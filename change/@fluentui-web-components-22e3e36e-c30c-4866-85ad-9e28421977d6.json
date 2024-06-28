@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor setTheme() to use adoptedStyleSheets",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

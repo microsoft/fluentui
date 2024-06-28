@@ -37,6 +37,13 @@ export type ComboboxBaseProps = SelectionProps &
     defaultValue?: string;
 
     /**
+     * Disable auto-focusing on the first item when mounting.
+     *
+     * @default false
+     */
+    disableAutoFocus?: boolean;
+
+    /**
      * Render the combobox's popup inline in the DOM.
      * This has accessibility benefits, particularly for touch screen readers.
      */

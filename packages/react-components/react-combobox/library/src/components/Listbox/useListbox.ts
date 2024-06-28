@@ -40,7 +40,7 @@ const UNSAFE_noLongerUsed = {
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
   'use no memo';
 
-  const { multiselect } = props;
+  const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
 
   const {
@@ -161,18 +161,20 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       activeDescendantController.hideFocusVisibleAttributes();
     }
 
-    // if it is single-select and there is a selected option, start at the selected option
-    if (!multiselect && optionContextValues.selectedOptions.length > 0) {
-      const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
+    if (!disableAutoFocus) {
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && optionContextValues.selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
 
-      if (selectedOption?.id) {
-        activeDescendantController.focus(selectedOption.id);
+        if (selectedOption?.id) {
+          activeDescendantController.focus(selectedOption.id);
+        }
       }
-    }
 
-    // otherwise start at the first option
-    else {
-      activeDescendantController.first();
+      // otherwise start at the first option
+      else {
+        activeDescendantController.first();
+      }
     }
 
     return () => {
