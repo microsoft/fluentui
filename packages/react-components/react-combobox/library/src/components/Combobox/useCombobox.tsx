@@ -9,11 +9,13 @@ import {
   useId,
   useMergedRefs,
   slot,
+  useOnClickOutside,
 } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { Listbox } from '../Listbox/Listbox';
-import type { ComboboxProps, ComboboxState } from './Combobox.types';
+import type { ComboboxOpenEvents, ComboboxProps, ComboboxState } from './Combobox.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
@@ -41,7 +43,8 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   const baseState = useComboboxBaseState({ ...props, editable: true, activeDescendantController });
 
-  const { clearable, clearSelection, disabled, multiselect, open, selectedOptions, value, hasFocus } = baseState;
+  const { clearable, clearSelection, disabled, multiselect, open, selectedOptions, setOpen, value, hasFocus } =
+    baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
@@ -111,6 +114,15 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     activeDescendantController,
     ...baseState,
   };
+
+  const { targetDocument } = useFluent();
+
+  useOnClickOutside({
+    element: targetDocument,
+    callback: event => setOpen(event as unknown as ComboboxOpenEvents, false),
+    refs: [triggerRef, comboboxPopupRef, comboboxTargetRef],
+    disabled: !open,
+  });
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown } = state.expandIcon || {};
