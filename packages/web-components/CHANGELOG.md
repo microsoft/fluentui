@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 26 Jun 2024 04:07:58 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Jun 2024 04:07:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.37)
+
+Fri, 28 Jun 2024 04:07:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.36..@fluentui/web-components_v3.0.0-beta.37)
+
+### Changes
+
+- refactor setTheme() to use adoptedStyleSheets ([PR #31713](https://github.com/microsoft/fluentui/pull/31713) by machi@microsoft.com)
+- Add rating-display component ([PR #31625](https://github.com/microsoft/fluentui/pull/31625) by email not defined)
+- Adds MessageBar component to Fluent Web Components ([PR #31708](https://github.com/microsoft/fluentui/pull/31708) by ryan@ryanmerrill.net)
+- chore: use tokens directly in css for badge partial ([PR #31847](https://github.com/microsoft/fluentui/pull/31847) by mmansour@microsoft.com)
+- fix: ensure menu keydown logic allows shift+tab to navigate as expected ([PR #31849](https://github.com/microsoft/fluentui/pull/31849) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.36)
 

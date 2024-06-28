@@ -2,6 +2,45 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 28 Jun 2024 04:07:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.37",
+      "version": "3.0.0-beta.37",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "896c9d329ae3206d95aa7c47ad8c4481a8e9961e",
+            "comment": "refactor setTheme() to use adoptedStyleSheets"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "e8819fbcd5ef0f4127f0b759cc597c1dc83ea9b2",
+            "comment": "Add rating-display component"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "dcdccf4f6504dd5e76fb89ed1c29499d290299ee",
+            "comment": "Adds MessageBar component to Fluent Web Components"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c05bfd2c12f8c658562b9fc63d98410f5de79003",
+            "comment": "chore: use tokens directly in css for badge partial"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "272dafa6a489749c61f8f98f33bfe03fdcb7921c",
+            "comment": "fix: ensure menu keydown logic allows shift+tab to navigate as expected"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Jun 2024 04:07:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.36",
       "version": "3.0.0-beta.36",
