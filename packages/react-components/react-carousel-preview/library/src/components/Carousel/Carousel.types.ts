@@ -33,6 +33,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Peeking enables the next/prev carousel pages to 'peek' into the current view
    */
   peeking?: boolean;
+
+  /**
+   * Sets the card width, can be any default css value
+   */
+  cardWidth?: number | string;
 };
 
 /**
