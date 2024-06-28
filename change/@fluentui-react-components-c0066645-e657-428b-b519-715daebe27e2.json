@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add useComboboxBaseState hook to the exports.",
+  "packageName": "@fluentui/react-components",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}
