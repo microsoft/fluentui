@@ -5,7 +5,6 @@ import { useCarouselStore_unstable } from '../useCarouselStore';
 import { useResizeObserverRef } from '../../utils/useResizeObserver';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useReducer } from 'react';
-import { useFluent } from '../../../../../react-shared-contexts/library/src/ProviderContext';
 
 /**
  * Create the state required to render CarouselSlider.

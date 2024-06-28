@@ -78,7 +78,8 @@ export type CarouselCardSlots = {
 // @public
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
     visible: boolean;
-    peekDir?: 'prev' | 'next' | null;
+    offsetIndex: number;
+    cardWidth: string | number;
 } & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
@@ -168,6 +169,33 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
+    cardWidth?: number | string;
+};
+
+// @public
+export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
+
+// @public (undocumented)
+export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots>;
+
+// @public
+export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
+    cardWidth?: string | number;
+};
+
+// @public (undocumented)
+export type CarouselSliderSlots = {
+    root: Slot<'div'>;
+    container: NonNullable<Slot<'div'>>;
+};
+
+// @public
+export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Required<Pick<CarouselSliderProps, 'cardWidth'>> & {
+    numCards: number;
+    currentIndex: number;
+    loopCount: number;
+    interruptedAnimation: boolean;
+    containerWidth: number;
 };
 
 // @public (undocumented)
@@ -204,6 +232,9 @@ export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) =
 
 // @public
 export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
+
+// @public
+export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.Element;
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
@@ -249,6 +280,12 @@ export const useCarouselNavImageButtonStyles_unstable: (state: CarouselNavImageB
 
 // @public
 export const useCarouselNavStyles_unstable: (state: CarouselNavState) => CarouselNavState;
+
+// @public
+export const useCarouselSlider_unstable: (props: CarouselSliderProps, ref: React_2.Ref<HTMLDivElement>) => CarouselSliderState;
+
+// @public
+export const useCarouselSliderStyles_unstable: (state: CarouselSliderState) => CarouselSliderState;
 
 // @public
 export const useCarouselStyles_unstable: (state: CarouselState) => CarouselState;

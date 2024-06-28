@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { MutableRefObject } from 'react';
 
 export type CarouselSliderSlots = {
   /**
