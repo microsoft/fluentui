@@ -25,7 +25,7 @@ export const useComboboxBaseState = (
 
   const {
     appearance = 'outline',
-    disableAutoFocus = false,
+    disableAutoFocus,
     children,
     clearable = false,
     editable = false,
