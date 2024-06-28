@@ -13,7 +13,7 @@ import {
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
 import { toggleState } from '../utils/element-internals.js';
-import { SliderConfiguration, SliderMode, SliderSize } from './slider.options.js';
+import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**
@@ -398,6 +398,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     super();
 
     this.elementInternals.role = 'slider';
+    this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
   }
 
   /**
