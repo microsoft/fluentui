@@ -88,7 +88,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   private handleStepStyles(): void {
     if (this.step) {
-      const totalSteps = (100 / Math.floor((this._maxValue - this._minValue) / this.step)) as any;
+      const totalSteps = (100 / Math.floor((this.maxAsNumber - this.minAsNumber) / this.step)) as any;
 
       if (this.stepStyles !== undefined) {
         this.$fastController.removeStyles(this.stepStyles);
@@ -158,7 +158,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public set value(value: string) {
     if (this.$fastController.isConnected) {
       const nextAsNumber = parseFloat(value);
-      const newValue = limit(this._minValue, this._maxValue, this.convertToConstrainedValue(nextAsNumber)).toString();
+      const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
 
       if (newValue !== value) {
         this.value = newValue;
@@ -270,24 +270,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   * Returns the min property or the default value
-   *
-   * @public
-   */
-  public get _minValue(): number {
-    return parseFloat(this.min) ?? 0;
-  }
-
-  /**
-   * Returns the max property or the default value
-   *
-   * @public
-   */
-  public get _maxValue(): number {
-    return parseFloat(this.max) ?? 100;
-  }
-
-  /**
    * Custom function that generates a string for the component's "aria-valuetext" attribute based on the current value.
    *
    * @public
@@ -322,9 +304,18 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: min
    */
   @attr({ converter: nullableNumberConverter })
-  public min?: string;
+  public min: string = '';
   protected minChanged(prev: string | undefined, next: string | undefined): void {
-    this.elementInternals.ariaValueMin = `${this._minValue}`;
+    this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
+  }
+
+  /**
+   * Returns the min property or the default value
+   *
+   * @internal
+   */
+  public get minAsNumber(): number {
+    return parseFloat(this.min) ?? 0;
   }
 
   /**
@@ -335,9 +326,18 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: max
    */
   @attr({ converter: nullableNumberConverter })
-  public max?: string;
+  public max: string = '';
   protected maxChanged(prev: string | undefined, next: string | undefined): void {
-    this.elementInternals.ariaValueMax = `${this._maxValue}`;
+    this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
+  }
+
+  /**
+   * Returns the max property or the default value
+   *
+   * @internal
+   */
+  public get maxAsNumber(): number {
+    return parseFloat(this.max) ?? 100;
   }
 
   /**
@@ -443,7 +443,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     const newVal: number =
       this.direction !== Direction.rtl ? Number(this.value) + this.stepValue : Number(this.value) - this.stepValue;
     const incrementedVal: number = this.convertToConstrainedValue(newVal);
-    const incrementedValString: string = incrementedVal < this._maxValue ? `${incrementedVal}` : `${this._maxValue}`;
+    const incrementedValString: string = incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
     this.value = incrementedValString;
   }
 
@@ -458,7 +458,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
         ? Number(this.value) - Number(this.stepValue)
         : Number(this.value) + Number(this.stepValue);
     const decrementedVal: number = this.convertToConstrainedValue(newVal);
-    const decrementedValString: string = decrementedVal > this._minValue ? `${decrementedVal}` : `${this._minValue}`;
+    const decrementedValString: string = decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
     this.value = decrementedValString;
   }
 
@@ -471,14 +471,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
       event.preventDefault();
       this.value =
         this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-          ? `${this._minValue}`
-          : `${this._maxValue}`;
+          ? `${this.minAsNumber}`
+          : `${this.maxAsNumber}`;
     } else if (event.key === keyEnd) {
       event.preventDefault();
       this.value =
         this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-          ? `${this._maxValue}`
-          : `${this._minValue}`;
+          ? `${this.maxAsNumber}`
+          : `${this.minAsNumber}`;
     } else if (!event.shiftKey) {
       switch (event.key) {
         case keyArrowRight:
@@ -510,7 +510,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @param direction - writing mode
    */
   private setSliderPosition(direction: Direction): void {
-    const newPct: number = convertPixelToPercent(parseFloat(this.value), this._minValue, this._maxValue, direction);
+    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, direction);
     const percentage: number = (1 - newPct) * 100;
     const thumbPosition = `calc(100% - ${percentage}%)`;
     const trackProgress =
@@ -552,14 +552,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   private get midpoint(): string {
-    return `${this.convertToConstrainedValue((this._maxValue + this._minValue) / 2)}`;
+    return `${this.convertToConstrainedValue((this.maxAsNumber + this.minAsNumber) / 2)}`;
   }
 
   private setupDefaultValue(): void {
     this.value = this.initialValue ?? this.midpoint;
 
     if (!Number.isNaN(this.valueAsNumber) &&
-        (this.valueAsNumber < this._minValue || this.valueAsNumber > this._maxValue)) {
+        (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)) {
       this.value = this.midpoint;
     }
   }
@@ -613,7 +613,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
       this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
       this.direction,
     );
-    const newValue: number = (this._maxValue - this._minValue) * newPosition + this._minValue;
+    const newValue: number = (this.maxAsNumber - this.minAsNumber) * newPosition + this.minAsNumber;
     return this.convertToConstrainedValue(newValue);
   }
 
@@ -656,7 +656,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   private convertToConstrainedValue(value: number): number {
     if (isNaN(value)) {
-      value = this._minValue;
+      value = this.minAsNumber;
     }
 
     /**
@@ -665,7 +665,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
      * and is converted to an integer by determining the number of decimal places it represent, multiplying it until it is an
      * integer and then dividing it to get back to the correct number.
      */
-    let constrainedValue: number = value - this._minValue;
+    let constrainedValue: number = value - this.minAsNumber;
     const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepValue);
     const remainderValue: number =
       constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepValue)) / this.stepMultiplier;
@@ -674,6 +674,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
       remainderValue >= Number(this.stepValue) / 2
         ? constrainedValue - remainderValue + Number(this.stepValue)
         : constrainedValue - remainderValue;
-    return constrainedValue + this._minValue;
+    return constrainedValue + this.minAsNumber;
   }
 }
