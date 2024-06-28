@@ -5,5 +5,12 @@ describe('NavDivider', () => {
   isConformant({
     Component: NavDivider,
     displayName: 'NavDivider',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { children: 'Test Children' },
+        },
+      ],
+    },
   });
 });
