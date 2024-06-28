@@ -103,4 +103,3 @@ export class MessageBar extends FASTElement {
     this.$emit('dismiss', {});
   };
 }
-

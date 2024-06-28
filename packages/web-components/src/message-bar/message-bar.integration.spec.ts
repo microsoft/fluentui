@@ -9,7 +9,6 @@ test.describe('Message Bar', () => {
   });
 
   test('should include a role of status', async ({ page }) => {
-
     const element = page.locator('fluent-message-bar');
 
     await expect(element).toHaveJSProperty('elementInternals.role', 'status');
