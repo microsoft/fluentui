@@ -245,3 +245,21 @@ export const singleLineState = css.partial`:is([state--singleline], :state(singl
  * @public
  */
 export const multiLineState = css.partial`:is([state--multiline], :state(multiline))`;
+
+/**
+ * Selector for the `expanded` state.
+ * @public
+ */
+export const expandedState = css.partial`:is([state--expanded], :state(expanded))`;
+
+/**
+ * Selector for the `block` state.
+ * @public
+ */
+export const blockState = css.partial`:is([state--block], :state(block))`;
+
+/**
+ * Selector for the `disabled` state.
+ * @public
+ */
+export const disabledState = css.partial`:is([state--disabled], :state(disabled))`;

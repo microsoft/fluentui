@@ -23,12 +23,12 @@ import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTElement {
-    // (undocumented)
+    // @internal (undocumented)
     protected accordionItems: Element[];
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
-    // @internal (undocumented)
+    // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
     slottedAccordionItems: HTMLElement[];
@@ -56,16 +56,21 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public (undocumented)
 export class AccordionItem extends FASTElement {
     block: boolean;
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
+    blockChanged(prev: boolean, next: boolean): void;
     disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandIconPosition?: AccordionItemExpandIconPosition;
+    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
+    markerPosition?: AccordionItemExpandIconPosition;
+    markerPositionChanged(prev: AccordionItemExpandIconPosition, next: AccordionItemExpandIconPosition): void;
     size?: AccordionItemSize;
+    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
