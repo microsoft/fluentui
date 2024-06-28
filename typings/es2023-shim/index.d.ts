@@ -1,4 +1,4 @@
-// TODO: Remove this when we upgrade to TypeScript 5
+// TODO: Remove this when we upgrade to TypeScript 5 https://github.com/microsoft/fluentui/issues/31857
 
 // Adopted from https://github.com/microsoft/TypeScript/blob/main/src/lib/es2023.array.d.ts
 declare interface Array<T> {
