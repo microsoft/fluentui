@@ -131,6 +131,9 @@ exports[`MaskedTextField renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &::-ms-reveal {
+              display: none;
+            }
             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background: Window;
               color: WindowText;
