@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
   IChartProps,
@@ -30,7 +31,7 @@ export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ILineChartStyleProps, ILineChartStyles>;
+  styles?: ILineChartStyles;
 
   /**
    * Show event annotation
