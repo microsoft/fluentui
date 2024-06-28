@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: update DatePicker to use legacyTrapFocus",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
