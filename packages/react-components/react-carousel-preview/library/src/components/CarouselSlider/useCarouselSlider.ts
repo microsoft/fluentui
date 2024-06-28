@@ -100,14 +100,10 @@ export const useCarouselSlider_unstable = (
     numCards,
     interruptedAnimation: interruptedAnimation.current,
     containerWidth: containerWidthRef.current,
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
       container: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: mergedRef,
