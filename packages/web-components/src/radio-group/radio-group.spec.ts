@@ -73,26 +73,29 @@ test.describe('RadioGroup', () => {
     const secondRadio = radios.nth(1);
     const thirdRadio = radios.nth(2);
 
-    const expectedFirst = await firstRadio.evaluate<boolean, Radio>(node => node.hasAttribute('disabled'));
-    const expectedSecond = await secondRadio.evaluate<boolean, Radio>(node => node.hasAttribute('disabled'));
-    const expectedThird = await thirdRadio.evaluate<boolean, Radio>(node => node.hasAttribute('disabled'));
+    const expectedFirst = await firstRadio.evaluate((node: Radio) => node.hasAttribute('disabled'));
+    const expectedSecond = await secondRadio.evaluate((node: Radio) => node.hasAttribute('disabled'));
+    const expectedThird = await thirdRadio.evaluate((node: Radio) => node.hasAttribute('disabled'));
 
-    expect(await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
+    expect(await firstRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
 
-    expect(await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
+    expect(await secondRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
 
-    expect(await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedThird);
+    expect(await thirdRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedThird);
 
-    element.evaluate<void, RadioGroup>(node => node.setAttribute('disabled', ''));
+    element.evaluate((node: RadioGroup) => {
+      node.toggleAttribute('disabled');
+    });
 
     const hasDisabledAttributeAfter = await element.evaluate((node: Element) => node.hasAttribute('disabled'));
+
     expect(hasDisabledAttributeAfter).toBe(true);
 
-    expect(await firstRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
+    expect(await firstRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedFirst);
 
-    expect(await secondRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
+    expect(await secondRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedSecond);
 
-    expect(await thirdRadio.evaluate<boolean, Radio>(radio => radio.hasAttribute('disabled'))).toEqual(expectedThird);
+    expect(await thirdRadio.evaluate((radio: Radio) => radio.hasAttribute('disabled'))).toEqual(expectedThird);
   });
 
   test('should NOT be focusable when disabled', async ({ page }) => {
@@ -150,7 +153,8 @@ test.describe('RadioGroup', () => {
     await element.evaluate(node => node.setAttribute('disabled', ''));
 
     const isDisabled = await element.evaluate((node: Element) => node.hasAttribute('disabled'));
-    await expect(isDisabled).toBe(true);
+
+    expect(isDisabled).toBe(true);
 
     for (let i = 0; i < radioItemsCount; i++) {
       const item = radios.nth(i);
@@ -418,5 +422,197 @@ test.describe('RadioGroup', () => {
 
       await expect(radios.nth(0)).toBeFocused();
     });
+  });
+
+  test('should adopt the `name` of the radios when every radio has the same `name` and the radio group has no `name` attribute', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+
+    await page.setContent(/* html */ `
+        <fluent-radio-group>
+            <fluent-radio name="foo"></fluent-radio>
+            <fluent-radio name="foo"></fluent-radio>
+            <fluent-radio name="foo"></fluent-radio>
+        </fluent-radio-group>
+    `);
+
+    await expect(element).toHaveJSProperty('name', 'foo');
+  });
+
+  test('should NOT adopt the `name` of the radios when the radios have different `name` attributes', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+
+    await page.setContent(/* html */ `
+        <fluent-radio-group>
+            <fluent-radio name="foo"></fluent-radio>
+            <fluent-radio name="bar"></fluent-radio>
+            <fluent-radio name="baz"></fluent-radio>
+        </fluent-radio-group>
+    `);
+
+    await expect(element).not.toHaveAttribute('name');
+  });
+
+  test('should set the `name` attribute of the radios to the `name` attribute of the radio group', async ({ page }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <fluent-radio-group name="foo">
+            <fluent-radio></fluent-radio>
+            <fluent-radio></fluent-radio>
+            <fluent-radio></fluent-radio>
+        </fluent-radio-group>
+    `);
+
+    expect(await radios.evaluateAll((radios: Radio[]) => radios.every(radio => radio.name === 'foo'))).toBe(true);
+  });
+
+  test('should override the `name` attribute of the radios with the `name` attribute of the radio group', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <fluent-radio-group name="foo">
+            <fluent-radio name="bar"></fluent-radio>
+            <fluent-radio name="baz"></fluent-radio>
+            <fluent-radio name="qux"></fluent-radio>
+        </fluent-radio-group>
+    `);
+
+    await expect(element).toHaveAttribute('name', 'foo');
+
+    expect(
+      await radios.evaluateAll((radios: Radio[]) => radios.every(radio => radio.getAttribute('name') === 'foo')),
+    ).toBe(true);
+
+    expect(await radios.evaluateAll((radios: Radio[]) => radios.every(radio => radio.name === 'foo'))).toBe(true);
+  });
+
+  test('should submit the value of the checked radio when the radio group is in a form and the form is submitted', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio-group name="radio">
+                <fluent-radio value="foo"></fluent-radio>
+                <fluent-radio value="bar"></fluent-radio>
+                <fluent-radio value="baz"></fluent-radio>
+            </fluent-radio-group>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    const button = page.locator('button');
+
+    await radios.nth(1).click();
+
+    await button.click();
+
+    await expect(page).toHaveURL(/radio=bar/);
+  });
+
+  test('should NOT submit the value of the checked radio when the radio group is in a form and the form is submitted and the radio group is disabled', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio-group name="radio" disabled>
+                <fluent-radio value="foo"></fluent-radio>
+                <fluent-radio value="bar"></fluent-radio>
+                <fluent-radio value="baz"></fluent-radio>
+            </fluent-radio-group>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    const button = page.locator('button');
+
+    await radios.nth(1).click();
+
+    await button.click();
+
+    await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT submit the value of the checked radio when the radio group is in a form and the form is submitted and the radio group has no name', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio-group>
+                <fluent-radio value="foo"></fluent-radio>
+                <fluent-radio value="bar"></fluent-radio>
+                <fluent-radio value="baz"></fluent-radio>
+            </fluent-radio-group>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    const button = page.locator('button');
+
+    await radios.nth(1).click();
+
+    await button.click();
+
+    await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT submit the value of the checked radio when the radio group is in a form and the form is submitted and the radio group has no radios', async ({
+    page,
+  }) => {
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio-group name="radio" value="foo"></fluent-radio-group>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    const button = page.locator('button');
+
+    await button.click();
+
+    await expect(page).not.toHaveURL(/radio=/);
+  });
+
+  test('should NOT submit the value of the checked radio when the radio group is in a form and the form is submitted and the radio group has no enabled radios', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+    const button = page.locator('button');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio-group name="radio">
+                <fluent-radio disabled value="foo"></fluent-radio>
+                <fluent-radio disabled value="bar"></fluent-radio>
+                <fluent-radio disabled value="baz"></fluent-radio>
+            </fluent-radio-group>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    await radios.nth(1).click();
+
+    await expect(radios.nth(1)).toHaveJSProperty('checked', false);
+
+    await button.click();
+
+    await expect(page).not.toHaveURL(/radio=/);
   });
 });

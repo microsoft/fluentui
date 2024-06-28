@@ -248,4 +248,104 @@ test.describe('Radio', () => {
       await expect(element).toHaveJSProperty('checked', true);
     });
   });
+
+  test('should set the `checked` property to false if the `checked` attribute is unset', async ({ page }) => {
+    const element = page.locator('fluent-radio');
+    const form = page.locator('form');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio></fluent-radio>
+        </form>
+    `);
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.checked = true;
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', false);
+  });
+
+  test('should set its checked property to true if the checked attribute is set', async ({ page }) => {
+    const element = page.locator('fluent-radio');
+    const form = page.locator('form');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio></fluent-radio>
+        </form>
+    `);
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.setAttribute('checked', '');
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+  });
+
+  test('should put the control into a clean state, where `checked` attribute modifications change the `checked` property prior to user or programmatic interaction', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-radio');
+    const form = page.locator('form');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio required></fluent-radio>
+        </form>
+    `);
+
+    await element.evaluate((node: Radio) => {
+      node.checked = true;
+      node.removeAttribute('checked');
+    });
+
+    await expect(element).toHaveJSProperty('checked', true);
+
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
+
+    await expect(element).toHaveJSProperty('checked', false);
+
+    await element.evaluate((node: Radio) => {
+      node.setAttribute('checked', '');
+    });
+
+    expect(await element.evaluate((node: Radio) => node.value)).toBeTruthy();
+  });
+
+  test('should NOT submit the value of the radio when checked', async ({ page }) => {
+    const element = page.locator('fluent-radio');
+    const submitButton = page.locator('button');
+
+    await page.setContent(/* html */ `
+        <form>
+            <fluent-radio name="radio" value="foo"></fluent-radio>
+            <button type="submit">submit</button>
+        </form>
+    `);
+
+    await element.click();
+
+    await submitButton.click();
+
+    expect(page.url()).not.toContain('?radio=foo');
+  });
 });

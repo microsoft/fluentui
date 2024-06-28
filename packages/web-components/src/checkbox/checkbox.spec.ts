@@ -29,6 +29,14 @@ test.describe('Checkbox', () => {
 
       await expect(element).toHaveAttribute('shape', 'square');
     });
+
+    await test.step('should unset the `shape` property when the attribute is removed', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.removeAttribute('shape');
+      });
+
+      await expect(element).toHaveJSProperty('shape', null);
+    });
   });
 
   test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
@@ -80,6 +88,14 @@ test.describe('Checkbox', () => {
       });
 
       await expect(element).toHaveJSProperty('size', 'large');
+    });
+
+    await test.step('should unset the `size` property when the attribute is removed', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.removeAttribute('size');
+      });
+
+      await expect(element).toHaveJSProperty('size', null);
     });
   });
 
