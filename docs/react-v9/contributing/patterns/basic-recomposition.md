@@ -1,6 +1,6 @@
 ## Basic Recomposition
 
-Fluent UI React V9 leans into Recomposition as one of its primary methods of customization. That is, reassemble parts of components to inherit most behaviors but also change some. We wanted to change 2 things for the Nav Divider component to help consumers quickly and easily implement specified behaviors:
+Fluent UI React V9 leans into recomposition as one of its primary methods of customization. That is, reassemble parts of components to inherit most behaviors but also change some. We will go through an example where we implemented this with the `NavDivider` component below:
 
 1.  Change the default appearance prop to 'strong'
     - The default Divider appearance happens to be the same color as the NavDrawer
@@ -76,7 +76,7 @@ export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HT
 };
 ```
 
-The last task is to add our new styling opinions. Pay special note to the location of `useDividerStyles`. We need to generate the base styles, but must add them _after_ merging the Nav specific styles such that the Nav styling opinions can 'win' and don't get over written by the base styles in the event of a collision (as there is with `flexGrow`.
+The last task is to add our new styling opinions. Pay special note to the location of `useDividerStyles`. We need to generate the base styles, but must add them _after_ merging the Nav specific styles such that the Nav styling opinions can 'win' and don't get overwritten by the base styles in the event of a collision (as there is with `flexGrow`.
 
 ```
 // useNavDividerStyles.ts
