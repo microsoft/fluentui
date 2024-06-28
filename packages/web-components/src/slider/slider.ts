@@ -355,6 +355,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    * @remarks
    * HTML Attribute: orientation
+   *
+   * @privateRemarks
+   * When checking the value of `this.orientation`, always compare it to
+   * `Orientation.vertical`, never to `Orientation.horizontal`, it’s because
+   * this property is optional, so it could be `undefined`. So any
+   * orientation-related behavior should consider horizontal as default, and
+   * apply different behavior when it’s vertical.
    */
   @attr
   public orientation?: Orientation;
@@ -576,9 +583,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // update the value based on current position
     const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
     const eventValue: number =
-      this.orientation === Orientation.horizontal
-        ? sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft
-        : sourceEvent.pageY - document.documentElement.scrollTop;
+      this.orientation === Orientation.vertical
+        ? sourceEvent.pageY - document.documentElement.scrollTop
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -597,8 +604,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // update the value based on current position
     const newPosition = convertPixelToPercent(
       rawValue,
-      this.orientation === Orientation.horizontal ? this.trackMinWidth : this.trackMinHeight,
-      this.orientation === Orientation.horizontal ? this.trackWidth : this.trackHeight,
+      this.orientation === Orientation.vertical ? this.trackMinHeight : this.trackMinWidth,
+      this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
       this.direction,
     );
     const newValue: number = (this._maxValue - this._minValue) * newPosition + this._minValue;
@@ -633,9 +640,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
       if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
-          this.orientation === Orientation.horizontal
-            ? event.pageX - document.documentElement.scrollLeft - this.trackLeft
-            : event.pageY - document.documentElement.scrollTop;
+          this.orientation === Orientation.vertical
+            ? event.pageY - document.documentElement.scrollTop
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
