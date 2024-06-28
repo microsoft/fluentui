@@ -15,6 +15,7 @@ describe('DrawerHeader', () => {
       <div>
         <header
           class="fui-DrawerHeader"
+          role="none"
         >
           Default DrawerHeader
         </header>

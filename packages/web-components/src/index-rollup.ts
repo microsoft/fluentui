@@ -23,6 +23,7 @@ import './message-bar/define.js';
 import './progress-bar/define.js';
 import './radio-group/define.js';
 import './radio/define.js';
+import './rating-display/define.js';
 import './slider/define.js';
 import './spinner/define.js';
 import './switch/define.js';
