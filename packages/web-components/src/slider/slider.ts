@@ -348,9 +348,18 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: step
    */
   @attr({ converter: nullableNumberConverter })
-  public step: number | undefined;
+  public step?: string;
   protected stepChanged(): void {
     this.updateStepMultiplier();
+  }
+
+  /**
+   * Returns the step property as a number.
+   *
+   * @internal
+   */
+  public get stepAsNumber(): number {
+    return this.step ? parseFloat(this.step) : 1;
   }
 
   /**
@@ -441,7 +450,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public increment(): void {
     const newVal: number =
-      this.direction !== Direction.rtl ? Number(this.value) + this.stepValue : Number(this.value) - this.stepValue;
+      this.direction !== Direction.rtl ? Number(this.value) + this.stepAsNumber : Number(this.value) - this.stepAsNumber;
     const incrementedVal: number = this.convertToConstrainedValue(newVal);
     const incrementedValString: string = incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
     this.value = incrementedValString;
@@ -455,8 +464,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public decrement(): void {
     const newVal =
       this.direction !== Direction.rtl
-        ? Number(this.value) - Number(this.stepValue)
-        : Number(this.value) + Number(this.stepValue);
+        ? Number(this.value) - Number(this.stepAsNumber)
+        : Number(this.value) + Number(this.stepAsNumber);
     const decrementedVal: number = this.convertToConstrainedValue(newVal);
     const decrementedValString: string = decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
     this.value = decrementedValString;
@@ -496,14 +505,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   };
 
   /**
-   * Gets the actual step value for the slider
-   *
-   */
-  private get stepValue(): number {
-    return this.step === undefined ? 1 : this.step;
-  }
-
-  /**
    * Places the thumb based on the current value
    *
    * @public
@@ -525,8 +526,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * are not whole numbers
    */
   private updateStepMultiplier(): void {
-    const stepString: string = this.stepValue + '';
-    const decimalPlacesOfStep: number = !!(this.stepValue % 1) ? stepString.length - stepString.indexOf('.') - 1 : 0;
+    const stepString: string = this.stepAsNumber + '';
+    const decimalPlacesOfStep: number = !!(this.stepAsNumber % 1) ? stepString.length - stepString.indexOf('.') - 1 : 0;
     this.stepMultiplier = Math.pow(10, decimalPlacesOfStep);
   }
 
@@ -666,13 +667,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
      * integer and then dividing it to get back to the correct number.
      */
     let constrainedValue: number = value - this.minAsNumber;
-    const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepValue);
+    const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepAsNumber);
     const remainderValue: number =
-      constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepValue)) / this.stepMultiplier;
+      constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepAsNumber)) / this.stepMultiplier;
 
     constrainedValue =
-      remainderValue >= Number(this.stepValue) / 2
-        ? constrainedValue - remainderValue + Number(this.stepValue)
+      remainderValue >= Number(this.stepAsNumber) / 2
+        ? constrainedValue - remainderValue + Number(this.stepAsNumber)
         : constrainedValue - remainderValue;
     return constrainedValue + this.minAsNumber;
   }
