@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Adds MessageBar component to Fluent Web Components",
+  "packageName": "@fluentui/web-components",
+  "email": "ryan@ryanmerrill.net",
+  "dependentChangeType": "patch"
+}

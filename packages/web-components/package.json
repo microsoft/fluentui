@@ -114,6 +114,10 @@
       "types": "./dist/dts/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
+    "./message-bar.js": {
+      "types": "./dist/dts/message-bar/define.d.ts",
+      "default": "./dist/esm/message-bar/define.js"
+    },
     "./progress-bar.js": {
       "types": "./dist/dts/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"

@@ -227,3 +227,15 @@ export const verticalState = css.partial`:is([state--vertical], :state(vertical)
  * @public
  */
 export const horizontalState = css.partial`:is([state--horizontal], :state(horizontal))`;
+
+/**
+ * Selector for the `singleline` state.
+ * @public
+ */
+export const singleLineState = css.partial`:is([state--singleline], :state(singleline))`;
+
+/**
+ * Selector for the `multiline` state.
+ * @public
+ */
+export const multiLineState = css.partial`:is([state--multiline], :state(multiline))`;
