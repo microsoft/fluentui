@@ -28,7 +28,7 @@ import type { CarouselContextValue } from '../CarouselContext.types';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { onValueChange, circular, peeking, cardWidth } = props;
+  const { onValueChange, circular, cardWidth } = props;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -160,7 +160,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByDirection,
     selectPageByValue,
     circular,
-    peeking,
     cardWidth: cardWidth ?? '100%',
   };
 }

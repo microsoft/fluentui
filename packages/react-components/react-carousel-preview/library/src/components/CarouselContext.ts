@@ -12,7 +12,6 @@ export const carouselContextDefaultValue: CarouselContextValue = {
     /** noop */
   },
   circular: false,
-  peeking: false,
   cardWidth: '100%',
 };
 

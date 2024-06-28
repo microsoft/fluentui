@@ -28,7 +28,7 @@ const TestDiv = (text: string, bgColor: string) => {
 };
 
 export const Default = (props: Partial<CarouselProps>) => (
-  <Carousel circular={true} peeking={true} defaultValue={'test-1'} cardWidth={'40%'} {...props}>
+  <Carousel circular={true} defaultValue={'test-1'} cardWidth={'70%'} {...props}>
     <CarouselSlider>
       <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
       <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>

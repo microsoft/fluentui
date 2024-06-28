@@ -37,7 +37,7 @@ _Include background research done for this component_
 
 ### Card Peeking
 
-When peeking is enabled, the previous and next card will be partially displayed on either side of the current active card.
+Cards will not peek by default, but can be enabled by setting the cardWidth to less than 100% of the viewport width.
 
 ### Condensed Navigation
 
@@ -80,6 +80,10 @@ A default navigation button that will set value to the next/previous page, drive
 The defining wrapper of a carousel's indexed content, they will take up the full viewport of Carousel wrapper (with consideration for gap and peeking variants), users may place multiple items within this Card if desired, with consideration of viewport width.
 
 Clickable actions within the content area are available via mouse and tab as expected, non-active index content will be set to inert until moved to active card.
+
+### CarouselSlider
+
+The container for animating and positioning the carousel cards, it should wrap all carousel cards to prevent the controls from affecting layout and responsiveness of card sizing.
 
 ### CarouselFooter
 
