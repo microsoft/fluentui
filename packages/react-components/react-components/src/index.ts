@@ -380,6 +380,7 @@ export {
   ListboxProvider,
   useListboxContextValues,
   useComboboxFilter,
+  useComboboxBaseState,
 } from '@fluentui/react-combobox';
 export type {
   ComboboxProps,

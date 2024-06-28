@@ -1355,6 +1355,7 @@ import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
+import { useComboboxBaseState } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxFilter } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -4419,6 +4420,8 @@ export { useColorSwatchStyles_unstable }
 export { useColumnIdContext }
 
 export { useCombobox_unstable }
+
+export { useComboboxBaseState }
 
 export { useComboboxContextValues }
 
