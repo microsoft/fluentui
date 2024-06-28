@@ -2,10 +2,10 @@ import * as React from 'react';
 // import { Input } from '@fluentui/react-input';
 import { Input } from '@fluentui/react-components';
 // import { Dropdown, Option } from '@fluentui/react-combobox';
-import { Dropdown, Option } from '@fluentui/react-components';
+import { Dropdown, Option, durations, curves } from '@fluentui/react-components';
 import { useId } from '@fluentui/react-utilities';
 
-import { durations, curves } from '@fluentui/react-motion';
+// import { durations, curves } from '@fluentui/react-motion';
 
 type DurationKey = keyof typeof durations;
 type CurveKey = keyof typeof curves;

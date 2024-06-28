@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Checkbox, ToggleButton } from '@fluentui/react-components';
-import { createPresenceComponentVariant } from '@fluentui/react-motion';
+import { Checkbox, ToggleButton, createPresenceComponentVariant } from '@fluentui/react-components';
+// import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { Scale } from '@fluentui/react-motion-components-preview';
 import { useMotionConfigurator, OverrideCodePreviewJSON } from '../utils/useMotionConfigurator';
 import description from './Custom.stories.md';
