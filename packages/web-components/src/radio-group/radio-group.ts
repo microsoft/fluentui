@@ -147,26 +147,32 @@ export class RadioGroup extends FASTElement {
       return;
     }
 
-    // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
-    const lastCheckedIndex = findLastIndex(this.enabledRadios, x => x.checked);
-
-    if (!this.dirtyState) {
-      this.value = this.initialValue ?? next[lastCheckedIndex]?.value ?? '';
+    if (!this.name && next.every(x => x.name === next[0].name)) {
+      this.name = next[0].name;
     }
 
     next.forEach((radio, index, radios) => {
       radio.ariaPosInSet = (index + 1).toString();
       radio.ariaSetSize = radios.length.toString();
-      radio.checked = !this.disabled && index === lastCheckedIndex;
+      radio.checked = false;
       radio.disabled = this.disabled || radio.disabledAttribute;
       radio.name = this.name;
     });
 
-    this.checkedIndex = lastCheckedIndex;
+    if (!this.dirtyState && this.initialValue) {
+      this.value = this.initialValue;
+    }
+
+    if (!this.value) {
+      // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
+      this.checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+    }
 
     this.setAttribute('aria-owns', next.map(radio => radio.id).join(' '));
 
-    Updates.enqueue(() => this.restrictFocus());
+    Updates.enqueue(() => {
+      this.restrictFocus();
+    });
   }
 
   /**
