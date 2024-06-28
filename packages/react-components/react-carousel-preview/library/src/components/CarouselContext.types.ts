@@ -39,6 +39,7 @@ export type CarouselContextValue = {
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
   circular?: boolean;
   peeking?: boolean;
+  cardWidth: number | string;
 };
 
 /**

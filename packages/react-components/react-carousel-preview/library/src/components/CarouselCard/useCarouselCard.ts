@@ -19,7 +19,7 @@ export const useCarouselCard_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
   const { value } = props;
-  const { circular } = useCarouselContext_unstable();
+  const { circular, cardWidth } = useCarouselContext_unstable();
 
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
@@ -59,6 +59,7 @@ export const useCarouselCard_unstable = (
     value,
     visible,
     offsetIndex,
+    cardWidth,
     components: {
       root: 'div',
     },
