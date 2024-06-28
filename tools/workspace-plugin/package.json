@@ -10,7 +10,7 @@
     "lint": "eslint --ext .ts,.js,.json ."
   },
   "dependencies": {
-    "@nx/devkit": "~19.0.8"
+    "@nx/devkit": "~19.1.2"
   },
   "devDependencies": {}
 }
