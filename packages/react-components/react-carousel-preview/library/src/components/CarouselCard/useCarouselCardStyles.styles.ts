@@ -1,7 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselCardSlots, CarouselCardState } from './CarouselCard.types';
-import { tokens } from '@fluentui/react-theme';
 
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
   root: 'fui-CarouselCard',
@@ -11,12 +10,8 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    width: '100%',
     height: '100%',
     gridRow: 1,
-    transitionProperty: 'transform',
-    transitionDelay: tokens.durationFaster,
-    transitionDuration: '0s',
   },
 });
 
@@ -26,7 +21,7 @@ const useStyles = makeStyles({
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
 
-  const { offsetIndex } = state;
+  const { offsetIndex, cardWidth } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselCardClassNames.root, styles.root, state.root.className);
@@ -35,9 +30,10 @@ export const useCarouselCardStyles_unstable = (state: CarouselCardState): Carous
   const currentPosition = offsetIndex * 100;
   // Todo: Resize observer our container so we can position based on pixels for variant states (isTrailing etc.)
   const slideTransform = `translate3d(${currentPosition}%, 0,0)`;
-
   state.root.style = {
     transform: slideTransform,
+    minWidth: cardWidth,
+    width: cardWidth,
     ...state.root.style,
   };
 

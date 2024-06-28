@@ -16,11 +16,10 @@ const easingCurve = 'cubic-bezier(0.65, 0, 0.35, 1)';
  */
 const useStyles = makeStyles({
   root: {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // flexWrap: 'nowrap',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
     overflow: 'visible',
-    display: 'inline-grid',
     transitionProperty: 'transform',
     transitionTimingFunction: easingCurve,
     transitionDuration: tokens.durationNormal,
@@ -50,12 +49,15 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   );
 
   // Shift our view for each card and tracking the total loops (circular)
-  const currentPosition = (-100 / numCards) * currentIndex + loopCount * -100 - 50 / numCards;
-  // Todo: Resize observer our container so we can position based on pixels for variant states (centered/isTrailing etc.)
-  const slideTransform = `translate3d(calc(${currentPosition}% + ${containerWidth / 2.0}px), 0,0)`;
+  const currentPosition = currentIndex + loopCount * numCards;
+
+  // Centers the active card
+  const offsetPos = `${containerWidth}px / 2 - ${cardWidth} / 2`;
+
+  // Todo: Positions for non-circular, trailing etc.
+  const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;
 
   state.root.style = {
-    width: `calc(${cardWidth} * ${numCards})`,
     transform: slideTransform,
     transitionDelay: interruptedAnimation ? `-${tokens.durationFast}` : '0',
     ...state.root.style,
