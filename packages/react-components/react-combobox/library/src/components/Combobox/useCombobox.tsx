@@ -46,7 +46,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const { clearable, clearSelection, disabled, multiselect, open, selectedOptions, setOpen, value, hasFocus } =
     baseState;
   const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
-  const { freeform, inlinePopup } = props;
+  const { disableAutoFocus = false, freeform, inlinePopup } = props;
   const comboId = useId('combobox-');
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
@@ -62,6 +62,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     triggerRef,
     defaultProps: {
       children: props.children,
+      disableAutoFocus,
     },
   });
 
