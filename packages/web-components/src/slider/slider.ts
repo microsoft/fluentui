@@ -275,7 +275,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   public get _minValue(): number {
-    return this.min ?? 0;
+    return parseFloat(this.min) ?? 0;
   }
 
   /**
@@ -284,7 +284,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   public get _maxValue(): number {
-    return this.max ?? 100;
+    return parseFloat(this.max) ?? 100;
   }
 
   /**
@@ -317,13 +317,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * The minimum allowed value.
    *
-   * @defaultValue - 0
    * @public
    * @remarks
    * HTML Attribute: min
    */
   @attr({ converter: nullableNumberConverter })
-  public min!: number;
+  public min?: string;
   protected minChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMin = `${this._minValue}`;
   }
@@ -331,13 +330,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * The maximum allowed value.
    *
-   * @defaultValue - 10
    * @public
    * @remarks
    * HTML Attribute: max
    */
   @attr({ converter: nullableNumberConverter })
-  public max!: number;
+  public max?: string;
   protected maxChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMax = `${this._maxValue}`;
   }

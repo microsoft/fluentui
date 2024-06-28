@@ -23,8 +23,6 @@ export default {
   title: 'Components/Slider',
   args: {
     disabled: false,
-    min: 0,
-    max: 100,
     size: SliderSetSize.medium,
     orientation: SliderSetOrientation.horizontal,
   },
