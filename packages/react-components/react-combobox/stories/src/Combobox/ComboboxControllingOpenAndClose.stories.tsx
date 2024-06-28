@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Checkbox, Combobox, makeStyles, Option, useId } from '@fluentui/react-components';
 import type { CheckboxProps, ComboboxProps } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { useDebounce } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   root: {
@@ -21,19 +19,17 @@ export const ControllingOpenAndClose = (props: Partial<ComboboxProps>) => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(true);
-  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(true);
-
-  const debouncedOpen = useDebounce(open, 100);
+  const handleOpenChange: ComboboxProps['onOpenChange'] = (e, data) => setOpen(data.open);
+  const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
 
   return (
     <div className={styles.root}>
-      <Checkbox value="open" name="state" label="open" capture="user" checked={debouncedOpen} onChange={onChange} />
+      <Checkbox value="open" name="state" label="open" capture="user" checked={open} onChange={onChange} />
       <label id={comboId}>Best pet</label>
       <Combobox
         aria-labelledby={comboId}
         placeholder="Select an animal"
-        open={debouncedOpen}
+        open={open}
         onOpenChange={handleOpenChange}
         {...props}
       >

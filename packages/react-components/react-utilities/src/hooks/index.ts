@@ -1,6 +1,5 @@
 export * from './useAnimationFrame';
 export * from './useControllableState';
-export * from './useDebounce';
 export * from './useEventCallback';
 export * from './useFirstMount';
 export * from './useForceUpdate';

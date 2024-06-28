@@ -3,7 +3,6 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
-import { useDebounce } from '@fluentui/react-utilities';
 
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import type { DropdownProps } from '@fluentui/react-combobox';
@@ -19,25 +18,17 @@ describe('Dropdown controlling open/close state', () => {
     const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
     const [open, setOpen] = React.useState(false);
-    const debouncedOpen = useDebounce(open, 100);
     const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open);
     const handleInputChange: React.ChangeEventHandler<HTMLInputElement> = event => setOpen(!!event.target.checked);
 
     return (
       <>
         <label>
-          <input
-            id={triggerId}
-            type="checkbox"
-            name="state"
-            value="open"
-            checked={debouncedOpen}
-            onChange={handleInputChange}
-          />
+          <input id={triggerId} type="checkbox" name="state" value="open" checked={open} onChange={handleInputChange} />
           Open/Close
         </label>
 
-        <Dropdown placeholder="Select an animal" open={debouncedOpen} onOpenChange={handleOpenChange}>
+        <Dropdown placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
           {options.map(option => (
             <Option key={option}>{option}</Option>
           ))}

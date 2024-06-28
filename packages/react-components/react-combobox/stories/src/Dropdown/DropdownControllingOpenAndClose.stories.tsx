@@ -1,8 +1,6 @@
 import * as React from 'react';
 import type { CheckboxProps, DropdownProps } from '@fluentui/react-components';
 import { Checkbox, Dropdown, makeStyles, Option, useId } from '@fluentui/react-components';
-// eslint-disable-next-line @fluentui/no-restricted-imports
-import { useDebounce } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   root: {
@@ -22,21 +20,14 @@ export const ControllingOpenAndClose = () => {
   const handleOpenChange: DropdownProps['onOpenChange'] = (e, data) => setOpen(data.open);
   const onChange: CheckboxProps['onChange'] = (e, data) => setOpen(!!data.checked);
 
-  const debouncedOpen = useDebounce(open, 100);
-
   const dropdownId = useId('dropdown');
   const options = ['Cat', 'Caterpillar', 'Corgi', 'Chupacabra', 'Dog', 'Ferret', 'Fish', 'Fox', 'Hamster', 'Snake'];
 
   return (
     <div className={styles.root}>
-      <Checkbox value="open" name="state" label="open" checked={debouncedOpen} onChange={onChange} />
+      <Checkbox value="open" name="state" label="open" checked={open} onChange={onChange} />
       <label id={dropdownId}>Best pet</label>
-      <Dropdown
-        aria-labelledby={dropdownId}
-        placeholder="Select an animal"
-        open={debouncedOpen}
-        onOpenChange={handleOpenChange}
-      >
+      <Dropdown aria-labelledby={dropdownId} placeholder="Select an animal" open={open} onOpenChange={handleOpenChange}>
         {options.map(option => (
           <Option key={option} disabled={option === 'Ferret'}>
             {option}

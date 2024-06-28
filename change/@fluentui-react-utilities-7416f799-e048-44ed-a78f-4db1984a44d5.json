@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add useDebounce hook",
-  "packageName": "@fluentui/react-utilities",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

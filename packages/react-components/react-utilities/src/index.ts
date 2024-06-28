@@ -42,7 +42,6 @@ export {
   resetIdsForTests,
   useAnimationFrame,
   useControllableState,
-  useDebounce,
   useEventCallback,
   useFirstMount,
   useForceUpdate,
