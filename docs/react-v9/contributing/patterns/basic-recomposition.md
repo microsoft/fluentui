@@ -76,7 +76,7 @@ export const useNavDivider_unstable = (props: NavDividerProps, ref: React.Ref<HT
 };
 ```
 
-The last task is to add our new styling opinions. Pay special note to the location of `useDividerStyles`. We need to generate the base styles, but must add them _after_ merging the Nav specific styles such that the Nav styling opinions can 'win' and don't get overwritten by the base styles in the event of a collision (as there is with `flexGrow`.
+The last task is to add our new styling opinions. Pay special note to the location of `useDividerStyles`. We need to generate the base styles, but must add them _after_ merging the Nav specific styles such that the Nav styling opinions can 'win' and don't get overwritten by the base styles in the event of a collision as there is with `flexGrow`. The classes passed in from consumers via state will also be respected.
 
 ```
 // useNavDividerStyles.ts
