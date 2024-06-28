@@ -181,6 +181,18 @@ export const importantState = css.partial`:is([state--important], :state(importa
 export const informativeState = css.partial`:is([state--informative], :state(informative))`;
 
 /**
+ * Selector for the `marigold` state.
+ * @public
+ */
+export const marigoldState = css.partial`:is([state--marigold], :state(marigold))`;
+
+/**
+ * Selector for the `neutral` state.
+ * @public
+ */
+export const neutralState = css.partial`:is([state--neutral], :state(neutral))`;
+
+/**
  * Selector for the `severe` state.
  * @public
  */
@@ -209,3 +221,15 @@ export const verticalState = css.partial`:is([state--vertical], :state(vertical)
  * @public
  */
 export const horizontalState = css.partial`:is([state--horizontal], :state(horizontal))`;
+
+/**
+ * Selector for the `singleline` state.
+ * @public
+ */
+export const singleLineState = css.partial`:is([state--singleline], :state(singleline))`;
+
+/**
+ * Selector for the `multiline` state.
+ * @public
+ */
+export const multiLineState = css.partial`:is([state--multiline], :state(multiline))`;
