@@ -10,7 +10,6 @@ type SliderStoryMeta = Meta<SliderStoryArgs>;
 const storyTemplate = html<SliderStoryArgs>`
   <fluent-slider
     ?disabled=${x => x.disabled}
-    ?readonly=${x => x.readOnly}
     step=${x => x.step}
     size=${x => x.size}
     min=${x => x.min}
@@ -24,7 +23,6 @@ export default {
   title: 'Components/Slider',
   args: {
     disabled: false,
-    readOnly: false,
     min: 0,
     max: 100,
     size: SliderSetSize.medium,
@@ -32,7 +30,6 @@ export default {
   },
   argTypes: {
     disabled: { control: 'boolean' },
-    readOnly: { control: 'boolean' },
     min: {
       control: 'number',
       defaultValue: 0,

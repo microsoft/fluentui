@@ -309,18 +309,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   * The element's read only state.
-   * @public
-   * @remarks
-   * HTML Attribute: `readonly`
-   */
-  @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readOnly: boolean = false;
-  protected readOnlyChanged(): void {
-    this.elementInternals.ariaReadOnly = `${this.readOnly}`;
-  }
-
-  /**
    * The minimum allowed value.
    *
    * @defaultValue - 0
