@@ -44,27 +44,18 @@ test.describe('Slider', () => {
             <fluent-slider></fluent-slider>
         `;
     });
-    await expect(element).toHaveAttribute('role', 'slider');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
 
-  test('should set a default `min` property of 0 when `min` is not provided', async () => {
+  test('should have default min and max if `min` and `max` attributes are not set', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
         `;
     });
 
-    await expect(element).toHaveJSProperty('min', 0);
-  });
-
-  test('should set a default `max` property of 10 when `max` is not provided', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
-
-    await expect(element).toHaveJSProperty('max', 10);
+    await expect(element).toHaveJSProperty('minAsNumber', 0);
+    await expect(element).toHaveJSProperty('maxAsNumber', 100);
   });
 
   test('should set a `tabindex` of 0', async () => {
@@ -77,38 +68,24 @@ test.describe('Slider', () => {
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set a default `aria-disabled` value when `disabled` is not defined', async () => {
+  test('should NOT set default `elementInternals.ariaDisabled` when `disabled` is not defined', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
         `;
     });
 
-    const hasAriaDisabled = await element.evaluate((node: Element) => node.hasAttribute('aria-disabled'));
-
-    expect(hasAriaDisabled).toBe(false);
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
 
-  test('should set a default `aria-orientation` value when `orientation` is not defined', async () => {
+  test('should set a default `elementInternals.ariaOrientation` when `orientation` is not defined', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
         `;
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
-  });
-
-  test('should NOT set a default `aria-readonly` value when `readonly` is not defined', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-              <fluent-slider></fluent-slider>
-          `;
-    });
-
-    const hasAriaReadonly = await element.evaluate((node: Element) => node.hasAttribute('aria-readonly'));
-
-    expect(hasAriaReadonly).toBe(false);
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
   });
 
   test('should initialize to the initial value if no value property is set', async () => {
@@ -118,12 +95,20 @@ test.describe('Slider', () => {
         `;
     });
 
-    const initialValue = await element.evaluate<string, Slider>(node => node.initialValue);
-
-    await expect(element).toHaveJSProperty('value', initialValue);
+    await expect(element).toHaveJSProperty('value', '50');
   });
 
-  test('should set the `aria-disabled` attribute when `disabled` value is true', async () => {
+  test('should set `elementInternals.ariaDisabled` when `disabled` is present', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+            <fluent-slider disabled></fluent-slider>
+        `;
+    });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+  });
+
+  test('should set the `elementInternals.ariaDisabled` when `disabled` value is true', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -134,7 +119,13 @@ test.describe('Slider', () => {
       node.disabled = true;
     });
 
-    await expect(element).toHaveAttribute('aria-disabled', 'true');
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+
+    await element.evaluate((node: Slider) => {
+      node.disabled = false;
+    });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
 
   test('should NOT set a tabindex when `disabled` value is true', async () => {
@@ -151,21 +142,7 @@ test.describe('Slider', () => {
     await expect(element).not.toHaveAttribute('tabindex', '0');
   });
 
-  test('should set the `aria-readonly` attribute when `readonly` value is true', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
-
-    await element.evaluate((node: Slider) => {
-      node.readOnly = true;
-    });
-
-    await expect(element).toHaveAttribute('aria-readonly', 'true');
-  });
-
-  test('should set the `aria-orientation` attribute equal to the `orientation` value', async () => {
+  test('should set `elementInternals.ariaOrientation` equal to the `orientation` value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -176,13 +153,13 @@ test.describe('Slider', () => {
       node.orientation = 'horizontal';
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
 
-    await element.evaluate((node: Slider, SliderOrientation) => {
+    await element.evaluate((node: Slider) => {
       node.orientation = 'vertical';
     });
 
-    await expect(element).toHaveAttribute('aria-orientation', 'vertical');
+    await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
   test('should set direction equal to the `direction` value', async () => {
@@ -205,7 +182,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('direction', 'rtl');
   });
 
-  test('should set the `aria-valuenow` attribute with the `value` property when provided', async () => {
+  test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -216,10 +193,10 @@ test.describe('Slider', () => {
       node.value = '8';
     });
 
-    await expect(element).toHaveAttribute('aria-valuenow', '8');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '8');
   });
 
-  test('should set the `aria-valuemin` attribute with the `min` property when provided', async () => {
+  test('should set `elementInternals.ariaValueMin` with the `min` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -227,13 +204,13 @@ test.describe('Slider', () => {
     });
 
     await element.evaluate((node: Slider) => {
-      node.min = 0;
+      node.min = '0';
     });
 
-    await expect(element).toHaveAttribute('aria-valuemin', '0');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMin', '0');
   });
 
-  test('should set the `aria-valuemax` attribute with the `max` property when provided', async () => {
+  test('should set `elementInternals.ariaValueMax` attribute with the `max` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -241,10 +218,10 @@ test.describe('Slider', () => {
     });
 
     await element.evaluate((node: Slider) => {
-      node.max = 75;
+      node.max = '75';
     });
 
-    await expect(element).toHaveAttribute('aria-valuemax', '75');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueMax', '75');
   });
 
   test.describe('valueAsNumber', () => {

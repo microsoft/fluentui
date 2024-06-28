@@ -54,6 +54,10 @@ export default {
 
 export const Slider = renderComponent(storyTemplate).bind({});
 
+export const SliderDefaultValue = renderComponent(html<SliderStoryArgs>`
+  <fluent-slider></fluent-slider>
+`);
+
 export const SliderOrientation = renderComponent(html<SliderStoryArgs>`
   <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
   <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
