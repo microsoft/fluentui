@@ -54,14 +54,8 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   // Centers the active card
   const offsetPos = `${containerWidth}px / 2 - ${cardWidth} / 2`;
 
-  console.log('offset pos:', offsetPos);
-  console.log('currentPosition:', currentPosition);
-  console.log('cardWidth:', cardWidth);
-
   // Todo: Positions for non-circular, trailing etc.
-  // const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;
-
-  const slideTransform = `translateX(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}))`;
+  const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;
 
   state.root.style = {
     transform: slideTransform,
