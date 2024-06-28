@@ -450,33 +450,33 @@ export class Slider extends FASTElement implements SliderConfiguration {
     this.value = decrementedValString;
   }
 
-  public keypressHandler = (e: KeyboardEvent): void => {
+  public keypressHandler = (event: KeyboardEvent): void => {
     if (this.disabled) {
       return;
     }
 
-    if (e.key === keyHome) {
-      e.preventDefault();
+    if (event.key === keyHome) {
+      event.preventDefault();
       this.value =
         this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
           ? `${this._minValue}`
           : `${this._maxValue}`;
-    } else if (e.key === keyEnd) {
-      e.preventDefault();
+    } else if (event.key === keyEnd) {
+      event.preventDefault();
       this.value =
         this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
           ? `${this._maxValue}`
           : `${this._minValue}`;
-    } else if (!e.shiftKey) {
-      switch (e.key) {
+    } else if (!event.shiftKey) {
+      switch (event.key) {
         case keyArrowRight:
         case keyArrowUp:
-          e.preventDefault();
+          event.preventDefault();
           this.increment();
           break;
         case keyArrowLeft:
         case keyArrowDown:
-          e.preventDefault();
+          event.preventDefault();
           this.decrement();
           break;
       }
@@ -568,13 +568,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    *  Handle mouse moves during a thumb drag operation
    */
-  private handlePointerMove = (e: PointerEvent | TouchEvent | Event): void => {
-    if (this.disabled || e.defaultPrevented) {
+  private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
+    if (this.disabled || event.defaultPrevented) {
       return;
     }
 
     // update the value based on current position
-    const sourceEvent = window.TouchEvent && e instanceof TouchEvent ? e.touches[0] : (e as PointerEvent);
+    const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
     const eventValue: number =
       this.orientation === Orientation.horizontal
         ? sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft
@@ -620,22 +620,22 @@ export class Slider extends FASTElement implements SliderConfiguration {
 
   /**
    *
-   * @param e - PointerEvent or null. If there is no event handler it will remove the events
+   * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
-  public handlePointerDown = (e: PointerEvent | null) => {
-    if (e === null || !this.disabled) {
-      const windowFn = e !== null ? window.addEventListener : window.removeEventListener;
-      const documentFn = e !== null ? document.addEventListener : document.removeEventListener;
+  public handlePointerDown = (event: PointerEvent | null) => {
+    if (event === null || !this.disabled) {
+      const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
+      const documentFn = event !== null ? document.addEventListener : document.removeEventListener;
       windowFn('pointerup', this.handleWindowPointerUp);
       documentFn('mouseleave', this.handleWindowPointerUp);
       windowFn('pointermove', this.handlePointerMove);
 
-      if (e) {
+      if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
           this.orientation === Orientation.horizontal
-            ? e.pageX - document.documentElement.scrollLeft - this.trackLeft
-            : e.pageY - document.documentElement.scrollTop;
+            ? event.pageX - document.documentElement.scrollLeft - this.trackLeft
+            : event.pageY - document.documentElement.scrollTop;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
