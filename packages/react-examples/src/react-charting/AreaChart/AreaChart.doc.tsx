@@ -7,6 +7,7 @@ import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
 import { AreaChartLargeDataExample } from './AreaChart.LargeData.Example';
+import { AreaChartNegativeValuesExample } from './AreaChart.NegativeValues.Example';
 
 const AreaChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
@@ -18,6 +19,8 @@ const AreaChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
 const AreaChartLargeDataExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.LargeData.Example.tsx') as string;
+const AreaChartNegativeValuesExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.NegativeValues.Example.tsx') as string;
 
 export const AreaChartPageProps: IDocPageProps = {
   title: 'AreaChart',
@@ -48,6 +51,11 @@ export const AreaChartPageProps: IDocPageProps = {
       title: 'AreaChart large data',
       code: AreaChartLargeDataExampleCode,
       view: <AreaChartLargeDataExample />,
+    },
+    {
+      title: 'AreaChart Negative Values',
+      code: AreaChartNegativeValuesExampleCode,
+      view: <AreaChartNegativeValuesExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md'),
