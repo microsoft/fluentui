@@ -9,19 +9,19 @@ export const LCBasic = (props: ILineChartProps) => {
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
 
-  const _onWidthChange = () => {
-    setWidth(10);
+  const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setWidth(parseInt(e.target.value, 10));
   };
 
-  const _onHeightChange = () => {
-    setHeight(10);
+  const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = (checked: boolean) => {
+  const _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setAllowMultipleShapes(checked);
   };
 
-  const _onToggleAxisTitlesCheckChange = (checked: boolean) => {
+  const _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setShowAxisTitles(checked);
   };
 
@@ -137,6 +137,7 @@ export const LCBasic = (props: ILineChartProps) => {
   return (
     <>
       <label htmlFor="changeWidth_basic">Change Width:</label>
+      *
       <input
         type="range"
         value={width}
@@ -207,4 +208,11 @@ export const LCBasic = (props: ILineChartProps) => {
       )}
     </>
   );
+};
+LCBasic.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
+    },
+  },
 };
