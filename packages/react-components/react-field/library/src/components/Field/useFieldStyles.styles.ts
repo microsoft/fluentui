@@ -116,6 +116,8 @@ const useValidationMessageIconStyles = makeStyles({
  * Apply styling to the Field slots based on the state
  */
 export const useFieldStyles_unstable = (state: FieldState): FieldState => {
+  'use no memo';
+
   const { validationState, size } = state;
   const horizontal = state.orientation === 'horizontal';
 

@@ -42,6 +42,8 @@ const useInvertedStyles = makeStyles({
  * Apply styling to the ToastBody slots based on the state
  */
 export const useToastBodyStyles_unstable = (state: ToastBodyState): ToastBodyState => {
+  'use no memo';
+
   const rootBaseClassName = useRootBaseClassName();
   const subtitleBaseClassName = useSubtitleBaseClassName();
   const invertedStyles = useInvertedStyles();

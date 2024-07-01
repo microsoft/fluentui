@@ -58,6 +58,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNavButton slots based on the state
  */
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
+  'use no memo';
+
   const styles = useStyles();
 
   const { selected } = state;

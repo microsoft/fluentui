@@ -12,6 +12,8 @@ import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
 export const useMergedTabsterAttributes_unstable: (
   ...attributes: Types.TabsterDOMAttribute[]
 ) => Types.TabsterDOMAttribute = (...attributes) => {
+  'use no memo';
+
   const stringAttributes = attributes.map(attribute => attribute[TABSTER_ATTRIBUTE_NAME]).filter(Boolean) as string[];
 
   return React.useMemo(() => {

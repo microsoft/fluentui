@@ -21,6 +21,8 @@ const useStyles = makeResetStyles({
 export const useDrawerHeaderNavigationStyles_unstable = (
   state: DrawerHeaderNavigationState,
 ): DrawerHeaderNavigationState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state.root.className = mergeClasses(drawerHeaderNavigationClassNames.root, styles, state.root.className);

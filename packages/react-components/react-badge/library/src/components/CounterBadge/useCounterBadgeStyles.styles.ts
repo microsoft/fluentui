@@ -25,6 +25,8 @@ const useStyles = makeStyles({
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles_unstable = (state: CounterBadgeState): CounterBadgeState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(
     counterBadgeClassNames.root,

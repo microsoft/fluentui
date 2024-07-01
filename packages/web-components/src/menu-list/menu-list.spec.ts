@@ -55,12 +55,12 @@ test.describe('Menu', () => {
       node.innerHTML = /* html */ `
                 <fluent-menu-list>
                     <fluent-menu-item>Menu item</fluent-menu-item>
-                    <div>Not a menu item</div>
+                    <div class="divider">Not a menu item</div>
                 </fluent-menu-list>
             `;
     });
 
-    const divider = element.locator('div');
+    const divider = element.locator('div.divider');
 
     expect(await divider.getAttribute('tabindex')).toBeNull();
   });

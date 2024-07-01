@@ -32,6 +32,8 @@ import { Escape } from '@fluentui/keyboard-keys';
  * @param props - props from this instance of Tooltip
  */
 export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
+  'use no memo';
+
   const context = useTooltipVisibility();
   const isServerSideRender = useIsSSR();
   const { targetDocument } = useFluent();
@@ -151,7 +153,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     }
   }, [context, targetDocument, visible, setVisible]);
 
-  // Used to skip showing the tooltip  in certain situations when the trigger is focued.
+  // Used to skip showing the tooltip  in certain situations when the trigger is focused.
   // See comments where this is set for more info.
   const ignoreNextFocusEventRef = React.useRef(false);
 

@@ -37,6 +37,8 @@ const useInfoButtonStyles = makeStyles({
  * Apply styling to the InfoLabel slots based on the state
  */
 export const useInfoLabelStyles_unstable = (state: InfoLabelState): InfoLabelState => {
+  'use no memo';
+
   state.root.className = mergeClasses(infoLabelClassNames.root, state.root.className);
 
   const labelStyles = useLabelStyles();

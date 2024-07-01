@@ -14,6 +14,8 @@ export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlot
  * Apply styling to the DataGridHeaderCell slots based on the state
  */
 export const useDataGridHeaderCellStyles_unstable = (state: DataGridHeaderCellState): DataGridHeaderCellState => {
+  'use no memo';
+
   useTableHeaderCellStyles_unstable(state);
   state.root.className = mergeClasses(dataGridHeaderCellClassNames.root, state.root.className);
 

@@ -241,6 +241,8 @@ const useVerticalStyles = makeStyles({
 });
 
 export const useDividerStyles_unstable = (state: DividerState): DividerState => {
+  'use no memo';
+
   const baseStyles = useBaseStyles();
   const horizontalStyles = useHorizontalStyles();
   const verticalStyles = useVerticalStyles();

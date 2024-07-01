@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add disableAutoFocus to Combobox and Listbox for cases when the popover is open on focus.",
+  "packageName": "@fluentui/react-combobox",
+  "email": "estebanmu@microsoft.com",
+  "dependentChangeType": "patch"
+}

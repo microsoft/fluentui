@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds 'use no memo' directive",
+  "packageName": "@fluentui/react-motion",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

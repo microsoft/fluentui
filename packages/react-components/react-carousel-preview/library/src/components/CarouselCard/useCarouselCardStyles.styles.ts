@@ -37,6 +37,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselCard slots based on the state
  */
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
+  'use no memo';
+
   const { peekDir } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add eslint react-compiler",
+  "packageName": "@fluentui/react-radio",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

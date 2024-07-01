@@ -80,6 +80,8 @@ const useBackdropMotionStyles = makeStyles({
  * Apply styling to the OverlayDrawer slots based on the state
  */
 export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): OverlayDrawerState => {
+  'use no memo';
+
   const baseClassNames = useDrawerBaseClassNames(state);
   const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();

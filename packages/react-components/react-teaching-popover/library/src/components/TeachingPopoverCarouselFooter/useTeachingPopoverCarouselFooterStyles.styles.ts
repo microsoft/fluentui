@@ -31,6 +31,8 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useTeachingPopoverCarouselFooterStyles_unstable = (state: TeachingPopoverCarouselFooterState) => {
+  'use no memo';
+
   const styles = useStyles();
   const { layout } = state;
 

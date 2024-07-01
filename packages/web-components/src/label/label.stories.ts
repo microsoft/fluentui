@@ -2,7 +2,6 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Label as FluentLabel } from './label.js';
-import './define.js';
 import { LabelSize, LabelWeight } from './label.options.js';
 
 type LabelStoryArgs = Args & FluentLabel;

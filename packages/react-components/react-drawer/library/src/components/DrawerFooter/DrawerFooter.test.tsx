@@ -15,6 +15,7 @@ describe('DrawerFooter', () => {
       <div>
         <footer
           class="fui-DrawerFooter"
+          role="none"
         >
           Default DrawerFooter
         </footer>

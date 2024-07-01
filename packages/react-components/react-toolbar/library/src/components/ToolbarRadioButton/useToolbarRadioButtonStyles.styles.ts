@@ -13,6 +13,8 @@ const useBaseStyles = makeStyles({
  * Apply styling to the ToolbarRadioButton slots based on the state
  */
 export const useToolbarRadioButtonStyles_unstable = (state: ToolbarRadioButtonState): ToolbarRadioButtonState => {
+  'use no memo';
+
   useToggleButtonStyles_unstable(state);
   const toggleButtonStyles = useBaseStyles();
 

@@ -10,6 +10,8 @@ export const toolbarGroupClassNames: SlotClassNames<ToolbarGroupSlots> = {
  * Apply styling to the Toolbar slots based on the state
  */
 export const useToolbarGroupStyles_unstable = (state: ToolbarGroupState): ToolbarGroupState => {
+  'use no memo';
+
   state.root.className = mergeClasses(toolbarGroupClassNames.root, state.root.className);
 
   return state;

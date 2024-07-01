@@ -38,7 +38,7 @@ export const ScrollTo = () => {
     <div>
       <Input defaultValue={'0'} onChange={onChangeGoToIndex} />
       <Button onClick={scrollToIndex}>{'GoTo'}</Button>
-      <Text>{message}</Text>
+      <Text aria-live="polite">{message}</Text>
       <VirtualizerScrollView
         numItems={childLength}
         itemSize={100}

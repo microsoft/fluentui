@@ -152,6 +152,11 @@ export interface CalendarDayGridProps extends DayGridOptions {
   allFocusable?: boolean;
 
   /**
+   * Label string for the grid
+   */
+  gridLabel?: string;
+
+  /**
    * The ID of the control that labels this one
    */
   labelledBy?: string;

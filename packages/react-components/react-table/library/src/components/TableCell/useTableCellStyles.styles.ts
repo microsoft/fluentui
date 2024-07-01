@@ -68,6 +68,8 @@ const useStyles = makeStyles({
  * Apply styling to the TableCell slots based on the state
  */
 export const useTableCellStyles_unstable = (state: TableCellState): TableCellState => {
+  'use no memo';
+
   const styles = useStyles();
   const layoutStyles = {
     table: useTableLayoutStyles(),

@@ -45,6 +45,7 @@ export const useNavCategoryItem_unstable = (
       getIntrinsicElementProps('button', {
         ref,
         'aria-current': validAriaCurrent,
+        'aria-expanded': open,
         ...props,
         onClick: onNavCategoryItemClick,
       }),

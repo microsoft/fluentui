@@ -50,6 +50,8 @@ function useAnimateAtomsInTestEnvironment() {
  * @internal
  */
 export function useAnimateAtoms() {
+  'use no memo';
+
   if (process.env.NODE_ENV === 'test' && !SUPPORTS_WEB_ANIMATIONS) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     return useAnimateAtomsInTestEnvironment();

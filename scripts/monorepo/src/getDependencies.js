@@ -112,6 +112,9 @@ function collectDependencies(
     return _acc;
   }
 
+  /** @type {Dependency[]} */
+  const collectedDeps = [];
+
   localDeps.forEach(dependency => {
     const isDependencyAlreadyCollected = _acc.some(dep => dep.name === dependency.target);
 
@@ -123,16 +126,21 @@ function collectDependencies(
       return;
     }
 
-    _acc.push({
+    collectedDeps.push({
       name: dependency.target,
       dependencyType: dependency.dependencyType,
       isTopLevel: _areTopLevelDeps,
     });
-
-    if (!options.shallow) {
-      collectDependencies(dependency.target, projectGraph, options, _acc, false);
-    }
   });
+
+  // update main dep stack with actual collected deps
+  _acc.push(...collectedDeps);
+
+  if (!options.shallow) {
+    for (const collectedDep of collectedDeps) {
+      collectDependencies(collectedDep.name, projectGraph, options, _acc, false);
+    }
+  }
 
   return _acc;
 }

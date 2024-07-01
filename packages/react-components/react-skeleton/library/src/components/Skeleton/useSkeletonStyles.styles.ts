@@ -9,6 +9,8 @@ export const skeletonClassNames: SlotClassNames<SkeletonSlots> = {
  * Apply styling to the Skeleton slots based on the state
  */
 export const useSkeletonStyles_unstable = (state: SkeletonState): SkeletonState => {
+  'use no memo';
+
   state.root.className = mergeClasses(skeletonClassNames.root, state.root.className);
 
   return state;

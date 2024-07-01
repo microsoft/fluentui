@@ -30,6 +30,8 @@ const useStyles = makeStyles({
  * Apply styling to the Menu slots based on the state
  */
 export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopoverState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
   return state;

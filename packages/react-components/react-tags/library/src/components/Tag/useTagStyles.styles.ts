@@ -325,6 +325,8 @@ export const useSecondaryTextBaseClassName = makeResetStyles({
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
+  'use no memo';
+
   const rootRoundedBaseClassName = useRootRoundedBaseClassName();
   const rootCircularBaseClassName = useRootCircularBaseClassName();
 

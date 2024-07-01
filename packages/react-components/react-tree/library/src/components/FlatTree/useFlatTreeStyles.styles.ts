@@ -14,6 +14,8 @@ const useBaseStyles = makeResetStyles({
 });
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
+  'use no memo';
+
   const baseStyles = useBaseStyles();
   state.root.className = mergeClasses(flatTreeClassNames.root, baseStyles, state.root.className);
   return state;

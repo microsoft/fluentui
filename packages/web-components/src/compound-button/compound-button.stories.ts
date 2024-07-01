@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { CompoundButton as FluentCompoundButton } from './compound-button.js';
 import { CompoundButtonAppearance, CompoundButtonShape, CompoundButtonSize } from './compound-button.options.js';
-import './define.js';
 
 type CompoundButtonStoryArgs = Args & FluentCompoundButton;
 type CompoundButtonStoryMeta = Meta<CompoundButtonStoryArgs>;

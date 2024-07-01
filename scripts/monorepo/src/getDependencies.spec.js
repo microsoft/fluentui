@@ -19,13 +19,8 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": false,
+          "isTopLevel": true,
           "name": "@fluentui/react-theme",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/tokens",
         },
         Object {
           "dependencyType": "dependencies",
@@ -34,13 +29,18 @@ describe(`#getDependencies`, () => {
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/keyboard-keys",
+          "isTopLevel": true,
+          "name": "@fluentui/react-jsx-runtime",
         },
         Object {
           "dependencyType": "dependencies",
-          "isTopLevel": true,
-          "name": "@fluentui/react-jsx-runtime",
+          "isTopLevel": false,
+          "name": "@fluentui/tokens",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/keyboard-keys",
         },
       ]
     `);
@@ -49,18 +49,33 @@ describe(`#getDependencies`, () => {
       Array [
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": false,
+          "isTopLevel": true,
           "name": "@fluentui/eslint-plugin",
         },
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": false,
+          "isTopLevel": true,
+          "name": "@fluentui/react-conformance",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "@fluentui/react-conformance-griffel",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
           "name": "@fluentui/scripts-api-extractor",
         },
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": false,
+          "isTopLevel": true,
           "name": "@fluentui/scripts-tasks",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-jest",
         },
         Object {
           "dependencyType": "dependencies",
@@ -76,21 +91,6 @@ describe(`#getDependencies`, () => {
           "dependencyType": "dependencies",
           "isTopLevel": false,
           "name": "@fluentui/scripts-prettier",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/react-conformance",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/scripts-jest",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/react-conformance-griffel",
         },
       ]
     `);

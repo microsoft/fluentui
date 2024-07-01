@@ -46,6 +46,8 @@ const usePopupSurfaceClassName = makeResetStyles({
  * Apply styling to the DatePicker slots based on the state
  */
 export const useDatePickerStyles_unstable = (state: DatePickerState): DatePickerState => {
+  'use no memo';
+
   const styles = useStyles();
   const popupSurfaceClassName = usePopupSurfaceClassName();
   const { disabled, inlinePopup } = state;

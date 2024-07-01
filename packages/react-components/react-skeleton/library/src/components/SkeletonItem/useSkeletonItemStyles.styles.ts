@@ -148,6 +148,8 @@ const useCircleSizeStyles = makeStyles({
  * Apply styling to the SkeletonItem slots based on the state
  */
 export const useSkeletonItemStyles_unstable = (state: SkeletonItemState): SkeletonItemState => {
+  'use no memo';
+
   const { animation, appearance, size, shape } = state;
   const { dir } = useFluent();
 

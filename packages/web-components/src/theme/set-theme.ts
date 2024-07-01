@@ -3,34 +3,52 @@ import * as tokens from './design-tokens.js';
 
 const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
+const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
+const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
+const themeStyleSheet = new CSSStyleSheet();
+const themeStyleTextMap = new Map<Theme, string>();
+
 /**
  * Sets the theme tokens on defaultNode.
  * @param theme - Flat object of theme token values.
  * @internal
  */
 export const setTheme = (theme: Theme) => {
-  for (const t of tokenNames) {
-    let registered = false;
+  // Fallback to setting token custom properties on `<html>` element’s `style`
+  // attribute, only checking the support of  `document.adoptedStyleSheets`
+  // here because it has broader support than `CSS.registerProperty()`, which
+  // is checked later.
+  if (!SUPPORTS_ADOPTED_STYLE_SHEETS) {
+    setThemeFor(document.documentElement, theme);
+    return;
+  }
 
-    if ('registerProperty' in CSS) {
-      try {
-        CSS.registerProperty({
-          name: `--${t}`,
-          inherits: true,
-          initialValue: theme[t] as string,
-        });
-        registered = true;
-      } catch {
-        // Do nothing.
+  if (!themeStyleTextMap.has(theme)) {
+    const tokenDeclarations: string[] = [];
+
+    for (const t of tokenNames) {
+      if (SUPPORTS_REGISTER_PROPERTY) {
+        try {
+          CSS.registerProperty({
+            name: `--${t}`,
+            inherits: true,
+            initialValue: theme[t] as string,
+          });
+        } catch {}
       }
+      tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
     }
 
-    if (!registered) {
-      // TODO: Find a better way to update the values. Current approach adds
-      // lots of code to the `style` attribute on `<body>`. Maybe look into
-      // `document.adoptedStyleSheets`.
-      setThemeFor(document.body, theme);
-    }
+    themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
+  }
+
+  if (!document.adoptedStyleSheets.includes(themeStyleSheet)) {
+    document.adoptedStyleSheets.push(themeStyleSheet);
+  } else {
+    // The very first call to `setTheme()` within a document doesn’t need to
+    // call `replaceSync()`, because `CSS.registerProperty()` above is
+    // sufficient to set the tokens.
+    themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
   }
 };
 

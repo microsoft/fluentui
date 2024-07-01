@@ -43,6 +43,8 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
+  'use no memo';
+
   if (process.env.NODE_ENV !== 'production') {
     if (options.state !== undefined && options.defaultState !== undefined) {
       // eslint-disable-next-line no-console
@@ -90,6 +92,8 @@ function isInitializer<State>(value: State | (() => State)): value is () => Stat
  * @returns - whether the value is controlled
  */
 const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is V => {
+  'use no memo';
+
   const [isControlled] = React.useState<boolean>(() => controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {

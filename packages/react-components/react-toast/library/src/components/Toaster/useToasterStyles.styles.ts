@@ -26,6 +26,8 @@ const useToasterStyles = makeStyles({
  * Apply styling to the Toaster slots based on the state
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
+  'use no memo';
+
   const rootBaseClassName = useRootBaseClassName();
   const styles = useToasterStyles();
   const className = mergeClasses(

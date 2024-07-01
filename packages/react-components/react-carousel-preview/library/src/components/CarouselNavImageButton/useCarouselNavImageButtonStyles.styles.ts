@@ -44,6 +44,8 @@ const useStyles = makeStyles({
 export const useCarouselNavImageButtonStyles_unstable = (
   state: CarouselNavImageButtonState,
 ): CarouselNavImageButtonState => {
+  'use no memo';
+
   const { selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(

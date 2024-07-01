@@ -41,6 +41,8 @@ const useStyles = makeStyles({
  * Apply styling to the OptionGroup slots based on the state
  */
 export const useOptionGroupStyles_unstable = (state: OptionGroupState): OptionGroupState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(optionGroupClassNames.root, styles.root, state.root.className);
 

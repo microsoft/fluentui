@@ -25,6 +25,8 @@ export type UsePortalMountNodeOptions = {
  * Creates a new element on a "document.body" to mount portals.
  */
 export const usePortalMountNode = (options: UsePortalMountNodeOptions): HTMLElement | null => {
+  'use no memo';
+
   const { targetDocument, dir } = useFluent();
   const mountNode = usePortalMountNodeContext();
 

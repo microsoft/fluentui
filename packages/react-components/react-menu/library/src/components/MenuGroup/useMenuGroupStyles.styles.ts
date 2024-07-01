@@ -7,6 +7,8 @@ export const menuGroupClassNames: SlotClassNames<MenuGroupSlots> = {
 };
 
 export const useMenuGroupStyles_unstable = (state: MenuGroupState): MenuGroupState => {
+  'use no memo';
+
   state.root.className = mergeClasses(menuGroupClassNames.root, state.root.className);
 
   return state;

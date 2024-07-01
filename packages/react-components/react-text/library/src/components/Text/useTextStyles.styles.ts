@@ -110,6 +110,8 @@ const useStyles = makeStyles({
  * Apply styling to the Text slots based on the state
  */
 export const useTextStyles_unstable = (state: TextState): TextState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state.root.className = mergeClasses(

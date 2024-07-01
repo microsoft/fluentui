@@ -60,6 +60,8 @@ const useStyles = makeStyles({
  * Apply styling to the TreeItem slots based on the state
  */
 export const useTreeItemStyles_unstable = (state: TreeItemState): TreeItemState => {
+  'use no memo';
+
   const baseStyles = useBaseStyles();
   const styles = useStyles();
 

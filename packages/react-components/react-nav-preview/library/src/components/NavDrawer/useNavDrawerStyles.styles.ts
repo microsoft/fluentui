@@ -23,6 +23,8 @@ const useStyles = makeStyles({
  * Apply styling to the NavDrawer slots based on the state
  */
 export const useNavDrawerStyles_unstable = (state: NavDrawerState): NavDrawerState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(navDrawerClassNames.root, styles.root, state.root.className);
 

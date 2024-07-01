@@ -119,7 +119,14 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     return dayRefs;
   };
 
-  const { dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth, animationDirection } = props;
+  const {
+    gridLabel,
+    dateRangeType,
+    showWeekNumbers,
+    labelledBy,
+    lightenDaysOutsideNavigatedMonth,
+    animationDirection,
+  } = props;
 
   const classNames = useCalendarDayGridStyles_unstable({
     animateBackwards,
@@ -149,6 +156,7 @@ export const CalendarDayGrid: React.FunctionComponent<CalendarDayGridProps> = pr
     <table
       className={mergeClasses(classNames.table, props.className)}
       aria-multiselectable="false"
+      aria-label={gridLabel}
       aria-labelledby={labelledBy}
       aria-activedescendant={activeDescendantId}
       role="grid"

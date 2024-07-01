@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
-import './define.js';
 
 type SliderStoryArgs = Args & FluentSlider;
 type SliderStoryMeta = Meta<SliderStoryArgs>;

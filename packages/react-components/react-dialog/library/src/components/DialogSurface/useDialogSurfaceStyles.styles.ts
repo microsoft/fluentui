@@ -71,6 +71,8 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
+  'use no memo';
+
   const { isNestedDialog, root, backdrop } = state;
 
   const rootBaseStyle = useRootBaseStyle();

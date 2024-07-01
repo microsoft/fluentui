@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { MenuButton as FluentMenuButton } from './menu-button.js';
 import { MenuButtonAppearance, MenuButtonShape, MenuButtonSize } from './menu-button.options.js';
-import './define.js';
 
 type MenuButtonStoryArgs = Args & FluentMenuButton;
 type MenuButtonStoryMeta = Meta<MenuButtonStoryArgs>;

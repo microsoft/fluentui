@@ -11,6 +11,8 @@ import { useMergedRefs } from '@fluentui/react-utilities';
  * @internal
  */
 export function useTreeNavigation() {
+  'use no memo';
+
   const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
 

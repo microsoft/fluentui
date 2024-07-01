@@ -27,13 +27,6 @@ describe('DatePicker', () => {
     cy.get(inputSelector).click({ force: true }).get(popoverSelector).should('not.exist');
   });
 
-  it('should render DatePicker and popupId must exist in the DOM when the popup is open', () => {
-    mount(<DatePicker />);
-    cy.get(inputSelector).click();
-
-    cy.get('body').find('[aria-owns]').should('exist');
-  });
-
   it('should move focus back to the input when the popup is closed', () => {
     mount(<DatePicker inlinePopup />);
     cy.get(inputSelector).focus().realPress('Enter').realPress('Escape');

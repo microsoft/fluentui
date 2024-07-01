@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: add eslint react-compiler",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

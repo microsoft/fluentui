@@ -29,6 +29,8 @@ const useIconStyles = makeStyles({
  * Apply styling to the BreadcrumbDivider slots based on the state
  */
 export const useBreadcrumbDividerStyles_unstable = (state: BreadcrumbDividerState): BreadcrumbDividerState => {
+  'use no memo';
+
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const { size = 'medium' } = state;

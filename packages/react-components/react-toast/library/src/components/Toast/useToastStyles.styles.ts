@@ -32,6 +32,8 @@ const useStyles = makeStyles({
  * Apply styling to the Toast slots based on the state
  */
 export const useToastStyles_unstable = (state: ToastState): ToastState => {
+  'use no memo';
+
   const rootBaseClassName = useRootBaseClassName();
   const styles = useStyles();
   state.root.className = mergeClasses(

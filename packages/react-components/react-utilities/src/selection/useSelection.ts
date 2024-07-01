@@ -80,6 +80,8 @@ function useMultipleSelection(params: Omit<SelectionHookParams, 'selectionMode'>
 }
 
 export function useSelection(params: SelectionHookParams) {
+  'use no memo';
+
   if (params.selectionMode === 'multiselect') {
     // selectionMode is a static value, so we can safely ignore rules-of-hooks
     // eslint-disable-next-line react-hooks/rules-of-hooks

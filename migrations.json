@@ -2,18 +2,11 @@
   "migrations": [
     {
       "cli": "nx",
-      "version": "17.3.0-beta.6",
-      "description": "Updates the nx wrapper.",
-      "implementation": "./src/migrations/update-17-3-0/update-nxw",
-      "package": "nx",
-      "name": "17.3.0-update-nx-wrapper"
-    },
-    {
-      "version": "17.2.9",
-      "description": "Move executor options to target defaults",
-      "implementation": "./src/migrations/update-17-2-9/move-options-to-target-defaults",
-      "package": "@nx/eslint",
-      "name": "move-options-to-target-defaults"
+      "version": "19.1.0-beta.6",
+      "description": "Migrate no-extra-semi rules into user config, out of nx extendable configs",
+      "implementation": "./src/migrations/update-19-1-0-migrate-no-extra-semi/migrate-no-extra-semi",
+      "package": "@nx/eslint-plugin",
+      "name": "update-19-1-0-rename-no-extra-semi"
     }
   ]
 }

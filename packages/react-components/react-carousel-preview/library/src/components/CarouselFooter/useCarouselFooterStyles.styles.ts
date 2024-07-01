@@ -23,6 +23,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselFooter slots based on the state
  */
 export const useCarouselFooterStyles_unstable = (state: CarouselFooterState): CarouselFooterState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(carouselFooterClassNames.root, styles.root, state.root.className);
 

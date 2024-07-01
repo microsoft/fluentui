@@ -3,6 +3,8 @@ import { TreeContextValue } from '../../contexts';
 import { TreeContextValues, TreeState } from './Tree.types';
 
 export function useTreeContextValues_unstable(state: TreeState): TreeContextValues {
+  'use no memo';
+
   if (state.contextType === 'root') {
     const {
       openItems,

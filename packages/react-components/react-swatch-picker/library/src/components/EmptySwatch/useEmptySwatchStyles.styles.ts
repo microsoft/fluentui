@@ -54,6 +54,8 @@ const useShapeStyles = makeStyles({
  * Apply styling to the EmptySwatch slots based on the state
  */
 export const useEmptySwatchStyles_unstable = (state: EmptySwatchState): EmptySwatchState => {
+  'use no memo';
+
   const styles = useStyles();
   const sizeStyles = useSizeStyles();
   const shapeStyles = useShapeStyles();

@@ -4,7 +4,8 @@ import { isConformant } from '../../testing/isConformant';
 import { List } from './List';
 import { ListProps } from './List.types';
 import { ListItem } from '../ListItem/ListItem';
-import { ListItemActionEvent } from '../../events/ListItemActionEvent';
+import { ListItemActionEventData } from '../ListItem/ListItem.types';
+import { EventHandler } from '@fluentui/react-utilities';
 
 function expectListboxItemSelected(item: HTMLElement, selected: boolean) {
   expect(item.getAttribute('aria-selected')).toBe(selected.toString());
@@ -335,12 +336,32 @@ describe('List', () => {
         firstItem.click();
         expect(onAction).toHaveBeenCalledTimes(1);
       });
+      it('onAction should be called with the value', () => {
+        const onAction = jest.fn();
+
+        const result = render(
+          <List>
+            <ListItem onAction={onAction} value="first-item">
+              First ListItem
+            </ListItem>
+            <ListItem>Second ListItem</ListItem>
+          </List>,
+        );
+
+        const firstItem = result.getByText('First ListItem');
+        firstItem.click();
+        expect(onAction).toHaveBeenCalledWith(expect.any(Object), {
+          event: expect.any(Object),
+          type: 'ListItemAction',
+          value: 'first-item',
+        });
+      });
     });
 
     describe('with selection', () => {
       function interactWithFirstElement(
         interaction: (firstItem: HTMLElement) => void,
-        customAction?: (e: ListItemActionEvent) => void,
+        customAction?: EventHandler<ListItemActionEventData>,
       ) {
         const onAction = jest.fn(customAction);
 
@@ -454,7 +475,9 @@ describe('List', () => {
 
         const result = render(
           <List>
-            <ListItem onAction={onAction}>First ListItem</ListItem>
+            <ListItem onAction={onAction} value="first-item">
+              First ListItem
+            </ListItem>
             <ListItem>Second ListItem</ListItem>
           </List>,
         );
@@ -473,11 +496,18 @@ describe('List', () => {
       it('Enter should trigger onClick', () => {
         expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledTimes(1);
       });
+      it('onAction should be called with list item value', () => {
+        expect(pressKeyOnListItem('Enter').onAction).toHaveBeenCalledWith(expect.any(Object), {
+          event: expect.any(Object),
+          type: 'ListItemAction',
+          value: 'first-item',
+        });
+      });
     });
 
     describe('with selection', () => {
-      function pressOnListItem(key: string, customOnaction?: (e: ListItemActionEvent) => void) {
-        const onAction = jest.fn(customOnaction);
+      function pressOnListItem(key: string, customOnAction?: EventHandler<ListItemActionEventData>) {
+        const onAction = jest.fn(customOnAction);
 
         const result = render(
           <List selectionMode="multiselect">

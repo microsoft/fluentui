@@ -30,6 +30,30 @@ import {
   lineHeightHero900,
 } from '../theme/design-tokens.js';
 
+/**
+ * Selector for the `nowrap` state.
+ * @public
+ */
+const nowrapState = css.partial`:is([state--nowrap], :state(nowrap))`;
+
+/**
+ * Selector for the `truncate` state.
+ * @public
+ */
+const truncateState = css.partial`:is([state--truncate], :state(truncate))`;
+
+/**
+ * Selector for the `underline` state.
+ * @public
+ */
+const underlineState = css.partial`:is([state--underline], :state(underline))`;
+
+/**
+ * Selector for the `strikethrough` state.
+ * @public
+ */
+const strikethroughState = css.partial`:is([state--strikethrough], :state(strikethrough))`;
+
 /** Text styles
  * @public
  */
@@ -38,126 +62,105 @@ export const styles = css`
 
   :host {
     contain: content;
-  }
-
-  ::slotted(*) {
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
     text-align: start;
-    white-space: normal;
-    overflow: visible;
-    text-overflow: clip;
-    margin: 0;
-    display: inline;
   }
 
-  :host([nowrap]) ::slotted(*),
-  :host([nowrap]) {
+  :host(${nowrapState}),
+  :host(${nowrapState}) ::slotted(*) {
     white-space: nowrap;
     overflow: hidden;
   }
-  :host([truncate]) ::slotted(*),
-  :host([truncate]) {
+  :host(${truncateState}),
+  :host(${truncateState}) ::slotted(*) {
     text-overflow: ellipsis;
   }
-  :host([block]),
-  :host([block]) ::slotted(*),
-  :host([block]) {
+  :host(:is([state--block], :state(block))) {
     display: block;
   }
-  :host([italic]) ::slotted(*),
-  :host([italic]) {
+  :host(:is([state--italic], :state(italic))) {
     font-style: italic;
   }
-  :host([underline]) ::slotted(*),
-  :host([underline]) {
+  :host(${underlineState}) {
     text-decoration-line: underline;
   }
-  :host([strikethrough]) ::slotted(*),
-  :host([strikethrough]) {
+  :host(${strikethroughState}) {
     text-decoration-line: line-through;
   }
-  :host([underline][strikethrough]) ::slotted(*),
-  :host([underline][strikethrough]) {
+  :host(${underlineState}${strikethroughState}) {
     text-decoration-line: line-through underline;
   }
-  :host([size='100']) ::slotted(*),
-  :host([size='100']) {
+  :host(:is([state--size-100], :state(size-100))) {
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
   }
-  :host([size='200']) ::slotted(*),
-  :host([size='200']) {
+  :host(:is([state--size-200], :state(size-200))) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host([size='400']) ::slotted(*),
-  :host([size='400']) {
+  :host(:is([state--size-400], :state(size-400))) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
-  :host([size='500']) ::slotted(*),
-  :host([size='500']) {
+  :host(:is([state--size-500], :state(size-500))) {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
   }
-  :host([size='600']) ::slotted(*),
-  :host([size='600']) {
+  :host(:is([state--size-600], :state(size-600))) {
     font-size: ${fontSizeBase600};
     line-height: ${lineHeightBase600};
   }
-  :host([size='700']) ::slotted(*),
-  :host([size='700']) {
+  :host(:is([state--size-700], :state(size-700))) {
     font-size: ${fontSizeHero700};
     line-height: ${lineHeightHero700};
   }
-  :host([size='800']) ::slotted(*),
-  :host([size='800']) {
+  :host(:is([state--size-800], :state(size-800))) {
     font-size: ${fontSizeHero800};
     line-height: ${lineHeightHero800};
   }
-  :host([size='900']) ::slotted(*),
-  :host([size='900']) {
+  :host(:is([state--size-900], :state(size-900))) {
     font-size: ${fontSizeHero900};
     line-height: ${lineHeightHero900};
   }
-  :host([size='1000']) ::slotted(*),
-  :host([size='1000']) {
+  :host(:is([state--size-1000], :state(size-1000))) {
     font-size: ${fontSizeHero1000};
     line-height: ${lineHeightHero1000};
   }
-  :host([font='monospace']) ::slotted(*),
-  :host([font='monospace']) {
+  :host(:is([state--monospace], :state(monospace))) {
     font-family: ${fontFamilyMonospace};
   }
-  :host([font='numeric']) ::slotted(*),
-  :host([font='numeric']) {
+  :host(:is([state--numeric], :state(numeric))) {
     font-family: ${fontFamilyNumeric};
   }
-  :host([weight='medium']) ::slotted(*),
-  :host([weight='medium']) {
+  :host(:is([state--medium], :state(medium))) {
     font-weight: ${fontWeightMedium};
   }
-  :host([weight='semibold']) ::slotted(*),
-  :host([weight='semibold']) {
+  :host(:is([state--semibold], :state(semibold))) {
     font-weight: ${fontWeightSemibold};
   }
-  :host([weight='bold']) ::slotted(*),
-  :host([weight='bold']) {
+  :host(:is([state--bold], :state(bold))) {
     font-weight: ${fontWeightBold};
   }
-  :host([align='center']) ::slotted(*),
-  :host([align='center']) {
+  :host(:is([state--center], :state(center))) {
     text-align: center;
   }
-  :host([align='end']) ::slotted(*),
-  :host([align='end']) {
+  :host(:is([state--end], :state(end))) {
     text-align: end;
   }
-  :host([align='justify']) ::slotted(*),
-  :host([align='justify']) {
+  :host(:is([state--justify], :state(justify))) {
     text-align: justify;
+  }
+
+  ::slotted(*) {
+    display: inherit;
+    font: inherit;
+    line-height: inherit;
+    text-decoration-line: inherit;
+    text-align: inherit;
+    text-decoration-line: inherit;
+    margin: 0;
   }
 `;

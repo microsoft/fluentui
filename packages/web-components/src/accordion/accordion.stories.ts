@@ -3,8 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
-import './define';
-import '../accordion-item/define';
 
 type AccordionStoryArgs = Args & FluentAccordion;
 type AccordionStoryMeta = Meta<AccordionStoryArgs>;

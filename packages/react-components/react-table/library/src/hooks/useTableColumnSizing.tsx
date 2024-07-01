@@ -25,6 +25,8 @@ export const defaultColumnSizingState: TableColumnSizingState = {
 };
 
 export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
+  'use no memo';
+
   // False positive, these plugin hooks are intended to be run on every render
 
   return (tableState: TableFeaturesState<TItem>) =>

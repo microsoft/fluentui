@@ -21,6 +21,8 @@ const useStyles = makeStyles({
 });
 
 export const useMenuGroupHeaderStyles_unstable = (state: MenuGroupHeaderState) => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(menuGroupHeaderClassNames.root, styles.root, state.root.className);
 

@@ -25,6 +25,8 @@ const useStyles = makeStyles({
 export const useCarouselAutoplayButtonStyles_unstable = (
   state: CarouselAutoplayButtonState,
 ): CarouselAutoplayButtonState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
 

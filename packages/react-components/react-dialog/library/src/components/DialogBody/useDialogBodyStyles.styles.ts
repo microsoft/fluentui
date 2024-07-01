@@ -33,6 +33,8 @@ const useResetStyles = makeResetStyles({
  * Apply styling to the DialogBody slots based on the state
  */
 export const useDialogBodyStyles_unstable = (state: DialogBodyState): DialogBodyState => {
+  'use no memo';
+
   const resetStyles = useResetStyles();
 
   state.root.className = mergeClasses(dialogBodyClassNames.root, resetStyles, state.root.className);

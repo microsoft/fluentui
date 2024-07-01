@@ -132,6 +132,7 @@ const COMPONENT_NAME = 'ComboBox';
 const DEFAULT_PROPS: Partial<IComboBoxProps> = {
   options: [],
   allowFreeform: false,
+  allowParentArrowNavigation: false,
   autoComplete: 'on',
   buttonIconProps: { iconName: 'ChevronDown' },
 };
@@ -2087,6 +2088,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       disabled,
       allowFreeform,
       allowFreeInput,
+      allowParentArrowNavigation,
       autoComplete,
       hoisted: { currentOptions },
     } = this.props;
@@ -2254,6 +2256,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         // or meta key, let the event propagate
         // eslint-disable-next-line deprecation/deprecation
         if (ev.keyCode === KeyCodes.alt || ev.key === 'Meta' /* && isOpen */) {
+          return;
+        }
+
+        // eslint-disable-next-line deprecation/deprecation
+        if (allowParentArrowNavigation && (ev.keyCode === KeyCodes.left || ev.keyCode === KeyCodes.right)) {
           return;
         }
 

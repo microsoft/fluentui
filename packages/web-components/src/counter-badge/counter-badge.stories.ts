@@ -8,7 +8,6 @@ import {
   CounterBadgeShape,
   CounterBadgeSize,
 } from './counter-badge.options.js';
-import './define.js';
 
 type CounterBadgeStoryArgs = Args & FluentCounterBadge;
 type CounterBadgeStoryMeta = Meta<CounterBadgeStoryArgs>;

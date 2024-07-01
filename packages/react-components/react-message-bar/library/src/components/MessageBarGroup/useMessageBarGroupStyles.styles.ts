@@ -45,6 +45,8 @@ const useStyles = makeStyles({
  * Apply styling to the MessageBarGroup slots based on the state
  */
 export const useMessageBarGroupStyles_unstable = (state: MessageBarGroupState): MessageBarGroupState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(messageBarGroupClassNames.root, state.root.className);
   state.enterStyles = mergeClasses(styles.base, styles.enter);

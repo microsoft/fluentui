@@ -7,5 +7,7 @@ import type { CalendarMonthStyleProps, CalendarMonthStyles } from './CalendarMon
  * Apply styling to the CalendarMonth slots based on the state
  */
 export const useCalendarMonthStyles_unstable = (props: CalendarMonthStyleProps): CalendarMonthStyles => {
+  'use no memo';
+
   return useCalendarPickerStyles_unstable(props);
 };

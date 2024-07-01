@@ -102,6 +102,8 @@ const useStyles = makeStyles({
 });
 
 export const useLinkStyles_unstable = (state: LinkState): LinkState => {
+  'use no memo';
+
   const styles = useStyles();
   const { appearance, disabled, inline, root, backgroundAppearance } = state;
 

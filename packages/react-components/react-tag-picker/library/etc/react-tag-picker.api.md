@@ -261,7 +261,7 @@ export const useTagPickerGroup_unstable: (props: TagPickerGroupProps, ref: React
 export const useTagPickerGroupStyles_unstable: (state: TagPickerGroupState) => TagPickerGroupState;
 
 // @public
-export const useTagPickerInput_unstable: (props: TagPickerInputProps, ref: React_2.Ref<HTMLInputElement>) => TagPickerInputState;
+export const useTagPickerInput_unstable: (propsArg: TagPickerInputProps, ref: React_2.Ref<HTMLInputElement>) => TagPickerInputState;
 
 // @public
 export const useTagPickerInputStyles_unstable: (state: TagPickerInputState) => TagPickerInputState;

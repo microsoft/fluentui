@@ -2,6 +2,54 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Tue, 25 Jun 2024 07:32:52 GMT",
+      "tag": "@fluentui/theme_v2.6.55",
+      "version": "2.6.55",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/merge-styles to v8.6.12",
+            "commit": "182a7b22c763910938a717db5f64456ede1bc504"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.15.12",
+            "commit": "182a7b22c763910938a717db5f64456ede1bc504"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jun 2024 07:33:22 GMT",
+      "tag": "@fluentui/theme_v2.6.54",
+      "version": "2.6.54",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/merge-styles to v8.6.11",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.15.11",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/set-version to v8.2.23",
+            "commit": "444d2ef497b5be5b4252f4af86ded3d2db7a0850"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jun 2024 15:25:28 GMT",
       "tag": "@fluentui/theme_v2.6.53",
       "version": "2.6.53",

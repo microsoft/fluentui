@@ -35,6 +35,7 @@ export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<P
     clearable?: boolean;
     defaultOpen?: boolean;
     defaultValue?: string;
+    disableAutoFocus?: boolean;
     inlinePopup?: boolean;
     onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
     open?: boolean;
@@ -156,7 +157,9 @@ export type ListboxContextValues = {
 };
 
 // @public
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & {
+    disableAutoFocus?: boolean;
+};
 
 // @public (undocumented)
 export const ListboxProvider: React_2.Provider<ListboxContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListboxContextValue | undefined>>;

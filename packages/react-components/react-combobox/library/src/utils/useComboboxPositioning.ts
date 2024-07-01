@@ -20,6 +20,7 @@ export function useComboboxPositioning(props: ComboboxBaseProps): [
     offset: { crossAxis: 0, mainAxis: 2 },
     fallbackPositions,
     matchTargetSize: 'width' as const,
+    autoSize: true,
     ...resolvePositioningShorthand(positioning),
   };
 

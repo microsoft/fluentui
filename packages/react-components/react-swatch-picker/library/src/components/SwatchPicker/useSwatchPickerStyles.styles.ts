@@ -28,6 +28,8 @@ const useStyles = makeStyles({
  * Apply styling to the SwatchPicker slots based on the state
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
+  'use no memo';
+
   const styles = useStyles();
   const layoutStyle = state.isGrid ? styles.grid : styles.row;
 

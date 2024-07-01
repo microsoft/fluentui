@@ -40,7 +40,7 @@
   "dependencies": {
     "@fluentui/react-aria": "^9.12.1",
     "@fluentui/react-button": "^9.3.84",
-    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-link": "^9.2.25",
     "@fluentui/react-shared-contexts": "^9.19.0",
     "@fluentui/react-tabster": "^9.22.0",

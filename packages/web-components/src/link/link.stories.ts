@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Link as FluentLink } from './link.js';
 import { LinkAppearance } from './link.options.js';
-import './define.js';
 
 type LinkStoryArgs = Args & FluentLink;
 type LinkStoryMeta = Meta<LinkStoryArgs>;

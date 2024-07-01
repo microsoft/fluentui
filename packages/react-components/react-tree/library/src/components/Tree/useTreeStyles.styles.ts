@@ -20,6 +20,8 @@ const useStyles = makeStyles({
 });
 
 export const useTreeStyles_unstable = (state: TreeState): TreeState => {
+  'use no memo';
+
   const baseStyles = useBaseStyles();
   const styles = useStyles();
   const isSubTree = state.level > 1;

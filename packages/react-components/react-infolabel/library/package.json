@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-label": "^9.1.71",
     "@fluentui/react-popover": "^9.9.12",
     "@fluentui/react-tabster": "^9.22.0",

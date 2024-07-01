@@ -29,12 +29,16 @@ interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
+interface ExtendedProjectConfiguration extends ProjectConfiguration {
+  metadata: ReturnType<typeof getProjectMetadata> & ProjectConfiguration['metadata'];
+}
+
 export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
   const userLog: UserLog = [];
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    const allProjects = new Map(
+    const allProjects = new Map<string, ExtendedProjectConfiguration>(
       Array.from(getProjects(tree).entries()).map(([projectName, project]) => {
         const metadata = getProjectMetadata(tree, project);
         const extendedProject = { ...project, metadata };
@@ -42,7 +46,7 @@ export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) 
       }),
     );
 
-    printStats(tree, {
+    printStats<ExtendedProjectConfiguration>(tree, {
       title: 'V8 DX',
       projects: allProjects,
       shouldProcessPackage: isV8Package,

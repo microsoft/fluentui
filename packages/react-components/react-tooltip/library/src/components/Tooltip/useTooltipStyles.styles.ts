@@ -50,6 +50,8 @@ const useStyles = makeStyles({
  * Apply styling to the Tooltip slots based on the state
  */
 export const useTooltipStyles_unstable = (state: TooltipState): TooltipState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state.content.className = mergeClasses(

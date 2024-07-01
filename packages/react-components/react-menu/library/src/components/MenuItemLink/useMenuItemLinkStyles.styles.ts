@@ -28,6 +28,8 @@ const useStyles = makeStyles({
  * Apply styling to the MenuItemLink slots based on the state
  */
 export const useMenuItemLinkStyles_unstable = (state: MenuItemLinkState): MenuItemLinkState => {
+  'use no memo';
+
   useMenuItemStyles_unstable(state as MenuItemState);
   const styles = useStyles();
   state.root.className = mergeClasses(menuItemLinkClassNames.root, styles.resetLink, state.root.className);

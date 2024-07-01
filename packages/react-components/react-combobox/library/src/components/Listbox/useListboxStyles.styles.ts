@@ -28,6 +28,8 @@ const useStyles = makeStyles({
  * Apply styling to the Listbox slots based on the state
  */
 export const useListboxStyles_unstable = (state: ListboxState): ListboxState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(listboxClassNames.root, styles.root, state.root.className);
 

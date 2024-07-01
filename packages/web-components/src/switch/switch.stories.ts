@@ -4,10 +4,6 @@ import { LabelPosition, ValidationFlags } from '../field/field.options.js';
 import { Meta, renderComponent, Story, StoryArgs } from '../helpers.stories.js';
 import type { Switch as FluentSwitch } from './switch.js';
 
-import './define.js';
-import '../button/define.js';
-import '../field/define.js';
-
 const storyTemplate = html<StoryArgs<FluentSwitch>>`
   <fluent-switch
     ?checked="${x => x.checked}"

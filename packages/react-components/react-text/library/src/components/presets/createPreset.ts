@@ -11,6 +11,8 @@ export function createPreset(options: {
 }): React.FunctionComponent<TextPresetProps> {
   const { useStyles, className, displayName } = options;
   const Wrapper: ForwardRefComponent<TextPresetProps> = React.forwardRef((props, ref) => {
+    'use no memo';
+
     const styles = useStyles();
     const state = useText_unstable(props as TextProps, ref);
 

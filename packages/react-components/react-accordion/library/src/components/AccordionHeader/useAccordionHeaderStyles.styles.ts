@@ -105,6 +105,8 @@ const useStyles = makeStyles({
 
 /** Applies style classnames to slots */
 export const useAccordionHeaderStyles_unstable = (state: AccordionHeaderState) => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(
     accordionHeaderClassNames.root,

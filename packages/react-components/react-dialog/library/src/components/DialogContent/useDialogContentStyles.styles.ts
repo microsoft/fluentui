@@ -32,6 +32,8 @@ const useStyles = makeResetStyles({
  * Apply styling to the DialogContent slots based on the state
  */
 export const useDialogContentStyles_unstable = (state: DialogContentState): DialogContentState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(dialogContentClassNames.root, styles, state.root.className);
   return state;

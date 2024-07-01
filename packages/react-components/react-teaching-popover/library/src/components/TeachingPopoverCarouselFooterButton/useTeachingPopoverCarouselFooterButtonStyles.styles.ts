@@ -52,6 +52,8 @@ const useStyles = makeStyles({
 export const useTeachingPopoverCarouselFooterButtonStyles_unstable = (
   state: TeachingPopoverCarouselFooterButtonState,
 ): TeachingPopoverCarouselFooterButtonState => {
+  'use no memo';
+
   const styles = useStyles();
   const { navType, popoverAppearance } = state;
 

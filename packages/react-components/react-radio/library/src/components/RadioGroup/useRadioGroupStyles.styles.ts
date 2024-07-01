@@ -21,6 +21,8 @@ const useStyles = makeStyles({
  * Apply styling to the RadioGroup slots based on the state
  */
 export const useRadioGroupStyles_unstable = (state: RadioGroupState): RadioGroupState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state.root.className = mergeClasses(

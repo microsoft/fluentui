@@ -69,6 +69,8 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
 ) {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
+    'use no memo';
+
     const itemContext = React.useContext(PresenceGroupChildContext);
     const merged = { ...itemContext, ...props };
 

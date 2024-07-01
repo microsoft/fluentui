@@ -19,6 +19,7 @@ import {
 } from '../../contexts';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { useHasParentContext } from '@fluentui/react-context-selector';
+import { treeClassNames } from '../../Tree';
 
 /**
  * Create the state required to render TreeItem.
@@ -30,14 +31,8 @@ import { useHasParentContext } from '@fluentui/react-context-selector';
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
-  const hasTreeContext = useHasParentContext(TreeContext);
-  if (!hasTreeContext && process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    console.error(/** #__DE-INDENT__ */ `
-      @fluentui/react-tree [useTreeItem]:
-      <TreeItem> should be declared inside a <Tree> component.
-    `);
-  }
+  'use no memo';
+
   const treeType = useTreeContext_unstable(ctx => ctx.treeType);
   if (treeType === 'flat') {
     warnIfNoProperPropsFlatTreeItem(props);
@@ -69,6 +64,27 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const subtreeRef = React.useRef<HTMLDivElement>(null);
   const selectionRef = React.useRef<HTMLInputElement>(null);
   const treeItemRef = React.useRef<HTMLDivElement>(null);
+
+  if (process.env.NODE_ENV !== 'production') {
+    // This is acceptable since the NODE_ENV will not change during runtime
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const hasTreeContext = useHasParentContext(TreeContext);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (hasTreeContext) {
+        return;
+      }
+
+      if (treeItemRef.current?.querySelector(`.${treeClassNames.root}`)) {
+        // eslint-disable-next-line no-console
+        console.error(/** #__DE-INDENT__ */ `
+      @fluentui/react-tree [useTreeItem]:
+      <TreeItem> should be declared inside a <Tree> component.
+    `);
+      }
+    }, [hasTreeContext]);
+  }
 
   const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const getNextOpen = () => (itemType === 'branch' ? !open : open);

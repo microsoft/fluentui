@@ -25,6 +25,8 @@ export type UseCarouselOptions = {
 // TODO: Migrate this into an external @fluentui/carousel component
 // For now, we won't export this publicly, is only for internal TeachingPopover use until stabilized.
 export function useCarousel_unstable(options: UseCarouselOptions) {
+  'use no memo';
+
   const { onValueChange, onFinish } = options;
 
   const { targetDocument } = useFluent();

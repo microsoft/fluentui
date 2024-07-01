@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { AnchorButton as FluentAnchorButton } from './anchor-button.js';
 import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
-import './define.js';
 
 type AnchorButtonStoryArgs = Args & FluentAnchorButton;
 type AnchorButtonStoryMeta = Meta<AnchorButtonStoryArgs>;

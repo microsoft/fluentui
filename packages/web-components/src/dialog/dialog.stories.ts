@@ -2,9 +2,6 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Dialog as FluentDialog } from './dialog.js';
-import './define.js';
-import '../button/define.js';
-import '../text/define.js';
 import { DialogType } from './dialog.options.js';
 
 type DialogStoryArgs = Args & FluentDialog;

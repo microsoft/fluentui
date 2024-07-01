@@ -22,7 +22,11 @@ import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Enter, Space, ArrowUp, ArrowDown, ArrowRight, ArrowLeft } from '@fluentui/keyboard-keys';
 import { Checkbox, CheckboxOnChangeData } from '@fluentui/react-checkbox';
-import { createListItemActionEvent, ListItemActionEvent } from '../../events/ListItemActionEvent';
+import {
+  createListItemActionEvent,
+  ListItemActionEvent,
+  ListItemActionEventName,
+} from '../../events/ListItemActionEvent';
 
 const DEFAULT_ROOT_EL_TYPE = 'li';
 
@@ -56,15 +60,15 @@ export const useListItem_unstable = (
   const rootRef = React.useRef<HTMLLIElement | HTMLDivElement>(null);
   const checkmarkRef = React.useRef<HTMLInputElement | null>(null);
 
-  const handleAction: (e: ListItemActionEvent) => void = useEventCallback(e => {
-    onAction?.(e);
+  const handleAction: (event: ListItemActionEvent) => void = useEventCallback(event => {
+    onAction?.(event, { event, value, type: ListItemActionEventName });
 
-    if (e.defaultPrevented) {
+    if (event.defaultPrevented) {
       return;
     }
 
     if (isSelectionEnabled) {
-      toggleItem?.(e.detail.originalEvent, value);
+      toggleItem?.(event.detail.originalEvent, value);
     }
   });
 

@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="web" />
+
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -2290,7 +2292,6 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    cleanup?: () => void;
     closeMenu: () => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
@@ -2298,10 +2299,7 @@ export class Menu extends FASTElement {
     disconnectedCallback(): void;
     focusMenuList(): void;
     focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -2309,16 +2307,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
     setComponent(): void;
-    // @internal
-    protected setPositioning(): void;
-    // @internal
-    protected setPositioningTask: () => void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
     toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
 // @public
@@ -2373,13 +2367,7 @@ export class MenuItem extends FASTElement {
     checked: boolean;
     // (undocumented)
     protected checkedChanged(oldValue: boolean, newValue: boolean): void;
-    cleanup: () => void;
     disabled: boolean;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    expanded: boolean;
-    // (undocumented)
-    protected expandedChanged(prev: boolean | undefined, next: boolean): void;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2388,10 +2376,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
-    // @internal (undocumented)
-    get hasSubmenu(): boolean;
     hidden: boolean;
     role: MenuItemRole;
+    // @internal
+    setSubmenuPosition: () => void;
     // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
@@ -2399,10 +2387,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    submenuContainer: HTMLDivElement;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    updateSubmenu(): void;
+    toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
 // @internal
@@ -2419,9 +2404,8 @@ export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-    checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-    expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-    radioIndicator?: StaticallyComposableHTML<MenuItem>;
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 // @public
@@ -2444,13 +2428,11 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
@@ -2644,6 +2626,52 @@ export const RadioStyles: ElementStyles;
 //
 // @public (undocumented)
 export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -3122,15 +3150,27 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 

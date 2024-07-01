@@ -33,6 +33,8 @@ const useStyles = makeStyles({
  * Apply styling to the TagPickerOption slots based on the state
  */
 export const useTagPickerOptionStyles_unstable = (state: TagPickerOptionState): TagPickerOptionState => {
+  'use no memo';
+
   useOptionStyles_unstable({
     ...state,
     active: false,

@@ -12,6 +12,8 @@ export const tagPickerOptionGroupClassNames: SlotClassNames<TagPickerOptionGroup
  * Apply styling to the TagPickerOptionGroup slots based on the state
  */
 export const useTagPickerOptionGroupStyles = (state: TagPickerOptionGroupState): TagPickerOptionGroupState => {
+  'use no memo';
+
   useOptionGroupStyles_unstable(state);
   state.root.className = mergeClasses(tagPickerOptionGroupClassNames.root, state.root.className);
 

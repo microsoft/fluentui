@@ -45,6 +45,8 @@ const useDrawerFooterStyles = makeStyles({
  * Apply styling to the DrawerFooter slots based on the state
  */
 export const useDrawerFooterStyles_unstable = (state: DrawerFooterState): DrawerFooterState => {
+  'use no memo';
+
   const styles = useStyles();
   const rootStyles = useDrawerFooterStyles();
 

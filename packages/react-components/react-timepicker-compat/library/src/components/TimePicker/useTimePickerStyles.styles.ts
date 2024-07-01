@@ -21,6 +21,8 @@ const useStyles = makeStyles({
  * Apply styling to the TimePicker slots based on the state
  */
 export const useTimePickerStyles_unstable = (state: TimePickerState): TimePickerState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state.root.className = mergeClasses(timePickerClassNames.root, state.root.className);

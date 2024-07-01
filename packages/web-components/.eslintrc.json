@@ -15,6 +15,12 @@
     }
   },
   "rules": {
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
     "no-extra-boolean-cast": "off",
     "no-prototype-builtins": "off",
     "no-fallthrough": "off",

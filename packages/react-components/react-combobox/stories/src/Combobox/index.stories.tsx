@@ -20,6 +20,7 @@ export { Size } from './ComboboxSize.stories';
 export { Disabled } from './ComboboxDisabled.stories';
 export { ComboboxVirtualizer as Virtualizer } from './ComboboxVirtualizer.stories';
 export { ActiveOptionChange } from './ComboboxActiveOptionChange.stories';
+export { ControllingOpenAndClose } from './ComboboxControllingOpenAndClose.stories';
 
 export default {
   title: 'Components/Combobox',

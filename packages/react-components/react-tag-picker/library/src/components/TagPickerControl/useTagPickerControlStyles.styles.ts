@@ -218,6 +218,8 @@ const useIconStyles = makeStyles({
  * Apply styling to the PickerControl slots based on the state
  */
 export const useTagPickerControlStyles_unstable = (state: TagPickerControlState): TagPickerControlState => {
+  'use no memo';
+
   const styles = useStyles();
   const iconStyles = useIconStyles();
   const asideStyles = useAsideStyles();

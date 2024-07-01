@@ -23,6 +23,8 @@ const useStyles = makeStyles({
 export const useTeachingPopoverSurfaceStyles_unstable = (
   state: TeachingPopoverSurfaceState,
 ): TeachingPopoverSurfaceState => {
+  'use no memo';
+
   const styles = useStyles();
 
   // Make sure to merge teaching bubble surface prior to popover styles

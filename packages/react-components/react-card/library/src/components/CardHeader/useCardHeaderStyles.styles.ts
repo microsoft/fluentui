@@ -95,6 +95,8 @@ const useStylesFlex = makeStyles<keyof CardHeaderSlots>({
  * Apply styling to the CardHeader slots based on the state.
  */
 export const useCardHeaderStyles_unstable = (state: CardHeaderState): CardHeaderState => {
+  'use no memo';
+
   const styles = useStyles();
   const stylesGrid = useStylesGrid();
   const stylesFlex = useStylesFlex();

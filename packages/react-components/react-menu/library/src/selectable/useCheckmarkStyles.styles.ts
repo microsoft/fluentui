@@ -19,6 +19,8 @@ const useStyles = makeStyles({
  * @param state - should contain a `checkmark` slot
  */
 export const useCheckmarkStyles_unstable = (state: MenuItemSelectableState & Pick<MenuItemState, 'checkmark'>) => {
+  'use no memo';
+
   const styles = useStyles();
   if (state.checkmark) {
     state.checkmark.className = mergeClasses(

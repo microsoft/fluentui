@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Badge as FluentBadge } from './badge.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
-import './define.js';
 
 type BadgeStoryArgs = Args & FluentBadge;
 type BadgeStoryMeta = Meta<BadgeStoryArgs>;

@@ -10,6 +10,8 @@ const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>({
 });
 
 export const CheckboxShim = React.forwardRef((props: ICheckboxProps, _ref: React.ForwardedRef<HTMLInputElement>) => {
+  'use no memo';
+
   const { className, styles: stylesV8, onRenderLabel, label, componentRef } = props;
   const shimProps = useCheckboxProps(props);
   const styles = getClassNames(stylesV8);
