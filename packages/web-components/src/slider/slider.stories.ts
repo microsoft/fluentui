@@ -78,14 +78,3 @@ export const SliderInRTL = renderComponent(html<SliderStoryArgs>`
     <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
   </div>
 `);
-
-export const SliderWithLabel = renderComponent(html<SliderStoryArgs>`
-  <div>
-    <label for="story-for-slider-slider1">Slider label</label>
-    <fluent-slider id="story-for-slider-slider1"></fluent-slider>
-  </div>
-  <div>
-    <label for="story-for-slider-slider2">Slider label</label>
-    <fluent-slider id="story-for-slider-slider2" orientation="vertical"></fluent-slider>
-  </div>
-`);
