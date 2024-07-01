@@ -88,7 +88,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   private handleStepStyles(): void {
     if (this.step) {
-      const totalSteps = (100 / Math.floor((this.maxAsNumber - this.minAsNumber) / this.step)) as any;
+      const totalSteps = (100 / Math.floor((this.maxAsNumber - this.minAsNumber) / this.stepAsNumber)) as any;
 
       if (this.stepStyles !== undefined) {
         this.$fastController.removeStyles(this.stepStyles);
