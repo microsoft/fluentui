@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-breadcrumb",
+  "name": "react-breadcrumb",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
