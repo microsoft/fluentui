@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
+import { AccordionItemMarkerPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 
 type AccordionStoryArgs = Args & FluentAccordion;
@@ -114,7 +114,7 @@ export default {
       },
       control: {
         type: 'select',
-        options: Object.values(AccordionItemExpandIconPosition),
+        options: Object.values(AccordionItemMarkerPosition),
       },
       defaultValue: 'start',
     },

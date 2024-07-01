@@ -5,7 +5,7 @@ import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
-import { AccordionItemExpandIconPosition, AccordionItemSize } from './accordion-item.options.js';
+import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
  * Accordion Item configuration options
@@ -82,7 +82,7 @@ export class AccordionItem extends FASTElement {
   public disabled: boolean = false;
 
   /**
-   * Handles expanded changes
+   * Handles disabled changes
    * @param prev - previous value
    * @param next - next value
    */
@@ -150,14 +150,14 @@ export class AccordionItem extends FASTElement {
    * HTML Attribute: marker-position
    */
   @attr({ attribute: 'marker-position' })
-  public markerPosition?: AccordionItemExpandIconPosition;
+  public markerPosition?: AccordionItemMarkerPosition;
 
   /**
    * Handles changes to marker-position attribute
    * @param prev - previous value
    * @param next - next value
    */
-  public markerPositionChanged(prev: AccordionItemExpandIconPosition, next: AccordionItemExpandIconPosition): void {
+  public markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void {
     if (prev) {
       toggleState(this.elementInternals, `align-${prev}`, false);
     } else {

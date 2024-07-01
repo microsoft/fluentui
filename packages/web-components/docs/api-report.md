@@ -67,8 +67,8 @@ export class AccordionItem extends FASTElement {
     expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
-    markerPosition?: AccordionItemExpandIconPosition;
-    markerPositionChanged(prev: AccordionItemExpandIconPosition, next: AccordionItemExpandIconPosition): void;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
     sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
@@ -82,16 +82,16 @@ export interface AccordionItem extends StartEnd {
 // @public (undocumented)
 export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
-// Warning: (ae-missing-release-tag) "AccordionItemExpandIconPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export const AccordionItemExpandIconPosition: {
+export const AccordionItemMarkerPosition: {
     readonly start: "start";
     readonly end: "end";
 };
 
 // @public
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
 // Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
 //

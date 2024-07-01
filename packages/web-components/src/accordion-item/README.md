@@ -30,24 +30,24 @@ Fluent WC3 Accordion Item extends from the [FAST Accordion Item](https://explore
 
 ### **Variables**
 
-| Name                              | Description                | Type                                                                              |
-| --------------------------------- | -------------------------- | --------------------------------------------------------------------------------- |
-| `AccordionItemSize`               | Expand modes for Accordion | `{ small: "small", medium: "medium", large: "large", extraLarge: "extra-large" }` |
-| `AccordionItemExpandIconPosition` | Expand icon position       | `{ start: "start", end: "end" }`                                                  |
+| Name                          | Description                | Type                                                                              |
+| ----------------------------- | -------------------------- | --------------------------------------------------------------------------------- |
+| `AccordionItemSize`           | Expand modes for Accordion | `{ small: "small", medium: "medium", large: "large", extraLarge: "extra-large" }` |
+| `AccordionItemMarkerPosition` | Expand icon position       | `{ start: "start", end: "end" }`                                                  |
 
 <br />
 
 ### **Fields**
 
-| Name             | Privacy | Type                              | Default  | Description                                                                                    | Inherited From |
-| ---------------- | ------- | --------------------------------- | -------- | ---------------------------------------------------------------------------------------------- | -------------- |
-| `headinglevel`   | public  | `1 or 2 or 3 or 4 or 5 or 6`      | `2`      | Configures the [level](https://www.w3.org/TR/wai-aria-1.1/#aria-level) of the heading element. |                |
-| `expanded`       | public  | `boolean`                         | `false`  | Expands or collapses the item.                                                                 |                |
-| `disabled`       | public  | `boolean`                         | `false`  | Disables an accordion item                                                                     |                |
-| `id`             | public  | `string`                          |          | The item ID                                                                                    |                |
-| `size`           | public  | `AccordionItemSize`               | `medium` | The font size of the AccordionItem header.                                                     |
-| `block`          | public  | `boolean`                         | `true`   | Sets the width of the focus state.                                                             |
-| `markerPosition` | public  | `AccordionItemExpandIconPosition` | `start`  | Sets the position of the expand icon                                                           |
+| Name             | Privacy | Type                          | Default  | Description                                                                                    | Inherited From |
+| ---------------- | ------- | ----------------------------- | -------- | ---------------------------------------------------------------------------------------------- | -------------- |
+| `headinglevel`   | public  | `1 or 2 or 3 or 4 or 5 or 6`  | `2`      | Configures the [level](https://www.w3.org/TR/wai-aria-1.1/#aria-level) of the heading element. |                |
+| `expanded`       | public  | `boolean`                     | `false`  | Expands or collapses the item.                                                                 |                |
+| `disabled`       | public  | `boolean`                     | `false`  | Disables an accordion item                                                                     |                |
+| `id`             | public  | `string`                      |          | The item ID                                                                                    |                |
+| `size`           | public  | `AccordionItemSize`           | `medium` | The font size of the AccordionItem header.                                                     |
+| `block`          | public  | `boolean`                     | `true`   | Sets the width of the focus state.                                                             |
+| `markerPosition` | public  | `AccordionItemMarkerPosition` | `start`  | Sets the position of the expand icon                                                           |
 
 <br />
 
