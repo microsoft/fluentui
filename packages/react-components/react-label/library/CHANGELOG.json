@@ -2,6 +2,33 @@
   "name": "@fluentui/react-label",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:51 GMT",
+      "tag": "@fluentui/react-label_v9.1.72",
+      "version": "9.1.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-label",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.40",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Jun 2024 13:17:18 GMT",
       "tag": "@fluentui/react-label_v9.1.71",
       "version": "9.1.71",

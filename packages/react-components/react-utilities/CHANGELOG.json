@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:39 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.11",
+      "version": "9.18.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:43 GMT",
       "tag": "@fluentui/react-utilities_v9.18.10",
       "version": "9.18.10",

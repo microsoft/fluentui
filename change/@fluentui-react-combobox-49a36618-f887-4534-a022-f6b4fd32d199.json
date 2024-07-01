@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add autoSize: true to Combobox and Dropdown by default",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
