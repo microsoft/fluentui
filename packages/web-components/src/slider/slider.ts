@@ -614,6 +614,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
         (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)) {
       this.value = this.midpoint;
     }
+
+    this.elementInternals.ariaValueNow = this.value;
   }
 
   /**

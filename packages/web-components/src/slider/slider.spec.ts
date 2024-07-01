@@ -302,7 +302,6 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '55');
-
       await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '55');
     });
 
@@ -333,7 +332,6 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '51');
-
       await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '51');
     });
 
@@ -445,6 +443,7 @@ test.describe('Slider', () => {
     await element.waitFor({ state: 'attached' });
 
     await expect(element).toHaveJSProperty('value', '4');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '4');
   });
 
   test('should initialize to the provided value attribute if set post-connection', async () => {
@@ -472,6 +471,7 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('value', '3');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
   });
 
   test('should update the `stepMultiplier` when the `step` attribute has been updated', async () => {
