@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose keyboard navigation state getter",
+  "packageName": "@fluentui/react-tabster",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Do not prevent showing tooltip in keyboard mode",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "jukapsia@microsoft.com",
+  "dependentChangeType": "patch"
+}
