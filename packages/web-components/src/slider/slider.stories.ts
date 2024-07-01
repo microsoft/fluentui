@@ -27,19 +27,20 @@ export default {
     orientation: SliderSetOrientation.horizontal,
   },
   argTypes: {
-    disabled: { control: 'boolean' },
-    min: {
-      control: 'number',
+    disabled: {
+      control: 'boolean',
+      table: { defaultValue: { summary: 'false' } },
     },
-    max: {
-      control: 'number',
-    },
+    min: { control: 'number' },
+    max: { control: 'number' },
     value: { control: 'number' },
+    step: { control: 'number' },
     size: {
       control: {
         type: 'inline-radio',
         options: Object.values(SliderSetSize),
       },
+      table: { defaultValue: { summary: 'medium' } },
     },
     orientation: {
       control: {
@@ -71,9 +72,20 @@ export const SliderDisabled = renderComponent(html<SliderStoryArgs>`
   <fluent-slider step="25" disabled value="50" min="0" max="100"></fluent-slider>
 `);
 
-export const RTL = renderComponent(html<SliderStoryArgs>`
+export const SliderInRTL = renderComponent(html<SliderStoryArgs>`
   <div dir="rtl">
     <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>
     <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
+  </div>
+`);
+
+export const SliderWithLabel = renderComponent(html<SliderStoryArgs>`
+  <div>
+    <label for="story-for-slider-slider1">Slider label</label>
+    <fluent-slider id="story-for-slider-slider1"></fluent-slider>
+  </div>
+  <div>
+    <label for="story-for-slider-slider2">Slider label</label>
+    <fluent-slider id="story-for-slider-slider2" orientation="vertical"></fluent-slider>
   </div>
 `);

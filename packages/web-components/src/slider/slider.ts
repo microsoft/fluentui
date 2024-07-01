@@ -160,25 +160,26 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   public set value(value: string) {
-    if (this.$fastController.isConnected) {
-      const nextAsNumber = parseFloat(value);
-      const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
-
-      if (newValue !== value) {
-        this.value = newValue;
-        return;
-      }
-
+    if (!this.$fastController.isConnected) {
       this._value = value.toString();
-      this.elementInternals.ariaValueNow = this._value;
-      this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
-      this.setSliderPosition(this.direction);
-      this.$emit('change');
-      this.setFormValue(value);
-      Observable.notify(this, 'value');
-    } else {
-      this._value = value.toString();
+      return;
     }
+
+    const nextAsNumber = parseFloat(value);
+    const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
+
+    if (newValue !== value) {
+      this.value = newValue;
+      return;
+    }
+
+    this._value = value.toString();
+    this.elementInternals.ariaValueNow = this._value;
+    this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
+    this.setSliderPosition(this.direction);
+    this.$emit('change');
+    this.setFormValue(value);
+    Observable.notify(this, 'value');
   }
 
   /**
