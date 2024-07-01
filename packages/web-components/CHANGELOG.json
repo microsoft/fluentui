@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 04:08:12 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.38",
+      "version": "3.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ef61509d3dd99df6b49daa7442a26bbb3ff75",
+            "comment": "Make utils a package export since it replaces fluentui/foundation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Jun 2024 04:07:17 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.37",
       "version": "3.0.0-beta.37",
