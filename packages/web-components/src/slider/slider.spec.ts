@@ -254,7 +254,7 @@ test.describe('Slider', () => {
     });
   });
 
-  test('should set an `aria-valuestring` attribute with the result of the valueTextFormatter() method', async () => {
+  test('should set `elementInternals.ariaValueText` attribute with the result of the valueTextFormatter() method', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -265,7 +265,14 @@ test.describe('Slider', () => {
       node.valueTextFormatter = () => 'Seventy Five Years';
     });
 
-    await expect(element).toHaveAttribute('aria-valuetext', 'Seventy Five Years');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueText', 'Seventy Five Years');
+
+    await element.evaluate((node: Slider) => {
+      node.valueTextFormatter = value => `New value is ${value}`;
+      node.value = '100';
+    });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueText', 'New value is 100');
   });
 
   test.describe('increment and decrement methods', () => {
@@ -276,7 +283,7 @@ test.describe('Slider', () => {
             `;
       });
 
-      await expect(element).toHaveAttribute('aria-valuenow', '50');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
 
       await element.evaluate((node: Slider) => {
         node.increment();
@@ -284,7 +291,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '55');
 
-      await expect(element).toHaveAttribute('aria-valuenow', '55');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '55');
     });
 
     test('should decrement the value when the `decrement()` method is invoked', async () => {
@@ -299,8 +306,7 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '45');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '45');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '45');
     });
 
     test('should increment the value when the `increment()` method is invoked and step is not provided', async () => {
@@ -310,7 +316,7 @@ test.describe('Slider', () => {
             `;
       });
 
-      await expect(element).toHaveAttribute('aria-valuenow', '50');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
 
       await element.evaluate((node: Slider) => {
         node.increment();
@@ -318,7 +324,7 @@ test.describe('Slider', () => {
 
       await expect(element).toHaveJSProperty('value', '51');
 
-      await expect(element).toHaveAttribute('aria-valuenow', '51');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '51');
     });
 
     test('should decrement the value when the `decrement()` method is invoked and step is not provided', async () => {
@@ -333,8 +339,7 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '49');
-
-      await expect(element).toHaveAttribute('aria-valuenow', '49');
+      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '49');
     });
   });
 
@@ -411,7 +416,7 @@ test.describe('Slider', () => {
 
     await expect(element).toHaveJSProperty('value', '100');
 
-    await expect(element).toHaveAttribute('aria-valuenow', '100');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '100');
 
     await element.evaluate((node: Slider) => {
       node.value = '-5';
@@ -472,7 +477,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '6');
 
     await element.evaluate((node: Slider) => {
-      node.step = 0.1;
+      node.step = '0.1';
       node.increment();
     });
 
@@ -501,7 +506,7 @@ test.describe('Slider', () => {
         node.reset();
       });
 
-      await expect(element).toHaveJSProperty('value', '5');
+      await expect(element).toHaveJSProperty('value', '50');
     });
 
     test('should reset its `value` property to match the `value` attribute when it is set', async () => {
@@ -552,7 +557,7 @@ test.describe('Slider', () => {
         node.setAttribute('value', '8');
       });
 
-      await expect(element).toHaveJSProperty('value', '7');
+      await expect(element).toHaveJSProperty('value', '8');
 
       await form.evaluate<void, HTMLFormElement>(node => {
         node.reset();

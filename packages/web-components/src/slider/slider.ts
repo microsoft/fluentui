@@ -124,7 +124,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   public initialValueChanged(prev: string, next: string): void {
-    this.value = next;
+    if (this.$fastController.isConnected) {
+      this.value = next;
+    } else {
+      this._value = next;
+    }
   }
 
   /**
@@ -181,7 +185,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   formResetCallback(): void {
-    this.value = this.initialValue ?? false;
+    this.value = this.initialValue ?? this.midpoint;
   }
 
   /**
@@ -270,7 +274,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
-   * Custom function that generates a string for the component's "aria-valuetext" attribute based on the current value.
+   * Custom function that generates a string for the component's "ariaValueText" on element internals based on the current value.
    *
    * @public
    */
@@ -563,6 +567,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
         (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)) {
       this.value = this.midpoint;
     }
+
+    this._value = this.value;
   }
 
   /**
