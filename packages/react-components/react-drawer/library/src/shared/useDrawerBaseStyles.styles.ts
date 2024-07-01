@@ -33,19 +33,6 @@ export const drawerDefaultStyles: GriffelResetStyle = {
  * Shared dynamic styles for the Drawer component
  */
 const useDrawerStyles = makeStyles({
-  /* Motion */
-  entering: {
-    transitionTimingFunction: tokens.curveDecelerateMid,
-  },
-  exiting: {
-    transitionTimingFunction: tokens.curveAccelerateMin,
-  },
-  reducedMotion: {
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      transitionDuration: '0.001ms',
-    },
-  },
-
   /* Positioning */
   start: {
     borderRight: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
@@ -95,33 +82,13 @@ export const useDrawerBottomBaseStyles = makeStyles({
   },
 });
 
-export const useDrawerDurationStyles = makeStyles({
-  small: {
-    transitionDuration: tokens.durationGentle,
-  },
-  medium: {
-    transitionDuration: tokens.durationSlow,
-  },
-  large: {
-    transitionDuration: tokens.durationSlower,
-  },
-  full: {
-    transitionDuration: tokens.durationUltraSlow,
-  },
-});
-
-export const useDrawerBaseClassNames = ({ position, size, motion }: DrawerBaseState) => {
+export const useDrawerBaseClassNames = ({ position, size }: DrawerBaseState) => {
   const baseStyles = useDrawerStyles();
   const bottomBaseStyles = useDrawerBottomBaseStyles();
-  const durationStyles = useDrawerDurationStyles();
 
   return mergeClasses(
     baseStyles[position],
     position === 'bottom' && bottomBaseStyles[size],
-    durationStyles[size],
     position !== 'bottom' && baseStyles[size],
-    baseStyles.reducedMotion,
-    motion.type === 'entering' && baseStyles.entering,
-    motion.type === 'exiting' && baseStyles.exiting,
   );
 };

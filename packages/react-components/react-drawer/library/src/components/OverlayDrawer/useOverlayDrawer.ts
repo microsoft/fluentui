@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
+import { slot } from '@fluentui/react-utilities';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
 import { OverlayDrawerDialog } from './OverlayDrawerDialog';
 import { OverlayDrawerSurface } from './OverlayDrawerSurface';
+
+const STATIC_MOTION = {
+  active: true,
+  canRender: true,
+  ref: React.createRef<HTMLDivElement>(),
+  type: 'idle' as const,
+};
 
 /**
  * Create the state required to render OverlayDrawer.
@@ -23,15 +29,13 @@ export const useOverlayDrawer_unstable = (
   const { open, size, position } = useDrawerDefaultProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
-  const motion = useMotion<HTMLElement>(open);
-
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
 
   const root = slot.always(
     {
       ...props,
-      ref: useMergedRefs(ref, motion.ref),
+      ref,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
     },
     {
@@ -69,8 +73,9 @@ export const useOverlayDrawer_unstable = (
     root,
     dialog,
 
+    open,
     size,
     position,
-    motion,
+    motion: STATIC_MOTION,
   };
 };

@@ -187,10 +187,10 @@ export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigati
 export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
 
 // @public
-export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
+export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSX.Element;
 
 // @public
-export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
+export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSX.Element;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;

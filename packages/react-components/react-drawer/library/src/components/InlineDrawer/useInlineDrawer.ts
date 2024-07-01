@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
+
+const STATIC_MOTION = {
+  active: true,
+  canRender: true,
+  ref: React.createRef<HTMLDivElement>(),
+  type: 'idle' as const,
+};
 
 /**
  * Create the state required to render InlineDrawer.
@@ -18,8 +24,6 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
   const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false } = props;
 
-  const motion = useMotion<HTMLElement>(open);
-
   return {
     components: {
       root: 'div',
@@ -28,14 +32,17 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
-        ref: useMergedRefs(ref, motion.ref),
+        ref,
       }),
       { elementType: 'div' },
     ),
 
+    open,
     size,
     position,
     separator,
-    motion,
+
+    // Deprecated props
+    motion: STATIC_MOTION,
   };
 };
