@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Make utils a package export since it replaces fluentui/foundation",
-  "packageName": "@fluentui/web-components",
-  "email": "mmansour@microsoft.com",
-  "dependentChangeType": "patch"
-}
