@@ -70,12 +70,21 @@ export const useListItem_unstable = (
     toggleItem?.(e, value);
   });
 
-  // This will give us the onKeyDown and onKeyUp props for Enter and Space
-  const buttonProps = useARIAButtonProps('div', {
-    onClick: handleClick,
+  // avoid passing empty onClick to prevent items unnecessary being narrated as clickable
+  // see https://github.com/microsoft/fluentui/issues/20658
+  const useClick = !!onClick || isSelectionEnabled;
+
+  const clickHandlerProps = {
+    onClick: useClick ? handleClick : undefined,
     onKeyDown: onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
     onKeyUp: onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
-  });
+  };
+
+  // This will give us the onKeyDown and onKeyUp props for Enter and Space
+  const ariaButtonProps = useARIAButtonProps('div', clickHandlerProps);
+
+  // v0 ListItem adds keyboard handling only for navigable or selectable items
+  const buttonProps = navigable || isSelectionEnabled ? ariaButtonProps : clickHandlerProps;
 
   const root = slot.always(
     getIntrinsicElementProps(DEFAULT_ROOT_EL_TYPE, {
