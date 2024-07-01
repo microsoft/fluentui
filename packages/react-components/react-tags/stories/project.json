@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-tags-stories",
+  "name": "react-tags-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

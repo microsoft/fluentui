@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-api-extractor",
+  "name": "scripts-api-extractor",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/api-extractor",
   "projectType": "library",

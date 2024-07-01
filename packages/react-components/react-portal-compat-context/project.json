@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-portal-compat-context",
+  "name": "react-portal-compat-context",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

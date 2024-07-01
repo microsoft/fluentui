@@ -5,7 +5,7 @@
   "type": "commonjs",
   "generators": "./generators.json",
   "scripts": {
-    "test": "nx run @fluentui/workspace-plugin:test",
+    "test": "nx run workspace-plugin:test",
     "type-check": "node  ./scripts/type-check.mjs",
     "lint": "eslint --ext .ts,.js,.json ."
   },

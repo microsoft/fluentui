@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/example-data",
+  "name": "example-data",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

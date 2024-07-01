@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-input-stories",
+  "name": "react-input-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-input/stories/src",

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/babel-preset-global-context",
+  "name": "babel-preset-global-context",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],
