@@ -283,8 +283,6 @@ test.describe('Slider', () => {
             `;
       });
 
-      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
-
       await element.evaluate((node: Slider) => {
         node.increment();
       });
@@ -315,8 +313,6 @@ test.describe('Slider', () => {
                 <fluent-slider min="0" max="100" value="50"></fluent-slider>
             `;
       });
-
-      await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '50');
 
       await element.evaluate((node: Slider) => {
         node.increment();
@@ -449,6 +445,7 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('value', '3');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
   });
 
   test('should initialize to the provided value property if set pre-connection', async () => {

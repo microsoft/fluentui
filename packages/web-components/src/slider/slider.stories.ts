@@ -30,13 +30,11 @@ export default {
     disabled: { control: 'boolean' },
     min: {
       control: 'number',
-      defaultValue: 0,
     },
     max: {
       control: 'number',
-      defaultValue: 100,
     },
-    value: { control: 'number', defaultValue: 50 },
+    value: { control: 'number' },
     size: {
       control: {
         type: 'inline-radio',

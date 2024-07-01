@@ -176,6 +176,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
       this.$emit('change');
       this.setFormValue(value);
       Observable.notify(this, 'value');
+    } else {
+      this._value = value.toString();
     }
   }
 
@@ -561,14 +563,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   private setupDefaultValue(): void {
-    this.value = this.initialValue ?? this.midpoint;
+    if (!this._value) {
+      this.value = this.initialValue ?? this.midpoint;
+    }
 
     if (!Number.isNaN(this.valueAsNumber) &&
         (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)) {
       this.value = this.midpoint;
     }
-
-    this._value = this.value;
   }
 
   /**
