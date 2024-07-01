@@ -23,22 +23,8 @@ test.describe('Slider', () => {
     await page.close();
   });
 
-  test('should set and retrieve the `size` property correctly', async () => {
-    await element.evaluate((node: Slider) => {
-      node.size = 'small';
-    });
-
-    await expect(element).toHaveJSProperty('size', 'small');
-
-    await element.evaluate((node: Slider) => {
-      node.size = 'medium';
-    });
-
-    await expect(element).toHaveJSProperty('size', 'medium');
-  });
-
   // Foundation tests
-  test('should have a role of `slider`', async () => {
+  test('should have a default role of `slider`', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
@@ -56,6 +42,20 @@ test.describe('Slider', () => {
 
     await expect(element).toHaveJSProperty('minAsNumber', 0);
     await expect(element).toHaveJSProperty('maxAsNumber', 100);
+  });
+
+  test('should reference connected <label> elements', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <label for="slider">Label 1</label>
+        <fluent-slider id="slider"></fluent-slider>
+        <label for="slider">Label 2</label>
+      `;
+    });
+
+    await expect(element).toHaveJSProperty('labels.length', 2);
+    expect(await element.evaluate((el: Slider) => el.labels[0].textContent)).toBe('Label 1');
+    expect(await element.evaluate((el: Slider) => el.labels[1].textContent)).toBe('Label 2');
   });
 
   test('should set a `tabindex` of 0', async () => {
@@ -180,6 +180,20 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('direction', 'rtl');
+  });
+
+  test('should set and retrieve the `size` property correctly', async () => {
+    await element.evaluate((node: Slider) => {
+      node.size = 'small';
+    });
+
+    await expect(element).toHaveJSProperty('size', 'small');
+
+    await element.evaluate((node: Slider) => {
+      node.size = 'medium';
+    });
+
+    await expect(element).toHaveJSProperty('size', 'medium');
   });
 
   test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async () => {

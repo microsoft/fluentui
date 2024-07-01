@@ -143,6 +143,48 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * The element's validation message.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/validationMessage | `ElemenentInternals.validationMessage`} property.
+   */
+  public get validationMessage(): string {
+    return this.elementInternals.validationMessage;
+  }
+
+  /**
+   * Whether the element is a candidate for its owning form's constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/willValidate | `ElemenentInternals.willValidate`} property.
+   */
+  public get willValidate() {
+    return this.elementInternals.willValidate;
+  }
+
+  /**
+   * Checks the element's validity.
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/checkValidity | `ElemenentInternals.checkValidity`} method.
+   */
+  public checkValidity() {
+    return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Reports the element's validity.
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/reportValidity | `ElemenentInternals.reportValidity`} method.
+   */
+  public reportValidity() {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
    * The internal value of the input.
    *
    * @internal
