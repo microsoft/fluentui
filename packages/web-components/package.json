@@ -54,6 +54,10 @@
       "types": "./dist/dts/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
+    "./button/design-tokens.js": {
+      "types": "./dist/dts/button/design-tokens.d.ts",
+      "default": "./dist/esm/button/design-tokens.js"
+    },
     "./checkbox.js": {
       "types": "./dist/dts/checkbox/define.d.ts",
       "default": "./dist/esm/checkbox/define.js"
@@ -231,6 +235,7 @@
     "compile:benchmark": "rollup -c rollup.bench.js",
     "clean": "node ./scripts/clean dist",
     "generate-api": "api-extractor run --local",
+    "generate-css-registration": "node ./scripts/generate-css-registration.js",
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
