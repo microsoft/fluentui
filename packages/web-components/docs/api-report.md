@@ -67,8 +67,8 @@ export class AccordionItem extends FASTElement {
     expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
-    markerPosition?: AccordionItemExpandIconPosition;
-    markerPositionChanged(prev: AccordionItemExpandIconPosition, next: AccordionItemExpandIconPosition): void;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
     sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
@@ -82,16 +82,16 @@ export interface AccordionItem extends StartEnd {
 // @public (undocumented)
 export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
-// Warning: (ae-missing-release-tag) "AccordionItemExpandIconPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export const AccordionItemExpandIconPosition: {
+export const AccordionItemMarkerPosition: {
     readonly start: "start";
     readonly end: "end";
 };
 
 // @public
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
 // Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
 //
@@ -1972,6 +1972,72 @@ export const DividerStyles: ElementStyles;
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
 // @public
 export const durationFast = "var(--durationFast)";
 
@@ -2636,6 +2702,7 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends FASTElement {
     constructor();
     color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     count?: number;
     // @internal
@@ -2646,6 +2713,7 @@ export class RatingDisplay extends FASTElement {
     generateIcons(): string;
     max?: number;
     size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
     value?: number;
 }
 
