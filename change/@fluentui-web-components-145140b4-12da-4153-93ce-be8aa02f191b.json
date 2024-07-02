@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): fix popover positioning in firefox, add docs",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}

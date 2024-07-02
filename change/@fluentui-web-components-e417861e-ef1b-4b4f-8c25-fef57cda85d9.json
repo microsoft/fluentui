@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): fix menu enterkey interaction ",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}

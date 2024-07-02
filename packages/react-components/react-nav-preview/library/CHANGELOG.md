@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.0)
+
+Mon, 01 Jul 2024 20:30:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.4.1..@fluentui/react-nav-preview_v0.5.0)
+
+### Minor changes
+
+- feat: Adds animation to selection indicator and icon. ([PR #31720](https://github.com/microsoft/fluentui/pull/31720) by matejera@microsoft.com)
+- feat: Adds NavDivider implementation ([PR #31848](https://github.com/microsoft/fluentui/pull/31848) by matejera@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.0 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-button to v9.3.85 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.63 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-divider to v9.2.71 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-drawer to v9.5.3 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-tabster to v9.22.1 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+
+### Patches
+
+- chore: Update react-icons package to ^2.0.245 ([PR #31802](https://github.com/microsoft/fluentui/pull/31802) by ololubek@microsoft.com)
+- Scaffolds NavDivider and AppNode ([PR #31836](https://github.com/microsoft/fluentui/pull/31836) by matejera@microsoft.com)
+- fix: Addresses icon and indicator Windows and Teams Theme high contrast issues. ([PR #31704](https://github.com/microsoft/fluentui/pull/31704) by matejera@microsoft.com)
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- fix: Adds aria-expanded to NavCategoryItem ([PR #31837](https://github.com/microsoft/fluentui/pull/31837) by matejera@microsoft.com)
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.4.1)
 
