@@ -7,7 +7,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useMountedState } from '../hooks/useMountedState';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
-import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn } from '../types';
+import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceDirection } from '../types';
 
 export type PresenceComponentProps = {
   /**
@@ -29,7 +29,7 @@ export type PresenceComponentProps = {
    * triggered once all animations have finished with "null" instead of an event object to avoid ambiguity.
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
-  onMotionFinish?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+  onMotionFinish?: (ev: null, data: { direction: PresenceDirection }) => void;
 
   /**
    * Callback that is called when the whole motion is cancelled. When a motion is cancelled it does not
@@ -49,7 +49,7 @@ export type PresenceComponentProps = {
    * so the callback is triggered with "null".
    */
   // eslint-disable-next-line @nx/workspace-consistent-callback-type -- EventHandler<T> does not support "null"
-  onMotionStart?: (ev: null, data: { direction: 'enter' | 'exit' }) => void;
+  onMotionStart?: (ev: null, data: { direction: PresenceDirection }) => void;
 
   /** Defines whether a component is visible; triggers the "enter" or "exit" motions. */
   visible?: boolean;
@@ -65,9 +65,15 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && !!visible;
 }
 
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  PresenceComponentProps & MotionParams
+> & {
+  motionDefinition: PresenceMotionFn<MotionParams>;
+};
+
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
   value: PresenceMotion | PresenceMotionFn<MotionParams>,
-) {
+): PresenceComponent<MotionParams> {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     'use no memo';
 
@@ -100,10 +106,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
     const isFirstMount = useFirstMount();
     const isReducedMotion = useIsReducedMotion();
 
-    const handleMotionStart = useEventCallback((direction: 'enter' | 'exit') => {
+    const handleMotionStart = useEventCallback((direction: PresenceDirection) => {
       onMotionStart?.(null, { direction });
     });
-    const handleMotionFinish = useEventCallback((direction: 'enter' | 'exit') => {
+    const handleMotionFinish = useEventCallback((direction: PresenceDirection) => {
       onMotionFinish?.(null, { direction });
 
       if (direction === 'exit' && unmountOnExit) {
@@ -130,10 +136,11 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           return;
         }
 
-        const presenceMotion = typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : value;
+        const presenceMotion =
+          typeof value === 'function' ? value({ element, ...optionsRef.current.params }) : (value as PresenceMotion);
         const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
-        const direction = visible ? 'enter' : 'exit';
+        const direction: PresenceDirection = visible ? 'enter' : 'exit';
         const forceFinishMotion = !visible && isFirstMount;
 
         if (!forceFinishMotion) {
@@ -170,6 +177,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
     return null;
   };
-
-  return Presence;
+  // If the motion definition is an object, normalize it to a function (simplifies types)
+  const motionDefinition = typeof value === 'function' ? value : () => value;
+  return Object.assign(Presence, { motionDefinition });
 }

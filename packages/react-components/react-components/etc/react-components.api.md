@@ -198,9 +198,11 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
+import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
+import { curves } from '@fluentui/react-motion';
 import { CurveTokens } from '@fluentui/react-theme';
 import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
 import { DATA_OVERFLOW_ITEM } from '@fluentui/react-overflow';
@@ -334,6 +336,7 @@ import { DropdownOpenEvents } from '@fluentui/react-combobox';
 import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
+import { durations } from '@fluentui/react-motion';
 import { DurationTokens } from '@fluentui/react-theme';
 import { EmptySwatch } from '@fluentui/react-swatch-picker';
 import { emptySwatchClassNames } from '@fluentui/react-swatch-picker';
@@ -2106,11 +2109,15 @@ export { createMotionComponent }
 
 export { createPresenceComponent }
 
+export { createPresenceComponentVariant }
+
 export { createTableColumn }
 
 export { CreateTableColumnOptions }
 
 export { createTeamsDarkTheme }
+
+export { curves }
 
 export { CurveTokens }
 
@@ -2377,6 +2384,8 @@ export { DropdownProps }
 export { DropdownSlots }
 
 export { DropdownState }
+
+export { durations }
 
 export { DurationTokens }
 

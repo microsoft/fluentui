@@ -20,7 +20,10 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): React_2.FC<PresenceComponentProps & MotionParams>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
+
+// @public (undocumented)
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -84,22 +87,30 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
+    motionDefinition: PresenceMotionFn<MotionParams>;
+};
+
+// @public (undocumented)
 export type PresenceComponentProps = {
     appear?: boolean;
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     onMotionCancel?: (ev: null, data: {
         direction: 'enter' | 'exit';
     }) => void;
     onMotionStart?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     visible?: boolean;
     unmountOnExit?: boolean;
 };
+
+// @public (undocumented)
+export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
@@ -119,8 +130,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 
 // @public (undocumented)
 export type PresenceMotion = {
-    enter: AtomMotion | AtomMotion[];
-    exit: AtomMotion | AtomMotion[];
+    [transition in PresenceDirection]: AtomMotion | AtomMotion[];
 };
 
 // @public (undocumented)
