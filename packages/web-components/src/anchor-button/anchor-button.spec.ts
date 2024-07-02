@@ -80,66 +80,144 @@ test.describe('Anchor Button', () => {
 
   test('should navigate to the provided url when clicked', async ({ page }) => {
     const element = page.locator('fluent-anchor-button');
-    const expectedUrl = '#foo';
 
     await page.setContent(/* html */ `
-          <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
-        `);
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
+    `);
 
     await element.click();
 
-    expect(page.url()).toContain(expectedUrl);
+    await expect(page).toHaveURL(/#foo$/);
   });
 
-  test('should navigate to the provided url when clicked while pressing the `Control` key on Windows or Meta on Mac', async ({
+  test('should open a new tab when middle clicked', async ({ page, context }) => {
+    // currently in Playwright there's no way to know if the new page is a new window or a new tab
+    const element = page.locator('fluent-anchor-button');
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
+    `);
+
+    const pagePromise = context.waitForEvent('page');
+
+    await element.click({ button: 'middle' });
+
+    const newPage = await pagePromise;
+
+    await expect(newPage).toHaveURL(/#foo$/);
+  });
+
+  // TODO: currently in Playwright there's no way to know if the new page is a new window or a new tab,
+  // and all pages are treated as focused. See https://playwright.dev/docs/pages#multiple-pages
+  test('should open the link in a new unfocused tab when `CtrlOrMeta` is pressed while clicked', async ({
     page,
     context,
   }) => {
     const element = page.locator('fluent-anchor-button');
-    const expectedUrl = '#foo';
 
     await page.setContent(/* html */ `
-      <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
     `);
 
-    const [newPage] = await Promise.all([
-      context.waitForEvent('page'),
-      element.click({ modifiers: ['ControlOrMeta'] }),
-    ]);
+    const pagePromise = context.waitForEvent('page');
 
-    expect(newPage.url()).toContain(expectedUrl);
+    await element.click({ modifiers: ['ControlOrMeta'] });
+
+    const newPage = await pagePromise;
+
+    await expect(newPage).toHaveURL(/#foo$/);
   });
 
-  test('should navigate to the provided url when `Enter` is pressed via keyboard', async ({ page }) => {
+  // TODO: currently in Playwright there's no way to know if the new page is a new window or a new tab,
+  // and all pages are treated as focused. See https://playwright.dev/docs/pages#multiple-pages
+  test('should open the link in a new window when `Shift` is pressed while clicked', async ({ page, context }) => {
     const element = page.locator('fluent-anchor-button');
-    const expectedUrl = '#foo';
 
     await page.setContent(/* html */ `
-        <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
-      `);
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
+    `);
+
+    const pagePromise = context.waitForEvent('page');
+
+    await element.click({ modifiers: ['Shift'] });
+
+    const newPage = await pagePromise;
+
+    await expect(newPage).toHaveURL(/#foo$/);
+  });
+
+  test('should open the link in the same tab when `Enter` is pressed', async ({ page }) => {
+    const element = page.locator('fluent-anchor-button');
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
+    `);
 
     await element.focus();
 
     await element.press('Enter');
 
-    expect(page.url()).toContain(expectedUrl);
+    await expect(page).toHaveURL(/#foo$/);
   });
 
-  test('should navigate to the provided url when `ctrl` and `Enter` are pressed via keyboard', async ({
+  // TODO: currently in Playwright there's no way to know if the new page is a new window or a new tab,
+  // and all pages are treated as focused. See https://playwright.dev/docs/pages#multiple-pages
+  test('should open the link in a new unfocused tab when `CtrlOrMeta+Enter` is pressed', async ({ page, context }) => {
+    const element = page.locator('fluent-anchor-button');
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
+    `);
+
+    const pagePromise = context.waitForEvent('page');
+
+    await element.press('ControlOrMeta+Enter');
+
+    const newPage = await pagePromise;
+
+    await expect(newPage).toHaveURL(/#foo$/);
+  });
+
+  // TODO: currently in Playwright there's no way to know if the new page is a new window or a new tab,
+  // and all pages are treated as focused. See https://playwright.dev/docs/pages#multiple-pages
+  test('should open the link in a new focused tab when `CtrlOrMeta+Shift+Enter` is pressed', async ({
     page,
     context,
   }) => {
     const element = page.locator('fluent-anchor-button');
-    const expectedUrl = '#foo';
 
     await page.setContent(/* html */ `
-      <fluent-anchor-button href="${expectedUrl}"></fluent-anchor-button>
+      <fluent-anchor-button href="#foo"></fluent-anchor-button>
     `);
 
-    await element.focus();
+    const pagePromise = context.waitForEvent('page');
 
-    const [newPage] = await Promise.all([context.waitForEvent('page'), element.press('ControlOrMeta+Enter')]);
+    await element.press('ControlOrMeta+Shift+Enter');
 
-    expect(newPage.url()).toContain(expectedUrl);
+    const newPage = await pagePromise;
+
+    await expect(newPage).toHaveURL(/#foo$/);
+  });
+
+  test('should NOT open the link when no `href` is provided', async ({ page }) => {
+    const element = page.locator('fluent-anchor-button');
+
+    await page.setContent(/* html */ `
+      <fluent-anchor-button></fluent-anchor-button>
+    `);
+
+    await test.step('when clicked', async () => {
+      await element.click();
+
+      await expect(page).not.toHaveURL(/#/);
+    });
+
+    await test.step('when `Enter` is pressed', async () => {
+      await element.focus();
+
+      await element.press('Enter');
+
+      await expect(page).not.toHaveURL(/#/);
+    });
   });
 });
