@@ -1,24 +1,32 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
+import { uniqueId } from '@microsoft/fast-web-utilities';
+import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Radio as FluentRadio } from './radio.js';
 
-type RadioStoryArgs = Args & FluentRadio;
-type RadioStoryMeta = Meta<RadioStoryArgs>;
+const storyTemplate = html<StoryArgs<FluentRadio>>`
+  <fluent-radio
+    slot="${x => x.slot}"
+    id="${x => x.id}"
+    ?checked="${x => x.checked}"
+    ?disabled="${x => x.disabled}"
+    name="${x => x.name}"
+    ?required="${x => x.required}"
+    value="${x => x.value}"
+  ></fluent-radio>
+`;
 
-const storyTemplate = html<RadioStoryArgs>`
-  <form @submit="${() => false}">
-    <fluent-radio ?checked="${x => x.checked}" ?disabled="${x => x.disabled}" name="radio-story" value="option1"
-      >Option 1</fluent-radio
-    >
-  </form>
+const fieldTemplate = html<StoryArgs<FluentRadio>>`
+  <fluent-field label-position="after">
+    <label slot="label">${x => x.value}</label>
+    ${storyTemplate}
+  </fluent-field>
 `;
 
 export default {
   title: 'Components/Radio',
   args: {
-    checked: false,
-    disabled: false,
+    slot: 'input',
   },
   argTypes: {
     checked: {
@@ -47,15 +55,29 @@ export default {
         },
       },
     },
+    slot: { table: { disable: true } },
   },
-} as RadioStoryMeta;
+} as Meta<FluentRadio>;
 
-export const Radio = renderComponent(storyTemplate).bind({});
+export const Radio: Story<FluentRadio> = renderComponent(storyTemplate).bind({});
+Radio.args = {
+  slot: null,
+  checked: false,
+  disabled: false,
+};
 
-export const Checked = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio checked value="Apple">Apple</fluent-radio>
+export const Checked: Story<FluentRadio> = renderComponent(html<StoryArgs<FluentRadio>>`
+  <fluent-radio checked value="Apple"></fluent-radio>
 `);
 
-export const Disabled = renderComponent(html<RadioStoryArgs>`
-  <fluent-radio disabled value="Apple">Apple</fluent-radio>
-`);
+export const Disabled: Story<FluentRadio> = renderComponent(fieldTemplate).bind({});
+Disabled.args = {
+  value: 'Disabled Radio',
+  disabled: true,
+};
+
+export const Field: Story<FluentRadio> = renderComponent(fieldTemplate).bind({});
+Field.args = {
+  id: uniqueId('radio-'),
+  value: 'Apple',
+};
