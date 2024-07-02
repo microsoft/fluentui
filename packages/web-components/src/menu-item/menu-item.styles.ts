@@ -149,6 +149,7 @@ export const styles = css`
     }
 
     ::slotted([popover]) {
+      align-self: start; /* Fallback for no anchor-positioning */
       inset-area: inline-end span-block-end;
       margin: 0;
       max-height: var(--menu-max-height, auto);
