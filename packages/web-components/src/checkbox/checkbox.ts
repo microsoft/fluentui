@@ -555,16 +555,6 @@ export class Checkbox extends BaseCheckbox {
   }
 
   /**
-   * Resets the form value to its initial value when the form is reset.
-   *
-   * @internal
-   */
-  formResetCallback(): void {
-    this.indeterminate = false;
-    super.formResetCallback();
-  }
-
-  /**
    * Toggles the checked state of the control.
    *
    * @public
