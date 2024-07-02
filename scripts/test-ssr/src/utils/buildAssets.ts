@@ -8,9 +8,6 @@ const NODE_MAJOR_VERSION = process.versions.node.split('.')[0];
 const commonOptions: BuildOptions = {
   bundle: true,
   jsx: 'transform',
-  define: {
-    'process.env.NODE_ENV': '"test"',
-  },
   loader: {
     '.jpg': 'dataurl',
     '.png': 'dataurl',

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Check if DOM can be used before checking for global Element.",
-  "packageName": "@fluentui/react-motion",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}
