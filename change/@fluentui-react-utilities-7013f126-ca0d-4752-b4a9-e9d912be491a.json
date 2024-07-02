@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: improve Slot signature to be more presentable in Storybook",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
