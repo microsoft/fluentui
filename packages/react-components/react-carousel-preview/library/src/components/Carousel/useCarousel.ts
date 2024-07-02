@@ -28,7 +28,7 @@ import type { CarouselContextValue } from '../CarouselContext.types';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { onValueChange, circular, peeking } = props;
+  const { onValueChange, circular, cardWidth } = props;
 
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
@@ -56,8 +56,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   }
 
   useIsomorphicLayoutEffect(() => {
-    store.setActiveValue(value);
-  }, [store, value]);
+    store.setActiveValue(value, circular ?? false);
+  }, [circular, store, value]);
 
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
@@ -160,6 +160,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByDirection,
     selectPageByValue,
     circular,
-    peeking,
+    cardWidth: cardWidth ?? '100%',
   };
 }

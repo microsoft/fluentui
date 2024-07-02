@@ -14,43 +14,78 @@ import { useCarouselStore_unstable } from '../useCarouselStore';
  * @param props - props from this instance of CarouselCard
  * @param ref - reference to root HTMLDivElement of CarouselCard
  */
+
 export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
+  'use no memo';
+
+  const { circular } = useCarouselContext_unstable();
+
+  // We rely on render-heavy context in circular so we want to avoid if disabled
+  // As circular is static, this doesn't break rule of hooks
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return circular ? useCarouselCardCircular(props, ref) : useCarouselCardCore(props, ref);
+};
+
+const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
+  const coreState = useCarouselCardCore(props, ref);
   const { value } = props;
-  const { circular, peeking } = useCarouselContext_unstable();
+  const { circular } = useCarouselContext_unstable();
+
+  const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
+
+  const currentActiveIndex: number = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue) {
+      return 0;
+    }
+
+    return snapshot.values.indexOf(snapshot.activeValue);
+  });
+
+  const currentSelfIndex: number = useCarouselStore_unstable(snapshot => {
+    if (!snapshot.activeValue) {
+      return 0;
+    }
+
+    return snapshot.values.indexOf(value);
+  });
+
+  const totalCards: number = useCarouselStore_unstable(snapshot => snapshot.values.length);
+
+  const loopCount: number = useCarouselStore_unstable(snapshot => snapshot.loopCount);
+
+  // Track if we need to modify position due to circular loop
+  const cardDirection = currentActiveIndex < currentSelfIndex ? 'next' : 'prev';
+  const directionMod = navDirection === cardDirection ? 0.5 : -0.5;
+
+  let offsetIndex = circular ? loopCount * totalCards : 0;
+  if (circular && Math.abs(currentActiveIndex - currentSelfIndex) + directionMod >= totalCards / 2.0) {
+    offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
+  }
+
+  const state: CarouselCardState = {
+    ...coreState,
+    offsetIndex,
+  };
+
+  return state;
+};
+
+const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
+  const { value } = props;
+  const { cardWidth } = useCarouselContext_unstable();
 
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
-  const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
-    if (!peeking) {
-      return;
-    }
 
-    const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
-
-    if (currentIndex !== null && currentIndex >= 0) {
-      let nextValue = currentIndex + 1 < snapshot.values.length ? snapshot.values[currentIndex + 1] : null;
-      let prevValue = currentIndex - 1 >= 0 ? snapshot.values[currentIndex - 1] : null;
-
-      if (!nextValue && circular) {
-        nextValue = snapshot.values[0];
-      }
-
-      if (!prevValue && circular) {
-        prevValue = snapshot.values[snapshot.values.length - 1];
-      }
-
-      if (nextValue === value || prevValue === value) {
-        return nextValue === value ? 'next' : 'prev';
-      }
-    }
-  });
+  const offsetIndex = 0;
 
   const state: CarouselCardState = {
     value,
     visible,
-    peekDir,
+    offsetIndex,
+    cardWidth,
     components: {
       root: 'div',
     },
@@ -59,7 +94,6 @@ export const useCarouselCard_unstable = (
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
-        hidden: !visible && !peekDir,
         'aria-hidden': !visible,
         inert: !visible,
         role: 'presentation',
@@ -68,10 +102,6 @@ export const useCarouselCard_unstable = (
       { elementType: 'div' },
     ),
   };
-
-  if (!visible && !peekDir) {
-    state.root.children = null;
-  }
 
   return state;
 };
