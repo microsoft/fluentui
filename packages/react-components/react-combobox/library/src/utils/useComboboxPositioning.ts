@@ -1,4 +1,4 @@
-import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
+import { resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
 import type { ComboboxBaseProps } from './ComboboxBase.types';
 import * as React from 'react';
 
@@ -10,15 +10,11 @@ export function useComboboxPositioning(props: ComboboxBaseProps): [
 ] {
   const { positioning } = props;
 
-  // Set a default set of fallback positions to try if the dropdown does not fit on screen
-  const fallbackPositions: PositioningShorthandValue[] = ['above', 'after', 'after-top', 'before', 'before-top'];
-
   // popper options
   const popperOptions = {
     position: 'below' as const,
     align: 'start' as const,
     offset: { crossAxis: 0, mainAxis: 2 },
-    fallbackPositions,
     matchTargetSize: 'width' as const,
     autoSize: true,
     ...resolvePositioningShorthand(positioning),
