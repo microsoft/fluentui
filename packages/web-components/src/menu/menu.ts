@@ -159,8 +159,7 @@ export class Menu extends FASTElement {
   public closeMenu = (event?: Event) => {
     // Keep menu open if the event target is a menu item checkbox or radio
     if (
-      event &&
-      event.target instanceof MenuItem &&
+      event?.target instanceof MenuItem &&
       (event.target.getAttribute('role') === MenuItemRole.menuitemcheckbox ||
         event.target.getAttribute('role') === MenuItemRole.menuitemradio)
     ) {
