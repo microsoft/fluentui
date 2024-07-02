@@ -20,16 +20,10 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent(value: PresenceMotion): PresenceComponent<{}, typeof value>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams, typeof value>;
-
-// @public (undocumented)
-export function createPresenceComponentVariant(component: PresenceComponent<{}, PresenceMotion>, override: PresenceOverride<{}>): PresenceComponent<{}, PresenceMotion>;
-
-// @public (undocumented)
-export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam>, MotionDefinition extends PresenceMotionFn<MotionParams>>(component: PresenceComponent<MotionParams, PresenceMotionFn<MotionParams>>, override: PresenceOverride<MotionParams>): PresenceComponent<MotionParams, PresenceMotionFn<MotionParams>>;
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride<MotionParams>): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -93,8 +87,8 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
-export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}, MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> = PresenceMotion | PresenceMotionFn<MotionParams>> = React_2.FC<PresenceComponentProps & MotionParams> & {
-    motionDefinition: MotionDefinition;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React_2.FC<PresenceComponentProps & MotionParams> & {
+    motionDefinition: PresenceMotionFn<MotionParams>;
 };
 
 // @public (undocumented)

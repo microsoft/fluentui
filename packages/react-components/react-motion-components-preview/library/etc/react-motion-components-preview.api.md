@@ -5,59 +5,45 @@
 ```ts
 
 import { PresenceComponent } from '@fluentui/react-motion';
-import { PresenceMotion } from '@fluentui/react-motion';
-import { PresenceMotionFn } from '@fluentui/react-motion';
 
 // @public
 export const Collapse: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // @public (undocumented)
 export const CollapseExaggerated: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // @public (undocumented)
 export const CollapseSnappy: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // @public
-export const Fade: PresenceComponent<    {}, PresenceMotion>;
+export const Fade: PresenceComponent<    {}>;
 
 // @public (undocumented)
-export const FadeExaggerated: PresenceComponent<    {}, PresenceMotion>;
+export const FadeExaggerated: PresenceComponent<    {}>;
 
 // @public (undocumented)
-export const FadeSnappy: PresenceComponent<    {}, PresenceMotion>;
+export const FadeSnappy: PresenceComponent<    {}>;
 
 // @public
 export const Scale: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // @public (undocumented)
 export const ScaleExaggerated: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // @public (undocumented)
 export const ScaleSnappy: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
-}, PresenceMotionFn<{
-animateOpacity?: boolean | undefined;
-}>>;
+}>;
 
 // (No @packageDocumentation comment for this package)
 

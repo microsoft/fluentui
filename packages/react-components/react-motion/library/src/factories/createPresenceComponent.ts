@@ -65,26 +65,15 @@ function shouldSkipAnimation(appear: boolean | undefined, isFirstMount: boolean,
   return !appear && isFirstMount && !!visible;
 }
 
-// TODO: consider a conditional type
-export type PresenceComponent<
-  MotionParams extends Record<string, MotionParam> = {},
-  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams> =
-    | PresenceMotion
-    | PresenceMotionFn<MotionParams>,
-> = React.FC<PresenceComponentProps & MotionParams> & {
-  motionDefinition: MotionDefinition;
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = React.FC<
+  PresenceComponentProps & MotionParams
+> & {
+  motionDefinition: PresenceMotionFn<MotionParams>;
 };
 
-export function createPresenceComponent(value: PresenceMotion): PresenceComponent<{}, typeof value>;
-
 export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(
-  value: PresenceMotionFn<MotionParams>,
-): PresenceComponent<MotionParams, typeof value>;
-
-export function createPresenceComponent<
-  MotionParams extends Record<string, MotionParam>,
-  MotionDefinition extends PresenceMotion | PresenceMotionFn<MotionParams>,
->(value: PresenceMotion | PresenceMotionFn<MotionParams>): unknown {
+  value: PresenceMotion | PresenceMotionFn<MotionParams>,
+): PresenceComponent<MotionParams> {
   const Presence: React.FC<PresenceComponentProps & MotionParams> = props => {
     'use no memo';
 
@@ -188,6 +177,7 @@ export function createPresenceComponent<
 
     return null;
   };
-
-  return Object.assign(Presence, { motionDefinition: value });
+  // If the motion definition is an object, normalize it to a function (simplifies types)
+  const motionDefinition = typeof value === 'function' ? value : () => value;
+  return Object.assign(Presence, { motionDefinition });
 }
