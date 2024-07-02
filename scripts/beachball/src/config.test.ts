@@ -1,3 +1,4 @@
+import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
 import webComponentsConfig from './release-web-components.config';
@@ -48,12 +49,13 @@ describe(`beachball configs`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
         ...excludedPackagesFromReleaseProcess,
-        '!apps/perf-test-react-components',
-        '!apps/vr-tests-react-components',
-        '!packages/web-components',
+        'packages/api-docs',
+        'packages/azure-themes',
+        'packages/react',
+        'packages/react-date-time',
+        'packages/react-hooks',
       ]),
     );
-    expect(v8Config.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
     expect(v8Config.changelog).toEqual(sharedConfig.changelog);
   });
 
@@ -90,5 +92,13 @@ describe(`beachball configs`, () => {
     );
 
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
+  });
+
+  it(`should generate tools release config`, () => {
+    expect(toolsConfig.scope).toEqual(
+      expect.arrayContaining(['scripts/api-extractor', 'scripts/babel', 'tools/workspace-plugin']),
+    );
+
+    expect(toolsConfig.changelog).toEqual(sharedConfig.changelog);
   });
 });
