@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: bump @types/node types to v20 and @tsconfig to v18",
+  "packageName": "@fluentui/cra-template",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
