@@ -17,6 +17,8 @@ export type CarouselSliderSlots = {
 export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
   /**
    * Used to define the carousel card size, can be any css metric i.e. 100% / 100px / 100vw
+   * This will define the uniform width for all cards based on viewport size,
+   * i.e. 50% will render the cards at 50% of the viewport width.
    */
   cardWidth?: string | number;
 };
