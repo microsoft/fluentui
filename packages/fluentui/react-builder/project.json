@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-builder",
+  "name": "react-builder",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

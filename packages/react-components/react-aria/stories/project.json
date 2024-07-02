@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-aria-stories",
+  "name": "react-aria-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-aria/stories/src",

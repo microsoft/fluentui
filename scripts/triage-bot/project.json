@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-triage-bot",
+  "name": "scripts-triage-bot",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/triage-bot/src",
   "projectType": "library",

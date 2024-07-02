@@ -283,7 +283,7 @@ module.exports = {
    * @returns {Set<string>} Returns a set of v9 packages that are currently unstable.
    */
   getV9UnstablePackages: (/** @type {string} */ root) => {
-    const v9ProjectMetaData = getProjectMetadata({ root, name: '@fluentui/react-components' });
+    const v9ProjectMetaData = getProjectMetadata({ root, name: 'react-components' });
     const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot ?? '', 'unstable', 'index.ts');
     const unstableV9Packages = new Set();
     fs.readFileSync(v9PackagePath)

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-cypress",
+  "name": "scripts-cypress",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/cypress/src",
   "projectType": "library",

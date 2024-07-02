@@ -7,7 +7,7 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
-      yarn nx run @fluentui/workspace-plugin:check-graph
+      yarn nx run workspace-plugin:check-graph
       yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
       yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
 
