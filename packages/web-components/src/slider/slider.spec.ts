@@ -68,16 +68,6 @@ test.describe('Slider', () => {
     await expect(element).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set default `elementInternals.ariaDisabled` when `disabled` is not defined', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
-    });
-
-    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
-  });
-
   test('should set a default `elementInternals.ariaOrientation` when `orientation` is not defined', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -96,6 +86,16 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('value', '50');
+  });
+
+  test('should NOT set default `elementInternals.ariaDisabled` when `disabled` is not defined', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+            <fluent-slider></fluent-slider>
+        `;
+    });
+
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
   });
 
   test('should set `elementInternals.ariaDisabled` when `disabled` is present', async () => {
@@ -140,6 +140,38 @@ test.describe('Slider', () => {
     });
 
     await expect(element).not.toHaveAttribute('tabindex', '0');
+  });
+
+  test('should be enabled/disabled by the associated fieldset', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <form>
+          <fieldset>
+            <fluent-slider></fluent-slider>
+          </fieldset>
+        </form>
+      `;
+    });
+
+    const fieldset = page.locator('fieldset');
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => node.disabled = true);
+
+    // The `disabled` property and attribute should not be affected.
+    await expect(element).toHaveJSProperty('disabled', false);
+    await expect(element).not.toHaveAttribute('disabled');
+    // But `ariaDisabled` and `tabIndex` should be updated.
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+    await expect(element).toHaveAttribute('tabindex', '-1');
+
+    await fieldset.evaluate((node: HTMLFieldSetElement) => node.disabled = false);
+
+    // The `disabled` property and attribute should not be affected.
+    await expect(element).toHaveJSProperty('disabled', false);
+    await expect(element).not.toHaveAttribute('disabled');
+    // But `ariaDisabled` and `tabIndex` should be updated.
+    await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+    await expect(element).toHaveAttribute('tabindex', '0');
   });
 
   test('should set `elementInternals.ariaOrientation` equal to the `orientation` value', async () => {
@@ -495,7 +527,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '6.1');
   });
 
-  test.describe("when the owning form's reset() method is invoked", () => {
+  test.describe("when the associated form's reset() method is invoked", () => {
     test('should reset its `value` property to the midpoint if no `value` attribute is set', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `

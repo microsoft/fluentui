@@ -234,6 +234,20 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * Disabled the component when its associated form is disabled.
+   *
+   * @internal
+   *
+   * @privateRemarks
+   * DO NOT change the `disabled` property or attribute here, because if the
+   * `disabled` attribute is present, reenabling an ancestor `<fieldset>`
+   * element will not reenabling this component.
+   */
+  formDisabledCallback(disabled: boolean): void {
+    this.setDisabledSideEffect(disabled);
+  }
+
+  /**
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
    *
    * @internal
@@ -342,7 +356,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
   protected disabledChanged(): void {
-    this.elementInternals.ariaDisabled = `${this.disabled}`;
+    this.setDisabledSideEffect(this.disabled);
   }
 
   /**
@@ -729,5 +743,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
         ? constrainedValue - remainderValue + Number(this.stepAsNumber)
         : constrainedValue - remainderValue;
     return constrainedValue + this.minAsNumber;
+  }
+
+  /**
+   * Makes sure the side effects of set up when the disabled state changes.
+   */
+  private setDisabledSideEffect(disabled: boolean) {
+    this.elementInternals.ariaDisabled = disabled.toString();
+    this.tabIndex = disabled ? -1 : 0;
   }
 }

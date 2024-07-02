@@ -21,7 +21,9 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('inline-grid')} :host {
+  ${display('inline-grid')}
+
+  :host {
     --thumb-size: 20px;
     --track-size: 4px;
     --track-overhang: calc(var(--track-size) / -2);
@@ -33,13 +35,16 @@ export const styles = css`
     justify-content: center;
     box-sizing: border-box;
     outline: none;
-    cursor: pointer;
     user-select: none;
     touch-action: pan-y;
     min-width: 120px;
     min-height: 32px;
     grid-template-rows: 1fr var(--thumb-size) 1fr;
     grid-template-columns: 1fr calc(100% - var(--thumb-size)) 1fr;
+  }
+
+  :host(:not(:disabled)) {
+    cursor: pointer;
   }
 
   :host(:dir(rtl)) {

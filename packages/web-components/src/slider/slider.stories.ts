@@ -78,3 +78,9 @@ export const SliderInRTL = renderComponent(html<SliderStoryArgs>`
     <fluent-slider orientation="horizontal" step="20" value="60" min="0" max="100"></fluent-slider>
   </div>
 `);
+
+export const FieldSet = renderComponent(html<SliderStoryArgs>`
+  <fieldset>
+    <fluent-slider></fluent-slider>
+  </fieldset>
+`);
