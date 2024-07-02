@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Correctly set aria-disabled on tab when parent tab group is set in web component",
+  "packageName": "@fluentui/web-components",
+  "email": "ryanmerrill@microsoft.com",
+  "dependentChangeType": "patch"
+}
