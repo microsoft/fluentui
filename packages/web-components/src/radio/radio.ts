@@ -11,36 +11,6 @@ import { BaseCheckbox } from '../checkbox/checkbox.js';
  * @public
  */
 export class Radio extends BaseCheckbox {
-  /**
-   * Indicates the position of the radio in a radio group.
-   *
-   * @public
-   * @remarks
-   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/ariaPosInSet | `ElementInternals.ariaPosInSet`} property.
-   */
-  public get ariaPosInSet(): string | null {
-    return this.elementInternals.ariaPosInSet;
-  }
-
-  public set ariaPosInSet(value: string | null) {
-    this.elementInternals.ariaPosInSet = value;
-  }
-
-  /**
-   * Indicates the number of radio buttons in the associated radio group.
-   *
-   * @public
-   * @remarks
-   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/ariaSetSize | `ElementInternals.ariaSetSize`} property.
-   */
-  public get ariaSetSize(): string | null {
-    return this.elementInternals.ariaSetSize;
-  }
-
-  public set ariaSetSize(value: string | null) {
-    this.elementInternals.ariaSetSize = value;
-  }
-
   connectedCallback() {
     super.connectedCallback();
 
