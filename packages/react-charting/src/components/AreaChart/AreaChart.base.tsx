@@ -285,6 +285,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     mouseEvent.persist();
     const { data } = this.props;
     const { lineChartData } = data;
+    const selectedLegend = this.state.selectedLegend;
     // This will get the value of the X when mouse is on the chart
     const xOffset = this._xAxisRectScale.invert(pointer(mouseEvent)[0], document.getElementById(this._rectId)!);
     const i = bisect(lineChartData![0].data, xOffset);
@@ -323,7 +324,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           break;
       }
     }
-
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
     const formattedDate =
       pointToHighlight instanceof Date ? formatDate(pointToHighlight, this.props.useUTC) : pointToHighlight;
@@ -332,6 +332,10 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
       return element.x === modifiedXVal;
     });
+    // filtering values based on selected legend
+    if (!this._noLegendHighlighted()) {
+      found.values = found.values.filter((e: { legend: string }) => e.legend === selectedLegend);
+    }
     const nearestCircleToHighlight =
       axisType === XAxisTypes.DateAxis ? (pointToHighlight as Date).getTime() : pointToHighlight;
     const pointToHighlightUpdated = this.state.nearestCircleToHighlight !== nearestCircleToHighlight;
@@ -655,6 +659,21 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
   };
 
+  private _getCircleOpacity = (legend: string): number => {
+    if (!this._isMultiStackChart) {
+      return 1;
+    } else {
+      let opacity = 0.3;
+      if (this.state.isCalloutVisible) {
+        opacity = 1;
+      }
+      if (!this._noLegendHighlighted()) {
+        opacity = this._legendHighlighted(legend) ? 1 : 0.1;
+      }
+      return opacity;
+    }
+  };
+
   private _updateCircleFillColor = (xDataPoint: number | Date, lineColor: string, circleId: string): string => {
     let fillColor = lineColor;
     if (this.state.nearestCircleToHighlight === xDataPoint || this.state.activePoint === circleId) {
@@ -721,7 +740,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               stroke={this._colors[index]}
               strokeWidth={3}
               fill={this._colors[index]}
-              opacity={this._opacity[index]}
+              opacity={this._getCircleOpacity(points[index]!.legend)}
               fillOpacity={this._getOpacity(points[index]!.legend)}
               onMouseMove={this._onRectMouseMove}
               onMouseOut={this._onRectMouseOut}
@@ -782,6 +801,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
                   strokeWidth={3}
+                  opacity={this._getCircleOpacity(points[index]!.legend)}
                   fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                   onMouseOut={this._onRectMouseOut}
                   onMouseOver={this._onRectMouseMove}
@@ -812,6 +832,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 cy={yScale(singlePoint.values[1])}
                 stroke={lineColor}
                 strokeWidth={3}
+                opacity={this._getCircleOpacity(points[index]!.legend)}
                 fill={this._updateCircleFillColor(xDataPoint, lineColor, circleId)}
                 onMouseOut={this._onRectMouseOut}
                 onMouseOver={this._onRectMouseMove}
@@ -927,7 +948,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
     // Show details in the callout for the focused point only
     found.values = found.values.filter((e: { y: number }) => e.y === y);
-
     this.setState({
       refSelected: `#${circleId}`,
       isCalloutVisible: true,
