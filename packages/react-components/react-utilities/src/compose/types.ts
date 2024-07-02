@@ -33,16 +33,16 @@ export type UnknownSlotProps = Pick<React.HTMLAttributes<HTMLElement>, 'children
 /**
  * Helper type for {@link Slot}. Adds shorthand types that are assignable to the slot's `children`.
  */
-type WithSlotShorthandValue<Props extends { children?: unknown }> =
+type WithSlotShorthandValue<Props> =
   | Props
-  | Extract<SlotShorthandValue, Props['children']>;
+  | ('children' extends keyof Props ? Extract<SlotShorthandValue, Props['children']> : never);
 
 /**
  * Helper type for {@link Slot}. Takes the props we want to support for a slot and adds the ability for `children`
  * to be a render function that takes those props.
  */
 type WithSlotRenderFunction<Props> = Props & {
-  children?: (Props extends { children?: unknown } ? Props['children'] : never) | SlotRenderFunction<Props>;
+  children?: ('children' extends keyof Props ? Props['children'] : never) | SlotRenderFunction<Props>;
 };
 
 /**
