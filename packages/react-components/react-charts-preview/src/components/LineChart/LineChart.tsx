@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable no-restricted-globals */
 import * as React from 'react';
 import { ILineChartProps } from './LineChart.types';
 import { useLineChartStyles_unstable } from './useLineChartStyles.styles';
@@ -8,7 +6,8 @@ import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
-import { getId, find, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { useId } from '@fluentui/react-utilities';
+import { find, memoizeFunction } from '@fluentui/utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -22,7 +21,6 @@ import {
   ILineChartGap,
   ILineChartDataPoint,
 } from '../../index';
-import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 import {
   calloutData,
@@ -133,11 +131,11 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _xAxisScale: any = '';
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _yAxisScale: any = '';
-    let _circleId: string = getId('circle');
-    let _lineId: string = getId('lineID');
-    let _borderId: string = getId('borderID');
-    let _verticalLine: string = getId('verticalLine');
-    let _colorFillBarPatternId: string = getId('colorFillBarPattern');
+    let _circleId: string = useId('circle');
+    let _lineId: string = useId('lineID');
+    let _borderId: string = useId('borderID');
+    let _verticalLine: string = useId('verticalLine');
+    let _colorFillBarPatternId: string = useId('colorFillBarPattern');
     let _uniqueCallOutID: string | null = '';
     let _refArray: IRefArrayData[] = [];
     let margins: IMargins;
@@ -145,14 +143,14 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let lines: JSX.Element[];
     let _renderedColorFillBars: JSX.Element[];
     let _colorFillBars: IColorFillBarsProps[] = [];
-    let _tooltipId: string = getId('LineChartTooltipId_');
-    let _rectId: string = getId('containerRectLD');
-    let _staticHighlightCircle: string = getId('staticHighlightCircle');
+    let _tooltipId: string = useId('LineChartTooltipId_');
+    let _rectId: string = useId('containerRectLD');
+    let _staticHighlightCircle: string = useId('staticHighlightCircle');
     let _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element = memoizeFunction(
       (data: LineChartDataWithIndex[]) => _createLegends(data),
     );
     let _firstRenderOptimization: boolean = true;
-    let _emptyChartId: string = getId('_LineChart_empty');
+    let _emptyChartId: string = useId('_LineChart_empty');
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps;
 
@@ -181,7 +179,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
         calloutPointsRef.current = calloutData(pointsRef.current);
       }
-    });
+    }, [props.height, props.width, props.data]);
 
     function _injectIndexPropertyInLineChartData(lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] {
       const { allowMultipleShapesForPoints = false } = props;
@@ -816,7 +814,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.length; i++) {
         const colorFillBar = _colorFillBars[i];
-        const colorFillBarId = getId(colorFillBar.legend.replace(/\W/g, ''));
+        const colorFillBarId = useId(colorFillBar.legend.replace(/\W/g, ''));
         // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color, props.theme?.isInverted);
 
@@ -1196,13 +1194,12 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     }
 
     function _isChartEmpty(): boolean {
-      /*return !(
+      return !(
         props.data &&
         props.data.lineChartData &&
         props.data.lineChartData.length > 0 &&
         props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
-      );*/
-      return false;
+      );
     }
 
     const { legendProps, tickValues, tickFormat, eventAnnotationProps } = props;
@@ -1224,7 +1221,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     }
     const calloutProps = {
       isCalloutVisible: isCalloutVisible,
-      directionalHint: DirectionalHint.topAutoEdge,
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
       id: `toolTip${_uniqueCallOutID}`,
