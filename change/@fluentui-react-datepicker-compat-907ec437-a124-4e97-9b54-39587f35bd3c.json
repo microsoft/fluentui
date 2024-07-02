@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: datepicker popup is not hidden from the a11y tree",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

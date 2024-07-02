@@ -3,6 +3,7 @@ import {
   Hamburger,
   NavCategory,
   NavCategoryItem,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
@@ -107,7 +108,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
         <NavDrawerBody>
-          <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -174,7 +174,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Analytics</NavSectionHeader>
+          <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>

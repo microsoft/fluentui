@@ -1,22 +1,19 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { useDividerStyles_unstable, type DividerSlots } from '@fluentui/react-divider';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { NavDividerSlots, NavDividerState } from './NavDivider.types';
+import type { NavDividerState } from './NavDivider.types';
 
-export const navDividerClassNames: SlotClassNames<NavDividerSlots> = {
+export const navDividerClassNames: SlotClassNames<DividerSlots> = {
   root: 'fui-NavDivider',
-  // TODO: add class names for all slots on NavDividerSlots.
-  // Should be of the form `<slotName>: 'fui-NavDivider__<slotName>`
+  wrapper: 'fui-NavDivider__wrapper',
 };
 
-/**
- * Styles for the root slot
- */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    flexGrow: 0,
+    marginTop: '4px',
+    marginBottom: '4px',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -26,10 +23,10 @@ export const useNavDividerStyles_unstable = (state: NavDividerState): NavDivider
   'use no memo';
 
   const styles = useStyles();
+
   state.root.className = mergeClasses(navDividerClassNames.root, styles.root, state.root.className);
+  state.wrapper.className = mergeClasses(navDividerClassNames.wrapper, state.wrapper.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
+  useDividerStyles_unstable(state);
   return state;
 };

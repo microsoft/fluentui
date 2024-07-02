@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Adds aria-expanded to NavCategoryItem",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 06 Jun 2024 15:26:45 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.39)
+
+Mon, 01 Jul 2024 20:30:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.38..@fluentui/react-badge_v9.2.39)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- chore: Update react-icons package to ^2.0.245 ([PR #31802](https://github.com/microsoft/fluentui/pull/31802) by ololubek@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.2.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.38)
 

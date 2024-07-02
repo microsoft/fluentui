@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Scaffolds NavDivider and AppNode",
-  "packageName": "@fluentui/react-nav-preview",
-  "email": "matejera@microsoft.com",
-  "dependentChangeType": "patch"
-}
