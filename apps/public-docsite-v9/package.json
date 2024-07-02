@@ -4,7 +4,6 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build": "just-scripts build",
     "build-storybook": "build-storybook --no-manager-cache -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
     "chromatic:branch": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
     "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook --branch-name microsoft:master",

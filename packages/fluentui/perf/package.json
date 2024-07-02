@@ -20,7 +20,8 @@
     "access": "public"
   },
   "scripts": {
-    "perf:test": "cross-env PERF=true gulp perf --times=100",
+    "bundle": "gulp perf:clean && cross-env PERF=true gulp perf:build",
+    "test-perf": "cross-env PERF=true gulp perf --times=100",
     "perf:test:debug": "cross-env PERF=true gulp perf:debug --debug",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",

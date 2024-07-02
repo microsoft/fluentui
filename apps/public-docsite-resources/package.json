@@ -17,7 +17,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "just-scripts build",
+    "prebundle": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "eslint --ext .js,.ts,.tsx ./src",
     "just": "just-scripts",
