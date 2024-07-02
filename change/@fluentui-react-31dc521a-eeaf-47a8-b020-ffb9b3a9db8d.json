@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: item.onClick is called when SplitMenuItem checkmark is clicked",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
