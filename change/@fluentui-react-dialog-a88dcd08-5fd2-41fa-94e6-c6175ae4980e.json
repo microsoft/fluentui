@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add motion slots",
+  "packageName": "@fluentui/react-dialog",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "TODO: remove me",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

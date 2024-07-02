@@ -1,9 +1,13 @@
 import type * as React from 'react';
-import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
 
-export type DialogSlots = {};
+export type DialogSlots = {
+  surfaceMotion: Slot<PresenceMotionSlotProps>;
+};
 
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 

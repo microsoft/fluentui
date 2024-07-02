@@ -1,11 +1,13 @@
-import * as React from 'react';
-import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
+import { useModalAttributes } from '@fluentui/react-tabster';
+import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { useControllableState, useEventCallback, useId } from '@fluentui/react-utilities';
+import * as React from 'react';
+
 import { useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
-
+import { DialogSurfaceMotion } from '../DialogSurfaceMotion';
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
-import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Dialog.
@@ -42,12 +44,15 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     trapFocus: modalType !== 'non-modal',
     legacyTrapFocus: !inertTrapFocus,
   });
-
   const isNestedDialog = useHasParentContext(DialogContext);
 
   return {
     components: {
-      backdrop: 'div',
+      // TODO: remove once React v18 slot API is modified
+      // This is a problem at the moment due to UnknownSlotProps assumption
+      // that `children` property is `ReactNode`, which in this case is not valid
+      // as PresenceComponentProps['children'] is `ReactElement`
+      surfaceMotion: DialogSurfaceMotion as React.FC<PresenceMotionSlotProps>,
     },
     inertTrapFocus,
     open,
@@ -60,6 +65,14 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     dialogRef: focusRef,
     modalAttributes,
     triggerAttributes,
+    surfaceMotion: presenceMotionSlot(props.surfaceMotion, {
+      elementType: DialogSurfaceMotion,
+      defaultProps: {
+        appear: true,
+        visible: open,
+        unmountOnExit: true,
+      },
+    }),
   };
 };
 

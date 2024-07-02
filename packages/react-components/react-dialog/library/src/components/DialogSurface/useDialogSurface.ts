@@ -1,4 +1,5 @@
 import { Escape } from '@fluentui/keyboard-keys';
+import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
 import {
   useEventCallback,
   useMergedRefs,
@@ -11,6 +12,7 @@ import * as React from 'react';
 
 import { useDialogContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
+import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
@@ -89,7 +91,15 @@ export const useDialogSurface_unstable = (
   }, [enableBodyScroll, isNestedDialog, disableBodyScroll, modalType]);
 
   return {
-    components: { backdrop: 'div', root: 'div' },
+    components: {
+      backdrop: 'div',
+      root: 'div',
+      // TODO: remove once React v18 slot API is modified
+      // This is a problem at the moment due to UnknownSlotProps assumption
+      // that `children` property is `ReactNode`, which in this case is not valid
+      // as PresenceComponentProps['children'] is `ReactElement`
+      backdropMotion: DialogBackdropMotion as React.FC<PresenceMotionSlotProps>,
+    },
     open,
     backdrop,
     isNestedDialog,
@@ -110,6 +120,13 @@ export const useDialogSurface_unstable = (
       }),
       { elementType: 'div' },
     ),
+    backdropMotion: presenceMotionSlot(props.backdropMotion, {
+      elementType: DialogBackdropMotion,
+      defaultProps: {
+        appear: true,
+        visible: open,
+      },
+    }),
 
     // Deprecated properties
     transitionStatus: undefined,

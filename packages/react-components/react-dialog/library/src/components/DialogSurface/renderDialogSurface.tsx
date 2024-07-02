@@ -5,7 +5,6 @@ import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
 
 import { DialogSurfaceProvider } from '../../contexts';
-import { DialogBackdropMotion } from '../DialogBackdropMotion';
 import type { DialogSurfaceState, DialogSurfaceSlots, DialogSurfaceContextValues } from './DialogSurface.types';
 
 /**
@@ -17,9 +16,9 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
   return (
     <Portal mountNode={state.mountNode}>
       {state.backdrop && (
-        <DialogBackdropMotion appear visible={state.open}>
+        <state.backdropMotion>
           <state.backdrop />
-        </DialogBackdropMotion>
+        </state.backdropMotion>
       )}
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         <state.root />
