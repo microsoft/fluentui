@@ -10,9 +10,9 @@ export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
 
 const useStyles = makeStyles({
   root: {
-    borderRadius: tokens.borderRadiusMedium,
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: `var(--ctrl-token-MenuPopover-1393, var(--semantic-token-MenuPopover-1394, ${tokens.borderRadiusMedium}))`,
+    backgroundColor: `var(--ctrl-token-MenuPopover-1395, var(--semantic-token-MenuPopover-1396, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--ctrl-token-MenuPopover-1397, var(--semantic-token-MenuPopover-1398, ${tokens.colorNeutralForeground1}))`,
     boxSizing: 'border-box',
     minWidth: '138px',
     maxWidth: '300px',

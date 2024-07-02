@@ -20,26 +20,26 @@ const useRootStyles = makeStyles({
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingLeft: `var(--ctrl-token-SearchBox-1579, var(--semantic-token-SearchBox-1580, ${tokens.spacingHorizontalSNudge}))`,
+    paddingRight: `var(--ctrl-token-SearchBox-1581, var(--semantic-token-SearchBox-1582, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalS,
-    paddingRight: tokens.spacingHorizontalS,
+    paddingLeft: `var(--ctrl-token-SearchBox-1583, var(--semantic-token-SearchBox-1584, ${tokens.spacingHorizontalS}))`,
+    paddingRight: `var(--ctrl-token-SearchBox-1585, var(--semantic-token-SearchBox-1586, ${tokens.spacingHorizontalS}))`,
   },
   large: {
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalMNudge,
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingLeft: `var(--ctrl-token-SearchBox-1587, var(--semantic-token-SearchBox-1588, ${tokens.spacingHorizontalMNudge}))`,
+    paddingRight: `var(--ctrl-token-SearchBox-1589, var(--semantic-token-SearchBox-1590, ${tokens.spacingHorizontalMNudge}))`,
   },
 
   input: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingLeft: `var(--ctrl-token-SearchBox-1591, var(--semantic-token-SearchBox-1592, ${tokens.spacingHorizontalSNudge}))`,
     paddingRight: 0,
 
     // removes the WebKit pseudoelement styling
@@ -54,8 +54,8 @@ const useRootStyles = makeStyles({
 
 const useContentAfterStyles = makeStyles({
   contentAfter: {
-    paddingLeft: tokens.spacingHorizontalM,
-    columnGap: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--ctrl-token-SearchBox-1593, var(--semantic-token-SearchBox-1594, ${tokens.spacingHorizontalM}))`,
+    columnGap: `var(--ctrl-token-SearchBox-1595, var(--semantic-token-SearchBox-1596, ${tokens.spacingHorizontalXS}))`,
   },
   rest: {
     opacity: 0,
@@ -66,7 +66,7 @@ const useContentAfterStyles = makeStyles({
 
 const useDismissClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: `var(--ctrl-token-SearchBox-1597, var(--semantic-token-SearchBox-1598, ${tokens.colorNeutralForeground3}))`, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -76,7 +76,7 @@ const useDismissClassName = makeResetStyles({
 
 const useDismissStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-SearchBox-1599, var(--semantic-token-SearchBox-1600, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   // Ensure resizable icons show up with the proper font size
   small: {

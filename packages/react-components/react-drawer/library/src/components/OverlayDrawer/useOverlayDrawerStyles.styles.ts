@@ -56,7 +56,7 @@ const useDrawerMotionStyles = makeStyles({
   enter: {
     opacity: 1,
     transform: 'translate3D(0, 0, 0)',
-    boxShadow: tokens.shadow64,
+    boxShadow: `var(--ctrl-token-OverlayDrawer-1099, var(--semantic-token-OverlayDrawer-1100, ${tokens.shadow64}))`,
   },
 });
 
@@ -67,7 +67,7 @@ const useBackdropMotionStyles = makeStyles({
   default: {
     opacity: 0,
     transitionProperty: 'opacity',
-    transitionTimingFunction: tokens.curveEasyEase,
+    transitionTimingFunction: `var(--ctrl-token-OverlayDrawer-1101, var(--semantic-token-OverlayDrawer-1102, ${tokens.curveEasyEase}))`,
     willChange: 'opacity',
   },
 

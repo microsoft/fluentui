@@ -12,10 +12,10 @@ export const textClassNames: SlotClassNames<TextSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: `var(--ctrl-token-Text-2655, var(--semantic-token-Text-2656, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--ctrl-token-Text-2657, var(--semantic-token-Text-2658, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-Text-2659, var(--semantic-token-Text-2660, ${tokens.lineHeightBase300}))`,
+    fontWeight: `var(--ctrl-token-Text-2661, var(--semantic-token-Text-2662, ${tokens.fontWeightRegular}))`,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -45,55 +45,55 @@ const useStyles = makeStyles({
     textDecorationLine: 'line-through underline',
   },
   base100: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
+    fontSize: `var(--ctrl-token-Text-2663, var(--semantic-token-Text-2664, ${tokens.fontSizeBase100}))`,
+    lineHeight: `var(--ctrl-token-Text-2665, var(--semantic-token-Text-2666, ${tokens.lineHeightBase100}))`,
   },
   base200: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: `var(--ctrl-token-Text-2667, var(--semantic-token-Text-2668, ${tokens.fontSizeBase200}))`,
+    lineHeight: `var(--ctrl-token-Text-2669, var(--semantic-token-Text-2670, ${tokens.lineHeightBase200}))`,
   },
   base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: `var(--ctrl-token-Text-2671, var(--semantic-token-Text-2672, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--ctrl-token-Text-2673, var(--semantic-token-Text-2674, ${tokens.lineHeightBase400}))`,
   },
   base500: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
+    fontSize: `var(--ctrl-token-Text-2675, var(--semantic-token-Text-2676, ${tokens.fontSizeBase500}))`,
+    lineHeight: `var(--ctrl-token-Text-2677, var(--semantic-token-Text-2678, ${tokens.lineHeightBase500}))`,
   },
   base600: {
-    fontSize: tokens.fontSizeBase600,
-    lineHeight: tokens.lineHeightBase600,
+    fontSize: `var(--ctrl-token-Text-2679, var(--semantic-token-Text-2680, ${tokens.fontSizeBase600}))`,
+    lineHeight: `var(--ctrl-token-Text-2681, var(--semantic-token-Text-2682, ${tokens.lineHeightBase600}))`,
   },
   hero700: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: tokens.lineHeightHero700,
+    fontSize: `var(--ctrl-token-Text-2683, var(--semantic-token-Text-2684, ${tokens.fontSizeHero700}))`,
+    lineHeight: `var(--ctrl-token-Text-2685, var(--semantic-token-Text-2686, ${tokens.lineHeightHero700}))`,
   },
   hero800: {
-    fontSize: tokens.fontSizeHero800,
-    lineHeight: tokens.lineHeightHero800,
+    fontSize: `var(--ctrl-token-Text-2687, var(--semantic-token-Text-2688, ${tokens.fontSizeHero800}))`,
+    lineHeight: `var(--ctrl-token-Text-2689, var(--semantic-token-Text-2690, ${tokens.lineHeightHero800}))`,
   },
   hero900: {
-    fontSize: tokens.fontSizeHero900,
-    lineHeight: tokens.lineHeightHero900,
+    fontSize: `var(--ctrl-token-Text-2691, var(--semantic-token-Text-2692, ${tokens.fontSizeHero900}))`,
+    lineHeight: `var(--ctrl-token-Text-2693, var(--semantic-token-Text-2694, ${tokens.lineHeightHero900}))`,
   },
   hero1000: {
-    fontSize: tokens.fontSizeHero1000,
-    lineHeight: tokens.lineHeightHero1000,
+    fontSize: `var(--ctrl-token-Text-2695, var(--semantic-token-Text-2696, ${tokens.fontSizeHero1000}))`,
+    lineHeight: `var(--ctrl-token-Text-2697, var(--semantic-token-Text-2698, ${tokens.lineHeightHero1000}))`,
   },
   monospace: {
-    fontFamily: tokens.fontFamilyMonospace,
+    fontFamily: `var(--ctrl-token-Text-2699, var(--semantic-token-Text-2700, ${tokens.fontFamilyMonospace}))`,
   },
   numeric: {
-    fontFamily: tokens.fontFamilyNumeric,
+    fontFamily: `var(--ctrl-token-Text-2701, var(--semantic-token-Text-2702, ${tokens.fontFamilyNumeric}))`,
   },
   weightMedium: {
-    fontWeight: tokens.fontWeightMedium,
+    fontWeight: `var(--ctrl-token-Text-2703, var(--semantic-token-Text-2704, ${tokens.fontWeightMedium}))`,
   },
   weightSemibold: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--ctrl-token-Text-2705, var(--semantic-token-Text-2706, ${tokens.fontWeightSemibold}))`,
   },
   weightBold: {
-    fontWeight: tokens.fontWeightBold,
+    fontWeight: `var(--ctrl-token-Text-2707, var(--semantic-token-Text-2708, ${tokens.fontWeightBold}))`,
   },
   alignCenter: {
     textAlign: 'center',

@@ -18,7 +18,7 @@ export const dropdownClassNames: SlotClassNames<DropdownSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-Dropdown-919, var(--semantic-token-Dropdown-920, ${tokens.borderRadiusMedium}))`,
     boxSizing: 'border-box',
     display: 'inline-flex',
     minWidth: '250px',
@@ -40,14 +40,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(${tokens.strokeWidthThick}, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--ctrl-token-Dropdown-921, var(--semantic-token-Dropdown-922, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--ctrl-token-Dropdown-923, var(--semantic-token-Dropdown-924, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--ctrl-token-Dropdown-925, var(--semantic-token-Dropdown-926, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--ctrl-token-Dropdown-927, var(--semantic-token-Dropdown-928, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -57,8 +57,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--ctrl-token-Dropdown-929, var(--semantic-token-Dropdown-930, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--ctrl-token-Dropdown-931, var(--semantic-token-Dropdown-932, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -66,7 +66,7 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--ctrl-token-Dropdown-933, var(--semantic-token-Dropdown-934, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
 
     '@supports selector(:has(*))': {
@@ -80,7 +80,7 @@ const useStyles = makeStyles({
   listbox: {
     boxSizing: 'border-box',
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-Dropdown-935, var(--semantic-token-Dropdown-936, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
   },
 
@@ -96,14 +96,14 @@ const useStyles = makeStyles({
 
   button: {
     alignItems: 'center',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Dropdown-937, var(--semantic-token-Dropdown-938, ${tokens.colorTransparentBackground}))`,
     border: 'none',
     boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-    columnGap: tokens.spacingHorizontalXXS,
+    color: `var(--ctrl-token-Dropdown-939, var(--semantic-token-Dropdown-940, ${tokens.colorNeutralForeground1}))`,
+    columnGap: `var(--ctrl-token-Dropdown-941, var(--semantic-token-Dropdown-942, ${tokens.spacingHorizontalXXS}))`,
     cursor: 'pointer',
     display: 'grid',
-    fontFamily: tokens.fontFamilyBase,
+    fontFamily: `var(--ctrl-token-Dropdown-943, var(--semantic-token-Dropdown-944, ${tokens.fontFamilyBase}))`,
     gridTemplateColumns: '[content] 1fr [icon] auto [end]',
     justifyContent: 'space-between',
     textAlign: 'left',
@@ -115,7 +115,7 @@ const useStyles = makeStyles({
   },
 
   placeholder: {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--ctrl-token-Dropdown-945, var(--semantic-token-Dropdown-946, ${tokens.colorNeutralForeground4}))`,
   },
 
   // size variants
@@ -132,7 +132,7 @@ const useStyles = makeStyles({
     } 5px ${`calc(${tokens.spacingHorizontalMNudge} + ${tokens.spacingHorizontalXXS})`}`,
   },
   large: {
-    columnGap: tokens.spacingHorizontalSNudge,
+    columnGap: `var(--ctrl-token-Dropdown-947, var(--semantic-token-Dropdown-948, ${tokens.spacingHorizontalSNudge}))`,
     ...typographyStyles.body2,
     padding: `7px ${
       tokens.spacingHorizontalM
@@ -141,32 +141,32 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Dropdown-949, var(--semantic-token-Dropdown-950, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--ctrl-token-Dropdown-951, var(--semantic-token-Dropdown-952, ${tokens.colorNeutralStrokeAccessible}))`,
   },
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Dropdown-953, var(--semantic-token-Dropdown-954, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Dropdown-955, var(--semantic-token-Dropdown-956, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Dropdown-957, var(--semantic-token-Dropdown-958, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Dropdown-959, var(--semantic-token-Dropdown-960, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--ctrl-token-Dropdown-961, var(--semantic-token-Dropdown-962, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid transparent`,
   },
   invalid: {
@@ -176,12 +176,12 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--ctrl-token-Dropdown-963, var(--semantic-token-Dropdown-964, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Dropdown-965, var(--semantic-token-Dropdown-966, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -189,7 +189,7 @@ const useStyles = makeStyles({
   },
 
   disabledText: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Dropdown-967, var(--semantic-token-Dropdown-968, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 
@@ -201,9 +201,9 @@ const useStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--ctrl-token-Dropdown-969, var(--semantic-token-Dropdown-970, ${tokens.colorNeutralStrokeAccessible}))`,
     display: 'block',
-    fontSize: tokens.fontSizeBase500,
+    fontSize: `var(--ctrl-token-Dropdown-971, var(--semantic-token-Dropdown-972, ${tokens.fontSizeBase500}))`,
     gridColumnStart: 'icon',
     gridColumnEnd: 'end',
 
@@ -217,30 +217,30 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--ctrl-token-Dropdown-973, var(--semantic-token-Dropdown-974, ${tokens.spacingHorizontalXXS}))`,
   },
   medium: {
     fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--ctrl-token-Dropdown-975, var(--semantic-token-Dropdown-976, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    marginLeft: `var(--ctrl-token-Dropdown-977, var(--semantic-token-Dropdown-978, ${tokens.spacingHorizontalSNudge}))`,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Dropdown-979, var(--semantic-token-Dropdown-980, ${tokens.colorNeutralForegroundDisabled}))`,
   },
 });
 
 const useBaseClearButtonStyle = makeResetStyles({
   alignSelf: 'center',
-  backgroundColor: tokens.colorTransparentBackground,
+  backgroundColor: `var(--ctrl-token-Dropdown-981, var(--semantic-token-Dropdown-982, ${tokens.colorTransparentBackground}))`,
   border: 'none',
   cursor: 'pointer',
   height: 'fit-content',
   margin: 0,
-  marginRight: tokens.spacingHorizontalMNudge,
+  marginRight: `var(--ctrl-token-Dropdown-983, var(--semantic-token-Dropdown-984, ${tokens.spacingHorizontalMNudge}))`,
   padding: 0,
   position: 'relative',
 

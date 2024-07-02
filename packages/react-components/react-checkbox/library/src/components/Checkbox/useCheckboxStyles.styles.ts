@@ -27,62 +27,62 @@ const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   cursor: 'pointer',
   verticalAlign: 'middle',
-  color: tokens.colorNeutralForeground3,
+  color: `var(--ctrl-token-Checkbox-791, var(--semantic-token-Checkbox-792, ${tokens.colorNeutralForeground3}))`,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
-      color: tokens.colorNeutralForeground2,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
+      color: `var(--ctrl-token-Checkbox-793, var(--semantic-token-Checkbox-794, ${tokens.colorNeutralForeground2}))`,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-795, var(--semantic-token-Checkbox-796, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
 
     ':active': {
-      color: tokens.colorNeutralForeground1,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
+      color: `var(--ctrl-token-Checkbox-797, var(--semantic-token-Checkbox-798, ${tokens.colorNeutralForeground1}))`,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-799, var(--semantic-token-Checkbox-800, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
   },
 
   checked: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
+    color: `var(--ctrl-token-Checkbox-801, var(--semantic-token-Checkbox-802, ${tokens.colorNeutralForeground1}))`,
+    [vars.indicatorBackgroundColor]: `var(--ctrl-token-Checkbox-803, var(--semantic-token-Checkbox-804, ${tokens.colorCompoundBrandBackground}))`,
+    [vars.indicatorColor]: `var(--ctrl-token-Checkbox-805, var(--semantic-token-Checkbox-806, ${tokens.colorNeutralForegroundInverted}))`,
+    [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-807, var(--semantic-token-Checkbox-808, ${tokens.colorCompoundBrandBackground}))`,
 
     ':hover': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
+      [vars.indicatorBackgroundColor]: `var(--ctrl-token-Checkbox-809, var(--semantic-token-Checkbox-810, ${tokens.colorCompoundBrandBackgroundHover}))`,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-811, var(--semantic-token-Checkbox-812, ${tokens.colorCompoundBrandBackgroundHover}))`,
     },
 
     ':active': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
+      [vars.indicatorBackgroundColor]: `var(--ctrl-token-Checkbox-813, var(--semantic-token-Checkbox-814, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-815, var(--semantic-token-Checkbox-816, ${tokens.colorCompoundBrandBackgroundPressed}))`,
     },
   },
 
   mixed: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
-    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
+    color: `var(--ctrl-token-Checkbox-817, var(--semantic-token-Checkbox-818, ${tokens.colorNeutralForeground1}))`,
+    [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-819, var(--semantic-token-Checkbox-820, ${tokens.colorCompoundBrandStroke}))`,
+    [vars.indicatorColor]: `var(--ctrl-token-Checkbox-821, var(--semantic-token-Checkbox-822, ${tokens.colorCompoundBrandForeground1}))`,
 
     ':hover': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-823, var(--semantic-token-Checkbox-824, ${tokens.colorCompoundBrandStrokeHover}))`,
+      [vars.indicatorColor]: `var(--ctrl-token-Checkbox-825, var(--semantic-token-Checkbox-826, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
 
     ':active': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
+      [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-827, var(--semantic-token-Checkbox-828, ${tokens.colorCompoundBrandStrokePressed}))`,
+      [vars.indicatorColor]: `var(--ctrl-token-Checkbox-829, var(--semantic-token-Checkbox-830, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
   },
 
   disabled: {
     cursor: 'default',
 
-    color: tokens.colorNeutralForegroundDisabled,
-    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Checkbox-831, var(--semantic-token-Checkbox-832, ${tokens.colorNeutralForegroundDisabled}))`,
+    [vars.indicatorBorderColor]: `var(--ctrl-token-Checkbox-833, var(--semantic-token-Checkbox-834, ${tokens.colorNeutralStrokeDisabled}))`,
+    [vars.indicatorColor]: `var(--ctrl-token-Checkbox-835, var(--semantic-token-Checkbox-836, ${tokens.colorNeutralForegroundDisabled}))`,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
@@ -131,8 +131,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   backgroundColor: `var(${vars.indicatorBackgroundColor})`,
   borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   borderStyle: 'solid',
-  borderWidth: tokens.strokeWidthThin,
-  borderRadius: tokens.borderRadiusSmall,
+  borderWidth: `var(--ctrl-token-Checkbox-837, var(--semantic-token-Checkbox-838, ${tokens.strokeWidthThin}))`,
+  borderRadius: `var(--ctrl-token-Checkbox-839, var(--semantic-token-Checkbox-840, ${tokens.borderRadiusSmall}))`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
@@ -149,7 +149,9 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: tokens.borderRadiusCircular },
+  circular: {
+    borderRadius: `var(--ctrl-token-Checkbox-841, var(--semantic-token-Checkbox-842, ${tokens.borderRadiusCircular}))`,
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -162,10 +164,10 @@ const useLabelStyles = makeStyles({
   },
 
   before: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--ctrl-token-Checkbox-843, var(--semantic-token-Checkbox-844, ${tokens.spacingHorizontalXS}))`,
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--ctrl-token-Checkbox-845, var(--semantic-token-Checkbox-846, ${tokens.spacingHorizontalXS}))`,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.

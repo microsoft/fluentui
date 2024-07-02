@@ -12,15 +12,15 @@ export const listboxClassNames: SlotClassNames<ListboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Listbox-985, var(--semantic-token-Listbox-986, ${tokens.colorNeutralBackground1}))`,
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
     minWidth: '160px',
     overflowY: 'auto',
     outline: `1px solid ${tokens.colorTransparentStroke}`,
-    padding: tokens.spacingHorizontalXS,
-    rowGap: tokens.spacingHorizontalXXS,
+    padding: `var(--ctrl-token-Listbox-987, var(--semantic-token-Listbox-988, ${tokens.spacingHorizontalXS}))`,
+    rowGap: `var(--ctrl-token-Listbox-989, var(--semantic-token-Listbox-990, ${tokens.spacingHorizontalXXS}))`,
   },
 });
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "prettier",
+  "packageName": "@fluentui/react-skeleton",
+  "email": "edwardwang.94@gmail.com",
+  "dependentChangeType": "patch"
+}

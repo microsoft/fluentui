@@ -5,7 +5,7 @@ import { ToolbarRadioButtonState } from './ToolbarRadioButton.types';
 
 const useBaseStyles = makeStyles({
   selected: {
-    color: tokens.colorBrandForeground1,
+    color: `var(--ctrl-token-ToolbarRadioButton-2831, var(--semantic-token-ToolbarRadioButton-2832, ${tokens.colorBrandForeground1}))`,
   },
 });
 

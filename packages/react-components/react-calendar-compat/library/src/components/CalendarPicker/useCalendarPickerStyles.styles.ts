@@ -55,14 +55,14 @@ const useHeaderContainerStyles = makeStyles({
 
 const useCurrentItemButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CalendarPicker-623, var(--semantic-token-CalendarPicker-624, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-CalendarPicker-625, var(--semantic-token-CalendarPicker-626, ${tokens.borderRadiusMedium}))`,
     color: 'inherit',
     flexGrow: 1,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--ctrl-token-CalendarPicker-627, var(--semantic-token-CalendarPicker-628, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--ctrl-token-CalendarPicker-629, var(--semantic-token-CalendarPicker-630, ${tokens.fontWeightSemibold}))`,
     overflow: 'visible',
     padding: '0 4px 0 10px',
     textAlign: 'left',
@@ -76,14 +76,14 @@ const useCurrentItemButtonStyles = makeStyles({
   hasHeaderClickCallback: {
     // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-631, var(--semantic-token-CalendarPicker-632, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--ctrl-token-CalendarPicker-633, var(--semantic-token-CalendarPicker-634, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-635, var(--semantic-token-CalendarPicker-636, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--ctrl-token-CalendarPicker-637, var(--semantic-token-CalendarPicker-638, ${tokens.colorBrandForegroundOnLightPressed}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
@@ -99,13 +99,13 @@ const useNavigationButtonsContainerStyles = makeStyles({
 
 const useNavigationButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CalendarPicker-639, var(--semantic-token-CalendarPicker-640, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: `var(--ctrl-token-CalendarPicker-641, var(--semantic-token-CalendarPicker-642, ${tokens.borderRadiusMedium}))`,
+    color: `var(--ctrl-token-CalendarPicker-643, var(--semantic-token-CalendarPicker-644, ${tokens.colorNeutralForeground1}))`,
     display: 'block',
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-CalendarPicker-645, var(--semantic-token-CalendarPicker-646, ${tokens.fontSizeBase200}))`,
     height: '28px',
     lineHeight: '28px',
     minHeight: '28px',
@@ -117,15 +117,15 @@ const useNavigationButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-647, var(--semantic-token-CalendarPicker-648, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--ctrl-token-CalendarPicker-649, var(--semantic-token-CalendarPicker-650, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
 
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-651, var(--semantic-token-CalendarPicker-652, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--ctrl-token-CalendarPicker-653, var(--semantic-token-CalendarPicker-654, ${tokens.colorBrandForegroundOnLightPressed}))`,
     },
   },
 });
@@ -164,12 +164,12 @@ const useButtonRowStyles = makeStyles({
 
 const useItemButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-CalendarPicker-655, var(--semantic-token-CalendarPicker-656, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground3,
+    borderRadius: `var(--ctrl-token-CalendarPicker-657, var(--semantic-token-CalendarPicker-658, ${tokens.borderRadiusMedium}))`,
+    color: `var(--ctrl-token-CalendarPicker-659, var(--semantic-token-CalendarPicker-660, ${tokens.colorNeutralForeground3}))`,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-CalendarPicker-661, var(--semantic-token-CalendarPicker-662, ${tokens.fontSizeBase200}))`,
     height: '40px',
     lineHeight: '40px',
     minHeight: '40px',
@@ -186,11 +186,11 @@ const useItemButtonStyles = makeStyles({
       marginBottom: 0,
     },
     '& div': {
-      fontWeight: tokens.fontWeightRegular,
+      fontWeight: `var(--ctrl-token-CalendarPicker-663, var(--semantic-token-CalendarPicker-664, ${tokens.fontWeightRegular}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorNeutralForeground1Static,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-665, var(--semantic-token-CalendarPicker-666, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--ctrl-token-CalendarPicker-667, var(--semantic-token-CalendarPicker-668, ${tokens.colorNeutralForeground1Static}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
 
@@ -202,7 +202,7 @@ const useItemButtonStyles = makeStyles({
       },
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-669, var(--semantic-token-CalendarPicker-670, ${tokens.colorBrandBackgroundInvertedPressed}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -215,9 +215,9 @@ const useItemButtonStyles = makeStyles({
 
 const useCurrentStyles = makeStyles({
   highlightCurrent: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: `var(--ctrl-token-CalendarPicker-671, var(--semantic-token-CalendarPicker-672, ${tokens.colorBrandBackground}))`,
+    color: `var(--ctrl-token-CalendarPicker-673, var(--semantic-token-CalendarPicker-674, ${tokens.colorNeutralForegroundOnBrand}))`,
+    fontWeight: `var(--ctrl-token-CalendarPicker-675, var(--semantic-token-CalendarPicker-676, ${tokens.fontWeightSemibold}))`,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'WindowText',
@@ -225,8 +225,8 @@ const useCurrentStyles = makeStyles({
       forcedColorAdjust: 'none',
     },
     '&:hover, &:hover:active': {
-      backgroundColor: tokens.colorBrandBackground,
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-677, var(--semantic-token-CalendarPicker-678, ${tokens.colorBrandBackground}))`,
+      color: `var(--ctrl-token-CalendarPicker-679, var(--semantic-token-CalendarPicker-680, ${tokens.colorNeutralForegroundOnBrand}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'WindowText',
@@ -239,9 +239,9 @@ const useCurrentStyles = makeStyles({
 
 const useSelectedStyles = makeStyles({
   highlightSelected: {
-    backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-    color: tokens.colorNeutralForeground1Static,
-    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: `var(--ctrl-token-CalendarPicker-681, var(--semantic-token-CalendarPicker-682, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+    color: `var(--ctrl-token-CalendarPicker-683, var(--semantic-token-CalendarPicker-684, ${tokens.colorNeutralForeground1Static}))`,
+    fontWeight: `var(--ctrl-token-CalendarPicker-685, var(--semantic-token-CalendarPicker-686, ${tokens.fontWeightSemibold}))`,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'Highlight',
@@ -249,11 +249,11 @@ const useSelectedStyles = makeStyles({
       forcedColorAdjust: 'none',
     },
     '& div': {
-      fontWeight: tokens.fontWeightSemibold,
+      fontWeight: `var(--ctrl-token-CalendarPicker-687, var(--semantic-token-CalendarPicker-688, ${tokens.fontWeightSemibold}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-      color: tokens.colorNeutralForeground1Static,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-689, var(--semantic-token-CalendarPicker-690, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+      color: `var(--ctrl-token-CalendarPicker-691, var(--semantic-token-CalendarPicker-692, ${tokens.colorNeutralForeground1Static}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
@@ -262,7 +262,7 @@ const useSelectedStyles = makeStyles({
       },
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      backgroundColor: `var(--ctrl-token-CalendarPicker-693, var(--semantic-token-CalendarPicker-694, ${tokens.colorBrandBackgroundInvertedPressed}))`,
     },
   },
 });
@@ -270,7 +270,7 @@ const useSelectedStyles = makeStyles({
 const useDisabledStyles = makeStyles({
   base: {
     '&, &:disabled, & button': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-CalendarPicker-695, var(--semantic-token-CalendarPicker-696, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
     '@media (forced-colors: active)': {

@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     height: '8px',
     width: '8px',
-    backgroundColor: tokens.colorNeutralForeground1,
+    backgroundColor: `var(--ctrl-token-CarouselNavButton-781, var(--semantic-token-CarouselNavButton-782, ${tokens.colorNeutralForeground1}))`,
     ':hover': {
       cursor: 'pointer',
     },
@@ -30,14 +30,14 @@ const useStyles = makeStyles({
     outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-CarouselNavButton-783, var(--semantic-token-CarouselNavButton-784, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
     backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForeground1} 30%, transparent)`,
     '@supports not (color: color-mix(in lch, white, black))': {
       // This will also affect the focus border, but only in older unsupported browsers
       opacity: 0.3,
-      backgroundColor: tokens.colorNeutralForeground1,
+      backgroundColor: `var(--ctrl-token-CarouselNavButton-785, var(--semantic-token-CarouselNavButton-786, ${tokens.colorNeutralForeground1}))`,
     },
   },
   rootSelected: {
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
     padding: '0px',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--ctrl-token-CarouselNavButton-787, var(--semantic-token-CarouselNavButton-788, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
   },

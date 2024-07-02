@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   root: {
     padding: '0px',
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-    borderRadius: tokens.borderRadiusSmall,
+    borderRadius: `var(--ctrl-token-CarouselNavImageButton-789, var(--semantic-token-CarouselNavImageButton-790, ${tokens.borderRadiusSmall}))`,
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
     boxSizing: 'content-box',

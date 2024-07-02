@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Prototyping Control and Semantic Design Tokens",
+  "packageName": "@fluentui/react-button",
+  "email": "edwardwang.94@gmail.com",
+  "dependentChangeType": "patch"
+}

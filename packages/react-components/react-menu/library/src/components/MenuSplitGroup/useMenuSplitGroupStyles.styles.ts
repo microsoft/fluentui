@@ -22,9 +22,9 @@ const useStyles = makeStyles({
       paddingLeft: 0,
       '::before': {
         content: '""',
-        width: tokens.strokeWidthThin,
+        width: `var(--ctrl-token-MenuSplitGroup-1399, var(--semantic-token-MenuSplitGroup-1400, ${tokens.strokeWidthThin}))`,
         height: '20px',
-        backgroundColor: tokens.colorNeutralStroke1,
+        backgroundColor: `var(--ctrl-token-MenuSplitGroup-1401, var(--semantic-token-MenuSplitGroup-1402, ${tokens.colorNeutralStroke1}))`,
       },
     },
   },

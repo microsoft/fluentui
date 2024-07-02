@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pretty & lint & yarn change",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "edwardwang.94@gmail.com",
+  "dependentChangeType": "patch"
+}
