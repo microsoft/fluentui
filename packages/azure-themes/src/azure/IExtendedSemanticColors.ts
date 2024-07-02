@@ -46,6 +46,8 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxCheckHoverTest: string;
   checkBoxCheckedDisabledBackground: string;
   checkBoxDisabled: string;
+  checkBoxIndeterminateDetailsRowCheck: string;
+  checkBoxIndeterminateDetailsRowCheckHover: string;
   checkBoxIndeterminateBackground: string;
   checkBoxIndeterminateDefaultChecked: string;
   callOutBorderStyle: string;
