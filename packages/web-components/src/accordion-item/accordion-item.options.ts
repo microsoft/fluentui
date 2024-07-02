@@ -19,7 +19,7 @@ export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
 /**
  * An Accordion Item expand/collapse icon can appear at the start or end of the accordion
  */
-export const AccordionItemExpandIconPosition = {
+export const AccordionItemMarkerPosition = {
   start: 'start',
   end: 'end',
 } as const;
@@ -28,4 +28,4 @@ export const AccordionItemExpandIconPosition = {
  * Applies expand/collapse icon position
  * @public
  */
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
