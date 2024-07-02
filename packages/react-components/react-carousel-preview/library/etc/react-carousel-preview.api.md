@@ -80,6 +80,7 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
     visible: boolean;
     offsetIndex: number;
     cardWidth: string | number;
+    initialLoad: boolean;
 } & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
@@ -186,7 +187,7 @@ export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> &
 // @public (undocumented)
 export type CarouselSliderSlots = {
     root: Slot<'div'>;
-    container: NonNullable<Slot<'div'>>;
+    slider: NonNullable<Slot<'div'>>;
 };
 
 // @public
