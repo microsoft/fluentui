@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding support for error handling",
+  "packageName": "@fluentui/react-charting",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

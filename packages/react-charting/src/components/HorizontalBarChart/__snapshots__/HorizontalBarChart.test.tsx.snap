@@ -27,7 +27,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone1"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -72,7 +72,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip2"
               style={
                 Object {
                   "border": 0,
@@ -113,7 +113,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone3"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -190,7 +190,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -235,7 +235,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -276,7 +276,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -538,7 +538,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone1"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -583,7 +583,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip2"
               style={
                 Object {
                   "border": 0,
@@ -624,7 +624,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone3"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -701,7 +701,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -746,7 +746,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -787,7 +787,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -960,7 +960,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone1"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1005,7 +1005,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip2"
               style={
                 Object {
                   "border": 0,
@@ -1033,7 +1033,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone3"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1091,7 +1091,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1136,7 +1136,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1164,7 +1164,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1239,7 +1239,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone1"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1284,7 +1284,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip2"
               style={
                 Object {
                   "border": 0,
@@ -1312,7 +1312,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone3"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1388,7 +1388,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1433,7 +1433,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1461,7 +1461,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
