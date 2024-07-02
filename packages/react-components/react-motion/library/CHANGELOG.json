@@ -2,6 +2,47 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:22 GMT",
+      "tag": "@fluentui/react-motion_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ae4e4339b8960e888e9226c8e721a0048d3bcfeb",
+            "comment": "fix: improve Jest compat"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "5bb359c3ffa071dbbf131126d9f368aaf556a2b0",
+            "comment": "chore: adds 'use no memo' directive"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "27ac4a0728b9ed96ac497fd04282ccc8d9f24a62",
+            "comment": "chore: add bundle size fixtures"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:16 GMT",
       "tag": "@fluentui/react-motion_v9.2.0",
       "version": "9.2.0",

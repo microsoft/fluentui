@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 06 Jun 2024 15:26:43 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.11)
+
+Mon, 01 Jul 2024 20:30:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.10..@fluentui/react-utilities_v9.18.11)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
 
 ## [9.18.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.10)
 

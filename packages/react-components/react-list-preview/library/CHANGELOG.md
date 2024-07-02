@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-list-preview
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.0)
+
+Mon, 01 Jul 2024 20:30:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.9..@fluentui/react-list-preview_v0.3.0)
+
+### Minor changes
+
+- feat: Pass data with value to onAction callback ([PR #31803](https://github.com/microsoft/fluentui/pull/31803) by jirivyhnalek@microsoft.com)
+- Bump @fluentui/react-checkbox to v9.2.30 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.63 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-tabster to v9.22.1 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
 
 ## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.9)
 

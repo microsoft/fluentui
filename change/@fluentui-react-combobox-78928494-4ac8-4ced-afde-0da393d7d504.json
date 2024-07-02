@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "close controlled dropdown by clicking outside",
-  "packageName": "@fluentui/react-combobox",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}
