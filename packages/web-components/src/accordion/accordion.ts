@@ -34,13 +34,13 @@ export class Accordion extends FASTElement {
       return;
     }
 
-    if (next !== AccordionExpandMode.single) {
-      // Clean up single expand mode behavior
-      (expandedItem as AccordionItem)?.expandbutton.removeAttribute('aria-disabled');
-    } else {
-      // Perform single expand mode behavior
+    if (next === AccordionExpandMode.single) {
       this.setSingleExpandMode(expandedItem);
+      return;
     }
+
+    // Clean up single expand mode behavior
+    (expandedItem as AccordionItem)?.expandbutton.removeAttribute('aria-disabled');
   }
 
   /**

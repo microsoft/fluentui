@@ -117,9 +117,10 @@ export class AccordionItem extends FASTElement {
    */
   public sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void {
     if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    } else {
-      toggleState(this.elementInternals, `${next}`, true);
+      toggleState(this.elementInternals, prev, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, next, true);
     }
   }
 
@@ -160,7 +161,8 @@ export class AccordionItem extends FASTElement {
   public markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void {
     if (prev) {
       toggleState(this.elementInternals, `align-${prev}`, false);
-    } else {
+    }
+    if (next) {
       toggleState(this.elementInternals, `align-${next}`, true);
     }
   }
