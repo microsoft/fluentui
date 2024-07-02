@@ -5,7 +5,7 @@ import type { CarouselSliderSlots, CarouselSliderState } from './CarouselSlider.
 
 export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots> = {
   root: 'fui-CarouselSlider',
-  container: 'fui-CarouselSlider__container',
+  slider: 'fui-CarouselSlider__slider',
 };
 
 // For now, until motion tokens are updated.
@@ -16,17 +16,19 @@ const easingCurve = 'cubic-bezier(0.65, 0, 0.35, 1)';
  */
 const useStyles = makeStyles({
   root: {
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  slider: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'nowrap',
     overflow: 'visible',
+  },
+  sliderAnimation: {
     transitionProperty: 'transform',
     transitionTimingFunction: easingCurve,
     transitionDuration: tokens.durationNormal,
-  },
-  container: {
-    overflow: 'hidden',
-    position: 'relative',
   },
 
   // TODO add additional classes for different states and/or slots
@@ -42,10 +44,11 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
-  state.container.className = mergeClasses(
-    carouselSliderClassNames.container,
-    styles.container,
-    state.container.className,
+  state.slider.className = mergeClasses(
+    carouselSliderClassNames.slider,
+    styles.slider,
+    styles.sliderAnimation,
+    state.slider.className,
   );
 
   // Shift our view for each card and tracking the total loops (circular)
@@ -57,10 +60,11 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   // Todo: Positions for non-circular, trailing etc.
   const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;
 
-  state.root.style = {
+  state.slider.style = {
     transform: slideTransform,
+    // If we interrupt an animation, the next one will start further along to catch up the additional distance
     transitionDelay: interruptedAnimation ? `-${tokens.durationFast}` : '0',
-    ...state.root.style,
+    ...state.slider.style,
   };
 
   return state;

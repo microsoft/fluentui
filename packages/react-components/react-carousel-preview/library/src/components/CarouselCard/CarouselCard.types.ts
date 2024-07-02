@@ -28,4 +28,8 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * Tracks the translate offset index for circular motion
    */
   cardWidth: string | number;
+  /**
+   * Tracks the initial load for positioning without animation
+   */
+  initialLoad: boolean;
 } & Pick<CarouselCardProps, 'value'>;

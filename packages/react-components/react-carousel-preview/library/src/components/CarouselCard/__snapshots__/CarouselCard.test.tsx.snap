@@ -7,8 +7,10 @@ exports[`CarouselCard renders a default state 1`] = `
     class="fui-CarouselCard"
     data-carousel-active-item="false"
     data-carousel-item="test-0"
-    hidden=""
     role="presentation"
-  />
+    style="transform: translate3d(0%, 0,0); min-width: 100%; width: 100%;"
+  >
+    Default CarouselCard
+  </div>
 </div>
 `;
