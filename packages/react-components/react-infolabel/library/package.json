@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-infolabel",
-  "version": "9.0.37",
+  "version": "9.0.38",
   "description": "InfoLabel component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,12 +33,12 @@
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-label": "^9.1.71",
-    "@fluentui/react-popover": "^9.9.12",
-    "@fluentui/react-tabster": "^9.22.0",
-    "@fluentui/react-jsx-runtime": "^9.0.39",
+    "@fluentui/react-label": "^9.1.72",
+    "@fluentui/react-popover": "^9.9.13",
+    "@fluentui/react-tabster": "^9.22.1",
+    "@fluentui/react-jsx-runtime": "^9.0.40",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-utilities": "^9.18.11",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },

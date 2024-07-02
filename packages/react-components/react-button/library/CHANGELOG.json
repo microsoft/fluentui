@@ -2,6 +2,63 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:42 GMT",
+      "tag": "@fluentui/react-button_v9.3.85",
+      "version": "9.3.85",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "1e1398cb66c56c6f67c33c33a54949cd24190a35",
+            "comment": "chore: Update react-icons package to ^2.0.245"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "3fe95fd84ac6ad2f283e24aef1eeb60af89f13c2",
+            "comment": "fix: MenuButton is styled correctly when aria-expanded is a string"
+          },
+          {
+            "author": "humbertomakotomorimoto@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "2a158719b2c4c185d0001a391035c8ccce1a4a8c",
+            "comment": " fix: Adding checked condition for icon styles when `ToggleButton` is checked + its appearance is subtle or transparent."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.13.0",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.40",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.22.1",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:17 GMT",
       "tag": "@fluentui/react-button_v9.3.84",
       "version": "9.3.84",

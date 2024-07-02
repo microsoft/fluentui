@@ -2,12 +2,14 @@ import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useActiveDescendant } from '@fluentui/react-aria';
 import { ChevronDownRegular as ChevronDownIcon, DismissRegular as DismissIcon } from '@fluentui/react-icons';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
   useMergedRefs,
   slot,
   useEventCallback,
+  useOnClickOutside,
 } from '@fluentui/react-utilities';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
@@ -16,6 +18,7 @@ import type { DropdownProps, DropdownState } from './Dropdown.types';
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useButtonTriggerSlot } from './useButtonTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
+import type { ComboboxOpenEvents } from '../Combobox/Combobox.types';
 
 /**
  * Create the state required to render Dropdown.
@@ -40,7 +43,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
 
   const baseState = useComboboxBaseState({ ...props, activeDescendantController, freeform: false });
-  const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions } = baseState;
+  const { clearable, clearSelection, hasFocus, multiselect, open, selectedOptions, setOpen } = baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -57,6 +60,15 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     defaultProps: {
       children: props.children,
     },
+  });
+
+  const { targetDocument } = useFluent();
+
+  useOnClickOutside({
+    element: targetDocument,
+    callback: event => setOpen(event as unknown as ComboboxOpenEvents, false),
+    refs: [triggerRef, comboboxPopupRef, comboboxTargetRef],
+    disabled: !open,
   });
 
   const trigger = useButtonTriggerSlot(props.button ?? {}, useMergedRefs(triggerRef, activeParentRef, ref), {

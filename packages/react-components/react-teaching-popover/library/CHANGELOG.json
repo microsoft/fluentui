@@ -2,6 +2,75 @@
   "name": "@fluentui/react-teaching-popover",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:35 GMT",
+      "tag": "@fluentui/react-teaching-popover_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "1e1398cb66c56c6f67c33c33a54949cd24190a35",
+            "comment": "chore: Update react-icons package to ^2.0.245"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "50118e4f4b82ae859e77ba44e489516880e619aa",
+            "comment": "fix: carousel tabs are visible in windows high contrast"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.40",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-popover to v9.9.13",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-button to v9.3.85",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-tabster to v9.22.1",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-aria to v9.13.0",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-teaching-popover",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.63",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:17 GMT",
       "tag": "@fluentui/react-teaching-popover_v9.1.8",
       "version": "9.1.8",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 28 Jun 2024 04:07:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 04:08:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.38)
+
+Mon, 01 Jul 2024 04:08:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.37..@fluentui/web-components_v3.0.0-beta.38)
+
+### Changes
+
+- Make utils a package export since it replaces fluentui/foundation ([PR #31865](https://github.com/microsoft/fluentui/pull/31865) by mmansour@microsoft.com)
 
 ## [3.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.37)
 

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.37",
+  "version": "3.0.0-beta.38",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -173,6 +173,10 @@
     "./theme.js": {
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
+    },
+    "./utilities.js": {
+      "types": "./dist/dts/utils/index.d.ts",
+      "default": "./dist/esm/utils/index.js"
     },
     "./package.json": "./package.json"
   },

@@ -16,7 +16,15 @@ export type ListboxSlots = {
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> &
+  SelectionProps & {
+    /**
+     * Disable auto-focusing on the first item when mounting.
+     *
+     * @default false
+     */
+    disableAutoFocus?: boolean;
+  };
 
 /**
  * State used in rendering Listbox
