@@ -121,3 +121,32 @@ export const MenuWithMaxHeight = renderComponent(html<MenuStoryArgs>`
     </fluent-menu>
   </div>
 `);
+
+export const MenuWithInteractiveItems = renderComponent(html<MenuStoryArgs>`
+  <div class="container">
+    <fluent-menu>
+      <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
+      <fluent-menu-list>
+        <fluent-menu-item>
+          Item 1
+          <fluent-menu-list slot="submenu">
+            <fluent-menu-item> Subitem 1 </fluent-menu-item>
+            <fluent-menu-item> Subitem 2 </fluent-menu-item>
+          </fluent-menu-list>
+        </fluent-menu-item>
+
+        <fluent-menu-item role="menuitemcheckbox"> Item 2 </fluent-menu-item>
+        <fluent-menu-item role="menuitemcheckbox"> Item 3 </fluent-menu-item>
+
+        <fluent-divider role="separator" aria-orientation="horizontal" orientation="horizontal"></fluent-divider>
+
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+        <fluent-menu-item>Menu item 5</fluent-menu-item>
+        <fluent-menu-item>Menu item 6</fluent-menu-item>
+
+        <fluent-menu-item>Menu item 7</fluent-menu-item>
+        <fluent-menu-item>Menu item 8</fluent-menu-item>
+      </fluent-menu-list>
+    </fluent-menu>
+  </div>
+`);
