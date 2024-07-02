@@ -21,7 +21,8 @@ function getProjectsExceptV0() {
   for (const projectConfig of projectConfigs) {
     const tags = projectConfig.tags ?? [];
     if (!tags.includes('react-northstar')) {
-      projects.push(projectConfig.name!);
+      // projectConfig.name doesn't contain `@fluentui` scope, but alias key needs to map to real packageName
+      projects.push(`@fluentui/${projectConfig.name}`);
     }
   }
 
