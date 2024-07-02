@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselSlider renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CarouselSlider"
+  >
+    <div
+      class="fui-CarouselSlider__slider"
+      role="presentation"
+      style="transform: translate3d(calc(0 * 100% + 0px / 2 - 100% / 2), 0,0); transition-delay: 0;"
+    >
+      Default CarouselSlider
+    </div>
+  </div>
+</div>
+`;

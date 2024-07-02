@@ -12,8 +12,8 @@ export const renderCarouselSlider_unstable = (state: CarouselSliderState) => {
 
   // TODO Add additional slots in the appropriate place
   return (
-    <state.container>
-      <state.root />
-    </state.container>
+    <state.root>
+      <state.slider>{state.root.children}</state.slider>
+    </state.root>
   );
 };

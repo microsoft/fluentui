@@ -82,15 +82,15 @@ export const useCarouselSlider_unstable = (
     };
   }, []);
 
-  const mergedRef = useMergedRefs(ref, animationRef);
-  const container = slot.always(props.container, {
+  const mergedRef = useMergedRefs(ref, containerRef);
+  const slider = slot.always(props.slider, {
     defaultProps: {
       role: 'presentation',
     },
     elementType: 'div',
   });
-  const containerMergedRefs = useMergedRefs<HTMLDivElement>(containerRef, container.ref);
-  container.ref = containerMergedRefs;
+  const containerMergedRefs = useMergedRefs<HTMLDivElement>(animationRef, slider.ref);
+  slider.ref = containerMergedRefs;
 
   return {
     cardWidth,
@@ -101,7 +101,7 @@ export const useCarouselSlider_unstable = (
     containerWidth: containerWidthRef.current,
     components: {
       root: 'div',
-      container: 'div',
+      slider: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -110,6 +110,6 @@ export const useCarouselSlider_unstable = (
       }),
       { elementType: 'div' },
     ),
-    container,
+    slider,
   };
 };

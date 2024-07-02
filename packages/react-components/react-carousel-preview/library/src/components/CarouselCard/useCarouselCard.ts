@@ -1,9 +1,11 @@
+/* eslint-disable react-compiler/react-compiler */
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import { useRef } from 'react';
 
 /**
  * Create the state required to render CarouselCard.
@@ -33,6 +35,7 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
   const coreState = useCarouselCardCore(props, ref);
   const { value } = props;
   const { circular } = useCarouselContext_unstable();
+  const initialLoad = useRef<boolean>(true);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
 
@@ -41,7 +44,7 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
       return 0;
     }
 
-    return snapshot.values.indexOf(snapshot.activeValue);
+    return Math.max(snapshot.values.indexOf(snapshot.activeValue), 0);
   });
 
   const currentSelfIndex: number = useCarouselStore_unstable(snapshot => {
@@ -58,16 +61,33 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
 
   // Track if we need to modify position due to circular loop
   const cardDirection = currentActiveIndex < currentSelfIndex ? 'next' : 'prev';
-  const directionMod = navDirection === cardDirection ? 0.5 : -0.5;
+
+  // Nav Mod tracks cards that have switched their position due to circular
+  const navMod = navDirection === cardDirection ? 0.5 : -0.5;
+
+  // Direction mod tracks animation direction (shift 'forwards')
+  const directionMod = navDirection === 'next' ? 0.5 : -0.5;
 
   let offsetIndex = circular ? loopCount * totalCards : 0;
-  if (circular && Math.abs(currentActiveIndex - currentSelfIndex) + directionMod >= totalCards / 2.0) {
+  if (circular && Math.abs(currentActiveIndex - (currentSelfIndex - directionMod)) + navMod >= totalCards / 2.0) {
     offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
+  }
+
+  useIsomorphicLayoutEffect(() => {
+    // These cards will need to be positioned without animation
+    if (offsetIndex !== 0 && currentActiveIndex === 0) {
+      initialLoad.current = false;
+    }
+  }, [currentActiveIndex, offsetIndex]);
+
+  if (currentActiveIndex !== 0) {
+    initialLoad.current = false;
   }
 
   const state: CarouselCardState = {
     ...coreState,
     offsetIndex,
+    initialLoad: initialLoad.current,
   };
 
   return state;
@@ -85,6 +105,7 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
     value,
     visible,
     offsetIndex,
+    initialLoad: false,
     cardWidth,
     components: {
       root: 'div',

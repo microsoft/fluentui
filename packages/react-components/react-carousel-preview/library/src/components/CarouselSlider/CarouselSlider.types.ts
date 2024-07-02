@@ -8,7 +8,7 @@ export type CarouselSliderSlots = {
   /**
    * The viewport/window of the carousel
    */
-  container: NonNullable<Slot<'div'>>;
+  slider: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -38,12 +38,10 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * The number of times we have done a full loop of carousel, can go negative.
      */
     loopCount: number;
-
     /**
      * Tracks whether a sliding animation was interrupted and needs to 'speed up' next animation.
      */
     interruptedAnimation: boolean;
-
     /**
      * Tracks container sizing for pixel values.
      */
