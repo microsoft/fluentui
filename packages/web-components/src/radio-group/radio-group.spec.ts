@@ -52,6 +52,29 @@ test.describe('RadioGroup', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'vertical');
   });
 
+  test('should set the `aria-setsize` and `aria-posinset` attributes on the radios', async ({ page }) => {
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
+
+    await page.setContent(/* html */ `
+        <fluent-radio-group>
+            <fluent-radio></fluent-radio>
+            <fluent-radio></fluent-radio>
+            <fluent-radio></fluent-radio>
+        </fluent-radio-group>
+    `);
+
+    expect(
+      await radios.evaluateAll((radios: Radio[]) => radios.every(radio => radio.hasAttribute('aria-posinset'))),
+    ).toBe(true);
+
+    await expect(radios.nth(0)).toHaveAttribute('aria-posinset', '1');
+
+    await expect(radios.nth(1)).toHaveAttribute('aria-posinset', '2');
+
+    await expect(radios.nth(2)).toHaveAttribute('aria-posinset', '3');
+  });
+
   test('should NOT modify child radio elements disabled state when the `disabled` attribute is present', async ({
     page,
   }) => {

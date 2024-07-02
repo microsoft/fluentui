@@ -151,9 +151,10 @@ export class RadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    next.forEach((radio, index, radios) => {
+    const setSize = next.length.toString();
+    next.forEach((radio, index) => {
       radio.ariaPosInSet = (index + 1).toString();
-      radio.ariaSetSize = radios.length.toString();
+      radio.ariaSetSize = setSize;
       radio.checked = false;
       radio.disabled = this.disabled || radio.disabledAttribute;
       radio.name = this.name;
