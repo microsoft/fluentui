@@ -14,6 +14,13 @@ import { MenuItemRole } from '../menu-item/menu-item.options.js';
  */
 export class MenuList extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
    * @internal
    */
   @observable
@@ -36,6 +43,12 @@ export class MenuList extends FASTElement {
   private focusIndex: number = -1;
 
   private static focusableElementRoles = MenuItemRole;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'menu';
+  }
 
   /**
    * @internal

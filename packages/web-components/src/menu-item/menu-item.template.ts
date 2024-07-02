@@ -2,7 +2,6 @@ import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { elements, html, slotted } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import { MenuItemRole } from './menu-item.js';
 import type { MenuItem, MenuItemOptions } from './menu-item.js';
 
 const Checkmark16Filled = html.partial(
@@ -15,10 +14,6 @@ const chevronRight16Filled = html.partial(
 export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      aria-haspopup="${x => (!!x.submenu ? 'menu' : void 0)}"
-      aria-checked="${x => (x.role !== MenuItemRole.menuitem ? x.checked : void 0)}"
-      aria-disabled="${x => x.disabled}"
-      aria-expanded="${x => (!!x.submenu ? 'false' : void 0)}"
       @keydown="${(x, c) => x.handleMenuItemKeyDown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleMenuItemClick(c.event as MouseEvent)}"
       @mouseover="${(x, c) => x.handleMouseOver(c.event as MouseEvent)}"
