@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { canUseDOM } from '@fluentui/react-utilities';
 import type { AnimationHandle, AtomMotion } from '../types';
 
+// eslint-disable-next-line no-restricted-globals
+const win = typeof window !== undefined ? window : undefined;
+
 // Heads up! "Element." is a side-effect for minifiers, should be kept as IIFE to avoid leaking after minification.
-const SUPPORTS_WEB_ANIMATIONS = /*@__PURE__*/ (() => canUseDOM() && typeof Element.prototype.animate === 'function')();
+const SUPPORTS_WEB_ANIMATIONS = /*@__PURE__*/ (() => win && typeof win.Element.prototype.animate === 'function')();
 
 /**
  * In test environments, this hook is used to delay the execution of a callback until the next render. This is necessary
