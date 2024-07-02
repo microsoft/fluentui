@@ -27,6 +27,7 @@ const useRootClassName = makeResetStyles({
   rowGap: 0,
   position: 'relative',
   isolation: 'isolate',
+  verticalAlign: 'middle',
 
   backgroundColor: tokens.colorNeutralBackground1,
   minHeight: fieldHeights.medium,

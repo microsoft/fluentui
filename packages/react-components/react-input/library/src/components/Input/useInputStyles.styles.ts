@@ -45,6 +45,7 @@ const useRootClassName = makeResetStyles({
   borderRadius: tokens.borderRadiusMedium, // used for all but underline
   position: 'relative',
   boxSizing: 'border-box',
+  verticalAlign: 'middle',
 
   // size: medium (default)
   minHeight: fieldHeights.medium,

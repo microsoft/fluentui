@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "vertically align spinbutton component",
+  "packageName": "@fluentui/react-spinbutton",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
