@@ -89,8 +89,8 @@ export const useCarouselSlider_unstable = (
     },
     elementType: 'div',
   });
-  const containerMergedRefs = useMergedRefs<HTMLDivElement>(animationRef, slider.ref);
-  slider.ref = containerMergedRefs;
+  const sliderMergedRefs = useMergedRefs<HTMLDivElement>(animationRef, slider.ref);
+  slider.ref = sliderMergedRefs;
 
   return {
     cardWidth,

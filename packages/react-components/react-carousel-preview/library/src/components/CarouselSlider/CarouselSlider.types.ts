@@ -2,11 +2,11 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type CarouselSliderSlots = {
   /**
-   * The div that will be animated to track and center current index
+   * The root viewport/window of the carousel
    */
   root: Slot<'div'>;
   /**
-   * The viewport/window of the carousel
+   * The div that will be animated to track and center current index
    */
   slider: NonNullable<Slot<'div'>>;
 };
