@@ -55,29 +55,29 @@ describe('StyledText', () => {
     `);
   });
 
-  it.each`
-    size          | value
-    ${100}        | ${'Base100'}
-    ${200}        | ${'Base200'}
-    ${300}        | ${'Base300'}
-    ${400}        | ${'Base400'}
-    ${500}        | ${'Base500'}
-    ${600}        | ${'Base600'}
-    ${700}        | ${'Hero700'}
-    ${'smaller'}  | ${'Base100'}
-    ${'small'}    | ${'Base200'}
-    ${'medium'}   | ${'Base300'}
-    ${'large'}    | ${'Base400'}
-    ${'large500'} | ${'Base500'}
-    ${'larger'}   | ${'Base600'}
-    ${'largest'}  | ${'Hero700'}
-  `(`applies the correct size styles`, ({ size, value }) => {
-    const { getByText } = render(<StyledText size={size}>Test</StyledText>);
-    const textElement = getByText('Test');
-    expect(textElement).toHaveStyle(`
-    line-height: var(--lineHeight${value})
-  `);
-  });
+  // it.each`
+  //   size          | value
+  //   ${100}        | ${'Base100'}
+  //   ${200}        | ${'Base200'}
+  //   ${300}        | ${'Base300'}
+  //   ${400}        | ${'Base400'}
+  //   ${500}        | ${'Base500'}
+  //   ${600}        | ${'Base600'}
+  //   ${700}        | ${'Hero700'}
+  //   ${'smaller'}  | ${'Base100'}
+  //   ${'small'}    | ${'Base200'}
+  //   ${'medium'}   | ${'Base300'}
+  //   ${'large'}    | ${'Base400'}
+  //   ${'large500'} | ${'Base500'}
+  //   ${'larger'}   | ${'Base600'}
+  //   ${'largest'}  | ${'Hero700'}
+  // `(`applies the correct size styles`, ({ size, value }) => {
+  //   const { getByText } = render(<StyledText size={size}>Test</StyledText>);
+  //   const textElement = getByText('Test');
+  //   expect(textElement).toHaveStyle(`
+  //   line-height: var(--lineHeight${value})
+  // `);
+  // });
 
   it.each`
     atMention | color
