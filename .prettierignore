@@ -42,3 +42,4 @@ packages/fluentui/ability-attributes/src/schema.ts
 CODEOWNERS
 
 /.nx/cache
+/.nx/workspace-data
