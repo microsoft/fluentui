@@ -32,12 +32,12 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.54.2",
-    "@fluentui/react-context-selector": "^9.1.62",
+    "@fluentui/react-components": "^9.54.3",
+    "@fluentui/react-context-selector": "^9.1.63",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-utilities": "^9.18.11",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",

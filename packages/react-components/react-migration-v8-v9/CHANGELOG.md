@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.19)
+
+Mon, 01 Jul 2024 20:30:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.6.18..@fluentui/react-migration-v8-v9_v9.6.19)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- chore: Update react-icons package to ^2.0.245 ([PR #31802](https://github.com/microsoft/fluentui/pull/31802) by ololubek@microsoft.com)
+- Bump @fluentui/react-components to v9.54.3 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.6.18)
 
