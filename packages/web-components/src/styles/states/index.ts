@@ -257,9 +257,3 @@ export const expandedState = css.partial`:is([state--expanded], :state(expanded)
  * @public
  */
 export const blockState = css.partial`:is([state--block], :state(block))`;
-
-/**
- * Selector for the `disabled` state.
- * @public
- */
-export const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
