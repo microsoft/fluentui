@@ -272,3 +272,11 @@ export const WithoutLabel: Story<FluentTextInput> = renderComponent(html<StoryAr
     <span slot="end">${Person20Regular}</span>
   </fluent-text-input>
 `);
+
+export const slottedEndButton: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <fluent-text-input>
+    <fluent-button slot="start" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-button slot="end" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-label>Input with slotted end button</fluent-label>
+  </fluent-text-input>
+`);

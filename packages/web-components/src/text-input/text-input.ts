@@ -474,9 +474,11 @@ export class TextInput extends FASTElement {
    * @param e - the event object
    */
   public clickHandler(e: MouseEvent): boolean | void {
-    if (this.isSameNode(e.target as Node | null)) {
+    if (e.target === this) {
       this.control?.click();
     }
+
+    return true;
   }
 
   public connectedCallback(): void {
@@ -493,7 +495,11 @@ export class TextInput extends FASTElement {
    * @public
    */
   public focusinHandler(e: FocusEvent): boolean | void {
-    this.control?.focus();
+    if (e.target === this) {
+      this.control?.focus();
+    }
+
+    return true;
   }
 
   /**

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.38",
+  "version": "3.0.0-beta.39",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -85,6 +85,10 @@
     "./drawer-body.js": {
       "types": "./dist/dts/drawer-body/define.d.ts",
       "default": "./dist/esm/drawer-body/define.js"
+    },
+    "./field.js": {
+      "types": "./dist/dts/field/define.d.ts",
+      "default": "./dist/esm/field/define.js"
     },
     "./image.js": {
       "types": "./dist/dts/image/define.d.ts",
@@ -193,6 +197,7 @@
     "./dist/esm/dialog/define.js",
     "./dist/esm/dialog-body/define.js",
     "./dist/esm/divider/define.js",
+    "./dist/esm/field/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
     "./dist/esm/link/define.js",

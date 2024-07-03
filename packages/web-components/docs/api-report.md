@@ -2292,7 +2292,7 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    closeMenu: () => void;
+    closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;

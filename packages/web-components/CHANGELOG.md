@@ -1,8 +1,20 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 01 Jul 2024 04:08:12 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Jul 2024 04:08:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.39)
+
+Wed, 03 Jul 2024 04:08:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.38..@fluentui/web-components_v3.0.0-beta.39)
+
+### Changes
+
+- fix(web-components): fix popover positioning in firefox, add docs ([PR #31895](https://github.com/microsoft/fluentui/pull/31895) by rupertdavid@microsoft.com)
+- expose field in webcomponents to package exports ([PR #31904](https://github.com/microsoft/fluentui/pull/31904) by mmansour@microsoft.com)
+- fix text-input focus handling when focusable slotted start and end elements are present ([PR #31903](https://github.com/microsoft/fluentui/pull/31903) by 863023+radium-v@users.noreply.github.com)
+- fix(web-components): fix menu enterkey interaction  ([PR #31894](https://github.com/microsoft/fluentui/pull/31894) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.38)
 
