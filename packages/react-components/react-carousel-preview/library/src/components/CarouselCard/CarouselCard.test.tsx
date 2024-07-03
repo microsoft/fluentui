@@ -21,6 +21,8 @@ describe('CarouselCard', () => {
     requiredProps: {
       value: 'test-0',
     },
+    // Intersection observer causes a re-call of makeStyles.
+    disabledTests: ['make-styles-overrides-win'],
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
