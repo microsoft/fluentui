@@ -49,13 +49,33 @@ describe(`beachball configs`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
         ...excludedPackagesFromReleaseProcess,
-        'packages/api-docs',
         'packages/azure-themes',
+        'packages/cra-template',
+        'packages/date-time-utilities',
+        'packages/example-data',
+        'packages/fluent2-theme',
+        'packages/font-icons-mdl2',
+        'packages/foundation-legacy',
+        'packages/merge-styles',
         'packages/react',
         'packages/react-date-time',
+        'packages/react-docsite-components',
+        'packages/react-examples',
+        'packages/react-experiments',
+        'packages/react-file-type-icons',
+        'packages/react-focus',
         'packages/react-hooks',
+        'packages/scheme-utilities',
+        'packages/set-version',
+        'packages/style-utilities',
+        'packages/theme-samples',
+        'packages/utilities',
       ]),
     );
+
+    // Ensure that no react-components packages are included in the v8 release
+    expect(v8Config.scope.some(scope => scope.startsWith('packages/react-components'))).toBe(false);
+
     expect(v8Config.changelog).toEqual(sharedConfig.changelog);
   });
 
@@ -96,8 +116,42 @@ describe(`beachball configs`, () => {
 
   it(`should generate tools release config`, () => {
     expect(toolsConfig.scope).toEqual(
-      expect.arrayContaining(['scripts/api-extractor', 'scripts/babel', 'tools/workspace-plugin']),
+      expect.arrayContaining([
+        ...excludedPackagesFromReleaseProcess,
+        'packages/eslint-plugin',
+        'scripts/api-extractor',
+        'scripts/babel',
+        'scripts/beachball',
+        'scripts/cypress',
+        'scripts/dangerjs',
+        'scripts/executors',
+        'scripts/fluentui-publish',
+        'scripts/generators',
+        'scripts/github',
+        'scripts/gulp',
+        'scripts/jest',
+        'scripts/lint-staged',
+        'scripts/monorepo',
+        'scripts/package-manager',
+        'scripts/perf-test-flamegrill',
+        'scripts/prettier',
+        'scripts/projects-test',
+        'scripts/puppeteer',
+        'scripts/storybook',
+        'scripts/tasks',
+        'scripts/test-ssr',
+        'scripts/triage-bot',
+        'scripts/ts-node',
+        'scripts/update-release-notes',
+        'scripts/utils',
+        'scripts/webpack',
+        'tools/eslint-rules',
+        'tools/workspace-plugin',
+      ]),
     );
+
+    // Ensure that no v8/vNext packages are included in the tools release
+    expect(toolsConfig.scope.some(scope => scope.startsWith('packages/react-components'))).toBe(false);
 
     expect(toolsConfig.changelog).toEqual(sharedConfig.changelog);
   });

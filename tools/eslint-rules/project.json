@@ -11,5 +11,5 @@
       }
     }
   },
-  "tags": ["tools"]
+  "tags": ["platform:node", "tools"]
 }
