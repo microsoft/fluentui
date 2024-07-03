@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "add nx-project-tag",
   "packageName": "@fluentui/react-conformance",
   "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }

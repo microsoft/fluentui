@@ -73,7 +73,7 @@ describe(`beachball configs`, () => {
       ]),
     );
 
-    // Ensure that no react-components packages are included in the v8 release
+    // Ensure that no vNext packages are included in the v8 release
     expect(v8Config.scope.some(scope => scope.startsWith('packages/react-components'))).toBe(false);
 
     expect(v8Config.changelog).toEqual(sharedConfig.changelog);
@@ -151,7 +151,7 @@ describe(`beachball configs`, () => {
     );
 
     // Ensure that no v8/vNext packages are included in the tools release
-    expect(toolsConfig.scope.some(scope => scope.startsWith('packages/react-components'))).toBe(false);
+    expect(toolsConfig.scope.some(scope => scope.startsWith('packages/react'))).toBe(false);
 
     expect(toolsConfig.changelog).toEqual(sharedConfig.changelog);
   });
