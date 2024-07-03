@@ -35,7 +35,7 @@ export async function packProjectPackages(logger: Function, project: string): Pr
   const { dependencies: projectDependencies, projectGraph, getProjectPackageJsonInfo } = await getDependencies(project);
   // add provided package to be packaged
   projectDependencies.unshift({
-    name: project,
+    name: project.replace('@fluentui/', ''),
     dependencyType: 'dependencies',
     isTopLevel: true,
   });
