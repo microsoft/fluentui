@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add tools nx project tag",
+  "packageName": "@fluentui/webpack-utilities",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
