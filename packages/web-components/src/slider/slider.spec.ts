@@ -465,6 +465,10 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '0');
   });
 
+  test.fixme('should return string values for `min`, `max`, and `step` regardless the value types were used to set', async () => {
+    // TODO
+  });
+
   test('should initialize to the provided value attribute if set pre-connection', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -527,7 +531,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '6.1');
   });
 
-  test.describe("when the associated form's reset() method is invoked", () => {
+  test.describe('when the associated form’s reset() method is invoked', () => {
     test('should reset its `value` property to the midpoint if no `value` attribute is set', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
@@ -613,6 +617,24 @@ test.describe('Slider', () => {
       });
 
       await expect(element).toHaveJSProperty('value', '3');
+    });
+  });
+
+  test.describe('`change` event', () => {
+    test.fixme('should emit `change` event when `value` changed', async () => {
+      // TODO
+    });
+    test.fixme('shouldn’t emit `change` event if the new `value` is the same as the old', async () => {
+      // TODO
+    });
+    test.fixme('should emit `change` event if changes on `min` causes `value` change', async () => {
+      // TODO
+    });
+    test.fixme('should emit `change` event if changes on `max` causes `value` change', async () => {
+      // TODO
+    });
+    test.fixme('should emit `change` event if changes on `step` causes `value` change', async () => {
+      // TODO
     });
   });
 });
