@@ -40,7 +40,7 @@ const useStyles = makeStyles({
 export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): CarouselSliderState => {
   'use no memo';
 
-  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation, containerWidth } = state;
+  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
@@ -55,7 +55,7 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   const currentPosition = currentIndex + loopCount * numCards;
 
   // Centers the active card
-  const offsetPos = `${containerWidth}px / 2 - ${cardWidth} / 2`;
+  const offsetPos = `50% - ${cardWidth} / 2`;
 
   // Todo: Positions for non-circular, trailing etc.
   const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;

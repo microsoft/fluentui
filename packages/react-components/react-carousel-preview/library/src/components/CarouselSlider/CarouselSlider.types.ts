@@ -44,8 +44,4 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * Tracks whether a sliding animation was interrupted and needs to 'speed up' next animation.
      */
     interruptedAnimation: boolean;
-    /**
-     * Tracks container sizing for pixel values.
-     */
-    containerWidth: number;
   };

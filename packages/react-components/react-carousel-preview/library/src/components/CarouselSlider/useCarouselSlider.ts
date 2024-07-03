@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs, useTimeout } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
 import { useCarouselStore_unstable } from '../useCarouselStore';
-import { useResizeObserverRef } from '../../utils/useResizeObserver';
 import { useCarouselContext_unstable } from '../CarouselContext';
-import { useReducer } from 'react';
 
 /**
  * Create the state required to render CarouselSlider.
@@ -22,21 +20,7 @@ export const useCarouselSlider_unstable = (
   const animating = React.useRef<boolean>(false);
   const interruptedAnimation = React.useRef<boolean>(false);
   const cleanupRef = React.useRef<() => void>(() => undefined);
-  const containerWidthRef = React.useRef<number>(0);
   const { cardWidth } = useCarouselContext_unstable();
-
-  const [setResizeTimeout, clearResizeTimeout] = useTimeout();
-
-  // We want to trigger renders on resize (debounced) while keeping our ref updated
-  const forceUpdate = useReducer(() => ({}), {})[1];
-
-  const containerRef = useResizeObserverRef<HTMLDivElement>(([container]) => {
-    clearResizeTimeout();
-    containerWidthRef.current = container.contentRect.width;
-    setResizeTimeout(() => {
-      forceUpdate();
-    }, 100);
-  });
 
   const numCards: number = useCarouselStore_unstable(snapshot => {
     return snapshot.values.length;
@@ -82,7 +66,6 @@ export const useCarouselSlider_unstable = (
     };
   }, []);
 
-  const mergedRef = useMergedRefs(ref, containerRef);
   const slider = slot.always(props.slider, {
     defaultProps: {
       role: 'presentation',
@@ -98,14 +81,13 @@ export const useCarouselSlider_unstable = (
     loopCount,
     numCards,
     interruptedAnimation: interruptedAnimation.current,
-    containerWidth: containerWidthRef.current,
     components: {
       root: 'div',
       slider: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: mergedRef,
+        ref,
         ...props,
       }),
       { elementType: 'div' },
