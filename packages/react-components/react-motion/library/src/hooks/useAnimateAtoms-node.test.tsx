@@ -13,3 +13,5 @@ describe('useAnimateAtoms (node)', () => {
     expect(SUPPORTS_WEB_ANIMATIONS).toBeFalsy();
   });
 });
+
+export {};
