@@ -8,7 +8,7 @@ export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): E
   return html<T>`
     <template
       tabindex="${x => (x.disabled ? null : 0)}"
-      @mousedown="${(x, c) => x.handlePointerDown(c.event as PointerEvent)}"
+      @pointerdown="${(x, c) => x.handlePointerDown(c.event as PointerEvent)}"
     >
       <div
         ${ref('track')}
@@ -21,8 +21,7 @@ export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): E
         part="thumb-container"
         class="thumb-container"
         style="${x => x.position}"
-        @mousedown="${(x, c) => x.handleThumbPointerDown(c.event as PointerEvent)}"
-        @touchstart="${(x, c) => x.handleThumbPointerDown(c.event as PointerEvent)}"
+        @pointerdown="${(x, c) => x.handleThumbPointerDown(c.event as PointerEvent)}"
       >
         <slot name="thumb">${staticallyCompose(options.thumb)}</slot>
       </div>

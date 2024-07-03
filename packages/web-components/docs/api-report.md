@@ -1967,6 +1967,72 @@ export const DividerStyles: ElementStyles;
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
 // @public
 export const durationFast = "var(--durationFast)";
 
@@ -2631,6 +2697,7 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends FASTElement {
     constructor();
     color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     count?: number;
     // @internal
@@ -2641,6 +2708,7 @@ export class RatingDisplay extends FASTElement {
     generateIcons(): string;
     max?: number;
     size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
     value?: number;
 }
 
@@ -2726,48 +2794,68 @@ export const shadow8 = "var(--shadow8)";
 // @public
 export const shadow8Brand = "var(--shadow8Brand)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSlider" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
     // @internal
     calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
     // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // (undocumented)
-    handleMouseDown: (e: MouseEvent | null) => void;
-    handleThumbMouseDown: (event: MouseEvent | null) => void;
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
-    // @internal (undocumented)
     initialValue: string;
+    // @internal
+    initialValueChanged(prev: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    max: number;
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max?: string;
+    // @internal
+    get maxAsNumber(): number;
     // (undocumented)
-    protected maxChanged(): void;
-    min: number;
+    protected maxChanged(prev: string | undefined, next: string | undefined): void;
+    min?: string;
+    // @internal
+    get minAsNumber(): number;
     // (undocumented)
-    protected minChanged(): void;
+    protected minChanged(prev: string | undefined, next: string | undefined): void;
     mode: SliderMode;
-    orientation: Orientation;
+    orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(): void;
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
     position: string;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     size?: SliderSize;
-    step: number | undefined;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step?: string;
+    // @internal
+    get stepAsNumber(): number;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
@@ -2776,21 +2864,16 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     thumb: HTMLDivElement;
     // @internal (undocumented)
     track: HTMLDivElement;
-    // @internal (undocumented)
-    trackHeight: number;
-    // @internal (undocumented)
-    trackLeft: number;
-    // @internal (undocumented)
-    trackMinHeight: number;
-    // @internal (undocumented)
-    trackMinWidth: number;
-    // @internal (undocumented)
-    trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
     get valueAsNumber(): number;
     set valueAsNumber(next: number);
-    // @internal (undocumented)
-    valueChanged(previous: string, next: string): void;
-    valueTextFormatter: (value: string) => string | null;
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
 // @public (undocumented)
@@ -2800,9 +2883,9 @@ export interface SliderConfiguration {
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
-    max: number;
+    max?: string;
     // (undocumented)
-    min: number;
+    min?: string;
     // (undocumented)
     orientation?: SliderOrientation;
 }
