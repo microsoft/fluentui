@@ -31,11 +31,11 @@ export class BaseCheckbox extends FASTElement {
 
   public set checked(next: boolean) {
     this._checked = next;
-    Observable.notify(this, 'checked');
     this.setFormValue(next ? this.value : null);
     this.setValidity();
     this.setAriaChecked();
     toggleState(this.elementInternals, 'checked', next);
+    Observable.notify(this, 'checked');
   }
 
   /**
