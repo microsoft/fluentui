@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2024 07:32:14 GMT",
+      "tag": "@fluentui/cra-template_v8.4.161",
+      "version": "8.4.161",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "7e2515167b9aae5f358734645137fc1fee1b70b1",
+            "comment": "chore: bump @types/node types to v20 and @tsconfig to v18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Dec 2023 07:30:10 GMT",
       "tag": "@fluentui/cra-template_v8.4.126",
       "version": "8.4.126",
