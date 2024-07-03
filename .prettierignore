@@ -1,7 +1,7 @@
 # generated or imported files
 package-deps.json
 CHANGELOG.*
-# generated versopnm files  (@fluentui/react v8 specific)
+# generated version files  (@fluentui/react v8 specific)
 packages/**/version.ts
 apps/**/version.ts
 *.api.md
