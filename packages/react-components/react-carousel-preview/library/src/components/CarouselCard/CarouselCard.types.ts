@@ -25,7 +25,7 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    */
   offsetIndex: number;
   /**
-   * Tracks the translate offset index for circular motion
+   * The uniform card width of all cards, passed in from carousel context
    */
   cardWidth: string | number;
   /**

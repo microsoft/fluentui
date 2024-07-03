@@ -26,8 +26,6 @@ import type { CarouselContextValue } from '../CarouselContext.types';
  * @param ref - reference to root HTMLDivElement of Carousel
  */
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
-  'use no memo';
-
   const { onValueChange, circular, cardWidth } = props;
 
   const { targetDocument } = useFluent();
@@ -39,21 +37,10 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     state: props.value,
     initialState: null,
   });
+
   const [store] = React.useState(() => createCarouselStore(value));
 
   const rootRef = React.useRef<HTMLDivElement>(null);
-
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      if (value === null) {
-        // eslint-disable-next-line no-console
-        console.error(
-          'useCarousel: Carousel needs to have a `defaultValue` or `value` prop set. If you want to control the value, use the `value` prop.',
-        );
-      }
-    }, [value]);
-  }
 
   useIsomorphicLayoutEffect(() => {
     store.setActiveValue(value, circular ?? false);
@@ -123,7 +110,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
-
     if (!active?.value) {
       return;
     }

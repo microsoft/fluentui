@@ -1,11 +1,16 @@
-/* eslint-disable react-compiler/react-compiler */
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  RefObjectFunction,
+  getIntrinsicElementProps,
+  slot,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselStore_unstable } from '../useCarouselStore';
-import { useRef } from 'react';
+import { useIntersectionObserver } from '../../utils/useIntersectionObserver';
 
 /**
  * Create the state required to render CarouselCard.
@@ -35,7 +40,7 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
   const coreState = useCarouselCardCore(props, ref);
   const { value } = props;
   const { circular } = useCarouselContext_unstable();
-  const initialLoad = useRef<boolean>(true);
+  const initialLoad = React.useRef<boolean>(true);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
 
@@ -96,10 +101,37 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
 const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
   const { value } = props;
   const { cardWidth } = useCarouselContext_unstable();
+  const [visible, setVisible] = React.useState(false);
 
-  const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
+  const isActiveIndex = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
   const offsetIndex = 0;
+
+  // Observe intersections of virtualized components
+  const { setObserverList } = useIntersectionObserver(
+    // eslint-disable-next-line no-restricted-globals
+    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      // Grab latest entry that is intersecting
+      const latestEntry = entries[0];
+      if (!latestEntry) {
+        // If we don't find an intersecting area, ignore for now.
+        return;
+      }
+
+      // Set visible based on enter/exit ratio
+      setVisible(latestEntry.intersectionRatio >= 0.99);
+    },
+    {
+      threshold: 0.99,
+    },
+  );
+
+  const observerRef = React.useCallback(
+    (el: HTMLDivElement) => {
+      setObserverList([el]);
+    },
+    [setObserverList],
+  );
 
   const state: CarouselCardState = {
     value,
@@ -112,9 +144,9 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, observerRef),
         [CAROUSEL_ITEM]: value,
-        [CAROUSEL_ACTIVE_ITEM]: visible,
+        [CAROUSEL_ACTIVE_ITEM]: isActiveIndex,
         'aria-hidden': !visible,
         inert: !visible,
         role: 'presentation',

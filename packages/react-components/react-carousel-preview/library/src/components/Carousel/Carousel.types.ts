@@ -30,7 +30,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   circular?: boolean;
 
   /**
-   * Sets the card width, can be any default css value
+   * Sets the card width, can be any CSS length value
    */
   cardWidth?: number | string;
 };
