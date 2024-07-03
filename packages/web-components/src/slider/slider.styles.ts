@@ -37,7 +37,7 @@ export const styles = css`
     box-sizing: border-box;
     outline: none;
     user-select: none;
-    touch-action: pan-y;
+    touch-action: none;
     min-width: 120px;
     min-height: 32px;
     grid-template-rows: 1fr var(--thumb-size) 1fr;
@@ -65,7 +65,6 @@ export const styles = css`
     min-height: 120px;
     grid-template-rows: var(--track-margin-inline) 1fr var(--track-margin-inline);
     grid-template-columns: 1fr var(--thumb-size) 1fr;
-    touch-action: pan-x;
     width: unset;
     min-width: 32px;
     justify-items: center;
