@@ -1,16 +1,12 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
+import { checkedState, disabledState } from '../styles/states/index.js';
 import {
   colorNeutralForeground1,
+  colorNeutralForeground2,
+  colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  fontFamilyBase,
-  fontSizeBase300,
-  fontWeightRegular,
-  lineHeightBase300,
-  spacingHorizontalS,
-  spacingHorizontalXS,
-  spacingVerticalS,
 } from '../theme/design-tokens.js';
+import { display } from '../utils/index.js';
 
 /** RadioGroup styles
  * @public
@@ -19,44 +15,37 @@ export const styles = css`
   ${display('flex')}
 
   :host {
-    align-items: flex-start;
-    flex-direction: column;
-    row-gap: ${spacingVerticalS};
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
   }
-  :host([disabled]) ::slotted([role='radio']) {
-    --control-border-color: ${colorNeutralForegroundDisabled};
-    --checked-indicator-background-color: ${colorNeutralForegroundDisabled};
-    --state-color: ${colorNeutralForegroundDisabled};
-  }
-  ::slotted([slot='label']) {
-    color: ${colorNeutralForeground1};
-    padding: ${spacingVerticalS} ${spacingHorizontalS} ${spacingVerticalS} ${spacingHorizontalXS};
-    font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
-    cursor: default;
-  }
-  .positioning-region {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  :host([orientation='vertical']) .positioning-region {
+
+  :host(${disabledState}),
+  :host([orientation='vertical']) {
     flex-direction: column;
     justify-content: flex-start;
   }
-  :host([orientation='horizontal']) .positioning-region {
+
+  :host([orientation='horizontal']) {
     flex-direction: row;
   }
-  :host([orientation='horizontal']) ::slotted([role='radio']) {
-    padding-inline-end: ${spacingHorizontalS};
+
+  ::slotted(*) {
+    color: ${colorNeutralForeground3};
   }
-  :host([orientation='horizontal'][stacked]) ::slotted([role='radio']) {
-    display: flex;
-    flex-direction: column;
-    padding-inline: ${spacingHorizontalS};
-    height: auto;
-    align-items: center;
-    justify-content: center;
+
+  ::slotted(:hover) {
+    color: ${colorNeutralForeground2};
   }
-  :host([disabled]) ::slotted([role='radio']) {
-    pointer-events: none;
+
+  ::slotted(:active) {
+    color: ${colorNeutralForeground1};
+  }
+
+  ::slotted(${disabledState}) {
+    color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::slotted(${checkedState}) {
+    color: ${colorNeutralForeground1};
   }
 `;
