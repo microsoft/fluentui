@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor(web-components): cleanup accordion and convert to element internals for states",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
