@@ -8,13 +8,13 @@ export function sliderTemplate<T extends Slider>(options: SliderOptions = {}): E
   return html<T>`
     <template
       tabindex="${x => (x.disabled ? null : 0)}"
+      @mousedown="${(x, c) => x.handlePointerDown(c.event as PointerEvent)}"
     >
       <div
         ${ref('track')}
         part="track-container"
         class="track"
         style="${x => x.position}"
-        @mousedown="${(x, c) => x.handlePointerDown(c.event as PointerEvent)}"
       ></div>
       <div
         ${ref('thumb')}
