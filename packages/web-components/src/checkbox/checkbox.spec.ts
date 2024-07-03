@@ -14,17 +14,29 @@ test.describe('Checkbox', () => {
 
     await expect(element).toHaveCount(1);
 
-    await page.setContent(/* html */ `
-        <fluent-checkbox shape="circular"></fluent-checkbox>
-    `);
+    await test.step('should set the `shape` property to `circular`', async () => {
+      await page.setContent(/* html */ `
+          <fluent-checkbox shape="circular"></fluent-checkbox>
+      `);
 
-    await expect(element).toHaveJSProperty('shape', 'circular');
-
-    await element.evaluate((node: Checkbox) => {
-      node.shape = 'square';
+      await expect(element).toHaveJSProperty('shape', 'circular');
     });
 
-    await expect(element).toHaveAttribute('shape', 'square');
+    await test.step('should set the `shape` attribute to `square`', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.shape = 'square';
+      });
+
+      await expect(element).toHaveAttribute('shape', 'square');
+    });
+
+    await test.step('should unset the `shape` property when the attribute is removed', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.removeAttribute('shape');
+      });
+
+      await expect(element).toHaveJSProperty('shape', null);
+    });
   });
 
   test('should add a custom state matching the `shape` attribute when provided', async ({ page }) => {
@@ -62,13 +74,29 @@ test.describe('Checkbox', () => {
       node.size = 'medium';
     });
 
-    await expect(element).toHaveAttribute('size', 'medium');
+    await test.step('should set the `size` attribute to `medium`', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.size = 'medium';
+      });
 
-    await element.evaluate((node: Checkbox) => {
-      node.setAttribute('size', 'large');
+      await expect(element).toHaveAttribute('size', 'medium');
     });
 
-    await expect(element).toHaveJSProperty('size', 'large');
+    await test.step('should set the `size` property to `large`', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.setAttribute('size', 'large');
+      });
+
+      await expect(element).toHaveJSProperty('size', 'large');
+    });
+
+    await test.step('should unset the `size` property when the attribute is removed', async () => {
+      await element.evaluate((node: Checkbox) => {
+        node.removeAttribute('size');
+      });
+
+      await expect(element).toHaveJSProperty('size', null);
+    });
   });
 
   test('should add a custom state matching the `size` attribute when provided', async ({ page }) => {
@@ -211,11 +239,14 @@ test.describe('Checkbox', () => {
     await expect(element).toHaveJSProperty('indeterminate', false);
   });
 
-  test('should clear the `indeterminate` state when the `checked` property is true', async ({ page }) => {
+  test('should NOT change the `indeterminate` property when the owning form is reset', async ({ page }) => {
     const element = page.locator('fluent-checkbox');
+    const form = page.locator('form');
 
     await page.setContent(/* html */ `
-        <fluent-checkbox></fluent-checkbox>
+        <form>
+            <fluent-checkbox></fluent-checkbox>
+        </form>
     `);
 
     await element.evaluate((node: Checkbox) => {
@@ -224,9 +255,23 @@ test.describe('Checkbox', () => {
 
     await expect(element).toHaveJSProperty('indeterminate', true);
 
-    await element.press(' ');
+    await form.evaluate((node: HTMLFormElement) => {
+      node.reset();
+    });
 
-    await expect(element).toHaveJSProperty('indeterminate', false);
+    await expect(element).toHaveJSProperty('indeterminate', true);
+
+    await test.step('should retain the `indeterminate` property after being set to `false` via user interaction', async () => {
+      await element.click();
+
+      await expect(element).toHaveJSProperty('indeterminate', false);
+
+      await form.evaluate((node: HTMLFormElement) => {
+        node.reset();
+      });
+
+      await expect(element).toHaveJSProperty('indeterminate', false);
+    });
   });
 
   test('should initialize to the initial value if no value property is set', async ({ page }) => {

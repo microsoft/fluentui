@@ -588,14 +588,20 @@ export const ButtonType: {
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
 // Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Checkbox extends BaseCheckbox {
+    constructor();
+    indeterminate?: boolean;
+    // @internal
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @override
+    protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    toggleChecked(force?: boolean): void;
 }
 
 // @public
@@ -2059,8 +2065,9 @@ export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
 export class Field extends FASTElement {
+    constructor();
     // @internal
-    changeHandler(e: Event): void;
+    changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
     // @internal
@@ -2070,15 +2077,21 @@ export class Field extends FASTElement {
     // @internal
     focusoutHandler(e: FocusEvent): boolean | void;
     input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
     // @internal
     invalidHandler(e: Event): boolean | void;
     labelPosition: FieldLabelPosition;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
     // @internal
     messageSlot: Element[];
     // @internal
     messageSlotChanged(prev: Element[], next: Element[]): void;
     // @internal
     setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
     // @internal
     slottedInputs: SlottableInput[];
     // @internal
@@ -2601,22 +2614,21 @@ export const ProgressBarValidationState: {
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Radio extends FormAssociatedRadio implements RadioControl {
+export class Radio extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
-    // @internal (undocumented)
-    defaultCheckedChanged(): void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @beta
-    keypressHandler(e: KeyboardEvent): boolean | void;
-    name: string;
+    // @internal @override
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
+    setFormValue(): void;
+    // @internal @override
+    setValidity(): void;
+    // @override
+    toggleChecked(force?: boolean): void;
 }
 
 // @public (undocumented)
@@ -2627,34 +2639,62 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends FASTElement {
-    // (undocumented)
-    childItems: HTMLElement[];
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void | boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal (undocumented)
-    focusOutHandler: (e: FocusEvent) => boolean | void;
-    // @internal (undocumented)
-    handleDisabledClick: (e: MouseEvent) => void | boolean;
+    constructor();
+    changeHandler(e: Event): boolean | void;
     // @internal
-    keydownHandler: (e: KeyboardEvent) => boolean | void;
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
     name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
     // (undocumented)
-    protected nameChanged(): void;
-    orientation: RadioGroupOrientation;
-    readOnly: boolean;
-    // @internal (undocumented)
-    slottedRadioButtons: HTMLElement[];
-    // (undocumented)
-    protected slottedRadioButtonsChanged(oldValue: unknown, newValue: HTMLElement[]): void;
-    stacked: boolean;
-    value: string;
-    // (undocumented)
-    protected valueChanged(): void;
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -2688,9 +2728,7 @@ export type RadioOptions = {
 // @public
 export const RadioStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
@@ -2938,6 +2976,8 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     required: boolean;
     disabled: boolean;
     readOnly: boolean;
+    checked?: boolean;
+    value?: string;
 };
 
 // @public
@@ -3074,6 +3114,7 @@ export { styles as MenuButtonStyles }
 //
 // @public (undocumented)
 export class Switch extends BaseCheckbox {
+    constructor();
 }
 
 // @public

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "expose field in webcomponents to package exports",
-  "packageName": "@fluentui/web-components",
-  "email": "mmansour@microsoft.com",
-  "dependentChangeType": "patch"
-}
