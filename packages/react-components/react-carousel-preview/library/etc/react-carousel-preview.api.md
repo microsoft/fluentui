@@ -196,7 +196,6 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Required
     currentIndex: number;
     loopCount: number;
     interruptedAnimation: boolean;
-    containerWidth: number;
 };
 
 // @public (undocumented)
