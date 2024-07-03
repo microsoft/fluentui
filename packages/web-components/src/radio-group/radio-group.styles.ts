@@ -15,6 +15,7 @@ export const styles = css`
   ${display('flex')}
 
   :host {
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
   }
 

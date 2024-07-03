@@ -1,6 +1,4 @@
-import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { children, html } from '@microsoft/fast-element';
-import { Radio } from '../radio/radio.js';
+import { ElementViewTemplate, html } from '@microsoft/fast-element';
 import type { RadioGroup } from './radio-group.js';
 
 export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<T> {
@@ -12,14 +10,8 @@ export function radioGroupTemplate<T extends RadioGroup>(): ElementViewTemplate<
       @focusin="${(x, c) => x.focusinHandler(c.event as FocusEvent)}"
       @focusout="${(x, c) => x.focusoutHandler(c.event as FocusEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
-      ${children({
-        property: 'radios',
-        filter: x => x instanceof Radio,
-        selector: '*',
-        subtree: true,
-      })}
     >
-      <slot></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event as Event)}"></slot>
     </template>
   `;
 }

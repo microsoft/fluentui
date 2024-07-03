@@ -64,15 +64,15 @@ test.describe('RadioGroup', () => {
         </fluent-radio-group>
     `);
 
-    expect(
-      await radios.evaluateAll((radios: Radio[]) => radios.every(radio => radio.hasAttribute('aria-posinset'))),
-    ).toBe(true);
-
     await expect(radios.nth(0)).toHaveAttribute('aria-posinset', '1');
 
+    await expect(radios.nth(0)).toHaveAttribute('aria-setsize', '3');
+
     await expect(radios.nth(1)).toHaveAttribute('aria-posinset', '2');
+    await expect(radios.nth(1)).toHaveAttribute('aria-setsize', '3');
 
     await expect(radios.nth(2)).toHaveAttribute('aria-posinset', '3');
+    await expect(radios.nth(2)).toHaveAttribute('aria-setsize', '3');
   });
 
   test('should NOT modify child radio elements disabled state when the `disabled` attribute is present', async ({

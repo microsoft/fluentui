@@ -37,6 +37,9 @@ export class RadioGroup extends FASTElement {
     this.checkRadio(next);
   }
 
+  /**
+   * Indicates that the value has been changed by the user.
+   */
   private dirtyState: boolean = false;
 
   /**
@@ -102,9 +105,11 @@ export class RadioGroup extends FASTElement {
    * @internal
    */
   protected nameChanged(prev: string | undefined, next: string | undefined): void {
-    this.radios?.forEach(radio => {
-      radio.name = this.name;
-    });
+    if (this.isConnected && next) {
+      this.radios?.forEach(radio => {
+        radio.name = this.name;
+      });
+    }
   }
 
   /**
@@ -134,7 +139,7 @@ export class RadioGroup extends FASTElement {
    * @public
    */
   @observable
-  public radios?: Radio[];
+  public radios!: Radio[];
 
   /**
    * Updates the enabled radios collection when properties on the child radios change.
@@ -143,7 +148,8 @@ export class RadioGroup extends FASTElement {
    * @param next - the current radios
    */
   public radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void {
-    if (!next?.length) {
+    const setSize = next?.length;
+    if (!setSize) {
       return;
     }
 
@@ -151,13 +157,20 @@ export class RadioGroup extends FASTElement {
       this.name = next[0].name;
     }
 
-    const setSize = next.length.toString();
+    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+
     next.forEach((radio, index) => {
-      radio.ariaPosInSet = (index + 1).toString();
-      radio.ariaSetSize = setSize;
-      radio.checked = false;
+      radio.ariaPosInSet = `${index + 1}`;
+      radio.ariaSetSize = `${setSize}`;
+
+      if (this.initialValue && !this.dirtyState) {
+        radio.checked = radio.value === this.initialValue;
+      } else {
+        radio.checked = index === checkedIndex;
+      }
+
+      radio.name = this.name ?? radio.name;
       radio.disabled = this.disabled || radio.disabledAttribute;
-      radio.name = this.name;
     });
 
     if (!this.dirtyState && this.initialValue) {
@@ -166,10 +179,14 @@ export class RadioGroup extends FASTElement {
 
     if (!this.value) {
       // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
-      this.checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+      this.checkedIndex = checkedIndex;
     }
 
-    this.setAttribute('aria-owns', next.map(radio => radio.id).join(' '));
+    // prettier-ignore
+    const radioIds = next.map(radio => radio.id).join(' ').trim();
+    if (radioIds) {
+      this.setAttribute('aria-owns', radioIds);
+    }
 
     Updates.enqueue(() => {
       this.restrictFocus();
@@ -302,7 +319,7 @@ export class RadioGroup extends FASTElement {
     }
 
     this.dirtyState = true;
-    const radioIndex = this.enabledRadios.indexOf(e.target as Radio) ?? this.checkedIndex;
+    const radioIndex = this.enabledRadios.indexOf(e.target as Radio);
     this.checkRadio(radioIndex);
     return true;
   }
@@ -359,12 +376,6 @@ export class RadioGroup extends FASTElement {
 
     this.elementInternals.role = 'radiogroup';
     this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
-  }
-
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.setFormValue(this.value);
-    this.setValidity();
   }
 
   /**
@@ -545,5 +556,17 @@ export class RadioGroup extends FASTElement {
         anchor ?? this.enabledRadios[0],
       );
     }
+  }
+
+  /**
+   * Updates the collection of child radios when the slot changes.
+   *
+   * @param e - the slot change event
+   * @internal
+   */
+  public slotchangeHandler(e: Event): void {
+    Updates.enqueue(() => {
+      this.radios = [...this.querySelectorAll('*')].filter(x => x instanceof Radio) as Radio[];
+    });
   }
 }
