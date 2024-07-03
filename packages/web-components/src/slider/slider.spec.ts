@@ -478,6 +478,19 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '4');
   });
 
+  test('should initialize to the provided value property if set pre-connection', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = '';
+
+      const slider = document.createElement('fluent-slider') as Slider;
+      slider.value = '3';
+      node.appendChild(slider);
+    });
+
+    await expect(element).toHaveJSProperty('value', '3');
+    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
+  });
+
   test('should initialize to the provided value attribute if set post-connection', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -487,19 +500,6 @@ test.describe('Slider', () => {
 
     await element.evaluate((node: Slider) => {
       node.setAttribute('value', '3');
-    });
-
-    await expect(element).toHaveJSProperty('value', '3');
-    await expect(element).toHaveJSProperty('elementInternals.ariaValueNow', '3');
-  });
-
-  test('should initialize to the provided value property if set pre-connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = '';
-
-      const slider = document.createElement('fluent-slider') as Slider;
-      slider.value = '3';
-      node.appendChild(slider);
     });
 
     await expect(element).toHaveJSProperty('value', '3');
