@@ -535,10 +535,10 @@ export class RadioGroup extends FASTElement {
   }
 
   /**
-   * Sets the validity of the control.
+   * Sets the validity of the element.
    *
    * @param flags - Validity flags to set.
-   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used.
+   * @param message - Optional message to supply. If not provided, the element's `validationMessage` will be used.
    * @param anchor - Optional anchor to use for the validation message.
    *
    * @internal

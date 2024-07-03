@@ -73,7 +73,7 @@ export class BaseCheckbox extends FASTElement {
    * @param next - the current value
    * @internal
    */
-  public disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void {
+  protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.disabled = !!next;
   }
 
@@ -89,7 +89,7 @@ export class BaseCheckbox extends FASTElement {
   public formAttribute?: string;
 
   /**
-   * The element's checked state.
+   * The initial checked state of the element.
    *
    * @public
    * @remarks
@@ -99,11 +99,13 @@ export class BaseCheckbox extends FASTElement {
   public initialChecked?: boolean;
 
   /**
-   * Updates the form value when the checked state changes.
+   * Updates the checked state when the `checked` attribute is changed, unless the checked state has been changed by the user.
    *
+   * @param prev - The previous initial checked state
+   * @param next - The current initial checked state
    * @internal
    */
-  public initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void {
+  protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void {
     if (!this.dirtyChecked) {
       this.checked = !!next;
     }
@@ -120,13 +122,13 @@ export class BaseCheckbox extends FASTElement {
   public initialValue: string = 'on';
 
   /**
-   * Sets the value of the input when the value attribute changes.
+   * Sets the value of the input when the `value` attribute changes.
    *
-   * @param prev - The previous value
-   * @param next - The current value
+   * @param prev - The previous initial value
+   * @param next - The current initial value
    * @internal
    */
-  public initialValueChanged(prev: string, next: string): void {
+  protected initialValueChanged(prev: string, next: string): void {
     this._value = next;
   }
 
@@ -157,7 +159,7 @@ export class BaseCheckbox extends FASTElement {
    * @param next - The current required state
    * @internal
    */
-  public requiredChanged(prev: boolean, next: boolean): void {
+  protected requiredChanged(prev: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
       this.setValidity();
       this.elementInternals.ariaRequired = this.required ? 'true' : 'false';
@@ -343,7 +345,7 @@ export class BaseCheckbox extends FASTElement {
    * @param e - the event object
    * @internal
    */
-  public inputHandler(e: Event): boolean | void {
+  public inputHandler(e: InputEvent): boolean | void {
     this.setFormValue(this.value);
     this.setValidity();
 
@@ -401,7 +403,7 @@ export class BaseCheckbox extends FASTElement {
   /**
    * Sets the ARIA checked state.
    *
-   * @param value - The value to set
+   * @param value - The checked state
    * @internal
    */
   protected setAriaChecked(value: boolean = this.checked) {
@@ -455,6 +457,7 @@ export class BaseCheckbox extends FASTElement {
   /**
    * Toggles the checked state of the control.
    *
+   * @param force - Forces the element to be checked or unchecked
    * @public
    */
   public toggleChecked(force: boolean = !this.checked): void {
@@ -483,11 +486,13 @@ export class Checkbox extends BaseCheckbox {
   public indeterminate?: boolean;
 
   /**
-   * Synchronizes the element's indeterminate state with the internal ElementInternals state.
+   * Updates the indeterminate state when the `indeterminate` property changes.
    *
+   * @param prev - the indeterminate state
+   * @param next - the current indeterminate state
    * @internal
    */
-  public indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
+  protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.setAriaChecked();
     toggleState(this.elementInternals, 'indeterminate', next);
   }
@@ -503,11 +508,13 @@ export class Checkbox extends BaseCheckbox {
   public shape?: CheckboxShape;
 
   /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
+   * Applies shape states when the `shape` property changes.
+   *
+   * @param prev - the previous shape value
+   * @param next - the next shape value
+   * @internal
    */
-  public shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
+  protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
     if (prev) {
       toggleState(this.elementInternals, prev, false);
     }
@@ -517,7 +524,7 @@ export class Checkbox extends BaseCheckbox {
   }
 
   /**
-   * Indicates the size of the checkbox.
+   * Indicates the size of the control.
    *
    * @public
    * @remarks
@@ -527,11 +534,13 @@ export class Checkbox extends BaseCheckbox {
   public size?: CheckboxSize;
 
   /**
-   * Handles changes to size attribute custom states
+   * Applies size states when the `size` property changes.
+   *
    * @param prev - the previous state
    * @param next - the next state
+   * @internal
    */
-  public sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
+  protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
     if (prev) {
       toggleState(this.elementInternals, prev, false);
     }
@@ -540,23 +549,30 @@ export class Checkbox extends BaseCheckbox {
     }
   }
 
-  public setAriaChecked(value: boolean = this.checked) {
-    if (this.indeterminate) {
-      this.elementInternals.ariaChecked = 'mixed';
-      return;
-    }
-
-    this.elementInternals.ariaChecked = value ? 'true' : 'false';
-  }
-
   constructor() {
     super();
     this.elementInternals.role = 'checkbox';
   }
 
   /**
+   * Sets the ARIA checked state. If the `indeterminate` flag is true, the value will be 'mixed'.
+   *
+   * @internal
+   * @override
+   */
+  protected setAriaChecked(value: boolean = this.checked) {
+    if (this.indeterminate) {
+      this.elementInternals.ariaChecked = 'mixed';
+      return;
+    }
+
+    super.setAriaChecked(value);
+  }
+
+  /**
    * Toggles the checked state of the control.
    *
+   * @param force - Forces the element to be checked or unchecked
    * @public
    */
   public toggleChecked(force: boolean = !this.checked): void {

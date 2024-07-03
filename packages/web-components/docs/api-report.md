@@ -592,17 +592,15 @@ export type ButtonType = ValuesOf<typeof ButtonType>;
 // @public
 export class Checkbox extends BaseCheckbox {
     constructor();
-    // @internal
-    formResetCallback(): void;
     indeterminate?: boolean;
     // @internal
-    indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // (undocumented)
-    setAriaChecked(value?: boolean): void;
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @override
+    protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
 
@@ -2619,22 +2617,18 @@ export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationSt
 // @public
 export class Radio extends BaseCheckbox {
     constructor();
-    get ariaPosInSet(): string | null;
-    set ariaPosInSet(value: string | null);
-    get ariaSetSize(): string | null;
-    set ariaSetSize(value: string | null);
     // (undocumented)
     connectedCallback(): void;
-    // (undocumented)
+    // @internal @override
     protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // (undocumented)
-    requiredChanged(): void;
-    // (undocumented)
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
     setFormValue(): void;
-    // (undocumented)
+    // @internal @override
     setValidity(): void;
-    // (undocumented)
-    toggleChecked(state?: boolean): void;
+    // @override
+    toggleChecked(force?: boolean): void;
 }
 
 // @public (undocumented)
@@ -2656,8 +2650,6 @@ export class RadioGroup extends FASTElement {
     checkValidity(): boolean;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
     disabled: boolean;
     // @internal
     protected disabledChanged(prev?: boolean, next?: boolean): void;
@@ -2686,7 +2678,7 @@ export class RadioGroup extends FASTElement {
     orientation?: RadioGroupOrientation;
     // @internal
     orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
-    radios?: Radio[];
+    radios: Radio[];
     radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
     reportValidity(): boolean;
     required: boolean;
@@ -2696,6 +2688,8 @@ export class RadioGroup extends FASTElement {
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
     // @internal
     get validationMessage(): string;
     get validity(): ValidityState;
