@@ -303,31 +303,31 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   @observable
-  private trackWidth: number = 0;
+  public trackWidth: number = 0;
 
   /**
    * @internal
    */
   @observable
-  private trackMinWidth: number = 0;
+  public trackMinWidth: number = 0;
 
   /**
    * @internal
    */
   @observable
-  private trackHeight: number = 0;
+  public trackHeight: number = 0;
 
   /**
    * @internal
    */
   @observable
-  private trackLeft: number = 0;
+  public trackLeft: number = 0;
 
   /**
    * @internal
    */
   @observable
-  private trackMinHeight: number = 0;
+  public trackMinHeight: number = 0;
 
   /**
    * The value property, typed as a number.
