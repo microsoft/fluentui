@@ -1,4 +1,4 @@
-import { attr, css, FASTElement, nullableNumberConverter, observable, Observable } from '@microsoft/fast-element';
+import { attr, css, FASTElement, nullableNumberConverter, observable, Observable, ValueConverter } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
 import {
   Direction,
@@ -15,6 +15,17 @@ import { getDirection } from '../utils/index.js';
 import { toggleState } from '../utils/element-internals.js';
 import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
+
+const numberLikeStringConverter: ValueConverter = {
+  fromView(value: string): string {
+    const valueAsNumber = parseFloat(value);
+    return Number.isNaN(valueAsNumber) ? '' : valueAsNumber.toString();
+  },
+  toView(value: any): string | undefined {
+    const valueAsNumber = parseFloat(value);
+    return Number.isNaN(valueAsNumber) ? undefined : valueAsNumber.toString();
+  },
+};
 
 /**
  * The base class used for constructing a fluent-slider custom element
@@ -72,10 +83,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     switch (propertyName) {
       case 'min':
       case 'max':
+        this.setSliderPosition(this.direction);
       case 'step':
         this.handleStepStyles();
-        break;
-      default:
         break;
     }
   }
@@ -366,7 +376,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @remarks
    * HTML Attribute: min
    */
-  @attr({ converter: nullableNumberConverter })
+  @attr({ converter: numberLikeStringConverter })
   public min?: string;
   protected minChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
@@ -378,7 +388,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   public get minAsNumber(): number {
-    return this.min ? parseFloat(this.min) : 0;
+    if (this.min !== undefined) {
+      const parsed = parseFloat(this.min);
+      if (!Number.isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    return 0;
   }
 
   /**
@@ -388,7 +404,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @remarks
    * HTML Attribute: max
    */
-  @attr({ converter: nullableNumberConverter })
+  @attr({ converter: numberLikeStringConverter })
   public max?: string;
   protected maxChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
@@ -400,7 +416,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   public get maxAsNumber(): number {
-    return this.max ? parseFloat(this.max) : 100;
+    if (this.max !== undefined) {
+      const parsed = parseFloat(this.max);
+      if (!Number.isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    return 100;
   }
 
   /**
@@ -410,7 +432,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @remarks
    * HTML Attribute: step
    */
-  @attr({ converter: nullableNumberConverter })
+  @attr({ converter: numberLikeStringConverter })
   public step?: string;
   protected stepChanged(): void {
     this.updateStepMultiplier();
@@ -422,7 +444,13 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   public get stepAsNumber(): number {
-    return this.step ? parseFloat(this.step) : 1;
+    if (this.step !== undefined) {
+      const parsed = parseFloat(this.step);
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        return parsed;
+      }
+    }
+    return 1;
   }
 
   /**
