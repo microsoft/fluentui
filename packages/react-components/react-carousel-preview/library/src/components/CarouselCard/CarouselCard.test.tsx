@@ -4,6 +4,17 @@ import { isConformant } from '../../testing/isConformant';
 import { CarouselCard } from './CarouselCard';
 
 describe('CarouselCard', () => {
+  beforeEach(() => {
+    // IntersectionObserver isn't available in test environment
+    const mockIntersectionObserver = jest.fn();
+    mockIntersectionObserver.mockReturnValue({
+      observe: () => null,
+      unobserve: () => null,
+      disconnect: () => null,
+    });
+    window.IntersectionObserver = mockIntersectionObserver;
+  });
+
   isConformant({
     Component: CarouselCard,
     displayName: 'CarouselCard',
