@@ -83,7 +83,7 @@ export async function changelog(
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v${previousReleasedVersion}..@fluentui/react-northstar_v${versionData.workspaceVersion})
   `;
 
-  const northstarLib = group.lib['@fluentui/react-northstar'];
+  const northstarLib = group.lib['react-northstar'];
   const changelogPath = joinPathFragments(northstarLib.data.root, '../CHANGELOG.md');
 
   if (!tree.exists(changelogPath)) {
