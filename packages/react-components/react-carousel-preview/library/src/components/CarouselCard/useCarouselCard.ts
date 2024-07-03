@@ -103,8 +103,7 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
 
   // Observe intersections of virtualized components
   const { setObserverList } = useIntersectionObserver(
-    // eslint-disable-next-line no-restricted-globals
-    (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+    (entries: IntersectionObserverEntry[]) => {
       // Grab latest entry that is intersecting
       const latestEntry = entries[0];
       if (!latestEntry) {
