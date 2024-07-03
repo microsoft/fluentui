@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  RefObjectFunction,
-  getIntrinsicElementProps,
-  slot,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';

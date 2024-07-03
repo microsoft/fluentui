@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselCardSlots, CarouselCardState } from './CarouselCard.types';
 import { tokens } from '@fluentui/react-theme';
