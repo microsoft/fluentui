@@ -25,6 +25,7 @@ export const styles = css`
 
   :host {
     --thumb-size: 20px;
+    --track-margin-inline: calc(var(--thumb-size) / 2);
     --track-size: 4px;
     --track-overhang: calc(var(--track-size) / -2);
     --slider-direction: 90deg;
@@ -40,7 +41,7 @@ export const styles = css`
     min-width: 120px;
     min-height: 32px;
     grid-template-rows: 1fr var(--thumb-size) 1fr;
-    grid-template-columns: 1fr calc(100% - var(--thumb-size)) 1fr;
+    grid-template-columns: var(--track-margin-inline) 1fr var(--track-margin-inline);
   }
 
   :host(:not(:disabled)) {
@@ -62,7 +63,7 @@ export const styles = css`
     --slider-direction: 0deg;
     --step-marker-inset: -1px var(--track-overhang);
     min-height: 120px;
-    grid-template-rows: 1fr calc(100% - var(--thumb-size)) 1fr;
+    grid-template-rows: var(--track-margin-inline) 1fr var(--track-margin-inline);
     grid-template-columns: 1fr var(--thumb-size) 1fr;
     touch-action: pan-x;
     width: unset;
