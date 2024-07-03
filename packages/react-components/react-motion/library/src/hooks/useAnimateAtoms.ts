@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
 // eslint-disable-next-line no-restricted-globals
-const win = typeof window !== undefined ? window : undefined;
+const win = typeof document === 'object' ? document.defaultView?.window : undefined;
 
 // Heads up! "Element." is a side-effect for minifiers, should be kept as IIFE to avoid leaking after minification.
 const SUPPORTS_WEB_ANIMATIONS = /*@__PURE__*/ (() => win && typeof win.Element.prototype.animate === 'function')();
