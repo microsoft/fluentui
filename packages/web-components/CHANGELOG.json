@@ -2,6 +2,93 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2024 04:08:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.39",
+      "version": "3.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7110cafa3d044bdc65887b8cd52054065a63f397",
+            "comment": "fix(web-components): fix popover positioning in firefox, add docs"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "16b43e3ff082b70f4dadbd102c99bba2bac9111d",
+            "comment": "expose field in webcomponents to package exports"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc77b9b36c54fd2c850671fa2542f7724e985800",
+            "comment": "fix text-input focus handling when focusable slotted start and end elements are present"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2ccb9dd0764a3b4fbfbb43910c1b1fe20c9460be",
+            "comment": "fix(web-components): fix menu enterkey interaction "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Jul 2024 04:08:12 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.38",
+      "version": "3.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ef61509d3dd99df6b49daa7442a26bbb3ff75",
+            "comment": "Make utils a package export since it replaces fluentui/foundation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Jun 2024 04:07:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.37",
+      "version": "3.0.0-beta.37",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "896c9d329ae3206d95aa7c47ad8c4481a8e9961e",
+            "comment": "refactor setTheme() to use adoptedStyleSheets"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "e8819fbcd5ef0f4127f0b759cc597c1dc83ea9b2",
+            "comment": "Add rating-display component"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "dcdccf4f6504dd5e76fb89ed1c29499d290299ee",
+            "comment": "Adds MessageBar component to Fluent Web Components"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c05bfd2c12f8c658562b9fc63d98410f5de79003",
+            "comment": "chore: use tokens directly in css for badge partial"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "272dafa6a489749c61f8f98f33bfe03fdcb7921c",
+            "comment": "fix: ensure menu keydown logic allows shift+tab to navigate as expected"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Jun 2024 04:07:58 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.36",
       "version": "3.0.0-beta.36",

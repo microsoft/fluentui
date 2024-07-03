@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="web" />
+
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -2290,7 +2292,7 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    closeMenu: () => void;
+    closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
@@ -2624,6 +2626,52 @@ export const RadioStyles: ElementStyles;
 //
 // @public (undocumented)
 export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -3106,6 +3154,8 @@ class Text_2 extends FASTElement {
     block: boolean;
     // (undocumented)
     connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     font?: TextFont;

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.1)
+
+Mon, 01 Jul 2024 20:30:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.0..@fluentui/react-tabster_v9.22.1)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.0)
 
