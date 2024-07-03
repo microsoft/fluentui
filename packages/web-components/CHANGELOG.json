@@ -2,6 +2,39 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 03 Jul 2024 04:08:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.39",
+      "version": "3.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7110cafa3d044bdc65887b8cd52054065a63f397",
+            "comment": "fix(web-components): fix popover positioning in firefox, add docs"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "16b43e3ff082b70f4dadbd102c99bba2bac9111d",
+            "comment": "expose field in webcomponents to package exports"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc77b9b36c54fd2c850671fa2542f7724e985800",
+            "comment": "fix text-input focus handling when focusable slotted start and end elements are present"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2ccb9dd0764a3b4fbfbb43910c1b1fe20c9460be",
+            "comment": "fix(web-components): fix menu enterkey interaction "
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 04:08:12 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.38",
       "version": "3.0.0-beta.38",
