@@ -4,7 +4,7 @@ import { Steps, StoryWright } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
-import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../../utilities/getStoryVariant';
+import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
@@ -201,7 +201,7 @@ export default {
       <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     ),
   ],
-} as Meta<typeof Avatar>;
+} satisfies Meta<typeof Avatar>;
 
 type Story = StoryFn<typeof Avatar>;
 
