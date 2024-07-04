@@ -6,6 +6,7 @@ import {
   ICartesianChartStyles,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
+import { IComponentErrorProps } from '../CommonComponents/ErrorBoundary.types';
 
 /**
  * Horizontal Bar Chart with Axis properties
@@ -72,24 +73,9 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   showYAxisLables?: boolean;
 
   /**
-   * Callback to handle error while chart is rendering.
+   * Props for handling error in the component
    */
-  handleError?: () => JSX.Element;
-
-  /**
-   * Callback to handle empty state while chart is rendering.
-   */
-  handleEmptyState?: () => JSX.Element;
-
-  /**
-   * Custom error state message.
-   */
-  customErrorMsg?: string;
-
-  /**
-   * Custom empty data message.
-   */
-  customEmptyMsg?: string;
+  errorProps?: IComponentErrorProps;
 }
 
 /**

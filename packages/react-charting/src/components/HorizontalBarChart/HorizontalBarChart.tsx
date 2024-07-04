@@ -6,9 +6,8 @@ import {
   IHorizontalBarChartStyles,
 } from './HorizontalBarChart.types';
 import { getHorizontalBarChartStyles } from './HorizontalBarChart.styles';
-import { HorizontalBarChartWithFallback } from './HorizontalBarChartWithFallback.base';
+import { HorizontalBarChartWithFallbackBase } from './HBCWithFallback.base';
 
-// Create a HorizontalBarChart variant which uses these default styles and this styled subcomponent.
 /**
  * HorizontalBarchart component.
  * {@docCategory HorizontalBarChart}
@@ -17,4 +16,4 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   IHorizontalBarChartProps,
   IHorizontalBarChartStyleProps,
   IHorizontalBarChartStyles
->(HorizontalBarChartWithFallback, getHorizontalBarChartStyles);
+>(HorizontalBarChartWithFallbackBase, getHorizontalBarChartStyles);

@@ -1,6 +1,9 @@
 import { IStyle, IStyleFunctionOrObject } from '@fluentui/react';
 import { ITheme } from '@fluentui/react/lib/Styling';
 
+/**
+ * Error boundary properties.
+ */
 export interface IErrorBoundaryProps {
   /**
    * If true, the error boundary will show the empty state.
@@ -55,6 +58,9 @@ export interface IErrorBoundaryProps {
   className?: string;
 }
 
+/**
+ * Error boundary styles
+ */
 export interface IErrorBoundaryStyles {
   /**
    * Styling for the root container
@@ -92,6 +98,9 @@ export interface IErrorBoundaryStyles {
   errorIconDarkTheme: IStyle;
 }
 
+/**
+ * Error boundary style properties
+ */
 export interface IErrorBoundaryStyleProps {
   /**
    * Additional CSS class(es) to apply to the Error Boundary.
@@ -107,4 +116,29 @@ export interface IErrorBoundaryStyleProps {
    * Height of the error icon
    */
   height?: number;
+}
+
+/**
+ * Error boundary component props.
+ */
+export interface IComponentErrorProps {
+  /**
+   * Callback to handle error while chart is rendering.
+   */
+  handleError?: () => JSX.Element;
+
+  /**
+   * Callback to handle empty state while chart is rendering.
+   */
+  handleEmptyState?: () => JSX.Element;
+
+  /**
+   * Custom error message to show in the chart.
+   */
+  customErrorMsg?: string;
+
+  /**
+   * Custom empty data message.
+   */
+  customEmptyMsg?: string;
 }

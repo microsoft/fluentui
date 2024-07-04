@@ -464,8 +464,10 @@ describe('Horizontal Bar Chart with Axis - Error Boundary', () => {
     render(
       <HorizontalBarChartWithAxis
         data={[]}
-        handleEmptyState={() => {
-          return <div>Custom Error Message</div>;
+        errorProps={{
+          handleEmptyState() {
+            return <div>Custom Error Message</div>;
+          },
         }}
       />,
     );

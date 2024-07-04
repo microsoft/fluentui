@@ -1,21 +1,19 @@
-/* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import * as React from 'react';
 import { IHorizontalBarChartProps } from './HorizontalBarChart.types';
 import { ErrorBoundary } from '../CommonComponents/ErrorBoundary';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
 import { isHorizontalBarChartEmpty } from '../CommonComponents/error-utils';
 
-// Create a class to render the HorizontalBarChart within ErrorBoundary
-export class HorizontalBarChartWithFallback extends React.Component<IHorizontalBarChartProps> {
-  render() {
+export class HorizontalBarChartWithFallbackBase extends React.Component<IHorizontalBarChartProps> {
+  public render() {
     return (
       <ErrorBoundary
-        handleError={this.props.handleError}
-        handleEmptyState={this.props.handleEmptyState}
+        handleError={this.props.errorProps ? this.props.errorProps!.handleError : undefined}
+        handleEmptyState={this.props.errorProps ? this.props.errorProps!.handleEmptyState : undefined}
         theme={this.props.theme}
         hasEmptyState={isHorizontalBarChartEmpty(this.props.data)}
-        customErrorMsg={this.props.customErrorMsg}
-        customEmptyMsg={this.props.customEmptyMsg}
+        customErrorMsg={this.props.errorProps ? this.props.errorProps!.customErrorMsg : undefined}
+        customEmptyMsg={this.props.errorProps ? this.props.errorProps!.customEmptyMsg : undefined}
         width={this.props.width}
       >
         <HorizontalBarChartBase {...this.props} />

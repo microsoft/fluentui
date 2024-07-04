@@ -2,6 +2,7 @@ import { IChartProps, IChartDataPoint } from './index';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IComponentErrorProps } from '../CommonComponents/ErrorBoundary.types';
 
 /**
  * Horizontal Bar Chart properties
@@ -94,24 +95,9 @@ export interface IHorizontalBarChartProps {
   hideLabels?: boolean;
 
   /**
-   * Callback to handle error while chart is rendering.
+   * Props for handling error in the component
    */
-  handleError?: () => JSX.Element;
-
-  /**
-   * Callback to handle empty state while chart is rendering.
-   */
-  handleEmptyState?: () => JSX.Element;
-
-  /**
-   * Custom error message to show in the chart.
-   */
-  customErrorMsg?: string;
-
-  /**
-   * Custom empty data message.
-   */
-  customEmptyMsg?: string;
+  errorProps?: IComponentErrorProps;
 }
 
 /**

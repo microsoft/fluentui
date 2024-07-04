@@ -390,8 +390,10 @@ describe('Horizontal Bar Chart - Error Boundary', () => {
     render(
       <HorizontalBarChart
         data={[]}
-        handleEmptyState={() => {
-          return <div>Custom Error Message</div>;
+        errorProps={{
+          handleEmptyState() {
+            return <div>Custom Error Message</div>;
+          },
         }}
       />,
     );
