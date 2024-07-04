@@ -15,7 +15,7 @@ export default {
       <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     ),
   ],
-} as Meta<typeof AvatarGroup>;
+} satisfies Meta<typeof AvatarGroup>;
 
 type Story = StoryFn<typeof AvatarGroup>;
 

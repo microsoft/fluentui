@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { disabledState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   colorNeutralForeground1,
@@ -13,18 +14,14 @@ import {
   lineHeightBase300,
   lineHeightBase400,
   spacingHorizontalM,
+  spacingHorizontalS,
+  spacingVerticalM,
   spacingVerticalS,
   spacingVerticalXXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 import { ValidationFlags } from './field.options.js';
-
-/**
- * Selector for the `disabled` state.
- * @public
- */
-const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
 
 /**
  * Selector for the `focus-visible` state.
@@ -99,6 +96,12 @@ const validState = css.partial`:is([state-${ValidationFlags.valid}], :state(${Va
 const valueMissingState = css.partial`:is([state--${ValidationFlags.valueMissing}], :state(${ValidationFlags.valueMissing}))`;
 
 /**
+ * Selector for the `has-message` state.
+ * @public
+ */
+const hasMessageState = css.partial`:is([state--has-message], :state(has-message))`;
+
+/**
  * The styles for the {@link Field} component.
  *
  * @public
@@ -107,11 +110,12 @@ export const styles = css`
   ${display('inline-grid')}
 
   :host {
+    color: ${colorNeutralForeground1};
     align-items: center;
-    cursor: pointer;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    padding: ${spacingVerticalS};
+    padding: ${spacingVerticalS} ${spacingHorizontalS};
+    position: relative;
   }
 
   :has([slot='message']) {
@@ -144,15 +148,28 @@ export const styles = css`
 
   :host([label-position='below']) {
     grid-template-areas: 'input' 'label' 'message';
+    justify-items: center;
   }
 
-  ::slotted([slot='label']) {
-    cursor: pointer;
-    grid-area: label;
+  :host([label-position='below']) ::slotted([slot='label']) {
+    margin-block-start: ${spacingVerticalM};
+  }
+
+  :host([label-position='below']:not(${hasMessageState})) {
+    grid-template-areas: 'input' 'label';
+  }
+
+  ::slotted([slot='label'])::after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
   }
 
   ::slotted([slot='input']) {
     grid-area: input;
+    position: relative;
+    z-index: 1;
   }
 
   ::slotted([slot='message']) {
@@ -165,13 +182,14 @@ export const styles = css`
     outline: ${strokeWidthThick} solid ${colorStrokeFocus2};
   }
 
-  ::slotted(label) {
+  ::slotted(label),
+  ::slotted([slot='label']) {
+    cursor: inherit;
     display: inline-flex;
-    color: ${colorNeutralForeground1};
-    cursor: pointer;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
+    grid-area: label;
     line-height: ${lineHeightBase300};
     user-select: none;
   }
@@ -191,8 +209,7 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
-  :host(${disabledState}) ::slotted(label) {
-    color: ${colorNeutralForeground1};
+  :host(${disabledState}) {
     cursor: default;
   }
 

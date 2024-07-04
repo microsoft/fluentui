@@ -17,7 +17,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as Meta<typeof AvatarGroup>;
+} satisfies Meta<typeof AvatarGroup>;
 
 type Story = StoryFn<typeof AvatarGroup>;
 
@@ -43,6 +43,6 @@ export const OverflowContent: Story = () => {
 };
 OverflowContent.storyName = 'overflowContent';
 
-export const OVerflowContentHighContrast = getStoryVariant(OverflowContent, HIGH_CONTRAST);
+export const OverflowContentHighContrast = getStoryVariant(OverflowContent, HIGH_CONTRAST);
 
-export const OVerflowContentDarkMode = getStoryVariant(OverflowContent, DARK_MODE);
+export const OverflowContentDarkMode = getStoryVariant(OverflowContent, DARK_MODE);
