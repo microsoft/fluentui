@@ -1,7 +1,7 @@
 export {
   AccordionItem,
   accordionItemDefinition,
-  AccordionItemExpandIconPosition,
+  AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
