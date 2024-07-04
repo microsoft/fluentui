@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import type { Meta, StoryFn } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
+import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
 const Calendar = (props: CalendarProps) => {
   const today = new Date('3/15/2023');
@@ -12,27 +12,39 @@ const Calendar = (props: CalendarProps) => {
   return <CalendarBase today={today} {...props} />;
 };
 
-storiesOf('Calendar Compat', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-  ))
-  .addStory('Default', () => <Calendar />, { includeRtl: true })
-  .addStory('Custom icons', () => (
-    <Calendar
-      calendarDayProps={{
-        navigationIcons: {
-          upNavigation: <ArrowLeftRegular />,
-          downNavigation: <ArrowRightRegular />,
-          dismiss: <DismissCircleRegular />,
-        },
-      }}
-      calendarMonthProps={{
-        navigationIcons: {
-          upNavigation: <ArrowLeftRegular />,
-          downNavigation: <ArrowRightRegular />,
-          dismiss: <DismissCircleRegular />,
-        },
-      }}
-    />
-  ));
+export default {
+  title: 'Calendar Compat',
+  component: CalendarBase,
+  decorators: [
+    TestWrapperDecorator,
+    story => (
+      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+    ),
+  ],
+} satisfies Meta<typeof CalendarBase>;
+
+type Story = StoryFn<typeof CalendarBase>;
+
+export const Default: Story = () => <Calendar />;
+
+export const CustomIcons: Story = () => (
+  <Calendar
+    calendarDayProps={{
+      navigationIcons: {
+        upNavigation: <ArrowLeftRegular />,
+        downNavigation: <ArrowRightRegular />,
+        dismiss: <DismissCircleRegular />,
+      },
+    }}
+    calendarMonthProps={{
+      navigationIcons: {
+        upNavigation: <ArrowLeftRegular />,
+        downNavigation: <ArrowRightRegular />,
+        dismiss: <DismissCircleRegular />,
+      },
+    }}
+  />
+);
+CustomIcons.storyName = 'Custom icons';
+
+export const CustomIconsRTL = getStoryVariant(CustomIcons, RTL);
