@@ -268,7 +268,7 @@
     "json-stable-stringify-without-jsonify": "1.0.1",
     "jsonc-eslint-parser": "2.3.0",
     "just-scripts": "1.8.2",
-    "lage": "1.10.0",
+    "lage": "1.8.8",
     "license-webpack-plugin": "4.0.2",
     "lint-staged": "10.2.10",
     "loader-utils": "2.0.4",
