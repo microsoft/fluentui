@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "vertically align combobox and dropdown components",
-  "packageName": "@fluentui/react-combobox",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

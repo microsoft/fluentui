@@ -2,6 +2,67 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:34 GMT",
+      "tag": "@fluentui/react-components_v9.54.4",
+      "version": "9.54.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align combobox and dropdown components"
+          }
+        ],
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add nx-project-tag"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add tools nx project tag"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align input component"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "0ad7f7c26cc01a9b45312bae5ef4833ee32d9c2c",
+            "comment": "fix: Check if DOM is available before using Element global to avoid breaks in build."
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align spinbutton component"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align textarea component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f5aad264fa9d16a0724c1c2dfcbf940d11fcdcce",
+            "comment": "fix(Tree): Roving tabindexes should be refreshed if current element is unmounted"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:20 GMT",
       "tag": "@fluentui/react-components_v9.54.3",
       "version": "9.54.3",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 01 Jul 2024 20:30:51 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.81)
+
+Thu, 04 Jul 2024 15:14:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.80..@fluentui/react-input_v9.4.81)
+
+### Patches
+
+- vertically align input component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
 
 ## [9.4.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.80)
 

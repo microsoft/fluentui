@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 01 Jul 2024 20:30:20 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.4)
+
+Thu, 04 Jul 2024 15:14:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.3..@fluentui/react-components_v9.54.4)
+
+### Minor changes
+
+- `@fluentui/react-combobox`
+  - vertically align combobox and dropdown components ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
+
+### Patches
+
+- `@fluentui/react-input`
+  - vertically align input component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
+- `@fluentui/react-motion`
+  - fix: Check if DOM is available before using Element global to avoid breaks in build. ([PR #31907](https://github.com/microsoft/fluentui/pull/31907) by estebanmu@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - vertically align spinbutton component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
+- `@fluentui/react-textarea`
+  - vertically align textarea component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
+- `@fluentui/react-tree`
+  - fix(Tree): Roving tabindexes should be refreshed if current element is unmounted ([PR #31918](https://github.com/microsoft/fluentui/pull/31918) by lingfangao@hotmail.com)
 
 ## [9.54.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.3)
 

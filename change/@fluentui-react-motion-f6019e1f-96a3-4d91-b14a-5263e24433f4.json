@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Check if DOM is available before using Element global to avoid breaks in build.",
-  "packageName": "@fluentui/react-motion",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

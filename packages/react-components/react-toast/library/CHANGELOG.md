@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Mon, 01 Jul 2024 20:30:37 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.49)
+
+Thu, 04 Jul 2024 15:14:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.48..@fluentui/react-toast_v9.3.49)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.2.2 ([PR #31893](https://github.com/microsoft/fluentui/pull/31893) by beachball)
 
 ## [9.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.48)
 

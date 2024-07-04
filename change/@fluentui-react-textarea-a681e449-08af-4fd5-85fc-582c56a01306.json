@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "vertically align textarea component",
-  "packageName": "@fluentui/react-textarea",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}
