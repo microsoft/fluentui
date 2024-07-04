@@ -42,13 +42,12 @@ export const setTheme = (theme: Theme) => {
     themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
   }
 
+  // Update the CSSStyleSheet with the new theme
+  themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
+
+  // Adopt the updated CSSStyleSheet if it hasn't been adopted yet
   if (!document.adoptedStyleSheets.includes(themeStyleSheet)) {
     document.adoptedStyleSheets.push(themeStyleSheet);
-  } else {
-    // The very first call to `setTheme()` within a document doesn’t need to
-    // call `replaceSync()`, because `CSS.registerProperty()` above is
-    // sufficient to set the tokens.
-    themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
   }
 };
 
