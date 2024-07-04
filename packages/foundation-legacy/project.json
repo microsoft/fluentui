@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/foundation-legacy",
+  "name": "foundation-legacy",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

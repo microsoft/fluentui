@@ -4,10 +4,14 @@ const fs = require('fs');
 const path = require('path');
 const { createProjectGraphAsync, stripIndents, logger } = require('@nx/devkit');
 
-main().catch(err => {
-  logger.error(err);
-  process.exit(1);
-});
+main()
+  .catch(err => {
+    logger.error(err);
+    process.exit(1);
+  })
+  .then(() => {
+    process.exit(0);
+  });
 
 /**
  * temporary integration check to mitigate AST parsing errors that cause invalid dependency tree creation
@@ -37,4 +41,6 @@ async function main() {
         ${toolsDeps.own.map(depName => `- ${depName}`).join('\n')}`,
     );
   }
+
+  console.log('✅ no workspace-plugin dependency graph issues found');
 }
