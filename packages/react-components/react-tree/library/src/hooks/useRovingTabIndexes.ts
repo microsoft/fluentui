@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 import { useFocusedElementChange } from '@fluentui/react-tabster';
 import { elementContains } from '@fluentui/react-utilities';
@@ -10,9 +11,13 @@ import { elementContains } from '@fluentui/react-utilities';
 export function useRovingTabIndex() {
   const currentElementRef = React.useRef<HTMLElement | null>(null);
   const walkerRef = React.useRef<HTMLElementWalker | null>(null);
+  const { targetDocument } = useFluent();
 
   React.useEffect(() => {
-    if (currentElementRef.current === null && walkerRef.current) {
+    if (
+      (currentElementRef.current === null || !targetDocument?.body.contains(currentElementRef.current)) &&
+      walkerRef.current
+    ) {
       initialize(walkerRef.current);
     }
   });

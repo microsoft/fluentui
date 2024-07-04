@@ -423,13 +423,14 @@ describe('Tree', () => {
     cy.get('#btn-after-tree').should('be.focused').realPress(['Shift', 'Tab']);
     cy.get('[data-testid="item2__item1"]').should('be.focused');
   });
+
   it('should ensure roving tab indexes when children change', () => {
     const RovingTreeTest = () => {
-      const [show, setShow] = React.useState(false);
+      const [show, setShow] = React.useState(true);
       return (
         <>
-          <button onClick={() => setShow(true)} id="btn-before-tree">
-            show tree
+          <button onClick={() => setShow(s => !s)} id="btn-before-tree">
+            toggle tree
           </button>
           <TreeTest>
             {show && (
@@ -442,15 +443,25 @@ describe('Tree', () => {
                 </TreeItem>
               </>
             )}
+            <TreeItem itemType="leaf" value="item3" data-testid="item3">
+              <TreeItemLayout>level 1, item 3</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf" value="item4" data-testid="item4">
+              <TreeItemLayout>level 1, item 4</TreeItemLayout>
+            </TreeItem>
           </TreeTest>
         </>
       );
     };
 
     mount(<RovingTreeTest />);
-    cy.get('#btn-before-tree').focus().realClick();
     cy.get('[data-testid="item1"]').should('have.attr', 'tabindex', '0').focus().realPress('ArrowDown');
-    cy.get('[data-testid="item2"]').should('be.focused');
+    cy.get('[data-testid="item2"]')
+      .should('be.focused')
+      .should('have.attr', 'tabindex', '0')
+      .get('#btn-before-tree')
+      .realClick();
+    cy.get('[data-testid="item3"]').should('have.attr', 'tabindex', '0');
   });
 });
 
