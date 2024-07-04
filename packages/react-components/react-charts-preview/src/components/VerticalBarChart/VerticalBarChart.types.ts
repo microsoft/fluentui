@@ -1,5 +1,5 @@
-import { IStyle } from '@fluentui/react/lib/Styling';
-import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { string } from '@fluentui/react/lib/Styling';
+import { IRenderFunction, stringFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
@@ -63,7 +63,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+  styles?: IVerticalBarChartStyles;
 
   /**
    * The prop used to define the culture to localized the numbers
@@ -127,51 +127,51 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
    * Style for the chart label.
    * @deprecated This style cannot be customized anymore
    */
-  chartLabel?: IStyle;
+  chartLabel?: string;
 
   /**
    * Style for the line representing the domain of the x-axis.
    * @deprecated This style cannot be customized anymore
    */
-  xAxisDomain?: IStyle;
+  xAxisDomain?: string;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
    * @deprecated This style cannot be customized anymore
    */
-  xAxisTicks?: IStyle;
+  xAxisTicks?: string;
 
   /**
    * Style for the text labeling each tick along the x-axis.
    * @deprecated This style cannot be customized anymore
    */
-  xAxisText?: IStyle;
+  xAxisText?: string;
 
   /**
    * Style for the line representing the domain of the y-axis.
    * @deprecated This style cannot be customized anymore
    */
-  yAxisDomain?: IStyle;
+  yAxisDomain?: string;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
    * @deprecated This style cannot be customized anymore
    */
-  yAxisTicks?: IStyle;
+  yAxisTicks?: string;
 
   /**
    * Style for the text labeling each tick along the y-axis.
    * @deprecated This style cannot be customized anymore
    */
-  yAxisText?: IStyle;
+  yAxisText?: string;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
-  opacityChangeOnHover: IStyle;
+  opacityChangeOnHover: string;
 
   /**
    * Style for the bar labels
    */
-  barLabel: IStyle;
+  barLabel: string;
 }
