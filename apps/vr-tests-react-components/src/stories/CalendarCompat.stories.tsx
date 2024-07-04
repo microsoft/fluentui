@@ -4,7 +4,6 @@ import { Steps, StoryWright } from 'storywright';
 import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
 import type { CalendarProps } from '@fluentui/react-calendar-compat';
-
 import { getStoryVariant, RTL, TestWrapperDecorator } from '../utilities';
 
 const Calendar = (props: CalendarProps) => {
@@ -22,7 +21,7 @@ export default {
       <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     ),
   ],
-} as Meta<typeof CalendarBase>;
+} satisfies Meta<typeof CalendarBase>;
 
 type Story = StoryFn<typeof CalendarBase>;
 
