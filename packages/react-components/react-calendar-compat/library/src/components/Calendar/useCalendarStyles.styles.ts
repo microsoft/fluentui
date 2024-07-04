@@ -56,13 +56,13 @@ const useMonthPickerWrapperStyles = makeStyles({
 const useGoTodayButtonStyles = makeStyles({
   base: {
     alignSelf: 'flex-end',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Calendar-493, var(--semantic-token-Calendar-494, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
     bottom: 0,
     boxSizing: 'content-box',
-    color: tokens.colorNeutralForeground1,
+    color: `var(--ctrl-token-Calendar-495, var(--semantic-token-Calendar-496, ${tokens.colorNeutralForeground1}))`,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-Calendar-497, var(--semantic-token-Calendar-498, ${tokens.fontSizeBase200}))`,
     height: '30px',
     lineHeight: '30px',
     marginRight: '16px',
@@ -71,23 +71,23 @@ const useGoTodayButtonStyles = makeStyles({
     padding: '0 4px',
 
     '& div': {
-      fontSize: tokens.fontSizeBase200,
+      fontSize: `var(--ctrl-token-Calendar-499, var(--semantic-token-Calendar-500, ${tokens.fontSizeBase200}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorBrandForeground1,
+      backgroundColor: `var(--ctrl-token-Calendar-501, var(--semantic-token-Calendar-502, ${tokens.colorTransparentBackground}))`,
+      color: `var(--ctrl-token-Calendar-503, var(--semantic-token-Calendar-504, ${tokens.colorBrandForeground1}))`,
       cursor: 'pointer',
 
       '@media (forced-colors: active)': {
-        outline: tokens.strokeWidthThin,
-        borderRadius: tokens.borderRadiusSmall,
+        outline: `var(--ctrl-token-Calendar-505, var(--semantic-token-Calendar-506, ${tokens.strokeWidthThin}))`,
+        borderRadius: `var(--ctrl-token-Calendar-507, var(--semantic-token-Calendar-508, ${tokens.borderRadiusSmall}))`,
       },
     },
     '&:hover:active': {
-      color: tokens.colorBrandForeground2,
+      color: `var(--ctrl-token-Calendar-509, var(--semantic-token-Calendar-510, ${tokens.colorBrandForeground2}))`,
     },
     '&:disabled': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Calendar-511, var(--semantic-token-Calendar-512, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
   },

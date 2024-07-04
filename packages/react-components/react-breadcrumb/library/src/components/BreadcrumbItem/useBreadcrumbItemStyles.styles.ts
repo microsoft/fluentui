@@ -10,7 +10,7 @@ export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
 const useBreadcrumbItemResetStyles = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground2,
+  color: `var(--ctrl-token-BreadcrumbItem-491, var(--semantic-token-BreadcrumbItem-492, ${tokens.colorNeutralForeground2}))`,
   boxSizing: 'border-box',
   textWrap: 'nowrap',
 });

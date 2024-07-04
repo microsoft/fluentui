@@ -12,7 +12,7 @@ export const dialogContentClassNames: SlotClassNames<DialogContentSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeResetStyles({
-  padding: tokens.strokeWidthThick,
+  padding: `var(--ctrl-token-DialogContent-1059, var(--semantic-token-DialogContent-1060, ${tokens.strokeWidthThick}))`,
   margin: `calc(${tokens.strokeWidthThick} * -1)`,
   ...typographyStyles.body1,
   overflowY: 'auto',

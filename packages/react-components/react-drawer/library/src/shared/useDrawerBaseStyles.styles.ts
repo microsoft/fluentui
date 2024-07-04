@@ -25,8 +25,8 @@ export const drawerDefaultStyles: GriffelResetStyle = {
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: `var(--ctrl-token-DrawerBase-1, var(--semantic-token-DrawerBase-2, ${tokens.colorNeutralBackground1}))`,
+  color: `var(--ctrl-token-DrawerBase-3, var(--semantic-token-DrawerBase-4, ${tokens.colorNeutralForeground1}))`,
 };
 
 /**
@@ -35,10 +35,10 @@ export const drawerDefaultStyles: GriffelResetStyle = {
 const useDrawerStyles = makeStyles({
   /* Motion */
   entering: {
-    transitionTimingFunction: tokens.curveDecelerateMid,
+    transitionTimingFunction: `var(--ctrl-token-DrawerBase-5, var(--semantic-token-DrawerBase-6, ${tokens.curveDecelerateMid}))`,
   },
   exiting: {
-    transitionTimingFunction: tokens.curveAccelerateMin,
+    transitionTimingFunction: `var(--ctrl-token-DrawerBase-7, var(--semantic-token-DrawerBase-8, ${tokens.curveAccelerateMin}))`,
   },
   reducedMotion: {
     '@media screen and (prefers-reduced-motion: reduce)': {
@@ -97,16 +97,16 @@ export const useDrawerBottomBaseStyles = makeStyles({
 
 export const useDrawerDurationStyles = makeStyles({
   small: {
-    transitionDuration: tokens.durationGentle,
+    transitionDuration: `var(--ctrl-token-DrawerBase-9, var(--semantic-token-DrawerBase-10, ${tokens.durationGentle}))`,
   },
   medium: {
-    transitionDuration: tokens.durationSlow,
+    transitionDuration: `var(--ctrl-token-DrawerBase-11, var(--semantic-token-DrawerBase-12, ${tokens.durationSlow}))`,
   },
   large: {
-    transitionDuration: tokens.durationSlower,
+    transitionDuration: `var(--ctrl-token-DrawerBase-13, var(--semantic-token-DrawerBase-14, ${tokens.durationSlower}))`,
   },
   full: {
-    transitionDuration: tokens.durationUltraSlow,
+    transitionDuration: `var(--ctrl-token-DrawerBase-15, var(--semantic-token-DrawerBase-16, ${tokens.durationUltraSlow}))`,
   },
 });
 

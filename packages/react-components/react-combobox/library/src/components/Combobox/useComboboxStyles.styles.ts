@@ -25,9 +25,9 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-Combobox-847, var(--semantic-token-Combobox-848, ${tokens.borderRadiusMedium}))`,
     boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
+    columnGap: `var(--ctrl-token-Combobox-849, var(--semantic-token-Combobox-850, ${tokens.spacingHorizontalXXS}))`,
     display: 'inline-grid',
     gridTemplateColumns: '1fr auto',
     justifyContent: 'space-between',
@@ -50,14 +50,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--ctrl-token-Combobox-851, var(--semantic-token-Combobox-852, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--ctrl-token-Combobox-853, var(--semantic-token-Combobox-854, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--ctrl-token-Combobox-855, var(--semantic-token-Combobox-856, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--ctrl-token-Combobox-857, var(--semantic-token-Combobox-858, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -67,8 +67,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--ctrl-token-Combobox-859, var(--semantic-token-Combobox-860, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--ctrl-token-Combobox-861, var(--semantic-token-Combobox-862, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -76,13 +76,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--ctrl-token-Combobox-863, var(--semantic-token-Combobox-864, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-Combobox-865, var(--semantic-token-Combobox-866, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -100,47 +100,47 @@ const useStyles = makeStyles({
   // size variants
   small: {
     height: fieldHeights.small,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--ctrl-token-Combobox-867, var(--semantic-token-Combobox-868, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     height: fieldHeights.medium,
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: `var(--ctrl-token-Combobox-869, var(--semantic-token-Combobox-870, ${tokens.spacingHorizontalMNudge}))`,
   },
   large: {
-    columnGap: tokens.spacingHorizontalSNudge,
+    columnGap: `var(--ctrl-token-Combobox-871, var(--semantic-token-Combobox-872, ${tokens.spacingHorizontalSNudge}))`,
     height: fieldHeights.large,
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: `var(--ctrl-token-Combobox-873, var(--semantic-token-Combobox-874, ${tokens.spacingHorizontalM}))`,
   },
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Combobox-875, var(--semantic-token-Combobox-876, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--ctrl-token-Combobox-877, var(--semantic-token-Combobox-878, ${tokens.colorNeutralStrokeAccessible}))`,
   },
 
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Combobox-879, var(--semantic-token-Combobox-880, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--ctrl-token-Combobox-881, var(--semantic-token-Combobox-882, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Combobox-883, var(--semantic-token-Combobox-884, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--ctrl-token-Combobox-885, var(--semantic-token-Combobox-886, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--ctrl-token-Combobox-887, var(--semantic-token-Combobox-888, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
@@ -150,13 +150,13 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--ctrl-token-Combobox-889, var(--semantic-token-Combobox-890, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Combobox-891, var(--semantic-token-Combobox-892, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -167,17 +167,17 @@ const useStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     alignSelf: 'stretch',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--ctrl-token-Combobox-893, var(--semantic-token-Combobox-894, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
+    color: `var(--ctrl-token-Combobox-895, var(--semantic-token-Combobox-896, ${tokens.colorNeutralForeground1}))`,
+    fontFamily: `var(--ctrl-token-Combobox-897, var(--semantic-token-Combobox-898, ${tokens.fontFamilyBase}))`,
 
     '&:focus': {
       outlineStyle: 'none',
     },
 
     '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
+      color: `var(--ctrl-token-Combobox-899, var(--semantic-token-Combobox-900, ${tokens.colorNeutralForeground4}))`,
       opacity: 1,
     },
   },
@@ -196,11 +196,11 @@ const useInputStyles = makeStyles({
     padding: `0 0 0 ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--ctrl-token-Combobox-901, var(--semantic-token-Combobox-902, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--ctrl-token-Combobox-903, var(--semantic-token-Combobox-904, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--ctrl-token-Combobox-905, var(--semantic-token-Combobox-906, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
@@ -208,10 +208,10 @@ const useInputStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--ctrl-token-Combobox-907, var(--semantic-token-Combobox-908, ${tokens.colorNeutralStrokeAccessible}))`,
     cursor: 'pointer',
     display: 'block',
-    fontSize: tokens.fontSizeBase500,
+    fontSize: `var(--ctrl-token-Combobox-909, var(--semantic-token-Combobox-910, ${tokens.fontSizeBase500}))`,
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -235,18 +235,18 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--ctrl-token-Combobox-911, var(--semantic-token-Combobox-912, ${tokens.spacingHorizontalXXS}))`,
   },
   medium: {
     fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--ctrl-token-Combobox-913, var(--semantic-token-Combobox-914, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    marginLeft: `var(--ctrl-token-Combobox-915, var(--semantic-token-Combobox-916, ${tokens.spacingHorizontalSNudge}))`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Combobox-917, var(--semantic-token-Combobox-918, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 });

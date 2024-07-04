@@ -10,12 +10,12 @@ export const treeClassNames: SlotClassNames<TreeSlots> = {
 const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
-  rowGap: tokens.spacingVerticalXXS,
+  rowGap: `var(--ctrl-token-Tree-2853, var(--semantic-token-Tree-2854, ${tokens.spacingVerticalXXS}))`,
 });
 
 const useStyles = makeStyles({
   subtree: {
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: `var(--ctrl-token-Tree-2855, var(--semantic-token-Tree-2856, ${tokens.spacingVerticalXXS}))`,
   },
 });
 

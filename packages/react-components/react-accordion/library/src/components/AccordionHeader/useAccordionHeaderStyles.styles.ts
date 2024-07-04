@@ -27,14 +27,14 @@ const useStyles = makeStyles({
   },
   focusIndicator: createFocusOutlineStyle(),
   root: {
-    color: tokens.colorNeutralForeground1,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--ctrl-token-AccordionHeader-17, var(--semantic-token-AccordionHeader-18, ${tokens.colorNeutralForeground1}))`,
+    backgroundColor: `var(--ctrl-token-AccordionHeader-19, var(--semantic-token-AccordionHeader-20, ${tokens.colorTransparentBackground}))`,
     margin: '0',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--ctrl-token-AccordionHeader-21, var(--semantic-token-AccordionHeader-22, ${tokens.borderRadiusMedium}))`,
   },
   rootDisabled: {
     backgroundImage: 'none',
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-AccordionHeader-23, var(--semantic-token-AccordionHeader-24, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   rootInline: {
     display: 'inline-block',
@@ -53,24 +53,24 @@ const useStyles = makeStyles({
   },
   buttonSmall: {
     minHeight: '32px',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--ctrl-token-AccordionHeader-25, var(--semantic-token-AccordionHeader-26, ${tokens.fontSizeBase200}))`,
   },
   buttonLarge: {
-    lineHeight: tokens.lineHeightBase400,
-    fontSize: tokens.fontSizeBase400,
+    lineHeight: `var(--ctrl-token-AccordionHeader-27, var(--semantic-token-AccordionHeader-28, ${tokens.lineHeightBase400}))`,
+    fontSize: `var(--ctrl-token-AccordionHeader-29, var(--semantic-token-AccordionHeader-30, ${tokens.fontSizeBase400}))`,
   },
   buttonExtraLarge: {
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    lineHeight: `var(--ctrl-token-AccordionHeader-31, var(--semantic-token-AccordionHeader-32, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--ctrl-token-AccordionHeader-33, var(--semantic-token-AccordionHeader-34, ${tokens.fontSizeBase500}))`,
   },
   buttonInline: {
     display: 'inline-flex',
   },
   buttonExpandIconEndNoIcon: {
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: `var(--ctrl-token-AccordionHeader-35, var(--semantic-token-AccordionHeader-36, ${tokens.spacingHorizontalM}))`,
   },
   buttonExpandIconEnd: {
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: `var(--ctrl-token-AccordionHeader-37, var(--semantic-token-AccordionHeader-38, ${tokens.spacingHorizontalMNudge}))`,
   },
   buttonDisabled: {
     cursor: 'not-allowed',
@@ -79,11 +79,11 @@ const useStyles = makeStyles({
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    lineHeight: `var(--ctrl-token-AccordionHeader-39, var(--semantic-token-AccordionHeader-40, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--ctrl-token-AccordionHeader-41, var(--semantic-token-AccordionHeader-42, ${tokens.fontSizeBase500}))`,
   },
   expandIconStart: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: `var(--ctrl-token-AccordionHeader-43, var(--semantic-token-AccordionHeader-44, ${tokens.spacingHorizontalS}))`,
   },
   expandIconEnd: {
     flexGrow: 1,
@@ -91,15 +91,15 @@ const useStyles = makeStyles({
     flexBasis: '0%',
     display: 'flex',
     justifyContent: 'flex-end',
-    paddingLeft: tokens.spacingHorizontalS,
+    paddingLeft: `var(--ctrl-token-AccordionHeader-45, var(--semantic-token-AccordionHeader-46, ${tokens.spacingHorizontalS}))`,
   },
   icon: {
     height: '100%',
     display: 'flex',
     alignItems: 'center',
-    paddingRight: tokens.spacingHorizontalS,
-    lineHeight: tokens.lineHeightBase500,
-    fontSize: tokens.fontSizeBase500,
+    paddingRight: `var(--ctrl-token-AccordionHeader-47, var(--semantic-token-AccordionHeader-48, ${tokens.spacingHorizontalS}))`,
+    lineHeight: `var(--ctrl-token-AccordionHeader-49, var(--semantic-token-AccordionHeader-50, ${tokens.lineHeightBase500}))`,
+    fontSize: `var(--ctrl-token-AccordionHeader-51, var(--semantic-token-AccordionHeader-52, ${tokens.fontSizeBase500}))`,
   },
 });
 

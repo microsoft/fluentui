@@ -39,28 +39,28 @@ const useRootStyles = makeStyles({
 
 const useLabelStyles = makeStyles({
   vertical: {
-    paddingTop: tokens.spacingVerticalXXS,
-    paddingBottom: tokens.spacingVerticalXXS,
-    marginBottom: tokens.spacingVerticalXXS,
+    paddingTop: `var(--ctrl-token-Field-1103, var(--semantic-token-Field-1104, ${tokens.spacingVerticalXXS}))`,
+    paddingBottom: `var(--ctrl-token-Field-1105, var(--semantic-token-Field-1106, ${tokens.spacingVerticalXXS}))`,
+    marginBottom: `var(--ctrl-token-Field-1107, var(--semantic-token-Field-1108, ${tokens.spacingVerticalXXS}))`,
   },
 
   verticalLarge: {
     paddingTop: '1px',
     paddingBottom: '1px',
-    marginBottom: tokens.spacingVerticalXS,
+    marginBottom: `var(--ctrl-token-Field-1109, var(--semantic-token-Field-1110, ${tokens.spacingVerticalXS}))`,
   },
 
   horizontal: {
-    paddingTop: tokens.spacingVerticalSNudge,
-    paddingBottom: tokens.spacingVerticalSNudge,
-    marginRight: tokens.spacingHorizontalM,
+    paddingTop: `var(--ctrl-token-Field-1111, var(--semantic-token-Field-1112, ${tokens.spacingVerticalSNudge}))`,
+    paddingBottom: `var(--ctrl-token-Field-1113, var(--semantic-token-Field-1114, ${tokens.spacingVerticalSNudge}))`,
+    marginRight: `var(--ctrl-token-Field-1115, var(--semantic-token-Field-1116, ${tokens.spacingHorizontalM}))`,
     gridRowStart: '1',
     gridRowEnd: '-1',
   },
 
   horizontalSmall: {
-    paddingTop: tokens.spacingVerticalXS,
-    paddingBottom: tokens.spacingVerticalXS,
+    paddingTop: `var(--ctrl-token-Field-1117, var(--semantic-token-Field-1118, ${tokens.spacingVerticalXS}))`,
+    paddingBottom: `var(--ctrl-token-Field-1119, var(--semantic-token-Field-1120, ${tokens.spacingVerticalXS}))`,
   },
 
   horizontalLarge: {
@@ -72,14 +72,14 @@ const useLabelStyles = makeStyles({
 });
 
 const useSecondaryTextBaseClassName = makeResetStyles({
-  marginTop: tokens.spacingVerticalXXS,
-  color: tokens.colorNeutralForeground3,
+  marginTop: `var(--ctrl-token-Field-1121, var(--semantic-token-Field-1122, ${tokens.spacingVerticalXXS}))`,
+  color: `var(--ctrl-token-Field-1123, var(--semantic-token-Field-1124, ${tokens.colorNeutralForeground3}))`,
   ...typographyStyles.caption1,
 });
 
 const useSecondaryTextStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: `var(--ctrl-token-Field-1125, var(--semantic-token-Field-1126, ${tokens.colorPaletteRedForeground1}))`,
   },
 
   withIcon: {
@@ -93,7 +93,7 @@ const useValidationMessageIconBaseClassName = makeResetStyles({
   fontSize: iconSize,
   // Negative left margin puts the icon in the gutter of the validation message div's withIcon style.
   marginLeft: `calc(-${iconSize} - ${tokens.spacingHorizontalXS})`,
-  marginRight: tokens.spacingHorizontalXS,
+  marginRight: `var(--ctrl-token-Field-1127, var(--semantic-token-Field-1128, ${tokens.spacingHorizontalXS}))`,
   // Line height of 0 prevents the verticalAlign from affecting the line height of the text.
   lineHeight: '0',
   // Negative verticalAlign shifts the inline icon down to align with the text (effectively top padding).
@@ -102,13 +102,13 @@ const useValidationMessageIconBaseClassName = makeResetStyles({
 
 const useValidationMessageIconStyles = makeStyles({
   error: {
-    color: tokens.colorPaletteRedForeground1,
+    color: `var(--ctrl-token-Field-1129, var(--semantic-token-Field-1130, ${tokens.colorPaletteRedForeground1}))`,
   },
   warning: {
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    color: `var(--ctrl-token-Field-1131, var(--semantic-token-Field-1132, ${tokens.colorPaletteDarkOrangeForeground1}))`,
   },
   success: {
-    color: tokens.colorPaletteGreenForeground1,
+    color: `var(--ctrl-token-Field-1133, var(--semantic-token-Field-1134, ${tokens.colorPaletteGreenForeground1}))`,
   },
 });
 

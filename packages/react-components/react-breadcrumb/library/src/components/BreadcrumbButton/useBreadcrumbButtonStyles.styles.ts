@@ -27,25 +27,25 @@ const useIconStyles = makeStyles({
     height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
     lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
     width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    marginRight: tokens.spacingHorizontalXS,
+    marginRight: `var(--ctrl-token-BreadcrumbButton-473, var(--semantic-token-BreadcrumbButton-474, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--ctrl-token-BreadcrumbButton-475, var(--semantic-token-BreadcrumbButton-476, ${tokens.lineHeightBase200}))`,
   },
   medium: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--ctrl-token-BreadcrumbButton-477, var(--semantic-token-BreadcrumbButton-478, ${tokens.lineHeightBase400}))`,
   },
   large: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--ctrl-token-BreadcrumbButton-479, var(--semantic-token-BreadcrumbButton-480, ${tokens.lineHeightBase600}))`,
   },
 });
 
 const defaultButtonStyles = {
-  backgroundColor: tokens.colorTransparentBackground,
-  color: tokens.colorNeutralForeground2,
+  backgroundColor: `var(--ctrl-token-BreadcrumbButton-481, var(--semantic-token-BreadcrumbButton-482, ${tokens.colorTransparentBackground}))`,
+  color: `var(--ctrl-token-BreadcrumbButton-483, var(--semantic-token-BreadcrumbButton-484, ${tokens.colorNeutralForeground2}))`,
   cursor: 'auto',
 };
 
@@ -70,17 +70,17 @@ const useStyles = makeStyles({
   small: {
     height: '24px',
     ...typographyStyles.caption1,
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--ctrl-token-BreadcrumbButton-485, var(--semantic-token-BreadcrumbButton-486, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     height: '32px',
     ...typographyStyles.body1,
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--ctrl-token-BreadcrumbButton-487, var(--semantic-token-BreadcrumbButton-488, ${tokens.spacingHorizontalSNudge}))`,
   },
   large: {
     height: '40px',
     ...typographyStyles.body2,
-    padding: tokens.spacingHorizontalS,
+    padding: `var(--ctrl-token-BreadcrumbButton-489, var(--semantic-token-BreadcrumbButton-490, ${tokens.spacingHorizontalS}))`,
   },
   current: {
     ':hover': {

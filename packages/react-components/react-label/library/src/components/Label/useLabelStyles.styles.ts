@@ -13,40 +13,40 @@ export const labelClassNames: SlotClassNames<LabelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    color: tokens.colorNeutralForeground1,
+    fontFamily: `var(--ctrl-token-Label-1239, var(--semantic-token-Label-1240, ${tokens.fontFamilyBase}))`,
+    color: `var(--ctrl-token-Label-1241, var(--semantic-token-Label-1242, ${tokens.colorNeutralForeground1}))`,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--ctrl-token-Label-1243, var(--semantic-token-Label-1244, ${tokens.colorNeutralForegroundDisabled}))`,
     '@media (forced-colors: active)': {
       color: 'GrayText',
     },
   },
 
   required: {
-    color: tokens.colorPaletteRedForeground3,
-    paddingLeft: tokens.spacingHorizontalXS,
+    color: `var(--ctrl-token-Label-1245, var(--semantic-token-Label-1246, ${tokens.colorPaletteRedForeground3}))`,
+    paddingLeft: `var(--ctrl-token-Label-1247, var(--semantic-token-Label-1248, ${tokens.spacingHorizontalXS}))`,
   },
 
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: `var(--ctrl-token-Label-1249, var(--semantic-token-Label-1250, ${tokens.fontSizeBase200}))`,
+    lineHeight: `var(--ctrl-token-Label-1251, var(--semantic-token-Label-1252, ${tokens.lineHeightBase200}))`,
   },
 
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--ctrl-token-Label-1253, var(--semantic-token-Label-1254, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--ctrl-token-Label-1255, var(--semantic-token-Label-1256, ${tokens.lineHeightBase300}))`,
   },
 
   large: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--ctrl-token-Label-1257, var(--semantic-token-Label-1258, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--ctrl-token-Label-1259, var(--semantic-token-Label-1260, ${tokens.lineHeightBase400}))`,
+    fontWeight: `var(--ctrl-token-Label-1261, var(--semantic-token-Label-1262, ${tokens.fontWeightSemibold}))`,
   },
 
   semibold: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--ctrl-token-Label-1263, var(--semantic-token-Label-1264, ${tokens.fontWeightSemibold}))`,
   },
 });
 

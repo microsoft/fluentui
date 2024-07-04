@@ -45,7 +45,7 @@ const useStyles = makeStyles({
       left: '50%',
       top: 0,
       bottom: 0,
-      backgroundColor: tokens.colorNeutralStroke1,
+      backgroundColor: `var(--ctrl-token-TableResizeHandle-1975, var(--semantic-token-TableResizeHandle-1976, ${tokens.colorNeutralStroke1}))`,
     },
   },
 });
