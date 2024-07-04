@@ -10,5 +10,6 @@
         "jestConfig": "tools/eslint-rules/jest.config.ts"
       }
     }
-  }
+  },
+  "tags": ["platform:node", "tools"]
 }
