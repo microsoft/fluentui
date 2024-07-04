@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuButton is styled correctly when aria-expanded is a string",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

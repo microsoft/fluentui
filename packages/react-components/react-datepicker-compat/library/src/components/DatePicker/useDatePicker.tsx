@@ -364,7 +364,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': open ? popupSurfaceId : undefined,
       ref: triggerWrapperRef,
     },
     elementType: 'span',
@@ -419,7 +418,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   root.onFocus = useEventCallback(mergeCallbacks(root.onFocus, onInputFocus));
   root.onClick = useEventCallback(mergeCallbacks(root.onClick, onInputClick));
 
-  const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
+  const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: true });
   const popupSurface = open
     ? slot.optional(props.popupSurface, {
         renderByDefault: true,

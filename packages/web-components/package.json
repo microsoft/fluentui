@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.36",
+  "version": "3.0.0-beta.40",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -86,6 +86,10 @@
       "types": "./dist/dts/drawer-body/define.d.ts",
       "default": "./dist/esm/drawer-body/define.js"
     },
+    "./field.js": {
+      "types": "./dist/dts/field/define.d.ts",
+      "default": "./dist/esm/field/define.js"
+    },
     "./image.js": {
       "types": "./dist/dts/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
@@ -114,6 +118,10 @@
       "types": "./dist/dts/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
+    "./message-bar.js": {
+      "types": "./dist/dts/message-bar/define.d.ts",
+      "default": "./dist/esm/message-bar/define.js"
+    },
     "./progress-bar.js": {
       "types": "./dist/dts/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
@@ -125,6 +133,10 @@
     "./radio-group.js": {
       "types": "./dist/dts/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
+    },
+    "./rating-display.js": {
+      "types": "./dist/dts/rating-display/define.d.ts",
+      "default": "./dist/esm/rating-display/define.js"
     },
     "./slider.js": {
       "types": "./dist/dts/slider/define.d.ts",
@@ -166,6 +178,10 @@
       "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
     },
+    "./utilities.js": {
+      "types": "./dist/dts/utils/index.d.ts",
+      "default": "./dist/esm/utils/index.js"
+    },
     "./package.json": "./package.json"
   },
   "sideEffects": [
@@ -181,6 +197,7 @@
     "./dist/esm/dialog/define.js",
     "./dist/esm/dialog-body/define.js",
     "./dist/esm/divider/define.js",
+    "./dist/esm/field/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
     "./dist/esm/link/define.js",
@@ -191,6 +208,7 @@
     "./dist/esm/progress-bar/define.js",
     "./dist/esm/radio/define.js",
     "./dist/esm/radio-group/define.js",
+    "./dist/esm/rating-display/define.js",
     "./dist/esm/slider/define.js",
     "./dist/esm/spinner/define.js",
     "./dist/esm/switch/define.js",
@@ -214,7 +232,7 @@
     "build": "yarn compile && yarn rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
+    "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
     "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
@@ -225,9 +243,9 @@
   },
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",
+    "@tensile-perf/web-components": "~0.2.0",
     "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
-    "@tensile-perf/web-components": "~0.1.15",
     "chromedriver": "^125.0.0"
   },
   "dependencies": {

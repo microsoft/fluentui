@@ -2,6 +2,21 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:54 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.40",
+      "version": "9.0.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-jsx-runtime",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:45 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.39",
       "version": "9.0.39",

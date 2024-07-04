@@ -2,6 +2,35 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:33 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.1",
+      "version": "9.22.1",
+      "comments": {
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b26b475efd80cf7bac3e6806254245115e7a5a5d",
+            "comment": "docs: update wording for legacyTrapFocus"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:17 GMT",
       "tag": "@fluentui/react-tabster_v9.22.0",
       "version": "9.22.0",

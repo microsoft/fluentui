@@ -1,6 +1,8 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { MenuList } from '../menu-list/menu-list.js';
+import { MenuItem } from '../menu-item/menu-item.js';
+import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu component that provides a customizable menu element.
@@ -154,7 +156,16 @@ export class Menu extends FASTElement {
    * Closes the menu.
    * @public
    */
-  public closeMenu = () => {
+  public closeMenu = (event?: Event) => {
+    // Keep menu open if the event target is a menu item checkbox or radio
+    if (
+      event?.target instanceof MenuItem &&
+      (event.target.getAttribute('role') === MenuItemRole.menuitemcheckbox ||
+        event.target.getAttribute('role') === MenuItemRole.menuitemradio)
+    ) {
+      return;
+    }
+
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -238,9 +249,9 @@ export class Menu extends FASTElement {
    */
   public persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void {
     if (!newValue) {
-      this._menuList?.addEventListener('click', this.closeMenu);
+      this._menuList?.addEventListener('change', this.closeMenu);
     } else {
-      this._menuList?.removeEventListener('click', this.closeMenu);
+      this._menuList?.removeEventListener('change', this.closeMenu);
     }
   }
 
@@ -288,7 +299,7 @@ export class Menu extends FASTElement {
     this._trigger?.addEventListener('keydown', this.triggerKeydownHandler);
 
     if (!this.persistOnItemClick) {
-      this._menuList?.addEventListener('click', this.closeMenu);
+      this._menuList?.addEventListener('change', this.closeMenu);
     }
     if (this.openOnHover) {
       this._trigger?.addEventListener('mouseover', this.openMenu);
@@ -313,7 +324,7 @@ export class Menu extends FASTElement {
 
     this._trigger?.removeEventListener('keydown', this.triggerKeydownHandler);
     if (!this.persistOnItemClick) {
-      this._menuList?.removeEventListener('click', this.closeMenu);
+      this._menuList?.removeEventListener('change', this.closeMenu);
     }
     if (this.openOnHover) {
       this._trigger?.removeEventListener('mouseover', this.openMenu);
@@ -349,7 +360,11 @@ export class Menu extends FASTElement {
         break;
       case keyTab:
         if (this._open) this.closeMenu();
-        if (e.shiftKey) this.focusTrigger();
+        if (e.shiftKey && e.composedPath()[0] !== this._trigger) {
+          this.focusTrigger();
+        } else if (e.shiftKey) {
+          return true;
+        }
       default:
         return true;
     }

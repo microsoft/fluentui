@@ -2,6 +2,51 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:29 GMT",
+      "tag": "@fluentui/react-select_v9.1.80",
+      "version": "9.1.80",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "52c24aa19c355d1843e5b101861bbdbce1a1f000",
+            "comment": "fix: underline appearance is readable in dark themes"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "1e1398cb66c56c6f67c33c33a54949cd24190a35",
+            "comment": "chore: Update react-icons package to ^2.0.245"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.1.69",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.40",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:17 GMT",
       "tag": "@fluentui/react-select_v9.1.79",
       "version": "9.1.79",

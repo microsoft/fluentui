@@ -68,8 +68,6 @@ import {
   warningState,
 } from '../states/index.js';
 
-const textPadding = spacingHorizontalXXS;
-
 export const badgeBaseStyles = css.partial`
   ${display('inline-flex')} :host {
     position: relative;
@@ -82,7 +80,7 @@ export const badgeBaseStyles = css.partial`
     line-height: ${lineHeightBase200};
     min-width: 20px;
     height: 20px;
-    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
+    padding-inline: calc(${spacingHorizontalXS} + ${spacingHorizontalXXS});
     border-radius: ${borderRadiusCircular};
     border-color: ${colorTransparentStroke};
     background-color: ${colorBrandBackground};
@@ -140,7 +138,7 @@ export const badgeSizeStyles = css.partial`
     height: 16px;
     font-size: ${fontSizeBase100};
     line-height: ${lineHeightBase100};
-    padding-inline: calc(${spacingHorizontalXXS} + ${textPadding});
+    padding-inline: calc(${spacingHorizontalXXS} + ${spacingHorizontalXXS});
   }
   :host(${smallState}) ::slotted(svg) {
     font-size: 12px;
@@ -150,7 +148,7 @@ export const badgeSizeStyles = css.partial`
     height: 24px;
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
-    padding-inline: calc(${spacingHorizontalXS} + ${textPadding});
+    padding-inline: calc(${spacingHorizontalXS} + ${spacingHorizontalXXS});
   }
   :host(${largeState}) ::slotted(svg) {
     font-size: 16px;
@@ -160,7 +158,7 @@ export const badgeSizeStyles = css.partial`
     height: 32px;
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
-    padding-inline: calc(${spacingHorizontalSNudge} + ${textPadding});
+    padding-inline: calc(${spacingHorizontalSNudge} + ${spacingHorizontalXXS});
   }
   :host(${extraLargeState}) ::slotted(svg) {
     font-size: 20px;

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:27 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.4",
+      "version": "9.15.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:38 GMT",
       "tag": "@fluentui/react-positioning_v9.15.3",
       "version": "9.15.3",

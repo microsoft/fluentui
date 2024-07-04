@@ -95,3 +95,13 @@ export {
   useNavSectionHeaderStyles_unstable,
   useNavSectionHeader_unstable,
 } from './NavSectionHeader';
+export type { NavDividerProps, NavDividerState } from './NavDivider';
+export { NavDivider, navDividerClassNames, useNavDividerStyles_unstable, useNavDivider_unstable } from './NavDivider';
+export type { AppNodeProps, AppNodeSlots, AppNodeState } from './AppNode';
+export {
+  AppNode,
+  appNodeClassNames,
+  renderAppNode_unstable,
+  useAppNodeStyles_unstable,
+  useAppNode_unstable,
+} from './AppNode';
