@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-positioning): export fallbackPositions prop",
+  "packageName": "@fluentui/react-positioning",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
