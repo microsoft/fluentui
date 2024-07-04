@@ -4,5 +4,5 @@
   "projectType": "library",
   "sourceRoot": "packages/react-conformance/src",
   "implicitDependencies": [],
-  "tags": ["vNext", "platform:node"]
+  "tags": ["vNext", "platform:node", "tools"]
 }
