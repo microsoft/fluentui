@@ -5,7 +5,7 @@
   "implicitDependencies": [],
   "tags": ["react-northstar"],
   "targets": {
-    "build": {
+    "bundle": {
       "dependsOn": [
         {
           "projects": ["react-northstar"],

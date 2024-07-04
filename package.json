@@ -13,7 +13,7 @@
   "scripts": {
     "dedupe": "npx yarn-deduplicate --strategy fewer",
     "build": "lage build --verbose",
-    "buildci": "lage build test lint type-check test-ssr verify-packaging --verbose",
+    "buildci": "lage build test lint type-check test-ssr test-integration verify-packaging --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "bundle": "lage bundle --verbose",

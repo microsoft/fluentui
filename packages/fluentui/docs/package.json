@@ -66,16 +66,15 @@
     "access": "public"
   },
   "scripts": {
-    "build": "gulp build:docs",
-    "prebuild:storybook": "lage build:info --to @fluentui/react-northstar @fluentui/react-component-ref @fluentui/react-bindings",
-    "build:storybook": "build-storybook --no-manager-cache -o dist/storybook",
+    "bundle": "gulp build:docs",
+    "prebuild-storybook": "lage build:info --to react-northstar react-component-ref react-bindings",
+    "build-storybook": "build-storybook --no-manager-cache -o dist/storybook",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
-    "prestart:storybook": "lage build:info --to @fluentui/react-northstar @fluentui/react-component-ref @fluentui/react-bindings",
+    "prestart:storybook": "lage build:info --to react-northstar react-component-ref react-bindings",
     "start:storybook": "start-storybook",
-    "vr:build": "yarn build:storybook",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }

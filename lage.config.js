@@ -9,16 +9,28 @@ module.exports = {
     // adding temporary back until import plugin rule is resolved https://github.com/microsoft/fluentui/issues/27727
     lint: ['build'],
     clean: [],
-    test: ['build'],
     'generate-api': ['^generate-api'],
+    test: ['build'],
+    'test-integration': ['build'],
     'test-ssr': [],
+    'test-vr': ['build-storybook'],
+    'test-perf': ['bundle'],
     'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
-    '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
+    '@fluentui/docs#bundle': ['@fluentui/react-northstar#build:info'],
     'verify-packaging': ['build'],
     e2e: [],
     '@fluentui/web-components#e2e': ['build-storybook'],
+
+    '@fluentui/ssr-tests#test-ssr': ['bundle'],
+    // 🚨 antipattern: ssr-test (application) uses code from public-docsite-resources(application), thus we need to trigger application dependency "bundle"
+    '@fluentui/ssr-tests#bundle': ['^bundle'],
+
+    '@fluentui/perf-test-react-components#bundle': [],
+    '@fluentui/perf-test-northstar#bundle': [],
+    '@fluentui/perf-test#bundle#bundle': [],
+    '@fluentui/perf#test-perf': [],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
