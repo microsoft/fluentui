@@ -27,8 +27,8 @@ test.describe('Slider', () => {
   test('should have a default role of `slider`', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
     await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
@@ -36,8 +36,8 @@ test.describe('Slider', () => {
   test('should have default min and max if `min` and `max` attributes are not set', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveJSProperty('minAsNumber', 0);
@@ -61,8 +61,8 @@ test.describe('Slider', () => {
   test('should set a `tabindex` of 0', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveAttribute('tabindex', '0');
@@ -71,8 +71,8 @@ test.describe('Slider', () => {
   test('should set a default `elementInternals.ariaOrientation` when `orientation` is not defined', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaOrientation', 'horizontal');
@@ -81,8 +81,8 @@ test.describe('Slider', () => {
   test('should initialize to the initial value if no value property is set', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveJSProperty('value', '50');
@@ -91,8 +91,8 @@ test.describe('Slider', () => {
   test('should NOT set default `elementInternals.ariaDisabled` when `disabled` is not defined', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
@@ -101,8 +101,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaDisabled` when `disabled` is present', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider disabled></fluent-slider>
-        `;
+        <fluent-slider disabled></fluent-slider>
+      `;
     });
 
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
@@ -111,8 +111,8 @@ test.describe('Slider', () => {
   test('should set the `elementInternals.ariaDisabled` when `disabled` value is true', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -131,8 +131,8 @@ test.describe('Slider', () => {
   test('should NOT set a tabindex when `disabled` value is true', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -177,8 +177,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaOrientation` equal to the `orientation` value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -197,8 +197,8 @@ test.describe('Slider', () => {
   test('should set direction equal to the `direction` value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-              <fluent-slider></fluent-slider>
-          `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -231,8 +231,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaValueNow` with the `value` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -245,8 +245,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaValueMin` with the `min` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -259,8 +259,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaValueMax` attribute with the `max` property when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -274,8 +274,8 @@ test.describe('Slider', () => {
     test('should allow setting value with number', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider></fluent-slider>
-            `;
+          <fluent-slider></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -288,8 +288,8 @@ test.describe('Slider', () => {
     test('should allow reading value as number', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider></fluent-slider>
-            `;
+          <fluent-slider></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -303,8 +303,8 @@ test.describe('Slider', () => {
   test('should set `elementInternals.ariaValueText` attribute with the result of the valueTextFormatter() method', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -325,8 +325,8 @@ test.describe('Slider', () => {
     test('should increment the value when the `increment()` method is invoked', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
-            `;
+          <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -340,8 +340,8 @@ test.describe('Slider', () => {
     test('should decrement the value when the `decrement()` method is invoked', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
-            `;
+          <fluent-slider min="0" max="100" value="50" step="5"></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -355,8 +355,8 @@ test.describe('Slider', () => {
     test('should increment the value when the `increment()` method is invoked and step is not provided', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50"></fluent-slider>
-            `;
+          <fluent-slider min="0" max="100" value="50"></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -370,8 +370,8 @@ test.describe('Slider', () => {
     test('should decrement the value when the `decrement()` method is invoked and step is not provided', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <fluent-slider min="0" max="100" value="50"></fluent-slider>
-            `;
+          <fluent-slider min="0" max="100" value="50"></fluent-slider>
+        `;
       });
 
       await element.evaluate((node: Slider) => {
@@ -386,10 +386,10 @@ test.describe('Slider', () => {
   test('should increase or decrease the slider value on arrow left/right keys', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <form>
-                <fluent-slider min="0" max="100"></fluent-slider>
-            </form>
-        `;
+        <form>
+            <fluent-slider min="0" max="100"></fluent-slider>
+        </form>
+      `;
     });
 
     await element.waitFor({ state: 'attached' });
@@ -416,10 +416,10 @@ test.describe('Slider', () => {
   test('should increase or decrease the slider value on arrow up/down keys', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <form>
-                <fluent-slider min="0" max="100"></fluent-slider>
-            </form>
-        `;
+        <form>
+            <fluent-slider min="0" max="100"></fluent-slider>
+        </form>
+      `;
     });
 
     await element.waitFor({ state: 'attached' });
@@ -446,8 +446,8 @@ test.describe('Slider', () => {
   test('should constrain and normalize the value between `min` and `max` when the value is out of range', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider min="0" max="100"></fluent-slider>
-        `;
+        <fluent-slider min="0" max="100"></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -465,15 +465,57 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('value', '0');
   });
 
-  test.fixme('should return string values for `min`, `max`, and `step` regardless the value types were used to set', async () => {
-    // TODO
+  test('should return string values for `min`, `max`, and `step` regardless the value types were used to set', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-slider min="10" max="100" step="20"></fluent-slider>
+      `;
+    });
+
+    await element.evaluate((node: Slider) => {
+      // @ts-expect-error test incorrect value type handling
+      node.min = 20;
+      // @ts-expect-error test incorrect value type handling
+      node.max = 110;
+      // @ts-expect-error test incorrect value type handling
+      node.step = 10;
+    });
+
+    await expect(element).toHaveJSProperty('min', '20');
+    await expect(element).not.toHaveJSProperty('min', 20);
+    await expect(element).toHaveJSProperty('max', '110');
+    await expect(element).not.toHaveJSProperty('max', 110);
+    await expect(element).toHaveJSProperty('step', '10');
+    await expect(element).not.toHaveJSProperty('step', 10);
+  });
+
+  test('should set to empty strings if `min`, `max`, and `step` to be set as invalid values', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-slider min="10" max="200" step="20"></fluent-slider>
+      `;
+    });
+
+    await element.evaluate((node: Slider) => {
+      node.min = undefined;
+      // @ts-expect-error test incorrect value type handling
+      node.max = null;
+      node.step = 'not a number';
+    });
+
+    await expect(element).toHaveJSProperty('min', '');
+    await expect(element).toHaveJSProperty('minAsNumber', 0);
+    await expect(element).toHaveJSProperty('max', '');
+    await expect(element).toHaveJSProperty('maxAsNumber', 100);
+    await expect(element).toHaveJSProperty('step', '');
+    await expect(element).toHaveJSProperty('stepAsNumber', 1);
   });
 
   test('should initialize to the provided value attribute if set pre-connection', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider value="4"></fluent-slider>
-        `;
+        <fluent-slider value="4"></fluent-slider>
+      `;
     });
 
     await element.waitFor({ state: 'attached' });
@@ -498,8 +540,8 @@ test.describe('Slider', () => {
   test('should initialize to the provided value attribute if set post-connection', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider></fluent-slider>
-        `;
+        <fluent-slider></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -513,8 +555,8 @@ test.describe('Slider', () => {
   test('should update the `stepMultiplier` when the `step` attribute has been updated', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-slider step="2" value="4"></fluent-slider>
-        `;
+        <fluent-slider step="2" value="4"></fluent-slider>
+      `;
     });
 
     await element.evaluate((node: Slider) => {
@@ -535,10 +577,10 @@ test.describe('Slider', () => {
     test('should reset its `value` property to the midpoint if no `value` attribute is set', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider></fluent-slider>
-                </form>
-            `;
+          <form>
+            <fluent-slider></fluent-slider>
+          </form>
+        `;
       });
 
       const form = page.locator('form');
@@ -559,10 +601,10 @@ test.describe('Slider', () => {
     test('should reset its `value` property to match the `value` attribute when it is set', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider min="0" max="100"></fluent-slider>
-                </form>
-            `;
+          <form>
+            <fluent-slider min="0" max="100"></fluent-slider>
+          </form>
+        `;
       });
 
       const form = page.locator('form');
@@ -588,10 +630,10 @@ test.describe('Slider', () => {
     test('should put the control into a clean state, where the value attribute changes the value property prior to user or programmatic interaction', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                <form>
-                    <fluent-slider min="0" max="100"></fluent-slider>
-                </form>
-            `;
+          <form>
+            <fluent-slider min="0" max="100"></fluent-slider>
+          </form>
+        `;
       });
 
       const form = page.locator('form');
