@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 04:08:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.40",
+      "version": "3.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f02ae0b454bc26f4d3eba0d17a5024a1bb40a0c5",
+            "comment": "feat: update radio and radio-group to use ElementInternals for form association"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "0777a2f8fbe7ea899f8f189a9729efe30a0ae038",
+            "comment": "fix for setTheme in Firefox"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "61b0027b57f2a940dac767e91e842ab6e8f7025e",
+            "comment": "refactor(web-components): cleanup accordion and convert to element internals for states"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2024 04:08:00 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.39",
       "version": "3.0.0-beta.39",

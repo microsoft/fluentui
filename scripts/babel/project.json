@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-babel",
+  "name": "scripts-babel",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/babel/src",
   "projectType": "library",

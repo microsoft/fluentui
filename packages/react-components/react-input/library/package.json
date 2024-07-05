@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-input",
-  "version": "9.4.80",
+  "version": "9.4.81",
   "description": "Fluent UI React Input component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -44,7 +44,7 @@
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
+    "react": "^8.119.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {

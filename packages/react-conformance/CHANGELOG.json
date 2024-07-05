@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:34 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.0",
+      "version": "0.19.0",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add nx-project-tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Feb 2024 14:22:19 GMT",
       "tag": "@fluentui/react-conformance_v0.19.0",
       "version": "0.19.0",

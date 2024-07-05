@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/jest-serializer-merge-styles",
+  "name": "jest-serializer-merge-styles",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: remove npmScope from project name",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

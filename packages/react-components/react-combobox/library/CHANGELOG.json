@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:34 GMT",
+      "tag": "@fluentui/react-combobox_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align combobox and dropdown components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:45 GMT",
       "tag": "@fluentui/react-combobox_v9.12.0",
       "version": "9.12.0",

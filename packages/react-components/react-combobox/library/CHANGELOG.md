@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Mon, 01 Jul 2024 20:30:45 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.0)
+
+Thu, 04 Jul 2024 15:14:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.12.0..@fluentui/react-combobox_v9.13.0)
+
+### Minor changes
+
+- vertically align combobox and dropdown components ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.12.0)
 

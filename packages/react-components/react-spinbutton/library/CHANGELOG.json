@@ -2,6 +2,21 @@
   "name": "@fluentui/react-spinbutton",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:35 GMT",
+      "tag": "@fluentui/react-spinbutton_v9.2.81",
+      "version": "9.2.81",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align spinbutton component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:30 GMT",
       "tag": "@fluentui/react-spinbutton_v9.2.80",
       "version": "9.2.80",
