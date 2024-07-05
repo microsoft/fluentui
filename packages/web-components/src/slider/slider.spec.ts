@@ -155,7 +155,7 @@ test.describe('Slider', () => {
 
     const fieldset = page.locator('fieldset');
 
-    await fieldset.evaluate((node: HTMLFieldSetElement) => node.disabled = true);
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = true));
 
     // The `disabled` property and attribute should not be affected.
     await expect(element).toHaveJSProperty('disabled', false);
@@ -164,7 +164,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
     await expect(element).toHaveAttribute('tabindex', '-1');
 
-    await fieldset.evaluate((node: HTMLFieldSetElement) => node.disabled = false);
+    await fieldset.evaluate((node: HTMLFieldSetElement) => (node.disabled = false));
 
     // The `disabled` property and attribute should not be affected.
     await expect(element).toHaveJSProperty('disabled', false);
@@ -671,11 +671,9 @@ test.describe('Slider', () => {
       });
 
       const [wasChanged] = await Promise.all([
-        element.evaluate(node => new Promise(resolve => node.addEventListener(
-          'change',
-          () => resolve(true),
-          {once: true}
-        ))),
+        element.evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
         element.evaluate((node: Slider) => {
           node.value = '10';
         }),
@@ -692,11 +690,9 @@ test.describe('Slider', () => {
       });
 
       const [wasChanged] = await Promise.all([
-        element.evaluate(node => new Promise(resolve => node.addEventListener(
-          'change',
-          () => resolve(true),
-          {once: true}
-        ))),
+        element.evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
         element.evaluate((node: Slider) => {
           node.setAttribute('value', '10');
         }),
@@ -713,11 +709,9 @@ test.describe('Slider', () => {
       });
 
       const [wasChanged] = await Promise.all([
-        element.evaluate(node => new Promise(resolve => node.addEventListener(
-          'change',
-          () => resolve(true),
-          {once: true}
-        ))),
+        element.evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
         element.evaluate((node: Slider) => {
           node.min = '21';
         }),
@@ -734,11 +728,9 @@ test.describe('Slider', () => {
       });
 
       const [wasChanged] = await Promise.all([
-        element.evaluate(node => new Promise(resolve => node.addEventListener(
-          'change',
-          () => resolve(true),
-          {once: true}
-        ))),
+        element.evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
         element.evaluate((node: Slider) => {
           node.max = '19';
         }),
@@ -755,11 +747,9 @@ test.describe('Slider', () => {
       });
 
       const [wasChanged] = await Promise.all([
-        element.evaluate(node => new Promise(resolve => node.addEventListener(
-          'change',
-          () => resolve(true),
-          {once: true}
-        ))),
+        element.evaluate(
+          node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+        ),
         element.evaluate((node: Slider) => {
           node.step = '11';
         }),

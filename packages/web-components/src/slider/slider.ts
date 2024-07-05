@@ -218,11 +218,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     const nextAsNumber = parseFloat(value);
-    const newValue = limit(
-      this.minAsNumber,
-      this.maxAsNumber, 
-      this.convertToConstrainedValue(nextAsNumber)
-    ).toString();
+    const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
 
     if (newValue !== value) {
       this.value = newValue;
@@ -557,9 +553,12 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   public increment(): void {
     const newVal: number =
-      this.direction !== Direction.rtl ? Number(this.value) + this.stepAsNumber : Number(this.value) - this.stepAsNumber;
+      this.direction !== Direction.rtl
+        ? Number(this.value) + this.stepAsNumber
+        : Number(this.value) - this.stepAsNumber;
     const incrementedVal: number = this.convertToConstrainedValue(newVal);
-    const incrementedValString: string = incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
+    const incrementedValString: string =
+      incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
     this.value = incrementedValString;
   }
 
@@ -574,7 +573,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
         ? Number(this.value) - Number(this.stepAsNumber)
         : Number(this.value) + Number(this.stepAsNumber);
     const decrementedVal: number = this.convertToConstrainedValue(newVal);
-    const decrementedValString: string = decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
+    const decrementedValString: string =
+      decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
     this.value = decrementedValString;
   }
 
@@ -668,8 +668,10 @@ export class Slider extends FASTElement implements SliderConfiguration {
       this.value = this.initialValue ?? this.midpoint;
     }
 
-    if (!Number.isNaN(this.valueAsNumber) &&
-        (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)) {
+    if (
+      !Number.isNaN(this.valueAsNumber) &&
+      (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)
+    ) {
       this.value = this.midpoint;
     }
 
