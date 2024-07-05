@@ -6,7 +6,6 @@
 
 /// <reference types="web" />
 
-import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -600,11 +599,13 @@ export class Checkbox extends BaseCheckbox {
     indeterminate?: boolean;
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // @override
+    // @internal @override
     protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
+    // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
@@ -2907,6 +2908,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
     thumb: HTMLDivElement;
     // @internal (undocumented)
     track: HTMLDivElement;
+    // @internal (undocumented)
+    trackHeight: number;
+    // @internal (undocumented)
+    trackLeft: number;
+    // @internal (undocumented)
+    trackMinHeight: number;
+    // @internal (undocumented)
+    trackMinWidth: number;
+    // @internal (undocumented)
+    trackWidth: number;
     get validationMessage(): string;
     get validity(): ValidityState;
     get value(): string;
