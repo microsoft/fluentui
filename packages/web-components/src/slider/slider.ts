@@ -1,4 +1,4 @@
-import { attr, css, FASTElement, nullableNumberConverter, observable, Observable, ValueConverter } from '@microsoft/fast-element';
+import { attr, css, FASTElement, observable, Observable, ValueConverter } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
 import {
   Direction,
