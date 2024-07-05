@@ -2,6 +2,21 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:36 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.5.1",
+      "version": "0.5.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.5.4",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:24 GMT",
       "tag": "@fluentui/react-nav-preview_v0.5.0",
       "version": "0.5.0",

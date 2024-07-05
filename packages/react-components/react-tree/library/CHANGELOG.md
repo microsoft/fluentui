@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 01 Jul 2024 20:30:38 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.3)
+
+Thu, 04 Jul 2024 15:14:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.7.2..@fluentui/react-tree_v9.7.3)
+
+### Patches
+
+- fix(Tree): Roving tabindexes should be refreshed if current element is unmounted ([PR #31918](https://github.com/microsoft/fluentui/pull/31918) by lingfangao@hotmail.com)
 
 ## [9.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.2)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: update radio and radio-group to use ElementInternals for form association",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

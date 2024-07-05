@@ -81,10 +81,10 @@ In other cases, such as before checking in or running tests, you may need to run
 
 ### Making a pull request
 
-Make sure all your changes are committed, and run `yarn nx run @fluentui/react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update our API docs accordingly. Commit this file change.
-Note: If you encounter build errors here (especially on non-\*nix systems) a 'yarn build' to ensure packages are correctly updated and linked may be nessecary.
+Make sure all your changes are committed, and run `yarn nx run react-components:build` or `yarn buildto @fluentui/react-components` for changes to the v9 components. This will compare your changes and detect if the publicly facing API has changed, and update our API docs accordingly. Commit this file change.
+Note: If you encounter build errors here (especially on non-\*nix systems) a 'yarn build' to ensure packages are correctly updated and linked may be necessary.
 
-Some of our tests make use of DOM snapshot tests. If your branch makes any changes or additions to the DOM, you may need to run `yarn nx run @fluentui/<package>:test -u` or `yarn workspace @fluentui/<package> test --updateSnapshot`. This will update any necessary files used by our snapshot tests.
+Some of our tests make use of DOM snapshot tests. If your branch makes any changes or additions to the DOM, you may need to run `yarn nx run <project-name>:test -u` or `yarn workspace @fluentui/<project-name> test --updateSnapshot`. This will update any necessary files used by our snapshot tests.
 
 Before creating a pull request, be sure to run `yarn change` and provide a high-level description of your change, which will be used in the release notes. You will need to run this at least once for every PR made to a published package. We follow [semantic versioning](https://semver.org/), so use the guide when selecting a change type:
 

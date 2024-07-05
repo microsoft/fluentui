@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 03 Jul 2024 04:08:00 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 04:08:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.40)
+
+Thu, 04 Jul 2024 04:08:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.39..@fluentui/web-components_v3.0.0-beta.40)
+
+### Changes
+
+- feat: update radio and radio-group to use ElementInternals for form association ([PR #31783](https://github.com/microsoft/fluentui/pull/31783) by 863023+radium-v@users.noreply.github.com)
+- fix for setTheme in Firefox ([PR #31911](https://github.com/microsoft/fluentui/pull/31911) by rupertdavid@microsoft.com)
+- refactor(web-components): cleanup accordion and convert to element internals for states ([PR #31866](https://github.com/microsoft/fluentui/pull/31866) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.39)
 

@@ -28,43 +28,43 @@ describe(`utils`, () => {
       const actual = getNorthstarGroup(graph);
 
       expect(Object.keys(actual.crossBoundaryProjects)).toMatchInlineSnapshot(`
-          Array [
-            "@fluentui/react-migration-v0-v9",
-          ]
-        `);
+        Array [
+          "react-migration-v0-v9",
+        ]
+      `);
       expect(Object.keys(actual.app)).toMatchInlineSnapshot(`
-          Array [
-            "@fluentui/perf-test-northstar",
-            "@fluentui/circulars-test",
-            "@fluentui/local-sandbox",
-            "@fluentui/projects-test",
-            "@fluentui/docs",
-            "@fluentui/perf",
-            "@fluentui/e2e",
-          ]
-        `);
+        Array [
+          "perf-test-northstar",
+          "circulars-test",
+          "local-sandbox",
+          "projects-test",
+          "docs",
+          "perf",
+          "e2e",
+        ]
+      `);
       expect(Object.keys(actual.lib)).toMatchInlineSnapshot(`
-          Array [
-            "@fluentui/react-component-nesting-registry",
-            "@fluentui/react-northstar-emotion-renderer",
-            "@fluentui/react-northstar-styles-renderer",
-            "@fluentui/react-component-event-listener",
-            "@fluentui/react-northstar-fela-renderer",
-            "@fluentui/react-northstar-prototypes",
-            "@fluentui/react-icons-northstar",
-            "@fluentui/react-component-ref",
-            "@fluentui/ability-attributes",
-            "@fluentui/docs-components",
-            "@fluentui/react-northstar",
-            "@fluentui/react-proptypes",
-            "@fluentui/react-telemetry",
-            "@fluentui/react-bindings",
-            "@fluentui/accessibility",
-            "@fluentui/react-builder",
-            "@fluentui/code-sandbox",
-            "@fluentui/digest",
-          ]
-        `);
+        Array [
+          "react-component-nesting-registry",
+          "react-northstar-emotion-renderer",
+          "react-northstar-styles-renderer",
+          "react-component-event-listener",
+          "react-northstar-fela-renderer",
+          "react-northstar-prototypes",
+          "react-icons-northstar",
+          "react-component-ref",
+          "ability-attributes",
+          "docs-components",
+          "react-northstar",
+          "react-proptypes",
+          "react-telemetry",
+          "react-bindings",
+          "accessibility",
+          "react-builder",
+          "code-sandbox",
+          "digest",
+        ]
+      `);
     });
   });
 });
