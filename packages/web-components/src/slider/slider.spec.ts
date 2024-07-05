@@ -621,20 +621,109 @@ test.describe('Slider', () => {
   });
 
   test.describe('`change` event', () => {
-    test.fixme('should emit `change` event when `value` changed', async () => {
-      // TODO
+    test('should emit `change` event when `value` property changed', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-slider></fluent-slider>
+        `;
+      });
+
+      const [wasChanged] = await Promise.all([
+        element.evaluate(node => new Promise(resolve => node.addEventListener(
+          'change',
+          () => resolve(true),
+          {once: true}
+        ))),
+        element.evaluate((node: Slider) => {
+          node.value = '10';
+        }),
+      ]);
+
+      expect(wasChanged).toBe(true);
     });
-    test.fixme('shouldn’t emit `change` event if the new `value` is the same as the old', async () => {
-      // TODO
+
+    test('should emit `change` event if the `value` attribute changed', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-slider></fluent-slider>
+        `;
+      });
+
+      const [wasChanged] = await Promise.all([
+        element.evaluate(node => new Promise(resolve => node.addEventListener(
+          'change',
+          () => resolve(true),
+          {once: true}
+        ))),
+        element.evaluate((node: Slider) => {
+          node.setAttribute('value', '10');
+        }),
+      ]);
+
+      expect(wasChanged).toBe(true);
     });
-    test.fixme('should emit `change` event if changes on `min` causes `value` change', async () => {
-      // TODO
+
+    test('should emit `change` event if changes on `min` causes `value` change', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-slider min="10" value="20" max="30"></fluent-slider>
+        `;
+      });
+
+      const [wasChanged] = await Promise.all([
+        element.evaluate(node => new Promise(resolve => node.addEventListener(
+          'change',
+          () => resolve(true),
+          {once: true}
+        ))),
+        element.evaluate((node: Slider) => {
+          node.min = '21';
+        }),
+      ]);
+
+      expect(wasChanged).toBe(true);
     });
-    test.fixme('should emit `change` event if changes on `max` causes `value` change', async () => {
-      // TODO
+
+    test('should emit `change` event if changes on `max` causes `value` change', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-slider min="10" value="20" max="30"></fluent-slider>
+        `;
+      });
+
+      const [wasChanged] = await Promise.all([
+        element.evaluate(node => new Promise(resolve => node.addEventListener(
+          'change',
+          () => resolve(true),
+          {once: true}
+        ))),
+        element.evaluate((node: Slider) => {
+          node.max = '19';
+        }),
+      ]);
+
+      expect(wasChanged).toBe(true);
     });
-    test.fixme('should emit `change` event if changes on `step` causes `value` change', async () => {
-      // TODO
+
+    test('should emit `change` event if changes on `step` causes `value` change', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-slider min="10" value="20" step="10" max="30"></fluent-slider>
+        `;
+      });
+
+      const [wasChanged] = await Promise.all([
+        element.evaluate(node => new Promise(resolve => node.addEventListener(
+          'change',
+          () => resolve(true),
+          {once: true}
+        ))),
+        element.evaluate((node: Slider) => {
+          node.step = '11';
+        }),
+      ]);
+
+      expect(wasChanged).toBe(true);
     });
   });
 });

@@ -218,7 +218,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
 
     const nextAsNumber = parseFloat(value);
-    const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
+    const newValue = limit(
+      this.minAsNumber,
+      this.maxAsNumber, 
+      this.convertToConstrainedValue(nextAsNumber)
+    ).toString();
 
     if (newValue !== value) {
       this.value = newValue;
@@ -380,6 +384,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public min?: string;
   protected minChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
+    if (this.minAsNumber > this.valueAsNumber) {
+      this.value = this.min!;
+    }
   }
 
   /**
@@ -408,6 +415,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public max?: string;
   protected maxChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
+    if (this.maxAsNumber < this.valueAsNumber) {
+      this.value = this.max!;
+    }
   }
 
   /**
@@ -436,6 +446,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
   public step?: string;
   protected stepChanged(): void {
     this.updateStepMultiplier();
+    // Update value to align with the new step if needed.
+    this.value = this._value;
   }
 
   /**
