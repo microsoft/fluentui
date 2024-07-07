@@ -23,7 +23,7 @@ describe(`utils`, () => {
      * @param {{packageName:string, presetContent?: string}} options
      */
     function setup(options) {
-      const npmScope = '@proj';
+      const npmScope = 'proj';
       const { name: rootDir } = tmp.dirSync({ prefix: 'sb-utils', unsafeCleanup: true });
       const packageRootPath = path.join('packages', options.packageName);
       const packageRootAbsolutePath = path.join(rootDir, packageRootPath);
@@ -42,7 +42,7 @@ describe(`utils`, () => {
         paths.projectJsonPath,
         JSON.stringify(
           {
-            name: `${npmScope}/${options.packageName}`,
+            name: options.packageName,
             root: packageRootPath,
             sourceRoot: path.join(packageRootPath, 'src'),
           },
@@ -53,7 +53,9 @@ describe(`utils`, () => {
       );
       fs.writeFileSync(
         paths.rootTsconfigPath,
-        JSON.stringify({ compilerOptions: { baseUrl: '.', paths: { '@proj/one': ['packages/one/src/index.ts'] } } }),
+        JSON.stringify({
+          compilerOptions: { baseUrl: '.', paths: { [`@${npmScope}/one`]: ['packages/one/src/index.ts'] } },
+        }),
       );
 
       fs.mkdirSync(packageRootAbsolutePath, { recursive: true });
@@ -96,8 +98,9 @@ describe(`utils`, () => {
     it(`should return path to in memory preset loader root`, () => {
       const { npmScope, workspaceRoot, tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
 
-      const actual = loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, {
+      const actual = loadWorkspaceAddon(`@${npmScope}/storybook-custom-addon`, {
         workspaceRoot,
+        npmScope,
         tsConfigPath: tsConfigRoot,
       });
       const expected = `${workspaceRoot}/packages/storybook-custom-addon/temp/preset.ts`;
@@ -108,8 +111,9 @@ describe(`utils`, () => {
     it(`should return path to in memory preset loader root with options if provided `, () => {
       const { npmScope, workspaceRoot, tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
 
-      const actual = loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, {
+      const actual = loadWorkspaceAddon(`@${npmScope}/storybook-custom-addon`, {
         workspaceRoot,
+        npmScope,
         tsConfigPath: tsConfigRoot,
         options: { who: 'developers' },
       });
@@ -124,7 +128,11 @@ describe(`utils`, () => {
     it(`should create mocked preset registration module with in memory TS compilation`, () => {
       const { tsConfigRoot, npmScope, packageRoot, workspaceRoot } = setup({ packageName: 'storybook-custom-addon' });
 
-      loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, { workspaceRoot, tsConfigPath: tsConfigRoot });
+      loadWorkspaceAddon(`@${npmScope}/storybook-custom-addon`, {
+        workspaceRoot,
+        npmScope,
+        tsConfigPath: tsConfigRoot,
+      });
 
       const mockedPreset = fs.readFileSync(path.join(packageRoot, 'temp', 'preset.ts'), 'utf-8');
 
@@ -169,7 +177,11 @@ describe(`utils`, () => {
       `,
       });
 
-      loadWorkspaceAddon(`${npmScope}/storybook-custom-addon`, { workspaceRoot, tsConfigPath: tsConfigRoot });
+      loadWorkspaceAddon(`@${npmScope}/storybook-custom-addon`, {
+        workspaceRoot,
+        npmScope,
+        tsConfigPath: tsConfigRoot,
+      });
 
       const mockedPreset = fs.readFileSync(path.join(packageRoot, 'temp', 'preset.ts'), 'utf-8');
 

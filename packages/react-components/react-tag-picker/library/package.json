@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tag-picker",
-  "version": "9.2.0",
+  "version": "9.2.1",
   "description": "FluentUI TagPicker component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -49,7 +49,7 @@
     "@fluentui/react-tabster": "^9.22.1",
     "@fluentui/react-aria": "^9.13.0",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-combobox": "^9.12.0",
+    "@fluentui/react-combobox": "^9.13.0",
     "@fluentui/react-tags": "^9.3.10",
     "@fluentui/react-context-selector": "^9.1.63",
     "@fluentui/react-positioning": "^9.15.4",
@@ -61,7 +61,7 @@
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
+    "react": "^8.119.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
   "exports": {

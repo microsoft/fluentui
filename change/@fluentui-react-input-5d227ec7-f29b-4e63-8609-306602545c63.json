@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "vertically align input component",
-  "packageName": "@fluentui/react-input",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

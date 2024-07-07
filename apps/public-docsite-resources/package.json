@@ -45,7 +45,7 @@
     "@fluentui/theme-samples": "*",
     "@fluentui/react-monaco-editor": "*",
     "office-ui-fabric-core": "^11.0.0",
-    "react": "17.0.2",
+    "react": "^8.119.0",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
   }

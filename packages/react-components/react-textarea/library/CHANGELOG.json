@@ -2,6 +2,21 @@
   "name": "@fluentui/react-textarea",
   "entries": [
     {
+      "date": "Thu, 04 Jul 2024 15:14:36 GMT",
+      "tag": "@fluentui/react-textarea_v9.3.81",
+      "version": "9.3.81",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align textarea component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:36 GMT",
       "tag": "@fluentui/react-textarea_v9.3.80",
       "version": "9.3.80",

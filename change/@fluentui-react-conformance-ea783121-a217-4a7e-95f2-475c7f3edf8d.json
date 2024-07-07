@@ -1,7 +1,7 @@
 {
   "type": "none",
-  "comment": "add nx-project-tag",
+  "comment": "chore: remove npmScope from project name",
   "packageName": "@fluentui/react-conformance",
-  "email": "kirpadv@gmail.com",
+  "email": "martinhochel@microsoft.com",
   "dependentChangeType": "none"
 }

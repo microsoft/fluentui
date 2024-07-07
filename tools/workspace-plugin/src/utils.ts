@@ -25,18 +25,26 @@ export function getWorkspaceConfig(tree: Tree): NxJsonConfiguration & { npmScope
     throw new Error('nx.json doesnt exist at root of monorepo');
   }
 
-  const packageJSON = readJson<PackageJson>(tree, '/package.json');
-  const matchedName = NPM_SCOPE_REGEX.exec(packageJSON.name);
-
-  if (!matchedName) {
-    throw new Error('root package.json doesnt provide valid monorepo name');
-  }
-
-  const [, npmScope] = matchedName;
+  const npmScope = getNpmScope(tree);
   return {
     npmScope,
     ...nxConfig,
   };
+}
+
+export function getNpmScope(tree: Tree) {
+  const packageJSON = readJson<PackageJson>(tree, '/package.json');
+  const matchedName = NPM_SCOPE_REGEX.exec(packageJSON.name);
+  if (!matchedName) {
+    throw new Error(`root package.json doesn't provide valid monorepo name`);
+  }
+  if (!matchedName[1]) {
+    throw new Error(
+      'unable to obtain monorepo npmScope. Please make sure that root package.json#name includes npmScope',
+    );
+  }
+
+  return matchedName[1];
 }
 
 export function getProjectNameWithoutScope(projectName: string) {

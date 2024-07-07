@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Mon, 01 Jul 2024 20:30:36 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.81)
+
+Thu, 04 Jul 2024 15:14:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.80..@fluentui/react-textarea_v9.3.81)
+
+### Patches
+
+- vertically align textarea component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
 
 ## [9.3.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.80)
 
