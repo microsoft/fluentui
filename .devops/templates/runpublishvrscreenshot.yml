@@ -4,7 +4,7 @@ parameters:
     default: v8
   - name: vrTestPackageName
     type: string
-    default: '@fluentui/vr-tests'
+    default: vr-tests'
   - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
@@ -23,7 +23,7 @@ steps:
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
       if [[ $isPR == true ]]; then
-        packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
+        packageAffected=$(yarn --silent check:affected --project ${{ parameters.vrTestPackageName }})
         if [[ $packageAffected == false ]]; then
           echo "In PR pipeline but NOT affecting test package. Skipping test run"
           echo "##vso[task.setvariable variable=vrTestSkip;]yes"

@@ -25,7 +25,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
-          vrTestPackageName: '@fluentui/vr-tests-web-components'
+          vrTestPackageName: 'vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
       - task: AzureCLI@2
@@ -58,7 +58,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
-          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackageName: 'vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
       - task: AzureCLI@2
@@ -91,7 +91,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
-          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackageName: 'vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
       - task: AzureCLI@2
@@ -123,7 +123,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
-          vrTestPackageName: '@fluentui/docs'
+          vrTestPackageName: 'docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
       - task: AzureCLI@2
