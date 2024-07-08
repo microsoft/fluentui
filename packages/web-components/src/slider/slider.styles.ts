@@ -70,7 +70,7 @@ export const styles = css`
     justify-items: center;
   }
 
-  :host(:focus-visible) {
+  :host(:not([slot='input']):focus-visible) {
     box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
