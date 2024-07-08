@@ -199,7 +199,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @public
    */
   public setCustomValidity(message: string) {
-    this.setValidity({customError: !!message}, message);
+    this.setValidity({ customError: !!message }, message);
   }
 
   /**
