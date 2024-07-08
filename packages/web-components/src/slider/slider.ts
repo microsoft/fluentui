@@ -195,6 +195,38 @@ export class Slider extends FASTElement implements SliderConfiguration {
   }
 
   /**
+   * Sets a custom validity message.
+   * @public
+   */
+  public setCustomValidity(message: string) {
+    this.setValidity({customError: !!message}, message);
+  }
+
+  /**
+   * Sets the validity of the control.
+   *
+   * @param flags - Validity flags to set.
+   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used.
+   * @param anchor - Optional anchor to use for the validation message.
+   *
+   * @internal
+   */
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
+    if (this.$fastController.isConnected) {
+      if (this.disabled) {
+        this.elementInternals.setValidity({});
+        return;
+      }
+
+      this.elementInternals.setValidity(
+        { customError: !!message, ...flags },
+        message ?? this.validationMessage,
+        anchor,
+      );
+    }
+  }
+
+  /**
    * The internal value of the input.
    *
    * @internal
