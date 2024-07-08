@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Jul 2024 20:30:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.30)
+
+Mon, 01 Jul 2024 20:30:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v9.2.29..@fluentui/react-checkbox_v9.2.30)
+
+### Patches
+
+- adjust indicator type to include span ([PR #31640](https://github.com/microsoft/fluentui/pull/31640) by vgenaev@gmail.com)
+- chore: Update react-icons package to ^2.0.245 ([PR #31802](https://github.com/microsoft/fluentui/pull/31802) by ololubek@microsoft.com)
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.1.69 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-label to v9.1.72 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-tabster to v9.22.1 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.2.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v9.2.29)
 

@@ -799,4 +799,38 @@ test.describe('TextInput', () => {
 
     expect(page.url()).toMatch(/foo\?testinput=hello%40example\.com%2Cworld%40example\.com/);
   });
+
+  test('should allow focusable start and end slotted content to be focused', async ({ page }) => {
+    const element = page.locator('fluent-text-input');
+    const control = element.locator('input');
+    const start = element.locator('[slot="start"]');
+    const end = element.locator('[slot="end"]');
+    const label = element.locator('text=Label');
+
+    await page.setContent(/* html */ `
+      <fluent-text-input>
+        <span>Label</span>
+        <button slot="start">start</button>
+        <button slot="end">end</button>
+      </fluent-text-input>
+    `);
+
+    await page.keyboard.press('Tab');
+
+    await expect(start).toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(control).toBeFocused();
+
+    await page.keyboard.press('Tab');
+
+    await expect(end).toBeFocused();
+
+    await test.step('should focus the control when the label is clicked', async () => {
+      await label.click();
+
+      await expect(control).toBeFocused();
+    });
+  });
 });

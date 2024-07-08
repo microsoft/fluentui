@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="web" />
+
 import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -21,12 +23,12 @@ import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTElement {
-    // (undocumented)
+    // @internal (undocumented)
     protected accordionItems: Element[];
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
-    // @internal (undocumented)
+    // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
     slottedAccordionItems: HTMLElement[];
@@ -54,16 +56,21 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public (undocumented)
 export class AccordionItem extends FASTElement {
     block: boolean;
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
+    blockChanged(prev: boolean, next: boolean): void;
     disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandIconPosition?: AccordionItemExpandIconPosition;
+    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
+    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
@@ -75,16 +82,16 @@ export interface AccordionItem extends StartEnd {
 // @public (undocumented)
 export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
-// Warning: (ae-missing-release-tag) "AccordionItemExpandIconPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export const AccordionItemExpandIconPosition: {
+export const AccordionItemMarkerPosition: {
     readonly start: "start";
     readonly end: "end";
 };
 
 // @public
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
 // Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
 //
@@ -586,14 +593,20 @@ export const ButtonType: {
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
 // Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Checkbox extends BaseCheckbox {
+    constructor();
+    indeterminate?: boolean;
+    // @internal
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @override
+    protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    toggleChecked(force?: boolean): void;
 }
 
 // @public
@@ -1965,6 +1978,72 @@ export const DividerStyles: ElementStyles;
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
 // @public
 export const durationFast = "var(--durationFast)";
 
@@ -1991,8 +2070,9 @@ export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
 export class Field extends FASTElement {
+    constructor();
     // @internal
-    changeHandler(e: Event): void;
+    changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
     // @internal
@@ -2002,15 +2082,21 @@ export class Field extends FASTElement {
     // @internal
     focusoutHandler(e: FocusEvent): boolean | void;
     input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
     // @internal
     invalidHandler(e: Event): boolean | void;
     labelPosition: FieldLabelPosition;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
     // @internal
     messageSlot: Element[];
     // @internal
     messageSlotChanged(prev: Element[], next: Element[]): void;
     // @internal
     setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
     // @internal
     slottedInputs: SlottableInput[];
     // @internal
@@ -2290,18 +2376,14 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    cleanup?: () => void;
-    closeMenu: () => void;
+    closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
     focusMenuList(): void;
     focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -2309,16 +2391,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
     setComponent(): void;
-    // @internal
-    protected setPositioning(): void;
-    // @internal
-    protected setPositioningTask: () => void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
     toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
 // @public
@@ -2373,13 +2451,7 @@ export class MenuItem extends FASTElement {
     checked: boolean;
     // (undocumented)
     protected checkedChanged(oldValue: boolean, newValue: boolean): void;
-    cleanup: () => void;
     disabled: boolean;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    expanded: boolean;
-    // (undocumented)
-    protected expandedChanged(prev: boolean | undefined, next: boolean): void;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2388,10 +2460,10 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
-    // @internal (undocumented)
-    get hasSubmenu(): boolean;
     hidden: boolean;
     role: MenuItemRole;
+    // @internal
+    setSubmenuPosition: () => void;
     // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
@@ -2399,10 +2471,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    submenuContainer: HTMLDivElement;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    updateSubmenu(): void;
+    toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
 // @internal
@@ -2419,9 +2488,8 @@ export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-    checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-    expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-    radioIndicator?: StaticallyComposableHTML<MenuItem>;
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 // @public
@@ -2444,13 +2512,11 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
@@ -2553,22 +2619,21 @@ export const ProgressBarValidationState: {
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Radio extends FormAssociatedRadio implements RadioControl {
+export class Radio extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
-    // @internal (undocumented)
-    defaultCheckedChanged(): void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @beta
-    keypressHandler(e: KeyboardEvent): boolean | void;
-    name: string;
+    // @internal @override
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
+    setFormValue(): void;
+    // @internal @override
+    setValidity(): void;
+    // @override
+    toggleChecked(force?: boolean): void;
 }
 
 // @public (undocumented)
@@ -2579,34 +2644,62 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends FASTElement {
-    // (undocumented)
-    childItems: HTMLElement[];
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void | boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal (undocumented)
-    focusOutHandler: (e: FocusEvent) => boolean | void;
-    // @internal (undocumented)
-    handleDisabledClick: (e: MouseEvent) => void | boolean;
+    constructor();
+    changeHandler(e: Event): boolean | void;
     // @internal
-    keydownHandler: (e: KeyboardEvent) => boolean | void;
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
     name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
     // (undocumented)
-    protected nameChanged(): void;
-    orientation: RadioGroupOrientation;
-    readOnly: boolean;
-    // @internal (undocumented)
-    slottedRadioButtons: HTMLElement[];
-    // (undocumented)
-    protected slottedRadioButtonsChanged(oldValue: unknown, newValue: HTMLElement[]): void;
-    stacked: boolean;
-    value: string;
-    // (undocumented)
-    protected valueChanged(): void;
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -2640,10 +2733,56 @@ export type RadioOptions = {
 // @public
 export const RadioStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -2827,6 +2966,8 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     required: boolean;
     disabled: boolean;
     readOnly: boolean;
+    checked?: boolean;
+    value?: string;
 };
 
 // @public
@@ -2963,6 +3104,7 @@ export { styles as MenuButtonStyles }
 //
 // @public (undocumented)
 export class Switch extends BaseCheckbox {
+    constructor();
 }
 
 // @public
@@ -3122,15 +3264,27 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 

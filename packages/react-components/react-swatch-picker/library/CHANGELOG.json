@@ -2,6 +2,57 @@
   "name": "@fluentui/react-swatch-picker",
   "entries": [
     {
+      "date": "Mon, 01 Jul 2024 20:30:31 GMT",
+      "tag": "@fluentui/react-swatch-picker_v9.1.4",
+      "version": "9.1.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "chore: add eslint react-compiler"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "1e1398cb66c56c6f67c33c33a54949cd24190a35",
+            "comment": "chore: Update react-icons package to ^2.0.245"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "da6d450f086a0d30a7f245cea7594ad1a4891d07",
+            "comment": "fix(react-swatch-picker): fixed colors of selected and pressed states"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.63",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.40",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-tabster to v9.22.1",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-swatch-picker",
+            "comment": "Bump @fluentui/react-utilities to v9.18.11",
+            "commit": "597871ce66d6937249b4774cb79be145f99ad997"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jun 2024 07:34:17 GMT",
       "tag": "@fluentui/react-swatch-picker_v9.1.3",
       "version": "9.1.3",

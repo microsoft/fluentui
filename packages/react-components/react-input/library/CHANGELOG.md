@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-input
 
-This log was last generated on Mon, 17 Jun 2024 07:34:17 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.81](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.81)
+
+Thu, 04 Jul 2024 15:14:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.80..@fluentui/react-input_v9.4.81)
+
+### Patches
+
+- vertically align input component ([PR #31812](https://github.com/microsoft/fluentui/pull/31812) by kirpadv@gmail.com)
+
+## [9.4.80](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.80)
+
+Mon, 01 Jul 2024 20:30:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-input_v9.4.79..@fluentui/react-input_v9.4.80)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-field to v9.1.69 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.4.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-input_v9.4.79)
 

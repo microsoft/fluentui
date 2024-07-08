@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "0.205.157",
+  "version": "0.205.160",
   "description": "Deprecated experimental Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,16 +34,16 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.118.8",
-    "@fluentui/foundation-legacy": "^8.4.10",
-    "@fluentui/set-version": "^8.2.22",
+    "@fluentui/react": "^8.119.0",
+    "@fluentui/foundation-legacy": "^8.4.12",
+    "@fluentui/set-version": "^8.2.23",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
+    "react": "^8.119.0",
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {

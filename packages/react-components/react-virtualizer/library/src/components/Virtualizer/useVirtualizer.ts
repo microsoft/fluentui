@@ -8,6 +8,8 @@ import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
+  'use no memo';
+
   const {
     itemSize,
     numItems,

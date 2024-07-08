@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-utilities-compat",
+  "name": "react-utilities-compat",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-utilities-compat/library/src",

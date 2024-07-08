@@ -12,6 +12,8 @@ export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLEle
   props,
   ref,
 ) => {
+  'use no memo';
+
   const isRoot = React.useContext(SubtreeContext) === undefined;
   // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted

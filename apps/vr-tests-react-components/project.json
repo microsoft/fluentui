@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/vr-tests-react-components",
+  "name": "vr-tests-react-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],

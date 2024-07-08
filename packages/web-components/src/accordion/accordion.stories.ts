@@ -1,10 +1,8 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import { AccordionItemExpandIconPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
+import { AccordionItemMarkerPosition, AccordionItemSize } from '../accordion-item/accordion-item.options.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
-import './define';
-import '../accordion-item/define';
 
 type AccordionStoryArgs = Args & FluentAccordion;
 type AccordionStoryMeta = Meta<AccordionStoryArgs>;
@@ -26,6 +24,7 @@ const subtract20Filled = html`<svg
 </svg>`;
 
 const eye20Regular = html`<svg
+  id="eye"
   width="20"
   height="20"
   viewBox="0 0 20 20"
@@ -38,6 +37,7 @@ const eye20Regular = html`<svg
   />
 </svg>`;
 const eyeOff20Regular = html`<svg
+  id="eye-off"
   width="20"
   height="20"
   viewBox="0 0 20 20"
@@ -55,7 +55,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
+      marker-position=${x => x.markerPosition}
       block=${x => x.block}
       ?disabled=${x => x.disabled}
     >
@@ -65,7 +65,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
+      marker-position=${x => x.markerPosition}
       block=${x => x.block}
       ?disabled=${x => x.disabled}
     >
@@ -75,7 +75,7 @@ const storyTemplate = html<AccordionStoryArgs>`
     <fluent-accordion-item
       size=${x => x.size}
       heading-level=${x => x.headingLevel}
-      expand-icon-position=${x => x.expandIconPosition}
+      marker-position=${x => x.markerPosition}
       block=${x => x.block}
       ?disabled=${x => x.disabled}
     >
@@ -89,7 +89,7 @@ export default {
   title: 'Components/Accordion',
   args: {
     size: 'medium',
-    expandIconPosition: 'start',
+    markerPosition: 'start',
     expandMode: 'multiple',
     block: false,
     disabled: false,
@@ -107,14 +107,14 @@ export default {
       },
       defaultValue: 'medium',
     },
-    expandIconPosition: {
+    markerPosition: {
       description: 'Sets position of expand and collapse icon',
       table: {
         defaultValue: { summary: 'start' },
       },
       control: {
         type: 'select',
-        options: Object.values(AccordionItemExpandIconPosition),
+        options: Object.values(AccordionItemMarkerPosition),
       },
       defaultValue: 'start',
     },
@@ -164,20 +164,20 @@ export const Accordion = renderComponent(storyTemplate).bind({});
 export const AccordionWithCustomIcons = renderComponent(html<AccordionStoryArgs>`
   <fluent-accordion>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 2</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
+      <span slot="marker-collapsed">${add20Filled}</span>
+      <span slot="marker-expanded">${subtract20Filled}</span>
       <span slot="heading">Accordion Header 3</span>
       Accordion Panel 1
     </fluent-accordion-item>
@@ -185,22 +185,27 @@ export const AccordionWithCustomIcons = renderComponent(html<AccordionStoryArgs>
 `);
 
 export const AccordionWithPresentationIcons = renderComponent(html<AccordionStoryArgs>`
-  <fluent-accordion>
+  <style>
+    #with-icon fluent-accordion-item:not([expanded]) #eye {
+      display: none;
+    }
+    #with-icon fluent-accordion-item[expanded] #eye-off {
+      display: none;
+    }
+  </style>
+  <fluent-accordion id="with-icon">
     <fluent-accordion-item>
-      <span slot="start">${eye20Regular}</span>
-      <span slot="end">${eyeOff20Regular}</span>
+      <span slot="start">${eye20Regular}${eyeOff20Regular}</span>
       <span slot="heading">Accordion Header 1</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="start">${eye20Regular}</span>
-      <span slot="end">${eyeOff20Regular}</span>
+      <span slot="start"> ${eye20Regular} ${eyeOff20Regular} </span>
       <span slot="heading">Accordion Header 2</span>
       Accordion Panel 1
     </fluent-accordion-item>
     <fluent-accordion-item>
-      <span slot="start">${eye20Regular}</span>
-      <span slot="end">${eyeOff20Regular}</span>
+      <span slot="start">${eye20Regular}${eyeOff20Regular}</span>
       <span slot="heading">Accordion Header 3</span>
       Accordion Panel 1
     </fluent-accordion-item>

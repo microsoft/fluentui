@@ -30,7 +30,7 @@ export function checkboxTemplate<T extends Checkbox>(options: CheckboxOptions = 
     <template
       tabindex="${x => (!x.disabled ? 0 : void 0)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @input="${(x, c) => x.inputHandler(c.event as Event)}"
+      @input="${(x, c) => x.inputHandler(c.event as InputEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       @keyup="${(x, c) => x.keyupHandler(c.event as KeyboardEvent)}"
     >

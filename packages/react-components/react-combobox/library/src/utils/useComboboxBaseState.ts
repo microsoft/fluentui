@@ -21,8 +21,11 @@ export const useComboboxBaseState = (
     activeDescendantController: ActiveDescendantImperativeRef;
   },
 ): ComboboxBaseState => {
+  'use no memo';
+
   const {
     appearance = 'outline',
+    disableAutoFocus,
     children,
     clearable = false,
     editable = false,
@@ -150,13 +153,11 @@ export const useComboboxBaseState = (
 
   // Fallback focus when children are updated in an open popover results in no item being focused
   React.useEffect(() => {
-    if (open) {
-      if (!activeDescendantController.active()) {
-        activeDescendantController.first();
-      }
+    if (open && !disableAutoFocus && !activeDescendantController.active()) {
+      activeDescendantController.first();
     }
     // this should only be run in response to changes in the open state or children
-  }, [open, children, activeDescendantController, getOptionById]);
+  }, [open, children, disableAutoFocus, activeDescendantController, getOptionById]);
 
   const onActiveDescendantChange = useEventCallback((event: ActiveDescendantChangeEvent) => {
     const previousOption = event.detail.previousId ? optionCollection.getOptionById(event.detail.previousId) : null;

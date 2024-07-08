@@ -3,6 +3,7 @@ import {
   Hamburger,
   NavCategory,
   NavCategoryItem,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
@@ -13,7 +14,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -94,14 +95,19 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
+  const renderHamburgerWithToolTip = () => {
+    return (
+      <Tooltip content="Navigation" relationship="label">
+        <Hamburger onClick={() => setIsOpen(!isOpen)} />
+      </Tooltip>
+    );
+  };
+
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
-        <NavDrawerHeader>
-          <Hamburger onClick={() => setIsOpen(false)} />
-        </NavDrawerHeader>
+        <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
         <NavDrawerBody>
-          <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -168,7 +174,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Analytics</NavSectionHeader>
+          <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
@@ -178,7 +184,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
-        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
+        {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
           <RadioGroup

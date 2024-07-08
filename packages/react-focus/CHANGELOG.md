@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 14 Jun 2024 15:25:28 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.9.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.9)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.8..@fluentui/react-focus_v8.9.9)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.12 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+- Bump @fluentui/style-utilities to v8.10.17 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+- Bump @fluentui/utilities to v8.15.12 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+
+## [8.9.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.8)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.9.7..@fluentui/react-focus_v8.9.8)
+
+### Patches
+
+- Bump @fluentui/keyboard-key to v0.4.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/merge-styles to v8.6.11 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/style-utilities to v8.10.16 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/utilities to v8.15.11 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
 
 ## [8.9.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.9.7)
 
