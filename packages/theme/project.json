@@ -2,5 +2,6 @@
   "name": "theme",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "tags": ["v8"]
 }
