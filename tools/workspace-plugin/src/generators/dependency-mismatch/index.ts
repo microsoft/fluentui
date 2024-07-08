@@ -1,10 +1,11 @@
 import semver from 'semver';
 import { Tree, formatFiles, updateJson, readJson, ProjectConfiguration, getProjects } from '@nrwl/devkit';
 
-import { getProjectPaths, isPackageVersionPrerelease } from '../../utils';
+import { getNpmScope, getProjectPaths, isPackageVersionPrerelease } from '../../utils';
 import type { PackageJson } from '../../types';
 
 export default async function (tree: Tree) {
+  const npmScope = getNpmScope(tree);
   const projects = getProjects(tree);
 
   projects.forEach(project => {
@@ -12,7 +13,7 @@ export default async function (tree: Tree) {
     const scope = getProjectScope(project);
 
     updateJson<PackageJson>(tree, projectPaths.packageJson, packageJson => {
-      updatedDependencies(tree, { allProjects: projects, packageJson, scope });
+      updatedDependencies(tree, { allProjects: projects, packageJson, scope, npmScope });
 
       return packageJson;
     });
@@ -21,9 +22,14 @@ export default async function (tree: Tree) {
   await formatFiles(tree);
 }
 
-function ensureIsInWorkspace(tree: Tree, projectName: string, allProjects: ReturnType<typeof getProjects>) {
+function ensureIsInWorkspace(
+  tree: Tree,
+  projectName: string,
+  options: { npmScope: string; allProjects: ReturnType<typeof getProjects> },
+) {
   try {
-    return projectName.startsWith('@fluentui/') && allProjects.get(projectName.replace('@fluentui/', ''));
+    const npmPackageScope = `@${options.npmScope}/`;
+    return projectName.startsWith(npmPackageScope) && options.allProjects.get(projectName.replace(npmPackageScope, ''));
   } catch {
     return null;
   }
@@ -35,9 +41,10 @@ function updatedDependencies(
     allProjects: ReturnType<typeof getProjects>;
     packageJson: PackageJson;
     scope: ReturnType<typeof getProjectScope>;
+    npmScope: string;
   },
 ) {
-  const { packageJson, scope, allProjects } = options;
+  const { packageJson, scope, allProjects, npmScope } = options;
 
   updateVersions(packageJson, 'dependencies');
   updateVersions(packageJson, 'devDependencies');
@@ -65,7 +72,7 @@ function updatedDependencies(
         continue;
       }
 
-      const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName, allProjects);
+      const dependencyProjectConfig = ensureIsInWorkspace(tree, dependencyName, { allProjects, npmScope });
 
       if (!dependencyProjectConfig) {
         continue;
