@@ -2450,9 +2450,13 @@ export const MenuDefinition: FASTElementDefinition<typeof Menu>;
 // @public
 export class MenuItem extends FASTElement {
     checked: boolean;
+    protected checkedChanged(prev: boolean, next: boolean): void;
     // (undocumented)
-    protected checkedChanged(oldValue: boolean, newValue: boolean): void;
+    connectedCallback(): void;
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2463,6 +2467,7 @@ export class MenuItem extends FASTElement {
     handleMouseOver: (e: MouseEvent) => boolean;
     hidden: boolean;
     role: MenuItemRole;
+    roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
     // @internal
     setSubmenuPosition: () => void;
     // @internal
@@ -2513,10 +2518,13 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
+    constructor();
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
     // @internal
