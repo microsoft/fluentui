@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update Spinner styles to address CSS bug",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
