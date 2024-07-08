@@ -38,11 +38,6 @@ steps:
     displayName: Check if vrTests should be skipped
 
   - script: |
-      yarn lage build-storybook --to ${{ parameters.vrTestPackageName }}
-    displayName: Build VR tests components package
-    condition: eq(variables['vrTestSkip'], 'no')
-
-  - script: |
       yarn lage test-vr --to ${{ parameters.vrTestPackageName }} --verbose
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
