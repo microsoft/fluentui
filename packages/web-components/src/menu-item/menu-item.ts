@@ -140,8 +140,6 @@ export class MenuItem extends FASTElement {
    */
   protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]) {
     this.submenu?.removeEventListener('toggle', this.toggleHandler);
-    this.elementInternals.ariaHasPopup = null;
-    toggleState(this.elementInternals, 'submenu', false);
 
     if (next.length) {
       this.submenu = next[0];
@@ -149,6 +147,9 @@ export class MenuItem extends FASTElement {
       this.submenu.addEventListener('toggle', this.toggleHandler);
       this.elementInternals.ariaHasPopup = 'menu';
       toggleState(this.elementInternals, 'submenu', true);
+    } else {
+      this.elementInternals.ariaHasPopup = null;
+      toggleState(this.elementInternals, 'submenu', false);
     }
   }
 

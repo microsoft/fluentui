@@ -130,7 +130,8 @@ test.describe('Menu', () => {
 
     const firstMenuItem = menuItems.first();
 
-    await expect(firstMenuItem).toBeDisabled();
+    await expect(firstMenuItem).toHaveAttribute('disabled');
+    await expect(firstMenuItem).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
 
     await expect(firstMenuItem).toHaveAttribute('tabindex', '0');
 
