@@ -6,7 +6,6 @@
   "scripts": {
     "bundle": "just-scripts build && just-scripts bundle",
     "lint": "just-scripts lint",
-    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",

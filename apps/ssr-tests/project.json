@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
+  "tags": ["v8"],
   "targets": {
     "test-ssr": { "dependsOn": ["bundle", "^bundle"] }
   }
