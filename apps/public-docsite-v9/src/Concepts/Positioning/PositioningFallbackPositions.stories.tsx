@@ -4,7 +4,6 @@ import type { ComboboxProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
-    // Stack the label above the field with a gap
     display: 'grid',
     gridTemplateRows: 'repeat(1fr)',
     justifyItems: 'start',
@@ -13,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ComboboxFallbackPositions = (props: Partial<ComboboxProps>) => {
+export const FallbackPositions = (props: Partial<ComboboxProps>) => {
   const comboId = useId('combo-default');
   const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
   const styles = useStyles();
@@ -36,7 +35,7 @@ export const ComboboxFallbackPositions = (props: Partial<ComboboxProps>) => {
   );
 };
 
-ComboboxFallbackPositions.parameters = {
+FallbackPositions.parameters = {
   docs: {
     description: {
       story: [

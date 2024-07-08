@@ -18,7 +18,6 @@ export { Disabled } from './DropdownDisabled.stories';
 export { TruncatedValue } from './DropdownTruncation.stories';
 export { ActiveOptionChange } from './DropdownActiveOptionChange.stories';
 export { ControllingOpenAndClose } from './DropdownControllingOpenAndClose.stories';
-export { DropdownFallbackPositions } from './DropdownFallbackPositions.stories';
 
 export default {
   title: 'Components/Dropdown',
