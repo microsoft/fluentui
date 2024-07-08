@@ -23,7 +23,7 @@ export default async function (tree: Tree) {
 
 function ensureIsInWorkspace(tree: Tree, projectName: string, allProjects: ReturnType<typeof getProjects>) {
   try {
-    return allProjects.get(projectName);
+    return projectName.startsWith('@fluentui/') && allProjects.get(projectName.replace('@fluentui/', ''));
   } catch {
     return null;
   }
@@ -53,12 +53,14 @@ function updatedDependencies(
       return;
     }
 
+    // eslint-disable-next-line guard-for-in
     for (const dependencyName in deps) {
-      if (!Object.prototype.hasOwnProperty.call(deps, dependencyName)) {
+      const versionRange = deps[dependencyName];
+
+      if (!versionRange) {
         continue;
       }
 
-      const versionRange = deps[dependencyName];
       if (ignoredVersionRanges.indexOf(versionRange) !== -1) {
         continue;
       }
