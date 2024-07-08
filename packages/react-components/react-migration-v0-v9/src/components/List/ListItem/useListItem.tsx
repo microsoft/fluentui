@@ -72,10 +72,10 @@ export const useListItem_unstable = (
 
   // avoid passing empty onClick to prevent items unnecessary being narrated as clickable
   // see https://github.com/microsoft/fluentui/issues/20658
-  const useClick = !!onClick || isSelectionEnabled;
+  const passClickHandler = !!onClick || isSelectionEnabled;
 
   const clickHandlerProps = {
-    onClick: useClick ? handleClick : undefined,
+    onClick: passClickHandler ? handleClick : undefined,
     onKeyDown: onKeyDown as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
     onKeyUp: onKeyUp as React.KeyboardEventHandler<HTMLLIElement & HTMLDivElement>,
   };
