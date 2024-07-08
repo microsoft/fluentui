@@ -20,7 +20,10 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): React_2.FC<PresenceComponentProps & MotionParams>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
+
+// @public (undocumented)
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -81,6 +84,12 @@ export const motionTokens: {
     durationSlow: 300;
     durationSlower: 400;
     durationUltraSlow: 500;
+};
+
+// @public (undocumented)
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
+    (props: PresenceComponentProps & MotionParams): React_2.ReactElement | null;
+    [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
 };
 
 // @public (undocumented)
