@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "tslib": "^2.1.0",
-    "react": "^8.119.0",
+    "react": "17.0.2",
     "ts-morph": "^10.0.1",
     "glob": "^7.1.2",
     "yargs": "^13.3.2"

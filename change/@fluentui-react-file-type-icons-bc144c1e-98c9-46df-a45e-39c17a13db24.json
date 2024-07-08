@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: revert incorectly set npm versions in all packages",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
