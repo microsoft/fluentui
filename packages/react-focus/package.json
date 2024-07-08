@@ -45,7 +45,7 @@
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
-    "react": "^8.119.0"
+    "react": ">=16.8.0 <19.0.0"
   },
   "publishConfig": {
     "access": "public"
