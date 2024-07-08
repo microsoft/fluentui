@@ -16,16 +16,16 @@ steps:
 
   # this also builds FUI N* docs if appropriate
   - script: |
-      yarn bundle  $(sinceArg)
+      yarn nx affected -t bundle --nxBail --verbose $(sinceArg)
     displayName: bundle
 
   - script: |
-      yarn lage build-storybook  --verbose $(sinceArg)
+      yarn nx affected -t build-storybook --nxBail --verbose $(sinceArg)
     displayName: build Storybooks
 
   ## This runs regardless of scope, the app will adapt to the scope as well
   - script: |
-      yarn workspace @fluentui/pr-deploy-site generate:site
+      yarn nx run pr-deploy-site:generate:site
     displayName: generate PR Deploy Site
 
   - task: AzureCLI@2
@@ -54,7 +54,7 @@ steps:
       githubTargetLink: $(deployUrl)/
 
   - script: |
-      yarn e2e $(sinceArg)
+      yarn nx affected -t e2e --nxBail --verbose $(sinceArg)
     displayName: Cypress E2E tests
 
   - template: cleanup.yml

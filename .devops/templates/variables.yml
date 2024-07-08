@@ -16,6 +16,8 @@ variables:
   # Prevents failures on CI when "caniuse-lite" becomes outdated
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
+  NX_PARALLEL: 3
+
   # Also accessed as process.env.DEPLOYHOST
   deployHost: 'fluentuipr.z22.web.core.windows.net'
 

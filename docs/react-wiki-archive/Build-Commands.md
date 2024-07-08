@@ -18,10 +18,7 @@ These commands should be run from the root of the Fluent UI Git repo.
 
 You can see all the available commands by looking at the `scripts` section of the [root `package.json`](https://github.com/microsoft/fluentui/blob/master/package.json).
 
-Many of the repo-wide commands internally use the Lage task runner and support its [CLI options](https://microsoft.github.io/lage/guide/cli.html), including:
-
-- `--to package-name`: build only packages matching `package-name`, and their dependencies. `package-name` can be a substring of the name, such as `react-examples` instead of `@fluentui/react-examples`.
-- `--concurrency N`: use max of N processes to build
+Many of the repo-wide commands internally use the Nx task runner and support its [CLI options](https://nx.dev/nx-api/nx/documents/run), including:
 
 <!-- prettier-ignore-start -->
 | Command | Explanation |
@@ -41,7 +38,7 @@ Many of the repo-wide commands internally use the Lage task runner and support i
 |[`yarn update-snapshots`](#yarn-update-snapshots-repo)|Update Jest snapshots for all packages *(**must build first**; supports `--to`)*|
 |[`yarn scrub`](#yarn-scrub)|Revert the repo to a clean state *(commit or stash your changes first)*|
 |[`yarn create-package`](#yarn-create-package)|Create a new package|
-|`yarn lage run`|(advanced) Run any package.json script name repo-wide using Lage. This is usually unnecessary. *(supports `--to`)*|
+|`yarn nx run-many`|(advanced) Run any package.json script name repo-wide using nx. This is usually unnecessary. *(supports `--to`)*|
 <!-- prettier-ignore-end -->
 
 ### Quick reference: package-specific commands
