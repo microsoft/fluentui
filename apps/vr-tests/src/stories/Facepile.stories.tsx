@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import {
   Facepile,
   PersonaInitialsColor,
@@ -51,59 +55,68 @@ const facepileProps: IFacepileProps = {
   ariaDescription: 'To move through the items use left and right arrow keys.',
 };
 
-storiesOf('Facepile', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Root', () => <Facepile {...facepileProps} />, { includeRtl: true })
-  .addStory('Extra extra small', () => (
-    <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
-  ))
-  .addStory('Overflow', () => (
-    <Facepile
-      {...facepileProps}
-      maxDisplayablePersonas={3}
-      overflowButtonType={OverflowButtonType.downArrow}
-      overflowButtonProps={{
-        ariaLabel: 'More users',
-      }}
-    />
-  ))
-  .addStory('Add face', () => <Facepile {...facepileProps} showAddButton={true} />)
-  .addStory('Custom button styles', () => (
-    <Facepile
-      {...facepileProps}
-      showAddButton
-      overflowButtonType={OverflowButtonType.descriptive}
-      maxDisplayablePersonas={3}
-      overflowButtonProps={{
-        styles: {
-          root: { background: 'yellow' },
-        },
-      }}
-      addButtonProps={{
-        styles: {
-          root: { boxShadow: '0px 0px 5px 5px gray' },
-        },
-      }}
-      styles={{
-        descriptiveOverflowButton: {
-          background: 'red', // overridden by overflowButtonProps
-          boxShadow: '0px 0px 5px 5px gray', // not overridden
-          marginLeft: 8, // not overridden
-        },
-        addButton: {
-          boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
-          marginRight: 8, // not overridden
-        },
-      }}
-    />
-  ));
+export default {
+  title: 'Facepile',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const Root = () => <Facepile {...facepileProps} />;
+
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+
+export const ExtraExtraSmall = () => (
+  <Facepile {...facepileProps} personaSize={PersonaSize.size24} />
+);
+
+ExtraExtraSmall.storyName = 'Extra extra small';
+
+export const Overflow = () => (
+  <Facepile
+    {...facepileProps}
+    maxDisplayablePersonas={3}
+    overflowButtonType={OverflowButtonType.downArrow}
+    overflowButtonProps={{
+      ariaLabel: 'More users',
+    }}
+  />
+);
+
+export const AddFace = () => <Facepile {...facepileProps} showAddButton={true} />;
+
+AddFace.storyName = 'Add face';
+
+export const CustomButtonStyles = () => (
+  <Facepile
+    {...facepileProps}
+    showAddButton
+    overflowButtonType={OverflowButtonType.descriptive}
+    maxDisplayablePersonas={3}
+    overflowButtonProps={{
+      styles: {
+        root: { background: 'yellow' },
+      },
+    }}
+    addButtonProps={{
+      styles: {
+        root: { boxShadow: '0px 0px 5px 5px gray' },
+      },
+    }}
+    styles={{
+      descriptiveOverflowButton: {
+        background: 'red', // overridden by overflowButtonProps
+        boxShadow: '0px 0px 5px 5px gray', // not overridden
+        marginLeft: 8, // not overridden
+      },
+      addButton: {
+        boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
+        marginRight: 8, // not overridden
+      },
+    }}
+  />
+);
+
+CustomButtonStyles.storyName = 'Custom button styles';

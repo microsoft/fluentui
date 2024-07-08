@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -195,11 +194,13 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   );
 }
 
-storiesOf('ScrollablePane Details List', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ScrollablePane Details List',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 2",
@@ -215,11 +216,14 @@ storiesOf('ScrollablePane Details List', module)
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 0",
         )
         .snapshot('scroll up to the top', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('ScrollablePane Details List with sticky header & footer', () => (
-    <ScrollablePaneDetailsListStory />
-  ));
+        .end(),
+    ),
+  ],
+};
+
+export const ScrollablePaneDetailsListWithStickyHeaderFooter = () => (
+  <ScrollablePaneDetailsListStory />
+);
+
+ScrollablePaneDetailsListWithStickyHeaderFooter.storyName =
+  'ScrollablePane Details List with sticky header & footer';

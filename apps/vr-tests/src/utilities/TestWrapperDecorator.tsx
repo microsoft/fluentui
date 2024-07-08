@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { DecoratorFunction } from '@storybook/addons';
-import { ExtendedStoryFnReturnType } from './types';
+import type { DecoratorFn } from '@storybook/react';
 
-export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecorator: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -10,7 +9,7 @@ export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> 
   </div>
 );
 
-export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecoratorTall: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -18,9 +17,7 @@ export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnTy
   </div>
 );
 
-export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<
-  ExtendedStoryFnReturnType
-> = story => (
+export const TestWrapperDecoratorTallFixedWidth: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -28,9 +25,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<
   </div>
 );
 
-export const TestWrapperDecoratorFixedWidth: DecoratorFunction<
-  ExtendedStoryFnReturnType
-> = story => (
+export const TestWrapperDecoratorFixedWidth: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -38,9 +33,7 @@ export const TestWrapperDecoratorFixedWidth: DecoratorFunction<
   </div>
 );
 
-export const TestWrapperDecoratorFullWidth: DecoratorFunction<
-  ExtendedStoryFnReturnType
-> = story => (
+export const TestWrapperDecoratorFullWidth: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}

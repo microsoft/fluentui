@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator, TestWrapperDecoratorFullWidth } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -83,93 +82,72 @@ const docActivity = (
   </Fabric>
 );
 
-storiesOf('DocumentCard', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  // Commenting out this story as it has some racing issues with the truncation logic
-  // and causes the test to fail on unrelated PRs
-  // .addStory('Root', () => (
-  //   <Fabric>
-  //     <DocumentCard onClickHref="http://bing.com">
-  //       <DocumentCardPreview {...previewProps} />
-  //       <DocumentCardTitle
-  // eslint-disable-next-line @fluentui/max-len
-  //         title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
-  //         shouldTruncate={true}
-  //       />
-  //       {docActivity}
-  //     </DocumentCard>
-  //   </Fabric>
-  // ))
-  .addStory('Not truncated', () => (
-    <Fabric>
-      <DocumentCard onClickHref="http://bing.com">
-        <DocumentCardPreview {...previewProps} />
+export default {
+  title: 'DocumentCard',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const NotTruncated = () => (
+  <Fabric>
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
+      <DocumentCardTitle
+        title={
+          'Large_file_name_with_underscores_used_to_separate_all_of_the_' +
+          'words_and_there_are_so_many_words_it_needs_truncating.pptx'
+        }
+        shouldTruncate={false}
+      />
+      {docActivity}
+    </DocumentCard>
+  </Fabric>
+);
+
+NotTruncated.storyName = 'Not truncated';
+
+export const WithSecondaryTitleStyle = () => (
+  <Fabric>
+    <DocumentCard onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewProps} />
+      <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
+      {docActivity}
+    </DocumentCard>
+  </Fabric>
+);
+
+WithSecondaryTitleStyle.storyName = 'With secondary title style';
+
+export const CompactWithPreviewList = () => (
+  <Fabric>
+    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+      <DocumentCardPreview {...previewPropsCompact} />
+      <DocumentCardDetails>
+        <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+        {docActivity}
+      </DocumentCardDetails>
+    </DocumentCard>
+  </Fabric>
+);
+
+CompactWithPreviewList.storyName = 'Compact with preview list';
+
+export const CompactWithPreviewImage = () => (
+  <Fabric>
+    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+      <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+      <DocumentCardDetails>
         <DocumentCardTitle
-          title={
-            'Large_file_name_with_underscores_used_to_separate_all_of_the_' +
-            'words_and_there_are_so_many_words_it_needs_truncating.pptx'
-          }
-          shouldTruncate={false}
+          title="Revenue stream proposal fiscal year 2016 version02.pptx"
+          shouldTruncate={true}
         />
         {docActivity}
-      </DocumentCard>
-    </Fabric>
-  ))
-  .addStory('With secondary title style', () => (
-    <Fabric>
-      <DocumentCard onClickHref="http://bing.com">
-        <DocumentCardPreview {...previewProps} />
-        <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
-        {docActivity}
-      </DocumentCard>
-    </Fabric>
-  ));
+      </DocumentCardDetails>
+    </DocumentCard>
+  </Fabric>
+);
 
-storiesOf('DocumentCard', module)
-  .addDecorator(TestWrapperDecoratorFullWidth)
-
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Compact with preview list', () => (
-    <Fabric>
-      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-        <DocumentCardPreview {...previewPropsCompact} />
-        <DocumentCardDetails>
-          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-          {docActivity}
-        </DocumentCardDetails>
-      </DocumentCard>
-    </Fabric>
-  ))
-  .addStory('Compact with preview image', () => (
-    <Fabric>
-      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-        <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
-        <DocumentCardDetails>
-          <DocumentCardTitle
-            title="Revenue stream proposal fiscal year 2016 version02.pptx"
-            shouldTruncate={true}
-          />
-          {docActivity}
-        </DocumentCardDetails>
-      </DocumentCard>
-    </Fabric>
-  ));
+CompactWithPreviewImage.storyName = 'Compact with preview image';

@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecoratorFixedWidth,
+} from '../utilities';
 import {
   ITilesGridItem,
   ITilesGridSegment,
@@ -77,16 +81,17 @@ function renderItem(item: IBasicItem, finalSize?: ITileSize): JSX.Element {
   );
 }
 
-storiesOf('TilesList', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Basic', () => <TilesListBasicExample />, { includeRtl: true });
+export default {
+  title: 'TilesList',
+
+  decorators: [
+    TestWrapperDecoratorFixedWidth,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+
+  excludeStories: ['IBasicItem', 'ITilesListBasicExampleState', 'TilesListBasicExample'],
+};
+
+export const Basic = () => <TilesListBasicExample />;
+
+export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);

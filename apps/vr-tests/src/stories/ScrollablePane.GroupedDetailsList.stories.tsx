@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -233,11 +232,13 @@ function _onRenderCheckForFooterRow(
 const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0]";
 const cropTo = { cropTo: '.testWrapper' };
 
-storiesOf('ScrollablePane Grouped Details List', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ScrollablePane Grouped Details List',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default: scrollbars should be visible', cropTo)
         .executeScript(`${getElement}.scrollTop = 100`)
         .snapshot('Scrollbars visibility when header is sticky', cropTo)
@@ -274,9 +275,11 @@ storiesOf('ScrollablePane Grouped Details List', module)
           'If groups are expanded, on horizontal scroll, over scroll should not happen for content container',
           cropTo,
         )
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('ScrollablePane scrollbars visibility', () => <ScrollablePaneDetailsListStory />);
+        .end(),
+    ),
+  ],
+};
+
+export const ScrollablePaneScrollbarsVisibility = () => <ScrollablePaneDetailsListStory />;
+
+ScrollablePaneScrollbarsVisibility.storyName = 'ScrollablePane scrollbars visibility';

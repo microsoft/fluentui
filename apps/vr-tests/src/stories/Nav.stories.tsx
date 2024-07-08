@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { Nav, INavLink } from '@fluentui/react/lib/Nav';
 
 const links: INavLink[] = [
@@ -86,37 +90,36 @@ const disabledLinks: INavLink[] = [
   },
 ];
 
-storiesOf('Nav', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'Nav',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-Nav-compositeLink')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-Nav-chevronButton')
         .hover('.ms-Nav-compositeLink')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Root',
-    () => (
-      <div style={{ width: '208px' }}>
-        <Nav groups={[{ links }]} selectedKey="key3" />
-      </div>
+        .end(),
     ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'Disabled',
-    () => (
-      <div style={{ width: '208px' }}>
-        <Nav groups={[{ links: disabledLinks }]} selectedKey="key3" />
-      </div>
-    ),
-    { includeRtl: true },
-  );
+  ],
+};
+
+export const Root = () => (
+  <div style={{ width: '208px' }}>
+    <Nav groups={[{ links }]} selectedKey="key3" />
+  </div>
+);
+
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+
+export const Disabled = () => (
+  <div style={{ width: '208px' }}>
+    <Nav groups={[{ links: disabledLinks }]} selectedKey="key3" />
+  </div>
+);
+
+export const DisabledRTL = getStoryVariant(Disabled, STORY_VARIANT.RTL);

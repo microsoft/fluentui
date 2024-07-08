@@ -1,29 +1,24 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { Overlay } from '@fluentui/react';
 
-storiesOf('Overlay', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.ms-Overlay' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory(
-    'Root',
-    // prettier-ignore
-    () => <Overlay>Overlay content</Overlay>,
-    { includeRtl: true },
-  )
-  .addStory(
-    'Dark',
-    // prettier-ignore
-    () => <Overlay isDarkThemed>Overlay content</Overlay>,
-  );
+export default {
+  title: 'Overlay',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.ms-Overlay' }).end()),
+  ],
+};
+
+export const Root = () => <Overlay>Overlay content</Overlay>;
+
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+
+export const Dark = () => <Overlay isDarkThemed>Overlay content</Overlay>;

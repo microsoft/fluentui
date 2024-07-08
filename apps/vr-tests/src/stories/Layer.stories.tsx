@@ -1,19 +1,22 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { Layer } from '@fluentui/react';
 
-storiesOf('Layer', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Root', () => <Layer>Layer content</Layer>, { includeRtl: true });
+export default {
+  title: 'Layer',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.ms-Layer' }).end()),
+  ],
+};
+
+export const Root = () => <Layer>Layer content</Layer>;
+
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);

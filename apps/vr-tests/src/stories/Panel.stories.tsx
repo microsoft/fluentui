@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
@@ -16,119 +20,136 @@ const onRenderFooterContent = () => (
   </div>
 );
 
-storiesOf('Panel', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default')
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory(
-    'Small left w/ close button',
-    () => (
-      <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
-    ),
-    { includeRtl: true },
-  )
-  .addStory(
-    'Small fixed right w/ close button',
-    () => (
-      <Panel
-        {...defaultProps}
-        hasCloseButton
-        type={PanelType.smallFixedFar}
-        headerText="Small fixed"
-      />
-    ),
-    { includeRtl: true },
-  )
-  .addStory('Small fluid right', () => (
-    <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
-  ))
-  .addStory(
-    'Medium right',
-    () => <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />,
-    { includeRtl: true },
-  )
-  .addStory('Large right', () => (
-    <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
-  ))
-  .addStory('Large fixed right', () => (
-    <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />
-  ))
-  .addStory('Extra large right', () => (
-    <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />
-  ))
-  .addStory('Custom', () => (
-    <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
-  ))
-  .addStory('Custom anchored left', () => (
-    <Panel
-      {...defaultProps}
-      type={PanelType.customNear}
-      headerText="Custom left"
-      customWidth="320px"
-    />
-  ))
-  .addStory('With no navigation', () => (
-    <Panel
-      {...defaultProps}
-      type={PanelType.smallFixedFar}
-      headerText="No navigation"
-      hasCloseButton={false}
-    />
-  ))
-  .addStory('With custom navigation', () => (
-    <Panel
-      {...defaultProps}
-      type={PanelType.smallFixedFar}
-      headerText="custom navigation"
-      onRenderNavigation={() => <DefaultButton>clickme</DefaultButton>}
-    />
-  ))
-  .addStory('With no header, close button', () => (
-    <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
-  ))
-  .addStory('With footer at the bottom', () => (
-    <Panel
-      {...defaultProps}
-      type={PanelType.smallFixedFar}
-      headerText="Footer at bottom"
-      onRenderFooterContent={onRenderFooterContent}
-      isFooterAtBottom={true}
-    />
-  ));
+export default {
+  title: 'Panel',
 
-storiesOf('Panel', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end()}
+  decorators: [TestWrapperDecorator, StoryWrightDecorator(new Steps().snapshot('default').end())],
+};
+
+export const SmallLeftWCloseButton = () => (
+  <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} headerText="Small" />
+);
+
+SmallLeftWCloseButton.storyName = 'Small left w/ close button';
+
+export const SmallLeftWCloseButtonRTL = getStoryVariant(SmallLeftWCloseButton, STORY_VARIANT.RTL);
+
+export const SmallFixedRightWCloseButton = () => (
+  <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedFar} headerText="Small fixed" />
+);
+
+SmallFixedRightWCloseButton.storyName = 'Small fixed right w/ close button';
+
+export const SmallFixedRightWCloseButtonRTL = getStoryVariant(
+  SmallFixedRightWCloseButton,
+  STORY_VARIANT.RTL,
+);
+
+export const SmallFluidRight = () => (
+  <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
+);
+
+SmallFluidRight.storyName = 'Small fluid right';
+
+export const MediumRight = () => (
+  <Panel {...defaultProps} type={PanelType.medium} headerText="Medium" />
+);
+
+MediumRight.storyName = 'Medium right';
+
+export const MediumRightRTL = getStoryVariant(MediumRight, STORY_VARIANT.RTL);
+
+export const LargeRight = () => (
+  <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
+);
+
+LargeRight.storyName = 'Large right';
+
+export const LargeFixedRight = () => (
+  <Panel {...defaultProps} type={PanelType.largeFixed} headerText="Large fixed" />
+);
+
+LargeFixedRight.storyName = 'Large fixed right';
+
+export const ExtraLargeRight = () => (
+  <Panel {...defaultProps} type={PanelType.extraLarge} headerText="Extra Large" />
+);
+
+ExtraLargeRight.storyName = 'Extra large right';
+
+export const Custom = () => (
+  <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
+);
+
+export const CustomAnchoredLeft = () => (
+  <Panel
+    {...defaultProps}
+    type={PanelType.customNear}
+    headerText="Custom left"
+    customWidth="320px"
+  />
+);
+
+CustomAnchoredLeft.storyName = 'Custom anchored left';
+
+export const WithNoNavigation = () => (
+  <Panel
+    {...defaultProps}
+    type={PanelType.smallFixedFar}
+    headerText="No navigation"
+    hasCloseButton={false}
+  />
+);
+
+WithNoNavigation.storyName = 'With no navigation';
+
+export const WithCustomNavigation = () => (
+  <Panel
+    {...defaultProps}
+    type={PanelType.smallFixedFar}
+    headerText="custom navigation"
+    onRenderNavigation={() => <DefaultButton>clickme</DefaultButton>}
+  />
+);
+
+WithCustomNavigation.storyName = 'With custom navigation';
+
+export const WithNoHeaderCloseButton = () => (
+  <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
+);
+
+WithNoHeaderCloseButton.storyName = 'With no header, close button';
+
+export const WithFooterAtTheBottom = () => (
+  <Panel
+    {...defaultProps}
+    type={PanelType.smallFixedFar}
+    headerText="Footer at bottom"
+    onRenderFooterContent={onRenderFooterContent}
+    isFooterAtBottom={true}
+  />
+);
+
+WithFooterAtTheBottom.storyName = 'With footer at the bottom';
+
+export const SearchBoxAndRightPanel = () => (
+  <div>
+    <SearchBox placeholder="Search" />
+    <Panel
+      {...defaultProps}
+      isOpen={false}
+      type={PanelType.medium}
+      headerClassName=""
+      headerText={'Header'}
+      isHiddenOnDismiss
     >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'SearchBox and Right Panel',
-    () => (
-      <div>
-        <SearchBox placeholder="Search" />
-        <Panel
-          {...defaultProps}
-          isOpen={false}
-          type={PanelType.medium}
-          headerClassName=""
-          headerText={'Header'}
-          isHiddenOnDismiss
-        >
-          {null}
-        </Panel>
-      </div>
-    ),
-    { includeRtl: true },
-  );
+      {null}
+    </Panel>
+  </div>
+);
+SearchBoxAndRightPanel.storyName = 'SearchBox and Right Panel';
+SearchBoxAndRightPanel.parameters = {
+  steps: new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end(),
+};
+
+export const SearchBoxAndRightPanelRTL = getStoryVariant(SearchBoxAndRightPanel, STORY_VARIANT.RTL);

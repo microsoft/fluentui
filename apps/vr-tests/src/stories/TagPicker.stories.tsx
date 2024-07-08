@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { StoryWright, Steps, Keys } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
+import { Steps, Keys } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -26,17 +30,12 @@ const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the StoryWright decorator because css classes for
-// suggestion items won't exist
-storiesOf('TagPicker', module)
-  .addDecorator(TestWrapperDecorator)
-  .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
-
-storiesOf('TagPicker', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'TagPicker',
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
@@ -44,101 +43,95 @@ storiesOf('TagPicker', module)
         .hover('.ms-Suggestions-item')
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
         .keys('.ms-BasePicker-input', Keys.upArrow)
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Root', () => (
+        .end(),
+    ),
+  ],
+};
+
+export const Disabled = () => <TagPicker onResolveSuggestions={getList} disabled />;
+
+Disabled.storyName = 'TagPicker disabled';
+Disabled.parameters = { steps: [] };
+
+export const Default = () => (
+  <TagPicker
+    onResolveSuggestions={getList}
+    onEmptyInputFocus={getList}
+    getTextFromItem={getTextFromItem}
+    pickerSuggestionsProps={{
+      suggestionsHeaderText: 'Suggested Tags',
+      noResultsFoundText: 'No Color Tags Found',
+      searchForMoreText: 'Get more Results',
+    }}
+    itemLimit={2}
+  />
+);
+
+export const Selected = () => (
+  <Fabric>
     <TagPicker
+      defaultSelectedItems={[testTags[4]]}
       onResolveSuggestions={getList}
       onEmptyInputFocus={getList}
       getTextFromItem={getTextFromItem}
       pickerSuggestionsProps={{
         suggestionsHeaderText: 'Suggested Tags',
         noResultsFoundText: 'No Color Tags Found',
-        searchForMoreText: 'Get more Results',
       }}
       itemLimit={2}
     />
-  ))
-  .addStory(
-    'Selected',
-    () => (
-      <Fabric>
-        <TagPicker
-          defaultSelectedItems={[testTags[4]]}
-          onResolveSuggestions={getList}
-          onEmptyInputFocus={getList}
-          getTextFromItem={getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found',
-          }}
-          itemLimit={2}
-        />
-      </Fabric>
-    ),
-    { includeRtl: true },
-  );
+  </Fabric>
+);
 
-storiesOf('TagPicker', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('With long tag', () => (
-    // This example MUST be inside a narrow container which forces the tag to overflow
-    <Fabric style={{ width: 180 }}>
-      <TagPicker
-        onResolveSuggestions={getList}
-        defaultSelectedItems={[
-          {
-            key: 'test',
-            name: 'Very very long tag (this part should be truncated)',
-          },
-        ]}
-      />
-    </Fabric>
-  ));
+export const SelectedRTL = getStoryVariant(Selected, STORY_VARIANT.RTL);
 
-storiesOf('TagItem', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-TagItem')
-        .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
-        .hover('.ms-TagItem-close')
-        .snapshot('Tag Item Clear Button Hover', { cropTo: '.testWrapper' })
-        .click('.ms-TagItem')
-        .snapshot('Tag Item Select', { cropTo: '.testWrapper' })
-        .hover('.ms-TagItem-close')
-        .snapshot('Tag Item Clear Button Selected Hover', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Selected',
-    () => (
-      <Fabric>
-        <TagPicker
-          defaultSelectedItems={[testTags[4]]}
-          onResolveSuggestions={getList}
-          onEmptyInputFocus={getList}
-          getTextFromItem={getTextFromItem}
-          pickerSuggestionsProps={{
-            suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found',
-          }}
-          itemLimit={2}
-        />
-      </Fabric>
-    ),
-    { includeRtl: true },
-  );
+export const WithLongTag = () => (
+  // This example MUST be inside a narrow container which forces the tag to overflow
+  <Fabric style={{ width: 180 }}>
+    <TagPicker
+      onResolveSuggestions={getList}
+      defaultSelectedItems={[
+        {
+          key: 'test',
+          name: 'Very very long tag (this part should be truncated)',
+        },
+      ]}
+    />
+  </Fabric>
+);
+
+WithLongTag.storyName = 'With long tag';
+WithLongTag.parameters = {
+  steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
+};
+
+export const TagItemSelected = () => (
+  <Fabric>
+    <TagPicker
+      defaultSelectedItems={[testTags[4]]}
+      onResolveSuggestions={getList}
+      onEmptyInputFocus={getList}
+      getTextFromItem={getTextFromItem}
+      pickerSuggestionsProps={{
+        suggestionsHeaderText: 'Suggested Tags',
+        noResultsFoundText: 'No Color Tags Found',
+      }}
+      itemLimit={2}
+    />
+  </Fabric>
+);
+TagItemSelected.parameters = {
+  steps: new Steps()
+    .snapshot('default', { cropTo: '.testWrapper' })
+    .hover('.ms-TagItem')
+    .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
+    .hover('.ms-TagItem-close')
+    .snapshot('Tag Item Clear Button Hover', { cropTo: '.testWrapper' })
+    .click('.ms-TagItem')
+    .snapshot('Tag Item Select', { cropTo: '.testWrapper' })
+    .hover('.ms-TagItem-close')
+    .snapshot('Tag Item Clear Button Selected Hover', { cropTo: '.testWrapper' })
+    .end(),
+};
+
+export const TagItemSelectedRTL = getStoryVariant(TagItemSelected, STORY_VARIANT.RTL);

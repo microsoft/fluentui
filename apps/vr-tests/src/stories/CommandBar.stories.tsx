@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecoratorTall } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecoratorTall,
+} from '../utilities';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -65,32 +69,42 @@ const farItems: ICommandBarItemProps[] = [
   },
 ];
 
-storiesOf('CommandBar', module)
-  .addDecorator(TestWrapperDecoratorTall)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'CommandBar',
+
+  decorators: [
+    TestWrapperDecoratorTall,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-CommandBarItem-link')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-CommandBarItem-link')
         .hover('.ms-CommandBarItem-link')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { includeRtl: true })
-  .addStory('Text only', () => (
-    <CommandBar
-      items={items.map(item => ({ ...item, iconProps: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
-    />
-  ))
-  .addStory('Icons only', () => (
-    <CommandBar
-      items={items.map(item => ({ ...item, text: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
-    />
-  ));
+        .end(),
+    ),
+  ],
+};
+
+export const Root = () => <CommandBar items={items} farItems={farItems} />;
+
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+
+export const TextOnly = () => (
+  <CommandBar
+    items={items.map(item => ({ ...item, iconProps: undefined }))}
+    farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
+  />
+);
+
+TextOnly.storyName = 'Text only';
+
+export const IconsOnly = () => (
+  <CommandBar
+    items={items.map(item => ({ ...item, text: undefined }))}
+    farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
+  />
+);
+
+IconsOnly.storyName = 'Icons only';

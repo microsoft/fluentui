@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
@@ -11,11 +15,13 @@ const options: IChoiceGroupOption[] = [
   { key: 'C', text: 'Disabled', disabled: true },
 ];
 
-storiesOf('ChoiceGroup', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ChoiceGroup',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover unselected', { cropTo: '.testWrapper' })
@@ -24,90 +30,85 @@ storiesOf('ChoiceGroup', module)
         .click('div.ms-ChoiceField:nth-of-type(1)')
         .hover('div.ms-ChoiceField:nth-of-type(1)')
         .snapshot('hover selected', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Root', () =>
-    // prettier-ignore
-    <ChoiceGroup
-      options={ options }
-      label="Pick one"
-    />,
-  )
-  .addStory('Required', () =>
-    // prettier-ignore
-    <ChoiceGroup
-      options={ options }
-      label="Pick one"
-      required
-    />,
-  )
-  .addStory(
-    'With icons',
-    () => (
-      <ChoiceGroup
-        label="Pick one icon"
-        options={[
-          {
-            key: 'day',
-            iconProps: { iconName: 'CalendarDay' },
-            text: 'Day',
-          },
-          {
-            key: 'week',
-            iconProps: { iconName: 'CalendarWeek' },
-            text: 'Week',
-          },
-          {
-            key: 'month',
-            iconProps: { iconName: 'Calendar' },
-            text: 'Month',
-            disabled: true,
-          },
-        ]}
-      />
+        .end(),
     ),
-    { includeRtl: true },
-  )
-  .addStory('With default size images', () => (
-    <ChoiceGroup
-      label="Pick one image"
-      options={[
-        {
-          key: 'bar',
-          imageSrc: TestImages.choiceGroupBarUnselected,
-          selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Clustered bar chart',
-        },
-        {
-          key: 'pie',
-          imageSrc: TestImages.choiceGroupBarUnselected,
-          selectedImageSrc: TestImages.choiceGroupBarSelected,
-          text: 'Pie chart',
-        },
-      ]}
-    />
-  ))
-  .addStory('With large size images', () => (
-    <ChoiceGroup
-      label="Pick one image"
-      options={[
-        {
-          key: 'bar2',
-          imageSrc: TestImages.choiceGroupBarUnselected,
-          selectedImageSrc: TestImages.choiceGroupBarSelected,
-          imageSize: { width: 120, height: 120 },
-          text: 'Clustered bar chart',
-        },
-        {
-          key: 'pie2',
-          imageSrc: TestImages.choiceGroupBarUnselected,
-          selectedImageSrc: TestImages.choiceGroupBarSelected,
-          imageSize: { width: 120, height: 120 },
-          text: 'Pie chart',
-        },
-      ]}
-    />
-  ));
+  ],
+};
+
+export const Root = () => <ChoiceGroup options={options} label="Pick one" />;
+
+export const Required = () => <ChoiceGroup options={options} label="Pick one" required />;
+
+export const WithIcons = () => (
+  <ChoiceGroup
+    label="Pick one icon"
+    options={[
+      {
+        key: 'day',
+        iconProps: { iconName: 'CalendarDay' },
+        text: 'Day',
+      },
+      {
+        key: 'week',
+        iconProps: { iconName: 'CalendarWeek' },
+        text: 'Week',
+      },
+      {
+        key: 'month',
+        iconProps: { iconName: 'Calendar' },
+        text: 'Month',
+        disabled: true,
+      },
+    ]}
+  />
+);
+
+WithIcons.storyName = 'With icons';
+
+export const WithIconsRTL = getStoryVariant(WithIcons, STORY_VARIANT.RTL);
+
+export const WithDefaultSizeImages = () => (
+  <ChoiceGroup
+    label="Pick one image"
+    options={[
+      {
+        key: 'bar',
+        imageSrc: TestImages.choiceGroupBarUnselected,
+        selectedImageSrc: TestImages.choiceGroupBarSelected,
+        text: 'Clustered bar chart',
+      },
+      {
+        key: 'pie',
+        imageSrc: TestImages.choiceGroupBarUnselected,
+        selectedImageSrc: TestImages.choiceGroupBarSelected,
+        text: 'Pie chart',
+      },
+    ]}
+  />
+);
+
+WithDefaultSizeImages.storyName = 'With default size images';
+
+export const WithLargeSizeImages = () => (
+  <ChoiceGroup
+    label="Pick one image"
+    options={[
+      {
+        key: 'bar2',
+        imageSrc: TestImages.choiceGroupBarUnselected,
+        selectedImageSrc: TestImages.choiceGroupBarSelected,
+        imageSize: { width: 120, height: 120 },
+        text: 'Clustered bar chart',
+      },
+      {
+        key: 'pie2',
+        imageSrc: TestImages.choiceGroupBarUnselected,
+        selectedImageSrc: TestImages.choiceGroupBarSelected,
+        imageSize: { width: 120, height: 120 },
+        text: 'Pie chart',
+      },
+    ]}
+  />
+);
+
+WithLargeSizeImages.storyName = 'With large size images';

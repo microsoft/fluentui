@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Fabric, ScrollablePane, StickyPositionType, Sticky } from '@fluentui/react';
 import { lorem } from '@fluentui/example-data';
 
@@ -41,39 +40,43 @@ function createContentArea(index: number) {
   );
 }
 
-storiesOf('ScrollablePane', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ScrollablePane',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0].scrollTop = 9999",
         )
         .snapshot('scrolled', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Default ScrollablePane Example', () => (
-    <div
-      style={{
-        height: '600px',
-        position: 'relative',
-        maxHeight: 'inherit',
-        width: '400px',
-      }}
-    >
-      <Fabric>
-        <ScrollablePane
-          className="scrollablePaneDefaultExample"
-          style={{ maxWidth: '400px', border: '1px solid #edebe9' }}
-        >
-          {contentAreas.map(ele => {
-            return ele;
-          })}
-        </ScrollablePane>
-      </Fabric>
-    </div>
-  ));
+        .end(),
+    ),
+  ],
+};
+
+export const DefaultScrollablePaneExample = () => (
+  <div
+    style={{
+      height: '600px',
+      position: 'relative',
+      maxHeight: 'inherit',
+      width: '400px',
+    }}
+  >
+    <Fabric>
+      <ScrollablePane
+        className="scrollablePaneDefaultExample"
+        style={{ maxWidth: '400px', border: '1px solid #edebe9' }}
+      >
+        {contentAreas.map(ele => {
+          return ele;
+        })}
+      </ScrollablePane>
+    </Fabric>
+  </div>
+);
+
+DefaultScrollablePaneExample.storyName = 'Default ScrollablePane Example';

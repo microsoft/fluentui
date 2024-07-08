@@ -8,10 +8,10 @@ import {
   SharedSignal,
   ITileBackgroundProps,
 } from '@fluentui/react-experiments';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
+import { Steps } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { Meta } from '@storybook/react';
 
 interface IDocumentItem {
   name: JSX.Element;
@@ -131,176 +131,213 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
   );
 };
 
-storiesOf('Tile', module)
-  .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Document tile with fit landscape image', () => (
-    <DocumentTileWithThumbnail
-      item={{
-        name: <>Test Name</>,
-        activity: <>Test Activity</>,
-      }}
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-    />
-  ))
-  .addStory('Document tile with fit portrait image', () => (
-    <DocumentTileWithThumbnail
-      item={{
-        name: <>Test Name</>,
-        activity: <>Test Activity</>,
-      }}
-      originalImageSize={{
-        width: 150,
-        height: 200,
-      }}
-    />
-  ))
-  .addStory('Document tile with icon-sized image', () => (
-    <DocumentTileWithThumbnail
-      item={{
-        name: <>Test Name</>,
-        activity: <>Test Activity</>,
-      }}
-      originalImageSize={{
-        width: 16,
-        height: 16,
-      }}
-    />
-  ))
-  .addStory('Document tile with icon', () => (
-    <DocumentTileBox>
-      <Tile
-        itemName={<SignalField before={<NewSignal />}>{'Test Name'}</SignalField>}
-        itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
-        foreground={
-          <img
-            src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/48/docx.svg"
-            style={{
-              display: 'block',
-              width: '64px',
-              height: '64px',
-              margin: '16px',
-            }}
-          />
-        }
-        showForegroundFrame={true}
-      />
-    </DocumentTileBox>
-  ))
-  .addStory('Tile with no content and long text', () => (
-    <DocumentTileBox>
-      <Tile
-        itemName={
-          <SignalField before={<NewSignal />}>{'This is a name which should overflow'}</SignalField>
-        }
-        itemActivity={
-          <SignalField before={<SharedSignal />}>
-            {'This is an activity which should overflow'}
-          </SignalField>
-        }
-        showForegroundFrame={false}
-      />
-    </DocumentTileBox>
-  ));
+export default {
+  title: 'Tile',
 
-storiesOf('MediaTile', module)
-  .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Tile')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Media tile with single activity line', () => (
-    <MediaTileBox>
-      <MediaTileWithThumbnail
-        item={{
-          name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
-        }}
-        imageSize={{
-          width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT,
-        }}
-        nameplateOnlyOnHover={false}
-      />
-    </MediaTileBox>
-  ))
-  .addStory('Media tile with two activity lines', () => (
-    <MediaTileBox>
-      <MediaTileWithThumbnail
-        item={{
-          name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-          activity: (
-            <>
-              <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
-              <span style={{ display: 'block' }}>{'Test Activity Second Line'}</span>
-            </>
-          ),
-        }}
-        imageSize={{
-          width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT,
-        }}
-        nameplateOnlyOnHover={false}
-      />
-    </MediaTileBox>
-  ))
-  .addStory('Media tile with very long name and activity', () => (
-    <MediaTileBox>
-      <MediaTileWithThumbnail
-        item={{
-          name: (
-            <SignalField before={<NewSignal />}>
-              {'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}
-            </SignalField>
-          ),
-          activity: (
-            <SignalField before={<SharedSignal />}>
-              {'Proin elementum erat gravida libero luctus, id consequat risus aliquam'}
-            </SignalField>
-          ),
-        }}
-        imageSize={{
-          width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT,
-        }}
-        nameplateOnlyOnHover={false}
-      />
-    </MediaTileBox>
-  ))
-  .addStory('Media tile with nameplate hidden until hover', () => (
-    <MediaTileBox>
-      <MediaTileWithThumbnail
-        item={{
-          name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-          activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
-        }}
-        imageSize={{
-          width: MEDIA_TILE_WIDTH,
-          height: MEDIA_TILE_HEIGHT,
-        }}
-        nameplateOnlyOnHover={true}
-      />
-    </MediaTileBox>
-  ));
+  decorators: [
+    story => <Fabric>{story()}</Fabric>,
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+} satisfies Meta<typeof Tile>;
+
+export const DocumentTileWithFitLandscapeImage = () => (
+  <DocumentTileWithThumbnail
+    item={{
+      name: <>Test Name</>,
+      activity: <>Test Activity</>,
+    }}
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+  />
+);
+
+DocumentTileWithFitLandscapeImage.storyName = 'Document tile with fit landscape image';
+
+export const DocumentTileWithFitPortraitImage = () => (
+  <DocumentTileWithThumbnail
+    item={{
+      name: <>Test Name</>,
+      activity: <>Test Activity</>,
+    }}
+    originalImageSize={{
+      width: 150,
+      height: 200,
+    }}
+  />
+);
+
+DocumentTileWithFitPortraitImage.storyName = 'Document tile with fit portrait image';
+
+export const DocumentTileWithIconSizedImage = () => (
+  <DocumentTileWithThumbnail
+    item={{
+      name: <>Test Name</>,
+      activity: <>Test Activity</>,
+    }}
+    originalImageSize={{
+      width: 16,
+      height: 16,
+    }}
+  />
+);
+
+DocumentTileWithIconSizedImage.storyName = 'Document tile with icon-sized image';
+
+export const DocumentTileWithIcon = () => (
+  <DocumentTileBox>
+    <Tile
+      itemName={<SignalField before={<NewSignal />}>{'Test Name'}</SignalField>}
+      itemActivity={<SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>}
+      foreground={
+        <img
+          src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/48/docx.svg"
+          style={{
+            display: 'block',
+            width: '64px',
+            height: '64px',
+            margin: '16px',
+          }}
+        />
+      }
+      showForegroundFrame={true}
+    />
+  </DocumentTileBox>
+);
+
+DocumentTileWithIcon.storyName = 'Document tile with icon';
+
+export const TileWithNoContentAndLongText = () => (
+  <DocumentTileBox>
+    <Tile
+      itemName={
+        <SignalField before={<NewSignal />}>{'This is a name which should overflow'}</SignalField>
+      }
+      itemActivity={
+        <SignalField before={<SharedSignal />}>
+          {'This is an activity which should overflow'}
+        </SignalField>
+      }
+      showForegroundFrame={false}
+    />
+  </DocumentTileBox>
+);
+
+TileWithNoContentAndLongText.storyName = 'Tile with no content and long text';
+
+// export default {
+//   title: 'MediaTile',
+
+//   decorators: [
+//     story => <Fabric>{story()}</Fabric>,
+//     TestWrapperDecorator,
+//     story => (
+//       <StoryWright
+//         steps={new Steps()
+//           .snapshot('default', { cropTo: '.testWrapper' })
+//           .hover('.ms-Tile')
+//           .snapshot('hover', { cropTo: '.testWrapper' })
+//           .end()}
+//       >
+//         {story()}
+//       </StoryWright>
+//     ),
+//   ],
+// };
+
+const steps = new Steps()
+  .snapshot('default', { cropTo: '.testWrapper' })
+  .hover('.ms-Tile')
+  .snapshot('hover', { cropTo: '.testWrapper' })
+  .end();
+
+export const MediaTileWithSingleActivityLine = () => (
+  <MediaTileBox>
+    <MediaTileWithThumbnail
+      item={{
+        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
+        activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
+      }}
+      imageSize={{
+        width: MEDIA_TILE_WIDTH,
+        height: MEDIA_TILE_HEIGHT,
+      }}
+      nameplateOnlyOnHover={false}
+    />
+  </MediaTileBox>
+);
+
+MediaTileWithSingleActivityLine.storyName = 'Media tile with single activity line';
+MediaTileWithSingleActivityLine.parameters = { steps };
+
+export const MediaTileWithTwoActivityLines = () => (
+  <MediaTileBox>
+    <MediaTileWithThumbnail
+      item={{
+        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
+        activity: (
+          <>
+            <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
+            <span style={{ display: 'block' }}>{'Test Activity Second Line'}</span>
+          </>
+        ),
+      }}
+      imageSize={{
+        width: MEDIA_TILE_WIDTH,
+        height: MEDIA_TILE_HEIGHT,
+      }}
+      nameplateOnlyOnHover={false}
+    />
+  </MediaTileBox>
+);
+
+MediaTileWithTwoActivityLines.storyName = 'Media tile with two activity lines';
+MediaTileWithTwoActivityLines.parameters = { steps };
+
+export const MediaTileWithVeryLongNameAndActivity = () => (
+  <MediaTileBox>
+    <MediaTileWithThumbnail
+      item={{
+        name: (
+          <SignalField before={<NewSignal />}>
+            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}
+          </SignalField>
+        ),
+        activity: (
+          <SignalField before={<SharedSignal />}>
+            {'Proin elementum erat gravida libero luctus, id consequat risus aliquam'}
+          </SignalField>
+        ),
+      }}
+      imageSize={{
+        width: MEDIA_TILE_WIDTH,
+        height: MEDIA_TILE_HEIGHT,
+      }}
+      nameplateOnlyOnHover={false}
+    />
+  </MediaTileBox>
+);
+
+MediaTileWithVeryLongNameAndActivity.storyName = 'Media tile with very long name and activity';
+MediaTileWithVeryLongNameAndActivity.parameters = { steps };
+
+export const MediaTileWithNameplateHiddenUntilHover = () => (
+  <MediaTileBox>
+    <MediaTileWithThumbnail
+      item={{
+        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
+        activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
+      }}
+      imageSize={{
+        width: MEDIA_TILE_WIDTH,
+        height: MEDIA_TILE_HEIGHT,
+      }}
+      nameplateOnlyOnHover={true}
+    />
+  </MediaTileBox>
+);
+
+MediaTileWithNameplateHiddenUntilHover.storyName = 'Media tile with nameplate hidden until hover';
+MediaTileWithNameplateHiddenUntilHover.parameters = { steps };

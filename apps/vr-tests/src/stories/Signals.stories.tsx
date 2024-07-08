@@ -21,9 +21,8 @@ import {
   FollowedSignal,
   NotFollowedSignal,
 } from '@fluentui/react-experiments';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Fabric } from '@fluentui/react';
 
 interface ISignalExampleProps {
@@ -43,47 +42,86 @@ const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
   );
 };
 
-storiesOf('Signals', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('You checked out', () => (
-    <SignalExample name="You checked out" signal={<YouCheckedOutSignal />} />
-  ))
-  .addStory('Malware detected', () => (
-    <SignalExample name="Malware detected" signal={<MalwareDetectedSignal />} />
-  ))
-  .addStory('Blocked', () => <SignalExample name="Blocked" signal={<BlockedSignal />} />)
-  .addStory('Missing metadata', () => (
-    <SignalExample name="Missing metadata" signal={<MissingMetadataSignal />} />
-  ))
-  .addStory('Warning', () => <SignalExample name="Warning" signal={<WarningSignal />} />)
-  .addStory('Awaiting approval', () => (
-    <SignalExample name="Awaiting approval" signal={<AwaitingApprovalSignal />} />
-  ))
-  .addStory('Trending', () => <SignalExample name="Trending" signal={<TrendingSignal />} />)
-  .addStory('Someone checked out', () => (
-    <SignalExample name="Someone checked out" signal={<SomeoneCheckedOutSignal />} />
-  ))
-  .addStory('New', () => <SignalExample name="New" signal={<NewSignal />} />)
-  .addStory('New (positioning)', () => <SignalExample name="O" signal={<NewSignal />} />)
-  .addStory('Mention', () => <SignalExample name="Mention" signal={<MentionSignal />} />)
-  .addStory('Comments', () => <SignalExample name="Comments" signal={<CommentsSignal />} />)
-  .addStory('Comments (count)', () => (
-    <SignalExample name="Comments" signal={<CommentsSignal>2</CommentsSignal>} />
-  ))
-  .addStory('Unseen reply', () => (
-    <SignalExample name="Unseen reply" signal={<UnseenReplySignal />} />
-  ))
-  .addStory('Unseen edit', () => <SignalExample name="Unseen edit" signal={<UnseenEditSignal />} />)
-  .addStory('Emailed', () => <SignalExample name="Emailed" signal={<EmailedSignal />} />)
-  .addStory('Record', () => <SignalExample name="Record" signal={<RecordSignal />} />)
-  .addStory('Read-only', () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />)
-  .addStory('Shared', () => <SignalExample name="Shared" signal={<SharedSignal />} />)
-  .addStory('Follow', () => <SignalExample name="Save for later" signal={<FollowedSignal />} />)
-  .addStory('NotFollow', () => (
-    <SignalExample name="Remove from saved" signal={<NotFollowedSignal />} />
-  ));
+export default {
+  title: 'Signals',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const YouCheckedOut = () => (
+  <SignalExample name="You checked out" signal={<YouCheckedOutSignal />} />
+);
+
+YouCheckedOut.storyName = 'You checked out';
+
+export const MalwareDetected = () => (
+  <SignalExample name="Malware detected" signal={<MalwareDetectedSignal />} />
+);
+
+MalwareDetected.storyName = 'Malware detected';
+
+export const Blocked = () => <SignalExample name="Blocked" signal={<BlockedSignal />} />;
+
+export const MissingMetadata = () => (
+  <SignalExample name="Missing metadata" signal={<MissingMetadataSignal />} />
+);
+
+MissingMetadata.storyName = 'Missing metadata';
+
+export const Warning = () => <SignalExample name="Warning" signal={<WarningSignal />} />;
+
+export const AwaitingApproval = () => (
+  <SignalExample name="Awaiting approval" signal={<AwaitingApprovalSignal />} />
+);
+
+AwaitingApproval.storyName = 'Awaiting approval';
+
+export const Trending = () => <SignalExample name="Trending" signal={<TrendingSignal />} />;
+
+export const SomeoneCheckedOut = () => (
+  <SignalExample name="Someone checked out" signal={<SomeoneCheckedOutSignal />} />
+);
+
+SomeoneCheckedOut.storyName = 'Someone checked out';
+
+export const New = () => <SignalExample name="New" signal={<NewSignal />} />;
+export const NewPositioning = () => <SignalExample name="O" signal={<NewSignal />} />;
+
+NewPositioning.storyName = 'New (positioning)';
+
+export const Mention = () => <SignalExample name="Mention" signal={<MentionSignal />} />;
+export const Comments = () => <SignalExample name="Comments" signal={<CommentsSignal />} />;
+
+export const CommentsCount = () => (
+  <SignalExample name="Comments" signal={<CommentsSignal>2</CommentsSignal>} />
+);
+
+CommentsCount.storyName = 'Comments (count)';
+
+export const UnseenReply = () => (
+  <SignalExample name="Unseen reply" signal={<UnseenReplySignal />} />
+);
+
+UnseenReply.storyName = 'Unseen reply';
+
+export const UnseenEdit = () => <SignalExample name="Unseen edit" signal={<UnseenEditSignal />} />;
+
+UnseenEdit.storyName = 'Unseen edit';
+
+export const Emailed = () => <SignalExample name="Emailed" signal={<EmailedSignal />} />;
+export const Record = () => <SignalExample name="Record" signal={<RecordSignal />} />;
+export const ReadOnly = () => <SignalExample name="Read-only" signal={<ReadOnlySignal />} />;
+
+ReadOnly.storyName = 'Read-only';
+
+export const Shared = () => <SignalExample name="Shared" signal={<SharedSignal />} />;
+export const Follow = () => <SignalExample name="Save for later" signal={<FollowedSignal />} />;
+
+export const NotFollow = () => (
+  <SignalExample name="Remove from saved" signal={<NotFollowedSignal />} />
+);
+
+NotFollow.storyName = 'NotFollow';

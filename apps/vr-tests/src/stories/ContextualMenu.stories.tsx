@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -278,55 +282,71 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
   },
 ];
 
-storiesOf('ContextualMenu', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ContextualMenu',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('hover', { cropTo: '.ms-Layer' })
         .click('.ms-ContextualMenu-linkContent')
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Root', () => <ContextualMenu items={items} />)
-  .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
-  .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
-    includeRtl: true,
-  })
-  .addStory('With submenu', () => <ContextualMenu items={itemsWithSubmenu} />, { includeRtl: true })
-  .addStory('With headers', () => <ContextualMenu items={itemsWithHeaders} />)
-  .addStory('With split button submenu', () => (
-    <ContextualMenu items={itemsWithSplitButtonSubmenu} />
-  ));
+        .end(),
+    ),
+  ],
+};
 
-storiesOf('ContextualMenu', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
-        .click('#button')
-        .snapshot('menu opened', { cropTo: '.ms-Layer' })
-        .hover('#parent')
-        .snapshot('parent hovered', { cropTo: '.ms-Layer' })
-        .hover('#item1')
-        .snapshot('item1 hovered', { cropTo: '.ms-Layer' })
-        .hover('#item2')
-        .snapshot('item2 hovered', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('With submenus with hrefs', () => (
-    <DefaultButton
-      id="button"
-      text="Click for ContextualMenu"
-      menuProps={{ items: itemsWithSubmenuHrefs }}
-    />
-  ));
+export const Root = () => <ContextualMenu items={items} />;
+export const WithIcons = () => <ContextualMenu items={itemsWithIcons} />;
+
+WithIcons.storyName = 'With icons';
+
+export const WithSecondaryText = () => <ContextualMenu items={itemsWithSecondaryText} />;
+
+WithSecondaryText.story = {
+  name: 'With secondaryText',
+
+  parameters: {
+    includeRtl: true,
+  },
+};
+
+export const WithSubmenu = () => <ContextualMenu items={itemsWithSubmenu} />;
+
+WithSubmenu.storyName = 'With submenu';
+
+export const WithSubmenuRTL = getStoryVariant(WithSubmenu, STORY_VARIANT.RTL);
+
+export const WithHeaders = () => <ContextualMenu items={itemsWithHeaders} />;
+
+WithHeaders.storyName = 'With headers';
+
+export const WithSplitButtonSubmenu = () => <ContextualMenu items={itemsWithSplitButtonSubmenu} />;
+
+WithSplitButtonSubmenu.storyName = 'With split button submenu';
+
+export const WithSubmenusWithHrefs = () => (
+  <DefaultButton
+    id="button"
+    text="Click for ContextualMenu"
+    menuProps={{ items: itemsWithSubmenuHrefs }}
+  />
+);
+
+WithSubmenusWithHrefs.storyName = 'With submenus with hrefs';
+WithSubmenusWithHrefs.parameters = {
+  steps: new Steps()
+    .click('#button')
+    .snapshot('menu opened', { cropTo: '.ms-Layer' })
+    .hover('#parent')
+    .snapshot('parent hovered', { cropTo: '.ms-Layer' })
+    .hover('#item1')
+    .snapshot('item1 hovered', { cropTo: '.ms-Layer' })
+    .hover('#item2')
+    .snapshot('item2 hovered', { cropTo: '.ms-Layer' })
+    .end(),
+};

@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecoratorFixedWidth,
+} from '../utilities';
 import { Fabric, IDatePickerProps, DatePicker } from '@fluentui/react';
 
 const customDayClass = 'test-dayCell';
@@ -26,11 +30,13 @@ const commonProps: Partial<IDatePickerProps> = {
   },
 };
 
-storiesOf('DatePicker', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'DatePicker',
+
+  decorators: [
+    TestWrapperDecoratorFixedWidth,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -41,98 +47,105 @@ storiesOf('DatePicker', module)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
         .hover(monthSelector)
         .snapshot('hover month', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Root',
-    () => (
-      <Fabric>
-        <DatePicker {...commonProps} />
-      </Fabric>
+        .end(),
     ),
-    { includeRtl: true },
-  )
-  .addStory('Placeholder', () => (
-    <Fabric>
-      <DatePicker {...commonProps} placeholder="Enter date" />
-    </Fabric>
-  ))
-  .addStory('Allow text input', () => (
-    <Fabric>
-      <DatePicker {...commonProps} allowTextInput />
-    </Fabric>
-  ))
-  .addStory('Required', () => (
-    <Fabric>
-      <DatePicker {...commonProps} isRequired />
-    </Fabric>
-  ))
-  .addStory('Underlined', () => (
-    <Fabric>
-      <DatePicker {...commonProps} underlined />
-    </Fabric>
-  ))
-  .addStory('Underlined and Required', () => (
-    <Fabric>
-      <DatePicker {...commonProps} underlined isRequired />
-    </Fabric>
-  ));
+  ],
+};
 
-storiesOf('DatePicker - No Month Option', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-DatePicker')
-        .snapshot('hover datepicker', { cropTo: '.testWrapper' })
-        .click('.ms-DatePicker')
-        .hover('.ms-DatePicker')
-        .snapshot('click', { cropTo: '.ms-Layer' })
-        .hover(daySelector)
-        .snapshot('hover day', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Show Month as Overlay and no Go To Today', () => (
-    <Fabric>
-      <DatePicker {...commonProps} showGoToToday={false} showMonthPickerAsOverlay={true} />
-    </Fabric>
-  ));
+export const Root = () => (
+  <Fabric>
+    <DatePicker {...commonProps} />
+  </Fabric>
+);
 
-storiesOf('DatePicker - Disabled', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-DatePicker')
-        .snapshot('hover datepicker', { cropTo: '.testWrapper' })
-        .click('.ms-DatePicker')
-        .hover('.ms-DatePicker')
-        .snapshot('click', { cropTo: '.ms-Layer' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Without Label', () => (
-    <Fabric>
-      <DatePicker {...commonProps} disabled />
-    </Fabric>
-  ))
-  .addStory('With Label', () => (
-    <Fabric>
-      <DatePicker label="This is my label" {...commonProps} disabled />
-    </Fabric>
-  ))
-  .addStory('Without Value', () => (
-    <Fabric>
-      <DatePicker calendarProps={commonProps.calendarProps} label="This is my label" disabled />
-    </Fabric>
-  ));
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+
+export const Placeholder = () => (
+  <Fabric>
+    <DatePicker {...commonProps} placeholder="Enter date" />
+  </Fabric>
+);
+
+export const AllowTextInput = () => (
+  <Fabric>
+    <DatePicker {...commonProps} allowTextInput />
+  </Fabric>
+);
+
+AllowTextInput.storyName = 'Allow text input';
+
+export const Required = () => (
+  <Fabric>
+    <DatePicker {...commonProps} isRequired />
+  </Fabric>
+);
+
+export const Underlined = () => (
+  <Fabric>
+    <DatePicker {...commonProps} underlined />
+  </Fabric>
+);
+
+export const UnderlinedAndRequired = () => (
+  <Fabric>
+    <DatePicker {...commonProps} underlined isRequired />
+  </Fabric>
+);
+
+UnderlinedAndRequired.storyName = 'Underlined and Required';
+
+export const ShowMonthAsOverlayAndNoGoToToday = () => (
+  <Fabric>
+    <DatePicker {...commonProps} showGoToToday={false} showMonthPickerAsOverlay={true} />
+  </Fabric>
+);
+
+ShowMonthAsOverlayAndNoGoToToday.storyName = 'Show Month as Overlay and no Go To Today';
+ShowMonthAsOverlayAndNoGoToToday.parameters = {
+  steps: new Steps()
+    .snapshot('default', { cropTo: '.testWrapper' })
+    .hover('.ms-DatePicker')
+    .snapshot('hover datepicker', { cropTo: '.testWrapper' })
+    .click('.ms-DatePicker')
+    .hover('.ms-DatePicker')
+    .snapshot('click', { cropTo: '.ms-Layer' })
+    .hover(daySelector)
+    .snapshot('hover day', { cropTo: '.ms-Layer' })
+    .end(),
+};
+
+const disabledSteps = new Steps()
+  .snapshot('default', { cropTo: '.testWrapper' })
+  .hover('.ms-DatePicker')
+  .snapshot('hover datepicker', { cropTo: '.testWrapper' })
+  .click('.ms-DatePicker')
+  .hover('.ms-DatePicker')
+  .snapshot('click', { cropTo: '.ms-Layer' })
+  .end();
+
+export const WithoutLabel = () => (
+  <Fabric>
+    <DatePicker {...commonProps} disabled />
+  </Fabric>
+);
+WithoutLabel.parameters = {
+  steps: disabledSteps,
+};
+
+export const WithLabel = () => (
+  <Fabric>
+    <DatePicker label="This is my label" {...commonProps} disabled />
+  </Fabric>
+);
+WithLabel.parameters = {
+  steps: disabledSteps,
+};
+
+export const WithoutValue = () => (
+  <Fabric>
+    <DatePicker calendarProps={commonProps.calendarProps} label="This is my label" disabled />
+  </Fabric>
+);
+WithoutValue.parameters = {
+  steps: disabledSteps,
+};

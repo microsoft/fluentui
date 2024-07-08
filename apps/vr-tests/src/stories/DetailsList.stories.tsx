@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -116,79 +120,86 @@ const groups = [
   { count: 4, key: '2', name: 'Blue', startIndex: 2 },
 ];
 
-storiesOf('DetailsList', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'DetailsList',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DetailsRow')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-DetailsRow')
         .hover('.ms-DetailsRow')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory('Root', () => (
-    <DetailsList
-      items={items}
-      compact={false}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .addStory('Compact', () => (
-    <DetailsList
-      items={items}
-      compact
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .addStory('Single Selection Mode', () => (
-    <DetailsList
-      items={items}
-      compact={false}
-      columns={columns}
-      selectionMode={SelectionMode.single}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .addStory('Grouped', () => (
-    <DetailsList
-      items={items}
-      groups={groups}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
-  ))
-  .addStory('Grouped with Checkbox Hidden', () => (
-    <DetailsList
-      items={items}
-      groups={groups}
-      columns={columns}
-      layoutMode={DetailsListLayoutMode.justified}
-      checkboxVisibility={CheckboxVisibility.hidden}
-      isHeaderVisible={true}
-    />
-  ))
-  .addStory(
-    'Checkbox Visible Always',
-    () => (
-      <DetailsList
-        items={items}
-        columns={columns}
-        layoutMode={DetailsListLayoutMode.justified}
-        checkboxVisibility={CheckboxVisibility.always}
-        isHeaderVisible={true}
-      />
+        .end(),
     ),
-    { includeRtl: true },
-  );
+  ],
+};
+
+export const Root = () => (
+  <DetailsList
+    items={items}
+    compact={false}
+    columns={columns}
+    layoutMode={DetailsListLayoutMode.justified}
+    isHeaderVisible={true}
+  />
+);
+
+export const Compact = () => (
+  <DetailsList
+    items={items}
+    compact
+    columns={columns}
+    layoutMode={DetailsListLayoutMode.justified}
+    isHeaderVisible={true}
+  />
+);
+
+export const SingleSelectionMode = () => (
+  <DetailsList
+    items={items}
+    compact={false}
+    columns={columns}
+    selectionMode={SelectionMode.single}
+    layoutMode={DetailsListLayoutMode.justified}
+    isHeaderVisible={true}
+  />
+);
+
+export const Grouped = () => (
+  <DetailsList
+    items={items}
+    groups={groups}
+    columns={columns}
+    layoutMode={DetailsListLayoutMode.justified}
+    isHeaderVisible={true}
+  />
+);
+
+export const GroupedWithCheckboxHidden = () => (
+  <DetailsList
+    items={items}
+    groups={groups}
+    columns={columns}
+    layoutMode={DetailsListLayoutMode.justified}
+    checkboxVisibility={CheckboxVisibility.hidden}
+    isHeaderVisible={true}
+  />
+);
+
+GroupedWithCheckboxHidden.storyName = 'Grouped with Checkbox Hidden';
+
+export const CheckboxVisibleAlways = () => (
+  <DetailsList
+    items={items}
+    columns={columns}
+    layoutMode={DetailsListLayoutMode.justified}
+    checkboxVisibility={CheckboxVisibility.always}
+    isHeaderVisible={true}
+  />
+);
+
+export const CheckboxVisibleAlwaysRTL = getStoryVariant(CheckboxVisibleAlways, STORY_VARIANT.RTL);
