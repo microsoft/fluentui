@@ -82,19 +82,17 @@ extends:
                   yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
                 displayName: 'Bump and commit nightly versions'
 
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
               - script: |
-                  yarn lage test --to @fluentui/react-components
-                displayName: yarn test
+                  yarn nx run react-components:build --nxBail --verbose
+                displayName: yarn build
 
               - script: |
-                  yarn lage lint --to @fluentui/react-components
+                  yarn nx run react-components:lint --nxBail --verbose
                 displayName: yarn lint
 
               - script: |
-                  yarn lage build --to @fluentui/react-components
-                displayName: yarn build
+                  yarn nx run react-components:test --nxBail --verbose
+                displayName: yarn test
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js

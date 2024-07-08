@@ -26,6 +26,10 @@ steps:
       echo "##vso[task.setvariable variable=shellopts]braceexpand:hashall:interactive-comments:errexit:errtrace"
     displayName: Force exit on error (bash)
 
+  - script: |
+      echo "##vso[task.setvariable variable=NX_PARALLEL]$(getconf _NPROCESSORS_ONLN)"
+    displayName: Set NX_PARALLEL env variable
+
   # Log all the environment variables since it can be useful for debugging.
   # (This happens automatically for the built-in agents, but not for custom agents.)
   - script: |
