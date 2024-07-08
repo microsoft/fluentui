@@ -1,22 +1,33 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { uniqueId } from '@microsoft/fast-web-utilities';
+import type { Meta } from '@storybook/html';
+import { renderComponent, Story, StoryArgs } from '../helpers.stories.js';
+import { LabelPosition } from '../field/field.options.js';
 import { SliderOrientation as SliderSetOrientation, SliderSize as SliderSetSize } from './slider.options.js';
 import type { Slider as FluentSlider } from './slider.js';
 
-type SliderStoryArgs = Args & FluentSlider;
+type SliderStoryArgs = StoryArgs<FluentSlider>;
 type SliderStoryMeta = Meta<SliderStoryArgs>;
 
 const storyTemplate = html<SliderStoryArgs>`
   <fluent-slider
-    ?disabled=${x => x.disabled}
-    step=${x => x.step}
-    size=${x => x.size}
-    min=${x => x.min}
-    max=${x => x.max}
-    orientation=${x => x.orientation}
-    value=${x => x.value}
+    ?disabled="${x => x.disabled}"
+    id="${x => x.id}"
+    step="${x => x.step}"
+    size="${x => x.size}"
+    min="${x => x.min}"
+    max="${x => x.max}"
+    orientation="${x => x.orientation}"
+    value="${x => x.value}"
+    slot="input"
   ></fluent-slider>
+`;
+
+const fieldTemplate = html<SliderStoryArgs>`
+  <fluent-field label-position="${x => x.labelPosition}">
+    <label slot="label" for="${x => x.id}">${x => x.label}</label>
+    ${storyTemplate}
+  </fluent-field>
 `;
 
 export default {
@@ -51,7 +62,14 @@ export default {
   },
 } as SliderStoryMeta;
 
-export const Slider = renderComponent(storyTemplate).bind({});
+export const Slider: Story<FluentSlider> = renderComponent(storyTemplate).bind({});
+
+export const SliderInField: Story<FluentSlider> = renderComponent(fieldTemplate).bind({});
+SliderInField.args = {
+  id: uniqueId('slider-'),
+  label: 'Slider (default)',
+  labelPosition: LabelPosition.above,
+};
 
 export const SliderOrientation = renderComponent(html<SliderStoryArgs>`
   <fluent-slider orientation="vertical" step="20" value="60" min="0" max="100"></fluent-slider>

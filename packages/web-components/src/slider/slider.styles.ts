@@ -154,13 +154,13 @@ export const styles = css`
     background-color: ${colorCompoundBrandBackground};
   }
 
-  .thumb:hover,
-  .track::before:hover {
+  :host(:hover) .thumb,
+  :host(:hover) .track::before {
     background-color: ${colorCompoundBrandBackgroundHover};
   }
 
-  .thumb:active,
-  .track::before:active {
+  :host(:active) .thumb,
+  :host(:active) .track::before {
     background-color: ${colorCompoundBrandBackgroundPressed};
   }
 
