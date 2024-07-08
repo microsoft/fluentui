@@ -118,7 +118,6 @@ export class MenuList extends FASTElement {
         // set focus on first item
         this.setFocus(0, 1);
         return;
-
       default:
         // if we are not handling the event, do not prevent default
         return true;

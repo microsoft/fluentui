@@ -106,8 +106,9 @@ export class MenuItem extends FASTElement {
    * @param next - the next state
    */
   protected checkedChanged(prev: boolean, next: boolean): void {
-    this.elementInternals.ariaChecked = !!next ? `${next}` : null;
-    toggleState(this.elementInternals, 'checked', next);
+    const checkableMenuItem = this.role !== MenuItemRole.menuitem;
+    this.elementInternals.ariaChecked = checkableMenuItem ? `${!!next}` : null;
+    toggleState(this.elementInternals, 'checked', checkableMenuItem ? next : false);
 
     if (this.$fastController.isConnected) {
       this.$emit('change');
@@ -161,6 +162,7 @@ export class MenuItem extends FASTElement {
     super.connectedCallback();
 
     this.elementInternals.role = this.role ?? MenuItemRole.menuitem;
+    this.elementInternals.ariaChecked = this.role !== MenuItemRole.menuitem ? `${!!this.checked}` : null;
   }
 
   /**
@@ -190,6 +192,8 @@ export class MenuItem extends FASTElement {
         //close submenu
         if (this.parentElement?.hasAttribute('popover')) {
           this.parentElement.togglePopover(false);
+          // focus the menu item containing the submenu
+          this.parentElement.parentElement?.focus();
         }
 
         return false;
