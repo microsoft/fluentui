@@ -14,6 +14,15 @@ const SUPPORTS_CSS_SCOPE = 'CSSScopeRule' in window;
 // NOT include any selector, `{`, or `}`.
 const themeStyleTextMap = new Map<Theme, string>();
 
+// A map from a theme to a unique string used to identity a theme. The string
+// will be used as the value of the `data-fluent-theme` attribute on a
+// differently themed element.
+const scopedThemeKeyMap = new Map<Theme, string>();
+
+// A map from an element with shadow root to a `CSSStyleSheet` object that
+// references its local theme style sheet.
+const shadowAdoptedStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
+
 const globalThemeStyleSheet = new CSSStyleSheet();
 
 /**
@@ -25,15 +34,19 @@ const globalThemeStyleSheet = new CSSStyleSheet();
  * @internal
  */
 export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
-  if (node !== document && !(node instanceof HTMLElement)) {
+  if (!node || (node !== document && !(node instanceof HTMLElement))) {
     return;
   }
 
   // Fallback to setting token custom properties on `<html>` element’s `style`
-  // attribute, only checking the support of  `document.adoptedStyleSheets`
-  // here because it has broader support than `CSS.registerProperty()`, which
-  // is checked later.
-  if (!SUPPORTS_ADOPTED_STYLE_SHEETS) {
+  // attribute.
+  //
+  // Checking the support of  `document.adoptedStyleSheets` first because it
+  // has broader support than `CSS.registerProperty()` and `@scope`.
+  if (
+    !SUPPORTS_ADOPTED_STYLE_SHEETS ||
+    (node instanceof HTMLElement && !node.shadowRoot && !SUPPORTS_CSS_SCOPE)
+  ) {
     const target: HTMLElement = document ? document.documentElement : (node as HTMLElement);
     setThemePropertiesOnElement(theme, target);
     return;
@@ -84,7 +97,11 @@ export function setGlobalTheme(theme: Theme | null) {
   }
 
   // Update the CSSStyleSheet with the new theme
-  globalThemeStyleSheet.replaceSync(`html{${getThemeStyleText(theme)}}`);
+  globalThemeStyleSheet.replaceSync(`
+    html {
+      ${getThemeStyleText(theme)}
+    }
+  `);
 
   // Adopt the updated CSSStyleSheet if it hasn't been adopted yet
   if (!document.adoptedStyleSheets.includes(globalThemeStyleSheet)) {
@@ -97,19 +114,58 @@ export function setGlobalTheme(theme: Theme | null) {
  */
 export function setLocalTheme(theme: Theme | null, element: HTMLElement) {
   if (theme === null) {
-    if (element.shadowRoot) {
-      // TODO
+    if (element.shadowRoot && shadowAdoptedStyleSheetMap.has(element)) {
+      shadowAdoptedStyleSheetMap.get(element)!.replaceSync('');
     } else {
-      delete element.dataset.fluentThemed;
+      delete element.dataset.fluentTheme;
     }
     return;
   }
 
   if (element.shadowRoot) {
-    // TODO: set theme for an element with shadow root on its adopted style sheets.
+    getShadowAdoptedStyleSheet(element).replaceSync(`
+      :host {
+        ${getThemeStyleText(theme)}
+      }
+    `);
   } else {
-    // TODO: set theme for an element with CSS scope.
+    element.dataset.fluentTheme = getScopedThemeKey(theme);
   }
+}
+
+/**
+ * @internal
+ */
+export function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet {
+  if (!shadowAdoptedStyleSheetMap.has(element)) {
+    const shadowAdoptedStyleSheet = new CSSStyleSheet();
+    shadowAdoptedStyleSheetMap.set(element, shadowAdoptedStyleSheet);
+    element.shadowRoot?.adoptedStyleSheets.push(shadowAdoptedStyleSheet);
+  }
+
+  return shadowAdoptedStyleSheetMap.get(element)!;
+}
+
+/**
+ * @internal
+ */
+export function getScopedThemeKey(theme: Theme): string {
+  if (!scopedThemeKeyMap.has(theme)) {
+    const themeKey = uniqueId('fluent-theme-');
+    const scopedThemeStyleSheet = new CSSStyleSheet();
+
+    scopedThemeKeyMap.set(theme, themeKey);
+    scopedThemeStyleSheet.replaceSync(`
+      @scope ([data-fluent-theme="${themeKey}"]) {
+        :scope {
+          ${getThemeStyleText(theme)}
+        }
+      }
+    `);
+    document.adoptedStyleSheets.push(scopedThemeStyleSheet);
+  }
+
+  return scopedThemeKeyMap.get(theme)!;
 }
 
 /**
