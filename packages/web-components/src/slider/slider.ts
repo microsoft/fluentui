@@ -647,7 +647,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
   };
 
-
   private positionStyles?: ElementStyles;
 
   /**
@@ -666,7 +665,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     if (this.positionStyles) {
       this.$fastController.removeStyles(this.positionStyles);
     }
-    this.positionStyles = css/* css */`
+    this.positionStyles = css/* css */ `
       :host {
         --slider-thumb: ${thumbPosition};
         --slider-progress: ${trackProgress};
