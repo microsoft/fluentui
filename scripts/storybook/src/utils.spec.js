@@ -248,10 +248,28 @@ describe(`utils`, () => {
       expect(actual).not.toContain(expect.stringContaining('/react-text/stories/'));
     });
 
-    // @TODO: Once we will have at least 1 project migrated to the new structure we can enable/implement this test
-    it.todo(
-      `should generate storybook stories string array of glob based on package.json#dependencies field pointing to sibling /stories project if it exists`,
-    );
+    it(`should generate storybook stories string array of glob based on package.json#dependencies field pointing to sibling /stories project if it exists`, () => {
+      const actual = getPackageStoriesGlob({
+        packageName: '@fluentui/react-menu',
+        callerPath: path.dirname(__dirname),
+      });
+
+      const expected = [
+        expect.stringContaining('../../packages/react-'),
+        expect.stringContaining('/**/@(index.stories.@(ts|tsx)|*.stories.mdx)'),
+      ];
+
+      expect(actual).toEqual(expect.arrayContaining(expected));
+
+      // package without any stories
+      expect(actual).toContain(
+        '../../packages/react-components/keyboard-keys/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+      );
+      // package with stories ( `*-stories` project adjacent project )
+      expect(actual).toContain(
+        '../../packages/react-components/react-theme/stories/src/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+      );
+    });
   });
 
   describe(`#processBabelLoaderOptions`, () => {

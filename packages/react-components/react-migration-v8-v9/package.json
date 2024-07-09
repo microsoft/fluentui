@@ -32,11 +32,11 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.88",
-    "@fluentui/react": "^8.119.0",
+    "@fluentui/fluent2-theme": "^8.107.89",
+    "@fluentui/react": "^8.119.1",
     "@fluentui/react-components": "^9.54.4",
     "@fluentui/react-icons": "^2.0.245",
-    "@fluentui/react-hooks": "^8.8.9",
+    "@fluentui/react-hooks": "^8.8.10",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.11",
     "@griffel/react": "^1.5.22",
@@ -45,7 +45,7 @@
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
-    "react": "^8.119.0",
+    "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
