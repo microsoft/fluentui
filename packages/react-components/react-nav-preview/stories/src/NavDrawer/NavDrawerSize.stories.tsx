@@ -13,6 +13,7 @@ import {
   NavSubItemGroup,
   NavSize,
   NavDivider,
+  AppNode,
 } from '@fluentui/react-nav-preview';
 import { Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
@@ -43,6 +44,7 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -97,6 +99,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           </Tooltip>
         </NavDrawerHeader>
         <NavDrawerBody>
+          <AppNode icon={<PersonCircle32Regular />}>Contoso HR</AppNode>
           <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard

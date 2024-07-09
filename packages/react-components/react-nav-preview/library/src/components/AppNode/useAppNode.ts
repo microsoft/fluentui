@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AppNodeProps, AppNodeState } from './AppNode.types';
+import { useNavContext_unstable } from '../NavContext';
 
 /**
  * Create the state required to render AppNode.
@@ -12,14 +13,12 @@ import type { AppNodeProps, AppNodeState } from './AppNode.types';
  * @param ref - reference to root HTMLDivElement of AppNode
  */
 export const useAppNode_unstable = (props: AppNodeProps, ref: React.Ref<HTMLDivElement>): AppNodeState => {
+  const { size = 'medium' } = useNavContext_unstable();
+
+  const iconShorthand = slot.optional(props.icon, { elementType: 'span' });
+
   return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
+    components: { root: 'div', icon: 'span' },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
@@ -27,5 +26,7 @@ export const useAppNode_unstable = (props: AppNodeProps, ref: React.Ref<HTMLDivE
       }),
       { elementType: 'div' },
     ),
+    icon: iconShorthand,
+    size,
   };
 };
