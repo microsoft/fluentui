@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 04 Jul 2024 04:08:13 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 04:07:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.41)
+
+Tue, 09 Jul 2024 04:07:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.40..@fluentui/web-components_v3.0.0-beta.41)
+
+### Changes
+
+- convert menu list and menu item to use element internals ([PR #31932](https://github.com/microsoft/fluentui/pull/31932) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: export drawer and drawer body from root package and package exports ([PR #31931](https://github.com/microsoft/fluentui/pull/31931) by 13071055+chrisdholt@users.noreply.github.com)
 
 ## [3.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.40)
 
