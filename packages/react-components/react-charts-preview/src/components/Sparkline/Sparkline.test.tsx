@@ -4,11 +4,11 @@ import * as renderer from 'react-test-renderer';
 import { ISparklineProps, Sparkline } from './index';
 import { IChartProps } from '../../index';
 import { mount, ReactWrapper } from 'enzyme';
-import { ISparklineState, SparklineBase } from './Sparkline.base';
+//import { ISparklineState, SparklineBase } from './Sparkline.base';
 import { resetIds } from '@fluentui/react';
 
 // Wrapper of the SparklineChart to be tested.
-let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
+let wrapper: ReactWrapper<ISparklineProps> | undefined;
 
 function sharedBeforeEach() {
   resetIds();

@@ -10,12 +10,12 @@ import {
   HorizontalBarChart,
   HorizontalBarChartVariant,
 } from './index';
-import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
 import toJson from 'enzyme-to-json';
 import * as renderer from 'react-test-renderer';
+import { act } from 'react-test-renderer';
 
 // Wrapper of the HorizontalBarChart to be tested.
-let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
+let wrapper: ReactWrapper<IHorizontalBarChartProps> | undefined;
 
 function sharedBeforeEach() {
   resetIds();
@@ -125,29 +125,30 @@ describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(HorizontalBarChartBase.prototype, 'render');
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
     };
     const component = mount(<HorizontalBarChart {...props} />);
+    expect(component).toMatchSnapshot();
     component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(component).toMatchSnapshot();
   });
 
-  it('prop changes', () => {
-    const renderMock = jest.spyOn(HorizontalBarChartBase.prototype, 'render');
+  it('prop changes', async () => {
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
     };
     const component = mount(<HorizontalBarChart {...props} />);
-    component.setProps({ ...props, hideTooltip: true });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(component.props().hideTooltip).toBe(undefined);
+    await act(async () => {
+      component.setProps({ ...props, hideTooltip: true });
+    });
+    expect(component.props().hideTooltip).toBe(true);
+    component.unmount();
   });
 });
 
