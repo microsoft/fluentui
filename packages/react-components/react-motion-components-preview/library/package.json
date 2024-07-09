@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-motion-components-preview",
   "version": "0.0.0",
-  "private": true,
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,10 +31,12 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
+    "@fluentui/react-utilities": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-motion": "*",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
