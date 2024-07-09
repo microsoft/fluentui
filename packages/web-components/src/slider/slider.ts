@@ -652,7 +652,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * Places the thumb based on the current value
    *
-   * @public
    * @param direction - writing mode
    */
   private setSliderPosition(direction: Direction): void {
