@@ -43,7 +43,6 @@
     "northstar:stats:save": "gulp stats:save",
     "northstar:test:circulars": "gulp test:circulars:run",
     "rename-package": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/rename-package.ts",
-    "run:published": "node ./scripts/executors/src/runPublished.js",
     "scrub": "node ./scripts/executors/src/scrub.js",
     "start": "node ./scripts/executors/src/start.js",
     "test": "nx run-many -t test --verbose",

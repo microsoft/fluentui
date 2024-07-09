@@ -69,19 +69,17 @@ extends:
                   filePath: yarn-ci.sh
                 displayName: yarn
 
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
               - script: |
-                  yarn run:published test
-                displayName: yarn test
+                  yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail --production
+                displayName: build
 
               - script: |
-                  yarn run:published lint
-                displayName: yarn lint
+                  yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail
+                displayName: test
 
               - script: |
-                  yarn run:published build --production
-                displayName: yarn build
+                  yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail
+                displayName: lint
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
