@@ -2,17 +2,22 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { AppNode } from './AppNode';
+import { appNodeClassNames } from './useAppNodeStyles.styles';
 
 describe('AppNode', () => {
   isConformant({
     Component: AppNode,
     displayName: 'AppNode',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<AppNode>Default AppNode</AppNode>);
-    expect(result.container).toMatchSnapshot();
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { icon: 'Test Icon', content: 'Some Content' },
+          expectedClassNames: {
+            root: appNodeClassNames.root,
+            icon: appNodeClassNames.icon,
+          },
+        },
+      ],
+    },
   });
 });
