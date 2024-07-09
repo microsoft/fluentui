@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove npmScope from project name",
-  "packageName": "@fluentui/style-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
