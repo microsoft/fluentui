@@ -179,14 +179,14 @@ export const styles = css`
     .track {
       background: WindowText;
     }
-    .thumb-cursor:hover,
-    .thumb-cursor:active,
-    .thumb-cursor {
+    .thumb:hover,
+    .thumb:active,
+    .thumb {
       background: ButtonText;
     }
 
     :host(:hover) .track::before,
-    .track::before:active,
+    :host(:active) .track::before,
     .track::before {
       background: Highlight;
     }
