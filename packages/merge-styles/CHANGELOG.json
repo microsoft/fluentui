@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Tue, 09 Jul 2024 07:36:41 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.12",
+      "version": "8.6.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jun 2024 07:32:52 GMT",
       "tag": "@fluentui/merge-styles_v8.6.12",
       "version": "8.6.12",
