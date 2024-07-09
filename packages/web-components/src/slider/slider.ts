@@ -335,12 +335,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @internal
    */
   @observable
-  public position!: string;
-
-  /**
-   * @internal
-   */
-  @observable
   public trackWidth: number = 0;
 
   /**
@@ -653,6 +647,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
   };
 
+
+  private positionStyles?: ElementStyles;
+
   /**
    * Places the thumb based on the current value
    *
@@ -666,7 +663,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
       !(this.orientation === Orientation.vertical) && direction === Direction.rtl
         ? `${percentage}%`
         : `calc(100% - ${percentage}%)`;
-    this.position = `--slider-thumb: ${thumbPosition}; --slider-progress: ${trackProgress}`;
+    if (this.positionStyles) {
+      this.$fastController.removeStyles(this.positionStyles);
+    }
+    this.positionStyles = css/* css */`
+      :host {
+        --slider-thumb: ${thumbPosition};
+        --slider-progress: ${trackProgress};
+      }
+    `;
+    this.$fastController.addStyles(this.positionStyles);
   }
 
   /**
