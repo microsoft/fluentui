@@ -43,11 +43,8 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
   //
   // Checking the support of  `document.adoptedStyleSheets` first because it
   // has broader support than `CSS.registerProperty()` and `@scope`.
-  if (
-    !SUPPORTS_ADOPTED_STYLE_SHEETS ||
-    (node instanceof HTMLElement && !node.shadowRoot && !SUPPORTS_CSS_SCOPE)
-  ) {
-    const target: HTMLElement = document ? document.documentElement : (node as HTMLElement);
+  if (!SUPPORTS_ADOPTED_STYLE_SHEETS || (node instanceof HTMLElement && !node.shadowRoot && !SUPPORTS_CSS_SCOPE)) {
+    const target: HTMLElement = node === document ? document.documentElement : (node as HTMLElement);
     setThemePropertiesOnElement(theme, target);
     return;
   }
@@ -172,6 +169,7 @@ export function getScopedThemeKey(theme: Theme): string {
  * @internal
  */
 export function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
+  console.log(element);
   for (const t of tokenNames) {
     element.style.setProperty(`--${t}`, theme !== null ? (theme[t] as string) : 'unset');
   }
