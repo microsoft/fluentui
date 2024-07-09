@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { CarouselSliderContextValue } from '../CarouselContext.types';
 
 export type CarouselSliderSlots = {
   /**
@@ -44,4 +45,4 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
      * Tracks whether a sliding animation was interrupted and needs to 'speed up' next animation.
      */
     interruptedAnimation: boolean;
-  };
+  } & CarouselSliderContextValue;

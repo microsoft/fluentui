@@ -5,6 +5,7 @@ import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import { useIntersectionObserver } from '../../utils/useIntersectionObserver';
+import { useCarouselSliderContext_unstable } from '../CarouselSliderContext';
 
 /**
  * Create the state required to render CarouselCard.
@@ -102,6 +103,7 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
 
 const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
   const { value } = props;
+  const { carouselSliderRef } = useCarouselSliderContext_unstable();
   const { cardWidth } = useCarouselContext_unstable();
   const [visible, setVisible] = React.useState(false);
 
@@ -124,6 +126,7 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
     },
     {
       threshold: 0.99,
+      root: carouselSliderRef?.current,
     },
   );
 

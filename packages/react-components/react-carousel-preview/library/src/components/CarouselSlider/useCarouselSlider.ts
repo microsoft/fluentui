@@ -19,6 +19,7 @@ export const useCarouselSlider_unstable = (
 ): CarouselSliderState => {
   const animating = React.useRef<boolean>(false);
   const interruptedAnimation = React.useRef<boolean>(false);
+  const carouselSliderRef = React.useRef<HTMLDivElement>(null);
   const cleanupRef = React.useRef<() => void>(() => undefined);
   const { cardWidth } = useCarouselContext_unstable();
 
@@ -75,19 +76,22 @@ export const useCarouselSlider_unstable = (
   const sliderMergedRefs = useMergedRefs<HTMLDivElement>(animationRef, slider.ref);
   slider.ref = sliderMergedRefs;
 
+  const windowMergedRefs = useMergedRefs<HTMLDivElement>(carouselSliderRef, ref);
+
   return {
     cardWidth,
     currentIndex,
     loopCount,
     numCards,
     interruptedAnimation: interruptedAnimation.current,
+    carouselSliderRef,
     components: {
       root: 'div',
       slider: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: windowMergedRefs,
         ...props,
       }),
       { elementType: 'div' },

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselCardSlots, CarouselCardState } from './CarouselCard.types';
 import { tokens } from '@fluentui/react-theme';
@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
 
-  const { offsetIndex, cardWidth, initialLoad } = state;
+  const { offsetIndex, cardWidth, initialLoad, visible } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(
