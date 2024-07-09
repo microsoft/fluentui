@@ -621,31 +621,35 @@ export class Slider extends FASTElement implements SliderConfiguration {
       return;
     }
 
-    if (event.key === keyHome) {
-      event.preventDefault();
-      this.value =
-        this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-          ? `${this.minAsNumber}`
-          : `${this.maxAsNumber}`;
-    } else if (event.key === keyEnd) {
-      event.preventDefault();
-      this.value =
-        this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-          ? `${this.maxAsNumber}`
-          : `${this.minAsNumber}`;
-    } else if (!event.shiftKey) {
-      switch (event.key) {
-        case keyArrowRight:
-        case keyArrowUp:
+    switch (event.key) {
+      case keyHome:
+        event.preventDefault();
+        this.value =
+          this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
+            ? `${this.minAsNumber}`
+            : `${this.maxAsNumber}`;
+        break;
+      case keyEnd:
+        event.preventDefault();
+        this.value =
+          this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
+            ? `${this.maxAsNumber}`
+            : `${this.minAsNumber}`;
+        break;
+      case keyArrowRight:
+      case keyArrowUp:
+        if (!event.shiftKey) {
           event.preventDefault();
           this.increment();
-          break;
-        case keyArrowLeft:
-        case keyArrowDown:
+        }
+        break;
+      case keyArrowLeft:
+      case keyArrowDown:
+        if (!event.shiftKey) {
           event.preventDefault();
           this.decrement();
-          break;
-      }
+        }
+        break;
     }
   };
 
