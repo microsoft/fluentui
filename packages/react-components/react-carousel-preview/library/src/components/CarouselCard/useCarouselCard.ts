@@ -22,35 +22,54 @@ export const useCarouselCard_unstable = (
   const { circular, peeking } = useCarouselContext_unstable();
 
   const visible = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
-  const peekDir: 'prev' | 'next' | undefined = useCarouselStore_unstable(snapshot => {
-    if (!peeking) {
-      return;
+  const bufferPosition: number | undefined = useCarouselStore_unstable(snapshot => {
+    // if (!peeking) {
+    //   return;
+    // }
+
+    const bufferSize = 2; // TODO: customize the value
+
+    const afterBuffer = snapshot.values.slice(-bufferSize).reverse();
+    const afterBufferIndex = afterBuffer.indexOf(value);
+
+    if (afterBufferIndex !== -1) {
+      return afterBufferIndex;
     }
 
-    const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
+    const beforeBuffer = snapshot.values.slice(0, bufferSize);
+    const beforeBufferIndex = beforeBuffer.indexOf(value);
 
-    if (currentIndex !== null && currentIndex >= 0) {
-      let nextValue = currentIndex + 1 < snapshot.values.length ? snapshot.values[currentIndex + 1] : null;
-      let prevValue = currentIndex - 1 >= 0 ? snapshot.values[currentIndex - 1] : null;
-
-      if (!nextValue && circular) {
-        nextValue = snapshot.values[0];
-      }
-
-      if (!prevValue && circular) {
-        prevValue = snapshot.values[snapshot.values.length - 1];
-      }
-
-      if (nextValue === value || prevValue === value) {
-        return nextValue === value ? 'next' : 'prev';
-      }
+    if (beforeBufferIndex !== -1) {
+      return 2 + beforeBufferIndex;
     }
+
+    // const currentIndex = snapshot.activeValue ? snapshot.values.indexOf(snapshot.activeValue) : null;
+    // // const offset = peeking ? 2 : 1;
+    //
+    // if (currentIndex !== null && currentIndex >= 0) {
+    //   let nextValue = currentIndex + 1 < snapshot.values.length ? snapshot.values[currentIndex + 1] : null;
+    //   let prevValue = currentIndex - 1 >= 0 ? snapshot.values[currentIndex - 1] : null;
+    //
+    //   if (!nextValue && circular) {
+    //     nextValue = snapshot.values[0];
+    //   }
+    //
+    //   if (!prevValue && circular) {
+    //     prevValue = snapshot.values[snapshot.values.length - 1];
+    //   }
+    //
+    //   if (nextValue === value || prevValue === value) {
+    //     return nextValue === value ? 'next' : 'prev';
+    //   }
+    // }
   });
+
+  // console.log('renderCard', { value, peekDir, isTrailing });
 
   const state: CarouselCardState = {
     value,
     visible,
-    peekDir,
+    bufferPosition,
     components: {
       root: 'div',
     },
@@ -59,7 +78,7 @@ export const useCarouselCard_unstable = (
         ref,
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: visible,
-        hidden: !visible && !peekDir,
+        // hidden: !visible && !peekDir,
         'aria-hidden': !visible,
         inert: !visible,
         role: 'presentation',
@@ -68,10 +87,6 @@ export const useCarouselCard_unstable = (
       { elementType: 'div' },
     ),
   };
-
-  if (!visible && !peekDir) {
-    state.root.children = null;
-  }
 
   return state;
 };

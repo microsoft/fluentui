@@ -70,3 +70,5 @@ export {
   useCarouselNavImageButtonStyles_unstable,
   useCarouselNavImageButton_unstable,
 } from './CarouselNavImageButton';
+
+export { CarouselSlider } from './components/CarouselSlider';

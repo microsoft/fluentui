@@ -6,30 +6,29 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
   root: 'fui-CarouselCard',
 };
 
-// TODO: Enable varying sizes w/ tokens
-const GapSize = 10;
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
-    marginLeft: GapSize / 2 + 'px',
-    marginRight: GapSize / 2 + 'px',
+    // marginLeft: GapSize / 2 + 'px',
+    // marginRight: GapSize / 2 + 'px',
+
+    scrollSnapAlign: 'center'
   },
   peekLeft: {
-    position: 'absolute',
-    float: 'left',
-    right: '100%',
-    top: 0,
-    width: '100%',
+    // position: 'absolute',
+    // float: 'left',
+    // right: '100%',
+    // top: 0,
+    // width: '100%',
   },
   peekRight: {
-    position: 'absolute',
-    float: 'right',
-    left: '100%',
-    top: 0,
-    width: '100%',
+    // position: 'absolute',
+    // float: 'right',
+    // left: '100%',
+    // top: 0,
+    // width: '100%',
   },
 });
 
@@ -38,14 +37,13 @@ const useStyles = makeStyles({
  */
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
-
-  const { peekDir } = state;
   const styles = useStyles();
+
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,
-    peekDir === 'next' && styles.peekRight,
-    peekDir === 'prev' && styles.peekLeft,
+    // peekDir === 'next' && styles.peekRight,
+    // peekDir === 'prev' && styles.peekLeft,
     state.root.className,
   );
 

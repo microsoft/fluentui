@@ -5,8 +5,10 @@ import {
   slot,
   useControllableState,
   useEventCallback,
+  useFirstMount,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  usePrevious,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -123,7 +125,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
-
+    console.log('selectPageByDirection: ', { active, direction, circular });
     if (!active?.value) {
       return;
     }
@@ -132,7 +134,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       direction === 'prev'
         ? carouselWalker.prevPage(active.value, circular)
         : carouselWalker.nextPage(active.value, circular);
-
+    console.log('newPage: ', newPage);
     if (newPage) {
       setValue(newPage?.value);
       onValueChange?.(event, { event, type: 'click', value: newPage?.value });
@@ -143,6 +145,82 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     setValue(_value);
     onValueChange?.(event, { event, type: 'click', value: _value });
   });
+
+  // TODO: use the same hook as in useMotion() to avoid scrolling
+  const isFirstMount = useFirstMount();
+  const previousValue = usePrevious(value);
+
+  React.useLayoutEffect(() => {
+    const scrollContainer = rootRef.current?.querySelector('.CarouselSlider');
+
+    console.log('useLayoutEffect: ', { previousValue, value, isFirstMount });
+
+    if (value) {
+      let { el: targetEl } = carouselWalker.find(value) ?? { el: null };
+
+      // TODO pure garbage, refactor it
+      const fromEndToStart =
+        previousValue === store.getSnapshot().values[store.getSnapshot().values.length - 1] &&
+        value === store.getSnapshot().values[0];
+      const fromStartToEnd =
+        previousValue === store.getSnapshot().values[0] &&
+        value === store.getSnapshot().values[store.getSnapshot().values.length - 1];
+
+      console.log('movement: ', { fromEndToStart, fromStartToEnd, targetEl });
+
+      function scrollTo(element: HTMLElement, behavior = isFirstMount ? 'instant' : 'smooth') {
+        console.log('element', element.getBoundingClientRect());
+        const left = element.offsetLeft; // - 100; /* TODO should be computed */
+
+        // console.log('scrolling to: ', { targetEl, left, behavior });
+        scrollContainer?.scrollTo({ left, behavior });
+        // element.scrollIntoView({
+        //   behavior,
+        //   block: 'center',
+        // });
+      }
+
+      if (targetEl) {
+        // TODO get rid of setTimeout (problem with order of effects)
+        setTimeout(() => {
+          if (fromEndToStart) {
+            targetEl = carouselWalker.find(previousValue)!.el.nextElementSibling as HTMLElement;
+
+            const listener = () => {
+              const { el } = carouselWalker.find(value)!;
+
+              scrollTo(el!, 'instant');
+              scrollContainer?.removeEventListener('scrollend', listener);
+            };
+
+            scrollTo(targetEl!);
+            scrollContainer?.addEventListener('scrollend', listener);
+
+            return;
+          }
+
+          if (fromStartToEnd) {
+            targetEl = carouselWalker.find(previousValue)!.el.previousSibling as HTMLElement;
+
+            const listener1 = () => {
+              const { el } = carouselWalker.find(value)!;
+
+              scrollTo(el!, 'instant');
+            };
+
+            scrollTo(targetEl!);
+            scrollContainer?.addEventListener('scrollend', listener1);
+
+            return;
+          }
+
+          scrollTo(targetEl!);
+        }, 50);
+      }
+
+      // target?.el.scrol
+    }
+  }, [previousValue, value, isFirstMount]);
 
   return {
     components: {

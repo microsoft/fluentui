@@ -13,11 +13,19 @@ const PeekSize = '100px';
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    // '& .carousel-slider': {
+    //   display: 'grid',
+    //   gridAutoColumns: '80%',
+    //   gridAutoFlow: 'column',
+    //
+    //   overflow: 'hidden'
+    // },
+  },
   rootPeek: {
-    position: 'relative',
-    marginRight: PeekSize,
-    marginLeft: PeekSize,
+    // position: 'relative',
+    // marginRight: PeekSize,
+    // marginLeft: PeekSize,
   },
 
   // TODO add additional classes for different states and/or slots
@@ -35,7 +43,7 @@ export const useCarouselStyles_unstable = (state: CarouselState): CarouselState 
   state.root.className = mergeClasses(
     carouselClassNames.root,
     styles.root,
-    peeking && styles.rootPeek,
+    // peeking && styles.rootPeek,
     state.root.className,
   );
 
