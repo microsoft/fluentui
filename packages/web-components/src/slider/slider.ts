@@ -85,7 +85,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     }
   }
 
-  public handleChange(source: any, propertyName: string): void {
+  public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
       case 'max':
@@ -139,7 +139,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @param next - The current value
    * @internal
    */
-  public initialValueChanged(prev: string, next: string): void {
+  public initialValueChanged(_: string, next: string): void {
     if (this.$fastController.isConnected) {
       this.value = next;
     } else {
@@ -447,7 +447,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr({ converter: numberLikeStringConverter })
   public max?: string;
-  protected maxChanged(prev: string | undefined, next: string | undefined): void {
+  protected maxChanged(): void {
     this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
     if (this.$fastController.isConnected && this.maxAsNumber < this.valueAsNumber) {
       this.value = this.max!;
@@ -772,7 +772,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
   /**
    * Handle a window mouse up during a drag operation
    */
-  private handleWindowPointerUp = (event: Event): void => {
+  private handleWindowPointerUp = (): void => {
     this.stopDragging();
   };
 
