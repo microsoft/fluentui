@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Tue, 09 Jul 2024 07:36:39 GMT",
+      "tag": "@fluentui/cra-template_v8.4.162",
+      "version": "8.4.162",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Jul 2024 07:32:14 GMT",
       "tag": "@fluentui/cra-template_v8.4.161",
       "version": "8.4.161",
