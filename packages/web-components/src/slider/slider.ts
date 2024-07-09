@@ -16,6 +16,12 @@ import { toggleState } from '../utils/element-internals.js';
 import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
+/**
+ * Converter for `@attr()` to make sure the attribute and property values are a string
+ * representation of a number, e.g. `'10'` instead of `10`. Used for the `min`, `max`,
+ * and `step` attributes/properties, to have a consistent behavior as HTML’s built-in
+ * `<input type=range>`.
+ */
 const numberLikeStringConverter: ValueConverter = {
   fromView(value: string): string {
     const valueAsNumber = parseFloat(value);
