@@ -171,7 +171,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, chartDataMode: 'fraction' },
     container => {
       //Assert
-      expect(getByClass(container, /chartDataTextDenominator/i)).toHaveLength(0);
+      expect(getByClass(container, /chartDataTextDenominator/i)).toHaveLength(3);
     },
   );
 
