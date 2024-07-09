@@ -19,7 +19,7 @@ const storyTemplate = html<SliderStoryArgs>`
     max="${x => x.max}"
     orientation="${x => x.orientation}"
     value="${x => x.value}"
-    slot="input"
+    slot="${x => x.slot}"
   ></fluent-slider>
 `;
 
@@ -69,6 +69,7 @@ SliderInField.args = {
   id: uniqueId('slider-'),
   label: 'Slider (default)',
   labelPosition: LabelPosition.above,
+  slot: 'input',
 };
 
 export const SliderOrientation = renderComponent(html<SliderStoryArgs>`
