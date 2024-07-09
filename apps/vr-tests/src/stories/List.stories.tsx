@@ -141,6 +141,10 @@ export default {
     TestWrapperDecorator,
     StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
   ],
+
+  parameters: {
+    testWrapperStyle: { padding: 0 },
+  },
 };
 
 export const Root = () => <List items={items} onRenderCell={onRenderCell} />;

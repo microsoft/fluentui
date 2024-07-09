@@ -134,6 +134,9 @@ export const CompactWithPreviewList = () => (
 );
 
 CompactWithPreviewList.storyName = 'Compact with preview list';
+CompactWithPreviewList.parameters = {
+  testWrapperStyle: { width: '100%' },
+};
 
 export const CompactWithPreviewImage = () => (
   <Fabric>
@@ -151,3 +154,6 @@ export const CompactWithPreviewImage = () => (
 );
 
 CompactWithPreviewImage.storyName = 'Compact with preview image';
+CompactWithPreviewImage.parameters = {
+  testWrapperStyle: { width: '100%' },
+};

@@ -6,9 +6,11 @@ import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 
 export const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
-  setRTL(context.parameters.dir === 'rtl');
+  const { dir, theme } = context.parameters;
 
-  return <ThemeProvider theme={context.parameters.theme}>{storyFn(context)}</ThemeProvider>;
+  setRTL(dir === 'rtl');
+
+  return theme ? <ThemeProvider theme={theme}>{storyFn(context)}</ThemeProvider> : storyFn(context);
 };
 
 /** A list of story variants that can be applied to stories. */
