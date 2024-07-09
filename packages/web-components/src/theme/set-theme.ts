@@ -9,10 +9,12 @@ const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
 const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
 const SUPPORTS_CSS_SCOPE = 'CSSScopeRule' in window;
 
-const globalThemeStyleSheet = new CSSStyleSheet();
-
 // A map from a theme to Custom Property declarations for the theme as a string.
+// Each value should be a list of CSS Custom Property declarations, and should
+// NOT include any selector, `{`, or `}`.
 const themeStyleTextMap = new Map<Theme, string>();
+
+const globalThemeStyleSheet = new CSSStyleSheet();
 
 /**
  * Sets the theme tokens on defaultNode.
@@ -22,7 +24,11 @@ const themeStyleTextMap = new Map<Theme, string>();
  *     setting global theme.
  * @internal
  */
-export const setTheme = (theme: Theme | null, node: Document | HTMLElement = document) => {
+export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
+  if (node !== document && !(node instanceof HTMLElement)) {
+    return;
+  }
+
   // Fallback to setting token custom properties on `<html>` element’s `style`
   // attribute, only checking the support of  `document.adoptedStyleSheets`
   // here because it has broader support than `CSS.registerProperty()`, which
@@ -36,11 +42,14 @@ export const setTheme = (theme: Theme | null, node: Document | HTMLElement = doc
   if (node === document) {
     setGlobalTheme(theme);
   } else {
-    setElementTheme(theme, node as HTMLElement);
+    setLocalTheme(theme, node as HTMLElement);
   }
-};
+}
 
-function getThemeStyleText(theme: Theme): string {
+/**
+ * @internal
+ */
+export function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
@@ -63,7 +72,10 @@ function getThemeStyleText(theme: Theme): string {
   return themeStyleTextMap.get(theme)!;
 }
 
-function setGlobalTheme(theme: Theme | null) {
+/**
+ * @internal
+ */
+export function setGlobalTheme(theme: Theme | null) {
   if (theme === null) {
     if (document.adoptedStyleSheets.includes(globalThemeStyleSheet)) {
       globalThemeStyleSheet.replaceSync('');
@@ -80,7 +92,10 @@ function setGlobalTheme(theme: Theme | null) {
   }
 }
 
-function setElementTheme(theme: Theme | null, element: HTMLElement) {
+/**
+ * @internal
+ */
+export function setLocalTheme(theme: Theme | null, element: HTMLElement) {
   if (theme === null) {
     if (element.shadowRoot) {
       // TODO
@@ -100,7 +115,7 @@ function setElementTheme(theme: Theme | null, element: HTMLElement) {
 /**
  * @internal
  */
-function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
+export function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
   for (const t of tokenNames) {
     element.style.setProperty(`--${t}`, theme !== null ? (theme[t] as string) : 'unset');
   }
@@ -110,6 +125,6 @@ function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) 
  * @internal
  * @deprecated Use `setTheme(theme, element)` instead.
  */
-export const setThemeFor = (element: HTMLElement, theme: Theme | null) => {
+export function setThemeFor(element: HTMLElement, theme: Theme | null) {
   setThemePropertiesOnElement(theme, element);
-};
+}

@@ -1999,6 +1999,23 @@ export class Drawer extends FASTElement {
     type: DrawerType;
 }
 
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class DrawerBody extends FASTElement {
+}
+
+// @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
 // @public (undocumented)
 export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
 
@@ -2804,12 +2821,12 @@ export const roleForMenuItem: {
 // Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export const setTheme: (theme: Theme) => void;
+export const setTheme: (theme: Theme | null, node?: Document | HTMLElement) => void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
-export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
+// @internal @deprecated (undocumented)
+export const setThemeFor: (element: HTMLElement, theme: Theme | null) => void;
 
 // @public
 export const shadow16 = "var(--shadow16)";
