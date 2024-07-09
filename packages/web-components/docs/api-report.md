@@ -1998,6 +1998,23 @@ export class Drawer extends FASTElement {
     type: DrawerType;
 }
 
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class DrawerBody extends FASTElement {
+}
+
+// @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
 // @public (undocumented)
 export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
 
@@ -2870,14 +2887,14 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     formResetCallback(): void;
     // (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
     // (undocumented)
     handlePointerDown: (event: PointerEvent | null) => void;
     handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
     initialValue: string;
     // @internal
-    initialValueChanged(prev: string, next: string): void;
+    initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
@@ -2887,21 +2904,22 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     get maxAsNumber(): number;
     // (undocumented)
-    protected maxChanged(prev: string | undefined, next: string | undefined): void;
+    protected maxChanged(): void;
     min?: string;
     // @internal
     get minAsNumber(): number;
     // (undocumented)
-    protected minChanged(prev: string | undefined, next: string | undefined): void;
+    protected minChanged(): void;
     mode: SliderMode;
     orientation?: Orientation;
     // (undocumented)
     protected orientationChanged(prev: string | undefined, next: string | undefined): void;
-    // @internal (undocumented)
-    position: string;
     reportValidity(): boolean;
+    setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
     // (undocumented)
     protected sizeChanged(prev: string, next: string): void;
