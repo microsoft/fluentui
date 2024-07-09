@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselContext_unstable } from '../CarouselContext';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import { useIntersectionObserver } from '../../utils/useIntersectionObserver';
 import { useCarouselSliderContext_unstable } from '../CarouselSliderContext';
+import { tokens } from '@fluentui/react-theme';
+import { cardAnimationDelayToken } from './useCarouselCardStyles.styles';
 
 /**
  * Create the state required to render CarouselCard.
@@ -33,10 +35,8 @@ export const useCarouselCard_unstable = (
 
 const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
   const coreState = useCarouselCardCore(props, ref);
-  const { visible } = coreState;
   const { value } = props;
   const { circular } = useCarouselContext_unstable();
-  const initialLoad = React.useRef<boolean>(true);
 
   const navDirection = useCarouselStore_unstable(snapshot => snapshot.navDirection);
 
@@ -70,33 +70,15 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
   const directionMod = navDirection === 'next' ? 0.5 : -0.5;
 
   let offsetIndex = circular ? loopCount * totalCards : 0;
-  let tabIndex = visible ? props.tabIndex : undefined;
 
   if (circular && Math.abs(currentActiveIndex - (currentSelfIndex - directionMod)) + navMod >= totalCards / 2.0) {
     offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
-    if (visible && currentActiveIndex < currentSelfIndex && tabIndex !== undefined) {
-      tabIndex = 1;
-    }
-  }
-
-  useIsomorphicLayoutEffect(() => {
-    // These cards will need to be positioned without animation
-    if (offsetIndex !== 0 && currentActiveIndex === 0) {
-      initialLoad.current = false;
-    }
-  }, [currentActiveIndex, offsetIndex]);
-
-  if (currentActiveIndex !== 0) {
-    initialLoad.current = false;
   }
 
   const state: CarouselCardState = {
     ...coreState,
     offsetIndex,
-    initialLoad: initialLoad.current,
   };
-
-  state.root.tabIndex = tabIndex;
 
   return state;
 };
@@ -132,6 +114,9 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
 
   const observerRef = React.useCallback(
     (el: HTMLDivElement) => {
+      if (el) {
+        el.style.setProperty(cardAnimationDelayToken, tokens.durationFast);
+      }
       setObserverList([el]);
     },
     [setObserverList],
@@ -141,7 +126,6 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
     value,
     visible,
     offsetIndex,
-    initialLoad: false,
     cardWidth,
     components: {
       root: 'div',
@@ -155,6 +139,8 @@ const useCarouselCardCore = (props: CarouselCardProps, ref: React.Ref<HTMLDivEle
         inert: !visible,
         role: 'presentation',
         ...props,
+        // Ensure we set undefined on any tab index that isn't visible
+        tabIndex: visible ? props.tabIndex : undefined,
       }),
       { elementType: 'div' },
     ),

@@ -8,6 +8,8 @@ export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots> = {
   slider: 'fui-CarouselSlider__slider',
 };
 
+export const sliderAnimationDelayToken = '--fui-CarouselSlider-animation-delay' as const;
+
 // For now, until motion tokens are updated.
 const easingCurve = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
@@ -26,12 +28,9 @@ const useStyles = makeStyles({
     overflow: 'visible',
   },
   sliderAnimation: {
-    transitionProperty: 'transform',
-    transitionTimingFunction: easingCurve,
-    transitionDuration: tokens.durationNormal,
+    transition: `transform ${tokens.durationNormal} ${easingCurve}`,
+    transitionDelay: `var(${sliderAnimationDelayToken}, 0)`,
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -40,7 +39,7 @@ const useStyles = makeStyles({
 export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): CarouselSliderState => {
   'use no memo';
 
-  const { cardWidth, currentIndex, numCards, loopCount, interruptedAnimation } = state;
+  const { cardWidth, currentIndex, numCards, loopCount } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselSliderClassNames.root, styles.root, state.root.className);
@@ -58,12 +57,10 @@ export const useCarouselSliderStyles_unstable = (state: CarouselSliderState): Ca
   const offsetPos = `50% - ${cardWidth} / 2`;
 
   // Todo: Positions for non-circular, trailing etc.
-  const slideTransform = `translate3d(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}), 0,0)`;
+  const slideTransform = `translateX(calc(${-currentPosition} * ${cardWidth} + ${offsetPos}))`;
 
   state.slider.style = {
     transform: slideTransform,
-    // If we interrupt an animation, the next one will start further along to catch up the additional distance
-    transitionDelay: interruptedAnimation ? `-${tokens.durationFast}` : '0',
     ...state.slider.style,
   };
 

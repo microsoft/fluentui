@@ -80,7 +80,6 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
     visible: boolean;
     offsetIndex: number;
     cardWidth: string | number;
-    initialLoad: boolean;
 } & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
@@ -195,8 +194,7 @@ export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Required
     numCards: number;
     currentIndex: number;
     loopCount: number;
-    interruptedAnimation: boolean;
-};
+} & CarouselSliderContextValue;
 
 // @public (undocumented)
 export type CarouselSlots = {
@@ -234,7 +232,10 @@ export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) =
 export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
 
 // @public
-export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.Element;
+export const renderCarouselSlider_unstable: (state: CarouselSliderState, contextValues: CarouselSliderContextValues) => JSX.Element;
+
+// @public (undocumented)
+export const sliderAnimationDelayToken: "--fui-CarouselSlider-animation-delay";
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
