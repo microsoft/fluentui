@@ -189,7 +189,7 @@ export interface PriorityQueue<T> {
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
