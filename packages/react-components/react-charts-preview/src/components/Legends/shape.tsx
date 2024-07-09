@@ -7,6 +7,7 @@ export interface IShapeProps {
   pathProps: React.SVGAttributes<SVGPathElement>;
   shape: LegendShape;
   classNameForNonSvg?: string;
+  style?: React.CSSProperties | undefined;
 }
 
 type PointPathType = {
@@ -26,19 +27,24 @@ const pointPath: PointPathType = {
   [`${CustomPoints[CustomPoints.dottedLine]}`]: 'M0 6 H3 M5 6 H8 M10 6 H13',
 };
 
-export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
-  if (Object.keys(pointPath).indexOf(shape) === -1) {
-    return <div className={classNameForNonSvg} />;
-  }
-  return (
-    <svg
-      width={14}
-      height={14}
-      viewBox={'-1 -1 14 14'}
-      {...svgProps}
-      transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0}, 0, 0)`}
-    >
-      <path d={pointPath[shape]} {...pathProps} />
-    </svg>
-  );
-};
+export const Shape: React.FunctionComponent<IShapeProps> = React.forwardRef<HTMLDivElement, IShapeProps>(
+  ({ svgProps, pathProps, shape, classNameForNonSvg, style }, forwardedRef) => {
+    if (Object.keys(pointPath).indexOf(shape) === -1) {
+      return <div className={classNameForNonSvg} />;
+    }
+    return (
+      <svg
+        width={14}
+        height={14}
+        viewBox={'-1 -1 14 14'}
+        {...svgProps}
+        transform={`rotate(${
+          shape === Points[Points.diamond] ? 45 : shape === Points[Points.pyramid] ? 180 : 0
+        }, 0, 0)`}
+        style={style}
+      >
+        <path d={pointPath[shape]} {...pathProps} />
+      </svg>
+    );
+  },
+);

@@ -130,14 +130,14 @@ const getThemeSpecificColor = (colors: string[], isDarkTheme: boolean): string =
 
 export const getNextColor = (index: number, offset: number = 0, isDarkTheme: boolean = false): string => {
   const colors = QUALITATIVE_COLORS[(index + offset) % QUALITATIVE_COLORS.length];
-  return getThemeSpecificColor(colors, isDarkTheme);
+  return getThemeSpecificColor(colors, false);
 };
 
 export const getColorFromToken = (token: string, isDarkTheme: boolean = false): string => {
   if (TOKENS.indexOf(token) >= 0) {
     const [paletteName, colorCode] = token.split('.');
     const colors = Colors[paletteName][colorCode];
-    return getThemeSpecificColor(colors, isDarkTheme);
+    return getThemeSpecificColor(colors, false);
   }
   return token;
 };

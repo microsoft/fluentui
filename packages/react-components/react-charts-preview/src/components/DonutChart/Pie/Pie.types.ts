@@ -26,6 +26,9 @@ export interface IPieProps {
    */
   /* eslint-disable @typescript-eslint/no-explicit-any */
   pie?: any;
+
+  pieForFocusRing?: any;
+
   /**
    * Defines the function that is executed upon hovering over the legend
    */

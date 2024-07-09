@@ -66,8 +66,12 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     //   if (props.height && props.height !== _height) {
     //     heightState = { _height: props.height - LEGEND_CONTAINER_HEIGHT };
     //   }
-    //   setWidth(widthState!._width);
-    //   setHeight(heightState!._height);
+    //   if (widthState && widthState._width) {
+    //     setWidth(widthState!._width);
+    //   }
+    //   if (heightState && heightState._height) {
+    //     setHeight(heightState!._height);
+    //   }
     // }, [props.width, props.height, _width, _height]);
 
     function _closeCallout() {
@@ -169,6 +173,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
         setCallOutAccessibilityData(data.callOutAccessibilityData!);
+        updatePosition(e.clientX, e.clientY);
       }
     }
     function _onBlur(): void {
@@ -182,6 +187,9 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     function _handleChartMouseLeave() {
       _calloutAnchorPoint = null;
       setShowHover(false);
+      if (isPopoverOpen) {
+        setPopoverOpen(false);
+      }
     }
 
     function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
@@ -232,12 +240,12 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
             let defaultColor: string;
             // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0, props.theme?.isInverted);
+              defaultColor = getNextColor(index, 0);
             } else {
-              defaultColor = getColorFromToken(item.color, props.theme?.isInverted);
+              defaultColor = getColorFromToken(item.color);
             }
-
-            return { ...item, color };
+            console.log('color = ', defaultColor);
+            return { ...item, defaultColor };
           })
         : [];
     }
@@ -332,4 +340,9 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     );
   },
 );
+
 DonutChart.displayName = 'DonutChart';
+DonutChart.defaultProps = {
+  innerRadius: 0,
+  hideLabels: true,
+};

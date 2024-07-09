@@ -39,7 +39,7 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useArcStyles_unstable = (props: IArcProps): IArcStyles => {
-  const { className, color, href } = props;
+  const { className } = props;
   const baseStyles = useStyles();
 
   return {

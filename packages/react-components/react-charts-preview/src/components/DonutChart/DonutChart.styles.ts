@@ -18,8 +18,9 @@ export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
+    // TO DO remove these
+    // display: 'flex',
+    // flexDirection: 'column',
     width: '100%',
     height: '100%',
   },
@@ -36,7 +37,7 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutChartStyles => {
-  const { className, width, height } = props;
+  const { className } = props;
   const baseStyles = useStyles();
 
   return {
