@@ -416,7 +416,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    */
   @attr({ converter: numberLikeStringConverter })
   public min?: string;
-  protected minChanged(prev: string | undefined, next: string | undefined): void {
+  protected minChanged(): void {
     this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
     if (this.$fastController.isConnected && this.minAsNumber > this.valueAsNumber) {
       this.value = this.min!;
