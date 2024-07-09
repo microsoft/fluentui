@@ -3,6 +3,8 @@ import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-u
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import { useCarouselContext_unstable } from '../CarouselContext';
+import { sliderAnimationDelayToken } from './useCarouselSliderStyles.styles';
+import { tokens } from '@fluentui/react-theme';
 
 /**
  * Create the state required to render CarouselSlider.
@@ -18,52 +20,45 @@ export const useCarouselSlider_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselSliderState => {
   const animating = React.useRef<boolean>(false);
-  const interruptedAnimation = React.useRef<boolean>(false);
   const carouselSliderRef = React.useRef<HTMLDivElement>(null);
-  const cleanupRef = React.useRef<() => void>(() => undefined);
   const { cardWidth } = useCarouselContext_unstable();
 
   const numCards: number = useCarouselStore_unstable(snapshot => {
     return snapshot.values.length;
   });
 
-  const currentIndex: number = useCarouselStore_unstable(snapshot => {
-    if (!snapshot.activeValue) {
-      return 0;
-    }
-    return snapshot.values.indexOf(snapshot.activeValue);
-  });
+  const currentIndex: number = useCarouselStore_unstable(snapshot =>
+    snapshot.activeValue === null ? 0 : snapshot.values.indexOf(snapshot.activeValue),
+  );
 
-  const loopCount: number = useCarouselStore_unstable(snapshot => {
-    if (!snapshot.loopCount) {
-      return 0;
-    }
-    return snapshot.loopCount;
-  });
+  const loopCount: number = useCarouselStore_unstable(snapshot => snapshot.loopCount);
 
-  const animationRef = React.useCallback((el: HTMLDivElement | null) => {
-    if (!el) {
-      return;
-    }
-
-    const onAnimationStart = () => {
+  const animationRef = React.useMemo<React.Ref<HTMLDivElement>>(() => {
+    const onAnimationStart = (ev: AnimationEvent) => {
+      const el = ev.currentTarget as HTMLDivElement;
       if (animating.current) {
-        interruptedAnimation.current = true;
+        el.style.setProperty(sliderAnimationDelayToken, tokens.durationFast);
       }
       animating.current = true;
     };
-
-    const onAnimationEnd = () => {
+    const onAnimationEnd = (ev: AnimationEvent) => {
+      const el = ev.currentTarget as HTMLDivElement;
+      el.style.setProperty(sliderAnimationDelayToken, '0');
       animating.current = false;
-      interruptedAnimation.current = false;
     };
-
-    el.addEventListener('animationstart', onAnimationStart);
-    el.addEventListener('animationend', onAnimationEnd);
-
-    cleanupRef.current = () => {
-      el.removeEventListener('animationstart', onAnimationStart);
-      el.removeEventListener('animationend', onAnimationEnd);
+    let currentEl: HTMLDivElement | null = null;
+    return {
+      set current(newEl: HTMLDivElement | null) {
+        if (currentEl) {
+          currentEl.removeEventListener('animationstart', onAnimationStart);
+          currentEl.removeEventListener('animationend', onAnimationEnd);
+        }
+        if (newEl) {
+          currentEl = newEl;
+          newEl.addEventListener('animationstart', onAnimationStart);
+          newEl.addEventListener('animationend', onAnimationEnd);
+        }
+      },
     };
   }, []);
 
@@ -83,7 +78,6 @@ export const useCarouselSlider_unstable = (
     currentIndex,
     loopCount,
     numCards,
-    interruptedAnimation: interruptedAnimation.current,
     carouselSliderRef,
     components: {
       root: 'div',

@@ -1,27 +1,25 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselCardSlots, CarouselCardState } from './CarouselCard.types';
-import { tokens } from '@fluentui/react-theme';
 
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
   root: 'fui-CarouselCard',
 };
+
+export const cardAnimationDelayToken = '--fui-CarouselCard-animation-delay' as const;
+
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
   root: {
     height: '100%',
-    gridRow: 1,
-    transitionProperty: 'transform',
-    transitionDelay: '0',
-    transitionDuration: '0',
+    transition: 'transform 0s 0s',
   },
   rootAnimation: {
-    transitionProperty: 'transform',
     // This just ensures the card won't disappear immediately during index change
-    transitionDelay: tokens.durationFaster,
-    transitionDuration: '0',
+    // transitionDelay: tokens.durationFaster,
+    transitionDelay: `var(${cardAnimationDelayToken}, 0)`,
   },
 });
 
@@ -31,13 +29,13 @@ const useStyles = makeStyles({
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
 
-  const { offsetIndex, cardWidth, initialLoad } = state;
+  const { offsetIndex, cardWidth } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(
     carouselCardClassNames.root,
     styles.root,
-    !initialLoad && styles.rootAnimation,
+    styles.rootAnimation,
     state.root.className,
   );
 

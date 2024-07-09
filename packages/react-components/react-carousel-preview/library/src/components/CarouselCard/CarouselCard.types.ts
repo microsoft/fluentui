@@ -28,8 +28,4 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & {
    * The uniform card width of all cards, passed in from carousel context
    */
   cardWidth: string | number;
-  /**
-   * Tracks the initial load for positioning without animation
-   */
-  initialLoad: boolean;
 } & Pick<CarouselCardProps, 'value'>;
