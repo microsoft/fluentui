@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
 
-  const { offsetIndex, cardWidth, initialLoad, visible } = state;
+  const { offsetIndex, cardWidth, initialLoad } = state;
 
   const styles = useStyles();
   state.root.className = mergeClasses(
