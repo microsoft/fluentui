@@ -29,7 +29,6 @@
   },
   "devDependencies": {
     "@fluentui/react-provider": "*",
-    "@fluentui/react-button": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/react-conformance": "*",
@@ -39,7 +38,9 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-button": "^9.3.85",
     "@fluentui/react-tabster": "^9.22.1",
+    "@fluentui/react-text": "^9.4.21",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.11",
     "@fluentui/react-jsx-runtime": "^9.0.40",

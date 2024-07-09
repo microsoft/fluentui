@@ -1,13 +1,15 @@
-import { shorthands, makeStyles, mergeClasses } from '@griffel/react';
+import * as React from 'react';
+import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { textClassNames } from '@fluentui/react-text';
+import { buttonClassNames } from '@fluentui/react-button';
 import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
 import { cardHeaderClassNames } from '../CardHeader/useCardHeaderStyles.styles';
 import { cardFooterClassNames } from '../CardFooter/useCardFooterStyles.styles';
 import type { CardSlots, CardState } from './Card.types';
-import * as React from 'react';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -32,39 +34,39 @@ const focusOutlineStyle: Partial<FocusOutlineStyleOptions> = {
   outlineOffset: '-2px', // FIXME: tokens.strokeWidthThick causes some weird bugs
 };
 
-const useStyles = makeStyles({
-  root: {
-    overflow: 'hidden',
+const useCardResetStyles = makeResetStyles({
+  overflow: 'hidden',
+  borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
+  padding: `var(${cardCSSVars.cardSizeVar})`,
+  gap: `var(${cardCSSVars.cardSizeVar})`,
+
+  display: 'flex',
+  position: 'relative',
+  boxSizing: 'border-box',
+  color: tokens.colorNeutralForeground1,
+
+  // Border setting using after pseudo element to allow CardPreview to render behind it.
+  '::after': {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    content: '""',
+    pointerEvents: 'none',
+
+    ...shorthands.borderStyle('solid'),
+    ...shorthands.borderWidth(tokens.strokeWidthThin),
     borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-    padding: `var(${cardCSSVars.cardSizeVar})`,
-    gap: `var(${cardCSSVars.cardSizeVar})`,
-
-    display: 'flex',
-    position: 'relative',
-    boxSizing: 'border-box',
-    color: tokens.colorNeutralForeground1,
-
-    // Border setting using after pseudo element to allow CardPreview to render behind it.
-    '::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      content: '""',
-      pointerEvents: 'none',
-
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderWidth(tokens.strokeWidthThin),
-      borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-    },
-
-    // Prevents CardHeader and CardFooter from shrinking.
-    [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
-      flexShrink: 0,
-    },
   },
 
+  // Prevents CardHeader and CardFooter from shrinking.
+  [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
+    flexShrink: 0,
+  },
+});
+
+const useCardStyles = makeStyles({
   focused: {
     ...createFocusOutlineStyle({
       style: focusOutlineStyle,
@@ -144,6 +146,16 @@ const useStyles = makeStyles({
     [cardCSSVars.cardBorderRadiusVar]: tokens.borderRadiusLarge,
   },
 
+  interactive: {
+    [`& .${textClassNames.root}`]: {
+      color: 'currentColor',
+    },
+
+    [`& .${buttonClassNames.root}`]: {
+      color: 'currentColor',
+    },
+  },
+
   filled: {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow4,
@@ -162,6 +174,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Hover,
       backgroundColor: tokens.colorNeutralBackground1Hover,
       boxShadow: tokens.shadow8,
     },
@@ -177,6 +190,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Selected,
       backgroundColor: tokens.colorNeutralBackground1Selected,
     },
   },
@@ -199,6 +213,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground2Hover,
       backgroundColor: tokens.colorNeutralBackground2Hover,
       boxShadow: tokens.shadow8,
     },
@@ -214,6 +229,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground2Selected,
       backgroundColor: tokens.colorNeutralBackground2Selected,
     },
   },
@@ -236,6 +252,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Hover,
       backgroundColor: tokens.colorTransparentBackgroundHover,
 
       '::after': {
@@ -258,6 +275,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Selected,
       backgroundColor: tokens.colorTransparentBackgroundSelected,
     },
   },
@@ -280,6 +298,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
     ':active': {
@@ -294,6 +313,7 @@ const useStyles = makeStyles({
     },
 
     ':hover': {
+      color: tokens.colorNeutralForeground1Selected,
       backgroundColor: tokens.colorSubtleBackgroundSelected,
     },
   },
@@ -356,7 +376,8 @@ const useStyles = makeStyles({
 export const useCardStyles_unstable = (state: CardState): CardState => {
   'use no memo';
 
-  const styles = useStyles();
+  const resetStyles = useCardResetStyles();
+  const styles = useCardStyles();
 
   const orientationMap = {
     horizontal: styles.orientationHorizontal,
@@ -405,15 +426,14 @@ export const useCardStyles_unstable = (state: CardState): CardState => {
 
   state.root.className = mergeClasses(
     cardClassNames.root,
-    styles.root,
+    resetStyles,
     orientationMap[state.orientation],
     sizeMap[state.size],
     appearanceMap[state.appearance],
+    isSelectableOrInteractive && styles.interactive,
     isSelectableOrInteractive && interactiveMap[state.appearance],
     state.selected && selectedMap[state.appearance],
-    // Focus overrides
     focusedClassName,
-    // High contrast overrides
     isSelectableOrInteractive && styles.highContrastInteractive,
     state.selected && styles.highContrastSelected,
     state.root.className,
