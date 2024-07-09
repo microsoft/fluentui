@@ -31,6 +31,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
+  const carouselSliderRef = React.useRef<HTMLDivElement>();
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,

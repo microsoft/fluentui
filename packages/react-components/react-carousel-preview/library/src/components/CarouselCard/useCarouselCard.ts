@@ -32,6 +32,7 @@ export const useCarouselCard_unstable = (
 
 const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDivElement>): CarouselCardState => {
   const coreState = useCarouselCardCore(props, ref);
+  const { visible } = coreState;
   const { value } = props;
   const { circular } = useCarouselContext_unstable();
   const initialLoad = React.useRef<boolean>(true);
@@ -68,8 +69,13 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
   const directionMod = navDirection === 'next' ? 0.5 : -0.5;
 
   let offsetIndex = circular ? loopCount * totalCards : 0;
+  let tabIndex = visible ? props.tabIndex : undefined;
+
   if (circular && Math.abs(currentActiveIndex - (currentSelfIndex - directionMod)) + navMod >= totalCards / 2.0) {
     offsetIndex = currentActiveIndex < currentSelfIndex ? offsetIndex - totalCards : offsetIndex + totalCards;
+    if (visible && currentActiveIndex < currentSelfIndex && tabIndex !== undefined) {
+      tabIndex = 1;
+    }
   }
 
   useIsomorphicLayoutEffect(() => {
@@ -88,6 +94,8 @@ const useCarouselCardCircular = (props: CarouselCardProps, ref: React.Ref<HTMLDi
     offsetIndex,
     initialLoad: initialLoad.current,
   };
+
+  state.root.tabIndex = tabIndex;
 
   return state;
 };
