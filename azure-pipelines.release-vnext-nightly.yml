@@ -84,15 +84,15 @@ extends:
 
               - script: |
                   yarn nx run react-components:build --nxBail --verbose
-                displayName: yarn build
+                displayName: build
 
               - script: |
                   yarn nx run react-components:lint --nxBail --verbose
-                displayName: yarn lint
+                displayName: lint
 
               - script: |
                   yarn nx run react-components:test --nxBail --verbose
-                displayName: yarn test
+                displayName: test
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/src/release-vNext.config.js
