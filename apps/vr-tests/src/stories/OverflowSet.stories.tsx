@@ -49,26 +49,3 @@ export const Root = () => (
 );
 
 export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
-
-export const VerticalDirection = () => (
-  <Fabric>
-    <OverflowSet
-      vertical
-      items={[
-        { key: 'item1', name: 'Link 1' },
-        { key: 'item2', name: 'Link 2' },
-        { key: 'item3', name: 'Link 3' },
-      ]}
-      overflowItems={[
-        { key: 'item4', name: 'Overflow Link 1' },
-        { key: 'item5', name: 'Overflow Link 2' },
-      ]}
-      onRenderOverflowButton={onRenderOverflowButton}
-      onRenderItem={onRenderItem}
-    />
-  </Fabric>
-);
-
-VerticalDirection.parameters = {
-  steps: new Steps().snapshot('default', { cropTo: '.testWrapper' }).end(),
-};

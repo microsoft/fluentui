@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon } from '@fluentui/react';
 import {
@@ -26,7 +27,7 @@ export default {
         .end(),
     ),
   ],
-};
+} satisfies Meta<typeof Pivot>;
 
 export const Root = () => (
   <Pivot>

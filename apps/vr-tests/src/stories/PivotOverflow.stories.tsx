@@ -4,7 +4,7 @@ import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react
 import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
-  title: 'Pivot',
+  title: 'Pivot - Overflow',
 
   decorators: [
     TestWrapperDecorator,

@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
 import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
-import {
   Dropdown,
   DropdownMenuItemType,
   IDropdownProps,
   Icon,
   IDropdownOption,
 } from '@fluentui/react';
+import {
+  getStoryVariant,
+  STORY_VARIANT,
+  StoryWrightDecorator,
+  TestWrapperDecorator,
+} from '../utilities';
 
 export default {
   title: 'Dropdown',

@@ -6,12 +6,11 @@ import {
   CommentsSignal,
   NewSignal,
   SharedSignal,
-  ITileBackgroundProps,
 } from '@fluentui/react-experiments';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
 import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
-import { Meta } from '@storybook/react';
 
 interface IDocumentItem {
   name: JSX.Element;
@@ -23,12 +22,6 @@ interface IDocumentTileWithThumbnailProps {
   item: IDocumentItem;
 }
 
-interface IMediaTileWithThumbnailProps {
-  imageSize: ISize;
-  item: IDocumentItem;
-  nameplateOnlyOnHover: boolean;
-}
-
 const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
   return (
     <div
@@ -36,23 +29,6 @@ const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
         position: 'relative',
         width: '176px',
         height: '171px',
-      }}
-    >
-      {props.children}
-    </div>
-  );
-};
-
-const MEDIA_TILE_WIDTH = 200;
-const MEDIA_TILE_HEIGHT = 150;
-
-const MediaTileBox = (props: { children: React.ReactNode }): JSX.Element => {
-  return (
-    <div
-      style={{
-        position: 'relative',
-        width: `${MEDIA_TILE_WIDTH}px`,
-        height: `${MEDIA_TILE_HEIGHT}px`,
       }}
     >
       {props.children}
@@ -99,35 +75,6 @@ const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbn
         showForegroundFrame={true}
       />
     </DocumentTileBox>
-  );
-};
-
-const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailProps> = (
-  props: IMediaTileWithThumbnailProps,
-): JSX.Element => {
-  const { imageSize, item, nameplateOnlyOnHover } = props;
-
-  function renderBackground(backgroundProps: ITileBackgroundProps) {
-    return (
-      <img
-        src={`//fabricweb.azureedge.net/fabric-website/placeholders/${Math.round(
-          imageSize.width,
-        )}x${Math.round(imageSize.height)}.png`}
-        style={{ display: 'block' }}
-      />
-    );
-  }
-
-  return (
-    <MediaTileBox>
-      <Tile
-        itemName={item.name}
-        itemActivity={item.activity}
-        background={renderBackground}
-        showBackgroundFrame={true}
-        nameplateOnlyOnHover={nameplateOnlyOnHover}
-      />
-    </MediaTileBox>
   );
 };
 
@@ -226,118 +173,3 @@ export const TileWithNoContentAndLongText = () => (
 );
 
 TileWithNoContentAndLongText.storyName = 'Tile with no content and long text';
-
-// export default {
-//   title: 'MediaTile',
-
-//   decorators: [
-//     story => <Fabric>{story()}</Fabric>,
-//     TestWrapperDecorator,
-//     story => (
-//       <StoryWright
-//         steps={new Steps()
-//           .snapshot('default', { cropTo: '.testWrapper' })
-//           .hover('.ms-Tile')
-//           .snapshot('hover', { cropTo: '.testWrapper' })
-//           .end()}
-//       >
-//         {story()}
-//       </StoryWright>
-//     ),
-//   ],
-// };
-
-const steps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('.ms-Tile')
-  .snapshot('hover', { cropTo: '.testWrapper' })
-  .end();
-
-export const MediaTileWithSingleActivityLine = () => (
-  <MediaTileBox>
-    <MediaTileWithThumbnail
-      item={{
-        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-        activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
-      }}
-      imageSize={{
-        width: MEDIA_TILE_WIDTH,
-        height: MEDIA_TILE_HEIGHT,
-      }}
-      nameplateOnlyOnHover={false}
-    />
-  </MediaTileBox>
-);
-
-MediaTileWithSingleActivityLine.storyName = 'Media tile with single activity line';
-MediaTileWithSingleActivityLine.parameters = { steps };
-
-export const MediaTileWithTwoActivityLines = () => (
-  <MediaTileBox>
-    <MediaTileWithThumbnail
-      item={{
-        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-        activity: (
-          <>
-            <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>
-            <span style={{ display: 'block' }}>{'Test Activity Second Line'}</span>
-          </>
-        ),
-      }}
-      imageSize={{
-        width: MEDIA_TILE_WIDTH,
-        height: MEDIA_TILE_HEIGHT,
-      }}
-      nameplateOnlyOnHover={false}
-    />
-  </MediaTileBox>
-);
-
-MediaTileWithTwoActivityLines.storyName = 'Media tile with two activity lines';
-MediaTileWithTwoActivityLines.parameters = { steps };
-
-export const MediaTileWithVeryLongNameAndActivity = () => (
-  <MediaTileBox>
-    <MediaTileWithThumbnail
-      item={{
-        name: (
-          <SignalField before={<NewSignal />}>
-            {'Lorem ipsum dolor sit amet, consectetur adipiscing elit'}
-          </SignalField>
-        ),
-        activity: (
-          <SignalField before={<SharedSignal />}>
-            {'Proin elementum erat gravida libero luctus, id consequat risus aliquam'}
-          </SignalField>
-        ),
-      }}
-      imageSize={{
-        width: MEDIA_TILE_WIDTH,
-        height: MEDIA_TILE_HEIGHT,
-      }}
-      nameplateOnlyOnHover={false}
-    />
-  </MediaTileBox>
-);
-
-MediaTileWithVeryLongNameAndActivity.storyName = 'Media tile with very long name and activity';
-MediaTileWithVeryLongNameAndActivity.parameters = { steps };
-
-export const MediaTileWithNameplateHiddenUntilHover = () => (
-  <MediaTileBox>
-    <MediaTileWithThumbnail
-      item={{
-        name: <SignalField before={<NewSignal />}>{'Test Name'}</SignalField>,
-        activity: <SignalField before={<SharedSignal />}>{'Test Activity'}</SignalField>,
-      }}
-      imageSize={{
-        width: MEDIA_TILE_WIDTH,
-        height: MEDIA_TILE_HEIGHT,
-      }}
-      nameplateOnlyOnHover={true}
-    />
-  </MediaTileBox>
-);
-
-MediaTileWithNameplateHiddenUntilHover.storyName = 'Media tile with nameplate hidden until hover';
-MediaTileWithNameplateHiddenUntilHover.parameters = { steps };
