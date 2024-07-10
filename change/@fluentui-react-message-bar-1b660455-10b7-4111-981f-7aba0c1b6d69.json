@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: fix reflow problems with layout automatic",
+  "packageName": "@fluentui/react-message-bar",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
