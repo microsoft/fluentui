@@ -13,7 +13,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, darkenLightenColor, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -80,6 +80,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
+
     return !this._isChartEmpty() ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
@@ -100,7 +101,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           // Hide right side text of chart title for absolute-scale variant
           const chartDataText =
             this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
-          const bars = this._createBars(points!, palette);
+          const bars = this._createBars(points!, palette, index);
           const keyVal = this._uniqLineText + '_' + index;
           const classNames = getClassNames(this.props.styles!, {
             theme: this.props.theme!,
@@ -199,7 +200,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       this._calloutAnchorPoint = point;
       this.setState({
         isCalloutVisible: true,
-        hoverValue: hoverValue,
+        hoverValue,
         lineColor: point.color!,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
@@ -306,7 +307,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
+  private _createBars(data: IChartProps, palette: IPalette, chartNumber: number): JSX.Element[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -348,6 +349,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color2 = darkenLightenColor(color, 60);
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -389,26 +391,36 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       }
 
       return (
-        <rect
-          key={index}
-          x={`${
-            this._isRTL
-              ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
-              : startingPoint[index] + index * this.state.barSpacingInPercent
-          }%`}
-          y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
-          width={value + '%'}
-          height={this._barHeight}
-          fill={color}
-          onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
-          role="img"
-          aria-label={this._getAriaLabel(point)}
-          onBlur={this._hoverOff}
-          onMouseLeave={this._hoverOff}
-          className={this._classNames.barWrapper}
-        />
+        <React.Fragment key={index}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}_${chartNumber}`} >
+                <stop offset="0" stopColor={color2} />
+                <stop offset="100%" stopColor={color} />
+              </linearGradient>
+            </defs>
+          )}
+          <rect
+            key={index}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
+                : startingPoint[index] + index * this.state.barSpacingInPercent
+            }%`}
+            y={0}
+            data-is-focusable={point.legend !== '' ? true : false}
+            width={value + '%'}
+            height={this._barHeight}
+            fill={this.props.enableGradient? `url(#gradient_${index}_${chartNumber})` : color}
+            onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
+            onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
+            role="img"
+            aria-label={this._getAriaLabel(point)}
+            onBlur={this._hoverOff}
+            onMouseLeave={this._hoverOff}
+            className={this._classNames.barWrapper}
+          />
+        </React.Fragment>
       );
     });
     return bars;
