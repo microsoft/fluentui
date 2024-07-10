@@ -281,7 +281,7 @@ function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
     name: options.projectConfig.name + '-stories',
     npmName: options.npmPackageName + '-stories',
   };
-  // const currentStoriesNormalizedPackageName = getProjectNameWithoutScope(currentStoriesPackageName);
+
   const storiesProjectPaths = {
     root: storiesProjectRoot,
     sourceRoot: joinPathFragments(storiesProjectRoot, 'src'),

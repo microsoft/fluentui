@@ -11,25 +11,25 @@ import {
 } from '../../utils';
 import { PackageJson } from '../../types';
 
-export default async function (host: Tree, schema: VersionBumpGeneratorSchema) {
+export default async function (tree: Tree, schema: VersionBumpGeneratorSchema) {
   const userLog: UserLog = [];
-  const validatedSchema = validateSchema(host, schema);
+  const validatedSchema = validateSchema(tree, schema);
 
   if (validatedSchema.all) {
-    runBatchMigration(host, validatedSchema, userLog);
+    runBatchMigration(tree, validatedSchema, userLog);
   } else {
-    runMigrationOnProject(host, validatedSchema, userLog);
+    runMigrationOnProject(tree, validatedSchema, userLog);
   }
 
-  await formatFiles(host);
+  await formatFiles(tree);
 
   return () => {
     printUserLogs(userLog);
   };
 }
 
-function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
-  const options = normalizeOptions(host, schema);
+function runMigrationOnProject(tree: Tree, schema: ValidatedSchema, userLog: UserLog) {
+  const options = normalizeOptions(tree, schema);
   const packageJsonPath = options.paths.packageJson;
   let nextVersion = '';
 
@@ -38,7 +38,7 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
     return;
   }
 
-  updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
+  updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
     nextVersion = bumpVersion(packageJson, schema.bumpType, schema.prereleaseTag);
 
     // nightly releases should bypass beachball disallowed changetypes
@@ -55,7 +55,7 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   });
 
   if (nextVersion) {
-    updatePackageDependents({ tree: host, nextVersion, userLog, schema });
+    updatePackageDependents({ tree, nextVersion, userLog, schema });
   }
 }
 
@@ -168,9 +168,9 @@ function bumpVersion(packageJson: PackageJson, bumpType: ValidatedSchema['bumpTy
   return semverVersion.version;
 }
 
-function normalizeOptions(host: Tree, options: ValidatedSchema) {
+function normalizeOptions(tree: Tree, options: ValidatedSchema) {
   const defaults = {};
-  const project = getProjectConfig(host, { packageName: options.name });
+  const project = getProjectConfig(tree, { packageName: options.name });
 
   return {
     ...defaults,
