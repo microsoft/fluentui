@@ -7,7 +7,6 @@
     "lib": ["ES2019", "dom"],
     "sourceMap": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "pretty": true,
     "typeRoots": ["node_modules/@types", "./typings"],

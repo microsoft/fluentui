@@ -6,7 +6,6 @@
 
 /// <reference types="web" />
 
-import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -2864,48 +2863,65 @@ export const shadow8 = "var(--shadow8)";
 // @public
 export const shadow8Brand = "var(--shadow8Brand)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSlider" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
     // @internal
     calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
     // (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handleMouseDown: (e: MouseEvent | null) => void;
-    handleThumbMouseDown: (event: MouseEvent | null) => void;
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
-    // @internal (undocumented)
     initialValue: string;
+    // @internal
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    max: number;
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max: string;
     // (undocumented)
     protected maxChanged(): void;
-    min: number;
+    min: string;
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
-    orientation: Orientation;
+    orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(): void;
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
     position: string;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    step: number | undefined;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step: string;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
@@ -2924,11 +2940,16 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     trackMinWidth: number;
     // @internal (undocumented)
     trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
     get valueAsNumber(): number;
     set valueAsNumber(next: number);
-    // @internal (undocumented)
-    valueChanged(previous: string, next: string): void;
-    valueTextFormatter: (value: string) => string | null;
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
 // @public (undocumented)
@@ -2938,9 +2959,9 @@ export interface SliderConfiguration {
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
-    max: number;
+    max?: string;
     // (undocumented)
-    min: number;
+    min?: string;
     // (undocumented)
     orientation?: SliderOrientation;
 }

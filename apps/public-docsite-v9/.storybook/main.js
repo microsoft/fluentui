@@ -10,7 +10,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
   stories: [
     ...rootMain.stories,
     '../src/**/*.stories.mdx',
-    '../src/**/*.stories.@(ts|tsx)',
+    '../src/**/index.stories.@(ts|tsx)',
     ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
     ...getPackageStoriesGlob({
       packageName: '@fluentui/public-docsite-v9',
