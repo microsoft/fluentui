@@ -28,11 +28,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Circular enables the carousel to loop back around on navigation past trailing index
    */
   circular?: boolean;
-
-  /**
-   * Sets the card width, can be any CSS length value
-   */
-  cardWidth?: number | string;
 };
 
 /**

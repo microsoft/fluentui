@@ -37,8 +37,7 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
-  circular?: boolean;
-  cardWidth: number | string;
+  circular: boolean;
 };
 
 /**
@@ -46,15 +45,4 @@ export type CarouselContextValue = {
  */
 export type CarouselContextValues = {
   carousel: CarouselContextValue;
-};
-
-export type CarouselSliderContextValue = {
-  carouselSliderRef?: React.RefObject<HTMLDivElement>;
-};
-
-/**
- * Context shared between CarouselSlider and its children components
- */
-export type CarouselSliderContextValues = {
-  slider: CarouselSliderContextValue;
 };

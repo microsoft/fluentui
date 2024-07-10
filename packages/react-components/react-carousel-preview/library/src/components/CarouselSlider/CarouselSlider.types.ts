@@ -1,44 +1,18 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { CarouselSliderContextValue } from '../CarouselContext.types';
 
 export type CarouselSliderSlots = {
   /**
    * The root viewport/window of the carousel
    */
   root: Slot<'div'>;
-  /**
-   * The div that will be animated to track and center current index
-   */
-  slider: NonNullable<Slot<'div'>>;
 };
 
 /**
  * CarouselSlider Props
  */
-export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
-  /**
-   * Used to define the carousel card size, can be any css metric i.e. 100% / 100px / 100vw
-   * This will define the uniform width for all cards based on viewport size,
-   * i.e. 50% will render the cards at 50% of the viewport width.
-   */
-  cardWidth?: string | number;
-};
+export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>>;
 
 /**
  * State used in rendering CarouselSlider
  */
-export type CarouselSliderState = ComponentState<CarouselSliderSlots> &
-  Required<Pick<CarouselSliderProps, 'cardWidth'>> & {
-    /**
-     * Used to track the number of cards and controls grid size
-     */
-    numCards: number;
-    /**
-     * The current card index
-     */
-    currentIndex: number;
-    /**
-     * The number of times we have done a full loop of carousel, can go negative.
-     */
-    loopCount: number;
-  } & CarouselSliderContextValue;
+export type CarouselSliderState = ComponentState<CarouselSliderSlots>;

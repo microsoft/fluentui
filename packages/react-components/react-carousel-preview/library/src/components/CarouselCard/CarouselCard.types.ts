@@ -20,12 +20,4 @@ export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
  */
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
   visible: boolean;
-  /**
-   * Tracks the translate offset index for circular motion
-   */
-  offsetIndex: number;
-  /**
-   * The uniform card width of all cards, passed in from carousel context
-   */
-  cardWidth: string | number;
 } & Pick<CarouselCardProps, 'value'>;
