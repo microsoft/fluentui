@@ -223,21 +223,6 @@ describe('Horizontal bar chart - Subcomponent Benchmark', () => {
 describe('Horizontal bar chart - Subcomponent callout', () => {
   beforeEach(sharedBeforeEach);
 
-  /* testWithWait(
-    'Should call the handler on mouse over bar and on mouse leave from bar',
-    HorizontalBarChart,
-    { data: chartPoints, calloutProps: { doNotLayer: true } },
-    container => {
-      // eslint-disable-next-line
-      const handleMouseOver = jest.spyOn(HorizontalBarChart.prototype as any, '_hoverOn');
-      const bars = getByClass(container, /barWrapper/);
-      // Assert
-      expect(bars).toHaveLength(6);
-      fireEvent.mouseOver(bars[0]);
-      expect(handleMouseOver).toHaveBeenCalled();
-    },
-  );*/
-
   test('Should call the handler on mouse over bar', async () => {
     // Mock function to replace _hoverOn
     const handleMouseOver = jest.fn();
