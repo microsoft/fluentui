@@ -55,7 +55,7 @@ yarn nx g @fluentui/workspace-plugin:rc-caret --dry-run
 Check `@fluentui/react-components` for pinned rc deps and convert them to carets
 
 ```sh
-yarn nx g @fluentui/workspace-plugin:rc-caret --name='@fluentui/react-components'
+yarn nx g @fluentui/workspace-plugin:rc-caret --name=react-components
 ```
 
 Check all packages for pinned rc deps and convert them to carets
@@ -70,7 +70,7 @@ yarn nx g @fluentui/workspace-plugin:rc-caret --all
 
 Type: `string`
 
-Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
+Project name (without npmScope - e.g. `react-one`)
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
 

@@ -10,7 +10,7 @@ const recipeName = 'Hello World';
 const recipePackageName = 'hello-world';
 
 const setup = (tree: Tree) => {
-  const generateApp = () => {
+  const generateProject = () => {
     const paths = { root: 'packages/react-components/recipes' };
     writeJson(tree, path.join(paths.root, 'package.json'), {
       name: '@proj/recipes',
@@ -18,7 +18,7 @@ const setup = (tree: Tree) => {
     });
     tree.write(path.join(paths.root, 'src/recipes/.gitkeep'), '');
 
-    addProjectConfiguration(tree, '@proj/recipes', {
+    addProjectConfiguration(tree, 'recipes', {
       root: paths.root,
       sourceRoot: path.join(paths.root, 'src'),
       projectType: 'application',
@@ -26,7 +26,7 @@ const setup = (tree: Tree) => {
     });
   };
 
-  generateApp();
+  generateProject();
   return tree;
 };
 

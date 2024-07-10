@@ -52,7 +52,7 @@ yarn nx g @fluentui/workspace-plugin:version-bump --dry-run
 Bump `@fluentui/example@9.0.0-alpha.1` to beta
 
 ```sh
-yarn nx g @fluentui/workspace-plugin:version-bump --name='@fluentui/example' --bumpType prerelease --prereleaseTag beta
+yarn nx g @fluentui/workspace-plugin:version-bump --name=example --bumpType prerelease --prereleaseTag beta
 ```
 
 Bump all vNext packages from alpha to beta
@@ -79,7 +79,7 @@ yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --pre
 
 Type: `string`
 
-Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
+Project name (without @npmScope prefix - e.g. `<project-name>`)
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
 

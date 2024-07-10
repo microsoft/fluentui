@@ -10,11 +10,12 @@ import {
   joinPathFragments,
   updateJson,
   readJson,
+  getProjects,
 } from '@nx/devkit';
 
 import { splitLibraryInTwoGenerator } from '../split-library-in-two/generator';
 
-import { getProjectConfig, getWorkspaceConfig } from '../../utils';
+import { getProjectConfig } from '../../utils';
 
 import { ReactLibraryGeneratorSchema } from './schema';
 import { PackageJson, TsConfig } from '../../types';
@@ -48,9 +49,8 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
 }
 
 function normalizeOptions(tree: Tree, options: ReactLibraryGeneratorSchema) {
-  const npmScope = getWorkspaceConfig(tree).npmScope;
   const projectNameSuffix = options.kind === 'compat' ? '-compat' : '-preview';
-  const projectName = '@' + npmScope + '/' + options.name + projectNameSuffix;
+  const projectName = options.name + projectNameSuffix;
   const projectDirectory = options.name + projectNameSuffix;
   const root = joinPathFragments('packages', 'react-components', projectDirectory);
   const sourceRoot = joinPathFragments(root, 'src');
@@ -77,17 +77,17 @@ function normalizeOptions(tree: Tree, options: ReactLibraryGeneratorSchema) {
     ...options,
     ...project,
     rootOffset: offsetFromRoot(root),
+    projectName,
     ...nameVariations,
   };
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
-  options.className;
   const templateOptions = {
     ...options,
     tmpl: '',
-    npmPackageName: options.projectConfig.name as string,
-    packageName: options.normalizedPkgName,
+    projectName: options.projectConfig.name,
+    npmScope: options.workspaceConfig.npmScope,
   };
 
   generateFiles(tree, path.join(__dirname, 'files'), options.projectConfig.root, templateOptions);
@@ -96,22 +96,33 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 function updatePackageJsonDependencies(tree: Tree, options: NormalizedSchema) {
   const rootPkgJson = readJson<PackageJson>(tree, options.paths.rootPackageJson);
   const rootPkgJsonDeps = { devDeps: rootPkgJson.devDependencies ?? {} };
+  const allProjects = getProjects(tree);
 
   updateJson<PackageJson>(tree, options.paths.packageJson, json => {
     const deps = json.dependencies ?? {};
     const errors: string[] = [];
-    Object.keys(deps).forEach(projectName => {
+
+    Object.keys(deps).forEach(npmPackageName => {
       try {
-        const workspacePackage = getProjectConfig(tree, { packageName: projectName });
-        const version = readJson<PackageJson>(tree, workspacePackage.paths.packageJson).version;
-        deps[projectName] = '^' + version;
+        const workspaceProjectName = npmPackageName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+        const workspacePackage = allProjects.get(workspaceProjectName);
+        if (!workspacePackage) {
+          throw new Error(`Package '${workspaceProjectName}' not found in workspace`);
+        }
+        const workspacePackageJson = readJson<PackageJson>(
+          tree,
+          joinPathFragments(workspacePackage?.root, 'package.json'),
+        );
+        const versionRange = '^' + workspacePackageJson.version;
+
+        deps[npmPackageName] = versionRange;
       } catch {
-        const monorepoDepVersion = rootPkgJsonDeps.devDeps[projectName];
+        const monorepoDepVersion = rootPkgJsonDeps.devDeps[npmPackageName];
         if (!monorepoDepVersion) {
-          errors.push(`- ${projectName}`);
+          errors.push(`- ${npmPackageName}`);
           return;
         }
-        deps[projectName] = '^' + monorepoDepVersion.replace(/[\^~]/, '');
+        deps[npmPackageName] = '^' + monorepoDepVersion.replace(/[\^~]/, '');
       }
     });
 
