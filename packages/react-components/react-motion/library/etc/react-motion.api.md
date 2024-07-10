@@ -89,17 +89,20 @@ export type PresenceComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     onMotionCancel?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     onMotionStart?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     visible?: boolean;
     unmountOnExit?: boolean;
 };
+
+// @public (undocumented)
+export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
@@ -118,10 +121,7 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 }
 
 // @public (undocumented)
-export type PresenceMotion = {
-    enter: AtomMotion | AtomMotion[];
-    exit: AtomMotion | AtomMotion[];
-};
+export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 // @public (undocumented)
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {

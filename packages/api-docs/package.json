@@ -21,7 +21,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@microsoft/api-extractor-model": "7.26.9",
+    "@microsoft/api-extractor-model": "7.28.3",
     "@microsoft/tsdoc": "0.14.2",
     "fs-extra": "^8.1.0"
   }
