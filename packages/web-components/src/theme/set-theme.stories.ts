@@ -1,62 +1,157 @@
-import { html } from '@microsoft/fast-element';
-import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import { html, type HTMLView } from '@microsoft/fast-element';
+import { teamsDarkTheme, teamsLightTheme, type Theme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
 import { renderComponent } from '../helpers.stories.js';
 import { setTheme } from './set-theme.js';
+
+const themes: Record<string, Theme | null> = {
+ 'web-light': webLightTheme ,
+ 'web-dark': webDarkTheme,
+ 'team-light': teamsLightTheme,
+ 'team-dark': teamsDarkTheme,
+ 'null': null,
+};
+
+function updateTheme(c: HTMLView, type = 'global') {
+  const {value} = c.event.target as HTMLSelectElement;
+
+  if (themes[value]) {
+    switch (type) {
+      case 'global':
+        setTheme(themes[value]);
+        break;
+      case 'local':
+        setTheme(themes[value], document.querySelector('.local') as HTMLElement);
+        break;
+      case 'shadow':
+        setTheme(themes[value], document.querySelector('.shadow') as HTMLElement);
+        break;
+    }
+  }
+}
 
 export default {
   title: 'Theme/SetTheme',
 };
 
+const ComponentCloudTemplate = html`
+  <p><fluent-button>A button</fluent-button></p>
+  <p>
+    <fluent-text-input>
+      <fluent-label>Text input</fluent-label>
+    </fluent-text-input>
+  </p>
+  <p>
+    <fluent-menu>
+      <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    </fluent-menu>
+  </p>
+`;
+
 export const SetTheme = renderComponent(html`
-  <div>
-    <div>
-      <p>These buttons set theme globally.</p>
-      <fluent-button @click="${() => setTheme(webLightTheme)}">webLightTheme</fluent-button>
-      <fluent-button @click="${() => setTheme(webDarkTheme)}">webDarkTheme</fluent-button>
-      <fluent-button @click="${() => setTheme(teamsLightTheme)}">teamsLightTheme</fluent-button>
-      <fluent-button @click="${() => setTheme(teamsDarkTheme)}">teamsDarkTheme</fluent-button>
-    </div>
+  <style>
+    .toolbar {
+      display: flex;
+      gap: 1rem;
+      border-block-end: 1px solid #ccc;
+      padding-block-end: 2rem;
 
-    <div id="local-theme" style="border: 1px solid #ccc;padding: 2rem;margin:2rem;">
-      <p>These buttons set theme on this bordered box element.</p>
-      <fluent-button @click="${() => setTheme(webLightTheme, document.getElementById('local-theme')!)}"
-        >webLightTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(webDarkTheme, document.getElementById('local-theme')!)}"
-        >webDarkTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(teamsLightTheme, document.getElementById('local-theme')!)}"
-        >teamsLightTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(teamsDarkTheme, document.getElementById('local-theme')!)}"
-        >teamsDarkTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(null, document.getElementById('local-theme')!)}"
-        >Unset local theme</fluent-button
-      >
-    </div>
+      label,
+      select {
+        display: flow-root;
+        inline-size: fit-content;
+      }
 
-    <div style="border: 1px solid #ccc;padding: 2rem;margin:2rem;">
-      <p>These buttons set theme on the following <code>&lt;fluent-text&gt;</code> element.</p>
-      <fluent-text-input id="local-shadow-theme">
-        <fluent-label>Sample Input</fluent-label>
-      </fluent-text-input>
-      <fluent-button @click="${() => setTheme(webLightTheme, document.getElementById('local-shadow-theme')!)}"
-        >webLightTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(webDarkTheme, document.getElementById('local-shadow-theme')!)}"
-        >webDarkTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(teamsLightTheme, document.getElementById('local-shadow-theme')!)}"
-        >teamsLightTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(teamsDarkTheme, document.getElementById('local-shadow-theme')!)}"
-        >teamsDarkTheme</fluent-button
-      >
-      <fluent-button @click="${() => setTheme(null, document.getElementById('local-shadow-theme')!)}"
-        >Unset local theme</fluent-button
-      >
-    </div>
+      label {
+        flex: 1 0 0;
+      }
+
+      select {
+        inline-size: 100%;
+        margin-block-start: .5rem;
+        padding: .5rem;
+      }
+    }
+
+    .global {
+      margin-block: 2rem;
+    }
+
+    .local {
+      background: var(--colorNeutralBackground2);
+      border: 1px solid #ccc;
+      color: var(--colorNeutralForeground2);
+      padding: 1rem;
+      margin-trim: block;
+
+      & > :first-child {
+        margin-block-start: 0;
+      }
+
+      & > :last-child {
+        margin-block-end: 0;
+      }
+
+      .shadow {
+        background: var(--colorNeutralBackground2);
+        color: var(--colorNeutralForeground2);
+      }
+    }
+  </style>
+  <div class="toolbar">
+    <label>
+      Global theme
+      <select @change="${(_, c) => updateTheme(c as HTMLView)}">
+        <option selected value="web-light">Web Light</option>
+        <option value="web-dark">Web Dark</option>
+        <option value="team-light">Team Light</option>
+        <option value="team-dark">Team Dark</option>
+      </select>
+    </label>
+
+    <label>
+      Local theme (element without shadow root)
+      <select @change="${(_, c) => updateTheme(c as HTMLView, 'local')}">
+        <option value="null">Unset</option>
+        <option value="web-light">Web Light</option>
+        <option value="web-dark">Web Dark</option>
+        <option value="team-light">Team Light</option>
+        <option value="team-dark">Team Dark</option>
+      </select>
+    </label>
+
+    <label>
+      Local theme (element with shadow root)
+      <select @change="${(_, c) => updateTheme(c as HTMLView, 'shadow')}">
+        <option value="null">Unset</option>
+        <option value="web-light">Web Light</option>
+        <option value="web-dark">Web Dark</option>
+        <option value="team-light">Team Light</option>
+        <option value="team-dark">Team Dark</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="global">
+    <p>These elements follow the global theme</p>
+    ${ComponentCloudTemplate}
+  </div>
+
+  <div class="local">
+    <p>These elements follow the container element’s theme</p>
+    ${ComponentCloudTemplate}
+
+    <fluent-divider></fluent-divider>
+
+    <p>This element (which have shadow roots) follows its own theme</p>
+    <fluent-text-input class="shadow">
+      <fluent-label>Text input</fluent-label>
+    </fluent-text-input>
   </div>
 `);
