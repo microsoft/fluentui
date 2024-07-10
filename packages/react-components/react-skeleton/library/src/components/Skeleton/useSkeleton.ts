@@ -24,7 +24,6 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
       ref: ref as React.Ref<HTMLDivElement>,
       role: 'progressbar',
       'aria-busy': true,
-      'aria-label': 'Loading Content',
       ...props,
     }),
     { elementType: 'div' },
