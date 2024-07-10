@@ -31,9 +31,10 @@ export const getStoryVariant = <TArgs = Args,>(
 
   return {
     ...story,
-    render: story,
+    render: (...args) => story(...args),
     storyName: `${getStoryName(story)} - ${variant}`,
     parameters: { ...story.parameters, dir, theme },
+    decorators: [...(story.decorators ?? []), StoryVariantDecorator],
   };
 };
 

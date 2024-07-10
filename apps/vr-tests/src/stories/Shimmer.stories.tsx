@@ -4,7 +4,7 @@ import {
   getStoryVariant,
   STORY_VARIANT,
   StoryWrightDecorator,
-  TestWrapperDecoratorFixedWidth,
+  TestWrapperDecorator,
 } from '../utilities';
 import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
@@ -23,11 +23,8 @@ const wrapperClassName = mergeStyles({
 
 export default {
   title: 'Shimmer',
-
-  decorators: [
-    TestWrapperDecoratorFixedWidth,
-    StoryWrightDecorator(new Steps().snapshot('default').end()),
-  ],
+  decorators: [TestWrapperDecorator, StoryWrightDecorator(new Steps().snapshot('default').end())],
+  parameters: { testWrapperStyle: { width: 500 } },
 };
 
 export const Basic = () => <Shimmer />;

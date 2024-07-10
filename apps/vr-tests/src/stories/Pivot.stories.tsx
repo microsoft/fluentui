@@ -4,7 +4,7 @@ import {
   getStoryVariant,
   STORY_VARIANT,
   StoryWrightDecorator,
-  TestWrapperDecoratorTall,
+  TestWrapperDecorator,
 } from '../utilities';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
 
@@ -12,7 +12,7 @@ export default {
   title: 'Pivot',
 
   decorators: [
-    TestWrapperDecoratorTall,
+    TestWrapperDecorator,
     StoryWrightDecorator(
       new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

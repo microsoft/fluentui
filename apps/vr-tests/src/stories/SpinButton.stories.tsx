@@ -13,6 +13,7 @@ import {
   ISpinButtonProps,
   ISpinButtonStyles,
   ITextFieldStyles,
+  Label,
 } from '@fluentui/react';
 import { Position } from '@fluentui/react/lib/Positioning';
 
@@ -133,6 +134,7 @@ export const LabelOnTop = () => (
 );
 
 LabelOnTop.storyName = 'Label on top';
+LabelOnTop.parameters = { testWrapperStyles: { width: 'auto' } };
 
 export const LabelOnTopWithIcon = () => (
   <Fabric>
@@ -154,3 +156,4 @@ export const LabelOnTopWithIcon = () => (
 );
 
 LabelOnTopWithIcon.storyName = 'Label on top with icon';
+LabelOnTopWithIcon.parameters = { testWrapperStyles: { width: 'auto' } };
