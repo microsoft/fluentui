@@ -1,4 +1,4 @@
-import { Tree, updateJson, getProjects, formatFiles } from '@nx/devkit';
+import { Tree, updateJson, getProjects, formatFiles, joinPathFragments } from '@nx/devkit';
 import semver from 'semver';
 import { VersionBumpGeneratorSchema } from './schema';
 import {
@@ -7,6 +7,7 @@ import {
   printUserLogs,
   UserLog,
   isPackageConverged,
+  getNpmScope,
 } from '../../utils';
 import { PackageJson } from '../../types';
 
@@ -54,26 +55,28 @@ function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: Use
   });
 
   if (nextVersion) {
-    updatePackageDependents({ host, nextVersion, userLog, schema });
+    updatePackageDependents({ tree: host, nextVersion, userLog, schema });
   }
 }
 
 function updatePackageDependents(options: {
-  host: Tree;
+  tree: Tree;
   nextVersion: string;
   userLog: UserLog;
   schema: ValidatedSchema;
 }) {
-  const { host, nextVersion, userLog, schema } = options;
-  const projects = getProjects(host);
+  const { tree, nextVersion, userLog, schema } = options;
+  const npmScope = getNpmScope(tree);
+  const projects = getProjects(tree);
 
   projects.forEach((project, projectName) => {
-    const projectConfig = getProjectConfig(host, { packageName: projectName });
+    const projectConfig = projects.get(projectName)!;
+
     updatePackageDependent({
-      host,
+      tree,
       nextVersion,
-      dependencyName: schema.name,
-      packageJsonPath: projectConfig.paths.packageJson,
+      dependencyName: `@${npmScope}/${schema.name}`,
+      packageJsonPath: joinPathFragments(projectConfig?.root, 'package.json'),
       userLog,
       bumpType: schema.bumpType,
     });
@@ -81,16 +84,16 @@ function updatePackageDependents(options: {
 }
 
 function updatePackageDependent(options: {
-  host: Tree;
+  tree: Tree;
   nextVersion: string;
   dependencyName: string;
   packageJsonPath: string;
   userLog: UserLog;
   bumpType: ValidatedSchema['bumpType'];
 }) {
-  const { host, nextVersion, dependencyName, packageJsonPath, userLog, bumpType } = options;
+  const { tree, nextVersion, dependencyName, packageJsonPath, userLog, bumpType } = options;
 
-  updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
+  updateJson(tree, packageJsonPath, (packageJson: PackageJson) => {
     if (packageJson.dependencies?.[dependencyName]) {
       userLog.push({
         type: 'info',
@@ -125,13 +128,13 @@ const bumpDependency = (options: {
   dependencies[dependencyName] = versionToBump;
 };
 
-function runBatchMigration(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
-  const projects = getProjects(host);
+function runBatchMigration(tree: Tree, schema: ValidatedSchema, userLog: UserLog) {
+  const projects = getProjects(tree);
 
   projects.forEach((project, projectName) => {
-    if (isPackageConverged(host, project)) {
+    if (isPackageConverged(tree, project)) {
       runMigrationOnProject(
-        host,
+        tree,
         {
           name: projectName,
           all: false,
@@ -173,15 +176,10 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
     ...defaults,
     ...options,
     ...project,
-
-    /**
-     * package name without npmScope (@scopeName)
-     */
-    normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
   };
 }
 
-export const validbumpTypes = [
+export const validBumpTypes = [
   'prerelease',
   'major',
   'premajor',
@@ -193,7 +191,7 @@ export const validbumpTypes = [
 ] as const;
 
 interface ValidatedSchema extends Required<Omit<VersionBumpGeneratorSchema, 'exclude'>> {
-  bumpType: (typeof validbumpTypes)[number];
+  bumpType: (typeof validBumpTypes)[number];
 
   exclude: string[];
 }
@@ -204,10 +202,10 @@ function validateSchema(tree: Tree, schema: VersionBumpGeneratorSchema) {
   }
 
   const validateBumpType = (type: string): type is ValidatedSchema['bumpType'] => {
-    return validbumpTypes.includes(type as ValidatedSchema['bumpType']);
+    return validBumpTypes.includes(type as ValidatedSchema['bumpType']);
   };
   if (!validateBumpType(schema.bumpType)) {
-    throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validbumpTypes}`);
+    throw new Error(`${schema.bumpType} is not a valid bumpType, please use one of ${validBumpTypes}`);
   }
 
   const validatedSchema: ValidatedSchema = {

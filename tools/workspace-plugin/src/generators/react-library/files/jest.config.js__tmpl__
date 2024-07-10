@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: '<%= packageName %>',
+  displayName: '<%= projectName %>',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
