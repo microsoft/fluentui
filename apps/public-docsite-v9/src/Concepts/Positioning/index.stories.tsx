@@ -17,6 +17,7 @@ export { MatchTargetSize } from './MatchTargetSize.stories';
 export { DisableTransform } from './PositioningDisableTransform.stories';
 export { ListenToUpdates } from './PositioningListenToUpdates.stories';
 export { AutoSizeForSmallViewport } from './PositioningAutoSize.stories';
+export { FallbackPositions } from './PositioningFallbackPositions.stories';
 
 export default {
   title: 'Concepts/Developer/Positioning Components',

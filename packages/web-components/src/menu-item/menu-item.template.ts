@@ -1,9 +1,8 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { elements, html, slotted } from '@microsoft/fast-element';
+import { html, slotted } from '@microsoft/fast-element';
 import { staticallyCompose } from '../utils/template-helpers.js';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
-import { MenuItemRole } from './menu-item.js';
-import type { MenuItem, MenuItemOptions } from './menu-item.js';
+import { menuFilter, type MenuItem, type MenuItemOptions } from './menu-item.js';
 
 const Checkmark16Filled = html.partial(
   `<svg class="indicator" fill="currentColor" aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M14.05 3.49c.28.3.27.77-.04 1.06l-7.93 7.47A.85.85 0 014.9 12L2.22 9.28a.75.75 0 111.06-1.06l2.24 2.27 7.47-7.04a.75.75 0 011.06.04z" fill="currentColor"></path></svg>`,
@@ -15,10 +14,6 @@ const chevronRight16Filled = html.partial(
 export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template
-      aria-haspopup="${x => (!!x.submenu ? 'menu' : void 0)}"
-      aria-checked="${x => (x.role !== MenuItemRole.menuitem ? x.checked : void 0)}"
-      aria-disabled="${x => x.disabled}"
-      aria-expanded="${x => (!!x.submenu ? 'false' : void 0)}"
       @keydown="${(x, c) => x.handleMenuItemKeyDown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleMenuItemClick(c.event as MouseEvent)}"
       @mouseover="${(x, c) => x.handleMouseOver(c.event as MouseEvent)}"
@@ -32,7 +27,7 @@ export function menuItemTemplate<T extends MenuItem>(options: MenuItemOptions = 
       </div>
       ${endSlotTemplate(options)}
       <slot name="submenu-glyph"> ${staticallyCompose(options.submenuGlyph)} </slot>
-      <slot name="submenu" ${slotted({ property: 'slottedSubmenu', filter: elements("[role='menu']") })}></slot>
+      <slot name="submenu" ${slotted({ property: 'slottedSubmenu', filter: menuFilter() })}></slot>
     </template>
   `;
 }

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.56](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.56)
+
+Tue, 09 Jul 2024 07:36:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.55..@fluentui/theme_v2.6.56)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/utilities to v8.15.13 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
 
 ## [2.6.55](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.55)
 

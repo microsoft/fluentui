@@ -1,8 +1,19 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.13](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.13)
+
+Tue, 09 Jul 2024 07:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.4.12..@fluentui/foundation-legacy_v8.4.13)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/style-utilities to v8.10.18 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/utilities to v8.15.13 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
 
 ## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.4.12)
 

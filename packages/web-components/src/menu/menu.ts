@@ -48,7 +48,6 @@ export class Menu extends FASTElement {
    * Determines if the menu should open on hover.
    * @public
    */
-  @observable
   @attr({ attribute: 'open-on-hover', mode: 'boolean' })
   public openOnHover?: boolean = false;
 
@@ -56,7 +55,6 @@ export class Menu extends FASTElement {
    * Determines if the menu should open on right click.
    * @public
    */
-  @observable
   @attr({ attribute: 'open-on-context', mode: 'boolean' })
   public openOnContext?: boolean = false;
 
@@ -64,7 +62,6 @@ export class Menu extends FASTElement {
    * Determines if the menu should close on scroll.
    * @public
    */
-  @observable
   @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
   public closeOnScroll?: boolean = false;
 
@@ -72,7 +69,6 @@ export class Menu extends FASTElement {
    * Determines if the menu open state should persis on click of menu item
    * @public
    */
-  @observable
   @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
   public persistOnItemClick?: boolean = false;
 

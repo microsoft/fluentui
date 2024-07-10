@@ -1,9 +1,11 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { attr, ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import { toggleState } from '../utils/element-internals.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { MenuList } from '../menu-list/menu-list.js';
 import { MenuItemRole, roleForMenuItem } from './menu-item.options.js';
 
 export type MenuItemColumnCount = 0 | 1 | 2;
@@ -18,6 +20,13 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
   indicator?: StaticallyComposableHTML<MenuItem>;
   submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
+
+/**
+ * Creates a function that can be used to filter a Node array, selecting only elements with elementInternals role of "menu".
+ * @public
+ */
+export const menuFilter = (): ElementsFilter => value =>
+  value.nodeType === 1 && (value as MenuList).elementInternals.role === 'menu';
 
 /**
  * A Switch Custom HTML Element.
@@ -36,6 +45,13 @@ export type MenuItemOptions = StartEndOptions<MenuItem> & {
  */
 export class MenuItem extends FASTElement {
   /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
    * The disabled state of the element.
    *
    * @public
@@ -44,6 +60,16 @@ export class MenuItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
+
+  /**
+   * Handles changes to disabled attribute custom states and element internals
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public disabledChanged(prev: boolean | undefined, next: boolean | undefined) {
+    this.elementInternals.ariaDisabled = !!next ? `${next}` : null;
+    toggleState(this.elementInternals, 'disabled', next);
+  }
 
   /**
    * The role of the element.
@@ -56,6 +82,15 @@ export class MenuItem extends FASTElement {
   public role: MenuItemRole = MenuItemRole.menuitem;
 
   /**
+   * Handles changes to role attribute element internals properties
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined) {
+    this.elementInternals.role = next ?? MenuItemRole.menuitem;
+  }
+
+  /**
    * The checked value of the element.
    *
    * @public
@@ -64,7 +99,17 @@ export class MenuItem extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public checked: boolean = false;
-  protected checkedChanged(oldValue: boolean, newValue: boolean): void {
+
+  /**
+   * Handles changes to checked attribute custom states and element internals
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  protected checkedChanged(prev: boolean, next: boolean): void {
+    const checkableMenuItem = this.role !== MenuItemRole.menuitem;
+    this.elementInternals.ariaChecked = checkableMenuItem ? `${!!next}` : null;
+    toggleState(this.elementInternals, 'checked', checkableMenuItem ? next : false);
+
     if (this.$fastController.isConnected) {
       this.$emit('change');
     }
@@ -100,6 +145,11 @@ export class MenuItem extends FASTElement {
       this.submenu = next[0];
       this.submenu.toggleAttribute('popover', true);
       this.submenu.addEventListener('toggle', this.toggleHandler);
+      this.elementInternals.ariaHasPopup = 'menu';
+      toggleState(this.elementInternals, 'submenu', true);
+    } else {
+      this.elementInternals.ariaHasPopup = null;
+      toggleState(this.elementInternals, 'submenu', false);
     }
   }
 
@@ -108,6 +158,13 @@ export class MenuItem extends FASTElement {
    */
   @observable
   public submenu: HTMLElement | undefined;
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    this.elementInternals.role = this.role ?? MenuItemRole.menuitem;
+    this.elementInternals.ariaChecked = this.role !== MenuItemRole.menuitem ? `${!!this.checked}` : null;
+  }
 
   /**
    * @internal
@@ -136,6 +193,8 @@ export class MenuItem extends FASTElement {
         //close submenu
         if (this.parentElement?.hasAttribute('popover')) {
           this.parentElement.togglePopover(false);
+          // focus the menu item containing the submenu
+          this.parentElement.parentElement?.focus();
         }
 
         return false;
@@ -188,11 +247,11 @@ export class MenuItem extends FASTElement {
   public toggleHandler = (e: ToggleEvent | Event): void => {
     if (e instanceof ToggleEvent && e.newState === 'open') {
       this.setAttribute('tabindex', '-1');
-      this.setAttribute('aria-expanded', 'true');
+      this.elementInternals.ariaExpanded = 'true';
       this.setSubmenuPosition();
     }
     if (e instanceof ToggleEvent && e.newState === 'closed') {
-      this.setAttribute('aria-expanded', 'false');
+      this.elementInternals.ariaExpanded = 'false';
       this.setAttribute('tabindex', '0');
     }
   };

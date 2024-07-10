@@ -9,7 +9,7 @@
     "@fluentui/react-bindings": "^0.66.5",
     "@fluentui/react-component-event-listener": "^0.66.5",
     "lodash": "^4.17.15",
-    "react-table": "^9.15.9"
+    "react-table": "^7.1.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

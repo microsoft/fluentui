@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.13)
+
+Tue, 09 Jul 2024 07:36:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.12..@fluentui/utilities_v8.15.13)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [8.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.12)
 

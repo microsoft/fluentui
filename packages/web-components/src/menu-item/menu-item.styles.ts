@@ -2,7 +2,6 @@ import { css } from '@microsoft/fast-element';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusMedium,
-  colorCompoundBrandForeground1Hover,
   colorCompoundBrandForeground1Pressed,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
@@ -21,6 +20,13 @@ import {
   lineHeightBase200,
   lineHeightBase300,
 } from '../theme/design-tokens.js';
+import { checkedState, disabledState } from '../styles/states/index.js';
+
+/**
+ * Selector for the `submenu` state.
+ * @public
+ */
+export const submenuState = css.partial`:is([state--submenu], :state(submenu))`;
 
 /** MenuItem styles
  * @public
@@ -51,10 +57,6 @@ export const styles = css`
     color: ${colorNeutralForeground2Hover};
   }
 
-  :host([icon]:hover) ::slotted([slot='start']) {
-    color: ${colorCompoundBrandForeground1Hover};
-  }
-
   :host(:active) {
     background-color: ${colorNeutralBackground1Selected};
     color: ${colorNeutralForeground2Pressed};
@@ -64,13 +66,13 @@ export const styles = css`
     color: ${colorCompoundBrandForeground1Pressed};
   }
 
-  :host([disabled]) {
+  :host(${disabledState}) {
     background-color: ${colorNeutralBackgroundDisabled};
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) ::slotted([slot='end']) {
+  :host(${disabledState}) ::slotted([slot='start']),
+  :host(${disabledState}) ::slotted([slot='end']) {
     color: ${colorNeutralForegroundDisabled};
   }
 
@@ -86,10 +88,10 @@ export const styles = css`
     padding: 0 2px;
   }
 
-  :host(:not([checked])) .indicator,
-  :host(:not([checked])) ::slotted([slot='indicator']),
-  :host(:not([aria-haspopup='menu'])) .submenu-glyph,
-  :host(:not([aria-haspopup='menu'])) ::slotted([slot='submenu-glyph']) {
+  :host(:not(${checkedState})) .indicator,
+  :host(:not(${checkedState})) ::slotted([slot='indicator']),
+  :host(:not(${submenuState})) .submenu-glyph,
+  :host(:not(${submenuState})) ::slotted([slot='submenu-glyph']) {
     display: none;
   }
 
@@ -108,11 +110,11 @@ export const styles = css`
     grid-template-columns: 20px 20px auto auto;
   }
 
-  :host([aria-haspopup='menu']) {
+  :host(${submenuState}) {
     grid-template-columns: 20px auto auto 20px;
   }
 
-  :host([data-indent='2'][aria-haspopup='menu']) {
+  :host([data-indent='2']${submenuState}) {
     grid-template-columns: 20px 20px auto auto 20px;
   }
 
@@ -169,9 +171,9 @@ export const styles = css`
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host([disabled]),
-    :host([disabled]) ::slotted([slot='start']),
-    :host([disabled]) ::slotted([slot='end']) {
+    :host(${disabledState}),
+    :host(${disabledState}) ::slotted([slot='start']),
+    :host(${disabledState}) ::slotted([slot='end']) {
       color: GrayText;
     }
   `),
