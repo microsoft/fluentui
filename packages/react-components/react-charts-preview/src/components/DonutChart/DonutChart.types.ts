@@ -1,8 +1,6 @@
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChartProps, IChartDataPoint } from './index';
-import { StringAxis } from '../../utilities/utilities';
 
 export interface IDonutChart {}
 
@@ -30,11 +28,6 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * props for inside donut value
    */
   valueInsideDonut?: string | number;
-
-  /**
-   * Define a custom callout renderer for a data point
-   */
-  onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
 
   /**
    * props for the callout in the chart

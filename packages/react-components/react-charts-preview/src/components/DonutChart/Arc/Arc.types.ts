@@ -1,4 +1,3 @@
-import { ITheme } from '@fluentui/react/lib/Styling';
 import { IChartDataPoint } from '../index';
 export interface IArcProps {
   /**

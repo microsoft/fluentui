@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { PieArcDatum, pie as d3Pie } from 'd3-shape';
+import { pie as d3Pie } from 'd3-shape';
 import { IPieProps } from './index';
 import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';

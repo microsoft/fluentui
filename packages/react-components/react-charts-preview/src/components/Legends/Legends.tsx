@@ -6,7 +6,7 @@ import { classNamesFunction, find, getNativeProps, buttonProperties } from '@flu
 import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react/lib/OverflowSet';
-import { Button } from '@fluentui/react-components';
+import { Button } from '@fluentui/react-button';
 import {
   ILegend,
   ILegendsProps,
@@ -64,7 +64,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       }
 
       setSelectedLegends(defaultSelectedLegends);
-    }, [props]);
+    }, [props.canSelectMultipleLegends, props.defaultSelectedLegend, props.defaultSelectedLegends]);
 
     const { styles } = props;
     const classes = useLegendStyles_unstable(props);
@@ -357,6 +357,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           style={{
             '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
+            // removed theme?.semanticColors.buttonBorder from borderColor
             '--rect-borderColor': legend.color,
             '--rect-content': legend.stripePattern
               ? // eslint-disable-next-line @fluentui/max-len

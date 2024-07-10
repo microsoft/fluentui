@@ -34,7 +34,7 @@ const useStyles = makeStyles({
 });
 
 /**
- * Apply styling to the Carousel slots based on the state
+ * Apply styling to the DonutChart component
  */
 export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutChartStyles => {
   const { className } = props;

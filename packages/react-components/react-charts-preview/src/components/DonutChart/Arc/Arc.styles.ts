@@ -19,6 +19,7 @@ const useStyles = makeStyles({
   root: {
     cursor: 'default',
     ...shorthands.outline('transparent'),
+    stroke: tokens.colorNeutralBackground1,
     selectors: {
       '::-moz-focus-inner': {
         ...shorthands.border('0'),
@@ -26,17 +27,19 @@ const useStyles = makeStyles({
     },
   },
   focusRing: {
+    stroke: tokens.colorStrokeFocus2,
     strokeWidth: '4px',
     fill: 'transparent',
   },
   arcLabel: {
-    fontSize: tokens.fontSizeBase100,
+    fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
+    fill: tokens.colorNeutralForeground1,
   },
 });
 
 /**
- * Apply styling to the Carousel slots based on the state
+ * Apply styling to the Arc components
  */
 export const useArcStyles_unstable = (props: IArcProps): IArcStyles => {
   const { className } = props;

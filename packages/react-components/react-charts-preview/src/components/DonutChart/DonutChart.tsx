@@ -56,6 +56,8 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       }
     }, []);
 
+    // TO DO: Need to check if this is required.
+    // This was part of getDerivedStateFromProps in v8. Keeping this changes the position of rendered donut chart.
     // React.useEffect(() => {
     //   let widthState: { _width: number } | undefined;
     //   if (props.width && props.width !== _width) {
