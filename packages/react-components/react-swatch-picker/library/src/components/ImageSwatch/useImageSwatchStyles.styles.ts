@@ -25,7 +25,7 @@ const useStyles = makeResetStyles({
   },
   ':hover:active': {
     border: 'none',
-    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
+    boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorStrokeFocus1}`,
   },
   ':focus': {
     outline: 'none',
@@ -57,10 +57,10 @@ const useStylesSelected = makeStyles({
     border: 'none',
     boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorBrandStroke1}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,
     ':hover': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorCompoundBrandStrokeHover}, inset 0 0 0 6px ${tokens.colorStrokeFocus1}`,
     },
     ':hover:active': {
-      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorBrandStroke1}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
+      boxShadow: `inset 0 0 0 ${tokens.strokeWidthThickest} ${tokens.colorCompoundBrandStrokePressed}, inset 0 0 0 7px ${tokens.colorStrokeFocus1}`,
     },
     ...createCustomFocusIndicatorStyle({
       boxShadow: `inset 0 0 0 ${tokens.strokeWidthThicker} ${tokens.colorStrokeFocus2}, inset 0 0 0 5px ${tokens.colorStrokeFocus1}`,

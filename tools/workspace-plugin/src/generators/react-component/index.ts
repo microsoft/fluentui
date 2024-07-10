@@ -51,7 +51,7 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
     ...nameCasings,
     directory: 'components',
     componentName: nameCasings.className,
-    npmPackageName: project.projectConfig.name as string,
+    npmPackageName: `@${project.workspaceConfig.npmScope}/${project.projectConfig.name}`,
     isSplitProject: isSplitProject(tree, project.projectConfig),
   };
 }

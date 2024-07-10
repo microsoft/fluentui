@@ -1,9 +1,10 @@
-import { storiesOf } from '@storybook/react';
+import type { Meta, StoryFn } from '@storybook/react';
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
 import { tokens } from '@fluentui/react-theme';
 import { PeopleRegular, PersonCallRegular } from '@fluentui/react-icons';
+import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities';
 
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
@@ -185,81 +186,101 @@ const AvatarColors: React.FC<Pick<AvatarProps, 'active' | 'activeAppearance'>> =
   );
 };
 
-storiesOf('Avatar Converged', module)
-  .addDecorator(story => (
-    <div style={{ display: 'flex' }}>
-      <div className="testWrapper" style={{ maxWidth: '750px' }}>
-        {story()}
-      </div>
-    </div>
-  ))
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-  ))
-  .addStory(
-    'basic',
-    () => (
-      <div style={{ display: 'flex', gap: '24px', padding: '24px' }}>
-        <Avatar />
-        <Avatar name="First Last" />
-        <Avatar name="Three Word Name" />
-        <Avatar name="One" />
-        <Avatar name="(111)-555-1234" icon={<PersonCallRegular />} />
-        <Avatar icon={<PeopleRegular />} shape="square" />
-        <Avatar name="Group" icon={<PeopleRegular />} shape="square" />
-        <Avatar image={{ src: examples.image[14] }} badge={{ status: 'away' }} />
-        <Avatar name={examples.name[7]} image={{ src: examples.image[7] }} badge={{ status: 'available' }} />
+export default {
+  title: 'Avatar Converged',
+  component: Avatar,
+  decorators: [
+    story => (
+      <div style={{ display: 'flex' }}>
+        <div className="testWrapper" style={{ maxWidth: '750px' }}>
+          {story()}
+        </div>
       </div>
     ),
-    { includeRtl: true, includeHighContrast: true, includeDarkMode: true },
-  )
-  .addStory('size+name', () => <AvatarList names={examples.name} />)
-  .addStory('size+icon+badge+square', () => <AvatarList badge={{ status: 'out-of-office' }} shape="square" />)
-  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge={{ status: 'do-not-disturb' }} />)
-  .addStory('size+inactive+badge', () => (
-    <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
-  ))
+    story => (
+      <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+    ),
+  ],
+} satisfies Meta<typeof Avatar>;
 
-  /* Temporarily disable these stories as these cause noise with storywright
-  The issue is raised against playwright. Till it gets fixed we disabled these. https://github.com/microsoft/playwright/issues/18373
-  .addStory('size+active+badge', () => (
-    <AvatarList images={examples.image} active="active" badge={{ status: 'available' }} />
-  ))
-  .addStory('size+active+shadow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="shadow" />
-  ))
-  .addStory('size+active+ring-shadow', () => (
-    <AvatarList images={examples.image} active="active" activeAppearance="ring-shadow" />
-  ))*/
-  .addStory(
-    'badgeMask',
-    () => (
-      <div
-        style={{
-          backgroundSize: '32px 32px',
-          backgroundImage:
-            `repeating-conic-gradient(` +
-            `${tokens.colorBrandBackground} 0% 25%, ` +
-            `${tokens.colorBrandBackgroundSelected} 0% 50%)`,
-        }}
-      >
-        <AvatarList images={examples.image} color="marigold" active="active" badge={{ status: 'available' }} />
-      </div>
-    ),
-    { includeRtl: true },
-  )
-  .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
-  .addStory('customSize+name+badge', () => (
-    <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
-  ))
-  .addStory('customSize+icon+active', () => <AvatarCustomSizeList active="active" badge={{ status: 'available' }} />)
-  .addStory('color', () => <AvatarColors />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('color+active', () => <AvatarColors active="active" />, {
-    includeHighContrast: true,
-    includeDarkMode: true,
-  })
-  .addStory('image-bad-url', () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />)
-  .addStory('image-bad-url+icon', () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />);
+type Story = StoryFn<typeof Avatar>;
+
+export const Basic: Story = () => (
+  <div style={{ display: 'flex', gap: '24px', padding: '24px' }}>
+    <Avatar />
+    <Avatar name="First Last" />
+    <Avatar name="Three Word Name" />
+    <Avatar name="One" />
+    <Avatar name="(111)-555-1234" icon={<PersonCallRegular />} />
+    <Avatar icon={<PeopleRegular />} shape="square" />
+    <Avatar name="Group" icon={<PeopleRegular />} shape="square" />
+    <Avatar image={{ src: examples.image[14] }} badge={{ status: 'away' }} />
+    <Avatar name={examples.name[7]} image={{ src: examples.image[7] }} badge={{ status: 'available' }} />
+  </div>
+);
+Basic.storyName = 'basic';
+
+export const BasicRTL = getStoryVariant(Basic, RTL);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
+export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
+
+export const SizeName: Story = () => <AvatarList names={examples.name} />;
+SizeName.storyName = 'size+name';
+
+export const SizeIconBadgeSquare: Story = () => <AvatarList badge={{ status: 'out-of-office' }} shape="square" />;
+SizeIconBadgeSquare.storyName = 'size+icon+badge+square';
+
+export const SizeImageBadge: Story = () => <AvatarList images={examples.image} badge={{ status: 'do-not-disturb' }} />;
+SizeImageBadge.storyName = 'size+image+badge';
+
+export const SizeInactiveBadge: Story = () => (
+  <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
+);
+SizeInactiveBadge.storyName = 'size+inactive+badge';
+
+export const BadgeMask: Story = () => (
+  <div
+    style={{
+      backgroundSize: '32px 32px',
+      backgroundImage: `repeating-conic-gradient(${tokens.colorBrandBackground} 0% 25%, ${tokens.colorBrandBackgroundSelected} 0% 50%)`,
+    }}
+  >
+    <AvatarList images={examples.image} color="marigold" active="active" badge={{ status: 'available' }} />
+  </div>
+);
+BadgeMask.storyName = 'badgeMask';
+
+export const BadgeMaskRTL = getStoryVariant(BadgeMask, RTL);
+
+export const CustomSizeImage: Story = () => <AvatarCustomSizeList images={examples.image} />;
+CustomSizeImage.storyName = 'customSize+image';
+
+export const CustomSizeNameBadge: Story = () => (
+  <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
+);
+CustomSizeNameBadge.storyName = 'customSize+name+badge';
+
+export const CustomSizeIconActive: Story = () => (
+  <AvatarCustomSizeList active="active" badge={{ status: 'available' }} />
+);
+CustomSizeIconActive.storyName = 'customSize+icon+active';
+
+export const Color: Story = () => <AvatarColors />;
+Color.storyName = 'color';
+
+export const ColorHighContrast = getStoryVariant(Color, HIGH_CONTRAST);
+export const ColorDarkMode = getStoryVariant(Color, DARK_MODE);
+
+export const ColorActive: Story = () => <AvatarColors active="active" />;
+ColorActive.storyName = 'color+active';
+
+export const ColorActiveHighContrast = getStoryVariant(ColorActive, HIGH_CONTRAST);
+export const ColorActiveDarkMode = getStoryVariant(ColorActive, DARK_MODE);
+
+export const ImageBadUrl: Story = () => (
+  <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />
+);
+ImageBadUrl.storyName = 'image-bad-url';
+
+export const ImageBadUrlIcon: Story = () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />;
+ImageBadUrlIcon.storyName = 'image-bad-url+icon';

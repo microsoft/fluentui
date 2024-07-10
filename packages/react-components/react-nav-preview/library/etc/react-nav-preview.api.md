@@ -12,6 +12,9 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DividerProps } from '@fluentui/react-divider';
+import { DividerSlots } from '@fluentui/react-divider';
+import type { DividerState } from '@fluentui/react-divider';
 import type { DrawerBodyProps } from '@fluentui/react-drawer';
 import type { DrawerBodySlots } from '@fluentui/react-drawer';
 import type { DrawerBodyState } from '@fluentui/react-drawer';
@@ -31,6 +34,23 @@ import type { InlineDrawerSlots } from '@fluentui/react-drawer';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const AppNode: ForwardRefComponent<AppNodeProps>;
+
+// @public (undocumented)
+export const appNodeClassNames: SlotClassNames<AppNodeSlots>;
+
+// @public
+export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
+
+// @public (undocumented)
+export type AppNodeSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AppNodeState = ComponentState<AppNodeSlots>;
 
 // @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
@@ -104,6 +124,18 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
 export type NavContextValues = {
     nav: NavContextValue;
 };
+
+// @public
+export const NavDivider: ForwardRefComponent<NavDividerProps>;
+
+// @public (undocumented)
+export const navDividerClassNames: SlotClassNames<DividerSlots>;
+
+// @public
+export type NavDividerProps = DividerProps;
+
+// @public
+export type NavDividerState = DividerState;
 
 // @public
 export const NavDrawer: ForwardRefComponent<NavDrawerProps>;
@@ -287,6 +319,9 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 // @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
+// @public
+export const renderAppNode_unstable: (state: AppNodeState) => JSX.Element;
+
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
@@ -312,6 +347,12 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
+export const useAppNode_unstable: (props: AppNodeProps, ref: React_2.Ref<HTMLDivElement>) => AppNodeState;
+
+// @public
+export const useAppNodeStyles_unstable: (state: AppNodeState) => AppNodeState;
+
+// @public
 export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
 
 // @public
@@ -331,6 +372,12 @@ export const useNavCategoryItemStyles_unstable: (state: NavCategoryItemState) =>
 
 // @public (undocumented)
 export const useNavContext_unstable: () => NavContextValue;
+
+// @public
+export const useNavDivider_unstable: (props: NavDividerProps, ref: React_2.Ref<HTMLElement>) => NavDividerState;
+
+// @public
+export const useNavDividerStyles_unstable: (state: NavDividerState) => NavDividerState;
 
 // @public
 export const useNavDrawer_unstable: (props: NavDrawerProps, ref: React_2.Ref<HTMLDivElement>) => NavDrawerState;

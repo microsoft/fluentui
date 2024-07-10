@@ -32,10 +32,10 @@ yarn nx g @fluentui/workspace-plugin:migrate-fixed-versions --dry-run
 
 ### Examples
 
-Run migration on package named `@fluentui/example`
+Run migration on project named `example`
 
 ```sh
-yarn nx g @fluentui/workspace-plugin:migrate-fixed-versions --name='@fluentui/example'
+yarn nx g @fluentui/workspace-plugin:migrate-fixed-versions --name=example
 ```
 
 Run migration on all vNext web packages
@@ -50,7 +50,7 @@ yarn nx g @fluentui/workspace-plugin:migrate-fixed-versions --all
 
 Type: `string`
 
-Package/library name (needs to be full name of the package, scope included - e.g. `@fluentui/<package-name>`)
+Project name (without @npmScope prefix - e.g. `<project-name>`)
 
 > NOTE: will trigger CLI prompt if you didn't provide this option
 

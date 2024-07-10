@@ -1,4 +1,4 @@
-import { attr, css, nullableNumberConverter, observable, Observable } from '@microsoft/fast-element';
+import { attr, css, FASTElement, observable, Observable } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
 import {
   Direction,
@@ -11,16 +11,47 @@ import {
   limit,
   Orientation,
 } from '@microsoft/fast-web-utilities';
-import { getDirection } from '../utils/index.js';
-import { SliderConfiguration, SliderMode, SliderSize } from './slider.options.js';
-import { FormAssociatedSlider } from './slider.form-associated.js';
+import { numberLikeStringConverter } from '../utils/converters.js';
+import { getDirection } from '../utils/direction.js';
+import { toggleState } from '../utils/element-internals.js';
+import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
 /**
  * The base class used for constructing a fluent-slider custom element
+ *
+ * @slot thumb - The slot for a custom thumb element.
+ * @csspart thumb-container - The container element of the thumb.
+ * @csspart track-container - The container element of the track.
+ * @fire change - Fires a custom 'change' event when the value changes.
+ *
  * @public
  */
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
+  /**
+   * The form-associated flag.
+   * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
+   *
+   * @public
+   */
+  public static formAssociated = true;
+
+  /**
+   * A reference to all associated `<label>` elements.
+   *
+   * @public
+   */
+  public get labels(): ReadonlyArray<Node> {
+    return Object.freeze(Array.from(this.elementInternals.labels));
+  }
+
   /**
    * The size of the slider
    * @public
@@ -29,15 +60,22 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    */
   @attr
   public size?: SliderSize;
+  protected sizeChanged(prev: string, next: string): void {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
-  public handleChange(source: any, propertyName: string): void {
+  public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
       case 'min':
       case 'max':
+        this.setSliderPosition(this.direction);
       case 'step':
         this.handleStepStyles();
-        break;
-      default:
         break;
     }
   }
@@ -50,7 +88,7 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    */
   private handleStepStyles(): void {
     if (this.step) {
-      const totalSteps = (100 / Math.floor((this.max - this.min) / this.step)) as any;
+      const totalSteps = (100 / Math.floor((this.maxAsNumber - this.minAsNumber) / this.stepAsNumber)) as any;
 
       if (this.stepStyles !== undefined) {
         this.$fastController.removeStyles(this.stepStyles);
@@ -59,7 +97,6 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
       this.stepStyles = css/**css*/ `
         :host {
           --step-rate: ${totalSteps}%;
-          color: blue;
         }
       `;
 
@@ -70,18 +107,185 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
   }
 
   /**
-   * When true, the control will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly | readonly HTML attribute} for more information.
+   * The initial value of the input.
    *
    * @public
    * @remarks
-   * HTML Attribute: readonly
+   * HTML Attribute: `value`
    */
-  @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readOnly!: boolean; // Map to proxy element
-  protected readOnlyChanged(): void {
-    if (this.proxy instanceof HTMLInputElement) {
-      this.proxy.readOnly = this.readOnly;
+  @attr({ attribute: 'value', mode: 'fromView' })
+  public initialValue!: string;
+
+  /**
+   * Sets the value of the input when the value attribute changes.
+   *
+   * @param prev - The previous value
+   * @param next - The current value
+   * @internal
+   */
+  protected initialValueChanged(_: string, next: string): void {
+    if (this.$fastController.isConnected) {
+      this.value = next;
+    } else {
+      this._value = next;
     }
+  }
+
+  /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
+  }
+
+  /**
+   * The element's validation message.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/validationMessage | `ElemenentInternals.validationMessage`} property.
+   */
+  public get validationMessage(): string {
+    return this.elementInternals.validationMessage;
+  }
+
+  /**
+   * Whether the element is a candidate for its owning form's constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/willValidate | `ElemenentInternals.willValidate`} property.
+   */
+  public get willValidate() {
+    return this.elementInternals.willValidate;
+  }
+
+  /**
+   * Checks the element's validity.
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/checkValidity | `ElemenentInternals.checkValidity`} method.
+   */
+  public checkValidity() {
+    return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Reports the element's validity.
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/en-US/docs/Web/API/ElementInternals/reportValidity | `ElemenentInternals.reportValidity`} method.
+   */
+  public reportValidity() {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
+   * Sets a custom validity message.
+   * @public
+   */
+  public setCustomValidity(message: string) {
+    this.setValidity({ customError: !!message }, message);
+  }
+
+  /**
+   * Sets the validity of the control.
+   *
+   * @param flags - Validity flags to set.
+   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used.
+   * @param anchor - Optional anchor to use for the validation message.
+   *
+   * @internal
+   */
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
+    if (this.$fastController.isConnected) {
+      if (this.disabled) {
+        this.elementInternals.setValidity({});
+        return;
+      }
+
+      this.elementInternals.setValidity(
+        { customError: !!message, ...flags },
+        message ?? this.validationMessage,
+        anchor,
+      );
+    }
+  }
+
+  /**
+   * The internal value of the input.
+   *
+   * @internal
+   */
+  private _value!: string;
+
+  /**
+   * The current value of the input.
+   *
+   * @public
+   */
+  public get value(): string {
+    Observable.track(this, 'value');
+    return this._value.toString();
+  }
+
+  public set value(value: string) {
+    if (!this.$fastController.isConnected) {
+      this._value = value.toString();
+      return;
+    }
+
+    const nextAsNumber = parseFloat(value);
+    const newValue = limit(this.minAsNumber, this.maxAsNumber, this.convertToConstrainedValue(nextAsNumber)).toString();
+
+    if (newValue !== value) {
+      this.value = newValue;
+      return;
+    }
+
+    this._value = value.toString();
+    this.elementInternals.ariaValueNow = this._value;
+    this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
+    this.setSliderPosition(this.direction);
+    this.$emit('change');
+    this.setFormValue(value);
+    Observable.notify(this, 'value');
+  }
+
+  /**
+   * Resets the form value to its initial value when the form is reset.
+   *
+   * @internal
+   */
+  formResetCallback(): void {
+    this.value = this.initialValue ?? this.midpoint;
+  }
+
+  /**
+   * Disabled the component when its associated form is disabled.
+   *
+   * @internal
+   *
+   * @privateRemarks
+   * DO NOT change the `disabled` property or attribute here, because if the
+   * `disabled` attribute is present, reenabling an ancestor `<fieldset>`
+   * element will not reenabling this component.
+   */
+  formDisabledCallback(disabled: boolean): void {
+    this.setDisabledSideEffect(disabled);
+  }
+
+  /**
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
+   *
+   * @internal
+   */
+  public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
+    this.elementInternals.setFormValue(value, value ?? state);
   }
 
   /**
@@ -153,7 +357,7 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    * @public
    */
   public get valueAsNumber(): number {
-    return parseFloat(super.value);
+    return parseFloat(this.value);
   }
 
   public set valueAsNumber(next: number) {
@@ -161,67 +365,92 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
   }
 
   /**
-   * Custom function that generates a string for the component's "aria-valuetext" attribute based on the current value.
+   * Custom function that generates a string for the component's "ariaValueText" on element internals based on the current value.
    *
    * @public
    */
   @observable
-  public valueTextFormatter: (value: string) => string | null = () => null;
+  public valueTextFormatter: (value: string) => string = () => '';
+  protected valueTextFormatterChanged() {
+    if (typeof this.valueTextFormatter === 'function') {
+      this.elementInternals.ariaValueText = this.valueTextFormatter(this._value);
+    } else {
+      this.elementInternals.ariaValueText = '';
+    }
+  }
 
   /**
-   * @internal
+   * The element's disabled state.
+   * @public
+   * @remarks
+   * HTML Attribute: `disabled`
    */
-  public valueChanged(previous: string, next: string): void {
-    if (this.$fastController.isConnected) {
-      const nextAsNumber = parseFloat(next);
-      const value = limit(this.min, this.max, this.convertToConstrainedValue(nextAsNumber)).toString();
-
-      if (value !== next) {
-        this.value = value;
-        return;
-      }
-
-      super.valueChanged(previous, next);
-
-      this.setThumbPositionForOrientation(this.direction);
-
-      this.$emit('change');
-    }
+  @attr({ mode: 'boolean' })
+  public disabled: boolean = false;
+  protected disabledChanged(): void {
+    this.setDisabledSideEffect(this.disabled);
   }
 
   /**
    * The minimum allowed value.
    *
-   * @defaultValue - 0
    * @public
    * @remarks
    * HTML Attribute: min
    */
-  @attr({ converter: nullableNumberConverter })
-  public min: number = 0; // Map to proxy element.
+  @attr({ converter: numberLikeStringConverter })
+  public min: string = '';
   protected minChanged(): void {
-    if (this.proxy instanceof HTMLInputElement) {
-      this.proxy.min = `${this.min}`;
+    this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
+    if (this.$fastController.isConnected && this.minAsNumber > this.valueAsNumber) {
+      this.value = this.min!;
     }
+  }
 
-    this.validate();
+  /**
+   * Returns the min property or the default value
+   *
+   * @internal
+   */
+  private get minAsNumber(): number {
+    if (this.min !== undefined) {
+      const parsed = parseFloat(this.min);
+      if (!Number.isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    return 0;
   }
 
   /**
    * The maximum allowed value.
    *
-   * @defaultValue - 10
    * @public
    * @remarks
    * HTML Attribute: max
    */
-  @attr({ converter: nullableNumberConverter })
-  public max: number = 10; // Map to proxy element.
+  @attr({ converter: numberLikeStringConverter })
+  public max: string = '';
   protected maxChanged(): void {
-    if (this.proxy instanceof HTMLInputElement) {
-      this.proxy.max = `${this.max}`;
+    this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
+    if (this.$fastController.isConnected && this.maxAsNumber < this.valueAsNumber) {
+      this.value = this.max!;
     }
-    this.validate();
+  }
+
+  /**
+   * Returns the max property or the default value
+   *
+   * @internal
+   */
+  private get maxAsNumber(): number {
+    if (this.max !== undefined) {
+      const parsed = parseFloat(this.max);
+      if (!Number.isNaN(parsed)) {
+        return parsed;
+      }
+    }
+    return 100;
   }
 
   /**
@@ -231,15 +460,29 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    * @remarks
    * HTML Attribute: step
    */
-  @attr({ converter: nullableNumberConverter })
-  public step: number | undefined;
+  @attr({ converter: numberLikeStringConverter })
+  public step: string = '';
   protected stepChanged(): void {
-    if (this.proxy instanceof HTMLInputElement) {
-      this.proxy.step = `${this.step}`;
-    }
-
     this.updateStepMultiplier();
-    this.validate();
+    // Update value to align with the new step if needed.
+    if (this.$fastController.isConnected) {
+      this.value = this._value;
+    }
+  }
+
+  /**
+   * Returns the step property as a number.
+   *
+   * @internal
+   */
+  private get stepAsNumber(): number {
+    if (this.step !== undefined) {
+      const parsed = parseFloat(this.step);
+      if (!Number.isNaN(parsed) && parsed > 0) {
+        return parsed;
+      }
+    }
+    return 1;
   }
 
   /**
@@ -248,12 +491,28 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    * @public
    * @remarks
    * HTML Attribute: orientation
+   *
+   * @privateRemarks
+   * When checking the value of `this.orientation`, always compare it to
+   * `Orientation.vertical`, never to `Orientation.horizontal`, it’s because
+   * this property is optional, so it could be `undefined`. So any
+   * orientation-related behavior should consider horizontal as default, and
+   * apply different behavior when it’s vertical.
    */
   @attr
-  public orientation: Orientation = Orientation.horizontal;
-  protected orientationChanged(): void {
+  public orientation?: Orientation;
+  protected orientationChanged(prev: string | undefined, next: string | undefined): void {
+    this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
+
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+
     if (this.$fastController.isConnected) {
-      this.setThumbPositionForOrientation(this.direction);
+      this.setSliderPosition(this.direction);
     }
   }
 
@@ -267,20 +526,27 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
   @attr
   public mode: SliderMode = SliderMode.singleValue;
 
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'slider';
+    this.elementInternals.ariaOrientation = this.orientation ?? SliderOrientation.horizontal;
+  }
+
   /**
    * @internal
    */
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.proxy.setAttribute('type', 'range');
-
     this.direction = getDirection(this);
+
+    this.setDisabledSideEffect(this.disabled);
     this.updateStepMultiplier();
     this.setupTrackConstraints();
     this.setupListeners();
     this.setupDefaultValue();
-    this.setThumbPositionForOrientation(this.direction);
+    this.setSliderPosition(this.direction);
 
     Observable.getNotifier(this).subscribe(this, 'max');
     Observable.getNotifier(this).subscribe(this, 'min');
@@ -309,11 +575,12 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    */
   public increment(): void {
     const newVal: number =
-      this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-        ? Number(this.value) + Number(this.stepValue)
-        : Number(this.value) + Number(this.stepValue);
+      this.direction !== Direction.rtl
+        ? Number(this.value) + this.stepAsNumber
+        : Number(this.value) - this.stepAsNumber;
     const incrementedVal: number = this.convertToConstrainedValue(newVal);
-    const incrementedValString: string = incrementedVal < Number(this.max) ? `${incrementedVal}` : `${this.max}`;
+    const incrementedValString: string =
+      incrementedVal < this.maxAsNumber ? `${incrementedVal}` : `${this.maxAsNumber}`;
     this.value = incrementedValString;
   }
 
@@ -324,71 +591,66 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    */
   public decrement(): void {
     const newVal =
-      this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-        ? Number(this.value) - Number(this.stepValue)
-        : Number(this.value) - Number(this.stepValue);
+      this.direction !== Direction.rtl
+        ? Number(this.value) - Number(this.stepAsNumber)
+        : Number(this.value) + Number(this.stepAsNumber);
     const decrementedVal: number = this.convertToConstrainedValue(newVal);
-    const decrementedValString: string = decrementedVal > Number(this.min) ? `${decrementedVal}` : `${this.min}`;
+    const decrementedValString: string =
+      decrementedVal > this.minAsNumber ? `${decrementedVal}` : `${this.minAsNumber}`;
     this.value = decrementedValString;
   }
 
-  public keypressHandler = (e: KeyboardEvent): void => {
-    if (this.readOnly || this.disabled) {
+  public keypressHandler = (event: KeyboardEvent): void => {
+    if (this.disabled) {
       return;
     }
 
-    if (e.key === keyHome) {
-      e.preventDefault();
-      this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-        ? (this.value = `${this.min}`)
-        : (this.value = `${this.max}`);
-    } else if (e.key === keyEnd) {
-      e.preventDefault();
-      this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
-        ? (this.value = `${this.max}`)
-        : (this.value = `${this.min}`);
-    } else if (!e.shiftKey) {
-      switch (e.key) {
-        case keyArrowRight:
-        case keyArrowUp:
-          e.preventDefault();
+    switch (event.key) {
+      case keyHome:
+        event.preventDefault();
+        this.value =
+          this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
+            ? `${this.minAsNumber}`
+            : `${this.maxAsNumber}`;
+        break;
+      case keyEnd:
+        event.preventDefault();
+        this.value =
+          this.direction !== Direction.rtl && this.orientation !== Orientation.vertical
+            ? `${this.maxAsNumber}`
+            : `${this.minAsNumber}`;
+        break;
+      case keyArrowRight:
+      case keyArrowUp:
+        if (!event.shiftKey) {
+          event.preventDefault();
           this.increment();
-          break;
-        case keyArrowLeft:
-        case keyArrowDown:
-          e.preventDefault();
+        }
+        break;
+      case keyArrowLeft:
+      case keyArrowDown:
+        if (!event.shiftKey) {
+          event.preventDefault();
           this.decrement();
-          break;
-      }
+        }
+        break;
     }
   };
 
   /**
-   * Gets the actual step value for the slider
-   *
-   */
-  private get stepValue(): number {
-    return this.step === undefined ? 1 : this.step;
-  }
-
-  /**
    * Places the thumb based on the current value
    *
-   * @public
    * @param direction - writing mode
    */
-  private setThumbPositionForOrientation(direction: Direction): void {
-    const newPct: number = convertPixelToPercent(Number(this.value), Number(this.min), Number(this.max), direction);
+  private setSliderPosition(direction: Direction): void {
+    const newPct: number = convertPixelToPercent(parseFloat(this.value), this.minAsNumber, this.maxAsNumber, direction);
     const percentage: number = (1 - newPct) * 100;
-    if (this.orientation === Orientation.horizontal) {
-      this.position = this.isDragging
-        ? `right: ${percentage}%; transition: none;`
-        : `right: ${percentage}%; transition: all 0.2s ease;`;
-    } else {
-      this.position = this.isDragging
-        ? `top: ${percentage}%; transition: none;`
-        : `top: ${percentage}%; transition: all 0.2s ease;`;
-    }
+    const thumbPosition = `calc(100% - ${percentage}%)`;
+    const trackProgress =
+      !(this.orientation === Orientation.vertical) && direction === Direction.rtl
+        ? `${percentage}%`
+        : `calc(100% - ${percentage}%)`;
+    this.position = `--slider-thumb: ${thumbPosition}; --slider-progress: ${trackProgress}`;
   }
 
   /**
@@ -396,8 +658,8 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
    * are not whole numbers
    */
   private updateStepMultiplier(): void {
-    const stepString: string = this.stepValue + '';
-    const decimalPlacesOfStep: number = !!(this.stepValue % 1) ? stepString.length - stepString.indexOf('.') - 1 : 0;
+    const stepString: string = this.stepAsNumber + '';
+    const decimalPlacesOfStep: number = !!(this.stepAsNumber % 1) ? stepString.length - stepString.indexOf('.') - 1 : 0;
     this.stepMultiplier = Math.pow(10, decimalPlacesOfStep);
   }
 
@@ -413,67 +675,61 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     }
   };
 
-  //Remove
   private setupListeners = (remove: boolean = false): void => {
     //TODO Bug: https://github.com/microsoft/fluentui/issues/30087
     this.addEventListener('keydown', this.keypressHandler);
-    this.addEventListener('mousedown', this.handleMouseDown);
-    // removes handlers attached by mousedown handlers
+
     if (remove) {
       this.removeEventListener('keydown', this.keypressHandler);
-      this.removeEventListener('mousedown', this.handleMouseDown);
     }
   };
 
-  /**
-   * @internal
-   */
-  public initialValue: string = '';
-
   private get midpoint(): string {
-    return `${this.convertToConstrainedValue((this.max + this.min) / 2)}`;
+    return `${this.convertToConstrainedValue((this.maxAsNumber + this.minAsNumber) / 2)}`;
   }
 
   private setupDefaultValue(): void {
-    if (typeof this.value === 'string') {
-      if (this.value.length === 0) {
-        this.initialValue = this.midpoint;
-      } else {
-        const value = parseFloat(this.value);
-
-        if (!Number.isNaN(value) && (value < this.min || value > this.max)) {
-          this.value = this.midpoint;
-        }
-      }
+    if (!this._value) {
+      this.value = this.initialValue ?? this.midpoint;
     }
+
+    if (
+      !Number.isNaN(this.valueAsNumber) &&
+      (this.valueAsNumber < this.minAsNumber || this.valueAsNumber > this.maxAsNumber)
+    ) {
+      this.value = this.midpoint;
+    }
+
+    this.elementInternals.ariaValueNow = this.value;
   }
 
   /**
    *  Handle mouse moves during a thumb drag operation
    *  If the event handler is null it removes the events
    */
-  public handleThumbMouseDown = (event: MouseEvent | null): void => {
+  public handleThumbPointerDown = (event: PointerEvent | null): void => {
     const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
-    windowFn('mouseup', this.handleWindowMouseUp);
-    windowFn('mousemove', this.handleMouseMove, { passive: true });
-    windowFn('touchmove', this.handleMouseMove, { passive: true });
-    windowFn('touchend', this.handleWindowMouseUp);
+    windowFn('pointerup', this.handleWindowPointerUp);
+    windowFn('pointermove', this.handlePointerMove, { passive: true });
+    windowFn('touchmove', this.handlePointerMove, { passive: true });
+    windowFn('touchend', this.handleWindowPointerUp);
     this.isDragging = event !== null;
   };
 
   /**
    *  Handle mouse moves during a thumb drag operation
    */
-  private handleMouseMove = (e: MouseEvent | TouchEvent | Event): void => {
-    if (this.readOnly || this.disabled || e.defaultPrevented) {
+  private handlePointerMove = (event: PointerEvent | TouchEvent | Event): void => {
+    if (this.disabled || event.defaultPrevented) {
       return;
     }
+
     // update the value based on current position
-    const sourceEvent = window.TouchEvent && e instanceof TouchEvent ? e.touches[0] : (e as MouseEvent);
+    const sourceEvent = window.TouchEvent && event instanceof TouchEvent ? event.touches[0] : (event as PointerEvent);
     const eventValue: number =
-      this.orientation === Orientation.horizontal
-        ? sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft
-        : sourceEvent.pageY - document.documentElement.scrollTop;
+      this.orientation === Orientation.vertical
+        ? sourceEvent.pageY - document.documentElement.scrollTop
+        : sourceEvent.pageX - document.documentElement.scrollLeft - this.trackLeft;
 
     this.value = `${this.calculateNewValue(eventValue)}`;
   };
@@ -492,45 +748,45 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     // update the value based on current position
     const newPosition = convertPixelToPercent(
       rawValue,
-      this.orientation === Orientation.horizontal ? this.trackMinWidth : this.trackMinHeight,
-      this.orientation === Orientation.horizontal ? this.trackWidth : this.trackHeight,
+      this.orientation === Orientation.vertical ? this.trackMinHeight : this.trackMinWidth,
+      this.orientation === Orientation.vertical ? this.trackHeight : this.trackWidth,
       this.direction,
     );
-    const newValue: number = (this.max - this.min) * newPosition + this.min;
+    const newValue: number = (this.maxAsNumber - this.minAsNumber) * newPosition + this.minAsNumber;
     return this.convertToConstrainedValue(newValue);
   }
 
   /**
    * Handle a window mouse up during a drag operation
    */
-  private handleWindowMouseUp = (event: Event): void => {
+  private handleWindowPointerUp = (): void => {
     this.stopDragging();
   };
 
   private stopDragging = (): void => {
     this.isDragging = false;
-    this.handleMouseDown(null);
-    this.handleThumbMouseDown(null);
+    this.handlePointerDown(null);
+    this.handleThumbPointerDown(null);
   };
 
   /**
    *
-   * @param e - MouseEvent or null. If there is no event handler it will remove the events
+   * @param event - PointerEvent or null. If there is no event handler it will remove the events
    */
-  public handleMouseDown = (e: MouseEvent | null) => {
-    if (e === null || (!this.disabled && !this.readOnly)) {
-      const windowFn = e !== null ? window.addEventListener : window.removeEventListener;
-      const documentFn = e !== null ? document.addEventListener : document.removeEventListener;
-      windowFn('mouseup', this.handleWindowMouseUp);
-      documentFn('mouseleave', this.handleWindowMouseUp);
-      windowFn('mousemove', this.handleMouseMove);
+  public handlePointerDown = (event: PointerEvent | null) => {
+    if (event === null || !this.disabled) {
+      const windowFn = event !== null ? window.addEventListener : window.removeEventListener;
+      const documentFn = event !== null ? document.addEventListener : document.removeEventListener;
+      windowFn('pointerup', this.handleWindowPointerUp);
+      documentFn('mouseleave', this.handleWindowPointerUp);
+      windowFn('pointermove', this.handlePointerMove);
 
-      if (e) {
+      if (event) {
         this.setupTrackConstraints();
         const controlValue: number =
-          this.orientation === Orientation.horizontal
-            ? e.pageX - document.documentElement.scrollLeft - this.trackLeft
-            : e.pageY - document.documentElement.scrollTop;
+          this.orientation === Orientation.vertical
+            ? event.pageY - document.documentElement.scrollTop
+            : event.pageX - document.documentElement.scrollLeft - this.trackLeft;
 
         this.value = `${this.calculateNewValue(controlValue)}`;
       }
@@ -539,7 +795,7 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
 
   private convertToConstrainedValue(value: number): number {
     if (isNaN(value)) {
-      value = this.min;
+      value = this.minAsNumber;
     }
 
     /**
@@ -548,15 +804,26 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
      * and is converted to an integer by determining the number of decimal places it represent, multiplying it until it is an
      * integer and then dividing it to get back to the correct number.
      */
-    let constrainedValue: number = value - this.min;
-    const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepValue);
+    let constrainedValue: number = value - this.minAsNumber;
+    const roundedConstrainedValue: number = Math.round(constrainedValue / this.stepAsNumber);
     const remainderValue: number =
-      constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepValue)) / this.stepMultiplier;
+      constrainedValue - (roundedConstrainedValue * (this.stepMultiplier * this.stepAsNumber)) / this.stepMultiplier;
 
     constrainedValue =
-      remainderValue >= Number(this.stepValue) / 2
-        ? constrainedValue - remainderValue + Number(this.stepValue)
+      remainderValue >= Number(this.stepAsNumber) / 2
+        ? constrainedValue - remainderValue + Number(this.stepAsNumber)
         : constrainedValue - remainderValue;
-    return constrainedValue + this.min;
+    return constrainedValue + this.minAsNumber;
+  }
+
+  /**
+   * Makes sure the side effects of set up when the disabled state changes.
+   */
+  private setDisabledSideEffect(disabled: boolean) {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+    this.elementInternals.ariaDisabled = disabled.toString();
+    this.tabIndex = disabled ? -1 : 0;
   }
 }

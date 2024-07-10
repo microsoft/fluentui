@@ -263,8 +263,8 @@ packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-switch/library @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-switch/stories @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-red @geoffcoxmsft
-packages/react-components/react-tabs/library @microsoft/teams-prg @geoffcoxmsft
-packages/react-components/react-tabs/stories @microsoft/teams-prg @geoffcoxmsft
+packages/react-components/react-tabs/library @microsoft/cxe-red @geoffcoxmsft
+packages/react-components/react-tabs/stories @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-text @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-text/stories @microsoft/cxe-prg @marcosmoura
@@ -326,9 +326,9 @@ packages/react-components/react-search @microsoft/cxe-red @smhigley
 packages/react-components/react-search/library @microsoft/cxe-red @smhigley
 packages/react-components/react-search/stories @microsoft/cxe-red @smhigley
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
-packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
-packages/react-components/react-nav-preview/library @microsoft/cxe-red @mltejera
-packages/react-components/react-nav-preview/stories @microsoft/cxe-red @mltejera
+packages/react-components/react-nav-preview @microsoft/cxe-red @microsoft/xc-uxe @mltejera
+packages/react-components/react-nav-preview/library @microsoft/cxe-red @microsoft/xc-uxe @mltejera
+packages/react-components/react-nav-preview/stories @microsoft/cxe-red @microsoft/xc-uxe @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-motion-preview/library @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-motion-preview/stories @microsoft/cxe-prg @marcosmoura

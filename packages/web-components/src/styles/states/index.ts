@@ -1,6 +1,18 @@
 import { css } from '@microsoft/fast-element';
 
 /**
+ * Selector for the `checked` state.
+ * @public
+ */
+export const checkedState = css.partial`:is([state--checked], :state(checked))`;
+
+/**
+ * Selector for the `disabled` state.
+ * @public
+ */
+export const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
+
+/**
  * Selector for the `filled-lighter` state.
  * @public
  */
@@ -103,6 +115,12 @@ export const extraSmallState = css.partial`:is([state--extra-small], :state(extr
 export const smallState = css.partial`:is([state--small], :state(small))`;
 
 /**
+ * Selector for the `medium` state.
+ * @public
+ */
+export const mediumState = css.partial`:is([state--medium], :state(medium))`;
+
+/**
  * Selector for the `large` state.
  * @public
  */
@@ -181,6 +199,18 @@ export const importantState = css.partial`:is([state--important], :state(importa
 export const informativeState = css.partial`:is([state--informative], :state(informative))`;
 
 /**
+ * Selector for the `marigold` state.
+ * @public
+ */
+export const marigoldState = css.partial`:is([state--marigold], :state(marigold))`;
+
+/**
+ * Selector for the `neutral` state.
+ * @public
+ */
+export const neutralState = css.partial`:is([state--neutral], :state(neutral))`;
+
+/**
  * Selector for the `severe` state.
  * @public
  */
@@ -209,3 +239,27 @@ export const verticalState = css.partial`:is([state--vertical], :state(vertical)
  * @public
  */
 export const horizontalState = css.partial`:is([state--horizontal], :state(horizontal))`;
+
+/**
+ * Selector for the `singleline` state.
+ * @public
+ */
+export const singleLineState = css.partial`:is([state--singleline], :state(singleline))`;
+
+/**
+ * Selector for the `multiline` state.
+ * @public
+ */
+export const multiLineState = css.partial`:is([state--multiline], :state(multiline))`;
+
+/**
+ * Selector for the `expanded` state.
+ * @public
+ */
+export const expandedState = css.partial`:is([state--expanded], :state(expanded))`;
+
+/**
+ * Selector for the `block` state.
+ * @public
+ */
+export const blockState = css.partial`:is([state--block], :state(block))`;

@@ -1,7 +1,7 @@
 export {
   AccordionItem,
   accordionItemDefinition,
-  AccordionItemExpandIconPosition,
+  AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
@@ -98,6 +98,7 @@ export {
   DrawerTemplate,
   DrawerStyles,
 } from './drawer/index.js';
+export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
   Field,
   FieldLabelPosition,
@@ -158,6 +159,14 @@ export {
 } from './radio-group/index.js';
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
+export {
+  RatingDisplay,
+  RatingDisplayColor,
+  RatingDisplayDefinition,
+  RatingDisplaySize,
+  RatingDisplayStyles,
+  RatingDisplayTemplate,
+} from './rating-display/index.js';
 export {
   Slider,
   SliderDefinition,

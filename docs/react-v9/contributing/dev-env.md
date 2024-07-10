@@ -4,8 +4,13 @@ This document describes how to set up your development environment and contribut
 
 ### Install dev tools
 
+Note that the core team does not support native Windows as a development platform. Many team members use macOS or WSL for their environment. We are working on updating our developer docs to include more information about WSL. Please bear with us until we have that workflow fully flushed out.
+
 - If you don't have a **GitHub account**, [create one](https://github.com/join)
+
   - Microsoft employees: please [link your GitHub account](https://repos.opensource.microsoft.com) (new or existing) to your MS account
+
+- Windows users should install **[WSL](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
 - Install **[Node.js LTS](https://nodejs.org/en/)** (20 as of writing)
   - Optional: If you're developing across multiple repos with varying Node version requirements, you may want to use `nvm` to install and manage Node versions.
 - Install **[Yarn v1](https://classic.yarnpkg.com/) (we do not use Yarn >=v2)**
@@ -18,7 +23,6 @@ This document describes how to set up your development environment and contribut
 - Optional: **[Accessibility insight for web](https://accessibilityinsights.io/)**
 - Optional: **[Node Version Manager](https://github.com/nvm-sh/nvm)**
 - Optional: **[CSpell VS Code Extension](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker)**
-- Optional: **[Improve build times: WSL for Windows](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)**
 
 ### Verify your environment
 
