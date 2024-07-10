@@ -1,4 +1,4 @@
-import { attr, css, FASTElement, observable, Observable, ValueConverter } from '@microsoft/fast-element';
+import { attr, css, FASTElement, observable, Observable } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
 import {
   Direction,
@@ -11,27 +11,11 @@ import {
   limit,
   Orientation,
 } from '@microsoft/fast-web-utilities';
-import { getDirection } from '../utils/index.js';
+import { numberLikeStringConverter } from '../utils/converters.js';
+import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
-
-/**
- * Converter for `@attr()` to make sure the attribute and property values are a string
- * representation of a number, e.g. `'10'` instead of `10`. Used for the `min`, `max`,
- * and `step` attributes/properties, to have a consistent behavior as HTML’s built-in
- * `<input type=range>`.
- */
-const numberLikeStringConverter: ValueConverter = {
-  fromView(value: string): string {
-    const valueAsNumber = parseFloat(value);
-    return Number.isNaN(valueAsNumber) ? '' : valueAsNumber.toString();
-  },
-  toView(value: any): string | undefined {
-    const valueAsNumber = parseFloat(value);
-    return Number.isNaN(valueAsNumber) ? undefined : valueAsNumber.toString();
-  },
-};
 
 /**
  * The base class used for constructing a fluent-slider custom element
