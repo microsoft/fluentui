@@ -224,7 +224,7 @@ Once the component has been released as unstable, you should perform additional 
 - **Bundle Size Tests**
   - Example: [Button.fixture.js](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-button/library/bundle-size/Button.fixture.js)
 - **Manual Accessibility Tests**
-  - For more info see [Manual Accessibility Review Checklist](https://github.com/microsoft/fluentui/blob/3131d2710f6300504e096c794b707ea236ba4ce9/docs/react-v9/contributing/accessibility-review-checklist.md)
+  - For more info see [Manual Accessibility Review Checklist](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/accessibility-review-checklist.md)
 
 ## Validation
 
