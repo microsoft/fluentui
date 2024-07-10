@@ -4,7 +4,7 @@ import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { IconButton } from '@fluentui/react/lib/Button';
 
 export default {
-  title: 'IconButton (compat)',
+  title: 'IconButton Scenarios (compat)',
 
   decorators: [
     TestWrapperDecorator,

@@ -7,7 +7,7 @@ import {
   StoryWrightDecorator,
   TestWrapperDecorator,
 } from '../utilities';
-import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
+import { DefaultButton, ActionButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
   iconProps: {
@@ -18,7 +18,7 @@ const baseProps: IButtonProps = {
 };
 
 export default {
-  title: 'Button (compat)',
+  title: 'Button Action (compat)',
 
   decorators: [
     TestWrapperDecorator,
@@ -34,27 +34,14 @@ export default {
   ],
 } satisfies Meta<typeof DefaultButton>;
 
-export const Root = () => <DefaultButton {...baseProps} />;
+export const Root = () => <ActionButton {...baseProps} />;
 
 export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
 
-export const Disabled = () => <DefaultButton {...baseProps} disabled={true} />;
+export const Disabled = () => <ActionButton {...baseProps} disabled={true} />;
 
-export const Checked = () => <DefaultButton {...baseProps} checked={true} />;
+export const Checked = () => <ActionButton {...baseProps} checked={true} />;
 
-export const Primary = () => <DefaultButton {...baseProps} primary={true} />;
+export const NoIcon = () => <ActionButton>Button</ActionButton>;
 
-export const PrimaryDisabled = () => (
-  <DefaultButton {...baseProps} primary={true} disabled={true} />
-);
-export const PrimaryChecked = () => <DefaultButton {...baseProps} primary={true} checked={true} />;
-
-export const PrimaryAnchor = () => (
-  <DefaultButton primary href="http://www.bing.com">
-    Button
-  </DefaultButton>
-);
-
-export const NoIcon = () => <DefaultButton>Button</DefaultButton>;
-
-export const IconOnly = () => <DefaultButton iconProps={baseProps.iconProps} />;
+export const IconOnly = () => <ActionButton iconProps={baseProps.iconProps} />;
