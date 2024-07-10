@@ -47,6 +47,9 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /** data-id attribute for the remove button */
+  'remove-button-data-id'?: string;
 }
 
 /**
