@@ -28,7 +28,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
@@ -41,7 +41,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.devDependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
@@ -54,7 +54,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies[`@${npmScope}/react-button`]).toMatchInlineSnapshot(`"^9.0.0-rc.1"`);
@@ -68,7 +68,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -86,7 +86,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -104,7 +104,7 @@ describe('rc-caret generator', () => {
       },
     });
 
-    await generator(tree, { name: `@${npmScope}/react-components` });
+    await generator(tree, { name: 'react-components' });
     const packageJson = readJson(tree, 'packages/react-components/package.json');
 
     expect(packageJson.dependencies).toMatchInlineSnapshot(`
@@ -127,7 +127,7 @@ function setupDummyPackage(
 ) {
   const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
-    name: `@${workspaceConfig.npmScope}/react-components`,
+    name: `react-components`,
     version: '9.0.0-alpha.40',
     dependencies: {
       [`@${workspaceConfig.npmScope}/react-button`]: '^9.0.0-rc.38',
@@ -138,15 +138,15 @@ function setupDummyPackage(
   };
 
   const normalizedOptions = { ...defaults, ...options };
-  const pkgName = normalizedOptions.name || '';
-  const normalizedPkgName = pkgName.replace(`@${workspaceConfig.npmScope}/`, '');
+  const npmPkgName = `@${workspaceConfig.npmScope}/${normalizedOptions.name}` || '';
+  const projectName = normalizedOptions.name;
   const paths = {
-    root: `packages/${normalizedPkgName}`,
+    root: `packages/${projectName}`,
   };
 
   const templates = {
     packageJson: {
-      name: pkgName,
+      name: npmPkgName,
       version: normalizedOptions.version,
       dependencies: normalizedOptions.dependencies,
       devDependencies: normalizedOptions.devDependencies,
@@ -155,7 +155,7 @@ function setupDummyPackage(
 
   tree.write(`${paths.root}/package.json`, serializeJson(templates.packageJson));
 
-  addProjectConfiguration(tree, pkgName, {
+  addProjectConfiguration(tree, projectName, {
     root: paths.root,
     projectType: 'library',
     targets: {},

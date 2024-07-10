@@ -198,6 +198,7 @@ import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
+import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -2105,6 +2106,8 @@ export { createLightTheme }
 export { createMotionComponent }
 
 export { createPresenceComponent }
+
+export { createPresenceComponentVariant }
 
 export { createTableColumn }
 
