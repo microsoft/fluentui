@@ -402,7 +402,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  public disabled!: boolean;
+  public disabled: boolean = false;
   protected disabledChanged(): void {
     this.setDisabledSideEffect(this.disabled);
   }
@@ -556,8 +556,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     super.connectedCallback();
 
     this.direction = getDirection(this);
-    this.disabled = this.hasAttribute('disabled');
 
+    this.setDisabledSideEffect(this.disabled);
     this.updateStepMultiplier();
     this.setupTrackConstraints();
     this.setupListeners();
@@ -836,6 +836,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * Makes sure the side effects of set up when the disabled state changes.
    */
   private setDisabledSideEffect(disabled: boolean) {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
     this.elementInternals.ariaDisabled = disabled.toString();
     this.tabIndex = disabled ? -1 : 0;
   }

@@ -2914,6 +2914,8 @@ export class Slider extends FASTElement implements SliderConfiguration {
     orientation?: Orientation;
     // (undocumented)
     protected orientationChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal (undocumented)
+    position: string;
     reportValidity(): boolean;
     setCustomValidity(message: string): void;
     // @internal
