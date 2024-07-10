@@ -22,8 +22,8 @@ import {
   NotFollowedSignal,
 } from '@fluentui/react-experiments';
 import { Steps } from 'storywright';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Fabric } from '@fluentui/react';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 interface ISignalExampleProps {
   name: string;

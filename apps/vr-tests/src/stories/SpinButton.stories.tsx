@@ -133,7 +133,7 @@ export const LabelOnTop = () => (
 );
 
 LabelOnTop.storyName = 'Label on top';
-LabelOnTop.parameters = { testWrapperStyles: { width: 'auto' } };
+LabelOnTop.parameters = { testWrapperStyle: { width: 'auto' } };
 
 export const LabelOnTopWithIcon = () => (
   <Fabric>
@@ -155,4 +155,4 @@ export const LabelOnTopWithIcon = () => (
 );
 
 LabelOnTopWithIcon.storyName = 'Label on top with icon';
-LabelOnTopWithIcon.parameters = { testWrapperStyles: { width: 'auto' } };
+LabelOnTopWithIcon.parameters = { testWrapperStyle: { width: 'auto' } };

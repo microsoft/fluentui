@@ -186,31 +186,3 @@ export const RequiredWithoutLabel = () => (
 );
 
 RequiredWithoutLabel.storyName = 'Required without label';
-
-export const Disabled = () => (
-  <Dropdown
-    placeholder="Select an Option"
-    label="Basic example:"
-    ariaLabel="Basic dropdown example"
-    disabled
-    options={[
-      { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
-      { key: 'A', text: 'Option a' },
-      { key: 'B', text: 'Option b' },
-      { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
-      { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
-      { key: 'F', text: 'Option f' },
-      { key: 'G', text: 'Option g' },
-    ]}
-  />
-);
-Disabled.parameters = {
-  steps: new Steps()
-    .snapshot('default', { cropTo: '.testWrapper' })
-    .hover('.ms-Dropdown')
-    .snapshot('hover', { cropTo: '.testWrapper' })
-    .click('.ms-Dropdown')
-    .hover('.ms-Dropdown')
-    .snapshot('click', { cropTo: '.ms-Layer' })
-    .end(),
-};

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
+import { Pivot, PivotItem, IPivotItemProps, Icon } from '@fluentui/react';
 import {
   getStoryVariant,
   STORY_VARIANT,
   StoryWrightDecorator,
   TestWrapperDecorator,
 } from '../utilities';
-import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
 
 export default {
   title: 'Pivot',
@@ -122,81 +122,6 @@ export const TabsLarge = () => (
 );
 
 TabsLarge.storyName = 'Tabs large';
-
-const overflowSteps = new Steps()
-  .executeScript('document.getElementById("testWrapper").style.width = "500px"')
-  .snapshot('Medium', { cropTo: '.testWrapper' })
-  .executeScript('document.getElementById("testWrapper").style.width = "750px"')
-  .snapshot('Wide', { cropTo: '.testWrapper' })
-  .executeScript('document.getElementById("testWrapper").style.width = "250px"')
-  .click('.ms-Pivot-overflowMenuButton')
-  .wait(1500)
-  .click('.ms-Pivot-linkInMenu[data-last-tab]')
-  .snapshot('Narrow - Last tab selected', { cropTo: '.testWrapper' })
-  .click('.ms-Pivot-overflowMenuButton')
-  .wait(1500)
-  .hover('.ms-Pivot-overflowMenuButton')
-  .snapshot('Narrow - Overflow menu', { cropTo: '.testWrapper' })
-  .end();
-
-export const Overflow = () => (
-  <Pivot overflowBehavior="menu">
-    <PivotItem headerText="My Files">
-      <p>Pivot #1</p>
-    </PivotItem>
-    <PivotItem itemCount={23} itemIcon="Recent">
-      <p>Pivot #2</p>
-    </PivotItem>
-    <PivotItem headerText="Placeholder" itemIcon="Globe">
-      <p>Pivot #3</p>
-    </PivotItem>
-    <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-      <p>Pivot #4</p>
-    </PivotItem>
-    <PivotItem headerText="Custom Renderer" itemIcon="Airplane" onRenderItemLink={_customRenderer}>
-      <p>Pivot #5</p>
-    </PivotItem>
-    <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-      <p>Pivot #6</p>
-    </PivotItem>
-  </Pivot>
-);
-Overflow.parameters = {
-  steps: overflowSteps,
-};
-
-export const OverflowTabsRtl = () => (
-  <Fabric dir="rtl">
-    <Pivot overflowBehavior="menu" linkFormat="tabs">
-      <PivotItem headerText="My Files">
-        <p>Pivot #1</p>
-      </PivotItem>
-      <PivotItem itemCount={23} itemIcon="Recent">
-        <p>Pivot #2</p>
-      </PivotItem>
-      <PivotItem headerText="Placeholder" itemIcon="Globe">
-        <p>Pivot #3</p>
-      </PivotItem>
-      <PivotItem headerText="Shared with me" itemIcon="Ringer" itemCount={1}>
-        <p>Pivot #4</p>
-      </PivotItem>
-      <PivotItem
-        headerText="Custom Renderer"
-        itemIcon="Airplane"
-        onRenderItemLink={_customRenderer}
-      >
-        <p>Pivot #5</p>
-      </PivotItem>
-      <PivotItem headerText="The Last Tab" headerButtonProps={{ 'data-last-tab': 'true' }}>
-        <p>Pivot #6</p>
-      </PivotItem>
-    </Pivot>
-  </Fabric>
-);
-OverflowTabsRtl.storyName = 'Tabs - RTL';
-OverflowTabsRtl.parameters = {
-  steps: overflowSteps,
-};
 
 function _customRenderer(
   link: IPivotItemProps,

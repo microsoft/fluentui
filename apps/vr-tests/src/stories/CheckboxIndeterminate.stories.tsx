@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
-import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
+import { Checkbox } from '@fluentui/react';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'Checkbox Indeterminate',

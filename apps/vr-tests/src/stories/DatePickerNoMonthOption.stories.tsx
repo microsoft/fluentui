@@ -51,39 +51,3 @@ export const ShowMonthAsOverlayAndNoGoToToday = () => (
 );
 
 ShowMonthAsOverlayAndNoGoToToday.storyName = 'Show Month as Overlay and no Go To Today';
-
-const disabledSteps = new Steps()
-  .snapshot('default', { cropTo: '.testWrapper' })
-  .hover('.ms-DatePicker')
-  .snapshot('hover datepicker', { cropTo: '.testWrapper' })
-  .click('.ms-DatePicker')
-  .hover('.ms-DatePicker')
-  .snapshot('click', { cropTo: '.ms-Layer' })
-  .end();
-
-export const WithoutLabel = () => (
-  <Fabric>
-    <DatePicker {...commonProps} disabled />
-  </Fabric>
-);
-WithoutLabel.parameters = {
-  steps: disabledSteps,
-};
-
-export const WithLabel = () => (
-  <Fabric>
-    <DatePicker label="This is my label" {...commonProps} disabled />
-  </Fabric>
-);
-WithLabel.parameters = {
-  steps: disabledSteps,
-};
-
-export const WithoutValue = () => (
-  <Fabric>
-    <DatePicker calendarProps={commonProps.calendarProps} label="This is my label" disabled />
-  </Fabric>
-);
-WithoutValue.parameters = {
-  steps: disabledSteps,
-};

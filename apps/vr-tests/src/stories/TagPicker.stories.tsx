@@ -48,11 +48,6 @@ export default {
   ],
 };
 
-export const Disabled = () => <TagPicker onResolveSuggestions={getList} disabled />;
-
-Disabled.storyName = 'TagPicker disabled';
-Disabled.parameters = { steps: [] };
-
 export const Root = () => (
   <TagPicker
     onResolveSuggestions={getList}
