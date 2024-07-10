@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecoratorFixedWidth,
-} from '../utilities';
+import { StoryWrightDecorator, TestWrapperDecoratorFixedWidth } from '../utilities';
 import { Fabric, Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 
 const date = new Date(2010, 1, 12);

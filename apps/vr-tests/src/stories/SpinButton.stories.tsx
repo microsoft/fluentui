@@ -13,7 +13,6 @@ import {
   ISpinButtonProps,
   ISpinButtonStyles,
   ITextFieldStyles,
-  Label,
 } from '@fluentui/react';
 import { Position } from '@fluentui/react/lib/Positioning';
 
