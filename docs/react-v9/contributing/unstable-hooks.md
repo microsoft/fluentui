@@ -1,15 +1,15 @@
-# How to treat API's marked with the `unstable` suffix
+# How to treat API's marked with the `_unstable` suffix
 
 There are many hooks and functions throughout this library marked with the `_unstable` suffix.
 
 This is due to legacy decisions in the early days of v9 development, when there was a chance these API's might change.
 
-Since then, the library has continued to move and grow. However stability was something we've learned partners value highly, so we've also embraced that value.It was concluded that these API's should not be changed, even to rename them.
+Since then, the library has continued to move and grow. We've learned stability was something partners treasured, so we've also embraced that value. It was concluded that these API's should not be changed, even to rename them in the v9 iteration of Fluent UI React.
 
 Renaming an API to remove the suffix would be a breaking change. Marking the `_unstable` API's as `@deprecated`with JSDocs and re-exporting them would also trip many teams linters and cause friction for consuming teams.
 
-**We treat API's with the `_unstable` suffix as stable, and our consumers should do also consider them stable.**
+**We treat API's with the `_unstable` suffix as stable, and our consumers should do also consider them stable. This should be considered simply a naming bug at this point.**
 
 One step consuming teams can do to reduce friction as they import `_unstable` API's is to rename and re-export them at an abstraction layer local to their project.
 
-We are actively working towards a solution that removes this point of friction for consuming teams, and will update this document accordingly.
+We are actively working towards a solution that gracefully removes this point of friction for consuming teams, and will update this document accordingly.
