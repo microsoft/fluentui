@@ -4,7 +4,7 @@ import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Dropdown, DropdownMenuItemType } from '@fluentui/react';
 
 export default {
-  title: 'Dropdown',
+  title: 'Dropdown Disabled',
 
   decorators: [
     TestWrapperDecorator,

@@ -10,7 +10,13 @@ export const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
 
   setRTL(dir === 'rtl');
 
-  return theme ? <ThemeProvider theme={theme}>{storyFn(context)}</ThemeProvider> : storyFn(context);
+  return theme ? (
+    <ThemeProvider applyTo="element" theme={theme}>
+      {storyFn(context)}
+    </ThemeProvider>
+  ) : (
+    storyFn(context)
+  );
 };
 
 /** A list of story variants that can be applied to stories. */
