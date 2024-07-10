@@ -149,7 +149,7 @@ export const SetTheme = renderComponent(html`
 
     <fluent-divider></fluent-divider>
 
-    <p>This element (which have shadow roots) follows its own theme</p>
+    <p>This element (which has shadow root) follows its own theme</p>
     <fluent-text-input class="shadow">
       <fluent-label>Text input</fluent-label>
     </fluent-text-input>

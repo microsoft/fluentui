@@ -56,10 +56,7 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
   }
 }
 
-/**
- * @internal
- */
-export function getThemeStyleText(theme: Theme): string {
+function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
@@ -82,10 +79,7 @@ export function getThemeStyleText(theme: Theme): string {
   return themeStyleTextMap.get(theme)!;
 }
 
-/**
- * @internal
- */
-export function setGlobalTheme(theme: Theme | null) {
+function setGlobalTheme(theme: Theme | null) {
   if (theme === null) {
     if (document.adoptedStyleSheets.includes(globalThemeStyleSheet)) {
       globalThemeStyleSheet.replaceSync('');
@@ -106,15 +100,13 @@ export function setGlobalTheme(theme: Theme | null) {
   }
 }
 
-/**
- * @internal
- */
-export function setLocalTheme(theme: Theme | null, element: HTMLElement) {
+function setLocalTheme(theme: Theme | null, element: HTMLElement) {
   if (theme === null) {
     if (element.shadowRoot && shadowAdoptedStyleSheetMap.has(element)) {
       shadowAdoptedStyleSheetMap.get(element)!.replaceSync('');
     } else {
       delete element.dataset.fluentTheme;
+      forceRepaint(element);
     }
     return;
   }
@@ -127,13 +119,11 @@ export function setLocalTheme(theme: Theme | null, element: HTMLElement) {
     `);
   } else {
     element.dataset.fluentTheme = getScopedThemeKey(theme);
+    forceRepaint(element);
   }
 }
 
-/**
- * @internal
- */
-export function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet {
+function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet {
   if (!shadowAdoptedStyleSheetMap.has(element)) {
     const shadowAdoptedStyleSheet = new CSSStyleSheet();
     shadowAdoptedStyleSheetMap.set(element, shadowAdoptedStyleSheet);
@@ -143,10 +133,7 @@ export function getShadowAdoptedStyleSheet(element: HTMLElement): CSSStyleSheet 
   return shadowAdoptedStyleSheetMap.get(element)!;
 }
 
-/**
- * @internal
- */
-export function getScopedThemeKey(theme: Theme): string {
+function getScopedThemeKey(theme: Theme): string {
   if (!scopedThemeKeyMap.has(theme)) {
     const themeKey = uniqueId('fluent-theme-');
     const scopedThemeStyleSheet = new CSSStyleSheet();
@@ -165,14 +152,42 @@ export function getScopedThemeKey(theme: Theme): string {
   return scopedThemeKeyMap.get(theme)!;
 }
 
-/**
- * @internal
- */
-export function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
-  console.log(element);
+function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
   for (const t of tokenNames) {
     element.style.setProperty(`--${t}`, theme !== null ? (theme[t] as string) : 'unset');
   }
+}
+
+/**
+ * This function fixes a Safari bug: when an element should no longer be
+ * selected by an `@scope` rule, the styles defined in the `:scope` selector
+ * persist.
+ * @see https://bugs.webkit.org/show_bug.cgi?id=276454
+ */
+declare global {
+  interface Window {
+    MSStream: any;
+  }
+}
+const {userAgent: UA} = navigator;
+const isWebkit =
+  /\b(iPad|iPhone|iPod)\b/.test(UA) &&
+  /WebKit/.test(UA) &&
+  !/Edge/.test(UA) &&
+  !window.MSStream;
+function forceRepaint(element: HTMLElement) {
+  if (!isWebkit) {
+    return;
+  }
+
+  const name = 'visibility';
+  const tempValue = 'hidden';
+  const currentValue = element.style.getPropertyValue(name);
+
+  element.style.setProperty(name, tempValue);
+  requestAnimationFrame(() => {
+    element.style.setProperty(name, currentValue);
+  });
 }
 
 /**
