@@ -15,7 +15,7 @@ const themes: Record<string, Theme | null> = {
 function updateTheme(c: HTMLView, type = 'global') {
   const {value} = c.event.target as HTMLSelectElement;
 
-  if (themes[value]) {
+  if (themes[value] !== undefined) {
     switch (type) {
       case 'global':
         setTheme(themes[value]);
