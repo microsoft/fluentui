@@ -241,11 +241,14 @@ export const DynamicWrapLabels = () => {
     </div>
   );
 };
+DynamicWrapLabels.storyName = 'Dynamic - Wrap Labels';
 
-DynamicWrapLabels.story = {
-  name: 'Dynamic - Wrap Labels',
-  parameters: { includeRtl: true, includeDarkMode: true },
-};
+export const DynamicWrapLabelsRTL = getStoryVariant(DynamicWrapLabels, STORY_VARIANT.RTL);
+
+export const DynamicWrapLabelsDarkMode = getStoryVariant(
+  DynamicWrapLabels,
+  STORY_VARIANT.DARK_MODE,
+);
 
 export const RotatedLabelHideLegends = () => {
   const points: IVerticalBarChartDataPoint[] = [

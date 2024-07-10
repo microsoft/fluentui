@@ -33,9 +33,9 @@ export default {
   ],
 };
 
-export const CompoundButtonDefault = () => <CompoundButton {...baseProps} />;
+export const Root = () => <CompoundButton {...baseProps} />;
 
-export const CompoundButtonDefaultRTL = getStoryVariant(CompoundButtonDefault, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
 
 export const Disabled = () => <CompoundButton {...baseProps} disabled={true} />;
 

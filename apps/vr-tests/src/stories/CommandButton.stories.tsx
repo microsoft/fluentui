@@ -56,9 +56,9 @@ export default {
   ],
 } satisfies Meta<typeof CommandBarButton>;
 
-export const Default = () => <CommandBarButton {...commandProps} />;
+export const Root = () => <CommandBarButton {...commandProps} />;
 
-export const DefaultRTL = getStoryVariant(Default, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
 
 export const Disabled = () => <CommandBarButton {...commandProps} disabled={true} />;
 

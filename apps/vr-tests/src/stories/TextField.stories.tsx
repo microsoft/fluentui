@@ -34,6 +34,7 @@ export const PlaceholderRTL = getStoryVariant(Placeholder, STORY_VARIANT.RTL);
 export const Disabled = () => <TextField label="Disabled" disabled />;
 export const Required = () => <TextField label="Required" required />;
 export const Error = () => <TextField label="Error" errorMessage="Error message" />;
+Error.storyName = 'Error';
 
 export const ErrorRTL = getStoryVariant(Error, STORY_VARIANT.RTL);
 
@@ -72,26 +73,23 @@ export const PrefixWithValueDisabledAndPrefixStyleOverride = () => (
     disabled
   />
 );
+PrefixWithValueDisabledAndPrefixStyleOverride.storyName =
+  'Prefix with Value, Disabled, and Prefix Style-Override';
 
-PrefixWithValueDisabledAndPrefixStyleOverride.story = {
-  name: 'Prefix with Value, Disabled, and Prefix Style-Override',
-
-  parameters: {
-    includeRtl: true,
-  },
-};
+export const PrefixWithValueDisabledAndPrefixStyleOverrideRTL = getStoryVariant(
+  PrefixWithValueDisabledAndPrefixStyleOverride,
+  STORY_VARIANT.RTL,
+);
 
 export const PrefixWithValueDisabled = () => (
   <TextField label="Prefix" prefix="https://" defaultValue="example.com" disabled />
 );
+PrefixWithValueDisabled.storyName = 'Prefix with Value, Disabled';
 
-PrefixWithValueDisabled.story = {
-  name: 'Prefix with Value, Disabled',
-
-  parameters: {
-    includeRtl: true,
-  },
-};
+export const PrefixWithValueDisabledRTL = getStoryVariant(
+  PrefixWithValueDisabled,
+  STORY_VARIANT.RTL,
+);
 
 export const Suffix = () => <TextField label="Suffix" suffix=".com" />;
 

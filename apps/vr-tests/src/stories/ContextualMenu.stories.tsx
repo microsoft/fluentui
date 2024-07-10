@@ -306,14 +306,9 @@ export const WithIcons = () => <ContextualMenu items={itemsWithIcons} />;
 WithIcons.storyName = 'With icons';
 
 export const WithSecondaryText = () => <ContextualMenu items={itemsWithSecondaryText} />;
+WithSecondaryText.storyName = 'With secondaryText';
 
-WithSecondaryText.story = {
-  name: 'With secondaryText',
-
-  parameters: {
-    includeRtl: true,
-  },
-};
+export const WithSecondaryTextRTL = getStoryVariant(WithSecondaryText, STORY_VARIANT.RTL);
 
 export const WithSubmenu = () => <ContextualMenu items={itemsWithSubmenu} />;
 

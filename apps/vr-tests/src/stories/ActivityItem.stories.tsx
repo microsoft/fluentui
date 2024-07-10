@@ -65,3 +65,4 @@ export const CompactPersonas = () => (
     timeStamp="timeStamp text"
   />
 );
+CompactPersonas.storyName = 'CompactPersonas';
