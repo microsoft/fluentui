@@ -139,7 +139,7 @@ export const CustomDropdown = () => (
         </div>
       );
     }}
-    onRenderCaretDown={(props: IDropdownProps): JSX.Element => {
+    onRenderCaretDown={(): JSX.Element => {
       return <Icon iconName="CirclePlus" />;
     }}
     options={[

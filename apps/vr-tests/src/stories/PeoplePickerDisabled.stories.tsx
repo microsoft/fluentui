@@ -1,11 +1,5 @@
 import * as React from 'react';
-import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { TestWrapperDecorator } from '../utilities';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -17,16 +11,6 @@ import {
 
 import { TestImages } from '@fluentui/example-data';
 
-const overflowPersona: IPersonaProps & { key: string | number } = {
-  key: 2,
-  imageUrl: TestImages.personaMale,
-  imageInitials: 'AR',
-  text: 'Aaron Reid Lundberg Kolar Lundberg Lindqvist Kolar Reid',
-  secondaryText: 'Designer',
-  tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm',
-  presence: PersonaPresence.busy,
-};
 const people: (IPersonaProps & { key: string | number })[] = [
   {
     key: 1,
@@ -136,20 +120,10 @@ const getPeople = () => people;
 
 export default {
   title: 'PeoplePicker',
-  decorators: [
-    TestWrapperDecorator,
-    StoryWrightDecorator(
-      new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .click('.ms-BasePicker-input')
-        .hover('.ms-Suggestions-item')
-        .snapshot('suggestions')
-        .end(),
-    ),
-  ],
+  decorators: [TestWrapperDecorator],
 };
 
-export const NormalWithText = () => (
+export const NormalDisabled = () => (
   <Fabric>
     <NormalPeoplePicker
       onResolveSuggestions={getPeople}
@@ -157,67 +131,14 @@ export const NormalWithText = () => (
       getTextFromItem={getTextFromItem}
       className={'ms-PeoplePicker'}
       pickerSuggestionsProps={suggestionProps}
+      disabled
     />
   </Fabric>
 );
 
-NormalWithText.storyName = 'Normal with text';
-NormalWithText.parameters = {
-  steps: new Steps()
-    .snapshot('default', { cropTo: '.testWrapper' })
-    .setValue('.ms-BasePicker-input', 'a')
-    .snapshot('suggestion: "a"')
-    .end(),
-};
+NormalDisabled.storyName = 'Normal disabled';
 
-export const Normal = () => (
-  <Fabric>
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-    />
-  </Fabric>
-);
-
-export const NormalSelected = () => (
-  <Fabric>
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
-    />
-  </Fabric>
-);
-
-NormalSelected.storyName = 'Normal selected';
-
-export const NormalSelectedRTL = getStoryVariant(NormalSelected, STORY_VARIANT.RTL);
-
-export const NormalOverflowSelected = () => (
-  <Fabric>
-    <NormalPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      styles={{ root: { maxWidth: 200 } }}
-      defaultSelectedItems={[people[1], overflowPersona]}
-    />
-  </Fabric>
-);
-
-NormalOverflowSelected.storyName = 'Normal Overflow selected';
-
-export const NormalOverflowSelectedRTL = getStoryVariant(NormalOverflowSelected, STORY_VARIANT.RTL);
-
-export const List = () => (
+export const ListDisabled = () => (
   <Fabric>
     <ListPeoplePicker
       onResolveSuggestions={getPeople}
@@ -225,28 +146,14 @@ export const List = () => (
       getTextFromItem={getTextFromItem}
       className={'ms-PeoplePicker'}
       pickerSuggestionsProps={suggestionProps}
+      disabled
     />
   </Fabric>
 );
 
-export const ListSelected = () => (
-  <Fabric>
-    <ListPeoplePicker
-      onResolveSuggestions={getPeople}
-      onEmptyInputFocus={getPeople}
-      getTextFromItem={getTextFromItem}
-      className={'ms-PeoplePicker'}
-      pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
-    />
-  </Fabric>
-);
+ListDisabled.storyName = 'List disabled';
 
-ListSelected.storyName = 'List selected';
-
-export const ListSelectedRTL = getStoryVariant(ListSelected, STORY_VARIANT.RTL);
-
-export const Compact = () => (
+export const CompactDisabled = () => (
   <Fabric>
     <CompactPeoplePicker
       onResolveSuggestions={getPeople}
@@ -254,23 +161,45 @@ export const Compact = () => (
       getTextFromItem={getTextFromItem}
       className={'ms-PeoplePicker'}
       pickerSuggestionsProps={suggestionProps}
+      disabled
     />
   </Fabric>
 );
 
-export const CompactSelected = () => (
+CompactDisabled.storyName = 'Compact disabled';
+
+export const NormalWithPlaceholder = () => (
   <Fabric>
-    <CompactPeoplePicker
+    <NormalPeoplePicker
       onResolveSuggestions={getPeople}
       onEmptyInputFocus={getPeople}
       getTextFromItem={getTextFromItem}
       className={'ms-PeoplePicker'}
       pickerSuggestionsProps={suggestionProps}
-      defaultSelectedItems={[people[2]]}
+      inputProps={{
+        placeholder: 'Add items here',
+      }}
+    />
+  </Fabric>
+);
+NormalWithPlaceholder.parameters = { steps: [] };
+
+NormalWithPlaceholder.storyName = 'Normal with placeholder';
+
+export const NormalDisabledWithPlaceholder = () => (
+  <Fabric>
+    <NormalPeoplePicker
+      onResolveSuggestions={getPeople}
+      onEmptyInputFocus={getPeople}
+      getTextFromItem={getTextFromItem}
+      className={'ms-PeoplePicker'}
+      pickerSuggestionsProps={suggestionProps}
+      inputProps={{
+        placeholder: 'Add items here',
+      }}
+      disabled
     />
   </Fabric>
 );
 
-CompactSelected.storyName = 'Compact selected';
-
-export const CompactSelectedRTL = getStoryVariant(CompactSelected, STORY_VARIANT.RTL);
+NormalDisabledWithPlaceholder.storyName = 'Normal disabled with placeholder';

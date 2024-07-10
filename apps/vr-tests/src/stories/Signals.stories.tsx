@@ -49,8 +49,6 @@ export default {
     TestWrapperDecorator,
     StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
   ],
-
-  parameters: { testWrapperStyle: { paddingInline: 0 } },
 };
 
 export const YouCheckedOut = () => (
