@@ -14,7 +14,7 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 
 describe('bundle-size-configuration generator', () => {
   let tree: Tree;
-  const options: BundleSizeConfigurationGeneratorSchema = { name: '@proj/react-continental' };
+  const options: BundleSizeConfigurationGeneratorSchema = { name: 'react-continental' };
 
   beforeEach(async () => {
     tree = createTreeWithEmptyWorkspace();
@@ -38,7 +38,7 @@ describe('bundle-size-configuration generator', () => {
       console.log(p);
 
       export default {
-        name: '@proj/react-continental - package',
+        name: 'react-continental - package',
       };
       "
     `);
@@ -90,11 +90,12 @@ describe('bundle-size-configuration generator', () => {
 });
 
 function createLibrary(tree: Tree, name: string) {
-  const projectName = '@proj/' + name;
+  const projectName = name;
+  const npmProjectName = '@proj/' + projectName;
   const root = `packages/react-components/${name}`;
   addProjectConfiguration(tree, projectName, { root, tags: ['vNext'] });
   writeJson(tree, joinPathFragments(root, 'package.json'), {
-    name: projectName,
+    name: npmProjectName,
     version: '9.0.0',
     scripts: {},
   });
