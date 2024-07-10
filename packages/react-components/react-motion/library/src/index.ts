@@ -5,4 +5,11 @@ export { createPresenceComponent, type PresenceComponentProps } from './factorie
 
 export { PresenceGroup } from './components/PresenceGroup';
 
-export type { AtomMotion, AtomMotionFn, PresenceMotion, PresenceMotionFn, MotionImperativeRef } from './types';
+export type {
+  AtomMotion,
+  AtomMotionFn,
+  PresenceMotion,
+  PresenceMotionFn,
+  PresenceDirection,
+  MotionImperativeRef,
+} from './types';
