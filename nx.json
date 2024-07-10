@@ -16,7 +16,7 @@
     },
     "bundle": {
       "cache": true,
-      "dependsOn": ["^build"]
+      "dependsOn": ["build"]
     },
     "build": {
       "dependsOn": ["^build"],
@@ -57,7 +57,7 @@
       "cache": true
     },
     "test-perf": {
-      "dependsOn": ["bundle"],
+      "dependsOn": [],
       "cache": true
     },
     "e2e": {
