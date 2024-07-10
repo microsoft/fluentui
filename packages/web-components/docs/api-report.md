@@ -2894,20 +2894,16 @@ export class Slider extends FASTElement implements SliderConfiguration {
     increment(): void;
     initialValue: string;
     // @internal
-    initialValueChanged(_: string, next: string): void;
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
     keypressHandler: (event: KeyboardEvent) => void;
     get labels(): ReadonlyArray<Node>;
-    max?: string;
-    // @internal
-    get maxAsNumber(): number;
+    max: string;
     // (undocumented)
     protected maxChanged(): void;
-    min?: string;
-    // @internal
-    get minAsNumber(): number;
+    min: string;
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
@@ -2925,9 +2921,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
     size?: SliderSize;
     // (undocumented)
     protected sizeChanged(prev: string, next: string): void;
-    step?: string;
-    // @internal
-    get stepAsNumber(): number;
+    step: string;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)

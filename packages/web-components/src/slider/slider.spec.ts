@@ -33,15 +33,16 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('elementInternals.role', 'slider');
   });
 
-  test('should have default min and max if `min` and `max` attributes are not set', async () => {
+  test('should have default empty string values if `min`, `max`, and `step` attributes are not set', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
         <fluent-slider></fluent-slider>
       `;
     });
 
-    await expect(element).toHaveJSProperty('minAsNumber', 0);
-    await expect(element).toHaveJSProperty('maxAsNumber', 100);
+    await expect(element).toHaveJSProperty('min', '');
+    await expect(element).toHaveJSProperty('max', '');
+    await expect(element).toHaveJSProperty('step', '');
   });
 
   test('should reference connected <label> elements', async () => {
@@ -482,11 +483,8 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('min', '20');
-    await expect(element).not.toHaveJSProperty('min', 20);
     await expect(element).toHaveJSProperty('max', '110');
-    await expect(element).not.toHaveJSProperty('max', 110);
     await expect(element).toHaveJSProperty('step', '10');
-    await expect(element).not.toHaveJSProperty('step', 10);
   });
 
   test('should set to empty strings if `min`, `max`, and `step` to be set as invalid values', async () => {
@@ -497,6 +495,7 @@ test.describe('Slider', () => {
     });
 
     await element.evaluate((node: Slider) => {
+      // @ts-expect-error test incorrect value type handling
       node.min = undefined;
       // @ts-expect-error test incorrect value type handling
       node.max = null;
@@ -504,11 +503,8 @@ test.describe('Slider', () => {
     });
 
     await expect(element).toHaveJSProperty('min', '');
-    await expect(element).toHaveJSProperty('minAsNumber', 0);
     await expect(element).toHaveJSProperty('max', '');
-    await expect(element).toHaveJSProperty('maxAsNumber', 100);
     await expect(element).toHaveJSProperty('step', '');
-    await expect(element).toHaveJSProperty('stepAsNumber', 1);
   });
 
   test('should initialize to the provided value attribute if set pre-connection', async () => {

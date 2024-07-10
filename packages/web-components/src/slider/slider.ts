@@ -123,7 +123,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @param next - The current value
    * @internal
    */
-  public initialValueChanged(_: string, next: string): void {
+  protected initialValueChanged(_: string, next: string): void {
     if (this.$fastController.isConnected) {
       this.value = next;
     } else {
@@ -399,7 +399,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: min
    */
   @attr({ converter: numberLikeStringConverter })
-  public min?: string;
+  public min: string = '';
   protected minChanged(): void {
     this.elementInternals.ariaValueMin = `${this.minAsNumber}`;
     if (this.$fastController.isConnected && this.minAsNumber > this.valueAsNumber) {
@@ -412,7 +412,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *
    * @internal
    */
-  public get minAsNumber(): number {
+  private get minAsNumber(): number {
     if (this.min !== undefined) {
       const parsed = parseFloat(this.min);
       if (!Number.isNaN(parsed)) {
@@ -430,7 +430,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: max
    */
   @attr({ converter: numberLikeStringConverter })
-  public max?: string;
+  public max: string = '';
   protected maxChanged(): void {
     this.elementInternals.ariaValueMax = `${this.maxAsNumber}`;
     if (this.$fastController.isConnected && this.maxAsNumber < this.valueAsNumber) {
@@ -443,7 +443,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *
    * @internal
    */
-  public get maxAsNumber(): number {
+  private get maxAsNumber(): number {
     if (this.max !== undefined) {
       const parsed = parseFloat(this.max);
       if (!Number.isNaN(parsed)) {
@@ -461,7 +461,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * HTML Attribute: step
    */
   @attr({ converter: numberLikeStringConverter })
-  public step?: string;
+  public step: string = '';
   protected stepChanged(): void {
     this.updateStepMultiplier();
     // Update value to align with the new step if needed.
@@ -475,7 +475,7 @@ export class Slider extends FASTElement implements SliderConfiguration {
    *
    * @internal
    */
-  public get stepAsNumber(): number {
+  private get stepAsNumber(): number {
     if (this.step !== undefined) {
       const parsed = parseFloat(this.step);
       if (!Number.isNaN(parsed) && parsed > 0) {
