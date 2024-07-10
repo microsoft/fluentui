@@ -3,28 +3,11 @@ import { type CarouselStore } from './CarouselContext.types';
 export const createCarouselStore = (initialValue: string | null): CarouselStore => {
   let values: string[] = [];
   let activeValue: string | null = initialValue;
-  let navDirection: 'prev' | 'next' = 'next';
-  let loopCount = 0;
 
   let listeners: Array<() => void> = [];
 
   const carouselStore = {
-    setActiveValue(newValue: string | null, circular?: boolean) {
-      if (activeValue && newValue && activeValue !== newValue) {
-        const oldIndex = values.indexOf(activeValue);
-        const newIndex = values.indexOf(newValue);
-        const indexDiff = Math.abs(newIndex - oldIndex);
-        if (!circular || indexDiff <= values.length / 2) {
-          // No wrap around
-          navDirection = oldIndex < newIndex ? 'next' : 'prev';
-        } else {
-          // Wrap around
-          navDirection = oldIndex < newIndex ? 'prev' : 'next';
-          // Increment our loop counter
-          loopCount = oldIndex < newIndex ? loopCount - 1 : loopCount + 1;
-        }
-      }
-
+    setActiveValue(newValue: string | null) {
       activeValue = newValue;
       emitChange();
     },
@@ -64,7 +47,7 @@ export const createCarouselStore = (initialValue: string | null): CarouselStore 
     },
 
     getSnapshot() {
-      return { activeValue, values, navDirection, loopCount };
+      return { activeValue, values };
     },
   };
 

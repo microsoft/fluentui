@@ -78,8 +78,6 @@ export type CarouselCardSlots = {
 // @public
 export type CarouselCardState = ComponentState<CarouselCardSlots> & {
     visible: boolean;
-    offsetIndex: number;
-    cardWidth: string | number;
 } & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
@@ -169,7 +167,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
-    cardWidth?: number | string;
 };
 
 // @public
@@ -179,22 +176,15 @@ export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
 export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots>;
 
 // @public
-export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
-    cardWidth?: string | number;
-};
+export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>>;
 
 // @public (undocumented)
 export type CarouselSliderSlots = {
     root: Slot<'div'>;
-    slider: NonNullable<Slot<'div'>>;
 };
 
 // @public
-export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Required<Pick<CarouselSliderProps, 'cardWidth'>> & {
-    numCards: number;
-    currentIndex: number;
-    loopCount: number;
-} & CarouselSliderContextValue;
+export type CarouselSliderState = ComponentState<CarouselSliderSlots>;
 
 // @public (undocumented)
 export type CarouselSlots = {
@@ -232,10 +222,7 @@ export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) =
 export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
 
 // @public
-export const renderCarouselSlider_unstable: (state: CarouselSliderState, contextValues: CarouselSliderContextValues) => JSX.Element;
-
-// @public (undocumented)
-export const sliderAnimationDelayToken: "--fui-CarouselSlider-animation-delay";
+export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.Element;
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;

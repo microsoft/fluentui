@@ -3,12 +3,11 @@
 exports[`CarouselCard renders a default state 1`] = `
 <div>
   <div
-    aria-hidden="true"
+    aria-hidden="false"
     class="fui-CarouselCard"
     data-carousel-active-item="false"
     data-carousel-item="test-0"
     role="presentation"
-    style="transform: translate3d(0%, 0,0); min-width: 100%; width: 100%; --fui-CarouselCard-animation-delay: var(--durationFast);"
   >
     Default CarouselCard
   </div>

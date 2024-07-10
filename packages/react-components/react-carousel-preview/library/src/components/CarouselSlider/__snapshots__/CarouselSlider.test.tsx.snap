@@ -5,13 +5,7 @@ exports[`CarouselSlider renders a default state 1`] = `
   <div
     class="fui-CarouselSlider"
   >
-    <div
-      class="fui-CarouselSlider__slider"
-      role="presentation"
-      style="transform: translateX(calc(0 * 100% + 50% - 100% / 2));"
-    >
-      Default CarouselSlider
-    </div>
+    Default CarouselSlider
   </div>
 </div>
 `;

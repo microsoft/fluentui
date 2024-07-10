@@ -10,9 +10,9 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
-
-  // TODO add additional classes for different states and/or slots
+  root: {
+    overflow: 'hidden',
+  },
 });
 
 /**

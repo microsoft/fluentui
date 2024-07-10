@@ -11,7 +11,8 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    height: '100%',
+    flex: '0 0 100%',
+    minWidth: 0,
   },
 });
 

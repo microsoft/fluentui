@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
@@ -9,12 +8,16 @@ import {
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import * as React from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
 
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import { useCarouselWalker_unstable } from '../useCarouselWalker';
 import { createCarouselStore } from '../createCarouselStore';
 import { CAROUSEL_ITEM } from '../constants';
 import type { CarouselContextValue } from '../CarouselContext.types';
+import { carouselSliderClassNames } from '../CarouselSlider';
+import { carouselCardClassNames } from '../CarouselCard';
 
 /**
  * Create the state required to render Carousel.
@@ -30,18 +33,23 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const { onValueChange, circular = false } = props;
 
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
-
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
     state: props.value,
     initialState: null,
   });
 
-  const [store] = React.useState(() => createCarouselStore(value));
+  const { targetDocument, dir } = useFluent();
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    direction: dir,
+    loop: circular,
+    watchDrag: false,
 
+    container: `.${carouselSliderClassNames.root}`,
+    slides: `.${carouselCardClassNames.root}`,
+  });
+
+  const [store] = React.useState(() => createCarouselStore(value));
   const rootRef = React.useRef<HTMLDivElement>(null);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -57,8 +65,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   }
 
   useIsomorphicLayoutEffect(() => {
-    store.setActiveValue(value, circular ?? false);
-  }, [circular, store, value]);
+    store.setActiveValue(value);
+  }, [store, value]);
 
   React.useEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
@@ -72,7 +80,11 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     };
   }, [store]);
 
+  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
+
   React.useEffect(() => {
+    const win = targetDocument?.defaultView;
+
     if (!win) {
       return;
     }
@@ -120,7 +132,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     return () => {
       observer.disconnect();
     };
-  }, [carouselWalker, store, win]);
+  }, [carouselWalker, store, targetDocument]);
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
@@ -132,16 +144,23 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       direction === 'prev'
         ? carouselWalker.prevPage(active.value, circular)
         : carouselWalker.nextPage(active.value, circular);
+    const scrollTo = direction === 'prev' ? emblaApi?.scrollPrev : emblaApi?.scrollNext;
 
     if (newPage) {
       setValue(newPage?.value);
       onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+
+      scrollTo?.();
     }
   });
 
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
     onValueChange?.(event, { event, type: 'click', value: _value });
+
+    const values = store.getSnapshot().values;
+
+    emblaApi?.scrollTo(values.indexOf(_value));
   });
 
   return {
@@ -150,7 +169,13 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, carouselRef, rootRef),
+        ref: useMergedRefs(
+          ref,
+          carouselRef,
+          rootRef,
+          // TODO fix types
+          emblaRef as unknown as React.RefObject<HTMLDivElement>,
+        ),
         role: 'region',
         ...props,
       }),

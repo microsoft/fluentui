@@ -11,7 +11,9 @@ export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    display: 'flex',
+  },
 });
 
 /**

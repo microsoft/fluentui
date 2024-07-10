@@ -6,7 +6,7 @@ describe('createCarouselStore', () => {
       const store = createCarouselStore(null);
       store.addValue('foo');
 
-      expect(store.getSnapshot()).toEqual({ activeValue: null, values: ['foo'], loopCount: 0, navDirection: 'next' });
+      expect(store.getSnapshot()).toEqual({ activeValue: null, values: ['foo'] });
     });
   });
 
@@ -18,12 +18,7 @@ describe('createCarouselStore', () => {
       store.addValue('bar');
       store.insertValue('baz', 'foo');
 
-      expect(store.getSnapshot()).toEqual({
-        activeValue: null,
-        values: ['foo', 'baz', 'bar'],
-        loopCount: 0,
-        navDirection: 'next',
-      });
+      expect(store.getSnapshot()).toEqual({ activeValue: null, values: ['foo', 'baz', 'bar'] });
     });
   });
 
@@ -36,12 +31,7 @@ describe('createCarouselStore', () => {
       store.addValue('baz');
       store.removeValue('bar');
 
-      expect(store.getSnapshot()).toEqual({
-        activeValue: null,
-        values: ['foo', 'baz'],
-        loopCount: 0,
-        navDirection: 'next',
-      });
+      expect(store.getSnapshot()).toEqual({ activeValue: null, values: ['foo', 'baz'] });
     });
   });
 
@@ -53,7 +43,7 @@ describe('createCarouselStore', () => {
       store.addValue('bar');
       store.clearValues();
 
-      expect(store.getSnapshot()).toEqual({ activeValue: null, values: [], loopCount: 0, navDirection: 'next' });
+      expect(store.getSnapshot()).toEqual({ activeValue: null, values: [] });
     });
   });
 
