@@ -4,6 +4,8 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
 import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
@@ -445,7 +447,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
     showLabelsInPercent?: boolean;
-    styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
+    styles?: IDonutChartStyles;
     valueInsideDonut?: string | number;
 }
 
@@ -455,9 +457,9 @@ export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface IDonutChartStyles {
-    chart?: IStyle;
-    legendContainer: IStyle;
-    root?: IStyle;
+    chart?: string;
+    legendContainer: string;
+    root?: string;
 }
 
 // @public (undocumented)
