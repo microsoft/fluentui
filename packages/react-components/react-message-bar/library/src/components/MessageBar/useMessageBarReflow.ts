@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { isHTMLElement } from '@fluentui/react-utilities';
+import { isHTMLElement, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 
 export function useMessageBarReflow(enabled: boolean = false) {
   const { targetDocument } = useFluent();
@@ -10,6 +10,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
   // eslint-disable-next-line no-restricted-globals
   const resizeObserverRef = React.useRef<ResizeObserver | null>(null);
   const prevInlineSizeRef = React.useRef(-1);
+  const targetRef = React.useRef<HTMLElement>(null);
 
   const handleResize: ResizeObserverCallback = React.useCallback(
     entries => {
@@ -64,27 +65,20 @@ export function useMessageBarReflow(enabled: boolean = false) {
     [forceUpdate],
   );
 
-  const ref = React.useCallback(
-    (el: HTMLElement | null) => {
-      if (!enabled || !el || !targetDocument?.defaultView) {
-        return;
-      }
-
-      resizeObserverRef.current?.disconnect();
-
-      const win = targetDocument.defaultView;
-      const resizeObserver = new win.ResizeObserver(handleResize);
-      resizeObserverRef.current = resizeObserver;
-      resizeObserver.observe(el, { box: 'border-box' });
-    },
-    [targetDocument, handleResize, enabled],
-  );
-
-  React.useEffect(() => {
-    return () => {
+  useIsomorphicLayoutEffect(() => {
+    const cleanUp = () => {
       resizeObserverRef.current?.disconnect();
     };
-  }, []);
+    if (!enabled || !targetRef.current || !targetDocument?.defaultView) {
+      return cleanUp;
+    }
 
-  return { ref, reflowing: reflowingRef.current };
+    const win = targetDocument.defaultView;
+    const resizeObserver = new win.ResizeObserver(handleResize);
+    resizeObserverRef.current = resizeObserver;
+    resizeObserver.observe(targetRef.current, { box: 'border-box' });
+    return cleanUp;
+  }, [enabled, handleResize, targetDocument]);
+
+  return { ref: targetRef, reflowing: reflowingRef.current };
 }
