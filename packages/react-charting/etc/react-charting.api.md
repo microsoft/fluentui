@@ -681,6 +681,7 @@ export interface IHorizontalBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;

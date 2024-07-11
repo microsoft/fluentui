@@ -349,7 +349,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      const color2 = darkenLightenColor(color, 60);
+      const color2 = darkenLightenColor(color, 70);
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;

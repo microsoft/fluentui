@@ -11,6 +11,7 @@ import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
+  enableGradient: boolean;
 }
 
 export class HorizontalBarChartBasicExample extends React.Component<
@@ -21,6 +22,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
     super(props);
     this.state = {
       chartMode: 'default',
+      enableGradient: false,
     };
   }
 
@@ -30,6 +32,10 @@ export class HorizontalBarChartBasicExample extends React.Component<
 
   private _onChangeChartMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ chartMode: checked ? ('percentage' as ChartDataMode) : ('default' as ChartDataMode) });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked});
   };
 
   private _basicExample() {
@@ -133,20 +139,31 @@ export class HorizontalBarChartBasicExample extends React.Component<
         ],
       },
     ];
+
     return (
       <>
-        <Toggle
-          label="Show labels as percentage"
-          onText="Chart mode percentage"
-          offText="Chart mode absolute"
-          onChange={this._onChangeChartMode}
-        />
+        <div style={{display: 'flex'}}>
+          <Toggle
+            label="Show labels as percentage"
+            onText="Chart mode percentage"
+            offText="Chart mode absolute"
+            onChange={this._onChangeChartMode}
+          />
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
+        </div>
+
         <div style={{ maxWidth: 600 }}>
           <HorizontalBarChart
             culture={window.navigator.language}
             data={data}
             hideRatio={hideRatio}
             chartDataMode={this.state.chartMode}
+            enableGradient={this.state.enableGradient}
           />
         </div>
       </>
