@@ -4,6 +4,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
+import { useCarouselContext_unstable } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselCard.
@@ -21,9 +22,20 @@ export const useCarouselCard_unstable = (
 ): CarouselCardState => {
   const { value } = props;
 
+  const [visible, setVisible] = React.useState(false);
+  const { onPageVisibilityChange } = useCarouselContext_unstable();
   const isActiveIndex = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
-  // TODO: handle
-  const visible = true;
+
+  const handlePageVisibility = React.useCallback(
+    (visibleValues: string[]) => {
+      setVisible(visibleValues.includes(value));
+    },
+    [value],
+  );
+
+  React.useEffect(() => {
+    return onPageVisibilityChange(handlePageVisibility);
+  }, [handlePageVisibility, onPageVisibilityChange]);
 
   const state: CarouselCardState = {
     value,

@@ -15,6 +15,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   defaultValue?: string;
 
   /**
+   * The alignment of the carousel.
+   */
+  align?: 'center' | 'start' | 'end';
+
+  /**
    * The value of the currently active page.
    */
   value?: string;

@@ -10,8 +10,8 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  slider: {
-    gap: '20px',
+  card: {
+    margin: '0px 10px',
   },
 });
 
@@ -37,24 +37,24 @@ export const FreeLayout = () => {
   const classes = useClasses();
 
   return (
-    <Carousel defaultValue={'test-1'}>
-      <CarouselSlider className={classes.slider}>
-        <CarouselCard value="test-1" style={{ maxWidth: '30%' }}>
+    <Carousel circular defaultValue={'test-5'}>
+      <CarouselSlider>
+        <CarouselCard className={classes.card} value="test-1" style={{ maxWidth: '30%' }}>
           {TestDiv('test-1', 'lightgrey')}
         </CarouselCard>
-        <CarouselCard value="test-2" style={{ maxWidth: '45%' }}>
+        <CarouselCard className={classes.card} value="test-2" style={{ maxWidth: '45%' }}>
           {TestDiv('test-2', 'lightblue')}
         </CarouselCard>
-        <CarouselCard value="test-3" style={{ maxWidth: '20%' }}>
+        <CarouselCard className={classes.card} value="test-3" style={{ maxWidth: '20%' }}>
           {TestDiv('test-3', 'BlanchedAlmond')}
         </CarouselCard>
-        <CarouselCard value="test-4" style={{ maxWidth: '80%' }}>
+        <CarouselCard className={classes.card} value="test-4" style={{ maxWidth: '80%' }}>
           {TestDiv('test-4', 'DarkKhaki')}
         </CarouselCard>
-        <CarouselCard value="test-5" style={{ maxWidth: '75%' }}>
+        <CarouselCard className={classes.card} value="test-5" style={{ maxWidth: '75%' }}>
           {TestDiv('test-5', 'blue')}
         </CarouselCard>
-        <CarouselCard value="test-6" style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card} value="test-6" style={{ maxWidth: '30%' }}>
           {TestDiv('test-6', 'green')}
         </CarouselCard>
       </CarouselSlider>

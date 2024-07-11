@@ -11,6 +11,9 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   selectPageByValue: () => {
     /** noop */
   },
+  onPageVisibilityChange: () => {
+    return () => null;
+  },
   circular: false,
 };
 

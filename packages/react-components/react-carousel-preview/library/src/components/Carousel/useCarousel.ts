@@ -31,7 +31,7 @@ import { carouselCardClassNames } from '../CarouselCard';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { onValueChange, circular = false } = props;
+  const { onValueChange, circular = false, align = 'center' } = props;
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
@@ -44,9 +44,11 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     direction: dir,
     loop: circular,
     watchDrag: false,
-
+    align,
+    containScroll: false,
     container: `.${carouselSliderClassNames.root}`,
     slides: `.${carouselCardClassNames.root}`,
+    inViewThreshold: 0.99,
   });
 
   const [store] = React.useState(() => createCarouselStore(value));
@@ -163,6 +165,37 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     emblaApi?.scrollTo(values.indexOf(_value));
   });
 
+  const onPageVisibilityChange = React.useCallback(
+    callback => {
+      const indexToValues = (_emblaApi: typeof emblaApi) => {
+        const visibleValues: string[] = [];
+        const visibleIndexes = _emblaApi?.slidesInView();
+        const values = store.getSnapshot().values;
+        visibleIndexes?.forEach(index => visibleValues.push(values[index]));
+
+        callback(visibleValues);
+      };
+
+      emblaApi?.on('slidesInView', indexToValues);
+
+      return () => {
+        emblaApi?.off('slidesInView', callback);
+      };
+    },
+    [emblaApi, store],
+  );
+
+  useIsomorphicLayoutEffect(() => {
+    // Set our default value if present
+    if (props.defaultValue) {
+      const values = store.getSnapshot().values;
+
+      emblaApi?.scrollTo(values.indexOf(props.defaultValue), true);
+    }
+    // We only want to run this on emblaApi init
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [emblaApi, props.defaultValue]);
+
   return {
     components: {
       root: 'div',
@@ -184,6 +217,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     store,
     selectPageByDirection,
     selectPageByValue,
+    onPageVisibilityChange,
     circular,
   };
 }

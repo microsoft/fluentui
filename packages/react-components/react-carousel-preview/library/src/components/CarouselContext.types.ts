@@ -35,6 +35,7 @@ export type CarouselContextValue = {
     direction: 'next' | 'prev',
   ) => void;
   selectPageByValue: (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: string) => void;
+  onPageVisibilityChange: (callback: (visibleValues: string[]) => void) => () => void;
   circular: boolean;
 };
 

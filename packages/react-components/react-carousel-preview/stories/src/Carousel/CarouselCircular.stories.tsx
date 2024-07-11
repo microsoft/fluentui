@@ -27,7 +27,7 @@ const TestDiv = (text: string, bgColor: string) => {
 };
 
 export const Circular = () => (
-  <Carousel circular defaultValue={'test-1'}>
+  <Carousel circular defaultValue={'test-5'}>
     <CarouselSlider>
       <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
       <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>

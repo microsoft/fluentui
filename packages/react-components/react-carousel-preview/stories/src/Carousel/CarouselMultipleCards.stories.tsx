@@ -12,10 +12,9 @@ import * as React from 'react';
 const useClasses = makeStyles({
   card: {
     flex: '0 0 45%',
+    margin: '0px 10px',
   },
-  slider: {
-    gap: '20px',
-  },
+  slider: {},
 });
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
@@ -40,7 +39,7 @@ export const MultipleCards = () => {
   const classes = useClasses();
 
   return (
-    <Carousel defaultValue={'test-1'}>
+    <Carousel circular defaultValue={'test-5'}>
       <CarouselSlider className={classes.slider}>
         <CarouselCard className={classes.card} value="test-1">
           {TestDiv('test-1', 'lightgrey')}
