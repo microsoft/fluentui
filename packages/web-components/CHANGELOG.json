@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 11 Jul 2024 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.42",
+      "version": "3.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1b6cc50ad1ea873abb613d60b720bb6e7842c4cf",
+            "comment": "feat: update slider to use ElementInternals for form association"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 04:07:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.41",
       "version": "3.0.0-beta.41",
