@@ -26,7 +26,7 @@
     "copy-notices": "node scripts/generators/src/copy-notices.js",
     "create-component": "yarn nx g @fluentui/workspace-plugin:react-component",
     "create-package": "yarn nx g @fluentui/workspace-plugin:react-library",
-    "e2e": "nx run-many -t e2e --verbose --concurrency=1",
+    "e2e": "nx run-many -t e2e --verbose --parallel=1",
     "format": "node scripts/executors/src/format.js",
     "generate-version-files": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/generate-version-files",
     "lint": "nx run-many -t lint --verbose",

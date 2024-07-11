@@ -54,7 +54,7 @@ steps:
       githubTargetLink: $(deployUrl)/
 
   - script: |
-      yarn nx affected -t e2e --nxBail $(sinceArg)
+      yarn nx affected -t e2e --nxBail --parallel 1 $(sinceArg)
     displayName: Cypress E2E tests
 
   - template: cleanup.yml
