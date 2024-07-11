@@ -256,7 +256,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
+            vr-app run-diff --screenshotsDirectory ./screenshots --workingDirectory . --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
         condition: eq(variables['vrTestSkip'], 'no')
 
   # - job: VisualRegressionTest_V0
