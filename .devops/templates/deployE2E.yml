@@ -54,7 +54,7 @@ steps:
       githubTargetLink: $(deployUrl)/
 
   - script: |
-      yarn nx affected -t e2e --nxBail --parallel 1 $(sinceArg)
+      NX_PARALLEL=1 yarn nx affected -t e2e --nxBail --parallel 1 $(sinceArg)
     displayName: Cypress E2E tests
     env:
       NX_PARALLEL: 1
