@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add Collapse component to react-motion-components",
+  "packageName": "@fluentui/react-motion",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}
