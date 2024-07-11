@@ -17,7 +17,8 @@ import {
 } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './Legends.styles';
-import { useFocusableGroup } from '@fluentui/react-components';
+import { Overflow, OverflowItem, useFocusableGroup } from '@fluentui/react-components';
+import { OverflowMenu } from './OverflowMenu';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -72,16 +73,12 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     const dataToRender = _generateData();
     return (
       <div className={classes.root}>
-        {props.enabledWrapLines ? (
-          _onRenderData(dataToRender)
-        ) : (
-          <ResizeGroup
-            data={dataToRender}
-            onReduceData={_onReduceData}
-            onRenderData={_onRenderData}
-            onGrowData={_onGrowData}
-          />
-        )}
+        <ResizeGroup
+          data={dataToRender}
+          onReduceData={_onReduceData}
+          onRenderData={_onRenderData}
+          onGrowData={_onGrowData}
+        />
       </div>
     );
 
@@ -123,6 +120,11 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           flexWrap: 'wrap',
         },
       };
+      console.log('overflowProps = ', overflowProps);
+      console.log('data = ', data);
+      // const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
+      // map the keys from data.primary to itemids
+      const itemIds = data.primary.map(item => item.key.toString());
       return (
         <div
           {...focusAttributes}
@@ -140,6 +142,26 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
             {...overflowProps}
             styles={{ ...rootStyles, ...overflowProps?.styles }}
           />
+          {/* <Overflow overflowDirection="start">
+            <div>
+              <OverflowMenu itemIds={data.primary} {...overflowProps} />
+              {data.primary.map(i => (
+                <OverflowItem key={i} id={i}>
+                  <Button>Item {i}</Button>
+                </OverflowItem>
+              ))}
+            </div>
+          </Overflow> */}
+          {/* <Overflow overflowAxis="vertical">
+            <div>
+              {data.overflow.map(i => (
+                <OverflowItem key={i} id={i}>
+                  <Button>Item {i}</Button>
+                </OverflowItem>
+              ))}
+              <OverflowMenu itemIds={itemIds} />
+            </div>
+          </Overflow> */}
         </div>
       );
     }

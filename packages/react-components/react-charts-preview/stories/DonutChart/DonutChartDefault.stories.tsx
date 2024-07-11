@@ -11,6 +11,60 @@ export const DonutBasic = () => {
       color: getColorFromToken(DataVizPalette.color2),
       xAxisCalloutData: '2020/04/20',
     },
+    {
+      legend: 'third',
+      data: 30000,
+      color: getColorFromToken(DataVizPalette.color3),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'fourth',
+      data: 25000,
+      color: getColorFromToken(DataVizPalette.color4),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'fifth',
+      data: 35000,
+      color: getColorFromToken(DataVizPalette.color5),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
+    {
+      legend: 'sixth',
+      data: 40000,
+      color: getColorFromToken(DataVizPalette.color6),
+      xAxisCalloutData: '2020/04/20',
+    },
   ];
 
   const data: IChartProps = {
