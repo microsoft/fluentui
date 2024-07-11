@@ -28,7 +28,7 @@ export const Row = (props: Partial<SkeletonProps>) => {
   const styles = useStyles();
   return (
     <div className={styles.invertedWrapper}>
-      <Skeleton {...props}>
+      <Skeleton {...props} aria-label="Loading Content">
         <div className={styles.firstRow}>
           <SkeletonItem shape="circle" size={24} />
           <SkeletonItem shape="rectangle" size={16} />

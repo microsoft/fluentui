@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add createPresenceComponentVariant()",
+  "packageName": "@fluentui/react-components",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

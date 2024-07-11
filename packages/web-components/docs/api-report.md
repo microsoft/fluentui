@@ -6,7 +6,6 @@
 
 /// <reference types="web" />
 
-import type { Constructable } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -600,11 +599,13 @@ export class Checkbox extends BaseCheckbox {
     indeterminate?: boolean;
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
-    // @override
+    // @internal @override
     protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
+    // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
@@ -1997,6 +1998,23 @@ export class Drawer extends FASTElement {
     type: DrawerType;
 }
 
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class DrawerBody extends FASTElement {
+}
+
+// @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
 // @public (undocumented)
 export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
 
@@ -2449,9 +2467,13 @@ export const MenuDefinition: FASTElementDefinition<typeof Menu>;
 // @public
 export class MenuItem extends FASTElement {
     checked: boolean;
+    protected checkedChanged(prev: boolean, next: boolean): void;
     // (undocumented)
-    protected checkedChanged(oldValue: boolean, newValue: boolean): void;
+    connectedCallback(): void;
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2462,6 +2484,7 @@ export class MenuItem extends FASTElement {
     handleMouseOver: (e: MouseEvent) => boolean;
     hidden: boolean;
     role: MenuItemRole;
+    roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
     // @internal
     setSubmenuPosition: () => void;
     // @internal
@@ -2512,10 +2535,13 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
+    constructor();
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     focus(): void;
     handleChange(source: any, propertyName: string): void;
     // @internal
@@ -2837,48 +2863,65 @@ export const shadow8 = "var(--shadow8)";
 // @public
 export const shadow8Brand = "var(--shadow8Brand)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSlider" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
     // @internal
     calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
     // (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handleMouseDown: (e: MouseEvent | null) => void;
-    handleThumbMouseDown: (event: MouseEvent | null) => void;
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
-    // @internal (undocumented)
     initialValue: string;
+    // @internal
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    max: number;
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max: string;
     // (undocumented)
     protected maxChanged(): void;
-    min: number;
+    min: string;
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
-    orientation: Orientation;
+    orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(): void;
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
     position: string;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    step: number | undefined;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step: string;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
@@ -2897,11 +2940,16 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     trackMinWidth: number;
     // @internal (undocumented)
     trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
     get valueAsNumber(): number;
     set valueAsNumber(next: number);
-    // @internal (undocumented)
-    valueChanged(previous: string, next: string): void;
-    valueTextFormatter: (value: string) => string | null;
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
 // @public (undocumented)
@@ -2911,9 +2959,9 @@ export interface SliderConfiguration {
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
-    max: number;
+    max?: string;
     // (undocumented)
-    min: number;
+    min?: string;
     // (undocumented)
     orientation?: SliderOrientation;
 }

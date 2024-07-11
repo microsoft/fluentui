@@ -209,6 +209,7 @@ export interface PositioningProps
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'fallbackPositions'
     | 'flipBoundary'
     | 'offset'
     | 'overflowBoundary'

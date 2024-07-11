@@ -2,6 +2,50 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 11 Jul 2024 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.42",
+      "version": "3.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1b6cc50ad1ea873abb613d60b720bb6e7842c4cf",
+            "comment": "feat: update slider to use ElementInternals for form association"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jul 2024 04:07:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.41",
+      "version": "3.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "05ad86d34fef4aa2e2f2eb76182222014f07706f",
+            "comment": "convert menu list and menu item to use element internals"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e52adca164f98f214aa51529b399dd53c330b531",
+            "comment": "fix: export drawer and drawer body from root package and package exports"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Jul 2024 04:08:13 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.40",
       "version": "3.0.0-beta.40",

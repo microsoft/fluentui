@@ -1,9 +1,8 @@
 export type AtomMotion = { keyframes: Keyframe[] } & KeyframeEffectOptions;
 
-export type PresenceMotion = {
-  enter: AtomMotion | AtomMotion[];
-  exit: AtomMotion | AtomMotion[];
-};
+export type PresenceDirection = 'enter' | 'exit';
+
+export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 /**
  * @internal
@@ -16,6 +15,7 @@ export type MotionParam = boolean | number | string;
 export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
   params: { element: HTMLElement } & MotionParams,
 ) => AtomMotion | AtomMotion[];
+
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
   params: { element: HTMLElement } & MotionParams,
 ) => PresenceMotion;

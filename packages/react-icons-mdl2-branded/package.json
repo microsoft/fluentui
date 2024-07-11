@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-mdl2-branded",
-  "version": "1.2.73",
+  "version": "1.2.74",
   "description": "Branded SVG icons from the MDL2 icon set",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,13 +26,13 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^8.2.23",
-    "@fluentui/react-icons-mdl2": "^1.3.71",
+    "@fluentui/react-icons-mdl2": "^1.3.72",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": "^8.119.0",
+    "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
