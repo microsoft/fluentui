@@ -11,7 +11,6 @@ import {
 } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -63,7 +62,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _points: IVerticalBarChartDataPoint[];
   let _barWidth: number;
   let _colors: string[];
-  let _classNames: IProcessedStyleSet<IVerticalBarChartStyles>;
   let _refArray: IRefArrayData[] = [];
   let _calloutId: string = useId('callout');
   let margins: IMargins;

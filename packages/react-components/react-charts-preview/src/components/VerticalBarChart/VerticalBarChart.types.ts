@@ -1,5 +1,4 @@
-import { string } from '@fluentui/react/lib/Styling';
-import { IRenderFunction, stringFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
