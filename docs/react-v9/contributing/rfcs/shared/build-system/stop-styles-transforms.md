@@ -157,7 +157,23 @@ As a result, the CSS rules will have a higher specificity and will override any 
 
 A [StackBlitz example](https://stackblitz.com/edit/vitejs-vite-d11ccd) demonstrates this workaround.
 
-## Proposal
+## Accepted solution
+
+### Option A: Stop pre-processing styles
+
+> Note: Applications already undertake this responsibility, as first and third-party packages do not include pre-processed styles.
+
+This option involves eliminating the pre-processing step from `@fluentui/react-components`, shifting the responsibility to the consuming application.
+
+This is the simplest option, albeit it necessitates adjustments in the consuming app and is not backward compatible. Consequently, apps not utilizing [AOT in Griffel](https://griffel.js.org/react/ahead-of-time-compilation/introduction) will experience noticeable slowdowns during initial loading.
+
+## Pros and Cons
+
+- 👍 (DX) drastically simplified Fluent build flow
+  👍 (DX/CI) significantly faster transpilation of Fluent libraries ([microsoft/griffel#534](https://github.com/microsoft/griffel/issues/534))
+- 👎 Not backward compatible
+
+### Rejected solutions
 
 ### Option B: Ship ESM output with unprocessed styles
 
@@ -186,23 +202,3 @@ module.exports = {
 - 👎 Harder to maintain; adds complexity to the build system
 - 👎 Another public API that is tightly coupled only for limited set of files including Griffel
 - 👎 Increased install size (NPM package will be larger)
-
-## Rejected solutions
-
-### Option A: Stop pre-processing styles
-
-_Rejection reason:_
-
-_- This option is not backward compatible and will cause performance issues for apps not utilizing AOT_
-
-> Note: Applications already undertake this responsibility, as first and third-party packages do not include pre-processed styles.
-
-This option involves eliminating the pre-processing step from `@fluentui/react-components`, shifting the responsibility to the consuming application.
-
-This is the simplest option, albeit it necessitates adjustments in the consuming app and is not backward compatible. Consequently, apps not utilizing [AOT in Griffel](https://griffel.js.org/react/ahead-of-time-compilation/introduction) will experience noticeable slowdowns during initial loading.
-
-## Pros and Cons
-
-- 👍 (DX) drastically simplified Fluent build flow
-  👍 (DX/CI) significantly faster transpilation of Fluent libraries ([microsoft/griffel#534](https://github.com/microsoft/griffel/issues/534))
-- 👎 Not backward compatible
