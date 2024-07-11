@@ -9,6 +9,7 @@ import {
   TableCellLayout,
 } from '@fluentui/react-components';
 import descriptionMd from './TableDescription.md';
+import bestPracticesMd from './TableBestPractices.md';
 
 export { Default } from './Default.stories';
 export { SizeSmall } from './SizeSmall.stories';
@@ -51,7 +52,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

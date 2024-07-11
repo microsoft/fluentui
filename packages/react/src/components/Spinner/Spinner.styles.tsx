@@ -58,8 +58,12 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
       {
         boxSizing: 'border-box',
         borderRadius: '50%',
-        border: '1.5px solid ' + palette.themeLight,
+        borderWidth: '1.5px',
+        borderStyle: 'solid',
         borderTopColor: palette.themePrimary,
+        borderRightColor: palette.themeLight,
+        borderBottomColor: palette.themeLight,
+        borderLeftColor: palette.themeLight,
         animationName: spinAnimation(),
         animationDuration: '1.3s',
         animationIterationCount: 'infinite',

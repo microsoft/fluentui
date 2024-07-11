@@ -15,6 +15,7 @@ import semver from 'semver';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
 import { PackageJson } from '../../types';
+import { getNpmScope } from '../../utils';
 
 type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
@@ -27,12 +28,18 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
 
   const graph = await createProjectGraphAsync();
 
+  const npmScope = getNpmScope(tree);
   const projects = getProjects(tree);
   const issues: ProjectIssues = {};
 
   projects.forEach(projectConfig => {
     if (normalizedOptions.verify) {
-      const foundIssues = getPackageJsonDependenciesIssues(tree, { allProjects: projects, projectConfig, graph });
+      const foundIssues = getPackageJsonDependenciesIssues(tree, {
+        allProjects: projects,
+        projectConfig,
+        graph,
+        npmScope,
+      });
 
       if (foundIssues) {
         issues[projectConfig.name!] = foundIssues;
@@ -41,7 +48,7 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
       return;
     }
 
-    normalizePackageJsonDependencies(tree, { allProjects: projects, projectConfig, graph });
+    normalizePackageJsonDependencies(tree, { allProjects: projects, projectConfig, graph, npmScope });
   });
 
   reportPackageJsonDependenciesIssues(issues);
@@ -55,9 +62,10 @@ function normalizePackageJsonDependencies(
     allProjects: ReturnType<typeof getProjects>;
     projectConfig: ProjectConfiguration;
     graph: ProjectGraph;
+    npmScope: string;
   },
 ) {
-  const { allProjects, graph, projectConfig } = options;
+  const { allProjects, graph, projectConfig, npmScope } = options;
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
 
@@ -74,18 +82,19 @@ function normalizePackageJsonDependencies(
 
   return tree;
 
-  function updateDepType(json: PackageJson, depType: 'dependencies' | 'devDependencies' | 'peerDependencies') {
-    const deps = json[depType];
-    if (!deps) {
-      return;
-    }
+  function updateDepType(json: PackageJson, depType: DepType) {
+    processDepType(json, depType, npmScope, (deps, npmPackageName, projectName) => {
+      if (isProjectDependencyAnWorkspaceProject(graph, projectName, projectDependencies)) {
+        const { updated } = getVersion(tree, {
+          allProjects,
+          deps,
+          npmPackageName,
+          projectName,
+        });
 
-    for (const packageName in deps) {
-      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies)) {
-        const { updated } = getVersion(tree, { allProjects, deps, packageName });
-        deps[packageName] = updated;
+        deps[npmPackageName] = updated;
       }
-    }
+    });
   }
 }
 
@@ -97,7 +106,7 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
   }
 
   issueEntries.forEach(([projectName, dependencyIssues]) => {
-    logger.log(chalk.bold(chalk.red(`${projectName} has following dependency version issues:`)));
+    logger.log(chalk.red(`[${chalk.bold(projectName)}] project has following dependency version issues:`));
     // eslint-disable-next-line guard-for-in
     for (const dep in dependencyIssues) {
       logger.log(chalk.red(`  - ${dep}@${dependencyIssues[dep]}`));
@@ -117,12 +126,22 @@ function getVersion(
   tree: Tree,
   options: {
     allProjects: ReturnType<typeof getProjects>;
+    /**
+     * dependencies from package.json -> including npm scope
+     */
     deps: Record<string, string>;
-    packageName: string;
+    /**
+     * name from package.json - must contain npm scope
+     */
+    npmPackageName: string;
+    /**
+     * project name - doesn't contain npm scope
+     */
+    projectName: string;
   },
 ) {
-  const { allProjects, deps, packageName } = options;
-  const current = deps[packageName];
+  const { allProjects, deps, npmPackageName, projectName } = options;
+  const current = deps[npmPackageName];
   const updated = getUpdatedVersion(current);
 
   const match = current === updated;
@@ -135,9 +154,9 @@ function getVersion(
     }
 
     if (NORMALIZED_PRERELEASE_RANGE_VERSION_REGEXP.test(currentVersion)) {
-      const prereleasePkg = allProjects.get(packageName);
+      const prereleasePkg = allProjects.get(projectName);
       if (!prereleasePkg) {
-        throw new Error(`Package ${packageName} not found in the workspace`);
+        throw new Error(`Package ${projectName} not found in the workspace`);
       }
       const prereleasePkgJson = readJson<PackageJson>(tree, joinPathFragments(prereleasePkg.root, 'package.json'));
       const isPrerelease = semver.prerelease(prereleasePkgJson.version) !== null;
@@ -161,13 +180,15 @@ function getPackageJsonDependenciesIssues(
     allProjects: ReturnType<typeof getProjects>;
     projectConfig: ProjectConfiguration;
     graph: ProjectGraph;
+    npmScope: string;
   },
 ): Record<string, string> | null {
-  const { allProjects, projectConfig, graph } = options;
+  const { allProjects, projectConfig, graph, npmScope } = options;
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJson = readJson<PackageJson>(tree, joinPathFragments(projectConfig.root, 'package.json'));
 
   let issues: Record<string, string> | null = null;
+
   checkDepType(packageJson, 'devDependencies');
 
   if (projectConfig.projectType === 'application') {
@@ -177,23 +198,51 @@ function getPackageJsonDependenciesIssues(
 
   return issues;
 
-  function checkDepType(json: PackageJson, depType: 'dependencies' | 'devDependencies' | 'peerDependencies') {
-    const deps = json[depType];
-    if (!deps) {
-      return null;
-    }
+  function checkDepType(json: PackageJson, depType: DepType) {
+    processDepType(json, depType, npmScope, (deps, npmPackageName, projectName) => {
+      const { match } = getVersion(tree, {
+        allProjects,
+        deps,
+        npmPackageName,
+        projectName,
+      });
 
-    // eslint-disable-next-line guard-for-in
-    for (const packageName in deps) {
-      const { match } = getVersion(tree, { allProjects, deps, packageName });
-
-      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies) && !match) {
+      if (isProjectDependencyAnWorkspaceProject(graph, projectName, projectDependencies) && !match) {
         issues = issues ?? {};
-        issues[packageName] = deps[packageName];
+        issues[npmPackageName] = deps[npmPackageName];
       }
+    });
+  }
+}
+
+type DepType = 'dependencies' | 'devDependencies' | 'peerDependencies';
+type Callback = (
+  /** package.json dependencies - names include npm scope */
+  deps: Record<string, string>,
+  /** npm valid package name - can include npm scope */
+  npmPackageName: string,
+  /** workspace project name - wont include npm scope */
+  projectName: string,
+) => void;
+
+function processDepType(json: PackageJson, depType: DepType, npmScope: string, callback: Callback) {
+  const deps = json[depType];
+
+  if (!deps) {
+    return;
+  }
+
+  const npmScopeToCheck = `@${npmScope}/`;
+
+  // eslint-disable-next-line guard-for-in
+  for (const npmPackageName in deps) {
+    if (!npmPackageName.startsWith(npmScopeToCheck)) {
+      continue;
     }
 
-    return issues;
+    const projectName = npmPackageName.replace(npmScopeToCheck, '');
+
+    callback(deps, npmPackageName, projectName);
   }
 }
 

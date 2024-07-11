@@ -12,8 +12,9 @@ import {
   NavSubItem,
   NavSubItemGroup,
   NavSize,
+  NavDivider,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -86,11 +87,14 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const labelId = useId('type-label');
 
   const [size, setNavSize] = React.useState<NavSize>('small');
+
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
         <NavDrawerHeader>
-          <Hamburger />
+          <Tooltip content="Navigation" relationship="label">
+            <Hamburger />
+          </Tooltip>
         </NavDrawerHeader>
         <NavDrawerBody>
           <NavSectionHeader>Home</NavSectionHeader>
@@ -144,7 +148,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Learning</NavSectionHeader>
+          <NavDivider />
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
           </NavItem>
@@ -159,8 +163,6 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-
-          <NavSectionHeader>Analytics</NavSectionHeader>
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>

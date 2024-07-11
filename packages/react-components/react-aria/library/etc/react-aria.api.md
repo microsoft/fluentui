@@ -37,17 +37,23 @@ export interface ActiveDescendantImperativeRef {
     first: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     focus: (id: string) => void;
-    focusLastActive: () => boolean | undefined;
+    // @deprecated (undocumented)
+    focusLastActive: () => void;
     // (undocumented)
     hideAttributes: () => void;
+    // (undocumented)
+    hideFocusVisibleAttributes: () => void;
     // (undocumented)
     last: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     next: (options?: IteratorOptions) => string | undefined;
     // (undocumented)
     prev: (options?: IteratorOptions) => string | undefined;
+    scrollActiveIntoView: () => void;
     // (undocumented)
     showAttributes: () => void;
+    // (undocumented)
+    showFocusVisibleAttributes: () => void;
 }
 
 // @public (undocumented)

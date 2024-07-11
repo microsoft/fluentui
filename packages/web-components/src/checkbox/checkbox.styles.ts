@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { checkedState, circularState, largeState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -23,12 +24,6 @@ import {
 } from '../theme/design-tokens.js';
 import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
-
-/**
- * Selector for the `checked` state.
- * @public
- */
-const checkedState = css.partial`:is([state--checked], :state(checked))`;
 
 /**
  * Selector for the `indeterminate` state.
@@ -133,17 +128,17 @@ export const styles = css`
     inset: 0;
   }
 
-  :host([size='large']) {
+  :host(${largeState}) {
     --size: 20px;
   }
 
-  :host([size='large']) ::slotted([slot='checked-indicator']),
-  :host([size='large']) .checked-indicator {
+  :host(${largeState}) ::slotted([slot='checked-indicator']),
+  :host(${largeState}) .checked-indicator {
     width: 16px;
   }
 
-  :host([shape='circular']),
-  :host([shape='circular']) .indeterminate-indicator {
+  :host(${circularState}),
+  :host(${circularState}) .indeterminate-indicator {
     border-radius: ${borderRadiusCircular};
   }
 

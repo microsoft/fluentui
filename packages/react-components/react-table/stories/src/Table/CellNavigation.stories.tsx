@@ -72,7 +72,12 @@ export const CellNavigation = () => {
   const keyboardNavAttr = useArrowNavigationGroup({ axis: 'grid' });
 
   return (
-    <Table {...keyboardNavAttr} role="grid" aria-label="Table with grid keyboard navigation">
+    <Table
+      {...keyboardNavAttr}
+      role="grid"
+      aria-label="Table with grid keyboard navigation"
+      style={{ minWidth: '600px' }}
+    >
       <TableHeader>
         <TableRow>
           {columns.map(column => (

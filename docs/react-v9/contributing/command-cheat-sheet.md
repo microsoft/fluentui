@@ -1,5 +1,9 @@
 This is a list of helpful commands.
 
+> [!TIP]
+>
+> `<project-name>` is project name without `@npmScope`
+
 ```shell
 yarn # installs everything. It fixes many things.
 yarn buildto package-name # Does a yarn build scoped to a specific package and its dependencies for faster speeds vs building the whole repo.
@@ -12,9 +16,9 @@ yarn build # generates and relinks all packages and temporary files, this can be
 yarn start # runs a package. You can select the package of choice.
 yarn update-snapshots # updates snapshot tests
 yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
-yarn nx run <package-name>:generate-api # updates API files
-yarn nx run <package-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
-yarn nx run @fluentui/<package-name>:type-check # quickly runs type checks and associated linting
+yarn nx run <project-name>:generate-api # updates API files
+yarn nx run <project-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
+yarn nx run <project-name>:type-check # quickly runs type checks and associated linting
 yarn lage build --to react # build v8 so intellisense works.
 ```
 

@@ -20,6 +20,7 @@ const useRootStyles = makeStyles({
     padding: `0 0 ${tokens.strokeWidthThick} 0`,
     margin: '0',
     borderRadius: tokens.borderRadiusMedium,
+    verticalAlign: 'top',
   },
 
   disabled: {
@@ -222,6 +223,8 @@ const useTextareaResizeStyles = makeStyles({
  * Apply styling to the Textarea slots based on the state
  */
 export const useTextareaStyles_unstable = (state: TextareaState): TextareaState => {
+  'use no memo';
+
   const { size, appearance, resize } = state;
   const disabled = state.textarea.disabled;
   const invalid = `${state.textarea['aria-invalid']}` === 'true';

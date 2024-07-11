@@ -67,6 +67,7 @@ const columns = [
   { columnKey: 'file', label: 'File' },
   { columnKey: 'author', label: 'Author' },
   { columnKey: 'lastUpdated', label: 'Last updated' },
+  { columnKey: 'lastUpdate', label: 'Last update' },
   { columnKey: 'actions', label: 'Actions' },
 ];
 
@@ -75,13 +76,17 @@ export const FocusableElementsInCells = () => {
   const focusableGroupAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   return (
-    <Table {...keyboardNavAttr} role="grid" aria-label="Table with grid keyboard navigation">
+    <Table
+      {...keyboardNavAttr}
+      role="grid"
+      aria-label="Table with grid keyboard navigation"
+      style={{ minWidth: '620px' }}
+    >
       <TableHeader>
         <TableRow>
           {columns.map(column => (
             <TableHeaderCell key={column.columnKey}>{column.label}</TableHeaderCell>
           ))}
-          <TableHeaderCell />
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -105,6 +110,9 @@ export const FocusableElementsInCells = () => {
             </TableCell>
             <TableCell tabIndex={0} role="gridcell">
               {item.lastUpdated.label}
+            </TableCell>
+            <TableCell tabIndex={0} role="gridcell">
+              <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>
             </TableCell>
             <TableCell role="gridcell" tabIndex={0} {...focusableGroupAttr}>
               <TableCellLayout>

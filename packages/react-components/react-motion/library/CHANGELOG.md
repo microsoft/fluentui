@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 17 Jun 2024 07:34:16 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Jul 2024 15:14:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.2.2)
+
+Thu, 04 Jul 2024 15:14:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.2.1..@fluentui/react-motion_v9.2.2)
+
+### Patches
+
+- fix: Check if DOM is available before using Element global to avoid breaks in build. ([PR #31907](https://github.com/microsoft/fluentui/pull/31907) by estebanmu@microsoft.com)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.2.1)
+
+Mon, 01 Jul 2024 20:30:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.2.0..@fluentui/react-motion_v9.2.1)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- fix: improve Jest compat ([PR #31715](https://github.com/microsoft/fluentui/pull/31715) by olfedias@microsoft.com)
+- chore: adds 'use no memo' directive ([PR #31787](https://github.com/microsoft/fluentui/pull/31787) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
 
 ## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.2.0)
 

@@ -5,7 +5,15 @@ import { ListboxContext, useListboxContext_unstable } from './ListboxContext';
 
 export function useListboxContextValues(state: ListboxState): ListboxContextValues {
   const hasListboxContext = useHasParentContext(ListboxContext);
-  const { multiselect, registerOption, selectedOptions, selectOption, activeDescendantController } = state;
+  const {
+    getOptionById,
+    getOptionsMatchingValue,
+    multiselect,
+    registerOption,
+    selectedOptions,
+    selectOption,
+    activeDescendantController,
+  } = state;
 
   // get register/unregister functions from parent combobox context
   const parentRegisterOption = useListboxContext_unstable(ctx => ctx.registerOption);
@@ -17,6 +25,8 @@ export function useListboxContextValues(state: ListboxState): ListboxContextValu
   const listbox = {
     activeOption: undefined,
     focusVisible: false,
+    getOptionById,
+    getOptionsMatchingValue,
     multiselect,
     registerOption: registerOptionValue,
     selectedOptions,

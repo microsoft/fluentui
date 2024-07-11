@@ -1,7 +1,4 @@
-<details>
-<summary>
- Accessibility
-</summary>
+## Accessibility
 
 ### Do
 
@@ -17,5 +14,3 @@
 - **Don’t place the Dropdown button on a surface which doesn’t have a sufficient contrast.** The colors adjacent to the input should have a sufficient contrast. Particularly, the color of input with filled darker and lighter styles needs to provide greater than 3 to 1 contrast ratio against the immediate surrounding color to pass accessibility requirements. When using underline or outline styles, ensure the color of bottom border stroke has a sufficient contrast of greater than 3 to 1 against the immediate surrounding color.
 
 Read the [Dropdown accessibility spec](./?path=/docs/concepts-developer-accessibility-components-dropdown--page) for more detailed information, as well as full descriptions of semantics and keyboard behavior.
-
-</details>

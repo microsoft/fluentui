@@ -4,7 +4,8 @@
 
 ```ts
 
-import type { Constructable } from '@microsoft/fast-element';
+/// <reference types="web" />
+
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -21,12 +22,12 @@ import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTElement {
-    // (undocumented)
+    // @internal (undocumented)
     protected accordionItems: Element[];
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
-    // @internal (undocumented)
+    // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
     slottedAccordionItems: HTMLElement[];
@@ -54,16 +55,21 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public (undocumented)
 export class AccordionItem extends FASTElement {
     block: boolean;
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
+    blockChanged(prev: boolean, next: boolean): void;
     disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandIconPosition?: AccordionItemExpandIconPosition;
+    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
+    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
 // Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
@@ -75,16 +81,16 @@ export interface AccordionItem extends StartEnd {
 // @public (undocumented)
 export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
-// Warning: (ae-missing-release-tag) "AccordionItemExpandIconPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public
-export const AccordionItemExpandIconPosition: {
+export const AccordionItemMarkerPosition: {
     readonly start: "start";
     readonly end: "end";
 };
 
 // @public
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
 // Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
 //
@@ -133,9 +139,13 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // @public (undocumented)
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -147,7 +157,6 @@ export const AnchorButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -374,9 +383,15 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -468,6 +483,7 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 export class Button extends FASTElement {
     constructor();
     appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -479,7 +495,7 @@ export class Button extends FASTElement {
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     formAction?: string;
     static readonly formAssociated = true;
@@ -491,13 +507,16 @@ export class Button extends FASTElement {
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
     iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
     shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -513,7 +532,6 @@ export const ButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -574,12 +592,22 @@ export const ButtonType: {
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
 // Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-// Warning: (ae-missing-release-tag) "Checkbox" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Checkbox extends BaseCheckbox {
-    shape: CheckboxShape;
+    constructor();
+    indeterminate?: boolean;
+    // @internal
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected setAriaChecked(value?: boolean): void;
+    shape?: CheckboxShape;
+    // @internal
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    // @internal
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    toggleChecked(force?: boolean): void;
 }
 
 // @public
@@ -1668,7 +1696,6 @@ export const CompoundButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1712,19 +1739,26 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     overflowCount: number;
     // (undocumented)
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -1875,14 +1909,17 @@ export function display(displayValue: CSSDisplayPropertyValue): string;
 export class Divider extends FASTElement {
     // (undocumented)
     alignContent?: DividerAlignContent;
+    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
+    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
     connectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     // (undocumented)
     inset?: boolean;
+    insetChanged(prev: boolean, next: boolean): void;
     orientation?: DividerOrientation;
     // @internal
     orientationChanged(previous: string | null, next: string | null): void;
@@ -1942,6 +1979,89 @@ export const DividerStyles: ElementStyles;
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class DrawerBody extends FASTElement {
+}
+
+// @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
 // @public
 export const durationFast = "var(--durationFast)";
 
@@ -1968,8 +2088,9 @@ export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
 export class Field extends FASTElement {
+    constructor();
     // @internal
-    changeHandler(e: Event): void;
+    changeHandler(e: Event): boolean | void;
     // @internal
     clickHandler(e: MouseEvent): boolean | void;
     // @internal
@@ -1979,15 +2100,21 @@ export class Field extends FASTElement {
     // @internal
     focusoutHandler(e: FocusEvent): boolean | void;
     input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
     // @internal
     invalidHandler(e: Event): boolean | void;
     labelPosition: FieldLabelPosition;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
     // @internal
     messageSlot: Element[];
     // @internal
     messageSlotChanged(prev: Element[], next: Element[]): void;
     // @internal
     setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
     // @internal
     slottedInputs: SlottableInput[];
     // @internal
@@ -2082,10 +2209,17 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2125,9 +2259,14 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2200,7 +2339,9 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
     inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2253,18 +2394,14 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    cleanup?: () => void;
-    closeMenu: () => void;
+    closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
     focusMenuList(): void;
     focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -2272,16 +2409,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
     setComponent(): void;
-    // @internal
-    protected setPositioning(): void;
-    // @internal
-    protected setPositioningTask: () => void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
     toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
 // @public
@@ -2293,7 +2426,6 @@ export const MenuButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -2335,15 +2467,13 @@ export const MenuDefinition: FASTElementDefinition<typeof Menu>;
 // @public
 export class MenuItem extends FASTElement {
     checked: boolean;
+    protected checkedChanged(prev: boolean, next: boolean): void;
     // (undocumented)
-    protected checkedChanged(oldValue: boolean, newValue: boolean): void;
-    cleanup: () => void;
+    connectedCallback(): void;
     disabled: boolean;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    expanded: boolean;
-    // (undocumented)
-    protected expandedChanged(prev: boolean | undefined, next: boolean): void;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2352,10 +2482,11 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
-    // @internal (undocumented)
-    get hasSubmenu(): boolean;
     hidden: boolean;
     role: MenuItemRole;
+    roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
+    // @internal
+    setSubmenuPosition: () => void;
     // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
@@ -2363,10 +2494,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    submenuContainer: HTMLDivElement;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    updateSubmenu(): void;
+    toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
 // @internal
@@ -2383,9 +2511,8 @@ export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-    checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-    expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-    radioIndicator?: StaticallyComposableHTML<MenuItem>;
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 // @public
@@ -2408,13 +2535,14 @@ export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
+    constructor();
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
@@ -2467,8 +2595,11 @@ export class ProgressBar extends FASTElement {
     // @internal
     get percentComplete(): number;
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
     validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
@@ -2514,22 +2645,21 @@ export const ProgressBarValidationState: {
 // @public
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Radio extends FormAssociatedRadio implements RadioControl {
+export class Radio extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
-    // @internal (undocumented)
-    defaultCheckedChanged(): void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @beta
-    keypressHandler(e: KeyboardEvent): boolean | void;
-    name: string;
+    // @internal @override
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
+    setFormValue(): void;
+    // @internal @override
+    setValidity(): void;
+    // @override
+    toggleChecked(force?: boolean): void;
 }
 
 // @public (undocumented)
@@ -2540,34 +2670,62 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends FASTElement {
-    // (undocumented)
-    childItems: HTMLElement[];
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void | boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal (undocumented)
-    focusOutHandler: (e: FocusEvent) => boolean | void;
-    // @internal (undocumented)
-    handleDisabledClick: (e: MouseEvent) => void | boolean;
+    constructor();
+    changeHandler(e: Event): boolean | void;
     // @internal
-    keydownHandler: (e: KeyboardEvent) => boolean | void;
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
     name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
     // (undocumented)
-    protected nameChanged(): void;
-    orientation: RadioGroupOrientation;
-    readOnly: boolean;
-    // @internal (undocumented)
-    slottedRadioButtons: HTMLElement[];
-    // (undocumented)
-    protected slottedRadioButtonsChanged(oldValue: unknown, newValue: HTMLElement[]): void;
-    stacked: boolean;
-    value: string;
-    // (undocumented)
-    protected valueChanged(): void;
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -2601,10 +2759,56 @@ export type RadioOptions = {
 // @public
 export const RadioStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -2659,48 +2863,65 @@ export const shadow8 = "var(--shadow8)";
 // @public
 export const shadow8Brand = "var(--shadow8Brand)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSlider" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
     // @internal
     calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
     // (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handleMouseDown: (e: MouseEvent | null) => void;
-    handleThumbMouseDown: (event: MouseEvent | null) => void;
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
-    // @internal (undocumented)
     initialValue: string;
+    // @internal
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    max: number;
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max: string;
     // (undocumented)
     protected maxChanged(): void;
-    min: number;
+    min: string;
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
-    orientation: Orientation;
+    orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(): void;
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
     position: string;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    step: number | undefined;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step: string;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
@@ -2719,11 +2940,16 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     trackMinWidth: number;
     // @internal (undocumented)
     trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
     get valueAsNumber(): number;
     set valueAsNumber(next: number);
-    // @internal (undocumented)
-    valueChanged(previous: string, next: string): void;
-    valueTextFormatter: (value: string) => string | null;
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
 // @public (undocumented)
@@ -2733,9 +2959,9 @@ export interface SliderConfiguration {
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
-    max: number;
+    max?: string;
     // (undocumented)
-    min: number;
+    min?: string;
     // (undocumented)
     orientation?: SliderOrientation;
 }
@@ -2788,6 +3014,8 @@ export type SlottableInput = HTMLElement & ElementInternals & {
     required: boolean;
     disabled: boolean;
     readOnly: boolean;
+    checked?: boolean;
+    value?: string;
 };
 
 // @public
@@ -2860,9 +3088,11 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 export class Spinner extends FASTElement {
     constructor();
     appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -2922,6 +3152,7 @@ export { styles as MenuButtonStyles }
 //
 // @public (undocumented)
 export class Switch extends BaseCheckbox {
+    constructor();
 }
 
 // @public
@@ -3081,15 +3312,27 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -3123,6 +3366,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends FASTElement {
     appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     autocomplete?: string;
     autofocus: boolean;
     // @internal
@@ -3138,6 +3382,7 @@ export class TextInput extends FASTElement {
     // @internal
     controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
     // @internal
     defaultSlottedNodes: Node[];
     // @internal
@@ -3301,7 +3546,6 @@ export const ToggleButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 

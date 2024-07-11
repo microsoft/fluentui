@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Fri, 14 Jun 2024 15:25:28 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.161](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.7.161)
+
+Tue, 09 Jul 2024 07:36:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.7.160..@fluentui/react-date-time_v8.7.161)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.119.1 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+
+## [8.7.160](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.7.160)
+
+Wed, 26 Jun 2024 07:31:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.7.159..@fluentui/react-date-time_v8.7.160)
+
+### Patches
+
+- Bump @fluentui/react to v8.119.0 ([commit](https://github.com/microsoft/fluentui/commit/a1da85c5c9adfa4818b6aa42a08ee269e70c2eea) by beachball)
+
+## [8.7.159](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.7.159)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.7.158..@fluentui/react-date-time_v8.7.159)
+
+### Patches
+
+- Bump @fluentui/react to v8.118.10 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+
+## [8.7.158](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.7.158)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.7.157..@fluentui/react-date-time_v8.7.158)
+
+### Patches
+
+- Bump @fluentui/react to v8.118.9 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
 
 ## [8.7.157](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.7.157)
 

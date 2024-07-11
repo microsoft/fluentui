@@ -25,6 +25,9 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone27"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -917,6 +920,9 @@ exports[`Sankey Chart snapShot testing number formatting renders Sankey correctl
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone21"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -1646,6 +1652,9 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly 1`] = `
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"
@@ -3083,6 +3092,9 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly on providing nod
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -4516,6 +4528,9 @@ exports[`Sankey Chart snapShot testing renders Sankey correctly with supplied re
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone10"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -4763,6 +4778,9 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone27"
     data-tabster="{\\"uncontrolled\\": {}}"
@@ -5496,6 +5514,9 @@ exports[`SankeyChart - Min Height of Node Test renders Sankey correctly on provi
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone17"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -5954,6 +5975,9 @@ exports[`SankeyChart - mouse events Should render callout correctly on mouseover
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"
@@ -7446,6 +7470,9 @@ exports[`SankeyChart - mouse events Should render correctly on link mouseover 1`
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"
@@ -8949,6 +8976,9 @@ exports[`SankeyChart - mouse events Should render correctly on node mouseover 1`
         &:focus {
           outline: none;
         }
+        {
+          overflow: auto;
+        }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
@@ -10443,6 +10473,9 @@ exports[`SankeyChart - mouse events Should render tooltip correctly on mouseover
         ms-FocusZone
         &:focus {
           outline: none;
+        }
+        {
+          overflow: auto;
         }
     data-focuszone-id="FocusZone41"
     data-tabster="{\\"uncontrolled\\": {}}"

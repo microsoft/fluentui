@@ -163,6 +163,7 @@ export const SingleSelectControlled = () => {
       selectionMode="single"
       selectedItems={selectedRows}
       onSelectionChange={onSelectionChange}
+      style={{ minWidth: '550px' }}
     >
       <DataGridHeader>
         <DataGridRow>

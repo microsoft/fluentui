@@ -22,24 +22,25 @@ export default async function (host: Tree, schema: MigrateFixedVersionsGenerator
 
 function runMigrationOnProject(host: Tree, schema: ValidatedSchema, userLog: UserLog) {
   const options = normalizeOptions(host, schema);
+  const npmPrefix = `@${options.workspaceConfig.npmScope}/`;
   const packageJsonPath = options.paths.packageJson;
 
   updateJson(host, packageJsonPath, (packageJson: PackageJson) => {
     if (packageJson.dependencies) {
-      Object.keys(packageJson.dependencies).forEach(dependency => {
-        if (isPackageConverged(dependency, host) && packageJson.dependencies) {
+      Object.keys(packageJson.dependencies).forEach(npmDependencyName => {
+        if (isPackageConverged(npmDependencyName.replace(npmPrefix, ''), host) && packageJson.dependencies) {
           userLog.push({
             type: 'info',
             message: `Updating package ${schema.name}`,
           });
-          packageJson.dependencies[dependency] = packageJson.dependencies[dependency].replace('^', '');
+          packageJson.dependencies[npmDependencyName] = packageJson.dependencies[npmDependencyName].replace('^', '');
         }
       });
     }
 
     if (packageJson.devDependencies) {
       Object.keys(packageJson.devDependencies).forEach(dependency => {
-        if (isPackageConverged(dependency, host) && packageJson.devDependencies) {
+        if (isPackageConverged(dependency.replace(npmPrefix, ''), host) && packageJson.devDependencies) {
           userLog.push({
             type: 'info',
             message: `Updating package ${schema.name}`,
@@ -92,11 +93,6 @@ function normalizeOptions(host: Tree, options: ValidatedSchema) {
     ...defaults,
     ...options,
     ...project,
-
-    /**
-     * package name without npmScope (@scopeName)
-     */
-    normalizedPkgName: options.name.replace(`@${project.workspaceConfig.npmScope}/`, ''),
   };
 }
 

@@ -49,7 +49,7 @@ export const EmptySwatchExample = () => {
     // "value" should be unique as it's used as a key and for selection
     const newValue = `custom-${newColor} [${items.length - ITEMS_LIMIT}]`;
 
-    setItems([...items, { color: newColor, value: newValue, 'aria-label': newColor }]);
+    setItems([...items, { color: newColor, value: newValue, 'aria-label': `swatch-${newColor}` }]);
   };
 
   return (
@@ -60,10 +60,16 @@ export const EmptySwatchExample = () => {
         onSelectionChange={handleSelect}
       >
         {items.map(item => (
-          <ColorSwatch key={item.value} {...item} />
+          <ColorSwatch key={item.value} aria-live="polite" aria-controls="add-new-color" {...item} />
         ))}
         {emptyItems.map((_, index) => (
-          <EmptySwatch disabled key={index} aria-label={`empty-swatch-${index}`} />
+          <EmptySwatch
+            disabled
+            key={index}
+            aria-label={`empty-swatch-${index}`}
+            aria-live="polite"
+            aria-controls="reset-example"
+          />
         ))}
       </SwatchPicker>
 
@@ -78,6 +84,8 @@ export const EmptySwatchExample = () => {
         name="color-select"
       />
       <Button
+        id="add-new-color"
+        aria-label="Add new color"
         className={styles.button}
         appearance="primary"
         disabled={items.length >= ITEMS_LIMIT}
@@ -85,7 +93,12 @@ export const EmptySwatchExample = () => {
       >
         Add new color
       </Button>
-      <Button className={styles.button} onClick={() => setItems(defaultItems)}>
+      <Button
+        id="reset-example"
+        aria-label="Reset example"
+        className={styles.button}
+        onClick={() => setItems(defaultItems)}
+      >
         Reset example
       </Button>
     </>

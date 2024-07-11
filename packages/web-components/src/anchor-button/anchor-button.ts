@@ -3,6 +3,7 @@ import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
+import { toggleState } from '../utils/element-internals.js';
 import {
   AnchorAttributes,
   type AnchorButtonAppearance,
@@ -31,11 +32,17 @@ export type AnchorOptions = StartEndOptions<AnchorButton>;
  */
 export class BaseAnchor extends FASTElement {
   /**
+   * Holds a reference to the platform to manage ctrl+click on Windows and cmd+click on Mac
+   * @internal
+   */
+  private readonly isMac = navigator.userAgent.includes('Mac');
+
+  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
-  protected elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
 
   /**
    * The proxy anchor element
@@ -176,26 +183,41 @@ export class BaseAnchor extends FASTElement {
    * @param e - The event object
    * @internal
    */
-  public clickHandler(): boolean {
-    this.internalProxyAnchor.click();
+  public clickHandler(e: PointerEvent): boolean {
+    if (this.href) {
+      const newTab = !this.isMac ? e.ctrlKey : e.metaKey;
+      this.handleNavigation(newTab);
+    }
 
     return true;
   }
 
   /**
-   * Handles keypress events for the anchor.
+   * Handles keydown events for the anchor.
    *
    * @param e - the keyboard event
    * @returns - the return value of the click handler
    * @public
    */
-  public keypressHandler(e: KeyboardEvent): boolean | void {
-    if (e.key === keyEnter) {
-      this.internalProxyAnchor.click();
-      return;
+  public keydownHandler(e: KeyboardEvent): boolean | void {
+    if (this.href) {
+      if (e.key === keyEnter) {
+        const newTab = !this.isMac ? e.ctrlKey : e.metaKey || e.ctrlKey;
+        this.handleNavigation(newTab);
+        return;
+      }
     }
 
     return true;
+  }
+
+  /**
+   * Handles navigation based on input
+   * If the metaKey is pressed, opens the href in a new window, if false, uses the click on the proxy
+   * @internal
+   */
+  private handleNavigation(newTab: boolean): void {
+    newTab ? window.open(this.href, '_blank') : this.internalProxyAnchor.click();
   }
 
   /**
@@ -214,7 +236,8 @@ export class BaseAnchor extends FASTElement {
 
   private createProxyElement(): HTMLAnchorElement {
     const proxy = this.internalProxyAnchor ?? document.createElement('a');
-    proxy.hidden = true;
+    proxy.ariaHidden = 'true';
+    proxy.tabIndex = -1;
     return proxy;
   }
 }
@@ -231,6 +254,20 @@ export class AnchorButton extends BaseAnchor {
   public appearance?: AnchorButtonAppearance | undefined;
 
   /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The shape the anchor button should have.
    *
    * @public
@@ -239,6 +276,20 @@ export class AnchorButton extends BaseAnchor {
    */
   @attr
   public shape?: AnchorButtonShape | undefined;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * The size the anchor button should have.
@@ -251,6 +302,20 @@ export class AnchorButton extends BaseAnchor {
   public size?: AnchorButtonSize;
 
   /**
+   * Handles changes to size attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
    * The anchor button has an icon only, no text content
    *
    * @public
@@ -259,6 +324,15 @@ export class AnchorButton extends BaseAnchor {
    */
   @attr({ attribute: 'icon-only', mode: 'boolean' })
   public iconOnly: boolean = false;
+
+  /**
+   * Handles changes to icon only custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public iconOnlyChanged(prev: boolean, next: boolean) {
+    toggleState(this.elementInternals, 'icon', !!next);
+  }
 }
 
 /**

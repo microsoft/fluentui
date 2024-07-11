@@ -12,11 +12,13 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { subtleState } from '../styles/states/index.js';
 
 export const styles = css`
   ${display('inline')}
 
   :host {
+    position: relative;
     box-sizing: border-box;
     background-color: transparent;
     color: ${colorBrandForegroundLink};
@@ -48,21 +50,21 @@ export const styles = css`
       color: ${colorBrandForegroundLinkPressed};
     }
 
-    :host([appearance='subtle']:hover) {
+    :host(${subtleState}:hover) {
       color: ${colorNeutralForeground2LinkHover};
     }
 
-    :host([appearance='subtle']:active) {
+    :host(${subtleState}:active) {
       color: ${colorNeutralForeground2LinkPressed};
     }
   }
 
-  :host([appearance='subtle']) {
+  :host(${subtleState}) {
     color: ${colorNeutralForeground2Link};
   }
 
   :host-context(:is(h1, h2, h3, h4, h5, h6, p, fluent-text)),
-  :host([inline]) {
+  :host(:is([state--inline], :state(inline))) {
     font: inherit;
     text-decoration: underline;
   }
@@ -70,6 +72,11 @@ export const styles = css`
   :host(:not([href])) {
     color: inherit;
     text-decoration: none;
+  }
+
+  ::slotted(a) {
+    position: absolute;
+    inset: 0;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

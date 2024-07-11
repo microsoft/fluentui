@@ -158,6 +158,7 @@ export const SubtleSelection = () => {
       selectionMode="multiselect"
       subtleSelection
       defaultSelectedItems={defaultSelectedItems}
+      style={{ minWidth: '550px' }}
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ checkboxIndicator: { 'aria-label': 'Select all rows' } }}>

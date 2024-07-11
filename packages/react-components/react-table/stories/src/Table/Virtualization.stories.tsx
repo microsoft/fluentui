@@ -200,7 +200,7 @@ export const Virtualization = () => {
   );
 
   return (
-    <Table noNativeElements aria-label="Table with selection" aria-rowcount={rows.length}>
+    <Table noNativeElements aria-label="Table with selection" aria-rowcount={rows.length} style={{ minWidth: '650px' }}>
       <TableHeader>
         <TableRow aria-rowindex={1}>
           <TableSelectionCell

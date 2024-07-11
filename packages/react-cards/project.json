@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/react-cards",
+  "name": "react-cards",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "tags": ["v8"]
 }

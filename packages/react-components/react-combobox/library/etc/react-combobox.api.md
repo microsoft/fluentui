@@ -35,6 +35,7 @@ export type ComboboxBaseProps = SelectionProps & HighlightedOptionProps & Pick<P
     clearable?: boolean;
     defaultOpen?: boolean;
     defaultValue?: string;
+    disableAutoFocus?: boolean;
     inlinePopup?: boolean;
     onOpenChange?: (e: ComboboxBaseOpenEvents, data: ComboboxBaseOpenChangeData) => void;
     open?: boolean;
@@ -144,7 +145,7 @@ export const Listbox: ForwardRefComponent<ListboxProps>;
 export const listboxClassNames: SlotClassNames<ListboxSlots>;
 
 // @public
-export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
+export type ListboxContextValue = Pick<ListboxState, 'activeOption' | 'focusVisible' | 'getOptionById' | 'getOptionsMatchingValue' | 'multiselect' | 'registerOption' | 'selectedOptions' | 'selectOption' | 'setActiveOption'> & {
     onOptionClick: (e: React_2.MouseEvent<HTMLElement>) => void;
     onActiveDescendantChange?: (e: ActiveDescendantChangeEvent) => void;
 };
@@ -156,7 +157,9 @@ export type ListboxContextValues = {
 };
 
 // @public
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps & {
+    disableAutoFocus?: boolean;
+};
 
 // @public (undocumented)
 export const ListboxProvider: React_2.Provider<ListboxContextValue | undefined> & React_2.FC<React_2.ProviderProps<ListboxContextValue | undefined>>;
@@ -171,6 +174,7 @@ export type ListboxState = ComponentState<ListboxSlots> & OptionCollectionState 
     activeOption?: OptionValue;
     focusVisible: boolean;
     setActiveOption(option?: OptionValue): void;
+    standalone: boolean;
     selectOption(event: SelectionEvents, option: OptionValue): void;
     activeDescendantController: ActiveDescendantImperativeRef;
     onActiveDescendantChange?: (event: ActiveDescendantChangeEvent) => void;

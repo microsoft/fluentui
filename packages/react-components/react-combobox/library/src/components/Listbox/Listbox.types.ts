@@ -16,7 +16,15 @@ export type ListboxSlots = {
 /**
  * Listbox Props
  */
-export type ListboxProps = ComponentProps<ListboxSlots> & SelectionProps;
+export type ListboxProps = ComponentProps<ListboxSlots> &
+  SelectionProps & {
+    /**
+     * Disable auto-focusing on the first item when mounting.
+     *
+     * @default false
+     */
+    disableAutoFocus?: boolean;
+  };
 
 /**
  * State used in rendering Listbox
@@ -41,6 +49,9 @@ export type ListboxState = ComponentState<ListboxSlots> &
      * @see activeDescendantController.focus(id)
      */
     setActiveOption(option?: OptionValue): void;
+
+    // Whether the Listbox renders within a Combobox, Dropdown, or picker, or as a standalone widget
+    standalone: boolean;
 
     selectOption(event: SelectionEvents, option: OptionValue): void;
 

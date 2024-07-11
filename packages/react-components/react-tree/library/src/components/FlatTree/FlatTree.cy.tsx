@@ -163,6 +163,13 @@ describe('FlatTree', () => {
       cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
       cy.get('[data-testid="item1__item1"]').should('exist');
     });
+    it('should not expand item on Alt + Right key', () => {
+      mount(<TreeTest />);
+      cy.get('[data-testid="item1"]').focus();
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', '{rightarrow}']);
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+    });
     it('should collapse item on Left key', () => {
       mount(<TreeTest />);
       cy.get('[data-testid="item1"]').focus();
@@ -171,6 +178,15 @@ describe('FlatTree', () => {
       cy.get('[data-testid="item1__item1"]').should('exist');
       cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{leftarrow}');
       cy.get('[data-testid="item1__item1"]').should('not.exist');
+    });
+    it('should not collapse item on Alt + Left key', () => {
+      mount(<TreeTest />);
+      cy.get('[data-testid="item1"]').focus();
+      cy.get('[data-testid="item1__item1"]').should('not.exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress('{rightarrow}');
+      cy.get('[data-testid="item1__item1"]').should('exist');
+      cy.get(`[data-testid="item1"] .${treeItemLayoutClassNames.root}`).realPress(['Alt', '{leftarrow}']);
+      cy.get('[data-testid="item1__item1"]').should('exist');
     });
     it('should focus on actions when pressing tab key', () => {
       mount(
@@ -239,6 +255,17 @@ describe('FlatTree', () => {
         cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
         cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
         cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
+        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
+        cy.get('[data-testid="item2"]').should('be.focused');
+      });
+      it('should not move with Alt + Left/Right keys', () => {
+        mount(<TreeTest defaultOpenItems={['item2', 'item2__item1']} />);
+        cy.get('[data-testid="item1"]').focus().realPress('{downarrow}');
+        cy.get('[data-testid="item2"]').should('be.focused').realPress(['Alt', '{rightarrow}']);
+        cy.get('[data-testid="item2"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{rightarrow}');
+        cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress(['Alt', '{leftarrow}']);
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{leftarrow}');
         cy.get('[data-testid="item2__item1"]').should('be.focused').realPress('{leftarrow}').realPress('{leftarrow}');
         cy.get('[data-testid="item2"]').should('be.focused');
@@ -349,6 +376,22 @@ describe('FlatTree', () => {
       cy.get('[data-testid="item1"]').focus().realPress('{enter}');
       cy.get('[data-testid="item1__item1"]').should('exist');
       cy.get('[data-testid="item1__item1"]').should('have.attr', 'aria-checked', 'true');
+    });
+    it('should warn if checkedItems and defaultCheckedItems are provided at the same time', () => {
+      cy.window().then(win => {
+        cy.spy(win.console, 'error');
+      });
+      mount(
+        <TreeTest
+          selectionMode="multiselect"
+          defaultOpenItems={['item1']}
+          checkedItems={['item1__item1']}
+          defaultCheckedItems={['item1__item1']}
+        />,
+      );
+      cy.window().then(win => {
+        expect(win.console.error).to.be.callCount(1);
+      });
     });
     it('should change selection when selecting a closed branch', () => {
       mount(<TreeTest selectionMode="multiselect" />);

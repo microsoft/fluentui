@@ -101,12 +101,15 @@ test.describe('Progress Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('thickness', 'medium');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('medium'))).toBe(true);
 
     await element.evaluate((node: ProgressBar) => {
       node.thickness = 'large';
     });
 
     await expect(element).toHaveJSProperty('thickness', 'large');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('large'))).toBe(true);
   });
 
   test('should set and retrieve the `shape` property correctly', async ({ page }) => {
@@ -117,12 +120,15 @@ test.describe('Progress Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('shape', 'square');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('square'))).toBe(true);
 
     await element.evaluate((node: ProgressBar) => {
       node.shape = 'rounded';
     });
 
     await expect(element).toHaveJSProperty('shape', 'rounded');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('square'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('rounded'))).toBe(true);
   });
 
   test('should set and retrieve the `validationState` property correctly', async ({ page }) => {
@@ -133,17 +139,30 @@ test.describe('Progress Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('validationState', 'success');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('success'))).toBe(true);
 
     await element.evaluate((node: ProgressBar) => {
       node.validationState = 'warning';
     });
 
     await expect(element).toHaveJSProperty('validationState', 'warning');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('success'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('warning'))).toBe(true);
 
     await element.evaluate((node: ProgressBar) => {
       node.validationState = 'error';
     });
 
     await expect(element).toHaveJSProperty('validationState', 'error');
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('warning'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('error'))).toBe(true);
+
+    await element.evaluate((node: ProgressBar) => {
+      node.validationState = null;
+    });
+
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('success'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('warning'))).toBe(false);
+    expect(await element.evaluate((node: ProgressBar) => node.elementInternals.states.has('error'))).toBe(false);
   });
 });

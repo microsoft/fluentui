@@ -88,6 +88,8 @@ function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
   options: MotionOptions = {},
 ): MotionState<Element> {
+  'use no memo';
+
   const { animateOnFirstMount, duration } = { animateOnFirstMount: false, ...options };
 
   const [type, setType] = React.useState<MotionType>(
