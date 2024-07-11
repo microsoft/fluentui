@@ -16,7 +16,7 @@
     },
     "bundle": {
       "cache": true,
-      "dependsOn": ["build"]
+      "dependsOn": ["build", "^build"]
     },
     "build": {
       "dependsOn": ["^build"],
