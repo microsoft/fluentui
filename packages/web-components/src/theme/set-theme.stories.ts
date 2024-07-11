@@ -5,15 +5,15 @@ import { renderComponent } from '../helpers.stories.js';
 import { setTheme } from './set-theme.js';
 
 const themes: Record<string, Theme | null> = {
- 'web-light': webLightTheme ,
- 'web-dark': webDarkTheme,
- 'team-light': teamsLightTheme,
- 'team-dark': teamsDarkTheme,
- 'null': null,
+  'web-light': webLightTheme,
+  'web-dark': webDarkTheme,
+  'team-light': teamsLightTheme,
+  'team-dark': teamsDarkTheme,
+  null: null,
 };
 
 function updateTheme(c: HTMLView, type = 'global') {
-  const {value} = c.event.target as HTMLSelectElement;
+  const { value } = c.event.target as HTMLSelectElement;
 
   if (themes[value] !== undefined) {
     switch (type) {
@@ -74,8 +74,8 @@ export const SetTheme = renderComponent(html`
 
       select {
         inline-size: 100%;
-        margin-block-start: .5rem;
-        padding: .5rem;
+        margin-block-start: 0.5rem;
+        padding: 0.5rem;
       }
     }
 

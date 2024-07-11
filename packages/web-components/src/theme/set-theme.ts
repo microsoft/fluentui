@@ -34,7 +34,7 @@ const globalThemeStyleSheet = new CSSStyleSheet();
  * @internal
  */
 export function setTheme(theme: Theme | null, node: Document | HTMLElement = document) {
-  if (!node || (node !== document && !(node instanceof HTMLElement))) {
+  if (!node || !isThemeableNode(node)) {
     return;
   }
 
@@ -49,7 +49,7 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
     return;
   }
 
-  if (node === document) {
+  if ([document, document.documentElement, document.body].includes(node)) {
     setGlobalTheme(theme);
   } else {
     setLocalTheme(theme, node as HTMLElement);
@@ -77,6 +77,17 @@ function getThemeStyleText(theme: Theme): string {
   }
 
   return themeStyleTextMap.get(theme)!;
+}
+
+/**
+ * A themeable node should either be one of the following:
+ * - `document`
+ * - `html`
+ * - `body`
+ * - Any HTML element inside `body`
+ */
+function isThemeableNode(node: Document | HTMLElement) {
+  return [document, document.documentElement].includes(node) || (node instanceof HTMLElement && !!node.closest('body'));
 }
 
 function setGlobalTheme(theme: Theme | null) {
@@ -169,12 +180,8 @@ declare global {
     MSStream: any;
   }
 }
-const {userAgent: UA} = navigator;
-const isWebkit =
-  /\b(iPad|iPhone|iPod)\b/.test(UA) &&
-  /WebKit/.test(UA) &&
-  !/Edge/.test(UA) &&
-  !window.MSStream;
+const { userAgent: UA } = navigator;
+const isWebkit = /\b(iPad|iPhone|iPod)\b/.test(UA) && /WebKit/.test(UA) && !/Edge/.test(UA) && !window.MSStream;
 function forceRepaint(element: HTMLElement) {
   if (!isWebkit) {
     return;
