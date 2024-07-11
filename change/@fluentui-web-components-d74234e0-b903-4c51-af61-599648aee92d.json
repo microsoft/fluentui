@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(web-components): enabling setting theme on an individual element and unsetting themes",
+  "packageName": "@fluentui/web-components",
+  "email": "machi@microsoft.com",
+  "dependentChangeType": "patch"
+}
