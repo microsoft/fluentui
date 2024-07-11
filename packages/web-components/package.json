@@ -166,6 +166,10 @@
       "types": "./dist/dts/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
+    "./textarea.js": {
+      "types": "./dist/dts/textarea/define.d.ts",
+      "default": "./dist/esm/textarea/define.js"
+    },
     "./text-input.js": {
       "types": "./dist/dts/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
