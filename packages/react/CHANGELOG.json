@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 11 Jul 2024 07:33:32 GMT",
+      "tag": "@fluentui/react_v8.119.1",
+      "version": "8.119.1",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "ff2c81325d734ddff92e606ac681c22c710f262f",
+            "comment": "remove redundant forceConsistentCasingInFileNames option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 07:36:33 GMT",
       "tag": "@fluentui/react_v8.119.1",
       "version": "8.119.1",
