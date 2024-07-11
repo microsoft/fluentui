@@ -84,6 +84,10 @@
         "packages/react-components/react-jsx-runtime/src/jsx-dev-runtime.ts"
       ],
       "@fluentui/react-jsx-runtime/jsx-runtime": ["packages/react-components/react-jsx-runtime/src/jsx-runtime.ts"],
+      "@fluentui/react-keytips-preview": ["packages/react-components/react-keytips-preview/library/src/index.ts"],
+      "@fluentui/react-keytips-preview-stories": [
+        "packages/react-components/react-keytips-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-label": ["packages/react-components/react-label/library/src/index.ts"],
       "@fluentui/react-label-stories": ["packages/react-components/react-label/stories/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/library/src/index.ts"],
