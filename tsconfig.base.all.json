@@ -258,9 +258,7 @@
       "@fluentui/recipes": ["packages/react-components/recipes/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "react-color-picker-1-preview": ["packages/react-components/react-color-picker-1-preview/src/index.ts"],
-      "react-color-picker-preview": ["packages/react-components/react-color-picker-preview/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }
