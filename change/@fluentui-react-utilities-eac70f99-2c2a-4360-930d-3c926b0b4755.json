@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: fix useMergedRefs signature to include null",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
