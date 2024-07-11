@@ -1,52 +1,35 @@
-import './tree-view.js';
-import '../tree-item/tree-item.js';
+import { TreeView } from './tree-view.js';
+import { TreeItem } from '../tree-item/tree-item.js';
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 
 test.describe('<tree-view> and <tree-item>', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-  let treeItems: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-
-    element = page.locator('fluent-tree-view');
-
-    root = page.locator('#root');
-
-    treeItems = element.locator('fluent-tree-item');
-
+  test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-treeview--tree-view'));
+    await page.waitForFunction(() => customElements.whenDefined('fluent-tree-view'));
   });
 
-  test.afterAll(async () => {
-    await page.close();
-  });
-  test.only('should work with basic rendering', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /*html*/ `
+
+  test('should work with basic rendering', async ({ page }) => {
+    await page.setContent(/* html */ `
       <fluent-tree-view>
         <fluent-tree-item>Item 1</fluent-tree-item>
         <fluent-tree-item>Item 2</fluent-tree-item>
         <fluent-tree-item>Item 3</fluent-tree-item>
       </fluent-tree-view>
-    `;
-    });
+    `);
     const treeView = page.locator('fluent-tree-view');
     const treeItems = page.locator('fluent-tree-item');
-    expect(treeView).toHaveCount(1);
-    expect(treeItems).toHaveCount(3);
-    expect(treeItems.nth(0)).toHaveText('Item 1');
-    expect(treeItems.nth(1)).toHaveText('Item 2');
-    expect(treeItems.nth(2)).toHaveText('Item 3');
+    await expect(treeView).toHaveCount(1);
+    await expect(treeItems).toHaveCount(3);
+    await expect(treeItems.nth(0)).toHaveText('Item 1');
+    await expect(treeItems.nth(1)).toHaveText('Item 2');
+    await expect(treeItems.nth(2)).toHaveText('Item 3');
   });
 
-  test('should work with basic rendering - nested', async () => {
-    const treeViewEl = await root.evaluate(node => {
-      node.innerHTML = `
+  test('should work with basic rendering - nested', async ({ page }) => {
+    await page.setContent(/* html */ `
       <fluent-tree-view>
         <fluent-tree-item>
           Item 1
@@ -57,136 +40,142 @@ test.describe('<tree-view> and <tree-item>', () => {
           <fluent-tree-item>Nested Item B</fluent-tree-item>
         </fluent-tree-item>
       </fluent-tree-view>
-    `;
-    });
+      `);
     const treeView = page.locator('fluent-tree-view');
     const treeItems = page.locator('fluent-tree-item');
-    expect(treeView).toHaveCount(1);
-    expect(treeView.nth(0).evaluate(node => node.children.length)).toBe(2);
-    // nested structure
+    await expect(treeView).toHaveCount(1);
+    await expect(treeItems).toHaveCount(4);
+    const nestedItems = await treeItems.nth(0).locator('fluent-tree-item');
+    expect(nestedItems).toHaveCount(1);
   });
 
-  // it('works with size variants', async () => {
-  //   const treeViewEl = await fixture(`
-  //     <fluent-tree-view size='small'>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl.children.length).to.equal(1);
-  //   expect(treeViewEl.children[0].classList.contains('small')).to.equal(true);
-  //   expect(treeViewEl.children[0].clientHeight).to.equal(24);
+  test('works with size variants', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view size='small'>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    const treeItemEl = treeViewEl.locator('fluent-tree-item');
+    expect(treeItemEl).toHaveCount(1);
+    expect(treeViewEl).toHaveAttribute('size', 'small');
+    const box = await treeItemEl.boundingBox();
+    expect(box?.height).toEqual(24);
 
-  //   const treeViewEl2 = await fixture(`
-  //     <fluent-tree-view size='medium'>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl2.children.length).to.equal(1);
-  //   expect(treeViewEl2.children[0].classList.contains('medium')).to.equal(true);
-  //   expect(treeViewEl2.children[0].clientHeight).to.equal(32);
-  // });
+    await page.setContent(`
+      <fluent-tree-view size='medium'>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    expect(treeItemEl).toHaveCount(1);
+    expect(treeViewEl).toHaveAttribute('size', 'medium');
+    const box2 = await treeItemEl.boundingBox();
+    expect(box2?.height).toEqual(32);
+  });
 
-  // it('works with appearance variants', async () => {
-  //   const treeViewEl = await fixture(`
-  //     <fluent-tree-view>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl.children.length).to.equal(1);
-  //   expect(treeViewEl.children[0].classList.contains('subtle')).to.equal(true);
+  test('works with appearance variants', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    expect(await treeViewEl.evaluate(node => node.children[0].classList.contains('subtle'))).toBe(true);
 
-  //   const treeViewEl2 = await fixture(`
-  //     <fluent-tree-view appearance='subtle-alpha'>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl2.children.length).to.equal(1);
-  //   expect(treeViewEl2.children[0].classList.contains('subtle-alpha')).to.equal(true);
+    await page.setContent(`
+      <fluent-tree-view appearance='subtle-alpha'>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeItemEl = treeViewEl.locator('fluent-tree-item');
+    expect(treeItemEl).toHaveCount(1);
+    expect(await treeViewEl.evaluate(node => node.children[0].classList.contains('subtle-alpha'))).toBe(true);
 
-  //   const treeViewEl3 = await fixture(`
-  //     <fluent-tree-view appearance='transparent'>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl3.children.length).to.equal(1);
-  //   expect(treeViewEl3.children[0].classList.contains('transparent')).to.equal(true);
-  // });
+    await page.setContent(`
+      <fluent-tree-view appearance='transparent'>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    expect(await treeViewEl.evaluate(node => node.children.length)).toBe(1);
+    expect(await treeViewEl.evaluate(node => node.children[0].classList.contains('transparent'))).toBe(true);
+  });
 
-  // it('should expand the item when clicking on it', async () => {
-  //   const treeViewEl = await fixture(`
-  //     <fluent-tree-view>
-  //       <fluent-tree-item>
-  //         Item 1
-  //         <fluent-tree-item>Nested Item A</fluent-tree-item>
-  //       </fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl.children.length).to.equal(1);
+  test.only('should expand the item when clicking on it', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view>
+        <fluent-tree-item>
+          Item 1
+          <fluent-tree-item>Nested Item A</fluent-tree-item>
+        </fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    expect(await treeViewEl.evaluate(node => node.children.length)).toBe(1);
 
-  //   const treeItem = treeViewEl.children[0] as HTMLElement;
-  //   expect(treeItem.hasAttribute('expanded')).to.equal(false);
+    const treeItem = treeViewEl.locator('fluent-tree-item');
+    expect(await treeItem.nth(0).getAttribute('expanded')).toBeNull();
 
-  //   // expand
-  //   treeItem.click();
-  //   await nextFrame();
-  //   expect(treeItem.hasAttribute('expanded')).to.equal(true);
+    // expand
+    await treeItem.nth(0).click();
+    expect(await treeItem.nth(0).getAttribute('expanded')).not.toBeNull();
 
-  //   // collapes
-  //   treeItem.click();
-  //   await nextFrame();
-  //   expect(treeItem.hasAttribute('expanded')).to.equal(false);
-  // });
+    // collapes
+    await treeItem.nth(0).click({
+      position: { x: 10, y: 10 } // click on the top left
+    });
+    expect(await treeItem.nth(0).getAttribute('expanded')).toBeNull();
+  });
 
-  // it('should work with selection', async () => {
-  //   const treeViewEl = await fixture(`
-  //     <fluent-tree-view>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //       <fluent-tree-item>Item 2</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   expect(treeViewEl.children.length).to.equal(2);
+  test('should work with selection', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+        <fluent-tree-item>Item 2</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    const treeItemEl = treeViewEl.locator('fluent-tree-item');
+    expect(treeViewEl).toHaveCount(1);
+    expect(treeItemEl).toHaveCount(2);
+    expect(await treeItemEl.nth(0).getAttribute('selected')).toBeNull();
+    expect(await treeItemEl.nth(1).getAttribute('selected')).toBeNull();
+    // select item 1
+    await treeItemEl.nth(0).click();
+    expect(await treeItemEl.nth(0).getAttribute('selected')).not.toBeNull();
+    expect(await treeItemEl.nth(1).getAttribute('selected')).toBeNull();
+    // select item 2
+    await treeItemEl.nth(1).click();
+    expect(await treeItemEl.nth(0).getAttribute('selected')).toBeNull();
+    expect(await treeItemEl.nth(1).getAttribute('selected')).not.toBeNull();
+  });
 
-  //   const treeItem1 = treeViewEl.children[0] as HTMLElement;
-  //   const treeItem2 = treeViewEl.children[1] as HTMLElement;
-  //   expect(treeItem1.hasAttribute('selected')).to.equal(false);
-  //   expect(treeItem2.hasAttribute('selected')).to.equal(false);
+  test('should not scroll when pressing space key', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view>
+        <fluent-tree-item>Item 1</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    // mock scroll event
+    const elementHandle = Promise.race([
+      treeViewEl.evaluate(node => new Promise(resolve => node.addEventListener('scroll', () => resolve(true)))),
+      new Promise(resolve => setTimeout(() => resolve(false), 10)),
+    ]);
+    await treeViewEl.evaluate(node => {
+      for (let i = 0; i < 30; i++) {
+        node.appendChild(document.createElement('fluent-tree-item'));
+      }
+    })
+    expect(await treeViewEl.evaluate(node => node.children.length)).toBe(31);
 
-  //   // select item 1
-  //   treeItem1.click();
-  //   await nextFrame();
-  //   expect(treeItem1.hasAttribute('selected')).to.equal(true);
-  //   expect(treeItem2.hasAttribute('selected')).to.equal(false);
+    const treeItem1 = treeViewEl.locator('fluent-tree-item').nth(0);
+    expect(await treeItem1.getAttribute('selected')).toBeNull();
 
-  //   // select item 2
-  //   treeItem2.click();
-  //   await nextFrame();
-  //   expect(treeItem1.hasAttribute('selected')).to.equal(false);
-  //   expect(treeItem2.hasAttribute('selected')).to.equal(true);
-  // });
+    await treeItem1.focus();
+    expect(await elementHandle).toBe(false);
+    await page.keyboard.press('Space');
 
-  // it('should not scroll when pressing space key', async () => {
-  //   const scrollTrigger = fake();
-  //   document.addEventListener('scroll', scrollTrigger);
-  //   const treeViewEl = await fixture(`
-  //     <fluent-tree-view>
-  //       <fluent-tree-item>Item 1</fluent-tree-item>
-  //     </fluent-tree-view>
-  //   `);
-  //   for (let i = 0; i < 30; i++) {
-  //     treeViewEl.appendChild(document.createElement('fluent-tree-item'));
-  //   }
-  //   expect(treeViewEl.children.length).to.equal(31);
-
-  //   const treeItem1 = treeViewEl.children[0] as HTMLElement;
-  //   expect(treeItem1.hasAttribute('selected')).to.equal(false);
-
-  //   treeItem1.focus();
-  //   expect(scrollTrigger.callCount).to.equal(0);
-
-  //   await sendKeys({ press: 'Space' });
-  //   await Updates.next();
-
-  //   expect(treeItem1.hasAttribute('selected')).to.equal(true);
-  //   expect(scrollTrigger.callCount).to.equal(0);
-  // });
+    expect(await treeItem1.getAttribute('selected')).not.toBeNull();
+    expect(await elementHandle).toBe(false);
+  });
 });

@@ -1954,10 +1954,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -2733,10 +2730,7 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Radio Group orientation
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3580,6 +3574,58 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// Warning: (ae-missing-release-tag) "TreeItem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TreeItem extends FASTElement {
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    // @internal
+    get calculatedClassName(): string;
+    // (undocumented)
+    childTreeItems: TreeItem[];
+    disabled: boolean;
+    expanded: boolean;
+    // (undocumented)
+    protected expandedChanged(): void;
+    // @internal
+    handleBlur: (e: FocusEvent) => void;
+    // @internal
+    handleFocus: (e: FocusEvent) => void;
+    // @internal
+    get isNestedItem(): boolean;
+    // @internal
+    get isRootItem(): any;
+    selected: boolean;
+    // (undocumented)
+    protected selectedChanged(): void;
+    size: 'medium' | 'small';
+    toggleExpansion(): void;
+    toggleSelection(): void;
+}
+
+// Warning: (ae-missing-release-tag) "TreeView" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TreeView extends FASTElement {
+    appearance: 'subtle' | 'subtle-alpha' | 'transparent';
+    // (undocumented)
+    childTreeItems: TreeItem[];
+    // @internal
+    currentFocused: HTMLElement | null;
+    currentSelected: HTMLElement | null;
+    // @internal
+    handleBlur: (e: FocusEvent) => void;
+    // @internal
+    handleClick(e: Event): true | undefined;
+    // @internal
+    handleFocus: (e: FocusEvent) => void;
+    // @internal
+    handleKeyDown: (e: KeyboardEvent) => boolean | void;
+    // @internal
+    handleSelectedChange: (e: Event) => boolean | void;
+    size: 'medium' | 'small';
+}
 
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
