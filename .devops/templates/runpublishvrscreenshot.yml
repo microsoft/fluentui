@@ -38,7 +38,7 @@ steps:
     displayName: Check if vrTests should be skipped
 
   - script: |
-      yarn nx run ${{ parameters.vrTestPackageName }}:test-vr --nxBail --verbose
+      yarn nx run ${{ parameters.vrTestPackageName }}:test-vr --nxBail
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 

@@ -70,15 +70,15 @@ extends:
                 displayName: yarn
 
               - script: |
-                  yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail --production
+                  yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail --production
                 displayName: build
 
               - script: |
-                  yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail
+                  yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
                 displayName: test
 
               - script: |
-                  yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,apps/**' --verbose --nxBail
+                  yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
                 displayName: lint
 
               - script: |

@@ -19,7 +19,7 @@ steps:
       # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
       #
       # NOTE: we are running this via nx in order to get cache hits later on
-      yarn nx run-many -t build -p api-docs digest --verbose
+      yarn nx run-many -t build -p api-docs digest
       yarn tsc -p ./tsconfig.just-scripts-configs.json
     displayName: Type-check just.config.ts files
 
