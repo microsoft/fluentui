@@ -12,6 +12,7 @@ import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import type { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -100,6 +101,7 @@ export type PopoverSurfaceSlots = {
 // @public
 export type PopoverSurfaceState = ComponentState<PopoverSurfaceSlots> & Pick<PopoverContextValue, 'appearance' | 'arrowRef' | 'inline' | 'mountNode' | 'size' | 'withArrow'> & {
     arrowClassName?: string;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public

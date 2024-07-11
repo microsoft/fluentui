@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
@@ -198,7 +199,9 @@ export type MenuItemSlots = {
 };
 
 // @public (undocumented)
-export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>>;
+export type MenuItemState = ComponentState<MenuItemSlots> & Required<Pick<MenuItemProps, 'disabled' | 'hasSubmenu' | 'persistOnClick'>> & {
+    materialType?: MaterialTypeContextValue;
+};
 
 // @public (undocumented)
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps>;
@@ -327,6 +330,7 @@ export type MenuPopoverSlots = {
 // @public
 export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
     inline: boolean;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public

@@ -1,4 +1,4 @@
-import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
+import { mergeClasses, makeStyles, makeResetStyles, shorthands } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -6,6 +6,7 @@ import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
   root: 'fui-MenuItem',
@@ -172,6 +173,21 @@ const useStyles = makeStyles({
       },
     },
   },
+  translucent: {
+    backgroundColor: tokens.colorTransparentBackground,
+    ':hover': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
+      color: tokens.colorNeutralForeground1,
+      [`& .${menuItemClassNames.icon}`]: {
+        color: tokens.colorNeutralForeground2BrandSelected,
+      },
+    },
+    ':hover:active': {
+      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+      color: tokens.colorNeutralForeground2Hover,
+    },
+    ...shorthands.borderColor(tokens.colorNeutralStrokeAlpha),
+  },
 });
 
 /** Applies style classnames to slots */
@@ -187,6 +203,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState): MenuItemState 
   state.root.className = mergeClasses(
     menuItemClassNames.root,
     rootBaseStyles,
+    state.materialType && state.materialType !== MaterialType.Opaque && styles.translucent,
     state.disabled && styles.disabled,
     state.root.className,
   );

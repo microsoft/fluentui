@@ -19,6 +19,7 @@ import type { ComboboxOpenEvents, ComboboxProps, ComboboxState } from './Combobo
 import { useListboxSlot } from '../../utils/useListboxSlot';
 import { useInputTriggerSlot } from './useInputTriggerSlot';
 import { optionClassNames } from '../Option/useOptionStyles.styles';
+import { useMaterialType } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Combobox.
@@ -88,7 +89,9 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
   const showClearIcon = selectedOptions.length > 0 && clearable && !multiselect;
+  const materialType = useMaterialType();
   const state: ComboboxState = {
+    materialType,
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox, clearIcon: 'span' },
     root: rootSlot,
     input: triggerSlot,

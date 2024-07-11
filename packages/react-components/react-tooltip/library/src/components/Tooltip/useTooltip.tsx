@@ -3,6 +3,7 @@ import { mergeArrowOffset, resolvePositioningShorthand, usePositioning } from '@
 import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
+  useMaterialType,
 } from '@fluentui/react-shared-contexts';
 import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
 import { KEYBORG_FOCUSIN } from '@fluentui/react-tabster';
@@ -65,8 +66,10 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     },
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
   );
+  const materialType = useMaterialType();
 
   const state: TooltipState = {
+    materialType,
     withArrow,
     positioning,
     showDelay,

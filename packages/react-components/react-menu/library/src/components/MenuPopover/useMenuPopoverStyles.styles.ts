@@ -3,6 +3,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createSlideStyles } from '@fluentui/react-positioning';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const menuPopoverClassNames: SlotClassNames<MenuPopoverSlots> = {
   root: 'fui-MenuPopover',
@@ -26,6 +27,28 @@ const useStyles = makeStyles({
   },
 });
 
+const useMaterialTypeStyles = makeStyles<MaterialType>({
+  [MaterialType.Opaque]: {},
+  [MaterialType.SemiOpaque]: {
+    backdropFilter: 'blur(80px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.Translucent]: {
+    backdropFilter: 'blur(45px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.SemiTransparent]: {
+    backdropFilter: 'blur(30px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+});
+
 /**
  * Apply styling to the Menu slots based on the state
  */
@@ -33,6 +56,12 @@ export const useMenuPopoverStyles_unstable = (state: MenuPopoverState): MenuPopo
   'use no memo';
 
   const styles = useStyles();
-  state.root.className = mergeClasses(menuPopoverClassNames.root, styles.root, state.root.className);
+  const materialTypeStyles = useMaterialTypeStyles();
+  state.root.className = mergeClasses(
+    menuPopoverClassNames.root,
+    styles.root,
+    state.materialType && materialTypeStyles[state.materialType],
+    state.root.className,
+  );
   return state;
 };

@@ -17,6 +17,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { Provider } from 'react';
@@ -102,6 +103,7 @@ export type ComboboxSlots = {
 export type ComboboxState = ComponentState<ComboboxSlots> & ComboboxBaseState & {
     showClearIcon?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public
@@ -136,6 +138,7 @@ export type DropdownState = ComponentState<DropdownSlots> & Omit<ComboboxBaseSta
     placeholderVisible: boolean;
     showClearButton?: boolean;
     activeDescendantController: ActiveDescendantImperativeRef;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public
@@ -236,6 +239,7 @@ export type OptionState = ComponentState<OptionSlots> & Pick<OptionProps, 'disab
     focusVisible: boolean;
     multiselect?: boolean;
     selected: boolean;
+    materialType?: MaterialTypeContextValue;
 };
 
 // @public

@@ -4,6 +4,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { PopoverSize } from '../Popover/Popover.types';
 import type { PopoverSurfaceSlots, PopoverSurfaceState } from './PopoverSurface.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { MaterialType } from '@fluentui/react-shared-contexts';
 
 export const popoverSurfaceClassNames: SlotClassNames<PopoverSurfaceSlots> = {
   root: 'fui-PopoverSurface',
@@ -56,6 +57,28 @@ const useStyles = makeStyles({
   arrow: createArrowStyles({ arrowHeight: undefined }),
 });
 
+const useMaterialTypeStyles = makeStyles<MaterialType>({
+  [MaterialType.Opaque]: {},
+  [MaterialType.SemiOpaque]: {
+    backdropFilter: 'blur(80px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.Translucent]: {
+    backdropFilter: 'blur(45px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+  [MaterialType.SemiTransparent]: {
+    backdropFilter: 'blur(30px)',
+    boxShadow: tokens.shadow16,
+    color: tokens.colorNeutralForeground1,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+  },
+});
+
 /**
  * Apply styling to the PopoverSurface slots based on the state
  */
@@ -63,6 +86,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   'use no memo';
 
   const styles = useStyles();
+  const materialTypeStyles = useMaterialTypeStyles();
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,
     styles.root,
@@ -72,6 +96,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
     state.size === 'large' && styles.largePadding,
     state.appearance === 'inverted' && styles.inverted,
     state.appearance === 'brand' && styles.brand,
+    state.materialType && materialTypeStyles[state.materialType],
     state.root.className,
   );
 

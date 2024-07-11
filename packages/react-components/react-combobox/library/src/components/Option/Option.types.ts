@@ -1,3 +1,4 @@
+import { MaterialTypeContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -67,4 +68,5 @@ export type OptionState = ComponentState<OptionSlots> &
 
     /** If true, the option is selected */
     selected: boolean;
+    materialType?: MaterialTypeContextValue;
   };

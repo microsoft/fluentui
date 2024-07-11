@@ -33,6 +33,7 @@
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-provider": "^9.16.4",
     "@fluentui/react-aria": "^9.13.0",
+    "@fluentui/react-shared-contexts": "^9.16.0",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
