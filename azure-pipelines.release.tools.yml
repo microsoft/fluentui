@@ -59,15 +59,15 @@ extends:
                 displayName: yarn
 
               - script: |
-                  yarn nx run-many -t build -p tag:tools --exclude 'apps/**' --verbose --nxBail --production
+                  yarn nx run-many -t build -p tag:tools --exclude 'apps/**' --nxBail --production
                 displayName: build
 
               - script: |
-                  yarn nx run-many -t test -p tag:tools --exclude 'apps/**' --verbose --nxBail
+                  yarn nx run-many -t test -p tag:tools --exclude 'apps/**' --nxBail
                 displayName: test
 
               - script: |
-                  yarn nx run-many -t lint -p tag:tools --exclude 'apps/**' --verbose --nxBail
+                  yarn nx run-many -t lint -p tag:tools --exclude 'apps/**' --nxBail
                 displayName: lint
 
               - script: |

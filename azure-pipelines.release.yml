@@ -102,15 +102,15 @@ extends:
                 displayName: Generate version files
 
               - script: |
-                  yarn nx run-many -t build bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --verbose --nxBail --production
+                  yarn nx run-many -t build bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail --production
                 displayName: build,bundle
 
               - script: |
-                  yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --verbose --nxBail
+                  yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: test
 
               - script: |
-                  yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --verbose --nxBail
+                  yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: lint
 
               - script: |
