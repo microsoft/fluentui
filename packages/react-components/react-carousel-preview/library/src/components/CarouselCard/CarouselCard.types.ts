@@ -18,6 +18,4 @@ export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
 /**
  * State used in rendering CarouselCard
  */
-export type CarouselCardState = ComponentState<CarouselCardSlots> & {
-  visible: boolean;
-} & Pick<CarouselCardProps, 'value'>;
+export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'value'>;

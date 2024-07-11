@@ -1,10 +1,10 @@
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
-import { useCarouselContext_unstable } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselCard.
@@ -22,38 +22,43 @@ export const useCarouselCard_unstable = (
 ): CarouselCardState => {
   const { value } = props;
 
-  const [visible, setVisible] = React.useState(false);
-  const { onPageVisibilityChange } = useCarouselContext_unstable();
+  const elementRef = React.useRef<HTMLDivElement>(null);
   const isActiveIndex = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
-  const handlePageVisibility = React.useCallback(
-    (visibleValues: string[]) => {
-      setVisible(visibleValues.includes(value));
-    },
-    [value],
-  );
-
   React.useEffect(() => {
-    return onPageVisibilityChange(handlePageVisibility);
-  }, [handlePageVisibility, onPageVisibilityChange]);
+    const element = elementRef.current;
+
+    if (element) {
+      const listener = (_e: Event) => {
+        const event = _e as CustomEvent<{ isVisible: boolean }>;
+        const hidden = !event.detail.isVisible;
+
+        element.ariaHidden = hidden.toString();
+        element.inert = hidden;
+
+        // TODO: handle "tabIndex" ?
+      };
+
+      element.addEventListener(EMBLA_VISIBILITY_EVENT, listener);
+
+      return () => {
+        element.removeEventListener(EMBLA_VISIBILITY_EVENT, listener);
+      };
+    }
+  }, []);
 
   const state: CarouselCardState = {
     value,
-    visible,
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(elementRef, ref),
         [CAROUSEL_ITEM]: value,
         [CAROUSEL_ACTIVE_ITEM]: isActiveIndex,
-        'aria-hidden': !visible,
-        inert: !visible,
         role: 'presentation',
         ...props,
-        // Ensure we set undefined on any tab index that isn't visible
-        tabIndex: visible ? props.tabIndex : undefined,
       }),
       { elementType: 'div' },
     ),

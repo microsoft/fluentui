@@ -3,8 +3,16 @@ import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { Carousel } from './Carousel';
 
-jest.mock('embla-carousel-react', () => ({
-  default: jest.fn().mockReturnValue([]),
+jest.mock('embla-carousel', () => ({
+  default: () => ({
+    on: jest.fn(),
+    off: jest.fn(),
+    destroy: jest.fn(),
+    slideNodes: jest.fn(),
+    slidesInView: jest.fn(),
+    scrollTo: jest.fn(),
+    reInit: jest.fn(),
+  }),
 }));
 
 describe('Carousel', () => {
