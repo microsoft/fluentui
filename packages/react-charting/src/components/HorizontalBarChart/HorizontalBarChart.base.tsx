@@ -408,6 +408,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 : startingPoint[index] + index * this.state.barSpacingInPercent
             }%`}
             y={0}
+            rx={5} // border radius
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={this._barHeight}
