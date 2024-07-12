@@ -185,6 +185,7 @@
     "@types/yargs-unparser": "2.0.1",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
+    "@typescript-eslint/rule-tester": "6.21.0",
     "@typescript-eslint/utils": "6.21.0",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.7",
     "ajv": "8.4.0",

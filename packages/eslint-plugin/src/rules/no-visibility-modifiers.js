@@ -1,24 +1,76 @@
 // @ts-check
-const _internalApiMisc =
-  /** @type {{getNameFromMember(member: import('@typescript-eslint/utils').TSESTree.BaseNode, sourceCode:string | import('@typescript-eslint/utils').TSESLint.SourceCode): string}} */ (
-    // @ts-expect-error - accessing private APIs 🚨 ( no types provided )
-    require('@typescript-eslint/eslint-plugin/dist/util/misc')
-  );
 
-const { getNameFromMember } = _internalApiMisc;
 const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
-
+const { requiresQuoting } = require('@typescript-eslint/type-utils');
 const createRule = require('../utils/createRule');
+
+const MemberNameType = {
+  Private: 1,
+  Quoted: 2,
+  Normal: 3,
+  Expression: 4,
+};
+
+/**
+ * @typedef {import('@typescript-eslint/utils').TSESTree.MethodDefinition} MethodDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.PropertyDefinition} PropertyDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.Property} Property
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractMethodDefinition} TSAbstractMethodDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractPropertyDefinition} TSAbstractPropertyDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSMethodSignature} TSMethodSignature
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSPropertySignature} TSProperySignature
+ * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode}  SourceCode
+ */
 
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
  * @typedef {import("@typescript-eslint/utils").TSESTree.PropertyDefinition} ClassProperty
  * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/utils").TSESTree.MethodDefinition} MethodDefinition
  * @typedef {import("@typescript-eslint/utils").TSESTree.Node} Node
  * @typedef {import("@typescript-eslint/utils").TSESTree.TSParameterProperty} ParameterProperty
  */
+
+/**
+ * Gets a string name representation of the name of the given MethodDefinition
+ * or PropertyDefinition node, with handling for computed property names.
+ * @param {MethodDefinition | PropertyDefinition | Property | TSAbstractMethodDefinition | TSAbstractPropertyDefinition | TSMethodSignature | TSProperySignature} member The node to get the name of.
+ * @param {SourceCode} sourceCode The source code object.
+ * @returns {{ type: number; name: string }} The name of the member.
+ */
+
+function getNameFromMember(member, sourceCode) {
+  if (member.key.type === 'Identifier') {
+    return {
+      type: MemberNameType.Normal,
+      name: member.key.name,
+    };
+  }
+  if (member.key.type === 'PrivateIdentifier') {
+    return {
+      type: MemberNameType.Private,
+      name: `#${member.key.name}`,
+    };
+  }
+  if (member.key.type === 'Literal') {
+    const name = `${member.key.value}`;
+    if (requiresQuoting(name)) {
+      return {
+        type: MemberNameType.Quoted,
+        name: `"${name}"`,
+      };
+    }
+    return {
+      type: MemberNameType.Normal,
+      name,
+    };
+  }
+
+  return {
+    type: MemberNameType.Expression,
+    name: sourceCode.text.slice(...member.key.range),
+  };
+}
 
 /** */
 module.exports = createRule({
