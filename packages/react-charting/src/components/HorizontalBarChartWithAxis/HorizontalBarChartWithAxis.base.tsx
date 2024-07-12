@@ -579,32 +579,46 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           : getNextColor(index, 0, this.props.theme?.isInverted);
       }
 
+      color = point.color && !useSingleColor ? point.color : color;
+      const color2 = darkenLightenColor(color, 70);
+
       return (
-        <rect
-          transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
-          key={point.x}
-          x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
-          y={yBarScale(point.y)}
-          width={
-            this._isRtl
-              ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-              : Math.max(xBarScale(point.x), 0) - this.margins.left!
-          }
-          height={this._barHeight}
-          aria-labelledby={`toolTip${this._calloutId}`}
-          aria-label={this._getAriaLabel(point)}
-          role="img"
-          ref={(e: SVGRectElement) => {
-            this._refCallback(e, point.legend!);
-          }}
-          onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, color)}
-          onMouseLeave={this._onBarLeave}
-          onBlur={this._onBarLeave}
-          data-is-focusable={true}
-          onFocus={this._onBarFocus.bind(this, point, index, color)}
-          fill={point.color && !useSingleColor ? point.color : color}
-        />
+        <React.Fragment key={point.x}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}_${point.x}`} >
+                <stop offset="0" stopColor={color2} />
+                <stop offset="100%" stopColor={color} />
+              </linearGradient>
+            </defs>
+          )}
+          <rect
+            transform={`translate(0,${0.5 * (yBarScale.bandwidth() - this._barHeight)})`}
+            key={point.x}
+            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            y={yBarScale(point.y)}
+            rx="2.5%"
+            width={
+              this._isRtl
+                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
+                : Math.max(xBarScale(point.x), 0) - this.margins.left!
+            }
+            height={this._barHeight}
+            aria-labelledby={`toolTip${this._calloutId}`}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            ref={(e: SVGRectElement) => {
+              this._refCallback(e, point.legend!);
+            }}
+            onClick={point.onClick}
+            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseLeave={this._onBarLeave}
+            onBlur={this._onBarLeave}
+            data-is-focusable={true}
+            onFocus={this._onBarFocus.bind(this, point, index, color)}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.x})` : color}
+          />
+        </React.Fragment>
       );
     });
 

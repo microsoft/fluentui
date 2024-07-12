@@ -7,6 +7,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'expandYAxisLabels', text: 'Expand Y Axis Ticks' },
@@ -15,6 +16,7 @@ const options: IChoiceGroupOption[] = [
 
 interface IHorizontalBarChartWithAxisState {
   selectedCallout: string;
+  enableGradient: boolean;
 }
 
 export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Component<
@@ -25,11 +27,17 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     super(props);
     this.state = {
       selectedCallout: 'showTooltip',
+      enableGradient: false,
     };
   }
+
   public render(): JSX.Element {
     return <div>{this._basicStringAxisExample()}</div>;
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked});
+  };
 
   private _basicStringAxisExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -66,7 +74,14 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
         </div>
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             chartTitle="Horizontal bar chart axis tooltip example "
@@ -78,6 +93,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             showYAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             showYAxisLables={this.state.selectedCallout === 'expandYAxisLabels' ? true : false}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
           />
         </div>
       </>
