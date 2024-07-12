@@ -157,7 +157,7 @@ const useRailStyles = makeStyles({
   },
 
   horizontal: {
-    width: '100%',
+    width: '118%',
     height: `var(${railSizeVar})`,
     '::before': {
       left: '-1px',
@@ -168,7 +168,7 @@ const useRailStyles = makeStyles({
 
   vertical: {
     width: `var(${railSizeVar})`,
-    height: '100%',
+    height: '118%',
     '::before': {
       width: `var(${railSizeVar})`,
       top: '-1px',
