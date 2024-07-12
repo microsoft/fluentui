@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: cleanup drawer storybook",
+  "packageName": "@fluentui/web-components",
+  "email": "rupertdavid@microsoft.com",
+  "dependentChangeType": "patch"
+}
