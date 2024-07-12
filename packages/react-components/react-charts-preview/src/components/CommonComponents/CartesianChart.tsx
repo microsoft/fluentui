@@ -795,3 +795,4 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     </div>
   );
 });
+CartesianChart.displayName = 'CartesianChart';
