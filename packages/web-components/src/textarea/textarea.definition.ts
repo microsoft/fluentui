@@ -4,14 +4,14 @@ import { styles } from './textarea.styles.js';
 import { template } from './textarea.template.js';
 
 /**
- * The Fluent TextInput Element definition.
+ * The Fluent Textarea Element definition.
  *
  * @public
  * @remarks
- * HTML Element: `<fluent-text-input>`
+ * HTML Element: `<fluent-textarea>`
  */
 export const definition = TextArea.compose({
-  name: `${FluentDesignSystem.prefix}-text-area`,
+  name: `${FluentDesignSystem.prefix}-textarea`,
   template,
   styles,
 });

@@ -1,9 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
-import { StartEnd } from '../patterns/start-end.js';
-import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
-import { TextAreaAutocomplete, TextAreaControlSize, TextAreaResize } from './textarea.options.js';
-import { TextAreaAppearance } from './textarea.options.js';
+import { TextAreaAppearance, TextAreaAutocomplete, TextAreaControlSize, TextAreaResize } from './textarea.options.js';
 
 /**
  * A Text Area Custom HTML Element.
@@ -11,29 +8,39 @@ import { TextAreaAppearance } from './textarea.options.js';
  * @public
  */
 export class TextArea extends FASTElement {
-  @observable
-  public control!: ElementContentEditable & HTMLElement;
-
-  @observable
-  public defaultContent: string = '';
+  /**
+   * The form-associated flag.
+   * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
+   *
+   * @public
+   */
+  static readonly formAssociated = true;
 
   /**
+   * The textbox element.
    * @internal
    */
   public textbox!: HTMLDivElement;
 
-  @observable
-  public content!: Node[];
+  /**
+   * The placeholder container element.
+   * @internal
+   */
+  public placeholderContainer!: HTMLDivElement;
 
-  public contentChanged(prev: Node[], next: Node[]): void {
-    if (this.$fastController.isConnected) {
-      this.defaultContent = next
-        .filter(node => node.nodeType === Node.TEXT_NODE)
-        .map(node => node.textContent)
-        .join('')
-        .trim();
-    }
-  }
+  /**
+   * The button to handle resize interactions.
+   * @internal
+   */
+  public resizeHandle!: HTMLButtonElement;
+
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * Indicates the styled appearance of the element.
    *
@@ -43,13 +50,7 @@ export class TextArea extends FASTElement {
    */
   @attr
   public appearance?: TextAreaAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
+  protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
@@ -70,32 +71,15 @@ export class TextArea extends FASTElement {
   public autocomplete?: TextAreaAutocomplete;
 
   /**
-   * Indicates that the element should get focus after the page finishes loading.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#autofocus | `autofocus`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `autofocus`
-   */
-  @attr({ mode: 'boolean' })
-  public autofocus!: boolean;
-
-  /**
    * Sets the size of the control.
    *
    * @public
    * @remarks
-   * HTML Attribute: `control-size`
+   * HTML Attribute: `size`
    */
-  @attr({ attribute: 'control-size' })
-  public controlSize?: TextAreaControlSize;
-
-  /**
-   * Handles changes to `control-size` attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public controlSizeChanged(prev: TextAreaControlSize | undefined, next: TextAreaControlSize | undefined) {
+  @attr
+  public size?: TextAreaControlSize;
+  protected sizeChanged(prev: TextAreaControlSize | undefined, next: TextAreaControlSize | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
@@ -105,34 +89,15 @@ export class TextArea extends FASTElement {
   }
 
   /**
-   * The default slotted content. This is the content that appears in the text field label.
-   *
-   * @internal
-   */
-  @observable
-  public defaultSlottedNodes!: Node[];
-
-  /**
-   * Updates the control label visibility based on the presence of default slotted content.
-   *
-   * @internal
-   */
-  public defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void {
-    if (this.$fastController.isConnected) {
-      this.controlLabel.hidden = !next?.length;
-    }
-  }
-
-  /**
-   * Sets the directionality of the element to be submitted with form data.
+   * Sets the name of the value directionality to be submitted with form data.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/dirname | `dirname`} attribute
    *
    * @public
    * @remarks
    * HTML Attribute: `dirname`
    */
-  @attr
-  public dirname?: string;
+  @attr({ attribute: 'dirname' })
+  public dirName?: string;
 
   /**
    * Sets the element's disabled state.
@@ -143,18 +108,40 @@ export class TextArea extends FASTElement {
    * HTML Attribute: `disabled`
    */
   @attr({ mode: 'boolean' })
-  disabled?: boolean;
+  public disabled = false;
+  protected disabledChanged() {
+    console.log('change');
+    this.setDisabledSideEffect(this.disabled);
+  }
 
   /**
    * The id of a form to associate the element to.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Element/input#form | `form`} attribute
    *
    * @public
    * @remarks
    * HTML Attribute: `form`
    */
   @attr({ attribute: 'form' })
-  public formAttribute?: string;
+  public initialForm?: string;
+
+  /**
+   * The form element that’s associated to the element, or `null` if no form is associated.
+   *
+   * @public
+   */
+  public get form(): HTMLFormElement | null {
+    return this.elementInternals.form;
+  }
+
+  /**
+   * A `NodeList` of `<label>` element associated with the element.
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/labels | `labels`} property
+   *
+   * @public
+   */
+  public get labels(): NodeList {
+    return this.elementInternals.labels;
+  }
 
   /**
    * The maximum number of characters a user can enter.
@@ -163,8 +150,8 @@ export class TextArea extends FASTElement {
    * @remarks
    * HTML Attribute: `maxlength`
    */
-  @attr({ converter: nullableNumberConverter })
-  public maxlength!: number;
+  @attr({ attribute: 'maxlength', converter: nullableNumberConverter })
+  public maxLength!: number;
 
   /**
    * The minimum number of characters a user can enter.
@@ -174,8 +161,8 @@ export class TextArea extends FASTElement {
    * @remarks
    * HTML Attribute: `minlength`
    */
-  @attr({ converter: nullableNumberConverter })
-  public minlength!: number;
+  @attr({ attribute: 'minlength', converter: nullableNumberConverter })
+  public minLength!: number;
 
   /**
    * The name of the element. This element's value will be surfaced during form submission under the provided name.
@@ -197,7 +184,12 @@ export class TextArea extends FASTElement {
    * This attribute is not a valid substitute for a label.
    */
   @attr
-  public placeholder: string = '';
+  public placeholder?: string;
+  protected placeholderChanged() {
+    if (this.$fastController.isConnected) {
+      this.elementInternals.ariaPlaceholder = `${this.placeholder ?? ''}`;
+    }
+  }
 
   /**
    * When true, the control will be immutable by user interaction.
@@ -208,16 +200,11 @@ export class TextArea extends FASTElement {
    * HTML Attribute: `readonly`
    */
   @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readOnly?: boolean;
-
-  /**
-   * Syncs the `ElementInternals.ariaReadOnly` property when the `readonly` property changes.
-   *
-   * @internal
-   */
-  public readOnlyChanged(): void {
+  public readOnly = false;
+  protected readOnlyChanged() {
     if (this.$fastController.isConnected) {
       this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+      this.setContentEditable(!this.readOnly);
     }
   }
 
@@ -230,30 +217,11 @@ export class TextArea extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public required!: boolean;
-
-  /**
-   * Syncs the element's internal `aria-required` state with the `required` attribute.
-   *
-   * @param previous - the previous required state
-   * @param next - the current required state
-   *
-   * @internal
-   */
-  public requiredChanged(previous: boolean, next: boolean): void {
+  protected requiredChanged() {
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaRequired = `${!!next}`;
+      this.elementInternals.ariaRequired = `${!!this.required}`;
     }
   }
-
-  /**
-   * Sets the width of the element to a specified number of characters.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr({ converter: nullableNumberConverter })
-  public size!: number;
 
   /**
    * Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.
@@ -272,23 +240,24 @@ export class TextArea extends FASTElement {
   public spellcheck!: boolean;
 
   /**
-   * A reference to the internal label element.
+   * The type of the element, which is always "textarea".
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/type | `type`} property
    *
-   * @internal
+   * @public
    */
-  @observable
-  public controlLabel!: HTMLLabelElement;
+  public get type(): 'textarea' {
+    return 'textarea';
+  }
 
   /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   * Indicates whether the element can be resized by end users.
    *
-   * @internal
+   * @public
+   * @remarks
+   * HTML Attribute: `resize`
    */
-  public elementInternals: ElementInternals = this.attachInternals();
-
   @attr({ mode: 'fromView' })
   public resize?: TextAreaResize = TextAreaResize.none;
-
   protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
     if (prev) {
       toggleState(this.elementInternals, `resize-${prev}`, false);
@@ -297,15 +266,9 @@ export class TextArea extends FASTElement {
     if (next) {
       toggleState(this.elementInternals, `resize-${next}`, true);
     }
-  }
 
-  /**
-   * The form-associated flag.
-   * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
-   *
-   * @public
-   */
-  static readonly formAssociated = true;
+    // TODO
+  }
 
   /**
    * The element's validity state.
@@ -326,7 +289,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    return this.elementInternals.validationMessage ?? 'error';
+    return this.elementInternals.validationMessage;
   }
 
   /**
@@ -341,46 +304,53 @@ export class TextArea extends FASTElement {
   }
 
   /**
-   * The associated form element.
+   * The value of the element.
    *
    * @public
-   * @remarks
-   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/form | `ElementInternals.form`} property.
+   * @remark
+   * Reflects the `value` property.
    */
-  public get form(): HTMLFormElement | null {
-    return this.elementInternals.form;
+  public get value(): string {
+    return this.textbox.textContent?.trim() ?? '';
   }
 
-  public beforeinputHandler(e: InputEvent): boolean | void {
-    if (this.disabled) {
-      e.preventDefault();
-      return false;
-    }
+  public set value(next: string) {
+    this.textbox.textContent = next;
+    this.setFormValue(next);
+  }
 
-    // don't allow the slot to be deleted
-    if (e.inputType === 'deleteContentBackward') {
-      console.log('deleteContentBackward', e);
-    }
+  constructor() {
+    super();
 
-    return true;
+    this.elementInternals.role = 'textbox';
+    this.elementInternals.ariaMultiLine = 'true';
   }
 
   /**
-   * Change event handler for inner control.
+   * @internal
+   */
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    this.setContentEditable(true);
+    this.setInitialValue();
+    this.setValidity();
+  }
+
+  /**
+   * Resets the value to its initial value when the form is reset.
    *
    * @internal
-   * @privateRemarks
-   * "Change" events are not `composable` so they will not permeate the shadow DOM boundary. This function effectively
-   * proxies the change event, emitting a `change` event whenever the internal control emits a `change` event.
    */
-  public changeHandler(e: InputEvent): boolean | void {
-    this.setValidity();
-    this.$emit('change', e, {
-      bubbles: true,
-      composed: true,
-    });
+  public formResetCallback(): void {
+    this.setInitialValue();
+  }
 
-    return true;
+  /**
+   * @internal
+   */
+  public formDisabledCallback(disabled: boolean) {
+    this.setDisabledSideEffect(disabled);
   }
 
   /**
@@ -392,42 +362,6 @@ export class TextArea extends FASTElement {
    */
   public checkValidity(): boolean {
     return this.elementInternals.checkValidity();
-  }
-
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'textbox';
-  }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    this.setContentEditable(true);
-    // this.setFormValue(this.value);
-    this.setValidity();
-  }
-
-  /**
-   * Resets the value to its initial value when the form is reset.
-   *
-   * @internal
-   */
-  public formResetCallback(): void {
-    // this.value = this.initialValue;
-    // this.dirtyValue = false;
-  }
-
-  /**
-   * Handles the internal control's `input` event.
-   *
-   * @internal
-   */
-  public inputHandler(e: InputEvent): boolean | void {
-    // this.dirtyValue = true;
-    // this.value = this.control.value;
-
-    return true;
   }
 
   /**
@@ -473,7 +407,7 @@ export class TextArea extends FASTElement {
   public setValidity(
     flags: Partial<ValidityState> = {},
     message: string = this.validationMessage,
-    anchor: HTMLElement = this.control,
+    anchor: HTMLElement = this.textbox,
   ): void {
     if (this.$fastController.isConnected) {
       if (this.disabled) {
@@ -500,15 +434,20 @@ export class TextArea extends FASTElement {
       }
     }
   }
-}
 
-/**
- * @internal
- * @privateRemarks
- * Mark internal because exporting class and interface of the same name
- * confuses API documenter.
- * TODO: https://github.com/microsoft/rushstack/issues/1308
- */
-/* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface TextArea extends StartEnd {}
-applyMixins(TextArea, StartEnd);
+  private setDisabledSideEffect(disabled: boolean) {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
+    this.elementInternals.ariaDisabled = `${disabled}`;
+    this.setContentEditable(!disabled);
+  }
+
+  private setInitialValue() {
+    if (this.innerHTML.trim() !== '') {
+      // TODO: double check security
+      this.textbox.textContent = this.innerHTML;
+    }
+  }
+}

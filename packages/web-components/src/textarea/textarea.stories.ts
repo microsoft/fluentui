@@ -6,7 +6,7 @@ import type { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaControlSize } from './textarea.options.js';
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
-  <fluent-text-area
+  <fluent-textarea
     appearance="${x => x.appearance}"
     autocomplete="${x => x.autocomplete}"
     ?autofocus="${x => x.autofocus}"
@@ -22,7 +22,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     ?required="${x => x.required}"
     size="${x => x.size}"
     spellcheck="${x => x.spellcheck}"
-  ></fluent-text-area>
+  ></fluent-textarea>
 `;
 
 export default {
@@ -106,58 +106,53 @@ export default {
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-text-area placeholder="This is a placeholder">
-    <fluent-label slot="label">Input with a placeholder</fluent-label>
-  </fluent-text-area>
+  <fluent-textarea placeholder="This is a placeholder">
+  </fluent-textarea>
 `);
 
 export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 30px; width: 400px;">
     <div style="padding: 10px;">
-      <fluent-text-area>
-        <fluent-label>Outline (default) Input</fluent-label>
-      </fluent-text-area>
+      <fluent-textarea>
+      </fluent-textarea>
     </div>
     <div style="padding: 10px;">
-      <fluent-text-area appearance="underline">
-        <fluent-label>Underlined Input</fluent-label>
-      </fluent-text-area>
+      <fluent-textarea appearance="underline">
+      </fluent-textarea>
     </div>
     <fluent-field style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
       <label slot="label" style="color: ${colorNeutralForegroundInverted2}">Filled Lighter Input</label>
-      <fluent-text-area slot="input" appearance="filled-lighter"> </fluent-text-area>
+      <fluent-textarea slot="input" appearance="filled-lighter"> </fluent-textarea>
     </fluent-field>
     <fluent-field style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
       <label slot="label" style="color: ${colorNeutralForegroundInverted2}">Filled Darker Input</label>
-      <fluent-text-area slot="input" appearance="filled-darker"></fluent-text-area>
+      <fluent-textarea slot="input" appearance="filled-darker"></fluent-textarea>
     </fluent-field>
   </div>
 `);
 
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-text-area control-size="small">
-      <fluent-label size="small">Small Input</fluent-label>
-    </fluent-text-area>
-    <fluent-text-area>
-      <fluent-label>Medium (default) Input</fluent-label>
-    </fluent-text-area>
+    <fluent-textarea control-size="small">
+    </fluent-textarea>
+    <fluent-textarea>
+    </fluent-textarea>
     <fluent-field size="large">
       <label slot="label">Large Input</label>
-      <fluent-text-area slot="input" size="large"></fluent-text-area>
+      <fluent-textarea slot="input" size="large"></fluent-textarea>
     </fluent-field>
   </div>
 `);
 
 export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-text-area disabled> </fluent-text-area>
+  <fluent-textarea disabled> </fluent-textarea>
 `);
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="required-form" action="#">
     <fluent-field>
       <label slot="label">Required Input</label>
-      <fluent-text-area slot="input" name="required-input" required></fluent-text-area>
+      <fluent-textarea slot="input" name="required-input" required></fluent-textarea>
     </fluent-field>
     <button type="submit">Submit</button>
   </form>
@@ -165,13 +160,12 @@ export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 
 export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="readonly-form" action="#">
-    <fluent-text-area readonly>
-      <fluent-label>Readonly Input</fluent-label>
-    </fluent-text-area>
+    <fluent-textarea readonly>
+    </fluent-textarea>
     <button type="submit">Submit</button>
   </form>
 `);
 
 export const WithoutLabel: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-text-area> </fluent-text-area>
+  <fluent-textarea> </fluent-textarea>
 `);

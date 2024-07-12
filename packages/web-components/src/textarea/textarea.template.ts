@@ -1,5 +1,4 @@
-import { ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
-import { whitespaceFilter } from '../utils/whitespace-filter.js';
+import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { TextArea } from './textarea.js';
 import type { TextAreaOptions } from './textarea.options.js';
 
@@ -10,9 +9,10 @@ import type { TextAreaOptions } from './textarea.options.js';
  */
 export function textInputTemplate<T extends TextArea>(options: TextAreaOptions = {}): ElementViewTemplate<T> {
   return html<T>`
-    <template @beforeinput="${(x, c) => x.beforeinputHandler(c.event as InputEvent)}">
+    <template>
       <div ${ref('textbox')} class="textbox"></div>
-      <div class="placeholder" part="placeholder">${x => x.placeholder}</div>
+      <div ${ref('placeholderContainer')} class="placeholder" part="placeholder">${x => x.placeholder}</div>
+      <button ${ref('resizeHandle')} class="resize" part="resize" aria-label="resize"></button>
     </template>
   `;
 }

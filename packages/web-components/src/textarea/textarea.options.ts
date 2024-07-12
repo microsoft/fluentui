@@ -29,7 +29,6 @@ export type TextAreaControlSize = ValuesOf<typeof TextAreaControlSize>;
  */
 export const TextAreaAppearance = {
   outline: 'outline',
-  underline: 'underline',
   filledLighter: 'filled-lighter',
   filledDarker: 'filled-darker',
 } as const;
