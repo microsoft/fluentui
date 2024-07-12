@@ -38,6 +38,7 @@ import {
   IDomainNRange,
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
+  darkenLightenColor,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -448,6 +449,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       const bValue = typeof b.y === 'number' ? b.y : parseFloat(b.y);
       return bValue - aValue;
     });
+
     const bars = sortedBars.map((point: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -472,32 +474,47 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           ? this._createColors()(point.x)
           : getNextColor(index, 0, this.props.theme?.isInverted);
       }
+
+      color = point.color && !useSingleColor ? point.color : color;
+      const color2 = darkenLightenColor(color, 70);
+
       return (
-        <rect
-          key={point.y}
-          x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
-          className={this._classNames.opacityChangeOnHover}
-          y={yBarScale(point.y) - this._barHeight / 2}
-          data-is-focusable={shouldHighlight}
-          width={
-            this._isRtl
-              ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
-              : Math.max(xBarScale(point.x), 0) - this.margins.left!
-          }
-          height={this._barHeight}
-          ref={(e: SVGRectElement) => {
-            this._refCallback(e, point.legend!);
-          }}
-          onClick={point.onClick}
-          onMouseOver={this._onBarHover.bind(this, point, color)}
-          aria-label={this._getAriaLabel(point)}
-          role="img"
-          aria-labelledby={`toolTip${this._calloutId}`}
-          onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point, index, color)}
-          onBlur={this._onBarLeave}
-          fill={point.color && !useSingleColor ? point.color : color}
-        />
+        <React.Fragment key={point.y}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}_${point.y}`} >
+                <stop offset="0" stopColor={color2} />
+                <stop offset="100%" stopColor={color} />
+              </linearGradient>
+            </defs>
+          )}
+          <rect
+            key={point.y}
+            x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
+            className={this._classNames.opacityChangeOnHover}
+            y={yBarScale(point.y) - this._barHeight / 2}
+            data-is-focusable={shouldHighlight}
+            width={
+              this._isRtl
+                ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
+                : Math.max(xBarScale(point.x), 0) - this.margins.left!
+            }
+            height={this._barHeight}
+            ref={(e: SVGRectElement) => {
+              this._refCallback(e, point.legend!);
+            }}
+            rx="3%"
+            onClick={point.onClick}
+            onMouseOver={this._onBarHover.bind(this, point, color)}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            aria-labelledby={`toolTip${this._calloutId}`}
+            onMouseLeave={this._onBarLeave}
+            onFocus={this._onBarFocus.bind(this, point, index, color)}
+            onBlur={this._onBarLeave}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y})` : color}
+          />
+        </React.Fragment>
       );
     });
     return bars;

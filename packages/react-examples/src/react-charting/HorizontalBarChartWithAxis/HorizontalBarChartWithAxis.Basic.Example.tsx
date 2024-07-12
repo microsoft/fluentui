@@ -9,12 +9,14 @@ import {
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  enableGradient: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -33,6 +35,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      enableGradient: false,
     };
   }
 
@@ -56,6 +59,10 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ useSingleColor: checked });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked});
   };
 
   private _basicExample(): JSX.Element {
@@ -128,6 +135,14 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <Toggle
+          label="Enable Gradient"
+          onText="Gradient enabled"
+          offText="Gradient disabled"
+          onChange={this._onToggleGradient}
+        />
+        <br />
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             culture={window.navigator.language}
@@ -143,6 +158,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
               ) => (props ? defaultRender(props) : null),
             })}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
           />
         </div>
       </>

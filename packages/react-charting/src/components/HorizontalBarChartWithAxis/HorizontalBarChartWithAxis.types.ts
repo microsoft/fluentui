@@ -70,6 +70,12 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
 }
 
 /**
