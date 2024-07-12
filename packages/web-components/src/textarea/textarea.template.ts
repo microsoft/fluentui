@@ -12,7 +12,7 @@ export function textInputTemplate<T extends TextArea>(options: TextAreaOptions =
     <template>
       <div ${ref('textbox')} class="textbox"></div>
       <div ${ref('placeholderContainer')} class="placeholder" part="placeholder">${x => x.placeholder}</div>
-      <button ${ref('resizeHandle')} class="resize" part="resize" aria-label="resize"></button>
+      <button ${ref('resizeHandle')} class="resize" part="resize" aria-hidden="true" tabindex="-1"></button>
     </template>
   `;
 }
