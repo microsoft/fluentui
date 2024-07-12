@@ -26,7 +26,7 @@
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-deprecation": "^2.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-jest": "^27.9.0",
+    "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-jsdoc": "^48.7.0",
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.24.0",
