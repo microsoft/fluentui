@@ -76,9 +76,7 @@ export type CarouselCardSlots = {
 };
 
 // @public
-export type CarouselCardState = ComponentState<CarouselCardSlots> & {
-    visible: boolean;
-} & Pick<CarouselCardProps, 'value'>;
+export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'value'>;
 
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
@@ -164,6 +162,7 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
 // @public
 export type CarouselProps = ComponentProps<CarouselSlots> & {
     defaultValue?: string;
+    align?: 'center' | 'start' | 'end';
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
