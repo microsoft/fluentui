@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
@@ -29,52 +28,52 @@ export interface ILegendsStyles {
   /**
    * Style set for the root of the legend component
    */
-  root: IStyle;
+  root?: string;
 
   /**
    * Style set for Legend. This is a wrapping class for text of legend and the rectange box that represents a legend
    */
-  legend: IStyle;
+  legend?: string;
 
   /**
    * Style set for the rectangle that represents a legend
    */
-  rect: IStyle;
+  rect?: string;
 
   /**
    * styles set for the shape that represents a legend
    */
-  shape: IStyle;
+  shape?: string;
 
   /**
    * Style set for the triangle that represents a legend
    */
-  triangle: IStyle;
+  triangle?: string;
 
   /**
    * Style for the legend text
    */
-  text: IStyle;
+  text?: string;
 
   /**
    * Style for the legend text
    */
-  hoverChange: IStyle;
+  hoverChange?: string;
 
   /**
    * Style for the text that indicates the no.of legends that are in hovercard due to lack of space
    */
-  overflowIndicationTextStyle: IStyle;
+  overflowIndicationTextStyle?: string;
 
   /**
    * Style for the overflow container
    */
-  hoverCardRoot: IStyle;
+  hoverCardRoot?: string;
 
   /**
    * sub component styles
    */
-  subComponentStyles: ILegendSubComponentStyles;
+  subComponentStyles?: ILegendSubComponentStyles;
 }
 
 /**
@@ -140,7 +139,6 @@ export interface ILegend {
  * {@docCategory Legends}
  */
 export interface ILegendStyleProps {
-  theme?: ITheme;
   className?: string;
   colorOnSelectedState?: string;
   borderColor?: string;
@@ -167,14 +165,9 @@ export interface ILegendsProps {
   className?: string;
 
   /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
-
-  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
+  styles?: ILegendsStyles;
 
   /**
    * This prop makes the legends component align itself to the center in the container it is sitting in
