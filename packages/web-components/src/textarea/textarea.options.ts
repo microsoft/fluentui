@@ -35,6 +35,11 @@ export const TextAreaAppearance = {
 
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
+export const TextAreaAppearancesForDisplayShadow: TextAreaAppearance[] = [
+  TextAreaAppearance.filledLighter,
+  TextAreaAppearance.filledDarker,
+];
+
 /**
  * Values for the `autocomplete` attribute on TextArea elements.
  *

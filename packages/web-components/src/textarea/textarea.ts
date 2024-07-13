@@ -1,6 +1,12 @@
-import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { TextAreaAppearance, TextAreaAutocomplete, TextAreaControlSize, TextAreaResize } from './textarea.options.js';
+import {
+  TextAreaAppearance,
+  TextAreaAppearancesForDisplayShadow,
+  TextAreaAutocomplete,
+  TextAreaControlSize,
+  TextAreaResize,
+} from './textarea.options.js';
 
 /**
  * A Text Area Custom HTML Element.
@@ -48,13 +54,16 @@ export class TextArea extends FASTElement {
    * @remarks
    * HTML Attribute: `appearance`
    */
-  @attr
-  public appearance?: TextAreaAppearance;
+  @attr({ mode: 'fromView' })
+  public appearance: TextAreaAppearance = TextAreaAppearance.outline;
   protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
-    if (next) {
+
+    if (!next || !Array.from(Object.values(TextAreaAppearance)).includes(next)) {
+      toggleState(this.elementInternals, TextAreaAppearance.outline, true);
+    } else {
       toggleState(this.elementInternals, `${next}`, true);
     }
   }
@@ -69,6 +78,32 @@ export class TextArea extends FASTElement {
    */
   @attr
   public autocomplete?: TextAreaAutocomplete;
+
+  /**
+   * Indicates whether the element’s block size (height) should be automatically changed as the input grows longer.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `auto-resize`
+   */
+  @attr({ attribute: 'auto-resize', mode: 'boolean' })
+  public autoResize = false;
+  protected autoResizeChanged() {
+    toggleState(this.elementInternals, `auto-resize`, this.autoResize);
+  }
+
+  /**
+   * Indicates whether the textarea should be a block-level element in the layout.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `block`
+   */
+  @attr({ mode: 'boolean' })
+  public block: boolean = false;
+  protected blockChanged() {
+    toggleState(this.elementInternals, `block`, this.block);
+  }
 
   /**
    * Sets the size of the control.
@@ -110,9 +145,18 @@ export class TextArea extends FASTElement {
   @attr({ mode: 'boolean' })
   public disabled = false;
   protected disabledChanged() {
-    console.log('change');
     this.setDisabledSideEffect(this.disabled);
   }
+
+  /**
+   * Indicates whether the element displays a box shadow. This only has effect when `appearance` is set to be `filled-darker` or `filled-lighter`.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `display-shadow`
+   */
+  @attr({ attribute: 'display-shadow', mode: 'boolean' })
+  public displayShadow = false;
 
   /**
    * The id of a form to associate the element to.
@@ -257,7 +301,7 @@ export class TextArea extends FASTElement {
    * HTML Attribute: `resize`
    */
   @attr({ mode: 'fromView' })
-  public resize?: TextAreaResize = TextAreaResize.none;
+  public resize: TextAreaResize = TextAreaResize.none;
   protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
     if (prev) {
       toggleState(this.elementInternals, `resize-${prev}`, false);
@@ -266,6 +310,14 @@ export class TextArea extends FASTElement {
     if (next) {
       toggleState(this.elementInternals, `resize-${next}`, true);
     }
+
+    toggleState(
+      this.elementInternals,
+      `resize`,
+      Array.from(Object.keys(TextAreaResize))
+        .filter(r => r !== TextAreaResize.none)
+        .includes(this.resize),
+    );
 
     // TODO
   }
@@ -319,6 +371,19 @@ export class TextArea extends FASTElement {
     this.setFormValue(next);
   }
 
+  public handleChange(_: any, propertyName: string) {
+    switch (propertyName) {
+      case 'appearance':
+      case 'displayShadow':
+        toggleState(
+          this.elementInternals,
+          'display-shadow',
+          this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
+        );
+        break;
+    }
+  }
+
   constructor() {
     super();
 
@@ -335,6 +400,20 @@ export class TextArea extends FASTElement {
     this.setContentEditable(true);
     this.setInitialValue();
     this.setValidity();
+
+    Observable.getNotifier(this).subscribe(this, 'appearance');
+    Observable.getNotifier(this).subscribe(this, 'displayShadow');
+
+  }
+
+  /**
+   * @internal
+   */
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this, 'appearance');
+    Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
   }
 
   /**

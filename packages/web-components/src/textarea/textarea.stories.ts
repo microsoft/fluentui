@@ -106,19 +106,16 @@ export default {
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea placeholder="This is a placeholder">
-  </fluent-textarea>
+  <fluent-textarea placeholder="This is a placeholder"> </fluent-textarea>
 `);
 
 export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 30px; width: 400px;">
     <div style="padding: 10px;">
-      <fluent-textarea>
-      </fluent-textarea>
+      <fluent-textarea> </fluent-textarea>
     </div>
     <div style="padding: 10px;">
-      <fluent-textarea appearance="underline">
-      </fluent-textarea>
+      <fluent-textarea appearance="underline"> </fluent-textarea>
     </div>
     <fluent-field style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
       <label slot="label" style="color: ${colorNeutralForegroundInverted2}">Filled Lighter Input</label>
@@ -133,10 +130,8 @@ export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<
 
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-textarea control-size="small">
-    </fluent-textarea>
-    <fluent-textarea>
-    </fluent-textarea>
+    <fluent-textarea control-size="small"> </fluent-textarea>
+    <fluent-textarea> </fluent-textarea>
     <fluent-field size="large">
       <label slot="label">Large Input</label>
       <fluent-textarea slot="input" size="large"></fluent-textarea>
@@ -160,8 +155,7 @@ export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 
 export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="readonly-form" action="#">
-    <fluent-textarea readonly>
-    </fluent-textarea>
+    <fluent-textarea readonly> </fluent-textarea>
     <button type="submit">Submit</button>
   </form>
 `);

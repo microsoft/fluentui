@@ -3,15 +3,11 @@ import { css } from '@microsoft/fast-element';
 import {
   borderRadiusMedium,
   colorCompoundBrandStroke,
-  colorCompoundBrandStrokePressed,
   colorNeutralBackground1,
   colorNeutralBackground3,
-  colorNeutralBackgroundInverted,
   colorNeutralForeground1,
-  colorNeutralForeground3,
   colorNeutralForeground4,
   colorNeutralForegroundDisabled,
-  colorNeutralForegroundInverted,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
@@ -21,8 +17,6 @@ import {
   colorNeutralStrokeDisabled,
   colorPaletteRedBorder2,
   colorTransparentBackground,
-  colorTransparentStroke,
-  colorTransparentStrokeInteractive,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -31,8 +25,6 @@ import {
   fontSizeBase200,
   fontSizeBase300,
   fontSizeBase400,
-  fontSizeBase500,
-  fontSizeBase600,
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
@@ -40,29 +32,28 @@ import {
   shadow2,
   spacingHorizontalM,
   spacingHorizontalMNudge,
-  spacingHorizontalS,
   spacingHorizontalSNudge,
-  spacingHorizontalXS,
   spacingHorizontalXXS,
+  spacingVerticalS,
   spacingVerticalSNudge,
   spacingVerticalXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/display.js';
 import {
+  autoResizeState,
+  blockState,
+  displayShadowState,
   filledDarkerState,
   filledLighterState,
   largeState,
   outlineState,
+  resizeBothState,
+  resizeHorizontalState,
+  resizeState,
+  resizeVerticalState,
   smallState,
-  underlineState,
 } from '../styles/states/index.js';
-
-const resizeHorizontalState = `:is(:state(resize-horizontal), [state--resize-horizontal])`;
-
-const resizeVerticalState = `:is(:state(resize-vertical), [state--resize-vertical])`;
-
-const resizeBothState = `:is(:state(resize-both), [state--resize-both])`;
 
 /**
  * Styles for the TextArea component.
@@ -70,32 +61,130 @@ const resizeBothState = `:is(:state(resize-both), [state--resize-both])`;
  * @public
  */
 export const styles: ElementStyles = css`
-  ${display('inline-block')}
+  ${display('inline-grid')}
 
   :host {
-    contain: content;
-    align-items: start;
-    background-color: ${colorNeutralBackground1};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-    border-bottom-color: ${colorNeutralStrokeAccessible};
+    /* typography */
+    --font-size: ${fontSizeBase300};
+    --line-height: ${lineHeightBase300};
+
+    /* sizing and spacing */
+    --padding-inline: ${spacingHorizontalMNudge};
+    --padding-block: ${spacingVerticalSNudge};
+    --min-block-size: 52px;
+    --max-block-size: 260px;
+    --block-size: auto;
+    --content-padding-inline: ${spacingHorizontalXXS};
+    --inline-size: 18rem;
+
+    /* colors */
+    --color: ${colorNeutralForeground1};
+    --background-color: ${colorNeutralBackground1};
+    --border-color: ${colorNeutralStroke1};
+    --border-block-end-color: ${colorNeutralStrokeAccessible};
+    --placeholder-color: ${colorNeutralForeground4};
+    --resize-color: currentcolor;
+
+    /* elevations */
+    --box-shadow: none;
+
+    background-color: var(--background-color);
+    border: ${strokeWidthThin} solid var(--border-color);
+    border-block-end-color: var(--border-block-end-color);
     border-radius: ${borderRadiusMedium};
     box-sizing: border-box;
+    box-shadow: var(--box-shadow);
+    color: var(--color);
     font-family: ${fontFamilyBase};
-    font-size: ${fontSizeBase300};
+    font-size: var(--font-size);
     font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase300};
-    max-height: 20em;
-    min-width: 20em;
+    grid-template: 1fr / 1fr;
+    line-height: var(--line-height);
+    max-inline-size: 100%;
+    min-block-size: var(--min-block-size);
+    max-block-size: var(--max-block-size);
+    inline-size: var(--inline-size);
+    block-size: var(--block-size);
+    padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
 
-  :host(${outlineState}:focus-within) {
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
+  :host(:hover) {
+    --border-color: ${colorNeutralStroke1Hover};
+    --border-block-end-color: ${colorNeutralStrokeAccessibleHover};
+  }
+
+  :host(:active) {
+    --border-color: ${colorNeutralStroke1Pressed};
+    --border-block-end-color: ${colorNeutralStrokeAccessiblePressed};
   }
 
   :host(:focus-within) {
     outline: transparent solid 2px;
-    border-bottom: 0;
+  }
+
+  :host(${blockState}) {
+    display: grid;
+    inline-size: auto;
+  }
+
+  :host(${smallState}) {
+    --font-size: ${fontSizeBase200};
+    --line-height: ${lineHeightBase200};
+    --min-block-size: 40px;
+    --max-block-size: 200px;
+    --padding-block: ${spacingVerticalXS};
+    --padding-inline: ${spacingHorizontalSNudge};
+    --content-padding-inline: ${spacingHorizontalXXS};
+  }
+
+  :host(${largeState}) {
+    --font-size: ${fontSizeBase400};
+    --line-height: ${lineHeightBase400};
+    --min-block-size: 64px;
+    --max-block-size: 320px;
+    --padding-block: ${spacingVerticalS};
+    --padding-inline: ${spacingHorizontalM};
+    --content-padding-inline: ${spacingHorizontalSNudge};
+  }
+
+  :host(${autoResizeState}) {
+    --max-block-size: none;
+  }
+
+  :host(${filledDarkerState}) {
+    --background-color: ${colorNeutralBackground3};
+    --border-color: var(--background-color);
+    --border-block-end-color: var(--border-color);
+  }
+
+  :host(${filledLighterState}) {
+    --border-color: var(--background-color);
+    --border-block-end-color: var(--border-color);
+  }
+
+  /* TODO */
+  :host(${filledDarkerState}${displayShadowState}),
+  :host(${filledLighterState}${displayShadowState}) {
+    --box-shadow: ${shadow2};
+  }
+
+  :host(:invalid) {
+    --border-color: ${colorPaletteRedBorder2};
+    --border-block-end-color: ${colorPaletteRedBorder2};
+  }
+
+  :host(:disabled) {
+    --color: ${colorNeutralForegroundDisabled};
+    --background-color: ${colorTransparentBackground};
+    --border-color: ${colorNeutralStrokeDisabled};
+    --border-block-end-color: var(--border-color);
+    --box-shadow: none;
+    --placeholder-color: ${colorNeutralForegroundDisabled};
+    --resize-color: ${colorNeutralStrokeDisabled};
+
+    cursor: no-drop;
+    user-select: none;
   }
 
   :host::after {
@@ -105,7 +194,7 @@ export const styles: ElementStyles = css`
     clip-path: inset(calc(100% - 2px) 1px 0px);
     content: '';
     height: max(2px, ${borderRadiusMedium});
-    inset: auto -1px 0;
+    inset: auto -1px -1px;
     position: absolute;
     transform: scaleX(0);
     transition-delay: ${curveAccelerateMid};
@@ -120,126 +209,57 @@ export const styles: ElementStyles = css`
     transition-delay: ${curveDecelerateMid};
   }
 
-  :host(:focus-within:active):after {
-    border-bottom-color: ${colorCompoundBrandStrokePressed};
+  :host([readonly])::after,
+  :host(:disabled)::after {
+    content: none;
   }
 
-  :host(${resizeBothState}) .control {
-    resize: both;
-  }
-  :host(${resizeHorizontalState}) .control {
-    resize: horizontal;
-  }
-  :host(${resizeVerticalState}) .control {
-    resize: vertical;
-  }
-  :host(${smallState}) {
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
-    height: 24px;
-    gap: ${spacingHorizontalXXS};
-    padding: 0 ${spacingHorizontalSNudge};
+  .textbox,
+  .placeholder {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding-inline: var(--content-padding-inline);
   }
 
   .textbox {
+    overflow: auto;
+    outline: 0;
   }
-`;
 
-const oldStyles = css`
-  .control {
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    color: ${colorNeutralForeground1};
-    border-radius: ${borderRadiusMedium};
-    background: ${colorTransparentBackground};
-    font-family: ${fontFamilyBase};
-    font-weight: ${fontWeightRegular};
-    font-size: ${fontSizeBase300};
-    border: none;
-    vertical-align: center;
+  .placeholder {
+    color: var(--placeholder-color);
   }
-  :host(:hover) {
-    border-color: ${colorNeutralStroke1Hover};
-    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
-  }
-  :host(:active) {
-    border-color: ${colorNeutralStroke1Pressed};
-  }
-  :host(:focus-within) .control {
-    color: ${colorNeutralForeground1};
-  }
-  :host([disabled]) {
-    background: ${colorTransparentBackground};
-    border: ${strokeWidthThin} solid ${colorNeutralStrokeDisabled};
-  }
-  :host([disabled]) .control::placeholder,
-  :host([disabled]) ::slotted([slot='start']),
-  :host([disabled]) ::slotted([slot='end']) {
-    color: ${colorNeutralForegroundDisabled};
-  }
-  ::selection {
-    color: ${colorNeutralForegroundInverted};
-    background-color: ${colorNeutralBackgroundInverted};
-  }
-  :host(${smallState}) .control {
-    font-size: ${fontSizeBase200};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase200};
-  }
-  :host(${smallState}) {
-    height: 24px;
-    gap: ${spacingHorizontalXXS};
-    padding: 0 ${spacingHorizontalSNudge};
-  }
-  :host(${largeState}) .control {
-    font-size: ${fontSizeBase400};
-    font-weight: ${fontWeightRegular};
-    line-height: ${lineHeightBase400};
-  }
-  :host(${largeState}) {
-    height: 40px;
-    gap: ${spacingHorizontalS};
-    padding: 0 ${spacingHorizontalM};
-  }
-  :host(${underlineState}) {
-    background: ${colorTransparentBackground};
+
+  .resize {
+    appearance: none;
+    background: var(--resize-color);
     border: 0;
-    border-radius: 0;
-    border-bottom: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
+    display: none;
+    padding: 0;
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-end: 0;
+    block-size: 1rem;
+    inline-size: 1rem;
   }
-  :host(${underlineState}:hover) {
-    border-bottom-color: ${colorNeutralStrokeAccessibleHover};
+
+  :host(${resizeState}) .resize {
+    display: block;
   }
-  :host(${underlineState}:active) {
-    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
+
+  :host(${resizeBothState}) .resize:not(:disabled) {
+    cursor: nwse-resize;
   }
-  :host(${underlineState}:focus-within) {
-    border: 0;
-    border-bottom-color: ${colorNeutralStrokeAccessiblePressed};
+
+  :host(${resizeBothState}:dir(rtl)) .resize:not(:disabled) {
+    cursor: nesw-resize;
   }
-  :host(${underlineState}[disabled]) {
-    border-bottom-color: ${colorNeutralStrokeDisabled};
+
+  :host(${resizeHorizontalState}) .resize:not(:disabled) {
+    cursor: ew-resize;
   }
-  :host(${filledLighterState}),
-  :host(${filledDarkerState}) {
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    box-shadow: ${shadow2};
-  }
-  :host(${filledLighterState}) {
-    background: ${colorNeutralBackground1};
-  }
-  :host(${filledDarkerState}) {
-    background: ${colorNeutralBackground3};
-  }
-  :host(${filledLighterState}:hover),
-  :host(${filledDarkerState}:hover) {
-    border-color: ${colorTransparentStrokeInteractive};
-  }
-  :host(${filledLighterState}:active),
-  :host(${filledDarkerState}:active) {
-    border-color: ${colorTransparentStrokeInteractive};
-    background: ${colorNeutralBackground3};
+
+  :host(${resizeVerticalState}) .resize:not(:disabled) {
+    cursor: ns-resize;
   }
 `;
