@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { useId } from '@fluentui/react-utilities';
 // import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { IModifiedCartesianChartProps, IYValueHover, IHorizontalBarChartWithAxisDataPoint } from '../../index';
@@ -115,8 +113,10 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
 
   // ComponentDidUpdate logic
   React.useEffect(() => {
-    if (prevProps.height !== props.height || prevProps.width !== props.width) {
-      _fitParentContainer();
+    if (prevProps) {
+      if (prevProps.height !== props.height || prevProps.width !== props.width) {
+        _fitParentContainer();
+      }
     }
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
       const rotateLabelProps = {
