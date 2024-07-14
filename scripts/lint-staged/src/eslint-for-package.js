@@ -65,7 +65,7 @@ async function run() {
 
   // Format results
   const formatter = await eslint.loadFormatter();
-  const resultText = formatter.format(results);
+  const resultText = await formatter.format(results);
 
   if (!resultText) {
     return;
