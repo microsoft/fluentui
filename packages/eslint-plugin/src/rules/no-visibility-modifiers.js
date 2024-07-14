@@ -79,8 +79,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid visibility modifiers on class properties and methods.',
-      // Only used by v0. Omitting visibility modifiers is generally not recommended.
-      recommended: false,
     },
     messages: {
       modifierPresent: 'Visibility modifier present on {{type}} {{name}}',
@@ -95,7 +93,7 @@ module.exports = createRule({
      * Generates the report for rule violations
      * @param {string} nodeType
      * @param {Node} node
-     * @param {string} nodeName
+     * @param  {{ type: number; name: string } | string} nodeName
      */
     function reportIssue(nodeType, node, nodeName) {
       context.report({

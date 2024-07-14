@@ -13,7 +13,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban usage of instanceof HTMLElement comparison',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       invalidBinaryExpression: 'instanceof {{right}} should be avoided, use isHTMLElement instead.',

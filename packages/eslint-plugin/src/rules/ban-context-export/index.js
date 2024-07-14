@@ -35,7 +35,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban export of React context or context selector objects',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       nativeContext: '{{exportName}} should not be exported directly',
