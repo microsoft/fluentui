@@ -503,7 +503,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
-            rx="3%"
+            rx={this.props.roundCorners ? this._barHeight / 2 : 0}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, color)}
             aria-label={this._getAriaLabel(point)}
@@ -597,7 +597,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             key={point.x}
             x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
             y={yBarScale(point.y)}
-            rx="2.5%"
+            rx={this.props.roundCorners ? this._barHeight / 2 : 0}
             width={
               this._isRtl
                 ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)

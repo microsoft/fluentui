@@ -17,6 +17,7 @@ interface IHorizontalBarChartWithAxisState {
   isCalloutselected: boolean;
   useSingleColor: boolean;
   enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -36,6 +37,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       isCalloutselected: false,
       useSingleColor: false,
       enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -64,6 +66,10 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked});
   };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked});
+  }
 
   private _basicExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -141,6 +147,12 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           offText="Gradient disabled"
           onChange={this._onToggleGradient}
         />
+        <Toggle
+          label="Rounded corners"
+          onText="ON"
+          offText="OFF"
+          onChange={this._onToggleRoundCorners}
+        />
         <br />
 
         <div style={rootStyle}>
@@ -159,6 +171,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
             })}
             enableReflow={true}
             enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

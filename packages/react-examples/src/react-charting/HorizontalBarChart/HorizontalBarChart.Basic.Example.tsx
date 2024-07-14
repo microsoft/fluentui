@@ -12,6 +12,7 @@ import { Toggle } from '@fluentui/react/lib/Toggle';
 interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
   enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class HorizontalBarChartBasicExample extends React.Component<
@@ -23,6 +24,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
     this.state = {
       chartMode: 'default',
       enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -36,6 +38,10 @@ export class HorizontalBarChartBasicExample extends React.Component<
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked});
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked});
   };
 
   private _basicExample() {
@@ -155,6 +161,12 @@ export class HorizontalBarChartBasicExample extends React.Component<
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundCorners}
+          />
         </div>
 
         <div style={{ maxWidth: 600 }}>
@@ -164,6 +176,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
             hideRatio={hideRatio}
             chartDataMode={this.state.chartMode}
             enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>
