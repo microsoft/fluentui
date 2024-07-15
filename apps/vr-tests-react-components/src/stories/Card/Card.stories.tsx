@@ -5,7 +5,7 @@ import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-
 import { Body1, Caption1, Text } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
@@ -22,7 +22,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Card>;
+} satisfies Meta<typeof Card>;
 
 export const CardTemplates = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>

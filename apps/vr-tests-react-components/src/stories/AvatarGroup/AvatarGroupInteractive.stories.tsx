@@ -1,27 +1,24 @@
 import * as React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 
 import { names } from './utils';
-import { DARK_MODE, HIGH_CONTRAST, getStoryVariant, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, HIGH_CONTRAST, getStoryVariant } from '../../utilities';
 
 export default {
   title: 'AvatarGroup Converged',
   component: AvatarGroup,
   decorators: [
-    TestWrapperDecorator,
     story => (
       <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
-        {story()}
+        <div className="testWrapper">{story()}</div>
       </StoryWright>
     ),
   ],
 } satisfies Meta<typeof AvatarGroup>;
 
-type Story = StoryFn<typeof AvatarGroup>;
-
-export const OverflowContent: Story = () => {
+export const OverflowContent = () => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (

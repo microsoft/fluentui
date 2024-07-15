@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps } from 'storywright';
@@ -28,7 +28,7 @@ export default {
   title: 'InteractionTag Converged',
   Component: InteractionTag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof InteractionTag>;
+} satisfies Meta<typeof InteractionTag>;
 
 export const Rounded = () => (
   <InteractionTag>

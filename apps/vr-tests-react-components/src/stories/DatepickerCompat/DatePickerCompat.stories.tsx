@@ -1,17 +1,17 @@
 import * as React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
 import type { DatePickerProps } from '@fluentui/react-datepicker-compat';
 import { DateRangeType } from '@fluentui/react-calendar-compat';
 import { Field } from '@fluentui/react-field';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST } from '../../utilities';
 
 const DatePicker = (props: DatePickerProps & { renderRelativeElement?: boolean }) => {
   const today = new Date('3/15/2023');
   const { renderRelativeElement, ...restProps } = props;
   return (
-    <div style={{ width: '500px', height: '330px', padding: '10px' }}>
+    <div style={{ width: '500px', height: '330px', padding: '20px' }}>
       <DatePickerBase value={today} today={today} {...restProps} />
       {renderRelativeElement && <input style={{ position: 'relative', display: 'block', width: '100%' }} />}
     </div>
@@ -22,43 +22,36 @@ export default {
   title: 'DatePicker Compat',
   component: DatePicker,
   decorators: [
-    TestWrapperDecorator,
     story => (
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+        <div className="testWrapper">{story()}</div>
+      </StoryWright>
     ),
   ],
 } satisfies Meta<typeof DatePicker>;
 
-type Story = StoryFn<typeof DatePicker>;
-
-export const DateRangeDay: Story = () => (
-  <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} defaultOpen={true} />
-);
+export const DateRangeDay = () => <DatePicker calendar={{ dateRangeType: DateRangeType.Day }} defaultOpen={true} />;
 
 DateRangeDay.storyName = 'DateRange: day';
 
-export const DateRangeWeek: Story = () => (
-  <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} defaultOpen={true} />
-);
+export const DateRangeWeek = () => <DatePicker calendar={{ dateRangeType: DateRangeType.Week }} defaultOpen={true} />;
 
 DateRangeWeek.storyName = 'DateRange: week';
 
-export const DateRangeWorkWeek: Story = () => (
+export const DateRangeWorkWeek = () => (
   <DatePicker calendar={{ dateRangeType: DateRangeType.WorkWeek }} defaultOpen={true} />
 );
 
 DateRangeWorkWeek.storyName = 'DateRange: work week';
 
-export const DateRangeMonth: Story = () => (
-  <DatePicker calendar={{ dateRangeType: DateRangeType.Month }} defaultOpen={true} />
-);
+export const DateRangeMonth = () => <DatePicker calendar={{ dateRangeType: DateRangeType.Month }} defaultOpen={true} />;
 DateRangeMonth.storyName = 'DateRange: month';
 
 export const DateRangeDayDarkMode = getStoryVariant(DateRangeDay, DARK_MODE);
 
 export const DateRangeMonthHightContrast = getStoryVariant(DateRangeMonth, HIGH_CONTRAST);
 
-export const MarkedDates: Story = () => (
+export const MarkedDates = () => (
   <DatePicker
     calendar={{
       calendarDayProps: { getMarkedDays: (start, end) => [new Date('3/15/2023'), new Date('3/10/2023')] },
@@ -72,26 +65,26 @@ export const MarkedDatesDarkMode = getStoryVariant(MarkedDates, DARK_MODE);
 
 export const MarkedDatesHightContrast = getStoryVariant(MarkedDates, HIGH_CONTRAST);
 
-export const ShowWeekNumbers: Story = () => <DatePicker showWeekNumbers defaultOpen={true} />;
+export const ShowWeekNumbers = () => <DatePicker showWeekNumbers defaultOpen={true} />;
 ShowWeekNumbers.storyName = 'showWeekNumbers';
 
 export const ShowWeekNumbersDarkMode = getStoryVariant(ShowWeekNumbers, DARK_MODE);
 
 export const ShowWeekNumbersHightContrast = getStoryVariant(ShowWeekNumbers, HIGH_CONTRAST);
 
-export const AllowTextInput: Story = () => <DatePicker allowTextInput />;
+export const AllowTextInput = () => <DatePicker allowTextInput />;
 
 AllowTextInput.storyName = 'allowTextInput';
 
-export const Required: Story = () => (
+export const Required = () => (
   <Field label="Select a date" required>
     <DatePicker />
   </Field>
 );
 
-export const Underlined: Story = () => <DatePicker underlined />;
+export const Underlined = () => <DatePicker underlined />;
 
-export const UnderlinedAndRequired: Story = () => (
+export const UnderlinedAndRequired = () => (
   <Field required>
     <DatePicker underlined />
   </Field>
@@ -99,7 +92,7 @@ export const UnderlinedAndRequired: Story = () => (
 
 UnderlinedAndRequired.storyName = 'Underlined and required';
 
-export const WithLabel: Story = () => (
+export const WithLabel = () => (
   <Field label="Select a date">
     <DatePicker />
   </Field>
@@ -107,7 +100,7 @@ export const WithLabel: Story = () => (
 
 WithLabel.storyName = 'With label';
 
-export const WhenRenderingInlineItShouldNotRenderBehindRelativelyPositionedElements: Story = () => (
+export const WhenRenderingInlineItShouldNotRenderBehindRelativelyPositionedElements = () => (
   <Field label="Select a date">
     <DatePicker open inlinePopup renderRelativeElement />
   </Field>

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tag } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 import { Steps } from 'storywright';
 
@@ -20,7 +20,7 @@ export default {
   title: 'Tag Converged',
   Component: Tag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof Tag>;
+} satisfies Meta<typeof Tag>;
 
 export const Filled = () => (
   <Tag appearance="filled" dismissible icon={<CalendarMonth />} dismissIcon={{ id: dismissIconId }}>

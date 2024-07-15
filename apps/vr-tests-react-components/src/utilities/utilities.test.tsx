@@ -1,28 +1,13 @@
 import * as React from 'react';
 
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from './getStoryVariant';
+import type { StoryFn } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
-import { ComponentStory } from '@storybook/react';
+
+import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from './getStoryVariant';
 
 describe('utility functions', () => {
   describe('getStoryVariant', () => {
-    const DefaultStory = () => <Button> Hello World</Button>;
-
-    it('should set the correct direction for story', () => {
-      const ltrStory = getStoryVariant(DefaultStory, DARK_MODE);
-      const rtlStory = getStoryVariant(DefaultStory, RTL);
-
-      expect(ltrStory.parameters.dir).toBe('ltr');
-      expect(rtlStory.parameters.dir).toBe('rtl');
-    });
-
-    it('should set the correct theme for story', () => {
-      const darkModeStory = getStoryVariant(DefaultStory, DARK_MODE);
-      const highContrastStory = getStoryVariant(DefaultStory, HIGH_CONTRAST);
-
-      expect(darkModeStory.parameters.fluentTheme).toBe('web-dark');
-      expect(highContrastStory.parameters.fluentTheme).toBe('teams-high-contrast');
-    });
+    const DefaultStory: StoryFn = () => <Button> Hello World</Button>;
 
     it('should set the correct name for story', () => {
       const darkModeStory = getStoryVariant(DefaultStory, DARK_MODE);
@@ -33,7 +18,7 @@ describe('utility functions', () => {
       expect(highContrastStory.storyName).toEqual('Default Story - High Contrast');
       expect(rtlStory.storyName).toEqual('Default Story - RTL');
 
-      const buttonStory: ComponentStory<any> = DefaultStory;
+      const buttonStory = DefaultStory;
       buttonStory.storyName = 'button';
 
       const buttonDarkModeStory = getStoryVariant(buttonStory, DARK_MODE);

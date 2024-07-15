@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Image } from '@fluentui/react-image';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 
 const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 
@@ -13,7 +13,7 @@ export default {
       <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Image>;
+} satisfies Meta<typeof Image>;
 
 export const Default = () => (
   <Image src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png" alt="Placeholder image" />

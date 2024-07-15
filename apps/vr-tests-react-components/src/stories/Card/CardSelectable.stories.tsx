@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Card } from '@fluentui/react-card';
 import { SampleCardContent } from './utils';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {
@@ -27,7 +27,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Card>;
+} satisfies Meta<typeof Card>;
 
 export const AppearanceSelectableFilled = () => (
   <Card defaultSelected={false} appearance="filled">

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Step } from 'storywright';
-import { StoryContext } from './types';
+import { StoryContext } from '@storybook/react';
 
 export const withStoryWrightSteps = ({
   story,
@@ -11,5 +11,5 @@ export const withStoryWrightSteps = ({
   steps: Step[];
   context?: StoryContext;
 }) => {
-  return <StoryWright steps={steps}> {story()} </StoryWright>;
+  return <StoryWright steps={context?.parameters.steps ?? steps}> {story()} </StoryWright>;
 };

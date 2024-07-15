@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { CounterBadge } from '@fluentui/react-badge';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 
 export default {
   title: 'CounterBadge Converged - colors',
-} as ComponentMeta<typeof CounterBadge>;
+} satisfies Meta<typeof CounterBadge>;
 
 export const Default = () => (
   <div style={{ display: 'flex', gap: 10 }}>

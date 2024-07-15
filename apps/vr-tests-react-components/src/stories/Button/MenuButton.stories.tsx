@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MenuButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
 
@@ -11,7 +11,7 @@ export default {
   title: 'MenuButton Converged',
   component: MenuButton,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof MenuButton>;
+} satisfies Meta<typeof MenuButton>;
 
 export const Default = () => <MenuButton id={buttonId}>Hello, world</MenuButton>;
 

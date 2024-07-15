@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Accordion, AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-accordion';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {
@@ -24,7 +24,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Accordion>;
+} satisfies Meta<typeof Accordion>;
 
 export const VisibilityFocus = () => (
   <Accordion openItems={[0]}>
