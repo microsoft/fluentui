@@ -48,6 +48,7 @@ jobs:
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
+          BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
           BUNDLESIZE_ACCOUNT_NAME: fluentbundlesize
 
       - template: .devops/templates/cleanup.yml
