@@ -222,22 +222,6 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      # - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
-      #   displayName: 'Run fluentui-screenshotdiff'
-      #   env:
-      #     API_TOKEN: $(fabric-public-pipeline-access-PAT)
-      #     GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-      #     STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-      #     VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-      #     VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-      #     VR_APP_API_URL: $(VR_APP_API_URL)
-      #     STORAGE_ACCOUNT_ID: $(StorageAccountId)
-      #     TENANT_ID: $(TenantId)
-      #     PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-      #     SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-      #     SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      #   condition: eq(variables['vrTestSkip'], 'no')
-
       - task: AzureCLI@2
         displayName: 'Run VR Tests'
         env:
