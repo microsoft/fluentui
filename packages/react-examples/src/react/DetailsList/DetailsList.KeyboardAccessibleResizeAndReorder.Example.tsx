@@ -11,10 +11,8 @@ import {
   IDragDropContext,
   ColumnActionsMode,
   IDetailsList,
-  IDetailsColumnRenderTooltipProps,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles, ITextField } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
@@ -53,7 +51,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = columns[draggedIndex];
     const newColumns: IColumn[] = [...columns];
-
+    console.log('handleColumnReorder', draggedIndex, targetIndex);
     // insert before the dropped item
     newColumns.splice(draggedIndex, 1);
     newColumns.splice(targetIndex, 0, draggedItems);
@@ -115,6 +113,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         detailsList.updateColumn(columnToEdit.current, { width: width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
+        console.log(columnToEdit.current.key, targetIndex);
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
       }
     }
@@ -126,22 +125,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       setContextualMenuProps(getContextualMenuProps(ev, column));
-    }
-  };
-
-  const onColumnKeyDown = (ev: React.KeyboardEvent, column: IColumn): void => {
-    const detailsList = detailsListRef.current;
-
-    if (ev.ctrlKey) {
-      ev.preventDefault();
-      switch (ev.key) {
-        case 'ArrowLeft':
-          detailsList.updateColumn(column, { width: column.currentWidth * 0.9 });
-          break;
-        case 'ArrowRight':
-          detailsList.updateColumn(column, { width: column.currentWidth * 1.1 });
-          break;
-      }
     }
   };
 
@@ -197,9 +180,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
   const [columns, setColumns] = React.useState<IColumn[]>(
-    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown).map(
-      column => ({ ...column, onColumnKeyDown }),
-    ),
+    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown),
   );
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
