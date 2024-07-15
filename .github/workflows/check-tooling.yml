@@ -29,7 +29,9 @@ jobs:
           yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@mrWick' --kind standard --no-interactive &&
           yarn nx g @fluentui/workspace-plugin:react-component --project hello-world-preview --name Aiur --no-interactive &&
           yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world-preview --no-interactive &&
-          yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --name=Aiur --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project hello-world-preview --no-interactive &&
           yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive &&
           yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --no-interactive &&
-          yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
+          yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive &&
+          yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive
