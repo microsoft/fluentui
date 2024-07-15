@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove default 'aria-label' value from Skeleton and update stories",
-  "packageName": "@fluentui/react-skeleton",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

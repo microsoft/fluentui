@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove npmScope from project name",
-  "packageName": "@fluentui/priority-overflow",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

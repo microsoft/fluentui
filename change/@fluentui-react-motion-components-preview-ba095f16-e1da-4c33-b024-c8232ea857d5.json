@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release preview package",
-  "packageName": "@fluentui/react-motion-components-preview",
-  "email": "olkatruk@microsoft.com",
-  "dependentChangeType": "patch"
-}

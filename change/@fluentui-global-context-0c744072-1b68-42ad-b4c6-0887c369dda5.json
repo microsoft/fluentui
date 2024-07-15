@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: revert incorectly set npm versions in all packages",
-  "packageName": "@fluentui/global-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
