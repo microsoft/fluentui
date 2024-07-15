@@ -4,6 +4,9 @@ import descriptionMd from './CarouselDescription.md';
 import bestPracticesMd from './CarouselBestPractices.md';
 
 export { Default } from './CarouselDefault.stories';
+export { Circular } from './CarouselCircular.stories';
+export { MultipleCards } from './CarouselMultipleCards.stories';
+export { FreeLayout } from './CarouselFreeLayout.stories';
 
 export default {
   title: 'Preview Components/Carousel',

@@ -15,7 +15,7 @@ const useClasses = makeStyles({
     ...typographyStyles.largeTitle,
     alignContent: 'center',
     borderRadius: tokens.borderRadiusLarge,
-    height: '450px',
+    height: '200px',
     textAlign: 'center',
   },
 });
@@ -31,8 +31,8 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
   );
 };
 
-export const Default = () => (
-  <Carousel defaultValue="card-1">
+export const Circular = () => (
+  <Carousel circular defaultValue="card-5">
     <CarouselSlider>
       <CarouselCard value="card-1">
         <TestComponent accentColor="#B99095">Card 1</TestComponent>
