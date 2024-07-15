@@ -1,6 +1,6 @@
 import path from 'path';
 import { execSync } from 'child_process';
-import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
+import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot, offsetFromRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
 import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
@@ -82,6 +82,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 
   const templateOptions = {
     ...options,
+    rootOffset: offsetFromRoot(joinPathFragments(sourceRoot, options.directory, options.componentName)),
     storiesTitle: createStoriesTitle(options),
     tmpl: '',
   };
