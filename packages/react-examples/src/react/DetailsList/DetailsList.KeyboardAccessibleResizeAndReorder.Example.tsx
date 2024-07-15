@@ -11,10 +11,8 @@ import {
   IDragDropContext,
   ColumnActionsMode,
   IDetailsList,
-  IDetailsColumnRenderTooltipProps,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
-import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles, ITextField } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
@@ -53,7 +51,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = columns[draggedIndex];
     const newColumns: IColumn[] = [...columns];
-    console.log('handleColumnReorder', draggedIndex, targetIndex);
+
     // insert before the dropped item
     newColumns.splice(draggedIndex, 1);
     newColumns.splice(targetIndex, 0, draggedItems);
@@ -115,7 +113,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         detailsList.updateColumn(columnToEdit.current, { width: width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
-        console.log(columnToEdit.current.key, targetIndex);
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
       }
     }
@@ -204,11 +201,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
       if (ev.shiftKey) {
         const indexOffset = 1 + selection.mode ? 1 : 0;
         const columnIndex = columns.findIndex(x => x.key === column.key) + indexOffset;
-        console.log(
-          column,
-          columnIndex,
-          columns.map(x => x.key),
-        );
         switch (ev.key) {
           case 'ArrowLeft':
             if (columnIndex > 0) {
