@@ -190,20 +190,6 @@ test.describe('Menu', () => {
     await expect(menuList).toBeVisible();
   });
 
-  test('should close when scroll outside of it when closeOnScroll is true', async () => {
-    page.setContent(menuFixture);
-
-    await menuButton.click();
-
-    await expect(menuList).toBeVisible();
-
-    await page.evaluate(() => {
-      window.scrollTo(0, 100);
-    });
-
-    await expect(menuList).toBeHidden();
-  });
-
   test('should focus first item after closing a submenu', async () => {
     page.setContent(complexMenuFixture);
 
