@@ -45,7 +45,7 @@ jobs:
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
@@ -79,7 +79,7 @@ jobs:
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
@@ -113,7 +113,7 @@ jobs:
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
@@ -146,7 +146,7 @@ jobs:
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
-          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
