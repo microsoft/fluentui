@@ -222,9 +222,7 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
 function getPackageStoriesGlob(options) {
   const projects = getAllProjects();
 
-  const excludeStoriesInsertionFromPackages = (options.excludeStoriesInsertionFromPackages ?? []).map(packageName =>
-    normalizeProjectName(packageName),
-  );
+  const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
   const projectMetadata = /** @type {NonNullable<ReturnType<typeof getMetadata>>} */ (
     getMetadata(normalizeProjectName(options.packageName), projects)
   );
