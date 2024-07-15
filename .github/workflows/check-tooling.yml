@@ -1,6 +1,8 @@
 name: Check tooling
 on:
   pull_request:
+    paths:
+      - 'tools/workspace-plugin/**'
 
 jobs:
   check-tools:
@@ -22,11 +24,11 @@ jobs:
       - run: yarn nx list @fluentui/workspace-plugin
 
       - name: test generators contributor flow
-        run: |
-          yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@mrWick' --kind standard --no-interactive
-          yarn nx g @fluentui/workspace-plugin:react-component --project hello-world --name Aiur --no-interactive
-          yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world --no-interactive
-          yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project=hello-world --name=Aiur --no-interactive
-          yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world --phase=preview --no-interactive
-          yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world --phase=stable --no-interactive
+        run: >
+          yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@mrWick' --kind standard --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:react-component --project hello-world --name Aiur --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:cypress-component-configuration --project hello-world --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:bundle-size-configuration --project=hello-world --name=Aiur --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world --phase=preview --no-interactive &&
+          yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world --phase=stable --no-interactive &&
           yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
