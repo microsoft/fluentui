@@ -12,11 +12,9 @@
   },
   "devDependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-motion": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
-    "@fluentui/react-utilities": "*",
     "@fluentui/scripts-storybook": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*"

@@ -1,13 +1,13 @@
-import CollapseDescription from './Description.md';
 import { Collapse } from '@fluentui/react-motion-components-preview';
+import CollapseDescription from './CollapseDescription.md';
 
-export { Default } from './Default.stories';
-export { Snappy } from './Snappy.stories';
-export { Exaggerated } from './Exaggerated.stories';
-export { Custom } from './Custom.stories';
+export { Default } from './CollapseDefault.stories';
+export { Snappy } from './CollapseSnappy.stories';
+export { Exaggerated } from './CollapseExaggerated.stories';
+export { Customization } from './CollapseCustomization.stories';
 
 export default {
-  title: 'Utilities/Motion Components/Collapse',
+  title: 'Utilities/Motion/Components (preview)/Collapse',
   component: Collapse,
   parameters: {
     docs: {
