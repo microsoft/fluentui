@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 01 Jul 2024 20:30:27 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.5)
+
+Mon, 15 Jul 2024 17:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.4..@fluentui/react-positioning_v9.15.5)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- fix(react-positioning): export fallbackPositions prop ([PR #31891](https://github.com/microsoft/fluentui/pull/31891) by vkozlova@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.4)
 

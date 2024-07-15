@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-motion",
-  "version": "9.2.2",
+  "version": "9.3.0",
   "description": "A package with utilities & motion definitions using Web Animations API",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,8 +39,8 @@
     "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.19.0",
-    "@fluentui/react-utilities": "^9.18.11",
+    "@fluentui/react-shared-contexts": "^9.19.1",
+    "@fluentui/react-utilities": "^9.18.12",
     "@swc/helpers": "^0.5.1",
     "react-is": "^17.0.2"
   },
