@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bump tabster to 8.0.1 to fix memorized elements focusing",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

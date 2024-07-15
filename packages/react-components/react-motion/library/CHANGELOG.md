@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Thu, 04 Jul 2024 15:14:35 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.3.0)
+
+Mon, 15 Jul 2024 17:25:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.2.2..@fluentui/react-motion_v9.3.0)
+
+### Minor changes
+
+- feat(motion): add PresenceDirection type ([PR #31958](https://github.com/microsoft/fluentui/pull/31958) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- feat: add createPresenceComponentVariant() ([PR #31943](https://github.com/microsoft/fluentui/pull/31943) by olfedias@microsoft.com)
 
 ## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.2.2)
 

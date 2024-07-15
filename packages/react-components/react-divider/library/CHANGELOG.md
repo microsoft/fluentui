@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Mon, 01 Jul 2024 20:30:49 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.72](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.72)
+
+Mon, 15 Jul 2024 17:25:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.71..@fluentui/react-divider_v9.2.72)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.2.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.71)
 
