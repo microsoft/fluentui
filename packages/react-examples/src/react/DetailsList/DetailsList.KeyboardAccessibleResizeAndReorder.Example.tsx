@@ -51,7 +51,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = columns[draggedIndex];
     const newColumns: IColumn[] = [...columns];
-    console.log('handleColumnReorder', draggedIndex, targetIndex);
+
     // insert before the dropped item
     newColumns.splice(draggedIndex, 1);
     newColumns.splice(targetIndex, 0, draggedItems);
@@ -113,7 +113,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         detailsList.updateColumn(columnToEdit.current, { width: width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
-        console.log(columnToEdit.current.key, targetIndex);
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
       }
     }
