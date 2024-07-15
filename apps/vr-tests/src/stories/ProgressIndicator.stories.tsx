@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { ProgressIndicator } from '@fluentui/react';
 
 export default {
@@ -33,7 +28,7 @@ export const _50 = () => (
 
 _50.storyName = '50%';
 
-export const _50RTL = getStoryVariant(_50, STORY_VARIANT.RTL);
+export const _50RTL = getStoryVariant(_50, RTL);
 
 export const _100 = () => (
   <ProgressIndicator label="Example title" description="Example description" percentComplete={1} />

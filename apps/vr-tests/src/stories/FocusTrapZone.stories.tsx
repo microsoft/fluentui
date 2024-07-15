@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 export default {
@@ -56,7 +51,7 @@ export const DialogNestedInPanel = () => (
 
 DialogNestedInPanel.storyName = 'Dialog nested in Panel';
 
-export const DialogNestedInPanelRTL = getStoryVariant(DialogNestedInPanel, STORY_VARIANT.RTL);
+export const DialogNestedInPanelRTL = getStoryVariant(DialogNestedInPanel, RTL);
 
 export const PanelOnItsOwn = () => (
   <div>

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
@@ -32,7 +27,7 @@ export const SmallLeftWCloseButton = () => (
 
 SmallLeftWCloseButton.storyName = 'Small left w/ close button';
 
-export const SmallLeftWCloseButtonRTL = getStoryVariant(SmallLeftWCloseButton, STORY_VARIANT.RTL);
+export const SmallLeftWCloseButtonRTL = getStoryVariant(SmallLeftWCloseButton, RTL);
 
 export const SmallFixedRightWCloseButton = () => (
   <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedFar} headerText="Small fixed" />
@@ -40,10 +35,7 @@ export const SmallFixedRightWCloseButton = () => (
 
 SmallFixedRightWCloseButton.storyName = 'Small fixed right w/ close button';
 
-export const SmallFixedRightWCloseButtonRTL = getStoryVariant(
-  SmallFixedRightWCloseButton,
-  STORY_VARIANT.RTL,
-);
+export const SmallFixedRightWCloseButtonRTL = getStoryVariant(SmallFixedRightWCloseButton, RTL);
 
 export const SmallFluidRight = () => (
   <Panel {...defaultProps} type={PanelType.smallFluid} headerText="Small fluid" />
@@ -57,7 +49,7 @@ export const MediumRight = () => (
 
 MediumRight.storyName = 'Medium right';
 
-export const MediumRightRTL = getStoryVariant(MediumRight, STORY_VARIANT.RTL);
+export const MediumRightRTL = getStoryVariant(MediumRight, RTL);
 
 export const LargeRight = () => (
   <Panel {...defaultProps} type={PanelType.large} headerText="Large" />
@@ -152,4 +144,4 @@ SearchBoxAndRightPanel.parameters = {
   steps: new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end(),
 };
 
-export const SearchBoxAndRightPanelRTL = getStoryVariant(SearchBoxAndRightPanel, STORY_VARIANT.RTL);
+export const SearchBoxAndRightPanelRTL = getStoryVariant(SearchBoxAndRightPanel, RTL);

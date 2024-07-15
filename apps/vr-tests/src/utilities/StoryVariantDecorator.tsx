@@ -2,10 +2,9 @@ import * as React from 'react';
 import type { Args, DecoratorFn, StoryFn, StoryObj } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 import { ThemeProvider } from '@fluentui/react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { DarkTheme } from '@fluentui/theme-samples';
 
-export const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
+const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
   const { dir, theme } = context.parameters;
 
   setRTL(dir === 'rtl');
@@ -19,13 +18,10 @@ export const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
   );
 };
 
-/** A list of story variants that can be applied to stories. */
-export const STORY_VARIANT = {
-  DARK_MODE: 'Dark Mode',
-  RTL: 'RTL',
-} as const;
+export const DARK_MODE = 'Dark Mode';
+export const RTL = 'RTL';
 
-export type StoryVariant = (typeof STORY_VARIANT)[keyof typeof STORY_VARIANT];
+type StoryVariant = typeof DARK_MODE | typeof RTL;
 
 /** Helper function that returns a RTL or Dark Mode variant of an existing story. */
 export const getStoryVariant = <TArgs = Args,>(
@@ -37,7 +33,7 @@ export const getStoryVariant = <TArgs = Args,>(
 
   return {
     ...story,
-    render: (...args) => story(...args),
+    render: story,
     storyName: `${getStoryName(story)} - ${variant}`,
     parameters: { ...story.parameters, dir, theme },
     decorators: [...(story.decorators ?? []), StoryVariantDecorator],
@@ -45,11 +41,11 @@ export const getStoryVariant = <TArgs = Args,>(
 };
 
 function getTheme(variant: StoryVariant) {
-  return variant === STORY_VARIANT.DARK_MODE ? DarkTheme : undefined;
+  return variant === DARK_MODE ? DarkTheme : undefined;
 }
 
 function getDir(variant: StoryVariant) {
-  return variant === STORY_VARIANT.RTL ? 'rtl' : 'ltr';
+  return variant === RTL ? 'rtl' : 'ltr';
 }
 
 function getStoryName<TArgs = Args>({ name, storyName }: StoryFn<TArgs>) {

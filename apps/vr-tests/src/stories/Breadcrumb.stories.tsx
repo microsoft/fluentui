@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { Meta, StoryFn } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  TestWrapperDecoratorTall,
-  StoryWrightDecorator,
-  getStoryVariant,
-  STORY_VARIANT,
-} from '../utilities';
+import { TestWrapperDecoratorTall, StoryWrightDecorator, getStoryVariant, RTL } from '../utilities';
 import { Breadcrumb } from '@fluentui/react';
 
 const noOp = () => undefined;
@@ -60,7 +55,7 @@ export const Root: Story = () => (
   />
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Button: Story = () => (
   <Breadcrumb
@@ -76,7 +71,7 @@ export const Button: Story = () => (
   />
 );
 
-export const ButtonRTL = getStoryVariant(Button, STORY_VARIANT.RTL);
+export const ButtonRTL = getStoryVariant(Button, RTL);
 
 export const HoveringItems: Story = () => (
   <Breadcrumb

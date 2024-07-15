@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
@@ -89,7 +84,7 @@ export default {
 
 export const Root = () => <CommandBar items={items} farItems={farItems} />;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const TextOnly = () => (
   <CommandBar

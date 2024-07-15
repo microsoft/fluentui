@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import {
   GroupedVerticalBarChart,
@@ -141,12 +141,9 @@ export const BasicSecondaryYAxis = () => {
 
 BasicSecondaryYAxis.storyName = 'Basic - Secondary Y Axis';
 
-export const BasicSecondaryYAxisDarkMode = getStoryVariant(
-  BasicSecondaryYAxis,
-  STORY_VARIANT.DARK_MODE,
-);
+export const BasicSecondaryYAxisDarkMode = getStoryVariant(BasicSecondaryYAxis, DARK_MODE);
 
-export const BasicSecondaryYAxisRTL = getStoryVariant(BasicSecondaryYAxis, STORY_VARIANT.RTL);
+export const BasicSecondaryYAxisRTL = getStoryVariant(BasicSecondaryYAxis, RTL);
 
 export const DateAxisVbc = () => {
   const points: IVerticalBarChartDataPoint[] = [
@@ -199,9 +196,9 @@ export const DateAxisVbc = () => {
 
 DateAxisVbc.storyName = 'Date Axis- VBC';
 
-export const DateAxisVbcDarkMode = getStoryVariant(DateAxisVbc, STORY_VARIANT.DARK_MODE);
+export const DateAxisVbcDarkMode = getStoryVariant(DateAxisVbc, DARK_MODE);
 
-export const DateAxisVbcRTL = getStoryVariant(DateAxisVbc, STORY_VARIANT.RTL);
+export const DateAxisVbcRTL = getStoryVariant(DateAxisVbc, RTL);
 
 export const DynamicWrapLabels = () => {
   const points: IVerticalBarChartDataPoint[] = [
@@ -243,12 +240,9 @@ export const DynamicWrapLabels = () => {
 };
 DynamicWrapLabels.storyName = 'Dynamic - Wrap Labels';
 
-export const DynamicWrapLabelsRTL = getStoryVariant(DynamicWrapLabels, STORY_VARIANT.RTL);
+export const DynamicWrapLabelsRTL = getStoryVariant(DynamicWrapLabels, RTL);
 
-export const DynamicWrapLabelsDarkMode = getStoryVariant(
-  DynamicWrapLabels,
-  STORY_VARIANT.DARK_MODE,
-);
+export const DynamicWrapLabelsDarkMode = getStoryVariant(DynamicWrapLabels, DARK_MODE);
 
 export const RotatedLabelHideLegends = () => {
   const points: IVerticalBarChartDataPoint[] = [
@@ -293,15 +287,9 @@ export const RotatedLabelHideLegends = () => {
 
 RotatedLabelHideLegends.storyName = 'Rotated Label- Hide Legends';
 
-export const RotatedLabelHideLegendsDarkMode = getStoryVariant(
-  RotatedLabelHideLegends,
-  STORY_VARIANT.DARK_MODE,
-);
+export const RotatedLabelHideLegendsDarkMode = getStoryVariant(RotatedLabelHideLegends, DARK_MODE);
 
-export const RotatedLabelHideLegendsRTL = getStoryVariant(
-  RotatedLabelHideLegends,
-  STORY_VARIANT.RTL,
-);
+export const RotatedLabelHideLegendsRTL = getStoryVariant(RotatedLabelHideLegends, RTL);
 
 export const StackedDateAxis = () => {
   const showLine = true;
@@ -494,9 +482,9 @@ export const StackedDateAxis = () => {
 
 StackedDateAxis.storyName = 'Stacked - Date Axis';
 
-export const StackedDateAxisDarkMode = getStoryVariant(StackedDateAxis, STORY_VARIANT.DARK_MODE);
+export const StackedDateAxisDarkMode = getStoryVariant(StackedDateAxis, DARK_MODE);
 
-export const StackedDateAxisRTL = getStoryVariant(StackedDateAxis, STORY_VARIANT.RTL);
+export const StackedDateAxisRTL = getStoryVariant(StackedDateAxis, RTL);
 
 export const Stacked = () => {
   const showLine = true;
@@ -675,9 +663,9 @@ export const Stacked = () => {
   );
 };
 
-export const StackedDarkMode = getStoryVariant(Stacked, STORY_VARIANT.DARK_MODE);
+export const StackedDarkMode = getStoryVariant(Stacked, DARK_MODE);
 
-export const StackedRTL = getStoryVariant(Stacked, STORY_VARIANT.RTL);
+export const StackedRTL = getStoryVariant(Stacked, RTL);
 
 export const GroupedWrapLabels = () => {
   const data = [
@@ -788,9 +776,6 @@ export const GroupedWrapLabels = () => {
 
 GroupedWrapLabels.storyName = 'Grouped - Wrap Labels';
 
-export const GroupedWrapLabelsDarkMode = getStoryVariant(
-  GroupedWrapLabels,
-  STORY_VARIANT.DARK_MODE,
-);
+export const GroupedWrapLabelsDarkMode = getStoryVariant(GroupedWrapLabels, DARK_MODE);
 
-export const GroupedWrapLabelsRTL = getStoryVariant(GroupedWrapLabels, STORY_VARIANT.RTL);
+export const GroupedWrapLabelsRTL = getStoryVariant(GroupedWrapLabels, RTL);

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { SwatchColorPicker, ISwatchColorPickerProps } from '@fluentui/react';
 
 const props: ISwatchColorPickerProps = {
@@ -53,7 +48,7 @@ export default {
 
 export const Circle = () => <SwatchColorPicker {...props} />;
 
-export const CircleRTL = getStoryVariant(Circle, STORY_VARIANT.RTL);
+export const CircleRTL = getStoryVariant(Circle, RTL);
 
 export const CircleOver24PxSize = () => (
   <SwatchColorPicker {...props} cellHeight={35} cellWidth={35} />

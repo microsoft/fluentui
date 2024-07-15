@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { List } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
@@ -145,4 +140,4 @@ export default {
 
 export const Root = () => <List items={items} onRenderCell={onRenderCell} />;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);

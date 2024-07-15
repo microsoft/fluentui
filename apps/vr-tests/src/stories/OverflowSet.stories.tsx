@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Fabric, OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/Button';
 
@@ -48,4 +43,4 @@ export const Root = () => (
   </Fabric>
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import {
   IChartProps,
@@ -119,9 +119,9 @@ export const BasicAbsolute = () => {
 
 BasicAbsolute.storyName = 'Basic_Absolute';
 
-export const BasicAbsoluteDarkMode = getStoryVariant(BasicAbsolute, STORY_VARIANT.DARK_MODE);
+export const BasicAbsoluteDarkMode = getStoryVariant(BasicAbsolute, DARK_MODE);
 
-export const BasicAbsoluteRTL = getStoryVariant(BasicAbsolute, STORY_VARIANT.RTL);
+export const BasicAbsoluteRTL = getStoryVariant(BasicAbsolute, RTL);
 
 export const BasicPartToWhole = () => {
   const chartPoints1: IChartDataPoint[] = [
@@ -221,9 +221,9 @@ export const BasicPartToWhole = () => {
 
 BasicPartToWhole.storyName = 'Basic_PartToWhole';
 
-export const BasicPartToWholeDarkMode = getStoryVariant(BasicPartToWhole, STORY_VARIANT.DARK_MODE);
+export const BasicPartToWholeDarkMode = getStoryVariant(BasicPartToWhole, DARK_MODE);
 
-export const BasicPartToWholeRTL = getStoryVariant(BasicPartToWhole, STORY_VARIANT.RTL);
+export const BasicPartToWholeRTL = getStoryVariant(BasicPartToWhole, RTL);
 
 export const WithPlaceholders = () => {
   const firstChartPoints: IChartDataPoint[] = [
@@ -270,6 +270,6 @@ export const WithPlaceholders = () => {
 
 WithPlaceholders.storyName = 'With_Placeholders';
 
-export const WithPlaceholdersDarkMode = getStoryVariant(WithPlaceholders, STORY_VARIANT.DARK_MODE);
+export const WithPlaceholdersDarkMode = getStoryVariant(WithPlaceholders, DARK_MODE);
 
-export const WithPlaceholdersRTL = getStoryVariant(WithPlaceholders, STORY_VARIANT.RTL);
+export const WithPlaceholdersRTL = getStoryVariant(WithPlaceholders, RTL);

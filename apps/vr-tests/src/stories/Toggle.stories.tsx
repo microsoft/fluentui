@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { IToggleProps, Toggle } from '@fluentui/react';
 
 const baseProps: IToggleProps = {
@@ -25,11 +20,11 @@ export default {
 
 export const Checked = () => <Toggle {...baseProps} defaultChecked={true} />;
 
-export const CheckedRTL = getStoryVariant(Checked, STORY_VARIANT.RTL);
+export const CheckedRTL = getStoryVariant(Checked, RTL);
 
 export const Unchecked = () => <Toggle {...baseProps} defaultChecked={false} />;
 
-export const UncheckedRTL = getStoryVariant(Unchecked, STORY_VARIANT.RTL);
+export const UncheckedRTL = getStoryVariant(Unchecked, RTL);
 
 export const DisabledChecked = () => (
   <Toggle {...baseProps} defaultChecked={true} disabled={true} />

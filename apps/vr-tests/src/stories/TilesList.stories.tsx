@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps } from 'storywright';
 import {
   getStoryVariant,
-  STORY_VARIANT,
+  RTL,
   StoryWrightDecorator,
   TestWrapperDecoratorFixedWidth,
 } from '../utilities';
@@ -94,4 +94,4 @@ export default {
 
 export const Basic = () => <TilesListBasicExample />;
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);

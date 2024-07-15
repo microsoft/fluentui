@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   Facepile,
   PersonaInitialsColor,
@@ -66,7 +61,7 @@ export default {
 
 export const Root = () => <Facepile {...facepileProps} />;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const ExtraExtraSmall = () => (
   <Facepile {...facepileProps} personaSize={PersonaSize.size24} />

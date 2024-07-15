@@ -4,7 +4,7 @@ import {
   TestWrapperDecoratorFixedWidth,
   StoryWrightDecorator,
   getStoryVariant,
-  STORY_VARIANT,
+  RTL,
 } from '../utilities';
 import {
   Fabric,
@@ -74,7 +74,7 @@ WithIcon.parameters = { steps };
 
 WithIcon.storyName = 'With icon';
 
-export const WithIconRTL = getStoryVariant(WithIcon, STORY_VARIANT.RTL);
+export const WithIconRTL = getStoryVariant(WithIcon, RTL);
 
 // const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
@@ -86,7 +86,7 @@ export const LabelAtEnd = () => (
 
 LabelAtEnd.storyName = 'Label at end';
 
-export const LabelAtEndRTL = getStoryVariant(LabelAtEnd, STORY_VARIANT.RTL);
+export const LabelAtEndRTL = getStoryVariant(LabelAtEnd, RTL);
 
 export const LabelAtEndWithIcon = () => (
   <Fabric>
@@ -96,7 +96,7 @@ export const LabelAtEndWithIcon = () => (
 
 LabelAtEndWithIcon.storyName = 'Label at end with icon';
 
-export const LabelAtEndWithIconRTL = getStoryVariant(LabelAtEndWithIcon, STORY_VARIANT.RTL);
+export const LabelAtEndWithIconRTL = getStoryVariant(LabelAtEndWithIcon, RTL);
 
 export const LabelOnBottom = () => (
   <Fabric>

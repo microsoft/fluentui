@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Separator, mergeStyles } from '@fluentui/react';
 
 const verticalStyles = mergeStyles({
@@ -31,7 +26,7 @@ export const Root = () => (
   </div>
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const HorizontalStartAligned = () => (
   <div className={horizontalStyles}>
@@ -39,7 +34,7 @@ export const HorizontalStartAligned = () => (
   </div>
 );
 
-export const HorizontalStartAlignedRTL = getStoryVariant(HorizontalStartAligned, STORY_VARIANT.RTL);
+export const HorizontalStartAlignedRTL = getStoryVariant(HorizontalStartAligned, RTL);
 
 export const HorizontalEndAligned = () => (
   <div className={horizontalStyles}>
@@ -47,7 +42,7 @@ export const HorizontalEndAligned = () => (
   </div>
 );
 
-export const HorizontalEndAlignedRTL = getStoryVariant(HorizontalEndAligned, STORY_VARIANT.RTL);
+export const HorizontalEndAlignedRTL = getStoryVariant(HorizontalEndAligned, RTL);
 
 export const VerticalCenterAligned = () => (
   <div className={verticalStyles}>
@@ -55,7 +50,7 @@ export const VerticalCenterAligned = () => (
   </div>
 );
 
-export const VerticalCenterAlignedRTL = getStoryVariant(VerticalCenterAligned, STORY_VARIANT.RTL);
+export const VerticalCenterAlignedRTL = getStoryVariant(VerticalCenterAligned, RTL);
 
 export const VerticalStartAligned = () => (
   <div className={verticalStyles}>
@@ -65,7 +60,7 @@ export const VerticalStartAligned = () => (
   </div>
 );
 
-export const VerticalStartAlignedRTL = getStoryVariant(VerticalStartAligned, STORY_VARIANT.RTL);
+export const VerticalStartAlignedRTL = getStoryVariant(VerticalStartAligned, RTL);
 
 export const VerticalEndAligned = () => (
   <div className={verticalStyles}>
@@ -75,4 +70,4 @@ export const VerticalEndAligned = () => (
   </div>
 );
 
-export const VerticalEndAlignedRTL = getStoryVariant(VerticalEndAligned, STORY_VARIANT.RTL);
+export const VerticalEndAlignedRTL = getStoryVariant(VerticalEndAligned, RTL);

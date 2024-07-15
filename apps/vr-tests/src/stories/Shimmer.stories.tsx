@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Shimmer, ShimmerElementType as ElemType, ShimmerElementsGroup } from '@fluentui/react';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
@@ -42,7 +37,7 @@ export const CircleGapLine = () => (
   />
 );
 
-export const CircleGapLineRTL = getStoryVariant(CircleGapLine, STORY_VARIANT.RTL);
+export const CircleGapLineRTL = getStoryVariant(CircleGapLine, RTL);
 
 export const CustomElements = () => (
   <Shimmer

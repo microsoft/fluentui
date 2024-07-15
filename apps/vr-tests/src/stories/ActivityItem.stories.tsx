@@ -3,12 +3,7 @@ import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { ActivityItem, Icon } from '@fluentui/react';
 
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'ActivityItem',
@@ -28,7 +23,7 @@ export const Root = () => (
   />
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Personas = () => (
   <ActivityItem
@@ -44,7 +39,7 @@ export const Personas = () => (
   />
 );
 
-export const PersonasRTL = getStoryVariant(Personas, STORY_VARIANT.RTL);
+export const PersonasRTL = getStoryVariant(Personas, RTL);
 
 export const Compact = () => (
   <ActivityItem

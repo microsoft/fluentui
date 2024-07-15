@@ -7,12 +7,7 @@ import {
   Icon,
   IDropdownOption,
 } from '@fluentui/react';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'Dropdown',
@@ -52,7 +47,7 @@ export const Root = () => (
   />
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const DisabledOptionSelected = () => (
   <Dropdown
@@ -91,7 +86,7 @@ export const Multiselect = () => (
   />
 );
 
-export const MultiselectRTL = getStoryVariant(Multiselect, STORY_VARIANT.RTL);
+export const MultiselectRTL = getStoryVariant(Multiselect, RTL);
 
 export const CustomDropdown = () => (
   <Dropdown
@@ -160,7 +155,7 @@ export const CustomDropdown = () => (
   />
 );
 
-export const CustomDropdownRTL = getStoryVariant(CustomDropdown, STORY_VARIANT.RTL);
+export const CustomDropdownRTL = getStoryVariant(CustomDropdown, RTL);
 
 export const Required = () => (
   <Dropdown

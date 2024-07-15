@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
@@ -65,7 +60,7 @@ export const WithIcons = () => (
 
 WithIcons.storyName = 'With icons';
 
-export const WithIconsRTL = getStoryVariant(WithIcons, STORY_VARIANT.RTL);
+export const WithIconsRTL = getStoryVariant(WithIcons, RTL);
 
 export const WithDefaultSizeImages = () => (
   <ChoiceGroup

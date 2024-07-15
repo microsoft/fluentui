@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
@@ -138,7 +133,7 @@ export const Size100ExtraLarge = () => (
 
 Size100ExtraLarge.storyName = 'size100 (extraLarge)';
 
-export const Size100ExtraLargeRTL = getStoryVariant(Size100ExtraLarge, STORY_VARIANT.RTL);
+export const Size100ExtraLargeRTL = getStoryVariant(Size100ExtraLarge, RTL);
 
 export const Size120 = () => (
   <div>
@@ -148,11 +143,11 @@ export const Size120 = () => (
 
 Size120.storyName = 'size120';
 
-export const Size120RTL = getStoryVariant(Size120, STORY_VARIANT.RTL);
+export const Size120RTL = getStoryVariant(Size120, RTL);
 
 export const Initials = () => <Persona {...examplePersona} imageUrl={undefined} />;
 
-export const InitialsRTL = getStoryVariant(Initials, STORY_VARIANT.RTL);
+export const InitialsRTL = getStoryVariant(Initials, RTL);
 
 export const PersonaWithChildren = () => (
   <Persona {...examplePersona}>

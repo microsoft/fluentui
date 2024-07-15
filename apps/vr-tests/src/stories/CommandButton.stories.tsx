@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
 import { IButtonProps, CommandBarButton } from '@fluentui/react/lib/Button';
 
 const commandProps: IButtonProps = {
@@ -58,7 +53,7 @@ export default {
 
 export const Root = () => <CommandBarButton {...commandProps} />;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Disabled = () => <CommandBarButton {...commandProps} disabled={true} />;
 

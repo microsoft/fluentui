@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import {
   ILineChartPoints,
   LineChart,
@@ -166,9 +166,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
 export const Events = () => {
   const data: IChartProps = {
@@ -316,9 +316,9 @@ export const Events = () => {
   );
 };
 
-export const EventsRTL = getStoryVariant(Events, STORY_VARIANT.RTL);
+export const EventsRTL = getStoryVariant(Events, RTL);
 
-export const EventsDarkMode = getStoryVariant(Events, STORY_VARIANT.DARK_MODE);
+export const EventsDarkMode = getStoryVariant(Events, DARK_MODE);
 
 export const Multiple = () => {
   const _onLegendClickHandler = (selectedLegend: string | null): void => {
@@ -602,9 +602,9 @@ export const Multiple = () => {
   );
 };
 
-export const MultipleRTL = getStoryVariant(Multiple, STORY_VARIANT.RTL);
+export const MultipleRTL = getStoryVariant(Multiple, RTL);
 
-export const MultipleDarkMode = getStoryVariant(Multiple, STORY_VARIANT.DARK_MODE);
+export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
 export const Gaps = () => {
   const _calculateCalloutDescription = (
@@ -841,6 +841,6 @@ export const Gaps = () => {
   );
 };
 
-export const GapsRTL = getStoryVariant(Gaps, STORY_VARIANT.RTL);
+export const GapsRTL = getStoryVariant(Gaps, RTL);
 
-export const GapsDarkMode = getStoryVariant(Gaps, STORY_VARIANT.DARK_MODE);
+export const GapsDarkMode = getStoryVariant(Gaps, DARK_MODE);

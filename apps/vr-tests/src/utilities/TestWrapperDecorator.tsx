@@ -8,7 +8,7 @@ export const TestWrapperDecorator: DecoratorFn = (story, context) => (
       className="testWrapper"
       style={{ padding: '10px', overflow: 'hidden', ...context.parameters.testWrapperStyle }}
     >
-      {story()}
+      {story(context)}
     </div>
   </div>
 );
@@ -20,7 +20,7 @@ export const TestWrapperDecoratorTall: DecoratorFn = (story, context) => (
       className="testWrapper"
       style={{ padding: '10px 10px 120px', ...context.parameters.testWrapperStyle }}
     >
-      {story()}
+      {story(context)}
     </div>
   </div>
 );
@@ -32,7 +32,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFn = (story, context) 
       className="testWrapper"
       style={{ padding: '10px 10px 120px', width: '300px', ...context.parameters.testWrapperStyle }}
     >
-      {story()}
+      {story(context)}
     </div>
   </div>
 );

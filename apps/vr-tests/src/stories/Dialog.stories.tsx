@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -41,7 +36,7 @@ export const Root = () => (
   </Dialog>
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const WideDialog = () => (
   <Dialog

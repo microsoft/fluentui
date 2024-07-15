@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   Fabric,
   CompactPeoplePicker,
@@ -197,7 +192,7 @@ export const NormalSelected = () => (
 
 NormalSelected.storyName = 'Normal selected';
 
-export const NormalSelectedRTL = getStoryVariant(NormalSelected, STORY_VARIANT.RTL);
+export const NormalSelectedRTL = getStoryVariant(NormalSelected, RTL);
 
 export const NormalOverflowSelected = () => (
   <Fabric>
@@ -215,7 +210,7 @@ export const NormalOverflowSelected = () => (
 
 NormalOverflowSelected.storyName = 'Normal Overflow selected';
 
-export const NormalOverflowSelectedRTL = getStoryVariant(NormalOverflowSelected, STORY_VARIANT.RTL);
+export const NormalOverflowSelectedRTL = getStoryVariant(NormalOverflowSelected, RTL);
 
 export const List = () => (
   <Fabric>
@@ -244,7 +239,7 @@ export const ListSelected = () => (
 
 ListSelected.storyName = 'List selected';
 
-export const ListSelectedRTL = getStoryVariant(ListSelected, STORY_VARIANT.RTL);
+export const ListSelectedRTL = getStoryVariant(ListSelected, RTL);
 
 export const Compact = () => (
   <Fabric>
@@ -273,4 +268,4 @@ export const CompactSelected = () => (
 
 CompactSelected.storyName = 'Compact selected';
 
-export const CompactSelectedRTL = getStoryVariant(CompactSelected, STORY_VARIANT.RTL);
+export const CompactSelectedRTL = getStoryVariant(CompactSelected, RTL);

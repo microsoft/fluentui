@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -308,13 +303,13 @@ WithIcons.storyName = 'With icons';
 export const WithSecondaryText = () => <ContextualMenu items={itemsWithSecondaryText} />;
 WithSecondaryText.storyName = 'With secondaryText';
 
-export const WithSecondaryTextRTL = getStoryVariant(WithSecondaryText, STORY_VARIANT.RTL);
+export const WithSecondaryTextRTL = getStoryVariant(WithSecondaryText, RTL);
 
 export const WithSubmenu = () => <ContextualMenu items={itemsWithSubmenu} />;
 
 WithSubmenu.storyName = 'With submenu';
 
-export const WithSubmenuRTL = getStoryVariant(WithSubmenu, STORY_VARIANT.RTL);
+export const WithSubmenuRTL = getStoryVariant(WithSubmenu, RTL);
 
 export const WithHeaders = () => <ContextualMenu items={itemsWithHeaders} />;
 

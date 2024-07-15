@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import { IChartProps, IChartDataPoint, DonutChart } from '@fluentui/react-charting';
 
@@ -43,9 +43,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const Dynamic = () => {
   const data: IChartProps = {
@@ -89,6 +89,6 @@ export const Dynamic = () => {
   );
 };
 
-export const DynamicDarkMode = getStoryVariant(Dynamic, STORY_VARIANT.DARK_MODE);
+export const DynamicDarkMode = getStoryVariant(Dynamic, DARK_MODE);
 
-export const DynamicRTL = getStoryVariant(Dynamic, STORY_VARIANT.RTL);
+export const DynamicRTL = getStoryVariant(Dynamic, RTL);

@@ -1,12 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
 import { SearchBox, Fabric } from '@fluentui/react';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'SearchBox',
@@ -32,7 +27,7 @@ export const Root = () => (
   </Fabric>
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Full = () => (
   <Fabric className="testWrapper">
@@ -40,7 +35,7 @@ export const Full = () => (
   </Fabric>
 );
 
-export const FullRTL = getStoryVariant(Full, STORY_VARIANT.RTL);
+export const FullRTL = getStoryVariant(Full, RTL);
 
 export const ShowIcon = () => (
   <Fabric className="testWrapper">
@@ -50,4 +45,4 @@ export const ShowIcon = () => (
 
 ShowIcon.storyName = 'ShowIcon';
 
-export const ShowIconRTL = getStoryVariant(ShowIcon, STORY_VARIANT.RTL);
+export const ShowIconRTL = getStoryVariant(ShowIcon, RTL);

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps, Keys } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -78,4 +73,4 @@ export const Selected = () => (
   </Fabric>
 );
 
-export const SelectedRTL = getStoryVariant(Selected, STORY_VARIANT.RTL);
+export const SelectedRTL = getStoryVariant(Selected, RTL);

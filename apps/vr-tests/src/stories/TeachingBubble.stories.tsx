@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecoratorTall,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecoratorTall } from '../utilities';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
@@ -39,7 +34,7 @@ export const WideIllustration = () => {
 
 WideIllustration.storyName = 'WideIllustration';
 
-export const WideIllustrationRTL = getStoryVariant(WideIllustration, STORY_VARIANT.RTL);
+export const WideIllustrationRTL = getStoryVariant(WideIllustration, RTL);
 
 export const SmallHeadline = () => {
   return (

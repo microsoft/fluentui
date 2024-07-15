@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Nav, INavLink } from '@fluentui/react/lib/Nav';
 
 const links: INavLink[] = [
@@ -114,7 +109,7 @@ export const Root = () => (
   </div>
 );
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Disabled = () => (
   <div style={{ width: '208px' }}>
@@ -122,4 +117,4 @@ export const Disabled = () => (
   </div>
 );
 
-export const DisabledRTL = getStoryVariant(Disabled, STORY_VARIANT.RTL);
+export const DisabledRTL = getStoryVariant(Disabled, RTL);

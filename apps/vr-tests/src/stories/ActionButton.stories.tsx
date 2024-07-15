@@ -1,12 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { DefaultButton, ActionButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
@@ -36,7 +31,7 @@ export default {
 
 export const Root = () => <ActionButton {...baseProps} />;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const Disabled = () => <ActionButton {...baseProps} disabled={true} />;
 

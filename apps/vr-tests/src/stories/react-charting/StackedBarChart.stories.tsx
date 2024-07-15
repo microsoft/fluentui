@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import { IChartDataPoint, IChartProps, StackedBarChart } from '@fluentui/react-charting';
 
@@ -62,9 +62,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const Multiple = () => {
   const points: IChartDataPoint[] = [
@@ -103,9 +103,9 @@ export const Multiple = () => {
   );
 };
 
-export const MultipleDarkMode = getStoryVariant(Multiple, STORY_VARIANT.DARK_MODE);
+export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
-export const MultipleRTL = getStoryVariant(Multiple, STORY_VARIANT.RTL);
+export const MultipleRTL = getStoryVariant(Multiple, RTL);
 
 export const Benchmark = () => {
   const points: IChartDataPoint[] = [
@@ -131,6 +131,6 @@ export const Benchmark = () => {
   );
 };
 
-export const BenchmarkDarkMode = getStoryVariant(Benchmark, STORY_VARIANT.DARK_MODE);
+export const BenchmarkDarkMode = getStoryVariant(Benchmark, DARK_MODE);
 
-export const BenchmarkRTL = getStoryVariant(Benchmark, STORY_VARIANT.RTL);
+export const BenchmarkRTL = getStoryVariant(Benchmark, RTL);

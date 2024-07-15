@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -202,4 +197,4 @@ export const CheckboxVisibleAlways = () => (
   />
 );
 
-export const CheckboxVisibleAlwaysRTL = getStoryVariant(CheckboxVisibleAlways, STORY_VARIANT.RTL);
+export const CheckboxVisibleAlwaysRTL = getStoryVariant(CheckboxVisibleAlways, RTL);

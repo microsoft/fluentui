@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import {
   IChartProps,
@@ -146,9 +146,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const WithBenchmark = () => {
   const hideRatio: boolean[] = [true, false];
@@ -198,9 +198,9 @@ export const WithBenchmark = () => {
 
 WithBenchmark.storyName = 'With_Benchmark';
 
-export const WithBenchmarkDarkMode = getStoryVariant(WithBenchmark, STORY_VARIANT.DARK_MODE);
+export const WithBenchmarkDarkMode = getStoryVariant(WithBenchmark, DARK_MODE);
 
-export const WithBenchmarkRTL = getStoryVariant(WithBenchmark, STORY_VARIANT.RTL);
+export const WithBenchmarkRTL = getStoryVariant(WithBenchmark, RTL);
 
 export const Variant = () => {
   const data: IChartProps[] = [
@@ -297,9 +297,9 @@ export const Variant = () => {
   );
 };
 
-export const VariantDarkMode = getStoryVariant(Variant, STORY_VARIANT.DARK_MODE);
+export const VariantDarkMode = getStoryVariant(Variant, DARK_MODE);
 
-export const VariantRTL = getStoryVariant(Variant, STORY_VARIANT.RTL);
+export const VariantRTL = getStoryVariant(Variant, RTL);
 
 export const WithAxis = () => {
   const points: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -358,6 +358,6 @@ export const WithAxis = () => {
 
 WithAxis.storyName = 'With_Axis';
 
-export const WithAxisDarkMode = getStoryVariant(WithAxis, STORY_VARIANT.DARK_MODE);
+export const WithAxisDarkMode = getStoryVariant(WithAxis, DARK_MODE);
 
-export const WithAxisRTL = getStoryVariant(WithAxis, STORY_VARIANT.RTL);
+export const WithAxisRTL = getStoryVariant(WithAxis, RTL);

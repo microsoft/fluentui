@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
 import { NodesComposition, TreeChart, TreeTraverse } from '@fluentui/react-charting';
 
@@ -111,9 +111,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const Compact = () => {
   const threeLayerChart = {
@@ -213,6 +213,6 @@ export const Compact = () => {
   );
 };
 
-export const CompactDarkMode = getStoryVariant(Compact, STORY_VARIANT.DARK_MODE);
+export const CompactDarkMode = getStoryVariant(Compact, DARK_MODE);
 
-export const CompactRTL = getStoryVariant(Compact, STORY_VARIANT.RTL);
+export const CompactRTL = getStoryVariant(Compact, RTL);

@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Link, MessageBar, MessageBarType } from '@fluentui/react';
 import { MessageBarButton } from '@fluentui/react/lib/Button';
 
@@ -26,7 +21,7 @@ export default {
 
 export const Root = () => <MessageBar>Info/default message bar. {link}</MessageBar>;
 
-export const RootRTL = getStoryVariant(Root, STORY_VARIANT.RTL);
+export const RootRTL = getStoryVariant(Root, RTL);
 
 export const RootDismiss = () => (
   <MessageBar onDismiss={noop}>Info/default message bar. {link}</MessageBar>
@@ -34,7 +29,7 @@ export const RootDismiss = () => (
 
 RootDismiss.storyName = 'Root dismiss';
 
-export const RootDismissRTL = getStoryVariant(RootDismiss, STORY_VARIANT.RTL);
+export const RootDismissRTL = getStoryVariant(RootDismiss, RTL);
 
 export const RootDismissSingleLine = () => (
   <MessageBar onDismiss={noop} isMultiline={false}>
@@ -58,7 +53,7 @@ export const RootTruncated = () => (
 
 RootTruncated.storyName = 'Root truncated';
 
-export const RootTruncatedRTL = getStoryVariant(RootTruncated, STORY_VARIANT.RTL);
+export const RootTruncatedRTL = getStoryVariant(RootTruncated, RTL);
 
 export const RootActions = () => (
   <MessageBar
@@ -75,7 +70,7 @@ export const RootActions = () => (
 
 RootActions.storyName = 'Root actions';
 
-export const RootActionsRTL = getStoryVariant(RootActions, STORY_VARIANT.RTL);
+export const RootActionsRTL = getStoryVariant(RootActions, RTL);
 
 export const RootActionsSingleLine = () => (
   <MessageBar
@@ -93,7 +88,7 @@ export const RootActionsSingleLine = () => (
 
 RootActionsSingleLine.storyName = 'Root actions single line';
 
-export const RootActionsSingleLineRTL = getStoryVariant(RootActionsSingleLine, STORY_VARIANT.RTL);
+export const RootActionsSingleLineRTL = getStoryVariant(RootActionsSingleLine, RTL);
 
 export const RootDismissAndAction = () => (
   <MessageBar
@@ -111,7 +106,7 @@ export const RootDismissAndAction = () => (
 
 RootDismissAndAction.storyName = 'Root dismiss and action';
 
-export const RootDismissAndActionRTL = getStoryVariant(RootDismissAndAction, STORY_VARIANT.RTL);
+export const RootDismissAndActionRTL = getStoryVariant(RootDismissAndAction, RTL);
 
 export const RootDismissAndActionSingleLine = () => (
   <MessageBar
@@ -132,7 +127,7 @@ RootDismissAndActionSingleLine.storyName = 'Root dismiss and action single line'
 
 export const RootDismissAndActionSingleLineRTL = getStoryVariant(
   RootDismissAndActionSingleLine,
-  STORY_VARIANT.RTL,
+  RTL,
 );
 
 export const RootMultiline = () => (
@@ -141,7 +136,7 @@ export const RootMultiline = () => (
 
 RootMultiline.storyName = 'Root multiline';
 
-export const RootMultilineRTL = getStoryVariant(RootMultiline, STORY_VARIANT.RTL);
+export const RootMultilineRTL = getStoryVariant(RootMultiline, RTL);
 
 export const RootOverflow = () => (
   <MessageBar isMultiline={false}>Info/default message bar. {longText} </MessageBar>
@@ -149,7 +144,7 @@ export const RootOverflow = () => (
 
 RootOverflow.storyName = 'Root overflow';
 
-export const RootOverflowRTL = getStoryVariant(RootOverflow, STORY_VARIANT.RTL);
+export const RootOverflowRTL = getStoryVariant(RootOverflow, RTL);
 
 export const Error = () => (
   <MessageBar messageBarType={MessageBarType.error}>Error message bar. {link}</MessageBar>

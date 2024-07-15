@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { StoryWright, Steps } from 'storywright';
-import { getStoryVariant, STORY_VARIANT, TestWrapperDecorator } from '../../utilities';
+import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { AreaChart, ICustomizedCalloutData, ChartHoverCard } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react';
 
@@ -162,9 +162,9 @@ export const Basic = () => {
   );
 };
 
-export const BasicDarkMode = getStoryVariant(Basic, STORY_VARIANT.DARK_MODE);
+export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 
-export const BasicRTL = getStoryVariant(Basic, STORY_VARIANT.RTL);
+export const BasicRTL = getStoryVariant(Basic, RTL);
 
 export const CustomAccessibility = () => {
   const chart1Points = [
@@ -296,12 +296,9 @@ export const CustomAccessibility = () => {
   );
 };
 
-export const CustomAccessibilityDarkMode = getStoryVariant(
-  CustomAccessibility,
-  STORY_VARIANT.DARK_MODE,
-);
+export const CustomAccessibilityDarkMode = getStoryVariant(CustomAccessibility, DARK_MODE);
 
-export const CustomAccessibilityRTL = getStoryVariant(CustomAccessibility, STORY_VARIANT.RTL);
+export const CustomAccessibilityRTL = getStoryVariant(CustomAccessibility, RTL);
 
 export const Multiple = () => {
   const chart1Points = [
@@ -470,6 +467,6 @@ export const Multiple = () => {
   );
 };
 
-export const MultipleDarkMode = getStoryVariant(Multiple, STORY_VARIANT.DARK_MODE);
+export const MultipleDarkMode = getStoryVariant(Multiple, DARK_MODE);
 
-export const MultipleRTL = getStoryVariant(Multiple, STORY_VARIANT.RTL);
+export const MultipleRTL = getStoryVariant(Multiple, RTL);

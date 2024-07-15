@@ -1,6 +1,6 @@
 // @ts-check
 
-import { setRTL } from '@fluentui/react';
+import { setRTL } from '@fluentui/react/lib/Utilities';
 
 /** @type {import('@storybook/react').DecoratorFn[]} */
 export const decorators = [

@@ -2,12 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon } from '@fluentui/react';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 export default {
   title: 'Pivot',
@@ -70,7 +65,7 @@ export const CountAndIcon = () => (
 
 CountAndIcon.storyName = 'Count and icon';
 
-export const CountAndIconRTL = getStoryVariant(CountAndIcon, STORY_VARIANT.RTL);
+export const CountAndIconRTL = getStoryVariant(CountAndIcon, RTL);
 
 export const Large = () => (
   <Pivot linkSize="large">
@@ -103,7 +98,7 @@ export const Tabs = () => (
   </Pivot>
 );
 
-export const TabsRTL = getStoryVariant(Tabs, STORY_VARIANT.RTL);
+export const TabsRTL = getStoryVariant(Tabs, RTL);
 
 export const TabsLarge = () => (
   <Pivot linkFormat="tabs" linkSize="large">

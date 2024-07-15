@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Callout, DirectionalHint, ICalloutProps } from '@fluentui/react';
-import { getStoryVariant, STORY_VARIANT, StoryWrightDecorator } from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator } from '../utilities';
 
 const calloutContent = (
   <p className="ms-CalloutExample-subText" id="callout-description-1">
@@ -74,7 +74,7 @@ export const BottomLeftEdge = () => (
 
 BottomLeftEdge.storyName = 'Bottom left edge';
 
-export const BottomLeftEdgeRTL = getStoryVariant(BottomLeftEdge, STORY_VARIANT.RTL);
+export const BottomLeftEdgeRTL = getStoryVariant(BottomLeftEdge, RTL);
 
 export const BottomRightEdge = () => (
   <Callout {...defaultProps} directionalHint={DirectionalHint.bottomRightEdge}>
@@ -84,7 +84,7 @@ export const BottomRightEdge = () => (
 
 BottomRightEdge.storyName = 'Bottom right edge';
 
-export const BottomRightEdgeRTL = getStoryVariant(BottomRightEdge, STORY_VARIANT.RTL);
+export const BottomRightEdgeRTL = getStoryVariant(BottomRightEdge, RTL);
 
 export const LeftBottomEdge = () => (
   <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge}>

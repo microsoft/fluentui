@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps } from 'storywright';
 import {
   getStoryVariant,
-  STORY_VARIANT,
+  RTL,
   StoryWrightDecorator,
   TestWrapperDecoratorFullWidth,
 } from '../utilities';
@@ -88,7 +88,7 @@ export const VerticalStackDefault = () => (
 
 VerticalStackDefault.storyName = 'Vertical Stack - Default';
 
-export const VerticalStackDefaultRTL = getStoryVariant(VerticalStackDefault, STORY_VARIANT.RTL);
+export const VerticalStackDefaultRTL = getStoryVariant(VerticalStackDefault, RTL);
 
 export const VerticalStackReversed = () => (
   <Fabric>
@@ -98,7 +98,7 @@ export const VerticalStackReversed = () => (
 
 VerticalStackReversed.storyName = 'Vertical Stack - Reversed';
 
-export const VerticalStackReversedRTL = getStoryVariant(VerticalStackReversed, STORY_VARIANT.RTL);
+export const VerticalStackReversedRTL = getStoryVariant(VerticalStackReversed, RTL);
 
 export const VerticalStackPadding = () => (
   <Fabric>
@@ -172,10 +172,7 @@ export const VerticalStackRightAligned = () => (
 
 VerticalStackRightAligned.storyName = 'Vertical Stack - Right-aligned';
 
-export const VerticalStackRightAlignedRTL = getStoryVariant(
-  VerticalStackRightAligned,
-  STORY_VARIANT.RTL,
-);
+export const VerticalStackRightAlignedRTL = getStoryVariant(VerticalStackRightAligned, RTL);
 
 export const VerticalStackItemAlignments = () => (
   <Stack {...defaultProps} tokens={{ childrenGap: 10 }}>
@@ -202,10 +199,7 @@ export const VerticalStackItemAlignments = () => (
 
 VerticalStackItemAlignments.storyName = 'Vertical Stack - Item alignments';
 
-export const VerticalStackItemAlignmentsRTL = getStoryVariant(
-  VerticalStackItemAlignments,
-  STORY_VARIANT.RTL,
-);
+export const VerticalStackItemAlignmentsRTL = getStoryVariant(VerticalStackItemAlignments, RTL);
 
 export const VerticalStackGrowingItems = () => (
   <Stack {...defaultProps} tokens={{ childrenGap: 10 }} className={styles.fixedHeight}>
@@ -261,7 +255,7 @@ export const VerticalStackWrap = () => (
 
 VerticalStackWrap.storyName = 'Vertical Stack - Wrap';
 
-export const VerticalStackWrapRTL = getStoryVariant(VerticalStackWrap, STORY_VARIANT.RTL);
+export const VerticalStackWrapRTL = getStoryVariant(VerticalStackWrap, RTL);
 
 export const VerticalStackBoxShadowAroundItems = () => (
   <Fabric>
@@ -285,7 +279,7 @@ export const HorizontalStackDefault = () => (
 
 HorizontalStackDefault.storyName = 'Horizontal Stack - Default';
 
-export const HorizontalStackDefaultRTL = getStoryVariant(HorizontalStackDefault, STORY_VARIANT.RTL);
+export const HorizontalStackDefaultRTL = getStoryVariant(HorizontalStackDefault, RTL);
 
 export const HorizontalStackReversed = () => (
   <Fabric>
@@ -295,10 +289,7 @@ export const HorizontalStackReversed = () => (
 
 HorizontalStackReversed.storyName = 'Horizontal Stack - Reversed';
 
-export const HorizontalStackReversedRTL = getStoryVariant(
-  HorizontalStackReversed,
-  STORY_VARIANT.RTL,
-);
+export const HorizontalStackReversedRTL = getStoryVariant(HorizontalStackReversed, RTL);
 
 export const HorizontalStackPadding = () => (
   <Fabric>
@@ -316,7 +307,7 @@ export const HorizontalStackGap = () => (
 
 HorizontalStackGap.storyName = 'Horizontal Stack - Gap';
 
-export const HorizontalStackGapRTL = getStoryVariant(HorizontalStackGap, STORY_VARIANT.RTL);
+export const HorizontalStackGapRTL = getStoryVariant(HorizontalStackGap, RTL);
 
 export const HorizontalStackHorizontallyCentered = () => (
   <Fabric>
@@ -334,10 +325,7 @@ export const HorizontalStackRightAligned = () => (
 
 HorizontalStackRightAligned.storyName = 'Horizontal Stack - Right-aligned';
 
-export const HorizontalStackRightAlignedRTL = getStoryVariant(
-  HorizontalStackRightAligned,
-  STORY_VARIANT.RTL,
-);
+export const HorizontalStackRightAlignedRTL = getStoryVariant(HorizontalStackRightAligned, RTL);
 
 export const HorizontalStackSpaceAround = () => (
   <Fabric>
@@ -404,10 +392,7 @@ export const HorizontalStackItemAlignments = () => (
 
 HorizontalStackItemAlignments.storyName = 'Horizontal Stack - Item alignments';
 
-export const HorizontalStackItemAlignmentsRTL = getStoryVariant(
-  HorizontalStackItemAlignments,
-  STORY_VARIANT.RTL,
-);
+export const HorizontalStackItemAlignmentsRTL = getStoryVariant(HorizontalStackItemAlignments, RTL);
 
 export const HorizontalStackGrowingItems = () => (
   <Stack horizontal {...defaultProps} tokens={{ childrenGap: 10 }}>
@@ -479,7 +464,7 @@ export const HorizontalStackWrap = () => (
 
 HorizontalStackWrap.storyName = 'Horizontal Stack - Wrap';
 
-export const HorizontalStackWrapRTL = getStoryVariant(HorizontalStackWrap, STORY_VARIANT.RTL);
+export const HorizontalStackWrapRTL = getStoryVariant(HorizontalStackWrap, RTL);
 
 export const HorizontalStackWrapWithSpecifiedVerticalGap = () => (
   <Fabric>

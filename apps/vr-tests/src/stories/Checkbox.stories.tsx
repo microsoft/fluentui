@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import {
-  getStoryVariant,
-  STORY_VARIANT,
-  StoryWrightDecorator,
-  TestWrapperDecorator,
-} from '../utilities';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
 
 export default {
@@ -19,7 +14,7 @@ export default {
 
 export const Unchecked = () => <Checkbox label="Unchecked checkbox" />;
 
-export const UncheckedRTL = getStoryVariant(Unchecked, STORY_VARIANT.RTL);
+export const UncheckedRTL = getStoryVariant(Unchecked, RTL);
 
 export const Checked = () => <Checkbox label="Checked checkbox" checked />;
 
@@ -51,7 +46,7 @@ UncontrolledIndeterminateDisabled.storyName = 'Uncontrolled Indeterminate disabl
 
 export const End = () => <Checkbox label="Checkbox end" boxSide="end" />;
 
-export const EndRTL = getStoryVariant(End, STORY_VARIANT.RTL);
+export const EndRTL = getStoryVariant(End, RTL);
 
 export const MultiLineCheckbox = () => (
   <Checkbox
