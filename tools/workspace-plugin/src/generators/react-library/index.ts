@@ -141,12 +141,12 @@ function updatePackageJsonDependencies(tree: Tree, options: NormalizedSchema) {
 }
 
 function updateTsConfigBase(tree: Tree, options: NormalizedSchema) {
+  const npmName = `@${options.workspaceConfig.npmScope}/${options.projectConfig.name}`;
+
   updateJson<TsConfig>(tree, options.paths.rootTsconfig, json => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
 
-    json.compilerOptions.paths[options.projectConfig.name as string] = [
-      joinPathFragments(options.projectConfig.sourceRoot as string, 'index.ts'),
-    ];
+    json.compilerOptions.paths[npmName] = [joinPathFragments(options.projectConfig.sourceRoot as string, 'index.ts')];
     return json;
   });
 
