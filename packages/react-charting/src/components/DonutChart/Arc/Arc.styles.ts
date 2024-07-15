@@ -2,10 +2,9 @@ import { IArcProps, IArcStyles } from './Arc.types';
 import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
-  const { color, href, theme } = props;
+  const { href, theme } = props;
   return {
     root: {
-      fill: color,
       cursor: href ? 'pointer' : 'default',
       stroke: theme.semanticColors.bodyBackground,
       outline: 'transparent',

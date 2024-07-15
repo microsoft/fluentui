@@ -7,10 +7,20 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
-export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
+interface IDonutChartState {
+  enableGradient: boolean;
+  // roundCorners: boolean;
+}
+
+export class DonutChartBasicExample extends React.Component<IDonutChartProps, IDonutChartState> {
   constructor(props: IDonutChartProps) {
     super(props);
+    this.state = {
+      enableGradient: false,
+      // roundCorners: false,
+    };
   }
 
   public render(): JSX.Element {
@@ -28,18 +38,36 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
       chartTitle: 'Donut chart basic example',
       chartData: points,
     };
+
     return (
-      <DonutChart
-        culture={window.navigator.language}
-        data={data}
-        innerRadius={55}
-        href={'https://developer.microsoft.com/en-us/'}
-        legendsOverflowText={'overflow Items'}
-        hideLegend={false}
-        height={220}
-        width={176}
-        valueInsideDonut={39000}
-      />
+      <>
+        <div>
+          <Toggle
+            label="Enable Gradient"
+            onText="On"
+            offText="Off"
+            onChange={this._onToggleGradient}
+            checked={this.state.enableGradient}
+          />
+        </div>
+
+        <DonutChart
+          culture={window.navigator.language}
+          data={data}
+          innerRadius={55}
+          href={'https://developer.microsoft.com/en-us/'}
+          legendsOverflowText={'overflow Items'}
+          hideLegend={false}
+          height={220}
+          width={176}
+          valueInsideDonut={39000}
+          enableGradient={this.state.enableGradient}
+        />
+      </>
     );
+  }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
   }
 }

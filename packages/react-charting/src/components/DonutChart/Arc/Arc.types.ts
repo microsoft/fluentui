@@ -99,6 +99,18 @@ export interface IArcProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable the gradient in the arc
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Next color stop for the gradient
+   * [Only used when enableGradient is True].
+   */
+  nextColor: string;
 }
 
 export interface IArcData {

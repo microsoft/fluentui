@@ -5,7 +5,7 @@ import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
-import { wrapTextInsideDonut } from '../../../utilities/index';
+import { darkenLightenColor, wrapTextInsideDonut } from '../../../utilities/index';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
@@ -35,6 +35,8 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
     const color = d && d.data && d.data.color;
+    const nextColor = this.props.data[i + 1] && this.props.data[i + 1].color;
+
     return (
       <Arc
         key={i}
@@ -43,6 +45,8 @@ export class Pie extends React.Component<IPieProps, {}> {
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
         color={color!}
+        nextColor={nextColor}
+        enableGradient={this.props.enableGradient}
         onFocusCallback={this._focusCallback}
         hoverOnCallback={this._hoverCallback}
         onBlurCallback={this.props.onBlurCallback}

@@ -85,6 +85,12 @@ export interface IPieProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable the gradient in the chart
+   * @default false
+   */
+  enableGradient?: boolean;
 }
 
 export interface IPieStyles {

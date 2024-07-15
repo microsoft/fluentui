@@ -34,23 +34,35 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const { arc, href, focusedArcId } = this.props;
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, {
-      color: this.props.color,
       href: href!,
       theme: this.props.theme!,
     });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
+
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
+        )}
+        {this.props.enableGradient && (
+          <defs>
+            <linearGradient id={`gradient_${this.props.color}_${this.props.nextColor}`} y2="100%">
+              <stop offset="0" stopColor={this.props.color} />
+              <stop offset="70%" stopColor={this.props.color} />
+              <stop offset="100%" stopColor={this.props.nextColor} />
+            </linearGradient>
+          </defs>
         )}
         <path
           id={id}
           d={arc(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
+          fill={
+            this.props.enableGradient ? `url(#gradient_${this.props.color}_${this.props.nextColor})` : this.props.color
+          }
           data-is-focusable={this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === ''}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}

@@ -9,6 +9,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];
@@ -17,6 +18,7 @@ export interface IExampleState {
   innerRadius: number;
   statusKey: number;
   statusMessage: string;
+  enableGradient: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -53,6 +55,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       innerRadius: 35,
       statusKey: 0,
       statusMessage: '',
+      enableGradient: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -64,6 +67,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       chartTitle: 'Donut chart dynamic example',
       chartData: this.state.dynamicData,
     };
+
     return (
       <div>
         <Checkbox
@@ -77,6 +81,14 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           checked={this.state.showLabelsInPercent}
           onChange={this._onShowPercentCheckChange}
         />
+        <Toggle
+          label="Enable Gradient"
+          onText="On"
+          offText="Off"
+          onChange={this._onToggleGradient}
+          checked={this.state.enableGradient}
+        />
+
         <DonutChart
           data={data}
           innerRadius={this.state.innerRadius}
@@ -85,6 +97,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           }}
           hideLabels={this.state.hideLabels}
           showLabelsInPercent={this.state.showLabelsInPercent}
+          enableGradient={this.state.enableGradient}
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
@@ -97,6 +110,10 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       </div>
     );
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
 
   private _changeData(): void {
     this.setState(prevState => ({

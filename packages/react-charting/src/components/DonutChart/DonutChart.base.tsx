@@ -111,6 +111,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
+
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
@@ -130,6 +131,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}
+                enableGradient={this.props.enableGradient}
+                // roundCorners={this.props.roundCorners}
                 onFocusCallback={this._focusCallback}
                 hoverOnCallback={this._hoverCallback}
                 hoverLeaveCallback={this._hoverLeave}
