@@ -4,7 +4,7 @@
   "title": "",
   "type": "object",
   "properties": {
-    "name": {
+    "project": {
       "type": "string",
       "description": "Project for which to generate bundle-size configuration.",
       "$default": {
