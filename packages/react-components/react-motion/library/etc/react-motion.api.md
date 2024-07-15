@@ -50,9 +50,6 @@ export const durations: {
     readonly durationUltraSlow: 500;
 };
 
-// @internal
-export const MOTION_DEFINITION: unique symbol;
-
 // @public (undocumented)
 export type MotionComponentProps = {
     children: React_2.ReactElement;
@@ -139,10 +136,6 @@ export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
 } & MotionParams) => PresenceMotion;
-
-// Warnings were encountered during analysis:
-//
-// /Users/alexanderkatrukhin/fluentui/dist/out-tsc/types/packages/react-components/react-motion/library/src/factories/createPresenceComponent.d.ts:56:5 - (ae-incompatible-release-tags) The symbol "[MOTION_DEFINITION]" is marked as @public, but its signature references "MOTION_DEFINITION" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

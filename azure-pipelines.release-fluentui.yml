@@ -161,7 +161,7 @@ extends:
               - task: AzureCLI@2
                 displayName: Upload to Azure
                 inputs:
-                  azureSubscription: 'Azure - fluentsite storage'
+                  azureSubscription: 'Azure - fluentsite storage - NEW'
                   scriptType: 'bash'
                   scriptLocation: 'inlineScript'
                   inlineScript: |

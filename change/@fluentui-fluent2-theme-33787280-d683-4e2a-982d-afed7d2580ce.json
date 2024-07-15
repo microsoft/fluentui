@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "remove redundant forceConsistentCasingInFileNames option",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}
