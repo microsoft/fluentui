@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -9,26 +9,27 @@ import {
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
+const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 const useClasses = makeStyles({
   card: {
     margin: '0px 10px',
   },
+  test: {
+    ...typographyStyles.largeTitle,
+    alignContent: 'center',
+    borderRadius: tokens.borderRadiusLarge,
+    height: '200px',
+    textAlign: 'center',
+  },
 });
 
-const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const TestComponent: React.FC<{ accentColor: string; children: string }> = props => {
+  const { accentColor, children } = props;
+  const classes = useClasses();
 
-const TestDiv = (text: string, bgColor: string) => {
   return (
-    <div
-      style={{
-        height: '200px',
-        borderRadius: '12px',
-        backgroundColor: bgColor,
-        alignContent: 'center',
-        textAlign: 'center',
-      }}
-    >
-      {text}
+    <div className={classes.test} style={{ backgroundColor: accentColor }}>
+      {children}
     </div>
   );
 };
@@ -37,25 +38,28 @@ export const FreeLayout = () => {
   const classes = useClasses();
 
   return (
-    <Carousel circular defaultValue={'test-5'}>
+    <Carousel defaultValue="card-4">
       <CarouselSlider>
-        <CarouselCard className={classes.card} value="test-1" style={{ maxWidth: '30%' }}>
-          {TestDiv('test-1', 'lightgrey')}
+        <CarouselCard className={classes.card} value="card-1" style={{ maxWidth: '30%' }}>
+          <TestComponent accentColor="#B99095">Card 1</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="test-2" style={{ maxWidth: '45%' }}>
-          {TestDiv('test-2', 'lightblue')}
+        <CarouselCard className={classes.card} value="card-2" style={{ maxWidth: '45%' }}>
+          <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="test-3" style={{ maxWidth: '20%' }}>
-          {TestDiv('test-3', 'BlanchedAlmond')}
+        <CarouselCard className={classes.card} value="card-3" style={{ maxWidth: '20%' }}>
+          <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="test-4" style={{ maxWidth: '80%' }}>
-          {TestDiv('test-4', 'DarkKhaki')}
+        <CarouselCard className={classes.card} value="card-4" style={{ maxWidth: '80%' }}>
+          <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="test-5" style={{ maxWidth: '75%' }}>
-          {TestDiv('test-5', 'blue')}
+        <CarouselCard className={classes.card} value="card-5" style={{ maxWidth: '75%' }}>
+          <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="test-6" style={{ maxWidth: '30%' }}>
-          {TestDiv('test-6', 'green')}
+        <CarouselCard className={classes.card} value="card-6" style={{ maxWidth: '30%' }}>
+          <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
+        </CarouselCard>
+        <CarouselCard className={classes.card} value="card-7" style={{ maxWidth: '30%' }}>
+          <TestComponent accentColor="#FFD898">Card 7</TestComponent>
         </CarouselCard>
       </CarouselSlider>
       <div
@@ -66,7 +70,7 @@ export const FreeLayout = () => {
         }}
       >
         <CarouselButton navType="prev" />
-        <CarouselNav>{() => <CarouselNavImageButton image={{ src: swapImage }} />}</CarouselNav>
+        <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
         <CarouselButton navType="next" />
       </div>
     </Carousel>

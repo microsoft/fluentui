@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -7,36 +7,54 @@ import {
   CarouselNavImageButton,
   CarouselSlider,
 } from '@fluentui/react-carousel-preview';
+import * as React from 'react';
 
-const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const useClasses = makeStyles({
+  test: {
+    ...typographyStyles.largeTitle,
+    alignContent: 'center',
+    borderRadius: tokens.borderRadiusLarge,
+    height: '200px',
+    textAlign: 'center',
+  },
+});
 
-const TestDiv = (text: string, bgColor: string) => {
+const TestComponent: React.FC<{ accentColor: string; children: string }> = props => {
+  const { accentColor, children } = props;
+  const classes = useClasses();
+
   return (
-    <div
-      style={{
-        height: '450px',
-        borderRadius: '12px',
-        backgroundColor: bgColor,
-        alignContent: 'center',
-        textAlign: 'center',
-      }}
-    >
-      {text}
+    <div className={classes.test} style={{ backgroundColor: accentColor }}>
+      {children}
     </div>
   );
 };
 
 export const Circular = () => (
-  <Carousel circular defaultValue={'test-5'}>
+  <Carousel circular defaultValue="card-5">
     <CarouselSlider>
-      <CarouselCard value="test-1">{TestDiv('test-1', 'lightgrey')}</CarouselCard>
-      <CarouselCard value="test-2">{TestDiv('test-2', 'lightblue')}</CarouselCard>
-      <CarouselCard value="test-3">{TestDiv('test-3', 'BlanchedAlmond')}</CarouselCard>
-      <CarouselCard value="test-4">{TestDiv('test-4', 'DarkKhaki')}</CarouselCard>
-      <CarouselCard value="test-5">{TestDiv('test-5', 'blue')}</CarouselCard>
-      <CarouselCard value="test-6">{TestDiv('test-6', 'green')}</CarouselCard>
-      <CarouselCard value="test-7">{TestDiv('test-7', 'red')}</CarouselCard>
-      <CarouselCard value="test-8">{TestDiv('test-8', 'yellow')}</CarouselCard>
+      <CarouselCard value="card-1">
+        <TestComponent accentColor="#B99095">Card 1</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-2">
+        <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-3">
+        <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-4">
+        <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-5">
+        <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-6">
+        <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
+      </CarouselCard>
+      <CarouselCard value="card-7">
+        <TestComponent accentColor="#FFD898">Card 7</TestComponent>
+      </CarouselCard>
     </CarouselSlider>
     <div
       style={{
@@ -46,7 +64,7 @@ export const Circular = () => (
       }}
     >
       <CarouselButton navType="prev" />
-      <CarouselNav>{() => <CarouselNavImageButton image={{ src: swapImage }} />}</CarouselNav>
+      <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
       <CarouselButton navType="next" />
     </div>
   </Carousel>
