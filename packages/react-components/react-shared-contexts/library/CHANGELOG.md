@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 20 May 2024 12:45:03 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.19.1)
+
+Mon, 15 Jul 2024 17:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.19.0..@fluentui/react-shared-contexts_v9.19.1)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [9.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.19.0)
 
