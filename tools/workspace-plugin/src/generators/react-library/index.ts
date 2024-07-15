@@ -28,6 +28,7 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
   const options = normalizeOptions(tree, schema);
 
   addFiles(tree, options);
+
   updatePackageJsonDependencies(tree, options);
 
   updateTsConfigBase(tree, options);
@@ -35,7 +36,12 @@ export default async function (tree: Tree, schema: ReactLibraryGeneratorSchema) 
 
   addCodeowner(tree, { packageName: options.projectConfig.name as string, owner: schema.owner });
 
-  await splitLibraryInTwoGenerator(tree, { project: options.projectConfig.name, skipFormat: true });
+  console.log('generated files from tmpl:', {
+    root: tree.children(options.projectConfig.root),
+    sb: tree.children(joinPathFragments(options.projectConfig.root, '.storybook')),
+    sbStories: tree.children(joinPathFragments(options.projectConfig.root, 'stories')),
+  });
+  await splitLibraryInTwoGenerator(tree, { project: options.projectConfig.name, skipFormat: true, logs: true });
 
   await formatFiles(tree);
 
