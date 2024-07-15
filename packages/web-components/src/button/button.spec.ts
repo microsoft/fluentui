@@ -224,6 +224,24 @@ test.describe('Button', () => {
     expect(ReceivedNoKeyDownEvent2).toBeTruthy();
   });
 
+  test('should NOT receive focus when the `tabindex` is manually set to -1', async ({ page }) => {
+    const element = page.locator('fluent-button', { hasText: 'Button' });
+    const focusable = page.locator('fluent-button', { hasText: 'Focusable' });
+
+    await page.setContent(/* html */ `
+      <fluent-button>Focusable</fluent-button>
+      <fluent-button tabindex="-1">Button</fluent-button>
+    `);
+
+    await focusable.focus();
+
+    await expect(focusable).toBeFocused();
+
+    await focusable.press('Tab');
+
+    await expect(element).not.toBeFocused();
+  });
+
   test('should focus the element when the `autofocus` attribute is present', async ({ page }) => {
     const element = page.locator('fluent-button');
 
