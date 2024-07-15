@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-motion-components-preview",
   "version": "0.0.0",
-  "private": true,
-  "description": "New fluentui react package",
+  "description": "A preview package for Fluent UI motion components, providing a collection of components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
