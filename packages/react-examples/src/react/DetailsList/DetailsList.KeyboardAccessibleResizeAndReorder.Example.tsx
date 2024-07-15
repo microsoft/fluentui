@@ -196,6 +196,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const input = React.useRef<number | null>(null);
   const focusZoneRef = React.useRef<IFocusZone>(null);
 
+  /** This callback provides support for keyboard shortcuts to resize & reorder columns */
   const onColumnKeyDown = React.useCallback(
     (ev: React.KeyboardEvent, column: IColumn): void => {
       const detailsList = detailsListRef.current;
@@ -233,7 +234,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         }
       }
     },
-    [columns],
+    [columns, selection.mode],
   );
 
   const insertBeforeItem = React.useCallback(
