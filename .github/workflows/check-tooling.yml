@@ -5,6 +5,9 @@ on:
     paths:
       - 'tools/workspace-plugin/**'
 
+env:
+  __LOCAL_API_GENERATION__: true
+
 jobs:
   check-tools:
     strategy:
