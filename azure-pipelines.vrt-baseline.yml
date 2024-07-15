@@ -31,13 +31,12 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
-      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
+      - task: AzureCLI@2
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
@@ -45,6 +44,12 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V9
     variables:
@@ -60,13 +65,12 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
+      - task: AzureCLI@2
         displayName: 'Run Screenshotdiff update baseline'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
@@ -74,6 +78,12 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V8
     variables:
@@ -89,13 +99,12 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+      - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
@@ -103,7 +112,12 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
   - job: VRToolUpdateBaseline_V0
     variables:
       pipelineId: '313'
@@ -118,13 +132,12 @@ jobs:
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
-      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+      - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
@@ -132,3 +145,9 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        inputs:
+          azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
