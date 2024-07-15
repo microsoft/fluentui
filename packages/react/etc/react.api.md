@@ -3820,6 +3820,7 @@ export interface IColumn {
     name: string;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column?: IColumn, ev?: React_2.MouseEvent<HTMLElement>) => void;
+    onColumnKeyDown?: (ev: React.KeyboardEvent, column: IColumn) => void;
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
@@ -4508,6 +4509,7 @@ export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColu
     isDropped?: boolean;
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
     onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
+    onColumnKeyDown?: (ev: React.KeyboardEvent, column: IColumn) => void;
     onRenderColumnHeaderTooltip?: IRenderFunction<IDetailsColumnRenderTooltipProps>;
     parentId?: string;
     // @deprecated (undocumented)
