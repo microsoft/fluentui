@@ -36,6 +36,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-motion": "*",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
