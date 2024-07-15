@@ -47,8 +47,8 @@ import {
   filledDarkerState,
   filledLighterState,
   largeState,
-  outlineState,
   resizeBothState,
+  resizedState,
   resizeHorizontalState,
   resizeState,
   resizeVerticalState,
@@ -104,7 +104,7 @@ export const styles: ElementStyles = css`
     min-block-size: var(--min-block-size);
     max-block-size: var(--max-block-size);
     inline-size: var(--inline-size);
-    block-size: var(--block-size);
+*2    block-size: var(--block-size);
     padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
@@ -146,6 +146,14 @@ export const styles: ElementStyles = css`
     --padding-block: ${spacingVerticalS};
     --padding-inline: ${spacingHorizontalM};
     --content-padding-inline: ${spacingHorizontalSNudge};
+  }
+
+  :host(${resizeState}) {
+    --max-block-size: none;
+  }
+
+  :host(${resizedState}) {
+    --inline-size: auto;
   }
 
   :host(${autoResizeState}) {
@@ -222,6 +230,11 @@ export const styles: ElementStyles = css`
   }
 
   .textbox {
+    --textbox-block-size: auto;
+    --textbox-inline-size: auto;
+
+    block-size: var(--textbox-block-size);
+    inline-size: var(--textbox-inline-size);
     overflow: auto;
     outline: 0;
   }
@@ -241,6 +254,7 @@ export const styles: ElementStyles = css`
     inset-inline-end: 0;
     block-size: 1rem;
     inline-size: 1rem;
+    touch-action: none;
   }
 
   :host(${resizeState}) .resize {

@@ -3,25 +3,29 @@ import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import type { TextArea as FluentTextArea } from './textarea.js';
-import { TextAreaAppearance, TextAreaControlSize } from './textarea.options.js';
+import { TextAreaAppearance, TextAreaResize } from './textarea.options.js';
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
   <fluent-textarea
     appearance="${x => x.appearance}"
     autocomplete="${x => x.autocomplete}"
     ?autofocus="${x => x.autofocus}"
-    control-size="${x => x.controlSize}"
+    ?auto-resize="${x => x.autoResize}"
+    ?block="${x => x.block}"
     dirname="${x => x.dirname}"
     ?disabled="${x => x.disabled}"
+    ?display-shadow="${x => x.displayShadow}"
     form="${x => x.form}"
-    maxlength="${x => x.maxlength}"
-    minlength="${x => x.minlength}"
+    maxlength="${x => x.maxLength}"
+    minlength="${x => x.minLength}"
     name="${x => x.name}"
     placeholder="${x => x.placeholder}"
     ?readonly="${x => x.readOnly}"
     ?required="${x => x.required}"
     size="${x => x.size}"
     spellcheck="${x => x.spellcheck}"
+    resize="${x => x.resize}"
+    value="${x => x.value}"
   ></fluent-textarea>
 `;
 
@@ -44,14 +48,6 @@ export default {
       description: 'Indicates that this element should get focus after the page finishes loading.',
       control: 'boolean',
     },
-    controlSize: {
-      description: 'Sets the size of the control',
-      table: {
-        defaultValue: { summary: `${TextAreaControlSize.medium}` },
-      },
-      control: 'select',
-      options: Object.values(TextAreaControlSize),
-    },
     dirname: {
       description: 'Sets the directionality of the element to be submitted with form data.',
       control: 'text',
@@ -67,28 +63,16 @@ export default {
       description: 'The id of a form to associate the element to.',
       control: 'text',
     },
-    list: {
-      description: 'The id of a datalist element that provides a list of suggested values.',
-      control: 'text',
-    },
-    maxlength: {
+    maxLength: {
       description: 'Sets the maximum number of characters allowed in the input',
       control: 'number',
     },
-    minlength: {
+    minLength: {
       description: 'Sets the minimum number of characters allowed in the input',
       control: 'number',
     },
-    multiple: {
-      description: 'Indicates whether the user can enter multiple values.',
-      control: 'boolean',
-    },
     name: {
       description: 'Sets the name of the input',
-      control: 'text',
-    },
-    pattern: {
-      description: 'Sets the regular expression pattern that the input’s value is checked against.',
       control: 'text',
     },
     placeholder: {
@@ -99,11 +83,18 @@ export default {
       description: 'Sets the readonly state',
       control: 'boolean',
     },
-    storyContent: { table: { disable: true } },
+    resize: {
+      description: 'Whether a user can resize the element.',
+      control: 'select',
+      options: Object.values(TextAreaResize),
+    },
   },
 } as Meta<FluentTextArea>;
 
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
+TextArea.args = {
+  resize: 'both',
+};
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <fluent-textarea placeholder="This is a placeholder"> </fluent-textarea>
@@ -130,8 +121,8 @@ export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<
 
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-textarea control-size="small"> </fluent-textarea>
-    <fluent-textarea> </fluent-textarea>
+    <fluent-textarea size="small"> </fluent-textarea>
+    <fluent-textarea></fluent-textarea>
     <fluent-field size="large">
       <label slot="label">Large Input</label>
       <fluent-textarea slot="input" size="large"></fluent-textarea>

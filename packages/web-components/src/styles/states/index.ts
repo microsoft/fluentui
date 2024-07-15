@@ -265,10 +265,16 @@ export const expandedState = css.partial`:is([state--expanded], :state(expanded)
 export const blockState = css.partial`:is([state--block], :state(block))`;
 
 /**
- * Selector for the `resize` state.
+ * Selector for the `resize` state. This indicates the element is resizable.
  * @public
  */
 export const resizeState = css.partial`:is([state--resize], :state(resize))`;
+
+/**
+ * Selector for the `resized` state. This indicates the element has been resized by the user.
+ * @public
+ */
+export const resizedState = css.partial`:is([state--resized], :state(resized))`;
 
 /**
  * Selector for the `resize-horizontal` state.

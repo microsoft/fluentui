@@ -1,11 +1,12 @@
-import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
-  TextAreaControlSize,
+  TextAreaResizableResize,
   TextAreaResize,
+  TextAreaSize,
 } from './textarea.options.js';
 
 /**
@@ -103,24 +104,6 @@ export class TextArea extends FASTElement {
   public block: boolean = false;
   protected blockChanged() {
     toggleState(this.elementInternals, `block`, this.block);
-  }
-
-  /**
-   * Sets the size of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: TextAreaControlSize;
-  protected sizeChanged(prev: TextAreaControlSize | undefined, next: TextAreaControlSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
   }
 
   /**
@@ -268,6 +251,30 @@ export class TextArea extends FASTElement {
   }
 
   /**
+   * Sets the size of the control.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: TextAreaSize;
+  protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
+   * @internal
+   */
+  @observable
+  public sizeStyles = '';
+
+  /**
    * Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Global_attributes/spellcheck | `spellcheck`} attribute
    *
@@ -311,16 +318,12 @@ export class TextArea extends FASTElement {
       toggleState(this.elementInternals, `resize-${next}`, true);
     }
 
-    toggleState(
-      this.elementInternals,
-      `resize`,
-      Array.from(Object.keys(TextAreaResize))
-        .filter(r => r !== TextAreaResize.none)
-        .includes(this.resize),
-    );
-
-    // TODO
+    toggleState(this.elementInternals, `resize`, TextAreaResizableResize.includes(this.resize));
   }
+
+  private handleResizeListener?: EventListener;
+
+  private isResizing = false;
 
   /**
    * The element's validity state.
@@ -401,9 +404,10 @@ export class TextArea extends FASTElement {
     this.setInitialValue();
     this.setValidity();
 
+    this.bindEvents();
+
     Observable.getNotifier(this).subscribe(this, 'appearance');
     Observable.getNotifier(this).subscribe(this, 'displayShadow');
-
   }
 
   /**
@@ -411,6 +415,8 @@ export class TextArea extends FASTElement {
    */
   public disconnectedCallback(): void {
     super.disconnectedCallback();
+
+    this.unbindEvents();
 
     Observable.getNotifier(this).unsubscribe(this, 'appearance');
     Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
@@ -498,10 +504,7 @@ export class TextArea extends FASTElement {
     }
   }
 
-  /**
-   * @internal
-   */
-  public setContentEditable(edtiable: boolean) {
+  private setContentEditable(edtiable: boolean) {
     if (!edtiable) {
       this.textbox.contentEditable = 'false';
     } else {
@@ -528,5 +531,63 @@ export class TextArea extends FASTElement {
       // TODO: double check security
       this.textbox.textContent = this.innerHTML;
     }
+  }
+
+  private bindEvents() {
+    this.handleResizeListener = this.handleResize.bind(this) as EventListener;
+    document.addEventListener('pointerdown', this.handleResizeListener);
+    document.addEventListener('pointermove', this.handleResizeListener);
+    document.addEventListener('pointerup', this.handleResizeListener);
+  }
+
+  private unbindEvents() {
+    if (this.handleResizeListener) {
+      document.removeEventListener('pointerdown', this.handleResizeListener);
+      document.removeEventListener('pointermove', this.handleResizeListener);
+      document.removeEventListener('pointerup', this.handleResizeListener);
+    }
+  }
+
+  private handleResize(evt: PointerEvent) {
+    if (!TextAreaResizableResize.includes(this.resize)) {
+      return;
+    }
+
+    switch (evt.type) {
+      case 'pointerdown':
+        if (evt.composedPath()[0] === this.resizeHandle) {
+          this.startResizing();
+        }
+        break;
+      case 'pointermove':
+        this.doResizing(evt.pageX, evt.pageY);
+        break;
+      case 'pointerup':
+        this.stopResizing();
+        break;
+    }
+  }
+
+  private startResizing() {
+    this.isResizing = true;
+    toggleState(this.elementInternals, 'resized', true);
+    console.log('resizing started');
+  }
+
+  private doResizing(pointerX: number, pointerY: number) {
+    if (!this.isResizing) {
+      return;
+    }
+
+    console.log('resizing', {pointerX, pointerY});
+  }
+
+  private stopResizing() {
+    if (!this.isResizing) {
+      return;
+    }
+
+    this.isResizing = false;
+    console.log('resizing stopped');
   }
 }

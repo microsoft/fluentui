@@ -11,14 +11,14 @@ export function textInputTemplate<T extends TextArea>(options: TextAreaOptions =
   return html<T>`
     <template>
       <div ${ref('placeholderContainer')} class="placeholder" part="placeholder">${x => x.placeholder}</div>
-      <div ${ref('textbox')} class="textbox"></div>
+      <div ${ref('textbox')} class="textbox" style="${x => x.sizeStyles}"></div>
       <button
         ${ref('resizeHandle')}
         class="resize"
         part="resize"
         aria-hidden="true"
         tabindex="-1"
-        disabled="${x => x.disabled}"
+        ?disabled="${x => x.disabled}"
       ></button>
     </template>
   `;

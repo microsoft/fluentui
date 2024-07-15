@@ -1,6 +1,6 @@
 import type { StartEndOptions } from '../patterns/start-end.js';
 import type { ValuesOf } from '../utils/typings.js';
-import type { TextArea } from './textarea.js';
+import { TextArea } from './textarea.js';
 
 /**
  * TextArea configuration options.
@@ -10,17 +10,17 @@ import type { TextArea } from './textarea.js';
 export type TextAreaOptions = StartEndOptions<TextArea>;
 
 /**
- * Values for the `control-size` attribute on TextArea elements.
+ * Values for the `size` attribute on TextArea elements.
  *
  * @public
  */
-export const TextAreaControlSize = {
+export const TextAreaSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
 
-export type TextAreaControlSize = ValuesOf<typeof TextAreaControlSize>;
+export type TextAreaSize = ValuesOf<typeof TextAreaSize>;
 
 /**
  * Values for the `appearance` attribute on TextArea elements.
@@ -35,7 +35,7 @@ export const TextAreaAppearance = {
 
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
-export const TextAreaAppearancesForDisplayShadow: TextAreaAppearance[] = [
+export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]> = [
   TextAreaAppearance.filledLighter,
   TextAreaAppearance.filledDarker,
 ];
@@ -63,3 +63,9 @@ export const TextAreaResize = {
 } as const;
 
 export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+export const TextAreaResizableResize: Partial<TextAreaResize[]> = [
+  TextAreaResize.both,
+  TextAreaResize.horizontal,
+  TextAreaResize.vertical,
+];
