@@ -1,14 +1,9 @@
 import {
   motionTokens,
-  PresenceMotionFn,
+  type PresenceMotionFn,
   createPresenceComponent,
   createPresenceComponentVariant,
 } from '@fluentui/react-motion';
-
-const { durationSlow, durationNormal, durationUltraFast, curveEasyEaseMax } = motionTokens;
-
-const duration = durationNormal;
-const easing = curveEasyEaseMax;
 
 /** Define a presence motion for collapse/expand */
 const collapseMotion: PresenceMotionFn<{ animateOpacity?: boolean }> = ({ element, animateOpacity = true }) => {
@@ -17,6 +12,9 @@ const collapseMotion: PresenceMotionFn<{ animateOpacity?: boolean }> = ({ elemen
   const fromHeight = '0'; // Could be a custom param in the future: start partially expanded
   const toHeight = `${element.scrollHeight}px`;
   const overflow = 'hidden';
+
+  const duration = motionTokens.durationNormal;
+  const easing = motionTokens.curveEasyEaseMax;
 
   const enterKeyframes = [
     { opacity: fromOpacity, maxHeight: fromHeight, overflow },
@@ -42,10 +40,10 @@ const collapseMotion: PresenceMotionFn<{ animateOpacity?: boolean }> = ({ elemen
 export const Collapse = createPresenceComponent(collapseMotion);
 
 export const CollapseSnappy = createPresenceComponentVariant(Collapse, {
-  all: { duration: durationUltraFast },
+  all: { duration: motionTokens.durationUltraFast },
 });
 
 export const CollapseExaggerated = createPresenceComponentVariant(Collapse, {
-  enter: { duration: durationSlow, easing: curveEasyEaseMax },
-  exit: { duration: durationNormal, easing: curveEasyEaseMax },
+  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
+  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
 });
