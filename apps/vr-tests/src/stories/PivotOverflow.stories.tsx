@@ -1,13 +1,23 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Pivot, PivotItem, IPivotItemProps, Icon, Fabric } from '@fluentui/react';
-import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
+import { StoryWrightDecorator } from '../utilities';
 
 export default {
   title: 'Pivot - Overflow',
 
   decorators: [
-    TestWrapperDecorator,
+    (story, context) => (
+      <div style={{ display: 'flex' }}>
+        <div
+          className="testWrapper"
+          style={{ padding: '10px', overflow: 'hidden', paddingBottom: '200px' }}
+        >
+          {story(context)}
+        </div>
+      </div>
+    ),
     StoryWrightDecorator(
       new Steps()
         .executeScript('document.getElementById("testWrapper").style.width = "500px"')
@@ -26,10 +36,7 @@ export default {
         .end(),
     ),
   ],
-  parameters: {
-    testWrapperStyle: { paddingBottom: '200px' },
-  },
-};
+} satisfies Meta<typeof Pivot>;
 
 export const Root = () => (
   <Pivot overflowBehavior="menu">

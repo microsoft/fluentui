@@ -23,11 +23,11 @@ export const RTL = 'RTL';
 
 type StoryVariant = typeof DARK_MODE | typeof RTL;
 
-/** Helper function that returns a RTL or Dark Mode variant of an existing story. */
-export const getStoryVariant = <TArgs = Args,>(
+/** Helper function that returns RTL or Dark Mode variant of an existing story. */
+export function getStoryVariant<TArgs = Args>(
   story: StoryFn<TArgs>,
   variant: StoryVariant,
-): StoryObj<TArgs> => {
+): StoryObj<TArgs> {
   const theme = getTheme(variant);
   const dir = getDir(variant);
 
@@ -38,7 +38,7 @@ export const getStoryVariant = <TArgs = Args,>(
     parameters: { ...story.parameters, dir, theme },
     decorators: [...(story.decorators ?? []), StoryVariantDecorator],
   };
-};
+}
 
 function getTheme(variant: StoryVariant) {
   return variant === DARK_MODE ? DarkTheme : undefined;
