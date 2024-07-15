@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
+import { CarouselVisibilityEventDetail } from '../Carousel';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -28,7 +29,7 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
 
       cardElements?.forEach((cardElement, index) => {
         cardElement.dispatchEvent(
-          new CustomEvent(EMBLA_VISIBILITY_EVENT, {
+          new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
             bubbles: false,
             detail: { isVisible: visibleIndexes.includes(index) },
           }),

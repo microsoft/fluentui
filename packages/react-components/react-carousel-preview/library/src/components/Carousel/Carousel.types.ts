@@ -39,3 +39,9 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
  * State used in rendering Carousel
  */
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
+
+export interface CarouselVisibilityEventDetail {
+  isVisible: boolean;
+}
+
+export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;

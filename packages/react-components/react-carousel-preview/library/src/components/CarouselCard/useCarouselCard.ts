@@ -5,6 +5,7 @@ import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
+import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 
 /**
  * Create the state required to render CarouselCard.
@@ -30,7 +31,7 @@ export const useCarouselCard_unstable = (
 
     if (element) {
       const listener = (_e: Event) => {
-        const event = _e as CustomEvent<{ isVisible: boolean }>;
+        const event = _e as CarouselVisibilityChangeEvent;
         const hidden = !event.detail.isVisible;
 
         element.ariaHidden = hidden.toString();
