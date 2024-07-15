@@ -67,21 +67,7 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
-      - powershell: |
-          $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-          Write-Host "Looking up latest official build via url: $url"
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-          Write-Host "Response: $pipelineBuildInfo"
-          [int]$latestBuildId = $pipelineBuildInfo.value.id
-          Write-Host "Setting variable LatestBuildId=$latestBuildId"
-          Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-        name: GetLatestGreenCIBuild
-        env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
-        condition: eq(variables['vrTestSkip'], 'no')
-
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
