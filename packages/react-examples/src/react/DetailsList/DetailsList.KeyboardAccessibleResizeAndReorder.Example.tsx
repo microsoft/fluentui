@@ -53,7 +53,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const handleColumnReorder = (draggedIndex: number, targetIndex: number) => {
     const draggedItems = columns[draggedIndex];
     const newColumns: IColumn[] = [...columns];
-
+    console.log('handleColumnReorder', draggedIndex, targetIndex);
     // insert before the dropped item
     newColumns.splice(draggedIndex, 1);
     newColumns.splice(targetIndex, 0, draggedItems);
@@ -115,6 +115,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         detailsList.updateColumn(columnToEdit.current, { width: width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
+        console.log(columnToEdit.current.key, targetIndex);
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
       }
     }
@@ -126,22 +127,6 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     if (column.columnActionsMode !== ColumnActionsMode.disabled) {
       setContextualMenuProps(getContextualMenuProps(ev, column));
-    }
-  };
-
-  const onColumnKeyDown = (ev: React.KeyboardEvent, column: IColumn): void => {
-    const detailsList = detailsListRef.current;
-
-    if (ev.ctrlKey) {
-      ev.preventDefault();
-      switch (ev.key) {
-        case 'ArrowLeft':
-          detailsList.updateColumn(column, { width: column.currentWidth * 0.9 });
-          break;
-        case 'ArrowRight':
-          detailsList.updateColumn(column, { width: column.currentWidth * 1.1 });
-          break;
-      }
     }
   };
 
@@ -197,9 +182,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
   const [columns, setColumns] = React.useState<IColumn[]>(
-    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown).map(
-      column => ({ ...column, onColumnKeyDown }),
-    ),
+    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown),
   );
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
@@ -212,6 +195,46 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const detailsListRef = React.useRef<IDetailsList>(null);
   const input = React.useRef<number | null>(null);
   const focusZoneRef = React.useRef<IFocusZone>(null);
+
+  const onColumnKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent, column: IColumn): void => {
+      const detailsList = detailsListRef.current;
+
+      if (ev.shiftKey) {
+        const indexOffset = 1 + selection.mode ? 1 : 0;
+        const columnIndex = columns.findIndex(x => x.key === column.key) + indexOffset;
+        console.log(
+          column,
+          columnIndex,
+          columns.map(x => x.key),
+        );
+        switch (ev.key) {
+          case 'ArrowLeft':
+            if (columnIndex > 0) {
+              detailsList.updateColumn(column, { newColumnIndex: columnIndex + indexOffset - 1 });
+            }
+            break;
+          case 'ArrowRight':
+            if (columnIndex < columns.length - 1) {
+              detailsList.updateColumn(column, { newColumnIndex: columnIndex + indexOffset + 1 });
+            }
+            break;
+        }
+      }
+      if (ev.ctrlKey) {
+        ev.preventDefault();
+        switch (ev.key) {
+          case 'ArrowLeft':
+            detailsList.updateColumn(column, { width: column.currentWidth * 0.9 });
+            break;
+          case 'ArrowRight':
+            detailsList.updateColumn(column, { width: column.currentWidth * 1.1 });
+            break;
+        }
+      }
+    },
+    [columns],
+  );
 
   const insertBeforeItem = React.useCallback(
     (item: IExampleItem) => {
@@ -332,7 +355,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           focusZoneProps={{ componentRef: focusZoneRef }}
           setKey="items"
           items={sortedItems}
-          columns={columns}
+          columns={columns.map(x => ({ ...x, onColumnKeyDown }))}
           selection={selection}
           selectionPreservedOnEmptyClick={true}
           onItemInvoked={onItemInvoked}
