@@ -167,10 +167,7 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
-    console.log('makeSrcLibrary not ignored files:', file);
-
     if (file.includes(path.normalize('/stories/')) || file.includes(path.normalize('/.storybook/'))) {
-      console.log('makeSrcLibrary skipping:', file);
       return;
     }
 
@@ -281,8 +278,6 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
   const newProjectName = `${options.projectConfig.name}-stories`;
 
-  console.log('BEFORE:', tree.children(oldProjectRoot), tree.children(joinPathFragments(oldProjectRoot, '.storybook')));
-
   // move stories/
   moveFilesToNewDirectory(tree, joinPathFragments(oldProjectRoot, 'stories'), newProjectSourceRoot);
 
@@ -291,12 +286,6 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
     tree,
     joinPathFragments(oldProjectRoot, '.storybook'),
     joinPathFragments(newProjectRoot, '.storybook'),
-  );
-
-  console.log(
-    'AFTER:',
-    tree.children(newProjectSourceRoot),
-    tree.children(joinPathFragments(newProjectRoot, '.storybook')),
   );
 
   const storiesWorkspaceDeps = getWorkspaceDependencies(
@@ -400,18 +389,18 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.json'), templates.tsconfig.root);
   writeJson(tree, joinPathFragments(newProjectRoot, 'tsconfig.lib.json'), templates.tsconfig.lib);
   writeJson(tree, joinPathFragments(newProjectRoot, 'package.json'), templates.packageJson);
-  updateJson(tree, joinPathFragments(newProjectRoot, '.storybook', 'tsconfig.json'), (json: TsConfig) => {
+  updateJson(tree, joinPathFragments(newProjectRoot, '.storybook/tsconfig.json'), (json: TsConfig) => {
     json.include = ['*.js'];
     return json;
   });
-  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook', 'main.js'), content => {
+  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/main.js'), content => {
     content = content
       .replace(new RegExp('../stories/', 'g'), '../src/')
       .replace(new RegExp(options.projectOffsetFromRoot.old, 'g'), options.projectOffsetFromRoot.updated);
 
     return content;
   });
-  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook', 'preview.js'), content => {
+  updateFileContent(tree, joinPathFragments(newProjectRoot, '.storybook/preview.js'), content => {
     content = content.replace(
       new RegExp(options.projectOffsetFromRoot.old, 'g'),
       options.projectOffsetFromRoot.updated,
