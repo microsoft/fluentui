@@ -78,9 +78,7 @@ jobs:
         name: GetLatestGreenCIBuild
         env:
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          # TODO: When web-components-v3 branch is merged with master,
-          # BASELINE-PIPELINE-ID-WEBCOMPONENTS should be changed to simply BASELINE-PIPELINE-ID.
-          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
+          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID)
         condition: eq(variables['vrTestSkip'], 'no')
 
       - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
