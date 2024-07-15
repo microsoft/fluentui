@@ -11,8 +11,10 @@ import {
   IDragDropContext,
   ColumnActionsMode,
   IDetailsList,
+  IDetailsColumnRenderTooltipProps,
 } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { TextField, ITextFieldStyles, ITextField } from '@fluentui/react/lib/TextField';
 import { Toggle, IToggleStyles } from '@fluentui/react/lib/Toggle';
@@ -127,6 +129,22 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     }
   };
 
+  const onColumnKeyDown = (ev: React.KeyboardEvent, column: IColumn): void => {
+    const detailsList = detailsListRef.current;
+
+    if (ev.ctrlKey) {
+      ev.preventDefault();
+      switch (ev.key) {
+        case 'ArrowLeft':
+          detailsList.updateColumn(column, { width: column.currentWidth * 0.9 });
+          break;
+        case 'ArrowRight':
+          detailsList.updateColumn(column, { width: column.currentWidth * 1.1 });
+          break;
+      }
+    }
+  };
+
   const getContextualMenuProps = (ev: React.MouseEvent<HTMLElement>, column: IColumn): IContextualMenuProps => {
     const items = [
       { key: 'resize', text: 'Resize', onClick: () => resizeColumn(column) },
@@ -179,7 +197,9 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const [items, setItems] = React.useState<IExampleItem[]>(createListItems(5, 0));
   const [sortedItems, setSortedItems] = React.useState<IExampleItem[]>(items);
   const [columns, setColumns] = React.useState<IColumn[]>(
-    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown),
+    buildColumns(items, true, onColumnClick, undefined, false, undefined, undefined, ColumnActionsMode.hasDropdown).map(
+      column => ({ ...column, onColumnKeyDown }),
+    ),
   );
   const [isColumnReorderEnabled, setIsColumnReorderEnabled] = React.useState<boolean>(true);
   const [frozenColumnCountFromStart, setFrozenColumnCountFromStart] = React.useState<string>('0');
