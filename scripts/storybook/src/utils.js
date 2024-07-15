@@ -222,7 +222,9 @@ function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackage
 function getPackageStoriesGlob(options) {
   const projects = getAllProjects();
 
-  const excludeStoriesInsertionFromPackages = options.excludeStoriesInsertionFromPackages ?? [];
+  const excludeStoriesInsertionFromPackages = (options.excludeStoriesInsertionFromPackages ?? []).map(packageName =>
+    normalizeProjectName(packageName),
+  );
   const projectMetadata = /** @type {NonNullable<ReturnType<typeof getMetadata>>} */ (
     getMetadata(normalizeProjectName(options.packageName), projects)
   );
@@ -237,11 +239,11 @@ function getPackageStoriesGlob(options) {
   const packages = Object.keys(dependencies);
 
   const result = packages.reduce((acc, pkgName) => {
-    if (!(pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))) {
+    const projectName = normalizeProjectName(pkgName);
+
+    if (!pkgName.startsWith('@fluentui/') || excludeStoriesInsertionFromPackages.includes(projectName)) {
       return acc;
     }
-
-    const projectName = normalizeProjectName(pkgName);
 
     const pkgMetadata = getMetadata(projectName, projects, { throwIfNotFound: false });
 
