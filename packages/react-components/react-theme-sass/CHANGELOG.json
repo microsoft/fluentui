@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Mon, 15 Jul 2024 17:25:20 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.23",
+      "version": "9.0.0-alpha.23",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:41 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.23",
       "version": "9.0.0-alpha.23",

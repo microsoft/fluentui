@@ -4,6 +4,23 @@
 
 ```ts
 
+import { PresenceComponent } from '@fluentui/react-motion';
+
+// @public
+export const Collapse: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
+// @public (undocumented)
+export const CollapseExaggerated: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```

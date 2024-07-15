@@ -15,6 +15,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   defaultValue?: string;
 
   /**
+   * The alignment of the carousel.
+   */
+  align?: 'center' | 'start' | 'end';
+
+  /**
    * The value of the currently active page.
    */
   value?: string;
@@ -25,17 +30,18 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   onValueChange?: EventHandler<CarouselValueChangeData>;
 
   /**
-   * Circular enables the carousel to loop back around on navigation past trailing index
+   * Circular enables the carousel to loop back around on navigation past trailing index.
    */
-  circular?: Boolean;
-
-  /**
-   * Peeking enables the next/prev carousel pages to 'peek' into the current view
-   */
-  peeking?: Boolean;
+  circular?: boolean;
 };
 
 /**
  * State used in rendering Carousel
  */
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
+
+export interface CarouselVisibilityEventDetail {
+  isVisible: boolean;
+}
+
+export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;

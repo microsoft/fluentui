@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove npmScope from project name",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

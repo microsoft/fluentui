@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Mon, 01 Jul 2024 20:30:26 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.91)
+
+Mon, 15 Jul 2024 17:25:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.90..@fluentui/react-persona_v9.2.91)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.32 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-badge to v9.2.40 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.2.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.90)
 

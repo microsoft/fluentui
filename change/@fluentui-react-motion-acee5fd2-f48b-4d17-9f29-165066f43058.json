@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(motion): add PresenceDirection type",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
