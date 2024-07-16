@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix With* internal helper types 'children' verification",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
