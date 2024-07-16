@@ -5,7 +5,7 @@ import {
   colorNeutralForeground2,
   colorNeutralForeground3,
   colorNeutralForegroundDisabled,
-  spacingVerticalS,
+  spacingVerticalL,
 } from '../theme/design-tokens.js';
 import { display } from '../utils/index.js';
 
@@ -18,7 +18,7 @@ export const styles = css`
   :host {
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
-    gap: ${spacingVerticalS};
+    gap: ${spacingVerticalL};
   }
 
   :host(${disabledState}),
