@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "adds useDebounce to react-utilities",
+  "packageName": "@fluentui/react-utilities",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}
