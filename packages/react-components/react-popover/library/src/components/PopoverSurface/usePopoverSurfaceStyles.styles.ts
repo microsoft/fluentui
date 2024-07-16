@@ -54,6 +54,17 @@ const useStyles = makeStyles({
   smallArrow: createArrowHeightStyles(arrowHeights.small),
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
   arrow: createArrowStyles({ arrowHeight: undefined }),
+  arrowTopShadow: {
+    /* When arrow is 'above' popover it is outside of surface box shadow,
+    This will provide a local shadow when above so that it remains visible.
+    */
+    ':global([data-popper-placement^="bottom"])': {
+      '::before': {
+        boxShadow: tokens.shadow16,
+        clipPath: `inset(0px -${tokens.strokeWidthThickest} -${tokens.strokeWidthThickest} 0px)`,
+      },
+    },
+  },
 });
 
 /**
@@ -77,6 +88,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
 
   state.arrowClassName = mergeClasses(
     styles.arrow,
+    styles.arrowTopShadow,
     state.size === 'small' ? styles.smallArrow : styles.mediumLargeArrow,
   );
 
