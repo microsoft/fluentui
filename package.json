@@ -40,7 +40,7 @@
     "northstar:release": "northstar-release",
     "northstar:build:docs": "yarn lage bundle --to @fluentui/docs",
     "northstar:start": "yarn workspace @fluentui/docs start",
-    "northstar:perf": "yarn lage --to @fluentui/perf perf:test",
+    "northstar:perf": "yarn lage test-perf --to @fluentui/perf",
     "northstar:stats:build": "gulp stats",
     "northstar:stats:save": "gulp stats:save",
     "northstar:test:circulars": "gulp test:circulars:run",

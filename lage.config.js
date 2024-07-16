@@ -29,7 +29,7 @@ module.exports = {
 
     '@fluentui/perf-test-react-components#bundle': [],
     '@fluentui/perf-test-northstar#bundle': [],
-    '@fluentui/perf-test#bundle#bundle': [],
+    '@fluentui/perf-test#bundle': [],
     '@fluentui/perf#test-perf': [],
   },
 
