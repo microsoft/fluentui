@@ -23,8 +23,14 @@ const getActiveFluentTheme = (globals: FluentGlobals) => {
 export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
   const { globals, parameters } = context;
   const { mode } = parameters;
-  const isVrTest = mode === 'vr-test';
 
+  const shouldDisable = parameters.reactStorybookAddon?.disabledDecorators?.includes('FluentProvider');
+
+  if (shouldDisable) {
+    return StoryFn();
+  }
+
+  const isVrTest = mode === 'vr-test';
   const dir = parameters.dir ?? globals[DIR_ID] ?? 'ltr';
   const globalTheme = getActiveFluentTheme(globals);
   const paramTheme = findTheme(parameters.fluentTheme);
