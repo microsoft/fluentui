@@ -539,7 +539,7 @@ export class TextArea extends FASTElement {
   private bindEvents() {
     this.handleResizeListener = this.handleResize.bind(this);
     document.addEventListener('pointerdown', this.handleResizeListener);
-    document.addEventListener('pointermove', this.handleResizeListener);
+    document.addEventListener('pointermove', this.handleResizeListener, {passive: true});
     document.addEventListener('pointerup', this.handleResizeListener);
   }
 
@@ -571,16 +571,16 @@ export class TextArea extends FASTElement {
     }
   }
 
-  private textboxWidth = 0;
-  private textboxHeight = 0;
+  private textboxInlineSize = 0;
+  private textboxBlockSize = 0;
   private lastPointerX = 0;
   private lastPointerY = 0;
 
   private startResizing(pointerX: number, pointerY: number) {
     this.isResizing = true;
 
-    this.textboxWidth = this.textbox.offsetWidth;
-    this.textboxHeight = this.textbox.offsetHeight;
+    this.textboxInlineSize = this.textbox.offsetWidth;
+    this.textboxBlockSize = this.textbox.offsetHeight;
 
     this.sizeStyles = this.getTextboxSizeStyles();
 
@@ -605,8 +605,8 @@ export class TextArea extends FASTElement {
       return;
     }
 
-    this.textboxWidth = 0;
-    this.textboxHeight = 0;
+    this.textboxInlineSize = 0;
+    this.textboxBlockSize = 0;
     this.lastPointerX = 0;
     this.lastPointerY = 0;
 
@@ -618,11 +618,11 @@ export class TextArea extends FASTElement {
     const allowHorizontalResizing = TextAreaHorizontallyResizableResize.includes(this.resize);
     const deltaX = allowHorizontalResizing ? pointerX - this.lastPointerX : 0;
     const deltaY = allowVerticalResizing ? pointerY - this.lastPointerY : 0;
-    const inline = this.textboxWidth + deltaX;
-    const block = this.textboxHeight + deltaY;
+    const inline = this.textboxInlineSize + deltaX;
+    const block = this.textboxBlockSize + deltaY;
 
-    this.textboxWidth = inline;
-    this.textboxHeight = block;
+    this.textboxInlineSize = inline;
+    this.textboxBlockSize = block;
     this.lastPointerX = pointerX;
     this.lastPointerY = pointerY;
 
