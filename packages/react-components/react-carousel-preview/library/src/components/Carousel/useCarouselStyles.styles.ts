@@ -6,21 +6,13 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
   root: 'fui-Carousel',
 };
 
-// TODO: Enable varying sizes w/ tokens
-const PeekSize = '100px';
-
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
-  rootPeek: {
-    position: 'relative',
-    marginRight: PeekSize,
-    marginLeft: PeekSize,
+  root: {
+    overflow: 'hidden',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -29,15 +21,9 @@ const useStyles = makeStyles({
 export const useCarouselStyles_unstable = (state: CarouselState): CarouselState => {
   'use no memo';
 
-  const { peeking } = state;
   const styles = useStyles();
 
-  state.root.className = mergeClasses(
-    carouselClassNames.root,
-    styles.root,
-    peeking && styles.rootPeek,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(carouselClassNames.root, styles.root, state.root.className);
 
   return state;
 };

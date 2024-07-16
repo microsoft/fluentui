@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove npmScope from project name",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
