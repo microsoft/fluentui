@@ -72,18 +72,3 @@ InvertedDisabled.storyName = 'Inverted disabled';
 export const InvertedDisabledHighContrast = getStoryVariant(InvertedDisabled, HIGH_CONTRAST);
 
 export const InvertedDisabledDarkMode = getStoryVariant(InvertedDisabled, DARK_MODE);
-
-export const StandAloneDisabled = () => <AnchorLink disabled>Stand-alone disabled link</AnchorLink>;
-StandAloneDisabled.storyName = 'Stand-alone Disabled';
-StandAloneDisabled.parameters = { steps: disabledUnfocusableSteps };
-
-export const InlineDisabled = () => (
-  <div>
-    This is{' '}
-    <AnchorLink inline disabled>
-      a disabled link
-    </AnchorLink>{' '}
-    used alongside other text content.
-  </div>
-);
-InlineDisabled.parameters = { steps: disabledUnfocusableSteps };

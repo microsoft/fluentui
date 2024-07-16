@@ -4,7 +4,7 @@ import { Steps } from 'storywright';
 import { SearchBox } from '@fluentui/react-search';
 import { ArrowEnterLeftRegular, MicRegular } from '@fluentui/react-icons';
 
-import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL } from '../utilities';
+import { getStoryVariant, withStoryWrightSteps, TestWrapperDecorator, RTL } from '../../utilities';
 
 export default {
   title: 'SearchBox Converged',
@@ -77,18 +77,3 @@ export const WithCustomDismiss = () => <SearchBox dismiss={<ArrowEnterLeftRegula
 WithCustomDismiss.storyName = 'With custom dismiss';
 
 export const WithCustomDismissRTL = getStoryVariant(WithCustomDismiss, RTL);
-
-export const ClearsValue = () => <SearchBox defaultValue="Value!" />;
-ClearsValue.storyName = 'Clears value';
-ClearsValue.parameters = {
-  steps: new Steps()
-    .snapshot('default', { cropTo: '.testWrapper' })
-    .keys('input', 'Tab')
-    .wait(250) // let focus border animation finish
-    .snapshot('input focused', { cropTo: '.testWrapper' })
-    .focus('[role=button]')
-    .snapshot('dismiss focused', { cropTo: '.testWrapper' })
-    .click('[role=button]')
-    .snapshot('dismiss clicked', { cropTo: '.testWrapper' })
-    .end(),
-};

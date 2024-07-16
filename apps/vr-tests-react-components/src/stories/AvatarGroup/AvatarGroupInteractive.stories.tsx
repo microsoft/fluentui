@@ -12,7 +12,11 @@ export default {
   decorators: [
     story => (
       <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
-        <div className="testWrapper">{story()}</div>
+        <div style={{ display: 'flex' }}>
+          <div className="testWrapper" style={{ overflow: 'hidden' }}>
+            {story()}
+          </div>
+        </div>
       </StoryWright>
     ),
   ],

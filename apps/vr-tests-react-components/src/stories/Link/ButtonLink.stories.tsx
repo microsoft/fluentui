@@ -3,7 +3,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { disabledUnfocusableSteps, InvertedBackground, steps } from './utils';
+import { InvertedBackground, steps } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
@@ -65,18 +65,3 @@ InvertedDisabled.storyName = 'Inverted disabled';
 export const InvertedDisabledHighContrast = getStoryVariant(InvertedDisabled, HIGH_CONTRAST);
 
 export const InvertedDisabledDarkMode = getStoryVariant(InvertedDisabled, DARK_MODE);
-
-export const StandAloneDisabled = () => <ButtonLink disabled>Stand-alone disabled link</ButtonLink>;
-StandAloneDisabled.storyName = 'Stand-alone Disabled';
-StandAloneDisabled.parameters = { steps: disabledUnfocusableSteps };
-
-export const InlineDisabled = () => (
-  <div>
-    This is{' '}
-    <ButtonLink inline disabled>
-      a disabled link
-    </ButtonLink>{' '}
-    used alongside other text content.
-  </div>
-);
-InlineDisabled.parameters = { steps: disabledUnfocusableSteps };

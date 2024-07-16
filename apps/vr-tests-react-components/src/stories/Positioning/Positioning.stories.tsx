@@ -864,66 +864,66 @@ export default {
   ],
 } satisfies Meta<'div'>;
 
-export const PositionAndAlignPropsStory = () => <PositionAndAlignProps />;
-PositionAndAlignPropsStory.storyName = 'position and align props';
+export const _PositionAndAlignProps = () => <PositionAndAlignProps />;
+_PositionAndAlignProps.storyName = 'position and align props';
 
-export const PositionAndAlignPropsRTL = getStoryVariant(PositionAndAlignPropsStory, RTL);
+export const PositionAndAlignPropsRTL = getStoryVariant(_PositionAndAlignProps, RTL);
 
-export const OffsetStory = () => <Offset />;
-OffsetStory.storyName = 'offset';
+export const _Offset = () => <Offset />;
+_Offset.storyName = 'offset';
 
-export const OffsetRTL = getStoryVariant(OffsetStory, RTL);
+export const OffsetRTL = getStoryVariant(_Offset, RTL);
 
-export const OffsetFunctionStory = () => <OffsetFunction />;
-OffsetFunctionStory.storyName = 'offset function';
+export const _OffsetFunction = () => <OffsetFunction />;
+_OffsetFunction.storyName = 'offset function';
 
-export const OffsetFunctionRTL = getStoryVariant(OffsetFunctionStory, RTL);
+export const OffsetFunctionRTL = getStoryVariant(_OffsetFunction, RTL);
 
-export const CoverTargetStory = () => <CoverTarget />;
-CoverTargetStory.storyName = 'coverTarget';
+export const _CoverTarget = () => <CoverTarget />;
+_CoverTarget.storyName = 'coverTarget';
 
-export const CoverTargetRTL = getStoryVariant(CoverTargetStory, RTL);
+export const CoverTargetRTL = getStoryVariant(_CoverTarget, RTL);
 
-export const VerticalFlipStory = () => <VerticalFlip />;
-VerticalFlipStory.storyName = 'vertical flip';
+export const _VerticalFlip = () => <VerticalFlip />;
+_VerticalFlip.storyName = 'vertical flip';
 
-export const HorizontalFlipStory = () => <HorizontalFlip />;
-HorizontalFlipStory.storyName = 'horizontal flip';
+export const _HorizontalFlip = () => <HorizontalFlip />;
+_HorizontalFlip.storyName = 'horizontal flip';
 
-export const HorizontalFlipRTL = getStoryVariant(HorizontalFlipStory, RTL);
+export const HorizontalFlipRTL = getStoryVariant(_HorizontalFlip, RTL);
 
-export const VerticalOverflowStory = () => <VerticalOverflow />;
-VerticalOverflowStory.storyName = 'vertical overflow';
+export const _VerticalOverflow = () => <VerticalOverflow />;
+_VerticalOverflow.storyName = 'vertical overflow';
 
-export const HorizontalOverflowPaddingStory = () => <HorizontalOverflowPadding />;
-HorizontalOverflowPaddingStory.storyName = 'horizontal overflow padding';
+export const _HorizontalOverflowPadding = () => <HorizontalOverflowPadding />;
+_HorizontalOverflowPadding.storyName = 'horizontal overflow padding';
 
-export const HorizontalOverflowPaddingRTL = getStoryVariant(HorizontalOverflowPaddingStory, RTL);
+export const HorizontalOverflowPaddingRTL = getStoryVariant(_HorizontalOverflowPadding, RTL);
 
-export const VerticalOverflowPaddingStory = () => <VerticalOverflowPadding />;
-VerticalOverflowPaddingStory.storyName = 'vertical overflow padding';
+export const _VerticalOverflowPadding = () => <VerticalOverflowPadding />;
+_VerticalOverflowPadding.storyName = 'vertical overflow padding';
 
-export const ExplicitOverflowPaddingStory = () => <ExplicitOverflowPadding />;
-ExplicitOverflowPaddingStory.storyName = 'explicit overflow padding';
+export const _ExplicitOverflowPadding = () => <ExplicitOverflowPadding />;
+_ExplicitOverflowPadding.storyName = 'explicit overflow padding';
 
-export const ExplicitOverflowPaddingRTL = getStoryVariant(ExplicitOverflowPaddingStory, RTL);
+export const ExplicitOverflowPaddingRTL = getStoryVariant(_ExplicitOverflowPadding, RTL);
 
-export const HorizontalOverflowStory = () => <HorizontalOverflow />;
-HorizontalOverflowStory.storyName = 'horizontal overflow';
+export const _HorizontalOverflow = () => <HorizontalOverflow />;
+_HorizontalOverflow.storyName = 'horizontal overflow';
 
-export const HorizontalOverflowRTL = getStoryVariant(HorizontalOverflowStory, RTL);
+export const HorizontalOverflowRTL = getStoryVariant(_HorizontalOverflow, RTL);
 
-export const PinnedStory = () => <Pinned />;
-PinnedStory.storyName = 'pinned';
+export const _Pinned = () => <Pinned />;
+_Pinned.storyName = 'pinned';
 
-export const AutoSizeStory = () => <AutoSize />;
-AutoSizeStory.storyName = 'auto size';
+export const _AutoSize = () => <AutoSize />;
+_AutoSize.storyName = 'auto size';
 
-export const AutoSizeOverflowPaddingStory = () => <AutoSize overflowBoundaryPadding={{ start: 10, end: 5 }} />;
+export const _AutoSizeOverflowPadding = () => <AutoSize overflowBoundaryPadding={{ start: 10, end: 5 }} />;
 
-AutoSizeOverflowPaddingStory.storyName = 'auto size overflow padding';
+_AutoSizeOverflowPadding.storyName = 'auto size overflow padding';
 
-export const AutoSizeOverflowPaddingRTL = getStoryVariant(AutoSizeOverflowPaddingStory, RTL);
+export const AutoSizeOverflowPaddingRTL = getStoryVariant(_AutoSizeOverflowPadding, RTL);
 
 export const AutoSizeOverflowPaddingShorthand = () => <AutoSize overflowBoundaryPadding={10} />;
 AutoSizeOverflowPaddingShorthand.storyName = 'auto size overflow padding shorthand';
@@ -957,27 +957,27 @@ export const AutoSizeWithAsyncContentResetStylesOnUpdatePosition = () => (
 AutoSizeWithAsyncContentResetStylesOnUpdatePosition.storyName =
   'auto size with async content reset styles on updatePosition';
 
-export const DisableTetherStory = () => <DisableTether />;
-DisableTetherStory.storyName = 'disable tether';
+export const _DisableTether = () => <DisableTether />;
+_DisableTether.storyName = 'disable tether';
 
-export const PositionFixedStory = () => <PositionAndAlignProps positionFixed />;
-PositionFixedStory.storyName = 'position fixed';
+export const _PositionFixed = () => <PositionAndAlignProps positionFixed />;
+_PositionFixed.storyName = 'position fixed';
 
-export const PositionFixedStoryRTL = getStoryVariant(PositionFixedStory, RTL);
+export const _PositionFixedRTL = getStoryVariant(_PositionFixed, RTL);
 
-export const VirtualElementStory = () => <VirtualElement />;
-VirtualElementStory.storyName = 'virtual element';
+export const _VirtualElement = () => <VirtualElement />;
+_VirtualElement.storyName = 'virtual element';
 
-export const ResetTargetStory = () => <ResetTarget />;
-ResetTargetStory.storyName = 'reset target';
+export const _ResetTarget = () => <ResetTarget />;
+_ResetTarget.storyName = 'reset target';
 
 export const TargetProperty = () => <TargetProp />;
 TargetProperty.storyName = 'target property';
 
-export const ImperativeTargetStory = () => <ImperativeTarget />;
-ImperativeTargetStory.storyName = 'imperative target';
+export const _ImperativeTarget = () => <ImperativeTarget />;
+_ImperativeTarget.storyName = 'imperative target';
 
-export const VisibilityModifiersStory = () => (
+export const _VisibilityModifiers = () => (
   <StoryWright
     steps={new Steps()
       .snapshot('has "[data-popper-is-intersecting]" when the popover intersects boundaries')
@@ -990,15 +990,15 @@ export const VisibilityModifiersStory = () => (
     <VisibilityModifiers />
   </StoryWright>
 );
-VisibilityModifiersStory.storyName = 'visibility modifiers';
+_VisibilityModifiers.storyName = 'visibility modifiers';
 
-export const ArrowStory = () => <Arrow />;
-ArrowStory.storyName = 'arrow';
+export const _Arrow = () => <Arrow />;
+_Arrow.storyName = 'arrow';
 
-export const ArrowRTL = getStoryVariant(ArrowStory, RTL);
+export const ArrowRTL = getStoryVariant(_Arrow, RTL);
 
-export const FallbackPositioningStory = () => <FallbackPositioning />;
-FallbackPositioningStory.storyName = 'fallback positioning';
+export const _FallbackPositioning = () => <FallbackPositioning />;
+_FallbackPositioning.storyName = 'fallback positioning';
 
 export const DisableCssTransform = () => <PositionAndAlignProps useTransform={false} />;
 DisableCssTransform.storyName = 'disable CSS transform';
@@ -1017,8 +1017,8 @@ export const MultipleScrollParents = () => (
 );
 MultipleScrollParents.storyName = 'Multiple scroll parents';
 
-export const MatchTargetSizeStory = () => <MatchTargetSize />;
-MatchTargetSizeStory.storyName = 'Match target size';
+export const _MatchTargetSize = () => <MatchTargetSize />;
+_MatchTargetSize.storyName = 'Match target size';
 
 export const PositioningEnd = () => (
   <StoryWright steps={new Steps().click('#target').snapshot('updated 2 times').end()}>
@@ -1027,9 +1027,9 @@ export const PositioningEnd = () => (
 );
 PositioningEnd.storyName = 'Positioning end';
 
-export const TargetDisplayNoneStory = () => (
+export const _TargetDisplayNone = () => (
   <StoryWright steps={new Steps().click('#target').snapshot('target display: none').end()}>
     <TargetDisplayNone />
   </StoryWright>
 );
-TargetDisplayNoneStory.storyName = 'Target display none';
+_TargetDisplayNone.storyName = 'Target display none';

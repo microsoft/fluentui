@@ -16,7 +16,11 @@ export default {
           .snapshot('opened', { cropTo: '.testWrapper' })
           .end()}
       >
-        <div className="testWrapper">{story()}</div>
+        <div style={{ display: 'flex' }}>
+          <div className="testWrapper" style={{ overflow: 'hidden' }}>
+            {story()}
+          </div>
+        </div>
       </StoryWright>
     ),
   ],

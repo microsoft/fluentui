@@ -11,5 +11,5 @@ export const withStoryWrightSteps = ({
   steps: Step[];
   context?: StoryContext;
 }) => {
-  return <StoryWright steps={context?.parameters.steps ?? steps}> {story()} </StoryWright>;
+  return <StoryWright steps={steps}> {story()} </StoryWright>;
 };
