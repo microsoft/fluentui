@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     ':global([data-popper-placement^="bottom"])': {
       '::before': {
         boxShadow: tokens.shadow16,
-        clipPath: `inset(0px -${tokens.strokeWidthThickest} -${tokens.strokeWidthThickest} 0px)`,
+        clipPath: `inset(0px -2px -2px 0px)`,
       },
     },
   },
