@@ -9,6 +9,9 @@ import * as React from 'react';
 import type { PresenceComponentProps } from '../factories/createPresenceComponent';
 import type { MotionParam } from '../types';
 
+/**
+ * @internal
+ */
 type PresenceMotionSlotReturnProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<
   PresenceComponentProps,
   'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'
@@ -41,7 +44,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
   },
 ): SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>> {
   // eslint-disable-next-line deprecation/deprecation
-  const { as, children, ...rest } = motion || ({} as PresenceMotionSlotProps<MotionParams>);
+  const { as, children, ...rest } = motion ?? {};
 
   if (process.env.NODE_ENV !== 'production') {
     if (typeof as !== 'undefined') {
@@ -51,21 +54,33 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
 
   if (motion === null) {
     // Heads up!
-    // Render function is used there to avoid rendering a motion component and handle unmounting logic.
+    // Render function is used there to avoid rendering a motion component and handle unmounting logic
     const isUnmounted = !options.defaultProps.visible && options.defaultProps.unmountOnExit;
     const renderFn: SlotRenderFunction<
       PresenceMotionSlotReturnProps<MotionParams> & { children: React.ReactElement }
     > = (_, props) => (isUnmounted ? null : <>{props.children}</>);
 
+    /**
+     * Casting is required here as SlotComponentType is a function, not an object.
+     * Although SlotComponentType has a function signature, it is still just an object.
+     * This is required to make a slot callable (JSX compatible), this is the exact same approach
+     * that is used on `@types/react` components
+     */
     return {
-      [SLOT_RENDER_FUNCTION_SYMBOL]: renderFn as SlotRenderFunction<PresenceMotionSlotReturnProps<MotionParams>>,
+      [SLOT_RENDER_FUNCTION_SYMBOL]: renderFn,
       [SLOT_ELEMENT_TYPE_SYMBOL]: options.elementType,
     } as SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>>;
   }
 
+  /**
+   * Casting is required here as SlotComponentType is a function, not an object.
+   * Although SlotComponentType has a function signature, it is still just an object.
+   * This is required to make a slot callable (JSX compatible), this is the exact same approach
+   * that is used on `@types/react` components
+   */
   const propsWithMetadata = {
     ...options.defaultProps,
-    ...(rest as PresenceMotionSlotReturnProps<MotionParams>),
+    ...rest,
     [SLOT_ELEMENT_TYPE_SYMBOL]: options.elementType,
   } as SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>>;
 
