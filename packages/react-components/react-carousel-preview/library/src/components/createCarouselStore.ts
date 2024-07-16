@@ -11,7 +11,6 @@ export const createCarouselStore = (initialValue: string | null): CarouselStore 
       activeValue = newValue;
       emitChange();
     },
-
     clearValues() {
       values = [];
       emitChange();
