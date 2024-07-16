@@ -29,7 +29,12 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
       stdio: 'inherit',
     });
 
-    execSync(`yarn workspace ${npmPackageName} test -t ${componentName}`, {
+    // This is used only for integration testing purposes on CI as jest disables snapshot updates by default
+    const forceSnapshotUpdate = Boolean(process.env.FORCE_SNAPSHOT_UPDATE);
+    const updateSnapshotCmd =
+      `yarn workspace ${npmPackageName} test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
+
+    execSync(updateSnapshotCmd, {
       cwd: root,
       stdio: 'inherit',
     });
