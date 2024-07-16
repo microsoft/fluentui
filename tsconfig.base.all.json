@@ -110,6 +110,12 @@
       ],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/library/src/index.ts"],
       "@fluentui/react-checkbox-stories": ["packages/react-components/react-checkbox/stories/src/index.ts"],
+      "@fluentui/react-color-picker-preview": [
+        "packages/react-components/react-color-picker-preview/library/src/index.ts"
+      ],
+      "@fluentui/react-color-picker-preview-stories": [
+        "packages/react-components/react-color-picker-preview/stories/src/index.ts"
+      ],
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/library/src/index.ts"],
       "@fluentui/react-combobox-stories": ["packages/react-components/react-combobox/stories/src/index.ts"],
