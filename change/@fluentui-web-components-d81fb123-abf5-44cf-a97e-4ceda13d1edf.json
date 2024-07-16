@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: support tabindex values from implementors on buttons",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
