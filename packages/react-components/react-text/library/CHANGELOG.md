@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Mon, 01 Jul 2024 20:30:36 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.22)
+
+Mon, 15 Jul 2024 17:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.4.21..@fluentui/react-text_v9.4.22)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.4.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.4.21)
 

@@ -61,43 +61,22 @@ jobs:
   #         VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
   #         VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
 
-  #     - template: .devops/templates/runpublishvrscreenshot.yml
-  #       parameters:
-  #         fluentVersion: webcomponents
-  #         vrTestPackageName: '@fluentui/vr-tests-web-components'
-  #         vrTestPackagePath: 'apps/vr-tests-web-components'
-
-  #     - powershell: |
-  #         $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-  #         Write-Host "Looking up latest official build via url: $url"
-  #         $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-  #         Write-Host "Response: $pipelineBuildInfo"
-  #         [int]$latestBuildId = $pipelineBuildInfo.value.id
-  #         Write-Host "Setting variable LatestBuildId=$latestBuildId"
-  #         Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-  #       name: GetLatestGreenCIBuild
-  #       env:
-  #         SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-  #         # TODO: When web-components-v3 branch is merged with master,
-  #         # BASELINE-PIPELINE-ID-WEBCOMPONENTS should be changed to simply BASELINE-PIPELINE-ID.
-  #         BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
-  #       condition: eq(variables['vrTestSkip'], 'no')
-
-  #     - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
-  #       displayName: 'Run fluentui-screenshotdiff'
-  #       env:
-  #         API_TOKEN: $(fabric-public-pipeline-access-PAT)
-  #         GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-  #         STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-  #         VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-  #         VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-  #         VR_APP_API_URL: $(VR_APP_API_URL)
-  #         STORAGE_ACCOUNT_ID: $(StorageAccountId)
-  #         TENANT_ID: $(TenantId)
-  #         PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-  #         SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-  #         SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-  #       condition: eq(variables['vrTestSkip'], 'no')
+  # - template: .devops/templates/runpublishvrscreenshot.yml
+  #   parameters:
+  #     fluentVersion: webcomponents
+  #     vrTestPackageName: '@fluentui/vr-tests-web-components'
+  #     vrTestPackagePath: 'apps/vr-tests-web-components'
+  # # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
+  # - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
+  #   displayName: 'Run fluentui-screenshotdiff'
+  #   env:
+  #     API_TOKEN: $(fabric-public-pipeline-access-PAT)
+  #     GITHUB_API_TOKEN: $(githubRepoStatusPAT)
+  #     STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+  #     VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+  #     VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+  #     VR_APP_API_URL: $(VR_APP_API_URL)
+  #   condition: eq(variables['vrTestSkip'], 'no')
 
   # - job: VisualRegressionTest_V9
   #   variables:

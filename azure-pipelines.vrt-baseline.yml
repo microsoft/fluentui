@@ -15,8 +15,6 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  # TODO: When web-components-v3 branch is merged with master, this file can be deleted and everything below this comment
-  # can be moved to azure-pipelines.vrt-baseline.yml. The corresponding pipeline on ADO can be deleted as well.
   - job: VRToolUpdateBaseline_WebComponents
     variables:
       pipelineId: '315'

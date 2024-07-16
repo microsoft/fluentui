@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Mon, 01 Jul 2024 20:30:33 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.2)
+
+Mon, 15 Jul 2024 17:25:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.1..@fluentui/react-tabster_v9.22.2)
+
+### Patches
+
+- bump tabster to 8.0.1 to fix memorized elements focusing ([PR #31960](https://github.com/microsoft/fluentui/pull/31960) by marata@microsoft.com)
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.1)
 
