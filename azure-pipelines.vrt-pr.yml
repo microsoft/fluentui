@@ -66,7 +66,7 @@ jobs:
           fluentVersion: webcomponents
           vrTestPackageName: '@fluentui/vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
-
+      # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
       - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
         displayName: 'Run fluentui-screenshotdiff'
         env:
