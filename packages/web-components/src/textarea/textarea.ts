@@ -50,7 +50,7 @@ export class TextArea extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  private handleTextboxInputListener?: (event?: InputEvent) => void;
+  private handleTextboxInputListener?: EventListener;
 
   /**
    * Indicates the styled appearance of the element.
@@ -547,7 +547,7 @@ export class TextArea extends FASTElement {
     document.addEventListener('pointerup', this.handleResizeListener);
 
     this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
-    this.textbox.addEventListener('input', this.handleTextboxInputListener);
+    this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
   }
 
   private unbindEvents() {
@@ -646,5 +646,6 @@ export class TextArea extends FASTElement {
 
   private handleTextboxInput() {
     this.togglePlaceholderShownState();
+    this.setFormValue(this.value);
   }
 }
