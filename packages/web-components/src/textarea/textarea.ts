@@ -52,6 +52,8 @@ export class TextArea extends FASTElement {
 
   private handleTextboxInputListener?: EventListener;
 
+  private handleTextboxBlurListener?: EventListener;
+
   /**
    * Indicates the styled appearance of the element.
    *
@@ -182,7 +184,7 @@ export class TextArea extends FASTElement {
    * HTML Attribute: `maxlength`
    */
   @attr({ attribute: 'maxlength', converter: nullableNumberConverter })
-  public maxLength!: number;
+  public maxLength?: number;
 
   /**
    * The minimum number of characters a user can enter.
@@ -193,7 +195,7 @@ export class TextArea extends FASTElement {
    * HTML Attribute: `minlength`
    */
   @attr({ attribute: 'minlength', converter: nullableNumberConverter })
-  public minLength!: number;
+  public minLength?: number;
 
   /**
    * The name of the element. This element's value will be surfaced during form submission under the provided name.
@@ -252,6 +254,7 @@ export class TextArea extends FASTElement {
   protected requiredChanged() {
     if (this.$fastController.isConnected) {
       this.elementInternals.ariaRequired = `${!!this.required}`;
+      this.setValidity();
     }
   }
 
@@ -350,7 +353,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    return this.elementInternals.validationMessage;
+    return this.elementInternals.validationMessage || this.getBuiltInValidationMessage(this.validity);
   }
 
   /**
@@ -381,7 +384,13 @@ export class TextArea extends FASTElement {
     }
     this.textbox.textContent = next.trim();
     this.setFormValue(next);
+    this.setValidity();
   }
+
+  /**
+   * Whether the user has interacted with the element.
+   */
+  private userInteracted = false;
 
   public handleChange(_: any, propertyName: string) {
     switch (propertyName) {
@@ -392,6 +401,11 @@ export class TextArea extends FASTElement {
           'display-shadow',
           this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
         );
+        break;
+      case 'required':
+      case 'minLength':
+      case 'maxLength':
+        this.setValidity();
         break;
     }
   }
@@ -411,13 +425,16 @@ export class TextArea extends FASTElement {
 
     this.setContentEditable(!this.disabled && !this.readOnly);
     this.setInitialValue();
-    this.setValidity();
     this.togglePlaceholderShownState();
+    this.setValidity();
 
     this.bindEvents();
 
     Observable.getNotifier(this).subscribe(this, 'appearance');
     Observable.getNotifier(this).subscribe(this, 'displayShadow');
+    Observable.getNotifier(this).subscribe(this, 'required');
+    Observable.getNotifier(this).subscribe(this, 'minLength');
+    Observable.getNotifier(this).subscribe(this, 'maxLength');
   }
 
   /**
@@ -430,6 +447,9 @@ export class TextArea extends FASTElement {
 
     Observable.getNotifier(this).unsubscribe(this, 'appearance');
     Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
+    Observable.getNotifier(this).unsubscribe(this, 'required');
+    Observable.getNotifier(this).unsubscribe(this, 'minLength');
+    Observable.getNotifier(this).unsubscribe(this, 'maxLength');
   }
 
   /**
@@ -465,8 +485,8 @@ export class TextArea extends FASTElement {
    *
    * @public
    */
-  public setCustomValidity(message: string): void {
-    this.elementInternals.setValidity({ customError: true }, message);
+  public setCustomValidity(message: string | undefined): void {
+    this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
     this.reportValidity();
   }
 
@@ -501,16 +521,35 @@ export class TextArea extends FASTElement {
    */
   public setValidity(
     flags: Partial<ValidityState> = {},
-    message: string = this.validationMessage,
-    anchor: HTMLElement = this.textbox,
+    message?: string,
+    anchor?: HTMLElement
   ): void {
     if (this.$fastController.isConnected) {
-      if (this.disabled) {
+      if (this.disabled || !this.userInteracted) {
         this.elementInternals.setValidity({});
         return;
       }
 
-      this.elementInternals.setValidity(flags, message, anchor);
+      const validity = {
+        valueMissing: false,
+        tooLong: false,
+        tooShort: false,
+      };
+
+      if (this.required && !this.value.length) {
+        validity.valueMissing = true;
+      } else if (this.maxLength && this.value.length > this.maxLength) {
+        validity.tooLong = true;
+      } else if (this.minLength && this.value.length < this.minLength) {
+        validity.tooShort = true;
+      }
+
+      console.log(validity);
+
+      this.elementInternals.setValidity({
+        ...validity,
+        ...flags,
+      }, message ?? this.getBuiltInValidationMessage(validity), anchor);
     }
   }
 
@@ -553,6 +592,10 @@ export class TextArea extends FASTElement {
 
     this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
     this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
+    this.textbox.addEventListener('input', () => this.userInteracted = true, {once: true});
+
+    this.handleTextboxBlurListener = this.handleTextboxBlur.bind(this);
+    this.textbox.addEventListener('blur', this.handleTextboxBlurListener);
   }
 
   private unbindEvents() {
@@ -564,6 +607,10 @@ export class TextArea extends FASTElement {
 
     if (this.handleTextboxInputListener) {
       this.textbox.removeEventListener('input', this.handleTextboxInputListener);
+    }
+
+    if (this.handleTextboxBlurListener) {
+      this.textbox.removeEventListener('blur', this.handleTextboxBlurListener);
     }
   }
 
@@ -652,5 +699,33 @@ export class TextArea extends FASTElement {
   private handleTextboxInput() {
     this.togglePlaceholderShownState();
     this.setFormValue(this.value);
+  }
+
+  private getBuiltInValidationMessage(validity: Partial<ValidityState>): string {
+    let el: HTMLTextAreaElement | null = document.createElement('textarea');
+    let message = '';
+
+    // FIXME: tooShort and tooLong aren't working because the validity only changes
+    // by user interactions.
+    if (validity.valueMissing) {
+      el.required = true;
+      message = el.validationMessage;
+    } else if (validity.tooShort) {
+      el.minLength = 2;
+      el.value = '0';
+      message = el.validationMessage;
+    } else if (validity.tooLong) {
+      el.maxLength = 1;
+      el.value = '00';
+      message = el.validationMessage;
+    }
+
+    el = null;
+
+    return message;
+  }
+
+  private handleTextboxBlur() {
+    this.setValidity();
   }
 }
