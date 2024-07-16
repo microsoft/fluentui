@@ -47,6 +47,7 @@ import {
   filledDarkerState,
   filledLighterState,
   largeState,
+  placeholderShownState,
   resizeBothState,
   resizedState,
   resizeHorizontalState,
@@ -81,14 +82,13 @@ export const styles: ElementStyles = css`
     --textbox-block-size: auto;
     --textbox-inline-size: auto;
 
-
     /* colors */
     --color: ${colorNeutralForeground1};
     --background-color: ${colorNeutralBackground1};
     --border-color: ${colorNeutralStroke1};
     --border-block-end-color: ${colorNeutralStrokeAccessible};
-    --placeholder-color: ${colorNeutralForeground4};
-    --resize-color: currentcolor;
+    --placeholder-color: transparent;
+    --resize-color: var(--color);
 
     /* elevations */
     --box-shadow: none;
@@ -182,6 +182,10 @@ export const styles: ElementStyles = css`
   :host(${filledDarkerState}${displayShadowState}),
   :host(${filledLighterState}${displayShadowState}) {
     --box-shadow: ${shadow2};
+  }
+
+  :host(${placeholderShownState}) {
+    --placeholder-color: ${colorNeutralForeground4};
   }
 
   :host(:invalid) {

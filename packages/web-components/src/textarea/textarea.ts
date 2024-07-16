@@ -50,6 +50,8 @@ export class TextArea extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  private handleTextboxInputListener?: (event?: InputEvent) => void;
+
   /**
    * Indicates the styled appearance of the element.
    *
@@ -217,6 +219,7 @@ export class TextArea extends FASTElement {
   protected placeholderChanged() {
     if (this.$fastController.isConnected) {
       this.elementInternals.ariaPlaceholder = `${this.placeholder ?? ''}`;
+      this.togglePlaceholderShownState();
     }
   }
 
@@ -406,6 +409,7 @@ export class TextArea extends FASTElement {
     this.setContentEditable(!this.disabled && !this.readOnly);
     this.setInitialValue();
     this.setValidity();
+    this.togglePlaceholderShownState();
 
     this.bindEvents();
 
@@ -541,6 +545,9 @@ export class TextArea extends FASTElement {
     document.addEventListener('pointerdown', this.handleResizeListener);
     document.addEventListener('pointermove', this.handleResizeListener, { passive: true });
     document.addEventListener('pointerup', this.handleResizeListener);
+
+    this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
+    this.textbox.addEventListener('input', this.handleTextboxInputListener);
   }
 
   private unbindEvents() {
@@ -548,6 +555,10 @@ export class TextArea extends FASTElement {
       document.removeEventListener('pointerdown', this.handleResizeListener);
       document.removeEventListener('pointermove', this.handleResizeListener);
       document.removeEventListener('pointerup', this.handleResizeListener);
+    }
+
+    if (this.handleTextboxInputListener) {
+      this.textbox.removeEventListener('input', this.handleTextboxInputListener);
     }
   }
 
@@ -627,5 +638,13 @@ export class TextArea extends FASTElement {
     this.lastPointerY = pointerY;
 
     return `--textbox-inline-size: ${inline}px; --textbox-block-size: ${block}px;`;
+  }
+
+  private togglePlaceholderShownState() {
+    toggleState(this.elementInternals, 'placeholder-shown', !!this.placeholder && !this.value);
+  }
+
+  private handleTextboxInput() {
+    this.togglePlaceholderShownState();
   }
 }
