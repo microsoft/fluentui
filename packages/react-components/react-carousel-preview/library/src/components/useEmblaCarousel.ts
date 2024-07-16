@@ -12,12 +12,29 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
   container: `.${carouselSliderClassNames.root}`,
   slides: `.${carouselCardClassNames.root}`,
+
+  slidesToScroll: undefined,
+  startIndex: 0,
 };
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
-export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop'>) {
-  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop });
+export function useEmblaCarousel({
+  align,
+  direction,
+  loop,
+  slidesToScroll,
+  startIndex,
+  containScroll,
+}: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex' | 'containScroll'>) {
+  const emblaOptions = React.useRef<EmblaOptionsType>({
+    align,
+    direction,
+    loop,
+    slidesToScroll,
+    startIndex,
+    containScroll,
+  });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   const ref = React.useMemo(() => {
@@ -74,12 +91,12 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
   );
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop };
+    emblaOptions.current = { align, direction, loop, slidesToScroll, startIndex, containScroll };
     emblaApi.current?.reInit({
-      ...emblaOptions.current,
       ...DEFAULT_EMBLA_OPTIONS,
+      ...emblaOptions.current,
     });
-  }, [align, direction, loop]);
+  }, [align, containScroll, direction, loop, slidesToScroll, startIndex]);
 
   return [ref, api] as const;
 }

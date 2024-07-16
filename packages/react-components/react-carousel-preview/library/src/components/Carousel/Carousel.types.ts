@@ -33,6 +33,17 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
   circular?: boolean;
+
+  /**
+   * Group size enables pagination of multiple cards as a single slide
+   */
+  groupSize?: number;
+
+  /**
+   * Controls whether the scrollView will trim whitespace in order to position trailing items via alignment
+   * Default: false.
+   */
+  containScroll?: false | 'keepSnaps' | 'trimSnaps';
 };
 
 /**

@@ -12,6 +12,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
     /** noop */
   },
   circular: false,
+  groupSize: undefined,
 };
 
 const CarouselContext = React.createContext<CarouselContextValue | undefined>(undefined);

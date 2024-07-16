@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import { useCarouselContext_unstable } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselNav.
@@ -24,8 +25,11 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
 
   const values = useCarouselStore_unstable(snapshot => snapshot.values);
 
+  const { groupSize } = useCarouselContext_unstable();
+
   return {
     values,
+    groupSize,
     renderNavButton: props.children,
     components: {
       root: 'div',

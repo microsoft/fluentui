@@ -11,7 +11,7 @@ export type CarouselWalker = {
   active(): { el: HTMLElement; value: string } | null;
 };
 
-export const useCarouselWalker_unstable = () => {
+export const useCarouselWalker_unstable = (groupSize: number = 1) => {
   const { targetDocument } = useFluent();
 
   const treeWalkerRef = React.useRef<TreeWalker | undefined>(targetDocument?.createTreeWalker(targetDocument.body));
@@ -92,6 +92,12 @@ export const useCarouselWalker_unstable = () => {
           treeWalkerRef.current.currentNode = res.el;
 
           let next = treeWalkerRef.current.nextNode();
+          let groupCount = 0;
+
+          while (++groupCount < groupSize) {
+            next = treeWalkerRef.current.nextNode();
+          }
+
           if (circular && !isHTMLElement(next) && htmlRef.current) {
             treeWalkerRef.current.currentNode = htmlRef.current;
             next = treeWalkerRef.current.firstChild();
@@ -114,6 +120,11 @@ export const useCarouselWalker_unstable = () => {
 
           treeWalkerRef.current.currentNode = res.el;
           let next = treeWalkerRef.current.previousNode();
+          let groupCount = 0;
+
+          while (++groupCount < groupSize) {
+            next = treeWalkerRef.current.previousNode();
+          }
 
           if (circular && !isHTMLElement(next) && htmlRef.current) {
             treeWalkerRef.current.currentNode = htmlRef.current;
@@ -130,7 +141,7 @@ export const useCarouselWalker_unstable = () => {
           return null;
         },
       }),
-      [],
+      [groupSize],
     ),
   };
 };

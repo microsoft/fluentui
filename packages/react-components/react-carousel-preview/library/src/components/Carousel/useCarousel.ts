@@ -30,7 +30,9 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', onValueChange, circular = false } = props;
+  const { align = 'center', onValueChange, circular = false, groupSize = 1, containScroll = false } = props;
+
+  const [startIndex, setStartIndex] = React.useState(0);
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
@@ -39,12 +41,19 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   });
 
   const { targetDocument, dir } = useFluent();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align, direction: dir, loop: circular });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align,
+    direction: dir,
+    loop: circular,
+    slidesToScroll: groupSize,
+    startIndex,
+    containScroll,
+  });
 
   const [store] = React.useState(() => createCarouselStore(value));
   const rootRef = React.useRef<HTMLDivElement>(null);
 
-  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
+  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable(groupSize);
   const isFirstMount = useFirstMount();
 
   if (process.env.NODE_ENV !== 'production') {
@@ -129,12 +138,13 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const scrollToValue = React.useCallback(
     (_value: string, jump?: boolean) => {
+      const _groupSize = groupSize ?? 1;
       const values = store.getSnapshot().values;
-      const index = values.indexOf(_value);
+      const index = values.indexOf(_value) / _groupSize;
 
       emblaApi?.scrollToIndex(index, jump);
     },
-    [emblaApi, store],
+    [emblaApi, groupSize, store],
   );
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
@@ -165,10 +175,21 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   });
 
   useIsomorphicLayoutEffect(() => {
-    if (isFirstMount && value) {
-      scrollToValue(value, true);
+    // Set the initial card
+    if (isFirstMount) {
+      const _groupSize = groupSize ?? 1;
+      const values = store.getSnapshot().values;
+      let cardIndex = values.indexOf(value ?? values[0]);
+      // Account for groups, we want to set the active index on 'first' in group.
+      cardIndex = cardIndex - (cardIndex % groupSize);
+
+      const index = Math.floor(cardIndex / _groupSize);
+      // Sets the internal carousel index
+      setStartIndex(index);
+      // Sets the nav items
+      setValue(values[cardIndex]);
     }
-  }, [isFirstMount, scrollToValue, value]);
+  }, [groupSize, isFirstMount, scrollToValue, setValue, store, value]);
 
   return {
     components: {
@@ -186,5 +207,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByDirection,
     selectPageByValue,
     circular,
+    groupSize,
   };
 }
