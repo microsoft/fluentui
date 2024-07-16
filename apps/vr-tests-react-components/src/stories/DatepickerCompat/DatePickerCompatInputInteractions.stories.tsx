@@ -2,12 +2,13 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { DatePicker } from '@fluentui/react-datepicker-compat';
-import { DARK_MODE, getStoryVariant, HIGH_CONTRAST } from '../../utilities';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, TestWrapperDecorator } from '../../utilities';
 
 export default {
   title: 'DatePicker Compat',
   component: DatePicker,
   decorators: [
+    TestWrapperDecorator,
     story => (
       <StoryWright
         steps={new Steps()
@@ -16,11 +17,7 @@ export default {
           .snapshot('opened', { cropTo: '.testWrapper' })
           .end()}
       >
-        <div style={{ display: 'flex' }}>
-          <div className="testWrapper" style={{ overflow: 'hidden' }}>
-            {story()}
-          </div>
-        </div>
+        {story()}
       </StoryWright>
     ),
   ],

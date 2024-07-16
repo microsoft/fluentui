@@ -80,12 +80,6 @@ export const AllowTextInput = () => <DatePicker allowTextInput />;
 
 AllowTextInput.storyName = 'allowTextInput';
 
-export const Required = () => (
-  <Field label="Select a date" required>
-    <DatePicker />
-  </Field>
-);
-
 export const Underlined = () => <DatePicker underlined />;
 
 export const UnderlinedAndRequired = () => (
@@ -95,20 +89,3 @@ export const UnderlinedAndRequired = () => (
 );
 
 UnderlinedAndRequired.storyName = 'Underlined and required';
-
-export const WithLabel = () => (
-  <Field label="Select a date">
-    <DatePicker />
-  </Field>
-);
-
-WithLabel.storyName = 'With label';
-
-export const WhenRenderingInlineItShouldNotRenderBehindRelativelyPositionedElements = () => (
-  <Field label="Select a date">
-    <DatePicker open inlinePopup renderRelativeElement />
-  </Field>
-);
-
-WhenRenderingInlineItShouldNotRenderBehindRelativelyPositionedElements.storyName =
-  'when rendering inline, it should not render behind relatively positioned elements';
