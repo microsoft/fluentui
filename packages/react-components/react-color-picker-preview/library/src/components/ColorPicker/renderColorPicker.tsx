@@ -11,5 +11,5 @@ export const renderColorPicker_unstable = (state: ColorPickerState) => {
   assertSlots<ColorPickerSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return <state.root>{state.root.children}</state.root>;
 };
