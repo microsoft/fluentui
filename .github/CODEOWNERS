@@ -375,6 +375,8 @@ packages/react-components/react-utilities-compat/library @microsoft/cxe-red
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-red
 packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
 packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
+packages/react-components/react-keytips-preview/library @microsoft/cxe-prg
+packages/react-components/react-keytips-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
