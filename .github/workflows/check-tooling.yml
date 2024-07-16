@@ -6,7 +6,8 @@ on:
       - 'tools/workspace-plugin/**'
 
 env:
-  __LOCAL_API_GENERATION__: true
+  __FORCE_API_MD_UPDATE__: true
+  __FORCE_SNAPSHOT_UPDATE__: true
 
 jobs:
   check-tools:
