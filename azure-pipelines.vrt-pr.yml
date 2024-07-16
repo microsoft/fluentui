@@ -164,7 +164,7 @@ jobs:
 
       - bash: |
           postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode )
+          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
             curl --location --request POST 'https://vrtfunctionappv0.azurewebsites.net/api/policyStateV2' \
