@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Enable box shadow on popover arrow when it is outside surface shadow (above)",
+  "packageName": "@fluentui/react-popover",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
