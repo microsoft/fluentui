@@ -26,7 +26,7 @@ const steps = new Steps()
 
 export default {
   title: 'InteractionTag Converged',
-  Component: InteractionTag,
+  component: InteractionTag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof InteractionTag>;
 

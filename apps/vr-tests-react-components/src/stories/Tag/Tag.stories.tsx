@@ -12,7 +12,7 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'Tag Converged',
-  Component: Tag,
+  component: Tag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof Tag>;
 

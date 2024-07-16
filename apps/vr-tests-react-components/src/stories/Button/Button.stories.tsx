@@ -9,7 +9,7 @@ const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export default {
   title: 'Button Converged',
-  Component: Button,
+  component: Button,
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof Button>;
 

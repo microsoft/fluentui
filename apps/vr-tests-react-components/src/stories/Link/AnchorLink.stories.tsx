@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
 
-import { InvertedBackground, steps, disabledUnfocusableSteps } from './utils';
+import { InvertedBackground, steps } from './utils';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link as="a" {...props} href="https://www.bing.com" />;

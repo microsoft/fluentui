@@ -13,7 +13,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 
 export default {
   title: 'FluentProvider CustomStyleHooks',
-  Component: FluentProvider,
+  component: FluentProvider,
 } satisfies Meta<typeof Button>;
 
 export const Default = () => <FluentProvider>Hello, world</FluentProvider>;

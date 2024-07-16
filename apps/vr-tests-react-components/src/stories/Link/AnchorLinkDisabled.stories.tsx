@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { Meta } from '@storybook/react';
-import { Steps } from 'storywright';
 import { Link, LinkProps } from '@fluentui/react-link';
 
 import { withStoryWrightSteps } from '../../utilities';

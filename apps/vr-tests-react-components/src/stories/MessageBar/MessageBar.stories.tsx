@@ -17,7 +17,7 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'MessageBar',
-  Component: MessageBar,
+  component: MessageBar,
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof MessageBar>;
 

@@ -10,7 +10,7 @@ const steps = new Steps().click('#popoverTrigger').snapshot('should have green b
 
 export default {
   title: 'Portal',
-  Component: Portal,
+  component: Portal,
   decorators: [story => <StoryWright steps={steps}>{story()}</StoryWright>],
 } satisfies Meta<typeof Portal>;
 

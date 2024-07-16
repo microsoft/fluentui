@@ -8,7 +8,7 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'TagGroup Converged',
-  Component: TagGroup,
+  component: TagGroup,
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } satisfies Meta<typeof TagGroup>;
 

@@ -23,7 +23,7 @@ import { steps } from './utils';
 
 export default {
   title: 'Toolbar Converged',
-  Component: Toolbar,
+  component: Toolbar,
   decorators: [
     story => (
       <StoryWright steps={steps}>
