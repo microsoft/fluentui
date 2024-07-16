@@ -251,8 +251,11 @@ export const styles: ElementStyles = css`
   }
 
   .resize {
+    --tooth-rotate: -45deg;
+    --tooth-left-offset-factor: 1;
+
     appearance: none;
-    background: var(--resize-color);
+    background: transparent;
     border: 0;
     display: none;
     padding: 0;
@@ -262,6 +265,32 @@ export const styles: ElementStyles = css`
     block-size: 1rem;
     inline-size: 1rem;
     touch-action: none;
+  }
+
+  :host(:dir(rtl)) .resize {
+    --tooth-rotate: 45deg;
+    --tooth-left-offset-factor: -1;
+  }
+
+  .resize::before,
+  .resize::after {
+    background-color: var(--resize-color);
+    content: '';
+    height: 1px;
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(var(--tooth-rotate));
+  }
+
+  .resize::before {
+    top: calc(50% + 1px);
+    left: calc(50% + 1px * var(--tooth-left-offset-factor));
+    width: 10px;
+  }
+
+  .resize::after {
+    top: calc(50% + 3px);
+    left: calc(50% + 3px * var(--tooth-left-offset-factor));
+    width: 6px;
   }
 
   :host(${resizeState}) .resize {

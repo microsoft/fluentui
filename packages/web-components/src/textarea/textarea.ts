@@ -552,7 +552,7 @@ export class TextArea extends FASTElement {
   }
 
   private handleResize(evt: PointerEvent) {
-    if (!TextAreaResizableResize.includes(this.resize)) {
+    if (!TextAreaResizableResize.includes(this.resize) || this.disabled) {
       return;
     }
 
