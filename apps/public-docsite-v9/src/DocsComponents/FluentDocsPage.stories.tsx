@@ -46,7 +46,8 @@ const useStyles = makeStyles({
     display: 'flex',
   },
   description: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: '1fr min-content',
   },
   nativeProps: {
     display: 'flex',

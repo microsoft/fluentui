@@ -7,7 +7,7 @@ import type { CarouselCardProps } from './CarouselCard.types';
 
 /**
  * The defining wrapper of a carousel's indexed content, they will take up the full
- * viewport of Carousel wrapper (with consideration for gap and peeking variants),
+ * viewport of CarouselSlider or div wrapper,
  * users may place multiple items within this Card if desired, with consideration of viewport width.
  *
  * Clickable actions within the content area are available via mouse and tab as expected,
