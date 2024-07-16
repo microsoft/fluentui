@@ -403,7 +403,7 @@ export class TextArea extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setContentEditable(true);
+    this.setContentEditable(!this.disabled && !this.readOnly);
     this.setInitialValue();
     this.setValidity();
 

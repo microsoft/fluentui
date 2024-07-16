@@ -10,8 +10,8 @@ import type { TextAreaOptions } from './textarea.options.js';
 export function textInputTemplate<T extends TextArea>(options: TextAreaOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template>
-      <div ${ref('placeholderContainer')} class="placeholder" part="placeholder">${x => x.placeholder}</div>
-      <div ${ref('textbox')} class="textbox" style="${x => x.sizeStyles}"></div>
+      <div ${ref('placeholderContainer')} class="placeholder" part="placeholder" style="${x => x.sizeStyles}">${x => x.placeholder}</div>
+      <div ${ref('textbox')} class="textbox" part="textbox" style="${x => x.sizeStyles}"></div>
       <button
         ${ref('resizeHandle')}
         class="resize"

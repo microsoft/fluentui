@@ -75,9 +75,12 @@ export const styles: ElementStyles = css`
     --max-block-size: 260px;
     --max-inline-size: 100%;
     --block-size: auto;
-    --textbox-padding-inline: ${spacingHorizontalXXS};
     --inline-size: 18rem;
     --border-width: ${strokeWidthThin};
+    --textbox-padding-inline: ${spacingHorizontalXXS};
+    --textbox-block-size: auto;
+    --textbox-inline-size: auto;
+
 
     /* colors */
     --color: ${colorNeutralForeground1};
@@ -231,19 +234,15 @@ export const styles: ElementStyles = css`
     box-sizing: border-box;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
+    block-size: var(--textbox-block-size);
+    inline-size: var(--textbox-inline-size);
     padding-inline: var(--textbox-padding-inline);
+    overflow-wrap: break-word;
   }
 
   .textbox {
-    --textbox-block-size: auto;
-    --textbox-inline-size: auto;
-
-    block-size: var(--textbox-block-size);
-    inline-size: var(--textbox-inline-size);
     overflow: auto;
-    overflow-wrap: break-word;
     outline: 0;
-    white-space: pre-wrap;
   }
 
   .placeholder {
@@ -265,6 +264,10 @@ export const styles: ElementStyles = css`
     block-size: 1rem;
     inline-size: 1rem;
     touch-action: none;
+  }
+
+  .resize:disabled {
+    pointer-events: none;
   }
 
   :host(:dir(rtl)) .resize {
