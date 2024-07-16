@@ -376,6 +376,9 @@ export class TextArea extends FASTElement {
   }
 
   public set value(next: string) {
+    if (this.disabled || this.readOnly) {
+      return;
+    }
     this.textbox.textContent = next.trim();
     this.setFormValue(next);
   }
@@ -534,10 +537,12 @@ export class TextArea extends FASTElement {
   }
 
   private setInitialValue() {
-    if (this.innerHTML.trim() !== '') {
-      // TODO: double check security
-      this.textbox.textContent = this.innerHTML.trim();
-    }
+    // Don't set `this.value` directly here since it won't set if the element
+    // is read-only or disabled.
+    // TODO: double check security
+    const value = this.innerHTML.trim();
+    this.textbox.textContent = value;
+    this.setFormValue(value);
   }
 
   private bindEvents() {

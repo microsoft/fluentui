@@ -146,7 +146,7 @@ export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 
 export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="readonly-form" action="#">
-    <fluent-textarea readonly> </fluent-textarea>
+    <fluent-textarea readonly name="readonly-input" resize="both">Default value</fluent-textarea>
     <button type="submit">Submit</button>
   </form>
 `);
