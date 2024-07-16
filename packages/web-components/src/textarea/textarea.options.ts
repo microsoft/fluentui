@@ -69,3 +69,13 @@ export const TextAreaResizableResize: Partial<TextAreaResize[]> = [
   TextAreaResize.horizontal,
   TextAreaResize.vertical,
 ];
+
+export const TextAreaVerticallyResizableResize: Partial<TextAreaResize[]> = [
+  TextAreaResize.both,
+  TextAreaResize.vertical,
+];
+
+export const TextAreaHorizontallyResizableResize: Partial<TextAreaResize[]> = [
+  TextAreaResize.both,
+  TextAreaResize.horizontal,
+];

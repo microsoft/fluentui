@@ -157,6 +157,7 @@ export const styles: ElementStyles = css`
   :host(${resizedState}) {
     --max-inline-size: none;
     --inline-size: auto;
+    --max-block-size: none;
   }
 
   :host(${autoResizeState}) {

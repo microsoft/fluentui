@@ -4,9 +4,11 @@ import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
+  TextAreaHorizontallyResizableResize,
   TextAreaResizableResize,
   TextAreaResize,
   TextAreaSize,
+  TextAreaVerticallyResizableResize,
 } from './textarea.options.js';
 
 /**
@@ -612,8 +614,10 @@ export class TextArea extends FASTElement {
   }
 
   private getTextboxSizeStyles(pointerX: number = 0, pointerY: number = 0): string {
-    const deltaX = pointerX - this.lastPointerX;
-    const deltaY = pointerY - this.lastPointerY;
+    const allowVerticalResizing = TextAreaVerticallyResizableResize.includes(this.resize);
+    const allowHorizontalResizing = TextAreaHorizontallyResizableResize.includes(this.resize);
+    const deltaX = allowHorizontalResizing ? pointerX - this.lastPointerX : 0;
+    const deltaY = allowVerticalResizing ? pointerY - this.lastPointerY : 0;
     const inline = this.textboxWidth + deltaX;
     const block = this.textboxHeight + deltaY;
 
