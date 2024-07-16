@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps } from 'storywright';
-import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
-import { DefaultButton, Panel, PanelType, PrimaryButton, SearchBox } from '@fluentui/react';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../../utilities';
+import { DefaultButton, Panel, PanelType, PrimaryButton } from '@fluentui/react';
 
 const defaultProps = {
   isOpen: true,
@@ -123,25 +123,3 @@ export const WithFooterAtTheBottom = () => (
 );
 
 WithFooterAtTheBottom.storyName = 'With footer at the bottom';
-
-export const SearchBoxAndRightPanel = () => (
-  <div>
-    <SearchBox placeholder="Search" />
-    <Panel
-      {...defaultProps}
-      isOpen={false}
-      type={PanelType.medium}
-      headerClassName=""
-      headerText={'Header'}
-      isHiddenOnDismiss
-    >
-      {null}
-    </Panel>
-  </div>
-);
-SearchBoxAndRightPanel.storyName = 'SearchBox and Right Panel';
-SearchBoxAndRightPanel.parameters = {
-  steps: new Steps().snapshot('default').click('.ms-SearchBox-field').snapshot('click').end(),
-};
-
-export const SearchBoxAndRightPanelRTL = getStoryVariant(SearchBoxAndRightPanel, RTL);

@@ -8,31 +8,8 @@ import { StoryWright, Step } from 'storywright';
  *
  * @param steps - The steps to pass to the `StoryWright` component.
  * @returns The decorator function.
- *
- * @example
- * ```tsx
- * import { Steps } from 'storywright';
- *
- * export default {
- *  title: 'ExampleComponent',
- *  decorators: [withStoryWrightSteps(steps)],
- * } satisfies Meta<typeof ExampleComponent>;
- *
- * type Story = StoryFn<typeof ExampleComponent>;
- *
- * export const WithDefaultSteps: Story = () => <Component />;
- *
- * export const WithCustomSteps: Story = () => <Component />;
- * WithCustomSteps.parameters = {
- *  steps: new Steps()
- *  .snapshot('default', { cropTo: '.testWrapper' })
- *  .hover('.fui-Link')
- *  .snapshot('hover', { cropTo: '.testWrapper' })
- *  .end();
- * };
- * ```
  */
 export const StoryWrightDecorator =
   (steps: Step[] = []): DecoratorFn =>
   (story, context) =>
-    <StoryWright steps={context.parameters.steps ?? steps}> {story(context)} </StoryWright>;
+    <StoryWright steps={steps}> {story(context)} </StoryWright>;
