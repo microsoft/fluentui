@@ -2,6 +2,10 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 export type ColorAreaSlots = {
   root: Slot<'div'>;
+  description: Slot<'div'>;
+  light: Slot<'div'>;
+  dark: Slot<'div'>;
+  thumb: Slot<'div'>;
 };
 
 /**

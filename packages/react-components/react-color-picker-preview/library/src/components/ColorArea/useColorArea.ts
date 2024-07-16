@@ -15,11 +15,12 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
   return {
     // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      description: 'div',
+      light: 'div',
+      dark: 'div',
+      thumb: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
@@ -27,5 +28,9 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       }),
       { elementType: 'div' },
     ),
+    description: {},
+    light: {},
+    dark: {},
+    thumb: {},
   };
 };
