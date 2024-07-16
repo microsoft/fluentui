@@ -4,16 +4,19 @@ import { Steps, StoryWright } from 'storywright';
 import { AvatarGroup, AvatarGroupItem, AvatarGroupPopover, partitionAvatarGroupItems } from '@fluentui/react-avatar';
 
 import { names } from './utils';
-import { DARK_MODE, HIGH_CONTRAST, TestWrapperDecoratorFullWidth, getStoryVariant } from '../../utilities';
+import { DARK_MODE, HIGH_CONTRAST, getStoryVariant } from '../../utilities';
 
 export default {
   title: 'AvatarGroup Converged',
   component: AvatarGroup,
   decorators: [
-    TestWrapperDecoratorFullWidth,
     story => (
       <StoryWright steps={new Steps().click('#show-overflow').snapshot('popoverContentOpen').end()}>
-        {story()}
+        <div style={{ display: 'flex' }}>
+          <div className="testWrapper" style={{ width: '100%', overflow: 'hidden' }}>
+            {story()}
+          </div>
+        </div>
       </StoryWright>
     ),
   ],
@@ -23,7 +26,7 @@ export const OverflowContent = () => {
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names });
 
   return (
-    <div style={{ padding: '10px' }}>
+    <div style={{ padding: '20px' }}>
       <AvatarGroup>
         {inlineItems.map(name => (
           <AvatarGroupItem key={name} name={name} />
