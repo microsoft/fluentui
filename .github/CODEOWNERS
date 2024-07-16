@@ -373,6 +373,8 @@ packages/react-components/react-motion-components-preview/library @microsoft/tea
 packages/react-components/react-motion-components-preview/stories @microsoft/teams-prg
 packages/react-components/react-utilities-compat/library @microsoft/cxe-red
 packages/react-components/react-utilities-compat/stories @microsoft/cxe-red
+packages/react-components/react-color-picker-preview/library @microsoft/cxe-prg
+packages/react-components/react-color-picker-preview/stories @microsoft/cxe-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
