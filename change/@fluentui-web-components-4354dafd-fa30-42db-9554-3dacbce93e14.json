@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: expose tabindex as an overriden attribute with a default value of 0'",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
