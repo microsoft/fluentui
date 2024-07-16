@@ -321,7 +321,8 @@ export class TextArea extends FASTElement {
     toggleState(this.elementInternals, `resize`, TextAreaResizableResize.includes(this.resize));
   }
 
-  private handleResizeListener?: EventListener;
+  // TypeScript requires the event object’s type to be `Event` if the listener is typed to `EventListener`.
+  private handleResizeListener?: (event: PointerEvent) => void;
 
   private isResizing = false;
 
@@ -534,7 +535,7 @@ export class TextArea extends FASTElement {
   }
 
   private bindEvents() {
-    this.handleResizeListener = this.handleResize.bind(this) as EventListener;
+    this.handleResizeListener = this.handleResize.bind(this);
     document.addEventListener('pointerdown', this.handleResizeListener);
     document.addEventListener('pointermove', this.handleResizeListener);
     document.addEventListener('pointerup', this.handleResizeListener);
@@ -556,7 +557,7 @@ export class TextArea extends FASTElement {
     switch (evt.type) {
       case 'pointerdown':
         if (evt.composedPath()[0] === this.resizeHandle) {
-          this.startResizing();
+          this.startResizing(evt.pageX, evt.pageY);
         }
         break;
       case 'pointermove':
@@ -568,10 +569,25 @@ export class TextArea extends FASTElement {
     }
   }
 
-  private startResizing() {
+  private textboxWidth = 0;
+  private textboxHeight = 0;
+  private lastPointerX = 0;
+  private lastPointerY = 0;
+
+  private startResizing(pointerX: number, pointerY: number) {
     this.isResizing = true;
-    toggleState(this.elementInternals, 'resized', true);
-    console.log('resizing started');
+
+    this.textboxWidth = this.textbox.offsetWidth;
+    this.textboxHeight = this.textbox.offsetHeight;
+
+    this.sizeStyles = this.getTextboxSizeStyles();
+
+    this.lastPointerX = pointerX;
+    this.lastPointerY = pointerY;
+
+    if (!this.elementInternals.states.has('resized')) {
+      toggleState(this.elementInternals, 'resized', true);
+    }
   }
 
   private doResizing(pointerX: number, pointerY: number) {
@@ -579,7 +595,7 @@ export class TextArea extends FASTElement {
       return;
     }
 
-    console.log('resizing', {pointerX, pointerY});
+    this.sizeStyles = this.getTextboxSizeStyles(pointerX, pointerY);
   }
 
   private stopResizing() {
@@ -587,7 +603,25 @@ export class TextArea extends FASTElement {
       return;
     }
 
+    this.textboxWidth = 0;
+    this.textboxHeight = 0;
+    this.lastPointerX = 0;
+    this.lastPointerY = 0;
+
     this.isResizing = false;
-    console.log('resizing stopped');
+  }
+
+  private getTextboxSizeStyles(pointerX: number = 0, pointerY: number = 0): string {
+    const deltaX = pointerX - this.lastPointerX;
+    const deltaY = pointerY - this.lastPointerY;
+    const inline = this.textboxWidth + deltaX;
+    const block = this.textboxHeight + deltaY;
+
+    this.textboxWidth = inline;
+    this.textboxHeight = block;
+    this.lastPointerX = pointerX;
+    this.lastPointerY = pointerY;
+
+    return `--textbox-inline-size: ${inline}px; --textbox-block-size: ${block}px;`;
   }
 }

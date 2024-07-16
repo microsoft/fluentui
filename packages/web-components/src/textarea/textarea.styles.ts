@@ -73,9 +73,11 @@ export const styles: ElementStyles = css`
     --padding-block: ${spacingVerticalSNudge};
     --min-block-size: 52px;
     --max-block-size: 260px;
+    --max-inline-size: 100%;
     --block-size: auto;
-    --content-padding-inline: ${spacingHorizontalXXS};
+    --textbox-padding-inline: ${spacingHorizontalXXS};
     --inline-size: 18rem;
+    --border-width: ${strokeWidthThin};
 
     /* colors */
     --color: ${colorNeutralForeground1};
@@ -89,7 +91,7 @@ export const styles: ElementStyles = css`
     --box-shadow: none;
 
     background-color: var(--background-color);
-    border: ${strokeWidthThin} solid var(--border-color);
+    border: var(--border-width) solid var(--border-color);
     border-block-end-color: var(--border-block-end-color);
     border-radius: ${borderRadiusMedium};
     box-sizing: border-box;
@@ -100,11 +102,11 @@ export const styles: ElementStyles = css`
     font-weight: ${fontWeightRegular};
     grid-template: 1fr / 1fr;
     line-height: var(--line-height);
-    max-inline-size: 100%;
+    max-inline-size: var(--max-inline-size);
     min-block-size: var(--min-block-size);
     max-block-size: var(--max-block-size);
     inline-size: var(--inline-size);
-*2    block-size: var(--block-size);
+    block-size: var(--block-size);
     padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
@@ -135,7 +137,7 @@ export const styles: ElementStyles = css`
     --max-block-size: 200px;
     --padding-block: ${spacingVerticalXS};
     --padding-inline: ${spacingHorizontalSNudge};
-    --content-padding-inline: ${spacingHorizontalXXS};
+    --textbox-padding-inline: ${spacingHorizontalXXS};
   }
 
   :host(${largeState}) {
@@ -145,7 +147,7 @@ export const styles: ElementStyles = css`
     --max-block-size: 320px;
     --padding-block: ${spacingVerticalS};
     --padding-inline: ${spacingHorizontalM};
-    --content-padding-inline: ${spacingHorizontalSNudge};
+    --textbox-padding-inline: ${spacingHorizontalSNudge};
   }
 
   :host(${resizeState}) {
@@ -153,6 +155,7 @@ export const styles: ElementStyles = css`
   }
 
   :host(${resizedState}) {
+    --max-inline-size: none;
     --inline-size: auto;
   }
 
@@ -224,9 +227,10 @@ export const styles: ElementStyles = css`
 
   .textbox,
   .placeholder {
+    box-sizing: border-box;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    padding-inline: var(--content-padding-inline);
+    padding-inline: var(--textbox-padding-inline);
   }
 
   .textbox {
@@ -236,7 +240,9 @@ export const styles: ElementStyles = css`
     block-size: var(--textbox-block-size);
     inline-size: var(--textbox-inline-size);
     overflow: auto;
+    overflow-wrap: break-word;
     outline: 0;
+    white-space: pre-wrap;
   }
 
   .placeholder {
