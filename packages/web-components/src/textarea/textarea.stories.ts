@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
-import type { TextArea as FluentTextArea } from './textarea.js';
+import { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaResize } from './textarea.options.js';
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
@@ -153,4 +153,15 @@ export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 
 export const WithoutLabel: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <fluent-textarea> </fluent-textarea>
+`);
+
+export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
+  <fluent-textarea>
+    <p>This text should show up as plain text.</p>
+    <img src="logo.svg" alt="" />
+    <script>
+      alert(1);
+    </script>
+    <fluent-text>hello</fluent-text>
+  </fluent-textarea>
 `);

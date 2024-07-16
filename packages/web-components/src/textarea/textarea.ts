@@ -373,7 +373,7 @@ export class TextArea extends FASTElement {
   }
 
   public set value(next: string) {
-    this.textbox.textContent = next;
+    this.textbox.textContent = next.trim();
     this.setFormValue(next);
   }
 
@@ -532,14 +532,14 @@ export class TextArea extends FASTElement {
   private setInitialValue() {
     if (this.innerHTML.trim() !== '') {
       // TODO: double check security
-      this.textbox.textContent = this.innerHTML;
+      this.textbox.textContent = this.innerHTML.trim();
     }
   }
 
   private bindEvents() {
     this.handleResizeListener = this.handleResize.bind(this);
     document.addEventListener('pointerdown', this.handleResizeListener);
-    document.addEventListener('pointermove', this.handleResizeListener, {passive: true});
+    document.addEventListener('pointermove', this.handleResizeListener, { passive: true });
     document.addEventListener('pointerup', this.handleResizeListener);
   }
 
