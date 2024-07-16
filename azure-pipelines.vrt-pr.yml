@@ -202,7 +202,7 @@ jobs:
           vrTestPackagePath: 'apps/vr-tests'
 
       - task: AzureCLI@2
-        displayName: 'Run VR Tests'
+        displayName: 'Run Snapshot Diffing'
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
