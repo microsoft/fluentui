@@ -523,11 +523,7 @@ export class TextArea extends FASTElement {
    *
    * @internal
    */
-  public setValidity(
-    flags: Partial<ValidityState> = {},
-    message?: string,
-    anchor?: HTMLElement
-  ): void {
+  public setValidity(flags: Partial<ValidityState> = {}, message?: string, anchor?: HTMLElement): void {
     if (this.$fastController.isConnected) {
       if (this.disabled || !this.userInteracted) {
         this.elementInternals.setValidity({});
@@ -560,10 +556,14 @@ export class TextArea extends FASTElement {
       // will not work for these 2 flags. `<fluent-field>` does provide the
       // `message` slot for authors add their custom validation messages based
       // on the validity state flags, and we do set the proper flags here.
-      this.elementInternals.setValidity({
-        ...defaultValidity,
-        ...flags,
-      }, message ?? defaultMessage, anchor);
+      this.elementInternals.setValidity(
+        {
+          ...defaultValidity,
+          ...flags,
+        },
+        message ?? defaultMessage,
+        anchor,
+      );
     }
   }
 
@@ -622,7 +622,7 @@ export class TextArea extends FASTElement {
 
     this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
     this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
-    this.textbox.addEventListener('input', () => this.userInteracted = true, { once: true });
+    this.textbox.addEventListener('input', () => (this.userInteracted = true), { once: true });
   }
 
   private unbindEvents() {

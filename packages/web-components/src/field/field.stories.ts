@@ -178,13 +178,14 @@ export const ValidationMessage: Story<FluentField> = renderComponent(html<StoryA
       </fluent-text>
     </fluent-field>
 
-    <p>The TextArea examples requires user interaction, so update the value by adding 1 character than move the focus outside.</p>
+    <p>
+      The TextArea examples requires user interaction, so update the value by adding 1 character than move the focus
+      outside.
+    </p>
 
     <fluent-field>
       <label slot="label" for="field-type-tooshort2">Too short (TextArea)</label>
-      <fluent-textarea minlength="10" slot="input" id="field-type-tooshort2">
-        12345
-      </fluent-textarea>
+      <fluent-textarea minlength="10" slot="input" id="field-type-tooshort2"> 12345 </fluent-textarea>
       <fluent-text slot="message" flag="too-short" size="200" style="color: ${colorStatusDangerForeground1}">
         This field requires at least 10 characters.
       </fluent-text>
@@ -192,9 +193,7 @@ export const ValidationMessage: Story<FluentField> = renderComponent(html<StoryA
 
     <fluent-field>
       <label slot="label" for="field-type-toolong2">Too long (TextArea)</label>
-      <fluent-textarea maxlength="2" slot="input" id="field-type-toolong2">
-        123456789
-      </fluent-textarea>
+      <fluent-textarea maxlength="2" slot="input" id="field-type-toolong2"> 123456789 </fluent-textarea>
       <fluent-text slot="message" flag="too-long" size="200" style="color: ${colorStatusDangerForeground1}">
         This field can only have up to 2 characters
       </fluent-text>
@@ -256,8 +255,7 @@ export const ComponentExamples: Story<FluentField> = renderComponent(html`
 
     <fluent-field>
       <label slot="label" for="field-textarea">Text Area</label>
-      <fluent-textarea slot="input" id="field-textarea" placeholder="Placeholder text" resize="both">
-      </fluent-textarea>
+      <fluent-textarea slot="input" id="field-textarea" placeholder="Placeholder text" resize="both"> </fluent-textarea>
     </fluent-field>
   </div>
 `).bind({});

@@ -1,9 +1,8 @@
 import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
-import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import { TextArea as FluentTextArea } from './textarea.js';
-import { TextAreaAppearance, TextAreaResizableResize, TextAreaResize, TextAreaSize } from './textarea.options.js';
+import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
   <fluent-textarea
@@ -26,7 +25,8 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     spellcheck="${x => x.spellcheck}"
     resize="${x => x.resize}"
     value="${x => x.value}"
-  >${x => x.content ?? ''}</fluent-textarea>
+    >${x => x.content ?? ''}</fluent-textarea
+  >
 `;
 
 export default {
@@ -126,16 +126,14 @@ export default {
       table: {
         defaultValue: { summary: 'false' },
       },
-      control: 'boolean'
+      control: 'boolean',
     },
   },
 } as Meta<FluentTextArea>;
 
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
 
-export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  ${storyTemplate}
-`);
+export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>` ${storyTemplate} `);
 Placeholder.args = {
   placeholder: 'This is a placeholder',
 };
@@ -182,9 +180,7 @@ export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fluent
   </div>
 `);
 
-export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  ${storyTemplate}
-`);
+export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>` ${storyTemplate} `);
 Disabled.args = {
   disabled: true,
 };
@@ -199,9 +195,7 @@ export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
   </form>
 `);
 
-export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  ${storyTemplate}
-`);
+export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>` ${storyTemplate} `);
 ReadOnly.args = {
   readOnly: true,
   resize: TextAreaResize.both,
