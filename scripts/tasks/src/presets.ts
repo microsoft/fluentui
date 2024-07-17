@@ -145,6 +145,13 @@ export function preset() {
     ),
   ).cached!();
 
+  task('build:react', () => {
+    return series(
+      'build',
+      condition('bundle', () => Boolean(args.production)),
+    );
+  });
+
   task('build:react-components', () => {
     return series(
       'clean',
@@ -156,7 +163,7 @@ export function preset() {
 
   task(
     'bundle',
-    condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
+    condition('webpack', () => metadata.hasWebpack()),
   );
 
   function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {
