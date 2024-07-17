@@ -30,6 +30,21 @@ export const FadeExaggerated: PresenceComponent<    {}>;
 // @public (undocumented)
 export const FadeSnappy: PresenceComponent<    {}>;
 
+// @public
+export const Scale: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
+// @public (undocumented)
+export const ScaleExaggerated: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
+// @public (undocumented)
+export const ScaleSnappy: PresenceComponent<    {
+animateOpacity?: boolean | undefined;
+}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
