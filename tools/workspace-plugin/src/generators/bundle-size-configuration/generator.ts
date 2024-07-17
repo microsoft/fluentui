@@ -21,7 +21,7 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 export async function bundleSizeConfigurationGenerator(tree: Tree, schema: BundleSizeConfigurationGeneratorSchema) {
   const options = normalizeOptions(tree, schema);
 
-  const project = readProjectConfiguration(tree, options.name);
+  const project = readProjectConfiguration(tree, options.project);
 
   assertOptions(tree, { isSplitProject: isSplitProject(tree, project), project });
 

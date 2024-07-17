@@ -1,5 +1,5 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, writeJson, joinPathFragments } from '@nx/devkit';
+import { Tree, addProjectConfiguration, writeJson, joinPathFragments, offsetFromRoot } from '@nx/devkit';
 
 import generator from './index';
 
@@ -56,6 +56,8 @@ describe('react-component generator', () => {
             : 'packages/react-components/react-one/library/src';
         const componentRootPath = `${projectSourceRootPath}/components/MyOne`;
 
+        const rootOffset = offsetFromRoot(componentRootPath);
+
         expect(tree.read(joinPathFragments(projectSourceRootPath, 'MyOne.ts'), 'utf-8')).toMatchInlineSnapshot(`
       "export * from './components/MyOne/index';
       "
@@ -76,7 +78,6 @@ describe('react-component generator', () => {
         expect(tree.read(joinPathFragments(componentRootPath, 'MyOne.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as React from 'react';
       import type { ForwardRefComponent } from '@fluentui/react-utilities';
-      import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
       import { useMyOne_unstable } from './useMyOne';
       import { renderMyOne_unstable } from './renderMyOne';
       import { useMyOneStyles_unstable } from './useMyOneStyles.styles';
@@ -90,9 +91,17 @@ describe('react-component generator', () => {
           const state = useMyOne_unstable(props, ref);
 
           useMyOneStyles_unstable(state);
-          // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-          // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
-          useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
+
+          /**
+           * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
+           *
+           * TODO: 💡 once package will become stable (PR which will be part of promoting PREVIEW package to STABLE),
+           *      - uncomment this line
+           *      - update types {@link file://./${rootOffset}packages/react-components/react-shared-contexts/library/src/CustomStyleHooksContext/CustomStyleHooksContext.ts#CustomStyleHooksContextValue}
+           *      - verify that custom global style override works for your component
+           */
+          // useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
+
           return renderMyOne_unstable(state);
         }
       );

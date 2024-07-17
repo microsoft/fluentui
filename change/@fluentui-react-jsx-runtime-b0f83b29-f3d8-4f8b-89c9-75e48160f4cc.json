@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "fix: make generate-api build valid d.ts file structure on par with build target",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

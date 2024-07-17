@@ -250,12 +250,9 @@ describe('react-library generator', () => {
       ['@proj/react-one-preview']: ['packages/react-components/react-one-preview/library/src/index.ts'],
       ['@proj/react-one-preview-stories']: ['packages/react-components/react-one-preview/stories/src/index.ts'],
     };
-    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
-    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
+
+    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(expectedPathAlias);
+    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(expectedPathAlias);
 
     expect(tree.read('.github/CODEOWNERS', 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`
