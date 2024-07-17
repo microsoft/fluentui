@@ -2,7 +2,7 @@ import { task, webpackDevServerTask, preset } from '@fluentui/scripts-tasks';
 
 preset();
 
-task('build', 'build:react');
+task('build', 'build:react-with-umd');
 task(
   'mf',
   webpackDevServerTask({
