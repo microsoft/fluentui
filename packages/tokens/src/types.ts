@@ -175,6 +175,7 @@ export type ColorTokens = {
   colorNeutralShadowKeyDarker: string;
   colorBrandShadowAmbient: string;
   colorBrandShadowKey: string;
+  colorMaterialTertiaryBackground: string;
 };
 
 export type ColorStatusSuccess =
@@ -757,6 +758,10 @@ export type Greys =
 
 export type AlphaColors = 5 | 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
+export type BlurTokens = {
+  blurMaterialTertiary: string;
+};
+
 // TODO: do we want to split theme for better tree shaking? (MUI)
 // But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
 export type Theme = FontSizeTokens &
@@ -773,6 +778,7 @@ export type Theme = FontSizeTokens &
   FontWeightTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
-  ColorTokens;
+  ColorTokens &
+  BlurTokens;
 
 export type PartialTheme = Partial<Theme>;

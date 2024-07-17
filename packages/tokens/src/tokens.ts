@@ -168,6 +168,7 @@ export const tokens: Record<keyof Theme, string> = {
   colorNeutralShadowKeyDarker: 'var(--colorNeutralShadowKeyDarker)',
   colorBrandShadowAmbient: 'var(--colorBrandShadowAmbient)',
   colorBrandShadowKey: 'var(--colorBrandShadowKey)',
+  colorMaterialTertiaryBackground: 'var(--colorMaterialTertiaryBackground)',
 
   // Color palette tokens
 
@@ -539,4 +540,7 @@ export const tokens: Record<keyof Theme, string> = {
   curveEasyEaseMax: 'var(--curveEasyEaseMax)',
   curveEasyEase: 'var(--curveEasyEase)',
   curveLinear: 'var(--curveLinear)',
+
+  // Blur
+  blurMaterialTertiary: 'var(--blurMaterialTertiary)',
 };

@@ -46,7 +46,9 @@ import { ColorPaletteYellow } from '@fluentui/tokens';
 import { ColorTokens } from '@fluentui/tokens';
 import { createDarkTheme } from '@fluentui/tokens';
 import { createHighContrastTheme } from '@fluentui/tokens';
+import { createLightGlassTheme } from '@fluentui/tokens';
 import { createLightTheme } from '@fluentui/tokens';
+import { createTeamsDarkGlassTheme } from '@fluentui/tokens';
 import { createTeamsDarkTheme } from '@fluentui/tokens';
 import { CurveTokens } from '@fluentui/tokens';
 import { DurationTokens } from '@fluentui/tokens';
@@ -60,8 +62,10 @@ import { ShadowBrandTokens } from '@fluentui/tokens';
 import { ShadowTokens } from '@fluentui/tokens';
 import { SpacingTokens } from '@fluentui/tokens';
 import { StrokeWidthTokens } from '@fluentui/tokens';
+import { teamsDarkGlassTheme } from '@fluentui/tokens';
 import { teamsDarkTheme } from '@fluentui/tokens';
 import { teamsHighContrastTheme } from '@fluentui/tokens';
+import { teamsLightGlassTheme } from '@fluentui/tokens';
 import { teamsLightTheme } from '@fluentui/tokens';
 import { Theme } from '@fluentui/tokens';
 import { themeToTokensObject } from '@fluentui/tokens';
@@ -157,7 +161,11 @@ export { createDarkTheme }
 
 export { createHighContrastTheme }
 
+export { createLightGlassTheme }
+
 export { createLightTheme }
+
+export { createTeamsDarkGlassTheme }
 
 export { createTeamsDarkTheme }
 
@@ -185,9 +193,13 @@ export { SpacingTokens }
 
 export { StrokeWidthTokens }
 
+export { teamsDarkGlassTheme }
+
 export { teamsDarkTheme }
 
 export { teamsHighContrastTheme }
+
+export { teamsLightGlassTheme }
 
 export { teamsLightTheme }
 

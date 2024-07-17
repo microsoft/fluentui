@@ -1,14 +1,14 @@
 import { colorPaletteTokens, colorStatusTokens } from '../alias/darkColorPalette';
 import { generateColorTokens } from '../alias/darkColor';
 
-import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights, noBlur } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { BrandVariants, Theme } from '../types';
 import { durations } from '../global/durations';
 import { curves } from '../global/curves';
 import { horizontalSpacings, verticalSpacings } from '../global/spacings';
 
-export const createDarkTheme: (brand: BrandVariants) => Theme = brand => {
+export const createDarkTheme: (brand: BrandVariants, glass?: boolean) => Theme = (brand, glass = false) => {
   const colorTokens = generateColorTokens(brand);
 
   return {
@@ -22,6 +22,7 @@ export const createDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...verticalSpacings,
     ...durations,
     ...curves,
+    ...noBlur,
 
     ...colorTokens,
     ...colorPaletteTokens,
