@@ -27,7 +27,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFn = (story, context) 
 
 export const TestWrapperDecoratorFixedWidth: DecoratorFn = (story, context) => (
   <div style={{ display: 'flex' }}>
-    <div id="testWrapper" className="testWrapper" style={{ padding: '10px', width: '300px' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story(context)}
     </div>
   </div>
