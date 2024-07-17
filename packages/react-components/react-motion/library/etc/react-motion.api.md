@@ -5,6 +5,8 @@
 ```ts
 
 import * as React_2 from 'react';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -136,6 +138,20 @@ export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
 } & MotionParams) => PresenceMotion;
+
+// @public (undocumented)
+export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: PresenceMotionSlotProps<MotionParams> | null | undefined, options: {
+    elementType: React_2.FC<PresenceComponentProps & MotionParams>;
+    defaultProps: PresenceMotionSlotRenderProps & MotionParams;
+}): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
+
+// @public (undocumented)
+export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
+    as?: keyof JSX.IntrinsicElements;
+    children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
+        children: React_2.ReactElement;
+    }>;
+};
 
 // (No @packageDocumentation comment for this package)
 

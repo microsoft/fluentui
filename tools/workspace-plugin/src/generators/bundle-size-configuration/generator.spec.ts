@@ -14,7 +14,7 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 
 describe('bundle-size-configuration generator', () => {
   let tree: Tree;
-  const options: BundleSizeConfigurationGeneratorSchema = { name: 'react-continental' };
+  const options: BundleSizeConfigurationGeneratorSchema = { project: 'react-continental' };
 
   beforeEach(async () => {
     tree = createTreeWithEmptyWorkspace();
@@ -24,7 +24,7 @@ describe('bundle-size-configuration generator', () => {
 
   it('should add setup bundle size', async () => {
     await bundleSizeConfigurationGenerator(tree, options);
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     const packageJson = readJson(tree, joinPathFragments(config.root, 'package.json'));
 
@@ -45,12 +45,12 @@ describe('bundle-size-configuration generator', () => {
   });
 
   it(`should not add index.fixture.js if there are already existing fixtures`, async () => {
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     tree.write(
       joinPathFragments(config.root, 'bundle-size/Foo.fixture.js'),
       stripIndents`
-    import {Foo} from '${options.name}'
+    import {Foo} from '${options.project}'
 
     export default {
       name: 'Foo',
@@ -66,7 +66,7 @@ describe('bundle-size-configuration generator', () => {
   it(`should add monosize config within project if overrideBaseConfig was specified`, async () => {
     await bundleSizeConfigurationGenerator(tree, { ...options, overrideBaseConfig: true });
 
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     expect(tree.read(joinPathFragments(config.root, 'monosize.config.mjs'), 'utf-8')).toMatchInlineSnapshot(`
       "// @ts-check
