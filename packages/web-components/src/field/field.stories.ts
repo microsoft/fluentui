@@ -71,6 +71,7 @@ export const LabelPositions: Story<FluentField> = renderComponent(html<StoryArgs
           <fluent-text-input slot="input" id="${x => x.id}"></fluent-text-input
         ></fluent-field>
       </div>
+      <br />
     `,
   )}
 `).bind({});
