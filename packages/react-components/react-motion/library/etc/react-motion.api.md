@@ -142,13 +142,13 @@ export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = 
 // @public (undocumented)
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: PresenceMotionSlotProps<MotionParams> | null | undefined, options: {
     elementType: React_2.FC<PresenceComponentProps & MotionParams>;
-    defaultProps: PresenceMotionSlotReturnProps<MotionParams>;
-}): SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>>;
+    defaultProps: PresenceMotionSlotRenderProps & MotionParams;
+}): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
 
 // @public (undocumented)
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
     as?: keyof JSX.IntrinsicElements;
-    children?: SlotRenderFunction<PresenceMotionSlotReturnProps<MotionParams> & {
+    children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: React_2.ReactElement;
     }>;
 };
