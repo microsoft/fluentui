@@ -3,7 +3,7 @@ import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import { TextArea as FluentTextArea } from './textarea.js';
-import { TextAreaAppearance, TextAreaResize } from './textarea.options.js';
+import { TextAreaAppearance, TextAreaResizableResize, TextAreaResize, TextAreaSize } from './textarea.options.js';
 
 const storyTemplate = html<StoryArgs<FluentTextArea>>`
   <fluent-textarea
@@ -26,7 +26,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     spellcheck="${x => x.spellcheck}"
     resize="${x => x.resize}"
     value="${x => x.value}"
-  ></fluent-textarea>
+  >${x => x.content ?? ''}</fluent-textarea>
 `;
 
 export default {
@@ -41,11 +41,25 @@ export default {
       options: Object.values(TextAreaAppearance),
     },
     autocomplete: {
-      description: "Indicates the element's autocomplete state.",
+      description: "The element's autocomplete state.",
       control: 'text',
     },
     autofocus: {
-      description: 'Indicates that this element should get focus after the page finishes loading.',
+      description: 'Whether this element should get focus after the page finishes loading.',
+      control: 'boolean',
+    },
+    autoResize: {
+      description: 'Whether the element’s height should be automatically changed based on the content.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+      control: 'boolean',
+    },
+    block: {
+      description: 'Whether the element should be a block-level element.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
       control: 'boolean',
     },
     dirname: {
@@ -54,6 +68,13 @@ export default {
     },
     disabled: {
       description: 'Sets the disabled state',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+      control: 'boolean',
+    },
+    displayShadow: {
+      description: 'Whether the element displays a visual box shadow',
       table: {
         defaultValue: { summary: 'false' },
       },
@@ -83,10 +104,29 @@ export default {
       description: 'Sets the readonly state',
       control: 'boolean',
     },
+    required: {
+      description: 'Sets the required state',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+      control: 'boolean',
+    },
     resize: {
-      description: 'Whether a user can resize the element.',
+      description: 'Whether and how a user can resize the element.',
       control: 'select',
       options: Object.values(TextAreaResize),
+    },
+    size: {
+      description: 'Sets the size of the control',
+      control: 'select',
+      options: Object.values(TextAreaSize),
+    },
+    spellcheck: {
+      description: 'Controls whether to enable spell checking for the content.',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+      control: 'boolean'
     },
   },
 } as Meta<FluentTextArea>;
@@ -94,42 +134,60 @@ export default {
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea placeholder="This is a placeholder"> </fluent-textarea>
+  ${storyTemplate}
 `);
+Placeholder.args = {
+  placeholder: 'This is a placeholder',
+};
 
 export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <div style="display: flex; flex-direction: column; gap: 30px; width: 400px;">
-    <div style="padding: 10px;">
-      <fluent-textarea> </fluent-textarea>
+  <div>
+    <p>Outlined (default)</p>
+    <div style="padding: 1rem; width: fit-content;">
+      <fluent-textarea></fluent-textarea>
     </div>
-    <div style="padding: 10px;">
-      <fluent-textarea appearance="underline"> </fluent-textarea>
+    <p>Filled darker</p>
+    <div style="padding: 1rem; width: fit-content; background-color: #fff;">
+      <fluent-textarea appearance="filled-darker"></fluent-textarea>
     </div>
-    <fluent-field style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
-      <label slot="label" style="color: ${colorNeutralForegroundInverted2}">Filled Lighter Input</label>
-      <fluent-textarea slot="input" appearance="filled-lighter"> </fluent-textarea>
-    </fluent-field>
-    <fluent-field style="padding: 10px; background: ${colorNeutralBackgroundInverted}">
-      <label slot="label" style="color: ${colorNeutralForegroundInverted2}">Filled Darker Input</label>
-      <fluent-textarea slot="input" appearance="filled-darker"></fluent-textarea>
-    </fluent-field>
+    <p>Filled darker with shadow</p>
+    <div style="padding: 1rem; width: fit-content; background-color: #fff;">
+      <fluent-textarea appearance="filled-darker" display-shadow></fluent-textarea>
+    </div>
+    <p>Filled lighter</p>
+    <div style="padding: 1rem; width: fit-content; background-color: #f5f5f5;">
+      <fluent-textarea appearance="filled-lighter"></fluent-textarea>
+    </div>
+    <p>Filled lighter with shadow</p>
+    <div style="padding: 1rem; width: fit-content; background-color: #f5f5f5;">
+      <fluent-textarea appearance="filled-lighter" display-shadow></fluent-textarea>
+    </div>
   </div>
 `);
 
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <div style="display: flex; flex-direction: column; gap: 30px;">
-    <fluent-textarea size="small"> </fluent-textarea>
-    <fluent-textarea></fluent-textarea>
-    <fluent-field size="large">
-      <label slot="label">Large Input</label>
-      <fluent-textarea slot="input" size="large"></fluent-textarea>
-    </fluent-field>
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+      <p>Medium (default)</p>
+      <fluent-textarea></fluent-textarea>
+    </div>
+    <div>
+      <p>Small</p>
+      <fluent-textarea size="small"></fluent-textarea>
+    </div>
+    <div>
+      <p>Large</p>
+      <fluent-textarea size="large"></fluent-textarea>
+    </div>
   </div>
 `);
 
 export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea disabled> </fluent-textarea>
+  ${storyTemplate}
 `);
+Disabled.args = {
+  disabled: true,
+};
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="required-form" action="#">
@@ -137,20 +195,18 @@ export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
       <label slot="label">Required Input</label>
       <fluent-textarea slot="input" name="required-input" required></fluent-textarea>
     </fluent-field>
-    <button type="submit">Submit</button>
+    <div><button type="submit">Submit</button></div>
   </form>
 `);
 
 export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <form id="readonly-form" action="#">
-    <fluent-textarea readonly name="readonly-input" resize="both">Default value</fluent-textarea>
-    <button type="submit">Submit</button>
-  </form>
+  ${storyTemplate}
 `);
-
-export const WithoutLabel: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea> </fluent-textarea>
-`);
+ReadOnly.args = {
+  readOnly: true,
+  resize: TextAreaResize.both,
+  content: 'Some content',
+};
 
 export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <fluent-textarea>

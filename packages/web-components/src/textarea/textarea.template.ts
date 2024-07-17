@@ -21,6 +21,8 @@ export function textInputTemplate<T extends TextArea>(): ElementViewTemplate<T> 
         part="textbox"
         style="${x => x.sizeStyles}"
         spellcheck="${x => x.spellcheck ? 'true' : 'false'}"
+        @focus="${x => x.handleTextboxFocus()}"
+        @blur="${x => x.handleTextboxBlur()}"
       ></div>
       <button
         ${ref('resizeHandle')}

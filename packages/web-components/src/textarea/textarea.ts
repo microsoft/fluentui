@@ -14,6 +14,14 @@ import {
 /**
  * A Text Area Custom HTML Element.
  * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea | `<textarea>`} element.
+ *
+ * @csspart textbox - The element contains the user input content.
+ * @csspart placehoder - The placeholder text container.
+ * @csspart resize - The button element to resize the control.
+ * @fires input - Fires when user types in content.
+ * @fires change - Fires after the control loses focus, if the content has changed.
+ * @fires select - Fires when the `select()` method is called.
+ *
  * @public
  */
 export class TextArea extends FASTElement {
@@ -50,12 +58,17 @@ export class TextArea extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  private handleResizeListener?: (event: PointerEvent) => void;
+
   private handleTextboxInputListener?: EventListener;
 
-  private handleTextboxBlurListener?: EventListener;
+  /**
+   * Whether the element is currently being resized.
+   */
+  private isResizing = false;
 
   /**
-   * Indicates the styled appearance of the element.
+   * Indicates the visual appearance of the element.
    *
    * @public
    * @remarks
@@ -87,7 +100,7 @@ export class TextArea extends FASTElement {
   public autocomplete?: TextAreaAutocomplete;
 
   /**
-   * Indicates whether the element’s block size (height) should be automatically changed as the input grows longer.
+   * Indicates whether the element’s block size (height) should be automatically changed based on the content.
    *
    * @public
    * @remarks
@@ -100,7 +113,7 @@ export class TextArea extends FASTElement {
   }
 
   /**
-   * Indicates whether the textarea should be a block-level element in the layout.
+   * Indicates whether the textarea should be a block-level element.
    *
    * @public
    * @remarks
@@ -259,6 +272,27 @@ export class TextArea extends FASTElement {
   }
 
   /**
+   * Indicates whether the element can be resized by end users.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `resize`
+   */
+  @attr({ mode: 'fromView' })
+  public resize: TextAreaResize = TextAreaResize.none;
+  protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
+    if (prev) {
+      toggleState(this.elementInternals, `resize-${prev}`, false);
+    }
+
+    if (next) {
+      toggleState(this.elementInternals, `resize-${next}`, true);
+    }
+
+    toggleState(this.elementInternals, `resize`, TextAreaResizableResize.includes(this.resize));
+  }
+
+  /**
    * Sets the size of the control.
    *
    * @public
@@ -302,32 +336,6 @@ export class TextArea extends FASTElement {
   public get type(): 'textarea' {
     return 'textarea';
   }
-
-  /**
-   * Indicates whether the element can be resized by end users.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `resize`
-   */
-  @attr({ mode: 'fromView' })
-  public resize: TextAreaResize = TextAreaResize.none;
-  protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void {
-    if (prev) {
-      toggleState(this.elementInternals, `resize-${prev}`, false);
-    }
-
-    if (next) {
-      toggleState(this.elementInternals, `resize-${next}`, true);
-    }
-
-    toggleState(this.elementInternals, `resize`, TextAreaResizableResize.includes(this.resize));
-  }
-
-  // TypeScript requires the event object’s type to be `Event` if the listener is typed to `EventListener`.
-  private handleResizeListener?: (event: PointerEvent) => void;
-
-  private isResizing = false;
 
   /**
    * The element's validity state.
@@ -384,6 +392,8 @@ export class TextArea extends FASTElement {
     this.setValidity();
   }
 
+  private valueBeforeFocus = '';
+
   /**
    * Whether the user has interacted with the element.
    */
@@ -393,11 +403,7 @@ export class TextArea extends FASTElement {
     switch (propertyName) {
       case 'appearance':
       case 'displayShadow':
-        toggleState(
-          this.elementInternals,
-          'display-shadow',
-          this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
-        );
+        this.maybeDisplayShadow();
         break;
       case 'required':
       case 'minLength':
@@ -424,6 +430,7 @@ export class TextArea extends FASTElement {
     this.setInitialValue();
     this.togglePlaceholderShownState();
     this.setValidity();
+    this.maybeDisplayShadow();
 
     this.bindEvents();
 
@@ -560,6 +567,22 @@ export class TextArea extends FASTElement {
     }
   }
 
+  /**
+   * Selects the content in the element.
+   *
+   * @public
+   */
+  public select() {
+    this.focus();
+    this.selectContent();
+  }
+
+  private selectContent() {
+    const selection = document.getSelection();
+    selection?.selectAllChildren(this.textbox);
+    this.$emit('select');
+  }
+
   private setContentEditable(edtiable: boolean) {
     if (!edtiable) {
       this.textbox.contentEditable = 'false';
@@ -599,10 +622,7 @@ export class TextArea extends FASTElement {
 
     this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
     this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
-    this.textbox.addEventListener('input', () => this.userInteracted = true, {once: true});
-
-    this.handleTextboxBlurListener = this.handleTextboxBlur.bind(this);
-    this.textbox.addEventListener('blur', this.handleTextboxBlurListener);
+    this.textbox.addEventListener('input', () => this.userInteracted = true, { once: true });
   }
 
   private unbindEvents() {
@@ -614,10 +634,6 @@ export class TextArea extends FASTElement {
 
     if (this.handleTextboxInputListener) {
       this.textbox.removeEventListener('input', this.handleTextboxInputListener);
-    }
-
-    if (this.handleTextboxBlurListener) {
-      this.textbox.removeEventListener('blur', this.handleTextboxBlurListener);
     }
   }
 
@@ -708,7 +724,30 @@ export class TextArea extends FASTElement {
     this.setFormValue(this.value);
   }
 
-  private handleTextboxBlur() {
+  /**
+   * @internal
+   */
+  public handleTextboxFocus() {
+    this.valueBeforeFocus = this.value;
+  }
+
+  /**
+   * @internal
+   */
+  public handleTextboxBlur() {
     this.setValidity();
+
+    if (this.valueBeforeFocus !== this.value) {
+      this.$emit('change');
+    }
+    this.valueBeforeFocus = '';
+  }
+
+  private maybeDisplayShadow() {
+    toggleState(
+      this.elementInternals,
+      'display-shadow',
+      this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
+    );
   }
 }

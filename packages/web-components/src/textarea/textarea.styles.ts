@@ -5,9 +5,11 @@ import {
   colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralBackground3,
+  colorNeutralBackgroundInverted,
   colorNeutralForeground1,
   colorNeutralForeground4,
   colorNeutralForegroundDisabled,
+  colorNeutralForegroundInverted,
   colorNeutralStroke1,
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
@@ -231,6 +233,11 @@ export const styles: ElementStyles = css`
   :host([readonly])::after,
   :host(:disabled)::after {
     content: none;
+  }
+
+  ::selection {
+    color: ${colorNeutralForegroundInverted};
+    background-color: ${colorNeutralBackgroundInverted};
   }
 
   .textbox,
