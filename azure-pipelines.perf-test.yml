@@ -51,12 +51,12 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test-northstar perf:test --base
+          yarn lage test-perf --to perf-test-northstar --base --verbose
         condition: eq(variables.isPR, false)
         displayName: Run Perf Test Base (Northstar)
 
       - script: |
-          yarn workspace @fluentui/perf-test-northstar perf:test
+          yarn lage test-perf --to perf-test-northstar --verbose
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
@@ -120,7 +120,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test test:perf
+          yarn lage test-perf --to perf-test --verbose
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
@@ -166,7 +166,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn workspace @fluentui/perf-test-react-components test:perf
+          yarn lage test-perf --to @fluentui/perf-test-react-components --verbose
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 

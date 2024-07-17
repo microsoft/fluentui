@@ -1,8 +1,19 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Mon, 01 Jul 2024 20:30:54 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.71)
+
+Mon, 15 Jul 2024 17:25:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.70..@fluentui/global-context_v9.0.0-beta.71)
+
+### Changes
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.64 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.70)
 

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Thu, 04 Jul 2024 15:14:36 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.2)
+
+Mon, 15 Jul 2024 17:25:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.1..@fluentui/react-nav-preview_v0.5.2)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-button to v9.3.86 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.64 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-divider to v9.2.72 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-drawer to v9.5.5 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-tabster to v9.22.2 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [0.5.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.1)
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Thu, 04 Jul 2024 15:14:36 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.44)
+
+Mon, 15 Jul 2024 17:25:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.4.43..@fluentui/react-datepicker-compat_v0.4.44)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-calendar-compat to v0.1.13 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-field to v9.1.70 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-input to v9.4.82 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-popover to v9.9.14 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-portal to v9.4.30 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-positioning to v9.15.5 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-tabster to v9.22.2 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [0.4.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.4.43)
 

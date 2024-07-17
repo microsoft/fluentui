@@ -1,8 +1,37 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 09 Jul 2024 04:07:26 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Jul 2024 04:07:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.44)
+
+Wed, 17 Jul 2024 04:07:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.43..@fluentui/web-components_v3.0.0-beta.44)
+
+### Changes
+
+- chore: cleanup drawer storybook ([PR #31991](https://github.com/microsoft/fluentui/pull/31991) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.43)
+
+Tue, 16 Jul 2024 04:08:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.42..@fluentui/web-components_v3.0.0-beta.43)
+
+### Changes
+
+- fix: scope menu fallback positioning to non-anchor browsers only ([PR #32000](https://github.com/microsoft/fluentui/pull/32000) by rupertdavid@microsoft.com)
+- fix: expose tabindex as an overriden attribute with a default value of 0' ([PR #32007](https://github.com/microsoft/fluentui/pull/32007) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: support tabindex values from implementors on buttons ([PR #32003](https://github.com/microsoft/fluentui/pull/32003) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.42)
+
+Thu, 11 Jul 2024 04:07:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.41..@fluentui/web-components_v3.0.0-beta.42)
+
+### Changes
+
+- feat: update slider to use ElementInternals for form association ([PR #31933](https://github.com/microsoft/fluentui/pull/31933) by machi@microsoft.com)
 
 ## [3.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.41)
 

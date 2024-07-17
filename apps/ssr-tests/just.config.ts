@@ -8,6 +8,4 @@ task('mocha', () => {
   return spawn(process.execPath, [mochaCmd, 'dist/ssr-tests.js'], { stdio: 'inherit' });
 });
 
-task('build', 'webpack');
-
 task('test', 'mocha');

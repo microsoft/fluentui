@@ -10,6 +10,5 @@ import type { CarouselCardState, CarouselCardSlots } from './CarouselCard.types'
 export const renderCarouselCard_unstable = (state: CarouselCardState) => {
   assertSlots<CarouselCardSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
   return <state.root />;
 };
