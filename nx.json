@@ -11,7 +11,7 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build", "^build"],
       "cache": true
     },
     "bundle": {
