@@ -22,6 +22,7 @@ export function getStoryVariant<TArgs = Args>(story: StoryFn<TArgs>, variant: St
       ...story.parameters,
       dir,
       mode: 'vr-test',
+      theme,
     },
     decorators: [
       ...(story.decorators ?? []),
