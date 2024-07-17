@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix WindowProvider utilities always returning window/document/undefined",
+  "packageName": "@fluentui/react",
+  "email": "jamie@index.hm",
+  "dependentChangeType": "patch"
+}
