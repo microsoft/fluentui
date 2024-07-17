@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Image } from '@fluentui/react-image';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 const imageUrl = 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg';
 

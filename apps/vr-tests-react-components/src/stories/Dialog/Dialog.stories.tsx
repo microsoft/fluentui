@@ -11,7 +11,7 @@ import {
 import { Button } from '@fluentui/react-button';
 import { Combobox, Option } from '@fluentui/react-combobox';
 import { Rocket24Regular } from '@fluentui/react-icons';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {

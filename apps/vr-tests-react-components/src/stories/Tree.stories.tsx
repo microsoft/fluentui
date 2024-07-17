@@ -14,7 +14,7 @@ import {
 import { tokens } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 import { Steps, StoryWright } from 'storywright';
 import {

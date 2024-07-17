@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CounterBadge } from '@fluentui/react-badge';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 
 export default {

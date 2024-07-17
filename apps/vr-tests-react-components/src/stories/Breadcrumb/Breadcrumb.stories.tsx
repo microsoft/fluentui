@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb } from '@fluentui/react-breadcrumb';
 import { SampleBreadcrumbButtons, steps } from './utils';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
 export default {

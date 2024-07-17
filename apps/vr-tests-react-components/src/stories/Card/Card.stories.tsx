@@ -5,7 +5,7 @@ import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-
 import { Body1, Caption1, Text } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
 import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { makeStyles } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';

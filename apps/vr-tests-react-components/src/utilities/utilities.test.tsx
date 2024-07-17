@@ -14,16 +14,16 @@ describe('utility functions', () => {
       const ltrStory = getStoryVariant(DefaultStory, DARK_MODE);
       const rtlStory = getStoryVariant(DefaultStory, RTL);
 
-      expect(ltrStory.parameters!.dir).toBe('ltr');
-      expect(rtlStory.parameters!.dir).toBe('rtl');
+      expect(ltrStory.parameters.dir).toBe('ltr');
+      expect(rtlStory.parameters.dir).toBe('rtl');
     });
 
     it('should set the correct theme for story', () => {
       const darkModeStory = getStoryVariant(DefaultStory, DARK_MODE);
       const highContrastStory = getStoryVariant(DefaultStory, HIGH_CONTRAST);
 
-      expect(darkModeStory.parameters!.theme).toEqual(webDarkTheme);
-      expect(highContrastStory.parameters!.theme).toEqual(teamsHighContrastTheme);
+      expect(darkModeStory.parameters.theme).toEqual(webDarkTheme);
+      expect(highContrastStory.parameters.theme).toEqual(teamsHighContrastTheme);
     });
 
     it('should set the correct name for story', () => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DecoratorFn } from '@storybook/react';
+import type { DecoratorFn } from '@storybook/react';
 
 export const TestWrapperDecorator: DecoratorFn = story => (
   <div style={{ display: 'flex' }}>

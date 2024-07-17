@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Card } from '@fluentui/react-card';
 import { SampleCardContent } from './utils';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 
 export default {

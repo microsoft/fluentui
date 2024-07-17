@@ -6,7 +6,7 @@ import {
   MessageBarIntent,
   MessageBarTitle,
 } from '@fluentui/react-message-bar';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Button } from '@fluentui/react-button';
 import { Link } from '@fluentui/react-link';

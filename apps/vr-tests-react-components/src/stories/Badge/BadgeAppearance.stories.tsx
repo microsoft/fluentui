@@ -3,7 +3,7 @@ import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { mergeClasses } from '@griffel/react';
 import { propValues, useStyles } from './utils';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 
 const BadgeAppearanceTemplate: React.FC<{ appearance: Required<BadgeProps>['appearance'] }> = ({ appearance }) => {

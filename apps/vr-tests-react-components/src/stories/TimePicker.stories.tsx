@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { TimePicker } from '@fluentui/react-timepicker-compat';
 

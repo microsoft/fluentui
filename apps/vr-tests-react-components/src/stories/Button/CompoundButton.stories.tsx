@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CompoundButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
 

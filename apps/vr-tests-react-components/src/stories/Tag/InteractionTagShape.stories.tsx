@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
-import { Meta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps } from 'storywright';

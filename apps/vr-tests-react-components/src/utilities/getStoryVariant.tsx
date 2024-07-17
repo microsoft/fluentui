@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Args, StoryFn, StoryObj } from '@storybook/react';
+import type { Args, DecoratorFn, StoryFn, StoryObj } from '@storybook/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
 
@@ -10,7 +10,7 @@ export const RTL = 'RTL';
 type StoryVariant = typeof DARK_MODE | typeof HIGH_CONTRAST | typeof RTL;
 
 /** Helper function that returns RTL, Dark Mode or High Contrast variant of an existing story. */
-export function getStoryVariant<TArgs = Args>(story: StoryFn<TArgs>, variant: StoryVariant): StoryObj<TArgs> {
+export function getStoryVariant(story: StoryFn, variant: StoryVariant) {
   const theme = getTheme(variant);
   const dir = getDir(variant);
 
@@ -24,18 +24,17 @@ export function getStoryVariant<TArgs = Args>(story: StoryFn<TArgs>, variant: St
       mode: 'vr-test',
       theme,
     },
-    decorators: [
-      ...(story.decorators ?? []),
-      (storyFn, context) => {
-        return (
-          <FluentProvider applyStylesToPortals={false} theme={theme} dir={dir}>
-            {storyFn(context)}
-          </FluentProvider>
-        );
-      },
-    ],
-  };
+    decorators: [...(story.decorators ?? []), StoryVariantDecorator],
+  } satisfies StoryObj;
 }
+
+const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
+  return (
+    <FluentProvider applyStylesToPortals={false} theme={context.parameters.theme} dir={context.parameters.dir}>
+      {storyFn(context)}
+    </FluentProvider>
+  );
+};
 
 /** A mapping of story variants to Fluent themes. */
 const STORY_VARIANT_THEME = {
