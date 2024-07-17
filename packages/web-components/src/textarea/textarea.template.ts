@@ -1,13 +1,12 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { TextArea } from './textarea.js';
-import type { TextAreaOptions } from './textarea.options.js';
 
 /**
  * Generates a template for the TextInput component.
  *
  * @public
  */
-export function textInputTemplate<T extends TextArea>(options: TextAreaOptions = {}): ElementViewTemplate<T> {
+export function textInputTemplate<T extends TextArea>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
       <div

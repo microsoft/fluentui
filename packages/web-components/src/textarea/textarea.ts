@@ -348,7 +348,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    return this.elementInternals.validationMessage || this.getBuiltInValidationMessage(this.validity);
+    return this.elementInternals.validationMessage;
   }
 
   /**
@@ -530,21 +530,31 @@ export class TextArea extends FASTElement {
         tooLong: false,
         tooShort: false,
       };
+      let defaultMessage = '';
 
       if (this.required && !this.value.length) {
         validity.valueMissing = true;
+        defaultMessage = 'valueMissing';
       } else if (this.maxLength && this.value.length > this.maxLength) {
         validity.tooLong = true;
+        defaultMessage = 'tooLong';
       } else if (this.minLength && this.value.length < this.minLength) {
         validity.tooShort = true;
+        defaultMessage = 'tooShort';
       }
 
-      console.log(validity);
-
+      // Notes on the `defaultMessage`:
+      // There isn’t a way to get browser’s built-in validation messages for
+      // `tooShort` or `tooLong`, because these flags require real user
+      // interactions before they would be set by the browser, so creating a
+      // `<textarea>` in the memory and trying to get its `validationMessage`
+      // will not work for these 2 flags. `<fluent-field>` does provide the
+      // `message` slot for authors add their custom validation messages based
+      // on the validity state flags, and we do set the proper flags here.
       this.elementInternals.setValidity({
         ...validity,
         ...flags,
-      }, message ?? this.getBuiltInValidationMessage(validity), anchor);
+      }, message ?? defaultMessage, anchor);
     }
   }
 
@@ -694,30 +704,6 @@ export class TextArea extends FASTElement {
   private handleTextboxInput() {
     this.togglePlaceholderShownState();
     this.setFormValue(this.value);
-  }
-
-  private getBuiltInValidationMessage(validity: Partial<ValidityState>): string {
-    let el: HTMLTextAreaElement | null = document.createElement('textarea');
-    let message = '';
-
-    // FIXME: tooShort and tooLong aren't working because the validity only changes
-    // by user interactions.
-    if (validity.valueMissing) {
-      el.required = true;
-      message = el.validationMessage;
-    } else if (validity.tooShort) {
-      el.minLength = 2;
-      el.value = '0';
-      message = el.validationMessage;
-    } else if (validity.tooLong) {
-      el.maxLength = 1;
-      el.value = '00';
-      message = el.validationMessage;
-    }
-
-    el = null;
-
-    return message;
   }
 
   private handleTextboxBlur() {

@@ -1,13 +1,4 @@
-import type { StartEndOptions } from '../patterns/start-end.js';
 import type { ValuesOf } from '../utils/typings.js';
-import { TextArea } from './textarea.js';
-
-/**
- * TextArea configuration options.
- *
- * @public
- */
-export type TextAreaOptions = StartEndOptions<TextArea>;
 
 /**
  * Values for the `size` attribute on TextArea elements.
