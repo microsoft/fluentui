@@ -45,7 +45,19 @@
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
+    "test-integration": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
     "test-ssr": {
+      "cache": true
+    },
+    "test-vr": {
+      "dependsOn": ["build-storybook"],
+      "cache": true
+    },
+    "test-perf": {
+      "dependsOn": ["bundle"],
       "cache": true
     },
     "e2e": {
