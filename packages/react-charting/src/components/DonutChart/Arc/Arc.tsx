@@ -41,28 +41,22 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
 
+    const startAngle = this.props.data?.startAngle ?? 0;
+    const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
+
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
         )}
-        {this.props.enableGradient && (
-          <defs>
-            <linearGradient id={`gradient_${this.props.color}_${this.props.nextColor}`} y2="100%">
-              <stop offset="0" stopColor={this.props.color} />
-              <stop offset="70%" stopColor={this.props.color} />
-              <stop offset="100%" stopColor={this.props.nextColor} />
-            </linearGradient>
-          </defs>
-        )}
+
         <path
           id={id}
           d={arc(this.props.data)}
+          rx={100}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
-          fill={
-            this.props.enableGradient ? `url(#gradient_${this.props.color}_${this.props.nextColor})` : this.props.color
-          }
+          fill="transparent"
           data-is-focusable={this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === ''}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
@@ -73,7 +67,35 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           aria-label={this._getAriaLabel()}
           role="img"
         />
+
         {this._renderArcLabel(classNames.arcLabel)}
+
+        <clipPath id={`clip_${this.props.color}_${this.props.nextColor}`}>
+          <path d={arc(this.props.data)} />
+        </clipPath>
+        <foreignObject
+          x="-50%"
+          y="-50%"
+          width="100%"
+          height="100%"
+          clipPath={`url(#clip_${this.props.color}_${this.props.nextColor})`}
+        >
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              background: this.props.enableGradient
+                ? `conic-gradient(
+                    from ${startAngle}rad,
+                    ${this.props.color},
+                    ${this.props.color} ${endAngle/2}rad,
+                    ${this.props.nextColor} ${endAngle}rad
+                  )`
+                : this.props.color,
+              opacity,
+            }}
+          />
+        </foreignObject>
       </g>
     );
   }
