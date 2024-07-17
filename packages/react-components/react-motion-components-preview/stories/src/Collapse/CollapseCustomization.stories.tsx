@@ -14,8 +14,6 @@ import { Collapse } from '@fluentui/react-motion-components-preview';
 
 import description from './CollapseCustomization.stories.md';
 
-const { curveEasyEaseMax, durationSlow, durationNormal } = motionTokens;
-
 const useClasses = makeStyles({
   container: {
     display: 'grid',
@@ -57,8 +55,8 @@ const useClasses = makeStyles({
 });
 
 const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
-  enter: { duration: durationSlow, easing: curveEasyEaseMax },
-  exit: { duration: durationNormal, easing: curveEasyEaseMax },
+  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
+  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
 });
 
 const LoremIpsum = () => (
