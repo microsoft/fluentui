@@ -12,11 +12,10 @@ import type { MotionParam } from '../types';
 /**
  * @internal
  */
-type PresenceMotionSlotReturnProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<
+type PresenceMotionSlotRenderProps = Pick<
   PresenceComponentProps,
   'appear' | 'onMotionFinish' | 'onMotionStart' | 'unmountOnExit' | 'visible'
-> &
-  MotionParams;
+>;
 
 export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<
   PresenceComponentProps,
@@ -33,16 +32,16 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
 
   // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
   //       possible value for children
-  children?: SlotRenderFunction<PresenceMotionSlotReturnProps<MotionParams> & { children: React.ReactElement }>;
+  children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }>;
 };
 
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(
   motion: PresenceMotionSlotProps<MotionParams> | null | undefined,
   options: {
     elementType: React.FC<PresenceComponentProps & MotionParams>;
-    defaultProps: PresenceMotionSlotReturnProps<MotionParams>;
+    defaultProps: PresenceMotionSlotRenderProps & MotionParams;
   },
-): SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>> {
+): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams> {
   // eslint-disable-next-line deprecation/deprecation
   const { as, children, ...rest } = motion ?? {};
 
@@ -57,7 +56,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     // Render function is used there to avoid rendering a motion component and handle unmounting logic
     const isUnmounted = !options.defaultProps.visible && options.defaultProps.unmountOnExit;
     const renderFn: SlotRenderFunction<
-      PresenceMotionSlotReturnProps<MotionParams> & { children: React.ReactElement }
+      PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }
     > = (_, props) => (isUnmounted ? null : <>{props.children}</>);
 
     /**
@@ -69,7 +68,7 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     return {
       [SLOT_RENDER_FUNCTION_SYMBOL]: renderFn,
       [SLOT_ELEMENT_TYPE_SYMBOL]: options.elementType,
-    } as SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>>;
+    } as SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
   }
 
   /**
@@ -82,11 +81,11 @@ export function presenceMotionSlot<MotionParams extends Record<string, MotionPar
     ...options.defaultProps,
     ...rest,
     [SLOT_ELEMENT_TYPE_SYMBOL]: options.elementType,
-  } as SlotComponentType<PresenceMotionSlotReturnProps<MotionParams>>;
+  } as SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
 
   if (typeof children === 'function') {
     propsWithMetadata[SLOT_RENDER_FUNCTION_SYMBOL] = children as SlotRenderFunction<
-      PresenceMotionSlotReturnProps<MotionParams>
+      PresenceMotionSlotRenderProps & MotionParams
     >;
   }
 
