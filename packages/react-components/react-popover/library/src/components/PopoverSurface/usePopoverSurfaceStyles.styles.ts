@@ -61,8 +61,8 @@ const useStyles = makeStyles({
     ':global([data-popper-placement^="bottom"])': {
       '::before': {
         boxShadow: tokens.shadow16,
-        // Clip the box on two sides, give ample room for various shadow tokens
-        clipPath: `polygon(50% 50%, -1000% 1100%, 1000% 1000%, 1100% -1000%)`,
+        /* Clip the box on two sides, give ample room for various shadow tokens */
+        clipPath: `polygon(50% calc(50% - 0.5px), -1000% 1100%, 1000% 1000%, 1100% -1000%)`,
       },
     },
   },
