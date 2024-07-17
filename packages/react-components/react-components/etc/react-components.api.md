@@ -195,12 +195,14 @@ import { createDOMRenderer } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
+import { createLightGlassTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
 import { createMotionComponent } from '@fluentui/react-motion';
 import { createPresenceComponent } from '@fluentui/react-motion';
 import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
+import { createTeamsDarkGlassTheme } from '@fluentui/react-theme';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
 import { CurveTokens } from '@fluentui/react-theme';
 import { DATA_OVERFLOW_DIVIDER } from '@fluentui/react-overflow';
@@ -1161,8 +1163,10 @@ import { TeachingPopoverTrigger } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerChildProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerProps } from '@fluentui/react-teaching-popover';
 import { TeachingPopoverTriggerState } from '@fluentui/react-teaching-popover';
+import { teamsDarkGlassTheme } from '@fluentui/react-theme';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
+import { teamsLightGlassTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { Text as Text_2 } from '@fluentui/react-text';
 import { Textarea } from '@fluentui/react-textarea';
@@ -2101,6 +2105,8 @@ export { CreateFocusOutlineStyleOptions }
 
 export { createHighContrastTheme }
 
+export { createLightGlassTheme }
+
 export { createLightTheme }
 
 export { createMotionComponent }
@@ -2112,6 +2118,8 @@ export { createPresenceComponentVariant }
 export { createTableColumn }
 
 export { CreateTableColumnOptions }
+
+export { createTeamsDarkGlassTheme }
 
 export { createTeamsDarkTheme }
 
@@ -4033,9 +4041,13 @@ export { TeachingPopoverTriggerProps }
 
 export { TeachingPopoverTriggerState }
 
+export { teamsDarkGlassTheme }
+
 export { teamsDarkTheme }
 
 export { teamsHighContrastTheme }
+
+export { teamsLightGlassTheme }
 
 export { teamsLightTheme }
 
