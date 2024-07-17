@@ -10,9 +10,9 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { Collapse } from '@fluentui/react-motion-components-preview';
+import { Fade } from '@fluentui/react-motion-components-preview';
 
-import description from './CollapseCustomization.stories.md';
+import description from './FadeCustomization.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -54,7 +54,7 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
+const CustomFadeVariant = createPresenceComponentVariant(Fade, {
   enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
   exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
 });
@@ -71,7 +71,6 @@ export const Customization = () => {
   const classes = useClasses();
   const motionRef = React.useRef<MotionImperativeRef>();
 
-  const [animateOpacity, setAnimateOpacity] = React.useState(true);
   const [playbackRate, setPlaybackRate] = React.useState<number>(30);
   const [visible, setVisible] = React.useState<boolean>(true);
   const [unmountOnExit, setUnmountOnExit] = React.useState<boolean>(false);
@@ -87,13 +86,6 @@ export const Customization = () => {
       <div className={classes.controls}>
         <Field className={classes.field}>
           <Switch label="Visible" checked={visible} onChange={() => setVisible(v => !v)} />
-        </Field>
-        <Field className={classes.field}>
-          <Switch
-            label={<code>animateOpacity</code>}
-            checked={animateOpacity}
-            onChange={() => setAnimateOpacity(v => !v)}
-          />
         </Field>
         <Field className={classes.field}>
           <Switch
@@ -126,16 +118,11 @@ export const Customization = () => {
         </Field>
       </div>
 
-      <CustomCollapseVariant
-        animateOpacity={animateOpacity}
-        imperativeRef={motionRef}
-        visible={visible}
-        unmountOnExit={unmountOnExit}
-      >
+      <CustomFadeVariant imperativeRef={motionRef} visible={visible} unmountOnExit={unmountOnExit}>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </CustomCollapseVariant>
+      </CustomFadeVariant>
     </div>
   );
 };

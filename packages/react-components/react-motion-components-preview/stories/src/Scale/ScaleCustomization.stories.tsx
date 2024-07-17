@@ -10,9 +10,9 @@ import {
   Switch,
   tokens,
 } from '@fluentui/react-components';
-import { Collapse } from '@fluentui/react-motion-components-preview';
+import { Scale } from '@fluentui/react-motion-components-preview';
 
-import description from './CollapseCustomization.stories.md';
+import description from './ScaleCustomization.stories.md';
 
 const useClasses = makeStyles({
   container: {
@@ -54,7 +54,7 @@ const useClasses = makeStyles({
   },
 });
 
-const CustomCollapseVariant = createPresenceComponentVariant(Collapse, {
+const CustomScaleVariant = createPresenceComponentVariant(Scale, {
   enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
   exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
 });
@@ -126,7 +126,7 @@ export const Customization = () => {
         </Field>
       </div>
 
-      <CustomCollapseVariant
+      <CustomScaleVariant
         animateOpacity={animateOpacity}
         imperativeRef={motionRef}
         visible={visible}
@@ -135,7 +135,7 @@ export const Customization = () => {
         <div className={classes.card}>
           <LoremIpsum />
         </div>
-      </CustomCollapseVariant>
+      </CustomScaleVariant>
     </div>
   );
 };
