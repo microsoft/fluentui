@@ -290,13 +290,8 @@ export class TextArea extends FASTElement {
    * @remarks
    * HTML Attribute: `spellcheck`
    */
-  @attr({
-    converter: {
-      fromView: value => (typeof value === 'string' ? ['true', ''].includes(value.trim().toLowerCase()) : null),
-      toView: value => value.toString(),
-    },
-  })
-  public spellcheck!: boolean;
+  @attr({ mode: 'boolean' })
+  public spellcheck = false;
 
   /**
    * The type of the element, which is always "textarea".

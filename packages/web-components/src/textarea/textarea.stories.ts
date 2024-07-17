@@ -92,9 +92,6 @@ export default {
 } as Meta<FluentTextArea>;
 
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
-TextArea.args = {
-  resize: 'both',
-};
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <fluent-textarea placeholder="This is a placeholder"> </fluent-textarea>
