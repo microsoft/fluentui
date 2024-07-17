@@ -21,6 +21,15 @@ export const CollapseSnappy: PresenceComponent<    {
 animateOpacity?: boolean | undefined;
 }>;
 
+// @public
+export const Fade: PresenceComponent<    {}>;
+
+// @public (undocumented)
+export const FadeExaggerated: PresenceComponent<    {}>;
+
+// @public (undocumented)
+export const FadeSnappy: PresenceComponent<    {}>;
+
 // (No @packageDocumentation comment for this package)
 
 ```
