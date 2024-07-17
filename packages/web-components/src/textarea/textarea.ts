@@ -337,6 +337,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
    */
   public get validity(): ValidityState {
+    this.setValidity();
     return this.elementInternals.validity;
   }
 
@@ -348,6 +349,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
+    this.setValidity();
     return this.elementInternals.validationMessage;
   }
 
@@ -525,7 +527,7 @@ export class TextArea extends FASTElement {
         return;
       }
 
-      const validity = {
+      const defaultValidity = {
         valueMissing: false,
         tooLong: false,
         tooShort: false,
@@ -533,13 +535,13 @@ export class TextArea extends FASTElement {
       let defaultMessage = '';
 
       if (this.required && !this.value.length) {
-        validity.valueMissing = true;
+        defaultValidity.valueMissing = true;
         defaultMessage = 'valueMissing';
       } else if (this.maxLength && this.value.length > this.maxLength) {
-        validity.tooLong = true;
+        defaultValidity.tooLong = true;
         defaultMessage = 'tooLong';
       } else if (this.minLength && this.value.length < this.minLength) {
-        validity.tooShort = true;
+        defaultValidity.tooShort = true;
         defaultMessage = 'tooShort';
       }
 
@@ -552,7 +554,7 @@ export class TextArea extends FASTElement {
       // `message` slot for authors add their custom validation messages based
       // on the validity state flags, and we do set the proper flags here.
       this.elementInternals.setValidity({
-        ...validity,
+        ...defaultValidity,
         ...flags,
       }, message ?? defaultMessage, anchor);
     }
