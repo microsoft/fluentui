@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps } from '../../src/LineChart';
-import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export const LCBasic = (props: ILineChartProps) => {
@@ -25,8 +24,8 @@ export const LCBasic = (props: ILineChartProps) => {
     setShowAxisTitles(checked);
   };
 
-  const data = {
-    chartTitle: 'Line Chart',
+  const data: IChartProps = {
+    chartTitle: 'Line Chart Basic Example',
     lineChartData: [
       {
         legend: 'From_Legacy_to_O365',
@@ -132,7 +131,9 @@ export const LCBasic = (props: ILineChartProps) => {
       },
     ],
   };
+
   const rootStyle = { width: `${width}px`, height: `${height}px` };
+  const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
   return (
     <>

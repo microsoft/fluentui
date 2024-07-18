@@ -237,7 +237,7 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     ),
     calloutlegendText: mergeClasses(
       cartesianchartClassNames.calloutlegendText,
-      baseStyles.calloutlegendText /*props.styles?.calloutlegendText*/,
+      baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
     ),
     calloutContentY: mergeClasses(
       cartesianchartClassNames.calloutContentY,
