@@ -1,4 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
+import { Direction } from '@microsoft/fast-web-utilities';
+import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import {
   TextAreaAppearance,
@@ -66,6 +68,8 @@ export class TextArea extends FASTElement {
    * Whether the element is currently being resized.
    */
   private isResizing = false;
+
+  private resizingDirectionFactor = getDirection(this) === Direction.ltr ? 1 : -1;
 
   /**
    * Indicates the visual appearance of the element.
@@ -704,7 +708,7 @@ export class TextArea extends FASTElement {
     const allowHorizontalResizing = TextAreaHorizontallyResizableResize.includes(this.resize);
     const deltaX = allowHorizontalResizing ? pointerX - this.lastPointerX : 0;
     const deltaY = allowVerticalResizing ? pointerY - this.lastPointerY : 0;
-    const inline = this.textboxInlineSize + deltaX;
+    const inline = this.textboxInlineSize + deltaX * this.resizingDirectionFactor;
     const block = this.textboxBlockSize + deltaY;
 
     this.textboxInlineSize = inline;

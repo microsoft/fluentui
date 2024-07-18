@@ -163,6 +163,19 @@ export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<
   </div>
 `);
 
+export const Block: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+      <p>Non-block (default)</p>
+      <fluent-textarea></fluent-textarea>
+    </div>
+    <div>
+      <p>Block</p>
+      <fluent-textarea block></fluent-textarea>
+    </div>
+  </div>
+`);
+
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
     <div>
@@ -180,9 +193,56 @@ export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fluent
   </div>
 `);
 
+export const AutoResize: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
+  <fluent-textarea auto-resize></fluent-textarea>
+`);
+
+export const Resize: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
+  <div style="display: flex; flex-direction: column; gap: 1rem;">
+    <div>
+      <p>None (default)</p>
+      <fluent-textarea resize="none"></fluent-textarea>
+    </div>
+    <div>
+      <p>Horizontal</p>
+      <fluent-textarea resize="horizontal"></fluent-textarea>
+    </div>
+    <div>
+      <p>Vertical</p>
+      <fluent-textarea resize="vertical"></fluent-textarea>
+    </div>
+    <div>
+      <p>Both</p>
+      <fluent-textarea resize="both"></fluent-textarea>
+    </div>
+  </div>
+`);
+
+export const RTL: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
+  <div style="display: flex; flex-direction: column; gap: 1rem;" dir="rtl">
+    <div>
+      <p>None (default)</p>
+      <fluent-textarea resize="none"></fluent-textarea>
+    </div>
+    <div>
+      <p>Horizontal</p>
+      <fluent-textarea resize="horizontal"></fluent-textarea>
+    </div>
+    <div>
+      <p>Vertical</p>
+      <fluent-textarea resize="vertical"></fluent-textarea>
+    </div>
+    <div>
+      <p>Both</p>
+      <fluent-textarea resize="both"></fluent-textarea>
+    </div>
+  </div>
+`);
+
 export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>` ${storyTemplate} `);
 Disabled.args = {
   disabled: true,
+  resize: TextAreaResize.both,
 };
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
