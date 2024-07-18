@@ -2,6 +2,48 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 17 Jul 2024 04:07:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.44",
+      "version": "3.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1f260f6791bdd264baf782052ff6d3328cf50df2",
+            "comment": "chore: cleanup drawer storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jul 2024 04:08:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.43",
+      "version": "3.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8f7e877e7024c485c37c117c363585a3934f269f",
+            "comment": "fix: scope menu fallback positioning to non-anchor browsers only"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7a1434afd46468bd84d82b54ab47f1088dc8ac70",
+            "comment": "fix: expose tabindex as an overriden attribute with a default value of 0'"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "294d82a15dc5b01cf9edc260f69607219c82cda9",
+            "comment": "fix: support tabindex values from implementors on buttons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 04:07:36 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.42",
       "version": "3.0.0-beta.42",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: scope menu fallback positioning to non-anchor browsers only",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}
