@@ -134,6 +134,18 @@ export interface IStackedBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
 }
 
 /**
