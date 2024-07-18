@@ -29,6 +29,10 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   calloutlegendText: 'fui-cart__calloutlegendText',
   calloutContentY: 'fui-cart__calloutContentY',
   descriptionMessage: 'fui-cart__descriptionMessage',
+  hover: 'fui-cart__hover',
+  calloutInfoContainer: 'fui-cart__calloutInfoContainer',
+  tooltip: 'fui-cart__tooltip',
+  chartTitle: 'fui-cart__chartTitle',
 };
 
 /**
@@ -237,7 +241,7 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     ),
     calloutlegendText: mergeClasses(
       cartesianchartClassNames.calloutlegendText,
-      baseStyles.calloutlegendText /*props.styles?.calloutlegendText*/,
+      baseStyles.calloutLegendText /*props.styles?.calloutlegendText*/,
     ),
     calloutContentY: mergeClasses(
       cartesianchartClassNames.calloutContentY,
