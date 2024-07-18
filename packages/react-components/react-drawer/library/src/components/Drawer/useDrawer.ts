@@ -20,5 +20,9 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
     InlineDrawerProps | OverlayDrawerProps
   >;
   const root: InlineDrawerProps | OverlayDrawerProps = slot.always({ ref, ...props }, { elementType });
-  return { components: { root: elementType }, root };
+
+  return {
+    components: { root: elementType },
+    root,
+  };
 };
