@@ -33,6 +33,7 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   calloutInfoContainer: 'fui-cart__calloutInfoContainer',
   tooltip: 'fui-cart__tooltip',
   chartTitle: 'fui-cart__chartTitle',
+
 };
 
 /**
