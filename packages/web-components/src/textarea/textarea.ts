@@ -376,7 +376,7 @@ export class TextArea extends FASTElement {
    * The value of the element.
    *
    * @public
-   * @remark
+   * @remarks
    * Reflects the `value` property.
    */
   public get value(): string {
