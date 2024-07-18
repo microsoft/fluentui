@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Tag } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { Steps } from 'storywright';
@@ -12,9 +12,9 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'Tag Converged',
-  Component: Tag,
+  component: Tag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof Tag>;
+} satisfies Meta<typeof Tag>;
 
 export const Default = () => <Tag>Primary Text</Tag>;
 

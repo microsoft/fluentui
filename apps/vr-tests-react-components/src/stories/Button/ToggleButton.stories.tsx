@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ToggleButton } from '@fluentui/react-button';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
 import { buttonId, steps, useStyles } from './utils';
 
@@ -11,7 +11,7 @@ export default {
   title: 'ToggleButton Converged',
   component: ToggleButton,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof ToggleButton>;
+} satisfies Meta<typeof ToggleButton>;
 
 export const Default = () => <ToggleButton id={buttonId}>Hello, world</ToggleButton>;
 

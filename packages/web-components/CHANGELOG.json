@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 18 Jul 2024 04:06:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.45",
+      "version": "3.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "be10f2c88ef24a58b4199416d5d342867a621c7f",
+            "comment": "fix: removed padding from field host element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Jul 2024 04:07:52 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.44",
       "version": "3.0.0-beta.44",

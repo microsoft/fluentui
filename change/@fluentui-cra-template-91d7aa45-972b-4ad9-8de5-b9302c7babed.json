@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: normalize target names and target dependency graph to properly utilize cache hits",
-  "packageName": "@fluentui/cra-template",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
