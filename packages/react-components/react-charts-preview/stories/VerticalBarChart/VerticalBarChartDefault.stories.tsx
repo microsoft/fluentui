@@ -137,7 +137,7 @@ export const VCBasic = () => {
       },
     },
   ];
-  const rootStyle = { width: '650px', height: '500px' };
+  const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
       <p>
@@ -189,27 +189,30 @@ export const VCBasic = () => {
       {showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
-            chartTitle="Vertical bar chart rotated labels example "
+            chartTitle="Vertical bar chart basic example "
             culture={window.navigator.language}
             data={points}
-            height={350}
-            width={650}
+            height={height}
+            width={width}
             hideLegend={true}
-            //rotateXAxisLables={true}
             enableReflow={true}
+            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
         </div>
       )}
       {!showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
-            chartTitle="Vertical bar chart rotated labels example "
+            chartTitle="Vertical bar chart basic example "
             culture={window.navigator.language}
             data={points}
-            height={350}
-            width={650}
+            height={height}
+            width={width}
             hideLegend={true}
             enableReflow={true}
+            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
         </div>
       )}
