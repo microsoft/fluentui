@@ -20,6 +20,13 @@ export type TreeNavigationData_unstable = {
   value: TreeItemValue;
   parentValue: TreeItemValue | undefined;
 } & (
+  | { event: React.FocusEvent<HTMLElement>; type: 'Focus' }
+  /**
+   * @deprecated
+   *
+   * Use `type: 'Focus'` instead of Click,
+   * a real click will trigger a focus event, which will trigger a navigation event,
+   */
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }

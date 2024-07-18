@@ -301,6 +301,16 @@ export type TreeNavigationData_unstable = {
     value: TreeItemValue;
     parentValue: TreeItemValue | undefined;
 } & ({
+    event: React_2.FocusEvent<HTMLElement>;
+    type: 'Focus';
+}
+/**
+* @deprecated
+*
+* Use `type: 'Focus'` instead of Click,
+* a real click will trigger a focus event, which will trigger a navigation event,
+*/
+| {
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';
 } | {

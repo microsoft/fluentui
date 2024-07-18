@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "bugfix: TreeNavigation deprecates Click events in favor of Focus events",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -22,4 +22,5 @@ export const treeDataTypes: {
   ArrowDown,
   TypeAhead: 'TypeAhead',
   Change: 'Change',
+  Focus: 'Focus',
 };
