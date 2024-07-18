@@ -157,6 +157,7 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
     values: string[];
     renderNavButton: NavButtonRenderFunction;
+    groupSize?: number;
 };
 
 // @public
@@ -166,6 +167,8 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
+    groupSize?: number;
+    containScroll?: false | 'keepSnaps' | 'trimSnaps';
 };
 
 // @public
@@ -194,7 +197,7 @@ export type CarouselSlots = {
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public (undocumented)
-export type NavButtonRenderFunction = (value: string) => React_2.ReactNode;
+export type NavButtonRenderFunction = (value: string[]) => React_2.ReactNode;
 
 // @public
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
