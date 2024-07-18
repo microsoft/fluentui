@@ -1,30 +1,26 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '../../src/VerticalBarChart';
-import { IVerticalBarChartDataPoint, ILineChartLineOptions } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-import { useForceUpdate } from '@fluentui/react-hooks';
 
 export const VCBasic = () => {
-  const options: IChoiceGroupOption[] = [
-    { key: 'basicExample', text: 'Basic Example' },
-    { key: 'calloutExample', text: 'Custom Callout Example' },
-  ];
-
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
-  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
+  const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
+
+  const options: IChoiceGroupOption[] = [
+    { key: 'basicExample', text: 'Basic Example' },
+    { key: 'calloutExample', text: 'Custom Callout Example' },
+  ];
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
   };
-
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
@@ -36,17 +32,13 @@ export const VCBasic = () => {
       setIsCalloutSelected(true);
     }
   };
-
   const _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setUseSingleColor(checked);
   };
-
   const _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setHideLabels(checked);
   };
-
   const _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    useForceUpdate();
     setShowAxisTitles(checked);
   };
 
@@ -145,10 +137,7 @@ export const VCBasic = () => {
       },
     },
   ];
-  const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
-
-  const rootStyle = { width: `${width}px`, height: `${height}px` };
-
+  const rootStyle = { width: '650px', height: '500px' };
   return (
     <>
       <p>
@@ -200,47 +189,26 @@ export const VCBasic = () => {
       {showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart rotated labels example "
             culture={window.navigator.language}
-            chartTitle="Vertical bar chart basic example "
             data={points}
-            width={width}
-            useSingleColor={useSingleColor}
-            height={height}
-            lineLegendText={'just line'}
-            lineLegendColor={'brown'}
-            lineOptions={lineOptions}
-            {...(isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })}
-            hideLabels={hideLabels}
+            height={350}
+            width={650}
+            hideLegend={true}
+            //rotateXAxisLables={true}
             enableReflow={true}
-            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
-            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
         </div>
       )}
       {!showAxisTitles && (
         <div style={rootStyle}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart rotated labels example "
             culture={window.navigator.language}
-            chartTitle="Vertical bar chart basic example "
             data={points}
-            width={width}
-            useSingleColor={useSingleColor}
-            height={height}
-            lineLegendText={'just line'}
-            lineLegendColor={'brown'}
-            lineOptions={lineOptions}
-            {...(isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })}
-            hideLabels={hideLabels}
+            height={350}
+            width={650}
+            hideLegend={true}
             enableReflow={true}
           />
         </div>

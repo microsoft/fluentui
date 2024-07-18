@@ -15,13 +15,10 @@ import {
   IAccessibilityProps,
   CartesianChart,
   ChartHoverCard,
-  IBasestate,
   IMargins,
   ILegend,
   IRefArrayData,
   IVerticalBarChartProps,
-  IVerticalBarChartStyleProps,
-  IVerticalBarChartStyles,
   IVerticalBarChartDataPoint,
   Legends,
   IChildProps,
@@ -62,22 +59,22 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _points: IVerticalBarChartDataPoint[];
   let _barWidth: number;
   let _colors: string[];
-  let _refArray: IRefArrayData[] = [];
-  let _calloutId: string = useId('callout');
+  const _refArray: IRefArrayData[] = [];
+  const _calloutId: string = useId('callout');
   let margins: IMargins;
-  let _isRtl: boolean = isRtl();
+  const _isRtl: boolean = isRtl();
   let _bars: JSX.Element[];
   let _xAxisLabels: string[];
   let _yMax: number;
   let _isHavingLine: boolean = _checkForLine();
-  let _tooltipId: string = useId('VCTooltipID_');
-  let _xAxisType: XAxisTypes =
+  const _tooltipId: string = useId('VCTooltipID_');
+  const _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
       : XAxisTypes.StringAxis;
   let _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   let _domainMargin: number;
-  let _emptyChartId: string = useId('_VBC_empty');
+  const _emptyChartId: string = useId('_VBC_empty');
   let _xAxisInnerPadding: number;
   let _xAxisOuterPadding: number;
 
@@ -117,8 +114,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const isStringAxis = _xAxisType === XAxisTypes.StringAxis;
     const { xBarScale } = _getScales(containerHeight, containerWidth);
     const colorScale = _createColors();
-    const { theme } = props;
-    const { data, lineLegendColor = theme!.palette.yellow, lineLegendText } = props;
+    const { data, lineLegendColor = tokens.colorPaletteYellowBackground1, lineLegendText } = props;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lineData: Array<any> = [];
     const line: JSX.Element[] = [];
@@ -154,7 +150,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           fill="transparent"
           strokeLinecap="square"
           strokeWidth={3 + lineBorderWidth * 2}
-          stroke={theme!.semanticColors.bodyBackground}
+          stroke={tokens.colorNeutralBackground1}
         />,
       );
     }
@@ -333,8 +329,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { useSingleColor = false } = props;
     if (useSingleColor) {
       return (_p?: number) => {
-        const { theme, colors } = props;
-        return colors && colors.length > 0 ? colors[0] : theme!.palette.blueLight;
+        const { colors } = props;
+        return colors && colors.length > 0 ? colors[0] : tokens.colorPaletteBlueBackground2;
       };
     }
     const domainValues = [];
@@ -355,8 +351,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   } {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const YValueHover: IYValueHover[] = [];
-    const { theme, useSingleColor = false } = props;
-    const { data, lineLegendText, lineLegendColor = theme!.palette.yellow } = props;
+    const { useSingleColor = false } = props;
+    const { data, lineLegendText, lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     const selectedPoint = data!.filter((xDataPoint: IVerticalBarChartDataPoint) => xDataPoint.x === point.x);
     // there might be no y value of the line for the hovered bar. so we need to check this condition
     if (_isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
@@ -474,8 +470,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     point: IVerticalBarChartDataPoint,
     _refSelected: React.MouseEvent<SVGElement> | SVGCircleElement,
   ) {
-    const { theme } = props;
-    const { lineLegendText = '', lineLegendColor = theme!.palette.yellow } = props;
+    const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     setRefSelected(_refSelected);
     setIsCalloutVisible(false);
     setCalloutLegend(lineLegendText);
@@ -769,7 +764,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   function _getLegendData(data: IVerticalBarChartDataPoint[]): JSX.Element {
-    const { theme, useSingleColor } = props;
+    const { useSingleColor } = props;
     const { lineLegendText, lineLegendColor = tokens.colorPaletteYellowForeground1 } = props;
     const actions: ILegend[] = [];
     data.forEach((point: IVerticalBarChartDataPoint, _index: number) => {
