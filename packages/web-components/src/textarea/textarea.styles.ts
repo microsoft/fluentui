@@ -248,7 +248,7 @@ export const styles: ElementStyles = css`
     block-size: var(--textbox-block-size);
     inline-size: var(--textbox-inline-size);
     padding-inline: var(--textbox-padding-inline);
-    overflow-wrap: break-word;
+    overflow-wrap: break-word; /* Needed for Firefox */
   }
 
   .textbox {
