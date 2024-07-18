@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(Slider): make thumb position clearer when the value is set near edge",
+  "packageName": "@fluentui/react-slider",
+  "email": "vn-group@live.com",
+  "dependentChangeType": "patch"
+}
