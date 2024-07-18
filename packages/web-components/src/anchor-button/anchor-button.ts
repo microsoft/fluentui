@@ -242,6 +242,12 @@ export class BaseAnchor extends FASTElement {
   }
 }
 
+/**
+ * An Anchor Custom HTML Element.
+ * Based on BaseAnchor and includes style and layout specific attributes
+ *
+ * @public
+ */
 export class AnchorButton extends BaseAnchor {
   /**
    * The appearance the anchor button should have.
