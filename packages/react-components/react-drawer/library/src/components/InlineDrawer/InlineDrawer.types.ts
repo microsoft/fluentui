@@ -4,10 +4,11 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { DrawerMotionParams } from '../../shared/drawerMotions';
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
 
+export type SurfaceMotionSlotProps = PresenceMotionSlotProps<DrawerMotionParams>;
+
 export type InlineDrawerSlots = {
   root: Slot<'div', 'aside'>;
-
-  surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
+  surfaceMotion?: Slot<SurfaceMotionSlotProps>;
 };
 
 /**

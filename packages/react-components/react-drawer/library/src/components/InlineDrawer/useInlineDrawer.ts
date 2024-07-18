@@ -1,10 +1,10 @@
-import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
+import { presenceMotionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { type DrawerMotionParams, InlineDrawerMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
-import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types';
+import type { InlineDrawerProps, InlineDrawerState, SurfaceMotionSlotProps } from './InlineDrawer.types';
 
 const STATIC_MOTION = {
   active: true,
@@ -26,14 +26,13 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
   const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false, surfaceMotion } = props;
 
-  return {
+  const state: InlineDrawerState = {
     components: {
       root: 'div',
-      // TODO: remove once React v18 slot API is modified
-      // This is a problem at the moment due to UnknownSlotProps assumption
-      // that `children` property is `ReactNode`, which in this case is not valid
-      // as PresenceComponentProps['children'] is `ReactElement`
-      surfaceMotion: InlineDrawerMotion as unknown as React.FC<PresenceMotionSlotProps<DrawerMotionParams>>,
+      // casting from internal type that has required properties
+      // to external type that only has optional properties
+      // converting to unknown first as both Function component signatures are not compatible
+      surfaceMotion: InlineDrawerMotion as unknown as React.FC<SurfaceMotionSlotProps>,
     },
 
     root: slot.always(
@@ -61,4 +60,8 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     // Deprecated props
     motion: STATIC_MOTION,
   };
+  if (typeof state.components.surfaceMotion === 'function') {
+    state.components.surfaceMotion.defaultProps;
+  }
+  return state;
 };
