@@ -1,9 +1,11 @@
 import * as React from 'react';
-
+import type { Meta } from '@storybook/react';
 import { Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-menu';
 import { makeStyles, shorthands } from '@griffel/react';
 import { PositioningImperativeRef } from '@fluentui/react-positioning';
-import { Steps, StoryWright } from 'storywright';
+import { Steps } from 'storywright';
+
+import { withStoryWrightSteps } from '../../utilities';
 
 const useStyles = makeStyles({
   container: {
@@ -68,9 +70,16 @@ const Example = () => {
   );
 };
 
-const steps = new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end();
-export const NestedSubmenusSmallViewportFlipped = () => (
-  <StoryWright steps={steps}>
-    <Example />
-  </StoryWright>
-);
+export default {
+  title: 'Menu',
+
+  decorators: [
+    story =>
+      withStoryWrightSteps({
+        story,
+        steps: new Steps().snapshot('default').hover('#nested').snapshot('nested menu').end(),
+      }),
+  ],
+} satisfies Meta<typeof Menu>;
+
+export const NestedSubmenusSmallViewportFlipped = () => <Example />;

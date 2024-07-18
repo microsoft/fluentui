@@ -1,4 +1,4 @@
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Avatar, AvatarProps } from '@fluentui/react-avatar';
@@ -203,9 +203,7 @@ export default {
   ],
 } satisfies Meta<typeof Avatar>;
 
-type Story = StoryFn<typeof Avatar>;
-
-export const Basic: Story = () => (
+export const Basic = () => (
   <div style={{ display: 'flex', gap: '24px', padding: '24px' }}>
     <Avatar />
     <Avatar name="First Last" />
@@ -224,21 +222,21 @@ export const BasicRTL = getStoryVariant(Basic, RTL);
 export const BasicDarkMode = getStoryVariant(Basic, DARK_MODE);
 export const BasicHighContrast = getStoryVariant(Basic, HIGH_CONTRAST);
 
-export const SizeName: Story = () => <AvatarList names={examples.name} />;
+export const SizeName = () => <AvatarList names={examples.name} />;
 SizeName.storyName = 'size+name';
 
-export const SizeIconBadgeSquare: Story = () => <AvatarList badge={{ status: 'out-of-office' }} shape="square" />;
+export const SizeIconBadgeSquare = () => <AvatarList badge={{ status: 'out-of-office' }} shape="square" />;
 SizeIconBadgeSquare.storyName = 'size+icon+badge+square';
 
-export const SizeImageBadge: Story = () => <AvatarList images={examples.image} badge={{ status: 'do-not-disturb' }} />;
+export const SizeImageBadge = () => <AvatarList images={examples.image} badge={{ status: 'do-not-disturb' }} />;
 SizeImageBadge.storyName = 'size+image+badge';
 
-export const SizeInactiveBadge: Story = () => (
+export const SizeInactiveBadge = () => (
   <AvatarList images={examples.image} active="inactive" badge={{ status: 'offline' }} />
 );
 SizeInactiveBadge.storyName = 'size+inactive+badge';
 
-export const BadgeMask: Story = () => (
+export const BadgeMask = () => (
   <div
     style={{
       backgroundSize: '32px 32px',
@@ -252,35 +250,29 @@ BadgeMask.storyName = 'badgeMask';
 
 export const BadgeMaskRTL = getStoryVariant(BadgeMask, RTL);
 
-export const CustomSizeImage: Story = () => <AvatarCustomSizeList images={examples.image} />;
+export const CustomSizeImage = () => <AvatarCustomSizeList images={examples.image} />;
 CustomSizeImage.storyName = 'customSize+image';
 
-export const CustomSizeNameBadge: Story = () => (
-  <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />
-);
+export const CustomSizeNameBadge = () => <AvatarCustomSizeList names={examples.name} badge={{ status: 'available' }} />;
 CustomSizeNameBadge.storyName = 'customSize+name+badge';
 
-export const CustomSizeIconActive: Story = () => (
-  <AvatarCustomSizeList active="active" badge={{ status: 'available' }} />
-);
+export const CustomSizeIconActive = () => <AvatarCustomSizeList active="active" badge={{ status: 'available' }} />;
 CustomSizeIconActive.storyName = 'customSize+icon+active';
 
-export const Color: Story = () => <AvatarColors />;
+export const Color = () => <AvatarColors />;
 Color.storyName = 'color';
 
 export const ColorHighContrast = getStoryVariant(Color, HIGH_CONTRAST);
 export const ColorDarkMode = getStoryVariant(Color, DARK_MODE);
 
-export const ColorActive: Story = () => <AvatarColors active="active" />;
+export const ColorActive = () => <AvatarColors active="active" />;
 ColorActive.storyName = 'color+active';
 
 export const ColorActiveHighContrast = getStoryVariant(ColorActive, HIGH_CONTRAST);
 export const ColorActiveDarkMode = getStoryVariant(ColorActive, DARK_MODE);
 
-export const ImageBadUrl: Story = () => (
-  <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />
-);
+export const ImageBadUrl = () => <Avatar name="Broken Image" image={{ src: `${imageRoot}/bad_image_url.jpg` }} />;
 ImageBadUrl.storyName = 'image-bad-url';
 
-export const ImageBadUrlIcon: Story = () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />;
+export const ImageBadUrlIcon = () => <Avatar image={{ src: `${imageRoot}/bad_image_url.jpg` }} />;
 ImageBadUrlIcon.storyName = 'image-bad-url+icon';

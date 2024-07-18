@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 16 Jul 2024 04:08:02 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Jul 2024 04:06:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.45)
+
+Thu, 18 Jul 2024 04:06:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.44..@fluentui/web-components_v3.0.0-beta.45)
+
+### Changes
+
+- fix: removed padding from field host element ([PR #32002](https://github.com/microsoft/fluentui/pull/32002) by jes@microsoft.com)
+
+## [3.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.44)
+
+Wed, 17 Jul 2024 04:07:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.43..@fluentui/web-components_v3.0.0-beta.44)
+
+### Changes
+
+- chore: cleanup drawer storybook ([PR #31991](https://github.com/microsoft/fluentui/pull/31991) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.43)
 

@@ -4,9 +4,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build:withdependencies": "yarn lage build --verbose --scope=@fluentui/local-sandbox --include-filtered-dependencies",
-    "build": "webpack",
-    "build:production": "webpack -p",
+    "bundle": "webpack --mode production",
     "serve": "node ./server.js"
   },
   "dependencies": {

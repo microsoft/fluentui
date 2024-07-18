@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 18 Jul 2024 07:31:11 GMT",
+      "tag": "@fluentui/react_v8.119.2",
+      "version": "8.119.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fc2ee0998ae9b77edd23e78ef72fc1883538ccd7",
+            "comment": "fix: item.onClick is called when SplitMenuItem checkmark is clicked"
+          },
+          {
+            "author": "jamie@index.hm",
+            "package": "@fluentui/react",
+            "commit": "dd5120e3baa8b8716c6c512b0e7b3afede787cc6",
+            "comment": "Fix WindowProvider utilities always returning window/document/undefined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 07:33:32 GMT",
       "tag": "@fluentui/react_v8.119.1",
       "version": "8.119.1",
