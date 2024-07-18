@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
 import { Calendar as CalendarBase } from '@fluentui/react-calendar-compat';
 import { ArrowLeftRegular, ArrowRightRegular, DismissCircleRegular } from '@fluentui/react-icons';
@@ -23,11 +23,9 @@ export default {
   ],
 } satisfies Meta<typeof CalendarBase>;
 
-type Story = StoryFn<typeof CalendarBase>;
+export const Default = () => <Calendar />;
 
-export const Default: Story = () => <Calendar />;
-
-export const CustomIcons: Story = () => (
+export const CustomIcons = () => (
   <Calendar
     calendarDayProps={{
       navigationIcons: {
