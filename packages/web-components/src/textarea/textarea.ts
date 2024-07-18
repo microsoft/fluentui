@@ -477,6 +477,15 @@ export class TextArea extends FASTElement {
   }
 
   /**
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
+   *
+   * @internal
+   */
+  public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
+    this.elementInternals.setFormValue(value, value ?? state);
+  }
+
+  /**
    * Checks the validity of the element and returns the result.
    *
    * @public
@@ -484,18 +493,9 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
    */
   public checkValidity(): boolean {
+    this.userInteracted = true;
+    this.setValidity();
     return this.elementInternals.checkValidity();
-  }
-
-  /**
-   * Sets the custom validity message.
-   * @param message - The message to set
-   *
-   * @public
-   */
-  public setCustomValidity(message: string | undefined): void {
-    this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
-    this.reportValidity();
   }
 
   /**
@@ -506,16 +506,21 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
    */
   public reportValidity(): boolean {
+    this.userInteracted = true;
+    this.setValidity();
     return this.elementInternals.reportValidity();
   }
 
   /**
-   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
+   * Sets the custom validity message.
+   * @param message - The message to set
    *
-   * @internal
+   * @public
    */
-  public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
-    this.elementInternals.setFormValue(value, value ?? state);
+  public setCustomValidity(message: string | undefined): void {
+    this.userInteracted = true;
+    this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
+    this.reportValidity();
   }
 
   /**
@@ -566,7 +571,7 @@ export class TextArea extends FASTElement {
           ...flags,
         },
         message ?? defaultMessage,
-        anchor,
+        anchor ?? this.textbox,
       );
     }
   }

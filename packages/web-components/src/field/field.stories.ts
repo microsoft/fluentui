@@ -177,12 +177,6 @@ export const ValidationMessage: Story<FluentField> = renderComponent(html<StoryA
         This value is not a valid email address.
       </fluent-text>
     </fluent-field>
-
-    <p>
-      The TextArea examples requires user interaction, so update the value by adding 1 character than move the focus
-      outside.
-    </p>
-
     <fluent-field>
       <label slot="label" for="field-type-tooshort2">Too short (TextArea)</label>
       <fluent-textarea minlength="10" slot="input" id="field-type-tooshort2"> 12345 </fluent-textarea>
@@ -190,7 +184,6 @@ export const ValidationMessage: Story<FluentField> = renderComponent(html<StoryA
         This field requires at least 10 characters.
       </fluent-text>
     </fluent-field>
-
     <fluent-field>
       <label slot="label" for="field-type-toolong2">Too long (TextArea)</label>
       <fluent-textarea maxlength="2" slot="input" id="field-type-toolong2"> 123456789 </fluent-textarea>
