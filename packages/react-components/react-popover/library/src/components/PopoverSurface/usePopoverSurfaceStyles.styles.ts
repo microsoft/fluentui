@@ -15,6 +15,8 @@ export const arrowHeights: Record<PopoverSize, number> = {
   large: 8,
 };
 
+const borderWidth = '1px';
+
 /**
  * Styles for the root slot
  */
@@ -24,7 +26,7 @@ const useStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow16,
     borderRadius: tokens.borderRadiusMedium,
-    border: `1px solid ${tokens.colorTransparentStroke}`,
+    border: `${borderWidth} solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
   },
@@ -53,16 +55,18 @@ const useStyles = makeStyles({
 
   smallArrow: createArrowHeightStyles(arrowHeights.small),
   mediumLargeArrow: createArrowHeightStyles(arrowHeights.medium),
-  arrow: createArrowStyles({ arrowHeight: undefined }),
+  arrow: createArrowStyles({ arrowHeight: undefined, borderWidth }),
   arrowTopShadow: {
     /* When arrow is 'above' popover it is outside of surface box shadow,
     This will provide a local shadow when above so that it remains visible.
     */
     ':global([data-popper-placement^="bottom"])': {
+      // We need to overlap any border present in this scenario
+      top: '0px',
       '::before': {
         boxShadow: tokens.shadow16,
         /* Clip the box on two sides, give ample room for various shadow tokens */
-        clipPath: `polygon(50% calc(50% - 0.5px), -1000% 1100%, 1000% 1000%, 1100% -1000%)`,
+        clipPath: `polygon(50% calc(50% - ${borderWidth}), -1000% 1100%, 1000% 1000%, 1100% -1000%)`,
       },
     },
   },
