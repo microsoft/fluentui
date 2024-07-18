@@ -329,7 +329,23 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       });
 
       return (
-        <React.Fragment key={index}>
+        <g
+          key={index}
+          className={this._classNames.opacityChangeOnHover}
+          ref={(e: SVGGElement) => {
+            this._refCallback(e, legend.title);
+          }}
+          data-is-focusable={!this.props.hideTooltip && shouldHighlight}
+          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+          onBlur={this._onBarLeave}
+          aria-label={this._getAriaLabel(point)}
+          role="img"
+          onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
+          onMouseLeave={this._onBarLeave}
+          pointerEvents="all"
+          onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
+        >
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${pointData}`} >
@@ -339,39 +355,21 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               </linearGradient>
             </defs>
           )}
-          <g
-
-            className={this._classNames.opacityChangeOnHover}
-            ref={(e: SVGGElement) => {
-              this._refCallback(e, legend.title);
-            }}
-            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-            onFocus={this._onBarFocus.bind(this, pointData, color, point)}
-            onBlur={this._onBarLeave}
-            aria-label={this._getAriaLabel(point)}
-            role="img"
-            onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
-            onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
-            onMouseLeave={this._onBarLeave}
-            pointerEvents="all"
-            onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
-          >
-            <rect
-              key={index}
-              id={getId('_SBC_bar')}
-              x={`${
-                this._isRTL
-                  ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
-                  : startingPoint[index] + this.state.barSpacingInPercent * index
-              }%`}
-              y={0}
-              width={value + '%'}
-              height={barHeight}
-              rx={this.props.roundCorners ? barHeight / 2 : 0}
-              fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
-            />
-          </g>
-        </React.Fragment>
+          <rect
+            key={index}
+            id={getId('_SBC_bar')}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
+            }%`}
+            y={0}
+            width={value + '%'}
+            height={barHeight}
+            rx={this.props.roundCorners ? barHeight / 2 : 0}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
+          />
+        </g>
       );
     });
 
