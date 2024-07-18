@@ -243,7 +243,7 @@ export class BaseAnchor extends FASTElement {
 }
 
 /**
- * A Anchor Custom HTML Element.
+ * An Anchor Custom HTML Element.
  * Based on BaseAnchor and includes style and layout specific attributes
  *
  * @public
