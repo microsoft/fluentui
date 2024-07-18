@@ -12,7 +12,8 @@ export const listboxClassNames: SlotClassNames<ListboxSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: tokens.colorMaterialTertiaryBackground,
+    backdropFilter: tokens.blurMaterialTertiary,
     boxSizing: 'border-box',
     display: 'flex',
     flexDirection: 'column',
