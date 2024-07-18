@@ -22,7 +22,12 @@ describe('Carousel', () => {
     requiredProps: {
       defaultValue: 'test',
     },
-  });
+    testOptions: {
+      'make-styles-overrides-win': {
+        callCount: 2,
+      },
+    },
+  } as any);
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
