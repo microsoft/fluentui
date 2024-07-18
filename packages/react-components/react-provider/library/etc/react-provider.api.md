@@ -67,6 +67,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMenuItemSwitchStyles_unstable: (state: unknown) => void;
         useMenuItemRadioStyles_unstable: (state: unknown) => void;
         useMenuItemStyles_unstable: (state: unknown) => void;
+        useMenuItemLinkStyles_unstable: (state: unknown) => void;
         useMenuListStyles_unstable: (state: unknown) => void;
         useMenuPopoverStyles_unstable: (state: unknown) => void;
         useMenuSplitGroupStyles_unstable: (state: unknown) => void;
