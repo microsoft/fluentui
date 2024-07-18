@@ -222,6 +222,7 @@
     "./dist/esm/tabs/define.js",
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
+    "./dist/esm/textarea/define.js",
     "./dist/esm/text-input/define.js",
     "./dist/esm/toggle-button/define.js",
     "./dist/web-components.js",
