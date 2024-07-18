@@ -1,5 +1,6 @@
 import * as React from 'react';
 // import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { IModifiedCartesianChartProps, IYValueHover, IHorizontalBarChartWithAxisDataPoint } from '../../index';
 import { useCartesianChartStyles_unstable } from './useCartesianChartStyles.styles';
@@ -39,17 +40,17 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
 >((props, forwardedRef) => {
   let chartContainer: HTMLDivElement;
   let legendContainer: HTMLDivElement;
-  let minLegendContainerHeight: number = 32;
+  const minLegendContainerHeight: number = 32;
   let xAxisElement: SVGElement | null;
   let yAxisElement: SVGElement | null;
   let yAxisElementSecondary: SVGElement | null;
   let margins: IMargins;
-  let idForGraph: string = 'chart_';
-  let idForDefaultTabbableElement: string = 'defaultTabbableElement_';
+  const idForGraph: string = 'chart_';
+  const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
   let _reqID: number;
-  let _isRtl: boolean = isRtl();
+  const _isRtl: boolean = isRtl();
   let _tickValues: (string | number)[];
-  let titleMargin: number = 8;
+  const titleMargin: number = 8;
   let _isFirstRender: boolean = true;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;

@@ -69,7 +69,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
-      setRefSelected(currentHoveredElement!.refElement);
+      setRefSelected(currentHoveredElement?.refElement);
       setXCalloutValue(point.xAxisCalloutData!);
       setYCalloutValue(point.yAxisCalloutData!);
       setBarCalloutProps(point);

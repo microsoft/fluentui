@@ -29,6 +29,11 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   calloutlegendText: 'fui-cart__calloutlegendText',
   calloutContentY: 'fui-cart__calloutContentY',
   descriptionMessage: 'fui-cart__descriptionMessage',
+  hover: 'fui-cart__hover',
+  calloutInfoContainer: 'fui-cart__calloutInfoContainer',
+  tooltip: 'fui-cart__tooltip',
+  chartTitle: 'fui-cart__chartTitle',
+
 };
 
 /**

@@ -42,6 +42,7 @@
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.7",
     "@fluentui/react-popover": "^9.9.0",
+    "@fluentui/react-tabster": "^9.22.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "@types/d3-array": "3",
