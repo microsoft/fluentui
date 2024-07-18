@@ -112,6 +112,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
       this._longestBarTotalValue = this._computeLongestBarTotalValue();
+
       const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
         const singleChartBars = this._createBarsAndLegends(
           singleChartData!,
@@ -159,6 +160,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </div>
       );
     }
+
     return (
       <div
         id={this._emptyChartId}
@@ -249,6 +251,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         : point.placeHolder
         ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color2: string = (data.chartData?.[index + 1] && data.chartData?.[index + 1].color) ?? color;
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;
@@ -275,6 +278,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
+
       return (
         <g
           key={index}
@@ -292,6 +296,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           onMouseLeave={this._onBarLeave}
           onClick={href ? (point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)) : point.onClick}
         >
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}_${pointData}`} >
+                <stop offset="0" stopColor={color} />
+                <stop offset="50%" stopColor={color} />
+                <stop offset="100%" stopColor={color2} />
+              </linearGradient>
+            </defs>
+          )}
           <rect
             key={index}
             id={`${this._barId}-${barNo}-${index}`}
@@ -303,7 +316,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             y={0}
             width={value + '%'}
             height={barHeight}
-            fill={color}
+            rx={this.props.roundCorners ? barHeight / 2 : 0}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
           />
         </g>
       );

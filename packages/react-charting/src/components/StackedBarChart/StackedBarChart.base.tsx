@@ -9,6 +9,7 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { convertToLocaleString } from '../../utilities/locale-util';
+import React = require('react');
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -121,6 +122,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       });
       const getChartData = () =>
         convertToLocaleString(data!.chartData![0].data ? data!.chartData![0].data : 0, culture);
+
       return (
         <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
           <FocusZone direction={FocusZoneDirection.horizontal}>
@@ -197,6 +199,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         </div>
       );
     }
+
     return (
       <div
         id={this._emptyChartId}
@@ -248,6 +251,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     let value = 0;
 
     let sumOfPercent = 0;
+
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
       value = (pointData / total) * 100;
@@ -273,6 +277,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      const color2: string = (data.chartData?.[index + 1] && data.chartData?.[index + 1].color) ?? color;
       const pointData = point.data ? point.data : 0;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
@@ -298,6 +303,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               }
             : undefined,
       };
+
       if (!point.placeHolder) {
         legendDataItems.push(legend);
       }
@@ -312,6 +318,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       } else {
         value = value / scalingRatio;
       }
+
       startingPoint.push(prevPosition);
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
@@ -322,37 +329,49 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       });
 
       return (
-        <g
-          key={index}
-          className={this._classNames.opacityChangeOnHover}
-          ref={(e: SVGGElement) => {
-            this._refCallback(e, legend.title);
-          }}
-          data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
-          onBlur={this._onBarLeave}
-          aria-label={this._getAriaLabel(point)}
-          role="img"
-          onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
-          onMouseLeave={this._onBarLeave}
-          pointerEvents="all"
-          onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
-        >
-          <rect
-            key={index}
-            id={getId('_SBC_bar')}
-            x={`${
-              this._isRTL
-                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
-                : startingPoint[index] + this.state.barSpacingInPercent * index
-            }%`}
-            y={0}
-            width={value + '%'}
-            height={barHeight}
-            fill={color}
-          />
-        </g>
+        <React.Fragment key={index}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={`gradient_${index}_${pointData}`} >
+                <stop offset="0" stopColor={color} />
+                <stop offset="50%" stopColor={color} />
+                <stop offset="100%" stopColor={color2} />
+              </linearGradient>
+            </defs>
+          )}
+          <g
+
+            className={this._classNames.opacityChangeOnHover}
+            ref={(e: SVGGElement) => {
+              this._refCallback(e, legend.title);
+            }}
+            data-is-focusable={!this.props.hideTooltip && shouldHighlight}
+            onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+            onBlur={this._onBarLeave}
+            aria-label={this._getAriaLabel(point)}
+            role="img"
+            onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
+            onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
+            onMouseLeave={this._onBarLeave}
+            pointerEvents="all"
+            onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
+          >
+            <rect
+              key={index}
+              id={getId('_SBC_bar')}
+              x={`${
+                this._isRTL
+                  ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                  : startingPoint[index] + this.state.barSpacingInPercent * index
+              }%`}
+              y={0}
+              width={value + '%'}
+              height={barHeight}
+              rx={this.props.roundCorners ? barHeight / 2 : 0}
+              fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
+            />
+          </g>
+        </React.Fragment>
       );
     });
 

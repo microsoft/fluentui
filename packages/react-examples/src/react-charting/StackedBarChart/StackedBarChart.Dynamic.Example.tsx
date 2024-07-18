@@ -10,11 +10,14 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export interface IExampleState {
   dynamicData: IChartProps;
   statusKey: number;
   statusMessage: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -80,6 +83,8 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       },
       statusKey: 0,
       statusMessage: '',
+      enableGradient: false,
+      roundCorners: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -89,6 +94,22 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   public render(): JSX.Element {
     return (
       <div>
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundCorners}
+          />
+        </div>
+        <br />
+
         <StackedBarChart
           data={this.state.dynamicData}
           // eslint-disable-next-line react/jsx-no-bind
@@ -101,7 +122,11 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
               />
             ) : null
           }
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
+        <br />
+
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
         <div aria-live="polite" aria-atomic="true">
@@ -153,4 +178,12 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
   private _randomColor(index: number): string {
     return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ roundCorners: checked });
+  };
 }
