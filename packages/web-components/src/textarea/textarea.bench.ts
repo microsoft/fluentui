@@ -4,8 +4,8 @@ import { definition } from './textarea.definition.js';
 definition.define(FluentDesignSystem.registry);
 
 const itemRenderer = () => {
-  const textInput = document.createElement('fluent-text-area');
-  return textInput;
+  const textarea = document.createElement('fluent-textarea');
+  return textarea;
 };
 
 export default itemRenderer;
