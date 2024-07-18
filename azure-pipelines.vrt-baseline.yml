@@ -22,7 +22,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
@@ -56,7 +55,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
@@ -90,7 +88,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
@@ -123,7 +120,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0

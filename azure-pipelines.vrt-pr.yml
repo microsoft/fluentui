@@ -26,7 +26,6 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
@@ -101,8 +100,6 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
-      - template: download-vr-cli.yml
-
       - bash: |
           postPolicy="true";
           response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
@@ -174,8 +171,6 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
-
-      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
@@ -249,8 +244,6 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
-
-      - template: download-vr-cli.yml
 
       - bash: |
           postPolicy="true";
