@@ -678,6 +678,10 @@ export class TextArea extends FASTElement {
     this.lastPointerY = pointerY;
 
     if (!this.elementInternals.states.has('resized')) {
+      this.style.setProperty('width', 'unset');
+      this.style.setProperty('height', 'unset');
+      this.style.setProperty('inline-size', 'unset');
+      this.style.setProperty('block-size', 'unset');
       toggleState(this.elementInternals, 'resized', true);
     }
   }
