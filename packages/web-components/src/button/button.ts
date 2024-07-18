@@ -424,6 +424,12 @@ export class BaseButton extends FASTElement {
   }
 }
 
+/**
+ * A Button Custom HTML Element.
+ * Based on BaseButton and includes style and layout specific attributes
+ *
+ * @public
+ */
 export class Button extends BaseButton {
   /**
    * Indicates the styled appearance of the button.

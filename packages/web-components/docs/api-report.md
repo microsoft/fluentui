@@ -134,9 +134,8 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
-// Warning: (ae-missing-release-tag) "AnchorButton" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
     appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
@@ -479,9 +478,8 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-forgotten-export) The symbol "BaseButton" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
-// Warning: (ae-missing-release-tag) "Button" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class Button extends BaseButton {
     appearance?: ButtonAppearance;
     appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
