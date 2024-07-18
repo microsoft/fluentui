@@ -5,8 +5,10 @@ export {
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
   TextAreaResizableResize,
+  TextAreaHorizontallyResizableResize,
+  TextAreaVerticallyResizableResize,
+  TextAreaResize,
   TextAreaSize,
 } from './textarea.options.js';
-export type { TextAreaOptions } from './textarea.options.js';
 export { styles as TextAreaStyles } from './textarea.styles.js';
 export { template as TextAreaTemplate } from './textarea.template.js';

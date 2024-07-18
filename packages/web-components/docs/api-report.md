@@ -517,6 +517,7 @@ export class Button extends FASTElement {
     shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
     sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
+    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
@@ -2000,7 +2001,7 @@ export class Drawer extends FASTElement {
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class DrawerBody extends FASTElement {
 }
 
@@ -3346,6 +3347,147 @@ export const TextAlign: {
 
 // @public
 export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// @public
+export class TextArea extends FASTElement {
+    constructor();
+    appearance: TextAreaAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
+    autocomplete?: TextAreaAutocomplete;
+    autoResize: boolean;
+    // (undocumented)
+    protected autoResizeChanged(): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    dirName?: string;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // @internal (undocumented)
+    handleTextboxBlur(): void;
+    // @internal (undocumented)
+    handleTextboxFocus(): void;
+    initialForm?: string;
+    get labels(): NodeList;
+    maxLength?: number;
+    minLength?: number;
+    name: string;
+    placeholder?: string;
+    // (undocumented)
+    protected placeholderChanged(): void;
+    // @internal
+    placeholderContainer: HTMLDivElement;
+    readOnly: boolean;
+    // (undocumented)
+    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    protected requiredChanged(): void;
+    resize: TextAreaResize;
+    // (undocumented)
+    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    // @internal
+    resizeHandle: HTMLButtonElement;
+    select(): void;
+    setCustomValidity(message: string | undefined): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size?: TextAreaSize;
+    // (undocumented)
+    protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
+    // @internal (undocumented)
+    sizeStyles: string;
+    spellcheck: boolean;
+    // @internal
+    textbox: HTMLDivElement;
+    get type(): 'textarea';
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(next: string);
+    get willValidate(): boolean;
+}
+
+// Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAppearance: {
+    readonly outline: "outline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public (undocumented)
+export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAutocomplete: {
+    readonly on: "on";
+    readonly off: "off";
+};
+
+// @public (undocumented)
+export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
+
+// @public
+export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaResize: {
+    readonly none: "none";
+    readonly both: "both";
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public (undocumented)
+export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+// Warning: (ae-missing-release-tag) "TextAreaSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TextAreaSize = ValuesOf<typeof TextAreaSize>;
+
+// @public
+export const TextAreaStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextAreaTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;

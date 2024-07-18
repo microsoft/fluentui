@@ -222,7 +222,10 @@ export type { TabsOptions } from './tabs/index.js';
 export {
   TextArea,
   TextAreaAppearance,
+  TextAreaAutocomplete,
   TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
   TextAreaStyles,
   TextAreaTemplate,
 } from './textarea/index.js';
