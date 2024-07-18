@@ -126,7 +126,7 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
 export const DrawerProvider: React_2.Provider<DrawerContextValue | undefined>;
 
 // @public (undocumented)
-export type DrawerSlots = OverlayDrawerSlots | InlineDrawerSlots;
+export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
 
 // @public
 export type DrawerState = ComponentState<DrawerSlots>;
@@ -145,7 +145,7 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBasePr
 // @public (undocumented)
 export type InlineDrawerSlots = {
     root: Slot<'div', 'aside'>;
-    surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
+    surfaceMotion?: Slot<SurfaceMotionSlotProps>;
 };
 
 // @public

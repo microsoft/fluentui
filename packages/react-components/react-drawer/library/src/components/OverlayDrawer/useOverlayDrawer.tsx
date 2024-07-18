@@ -29,7 +29,7 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion } = props;
+  const { backdropMotion, modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion } = props;
 
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
@@ -39,7 +39,7 @@ export const useOverlayDrawer_unstable = (
       ...props,
       ref,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
-      backdropMotion: mergePresenceSlots(props.backdropMotion, OverlaySurfaceBackdropMotion, { size }),
+      backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
     },
     {
       /**

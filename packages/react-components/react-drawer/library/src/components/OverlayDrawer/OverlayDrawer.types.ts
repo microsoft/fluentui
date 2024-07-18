@@ -2,15 +2,20 @@ import type { DialogProps } from '@fluentui/react-dialog';
 import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-import type { DrawerMotionParams } from '../../shared/drawerMotions';
+import type { DrawerMotionParams, OverlayDrawerSurfaceMotionParams } from '../../shared/drawerMotions';
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
-import { OverlayDrawerSurfaceSlots } from './OverlayDrawerSurface';
+import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface';
 
 /**
  * OverlayDrawer slots
  */
-export type OverlayDrawerSlots = Pick<OverlayDrawerSurfaceSlots, 'root' | 'backdrop'> & {
-  backdropMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
+export type OverlayDrawerSlots = {
+  /**
+   * Slot for the root element.
+   */
+  root: Slot<OverlayDrawerSurfaceProps>;
+
+  backdropMotion?: Slot<PresenceMotionSlotProps<OverlayDrawerSurfaceMotionParams>>;
   surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
 };
 
