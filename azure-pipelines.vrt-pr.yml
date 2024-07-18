@@ -83,8 +83,9 @@ jobs:
           azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
+          # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
           inlineScript: |
-            vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
+            yarn vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
         condition: eq(variables['vrTestSkip'], 'no')
 
   - job: VisualRegressionTest_V9
@@ -156,8 +157,9 @@ jobs:
           azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
+          # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
           inlineScript: |
-            vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '1'
+            yarn vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '1'
         condition: eq(variables['vrTestSkip'], 'no')
 
   - job: VisualRegressionTest_V8
@@ -228,8 +230,9 @@ jobs:
           azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
+          # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
           inlineScript: |
-            vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
+            yarn vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
         condition: eq(variables['vrTestSkip'], 'no')
 
   - job: VisualRegressionTest_V0
@@ -300,6 +303,7 @@ jobs:
           azureSubscription: $(AzureSubscription)
           scriptType: bash
           scriptLocation: 'inlineScript'
+          # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
           inlineScript: |
-            vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '1'
+            yarn vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '1'
         condition: eq(variables['vrTestSkip'], 'no')
