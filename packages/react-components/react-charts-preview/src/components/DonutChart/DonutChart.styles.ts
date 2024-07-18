@@ -1,31 +1,52 @@
-import { IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
+import { IDonutChartProps, IDonutChartStyles } from './index';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
-export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
-  const { className, width, height, theme } = props;
+/**
+ * @internal
+ */
+export const donutClassNames: SlotClassNames<IDonutChartStyles> = {
+  root: 'fui-donut__root',
+  chart: 'fui-donut__chart',
+  legendContainer: 'fui-donut__legendContainer',
+};
+
+/**
+ * Base Styles
+ */
+const useStyles = makeStyles({
+  root: {
+    alignItems: 'center',
+    // TO DO remove these
+    // display: 'flex',
+    // flexDirection: 'column',
+    width: '100%',
+    height: '100%',
+  },
+  chart: {
+    boxSizing: 'content-box',
+    alignmentAdjust: 'center',
+    display: 'block',
+    ...shorthands.overflow('visible'),
+  },
+  legendContainer: { paddingTop: '16px' },
+});
+
+/**
+ * Apply styling to the DonutChart component
+ */
+export const useDonutChartStyles_unstable = (props: IDonutChartProps): IDonutChartStyles => {
+  const { className } = props;
+  const baseStyles = useStyles();
+
   return {
-    root: [
-      theme.fonts.medium,
-      'ms-DonutChart',
-      {
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
-        height: '100%',
-      },
-      className,
-    ],
-    chart: {
-      width: width,
-      height: height,
-      boxSizing: 'content-box',
-      overflow: 'visible',
-      alignmentAdjust: 'center',
-      display: 'block',
-    },
-    legendContainer: {
-      paddingTop: '16px',
-      width: `${width}px`,
-    },
+    root: mergeClasses(donutClassNames.root, baseStyles.root, className, props.styles?.root),
+    chart: mergeClasses(donutClassNames.chart, baseStyles.chart, props.styles?.chart),
+    legendContainer: mergeClasses(
+      donutClassNames.legendContainer,
+      baseStyles.legendContainer,
+      props.styles?.legendContainer,
+    ),
   };
 };

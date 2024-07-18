@@ -3,419 +3,179 @@
 exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class=
-
-        {
-          display: flex;
-          flex-direction: column;
-          width: 300px;
-        }
+    class="fui-hbc__root"
   >
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                one
-              </span>
-              <div
-                hidden=""
-                id="tooltip3"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                one
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              1,543
-            </div>
+            one
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            1,543
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="one"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="one"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_0"
           >
-            <g
-              id="_HorizontalLine_lllllm_0"
-            >
-              <rect
-                aria-label="2020/04/30, 10%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#004b50"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="10.286666666666665%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="13457/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="89.71333333333334%"
-                x="10.286666666666665%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 10%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#004b50"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="10.286666666666665%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="13457/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                two
-              </span>
-              <div
-                hidden=""
-                id="tooltip6"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                two
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              800
-            </div>
+            two
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            800
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="two"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="two"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_1"
           >
-            <g
-              id="_HorizontalLine_lllllm_1"
-            >
-              <rect
-                aria-label="2020/04/30, 5%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#5c2d91"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="5.333333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="14200/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="94.66666666666667%"
-                x="5.333333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 5%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#5c2d91"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="5.333333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="14200/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                three
-              </span>
-              <div
-                hidden=""
-                id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                three
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              8,888
-            </div>
+            three
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            8,888
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="three"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="three"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_2"
           >
-            <g
-              id="_HorizontalLine_lllllm_2"
-            >
-              <rect
-                aria-label="2020/04/30, 59%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#a4262c"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="59.25333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="6112/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="40.74666666666666%"
-                x="59.25333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 59%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#a4262c"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="59.25333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="6112/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="40.74666666666666%"
+              x="59.25333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
-    <span
-      class="ms-layer"
-    />
   </div>
 </div>
 `;
@@ -423,120 +183,224 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class=
-
-        {
-          display: flex;
-          flex-direction: column;
-          width: 300px;
-        }
+    class="fui-hbc__root"
   >
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
+          >
+            one
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            1,543
+          </div>
+        </div>
+        <svg
+          aria-label="one"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+          >
+            <rect
+              aria-label="2020/04/30, 10%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#004b50"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="10.286666666666665%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="13457/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y="0"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <div
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      >
+        <div
+          class="fui-hbc__chartTitle"
+        >
+          <div
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
+          >
+            two
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            800
+          </div>
+        </div>
+        <svg
+          aria-label="two"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+          >
+            <rect
+              aria-label="2020/04/30, 5%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#5c2d91"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="5.333333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="14200/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <div
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      >
+        <div
+          class="fui-hbc__chartTitle"
+        >
+          <div
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
+          >
+            three
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            8,888
+          </div>
+        </div>
+        <svg
+          aria-label="three"
+          class="fui-hbc__chart"
+        >
+          <g
+            id="_HorizontalLine_lllllm_2"
+          >
+            <rect
+              aria-label="2020/04/30, 59%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#a4262c"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="59.25333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="6112/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="40.74666666666666%"
+              x="59.25333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
 
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
+<div>
+  <div
+    class="body-109"
+  >
+    <div
+      class="fui-hbc__root"
+    >
+      <div>
+        <div
+          class="fui-hbc__items"
+          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        >
+          <div
+            class="fui-hbc__chartTitle"
           >
             <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
+              class="fui-hbc__chartTitleLeft"
+              data-is-focusable="true"
+              role="text"
             >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                one
-              </span>
-              <div
-                hidden=""
-                id="tooltip3"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                one
-              </div>
+              one
             </div>
             <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
+              class="fui-hbc__chartTitleRight"
               data-is-focusable="false"
               role="text"
-              tabindex="-1"
             >
               1,543
             </div>
           </div>
-        </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
-        >
           <svg
             aria-label="one"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+            class="fui-hbc__chart"
           >
             <g
               id="_HorizontalLine_lllllm_0"
             >
               <rect
                 aria-label="2020/04/30, 10%."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="true"
                 fill="#004b50"
                 height="12"
@@ -548,14 +412,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               />
               <rect
                 aria-label="13457/15000."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="#edebe9"
+                fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
-                tabindex="-1"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
                 y="0"
@@ -564,113 +425,39 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           </svg>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
-      >
+      <div>
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__items"
+          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitle"
           >
             <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
+              class="fui-hbc__chartTitleLeft"
+              data-is-focusable="true"
+              role="text"
             >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                two
-              </span>
-              <div
-                hidden=""
-                id="tooltip6"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                two
-              </div>
+              two
             </div>
             <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
+              class="fui-hbc__chartTitleRight"
               data-is-focusable="false"
               role="text"
-              tabindex="-1"
             >
               800
             </div>
           </div>
-        </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
-        >
           <svg
             aria-label="two"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+            class="fui-hbc__chart"
           >
             <g
               id="_HorizontalLine_lllllm_1"
             >
               <rect
                 aria-label="2020/04/30, 5%."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="true"
                 fill="#5c2d91"
                 height="12"
@@ -682,14 +469,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               />
               <rect
                 aria-label="14200/15000."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="#edebe9"
+                fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
-                tabindex="-1"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
                 y="0"
@@ -698,113 +482,39 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           </svg>
         </div>
       </div>
-    </div>
-    <div>
-      <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
-      >
+      <div>
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__items"
+          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitle"
           >
             <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
+              class="fui-hbc__chartTitleLeft"
+              data-is-focusable="true"
+              role="text"
             >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                three
-              </span>
-              <div
-                hidden=""
-                id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                three
-              </div>
+              three
             </div>
             <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
+              class="fui-hbc__chartTitleRight"
               data-is-focusable="false"
               role="text"
-              tabindex="-1"
             >
               8,888
             </div>
           </div>
-        </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
-        >
           <svg
             aria-label="three"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+            class="fui-hbc__chart"
           >
             <g
               id="_HorizontalLine_lllllm_2"
             >
               <rect
                 aria-label="2020/04/30, 59%."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="true"
                 fill="#a4262c"
                 height="12"
@@ -816,14 +526,11 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
               />
               <rect
                 aria-label="6112/15000."
-                class=
-
-
+                class="fui-hbc__barWrapper"
                 data-is-focusable="false"
-                fill="#edebe9"
+                fill="var(--colorBackgroundOverlay)"
                 height="12"
                 role="img"
-                tabindex="-1"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
                 y="0"
@@ -832,443 +539,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
           </svg>
         </div>
       </div>
-    </div>
-    <span
-      class="ms-layer"
-    />
-  </div>
-</div>
-`;
-
-exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background: #1b1a19;
-          color: #f3f2f1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
-  >
-    <div
-      class=
-
-          {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          class=
-
-              {
-                margin-bottom: 10px;
-              }
-        >
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-            data-focuszone-id="FocusZone5"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <div
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: flex;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    justify-content: space-between;
-                  }
-            >
-              <div
-                class=
-                    ms-TooltipHost
-                    {
-                      color: #f3f2f1;
-                      display: block;
-                      margin-bottom: 5px;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      white-space: nowrap;
-                    }
-                role="none"
-              >
-                <span
-                  data-is-focusable="false"
-                  role="text"
-                  tabindex="-1"
-                >
-                  one
-                </span>
-                <div
-                  hidden=""
-                  id="tooltip6"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-                >
-                  one
-                </div>
-              </div>
-              <div
-                class=
-
-                    {
-                      color: #f3f2f1;
-                      font-size: 14px;
-                      font-weight: 600;
-                    }
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                1,543
-              </div>
-            </div>
-          </div>
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  padding-right: 0px;
-                }
-            data-focuszone-id="FocusZone7"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <svg
-              aria-label="one"
-              class=
-
-                  {
-                    display: block;
-                    height: 12px;
-                    overflow: visible;
-                    width: 100%;
-                  }
-              focusable="false"
-            >
-              <g
-                id="_HorizontalLine_lllllm_0"
-              >
-                <rect
-                  aria-label="2020/04/30, 10%."
-                  class=
-
-
-                  data-is-focusable="true"
-                  fill="#004b50"
-                  height="12"
-                  role="img"
-                  tabindex="0"
-                  width="10.286666666666665%"
-                  x="0%"
-                  y="0"
-                />
-                <rect
-                  aria-label="13457/15000."
-                  class=
-
-
-                  data-is-focusable="false"
-                  fill="#292827"
-                  height="12"
-                  role="img"
-                  tabindex="-1"
-                  width="89.71333333333334%"
-                  x="10.286666666666665%"
-                  y="0"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          class=
-
-              {
-                margin-bottom: 10px;
-              }
-        >
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-            data-focuszone-id="FocusZone8"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <div
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: flex;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    justify-content: space-between;
-                  }
-            >
-              <div
-                class=
-                    ms-TooltipHost
-                    {
-                      color: #f3f2f1;
-                      display: block;
-                      margin-bottom: 5px;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      white-space: nowrap;
-                    }
-                role="none"
-              >
-                <span
-                  data-is-focusable="false"
-                  role="text"
-                  tabindex="-1"
-                >
-                  two
-                </span>
-                <div
-                  hidden=""
-                  id="tooltip9"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-                >
-                  two
-                </div>
-              </div>
-              <div
-                class=
-
-                    {
-                      color: #f3f2f1;
-                      font-size: 14px;
-                      font-weight: 600;
-                    }
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                800
-              </div>
-            </div>
-          </div>
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  padding-right: 0px;
-                }
-            data-focuszone-id="FocusZone10"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <svg
-              aria-label="two"
-              class=
-
-                  {
-                    display: block;
-                    height: 12px;
-                    overflow: visible;
-                    width: 100%;
-                  }
-              focusable="false"
-            >
-              <g
-                id="_HorizontalLine_lllllm_1"
-              >
-                <rect
-                  aria-label="2020/04/30, 5%."
-                  class=
-
-
-                  data-is-focusable="true"
-                  fill="#5c2d91"
-                  height="12"
-                  role="img"
-                  tabindex="0"
-                  width="5.333333333333334%"
-                  x="0%"
-                  y="0"
-                />
-                <rect
-                  aria-label="14200/15000."
-                  class=
-
-
-                  data-is-focusable="false"
-                  fill="#292827"
-                  height="12"
-                  role="img"
-                  tabindex="-1"
-                  width="94.66666666666667%"
-                  x="5.333333333333334%"
-                  y="0"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div>
-        <div
-          class=
-
-              {
-                margin-bottom: 10px;
-              }
-        >
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-            data-focuszone-id="FocusZone11"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <div
-              class=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: flex;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    justify-content: space-between;
-                  }
-            >
-              <div
-                class=
-                    ms-TooltipHost
-                    {
-                      color: #f3f2f1;
-                      display: block;
-                      margin-bottom: 5px;
-                      overflow: hidden;
-                      text-overflow: ellipsis;
-                      white-space: nowrap;
-                    }
-                role="none"
-              >
-                <span
-                  data-is-focusable="false"
-                  role="text"
-                  tabindex="-1"
-                >
-                  three
-                </span>
-                <div
-                  hidden=""
-                  id="tooltip12"
-                  style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-                >
-                  three
-                </div>
-              </div>
-              <div
-                class=
-
-                    {
-                      color: #f3f2f1;
-                      font-size: 14px;
-                      font-weight: 600;
-                    }
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                8,888
-              </div>
-            </div>
-          </div>
-          <div
-            class=
-                ms-FocusZone
-                &:focus {
-                  outline: none;
-                }
-                {
-                  padding-right: 0px;
-                }
-            data-focuszone-id="FocusZone13"
-            data-tabster="{\\"uncontrolled\\": {}}"
-          >
-            <svg
-              aria-label="three"
-              class=
-
-                  {
-                    display: block;
-                    height: 12px;
-                    overflow: visible;
-                    width: 100%;
-                  }
-              focusable="false"
-            >
-              <g
-                id="_HorizontalLine_lllllm_2"
-              >
-                <rect
-                  aria-label="2020/04/30, 59%."
-                  class=
-
-
-                  data-is-focusable="true"
-                  fill="#a4262c"
-                  height="12"
-                  role="img"
-                  tabindex="0"
-                  width="59.25333333333334%"
-                  x="0%"
-                  y="0"
-                />
-                <rect
-                  aria-label="6112/15000."
-                  class=
-
-
-                  data-is-focusable="false"
-                  fill="#292827"
-                  height="12"
-                  role="img"
-                  tabindex="-1"
-                  width="40.74666666666666%"
-                  x="59.25333333333334%"
-                  y="0"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-      <span
-        class="ms-layer"
-      />
     </div>
   </div>
 </div>
@@ -1278,7 +548,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty1"
+    id="_HBC_empty16"
     role="alert"
     style="opacity: 0;"
   />
@@ -1288,420 +558,180 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar chart with data 2`] = `
 <div>
   <div
-    class=
-
-        {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-        }
+    class="fui-hbc__root"
     style=""
   >
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                one
-              </span>
-              <div
-                hidden=""
-                id="tooltip3"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                one
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              1,543
-            </div>
+            one
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            1,543
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="one"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="one"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_0"
           >
-            <g
-              id="_HorizontalLine_lllllm_0"
-            >
-              <rect
-                aria-label="2020/04/30, 10%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#004b50"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="10.286666666666665%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="13457/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="89.71333333333334%"
-                x="10.286666666666665%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 10%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#004b50"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="10.286666666666665%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="13457/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                two
-              </span>
-              <div
-                hidden=""
-                id="tooltip6"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                two
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              800
-            </div>
+            two
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            800
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="two"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="two"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_1"
           >
-            <g
-              id="_HorizontalLine_lllllm_1"
-            >
-              <rect
-                aria-label="2020/04/30, 5%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#5c2d91"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="5.333333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="14200/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="94.66666666666667%"
-                x="5.333333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 5%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#5c2d91"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="5.333333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="14200/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                three
-              </span>
-              <div
-                hidden=""
-                id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                three
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              8,888
-            </div>
+            three
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            8,888
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="three"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="three"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_2"
           >
-            <g
-              id="_HorizontalLine_lllllm_2"
-            >
-              <rect
-                aria-label="2020/04/30, 59%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#a4262c"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="59.25333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="6112/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="40.74666666666666%"
-                x="59.25333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 59%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#a4262c"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="59.25333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="6112/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="40.74666666666666%"
+              x="59.25333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
-    <span
-      class="ms-layer"
-    />
   </div>
 </div>
 `;
@@ -1709,419 +739,179 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 exports[`Horizontal bar chart rendering Should render the Horizontal bar chart legend with string data 1`] = `
 <div>
   <div
-    class=
-
-        {
-          display: flex;
-          flex-direction: column;
-          width: 100%;
-        }
+    class="fui-hbc__root"
   >
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone2"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                one
-              </span>
-              <div
-                hidden=""
-                id="tooltip3"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                one
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              1,543
-            </div>
+            one
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            1,543
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone4"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="one"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="one"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_0"
           >
-            <g
-              id="_HorizontalLine_lllllm_0"
-            >
-              <rect
-                aria-label="2020/04/30, 10%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#004b50"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="10.286666666666665%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="13457/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="89.71333333333334%"
-                x="10.286666666666665%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 10%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#004b50"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="10.286666666666665%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="13457/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone5"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                two
-              </span>
-              <div
-                hidden=""
-                id="tooltip6"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                two
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              800
-            </div>
+            two
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            800
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone7"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="two"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="two"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_1"
           >
-            <g
-              id="_HorizontalLine_lllllm_1"
-            >
-              <rect
-                aria-label="2020/04/30, 5%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#5c2d91"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="5.333333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="14200/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="94.66666666666667%"
-                x="5.333333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 5%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#5c2d91"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="5.333333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="14200/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
     <div>
       <div
-        class=
-
-            {
-              margin-bottom: 10px;
-            }
+        class="fui-hbc__items"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-          data-focuszone-id="FocusZone8"
-          data-tabster="{\\"uncontrolled\\": {}}"
+          class="fui-hbc__chartTitle"
         >
           <div
-            class=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  display: flex;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  justify-content: space-between;
-                }
+            class="fui-hbc__chartTitleLeft"
+            data-is-focusable="true"
+            role="text"
           >
-            <div
-              class=
-                  ms-TooltipHost
-                  {
-                    color: #323130;
-                    display: block;
-                    margin-bottom: 5px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              role="none"
-            >
-              <span
-                data-is-focusable="false"
-                role="text"
-                tabindex="-1"
-              >
-                three
-              </span>
-              <div
-                hidden=""
-                id="tooltip9"
-                style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
-              >
-                three
-              </div>
-            </div>
-            <div
-              class=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-              data-is-focusable="false"
-              role="text"
-              tabindex="-1"
-            >
-              8,888
-            </div>
+            three
+          </div>
+          <div
+            class="fui-hbc__chartTitleRight"
+            data-is-focusable="false"
+            role="text"
+          >
+            8,888
           </div>
         </div>
-        <div
-          class=
-              ms-FocusZone
-              &:focus {
-                outline: none;
-              }
-              {
-                padding-right: 0px;
-              }
-          data-focuszone-id="FocusZone10"
-          data-tabster="{\\"uncontrolled\\": {}}"
+        <svg
+          aria-label="three"
+          class="fui-hbc__chart"
         >
-          <svg
-            aria-label="three"
-            class=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-            focusable="false"
+          <g
+            id="_HorizontalLine_lllllm_2"
           >
-            <g
-              id="_HorizontalLine_lllllm_2"
-            >
-              <rect
-                aria-label="2020/04/30, 59%."
-                class=
-
-
-                data-is-focusable="true"
-                fill="#a4262c"
-                height="12"
-                role="img"
-                tabindex="0"
-                width="59.25333333333334%"
-                x="0%"
-                y="0"
-              />
-              <rect
-                aria-label="6112/15000."
-                class=
-
-
-                data-is-focusable="false"
-                fill="#edebe9"
-                height="12"
-                role="img"
-                tabindex="-1"
-                width="40.74666666666666%"
-                x="59.25333333333334%"
-                y="0"
-              />
-            </g>
-          </svg>
-        </div>
+            <rect
+              aria-label="2020/04/30, 59%."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="true"
+              fill="#a4262c"
+              height="12"
+              role="img"
+              tabindex="0"
+              width="59.25333333333334%"
+              x="0%"
+              y="0"
+            />
+            <rect
+              aria-label="6112/15000."
+              class="fui-hbc__barWrapper"
+              data-is-focusable="false"
+              fill="var(--colorBackgroundOverlay)"
+              height="12"
+              role="img"
+              width="40.74666666666666%"
+              x="59.25333333333334%"
+              y="0"
+            />
+          </g>
+        </svg>
       </div>
     </div>
-    <span
-      class="ms-layer"
-    />
   </div>
 </div>
 `;

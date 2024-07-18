@@ -20,3 +20,4 @@ export * from './utilities/colors';
 export * from './GaugeChart';
 
 //import './version';
+

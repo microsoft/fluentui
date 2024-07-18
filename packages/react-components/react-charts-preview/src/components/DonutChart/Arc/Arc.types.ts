@@ -1,10 +1,5 @@
-import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IChartDataPoint } from '../index';
 export interface IArcProps {
-  /**
-   * Theme
-   */
-  theme: ITheme;
   /**
    * Data to render in the Arc.
    */
@@ -99,6 +94,16 @@ export interface IArcProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IArcStyles;
+
+  /**
+   * Additional CSS class(es) to apply to the Chart.
+   */
+  className?: string;
 }
 
 export interface IArcData {
@@ -132,15 +137,15 @@ export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
-  root: IStyle;
+  root: string;
 
   /**
    * styles for the focus
    */
-  focusRing: IStyle;
+  focusRing: string;
 
   /**
    * Style for the arc labels
    */
-  arcLabel: IStyle;
+  arcLabel: string;
 }

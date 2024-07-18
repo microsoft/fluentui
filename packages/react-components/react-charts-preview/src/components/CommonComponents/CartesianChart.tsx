@@ -52,6 +52,11 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const _isRtl: boolean = isRtl();
   let _tickValues: (string | number)[];
   const titleMargin: number = 8;
+  let idForGraph: string = 'chart_';
+  let idForDefaultTabbableElement: string = 'defaultTabbableElement_';
+  let _reqID: number;
+  let _isRtl: boolean = isRtl();
+  let _tickValues: (string | number)[];
   let _isFirstRender: boolean = true;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
@@ -114,7 +119,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
 
   // ComponentDidUpdate logic
   React.useEffect(() => {
-    //_fitParentContainer();
     if (prevProps) {
       if (prevProps.height !== props.height || prevProps.width !== props.width) {
         _fitParentContainer();
@@ -277,6 +281,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       lineColor: xValue.color,
       toDrawShape,
     });
+
     const { culture } = props;
     const yValue = convertToLocaleString(xValue.y, culture);
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
