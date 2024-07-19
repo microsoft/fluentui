@@ -22,11 +22,15 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow16,
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
+
+    filter: `drop-shadow(0 0 2px rgba(0,0,0,0.24)) drop-shadow(0 8px 16px rgba(0,0,0,0.28))`,
+    '@media (forced-colors: active)': {
+      filter: 'none',
+    },
   },
 
   inline: {
