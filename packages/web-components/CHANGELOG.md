@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 18 Jul 2024 04:06:50 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Jul 2024 04:08:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.46)
+
+Fri, 19 Jul 2024 04:08:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.45..@fluentui/web-components_v3.0.0-beta.46)
+
+### Changes
+
+- chore: [button] move style related api out of base class ([PR #32049](https://github.com/microsoft/fluentui/pull/32049) by jes@microsoft.com)
 
 ## [3.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.45)
 
