@@ -19,7 +19,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api",
+    "generate-api": "just-scripts copy && just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "bundle-size": "monosize measure"
   },

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
 import {
   Drawer,
@@ -26,7 +26,7 @@ import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities'
 
 export default {
   title: 'Drawer',
-} as ComponentMeta<typeof Drawer>;
+} satisfies Meta<typeof Drawer>;
 
 const ExampleDrawerHeader = () => (
   <DrawerHeader>

@@ -48,6 +48,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useMenuItemSwitchStyles_unstable: CustomStyleHook;
   useMenuItemRadioStyles_unstable: CustomStyleHook;
   useMenuItemStyles_unstable: CustomStyleHook;
+  useMenuItemLinkStyles_unstable: CustomStyleHook;
   useMenuListStyles_unstable: CustomStyleHook;
   useMenuPopoverStyles_unstable: CustomStyleHook;
   useMenuSplitGroupStyles_unstable: CustomStyleHook;
