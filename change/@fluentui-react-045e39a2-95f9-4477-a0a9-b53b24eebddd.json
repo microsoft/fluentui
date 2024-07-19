@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(TextField): Don't use native password reveal for Edge.",
+  "packageName": "@fluentui/react",
+  "email": "tfaller1@gmx.de",
+  "dependentChangeType": "patch"
+}
