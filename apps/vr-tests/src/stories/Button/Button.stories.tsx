@@ -8,8 +8,8 @@ const baseProps: IButtonProps = {
   iconProps: {
     iconName: 'AddFriend',
   },
-  children: 'Button',
-  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
+  children: 'Hello world',
+  secondaryText: 'meow',
 };
 
 export default {
