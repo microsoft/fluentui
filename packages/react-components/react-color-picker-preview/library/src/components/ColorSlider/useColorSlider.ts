@@ -1,31 +1,61 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ColorSliderProps, ColorSliderState } from './ColorSlider.types';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useColorSliderState_unstable } from './useColorSliderState';
+import { ColorSliderProps, ColorSliderState } from './ColorSlider.types';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
-/**
- * Create the state required to render ColorSlider.
- *
- * The returned state can be modified with hooks such as useColorSliderStyles_unstable,
- * before being passed to renderColorSlider_unstable.
- *
- * @param props - props from this instance of ColorSlider
- * @param ref - reference to root HTMLDivElement of ColorSlider
- */
-export const useColorSlider_unstable = (props: ColorSliderProps, ref: React.Ref<HTMLDivElement>): ColorSliderState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useColorSlider_unstable = (
+  props: ColorSliderProps,
+  ref: React.Ref<HTMLInputElement>,
+): ColorSliderState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['onChange'],
+  });
+
+  const {
+    vertical,
+    // Slots
+    root,
+    input,
+    rail,
+    thumb,
+  } = props;
+
+  const state: ColorSliderState = {
+    vertical,
     components: {
-      // TODO add each slot's element type or component
+      input: 'input',
+      rail: 'div',
       root: 'div',
+      thumb: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
+    root: slot.always(root, {
+      defaultProps: nativeProps.root,
+      elementType: 'div',
+    }),
+    input: slot.always(input, {
+      defaultProps: {
+        id: useId('slider-', props.id),
         ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+        ...nativeProps.primary,
+        type: 'range',
+        orient: vertical ? 'vertical' : undefined,
+      },
+      elementType: 'input',
+    }),
+    rail: slot.always(rail, { elementType: 'div' }),
+    thumb: slot.always(thumb, { elementType: 'div' }),
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
+
+  useColorSliderState_unstable(state, props);
+
+  return state;
 };
