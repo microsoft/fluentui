@@ -37,12 +37,6 @@ export class TextArea extends FASTElement {
   public textbox!: HTMLDivElement;
 
   /**
-   * The placeholder container element.
-   * @internal
-   */
-  public placeholderContainer!: HTMLDivElement;
-
-  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal

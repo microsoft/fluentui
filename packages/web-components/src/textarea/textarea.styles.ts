@@ -178,7 +178,6 @@ export const styles: ElementStyles = css`
     --border-block-end-color: var(--border-color);
   }
 
-  /* TODO */
   :host(${filledDarkerState}${displayShadowState}),
   :host(${filledLighterState}${displayShadowState}) {
     --box-shadow: ${shadow2};
