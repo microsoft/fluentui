@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: [button] move style related api out of base class",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
