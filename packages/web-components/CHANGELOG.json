@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 19 Jul 2024 04:08:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.46",
+      "version": "3.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4cf837ac3da78e3701f6f02a34958996b53eb24e",
+            "comment": "chore: [button] move style related api out of base class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 04:06:50 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.45",
       "version": "3.0.0-beta.45",
