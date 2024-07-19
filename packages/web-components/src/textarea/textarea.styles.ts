@@ -51,9 +51,7 @@ import {
   largeState,
   placeholderShownState,
   resizeBothState,
-  resizedState,
   resizeHorizontalState,
-  resizeState,
   resizeVerticalState,
   smallState,
 } from '../styles/states/index.js';
@@ -75,9 +73,7 @@ export const styles: ElementStyles = css`
     --padding-inline: ${spacingHorizontalMNudge};
     --padding-block: ${spacingVerticalSNudge};
     --min-block-size: 52px;
-    --max-block-size: 260px;
-    --max-inline-size: 100%;
-    --block-size: auto;
+    --block-size: var(--min-block-size);
     --inline-size: 18rem;
     --border-width: ${strokeWidthThin};
     --textbox-padding-inline: ${spacingHorizontalXXS};
@@ -106,10 +102,8 @@ export const styles: ElementStyles = css`
     font-weight: ${fontWeightRegular};
     grid-template: 1fr / 1fr;
     line-height: var(--line-height);
-    max-inline-size: var(--max-inline-size);
-    min-block-size: var(--min-block-size);
-    max-block-size: var(--max-block-size);
     inline-size: var(--inline-size);
+    min-block-size: var(--min-block-size);
     block-size: var(--block-size);
     overflow: hidden;
     padding: var(--padding-block) var(--padding-inline);
@@ -139,7 +133,6 @@ export const styles: ElementStyles = css`
     --font-size: ${fontSizeBase200};
     --line-height: ${lineHeightBase200};
     --min-block-size: 40px;
-    --max-block-size: 200px;
     --padding-block: ${spacingVerticalXS};
     --padding-inline: ${spacingHorizontalSNudge};
     --textbox-padding-inline: ${spacingHorizontalXXS};
@@ -149,14 +142,9 @@ export const styles: ElementStyles = css`
     --font-size: ${fontSizeBase400};
     --line-height: ${lineHeightBase400};
     --min-block-size: 64px;
-    --max-block-size: 320px;
     --padding-block: ${spacingVerticalS};
     --padding-inline: ${spacingHorizontalM};
     --textbox-padding-inline: ${spacingHorizontalSNudge};
-  }
-
-  :host(${resizeState}) {
-    --max-block-size: none;
   }
 
   :host(${resizeBothState}:not(:disabled)) {
@@ -171,14 +159,8 @@ export const styles: ElementStyles = css`
     resize: vertical;
   }
 
-  :host(${resizedState}) {
-    --max-inline-size: none;
-    --inline-size: auto;
-    --max-block-size: none;
-  }
-
   :host(${autoResizeState}) {
-    --max-block-size: none;
+    --block-size: auto;
   }
 
   :host(${filledDarkerState}) {
@@ -226,7 +208,7 @@ export const styles: ElementStyles = css`
     clip-path: inset(calc(100% - 2px) 1px 0px);
     content: '';
     height: max(2px, ${borderRadiusMedium});
-    inset: auto -1px -1px;
+    inset: auto -1px 0;
     position: absolute;
     transform: scaleX(0);
     transition-delay: ${curveAccelerateMid};
