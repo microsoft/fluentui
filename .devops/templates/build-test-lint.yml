@@ -63,7 +63,7 @@ steps:
     displayName: test-ssr
 
   - script: |
-      yarn lage vr:test --verbose
+      yarn lage test-vr --verbose
     displayName: test-vr
 
   - script: |
