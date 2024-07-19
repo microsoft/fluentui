@@ -3372,8 +3372,6 @@ export class TextArea extends FASTElement {
     resize: TextAreaResize;
     // (undocumented)
     protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
-    // @internal
-    resizeHandle: HTMLButtonElement;
     select(): void;
     setCustomValidity(message: string | undefined): void;
     // @internal
