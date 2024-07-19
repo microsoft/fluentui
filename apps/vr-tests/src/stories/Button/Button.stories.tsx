@@ -8,7 +8,7 @@ const baseProps: IButtonProps = {
   iconProps: {
     iconName: 'AddFriend',
   },
-  children: 'Hello world',
+  children: 'Hello world im a button',
   secondaryText: 'meow',
 };
 
