@@ -1,16 +1,12 @@
 import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
-import { Direction } from '@microsoft/fast-web-utilities';
-import { getDirection } from '../utils/direction.js';
 import { toggleState } from '../utils/element-internals.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
-  TextAreaHorizontallyResizableResize,
   TextAreaResizableResize,
   TextAreaResize,
   TextAreaSize,
-  TextAreaVerticallyResizableResize,
 } from './textarea.options.js';
 
 /**
@@ -19,7 +15,6 @@ import {
  *
  * @csspart textbox - The element contains the user input content.
  * @csspart placehoder - The placeholder text container.
- * @csspart resize - The button element to resize the control.
  * @fires input - Fires when user types in content.
  * @fires change - Fires after the control loses focus, if the content has changed.
  * @fires select - Fires when the `select()` method is called.
@@ -48,28 +43,13 @@ export class TextArea extends FASTElement {
   public placeholderContainer!: HTMLDivElement;
 
   /**
-   * The button to handle resize interactions.
-   * @internal
-   */
-  public resizeHandle!: HTMLButtonElement;
-
-  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  private handleResizeListener?: (event: PointerEvent) => void;
-
   private handleTextboxInputListener?: EventListener;
-
-  /**
-   * Whether the element is currently being resized.
-   */
-  private isResizing = false;
-
-  private resizingDirectionFactor = getDirection(this) === Direction.ltr ? 1 : -1;
 
   /**
    * Indicates the visual appearance of the element.
@@ -624,108 +604,15 @@ export class TextArea extends FASTElement {
   }
 
   private bindEvents() {
-    this.handleResizeListener = this.handleResize.bind(this);
-    document.addEventListener('pointerdown', this.handleResizeListener);
-    document.addEventListener('pointermove', this.handleResizeListener, { passive: true });
-    document.addEventListener('pointerup', this.handleResizeListener);
-
     this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
     this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
     this.textbox.addEventListener('input', () => (this.userInteracted = true), { once: true });
   }
 
   private unbindEvents() {
-    if (this.handleResizeListener) {
-      document.removeEventListener('pointerdown', this.handleResizeListener);
-      document.removeEventListener('pointermove', this.handleResizeListener);
-      document.removeEventListener('pointerup', this.handleResizeListener);
-    }
-
     if (this.handleTextboxInputListener) {
       this.textbox.removeEventListener('input', this.handleTextboxInputListener);
     }
-  }
-
-  private handleResize(evt: PointerEvent) {
-    if (!TextAreaResizableResize.includes(this.resize) || this.disabled) {
-      return;
-    }
-
-    switch (evt.type) {
-      case 'pointerdown':
-        if (evt.composedPath()[0] === this.resizeHandle) {
-          this.startResizing(evt.pageX, evt.pageY);
-        }
-        break;
-      case 'pointermove':
-        this.doResizing(evt.pageX, evt.pageY);
-        break;
-      case 'pointerup':
-        this.stopResizing();
-        break;
-    }
-  }
-
-  private textboxInlineSize = 0;
-  private textboxBlockSize = 0;
-  private lastPointerX = 0;
-  private lastPointerY = 0;
-
-  private startResizing(pointerX: number, pointerY: number) {
-    this.isResizing = true;
-
-    this.textboxInlineSize = this.textbox.offsetWidth;
-    this.textboxBlockSize = this.textbox.offsetHeight;
-
-    this.sizeStyles = this.getTextboxSizeStyles();
-
-    this.lastPointerX = pointerX;
-    this.lastPointerY = pointerY;
-
-    if (!this.elementInternals.states.has('resized')) {
-      this.style.setProperty('width', 'unset');
-      this.style.setProperty('height', 'unset');
-      this.style.setProperty('inline-size', 'unset');
-      this.style.setProperty('block-size', 'unset');
-      toggleState(this.elementInternals, 'resized', true);
-    }
-  }
-
-  private doResizing(pointerX: number, pointerY: number) {
-    if (!this.isResizing) {
-      return;
-    }
-
-    this.sizeStyles = this.getTextboxSizeStyles(pointerX, pointerY);
-  }
-
-  private stopResizing() {
-    if (!this.isResizing) {
-      return;
-    }
-
-    this.textboxInlineSize = 0;
-    this.textboxBlockSize = 0;
-    this.lastPointerX = 0;
-    this.lastPointerY = 0;
-
-    this.isResizing = false;
-  }
-
-  private getTextboxSizeStyles(pointerX: number = 0, pointerY: number = 0): string {
-    const allowVerticalResizing = TextAreaVerticallyResizableResize.includes(this.resize);
-    const allowHorizontalResizing = TextAreaHorizontallyResizableResize.includes(this.resize);
-    const deltaX = allowHorizontalResizing ? pointerX - this.lastPointerX : 0;
-    const deltaY = allowVerticalResizing ? pointerY - this.lastPointerY : 0;
-    const inline = this.textboxInlineSize + deltaX * this.resizingDirectionFactor;
-    const block = this.textboxBlockSize + deltaY;
-
-    this.textboxInlineSize = inline;
-    this.textboxBlockSize = block;
-    this.lastPointerX = pointerX;
-    this.lastPointerY = pointerY;
-
-    return `--textbox-inline-size: ${inline}px; --textbox-block-size: ${block}px;`;
   }
 
   private togglePlaceholderShownState() {

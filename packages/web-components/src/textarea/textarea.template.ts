@@ -21,14 +21,6 @@ export function textInputTemplate<T extends TextArea>(): ElementViewTemplate<T> 
         @focus="${x => x.handleTextboxFocus()}"
         @blur="${x => x.handleTextboxBlur()}"
       ></div>
-      <button
-        ${ref('resizeHandle')}
-        class="resize"
-        part="resize"
-        aria-hidden="true"
-        tabindex="-1"
-        ?disabled="${x => x.disabled}"
-      ></button>
     </template>
   `;
 }

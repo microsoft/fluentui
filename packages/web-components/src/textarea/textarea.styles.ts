@@ -90,7 +90,6 @@ export const styles: ElementStyles = css`
     --border-color: ${colorNeutralStroke1};
     --border-block-end-color: ${colorNeutralStrokeAccessible};
     --placeholder-color: transparent;
-    --resize-color: var(--color);
 
     /* elevations */
     --box-shadow: none;
@@ -112,6 +111,7 @@ export const styles: ElementStyles = css`
     max-block-size: var(--max-block-size);
     inline-size: var(--inline-size);
     block-size: var(--block-size);
+    overflow: hidden;
     padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
@@ -159,6 +159,18 @@ export const styles: ElementStyles = css`
     --max-block-size: none;
   }
 
+  :host(${resizeBothState}:not(:disabled)) {
+    resize: both;
+  }
+
+  :host(${resizeHorizontalState}:not(:disabled)) {
+    resize: horizontal;
+  }
+
+  :host(${resizeVerticalState}:not(:disabled)) {
+    resize: vertical;
+  }
+
   :host(${resizedState}) {
     --max-inline-size: none;
     --inline-size: auto;
@@ -202,7 +214,6 @@ export const styles: ElementStyles = css`
     --border-block-end-color: var(--border-color);
     --box-shadow: none;
     --placeholder-color: ${colorNeutralForegroundDisabled};
-    --resize-color: ${colorNeutralStrokeDisabled};
 
     cursor: no-drop;
     user-select: none;
@@ -258,72 +269,5 @@ export const styles: ElementStyles = css`
 
   .placeholder {
     color: var(--placeholder-color);
-  }
-
-  .resize {
-    --tooth-rotate: -45deg;
-    --tooth-left-offset-factor: 1;
-
-    appearance: none;
-    background: transparent;
-    border: 0;
-    display: none;
-    padding: 0;
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-end: 0;
-    block-size: 1rem;
-    inline-size: 1rem;
-    touch-action: none;
-  }
-
-  .resize:disabled {
-    pointer-events: none;
-  }
-
-  :host(:dir(rtl)) .resize {
-    --tooth-rotate: 45deg;
-    --tooth-left-offset-factor: -1;
-  }
-
-  .resize::before,
-  .resize::after {
-    background-color: var(--resize-color);
-    content: '';
-    height: 1px;
-    position: absolute;
-    transform: translate(-50%, -50%) rotate(var(--tooth-rotate));
-  }
-
-  .resize::before {
-    top: calc(50% + 1px);
-    left: calc(50% + 1px * var(--tooth-left-offset-factor));
-    width: 10px;
-  }
-
-  .resize::after {
-    top: calc(50% + 3px);
-    left: calc(50% + 3px * var(--tooth-left-offset-factor));
-    width: 6px;
-  }
-
-  :host(${resizeState}) .resize {
-    display: block;
-  }
-
-  :host(${resizeBothState}) .resize:not(:disabled) {
-    cursor: nwse-resize;
-  }
-
-  :host(${resizeBothState}:dir(rtl)) .resize:not(:disabled) {
-    cursor: nesw-resize;
-  }
-
-  :host(${resizeHorizontalState}) .resize:not(:disabled) {
-    cursor: ew-resize;
-  }
-
-  :host(${resizeVerticalState}) .resize:not(:disabled) {
-    cursor: ns-resize;
   }
 `;
