@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: update slider to use ElementInternals for form association",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Combobox, Option } from '@fluentui/react-combobox';
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 
@@ -26,9 +26,7 @@ export default {
   ],
 } satisfies Meta<typeof Combobox>;
 
-type Story = StoryFn<typeof Combobox>;
-
-export const AppearanceOutlineDefault: Story = () => (
+export const AppearanceOutlineDefault = () => (
   <Combobox>
     <Option>text</Option>
   </Combobox>
@@ -36,7 +34,7 @@ export const AppearanceOutlineDefault: Story = () => (
 
 AppearanceOutlineDefault.storyName = 'Appearance: outline (default)';
 
-export const AppearanceUnderline: Story = () => (
+export const AppearanceUnderline = () => (
   <Combobox appearance="underline">
     <Option>text</Option>
   </Combobox>
@@ -44,7 +42,7 @@ export const AppearanceUnderline: Story = () => (
 
 AppearanceUnderline.storyName = 'Appearance: underline';
 
-export const AppearanceFilledDarker: Story = () => (
+export const AppearanceFilledDarker = () => (
   <div style={{ background: '#00335c', padding: '10px' }}>
     <Combobox appearance="filled-darker">
       <Option>text</Option>
@@ -54,7 +52,7 @@ export const AppearanceFilledDarker: Story = () => (
 
 AppearanceFilledDarker.storyName = 'Appearance: filled-darker';
 
-export const AppearanceFilledLighter: Story = () => (
+export const AppearanceFilledLighter = () => (
   <div style={{ background: '#00335c', padding: '10px' }}>
     <Combobox appearance="filled-lighter">
       <Option>text</Option>
@@ -64,13 +62,13 @@ export const AppearanceFilledLighter: Story = () => (
 
 AppearanceFilledLighter.storyName = 'Appearance: filled-lighter';
 
-export const Disabled: Story = () => (
+export const Disabled = () => (
   <Combobox disabled>
     <Option>text</Option>
   </Combobox>
 );
 
-export const DisabledWithValue: Story = () => (
+export const DisabledWithValue = () => (
   <Combobox disabled value="text">
     <Option>text</Option>
   </Combobox>
@@ -78,7 +76,7 @@ export const DisabledWithValue: Story = () => (
 
 DisabledWithValue.storyName = 'Disabled with value';
 
-export const InvalidOutline: Story = () => (
+export const InvalidOutline = () => (
   <Combobox aria-invalid>
     <Option>text</Option>
   </Combobox>
@@ -86,7 +84,7 @@ export const InvalidOutline: Story = () => (
 
 InvalidOutline.storyName = 'Invalid: outline';
 
-export const InvalidUnderline: Story = () => (
+export const InvalidUnderline = () => (
   <Combobox aria-invalid appearance="underline">
     <Option>text</Option>
   </Combobox>
@@ -94,7 +92,7 @@ export const InvalidUnderline: Story = () => (
 
 InvalidUnderline.storyName = 'Invalid: underline';
 
-export const InvalidFilledDarker: Story = () => (
+export const InvalidFilledDarker = () => (
   <div style={{ background: '#00335c', padding: '10px' }}>
     <Combobox aria-invalid appearance="filled-darker">
       <Option>text</Option>
@@ -104,7 +102,7 @@ export const InvalidFilledDarker: Story = () => (
 
 InvalidFilledDarker.storyName = 'Invalid: filled-darker';
 
-export const InvalidFilledLighter: Story = () => (
+export const InvalidFilledLighter = () => (
   <div style={{ background: '#00335c', padding: '10px' }}>
     <Combobox aria-invalid appearance="filled-lighter">
       <Option>text</Option>
@@ -114,7 +112,7 @@ export const InvalidFilledLighter: Story = () => (
 
 InvalidFilledLighter.storyName = 'Invalid: filled-lighter';
 
-export const WithPlaceholder: Story = () => (
+export const WithPlaceholder = () => (
   <Combobox placeholder="Color">
     <Option>text</Option>
   </Combobox>
@@ -122,7 +120,7 @@ export const WithPlaceholder: Story = () => (
 
 WithPlaceholder.storyName = 'With placeholder';
 
-export const WithValue: Story = () => (
+export const WithValue = () => (
   <Combobox value="Text text">
     <Option>text</Option>
   </Combobox>
@@ -130,7 +128,7 @@ export const WithValue: Story = () => (
 
 WithValue.storyName = 'With value';
 
-export const SizeSmall: Story = () => (
+export const SizeSmall = () => (
   <Combobox size="small">
     <Option>text</Option>
   </Combobox>
@@ -138,7 +136,7 @@ export const SizeSmall: Story = () => (
 
 SizeSmall.storyName = 'Size: small';
 
-export const SizeLarge: Story = () => (
+export const SizeLarge = () => (
   <Combobox size="large">
     <Option>text</Option>
   </Combobox>

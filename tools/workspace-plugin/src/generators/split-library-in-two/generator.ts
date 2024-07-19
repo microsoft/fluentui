@@ -167,11 +167,11 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
-    if (file.includes('/stories/') || file.includes('/.storybook/')) {
+    if (file.includes(path.normalize('/stories/')) || file.includes(path.normalize('/.storybook/'))) {
       return;
     }
 
-    const newFileName = `${newProjectRoot}/${path.relative(oldProjectRoot, file)}`;
+    const newFileName = joinPathFragments(newProjectRoot, path.relative(oldProjectRoot, file));
 
     tree.rename(file, newFileName);
   });
