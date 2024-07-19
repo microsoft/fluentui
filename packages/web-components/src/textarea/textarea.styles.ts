@@ -69,7 +69,7 @@ export const styles: ElementStyles = css`
     --font-size: ${fontSizeBase300};
     --line-height: ${lineHeightBase300};
 
-    /* sizing and spacing */
+    /* layout */
     --padding-inline: ${spacingHorizontalMNudge};
     --padding-block: ${spacingVerticalSNudge};
     --min-block-size: 52px;
@@ -90,6 +90,8 @@ export const styles: ElementStyles = css`
     /* elevations */
     --box-shadow: none;
 
+    --contain-size: size;
+
     background-color: var(--background-color);
     border: var(--border-width) solid var(--border-color);
     border-block-end-color: var(--border-block-end-color);
@@ -97,6 +99,7 @@ export const styles: ElementStyles = css`
     box-sizing: border-box;
     box-shadow: var(--box-shadow);
     color: var(--color);
+    contain: paint layout style var(--contain-size);
     font-family: ${fontFamilyBase};
     font-size: var(--font-size);
     font-weight: ${fontWeightRegular};
@@ -161,6 +164,7 @@ export const styles: ElementStyles = css`
 
   :host(${autoResizeState}) {
     --block-size: auto;
+    --contain-size: inline-size;
   }
 
   :host(${filledDarkerState}) {

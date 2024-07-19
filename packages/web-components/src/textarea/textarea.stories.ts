@@ -263,7 +263,7 @@ ReadOnly.args = {
 };
 
 export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea>
+  <fluent-textarea style="inline-size: 300px; min-block-size: 200px;" auto-resize resize="both" size="large">
     <p>This text should show up as plain text.</p>
     <img src="logo.svg" alt="" />
     <script>
