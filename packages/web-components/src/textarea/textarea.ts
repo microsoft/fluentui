@@ -584,6 +584,7 @@ export class TextArea extends FASTElement {
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
     if (this.$fastController.isConnected) {
+      this.tabIndex = disabled ? -1 : 0;
       this.setContentEditable(!disabled);
     }
   }

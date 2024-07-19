@@ -9,6 +9,7 @@ import type { TextArea } from './textarea.js';
 export function textInputTemplate<T extends TextArea>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
+      <div class="placeholder" part="placeholder" aria-hidden="true">
         ${x => x.placeholder}
       </div>
       <div

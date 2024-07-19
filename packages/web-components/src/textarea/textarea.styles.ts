@@ -77,8 +77,6 @@ export const styles: ElementStyles = css`
     --inline-size: 18rem;
     --border-width: ${strokeWidthThin};
     --textbox-padding-inline: ${spacingHorizontalXXS};
-    --textbox-block-size: auto;
-    --textbox-inline-size: auto;
 
     /* colors */
     --color: ${colorNeutralForeground1};
@@ -241,8 +239,6 @@ export const styles: ElementStyles = css`
     box-sizing: border-box;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
-    block-size: var(--textbox-block-size);
-    inline-size: var(--textbox-inline-size);
     padding-inline: var(--textbox-padding-inline);
     overflow-wrap: break-word; /* Needed for Firefox */
   }
