@@ -1,6 +1,11 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
-import { colorBrandStroke1, colorBrandStroke2, colorNeutralStrokeOnBrand2 } from '../theme/design-tokens.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import {
+  colorBrandStroke1,
+  colorBrandStroke2,
+  colorNeutralStrokeOnBrand2,
+  curveEasyEase,
+} from '../theme/design-tokens.js';
 import {
   extraLargeState,
   extraSmallState,
@@ -12,81 +17,170 @@ import {
 } from '../styles/states/index.js';
 
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
 
   :host {
-    display: flex;
+    --size: 32px;
+    --duration: 1.5s;
+    --indicatorSize: calc(0.09375 * var(--size));
+
+    height: var(--size);
+    width: var(--size);
+    position: relative;
     align-items: center;
-    height: 32px;
-    width: 32px;
-    contain: content;
+    justify-content: center;
+    contain: strict;
+    content-visibility: auto;
   }
+
   :host(${tinyState}) {
-    height: 20px;
-    width: 20px;
+    --size: 20px;
   }
   :host(${extraSmallState}) {
-    height: 24px;
-    width: 24px;
+    --size: 24px;
   }
   :host(${smallState}) {
-    height: 28px;
-    width: 28px;
+    --size: 28px;
   }
   :host(${largeState}) {
-    height: 36px;
-    width: 36px;
+    --size: 36px;
   }
   :host(${extraLargeState}) {
-    height: 40px;
-    width: 40px;
+    --size: 40px;
   }
   :host(${hugeState}) {
-    height: 44px;
-    width: 44px;
+    --size: 44px;
   }
+
+  .progress,
+  .background,
+  .spinner,
+  .start,
+  .end,
+  .indicator {
+    position: absolute;
+    inset: 0;
+  }
+
   .progress {
-    height: 100%;
-    width: 100%;
+    flex: 1;
+    align-self: stretch;
+
+    animation-duration: var(--duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: spin;
   }
 
   .background {
-    fill: none;
-    stroke: ${colorBrandStroke2};
-    stroke-width: 1.5px;
+    border: var(--indicatorSize) solid ${colorBrandStroke2};
+    border-radius: 50%;
   }
 
   :host(${invertedState}) .background {
-    stroke: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .spinner {
+    animation-duration: var(--duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: ${curveEasyEase};
+    animation-name: spin-mask;
+  }
+
+  .start {
+    overflow: hidden;
+    inset-inline-end: 50%;
+  }
+
+  .end {
+    overflow: hidden;
+    inset-inline-start: 50%;
   }
 
   .indicator {
-    stroke: ${colorBrandStroke1};
-    fill: none;
-    stroke-width: 1.5px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
-    animation: spin-infinite 3s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
+    color: ${colorBrandStroke1};
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: var(--indicatorSize) solid transparent;
+    border-block-start-color: currentcolor;
+    border-inline-end-color: currentcolor;
+
+    animation-duration: var(--duration);
+    animation-iteration-count: infinite;
+    animation-timing-function: ${curveEasyEase};
   }
 
   :host(${invertedState}) .indicator {
-    stroke: ${colorNeutralStrokeOnBrand2};
+    color: ${colorNeutralStrokeOnBrand2};
   }
 
-  @keyframes spin-infinite {
+  .start .indicator {
+    rotate: 135deg; /* 9 o'clock */
+    inset: 0 -100% 0 0;
+    animation-name: spin-start;
+  }
+
+  .end .indicator {
+    rotate: 135deg; /* 3 o'clock */
+    inset: 0 0 0 -100%;
+    animation-name: spin-end;
+  }
+
+  @keyframes spin {
     0% {
-      stroke-dasharray: 0.01px 43.97px;
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-mask {
+    0% {
+      transform: rotate(-135deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(225deg);
+    }
+  }
+
+  @keyframes spin-start {
+    0% {
       transform: rotate(0deg);
     }
     50% {
-      stroke-dasharray: 21.99px 21.99px;
-      transform: rotate(450deg);
+      transform: rotate(-80deg);
     }
     100% {
-      stroke-dasharray: 0.01px 43.97px;
-      transform: rotate(1080deg);
+      transform: rotate(0deg);
     }
   }
-`;
+
+  @keyframes spin-end {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    50% {
+      transform: rotate(70deg);
+    }
+    100% {
+      transform: rotate(0deg);
+    }
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .background {
+      display: none;
+    }
+    .indicator {
+      border-color: Canvas;
+      border-block-start-color: Highlight;
+      border-inline-end-color: Highlight;
+    }
+  `),
+);
