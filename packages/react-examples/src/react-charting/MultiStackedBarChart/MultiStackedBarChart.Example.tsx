@@ -6,8 +6,13 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+
 
 export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
+  const [enableGradient, setEnableGradient] = React.useState(false);
+  const [roundCorners, setRoundCorners] = React.useState(false);
+
   const firstChartPoints: IChartDataPoint[] = [
     {
       legend: 'Debit card numbers (EU and USA)',
@@ -160,14 +165,35 @@ export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
   ];
 
   return (
-    <MultiStackedBarChart
-      data={data}
-      hideDenominator={hideDenominator}
-      hideRatio={hideRatio}
-      width={600}
-      href={'https://developer.microsoft.com/en-us/'}
-      focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
-      legendsOverflowText={'OverFlow Items'}
-    />
+    <>
+    <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: any, checked: boolean) => setEnableGradient(checked)}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            // eslint-disable-next-line react/jsx-no-bind
+            onChange={(ev: any, checked: boolean) => setRoundCorners(checked)}
+          />
+        </div>
+        <br />
+      <MultiStackedBarChart
+        data={data}
+        hideDenominator={hideDenominator}
+        hideRatio={hideRatio}
+        width={600}
+        href={'https://developer.microsoft.com/en-us/'}
+        focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
+        legendsOverflowText={'OverFlow Items'}
+        enableGradient={enableGradient}
+        roundCorners={roundCorners}
+      />
+    </>
   );
 };
