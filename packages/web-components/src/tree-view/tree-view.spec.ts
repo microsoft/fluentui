@@ -100,7 +100,7 @@ test.describe('<tree-view> and <tree-item>', () => {
     expect(await treeViewEl.evaluate(node => node.children[0].classList.contains('transparent'))).toBe(true);
   });
 
-  test.only('should expand the item when clicking on it', async ({ page }) => {
+  test('should expand the item when clicking on it', async ({ page }) => {
     await page.setContent(`
       <fluent-tree-view>
         <fluent-tree-item>

@@ -8,7 +8,7 @@ type TreeViewStoryArgs = Args & FluentTreeView;
 type TreeViewStoryMeta = Meta<TreeViewStoryArgs>;
 
 const storyTemplate = html<TreeViewStoryArgs>`
-<fluent-tree-view :size="${x => x.size}" :appearance="${x => x.appearance}">
+<fluent-tree-view size="${x => x.size}" appearance="${x => x.appearance}">
   <fluent-tree-item >
     Item 1
     <fluent-tree-item>Item 1-1</fluent-tree-item>
