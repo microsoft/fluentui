@@ -216,8 +216,8 @@ export class TextArea extends FASTElement {
   @attr
   public placeholder?: string;
   protected placeholderChanged() {
+    this.elementInternals.ariaPlaceholder = `${this.placeholder ?? ''}`;
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaPlaceholder = `${this.placeholder ?? ''}`;
       this.togglePlaceholderShownState();
     }
   }
@@ -233,8 +233,8 @@ export class TextArea extends FASTElement {
   @attr({ attribute: 'readonly', mode: 'boolean' })
   public readOnly = false;
   protected readOnlyChanged() {
+    this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
       this.setContentEditable(!this.readOnly);
     }
   }
@@ -249,8 +249,8 @@ export class TextArea extends FASTElement {
   @attr({ mode: 'boolean' })
   public required!: boolean;
   protected requiredChanged() {
+    this.elementInternals.ariaRequired = `${!!this.required}`;
     if (this.$fastController.isConnected) {
-      this.elementInternals.ariaRequired = `${!!this.required}`;
       this.setValidity();
     }
   }
@@ -514,46 +514,48 @@ export class TextArea extends FASTElement {
    */
   public setValidity(flags: Partial<ValidityState> = {}, message?: string, anchor?: HTMLElement): void {
     if (this.$fastController.isConnected) {
-      if (this.disabled || !this.userInteracted) {
-        this.elementInternals.setValidity({});
-        return;
-      }
-
-      const defaultValidity = {
-        valueMissing: false,
-        tooLong: false,
-        tooShort: false,
-      };
-      let defaultMessage = '';
-
-      if (this.required && !this.value.length) {
-        defaultValidity.valueMissing = true;
-        defaultMessage = 'valueMissing';
-      } else if (this.maxLength && this.value.length > this.maxLength) {
-        defaultValidity.tooLong = true;
-        defaultMessage = 'tooLong';
-      } else if (this.minLength && this.value.length < this.minLength) {
-        defaultValidity.tooShort = true;
-        defaultMessage = 'tooShort';
-      }
-
-      // Notes on the `defaultMessage`:
-      // There isn’t a way to get browser’s built-in validation messages for
-      // `tooShort` or `tooLong`, because these flags require real user
-      // interactions before they would be set by the browser, so creating a
-      // `<textarea>` in the memory and trying to get its `validationMessage`
-      // will not work for these 2 flags. `<fluent-field>` does provide the
-      // `message` slot for authors add their custom validation messages based
-      // on the validity state flags, and we do set the proper flags here.
-      this.elementInternals.setValidity(
-        {
-          ...defaultValidity,
-          ...flags,
-        },
-        message ?? defaultMessage,
-        anchor ?? this.textbox,
-      );
+      return;
     }
+
+    if (this.disabled || !this.userInteracted) {
+      this.elementInternals.setValidity({});
+      return;
+    }
+
+    const defaultValidity = {
+      valueMissing: false,
+      tooLong: false,
+      tooShort: false,
+    };
+    let defaultMessage = '';
+
+    if (this.required && !this.value.length) {
+      defaultValidity.valueMissing = true;
+      defaultMessage = 'valueMissing';
+    } else if (this.maxLength && this.value.length > this.maxLength) {
+      defaultValidity.tooLong = true;
+      defaultMessage = 'tooLong';
+    } else if (this.minLength && this.value.length < this.minLength) {
+      defaultValidity.tooShort = true;
+      defaultMessage = 'tooShort';
+    }
+
+    // Notes on the `defaultMessage`:
+    // There isn’t a way to get browser’s built-in validation messages for
+    // `tooShort` or `tooLong`, because these flags require real user
+    // interactions before they would be set by the browser, so creating a
+    // `<textarea>` in the memory and trying to get its `validationMessage`
+    // will not work for these 2 flags. `<fluent-field>` does provide the
+    // `message` slot for authors add their custom validation messages based
+    // on the validity state flags, and we do set the proper flags here.
+    this.elementInternals.setValidity(
+      {
+        ...defaultValidity,
+        ...flags,
+      },
+      message ?? defaultMessage,
+      anchor ?? this.textbox,
+    );
   }
 
   /**
@@ -586,12 +588,10 @@ export class TextArea extends FASTElement {
   }
 
   private setDisabledSideEffect(disabled: boolean) {
-    if (!this.$fastController.isConnected) {
-      return;
-    }
-
     this.elementInternals.ariaDisabled = `${disabled}`;
-    this.setContentEditable(!disabled);
+    if (this.$fastController.isConnected) {
+      this.setContentEditable(!disabled);
+    }
   }
 
   private setInitialValue() {

@@ -9,14 +9,12 @@ import type { TextArea } from './textarea.js';
 export function textInputTemplate<T extends TextArea>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
-      <div ${ref('placeholderContainer')} class="placeholder" part="placeholder" style="${x => x.sizeStyles}">
         ${x => x.placeholder}
       </div>
       <div
         ${ref('textbox')}
         class="textbox"
         part="textbox"
-        style="${x => x.sizeStyles}"
         spellcheck="${x => (x.spellcheck ? 'true' : 'false')}"
         @focus="${x => x.handleTextboxFocus()}"
         @blur="${x => x.handleTextboxBlur()}"
