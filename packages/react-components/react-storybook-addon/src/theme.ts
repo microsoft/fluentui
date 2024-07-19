@@ -4,6 +4,8 @@ import {
   teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
+  teamsDarkGlassTheme,
+  teamsLightGlassTheme,
 } from '@fluentui/react-theme';
 
 import type { Theme } from '@fluentui/react-theme';
@@ -14,6 +16,8 @@ export const themes = [
   { id: 'teams-light', label: 'Teams Light', theme: teamsLightTheme },
   { id: 'teams-dark', label: 'Teams Dark', theme: teamsDarkTheme },
   { id: 'teams-high-contrast', label: 'Teams High Contrast', theme: teamsHighContrastTheme },
+  { id: 'teams-light-glass', label: 'Teams Light Glass', theme: teamsLightGlassTheme },
+  { id: 'teams-dark-glass', label: 'Teams Dark Glass', theme: teamsDarkGlassTheme },
 ] as const;
 
 export const defaultTheme = themes[0];
