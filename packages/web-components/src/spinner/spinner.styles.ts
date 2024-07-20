@@ -5,6 +5,9 @@ import {
   colorBrandStroke2,
   colorNeutralStrokeOnBrand2,
   curveEasyEase,
+  strokeWidthThick,
+  strokeWidthThicker,
+  strokeWidthThickest,
 } from '../theme/design-tokens.js';
 import {
   extraLargeState,
@@ -20,35 +23,37 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
-    --size: 32px;
     --duration: 1.5s;
-    --indicatorSize: calc(0.09375 * var(--size));
-
+    --indicatorSize: ${strokeWidthThicker};
+    --size: 32px;
     height: var(--size);
     width: var(--size);
-    position: relative;
-    align-items: center;
-    justify-content: center;
     contain: strict;
     content-visibility: auto;
   }
 
   :host(${tinyState}) {
+    --indicatorSize: ${strokeWidthThick};
     --size: 20px;
   }
   :host(${extraSmallState}) {
+    --indicatorSize: ${strokeWidthThick};
     --size: 24px;
   }
   :host(${smallState}) {
+    --indicatorSize: ${strokeWidthThick};
     --size: 28px;
   }
   :host(${largeState}) {
+    --indicatorSize: ${strokeWidthThicker};
     --size: 36px;
   }
   :host(${extraLargeState}) {
+    --indicatorSize: ${strokeWidthThicker};
     --size: 40px;
   }
   :host(${hugeState}) {
+    --indicatorSize: ${strokeWidthThickest};
     --size: 44px;
   }
 
@@ -62,14 +67,15 @@ export const styles = css`
     inset: 0;
   }
 
-  .progress {
-    flex: 1;
-    align-self: stretch;
+  .progress,
+  .spinner,
+  .indicator {
+    animation: none var(--duration) infinite ${curveEasyEase};
+  }
 
-    animation-duration: var(--duration);
-    animation-iteration-count: infinite;
+  .progress {
     animation-timing-function: linear;
-    animation-name: spin;
+    animation-name: spin-linear;
   }
 
   .background {
@@ -82,10 +88,7 @@ export const styles = css`
   }
 
   .spinner {
-    animation-duration: var(--duration);
-    animation-iteration-count: infinite;
-    animation-timing-function: ${curveEasyEase};
-    animation-name: spin-mask;
+    animation-name: spin-swing;
   }
 
   .start {
@@ -105,10 +108,6 @@ export const styles = css`
     border: var(--indicatorSize) solid transparent;
     border-block-start-color: currentcolor;
     border-inline-end-color: currentcolor;
-
-    animation-duration: var(--duration);
-    animation-iteration-count: infinite;
-    animation-timing-function: ${curveEasyEase};
   }
 
   :host(${invertedState}) .indicator {
@@ -116,27 +115,24 @@ export const styles = css`
   }
 
   .start .indicator {
-    rotate: 135deg; /* 9 o'clock */
+    rotate: 135deg; /* Starts 9 o'clock */
     inset: 0 -100% 0 0;
     animation-name: spin-start;
   }
 
   .end .indicator {
-    rotate: 135deg; /* 3 o'clock */
+    rotate: 135deg; /* Ends at 3 o'clock */
     inset: 0 0 0 -100%;
     animation-name: spin-end;
   }
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
+  @keyframes spin-linear {
     100% {
       transform: rotate(360deg);
     }
   }
 
-  @keyframes spin-mask {
+  @keyframes spin-swing {
     0% {
       transform: rotate(-135deg);
     }
@@ -149,27 +145,22 @@ export const styles = css`
   }
 
   @keyframes spin-start {
-    0% {
+    0%,
+    100% {
       transform: rotate(0deg);
     }
     50% {
       transform: rotate(-80deg);
     }
-    100% {
-      transform: rotate(0deg);
-    }
   }
 
   @keyframes spin-end {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    50% {
-      transform: rotate(70deg);
-    }
+    0%,
     100% {
       transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(70deg);
     }
   }
 `.withBehaviors(
