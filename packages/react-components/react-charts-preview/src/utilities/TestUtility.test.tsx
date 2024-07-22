@@ -3,7 +3,7 @@ import { act, queryAllByAttribute, render, waitFor } from '@testing-library/reac
 import * as React from 'react';
 const env = require('../../config/tests');
 
-const { Timezone } = require('../../scripts/constants.js');
+const { Timezone } = require('../../scripts/constants');
 
 export const getById = queryAllByAttribute.bind(null, 'id');
 export const getByClass = queryAllByAttribute.bind(null, 'class');
