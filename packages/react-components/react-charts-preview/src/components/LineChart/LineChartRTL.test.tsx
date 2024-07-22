@@ -601,7 +601,7 @@ describe('Line chart - Subcomponent Time Range', () => {
   );
 });
 
-/*describe('Line chart - Subcomponent xAxis Labels', () => {
+describe('Line chart - Subcomponent xAxis Labels', () => {
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     LineChart,
@@ -614,7 +614,7 @@ describe('Line chart - Subcomponent Time Range', () => {
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
   );
-});*/
+});
 
 describe.skip('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
@@ -677,7 +677,7 @@ describe('Screen resolution', () => {
   );
 });
 
-/*describe('Theme and accessibility', () => {
+describe('Theme and accessibility', () => {
   beforeEach(updateChartWidthAndHeight);
   afterEach(sharedAfterEach);
 
@@ -691,7 +691,7 @@ describe('Screen resolution', () => {
     // Assert
     expect(container).toMatchSnapshot();
   });
-});*/
+});
 
 describe('Line chart - Accessibility', () => {
   test('Should pass accessibility tests', async () => {

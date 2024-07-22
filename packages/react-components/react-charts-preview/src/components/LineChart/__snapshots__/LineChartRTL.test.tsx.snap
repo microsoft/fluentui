@@ -4578,321 +4578,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         />
         <g>
           <line
-            id="verticalLine127"
-            stroke="#323130"
-            stroke-dasharray="5,5"
-            visibility="hidden"
-            x1="0"
-            x2="0"
-            y1="0"
-          />
-          <g>
-            <line
-              id="lineID125_2_1"
-              opacity="1"
-              stroke="yellow"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="630"
-              x2="276"
-              y1="179.7173913043478"
-              y2="50.913043478260875"
-            />
-            <path
-              aria-label="70. metaData3, 30."
-              d="M629.5 179.7173913043478
-     A0.5 0.5 0 1 0 630.5 179.7173913043478
-     M629.5 179.7173913043478
-     A 0.5 0.5 0 1 1 630.5 179.7173913043478
-     "
-              data-is-focusable="true"
-              fill="yellow"
-              id="circle124_2_1"
-              opacity="1"
-              role="img"
-              stroke="yellow"
-              stroke-width="4"
-              tabindex="0"
-            />
-            <path
-              aria-label="40. metaData3, 80."
-              d="M275.5 50.913043478260875
-     A0.5 0.5 0 1 0 276.5 50.913043478260875
-     M275.5 50.913043478260875
-     A 0.5 0.5 0 1 1 276.5 50.913043478260875
-     "
-              data-is-focusable="true"
-              fill="yellow"
-              id="circle124_2_11L"
-              opacity="1"
-              role="img"
-              stroke="yellow"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="276"
-              cy="50.913043478260875"
-              focusable="false"
-              id="circle124_2_11D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-            <line
-              id="lineID125_1_1"
-              opacity="1"
-              stroke="green"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="158"
-              x2="394"
-              y1="102.43478260869564"
-              y2="25.152173913043473"
-            />
-            <path
-              aria-label="30. metaData2, 60."
-              d="M157.5 102.43478260869564
-     A0.5 0.5 0 1 0 158.5 102.43478260869564
-     M157.5 102.43478260869564
-     A 0.5 0.5 0 1 1 158.5 102.43478260869564
-     "
-              data-is-focusable="true"
-              fill="green"
-              id="circle124_1_1"
-              opacity="1"
-              role="img"
-              stroke="green"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="50. metaData2, 90."
-              d="M393.5 25.152173913043473
-     A0.5 0.5 0 1 0 394.5 25.152173913043473
-     M393.5 25.152173913043473
-     A 0.5 0.5 0 1 1 394.5 25.152173913043473
-     "
-              data-is-focusable="true"
-              fill="green"
-              id="circle124_1_11L"
-              opacity="1"
-              role="img"
-              stroke="green"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="394"
-              cy="25.152173913043473"
-              focusable="false"
-              id="circle124_1_11D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-            <line
-              id="lineID125_0_1"
-              opacity="1"
-              stroke="red"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="40"
-              x2="276"
-              y1="128.19565217391306"
-              y2="50.913043478260875"
-            />
-            <path
-              aria-label="20. metaData1, 50."
-              d="M39.5 128.19565217391306
-     A0.5 0.5 0 1 0 40.5 128.19565217391306
-     M39.5 128.19565217391306
-     A 0.5 0.5 0 1 1 40.5 128.19565217391306
-     "
-              data-is-focusable="true"
-              fill="red"
-              id="circle124_0_1"
-              opacity="1"
-              role="img"
-              stroke="red"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <path
-              aria-label="40. metaData1, 80."
-              d="M275.5 50.913043478260875
-     A0.5 0.5 0 1 0 276.5 50.913043478260875
-     M275.5 50.913043478260875
-     A 0.5 0.5 0 1 1 276.5 50.913043478260875
-     "
-              data-is-focusable="true"
-              fill="red"
-              id="circle124_0_11L"
-              opacity="1"
-              role="img"
-              stroke="red"
-              stroke-width="4"
-              tabindex="-1"
-            />
-            <circle
-              cx="276"
-              cy="50.913043478260875"
-              focusable="false"
-              id="circle124_0_11D"
-              opacity="0"
-              r="8"
-              stroke-width="0"
-              width="0"
-            />
-          </g>
-        </g>
-      </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        class="root-111"
-      >
-        <div>
-          <div
-            style="position: relative;"
-          >
-            <div
-              data-automation-id="visibleContent"
-              style=""
-            >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                class="ms-FocusZone css-110"
-                data-focuszone-id="FocusZone1"
-                data-tabster="{\\"uncontrolled\\": {}}"
-                role="listbox"
-              >
-                <div
-                  class="ms-OverflowSet root-120"
-                  role="group"
-                >
-                  <div
-                    class="ms-OverflowSet-item item-121"
-                    role="none"
-                  >
-                    <button
-                      aria-label="metaData1"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="legend-112"
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="0"
-                    >
-                      <div
-                        class="rect-123"
-                      />
-                      <div
-                        class="text-116"
-                      >
-                        metaData1
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class="ms-OverflowSet-item item-121"
-                    role="none"
-                  >
-                    <button
-                      aria-label="metaData2"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="legend-112"
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="rect-126"
-                      />
-                      <div
-                        class="text-116"
-                      >
-                        metaData2
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class="ms-OverflowSet-item item-121"
-                    role="none"
-                  >
-                    <button
-                      aria-label="metaData3"
-                      aria-posinset="3"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="legend-112"
-                      data-is-focusable="true"
-                      role="option"
-                      tabindex="-1"
-                    >
-                      <div
-                        class="rect-129"
-                      />
-                      <div
-                        class="text-116"
-                      >
-                        metaData3
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
-<div>
-  <div
-    class="fui-cart__root"
-    id="chart_"
-    role="presentation"
-  >
-    <div
-      id="defaultTabbableElement_"
-    />
-    <div
-      class="ms-FocusZone css-110 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
-    >
-      <svg
-        aria-label="LineChart"
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
-      >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
-        />
-        <g
-          class="fui-cart__yAxis"
-          id="yAxisGElementchart_"
-          transform="translate(40, 0)"
-        />
-        <g>
-          <line
             id="verticalLine136"
             stroke="#323130"
             stroke-dasharray="5,5"
@@ -5056,6 +4741,321 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="50.913043478260875"
               focusable="false"
               id="circle133_0_11D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        class="root-111"
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class="ms-FocusZone css-110"
+                data-focuszone-id="FocusZone1"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class="ms-OverflowSet root-120"
+                  role="group"
+                >
+                  <div
+                    class="ms-OverflowSet-item item-121"
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class="legend-112"
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class="rect-123"
+                      />
+                      <div
+                        class="text-116"
+                      >
+                        metaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="ms-OverflowSet-item item-121"
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData2"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class="legend-112"
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="rect-126"
+                      />
+                      <div
+                        class="text-116"
+                      >
+                        metaData2
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class="ms-OverflowSet-item item-121"
+                    role="none"
+                  >
+                    <button
+                      aria-label="metaData3"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class="legend-112"
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class="rect-129"
+                      />
+                      <div
+                        class="text-116"
+                      >
+                        metaData3
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class="fui-cart__root"
+    id="chart_"
+    role="presentation"
+  >
+    <div
+      id="defaultTabbableElement_"
+    />
+    <div
+      class="ms-FocusZone css-110 fui-cart__chartWrapper"
+      data-focuszone-id="FocusZone0"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="LineChart"
+        focusable="false"
+        height="292"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class="fui-cart__xAxis"
+          id="xAxisGElementchart_"
+          transform="translate(0, 257)"
+        />
+        <g
+          class="fui-cart__yAxis"
+          id="yAxisGElementchart_"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <line
+            id="verticalLine145"
+            stroke="#323130"
+            stroke-dasharray="5,5"
+            visibility="hidden"
+            x1="0"
+            x2="0"
+            y1="0"
+          />
+          <g>
+            <line
+              id="lineID143_2_1"
+              opacity="1"
+              stroke="yellow"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="630"
+              x2="276"
+              y1="179.7173913043478"
+              y2="50.913043478260875"
+            />
+            <path
+              aria-label="70. metaData3, 30."
+              d="M629.5 179.7173913043478
+     A0.5 0.5 0 1 0 630.5 179.7173913043478
+     M629.5 179.7173913043478
+     A 0.5 0.5 0 1 1 630.5 179.7173913043478
+     "
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle142_2_1"
+              opacity="1"
+              role="img"
+              stroke="yellow"
+              stroke-width="4"
+              tabindex="0"
+            />
+            <path
+              aria-label="40. metaData3, 80."
+              d="M275.5 50.913043478260875
+     A0.5 0.5 0 1 0 276.5 50.913043478260875
+     M275.5 50.913043478260875
+     A 0.5 0.5 0 1 1 276.5 50.913043478260875
+     "
+              data-is-focusable="true"
+              fill="yellow"
+              id="circle142_2_11L"
+              opacity="1"
+              role="img"
+              stroke="yellow"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="276"
+              cy="50.913043478260875"
+              focusable="false"
+              id="circle142_2_11D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+            <line
+              id="lineID143_1_1"
+              opacity="1"
+              stroke="green"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="158"
+              x2="394"
+              y1="102.43478260869564"
+              y2="25.152173913043473"
+            />
+            <path
+              aria-label="30. metaData2, 60."
+              d="M157.5 102.43478260869564
+     A0.5 0.5 0 1 0 158.5 102.43478260869564
+     M157.5 102.43478260869564
+     A 0.5 0.5 0 1 1 158.5 102.43478260869564
+     "
+              data-is-focusable="true"
+              fill="green"
+              id="circle142_1_1"
+              opacity="1"
+              role="img"
+              stroke="green"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="50. metaData2, 90."
+              d="M393.5 25.152173913043473
+     A0.5 0.5 0 1 0 394.5 25.152173913043473
+     M393.5 25.152173913043473
+     A 0.5 0.5 0 1 1 394.5 25.152173913043473
+     "
+              data-is-focusable="true"
+              fill="green"
+              id="circle142_1_11L"
+              opacity="1"
+              role="img"
+              stroke="green"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="394"
+              cy="25.152173913043473"
+              focusable="false"
+              id="circle142_1_11D"
+              opacity="0"
+              r="8"
+              stroke-width="0"
+              width="0"
+            />
+            <line
+              id="lineID143_0_1"
+              opacity="1"
+              stroke="red"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="40"
+              x2="276"
+              y1="128.19565217391306"
+              y2="50.913043478260875"
+            />
+            <path
+              aria-label="20. metaData1, 50."
+              d="M39.5 128.19565217391306
+     A0.5 0.5 0 1 0 40.5 128.19565217391306
+     M39.5 128.19565217391306
+     A 0.5 0.5 0 1 1 40.5 128.19565217391306
+     "
+              data-is-focusable="true"
+              fill="red"
+              id="circle142_0_1"
+              opacity="1"
+              role="img"
+              stroke="red"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <path
+              aria-label="40. metaData1, 80."
+              d="M275.5 50.913043478260875
+     A0.5 0.5 0 1 0 276.5 50.913043478260875
+     M275.5 50.913043478260875
+     A 0.5 0.5 0 1 1 276.5 50.913043478260875
+     "
+              data-is-focusable="true"
+              fill="red"
+              id="circle142_0_11L"
+              opacity="1"
+              role="img"
+              stroke="red"
+              stroke-width="4"
+              tabindex="-1"
+            />
+            <circle
+              cx="276"
+              cy="50.913043478260875"
+              focusable="false"
+              id="circle142_0_11D"
               opacity="0"
               r="8"
               stroke-width="0"
