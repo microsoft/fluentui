@@ -852,6 +852,8 @@ export class VerticalStackedBarChartBase extends React.Component<
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
         const color = point.color ? point.color : this._colors[index];
+        const color2 = singleChartData.chartData[index + 1]?.color ?? color;
+
         const ref: IRefArrayData = {};
 
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
@@ -882,41 +884,62 @@ export class VerticalStackedBarChartBase extends React.Component<
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
-            <path
-              key={index + indexNumber + `${shouldFocusWholeStack}`}
-              className={this._classNames.opacityChangeOnHover}
-              d={`
-                M ${xPoint} ${yPoint + barCornerRadius}
-                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
-                h ${this._barWidth - 2 * barCornerRadius}
-                a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${barCornerRadius}
-                v ${barHeight - barCornerRadius}
-                h ${-this._barWidth}
-                z
-              `}
-              fill={color}
-              ref={e => (ref.refElement = e)}
-              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-              {...rectFocusProps}
-            />
+            <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
+              {this.props.enableGradient && (
+                <defs>
+                  <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                    <stop offset="0" stopColor={color} />
+                    <stop offset="50%" stopColor={color} />
+                    <stop offset="100%" stopColor={color2} />
+                  </linearGradient>
+                </defs>
+              )}
+              <path
+                className={this._classNames.opacityChangeOnHover}
+                d={`
+                  M ${xPoint} ${yPoint + barCornerRadius}
+                  a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
+                  h ${this._barWidth - 2 * barCornerRadius}
+                  a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${barCornerRadius}
+                  v ${barHeight - barCornerRadius}
+                  h ${-this._barWidth}
+                  z
+                `}
+                fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
+                ref={e => (ref.refElement = e)}
+                transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+                {...rectFocusProps}
+              />
+            </React.Fragment>
           );
         }
         if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (
-          <rect
-            key={index + indexNumber}
-            className={this._classNames.opacityChangeOnHover}
-            x={xPoint}
-            y={yPoint}
-            width={this._barWidth}
-            height={barHeight}
-            fill={color}
-            ref={e => (ref.refElement = e)}
-            {...rectFocusProps}
-            transform={`translate(${xScaleBandwidthTranslate}, 0)`}
-          />
+          <React.Fragment key={index + indexNumber}>
+             {this.props.enableGradient && (
+              <defs>
+                <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                  <stop offset="0" stopColor={color} />
+                  <stop offset="50%" stopColor={color} />
+                  <stop offset="100%" stopColor={color2} />
+                </linearGradient>
+              </defs>
+            )}
+            <rect
+              className={this._classNames.opacityChangeOnHover}
+              x={xPoint}
+              y={yPoint}
+              width={this._barWidth}
+              height={barHeight}
+              fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
+              rx={this.props.roundCorners ? this._barWidth / 2 : 0}
+              ref={e => (ref.refElement = e)}
+              {...rectFocusProps}
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            />
+          </React.Fragment>
         );
       });
       const groupRef: IRefArrayData = {};
