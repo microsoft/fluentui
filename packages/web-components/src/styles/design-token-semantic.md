@@ -49,12 +49,11 @@ CSS:
 var(--ctrlDefaultCornerRest, var(--smtcCornerControlDefaultRest));
 ```
 
-Migration mapping:
+Migration mapping (checkbox):
 
 ```mermaid
 stateDiagram-v2
 
-    ctrlDefaultCornerRest --> smtcCornerControlDefaultRest
     ctrlCheckboxDefaultCornerRest --> ctrlDefaultCornerRest
     ctrlDefaultCornerRest --> smtcCornerCheckboxDefaultRest
     smtcCornerCheckboxDefaultRest --> smtcCornerControlDefaultRest
