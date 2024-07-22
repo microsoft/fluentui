@@ -97,8 +97,7 @@ describe('Is Chart Empty', () => {
 
   test('Test Sparkline chart with empty data', async () => {
     // Arrange
-    const { container, rerender } = render(<Sparkline data={emptySparklinePoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
+    const { container } = render(<Sparkline data={emptySparklinePoints} />);
     // Assert
     expect(container).toMatchSnapshot();
     screen.debug(container, Infinity);
@@ -107,7 +106,7 @@ describe('Is Chart Empty', () => {
 
   test('Test Sparkline chart with data', async () => {
     // Arrange
-    const { container, rerender } = render(<Sparkline data={sparkline1Points} />);
+    const { container } = render(<Sparkline data={sparkline1Points} />);
     const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
