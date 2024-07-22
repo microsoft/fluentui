@@ -531,6 +531,13 @@ export class BaseProgressBar extends FASTElement {
 }
 
 // @public
+export class BaseSpinner extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+}
+
+// @public
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
 
 // @public
@@ -3095,12 +3102,9 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends FASTElement {
-    constructor();
+export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
     appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     size?: SpinnerSize;
     sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
