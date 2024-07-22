@@ -1,36 +1,63 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { useColorAreaState_unstable } from './useColorAreaState';
+import { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import { useFocusWithin } from '@fluentui/react-tabster';
 
-/**
- * Create the state required to render ColorArea.
- *
- * The returned state can be modified with hooks such as useColorAreaStyles_unstable,
- * before being passed to renderColorArea_unstable.
- *
- * @param props - props from this instance of ColorArea
- * @param ref - reference to root HTMLDivElement of ColorArea
- */
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
-  return {
-    // TODO add appropriate props/defaults
+export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['onChange'],
+  });
+
+  const {
+    // Slots
+    root,
+    inputX,
+    inputY,
+    thumb,
+    color = 'red',
+    // ...rest
+  } = props;
+
+  const state: ColorAreaState = {
+    color,
     components: {
       root: 'div',
-      description: 'div',
-      light: 'div',
-      dark: 'div',
+      inputX: 'input',
+      inputY: 'input',
       thumb: 'div',
     },
-    root: slot.always(
-      getIntrinsicElementProps('div', {
+    root: slot.always(root, {
+      defaultProps: nativeProps.root,
+      elementType: 'div',
+    }),
+    inputX: slot.always(inputX, {
+      defaultProps: {
+        id: useId('sliderX-', props.id),
         ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
-    description: {},
-    light: {},
-    dark: {},
-    thumb: {},
+        ...nativeProps.primary,
+        type: 'range',
+      },
+      elementType: 'input',
+    }),
+    inputY: slot.always(inputY, {
+      defaultProps: {
+        id: useId('sliderY-', props.id),
+        type: 'range',
+      },
+      elementType: 'input',
+    }),
+    thumb: slot.always(thumb, { elementType: 'div' }),
   };
+
+  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
+
+  useColorAreaState_unstable(state, props);
+
+  return state;
 };
