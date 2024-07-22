@@ -22,7 +22,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
@@ -47,7 +46,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
+            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V9
     variables:
@@ -56,7 +55,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
@@ -81,7 +79,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
+            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V8
     variables:
@@ -90,7 +88,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
@@ -115,7 +112,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+            yarn vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
   - job: VRToolUpdateBaseline_V0
     variables:
       pipelineId: '313'
@@ -123,7 +120,6 @@ jobs:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
@@ -148,4 +144,4 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
