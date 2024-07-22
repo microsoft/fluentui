@@ -2,6 +2,7 @@ import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -19,6 +20,8 @@ interface IVerticalBarState {
   xAxisOuterPadding: number;
   width: number;
   height: number;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class VerticalBarChartTooltipExample extends React.Component<{}, IVerticalBarState> {
@@ -35,6 +38,8 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
       xAxisOuterPadding: 0,
       width: 650,
       height: 350,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
   public render(): JSX.Element {
@@ -69,6 +74,14 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     this.setState({ height: Number(e.target.value) });
   };
 
+  private _onToggleGradient = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  }
+
+  private _onToggleRoundedCorners = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  }
+
   private _basicExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
       {
@@ -94,6 +107,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
     ];
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+
     return (
       <>
         <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
@@ -190,7 +204,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             <span>&nbsp;{this.state.xAxisOuterPadding}</span>
           </Stack>
         </Stack>
-        <div>
+        <Stack horizontal>
           <ChoiceGroup
             options={options}
             defaultSelectedKey="showTooltip"
@@ -198,7 +212,22 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
-        </div>
+
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundedCorners}
+          />
+        </Stack>
+
+
         <div style={rootStyle}>
           <VerticalBarChart
             chartTitle="Vertical bar chart axis tooltip example "
@@ -214,6 +243,8 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             maxBarWidth={this.state.maxBarWidth}
             xAxisInnerPadding={this.state.xAxisInnerPaddingEnabled ? this.state.xAxisInnerPadding : undefined}
             xAxisOuterPadding={this.state.xAxisOuterPaddingEnabled ? this.state.xAxisOuterPadding : undefined}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>
