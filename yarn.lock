@@ -64,25 +64,27 @@
   resolved "https://registry.yarnpkg.com/@azure/core-asynciterator-polyfill/-/core-asynciterator-polyfill-1.0.0.tgz#dcccebb88406e5c76e0e1d52e8cc4c43a68b3ee7"
   integrity sha512-kmv8CGrPfN9SwMwrkiBK9VTQYxdFQEGe0BmQk+M8io56P9KNzpAxcWE/1fxJj7uouwN4kXF0BHW8DNlgx+wtCg==
 
-"@azure/core-auth@^1.1.2", "@azure/core-auth@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@azure/core-auth/-/core-auth-1.3.0.tgz#0d55517cf0650aefe755669aca8a2f3724fcf536"
-  integrity sha512-kSDSZBL6c0CYdhb+7KuutnKGf2geeT+bCJAgccB0DD7wmNJSsQPcF7TcuoZX83B7VK4tLz/u+8sOO/CnCsYp8A==
+"@azure/core-auth@^1.1.2", "@azure/core-auth@^1.3.0", "@azure/core-auth@^1.4.0", "@azure/core-auth@^1.5.0":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@azure/core-auth/-/core-auth-1.7.2.tgz#558b7cb7dd12b00beec07ae5df5907d74df1ebd9"
+  integrity sha512-Igm/S3fDYmnMq1uKS38Ae1/m37B3zigdlZw+kocwEhh5GjyKjPrXKO2J6rzpC1wAxrNil/jX9BJRqBshyjnF3g==
   dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    tslib "^2.0.0"
+    "@azure/abort-controller" "^2.0.0"
+    "@azure/core-util" "^1.1.0"
+    tslib "^2.6.2"
 
-"@azure/core-client@^1.0.0":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@azure/core-client/-/core-client-1.1.1.tgz#404d172c32435847ec6bfd6a50beb9b7ae25bcb4"
-  integrity sha512-SHW4H4I9IxzqaadHCUJLQPTD5jLfBOVNkWw1TSEZr4SGk0AzZzA3BG5q8Pr9L6WDK3MKCXdi6f9IViGYKGXjzw==
+"@azure/core-client@^1.0.0", "@azure/core-client@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.yarnpkg.com/@azure/core-client/-/core-client-1.9.2.tgz#6fc69cee2816883ab6c5cdd653ee4f2ff9774f74"
+  integrity sha512-kRdry/rav3fUKHl/aDLd/pDLcB+4pOFwPPTVEExuMyaI5r+JBbMWqRbCY1pn5BniDaU3lRxO9eaQ1AmSMehl/w==
   dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    "@azure/core-asynciterator-polyfill" "^1.0.0"
-    "@azure/core-auth" "^1.3.0"
-    "@azure/core-rest-pipeline" "^1.0.0"
-    "@azure/core-tracing" "1.0.0-preview.11"
-    tslib "^2.0.0"
+    "@azure/abort-controller" "^2.0.0"
+    "@azure/core-auth" "^1.4.0"
+    "@azure/core-rest-pipeline" "^1.9.1"
+    "@azure/core-tracing" "^1.0.0"
+    "@azure/core-util" "^1.6.1"
+    "@azure/logger" "^1.0.0"
+    tslib "^2.6.2"
 
 "@azure/core-http@^1.1.1":
   version "1.1.3"
@@ -153,29 +155,19 @@
   dependencies:
     "@azure/core-asynciterator-polyfill" "^1.0.0"
 
-"@azure/core-rest-pipeline@^1.0.0", "@azure/core-rest-pipeline@^1.1.0":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@azure/core-rest-pipeline/-/core-rest-pipeline-1.3.2.tgz#82bfb4e960b4ecf4f1a1cdb1afde4ce9192aef09"
-  integrity sha512-kymICKESeHBpVLgQiAxllgWdSTopkqtmfPac8ITwMCxNEC6hzbSpqApYbjzxbBNkBMgoD4GESo6LLhR/sPh6kA==
+"@azure/core-rest-pipeline@^1.1.0", "@azure/core-rest-pipeline@^1.9.1":
+  version "1.16.2"
+  resolved "https://registry.yarnpkg.com/@azure/core-rest-pipeline/-/core-rest-pipeline-1.16.2.tgz#3f71b09e45a65926cc598478b4f1bcd0fe67bf4b"
+  integrity sha512-Hnhm/PG9/SQ07JJyLDv3l9Qr8V3xgAe1hFoBYzt6LaalMxfL/ZqFaZf/bz5VN3pMcleCPwl8ivlS2Fjxq/iC8Q==
   dependencies:
-    "@azure/abort-controller" "^1.0.0"
-    "@azure/core-auth" "^1.3.0"
-    "@azure/core-tracing" "1.0.0-preview.13"
+    "@azure/abort-controller" "^2.0.0"
+    "@azure/core-auth" "^1.4.0"
+    "@azure/core-tracing" "^1.0.1"
+    "@azure/core-util" "^1.9.0"
     "@azure/logger" "^1.0.0"
-    form-data "^4.0.0"
-    http-proxy-agent "^4.0.1"
-    https-proxy-agent "^5.0.0"
-    tslib "^2.2.0"
-    uuid "^8.3.0"
-
-"@azure/core-tracing@1.0.0-preview.11":
-  version "1.0.0-preview.11"
-  resolved "https://registry.yarnpkg.com/@azure/core-tracing/-/core-tracing-1.0.0-preview.11.tgz#bdfb2ba73cd6c39b7d6c207b9522eb98e08b4ddd"
-  integrity sha512-frF0pJc9HTmKncVokhBxCqipjbql02DThQ1ZJ9wLi7SDMLdPAFyDI5xZNzX5guLz+/DtPkY+SGK2li9FIXqshQ==
-  dependencies:
-    "@opencensus/web-types" "0.0.7"
-    "@opentelemetry/api" "1.0.0-rc.0"
-    tslib "^2.0.0"
+    http-proxy-agent "^7.0.0"
+    https-proxy-agent "^7.0.0"
+    tslib "^2.6.2"
 
 "@azure/core-tracing@1.0.0-preview.13":
   version "1.0.0-preview.13"
@@ -194,7 +186,14 @@
     "@opentelemetry/api" "^0.6.1"
     tslib "^1.10.0"
 
-"@azure/core-util@^1.1.1", "@azure/core-util@^1.2.0":
+"@azure/core-tracing@^1.0.0", "@azure/core-tracing@^1.0.1":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@azure/core-tracing/-/core-tracing-1.1.2.tgz#065dab4e093fb61899988a1cdbc827d9ad90b4ee"
+  integrity sha512-dawW9ifvWAWmUm9/h+/UQ2jrdvjCJ7VJEuCJ6XVNudzcOwm53BFZH4Q845vjfgoUAM8ZxokvVNxNxAITc502YA==
+  dependencies:
+    tslib "^2.6.2"
+
+"@azure/core-util@^1.1.0", "@azure/core-util@^1.1.1", "@azure/core-util@^1.2.0", "@azure/core-util@^1.3.0", "@azure/core-util@^1.6.1", "@azure/core-util@^1.9.0":
   version "1.9.1"
   resolved "https://registry.yarnpkg.com/@azure/core-util/-/core-util-1.9.1.tgz#05ea9505c5cdf29c55ccf99a648c66ddd678590b"
   integrity sha512-OLsq0etbHO1MA7j6FouXFghuHrAFGk+5C1imcpQ2e+0oZhYF07WLA+NW2Vqs70R7d+zOAWiWM3tbE1sXcDN66g==
@@ -225,12 +224,53 @@
     tslib "^2.2.0"
     uuid "^8.3.0"
 
+"@azure/identity@^4.3.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@azure/identity/-/identity-4.4.0.tgz#f2743e63d346000a70b0eed5a3b397dedd3984a7"
+  integrity sha512-oG6oFNMxUuoivYg/ElyZWVSZfw42JQyHbrp+lR7VJ1BYWsGzt34NwyDw3miPp1QI7Qm5+4KAd76wGsbHQmkpkg==
+  dependencies:
+    "@azure/abort-controller" "^1.0.0"
+    "@azure/core-auth" "^1.5.0"
+    "@azure/core-client" "^1.9.2"
+    "@azure/core-rest-pipeline" "^1.1.0"
+    "@azure/core-tracing" "^1.0.0"
+    "@azure/core-util" "^1.3.0"
+    "@azure/logger" "^1.0.0"
+    "@azure/msal-browser" "^3.14.0"
+    "@azure/msal-node" "^2.9.2"
+    events "^3.0.0"
+    jws "^4.0.0"
+    open "^8.0.0"
+    stoppable "^1.1.0"
+    tslib "^2.2.0"
+
 "@azure/logger@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@azure/logger/-/logger-1.0.0.tgz#48b371dfb34288c8797e5c104f6c4fb45bf1772c"
   integrity sha512-g2qLDgvmhyIxR3JVS8N67CyIOeFRKQlX/llxYJQr1OSGQqM3HTpVP8MjmjcEKbL/OIt2N9C9UFaNQuKOw1laOA==
   dependencies:
     tslib "^1.9.3"
+
+"@azure/msal-browser@^3.14.0":
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/@azure/msal-browser/-/msal-browser-3.19.1.tgz#c5e5a7996f95cadc11920bffa2bf6321e3a24555"
+  integrity sha512-pqYP2gK0GCEa4OxtOqlS+EdFQqhXV6ZuESgSTYWq2ABXyxBVVdd5KNuqgR5SU0OwI2V1YWdFVvLDe1487dyQ0g==
+  dependencies:
+    "@azure/msal-common" "14.13.1"
+
+"@azure/msal-common@14.13.1":
+  version "14.13.1"
+  resolved "https://registry.yarnpkg.com/@azure/msal-common/-/msal-common-14.13.1.tgz#e296cf8cc556082af9c35d803496424e8a95d8b7"
+  integrity sha512-iUp3BYrsRZ4X3EiaZ2fDjNFjmtYMv9rEQd6c1op6ULn0HWk4ACvDmosL6NaBgWOhl1BAblIbd9vmB5/ilF8d4A==
+
+"@azure/msal-node@^2.9.2":
+  version "2.11.1"
+  resolved "https://registry.yarnpkg.com/@azure/msal-node/-/msal-node-2.11.1.tgz#7fea67a1c6904301eb8853fae7df86c34306a9cc"
+  integrity sha512-8ECtug4RL+zsgh20VL8KYHjrRO3MJOeAKEPRXT2lwtiu5U3BdyIdBb50+QZthEkIi60K6pc/pdOx/k5Jp4sLng==
+  dependencies:
+    "@azure/msal-common" "14.13.1"
+    jsonwebtoken "^9.0.0"
+    uuid "^8.3.0"
 
 "@azure/storage-blob@12.1.2":
   version "12.1.2"
@@ -2636,71 +2676,83 @@
     source-map "~0.6.1"
     typescript "~5.0.4"
 
-"@microsoft/applicationinsights-analytics-js@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-analytics-js/-/applicationinsights-analytics-js-3.0.2.tgz#eb6d3615b3b7866518d259066c93d0ab2b52174c"
-  integrity sha512-vrgEiT6cKC2Yb0Y6rCp9CXjFStlRZLI/IhIiBEGYaUfzoytLxUj6F/AizUDYBuNQfE+CTYe0jNyqf+RJgEMkJQ==
+"@microsoft/applicationinsights-analytics-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-analytics-js/-/applicationinsights-analytics-js-3.3.0.tgz#aa3513c45796ebc43843b206f09366e2d68b603c"
+  integrity sha512-lG2JQutAla84Z9ZoPYyVkTOhzukk1JTuiTmL3f8AoQIHaDdJ2sQdvuTh9sHX8jLnbuAy0KdRiukAaYUGcuc5Dg==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.0.2"
-    "@microsoft/applicationinsights-core-js" "3.0.2"
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/applicationinsights-channel-js@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-channel-js/-/applicationinsights-channel-js-3.0.2.tgz#be49fbf74831c7b8c97950027c5052ea99d2a8a5"
-  integrity sha512-jDBNKbCHsJgmpv0CKNhJ/uN9ZphvfGdb93Svk+R4LjO8L3apNNMbDDPxBvXXi0uigRmA1TBcmyBG4IRKjabGhw==
+"@microsoft/applicationinsights-cfgsync-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-cfgsync-js/-/applicationinsights-cfgsync-js-3.3.0.tgz#4aaa22288a15825cb535e9a4f2ade76e31eaaa84"
+  integrity sha512-m9VpZNAQK+yvpS/sHhWczRoGl7t6VKZ8lvLduDmRMarqQw+CUVAJ1LEYQYcznZlOICfMGBPr9t0kpPP/u1ZGqg==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.0.2"
-    "@microsoft/applicationinsights-core-js" "3.0.2"
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-async" ">= 0.2.4 < 2.x"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/applicationinsights-common@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-common/-/applicationinsights-common-3.0.2.tgz#37670bb07f4858ed41ff9759119e0759007d6e05"
-  integrity sha512-y+WXWop+OVim954Cu1uyYMnNx6PWO8okHpZIQi/1YSqtqaYdtJVPv4P0AVzwJdohxzVfgzKvqj9nec/VWqE2Zg==
+"@microsoft/applicationinsights-channel-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-channel-js/-/applicationinsights-channel-js-3.3.0.tgz#fca847a9e14b6b82f8b57a0feb88b608a57d9ab1"
+  integrity sha512-xlxcfwgFgvHoY/STVgtRoUSvAKOMNbe4CIBeY8zTHsjE9x3/kY9R9kpRkTBectuD7xVm1/FmzrzqaxcJO7R/sw==
   dependencies:
-    "@microsoft/applicationinsights-core-js" "3.0.2"
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/applicationinsights-core-js@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-3.0.2.tgz#108e20df8c162bec92b1f66f9de2530a25d9f51a"
-  integrity sha512-WQhVhzlRlLDrQzn3OShCW/pL3BW5WC57t0oywSknX3q7lMzI3jDg7Ihh0iuIcNTzGCTbDkuqr4d6IjEDWIMtJQ==
+"@microsoft/applicationinsights-common@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-common/-/applicationinsights-common-3.3.0.tgz#fb5dfa226fe7e0849e44977cbb9d4dbce49bf82a"
+  integrity sha512-5t6WtL9wCQUA06sioaTenz5qWgrCk7QRm99pDuP+vyjcAiT6//f+Qn1K9KXtEX5WfEMHx3vBIDGLl6ppnF1YAQ==
   dependencies:
+    "@microsoft/applicationinsights-core-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-async" ">= 0.2.4 < 2.x"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/applicationinsights-dependencies-js@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-dependencies-js/-/applicationinsights-dependencies-js-3.0.2.tgz#a50436519abdf4c4409d25806df481b7cd1c8848"
-  integrity sha512-b/YTonnbghg9DOFsLg4zdbYPafW8fPIzV+nZxfPPpxjA1LGvPhZz/zVx9YYWJg2RBXjojLQoJxLf1ro5eNGVig==
+"@microsoft/applicationinsights-core-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-core-js/-/applicationinsights-core-js-3.3.0.tgz#b4e4da3bd49c3d14107f7beb6152d5214324b214"
+  integrity sha512-so0fFTqgZMjClH+MsiRYGspo5fpgwHEUYNMjyzpf9rjrY7FaUH8kkWzrQ3V0Cs4axZwf+WuIndtDOAws7aBmGQ==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.0.2"
-    "@microsoft/applicationinsights-core-js" "3.0.2"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-async" ">= 0.2.4 < 2.x"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/applicationinsights-properties-js@3.0.2":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-properties-js/-/applicationinsights-properties-js-3.0.2.tgz#3e92985a010ff74df9b827e4c98c807711005649"
-  integrity sha512-PFqicp8q4Tc0hqfPjwfqKo12gEqTk1l4lMyUUIU7ugE1XOuDkZcMPha05KnZWKj+F4zQXJcetcAHoVkyoyCFQw==
+"@microsoft/applicationinsights-dependencies-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-dependencies-js/-/applicationinsights-dependencies-js-3.3.0.tgz#83a990278f9608cc736d25a3d6c6e3b1cccc9a9a"
+  integrity sha512-6dILyoRyP1qOGY63yY/dHSoCRgba8+B+q1SNw57DrwpmmnEcZ1CYU0x9qLdXoFPDVWFlj+8RuLFFwd0k+flGLQ==
   dependencies:
-    "@microsoft/applicationinsights-common" "3.0.2"
-    "@microsoft/applicationinsights-core-js" "3.0.2"
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
+
+"@microsoft/applicationinsights-properties-js@3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-properties-js/-/applicationinsights-properties-js-3.3.0.tgz#c461f2a0be20f15fcf3762727c11c7d2e00fe60f"
+  integrity sha512-hNw/7cv7zfg5WE+McWAPqW8NVI+VIG2DPht9IbusjMsOSP7P+zx62Y/8AHAG9QsAuqzS+TdbxTlQTdjbHCMNsw==
+  dependencies:
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
+    "@microsoft/applicationinsights-shims" "3.0.1"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
 "@microsoft/applicationinsights-shims@3.0.1":
   version "3.0.1"
@@ -2709,28 +2761,29 @@
   dependencies:
     "@nevware21/ts-utils" ">= 0.9.4 < 2.x"
 
-"@microsoft/applicationinsights-web@^3":
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-web/-/applicationinsights-web-3.0.2.tgz#f825b718fbffa921e2a32a7fb8da2dc905071ac6"
-  integrity sha512-pf2zz/3mmGy1RoyaiLZwhHoE2mFZ+AWR3Zf7xPW7HjTG7dEE4BnovNyW3f9Eu6WWkcHUAHmS/ATzqvVlpB3W6A==
+"@microsoft/applicationinsights-web@^3", "@microsoft/applicationinsights-web@^3.2.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/applicationinsights-web/-/applicationinsights-web-3.3.0.tgz#3959bbca74a7ae11e10cf8f029b1b64e0dc2d123"
+  integrity sha512-sNavVlkt5HTfZcKcNatlLq35A6Hc9citdvY3r6Ks5IlPsP5c4hIWC3z+/aECBa+YikewcunZQW2i2Uz020Z3xQ==
   dependencies:
-    "@microsoft/applicationinsights-analytics-js" "3.0.2"
-    "@microsoft/applicationinsights-channel-js" "3.0.2"
-    "@microsoft/applicationinsights-common" "3.0.2"
-    "@microsoft/applicationinsights-core-js" "3.0.2"
-    "@microsoft/applicationinsights-dependencies-js" "3.0.2"
-    "@microsoft/applicationinsights-properties-js" "3.0.2"
+    "@microsoft/applicationinsights-analytics-js" "3.3.0"
+    "@microsoft/applicationinsights-cfgsync-js" "3.3.0"
+    "@microsoft/applicationinsights-channel-js" "3.3.0"
+    "@microsoft/applicationinsights-common" "3.3.0"
+    "@microsoft/applicationinsights-core-js" "3.3.0"
+    "@microsoft/applicationinsights-dependencies-js" "3.3.0"
+    "@microsoft/applicationinsights-properties-js" "3.3.0"
     "@microsoft/applicationinsights-shims" "3.0.1"
-    "@microsoft/dynamicproto-js" "^2.0.2"
-    "@nevware21/ts-async" ">= 0.2.4 < 2.x"
-    "@nevware21/ts-utils" ">= 0.9.5 < 2.x"
+    "@microsoft/dynamicproto-js" "^2.0.3"
+    "@nevware21/ts-async" ">= 0.5.2 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@microsoft/dynamicproto-js@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@microsoft/dynamicproto-js/-/dynamicproto-js-2.0.2.tgz#e57fbec2e7067d48b7e8e1e1c1d354028ef718a6"
-  integrity sha512-MB8trWaFREpmb037k/d0bB7T2BP7Ai24w1e1tbz3ASLB0/lwphsq3Nq8S9I5AsI5vs4zAQT+SB5nC5/dLYTiOg==
+"@microsoft/dynamicproto-js@^2.0.3":
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/@microsoft/dynamicproto-js/-/dynamicproto-js-2.0.3.tgz#ae2b408061e3ff01a97078429fc768331e239256"
+  integrity sha512-JTWTU80rMy3mdxOjjpaiDQsTLZ6YSGGqsjURsY6AUQtIj0udlF/jYmhdLZu8693ZIC0T1IwYnFa0+QeiMnziBA==
   dependencies:
-    "@nevware21/ts-utils" ">= 0.9.4 < 2.x"
+    "@nevware21/ts-utils" ">= 0.10.4 < 2.x"
 
 "@microsoft/eslint-plugin-sdl@0.1.9":
   version "0.1.9"
@@ -2802,17 +2855,17 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nevware21/ts-async@>= 0.2.4 < 2.x":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@nevware21/ts-async/-/ts-async-0.2.6.tgz#9fad1c4a56b01430b407d454817f68bb6ace92b0"
-  integrity sha512-NCUqEZSbsy7LVtKlUScd/eTst6djkWauLlzoIPVKCOxalEBdO8lrgNRIm4Xy68JNudNN5faqa2WA12X8m0BVhA==
+"@nevware21/ts-async@>= 0.5.2 < 2.x":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@nevware21/ts-async/-/ts-async-0.5.2.tgz#a41883dc6ccc4666bdf156e92f35f3003fd3f6f0"
+  integrity sha512-Zf2vUNjCw2vJsiVKhWXA9hCNHsn59AOSGa5jGP4tWrp/vTH9XrI4eG/65khuoAgrS83migj0Xv5/j6fUAz69Zw==
   dependencies:
-    "@nevware21/ts-utils" ">= 0.9.7 < 2.x"
+    "@nevware21/ts-utils" ">= 0.11.3 < 2.x"
 
-"@nevware21/ts-utils@>= 0.9.4 < 2.x", "@nevware21/ts-utils@>= 0.9.5 < 2.x", "@nevware21/ts-utils@>= 0.9.7 < 2.x":
-  version "0.9.8"
-  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.9.8.tgz#6db23211a5c7539d3b4362e273087effcfc7d2f8"
-  integrity sha512-kZ8s8hcn9jPVX/M7kSsBYrOGlHjqLahmxrG7QeKTk5paeVwfgKdvVCjj5Acb4UGb/ukU1G34U1Z3eb7bbVanyA==
+"@nevware21/ts-utils@>= 0.10.4 < 2.x", "@nevware21/ts-utils@>= 0.11.3 < 2.x", "@nevware21/ts-utils@>= 0.9.4 < 2.x":
+  version "0.11.3"
+  resolved "https://registry.yarnpkg.com/@nevware21/ts-utils/-/ts-utils-0.11.3.tgz#d0f032ade9540585a30a6453d962de613566d856"
+  integrity sha512-oipW+tyKN68bREjoESYAzOZiatM+1LF+ez1TX3BaeinhCkI18xsLgmpH9tvwHaVgKf1Tsth25sdbXVtYmgRYvQ==
 
 "@nodelib/fs.scandir@2.1.3":
   version "2.1.3"
@@ -3323,11 +3376,6 @@
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@opencensus/web-types/-/web-types-0.0.7.tgz#4426de1fe5aa8f624db395d2152b902874f0570a"
   integrity sha512-xB+w7ZDAu3YBzqH44rCmG9/RlrOmFuDPt/bpf17eJr8eZSrLt7nc7LnWdxM9Mmoj/YKMHpxRg28txu3TcpiL+g==
-
-"@opentelemetry/api@1.0.0-rc.0":
-  version "1.0.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@opentelemetry/api/-/api-1.0.0-rc.0.tgz#0c7c3f5e1285f99cedb563d74ad1adb9822b5144"
-  integrity sha512-iXKByCMfrlO5S6Oh97BuM56tM2cIBB0XsL/vWF/AtJrJEKx4MC/Xdu0xDsGXMGcNWpqF7ujMsjjnp0+UHBwnDQ==
 
 "@opentelemetry/api@^0.6.1":
   version "0.6.1"
@@ -4831,11 +4879,6 @@
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@tokenizer/token/-/token-0.3.0.tgz#fe98a93fe789247e998c75e74e9c7c63217aa276"
   integrity sha512-OvjF+z51L3ov0OyAU0duzsYuvO01PH7x4t6DJx+guahgTnBHkhJdG7soQeTSFLWN3efnHyibZ4Z8l2EuWwJN3A==
-
-"@tootallnate/once@1":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
-  integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
 "@tootallnate/once@2":
   version "2.0.0"
@@ -7428,10 +7471,10 @@ axobject-query@^2.2.0:
   resolved "https://registry.yarnpkg.com/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
   integrity sha512-Td525n+iPOOyUQIeBfcASuG6uJsDOITl7Mds5gFyerkWiX7qhUTdYUBlSgNMyVqtSJqwpt1kXGLdUt6SykLMRA==
 
-azure-devops-node-api@^10.1.0:
-  version "10.2.2"
-  resolved "https://registry.yarnpkg.com/azure-devops-node-api/-/azure-devops-node-api-10.2.2.tgz#9f557e622dd07bbaa9bd5e7e84e17c761e2151b2"
-  integrity sha512-4TVv2X7oNStT0vLaEfExmy3J4/CzfuXolEcQl/BRUmvGySqKStTG2O55/hUQ0kM7UJlZBLgniM0SBq4d/WkKow==
+azure-devops-node-api@^12.5.0:
+  version "12.5.0"
+  resolved "https://registry.yarnpkg.com/azure-devops-node-api/-/azure-devops-node-api-12.5.0.tgz#38b9efd7c5ac74354fe4e8dbe42697db0b8e85a5"
+  integrity sha512-R5eFskGvOm3U/GzeAuxRkUsAl0hrAwGgWn6zAd2KrZmrEhWZVqLew4OOupbQlXUuojUzpGtq62SmdhJ06N88og==
   dependencies:
     tunnel "0.0.6"
     typed-rest-client "^1.8.4"
@@ -14344,15 +14387,6 @@ http-proxy-agent@^2.1.0:
     agent-base "4"
     debug "3.1.0"
 
-http-proxy-agent@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-4.0.1.tgz#8a8c8ef7f5932ccf953c296ca8291b95aa74aa3a"
-  integrity sha512-k0zdNgqWTGA6aeIRVpvfVob4fL52dTfaehylg0Y4UvSySvOq/Y+BOyPrgpUrA7HylqvU8vIZGsRuXmspskV0Tg==
-  dependencies:
-    "@tootallnate/once" "1"
-    agent-base "6"
-    debug "4"
-
 http-proxy-agent@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/http-proxy-agent/-/http-proxy-agent-5.0.0.tgz#5129800203520d434f142bc78ff3c170800f2b43"
@@ -14429,7 +14463,7 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
-https-proxy-agent@5.0.1, https-proxy-agent@^5.0.0, https-proxy-agent@^5.0.1:
+https-proxy-agent@5.0.1, https-proxy-agent@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/https-proxy-agent/-/https-proxy-agent-5.0.1.tgz#c59ef224a04fe8b754f3db0063a25ea30d0005d6"
   integrity sha512-dFcAjpTQFgoLMzC2VwU+C/CbS7uRL0lWmxDITmqm7C+7F0Odmj6s9l6alZc6AELXhrnggM2CeWSXHGOdX2YtwA==
@@ -16228,6 +16262,22 @@ jsonwebtoken@^8.4.0, jsonwebtoken@^8.5.1:
     ms "^2.1.1"
     semver "^5.6.0"
 
+jsonwebtoken@^9.0.0:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/jsonwebtoken/-/jsonwebtoken-9.0.2.tgz#65ff91f4abef1784697d40952bb1998c504caaf3"
+  integrity sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==
+  dependencies:
+    jws "^3.2.2"
+    lodash.includes "^4.3.0"
+    lodash.isboolean "^3.0.3"
+    lodash.isinteger "^4.0.4"
+    lodash.isnumber "^3.0.3"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.once "^4.0.0"
+    ms "^2.1.1"
+    semver "^7.5.4"
+
 jsprim@^1.2.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/jsprim/-/jsprim-1.4.2.tgz#712c65533a15c878ba59e9ed5f0e26d5b77c5feb"
@@ -16347,12 +16397,29 @@ jwa@^1.4.1:
     ecdsa-sig-formatter "1.0.11"
     safe-buffer "^5.0.1"
 
+jwa@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jwa/-/jwa-2.0.0.tgz#a7e9c3f29dae94027ebcaf49975c9345593410fc"
+  integrity sha512-jrZ2Qx916EA+fq9cEAeCROWPTfCwi1IVHqT2tapuqLEVVDKFDENFw1oL+MwrTvH6msKxsd1YTDVw6uKEcsrLEA==
+  dependencies:
+    buffer-equal-constant-time "1.0.1"
+    ecdsa-sig-formatter "1.0.11"
+    safe-buffer "^5.0.1"
+
 jws@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/jws/-/jws-3.2.2.tgz#001099f3639468c9414000e99995fa52fb478304"
   integrity sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==
   dependencies:
     jwa "^1.4.1"
+    safe-buffer "^5.0.1"
+
+jws@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/jws/-/jws-4.0.0.tgz#2d4e8cf6a318ffaa12615e9dec7e86e6c97310f4"
+  integrity sha512-KDncfTmOZoOMTFG4mBlG0qUIOlc03fmzH+ru6RgYVZhPkyiy/92Owlt/8UEN+a4TXR1FQetfIpJE8ApdvdVxTg==
+  dependencies:
+    jwa "^2.0.0"
     safe-buffer "^5.0.1"
 
 keyborg@2.6.0, keyborg@^2.6.0:
@@ -18537,7 +18604,7 @@ open@^7.0.3:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
-open@^8.0.9, open@^8.4.0:
+open@^8.0.0, open@^8.0.9, open@^8.4.0:
   version "8.4.2"
   resolved "https://registry.yarnpkg.com/open/-/open-8.4.2.tgz#5b5ffe2a8f793dcd2aad73e550cb87b59cb084f9"
   integrity sha512-7x81NCL719oNbsq/3mh+hVrAWmFuEYUqrq/Iw3kUzH8ReypT9QQ0BLoJS7/G9k6N81XjW4qHWtjWwe/9eLy1EQ==
@@ -22179,6 +22246,11 @@ stealthy-require@^1.1.1:
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
+stoppable@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/stoppable/-/stoppable-1.1.0.tgz#32da568e83ea488b08e4d7ea2c3bcc9d75015d5b"
+  integrity sha512-KXDYZ9dszj6bzvnEMRYvxgeTHU74QBFL54XKtP3nyMuJ81CFYtABZ3bAzL2EdFUaEwJOBOgENyFj3R7oTzDyyw==
+
 store2@^2.12.0:
   version "2.12.0"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.12.0.tgz#e1f1b7e1a59b6083b2596a8d067f6ee88fd4d3cf"
@@ -24325,14 +24397,16 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vr-approval-cli@0.0.205:
-  version "0.0.205"
-  resolved "https://registry.yarnpkg.com/vr-approval-cli/-/vr-approval-cli-0.0.205.tgz#3623812965d401046a8a065548324dc4bba48d2e"
-  integrity sha512-97ANe0cEA5poCog3XWaw7a+PCbTumiADQ4yvsi8248BecclE+8BcgY5iUkIy2VreEQ1cmAVBhUmlt/6GCOIvwQ==
+vr-approval-cli@0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/vr-approval-cli/-/vr-approval-cli-0.4.4.tgz#a9377056996a69e2d54fa561118abdf599bab458"
+  integrity sha512-rQ3nFyHds7gy1paVb1pkQJVJuzf2CJyzvq2g4x1Qe9JQHSgAWITdpD0tfPTvCuwLh6JcZ3z3hTr+sTSHg5976Q==
   dependencies:
+    "@azure/identity" "^4.3.0"
     "@azure/storage-blob" "12.11.0"
+    "@microsoft/applicationinsights-web" "^3.2.0"
     "@octokit/rest" "^19.0.3"
-    azure-devops-node-api "^10.1.0"
+    azure-devops-node-api "^12.5.0"
     commander "^9.4.1"
     compress-json "^2.1.1"
     domdiffing "^0.0.9"
