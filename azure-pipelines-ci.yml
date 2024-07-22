@@ -21,6 +21,11 @@ resources:
 extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
   parameters:
+    sdl:
+      codeql:
+        compiled:
+          enabled: true
+        runSourceLanguagesInSourceAnalysis: true
     pool:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
