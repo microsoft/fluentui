@@ -1,9 +1,34 @@
 import * as React from 'react';
-import { styled } from '@fluentui/react/lib/Utilities';
-import { IModifiedCartesianChartProps, ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { CartesianChartBase } from './CartesianChart.base';
-import { getStyles } from './CartesianChart.styles';
-
+// import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { IModifiedCartesianChartProps, IYValueHover, IHorizontalBarChartWithAxisDataPoint } from '../../index';
+import { useCartesianChartStyles_unstable } from './useCartesianChartStyles.styles';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import {
+  createNumericXAxis,
+  createStringXAxis,
+  IAxisData,
+  //getAccessibleDataObject,
+  getDomainNRangeValues,
+  createDateXAxis,
+  createYAxis,
+  createStringYAxis,
+  IMargins,
+  getMinMaxOfYAxis,
+  XAxisTypes,
+  YAxisType,
+  createWrapOfXLabels,
+  rotateXAxisLabels,
+  Points,
+  pointTypes,
+  calculateLongestLabelWidth,
+  createYAxisLabels,
+  ChartTypes,
+  wrapContent,
+  isRtl,
+} from '../../utilities/index';
+import { LegendShape, Shape } from '../Legends/index';
+import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
