@@ -18,6 +18,8 @@ import { useRestoreFocusSource } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of MenuPopover
  */
 export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<HTMLElement>): MenuPopoverState => {
+  'use no memo';
+
   const popoverRef = useMenuContext_unstable(context => context.menuPopoverRef);
   const setOpen = useMenuContext_unstable(context => context.setOpen);
   const open = useMenuContext_unstable(context => context.open);

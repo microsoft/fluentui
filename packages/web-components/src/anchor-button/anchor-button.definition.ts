@@ -12,7 +12,4 @@ export const definition = AnchorButton.compose({
   name: `${FluentDesignSystem.prefix}-anchor-button`,
   template,
   styles,
-  shadowOptions: {
-    delegatesFocus: true,
-  },
 });

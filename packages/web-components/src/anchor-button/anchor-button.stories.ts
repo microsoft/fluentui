@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { AnchorButton as FluentAnchorButton } from './anchor-button.js';
 import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
-import './define.js';
 
 type AnchorButtonStoryArgs = Args & FluentAnchorButton;
 type AnchorButtonStoryMeta = Meta<AnchorButtonStoryArgs>;
@@ -14,8 +13,6 @@ const storyTemplate = html<AnchorButtonStoryArgs>`
     appearance="${x => x.appearance}"
     shape="${x => x.shape}"
     size="${x => x.size}"
-    ?disabled="${x => x.disabled}"
-    ?disabled-focusable="${x => x.disabledFocusable}"
     ?icon-only="${x => x.iconOnly}"
   >
     ${x => x.content}
@@ -47,28 +44,6 @@ export default {
       options: Object.values(AnchorButtonSize),
       control: {
         type: 'select',
-      },
-    },
-    disabled: {
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'Sets the disabled state of the component',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
-      },
-    },
-    disabledFocusable: {
-      control: 'boolean',
-      table: {
-        type: {
-          summary: 'The component is disabled but still focusable',
-        },
-        defaultValue: {
-          summary: 'false',
-        },
       },
     },
     href: {
@@ -196,15 +171,6 @@ export const Size = renderComponent(html<AnchorButtonStoryArgs>`
       ></path>
     </svg>
   </fluent-anchor-button>
-`);
-
-export const Disabled = renderComponent(html<AnchorButtonStoryArgs>`
-  <fluent-anchor-button href="#">Enabled state</fluent-anchor-button>
-  <fluent-anchor-button href="#" disabled>Disabled state</fluent-anchor-button>
-  <fluent-anchor-button href="#" disabled-focusable>Disabled focusable state</fluent-anchor-button>
-  <fluent-anchor-button href="#" appearance="primary">Enabled state</fluent-anchor-button>
-  <fluent-anchor-button href="#" appearance="primary" disabled>Disabled state</fluent-anchor-button>
-  <fluent-anchor-button href="#" appearance="primary" disabled-focusable>Disabled focusable state</fluent-anchor-button>
 `);
 
 export const WithLongText = renderComponent(html<AnchorButtonStoryArgs>`

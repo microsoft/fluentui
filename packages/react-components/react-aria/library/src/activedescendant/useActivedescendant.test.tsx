@@ -272,6 +272,7 @@ describe('useActivedescendant', () => {
       const { getByRole } = render(<Test imperativeRef={imperativeRef} />);
 
       // there should not be a last active descendant yet
+      // eslint-disable-next-line deprecation/deprecation
       expect(imperativeRef.current?.focusLastActive()).toBeFalsy();
 
       imperativeRef.current?.focus('option-3');
@@ -280,6 +281,7 @@ describe('useActivedescendant', () => {
       imperativeRef.current?.blur();
       expect(imperativeRef.current?.active()).toBeUndefined();
 
+      // eslint-disable-next-line deprecation/deprecation
       expect(imperativeRef.current?.focusLastActive()).toBeTruthy();
       expect(imperativeRef.current?.active()).toBe('option-3');
 

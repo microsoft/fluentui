@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-migration-v8-v9",
-  "version": "9.6.16",
+  "version": "9.6.21",
   "description": "Migration shim components and methods for hybrid v8/v9 applications building on Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,20 +32,20 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.84",
-    "@fluentui/react": "^8.118.7",
-    "@fluentui/react-components": "^9.54.0",
-    "@fluentui/react-icons": "^2.0.239",
-    "@fluentui/react-hooks": "^8.8.6",
+    "@fluentui/fluent2-theme": "^8.107.90",
+    "@fluentui/react": "^8.119.2",
+    "@fluentui/react-components": "^9.54.5",
+    "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-hooks": "^8.8.10",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-utilities": "^9.18.12",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
     "@types/react-dom": ">=16.9.0 <19.0.0",
-    "react": ">=16.14.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {

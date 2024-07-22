@@ -1,5 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { Button } from '../button/button.js';
+import { toggleState } from '../utils/element-internals.js';
 
 /**
  * The base class used for constructing a `<fluent-toggle-button>` custom element.
@@ -70,7 +71,7 @@ export class ToggleButton extends Button {
     if (this.$fastController.isConnected) {
       const ariaPressed = `${this.mixed ? 'mixed' : !!this.pressed}`;
       this.elementInternals.ariaPressed = ariaPressed;
-      this.setAttribute('aria-pressed', ariaPressed);
+      toggleState(this.elementInternals, 'pressed', !!this.pressed || !!this.mixed);
     }
   }
 }

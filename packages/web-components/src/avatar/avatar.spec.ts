@@ -87,6 +87,11 @@ test.describe('Avatar Component', () => {
     await expect(element).toBeVisible();
   });
 
+  test('should have a role of img', async () => {
+    await page.waitForSelector('fluent-avatar');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'img');
+  });
+
   test('When no name value is set, should render with custom initials based on the provided initials value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -134,44 +139,27 @@ test.describe('Avatar Component', () => {
   });
 
   test('default color should be neutral', async () => {
-    await expect(element).toHaveAttribute('data-color', `neutral`);
+    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('neutral'))).toBe(true);
   });
 
-  test('should default to a specific color when "colorful" is set without name or colorId', async () => {
-    await element.evaluate((node: Avatar) => {
-      node.color = 'colorful';
-    });
-    const generatedColor = await element.evaluate((node: Avatar) => {
-      return node.generateColor();
-    });
-    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
-  });
-
-  test('should derive the color from the name attribute when set to "colorful"', async () => {
+  test('should add a custom state of `brand` when `brand is provided as the color', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar name="John Doe" color="colorful"></fluent-avatar>
+        <fluent-avatar color-id="pumpkin" name="John Doe" color="brand"></fluent-avatar>
       `;
     });
 
-    const generatedColor = await element.evaluate((node: Avatar) => {
-      return node.generateColor();
-    });
-
-    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
+    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('brand'))).toBe(true);
   });
 
   test('should prioritize color derivation from colorId over name when set to "colorful"', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar color-id="pumpkin" name="John Doe" color="colorful"></fluent-avatar>
+        <fluent-avatar color-id="pumpkin" name="Steve Smith" color="colorful"></fluent-avatar>
       `;
     });
 
-    const generatedColor = await element.evaluate((node: Avatar) => {
-      return node.generateColor();
-    });
-    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
+    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('pumpkin'))).toBe(true);
   });
 
   for (const [, value] of Object.entries(colorAttributes)) {

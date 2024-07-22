@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeItem renders a default state 1`] = `
+<div
+  class="fui-Tree"
+  role="tree"
+>
+  <div
+    aria-level="1"
+    class="fui-TreeItem"
+    data-fui-tree-item-value="1"
+    role="treeitem"
+    tabindex="0"
+  >
+    Default TreeItem
+  </div>
+</div>
+`;

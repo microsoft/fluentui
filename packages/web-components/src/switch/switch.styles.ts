@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { checkedState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
@@ -26,12 +26,8 @@ import {
   spacingHorizontalXXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
-
-/**
- * Selector for the `checked` state.
- * @public
- */
-const checkedState = css.partial`:is([state--checked], :state(checked))`;
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
 
 export const styles = css`
   ${display('inline-flex')}
@@ -67,6 +63,7 @@ export const styles = css`
   }
   :host(${checkedState}) {
     background: ${colorCompoundBrandBackground};
+    border-color: ${colorCompoundBrandBackground};
   }
   :host(${checkedState}:hover) {
     background: ${colorCompoundBrandBackgroundHover};

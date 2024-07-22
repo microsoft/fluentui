@@ -32,7 +32,6 @@ export const parameters = {
             'Quick Start',
             'Styling Components',
             'Positioning Components',
-            'Component Poster',
             'Server-Side Rendering',
             ['Basic setup', 'Next.js setup', 'Limitations with Portals'],
           ],

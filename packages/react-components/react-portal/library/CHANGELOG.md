@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-portal
 
-This log was last generated on Thu, 06 Jun 2024 15:26:37 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.30)
+
+Mon, 15 Jul 2024 17:25:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.29..@fluentui/react-portal_v9.4.30)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-tabster to v9.22.2 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+
+## [9.4.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.29)
+
+Mon, 01 Jul 2024 20:30:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.28..@fluentui/react-portal_v9.4.29)
+
+### Patches
+
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-tabster to v9.22.1 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+
+## [9.4.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.28)
+
+Mon, 17 Jun 2024 07:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal_v9.4.27..@fluentui/react-portal_v9.4.28)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
 
 ## [9.4.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal_v9.4.27)
 

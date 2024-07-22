@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.21.17",
+  "version": "5.21.24",
   "description": "React web charting controls for Microsoft fluentui system.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -15,7 +15,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
     "test": "cross-env TZ=UTC just-scripts test",
     "just": "just-scripts",
@@ -40,8 +39,8 @@
     "jest-canvas-mock": "2.4.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^8.9.6",
-    "@fluentui/theme-samples": "^8.7.156",
+    "@fluentui/react-focus": "^8.9.10",
+    "@fluentui/theme-samples": "^8.7.162",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "^2.0.0",
     "@types/d3-axis": "^2.0.0",
@@ -53,7 +52,7 @@
     "@types/d3-shape": "^3.0.0",
     "@types/d3-time-format": "^3.0.0",
     "@types/d3-time": "^2.0.0",
-    "@fluentui/set-version": "^8.2.22",
+    "@fluentui/set-version": "^8.2.23",
     "d3-array": "^2.0.0",
     "d3-axis": "^2.0.0",
     "d3-format": "^2.0.0",
@@ -67,7 +66,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.118.7",
+    "@fluentui/react": "^8.119.2",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",

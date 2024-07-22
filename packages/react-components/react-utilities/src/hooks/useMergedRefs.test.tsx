@@ -66,4 +66,23 @@ describe('useMergedRefs', () => {
     expect(firstRefValue).toBe(true);
     expect(secondRefValue).toBe(true);
   });
+  describe('type tests', () => {
+    it('should be assignable to distributive types', () => {
+      const {
+        result: { current: mergedRef },
+      } = renderHook(() => useMergedRefs<1 | 2>());
+
+      const refO: React.RefObject<1> | React.RefObject<2> = mergedRef;
+      const refF: React.RefCallback<1> | React.RefCallback<2> = mergedRef;
+      refF;
+      refO;
+    });
+    `  `;
+    it('should accept null as a value', () => {
+      const {
+        result: { current: mergedRef },
+      } = renderHook(() => useMergedRefs<1 | 2>());
+      mergedRef(null);
+    });
+  });
 });

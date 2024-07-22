@@ -14,6 +14,15 @@ import {
   fontWeightRegular,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import {
+  alignEndState,
+  alignStartState,
+  brandState,
+  insetState,
+  strongState,
+  subtleState,
+  verticalState,
+} from '../styles/states/index.js';
 
 /** Divider styles
  * @public
@@ -36,7 +45,7 @@ export const styles = css`
     height: ${strokeWidthThin};
   }
 
-  :host([inset]) {
+  :host(${insetState}) {
     padding: 0 12px;
   }
 
@@ -49,90 +58,90 @@ export const styles = css`
     padding: 0 12px;
   }
 
-  :host([align-content='start'])::before,
-  :host([align-content='end'])::after {
+  :host(${alignStartState})::before,
+  :host(${alignEndState})::after {
     flex-basis: 12px;
     flex-grow: 0;
     flex-shrink: 0;
   }
 
-  :host([orientation='vertical']) {
+  :host(${verticalState}) {
     height: 100%;
     min-height: 84px;
   }
-  :host([orientation='vertical']):empty {
+  :host(${verticalState}):empty {
     min-height: 20px;
   }
 
-  :host([orientation='vertical']) {
+  :host(${verticalState}) {
     flex-direction: column;
     align-items: center;
   }
 
-  :host([orientation='vertical'][inset])::before {
+  :host(${verticalState}${insetState})::before {
     margin-top: 12px;
   }
-  :host([orientation='vertical'][inset])::after {
+  :host(${verticalState}${insetState})::after {
     margin-bottom: 12px;
   }
 
-  :host([orientation='vertical']):empty::before,
-  :host([orientation='vertical']):empty::after {
+  :host(${verticalState}):empty::before,
+  :host(${verticalState}):empty::after {
     height: 10px;
     min-height: 10px;
     flex-grow: 0;
   }
 
-  :host([orientation='vertical'])::before,
-  :host([orientation='vertical'])::after {
+  :host(${verticalState})::before,
+  :host(${verticalState})::after {
     width: ${strokeWidthThin};
     min-height: 20px;
     height: 100%;
   }
 
-  :host([orientation='vertical']) ::slotted(*) {
+  :host(${verticalState}) ::slotted(*) {
     display: flex;
     flex-direction: column;
     padding: 12px 0;
     line-height: 20px;
   }
 
-  :host([orientation='vertical'][align-content='start'])::before {
+  :host(${verticalState}${alignStartState})::before {
     min-height: 8px;
   }
-  :host([orientation='vertical'][align-content='end'])::after {
+  :host(${verticalState}${alignEndState})::after {
     min-height: 8px;
   }
 
-  :host([appearance='strong'])::before,
-  :host([appearance='strong'])::after {
+  :host(${strongState})::before,
+  :host(${strongState})::after {
     background: ${colorNeutralStroke1};
   }
-  :host([appearance='strong']) ::slotted(*) {
+  :host(${strongState}) ::slotted(*) {
     color: ${colorNeutralForeground1};
   }
-  :host([appearance='brand'])::before,
-  :host([appearance='brand'])::after {
+  :host(${brandState})::before,
+  :host(${brandState})::after {
     background: ${colorBrandStroke1};
   }
-  :host([appearance='brand']) ::slotted(*) {
+  :host(${brandState}) ::slotted(*) {
     color: ${colorBrandForeground1};
   }
-  :host([appearance='subtle'])::before,
-  :host([appearance='subtle'])::after {
+  :host(${subtleState})::before,
+  :host(${subtleState})::after {
     background: ${colorNeutralStroke3};
   }
-  :host([appearance='subtle']) ::slotted(*) {
+  :host(${subtleState}) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    :host([appearance='strong'])::before,
-    :host([appearance='strong'])::after,
-    :host([appearance='brand'])::before,
-    :host([appearance='brand'])::after,
-    :host([appearance='subtle'])::before,
-    :host([appearance='subtle'])::after,
+    :host(${strongState})::before,
+    :host(${strongState})::after,
+    :host(${brandState})::before,
+    :host(${brandState})::after,
+    :host(${subtleState})::before,
+    :host(${subtleState})::after,
     :host::after,
     :host::before {
       background: WindowText;

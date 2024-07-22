@@ -1,7 +1,7 @@
 export {
   AccordionItem,
   accordionItemDefinition,
-  AccordionItemExpandIconPosition,
+  AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
@@ -14,16 +14,7 @@ export {
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export {
-  AnchorButton,
-  AnchorButtonAppearance,
-  AnchorButtonDefinition,
-  AnchorButtonShape,
-  AnchorButtonSize,
-  AnchorButtonTemplate,
-  AnchorTarget,
-} from './anchor-button/index.js';
-export type { AnchorButtonOptions } from './anchor-button/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -99,6 +90,16 @@ export {
   DividerTemplate,
 } from './divider/index.js';
 export {
+  Drawer,
+  DrawerDefinition,
+  DrawerPosition,
+  DrawerSize,
+  DrawerType,
+  DrawerTemplate,
+  DrawerStyles,
+} from './drawer/index.js';
+export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
+export {
   Field,
   FieldLabelPosition,
   ValidationFlags,
@@ -110,6 +111,15 @@ export type { SlottableInput } from './field/index.js';
 export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
+export {
+  AnchorButton,
+  AnchorButtonAppearance,
+  AnchorButtonDefinition,
+  AnchorButtonShape,
+  AnchorButtonSize,
+  AnchorButtonTemplate,
+  AnchorTarget,
+} from './anchor-button/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
@@ -140,7 +150,6 @@ export {
   ProgressBarThickness,
   ProgressBarValidationState,
 } from './progress-bar/index.js';
-export type { ProgressOptions } from './progress-bar/index.js';
 export {
   RadioGroup,
   RadioGroupDefinition,
@@ -150,6 +159,14 @@ export {
 } from './radio-group/index.js';
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
+export {
+  RatingDisplay,
+  RatingDisplayColor,
+  RatingDisplayDefinition,
+  RatingDisplaySize,
+  RatingDisplayStyles,
+  RatingDisplayTemplate,
+} from './rating-display/index.js';
 export {
   Slider,
   SliderDefinition,

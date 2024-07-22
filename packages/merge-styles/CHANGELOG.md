@@ -1,8 +1,35 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Thu, 06 Jun 2024 07:26:46 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.12)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.11..@fluentui/merge-styles_v8.6.12)
+
+### Patches
+
+- fix: Correctly processing selectors when value is a class name and they are not wrapped in 'selectors' wrapper. ([PR #31798](https://github.com/microsoft/fluentui/pull/31798) by Humberto.Morimoto@microsoft.com)
+
+## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.11)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.10..@fluentui/merge-styles_v8.6.11)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+
+## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.10)
+
+Fri, 14 Jun 2024 15:25:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.9..@fluentui/merge-styles_v8.6.10)
+
+### Patches
+
+- fix(merge-styles): improve DeepPartial type infinite recursion triggerpoint ([PR #31703](https://github.com/microsoft/fluentui/pull/31703) by martinhochel@microsoft.com)
 
 ## [8.6.9](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.9)
 

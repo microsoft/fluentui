@@ -22,7 +22,7 @@ import { tsquery } from '@phenomnomnominal/tsquery';
 
 import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
 import { TsConfig } from '../../types';
-import { workspacePaths } from '../../utils';
+import { getNpmScope, workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
 export { isSplitProject, assertStoriesProject } from './shared';
@@ -30,6 +30,7 @@ export { isSplitProject, assertStoriesProject } from './shared';
 type CLIOutput = typeof output;
 
 interface Options extends SplitLibraryInTwoGeneratorSchema {
+  npmScope: string;
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
@@ -122,6 +123,7 @@ function splitLibraryInTwoInternal(
 
   const packageJSON = readJson(tree, joinPathFragments(projectConfig.root, 'package.json'));
   const normalizedOptions = {
+    npmScope: getNpmScope(tree),
     projectName,
     projectConfig,
     projectOffsetFromRoot: {
@@ -165,11 +167,11 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
-    if (file.includes('/stories/') || file.includes('/.storybook/')) {
+    if (file.includes(path.normalize('/stories/')) || file.includes(path.normalize('/.storybook/'))) {
       return;
     }
 
-    const newFileName = `${newProjectRoot}/${path.relative(oldProjectRoot, file)}`;
+    const newFileName = joinPathFragments(newProjectRoot, path.relative(oldProjectRoot, file));
 
     tree.rename(file, newFileName);
   });
@@ -260,7 +262,9 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   updateJson(tree, filePaths.rootTsConfig, (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[options.projectConfig.name!] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${options.projectConfig.name}`] = [
+      `${newProjectSourceRoot}/index.ts`,
+    ];
     return json;
   });
 
@@ -297,7 +301,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   const templates = {
     readme: stripIndents`
-      # ${newProjectName}
+      # @${options.npmScope}/${newProjectName}
 
       Storybook stories for ${options.projectConfig.root}
 
@@ -316,7 +320,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       no public API available
     `,
     packageJson: {
-      name: newProjectName,
+      name: `@${options.npmScope}/${newProjectName}`,
       version: '0.0.0',
       private: true,
       scripts: {
@@ -330,11 +334,11 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       devDependencies: {
         ...storiesWorkspaceDeps,
         // always added
-        '@fluentui/react-storybook-addon': '*',
-        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
-        '@fluentui/scripts-storybook': '*',
-        '@fluentui/eslint-plugin': '*',
-        '@fluentui/scripts-tasks': '*',
+        [`@${options.npmScope}/react-storybook-addon`]: '*',
+        [`@${options.npmScope}/react-storybook-addon-export-to-sandbox`]: '*',
+        [`@${options.npmScope}/scripts-storybook`]: '*',
+        [`@${options.npmScope}/eslint-plugin`]: '*',
+        [`@${options.npmScope}/scripts-tasks`]: '*',
       },
     },
     justConfig: stripIndents`
@@ -418,7 +422,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[newProjectName] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${newProjectName}`] = [`${newProjectSourceRoot}/index.ts`];
     return json;
   });
 }
@@ -517,9 +521,12 @@ function getImportsFromSourceFiles(tree: Tree, root: string, filter: (file: stri
 
 function getWorkspaceDependencies(tree: Tree, imports: string[]) {
   const allProjects = getProjects(tree);
+  const npmScope = getNpmScope(tree);
+  const npmPackagePrefix = `@${npmScope}/`;
   const dependencies: Record<string, string> = {};
   imports.forEach(importPath => {
-    if (allProjects.has(importPath)) {
+    const projectName = importPath.replace(npmPackagePrefix, '');
+    if (importPath.startsWith(npmPackagePrefix) && allProjects.has(projectName)) {
       dependencies[importPath] = '*';
     }
   });

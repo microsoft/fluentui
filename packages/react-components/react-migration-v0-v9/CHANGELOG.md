@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Thu, 06 Jun 2024 15:26:45 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.2)
+
+Mon, 15 Jul 2024 17:25:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.1..@fluentui/react-migration-v0-v9_v9.2.2)
+
+### Patches
+
+- Add key handling only for selectable and navigable ([PR #31886](https://github.com/microsoft/fluentui/pull/31886) by jukapsia@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-components to v9.54.5 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.64 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-tabster to v9.22.2 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.1)
+
+Thu, 04 Jul 2024 15:14:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.0..@fluentui/react-migration-v0-v9_v9.2.1)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.4 ([PR #31893](https://github.com/microsoft/fluentui/pull/31893) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.0)
+
+Mon, 01 Jul 2024 20:30:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.1.37..@fluentui/react-migration-v0-v9_v9.2.0)
+
+### Minor changes
+
+- feat(v0-migration): Attachment compat component ([PR #31634](https://github.com/microsoft/fluentui/pull/31634) by jukapsia@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.0 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-components to v9.54.3 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.63 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.40 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-tabster to v9.22.1 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+- Bump @fluentui/react-utilities to v9.18.11 ([PR #31861](https://github.com/microsoft/fluentui/pull/31861) by beachball)
+
+### Patches
+
+- chore: Update react-icons package to ^2.0.245 ([PR #31802](https://github.com/microsoft/fluentui/pull/31802) by ololubek@microsoft.com)
+- chore: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+
+## [9.1.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.1.37)
+
+Mon, 17 Jun 2024 07:34:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.1.36..@fluentui/react-migration-v0-v9_v9.1.37)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.12.1 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-components to v9.54.2 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.62 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+- Bump @fluentui/react-tabster to v9.22.0 ([commit](https://github.com/microsoft/fluentui/commit/9ae683c22f2e65d94422a571ad5d3f97d0a77234) by beachball)
+
+## [9.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.1.36)
+
+Wed, 12 Jun 2024 13:17:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.1.35..@fluentui/react-migration-v0-v9_v9.1.36)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.54.1 ([PR #31681](https://github.com/microsoft/fluentui/pull/31681) by beachball)
 
 ## [9.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.1.35)
 

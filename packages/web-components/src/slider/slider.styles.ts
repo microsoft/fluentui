@@ -1,10 +1,10 @@
 import { css } from '@microsoft/fast-element';
+import { smallState, verticalState } from '../styles/states/index.js';
 import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
   borderRadiusSmall,
-  colorBrandBackground,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
@@ -13,7 +13,6 @@ import {
   colorNeutralForegroundDisabled,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
-  colorNeutralStrokeDisabled,
   colorStrokeFocus1,
   colorStrokeFocus2,
 } from '../theme/design-tokens.js';
@@ -22,127 +21,98 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('inline-grid')} :host {
-    --thumb-size: 18px;
-    --thumb-padding: 3px;
-    --thumb-translate: calc(var(--thumb-size) * -0.5 + var(--track-width) / 2);
-    --track-overhang: -2px;
-    --track-width: 4px;
-    --fast-slider-height: calc(var(--thumb-size) * 10);
+  ${display('inline-grid')}
+
+  :host {
+    --thumb-size: 20px;
+    --track-margin-inline: calc(var(--thumb-size) / 2);
+    --track-size: 4px;
+    --track-overhang: calc(var(--track-size) / -2);
     --slider-direction: 90deg;
+    --border-radius: ${borderRadiusMedium};
+    --step-marker-inset: var(--track-overhang) -1px;
+    position: relative;
     align-items: center;
+    justify-content: center;
     box-sizing: border-box;
     outline: none;
-    cursor: pointer;
     user-select: none;
-    border-radius: ${borderRadiusSmall};
-    touch-action: pan-y;
-    min-width: calc(var(--thumb-size) * 1px);
-    width: 100%;
+    touch-action: none;
+    min-width: 120px;
+    min-height: 32px;
+    grid-template-rows: 1fr var(--thumb-size) 1fr;
+    grid-template-columns: var(--track-margin-inline) 1fr var(--track-margin-inline);
   }
 
-  :host([size='small']) {
-    --thumb-size: 14px;
-    --track-width: 2px;
-    --thumb-padding: 3px;
+  :host(:not(:disabled)) {
+    cursor: pointer;
   }
 
-  :host([orientation='vertical']) {
+  :host(:dir(rtl)) {
+    --slider-direction: -90deg;
+  }
+
+  :host(${smallState}) {
+    --thumb-size: 16px;
+    --track-overhang: -1px;
+    --track-size: 2px;
+    --border-radius: ${borderRadiusSmall};
+  }
+
+  :host(${verticalState}) {
     --slider-direction: 0deg;
-    height: 160px;
-    min-height: var(--thumb-size);
-    touch-action: pan-x;
-    padding: 8px 0;
-    width: auto;
-    min-width: auto;
+    --step-marker-inset: -1px var(--track-overhang);
+    min-height: 120px;
+    grid-template-rows: var(--track-margin-inline) 1fr var(--track-margin-inline);
+    grid-template-columns: 1fr var(--thumb-size) 1fr;
+    width: unset;
+    min-width: 32px;
+    justify-items: center;
   }
 
-  :host([disabled]:hover) {
-    cursor: initial;
-  }
-
-  :host(:focus-visible) {
+  :host(:not([slot='input']):focus-visible) {
     box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
     outline: 1px solid ${colorStrokeFocus1};
   }
 
-  .thumb-cursor:focus {
-    outline: 0;
-  }
-
-  /* Thumb Container and Cursor */
-  .thumb-container {
-    position: absolute;
-    height: var(--thumb-size);
-    width: var(--thumb-size);
-    transition: all 0.2s ease;
-  }
-
-  .thumb-container {
-    transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.5));
-  }
-
-  :host([size='small']) .thumb-container {
-    transform: translateX(calc(var(--thumb-size) * 0.5)) translateY(calc(var(--thumb-translate) * -1.35));
-  }
-
-  :host([orientation='vertical']) .thumb-container {
-    transform: translateX(calc(var(--thumb-translate) * -1.5)) translateY(calc(var(--thumb-size) * -0.5));
-  }
-
-  :host([orientation='vertical'][size='small']) .thumb-container {
-    transform: translateX(calc(var(--thumb-translate) * -1.35)) translateY(calc(var(--thumb-size) * -0.5));
-  }
-
-  .thumb-cursor {
-    height: var(--thumb-size);
-    width: var(--thumb-size);
-    background-color: ${colorBrandBackground};
-    border-radius: ${borderRadiusCircular};
-    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStroke1};
-  }
-  .thumb-cursor:hover {
-    background-color: ${colorCompoundBrandBackgroundHover};
-  }
-  .thumb-cursor:active {
-    background-color: ${colorCompoundBrandBackgroundPressed};
-  }
-  :host([disabled]) .thumb-cursor {
-    background-color: ${colorNeutralForegroundDisabled};
-    box-shadow: inset 0 0 0 var(--thumb-padding) ${colorNeutralBackground1}, 0 0 0 1px ${colorNeutralStrokeDisabled};
-  }
-
-  /* Positioning Region */
-  .positioning-region {
-    position: relative;
-    display: grid;
-  }
-
-  :host([orientation='horizontal']) .positioning-region {
-    margin: 0 8px;
-    grid-template-rows: var(--thumb-size) var(--thumb-size);
-  }
-  :host([orientation='vertical']) .positioning-region {
-    margin: 8px 0;
-    height: 100%;
-    grid-template-columns: var(--thumb-size) var(--thumb-size);
-  }
-
-  /* Track */
   .track {
-    align-self: start;
-    position: absolute;
+    position: relative;
     background-color: ${colorNeutralStrokeAccessible};
-    border-radius: ${borderRadiusMedium};
-    overflow: hidden;
+    border-radius: var(--border-radius);
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    width: 100%;
+    height: var(--track-size);
+    forced-color-adjust: none;
+  }
+
+  :host(${verticalState}) .track {
+    top: var(--track-overhang);
+    bottom: var(--track-overhang);
+    width: var(--track-size);
+    height: 100%;
+  }
+
+  .track::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border-radius: inherit;
+    inset-inline-start: 0;
+    width: var(--slider-progress);
+  }
+
+  :host(${verticalState}) .track::before {
+    width: 100%;
+    bottom: 0;
+    height: var(--slider-progress);
   }
 
   :host([step]) .track::after {
     content: '';
     position: absolute;
-    border-radius: ${borderRadiusMedium};
-    width: 100%;
-    inset: 0 2px;
+    border-radius: inherit;
+    inset: var(--step-marker-inset);
     background-image: repeating-linear-gradient(
       var(--slider-direction),
       #0000 0%,
@@ -152,52 +122,55 @@ export const styles = css`
     );
   }
 
-  :host([orientation='vertical'][step]) .track::after {
-    inset: -2px 0;
+  .thumb-container {
+    position: absolute;
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    transform: translateX(-50%);
+    left: var(--slider-thumb);
   }
 
-  :host([disabled]) .track {
+  :host(${verticalState}) .thumb-container {
+    transform: translateY(50%);
+    left: unset;
+    bottom: var(--slider-thumb);
+  }
+
+  :host(:not(:active)) :is(.thumb-container, .track::before) {
+    transition: all 0.2s ease;
+  }
+
+  .thumb {
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    border-radius: ${borderRadiusCircular};
+    box-shadow: 0 0 0 calc(var(--thumb-size) * 0.2) ${colorNeutralBackground1} inset;
+    border: calc(var(--thumb-size) * 0.05) solid ${colorNeutralStroke1};
+    box-sizing: border-box;
+  }
+
+  .thumb,
+  .track::before {
+    background-color: ${colorCompoundBrandBackground};
+  }
+
+  :host(:hover) .thumb,
+  :host(:hover) .track::before {
+    background-color: ${colorCompoundBrandBackgroundHover};
+  }
+
+  :host(:active) .thumb,
+  :host(:active) .track::before {
+    background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host(:disabled) .track {
     background-color: ${colorNeutralBackgroundDisabled};
   }
 
-  :host([orientation='horizontal']) .track {
-    right: var(--track-overhang);
-    left: var(--track-overhang);
-    align-self: start;
-    height: var(--track-width);
-    grid-row: 2 / auto;
-  }
-
-  :host([orientation='vertical']) .track {
-    top: var(--track-overhang);
-    bottom: var(--track-overhang);
-    width: var(--track-width);
-    height: 100%;
-    grid-column: 2 / auto;
-  }
-  .track-start {
-    background-color: ${colorCompoundBrandBackground};
-    position: absolute;
-    height: 100%;
-    left: 0;
-    border-radius: ${borderRadiusMedium};
-  }
-  :host([disabled]) .track-start {
+  :host(:disabled) .thumb,
+  :host(:disabled) .track::before {
     background-color: ${colorNeutralForegroundDisabled};
-  }
-  :host(:hover) .track-start {
-    background-color: ${colorCompoundBrandBackgroundHover};
-  }
-  :host([disabled]:hover) .track-start {
-    background-color: ${colorNeutralForegroundDisabled};
-  }
-  .track-start:active {
-    background-color: ${colorCompoundBrandBackgroundPressed};
-  }
-  :host([orientation='vertical']) .track-start {
-    height: auto;
-    width: 100%;
-    bottom: 0;
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
@@ -206,15 +179,15 @@ export const styles = css`
     .track {
       background: WindowText;
     }
-    .thumb-cursor:hover,
-    .thumb-cursor:active,
-    .thumb-cursor {
+    .thumb:hover,
+    .thumb:active,
+    .thumb {
       background: ButtonText;
     }
 
-    :host(:hover) .track-start,
-    .track-start:active,
-    .track-start {
+    :host(:hover) .track::before,
+    :host(:active) .track::before,
+    .track::before {
       background: Highlight;
     }
   `),

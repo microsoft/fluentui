@@ -34,6 +34,8 @@ const useStyles = makeStyles({
  * Apply styling to the MenuSplitGroup slots based on the state
  */
 export const useMenuSplitGroupStyles_unstable = (state: MenuSplitGroupState): MenuSplitGroupState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(menuSplitGroupClassNames.root, styles.root, state.root.className);
   return state;

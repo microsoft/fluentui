@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add Fade motion component",
+  "packageName": "@fluentui/react-motion-components-preview",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}

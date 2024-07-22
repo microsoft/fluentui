@@ -2,6 +2,516 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 19 Jul 2024 04:08:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.46",
+      "version": "3.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4cf837ac3da78e3701f6f02a34958996b53eb24e",
+            "comment": "chore: [button] move style related api out of base class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jul 2024 04:06:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.45",
+      "version": "3.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "be10f2c88ef24a58b4199416d5d342867a621c7f",
+            "comment": "fix: removed padding from field host element"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2024 04:07:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.44",
+      "version": "3.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1f260f6791bdd264baf782052ff6d3328cf50df2",
+            "comment": "chore: cleanup drawer storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jul 2024 04:08:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.43",
+      "version": "3.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8f7e877e7024c485c37c117c363585a3934f269f",
+            "comment": "fix: scope menu fallback positioning to non-anchor browsers only"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7a1434afd46468bd84d82b54ab47f1088dc8ac70",
+            "comment": "fix: expose tabindex as an overriden attribute with a default value of 0'"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "294d82a15dc5b01cf9edc260f69607219c82cda9",
+            "comment": "fix: support tabindex values from implementors on buttons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jul 2024 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.42",
+      "version": "3.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1b6cc50ad1ea873abb613d60b720bb6e7842c4cf",
+            "comment": "feat: update slider to use ElementInternals for form association"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Jul 2024 04:07:26 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.41",
+      "version": "3.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "05ad86d34fef4aa2e2f2eb76182222014f07706f",
+            "comment": "convert menu list and menu item to use element internals"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "e52adca164f98f214aa51529b399dd53c330b531",
+            "comment": "fix: export drawer and drawer body from root package and package exports"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2024 04:08:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.40",
+      "version": "3.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f02ae0b454bc26f4d3eba0d17a5024a1bb40a0c5",
+            "comment": "feat: update radio and radio-group to use ElementInternals for form association"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "0777a2f8fbe7ea899f8f189a9729efe30a0ae038",
+            "comment": "fix for setTheme in Firefox"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "61b0027b57f2a940dac767e91e842ab6e8f7025e",
+            "comment": "refactor(web-components): cleanup accordion and convert to element internals for states"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Jul 2024 04:08:00 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.39",
+      "version": "3.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "7110cafa3d044bdc65887b8cd52054065a63f397",
+            "comment": "fix(web-components): fix popover positioning in firefox, add docs"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "16b43e3ff082b70f4dadbd102c99bba2bac9111d",
+            "comment": "expose field in webcomponents to package exports"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "fc77b9b36c54fd2c850671fa2542f7724e985800",
+            "comment": "fix text-input focus handling when focusable slotted start and end elements are present"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2ccb9dd0764a3b4fbfbb43910c1b1fe20c9460be",
+            "comment": "fix(web-components): fix menu enterkey interaction "
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Jul 2024 04:08:12 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.38",
+      "version": "3.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "286ef61509d3dd99df6b49daa7442a26bbb3ff75",
+            "comment": "Make utils a package export since it replaces fluentui/foundation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Jun 2024 04:07:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.37",
+      "version": "3.0.0-beta.37",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "896c9d329ae3206d95aa7c47ad8c4481a8e9961e",
+            "comment": "refactor setTheme() to use adoptedStyleSheets"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "e8819fbcd5ef0f4127f0b759cc597c1dc83ea9b2",
+            "comment": "Add rating-display component"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "dcdccf4f6504dd5e76fb89ed1c29499d290299ee",
+            "comment": "Adds MessageBar component to Fluent Web Components"
+          },
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c05bfd2c12f8c658562b9fc63d98410f5de79003",
+            "comment": "chore: use tokens directly in css for badge partial"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "272dafa6a489749c61f8f98f33bfe03fdcb7921c",
+            "comment": "fix: ensure menu keydown logic allows shift+tab to navigate as expected"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.36",
+      "version": "3.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "email not defined",
+            "package": "@fluentui/web-components",
+            "commit": "660d5fe984012d28d5063ee0a51aa104fc9ae0e2",
+            "comment": "feat(drawer): add drawer web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jun 2024 04:06:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.35",
+      "version": "3.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a651436efd861f6d50ac6af3c7ed9ba7bc6271f6",
+            "comment": "updates the Text component to use Element Internals custom states for presentational attributes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Jun 2024 04:06:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.34",
+      "version": "3.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8cfadd0245da036b77c921a7e6a128969cb72462",
+            "comment": "Refactor Menu, MenuList, and MenuItem components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Jun 2024 04:06:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.33",
+      "version": "3.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "98fd517aecb51c4dc351e00eda89e22cbe1a7967",
+            "comment": "feat: make fast-element a peer dependencies of the web-components package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jun 2024 04:07:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.32",
+      "version": "3.0.0-beta.32",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "14ff3fa387f49ed5d7d81da0566c31e849a1fb0c",
+            "comment": "feat: update progress bar to use element internals custom states for visual states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "81f2ac59a60f7baf91a50ed0acf7aa78933b5cf2",
+            "comment": "feat: update divider to use custom states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7428b7a329af2ebb0f92c3425adf36e42a26f03b",
+            "comment": "feat: update link to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1189e569b5e9b6ab3729e6fd08cdaca562a98cc3",
+            "comment": "feat: update checkbox to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "b101c343e786803b141dfafe77f90524e30d18c6",
+            "comment": "feat: update text input to use Element Internals custom states for presentational attributes"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "c1f035451a65cf922a8dec8d210e179a3c43f592",
+            "comment": "update image to use element internals custom states for visual states"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5e700b814af89327834f63f63294ac020c8f1f1f",
+            "comment": "feat: update spinner to use Element Internals for presentational styling"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a3b7e64a720bf64e67b0b6e700b0ea3bdf69e572",
+            "comment": "update label to use element internals custom states for styling"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Jun 2024 04:05:31 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.31",
+      "version": "3.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1fb910e682936e205920674cd7baa37d73680d90",
+            "comment": "feat: update button and anchor button to leverage custom states for variants"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "5f1feb5721933fb703d789fb00ce385d7e3f950e",
+            "comment": "update badge to use element internals custom states"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.30",
+      "version": "3.0.0-beta.30",
+      "comments": {
+        "none": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "1556ec2800852d264916c2091834e1a3064affeb",
+            "comment": "chore: update tensile-perf and add chromedriver as devDependency"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jun 2024 04:06:06 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.30",
+      "version": "3.0.0-beta.30",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e0ee62f419aac133f980bc007589e6bc98d70a86",
+            "comment": "fix: configure e2e target properly in order to make fix affected e2e target execution on ci"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "974e0416f342d9af5bd91333c8f2e1f716a3123a",
+            "comment": "Adds spec doc for MessageBar for conversation"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "17b73b4b4cd445cea74f2a16ef9ea34a91999302",
+            "comment": "update avatar to use ElementInternals for role and states for color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Jun 2024 04:06:41 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.29",
+      "version": "3.0.0-beta.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef5d226c751d6c1fbc1d2881ee3e36e8d8758253",
+            "comment": "refactor setTheme() to reduce code duplication"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "a9588506fae59fd4f35a2cf3ca1cf83cfdf22fcd",
+            "comment": "add link as a new web component"
+          }
+        ],
+        "none": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "f5a31536fdcac94782812bbaa03d835ac19aff9f",
+            "comment": "fix tsdoc for link template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Jun 2024 04:06:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.28",
+      "version": "3.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "46c33692940dce4906974ad90c5c79aae7e52d0f",
+            "comment": "refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7cf5e76e30a13dbd0b19669bcc7c8e0696851bff",
+            "comment": "refactor progress bar to use ElementInternals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Jun 2024 04:06:29 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.27",
+      "version": "3.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "32e259d0f971ea7d1da4ec82f097dd052fbcbfb7",
+            "comment": "feat: update divider to leverage ElementInternals"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "71dc8a7023f740320651c68ca54ecf27cb8dec37",
+            "comment": "fix: show default title action in dialog-body for modal dialogs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Jun 2024 04:07:58 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.26",
+      "version": "3.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "0ee053f9c4dae7dea578d80221bbf0fa9d630bc0",
+            "comment": "feat: refactor Switch to use ElementInternals by extending BaseCheckbox"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "eb13aea7d259f3b72e4b65bc32232e4315ff5c05",
+            "comment": "fixes the border-color for switch when in the checked state on rest"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "d5fe2edf2a5d598c3e84fa14cf42f9c81f3e24d6",
+            "comment": "add try-catch block to ensure that registered properties can be updated dynamically"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Jun 2024 04:06:31 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.25",
       "version": "3.0.0-beta.25",

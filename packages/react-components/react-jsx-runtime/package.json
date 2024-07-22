@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.39",
+  "version": "9.0.41",
   "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api",
+    "generate-api": "just-scripts copy && just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "bundle-size": "monosize measure"
   },
@@ -31,7 +31,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-utilities": "^9.18.12",
     "react-is": "^17.0.2",
     "@swc/helpers": "^0.5.1"
   },

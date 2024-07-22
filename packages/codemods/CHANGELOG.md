@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Fri, 22 Mar 2024 07:28:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Jul 2024 07:36:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.26](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.26)
+
+Tue, 09 Jul 2024 07:36:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v8.4.16..@fluentui/codemods_v8.4.26)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [8.4.16](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.4.16)
 

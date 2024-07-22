@@ -1,7 +1,4 @@
-<details>
-  <summary>
-    Best practices
-  </summary>
+## Best practices
 
 ### OverlayDrawer vs InlineDrawer vs Drawer
 
@@ -14,6 +11,6 @@
 ### Accessibility
 
 - `OverlayDrawer`: <br>Please refer to the Dialog component to understand the accessibility recommendations and implications.
-- `InlineDrawer`: <br>Renders a plain div and do not imply any A11y tags or attributes by default. It accepts all aria attributes and it should be customized depending on its context within a page
-
-</details>
+- `InlineDrawer`: <br>
+  **Semantics**: Renders a plain div and do not imply any accessibility semantics by default. It accepts all aria attributes and it should be customized depending on its context within a page. Consider using `role="region"` for large page-level drawers. <br><br>
+  **Focus**: If the `InlineDrawer` has a trigger and can be closed, use the `useRestoreFocusTarget` and `useRestoreFocusSource` hooks to handle focus restoration as shown in our Default and Inline examples.

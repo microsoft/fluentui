@@ -1,4 +1,4 @@
-import { Types, getMover } from 'tabster';
+import { Types, getMover, MoverDirections } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
@@ -74,16 +74,16 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
 function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Types.MoverDirection {
   switch (axis) {
     case 'horizontal':
-      return Types.MoverDirections.Horizontal;
+      return MoverDirections.Horizontal;
     case 'grid':
-      return Types.MoverDirections.Grid;
+      return MoverDirections.Grid;
     case 'grid-linear':
-      return Types.MoverDirections.GridLinear;
+      return MoverDirections.GridLinear;
     case 'both':
-      return Types.MoverDirections.Both;
+      return MoverDirections.Both;
 
     case 'vertical':
     default:
-      return Types.MoverDirections.Vertical;
+      return MoverDirections.Vertical;
   }
 }

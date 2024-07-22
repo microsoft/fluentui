@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-file-type-icons",
+  "name": "react-file-type-icons",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

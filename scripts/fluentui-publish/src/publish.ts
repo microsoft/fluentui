@@ -40,13 +40,8 @@ export async function publish(config: { args: PublishArgs; group: NorthstarGroup
 
     const tag = interpolate(tagPattern, { version: ' ', projectName: ' ' }).trim() + newWorkspaceVersion;
 
-    await gitTag({ tag, dryRun: options.dryRun });
-
-    if (!options.dryRun) {
-      await gitPush();
-    } else {
-      output.logSingleLine(`Would push tag:${tag} to remote origin`);
-    }
+    await gitTag({ tag, dryRun: options.dryRun, verbose: options.verbose });
+    await gitPush({ dryRun: options.dryRun, verbose: options.verbose });
   }
 
   function getNewFixedVersion(projects: { [projectName: string]: ProjectGraphProjectNode }) {

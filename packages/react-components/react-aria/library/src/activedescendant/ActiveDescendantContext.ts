@@ -15,11 +15,14 @@ const activeDescendantContextDefaultValue: ActiveDescendantContextValue = {
     first: noop,
     focus: noop,
     focusLastActive: noop,
+    scrollActiveIntoView: noop,
     last: noop,
     next: noop,
     prev: noop,
     showAttributes: noop,
     hideAttributes: noop,
+    showFocusVisibleAttributes: noop,
+    hideFocusVisibleAttributes: noop,
   },
 };
 

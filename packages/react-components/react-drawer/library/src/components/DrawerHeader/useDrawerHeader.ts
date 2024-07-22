@@ -25,6 +25,7 @@ export const useDrawerHeader_unstable = (props: DrawerHeaderProps, ref: React.Re
     root: slot.always(
       getIntrinsicElementProps('header', {
         ref,
+        role: 'none', // until header and footer elements can be scoped to a dialog, this is needed
         ...props,
       }),
       { elementType: 'header' },

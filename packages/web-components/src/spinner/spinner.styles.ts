@@ -1,83 +1,177 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '../utils/index.js';
-import { colorBrandStroke1, colorBrandStroke2, colorNeutralStrokeOnBrand2 } from '../theme/design-tokens.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import {
+  colorBrandStroke1,
+  colorBrandStroke2,
+  colorNeutralStrokeOnBrand2,
+  curveEasyEase,
+  strokeWidthThick,
+  strokeWidthThicker,
+  strokeWidthThickest,
+} from '../theme/design-tokens.js';
+import {
+  extraLargeState,
+  extraSmallState,
+  hugeState,
+  invertedState,
+  largeState,
+  smallState,
+  tinyState,
+} from '../styles/states/index.js';
 
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
 
   :host {
-    display: flex;
-    align-items: center;
-    height: 32px;
-    width: 32px;
-    contain: content;
+    --duration: 1.5s;
+    --indicatorSize: ${strokeWidthThicker};
+    --size: 32px;
+    height: var(--size);
+    width: var(--size);
+    contain: strict;
+    content-visibility: auto;
   }
-  :host([size='tiny']) {
-    height: 20px;
-    width: 20px;
+
+  :host(${tinyState}) {
+    --indicatorSize: ${strokeWidthThick};
+    --size: 20px;
   }
-  :host([size='extra-small']) {
-    height: 24px;
-    width: 24px;
+  :host(${extraSmallState}) {
+    --indicatorSize: ${strokeWidthThick};
+    --size: 24px;
   }
-  :host([size='small']) {
-    height: 28px;
-    width: 28px;
+  :host(${smallState}) {
+    --indicatorSize: ${strokeWidthThick};
+    --size: 28px;
   }
-  :host([size='large']) {
-    height: 36px;
-    width: 36px;
+  :host(${largeState}) {
+    --indicatorSize: ${strokeWidthThicker};
+    --size: 36px;
   }
-  :host([size='extra-large']) {
-    height: 40px;
-    width: 40px;
+  :host(${extraLargeState}) {
+    --indicatorSize: ${strokeWidthThicker};
+    --size: 40px;
   }
-  :host([size='huge']) {
-    height: 44px;
-    width: 44px;
+  :host(${hugeState}) {
+    --indicatorSize: ${strokeWidthThickest};
+    --size: 44px;
   }
+
+  .progress,
+  .background,
+  .spinner,
+  .start,
+  .end,
+  .indicator {
+    position: absolute;
+    inset: 0;
+  }
+
+  .progress,
+  .spinner,
+  .indicator {
+    animation: none var(--duration) infinite ${curveEasyEase};
+  }
+
   .progress {
-    height: 100%;
-    width: 100%;
+    animation-timing-function: linear;
+    animation-name: spin-linear;
   }
 
   .background {
-    fill: none;
-    stroke: ${colorBrandStroke2};
-    stroke-width: 1.5px;
+    border: var(--indicatorSize) solid ${colorBrandStroke2};
+    border-radius: 50%;
   }
 
-  :host([appearance='inverted']) .background {
-    stroke: rgba(255, 255, 255, 0.2);
+  :host(${invertedState}) .background {
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .spinner {
+    animation-name: spin-swing;
+  }
+
+  .start {
+    overflow: hidden;
+    inset-inline-end: 50%;
+  }
+
+  .end {
+    overflow: hidden;
+    inset-inline-start: 50%;
   }
 
   .indicator {
-    stroke: ${colorBrandStroke1};
-    fill: none;
-    stroke-width: 1.5px;
-    stroke-linecap: round;
-    transform-origin: 50% 50%;
-    transform: rotate(-90deg);
-    transition: all 0.2s ease-in-out;
-    animation: spin-infinite 3s cubic-bezier(0.53, 0.21, 0.29, 0.67) infinite;
+    color: ${colorBrandStroke1};
+    box-sizing: border-box;
+    border-radius: 50%;
+    border: var(--indicatorSize) solid transparent;
+    border-block-start-color: currentcolor;
+    border-inline-end-color: currentcolor;
   }
 
-  :host([appearance='inverted']) .indicator {
-    stroke: ${colorNeutralStrokeOnBrand2};
+  :host(${invertedState}) .indicator {
+    color: ${colorNeutralStrokeOnBrand2};
   }
 
-  @keyframes spin-infinite {
+  .start .indicator {
+    rotate: 135deg; /* Starts 9 o'clock */
+    inset: 0 -100% 0 0;
+    animation-name: spin-start;
+  }
+
+  .end .indicator {
+    rotate: 135deg; /* Ends at 3 o'clock */
+    inset: 0 0 0 -100%;
+    animation-name: spin-end;
+  }
+
+  @keyframes spin-linear {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes spin-swing {
     0% {
-      stroke-dasharray: 0.01px 43.97px;
+      transform: rotate(-135deg);
+    }
+    50% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(225deg);
+    }
+  }
+
+  @keyframes spin-start {
+    0%,
+    100% {
       transform: rotate(0deg);
     }
     50% {
-      stroke-dasharray: 21.99px 21.99px;
-      transform: rotate(450deg);
-    }
-    100% {
-      stroke-dasharray: 0.01px 43.97px;
-      transform: rotate(1080deg);
+      transform: rotate(-80deg);
     }
   }
-`;
+
+  @keyframes spin-end {
+    0%,
+    100% {
+      transform: rotate(0deg);
+    }
+    50% {
+      transform: rotate(70deg);
+    }
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .background {
+      display: none;
+    }
+    .indicator {
+      border-color: Canvas;
+      border-block-start-color: Highlight;
+      border-inline-end-color: Highlight;
+    }
+  `),
+);

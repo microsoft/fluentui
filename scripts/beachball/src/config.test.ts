@@ -1,9 +1,12 @@
+import toolsConfig from './release-tools.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
 import webComponentsConfig from './release-web-components.config';
 import { config as sharedConfig } from './shared.config';
 
 describe(`beachball configs`, () => {
+  const excludedPackagesFromReleaseProcess = ['!packages/fluentui/*'];
+
   it(`should generate shared config`, () => {
     expect(sharedConfig).toEqual({
       changehint: "Run 'yarn change' to generate a change file",
@@ -45,21 +48,41 @@ describe(`beachball configs`, () => {
   it(`should generate v8 release config`, () => {
     expect(v8Config.scope).toEqual(
       expect.arrayContaining([
-        '!packages/fluentui/*',
-        '!apps/perf-test-react-components',
-        '!apps/vr-tests-react-components',
+        ...excludedPackagesFromReleaseProcess,
+        'packages/azure-themes',
+        'packages/cra-template',
+        'packages/date-time-utilities',
+        'packages/example-data',
+        'packages/fluent2-theme',
+        'packages/font-icons-mdl2',
+        'packages/foundation-legacy',
+        'packages/merge-styles',
+        'packages/react',
+        'packages/react-date-time',
+        'packages/react-docsite-components',
+        'packages/react-examples',
+        'packages/react-experiments',
+        'packages/react-file-type-icons',
+        'packages/react-focus',
+        'packages/react-hooks',
+        'packages/scheme-utilities',
+        'packages/set-version',
+        'packages/style-utilities',
+        'packages/theme-samples',
+        'packages/utilities',
       ]),
     );
-    expect(v8Config.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
+
+    // Ensure that no vNext packages are included in the v8 release
+    expect(v8Config.scope.some(scope => scope.startsWith('packages/react-components'))).toBe(false);
+
     expect(v8Config.changelog).toEqual(sharedConfig.changelog);
   });
 
   it(`should generate vNext release config`, () => {
-    const excludedPackages = ['!packages/fluentui/*'];
-
     expect(vNextConfig.scope).toEqual(
       expect.arrayContaining([
-        ...excludedPackages,
+        ...excludedPackagesFromReleaseProcess,
         'apps/perf-test-react-components',
         'apps/vr-tests-react-components',
       ]),
@@ -67,7 +90,7 @@ describe(`beachball configs`, () => {
 
     expect(vNextConfig.scope.some(scope => scope.startsWith('packages/react-'))).toBe(true);
 
-    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackages.includes(scope));
+    const includeScopes = vNextConfig.scope.filter(scope => !excludedPackagesFromReleaseProcess.includes(scope));
 
     expect(vNextConfig.changelog.customRenderers).toEqual(sharedConfig.changelog.customRenderers);
     expect(vNextConfig.changelog.groups).toEqual([
@@ -82,15 +105,54 @@ describe(`beachball configs`, () => {
   it(`should generate web-components release config`, () => {
     expect(webComponentsConfig.scope).toEqual(
       expect.arrayContaining([
+        ...excludedPackagesFromReleaseProcess,
+        'apps/vr-tests-web-components',
         'packages/web-components',
-        '!packages/fluentui/*',
-        '!apps/*',
-        '!apps/perf-test-react-components',
-        '!apps/vr-tests-react-components',
-        '!packages/react-components/react-components',
       ]),
     );
-    expect(webComponentsConfig.scope.some(scope => scope.startsWith('!packages/react-'))).toBe(true);
+
     expect(webComponentsConfig.changelog).toEqual(sharedConfig.changelog);
+  });
+
+  it(`should generate tools release config`, () => {
+    expect(toolsConfig.scope).toEqual(
+      expect.arrayContaining([
+        ...excludedPackagesFromReleaseProcess,
+        'packages/eslint-plugin',
+        'scripts/api-extractor',
+        'scripts/babel',
+        'scripts/beachball',
+        'scripts/cypress',
+        'scripts/dangerjs',
+        'scripts/executors',
+        'scripts/fluentui-publish',
+        'scripts/generators',
+        'scripts/github',
+        'scripts/gulp',
+        'scripts/jest',
+        'scripts/lint-staged',
+        'scripts/monorepo',
+        'scripts/package-manager',
+        'scripts/perf-test-flamegrill',
+        'scripts/prettier',
+        'scripts/projects-test',
+        'scripts/puppeteer',
+        'scripts/storybook',
+        'scripts/tasks',
+        'scripts/test-ssr',
+        'scripts/triage-bot',
+        'scripts/ts-node',
+        'scripts/update-release-notes',
+        'scripts/utils',
+        'scripts/webpack',
+        'tools/eslint-rules',
+        'tools/workspace-plugin',
+      ]),
+    );
+
+    // Ensure that no v8/vNext packages are included in the tools release
+    expect(toolsConfig.scope.some(scope => scope.startsWith('packages/react'))).toBe(false);
+
+    expect(toolsConfig.changelog).toEqual(sharedConfig.changelog);
   });
 });
