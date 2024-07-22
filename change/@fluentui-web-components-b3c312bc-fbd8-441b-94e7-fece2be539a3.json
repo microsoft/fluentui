@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: create divider base class to abstract style specfic api",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
