@@ -18,18 +18,31 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<ColorSliderProps>) => {
+export const AlphaSlider = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();
   const id = useId();
-  const [sliderValue, setSliderValue] = React.useState(160);
+  const COLOR = '#5be600';
+  const HUE = 96;
+  const [sliderValue, setSliderValue] = React.useState(50);
   const onSliderChange: ColorSliderProps['onChange'] = (_, data) => setSliderValue(data.value);
   const resetSlider = () => setSliderValue(0);
 
   return (
     <div className={styles.example}>
       <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
-      <ColorSlider value={sliderValue} max={360} onChange={onSliderChange} id={id} {...props} />
-      <div className={styles.previewColor} style={{ backgroundColor: `hsl(${sliderValue}, 100%, 50%)` }} />
+      <ColorSlider
+        color={COLOR}
+        value={sliderValue}
+        variant="alpha"
+        max={100}
+        onChange={onSliderChange}
+        id={id}
+        {...props}
+      />
+      <div
+        className={styles.previewColor}
+        style={{ backgroundColor: `hsla(${HUE}, 100%, 45%, ${sliderValue / 100})` }}
+      />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );

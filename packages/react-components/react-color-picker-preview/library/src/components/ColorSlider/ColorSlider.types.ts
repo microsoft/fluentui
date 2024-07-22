@@ -35,13 +35,15 @@ export type ColorSliderProps = Omit<
    */
   min?: number;
 
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void; // Use EventHandler<SliderOnChangeData>;
 
   /**
    * Render the Slider in a vertical orientation, smallest value on the bottom.
    * @default `false`
    */
   vertical?: boolean;
+  variant?: 'hue' | 'saturation' | 'lightness' | 'alpha';
+  color?: string;
 };
 
 export type SliderOnChangeData = {
@@ -51,4 +53,4 @@ export type SliderOnChangeData = {
 /**
  * State used in rendering ColorSlider
  */
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'variant'>;

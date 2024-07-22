@@ -4,7 +4,8 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import type { ColorSliderState, ColorSliderProps } from './ColorSlider.types';
 
-const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar, thumbColorVar } = colorSliderCSSVars;
+const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar, thumbColorVar, railColorVar } =
+  colorSliderCSSVars;
 
 const MAX_COLOR_HUE = 360;
 
@@ -15,7 +16,7 @@ const getPercent = (value: number, min: number, max: number) => {
 export const useColorSliderState_unstable = (state: ColorSliderState, props: ColorSliderProps) => {
   'use no memo';
 
-  const { min = 0, max = MAX_COLOR_HUE } = props;
+  const { min = 0, max = MAX_COLOR_HUE, color = 'red', variant } = props;
   const step = 1;
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
@@ -44,7 +45,8 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
-    [thumbColorVar]: `hsl(${clampedValue}, 100%, 50%)`,
+    [thumbColorVar]: variant === 'hue' ? `hsl(${clampedValue}, 100%, 50%)` : 'transparent',
+    [railColorVar]: color,
   };
 
   // Root props
