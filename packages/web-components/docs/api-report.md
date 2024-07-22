@@ -1871,10 +1871,10 @@ export type DialogType = ValuesOf<typeof DialogType>;
 // @public
 export function display(displayValue: CSSDisplayPropertyValue): string;
 
-// Warning: (ae-missing-release-tag) "Divider" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-forgotten-export) The symbol "BaseDivider" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class Divider extends FASTElement {
+export class Divider extends BaseDivider {
     // (undocumented)
     alignContent?: DividerAlignContent;
     alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
@@ -1882,18 +1882,8 @@ export class Divider extends FASTElement {
     appearance?: DividerAppearance;
     appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // (undocumented)
     inset?: boolean;
     insetChanged(prev: boolean, next: boolean): void;
-    orientation?: DividerOrientation;
-    // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
-    role: DividerRole;
-    // @internal
-    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
