@@ -12,11 +12,8 @@ export const renderColorArea_unstable = (state: ColorAreaState) => {
 
   return (
     <state.root>
-      <state.description>
-        Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.
-      </state.description>
-      <state.light />
-      <state.dark />
+      <state.inputX />
+      <state.inputY />
       <state.thumb />
     </state.root>
   );
