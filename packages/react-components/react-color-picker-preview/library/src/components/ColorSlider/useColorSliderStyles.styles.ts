@@ -3,6 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+import TransparentImage from '../../../docs/assets/transparent-pattern.png'; // Use DNS
 
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots> = {
   root: 'fui-ColorSlider',
@@ -16,15 +17,16 @@ export const colorSliderCSSVars = {
   sliderProgressVar: `--fui-Slider--progress`,
   sliderStepsPercentVar: `--fui-Slider--steps-percent`,
   thumbColorVar: `--fui-Slider__thumb--color`,
+  railColorVar: `--fui-Slider__rail--color`,
 };
 
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
 const railSizeVar = `--fui-Slider__rail--size`;
-const railColorVar = `--fui-Slider__rail--color`;
 const progressColorVar = `--fui-Slider__progress--color`;
 
-const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar, thumbColorVar } = colorSliderCSSVars;
+const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar, thumbColorVar, railColorVar } =
+  colorSliderCSSVars;
 
 const hueStyle = {
   background: `linear-gradient(${[
@@ -74,6 +76,9 @@ const useStyles = makeStyles({
         [progressColorVar]: 'Highlight',
       },
     },
+  },
+  alpha: {
+    backgroundImage: `linear-gradient(to right, transparent, var(${railColorVar})), url(${TransparentImage})`,
   },
   horizontal: {
     minWidth: '120px',
@@ -127,13 +132,15 @@ const useStyles = makeStyles({
     outlineStyle: 'solid',
     outlineColor: tokens.colorTransparentStroke,
     ////
-    background: hueStyle.background,
     width: '250px',
     height: '20px',
     marginBottom: '8px',
     border: `1px solid #ccc`,
     boxSizing: 'border-box',
     outline: 'none',
+  },
+  hue: {
+    backgroundImage: hueStyle.background,
   },
   focusIndicatorHorizontal: createFocusOutlineStyle({
     selector: 'focus-within',
@@ -166,7 +173,7 @@ const useRailStyles = makeStyles({
     //   var(${progressColorVar}) var(${sliderProgressVar}),
     //   var(${railColorVar}) var(${sliderProgressVar})
     // )`,
-    backgroundImage: hueStyle.background,
+    // backgroundImage: hueStyle.background,
 
     outlineWidth: '1px',
     outlineStyle: 'solid',
@@ -306,12 +313,14 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     styles.root,
     isVertical ? styles.focusIndicatorVertical : styles.focusIndicatorHorizontal,
     isVertical ? styles.vertical : styles.horizontal,
+    state.variant === 'alpha' ? styles.alpha : undefined,
     state.root.className,
   );
 
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
+    state.variant === 'hue' ? styles.hue : undefined,
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
