@@ -3,13 +3,12 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { ILineChartPoints, ILineChartProps, LineChart } from './index';
-import { ILineChartState, LineChartBase } from './LineChart.base';
 import { ICustomizedCalloutData } from '../../index';
 import toJson from 'enzyme-to-json';
 import { act } from 'react-dom/test-utils';
 
 // Wrapper of the LineChart to be tested.
-let wrapper: ReactWrapper<ILineChartProps, ILineChartState, LineChartBase> | undefined;
+let wrapper: ReactWrapper<ILineChartProps> | undefined;
 const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
@@ -226,7 +225,7 @@ describe('Render calling with respective to props', () => {
   });
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(LineChartBase.prototype, 'render');
+    //const renderMock = jest.spyOn(LineChart.prototype, 'render');
     const props = {
       data: chartPoints,
       height: 300,
@@ -234,26 +233,26 @@ describe('Render calling with respective to props', () => {
     };
     act(() => {
       const component = mount(<LineChart {...props} />);
+      expect(component).toMatchSnapshot();
       component.setProps({ ...props });
+      expect(component).toMatchSnapshot();
     });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
   });
 
-  it('prop changes', () => {
-    const renderMock = jest.spyOn(LineChartBase.prototype, 'render');
+  it('prop changes', async () => {
     const props = {
       data: chartPoints,
       height: 300,
       width: 600,
       hideLegend: true,
     };
-    act(() => {
-      const component = mount(<LineChart {...props} />);
+    const component = mount(<LineChart {...props} />);
+    expect(component.props().hideTooltip).toBe(undefined);
+    await act(async () => {
       component.setProps({ ...props, hideTooltip: true });
     });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(component.props().hideTooltip).toBe(true);
+    component.unmount();
   });
 });
 

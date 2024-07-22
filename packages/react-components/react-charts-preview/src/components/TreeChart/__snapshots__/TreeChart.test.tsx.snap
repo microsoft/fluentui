@@ -2,11 +2,7 @@
 
 exports[`TreeChart snapshot testing renders treechart three layer compact composition correctly 1`] = `
 <div
-  className=
-      ms-FocusZone
-      &:focus {
-        outline: none;
-      }
+  className="ms-FocusZone css-101"
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
@@ -14,16 +10,7 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className=
-        ms-TreeChart
-        {
-          l1: 20px;
-          l2: 32px;
-          m: 16px;
-          overflow: scroll;
-          s1: 8px;
-          s2: 4px;
-        }
+    className="ms-TreeChart root-102"
   >
     <svg
       className="svgTree"
@@ -37,17 +24,7 @@ exports[`TreeChart snapshot testing renders treechart three layer compact compos
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -58,16 +35,7 @@ subText subtext Root Node"
           y={10}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -75,16 +43,7 @@ subText subtext Root Node"
         >
           Root Node 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={715}
           >
@@ -97,17 +56,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -118,16 +67,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -135,16 +75,7 @@ subText subtext Parent info parentId: 0
         >
           Child 1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={321.25}
           >
@@ -157,17 +88,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -178,16 +99,7 @@ subText sub Parent info parentId: 1
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -195,16 +107,7 @@ subText sub Parent info parentId: 1
         >
           leaf1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={260}
           >
@@ -217,17 +120,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -238,16 +131,7 @@ subText undefined Parent info parentId: 1
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={300.7608695652174}
           textAnchor="middle"
@@ -261,17 +145,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -282,16 +156,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -299,16 +164,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
         >
           leaf3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={260}
           >
@@ -321,17 +177,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -342,16 +188,7 @@ subText sub Parent info parentId: 1
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -359,16 +196,7 @@ subText sub Parent info parentId: 1
         >
           leaf4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={382.5}
           >
@@ -381,17 +209,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -402,16 +220,7 @@ subText undefined Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={170.76086956521738}
           textAnchor="middle"
@@ -425,17 +234,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -446,16 +245,7 @@ subText sub Parent info parentId: 6
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -463,16 +253,7 @@ subText sub Parent info parentId: 6
         >
           leaf5 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={522.5}
           >
@@ -485,17 +266,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -506,16 +277,7 @@ subText sub Parent info parentId: 6
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -523,16 +285,7 @@ subText sub Parent info parentId: 6
         >
           leaf6 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={645}
           >
@@ -545,17 +298,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -566,16 +309,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -583,16 +317,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
         >
           Child 3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -605,17 +330,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -626,16 +341,7 @@ subText sub Parent info parentId: 9
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -643,16 +349,7 @@ subText sub Parent info parentId: 9
         >
           leaf7 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={785}
           >
@@ -665,17 +362,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -686,16 +373,7 @@ subText sub Parent info parentId: 9
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -703,16 +381,7 @@ subText sub Parent info parentId: 9
         >
           leaf8 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={907.5}
           >
@@ -725,17 +394,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -746,16 +405,7 @@ subText sub Parent info parentId: 9
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -763,16 +413,7 @@ subText sub Parent info parentId: 9
         >
           leaf9 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={785}
           >
@@ -785,17 +426,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -806,16 +437,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -823,16 +445,7 @@ subText subtext Parent info parentId: 0
         >
           Child 4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={1108.75}
           >
@@ -845,17 +458,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -866,16 +469,7 @@ subText sub Parent info parentId: 13
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -883,16 +477,7 @@ subText sub Parent info parentId: 13
         >
           leaf10 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={1108.75}
           >
@@ -904,57 +489,27 @@ subText sub Parent info parentId: 13
         className="svgLink"
       >
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
         />
@@ -966,11 +521,7 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart three layer long composition correctly 1`] = `
 <div
-  className=
-      ms-FocusZone
-      &:focus {
-        outline: none;
-      }
+  className="ms-FocusZone css-101"
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
@@ -978,16 +529,7 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
   onMouseDownCapture={[Function]}
 >
   <div
-    className=
-        ms-TreeChart
-        {
-          l1: 20px;
-          l2: 32px;
-          m: 16px;
-          overflow: scroll;
-          s1: 8px;
-          s2: 4px;
-        }
+    className="ms-TreeChart root-102"
   >
     <svg
       className="svgTree"
@@ -1001,17 +543,7 @@ exports[`TreeChart snapshot testing renders treechart three layer long compositi
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1022,16 +554,7 @@ subText subtext Root Node"
           y={10}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -1039,16 +562,7 @@ subText subtext Root Node"
         >
           Root Node 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={715}
           >
@@ -1061,17 +575,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1082,16 +586,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -1099,16 +594,7 @@ subText subtext Parent info parentId: 0
         >
           Child 1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={321.25}
           >
@@ -1121,17 +607,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1142,16 +618,7 @@ subText sub Parent info parentId: 1
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1159,16 +626,7 @@ subText sub Parent info parentId: 1
         >
           leaf1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={321.25}
           >
@@ -1181,17 +639,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1202,16 +650,7 @@ subText undefined Parent info parentId: 1
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={385.9782608695652}
           textAnchor="middle"
@@ -1225,17 +664,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1246,16 +675,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           y={430.4347826086956}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={463.04347826086956}
           textAnchor="middle"
@@ -1263,16 +683,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
         >
           leaf3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={321.25}
           >
@@ -1285,17 +696,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1306,16 +707,7 @@ subText sub Parent info parentId: 1
           y={515.6521739130435}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={548.2608695652174}
           textAnchor="middle"
@@ -1323,16 +715,7 @@ subText sub Parent info parentId: 1
         >
           leaf4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={321.25}
           >
@@ -1345,17 +728,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1366,16 +739,7 @@ subText undefined Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={170.76086956521738}
           textAnchor="middle"
@@ -1389,17 +753,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1410,16 +764,7 @@ subText sub Parent info parentId: 6
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1427,16 +772,7 @@ subText sub Parent info parentId: 6
         >
           leaf5 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={583.75}
           >
@@ -1449,17 +785,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1470,16 +796,7 @@ subText sub Parent info parentId: 6
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -1487,16 +804,7 @@ subText sub Parent info parentId: 6
         >
           leaf6 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={583.75}
           >
@@ -1509,17 +817,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1530,16 +828,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -1547,16 +836,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
         >
           Child 3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -1569,17 +849,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1590,16 +860,7 @@ subText sub Parent info parentId: 9
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1607,16 +868,7 @@ subText sub Parent info parentId: 9
         >
           leaf7 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -1629,17 +881,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1650,16 +892,7 @@ subText sub Parent info parentId: 9
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -1667,16 +900,7 @@ subText sub Parent info parentId: 9
         >
           leaf8 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -1689,17 +913,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1710,16 +924,7 @@ subText sub Parent info parentId: 9
           y={430.4347826086956}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={463.04347826086956}
           textAnchor="middle"
@@ -1727,16 +932,7 @@ subText sub Parent info parentId: 9
         >
           leaf9 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -1749,17 +945,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1770,16 +956,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -1787,16 +964,7 @@ subText subtext Parent info parentId: 0
         >
           Child 4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={1108.75}
           >
@@ -1809,17 +977,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1830,16 +988,7 @@ subText sub Parent info parentId: 13
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -1847,16 +996,7 @@ subText sub Parent info parentId: 13
         >
           leaf10 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={1108.75}
           >
@@ -1868,57 +1008,27 @@ subText sub Parent info parentId: 13
         className="svgLink"
       >
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
         />
@@ -1930,11 +1040,7 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart three layer without composition correctly 1`] = `
 <div
-  className=
-      ms-FocusZone
-      &:focus {
-        outline: none;
-      }
+  className="ms-FocusZone css-101"
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
@@ -1942,16 +1048,7 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
   onMouseDownCapture={[Function]}
 >
   <div
-    className=
-        ms-TreeChart
-        {
-          l1: 20px;
-          l2: 32px;
-          m: 16px;
-          overflow: scroll;
-          s1: 8px;
-          s2: 4px;
-        }
+    className="ms-TreeChart root-102"
   >
     <svg
       className="svgTree"
@@ -1965,17 +1062,7 @@ exports[`TreeChart snapshot testing renders treechart three layer without compos
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -1986,16 +1073,7 @@ subText subtext Root Node"
           y={10}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -2003,16 +1081,7 @@ subText subtext Root Node"
         >
           Root Node 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={715}
           >
@@ -2025,17 +1094,7 @@ nodeMainText: Child 1
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2046,16 +1105,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -2063,16 +1113,7 @@ subText subtext Parent info parentId: 0
         >
           Child 1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={321.25}
           >
@@ -2085,17 +1126,7 @@ nodeMainText: leaf1
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2106,16 +1137,7 @@ subText sub Parent info parentId: 1
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2123,16 +1145,7 @@ subText sub Parent info parentId: 1
         >
           leaf1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={260}
           >
@@ -2145,17 +1158,7 @@ nodeMainText: leaf2
 subText undefined Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2166,16 +1169,7 @@ subText undefined Parent info parentId: 1
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={300.7608695652174}
           textAnchor="middle"
@@ -2189,17 +1183,7 @@ nodeMainText: leaf3
 subText The subtext is as follows: sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2210,16 +1194,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2227,16 +1202,7 @@ subText The subtext is as follows: sub Parent info parentId: 1
         >
           leaf3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={260}
           >
@@ -2249,17 +1215,7 @@ nodeMainText: leaf4
 subText sub Parent info parentId: 1
       Child 1
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2270,16 +1226,7 @@ subText sub Parent info parentId: 1
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2287,16 +1234,7 @@ subText sub Parent info parentId: 1
         >
           leaf4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={382.5}
           >
@@ -2309,17 +1247,7 @@ nodeMainText: Child 2 is the child name
 subText undefined Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2330,16 +1258,7 @@ subText undefined Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 20px;
-                font-weight: 600;
-              }
+          className="rectMetricText-108"
           data-is-focusable={false}
           dy={170.76086956521738}
           textAnchor="middle"
@@ -2353,17 +1272,7 @@ nodeMainText: leaf5
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2374,16 +1283,7 @@ subText sub Parent info parentId: 6
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2391,16 +1291,7 @@ subText sub Parent info parentId: 6
         >
           leaf5 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={583.75}
           >
@@ -2413,17 +1304,7 @@ nodeMainText: leaf6
 subText sub Parent info parentId: 6
       Child 2 is the child name
       undefined"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2434,16 +1315,7 @@ subText sub Parent info parentId: 6
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2451,16 +1323,7 @@ subText sub Parent info parentId: 6
         >
           leaf6 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={583.75}
           >
@@ -2473,17 +1336,7 @@ nodeMainText: Child 3
 subText The subtext is as follows: subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2494,16 +1347,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -2511,16 +1355,7 @@ subText The subtext is as follows: subtext Parent info parentId: 0
         >
           Child 3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -2533,17 +1368,7 @@ nodeMainText: leaf7
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2554,16 +1379,7 @@ subText sub Parent info parentId: 9
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2571,16 +1387,7 @@ subText sub Parent info parentId: 9
         >
           leaf7 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={785}
           >
@@ -2593,17 +1400,7 @@ nodeMainText: leaf8
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2614,16 +1411,7 @@ subText sub Parent info parentId: 9
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2631,16 +1419,7 @@ subText sub Parent info parentId: 9
         >
           leaf8 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={907.5}
           >
@@ -2653,17 +1432,7 @@ nodeMainText: leaf9
 subText sub Parent info parentId: 9
       Child 3
       The subtext is as follows: subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2674,16 +1443,7 @@ subText sub Parent info parentId: 9
           y={345.2173913043478}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={377.82608695652175}
           textAnchor="middle"
@@ -2691,16 +1451,7 @@ subText sub Parent info parentId: 9
         >
           leaf9 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={785}
           >
@@ -2713,17 +1464,7 @@ nodeMainText: Child 4
 subText subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2734,16 +1475,7 @@ subText subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-              }
+          className="rectSubText-106"
           data-is-focusable={false}
           dy={156.08695652173913}
           textAnchor="middle"
@@ -2751,16 +1483,7 @@ subText subtext Parent info parentId: 0
         >
           Child 4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #201f1e;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 20px;
-                  font-weight: 600;
-                }
+            className="rectMetricText-108"
             dy="1.4em"
             x={1108.75}
           >
@@ -2773,17 +1496,7 @@ nodeMainText: leaf10
 subText sub Parent info parentId: 13
       Child 4
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2794,16 +1507,7 @@ subText sub Parent info parentId: 13
           y={260}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={292.60869565217394}
           textAnchor="middle"
@@ -2811,16 +1515,7 @@ subText sub Parent info parentId: 13
         >
           leaf10 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={1108.75}
           >
@@ -2832,57 +1527,27 @@ subText sub Parent info parentId: 13
         className="svgLink"
       >
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M321.25,205.2173913043478 V230
     H208.75 H433.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M583.75,205.2173913043478 V230
     H471.25 H696.25"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M846.25,205.2173913043478 V230
     H733.75 H958.75"
         />
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M1108.75,205.2173913043478 V230
     H996.25 H1221.25"
         />
@@ -2894,11 +1559,7 @@ subText sub Parent info parentId: 13
 
 exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = `
 <div
-  className=
-      ms-FocusZone
-      &:focus {
-        outline: none;
-      }
+  className="ms-FocusZone css-101"
   data-focuszone-id="FocusZone0"
   data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
@@ -2906,16 +1567,7 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
   onMouseDownCapture={[Function]}
 >
   <div
-    className=
-        ms-TreeChart
-        {
-          l1: 20px;
-          l2: 32px;
-          m: 16px;
-          overflow: scroll;
-          s1: 8px;
-          s2: 4px;
-        }
+    className="ms-TreeChart root-102"
   >
     <svg
       className="svgTree"
@@ -2929,17 +1581,7 @@ exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = 
           aria-label="nodeId: 0 
 nodeMainText: Root Node
 subText subtext Root Node"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -2950,16 +1592,7 @@ subText subtext Root Node"
           y={10}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={true}
           dy={42.608695652173914}
           textAnchor="middle"
@@ -2967,16 +1600,7 @@ subText subtext Root Node"
         >
           Root Node 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={715}
           >
@@ -2989,17 +1613,7 @@ nodeMainText: Child 1
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3010,16 +1624,7 @@ subText Subtext val is subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3027,16 +1632,7 @@ subText Subtext val is subtext Parent info parentId: 0
         >
           Child 1 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={321.25}
           >
@@ -3049,17 +1645,7 @@ nodeMainText: Child 2
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3070,16 +1656,7 @@ subText Subtext val is subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3087,16 +1664,7 @@ subText Subtext val is subtext Parent info parentId: 0
         >
           Child 2 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={583.75}
           >
@@ -3109,17 +1677,7 @@ nodeMainText: Child 3
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3130,16 +1688,7 @@ subText Subtext val is subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3147,16 +1696,7 @@ subText Subtext val is subtext Parent info parentId: 0
         >
           Child 3 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={846.25}
           >
@@ -3169,17 +1709,7 @@ nodeMainText: Child 4
 subText Subtext val is subtext Parent info parentId: 0
       Root Node
       subtext"
-          className=
-
-              {
-                fill: #ffffff;
-                padding-bottom: 10px;
-                padding-left: 10px;
-                padding-right: 10px;
-                padding-top: 10px;
-                rx: 2px;
-                stroke-width: 2px;
-              }
+          className="rectNode-104"
           data-is-focusable={true}
           height={65.21739130434783}
           role="text"
@@ -3190,16 +1720,7 @@ subText Subtext val is subtext Parent info parentId: 0
           y={130}
         />
         <text
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #201f1e;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 18px;
-                font-weight: 400;
-              }
+          className="rectText-105"
           data-is-focusable={false}
           dy={162.6086956521739}
           textAnchor="middle"
@@ -3207,16 +1728,7 @@ subText Subtext val is subtext Parent info parentId: 0
         >
           Child 4 
           <tspan
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
+            className="rectSubText-106"
             dy="1.4em"
             x={1108.75}
           >
@@ -3228,13 +1740,7 @@ subText Subtext val is subtext Parent info parentId: 0
         className="svgLink"
       >
         <path
-          className=
-
-              {
-                fill: none;
-                stroke-width: 2px;
-                stroke: #A1A1A1;
-              }
+          className="link-103"
           d="M208.75,110 H1221.25 M715,110
     V85.21739130434783"
         />

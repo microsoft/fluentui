@@ -1987,6 +1987,36 @@
     "@griffel/react" "^1.5.14"
     "@swc/helpers" "^0.5.1"
 
+"@fluentui/react-shared-contexts@^9.19.1":
+  version "9.19.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-shared-contexts/-/react-shared-contexts-9.19.1.tgz#60d08536b97d886f514fb7b897dc52a3f5f74fda"
+  integrity sha512-UZteZ1zuQmscwELmb673hX9DoBWJYkSdEBcJfohqh+49WnkUb+y03tQ0nEF6xHV1FWmAwcjFm532gBW1ayG8Ng==
+  dependencies:
+    "@fluentui/react-theme" "^9.1.19"
+    "@swc/helpers" "^0.5.1"
+
+"@fluentui/react-tabster@^9.22.0":
+  version "9.22.2"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-tabster/-/react-tabster-9.22.2.tgz#5ecfaf05bb30c9b52491071ef3b7939876a25a54"
+  integrity sha512-QXQCk9XYQpjtNhMPKqRwmnPe58kc8YjtaGDFlRUtKBi8PRtK08Qf4rltEntpDv2xEZSyR5wJPZLnQI25hKZ3fQ==
+  dependencies:
+    "@fluentui/react-shared-contexts" "^9.19.1"
+    "@fluentui/react-theme" "^9.1.19"
+    "@fluentui/react-utilities" "^9.18.12"
+    "@griffel/react" "^1.5.22"
+    "@swc/helpers" "^0.5.1"
+    keyborg "^2.6.0"
+    tabster "^8.0.1"
+
+"@fluentui/react-utilities@^9.18.12":
+  version "9.18.12"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-9.18.12.tgz#0e3251cad7109f8c34e19ed52055454716bd6bfa"
+  integrity sha512-zDWLdkZJf6/jAlExDN84JPZdU0vECVKfF+PA5m7T5/tIbCQjlagz4yk+xT0x0jewrfIVqeoUZUx6I6WlvM8gKA==
+  dependencies:
+    "@fluentui/keyboard-keys" "^9.0.7"
+    "@fluentui/react-shared-contexts" "^9.19.1"
+    "@swc/helpers" "^0.5.1"
+
 "@griffel/babel-preset@1.4.20", "@griffel/babel-preset@^1.4.20":
   version "1.4.20"
   resolved "https://registry.yarnpkg.com/@griffel/babel-preset/-/babel-preset-1.4.20.tgz#047eb62f104e7bea781820816263e7407fafe543"
@@ -2016,6 +2046,18 @@
     stylis "^4.2.0"
     tslib "^2.1.0"
 
+"@griffel/core@^1.17.1":
+  version "1.17.1"
+  resolved "https://registry.yarnpkg.com/@griffel/core/-/core-1.17.1.tgz#2e23e07a17e4a797aafeff6b7933b876ab126de5"
+  integrity sha512-K3osVOktJ5nioY62idtkjLiIdVcazMwraNxkUMhLtoapDthnKVSC3+gYTuPCBZMdfLH5Hl5Y29YUClRlDjyb7g==
+  dependencies:
+    "@emotion/hash" "^0.9.0"
+    "@griffel/style-types" "^1.2.0"
+    csstype "^3.1.3"
+    rtl-css-js "^1.16.1"
+    stylis "^4.2.0"
+    tslib "^2.1.0"
+
 "@griffel/eslint-plugin@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@griffel/eslint-plugin/-/eslint-plugin-1.2.0.tgz#a4e211c16b4d3f0cdb90b47c5af1dce191b10bd4"
@@ -2041,6 +2083,14 @@
     "@griffel/core" "^1.14.1"
     tslib "^2.1.0"
 
+"@griffel/react@^1.5.22":
+  version "1.5.24"
+  resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.24.tgz#f09191b03ed73cf6be4f36217f2e6cca44dfbea6"
+  integrity sha512-WDxWyg182kL/aFCViybARAm/ZFVZoJDiW52pguveZx6cJvvc51esZ2qYJhsbMoy8cqOfnfOrWhOibdb89kgXAQ==
+  dependencies:
+    "@griffel/core" "^1.17.1"
+    tslib "^2.1.0"
+
 "@griffel/shadow-dom@0.1.5":
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/@griffel/shadow-dom/-/shadow-dom-0.1.5.tgz#e1a14b036ef3b4382e7dc71fce3e43c5da1e93d0"
@@ -2055,6 +2105,13 @@
   integrity sha512-nhVryiNHhoBt5L93tfDYGoE4KtWvhBvY7y1yR1n6WKpRjasgw3GI2pBwiMiVt68bycnyvXIvcJjJTr0QM22VLQ==
   dependencies:
     csstype "^3.1.2"
+
+"@griffel/style-types@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@griffel/style-types/-/style-types-1.2.0.tgz#2bfb4b900c316c65e513ab38e6b2fa94241a5122"
+  integrity sha512-x166MNw0vWe5l5qhinfNT4eyWOaP48iFzPyFOfIB0/BVidKTWsEe5PmqRJDDtrJFS3VHhd/tE0oM6tkEMh2tsg==
+  dependencies:
+    csstype "^3.1.3"
 
 "@griffel/webpack-extraction-plugin@0.3.18":
   version "0.3.18"
@@ -9915,6 +9972,11 @@ csstype@^3.0.2, csstype@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
   integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
+
+csstype@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.3.tgz#d80ff294d114fb0e6ac500fbf85b60137d7eff81"
+  integrity sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==
 
 csv-stringify@^6.2.0:
   version "6.2.0"
@@ -22953,6 +23015,14 @@ tabster@^7.1.2:
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/tabster/-/tabster-7.1.2.tgz#ab2fb2bc67b78059e1406b2afc35aec69eb824a5"
   integrity sha512-wYG9ddAeSUxBrcPCZ+hQV5IcsyM089nTGkQ53G9/2pPDdUa3pBC4sP3qmdbvu+IoFpy62CMDxMgxQmegtCiLKg==
+  dependencies:
+    keyborg "2.6.0"
+    tslib "^2.3.1"
+
+tabster@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-8.0.1.tgz#07540bf5939b23bb6cdbb1e2c506cdaa2d0a427c"
+  integrity sha512-Df8La4+IkdbHjupybEDv4rCPSOwx8L3Xh7UVbl0tzyrkiVTKvZg3IRID6KHd/tXbyerO4cXwhY9aOQ+mbEP04w==
   dependencies:
     keyborg "2.6.0"
     tslib "^2.3.1"

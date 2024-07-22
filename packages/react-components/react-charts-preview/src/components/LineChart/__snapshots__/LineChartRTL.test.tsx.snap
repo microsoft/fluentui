@@ -3885,36 +3885,16 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
 exports[`Line chart rendering Should render the Line chart with numeric x-axis data 1`] = `
 <div>
   <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
+    class="fui-cart__root"
+    id="chart_"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_"
     />
     <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
+      class="ms-FocusZone css-110 fui-cart__chartWrapper"
+      data-focuszone-id="FocusZone0"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3925,294 +3905,28 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
         width="650"
       >
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_9"
-          text-anchor="middle"
+          class="fui-cart__xAxis"
+          id="xAxisGElementchart_"
           transform="translate(0, 257)"
-        >
-          <path
-            class="domain"
-            d="M40.5,6V0.5H630.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(40.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              20
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(158.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(276.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              40
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(394.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(512.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(630.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
-            </text>
-          </g>
-        </g>
+        />
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_9"
-          text-anchor="end"
+          class="fui-cart__yAxis"
+          id="yAxisGElementchart_"
           transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              23
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              46
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              69
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              92
-            </text>
-          </g>
-        </g>
+        />
         <g>
           <line
-            id="verticalLine3"
+            id="verticalLine4"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
             x1="0"
             x2="0"
             y1="0"
-            y2="292"
           />
           <g>
             <line
-              id="lineID1_2_1"
+              id="lineID2_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -4231,7 +3945,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_1"
+              id="circle1_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -4247,7 +3961,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_11L"
+              id="circle1_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -4258,14 +3972,14 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_2_11D"
+              id="circle1_2_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_1_1"
+              id="lineID2_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -4284,7 +3998,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_1"
+              id="circle1_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -4300,7 +4014,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_11L"
+              id="circle1_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -4311,14 +4025,14 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               cx="394"
               cy="25.152173913043473"
               focusable="false"
-              id="circle0_1_11D"
+              id="circle1_1_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_0_1"
+              id="lineID2_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -4337,7 +4051,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_1"
+              id="circle1_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -4353,7 +4067,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_11L"
+              id="circle1_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -4364,7 +4078,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_0_11D"
+              id="circle1_0_11D"
               opacity="0"
               r="8"
               stroke-width="0"
@@ -4375,25 +4089,10 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
       </svg>
     </div>
     <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
+      class="fui-cart__legendContainer"
     >
       <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
+        class="root-111"
       >
         <div>
           <div
@@ -4406,33 +4105,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               <div
                 aria-label="Legends"
                 aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
+                class="ms-FocusZone css-110"
+                data-focuszone-id="FocusZone1"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
+                  class="ms-OverflowSet root-120"
                   role="group"
                 >
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -4440,99 +4123,23 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: red;
-                              border-color: red;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, red, red);
-                              opacity: ;
-                            }
+                        class="rect-123"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData1
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -4540,99 +4147,23 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: green;
-                              border-color: green;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, green, green);
-                              opacity: ;
-                            }
+                        class="rect-126"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData2
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -4640,87 +4171,16 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                       aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: yellow;
-                              border-color: yellow;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, yellow, yellow);
-                              opacity: ;
-                            }
+                        class="rect-129"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData3
                       </div>
@@ -4740,36 +4200,16 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
 exports[`Line chart rendering Should render the Line chart with points in multiple shapes 1`] = `
 <div>
   <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
+    class="fui-cart__root"
+    id="chart_"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_"
     />
     <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
+      class="ms-FocusZone css-110 fui-cart__chartWrapper"
+      data-focuszone-id="FocusZone0"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -4780,294 +4220,28 @@ exports[`Line chart rendering Should render the Line chart with points in multip
         width="650"
       >
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_9"
-          text-anchor="middle"
+          class="fui-cart__xAxis"
+          id="xAxisGElementchart_"
           transform="translate(0, 257)"
-        >
-          <path
-            class="domain"
-            d="M40.5,6V0.5H630.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(40.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              20
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(158.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(276.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              40
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(394.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(512.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(630.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
-            </text>
-          </g>
-        </g>
+        />
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_9"
-          text-anchor="end"
+          class="fui-cart__yAxis"
+          id="yAxisGElementchart_"
           transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              23
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              46
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              69
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              92
-            </text>
-          </g>
-        </g>
+        />
         <g>
           <line
-            id="verticalLine3"
+            id="verticalLine13"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
             x1="0"
             x2="0"
             y1="0"
-            y2="292"
           />
           <g>
             <line
-              id="lineID1_2_1"
+              id="lineID11_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -5084,7 +4258,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L630 185.49139130434781 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_1"
+              id="circle10_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -5098,7 +4272,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L276 56.687043478260875 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_11L"
+              id="circle10_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -5109,14 +4283,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_2_11D"
+              id="circle10_2_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_1_1"
+              id="lineID11_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -5135,7 +4309,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_1"
+              id="circle10_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -5151,7 +4325,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_11L"
+              id="circle10_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -5162,14 +4336,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               cx="394"
               cy="25.152173913043473"
               focusable="false"
-              id="circle0_1_11D"
+              id="circle10_1_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_0_1"
+              id="lineID11_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -5188,7 +4362,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_1"
+              id="circle10_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -5204,7 +4378,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_11L"
+              id="circle10_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -5215,7 +4389,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_0_11D"
+              id="circle10_0_11D"
               opacity="0"
               r="8"
               stroke-width="0"
@@ -5226,25 +4400,10 @@ exports[`Line chart rendering Should render the Line chart with points in multip
       </svg>
     </div>
     <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
+      class="fui-cart__legendContainer"
     >
       <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
+        class="root-111"
       >
         <div>
           <div
@@ -5257,33 +4416,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               <div
                 aria-label="Legends"
                 aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
+                class="ms-FocusZone css-110"
+                data-focuszone-id="FocusZone1"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
+                  class="ms-OverflowSet root-120"
                   role="group"
                 >
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -5291,63 +4434,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
                     >
                       <svg
-                        class=
-
-                            {
-                              margin-right: 8px;
-                            }
+                        class="shape-114"
                         focusable="false"
                         height="14"
                         transform="rotate(0, 0, 0)"
@@ -5362,30 +4455,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                         />
                       </svg>
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData1
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -5393,63 +4470,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <svg
-                        class=
-
-                            {
-                              margin-right: 8px;
-                            }
+                        class="shape-114"
                         focusable="false"
                         height="14"
                         transform="rotate(0, 0, 0)"
@@ -5464,30 +4491,14 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                         />
                       </svg>
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData2
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -5495,63 +4506,13 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                       aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <svg
-                        class=
-
-                            {
-                              margin-right: 8px;
-                            }
+                        class="shape-114"
                         focusable="false"
                         height="14"
                         transform="rotate(0, 0, 0)"
@@ -5566,18 +4527,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                         />
                       </svg>
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData3
                       </div>
@@ -5597,36 +4547,16 @@ exports[`Line chart rendering Should render the Line chart with points in multip
 exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 <div>
   <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
+    class="fui-cart__root"
+    id="chart_"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_"
     />
     <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
+      class="ms-FocusZone css-110 fui-cart__chartWrapper"
+      data-focuszone-id="FocusZone0"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -5637,294 +4567,28 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         width="650"
       >
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_9"
-          text-anchor="middle"
+          class="fui-cart__xAxis"
+          id="xAxisGElementchart_"
           transform="translate(0, 257)"
-        >
-          <path
-            class="domain"
-            d="M40.5,6V0.5H630.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(40.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              20
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(158.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(276.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              40
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(394.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(512.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(630.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
-            </text>
-          </g>
-        </g>
+        />
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_9"
-          text-anchor="end"
+          class="fui-cart__yAxis"
+          id="yAxisGElementchart_"
           transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              23
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              46
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              69
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              92
-            </text>
-          </g>
-        </g>
+        />
         <g>
           <line
-            id="verticalLine3"
+            id="verticalLine127"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
             x1="0"
             x2="0"
             y1="0"
-            y2="292"
           />
           <g>
             <line
-              id="lineID1_2_1"
+              id="lineID125_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -5943,7 +4607,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_1"
+              id="circle124_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -5959,7 +4623,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_11L"
+              id="circle124_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -5970,14 +4634,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_2_11D"
+              id="circle124_2_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_1_1"
+              id="lineID125_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -5996,7 +4660,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_1"
+              id="circle124_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -6012,7 +4676,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_11L"
+              id="circle124_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -6023,14 +4687,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cx="394"
               cy="25.152173913043473"
               focusable="false"
-              id="circle0_1_11D"
+              id="circle124_1_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_0_1"
+              id="lineID125_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -6049,7 +4713,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_1"
+              id="circle124_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -6065,7 +4729,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_11L"
+              id="circle124_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -6076,7 +4740,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_0_11D"
+              id="circle124_0_11D"
               opacity="0"
               r="8"
               stroke-width="0"
@@ -6087,25 +4751,10 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </svg>
     </div>
     <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
+      class="fui-cart__legendContainer"
     >
       <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
+        class="root-111"
       >
         <div>
           <div
@@ -6118,33 +4767,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <div
                 aria-label="Legends"
                 aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
+                class="ms-FocusZone css-110"
+                data-focuszone-id="FocusZone1"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
+                  class="ms-OverflowSet root-120"
                   role="group"
                 >
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -6152,99 +4785,23 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: red;
-                              border-color: red;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, red, red);
-                              opacity: ;
-                            }
+                        class="rect-123"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData1
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -6252,99 +4809,23 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: green;
-                              border-color: green;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, green, green);
-                              opacity: ;
-                            }
+                        class="rect-126"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData2
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -6352,87 +4833,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: yellow;
-                              border-color: yellow;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, yellow, yellow);
-                              opacity: ;
-                            }
+                        class="rect-129"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData3
                       </div>
@@ -6452,36 +4862,16 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
 exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 <div>
   <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          display: flex;
-          flex-direction: column;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 100%;
-          overflow: hidden;
-          width: 100%;
-        }
-    id="chart_9"
+    class="fui-cart__root"
+    id="chart_"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_10"
+      id="defaultTabbableElement_"
     />
     <div
-      class=
-          ms-FocusZone
-          &:focus {
-            outline: none;
-          }
-          {
-            overflow: auto;
-          }
-      data-focuszone-id="FocusZone11"
+      class="ms-FocusZone css-110 fui-cart__chartWrapper"
+      data-focuszone-id="FocusZone0"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -6492,294 +4882,28 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         width="650"
       >
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-                width: 1px;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="xAxisGElementchart_9"
-          text-anchor="middle"
+          class="fui-cart__xAxis"
+          id="xAxisGElementchart_"
           transform="translate(0, 257)"
-        >
-          <path
-            class="domain"
-            d="M40.5,6V0.5H630.5V6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(40.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              20
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(158.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              30
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(276.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              40
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(394.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              50
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(512.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              60
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(630.5,0)"
-          >
-            <line
-              stroke="currentColor"
-              y2="6"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.71em"
-              fill="currentColor"
-              y="16"
-            >
-              70
-            </text>
-          </g>
-        </g>
+        />
         <g
-          class=
-
-              & text {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-weight: 600;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                fill: rgb(179, 179, 179);
-              }
-              & path {
-                display: none;
-              }
-              & line {
-                opacity: 0.2;
-                stroke: #323130;
-              }
-              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                opacity: 0.1;
-                stroke: rgb(179, 179, 179);
-              }
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_9"
-          text-anchor="end"
+          class="fui-cart__yAxis"
+          id="yAxisGElementchart_"
           transform="translate(40, 0)"
-        >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
-            stroke="currentColor"
-          />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              23
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              46
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              69
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              92
-            </text>
-          </g>
-        </g>
+        />
         <g>
           <line
-            id="verticalLine3"
+            id="verticalLine136"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
             x1="0"
             x2="0"
             y1="0"
-            y2="292"
           />
           <g>
             <line
-              id="lineID1_2_1"
+              id="lineID134_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -6798,7 +4922,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_1"
+              id="circle133_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -6814,7 +4938,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle0_2_11L"
+              id="circle133_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -6825,14 +4949,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_2_11D"
+              id="circle133_2_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_1_1"
+              id="lineID134_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -6851,7 +4975,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_1"
+              id="circle133_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -6867,7 +4991,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle0_1_11L"
+              id="circle133_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -6878,14 +5002,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cx="394"
               cy="25.152173913043473"
               focusable="false"
-              id="circle0_1_11D"
+              id="circle133_1_11D"
               opacity="0"
               r="8"
               stroke-width="0"
               width="0"
             />
             <line
-              id="lineID1_0_1"
+              id="lineID134_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -6904,7 +5028,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_1"
+              id="circle133_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -6920,7 +5044,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle0_0_11L"
+              id="circle133_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -6931,7 +5055,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cx="276"
               cy="50.913043478260875"
               focusable="false"
-              id="circle0_0_11D"
+              id="circle133_0_11D"
               opacity="0"
               r="8"
               stroke-width="0"
@@ -6942,25 +5066,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </svg>
     </div>
     <div
-      class=
-
-          {
-            margin-left: 20px;
-            margin-top: 8px;
-          }
+      class="fui-cart__legendContainer"
     >
       <div
-        class=
-
-            {
-              align-items: center;
-              margin-bottom: 0;
-              margin-left: -8px;
-              margin-right: 0;
-              margin-top: -8px;
-              white-space: nowrap;
-              width: 100%;
-            }
+        class="root-111"
       >
         <div>
           <div
@@ -6973,33 +5082,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <div
                 aria-label="Legends"
                 aria-multiselectable="false"
-                class=
-                    ms-FocusZone
-                    &:focus {
-                      outline: none;
-                    }
-                data-focuszone-id="FocusZone12"
+                class="ms-FocusZone css-110"
+                data-focuszone-id="FocusZone1"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
-                  class=
-                      ms-OverflowSet
-                      {
-                        display: flex;
-                        flex-wrap: wrap;
-                        justify-content: unset;
-                        position: relative;
-                      }
+                  class="ms-OverflowSet root-120"
                   role="group"
                 >
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -7007,99 +5100,23 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       aria-posinset="1"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="0"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: red;
-                              border-color: red;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, red, red);
-                              opacity: ;
-                            }
+                        class="rect-123"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData1
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -7107,99 +5124,23 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       aria-posinset="2"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: green;
-                              border-color: green;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, green, green);
-                              opacity: ;
-                            }
+                        class="rect-126"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData2
                       </div>
                     </button>
                   </div>
                   <div
-                    class=
-                        ms-OverflowSet-item
-                        {
-                          display: inherit;
-                          flex-shrink: 0;
-                        }
+                    class="ms-OverflowSet-item item-121"
                     role="none"
                   >
                     <button
@@ -7207,960 +5148,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       aria-posinset="3"
                       aria-selected="false"
                       aria-setsize="3"
-                      class=
-
-                          {
-                            align-items: center;
-                            background: none;
-                            border: none;
-                            cursor: pointer;
-                            display: flex;
-                            outline: transparent;
-                            padding-bottom: 8px;
-                            padding-left: 8px;
-                            padding-right: 8px;
-                            padding-top: 8px;
-                            position: relative;
-                            text-transform: capitalize;
-                          }
-                          &::-moz-focus-inner {
-                            border: 0;
-                          }
-                          .ms-Fabric--isFocusVisible &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                            outline-color: #605e5c;
-                          }
-                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            border: 1px solid transparent;
-                            bottom: 1px;
-                            content: "";
-                            left: 1px;
-                            outline: 1px solid #605e5c;
-                            position: absolute;
-                            right: 1px;
-                            top: 1px;
-                            z-index: 1;
-                          }
-                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                            outline-color: #605e5c;
-                          }
+                      class="legend-112"
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
                     >
                       <div
-                        class=
-
-                            {
-                              background-color: yellow;
-                              border-color: yellow;
-                              border: 1px solid;
-                              content: ;
-                              height: 12px;
-                              margin-right: 8px;
-                              width: 12px;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                              content: linear-gradient(to right, yellow, yellow);
-                              opacity: ;
-                            }
+                        class="rect-129"
                       />
                       <div
-                        class=
-
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              color: #323130;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 12px;
-                              font-weight: 400;
-                              line-height: 16px;
-                              opacity: ;
-                            }
+                        class="text-116"
                       >
                         metaData3
                       </div>
                     </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Theme and accessibility Should reflect theme change 1`] = `
-<div>
-  <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background: #1b1a19;
-          color: #f3f2f1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
-  >
-    <div
-      class=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 100%;
-            overflow: hidden;
-            width: 100%;
-          }
-      id="chart_12"
-      role="presentation"
-    >
-      <div
-        id="defaultTabbableElement_13"
-      />
-      <div
-        class=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-            {
-              overflow: auto;
-            }
-        data-focuszone-id="FocusZone14"
-        data-tabster="{\\"uncontrolled\\": {}}"
-      >
-        <svg
-          aria-label="LineChart"
-          focusable="false"
-          height="292"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #f3f2f1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #f3f2f1;
-                  width: 1px;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
-                }
-                & path {
-                  display: none;
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="xAxisGElementchart_12"
-            text-anchor="middle"
-            transform="translate(0, 257)"
-          >
-            <path
-              class="domain"
-              d="M40.5,6V0.5H630.5V6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(40.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                20
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(158.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                30
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(276.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                40
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(394.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                50
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(512.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                60
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(630.5,0)"
-            >
-              <line
-                stroke="currentColor"
-                y2="6"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.71em"
-                fill="currentColor"
-                y="16"
-              >
-                70
-              </text>
-            </g>
-          </g>
-          <g
-            class=
-
-                & text {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  fill: #f3f2f1;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 10px;
-                  font-weight: 600;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
-                  fill: rgb(179, 179, 179);
-                }
-                & path {
-                  display: none;
-                }
-                & line {
-                  opacity: 0.2;
-                  stroke: #f3f2f1;
-                }
-                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
-                  opacity: 0.1;
-                  stroke: rgb(179, 179, 179);
-                }
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_12"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,257.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,198.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                23
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,139)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                46
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                69
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                92
-              </text>
-            </g>
-          </g>
-          <g>
-            <line
-              id="verticalLine6"
-              stroke="#323130"
-              stroke-dasharray="5,5"
-              visibility="hidden"
-              x1="0"
-              x2="0"
-              y1="0"
-              y2="292"
-            />
-            <g>
-              <line
-                id="lineID4_2_1"
-                opacity="1"
-                stroke="yellow"
-                stroke-linecap="round"
-                stroke-width="4"
-                x1="630"
-                x2="276"
-                y1="179.7173913043478"
-                y2="50.913043478260875"
-              />
-              <path
-                aria-label="70. metaData3, 30."
-                d="M629.5 179.7173913043478
-     A0.5 0.5 0 1 0 630.5 179.7173913043478
-     M629.5 179.7173913043478
-     A 0.5 0.5 0 1 1 630.5 179.7173913043478
-     "
-                data-is-focusable="true"
-                fill="yellow"
-                id="circle3_2_1"
-                opacity="1"
-                role="img"
-                stroke="yellow"
-                stroke-width="4"
-                tabindex="0"
-              />
-              <path
-                aria-label="40. metaData3, 80."
-                d="M275.5 50.913043478260875
-     A0.5 0.5 0 1 0 276.5 50.913043478260875
-     M275.5 50.913043478260875
-     A 0.5 0.5 0 1 1 276.5 50.913043478260875
-     "
-                data-is-focusable="true"
-                fill="yellow"
-                id="circle3_2_11L"
-                opacity="1"
-                role="img"
-                stroke="yellow"
-                stroke-width="4"
-                tabindex="-1"
-              />
-              <circle
-                cx="276"
-                cy="50.913043478260875"
-                focusable="false"
-                id="circle3_2_11D"
-                opacity="0"
-                r="8"
-                stroke-width="0"
-                width="0"
-              />
-              <line
-                id="lineID4_1_1"
-                opacity="1"
-                stroke="green"
-                stroke-linecap="round"
-                stroke-width="4"
-                x1="158"
-                x2="394"
-                y1="102.43478260869564"
-                y2="25.152173913043473"
-              />
-              <path
-                aria-label="30. metaData2, 60."
-                d="M157.5 102.43478260869564
-     A0.5 0.5 0 1 0 158.5 102.43478260869564
-     M157.5 102.43478260869564
-     A 0.5 0.5 0 1 1 158.5 102.43478260869564
-     "
-                data-is-focusable="true"
-                fill="green"
-                id="circle3_1_1"
-                opacity="1"
-                role="img"
-                stroke="green"
-                stroke-width="4"
-                tabindex="-1"
-              />
-              <path
-                aria-label="50. metaData2, 90."
-                d="M393.5 25.152173913043473
-     A0.5 0.5 0 1 0 394.5 25.152173913043473
-     M393.5 25.152173913043473
-     A 0.5 0.5 0 1 1 394.5 25.152173913043473
-     "
-                data-is-focusable="true"
-                fill="green"
-                id="circle3_1_11L"
-                opacity="1"
-                role="img"
-                stroke="green"
-                stroke-width="4"
-                tabindex="-1"
-              />
-              <circle
-                cx="394"
-                cy="25.152173913043473"
-                focusable="false"
-                id="circle3_1_11D"
-                opacity="0"
-                r="8"
-                stroke-width="0"
-                width="0"
-              />
-              <line
-                id="lineID4_0_1"
-                opacity="1"
-                stroke="red"
-                stroke-linecap="round"
-                stroke-width="4"
-                x1="40"
-                x2="276"
-                y1="128.19565217391306"
-                y2="50.913043478260875"
-              />
-              <path
-                aria-label="20. metaData1, 50."
-                d="M39.5 128.19565217391306
-     A0.5 0.5 0 1 0 40.5 128.19565217391306
-     M39.5 128.19565217391306
-     A 0.5 0.5 0 1 1 40.5 128.19565217391306
-     "
-                data-is-focusable="true"
-                fill="red"
-                id="circle3_0_1"
-                opacity="1"
-                role="img"
-                stroke="red"
-                stroke-width="4"
-                tabindex="-1"
-              />
-              <path
-                aria-label="40. metaData1, 80."
-                d="M275.5 50.913043478260875
-     A0.5 0.5 0 1 0 276.5 50.913043478260875
-     M275.5 50.913043478260875
-     A 0.5 0.5 0 1 1 276.5 50.913043478260875
-     "
-                data-is-focusable="true"
-                fill="red"
-                id="circle3_0_11L"
-                opacity="1"
-                role="img"
-                stroke="red"
-                stroke-width="4"
-                tabindex="-1"
-              />
-              <circle
-                cx="276"
-                cy="50.913043478260875"
-                focusable="false"
-                id="circle3_0_11D"
-                opacity="0"
-                r="8"
-                stroke-width="0"
-                width="0"
-              />
-            </g>
-          </g>
-        </svg>
-      </div>
-      <div
-        class=
-
-            {
-              margin-left: 20px;
-              margin-top: 8px;
-            }
-      >
-        <div
-          class=
-
-              {
-                align-items: center;
-                margin-bottom: 0;
-                margin-left: -8px;
-                margin-right: 0;
-                margin-top: -8px;
-                white-space: nowrap;
-                width: 100%;
-              }
-        >
-          <div>
-            <div
-              style="position: relative;"
-            >
-              <div
-                data-automation-id="visibleContent"
-                style=""
-              >
-                <div
-                  aria-label="Legends"
-                  aria-multiselectable="false"
-                  class=
-                      ms-FocusZone
-                      &:focus {
-                        outline: none;
-                      }
-                  data-focuszone-id="FocusZone15"
-                  data-tabster="{\\"uncontrolled\\": {}}"
-                  role="listbox"
-                >
-                  <div
-                    class=
-                        ms-OverflowSet
-                        {
-                          display: flex;
-                          flex-wrap: wrap;
-                          justify-content: unset;
-                          position: relative;
-                        }
-                    role="group"
-                  >
-                    <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
-                      role="none"
-                    >
-                      <button
-                        aria-label="metaData1"
-                        aria-posinset="1"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                        data-is-focusable="true"
-                        role="option"
-                        tabindex="0"
-                      >
-                        <div
-                          class=
-
-                              {
-                                background-color: red;
-                                border-color: red;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, red, red);
-                                opacity: ;
-                              }
-                        />
-                        <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
-                        >
-                          metaData1
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
-                      role="none"
-                    >
-                      <button
-                        aria-label="metaData2"
-                        aria-posinset="2"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                        data-is-focusable="true"
-                        role="option"
-                        tabindex="-1"
-                      >
-                        <div
-                          class=
-
-                              {
-                                background-color: green;
-                                border-color: green;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, green, green);
-                                opacity: ;
-                              }
-                        />
-                        <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
-                        >
-                          metaData2
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
-                      role="none"
-                    >
-                      <button
-                        aria-label="metaData3"
-                        aria-posinset="3"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                        data-is-focusable="true"
-                        role="option"
-                        tabindex="-1"
-                      >
-                        <div
-                          class=
-
-                              {
-                                background-color: yellow;
-                                border-color: yellow;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, yellow, yellow);
-                                opacity: ;
-                              }
-                        />
-                        <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
-                        >
-                          metaData3
-                        </div>
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
