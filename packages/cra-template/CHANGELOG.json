@@ -2,6 +2,21 @@
   "name": "@fluentui/cra-template",
   "entries": [
     {
+      "date": "Thu, 18 Jul 2024 07:31:11 GMT",
+      "tag": "@fluentui/cra-template_v8.4.163",
+      "version": "8.4.163",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/cra-template",
+            "commit": "c0008087097d546736069565b6c61a640b320362",
+            "comment": "chore: normalize target names and target dependency graph to properly utilize cache hits"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 07:36:39 GMT",
       "tag": "@fluentui/cra-template_v8.4.162",
       "version": "8.4.162",

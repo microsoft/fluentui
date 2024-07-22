@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: removed padding from field host element",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
