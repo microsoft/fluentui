@@ -5,6 +5,7 @@ import { Theme } from '@fluentui/react-theme';
 import { themes, defaultTheme, ThemeIds } from '../theme';
 import { DIR_ID, THEME_ID } from '../constants';
 import { FluentGlobals, FluentStoryContext } from '../hooks';
+import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 const findTheme = (themeId?: ThemeIds) => {
   if (!themeId) {
@@ -24,9 +25,7 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   const { globals, parameters } = context;
   const { mode } = parameters;
 
-  const shouldDisable = parameters.reactStorybookAddon?.disabledDecorators?.includes('FluentProvider');
-
-  if (shouldDisable) {
+  if (isDecoratorDisabled(context, 'FluentProvider')) {
     return StoryFn();
   }
 

@@ -2,11 +2,10 @@ import * as React from 'react';
 
 import { STRICT_MODE_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
+import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 export const withReactStrictMode = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
-  const shouldDisable = context.parameters.reactStorybookAddon?.disabledDecorators?.includes('ReactStrictMode');
-
-  if (shouldDisable) {
+  if (isDecoratorDisabled(context, 'ReactStrictMode')) {
     return StoryFn();
   }
 

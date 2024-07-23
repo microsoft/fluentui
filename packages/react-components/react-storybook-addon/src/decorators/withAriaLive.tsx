@@ -2,11 +2,10 @@ import { AriaLiveAnnouncer } from '@fluentui/react-aria';
 import * as React from 'react';
 
 import { FluentStoryContext } from '../hooks';
+import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 export const withAriaLive = (Story: () => JSX.Element, context: FluentStoryContext) => {
-  const shouldDisable = context.parameters.reactStorybookAddon?.disabledDecorators?.includes('AriaLive');
-
-  if (shouldDisable) {
+  if (isDecoratorDisabled(context, 'AriaLive')) {
     return Story();
   }
 
