@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update types",
+  "packageName": "@fluentui/react-combobox",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

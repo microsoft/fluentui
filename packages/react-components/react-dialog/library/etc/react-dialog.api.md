@@ -135,7 +135,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
 };
 
 // @public (undocumented)
-export const DialogProvider: React_2.Provider<DialogContextValue | undefined> & React_2.FC<React_2.ProviderProps<DialogContextValue | undefined>>;
+export const DialogProvider: (props: React_2.ProviderProps<DialogContextValue | undefined>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type DialogSlots = {

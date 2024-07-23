@@ -13,12 +13,12 @@ import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Provider } from 'react';
+import { JSXElementConstructor } from 'react';
 import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import { ReactNode } from 'react';
 import { SelectionHookParams } from '@fluentui/react-utilities';
 import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
@@ -93,7 +93,7 @@ export type DataGridCellState = TableCellState;
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 
 // @public (undocumented)
-export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
+export const DataGridContextProvider: (props: ProviderProps<DataGridContextValue | undefined>) => ReactElement<any, string | JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type DataGridContextValue = TableFeaturesState<any> & {

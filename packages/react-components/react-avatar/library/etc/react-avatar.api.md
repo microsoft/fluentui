@@ -9,14 +9,14 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverSurface } from '@fluentui/react-popover';
 import { PresenceBadge } from '@fluentui/react-badge';
-import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TooltipProps } from '@fluentui/react-tooltip';
@@ -113,7 +113,7 @@ export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
 };
 
 // @public (undocumented)
-export const AvatarGroupProvider: Provider<AvatarGroupContextValue> & FC<ProviderProps<AvatarGroupContextValue>>;
+export const AvatarGroupProvider: (props: ProviderProps<AvatarGroupContextValue>) => ReactElement<any, string | JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type AvatarGroupSlots = {
