@@ -1,18 +1,18 @@
 export {
   AccordionItem,
-  accordionItemDefinition,
+  AccordionItemDefinition,
   AccordionItemMarkerPosition,
   AccordionItemSize,
-  accordionItemStyles,
-  accordionItemTemplate,
+  AccordionItemStyles,
+  AccordionItemTemplate,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
   Accordion,
-  accordionDefinition,
+  AccordionDefinition,
   AccordionExpandMode,
-  accordionStyles,
-  accordionTemplate,
+  AccordionStyles,
+  AccordionTemplate,
 } from './accordion/index.js';
 export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
 export {
