@@ -1,9 +1,11 @@
 import { createStorybookWebpackConfig } from '@fluentui/scripts-webpack';
+import * as fs from 'fs';
 import * as path from 'path';
 import { merge } from 'webpack-merge';
 
 /** @type {Partial<import('@storybook/core-common').StorybookConfig>} */
 const config = {
+  stories: getStories(),
   addons: [
     '@storybook/addon-a11y',
     '@storybook/addon-essentials',
@@ -22,15 +24,6 @@ const config = {
     const customConfig = createStorybookWebpackConfig(config);
 
     return merge(customConfig, {
-      module: {
-        rules: [
-          {
-            // Special loader that only includes stories from the current package
-            test: /\.storybook[/\\]preview.js/,
-            loader: path.resolve(__dirname, 'preview-loader.js'),
-          },
-        ],
-      },
       resolve: {
         fallback: {
           crypto: require.resolve('crypto-browserify'),
@@ -47,5 +40,20 @@ const config = {
     disableTelemetry: true,
   },
 };
+
+function getStories() {
+  const packageName = path.basename(__dirname);
+
+  if (!fs.existsSync(path.resolve(__dirname, '../src', packageName))) {
+    throw new Error(`Package ${packageName} does not have examples!`);
+  }
+
+  // For @fluentui/react's storybook, also include examples from @fluentui/react-focus
+  if (packageName === 'react') {
+    return ['../src/react/**/*.stories.tsx', '../src/react-focus/**/*.stories.tsx'];
+  }
+
+  return [`../src/${packageName}/**/*.stories.tsx`];
+}
 
 export default config;
