@@ -36,6 +36,40 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export const AppItem: ForwardRefComponent<AppItemProps>;
+
+// @public (undocumented)
+export const appItemClassNames: SlotClassNames<AppItemSlots>;
+
+// @public
+export type AppItemProps = ComponentProps<AppItemSlots> & {};
+
+// @public (undocumented)
+export type AppItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AppItemState = ComponentState<AppItemSlots>;
+
+// @public
+export const AppItemStatic: ForwardRefComponent<AppItemStaticProps>;
+
+// @public (undocumented)
+export const appItemStaticClassNames: SlotClassNames<AppItemStaticSlots>;
+
+// @public
+export type AppItemStaticProps = ComponentProps<AppItemStaticSlots> & {};
+
+// @public (undocumented)
+export type AppItemStaticSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type AppItemStaticState = ComponentState<AppItemStaticSlots>;
+
+// @public
 export const AppNode: ForwardRefComponent<AppNodeProps>;
 
 // @public (undocumented)
@@ -320,6 +354,12 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
 // @public
+export const renderAppItem_unstable: (state: AppItemState) => JSX.Element;
+
+// @public
+export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.Element;
+
+// @public
 export const renderAppNode_unstable: (state: AppNodeState) => JSX.Element;
 
 // @public (undocumented)
@@ -345,6 +385,18 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 
 // @public
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
+
+// @public
+export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLDivElement>) => AppItemState;
+
+// @public
+export const useAppItemStatic_unstable: (props: AppItemStaticProps, ref: React_2.Ref<HTMLDivElement>) => AppItemStaticState;
+
+// @public
+export const useAppItemStaticStyles_unstable: (state: AppItemStaticState) => AppItemStaticState;
+
+// @public
+export const useAppItemStyles_unstable: (state: AppItemState) => AppItemState;
 
 // @public
 export const useAppNode_unstable: (props: AppNodeProps, ref: React_2.Ref<HTMLDivElement>) => AppNodeState;
