@@ -15,7 +15,7 @@ export const renderCarouselNav_unstable = (state: CarouselNavState) => {
   return (
     <state.root>
       {values.map(value => (
-        <CarouselNavContextProvider value={value} key={value}>
+        <CarouselNavContextProvider value={value} key={`carousel-nav-${value.join('-')}`}>
           {renderNavButton(value)}
         </CarouselNavContextProvider>
       ))}

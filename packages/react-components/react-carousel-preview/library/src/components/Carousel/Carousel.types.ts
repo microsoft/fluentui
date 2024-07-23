@@ -33,6 +33,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
   circular?: boolean;
+
+  /**
+   * Circular enables the carousel to loop back around on navigation past trailing index.
+   */
+  groupSize?: number | 'auto';
 };
 
 /**
@@ -45,3 +50,9 @@ export interface CarouselVisibilityEventDetail {
 }
 
 export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;
+
+export interface CarouselGroupEventDetail {
+  groupIndex: number[][];
+}
+
+export type CarouselGroupChangeEvent = CustomEvent<CarouselGroupEventDetail>;

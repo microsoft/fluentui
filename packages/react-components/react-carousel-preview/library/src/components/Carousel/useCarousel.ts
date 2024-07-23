@@ -11,12 +11,12 @@ import {
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
-import type { CarouselProps, CarouselState } from './Carousel.types';
+import type { CarouselGroupChangeEvent, CarouselProps, CarouselState } from './Carousel.types';
 import { useCarouselWalker_unstable } from '../useCarouselWalker';
 import { createCarouselStore } from '../createCarouselStore';
 import { CAROUSEL_ITEM } from '../constants';
 import type { CarouselContextValue } from '../CarouselContext.types';
-import { useEmblaCarousel } from '../useEmblaCarousel';
+import { EMBLA_REINIT_EVENT, useEmblaCarousel } from '../useEmblaCarousel';
 
 /**
  * Create the state required to render Carousel.
@@ -30,7 +30,7 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', onValueChange, circular = false } = props;
+  const { align = 'center', onValueChange, circular = false, groupSize } = props;
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
@@ -39,11 +39,12 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   });
 
   const { targetDocument, dir } = useFluent();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ align, direction: dir, loop: circular });
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align, direction: dir, loop: circular, slidesToScroll: groupSize });
 
   const [store] = React.useState(() => createCarouselStore(value));
   const rootRef = React.useRef<HTMLDivElement>(null);
-
+  const [groupIndexList, setGroupIndexList] = React.useState<number[][]>([[]]);
+  const reinitRef = React.useRef<HTMLDivElement>(null);
   const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
   const isFirstMount = useFirstMount();
 
@@ -131,10 +132,16 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     (_value: string, jump?: boolean) => {
       const values = store.getSnapshot().values;
       const index = values.indexOf(_value);
-
-      emblaApi?.scrollToIndex(index, jump);
+      if (groupSize === undefined) {
+        emblaApi?.scrollToIndex(index, jump);
+      } else {
+        const snapIndex = groupIndexList?.findIndex(group => group.includes(index));
+        if (snapIndex !== undefined) {
+          emblaApi.scrollToIndex(snapIndex, jump);
+        }
+      }
     },
-    [emblaApi, store],
+    [emblaApi, groupIndexList, groupSize, store],
   );
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
@@ -144,23 +151,52 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       return;
     }
 
-    const newPage =
-      direction === 'prev'
-        ? carouselWalker.prevPage(active.value, circular)
-        : carouselWalker.nextPage(active.value, circular);
+    if (groupSize !== undefined) {
+      const values = store.getSnapshot().values;
+      const index = values.indexOf(active?.value);
+      const snapIndex = groupIndexList?.findIndex(group => group.includes(index));
+      if (snapIndex === undefined || groupIndexList === undefined) {
+        return;
+      }
+      let newPageIndex = direction === 'prev' ? snapIndex - 1 : snapIndex + 1;
+      if (newPageIndex < 0) {
+        if (circular) {
+          newPageIndex = groupIndexList.length - 1;
+        } else {
+          return;
+        }
+      } else if (newPageIndex >= groupIndexList.length && circular) {
+        if (circular) {
+          newPageIndex = 0;
+        } else {
+          return;
+        }
+      }
 
-    if (newPage) {
-      setValue(newPage?.value);
-      onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+      const nextIndex = groupIndexList[newPageIndex][0];
+
+      setValue(values[nextIndex]);
+      onValueChange?.(event, { event, type: 'click', value: values[nextIndex] });
 
       emblaApi.scrollInDirection(direction);
+    } else {
+      const newPage =
+        direction === 'prev'
+          ? carouselWalker.prevPage(active.value, circular)
+          : carouselWalker.nextPage(active.value, circular);
+
+      if (newPage) {
+        setValue(newPage?.value);
+        onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+
+        emblaApi.scrollInDirection(direction);
+      }
     }
   });
 
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
     onValueChange?.(event, { event, type: 'click', value: _value });
-
     scrollToValue(_value);
   });
 
@@ -170,13 +206,37 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     }
   }, [isFirstMount, scrollToValue, value]);
 
+  useIsomorphicLayoutEffect(() => {
+    const element = reinitRef.current;
+
+    if (element && groupSize !== undefined) {
+      const listener = (_e: Event) => {
+        const event = _e as CarouselGroupChangeEvent;
+        setGroupIndexList(event.detail.groupIndex);
+      };
+
+      element.addEventListener(EMBLA_REINIT_EVENT, listener);
+
+      return () => {
+        element.removeEventListener(EMBLA_REINIT_EVENT, listener);
+      };
+    }
+  }, [groupSize]);
+
+  useIsomorphicLayoutEffect(() => {
+    const activeValue = carouselWalker.active();
+    if (activeValue) {
+      scrollToValue(activeValue.value, true);
+    }
+  }, [carouselWalker, groupIndexList, scrollToValue]);
+
   return {
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, carouselRef, rootRef, emblaRef),
+        ref: useMergedRefs(ref, reinitRef, carouselRef, rootRef, emblaRef),
         role: 'region',
         ...props,
       }),
@@ -186,5 +246,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByDirection,
     selectPageByValue,
     circular,
+    groupSize,
+    groupIndexList,
   };
 }

@@ -3,6 +3,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { useCarouselStore_unstable } from '../useCarouselStore';
+import { useCarouselContext_unstable } from '../CarouselContext';
 
 /**
  * Create the state required to render CarouselNav.
@@ -22,7 +23,24 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const values = useCarouselStore_unstable(snapshot => snapshot.values);
+  const values: string[][] = [];
+  const _values = useCarouselStore_unstable(snapshot => snapshot.values);
+  const { groupSize, groupIndexList } = useCarouselContext_unstable();
+
+  if (groupSize !== undefined) {
+    const indexing = groupIndexList ?? [];
+    indexing.forEach(groupIndexes => {
+      const _group: string[] = [];
+      groupIndexes.forEach(index => {
+        if (index < _values.length) {
+          _group.push(_values[index]);
+        }
+      });
+      values.push(_group);
+    });
+  } else {
+    _values.forEach(value => values.push([value]));
+  }
 
   return {
     values,

@@ -36,8 +36,6 @@ export const useCarouselCard_unstable = (
 
         element.ariaHidden = hidden.toString();
         element.inert = hidden;
-
-        // TODO: handle "tabIndex" ?
       };
 
       element.addEventListener(EMBLA_VISIBILITY_EVENT, listener);

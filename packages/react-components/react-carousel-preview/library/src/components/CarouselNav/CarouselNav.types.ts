@@ -8,10 +8,14 @@ export type CarouselNavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type NavButtonRenderFunction = (value: string) => React.ReactNode;
+export type NavButtonRenderFunction = (value: string[]) => React.ReactNode;
 
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-  values: string[];
+  /*
+   * Values contains the nodes for each navigation button
+   * Can be a list of multiple items when grouped.
+   */
+  values: string[][];
 
   renderNavButton: NavButtonRenderFunction;
 };

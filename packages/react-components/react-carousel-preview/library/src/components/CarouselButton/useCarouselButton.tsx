@@ -23,10 +23,17 @@ export const useCarouselButton_unstable = (
 ): CarouselButtonState => {
   const { navType } = props;
 
-  const { circular, selectPageByDirection } = useCarouselContext_unstable();
+  const { circular, selectPageByDirection, groupIndexList, groupSize } = useCarouselContext_unstable();
   const isTrailing = useCarouselStore_unstable(snapshot => {
     if (!snapshot.activeValue || circular) {
       return false;
+    }
+
+    if (groupSize !== undefined && groupIndexList !== undefined) {
+      const trailingGroup = navType === 'prev' ? groupIndexList[0] : groupIndexList[groupIndexList?.length - 1];
+      const activeIndex = snapshot.values.indexOf(snapshot.activeValue);
+
+      return trailingGroup.includes(activeIndex);
     }
 
     if (navType === 'prev') {

@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselGroupEventDetail, CarouselVisibilityEventDetail } from '../Carousel';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -15,10 +15,17 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 };
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
+export const EMBLA_REINIT_EVENT = 'embla:reinit';
 
-export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop'>) {
-  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop });
+export function useEmblaCarousel({
+  align,
+  direction,
+  loop,
+  slidesToScroll,
+}: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll'>) {
+  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
+  const carouselGroupRef = React.useRef<number[][]>([[0]]);
 
   const ref = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
@@ -37,10 +44,28 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
       });
     };
 
+    const handleReinit = () => {
+      const carouselGroups = emblaApi.current?.internalEngine().slideRegistry;
+
+      // TODO: Check if we have cases where the length is the same but nav points change, if so, compare array equality
+      // Values array should handle id changes, we're just concerned with number of nav points.
+      if (carouselGroups?.length !== carouselGroupRef.current.length) {
+        carouselGroupRef.current = carouselGroups ?? [[]];
+        currentElement?.dispatchEvent(
+          new CustomEvent<CarouselGroupEventDetail>(EMBLA_REINIT_EVENT, {
+            bubbles: false,
+            detail: { groupIndex: carouselGroupRef.current },
+          }),
+        );
+      }
+    };
+
     return {
       set current(newElement: HTMLDivElement | null) {
         if (currentElement) {
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
+          emblaApi.current?.off('reInit', handleReinit);
+          emblaApi.current?.off('init', handleReinit);
           emblaApi.current?.destroy();
         }
 
@@ -52,6 +77,8 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
           });
 
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
+          emblaApi.current?.on('reInit', handleReinit);
+          emblaApi.current?.on('init', handleReinit);
         }
       },
     };
