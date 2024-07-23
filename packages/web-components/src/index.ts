@@ -224,6 +224,7 @@ export {
 } from './tabs/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextInput,
   TextInput,
   TextInputAppearance,
   TextInputControlSize,
