@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adds AppItem and AppItemStatic, removes AppNode",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "17346018+mltejera@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
