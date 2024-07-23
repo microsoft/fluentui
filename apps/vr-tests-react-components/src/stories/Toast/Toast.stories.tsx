@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import {
   Toast,
   ToastTitle,
@@ -22,7 +22,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toast>;
+} satisfies Meta<typeof Toast>;
 
 const toastIntents = ['success', 'warning', 'info', 'error'] as const;
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Mon, 15 Jul 2024 17:25:25 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.16",
+      "version": "1.0.0-alpha.16",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 06 Jun 2024 15:26:44 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.16",
       "version": "1.0.0-alpha.16",

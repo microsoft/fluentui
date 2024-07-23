@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { Icon, IconType, getIconClassName, Fabric } from '@fluentui/react';
 import { IconNames } from '@fluentui/font-icons-mdl2';
 
@@ -17,39 +16,38 @@ for (const iconName in IconNames) {
   allIcons.push(<Icon iconName={iconName} />);
 }
 
-storiesOf('Icon', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Root', () => (
-    <Fabric>
-      <div>{allIcons}</div>
-      <Icon className={getIconClassName('CompassNW')} />
-      <Icon className={getIconClassName('Upload')} />
-      <Icon className={getIconClassName('Share')} />
-    </Fabric>
-  ))
-  .addStory('Color', () => (
-    <Fabric>
-      <Icon iconName={'CompassNW'} style={{ color: 'red' }} />
-    </Fabric>
-  ))
-  .addStory('Image', () => (
-    <Fabric>
-      <Icon
-        iconName={'None'}
-        iconType={IconType.image}
-        imageProps={{
-          src: TestImages.iconOne,
-        }}
-      />
-    </Fabric>
-  ));
+export default {
+  title: 'Icon',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const Root = () => (
+  <Fabric>
+    <div>{allIcons}</div>
+    <Icon className={getIconClassName('CompassNW')} />
+    <Icon className={getIconClassName('Upload')} />
+    <Icon className={getIconClassName('Share')} />
+  </Fabric>
+);
+
+export const Color = () => (
+  <Fabric>
+    <Icon iconName={'CompassNW'} style={{ color: 'red' }} />
+  </Fabric>
+);
+
+export const Image = () => (
+  <Fabric>
+    <Icon
+      iconName={'None'}
+      iconType={IconType.image}
+      imageProps={{
+        src: TestImages.iconOne,
+      }}
+    />
+  </Fabric>
+);

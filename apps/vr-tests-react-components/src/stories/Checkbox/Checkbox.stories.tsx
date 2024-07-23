@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { getStoryVariant, RTL, TestWrapperDecoratorFixedWidth } from '../../utilities';
 
@@ -15,23 +15,21 @@ export default {
   ],
 } satisfies Meta<typeof Checkbox>;
 
-type Story = StoryFn<typeof Checkbox>;
-
-export const DisabledChecked: Story = () => <Checkbox disabled checked label="Disabled checked" />;
+export const DisabledChecked = () => <Checkbox disabled checked label="Disabled checked" />;
 DisabledChecked.storyName = 'disabled+checked';
 
-export const DisabledMixed: Story = () => <Checkbox disabled checked="mixed" label="Disabled mixed" />;
+export const DisabledMixed = () => <Checkbox disabled checked="mixed" label="Disabled mixed" />;
 DisabledMixed.storyName = 'disabled+mixed';
 
-export const NoLabel: Story = () => <Checkbox />;
+export const NoLabel = () => <Checkbox />;
 NoLabel.storyName = 'no-label';
 
-export const LabelBefore: Story = () => <Checkbox labelPosition="before" label="Label before" />;
+export const LabelBefore = () => <Checkbox labelPosition="before" label="Label before" />;
 LabelBefore.storyName = 'label-before';
 
 export const LabelBeforeRTL = getStoryVariant(LabelBefore, RTL);
 
-export const LabelWrapping: Story = () => (
+export const LabelWrapping = () => (
   <Checkbox
     label={
       <>
@@ -45,51 +43,51 @@ LabelWrapping.storyName = 'label-wrapping';
 
 export const LabelWrappingRTL = getStoryVariant(LabelWrapping, RTL);
 
-export const Required: Story = () => <Checkbox required label="Required" />;
+export const Required = () => <Checkbox required label="Required" />;
 Required.storyName = 'required';
 
-export const RequiredLabelBefore: Story = () => (
+export const RequiredLabelBefore = () => (
   <Checkbox required labelPosition="before" label="Required with label before" />
 );
 RequiredLabelBefore.storyName = 'required+label-before';
 
-export const Circular: Story = () => <Checkbox shape="circular" label="Circular" />;
+export const Circular = () => <Checkbox shape="circular" label="Circular" />;
 Circular.storyName = 'circular';
 
-export const CircularChecked: Story = () => <Checkbox shape="circular" checked label="Circular checked" />;
+export const CircularChecked = () => <Checkbox shape="circular" checked label="Circular checked" />;
 CircularChecked.storyName = 'circular+checked';
 
-export const CircularMixed: Story = () => <Checkbox shape="circular" checked="mixed" label="Circular mixed" />;
+export const CircularMixed = () => <Checkbox shape="circular" checked="mixed" label="Circular mixed" />;
 CircularMixed.storyName = 'circular+mixed';
 
 //
 // large variants
 //
-export const Large: Story = () => <Checkbox size="large" label="Large" />;
+export const Large = () => <Checkbox size="large" label="Large" />;
 Large.storyName = 'large';
 
 export const LargeRTL = getStoryVariant(Large, RTL);
 
-export const LargeChecked: Story = () => <Checkbox size="large" checked label="Large checked" />;
+export const LargeChecked = () => <Checkbox size="large" checked label="Large checked" />;
 LargeChecked.storyName = 'large+checked';
 
-export const LargeMixed: Story = () => <Checkbox size="large" checked="mixed" label="Large mixed" />;
+export const LargeMixed = () => <Checkbox size="large" checked="mixed" label="Large mixed" />;
 LargeMixed.storyName = 'large+mixed';
 
-export const LargeCircular: Story = () => <Checkbox size="large" shape="circular" label="Large circular" />;
+export const LargeCircular = () => <Checkbox size="large" shape="circular" label="Large circular" />;
 LargeCircular.storyName = 'large+circular';
 
-export const LargeCircularChecked: Story = () => (
+export const LargeCircularChecked = () => (
   <Checkbox size="large" shape="circular" checked label="Large circular checked" />
 );
 LargeCircularChecked.storyName = 'large+circular+checked';
 
-export const LargeCircularMixed: Story = () => (
+export const LargeCircularMixed = () => (
   <Checkbox size="large" shape="circular" checked="mixed" label="Large circular mixed" />
 );
 LargeCircularMixed.storyName = 'large+circular+mixed';
 
-export const LargeLabelWrapping: Story = () => (
+export const LargeLabelWrapping = () => (
   <Checkbox
     size="large"
     label={

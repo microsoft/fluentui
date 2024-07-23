@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: adds custom style hook for MenuItemLink",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

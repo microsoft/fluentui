@@ -242,10 +242,12 @@ describe(`utils`, () => {
       const actual = getPackageStoriesGlob({
         packageName: '@fluentui/react-components',
         callerPath: path.dirname(__dirname),
-        excludeStoriesInsertionFromPackages: ['@fluentui/react-text'],
+        // should support both project and package names
+        excludeStoriesInsertionFromPackages: ['@fluentui/react-text', 'react-button'],
       });
 
-      expect(actual).not.toContain(expect.stringContaining('/react-text/stories/'));
+      expect(actual).not.toContainEqual(expect.stringContaining('/react-button/stories/'));
+      expect(actual).not.toContainEqual(expect.stringContaining('/react-text/stories/'));
     });
 
     it(`should generate storybook stories string array of glob based on package.json#dependencies field pointing to sibling /stories project if it exists`, () => {

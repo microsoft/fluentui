@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: add createPresenceComponentVariant()",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

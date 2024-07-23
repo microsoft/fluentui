@@ -134,9 +134,8 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
-// Warning: (ae-missing-release-tag) "AnchorButton" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
     appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
@@ -459,31 +458,8 @@ export const BadgeStyles: ElementStyles;
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
 // @public
-export const borderRadiusCircular = "var(--borderRadiusCircular)";
-
-// @public
-export const borderRadiusLarge = "var(--borderRadiusLarge)";
-
-// @public
-export const borderRadiusMedium = "var(--borderRadiusMedium)";
-
-// @public
-export const borderRadiusNone = "var(--borderRadiusNone)";
-
-// @public
-export const borderRadiusSmall = "var(--borderRadiusSmall)";
-
-// @public
-export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
-
-// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
-//
-// @public
-export class Button extends FASTElement {
+export class BaseButton extends FASTElement {
     constructor();
-    appearance?: ButtonAppearance;
-    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -506,21 +482,63 @@ export class Button extends FASTElement {
     formMethod?: string;
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
-    iconOnly: boolean;
-    iconOnlyChanged(prev: boolean, next: boolean): void;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
-    shape?: ButtonShape;
-    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
-    size?: ButtonSize;
-    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
+    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
     value?: string;
+}
+
+// @public
+export class BaseDivider extends FASTElement {
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
+    role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export const borderRadiusCircular = "var(--borderRadiusCircular)";
+
+// @public
+export const borderRadiusLarge = "var(--borderRadiusLarge)";
+
+// @public
+export const borderRadiusMedium = "var(--borderRadiusMedium)";
+
+// @public
+export const borderRadiusNone = "var(--borderRadiusNone)";
+
+// @public
+export const borderRadiusSmall = "var(--borderRadiusSmall)";
+
+// @public
+export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
+//
+// @public
+export class Button extends BaseButton {
+    appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
+    iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
+    shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
+    size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
 }
 
 // @internal (undocumented)
@@ -1903,10 +1921,8 @@ export type DialogType = ValuesOf<typeof DialogType>;
 // @public
 export function display(displayValue: CSSDisplayPropertyValue): string;
 
-// Warning: (ae-missing-release-tag) "Divider" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
-export class Divider extends FASTElement {
+export class Divider extends BaseDivider {
     // (undocumented)
     alignContent?: DividerAlignContent;
     alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
@@ -1914,18 +1930,8 @@ export class Divider extends FASTElement {
     appearance?: DividerAppearance;
     appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // (undocumented)
     inset?: boolean;
     insetChanged(prev: boolean, next: boolean): void;
-    orientation?: DividerOrientation;
-    // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
-    role: DividerRole;
-    // @internal
-    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
@@ -1997,7 +2003,7 @@ export class Drawer extends FASTElement {
 
 // Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
+// @public
 export class DrawerBody extends FASTElement {
 }
 

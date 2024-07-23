@@ -1,20 +1,22 @@
-import * as React from 'react';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
   slot,
   useControllableState,
   useEventCallback,
+  useFirstMount,
   useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import * as React from 'react';
 
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import { useCarouselWalker_unstable } from '../useCarouselWalker';
 import { createCarouselStore } from '../createCarouselStore';
 import { CAROUSEL_ITEM } from '../constants';
 import type { CarouselContextValue } from '../CarouselContext.types';
+import { useEmblaCarousel } from '../useEmblaCarousel';
 
 /**
  * Create the state required to render Carousel.
@@ -28,20 +30,22 @@ import type { CarouselContextValue } from '../CarouselContext.types';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { onValueChange, circular, peeking } = props;
-
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
+  const { align = 'center', onValueChange, circular = false } = props;
 
   const [value, setValue] = useControllableState({
     defaultState: props.defaultValue,
     state: props.value,
     initialState: null,
   });
-  const [store] = React.useState(() => createCarouselStore(value));
 
+  const { targetDocument, dir } = useFluent();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align, direction: dir, loop: circular });
+
+  const [store] = React.useState(() => createCarouselStore(value));
   const rootRef = React.useRef<HTMLDivElement>(null);
+
+  const { ref: carouselRef, walker: carouselWalker } = useCarouselWalker_unstable();
+  const isFirstMount = useFirstMount();
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -59,7 +63,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     store.setActiveValue(value);
   }, [store, value]);
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     const allItems = rootRef.current?.querySelectorAll(`[${CAROUSEL_ITEM}]`)!;
 
     for (let i = 0; i < allItems.length; i++) {
@@ -72,6 +76,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   }, [store]);
 
   React.useEffect(() => {
+    const win = targetDocument?.defaultView;
+
     if (!win) {
       return;
     }
@@ -119,7 +125,17 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     return () => {
       observer.disconnect();
     };
-  }, [carouselWalker, store, win]);
+  }, [carouselWalker, store, targetDocument]);
+
+  const scrollToValue = React.useCallback(
+    (_value: string, jump?: boolean) => {
+      const values = store.getSnapshot().values;
+      const index = values.indexOf(_value);
+
+      emblaApi?.scrollToIndex(index, jump);
+    },
+    [emblaApi, store],
+  );
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const active = carouselWalker.active();
@@ -136,13 +152,23 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     if (newPage) {
       setValue(newPage?.value);
       onValueChange?.(event, { event, type: 'click', value: newPage?.value });
+
+      emblaApi.scrollInDirection(direction);
     }
   });
 
   const selectPageByValue: CarouselContextValue['selectPageByValue'] = useEventCallback((event, _value) => {
     setValue(_value);
     onValueChange?.(event, { event, type: 'click', value: _value });
+
+    scrollToValue(_value);
   });
+
+  useIsomorphicLayoutEffect(() => {
+    if (isFirstMount && value) {
+      scrollToValue(value, true);
+    }
+  }, [isFirstMount, scrollToValue, value]);
 
   return {
     components: {
@@ -150,7 +176,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, carouselRef, rootRef),
+        ref: useMergedRefs(ref, carouselRef, rootRef, emblaRef),
         role: 'region',
         ...props,
       }),
@@ -160,6 +186,5 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByDirection,
     selectPageByValue,
     circular,
-    peeking,
   };
 }

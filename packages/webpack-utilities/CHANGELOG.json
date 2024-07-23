@@ -2,6 +2,21 @@
   "name": "@fluentui/webpack-utilities",
   "entries": [
     {
+      "date": "Thu, 11 Jul 2024 07:33:32 GMT",
+      "tag": "@fluentui/webpack-utilities_v8.1.29",
+      "version": "8.1.29",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/webpack-utilities",
+            "commit": "ff2c81325d734ddff92e606ac681c22c710f262f",
+            "comment": "remove redundant forceConsistentCasingInFileNames option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 07:36:32 GMT",
       "tag": "@fluentui/webpack-utilities_v8.1.29",
       "version": "8.1.29",

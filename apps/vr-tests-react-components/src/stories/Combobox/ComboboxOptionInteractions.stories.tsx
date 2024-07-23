@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
-import type { Meta, StoryFn } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Combobox, Option, OptionGroup } from '@fluentui/react-combobox';
 import { TestWrapperDecoratorFixedWidth } from '../../utilities';
 
@@ -25,9 +25,7 @@ export default {
   ],
 } satisfies Meta<typeof Combobox>;
 
-type Story = StoryFn<typeof Combobox>;
-
-export const Open: Story = () => (
+export const Open = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox open>
       <Option>Red</Option>
@@ -37,7 +35,7 @@ export const Open: Story = () => (
   </div>
 );
 
-export const OpenWithInlinePopup: Story = () => (
+export const OpenWithInlinePopup = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox open inlinePopup>
       <Option>Red</Option>
@@ -49,7 +47,7 @@ export const OpenWithInlinePopup: Story = () => (
 
 OpenWithInlinePopup.storyName = 'Open with inlinePopup';
 
-export const WhenRenderingInlineItShouldRenderOnTopOfRelativelyPositionedElements: Story = () => (
+export const WhenRenderingInlineItShouldRenderOnTopOfRelativelyPositionedElements = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox open inlinePopup>
       <Option>Red</Option>
@@ -63,7 +61,7 @@ export const WhenRenderingInlineItShouldRenderOnTopOfRelativelyPositionedElement
 WhenRenderingInlineItShouldRenderOnTopOfRelativelyPositionedElements.storyName =
   'When rendering inline, it should render on top of relatively positioned elements';
 
-export const OptionWithLongContent: Story = () => (
+export const OptionWithLongContent = () => (
   <div style={{ paddingBottom: '240px' }}>
     <Combobox open>
       <Option>
@@ -78,7 +76,7 @@ export const OptionWithLongContent: Story = () => (
 
 OptionWithLongContent.storyName = 'Option with long content';
 
-export const WithSelection: Story = () => (
+export const WithSelection = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox selectedOptions={['Red']} open>
       <Option>Red</Option>
@@ -90,7 +88,7 @@ export const WithSelection: Story = () => (
 
 WithSelection.storyName = 'With selection';
 
-export const WithMultiselectSelection: Story = () => (
+export const WithMultiselectSelection = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox multiselect selectedOptions={['Green', 'Red']} open>
       <Option>Red</Option>
@@ -102,7 +100,7 @@ export const WithMultiselectSelection: Story = () => (
 
 WithMultiselectSelection.storyName = 'With multiselect selection';
 
-export const DisabledOption: Story = () => (
+export const DisabledOption = () => (
   <div style={{ paddingBottom: '120px' }}>
     <Combobox open>
       <Option disabled>Red</Option>
@@ -114,7 +112,7 @@ export const DisabledOption: Story = () => (
 
 DisabledOption.storyName = 'Disabled option';
 
-export const OpenWithGroupedOptions: Story = () => (
+export const OpenWithGroupedOptions = () => (
   <div style={{ paddingBottom: '300px' }}>
     <Combobox open>
       <OptionGroup label="Colors">

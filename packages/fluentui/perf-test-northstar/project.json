@@ -3,5 +3,8 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
-  "tags": ["react-northstar"]
+  "tags": ["react-northstar"],
+  "targets": {
+    "bundle": { "dependsOn": ["prebundle"] }
+  }
 }

@@ -48,7 +48,7 @@ export const AvatarGroupList: React.FC<
   const { inlineItems, overflowItems } = partitionAvatarGroupItems({ items: names, layout: props.layout });
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '10px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flexWrap: 'wrap', gap: '10px', padding: '20px' }}>
       {sizes.map(size => (
         <AvatarGroup key={size} size={size as AvatarGroupProps['size']} {...props}>
           {inlineItems.map(name => (

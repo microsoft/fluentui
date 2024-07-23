@@ -38,6 +38,7 @@ export {
   BadgeTemplate,
 } from './badge/index.js';
 export {
+  BaseButton,
   Button,
   ButtonAppearance,
   ButtonDefinition,
@@ -80,6 +81,7 @@ export {
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
+  BaseDivider,
   Divider,
   DividerAlignContent,
   DividerAppearance,

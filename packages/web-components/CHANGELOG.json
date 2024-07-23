@@ -2,6 +2,114 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.47",
+      "version": "3.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1bfb9c97a65007e4a97936a3f189d0495864f2f9",
+            "comment": "fix: move spinner animation off of main thread"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "233720f2ebe83f3127427e6dfc6c29643c4704bf",
+            "comment": "chore: create divider base class to abstract style specfic api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Jul 2024 04:08:32 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.46",
+      "version": "3.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4cf837ac3da78e3701f6f02a34958996b53eb24e",
+            "comment": "chore: [button] move style related api out of base class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Jul 2024 04:06:50 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.45",
+      "version": "3.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "be10f2c88ef24a58b4199416d5d342867a621c7f",
+            "comment": "fix: removed padding from field host element"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Jul 2024 04:07:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.44",
+      "version": "3.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1f260f6791bdd264baf782052ff6d3328cf50df2",
+            "comment": "chore: cleanup drawer storybook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jul 2024 04:08:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.43",
+      "version": "3.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8f7e877e7024c485c37c117c363585a3934f269f",
+            "comment": "fix: scope menu fallback positioning to non-anchor browsers only"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7a1434afd46468bd84d82b54ab47f1088dc8ac70",
+            "comment": "fix: expose tabindex as an overriden attribute with a default value of 0'"
+          },
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "294d82a15dc5b01cf9edc260f69607219c82cda9",
+            "comment": "fix: support tabindex values from implementors on buttons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jul 2024 04:07:36 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.42",
+      "version": "3.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1b6cc50ad1ea873abb613d60b720bb6e7842c4cf",
+            "comment": "feat: update slider to use ElementInternals for form association"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 04:07:26 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.41",
       "version": "3.0.0-beta.41",
