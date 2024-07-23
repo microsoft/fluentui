@@ -1,118 +1,104 @@
-import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
-import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions, IStyle } from '@fluentui/react/lib/Styling';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import { ILegendsProps, ILegendsStyles } from './Legends.types';
 
-export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
-  const { className, theme, isLineLegendInBarChart = false } = props;
-  const { palette, fonts } = theme!;
-  const options: IGetFocusStylesOptions = {
-    inset: undefined,
-    position: undefined,
-    highContrastStyle: {
-      outlineColor: theme!.semanticColors.focusBorder,
-    },
-    borderColor: 'transparent',
-    outlineColor: undefined,
-  };
+/**
+ * @internal
+ */
+export const legendClassNames: SlotClassNames<ILegendsStyles> = {
+  root: 'fui-legend__root',
+  legend: 'fui-legend__legend',
+  rect: 'fui-legend__rect',
+  shape: 'fui-legend__shape',
+  triangle: 'fui-legend__triangle',
+  text: 'fui-legend__text',
+  hoverChange: 'fui-legend__hoverChange',
+  overflowIndicationTextStyle: 'fui-legend__overflowIndicationTextStyle',
+  hoverCardRoot: 'fui-legend__hoverCardRoot',
+};
+
+const useStyles = makeStyles({
+  root: {
+    whiteSpace: 'nowrap',
+    width: '100%',
+    alignItems: 'center',
+    ...shorthands.margin('-8px 0 0 -8px'),
+  },
+  legend: {
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+    ...shorthands.border('none'),
+    ...shorthands.padding('8px'),
+    textTransform: 'capitalize',
+  },
+  rect: {
+    // selectors: {
+    //   [HighContrastSelector]: {
+    //     content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
+    //     opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.6' : '',
+    //   },
+    // },
+    width: '12px',
+    height: 'var(--rect-height)',
+    backgroundColor: 'var(--rect-backgroundColor)',
+    ...shorthands.borderColor('var(--rect-borderColor)'),
+    content: 'var(--rect-content)',
+    marginRight: '8px',
+    ...shorthands.border('1px solid'),
+  },
+  shape: {
+    marginRight: '8px',
+  },
+  // TO DO Add props when these styles are used in the component
+  triangle: {
+    width: '0',
+    height: '0',
+    ...shorthands.borderLeft('6px solid transparent'),
+    ...shorthands.borderRight('6px solid transparent'),
+    ...shorthands.borderTop('10.4px solid'),
+    marginRight: '8px',
+  },
+  // TO DO Add props when these styles are used in the component
+  text: {
+    lineHeight: '16px',
+  },
+  // TO DO Add props when these styles are used in the component
+  hoverChange: {
+    width: '12px',
+    height: '12px',
+    marginRight: '8px',
+    ...shorthands.border('1px solid'),
+  },
+  // TO DO Add props when these styles are used in the component
+  overflowIndicationTextStyle: {
+    cursor: 'pointer',
+    lineHeight: '16px',
+    ...shorthands.padding('8px'),
+  },
+  // TO DO Add props when these styles are used in the component
+  hoverCardRoot: {
+    ...shorthands.padding('8px'),
+  },
+});
+
+export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles => {
+  const { className } = props; // ToDo - width, barHeight is non enumerable. Need to be used inline.
+  const baseStyles = useStyles();
+
   return {
-    root: [
-      {
-        whiteSpace: 'nowrap',
-        width: '100%',
-        alignItems: 'center',
-        margin: '-8px 0 0 -8px',
-      },
-      className,
-    ],
-    legend: [
-      getFocusStyle(theme!, options),
-      {
-        display: 'flex',
-        alignItems: 'center',
-        cursor: 'pointer',
-        border: 'none',
-        padding: '8px',
-        background: 'none',
-        textTransform: 'capitalize',
-      },
-    ],
-    rect: {
-      selectors: {
-        [HighContrastSelector]: {
-          content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
-          opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.6' : '',
-        },
-      },
-      width: '12px',
-      height: isLineLegendInBarChart ? '4px' : '12px',
-      backgroundColor: props.stripePattern ? '' : props.colorOnSelectedState,
-      marginRight: '8px',
-      border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : theme?.semanticColors.buttonBorder,
-      content: props.stripePattern
-        ? // eslint-disable-next-line @fluentui/max-len
-          `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
-        : '',
-    },
-    shape: [
-      {
-        marginRight: '8px',
-      },
-    ],
-    triangle: {
-      width: '0',
-      height: '0',
-      borderLeft: '6px solid transparent',
-      borderRight: '6px solid transparent',
-      borderTop: '10.4px solid',
-      borderTopColor: props.colorOnSelectedState,
-      marginRight: '8px',
-      opacity:
-        props.colorOnSelectedState === theme!.semanticColors.buttonBackground
-          ? '0.6'
-          : props.opacity
-          ? props.opacity
-          : '',
-      selectors: {
-        [HighContrastSelector]: {
-          border: '0px',
-          height: '10.4px',
-          width: '10.4px',
-          clipPath: 'polygon(50% 100%, 0 0, 100% 0)',
-          backgroundImage: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
-        } as IStyle,
-      },
-    },
-    text: {
-      ...fonts.small,
-      lineHeight: '16px',
-      color: theme?.semanticColors.bodyText,
-      opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.67' : '',
-    },
-    hoverChange: {
-      width: '12px',
-      height: '12px',
-      backgroundColor: theme!.semanticColors.buttonBackground,
-      marginRight: '8px',
-      border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : palette.black,
-    },
-    overflowIndicationTextStyle: [
-      getFocusStyle(theme!, options),
-      {
-        cursor: 'pointer',
-        color: theme?.semanticColors.bodyText,
-        ...fonts.small,
-        lineHeight: '16px',
-        padding: '8px',
-      },
-    ],
-    hoverCardRoot: {
-      padding: '8px',
-    },
-    subComponentStyles: {
-      hoverCardStyles: {
-        host: [getFocusStyle(theme!, options)],
-      },
-    },
+    root: mergeClasses(legendClassNames.root, baseStyles.root, className, props.styles?.root),
+    legend: mergeClasses(legendClassNames.legend, baseStyles.legend, props.styles?.legend),
+    rect: mergeClasses(legendClassNames.rect, baseStyles.rect, props.styles?.rect),
+    shape: mergeClasses(legendClassNames.shape, baseStyles.shape, props.styles?.shape),
+    triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.styles?.triangle),
+    text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
+    hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
+    overflowIndicationTextStyle: mergeClasses(
+      legendClassNames.overflowIndicationTextStyle,
+      baseStyles.overflowIndicationTextStyle,
+      props.styles?.overflowIndicationTextStyle,
+    ),
+    hoverCardRoot: mergeClasses(legendClassNames.hoverCardRoot, baseStyles.hoverCardRoot, props.styles?.hoverCardRoot),
   };
 };
