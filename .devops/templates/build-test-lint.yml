@@ -43,8 +43,82 @@ steps:
     env:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
+  # REACT COMPONENTS v9
+
+  # - script: |
+  #     yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**'
+  #   displayName: build v9
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**'
+  #   displayName: test (default)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --runInBand
+  #   displayName: test (runInBand)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --maxWorkers=1 --workerThreads
+  #   displayName: test (workerThreads + maxWorkers 1)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --maxWorkers=50%
+  #   displayName: test (maxWorkers 50)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --maxWorkers=25%
+  #   displayName: test (maxWorkers 25)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --workerThreads
+  #   displayName: test (workerThreads)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --maxWorkers=50% --workerThreads
+  #   displayName: test (workerThreads + maxWorkers 50)
+
+  # REACT v8
+
   - script: |
-      yarn buildci $(sinceArg)
-    displayName: build, test, lint, test-ssr
+      yarn nx run-many -t build -p tag:v8 --exclude 'tag:vNext,apps/**'
+    displayName: build v8
+
+  - script: |
+      yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**'
+    displayName: test v8 (default mw=4)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --runInBand
+  #   displayName: test v8 (runInBand)
+
+  - script: |
+      yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=50%
+    displayName: test v8 (maxWorkers 50)
+
+  - script: |
+      yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=25%
+    displayName: test v8 (maxWorkers 25)
+
+  # REACT NORTHSTAR v0
+
+  - script: |
+      yarn nx run-many -t build -p tag:react-northstar --exclude 'tag:vNext,apps/**'
+    displayName: build react-northstar
+
+  - script: |
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**'
+    displayName: test react-northstar (default mw=4)
+
+  - script: |
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --runInBand
+    displayName: test react-northstar (runInBand)
+
+  - script: |
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=50%
+    displayName: test react-northstar (maxWorkers 50)
+
+  - script: |
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=25%
+    displayName: test react-northstar (maxWorkers 25)
 
   - template: cleanup.yml
