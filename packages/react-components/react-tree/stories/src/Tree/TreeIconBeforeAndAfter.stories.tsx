@@ -37,9 +37,7 @@ IconBeforeAndAfter.parameters = {
     name: 'Icon Before/After',
     description: {
       story: `
-\`TreeItemLayout\` component allows you to add icons before or after the content.
-
-> ⚠️ iconBefore and  iconAfter are marked as \`aria-hidden\` by default`,
+\`TreeItemLayout\` component allows you to add icons before or after the content.`,
     },
   },
 };

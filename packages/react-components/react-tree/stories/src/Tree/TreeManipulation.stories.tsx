@@ -58,7 +58,6 @@ const CustomTreeItem = React.forwardRef(
             <TreeItemLayout
               actions={
                 isItemRemovable ? (
-                  // this button is accessible via context menu, hence aria-hidden='true'
                   <Button
                     aria-label="Remove item"
                     appearance="subtle"
