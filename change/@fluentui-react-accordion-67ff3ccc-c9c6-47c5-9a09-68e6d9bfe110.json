@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add collapse motion to Accordion",
+  "packageName": "@fluentui/react-accordion",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}
