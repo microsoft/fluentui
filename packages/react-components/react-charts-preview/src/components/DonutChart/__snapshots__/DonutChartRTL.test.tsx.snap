@@ -639,57 +639,18 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class=
-
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background: #1b1a19;
-          color: #f3f2f1;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-        }
+    class="body-112"
   >
     <div
-      class=
-          ms-DonutChart
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            align-items: center;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            height: 100%;
-            width: 100%;
-          }
+      class="fui-donut__root"
     >
       <div
-        class=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone6"
-        data-tabster="{\\"uncontrolled\\": {}}"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       >
         <div>
           <svg
             aria-label="Donut chart example"
-            class=
-
-                {
-                  alignment-adjust: center;
-                  box-sizing: content-box;
-                  display: block;
-                  height: -40px;
-                  overflow: visible;
-                  width: 0px;
-                }
-            focusable="false"
+            class="fui-donut__chart"
             viewBox="0 0 0 0"
           >
             <g
@@ -698,96 +659,51 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               <g>
                 <path
                   aria-label="2020/04/30, 20000."
-                  class=
-
-                      {
-                        cursor: default;
-                        fill: #E5E5E5;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
+                  class="fui-donut-arc__root"
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
-                  id="_Pie_4first20000"
+                  id="_Pie_19first20000"
                   opacity="1"
                   role="img"
-                  tabindex="0"
+                  style="fill: #E5E5E5; cursor: default;"
                 />
               </g>
               <g>
                 <path
                   aria-label="2020/04/20, 39000."
-                  class=
-
-                      {
-                        cursor: default;
-                        fill: #0078D4;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
+                  class="fui-donut-arc__root"
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
-                  id="_Pie_4second39000"
+                  id="_Pie_19second39000"
                   opacity="1"
                   role="img"
-                  tabindex="-1"
+                  style="fill: #0078D4; cursor: default;"
                 />
               </g>
               <g>
                 <path
                   aria-label="2020/04/25, 45000."
-                  class=
-
-                      {
-                        cursor: default;
-                        fill: #DADADA;
-                        outline: transparent;
-                        stroke: #1b1a19;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
+                  class="fui-donut-arc__root"
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
-                  id="_Pie_4third45000"
+                  id="_Pie_19third45000"
                   opacity="1"
                   role="img"
-                  tabindex="-1"
+                  style="fill: #DADADA; cursor: default;"
                 />
               </g>
             </g>
           </svg>
         </div>
       </div>
-      <span
-        class="ms-layer"
+      <div
+        id="callout20"
       />
       <div
-        class=
-
-            {
-              padding-top: 16px;
-              width: 0px;
-            }
+        class="fui-donut__legendContainer"
       >
         <div
-          class=
-
-              {
-                align-items: center;
-                margin-bottom: 0;
-                margin-left: -8px;
-                margin-right: 0;
-                margin-top: -8px;
-                white-space: nowrap;
-                width: 100%;
-              }
+          class="fui-legend__root"
         >
           <div>
             <div
@@ -800,33 +716,15 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                 <div
                   aria-label="Legends"
                   aria-multiselectable="false"
-                  class=
-                      ms-FocusZone
-                      &:focus {
-                        outline: none;
-                      }
-                  data-focuszone-id="FocusZone7"
-                  data-tabster="{\\"uncontrolled\\": {}}"
+                  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
                   role="listbox"
                 >
                   <div
-                    class=
-                        ms-OverflowSet
-                        {
-                          display: flex;
-                          flex-wrap: wrap;
-                          justify-content: center;
-                          position: relative;
-                        }
+                    class="ms-OverflowSet root-109"
                     role="group"
                   >
                     <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
+                      class="ms-OverflowSet-item item-110"
                       role="none"
                     >
                       <button
@@ -834,99 +732,24 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         aria-posinset="1"
                         aria-selected="false"
                         aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
+                        class="fui-Button fui-legend__legend"
                         data-is-focusable="true"
                         role="option"
-                        tabindex="0"
+                        style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+                        type="button"
                       >
                         <div
-                          class=
-
-                              {
-                                background-color: #E5E5E5;
-                                border-color: #E5E5E5;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #E5E5E5, #E5E5E5);
-                                opacity: ;
-                              }
+                          class="fui-legend__rect"
                         />
                         <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
+                          class="fui-legend__text"
                         >
                           first
                         </div>
                       </button>
                     </div>
                     <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
+                      class="ms-OverflowSet-item item-110"
                       role="none"
                     >
                       <button
@@ -934,99 +757,24 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         aria-posinset="2"
                         aria-selected="false"
                         aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
+                        class="fui-Button fui-legend__legend"
                         data-is-focusable="true"
                         role="option"
-                        tabindex="-1"
+                        style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+                        type="button"
                       >
                         <div
-                          class=
-
-                              {
-                                background-color: #0078D4;
-                                border-color: #0078D4;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #0078D4, #0078D4);
-                                opacity: ;
-                              }
+                          class="fui-legend__rect"
                         />
                         <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
+                          class="fui-legend__text"
                         >
                           second
                         </div>
                       </button>
                     </div>
                     <div
-                      class=
-                          ms-OverflowSet-item
-                          {
-                            display: inherit;
-                            flex-shrink: 0;
-                          }
+                      class="ms-OverflowSet-item item-110"
                       role="none"
                     >
                       <button
@@ -1034,87 +782,17 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                         aria-posinset="3"
                         aria-selected="false"
                         aria-setsize="3"
-                        class=
-
-                            {
-                              align-items: center;
-                              background: none;
-                              border: none;
-                              cursor: pointer;
-                              display: flex;
-                              outline: transparent;
-                              padding-bottom: 8px;
-                              padding-left: 8px;
-                              padding-right: 8px;
-                              padding-top: 8px;
-                              position: relative;
-                              text-transform: capitalize;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
-                              outline-color: #a19f9d;
-                            }
-                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              border: 1px solid transparent;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #a19f9d;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
-                              outline-color: #a19f9d;
-                            }
+                        class="fui-Button fui-legend__legend"
                         data-is-focusable="true"
                         role="option"
-                        tabindex="-1"
+                        style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+                        type="button"
                       >
                         <div
-                          class=
-
-                              {
-                                background-color: #DADADA;
-                                border-color: #DADADA;
-                                border: 1px solid;
-                                content: ;
-                                height: 12px;
-                                margin-right: 8px;
-                                width: 12px;
-                              }
-                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                                content: linear-gradient(to right, #DADADA, #DADADA);
-                                opacity: ;
-                              }
+                          class="fui-legend__rect"
                         />
                         <div
-                          class=
-
-                              {
-                                -moz-osx-font-smoothing: grayscale;
-                                -webkit-font-smoothing: antialiased;
-                                color: #f3f2f1;
-                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                font-size: 12px;
-                                font-weight: 400;
-                                line-height: 16px;
-                                opacity: ;
-                              }
+                          class="fui-legend__text"
                         >
                           third
                         </div>
