@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.47",
+      "version": "3.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1bfb9c97a65007e4a97936a3f189d0495864f2f9",
+            "comment": "fix: move spinner animation off of main thread"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "233720f2ebe83f3127427e6dfc6c29643c4704bf",
+            "comment": "chore: create divider base class to abstract style specfic api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jul 2024 04:08:32 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.46",
       "version": "3.0.0-beta.46",

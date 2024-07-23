@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 15 Jul 2024 17:25:45 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 20:13:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.20.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.20.0)
+
+Tue, 23 Jul 2024 20:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.19.1..@fluentui/react-shared-contexts_v9.20.0)
+
+### Minor changes
+
+- chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
 
 ## [9.19.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.19.1)
 
