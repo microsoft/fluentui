@@ -2,6 +2,33 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 20:13:13 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.13",
+      "version": "9.18.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "5e3705df32a47dcfdea9c47cf8da209d80a1aabd",
+            "comment": "chore: stops leaking HTMLElementConstructorName type"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dec6f1577fe8b81810e46f92de0f7c2530e49e7e",
+            "comment": "chore: simplify SlotComponentType type"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.0",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:23 GMT",
       "tag": "@fluentui/react-utilities_v9.18.12",
       "version": "9.18.12",

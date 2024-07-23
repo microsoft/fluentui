@@ -509,6 +509,35 @@ export class BaseDivider extends FASTElement {
 }
 
 // @public
+export class BaseProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
+    validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseSpinner extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+}
+
+// @public
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
 
 // @public
@@ -2587,29 +2616,11 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends FASTElement {
-    constructor();
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    max?: number;
-    // @internal
-    protected maxChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    min?: number;
-    protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
-    // @internal
-    value?: number;
-    // @internal
-    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -3091,12 +3102,9 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends FASTElement {
-    constructor();
+export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
     appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     size?: SpinnerSize;
     sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
