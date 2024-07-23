@@ -23,7 +23,12 @@ export function useEmblaCarousel({
   loop,
   slidesToScroll,
 }: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll'>) {
-  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll });
+  const emblaOptions = React.useRef<EmblaOptionsType>({
+    align,
+    direction,
+    loop,
+    slidesToScroll: slidesToScroll ?? 1, // Default to 1
+  });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
   const carouselGroupRef = React.useRef<number[][]>([[0]]);
 
@@ -45,8 +50,11 @@ export function useEmblaCarousel({
     };
 
     const handleReinit = () => {
+      if (slidesToScroll === undefined) {
+        // We only need this when grouping enabled
+        return;
+      }
       const carouselGroups = emblaApi.current?.internalEngine().slideRegistry;
-
       // TODO: Check if we have cases where the length is the same but nav points change, if so, compare array equality
       // Values array should handle id changes, we're just concerned with number of nav points.
       if (carouselGroups?.length !== carouselGroupRef.current.length) {

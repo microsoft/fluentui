@@ -32,7 +32,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 };
 
 export const Default = () => (
-  <Carousel defaultValue="card-1">
+  <Carousel defaultValue="card-5">
     <CarouselSlider>
       <CarouselCard value="card-1">
         <TestComponent accentColor="#B99095">Card 1</TestComponent>
