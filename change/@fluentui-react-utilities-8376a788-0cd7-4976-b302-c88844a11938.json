@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: stops leaking HTMLElementConstructorName type",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
