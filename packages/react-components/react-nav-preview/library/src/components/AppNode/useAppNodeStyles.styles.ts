@@ -1,22 +1,37 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AppNodeSlots, AppNodeState } from './AppNode.types';
+import { useRootDefaultClassName } from '../sharedNavStyles.styles';
+import { typographyStyles } from '@fluentui/react-theme';
 
 export const appNodeClassNames: SlotClassNames<AppNodeSlots> = {
   root: 'fui-AppNode',
-  // TODO: add class names for all slots on AppNodeSlots.
-  // Should be of the form `<slotName>: 'fui-AppNode__<slotName>`
+  icon: 'fui-AppNode__icon',
 };
 
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const useAppNodeSpecificStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...typographyStyles.subtitle2,
+    gap: '12px',
+    paddingInlineStart: '3px',
+    alignItems: 'center',
+    ':hover': {
+      backgroundColor: 'unset',
+    },
+    ':active': {
+      backgroundColor: 'unset',
+    },
   },
-
-  // TODO add additional classes for different states and/or slots
+  icon: {
+    height: '32px',
+    width: '32px',
+  },
+  smallRoot: {
+    paddingBlock: 'unset',
+  },
 });
 
 /**
@@ -25,11 +40,21 @@ const useStyles = makeStyles({
 export const useAppNodeStyles_unstable = (state: AppNodeState): AppNodeState => {
   'use no memo';
 
-  const styles = useStyles();
-  state.root.className = mergeClasses(appNodeClassNames.root, styles.root, state.root.className);
+  const styles = useAppNodeSpecificStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const rootDefaultClassName = useRootDefaultClassName();
+
+  state.root.className = mergeClasses(
+    appNodeClassNames.root,
+    rootDefaultClassName,
+    styles.root,
+    state.size === 'small' && styles.smallRoot,
+    state.root.className,
+  );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(appNodeClassNames.icon, styles.icon, state.icon.className);
+  }
 
   return state;
 };

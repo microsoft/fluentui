@@ -10,6 +10,10 @@ import type { AppNodeState, AppNodeSlots } from './AppNode.types';
 export const renderAppNode_unstable = (state: AppNodeState) => {
   assertSlots<AppNodeSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.icon && <state.icon />}
+      {state.root.children}
+    </state.root>
+  );
 };

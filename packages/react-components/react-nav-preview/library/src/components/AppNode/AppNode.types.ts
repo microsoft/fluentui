@@ -1,17 +1,29 @@
+import { NavSize } from '../Nav/Nav.types';
+
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AppNodeSlots = {
   root: Slot<'div'>;
+
+  /**
+   * Icon that renders.
+   */
+  icon?: Slot<'span'>;
 };
 
 /**
  * AppNode Props
  */
-export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
+export type AppNodeProps = ComponentProps<AppNodeSlots>;
 
 /**
  * State used in rendering AppNode
  */
-export type AppNodeState = ComponentState<AppNodeSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from AppNodeProps.
-// & Required<Pick<AppNodeProps, 'propName'>>
+export type AppNodeState = ComponentState<AppNodeSlots> & {
+  /**
+   * The size of the NavItem
+   *
+   * @default 'medium'
+   */
+  size: NavSize;
+};

@@ -42,15 +42,18 @@ export const AppNode: ForwardRefComponent<AppNodeProps>;
 export const appNodeClassNames: SlotClassNames<AppNodeSlots>;
 
 // @public
-export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
+export type AppNodeProps = ComponentProps<AppNodeSlots>;
 
 // @public (undocumented)
 export type AppNodeSlots = {
     root: Slot<'div'>;
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type AppNodeState = ComponentState<AppNodeSlots>;
+export type AppNodeState = ComponentState<AppNodeSlots> & {
+    size: NavSize;
+};
 
 // @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  AppNode,
   Hamburger,
   NavCategory,
   NavCategoryItem,
@@ -43,6 +44,7 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -108,6 +110,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
         <NavDrawerBody>
+          <AppNode icon={<PersonCircle32Regular />}>Contoso HR</AppNode>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
