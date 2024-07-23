@@ -906,6 +906,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                   z
                 `}
                 fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
+                rx={this.props.roundCorners ? this._barWidth / 2 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
                 {...rectFocusProps}
