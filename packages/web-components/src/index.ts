@@ -181,6 +181,7 @@ export {
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
+  BaseSpinner,
   Spinner,
   SpinnerAppearance,
   SpinnerDefinition,
