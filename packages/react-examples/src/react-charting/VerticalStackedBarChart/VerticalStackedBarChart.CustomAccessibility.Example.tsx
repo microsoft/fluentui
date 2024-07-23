@@ -4,6 +4,8 @@ import {
   IVerticalStackedChartProps,
   VerticalStackedBarChart,
   ILineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -46,7 +48,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '61%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 Metadata1 61%' },
@@ -62,7 +64,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata3',
         data: 20,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '31%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 Metadata3 31%' },
@@ -73,7 +75,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '33%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 Metadata1 33%' },
@@ -89,7 +91,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata3',
         data: 40,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '45%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-3 of 4, 2020/04/30 Metadata3 45%' },
@@ -100,7 +102,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '43%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 Metadata1 43%' },
@@ -116,7 +118,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
       {
         legend: 'Metadata3',
         data: 30,
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-3 of 4, 2020/04/30 Metadata3 30%' },

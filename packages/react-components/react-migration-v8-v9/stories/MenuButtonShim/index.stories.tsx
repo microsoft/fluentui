@@ -8,7 +8,6 @@ import {
   FluentProvider,
   webLightTheme,
   makeStyles,
-  shorthands,
   Menu,
   MenuButton,
   MenuDivider,
@@ -36,7 +35,7 @@ const useStyles = makeStyles({
   },
   componentName: {
     justifySelf: 'end',
-    ...shorthands.margin(0, '10px', 0, 0),
+    margin: '0 10px 0 0',
   },
 });
 
@@ -67,7 +66,7 @@ export const Default = () => {
   const menuProps: IContextualMenuProps = {
     // For example: disable dismiss if shift key is held down while dismissing
     onDismiss: ev => {
-      if (ev && 'shiftKey' in ev) {
+      if (ev && 'shiftKey' in ev && ev.shiftKey) {
         ev.preventDefault();
       }
     },

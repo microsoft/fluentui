@@ -23,7 +23,7 @@ const noop = () => {
 
 describe('split-library-in-two generator', () => {
   let tree: Tree;
-  const options = { project: '@proj/react-hello' };
+  const options = { project: 'react-hello', logs: true };
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
@@ -79,7 +79,7 @@ describe('split-library-in-two generator', () => {
     expect(newConfig).toMatchInlineSnapshot(`
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-        "name": "@proj/react-hello",
+        "name": "react-hello",
         "projectType": "library",
         "root": "packages/react-components/react-hello/library",
         "sourceRoot": "packages/react-components/react-hello/library/src",
@@ -119,11 +119,12 @@ describe('split-library-in-two generator', () => {
       }),
     );
 
-    expect(readJson(tree, `${newConfig.root}/package.json`)).toEqual(
+    const newConfigPackageJSON = readJson(tree, `${newConfig.root}/package.json`);
+    expect(newConfigPackageJSON.scripts['test-ssr']).toEqual(undefined);
+    expect(newConfigPackageJSON).toEqual(
       expect.objectContaining({
         name: '@proj/react-hello',
         scripts: expect.objectContaining({
-          'test-ssr': 'test-ssr "../stories/src/**/*.stories.tsx"',
           'type-check': 'just-scripts type-check',
           storybook: 'yarn --cwd ../stories storybook',
         }),
@@ -137,7 +138,7 @@ describe('split-library-in-two generator', () => {
 
     expect(tree.read(`${newConfig.root}/jest.config.js`, 'utf-8')).toMatchInlineSnapshot(`
       "module.exports = {
-        displayName: 'react-text',
+        displayName: 'react-hello',
         preset: '../../../../jest.preset.js',
         transform: {
           '^.+\\\\\\\\.tsx?$': [
@@ -161,7 +162,7 @@ describe('split-library-in-two generator', () => {
     expect(storiesConfig).toMatchInlineSnapshot(`
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
-        "name": "@proj/react-hello-stories",
+        "name": "react-hello-stories",
         "projectType": "library",
         "root": "packages/react-components/react-hello/stories",
         "sourceRoot": "packages/react-components/react-hello/stories/src",
@@ -176,14 +177,14 @@ describe('split-library-in-two generator', () => {
     expect(readJson(tree, `${storiesConfig.root}/package.json`)).toMatchInlineSnapshot(`
       Object {
         "devDependencies": Object {
-          "@fluentui/eslint-plugin": "*",
-          "@fluentui/react-storybook-addon": "*",
-          "@fluentui/react-storybook-addon-export-to-sandbox": "*",
-          "@fluentui/scripts-storybook": "*",
-          "@fluentui/scripts-tasks": "*",
+          "@proj/eslint-plugin": "*",
           "@proj/react-components": "*",
           "@proj/react-one-compat": "*",
+          "@proj/react-storybook-addon": "*",
+          "@proj/react-storybook-addon-export-to-sandbox": "*",
           "@proj/react-two-preview": "*",
+          "@proj/scripts-storybook": "*",
+          "@proj/scripts-tasks": "*",
         },
         "name": "@proj/react-hello-stories",
         "private": true,
@@ -192,6 +193,7 @@ describe('split-library-in-two generator', () => {
           "lint": "eslint src/",
           "start": "yarn storybook",
           "storybook": "start-storybook",
+          "test-ssr": "test-ssr \\"./src/**/*.stories.tsx\\"",
           "type-check": "just-scripts type-check",
         },
         "version": "0.0.0",
@@ -423,7 +425,7 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
     },
     jestConfig: stripIndents`
       module.exports = {
-        displayName: 'react-text',
+        displayName: '${options.projectName}',
         preset: '../../../jest.preset.js',
         transform: {
           '^.+\\.tsx?$': [
@@ -582,14 +584,14 @@ function setupDummyPackage(tree: Tree, options: { projectName: string }) {
   );
   tree.write(`${rootPath}/stories/Hello.md`, stripIndents``);
 
-  addProjectConfiguration(tree, npmProjectName, {
+  addProjectConfiguration(tree, options.projectName, {
     root: rootPath,
     sourceRoot: `${rootPath}/src`,
     projectType: 'library',
     tags: ['vNext', 'platform:web'],
   });
 
-  addCodeowner(tree, { owner: 'Mr.Wick', packageName: npmProjectName });
+  addCodeowner(tree, { owner: 'Mr.Wick', packageName: options.projectName });
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};

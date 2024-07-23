@@ -1,0 +1,473 @@
+/*
+ * Heads Up!
+ * This file should be kept in sync with the `docs-root.css` file for the React v9 Storybook.
+ */
+
+/* remove the docs wrapper bg to let page bg show through */
+#docs-root .sbdocs-wrapper {
+  background: transparent !important;
+}
+
+/* sb-show-main is missing during page transitions causing a page shift */
+/* todo: cleanup once we no longer inherit docs-root */
+.sb-show-main.sb-main-fullscreen,
+.sb-main-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+#docs-root .sbdocs-content {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  max-width: 1200px;
+}
+
+#docs-root h1.sbdocs-title {
+  font-size: 44px;
+  line-height: 60px;
+  /* identical to box height, or 143% */
+  letter-spacing: -0.04em;
+  color: #000000;
+}
+
+#docs-root details {
+  position: relative;
+  z-index: 99;
+}
+
+#docs-root .sbdocs-p {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: -0.01em;
+  color: #000000;
+  margin-top: 24px;
+}
+
+#docs-root .sbdocs-img.featured-image {
+  max-width: 100%;
+  margin: 48px 0;
+  display: block;
+}
+
+#docs-root .sbdocs-img {
+  border-radius: 24px;
+}
+
+#docs-root .sbdocs-hr {
+  margin: 48px 0;
+  height: 0;
+  border-top: 1px solid #ebebeb;
+}
+
+#docs-root .sbdocs-h2 {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
+  color: black;
+  border-top: 1px solid #ebebeb;
+  border-bottom: none;
+  margin: 48px 0 15px 0;
+  padding: 48px 0 0 0;
+}
+
+#docs-root .sbdocs-h2 code {
+  border-radius: 4px;
+  font-size: 20px;
+}
+
+#docs-root .sbdocs-h3 {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 25px 0 0 0 !important;
+  letter-spacing: -0.01em;
+  color: #000000;
+}
+
+#docs-root .sbdocs-h3 code {
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* Only apply to H3s inside of stories which have a parent with an ID */
+#docs-root [id] > .sbdocs-h3:before {
+  content: '';
+  display: block;
+  height: 40px;
+  margin: -40px 0 0;
+}
+
+#docs-root .sbdocs-li {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: -0.01em;
+
+  /* Neutrals / Web / Gray 200 #1B1A19 */
+  color: #1b1a19;
+  margin-top: 8px;
+}
+
+#docs-root .sbdocs-ul {
+  margin: 12px 0;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li {
+  list-style: none;
+  position: relative;
+}
+
+#docs-root .sbdocs-ul .sbdocs-li::before {
+  position: absolute;
+  content: '•';
+  color: #8d8d8d;
+  top: 0;
+  left: -15px;
+}
+
+#docs-root .sbdocs-ol .sbdocs-li::marker {
+  color: #8d8d8d;
+}
+
+#docs-root .sbdocs-preview {
+  border-radius: 16px;
+  background: #fff; /* --colorBrandBackgroundInverted */
+  padding: 0;
+  box-shadow: none;
+  border: 1px solid #d1d1d1; /* --colorNeutralStroke1 */
+}
+
+/* Apply the currently selected Fluent UI theme to the relevant areas of the docs */
+#docs-root .innerZoomElementWrapper > div {
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+/* fix mouse interactions for toolbar on first story */
+#docs-root .sbdocs-preview > .os-host {
+  /* The toolbar sits within the story content area and is position: absolute by default. */
+  /* The story content overlays the toolbar making it non-interactive */
+  /* We don't use z-index because the toolbar can still sometimes overlay story content (flyout menu) */
+  /* The best solution is to use a static toolbar that is always outside the story content and interactive */
+  position: static;
+}
+
+#docs-root span + .sbdocs .docblock-argstable tbody tr td button {
+  color: #0078d4;
+  color: red;
+}
+
+#docs-root .docs-story + div {
+  background: #11100f;
+}
+
+#docs-root .sbdocs-content > div:last-child {
+  margin-bottom: 96px;
+}
+
+#docs-root .docs-story > div {
+  padding: 0;
+  background: none;
+}
+
+#docs-root .docs-story > div:last-child {
+  right: 31px;
+  border-radius: 24px;
+}
+
+.docs-story + div > div:last-child {
+  background: #000000;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 0px 0px;
+  right: 31px;
+}
+
+.docs-story + div > div:last-child > button {
+  color: white;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+#docs-root a.sbdocs-a {
+  color: #0078d4;
+  text-decoration: underline;
+}
+
+/*  */
+/* Args Table */
+/*  */
+
+#docs-root .docblock-argstable tbody {
+  box-shadow: none;
+  border-left: none;
+  border-right: none;
+}
+
+#docs-root .docblock-argstable-head th {
+  letter-spacing: -0.01em;
+  color: black;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  font-weight: 600;
+}
+
+#docs-root thead.docblock-argstable-head {
+  border-bottom: 1px solid #edebe9;
+}
+
+#docs-root .docblock-argstable tbody tr {
+  border: none;
+}
+
+#docs-root table.docblock-argstable tbody.docblock-argstable-body td,
+#docs-root .docblock-argstable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+}
+
+#docs-root .docblock-argstable tbody tr td:nth-child(1) span {
+  font-weight: normal;
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.01em;
+  color: #616161;
+}
+
+#docs-root .docblock-argstable tbody tr td {
+  vertical-align: top;
+}
+
+#docs-root .docblock-argstable-body > tr > td > div > div > button {
+  color: #0078d4;
+  line-height: 21px;
+}
+
+#docs-root code,
+#docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+#docs-root .css-16d4d7t {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: -0.2px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+#docs-root code.sbdocs-code,
+#docs-root .sbdocs-p code,
+#docs-root .sbdocs-li code,
+#docs-root .docblock-argstable code,
+#docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+#docs-root .css-16d4d7t {
+  font-size: 14px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  padding: 1px 4px;
+  margin: 0 3px 0 3px;
+  color: black;
+  border: none;
+  line-height: 1.5;
+}
+
+#docs-root .docblock-argstable code {
+  white-space: normal;
+}
+
+#docs-root code {
+  padding: 0.1em 0.2em;
+  display: inline-block;
+  background-color: rgba(17, 16, 15, 0.1);
+  border-radius: 2px;
+  width: fit-content; /* prevent wrapping kebab-case words when they'll fit on one line */
+}
+
+.os-content-glue {
+  width: auto !important;
+}
+
+#docs-root .sbdocs-preview .prismjs {
+  overflow: hidden;
+}
+
+#docs-root .os-content .prismjs * {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+#docs-root .sbdocs-preview .prismjs code {
+  color: white;
+  background: #11100f;
+  margin: 0;
+  overflow-x: auto;
+}
+
+#docs-root .docblock-argstable-body td > div > p,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) p,
+#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  line-height: 130%;
+  color: black;
+  letter-spacing: -0.01em;
+}
+
+#docs-root .docblock-argstable tr > :nth-child(1) {
+  width: 4%;
+}
+
+#docs-root .docblock-argstable tr > :nth-child(2) {
+  width: 100%;
+}
+
+#docs-root .os-padding {
+  z-index: 0;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI Light'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/light/latest.ttf) format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI Semilight'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semilight/latest.ttf) format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/normal/latest.ttf) format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI Semibold'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/semibold/latest.ttf) format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Segoe UI';
+  src: local('Segoe UI Bold'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff2) format('woff2'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.woff) format('woff'),
+    url(https://c.s-microsoft.com/static/fonts/segoe-ui/west-european/bold/latest.ttf) format('truetype');
+  font-weight: 700;
+}
+
+body,
+body p,
+body ul,
+body ul li {
+  font-family: 'Segoe UI' !important;
+}
+
+h1.fluent {
+  font-weight: 700;
+  font-size: 40px;
+  font-family: 'Segoe UI';
+  line-height: 60px;
+  letter-spacing: -0.16px;
+}
+
+h1 .fluent-version {
+  display: block;
+  font-size: 24px; /* --font-size-base-600 */
+  line-height: 32px;
+  color: #707070; /* --color-neutral-foreground-3 */
+}
+
+h2.fluent {
+  font-weight: 600;
+  font-size: 24px;
+  font-family: 'Segoe UI';
+  line-height: 36px;
+  letter-spacing: -0.16px;
+}
+
+/* Mimic React v9 Provider styles:
+ *   - apply font, background, and foreground colors
+ *   - apply padding for story content
+ */
+#docs-root .innerZoomElementWrapper > div > div {
+  padding: 48px 24px;
+  font-family: var(--fontFamilyBase);
+  background: var(--colorNeutralBackground2);
+  color: var(--colorNeutralForeground2);
+}
+
+/*
+ * Theme Switcher
+ */
+#switches-container {
+  position: sticky;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 12px;
+  width: 100%;
+  top: 0;
+  box-sizing: border-box; /* keep from overflowing body making x scroll bar*/
+  background: #fff;
+  box-shadow: 0 0 3px rgb(0 0 0 / 22%);
+  z-index: 10;
+}
+
+#switches-container select {
+  padding: 5px var(--spacingHorizontalM);
+  border: var(--strokeWidthThin) solid #d1d1d1 /* --colorNeutralStroke1, without theme switching */;
+  border-radius: var(--borderRadiusMedium);
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightSemibold);
+  line-height: var(--lineHeightBase300);
+  width: 140px;
+}
+
+.custom-fullscreen #switches-container {
+  display: none;
+}
+
+.custom-fullscreen .sbdocs-wrapper {
+  padding: 20px;
+}
+
+.custom-fullscreen .sbdocs-content {
+  max-width: unset;
+}

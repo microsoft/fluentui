@@ -1,5 +1,5 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { makeStyles, makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
 import { tokens } from '@fluentui/react-theme';
@@ -41,7 +41,7 @@ const useStyles = makeStyles({
     gridColumnEnd: 4,
   },
   truncate: {
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
     textWrap: 'nowrap',
     textOverflow: 'ellipsis',
   },
@@ -61,6 +61,8 @@ const useStyles = makeStyles({
  * Apply styling to the ListItem slots based on the state
  */
 export const useListItemStyles_unstable = (state: ListItemState): ListItemState => {
+  'use no memo';
+
   const rootBaseStyles = useRootBaseStyles();
   const styles = useStyles();
 

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-dangerjs",
+  "name": "scripts-dangerjs",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/dangerjs/src",
   "projectType": "library",

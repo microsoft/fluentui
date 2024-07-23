@@ -30,6 +30,8 @@ import { POSITIONING_END_EVENT } from './constants';
  * @internal
  */
 export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
+  'use no memo';
+
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -158,6 +160,8 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
 }
 
 function usePositioningOptions(options: PositioningOptions) {
+  'use no memo';
+
   const {
     align,
     arrowPadding,

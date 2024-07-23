@@ -67,7 +67,7 @@ export function apiExtractor(): TaskFunction {
    * overrides api-extractor default `true` to be `false` on local dev machine
    * Triggers if path aliases will be used or yarn workspaces (that needs to be build based on package dependency tree)
    */
-  const isLocalBuild = args.local ?? !(process.env.TF_BUILD || isCI);
+  const isLocalBuild = Boolean((args.local || process.env.__FORCE_API_MD_UPDATE__) ?? !(process.env.TF_BUILD || isCI));
 
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;

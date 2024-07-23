@@ -18,6 +18,10 @@ import {
   getScalePadding,
   getBarWidth,
   isScalePaddingDefined,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -122,6 +126,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._calloutId = getId('callout');
     this._tooltipId = getId('GVBCTooltipId_');
     this._emptyChartId = getId('_GVBC_empty');
+    this._domainMargin = MIN_DOMAIN_MARGIN;
   }
 
   public render(): React.ReactNode {
@@ -168,13 +173,18 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={this._datasetForBars}
         chartType={ChartTypes.GroupedVerticalBarChart}
         calloutProps={calloutProps}
         legendBars={legends}
         xAxisType={this._xAxisType}
+        createYAxis={createNumericYAxis}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
+        createStringYAxis={createStringYAxis}
         tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
@@ -206,6 +216,30 @@ export class GroupedVerticalBarChartBase extends React.Component<
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
+
+  private _getDomainNRangeValues = (
+    points: IGroupedVerticalBarChartData[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _getGraphData = (
     xScale: StringAxis | NumericAxis,
@@ -649,4 +683,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
     );
     this._xAxisOuterPadding = getScalePadding(this.props.xAxisOuterPadding);
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle } = this.props;
+    return (
+      (chartTitle ? `${chartTitle}. ` : '') +
+      `Vertical bar chart with ${this._xAxisLabels.length} groups of ${this._keys.length} bars each. `
+    );
+  };
 }

@@ -1,10 +1,9 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").BinaryExpression} BinaryExpression
- * @typedef {import("@fluentui/react-utilities/src/utils/isHTMLElement").HTMLElementConstructorName} HTMLElementConstructorName
+ * @typedef {import('./types').HTMLElementConstructorName} HTMLElementConstructorName
  *
  */
 
@@ -14,7 +13,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban usage of instanceof HTMLElement comparison',
-      category: 'Possible Errors',
       recommended: 'error',
     },
     messages: {
@@ -25,9 +23,6 @@ module.exports = createRule({
   },
   defaultOptions: [],
   create: context => ({
-    /**
-     * @param {BinaryExpression} binaryExpression
-     */
     // eslint-disable-next-line @typescript-eslint/naming-convention
     BinaryExpression(binaryExpression) {
       if (
@@ -61,7 +56,6 @@ const constructorNames = [
   'HTMLDataElement',
   'HTMLDataListElement',
   'HTMLDetailsElement',
-  // @ts-expect-error - NOTE: dialog is not supported in safari 14, also it was removed from lib-dom starting typescript 4.4
   'HTMLDialogElement',
   'HTMLDivElement',
   'HTMLDListElement',

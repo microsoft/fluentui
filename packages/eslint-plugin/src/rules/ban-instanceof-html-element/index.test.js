@@ -1,5 +1,4 @@
-// @ts-nocheck
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { ESLintUtils } = require('@typescript-eslint/utils');
 const rule = require('./index');
 
 const ruleTester = new ESLintUtils.RuleTester({

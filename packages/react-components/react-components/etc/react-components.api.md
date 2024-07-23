@@ -50,6 +50,8 @@ import { AriaLiveAnnouncerProps } from '@fluentui/react-aria';
 import { AriaLiveAnnouncerState } from '@fluentui/react-aria';
 import { arrowHeights } from '@fluentui/react-popover';
 import { assertSlots } from '@fluentui/react-utilities';
+import { AtomMotion } from '@fluentui/react-motion';
+import { AtomMotionFn } from '@fluentui/react-motion';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -157,6 +159,11 @@ import { CheckboxProps } from '@fluentui/react-checkbox';
 import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
+import { ColorSwatch } from '@fluentui/react-swatch-picker';
+import { colorSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ColorSwatchProps } from '@fluentui/react-swatch-picker';
+import { ColorSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ColorSwatchState } from '@fluentui/react-swatch-picker';
 import { ColorTokens } from '@fluentui/react-theme';
 import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
@@ -189,6 +196,9 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { CreateFocusOutlineStyleOptions } from '@fluentui/react-tabster';
 import { createHighContrastTheme } from '@fluentui/react-theme';
 import { createLightTheme } from '@fluentui/react-theme';
+import { createMotionComponent } from '@fluentui/react-motion';
+import { createPresenceComponent } from '@fluentui/react-motion';
+import { createPresenceComponentVariant } from '@fluentui/react-motion';
 import { createTableColumn } from '@fluentui/react-table';
 import { CreateTableColumnOptions } from '@fluentui/react-table';
 import { createTeamsDarkTheme } from '@fluentui/react-theme';
@@ -255,9 +265,11 @@ import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
 import { DialogContextValue } from '@fluentui/react-dialog';
+import { DialogModalType } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
+import { DialogProvider } from '@fluentui/react-dialog';
 import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
@@ -290,6 +302,7 @@ import { drawerBodyClassNames } from '@fluentui/react-drawer';
 import { DrawerBodyProps } from '@fluentui/react-drawer';
 import { DrawerBodySlots } from '@fluentui/react-drawer';
 import { DrawerBodyState } from '@fluentui/react-drawer';
+import { DrawerContextValue } from '@fluentui/react-drawer';
 import { DrawerFooter } from '@fluentui/react-drawer';
 import { drawerFooterClassNames } from '@fluentui/react-drawer';
 import { DrawerFooterProps } from '@fluentui/react-drawer';
@@ -311,6 +324,7 @@ import { DrawerHeaderTitleProps } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
+import { DrawerProvider } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
 import { Dropdown } from '@fluentui/react-combobox';
@@ -322,6 +336,11 @@ import { DropdownProps } from '@fluentui/react-combobox';
 import { DropdownSlots } from '@fluentui/react-combobox';
 import { DropdownState } from '@fluentui/react-combobox';
 import { DurationTokens } from '@fluentui/react-theme';
+import { EmptySwatch } from '@fluentui/react-swatch-picker';
+import { emptySwatchClassNames } from '@fluentui/react-swatch-picker';
+import { EmptySwatchProps } from '@fluentui/react-swatch-picker';
+import { EmptySwatchSlots } from '@fluentui/react-swatch-picker';
+import { EmptySwatchState } from '@fluentui/react-swatch-picker';
 import { Field } from '@fluentui/react-field';
 import { fieldClassNames } from '@fluentui/react-field';
 import { FieldContextProvider } from '@fluentui/react-field';
@@ -370,6 +389,11 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { ImageSwatch } from '@fluentui/react-swatch-picker';
+import { imageSwatchClassNames } from '@fluentui/react-swatch-picker';
+import { ImageSwatchProps } from '@fluentui/react-swatch-picker';
+import { ImageSwatchSlots } from '@fluentui/react-swatch-picker';
+import { ImageSwatchState } from '@fluentui/react-swatch-picker';
 import { InfoLabel } from '@fluentui/react-infolabel';
 import { infoLabelClassNames } from '@fluentui/react-infolabel';
 import { InfoLabelProps } from '@fluentui/react-infolabel';
@@ -512,6 +536,7 @@ import { mergeClasses } from '@griffel/react';
 import { MessageBar } from '@fluentui/react-message-bar';
 import { MessageBarActions } from '@fluentui/react-message-bar';
 import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsContextValues } from '@fluentui/react-message-bar';
 import { MessageBarActionsProps } from '@fluentui/react-message-bar';
 import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
 import { MessageBarActionsState } from '@fluentui/react-message-bar';
@@ -523,6 +548,7 @@ import { MessageBarBodyState } from '@fluentui/react-message-bar';
 import { messageBarClassNames } from '@fluentui/react-message-bar';
 import { MessageBarContextProvider } from '@fluentui/react-message-bar';
 import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarContextValues } from '@fluentui/react-message-bar';
 import { MessageBarGroup } from '@fluentui/react-message-bar';
 import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
 import { MessageBarGroupProps } from '@fluentui/react-message-bar';
@@ -537,6 +563,10 @@ import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
 import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
+import { MessageBarTransitionContextValue } from '@fluentui/react-message-bar';
+import { MotionComponentProps } from '@fluentui/react-motion';
+import { MotionImperativeRef } from '@fluentui/react-motion';
+import { motionTokens } from '@fluentui/react-motion';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
 import { OnSelectionChangeData } from '@fluentui/react-utilities';
@@ -610,8 +640,12 @@ import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
 import { presenceBlockedRegular } from '@fluentui/react-badge';
 import { presenceBusyFilled } from '@fluentui/react-badge';
+import { PresenceComponentProps } from '@fluentui/react-motion';
 import { presenceDndFilled } from '@fluentui/react-badge';
 import { presenceDndRegular } from '@fluentui/react-badge';
+import { PresenceGroup } from '@fluentui/react-motion';
+import { PresenceMotion } from '@fluentui/react-motion';
+import { PresenceMotionFn } from '@fluentui/react-motion';
 import { presenceOfflineRegular } from '@fluentui/react-badge';
 import { presenceOofRegular } from '@fluentui/react-badge';
 import { presenceUnknownRegular } from '@fluentui/react-badge';
@@ -675,6 +709,7 @@ import { renderCardFooter_unstable } from '@fluentui/react-card';
 import { renderCardHeader_unstable } from '@fluentui/react-card';
 import { renderCardPreview_unstable } from '@fluentui/react-card';
 import { renderCheckbox_unstable } from '@fluentui/react-checkbox';
+import { renderColorSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderCombobox_unstable } from '@fluentui/react-combobox';
 import { renderCompoundButton_unstable } from '@fluentui/react-button';
 import { renderDataGrid_unstable } from '@fluentui/react-table';
@@ -699,11 +734,13 @@ import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
+import { renderEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
 import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderImageSwatch_unstable } from '@fluentui/react-swatch-picker';
 import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -754,6 +791,9 @@ import { renderSlider_unstable } from '@fluentui/react-slider';
 import { renderSpinButton_unstable } from '@fluentui/react-spinbutton';
 import { renderSpinner_unstable } from '@fluentui/react-spinner';
 import { renderSplitButton_unstable } from '@fluentui/react-button';
+import { renderSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker';
+import { renderSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
 import { renderSwitch_unstable } from '@fluentui/react-switch';
 import { renderTab_unstable } from '@fluentui/react-tabs';
 import { renderTable_unstable } from '@fluentui/react-table';
@@ -769,6 +809,14 @@ import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
 import { renderTag_unstable } from '@fluentui/react-tags';
 import { renderTagGroup_unstable } from '@fluentui/react-tags';
+import { renderTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { renderTagPickerOptionGroup } from '@fluentui/react-tag-picker';
 import { renderTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
 import { renderTeachingPopoverCarousel_unstable } from '@fluentui/react-teaching-popover';
@@ -884,6 +932,25 @@ import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
 import { SubtreeContextValue } from '@fluentui/react-tree';
+import { swatchCSSVars } from '@fluentui/react-swatch-picker';
+import { SwatchPicker } from '@fluentui/react-swatch-picker';
+import { swatchPickerClassNames } from '@fluentui/react-swatch-picker';
+import { swatchPickerContextDefaultValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValue } from '@fluentui/react-swatch-picker';
+import { SwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { SwatchPickerGridProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectEventHandler } from '@fluentui/react-swatch-picker';
+import { SwatchPickerOnSelectionChangeData } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerProvider } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRow } from '@fluentui/react-swatch-picker';
+import { swatchPickerRowClassNames } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowProps } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerRowState } from '@fluentui/react-swatch-picker';
+import { SwatchPickerSlots } from '@fluentui/react-swatch-picker';
+import { SwatchPickerState } from '@fluentui/react-swatch-picker';
+import { SwatchProps } from '@fluentui/react-swatch-picker';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -983,6 +1050,49 @@ import { tagGroupClassNames } from '@fluentui/react-tags';
 import { TagGroupProps } from '@fluentui/react-tags';
 import { TagGroupSlots } from '@fluentui/react-tags';
 import { TagGroupState } from '@fluentui/react-tags';
+import { TagPicker } from '@fluentui/react-tag-picker';
+import { TagPickerButton } from '@fluentui/react-tag-picker';
+import { tagPickerButtonClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerButtonProps } from '@fluentui/react-tag-picker';
+import { TagPickerButtonSlots } from '@fluentui/react-tag-picker';
+import { TagPickerButtonState } from '@fluentui/react-tag-picker';
+import { TagPickerContextValues } from '@fluentui/react-tag-picker';
+import { TagPickerControl } from '@fluentui/react-tag-picker';
+import { tagPickerControlClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerControlProps } from '@fluentui/react-tag-picker';
+import { TagPickerControlSlots } from '@fluentui/react-tag-picker';
+import { TagPickerControlState } from '@fluentui/react-tag-picker';
+import { TagPickerGroup } from '@fluentui/react-tag-picker';
+import { tagPickerGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerInput } from '@fluentui/react-tag-picker';
+import { tagPickerInputClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerInputProps } from '@fluentui/react-tag-picker';
+import { TagPickerInputSlots } from '@fluentui/react-tag-picker';
+import { TagPickerInputState } from '@fluentui/react-tag-picker';
+import { TagPickerList } from '@fluentui/react-tag-picker';
+import { tagPickerListClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerListProps } from '@fluentui/react-tag-picker';
+import { TagPickerListSlots } from '@fluentui/react-tag-picker';
+import { TagPickerListState } from '@fluentui/react-tag-picker';
+import { TagPickerOnOpenChangeData } from '@fluentui/react-tag-picker';
+import { TagPickerOnOptionSelectData } from '@fluentui/react-tag-picker';
+import { TagPickerOption } from '@fluentui/react-tag-picker';
+import { tagPickerOptionClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { tagPickerOptionGroupClassNames } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionGroupState } from '@fluentui/react-tag-picker';
+import { TagPickerOptionProps } from '@fluentui/react-tag-picker';
+import { TagPickerOptionSlots } from '@fluentui/react-tag-picker';
+import { TagPickerOptionState } from '@fluentui/react-tag-picker';
+import { TagPickerProps } from '@fluentui/react-tag-picker';
+import { TagPickerSize } from '@fluentui/react-tag-picker';
+import { TagPickerSlots } from '@fluentui/react-tag-picker';
+import { TagPickerState } from '@fluentui/react-tag-picker';
 import { TagProps } from '@fluentui/react-tags';
 import { TagShape } from '@fluentui/react-tags';
 import { TagSize } from '@fluentui/react-tags';
@@ -1201,6 +1311,7 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAnimationFrame } from '@fluentui/react-utilities';
 import { useAnnounce } from '@fluentui/react-shared-contexts';
 import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 import { useAriaLiveAnnouncerContextValues_unstable } from '@fluentui/react-aria';
@@ -1241,6 +1352,8 @@ import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColorSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useColorSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
@@ -1286,6 +1399,8 @@ import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDrawer_unstable } from '@fluentui/react-drawer';
 import { useDrawerBody_unstable } from '@fluentui/react-drawer';
 import { useDrawerBodyStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerContext_unstable } from '@fluentui/react-drawer';
+import { useDrawerContextValue } from '@fluentui/react-drawer';
 import { useDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { useDrawerFooterStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeader_unstable } from '@fluentui/react-drawer';
@@ -1297,6 +1412,8 @@ import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEmptySwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useEmptySwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
@@ -1321,6 +1438,8 @@ import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useImageSwatch_unstable } from '@fluentui/react-swatch-picker';
+import { useImageSwatchStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
 import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
@@ -1384,10 +1503,12 @@ import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { useMessageBar_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarContextValue_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
 import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
@@ -1457,6 +1578,12 @@ import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
 import { useSubtreeContext_unstable } from '@fluentui/react-tree';
+import { useSwatchPicker_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValue_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerContextValues } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRow_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerRowStyles_unstable } from '@fluentui/react-swatch-picker';
+import { useSwatchPickerStyles_unstable } from '@fluentui/react-swatch-picker';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -1498,6 +1625,22 @@ import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroup_unstable } from '@fluentui/react-tags';
 import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
 import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagPicker_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButton_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerButtonStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControl_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerControlStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerFilter } from '@fluentui/react-tag-picker';
+import { useTagPickerGroup_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerGroupStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInput_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerInputStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerList_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerListStyles_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOption_unstable } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroup } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionGroupStyles } from '@fluentui/react-tag-picker';
+import { useTagPickerOptionStyles_unstable } from '@fluentui/react-tag-picker';
 import { useTagStyles_unstable } from '@fluentui/react-tags';
 import { useTeachingPopover_unstable } from '@fluentui/react-teaching-popover';
 import { useTeachingPopoverBody_unstable } from '@fluentui/react-teaching-popover';
@@ -1528,6 +1671,7 @@ import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
 import { useTextStyles_unstable } from '@fluentui/react-text';
 import { useThemeClassName_unstable as useThemeClassName } from '@fluentui/react-shared-contexts';
+import { useTimeout } from '@fluentui/react-utilities';
 import { useToast_unstable } from '@fluentui/react-toast';
 import { useToastBody_unstable } from '@fluentui/react-toast';
 import { useToastBodyStyles_unstable } from '@fluentui/react-toast';
@@ -1666,6 +1810,10 @@ export { AriaLiveAnnouncerState }
 export { arrowHeights }
 
 export { assertSlots }
+
+export { AtomMotion }
+
+export { AtomMotionFn }
 
 export { Avatar }
 
@@ -1881,6 +2029,16 @@ export { CheckboxState }
 
 export { ColorPaletteTokens }
 
+export { ColorSwatch }
+
+export { colorSwatchClassNames }
+
+export { ColorSwatchProps }
+
+export { ColorSwatchSlots }
+
+export { ColorSwatchState }
+
 export { ColorTokens }
 
 export { ColumnIdContextProvider }
@@ -1944,6 +2102,12 @@ export { CreateFocusOutlineStyleOptions }
 export { createHighContrastTheme }
 
 export { createLightTheme }
+
+export { createMotionComponent }
+
+export { createPresenceComponent }
+
+export { createPresenceComponentVariant }
 
 export { createTableColumn }
 
@@ -2077,11 +2241,15 @@ export { DialogContentState }
 
 export { DialogContextValue }
 
+export { DialogModalType }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
 
 export { DialogProps }
+
+export { DialogProvider }
 
 export { DialogSlots }
 
@@ -2147,6 +2315,8 @@ export { DrawerBodySlots }
 
 export { DrawerBodyState }
 
+export { DrawerContextValue }
+
 export { DrawerFooter }
 
 export { drawerFooterClassNames }
@@ -2189,6 +2359,8 @@ export { DrawerHeaderTitleState }
 
 export { DrawerProps }
 
+export { DrawerProvider }
+
 export { DrawerSlots }
 
 export { DrawerState }
@@ -2210,6 +2382,16 @@ export { DropdownSlots }
 export { DropdownState }
 
 export { DurationTokens }
+
+export { EmptySwatch }
+
+export { emptySwatchClassNames }
+
+export { EmptySwatchProps }
+
+export { EmptySwatchSlots }
+
+export { EmptySwatchState }
 
 export { Field }
 
@@ -2306,6 +2488,16 @@ export { ImageProps }
 export { ImageSlots }
 
 export { ImageState }
+
+export { ImageSwatch }
+
+export { imageSwatchClassNames }
+
+export { ImageSwatchProps }
+
+export { ImageSwatchSlots }
+
+export { ImageSwatchState }
 
 export { InfoLabel }
 
@@ -2591,6 +2783,8 @@ export { MessageBarActions }
 
 export { messageBarActionsClassNames }
 
+export { MessageBarActionsContextValues }
+
 export { MessageBarActionsProps }
 
 export { MessageBarActionsSlots }
@@ -2612,6 +2806,8 @@ export { messageBarClassNames }
 export { MessageBarContextProvider }
 
 export { MessageBarContextValue }
+
+export { MessageBarContextValues }
 
 export { MessageBarGroup }
 
@@ -2640,6 +2836,14 @@ export { MessageBarTitleProps }
 export { MessageBarTitleSlots }
 
 export { MessageBarTitleState }
+
+export { MessageBarTransitionContextValue }
+
+export { MotionComponentProps }
+
+export { MotionImperativeRef }
+
+export { motionTokens }
 
 export { OnOpenChangeData }
 
@@ -2787,9 +2991,17 @@ export { presenceBlockedRegular }
 
 export { presenceBusyFilled }
 
+export { PresenceComponentProps }
+
 export { presenceDndFilled }
 
 export { presenceDndRegular }
+
+export { PresenceGroup }
+
+export { PresenceMotion }
+
+export { PresenceMotionFn }
 
 export { presenceOfflineRegular }
 
@@ -2917,6 +3129,8 @@ export { renderCardPreview_unstable }
 
 export { renderCheckbox_unstable }
 
+export { renderColorSwatch_unstable }
+
 export { renderCombobox_unstable }
 
 export { renderCompoundButton_unstable }
@@ -2965,6 +3179,8 @@ export { renderDrawerHeaderTitle_unstable }
 
 export { renderDropdown_unstable }
 
+export { renderEmptySwatch_unstable }
+
 export { RendererProvider }
 
 export { renderField_unstable }
@@ -2974,6 +3190,8 @@ export { renderFlatTree_unstable }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderImageSwatch_unstable }
 
 export { renderInfoLabel_unstable }
 
@@ -3075,6 +3293,12 @@ export { renderSpinner_unstable }
 
 export { renderSplitButton_unstable }
 
+export { renderSwatchPicker_unstable }
+
+export { renderSwatchPickerGrid }
+
+export { renderSwatchPickerRow_unstable }
+
 export { renderSwitch_unstable }
 
 export { renderTab_unstable }
@@ -3104,6 +3328,22 @@ export { renderTabList_unstable }
 export { renderTag_unstable }
 
 export { renderTagGroup_unstable }
+
+export { renderTagPicker_unstable }
+
+export { renderTagPickerButton_unstable }
+
+export { renderTagPickerControl_unstable }
+
+export { renderTagPickerGroup_unstable }
+
+export { renderTagPickerInput_unstable }
+
+export { renderTagPickerList_unstable }
+
+export { renderTagPickerOption_unstable }
+
+export { renderTagPickerOptionGroup }
 
 export { renderTeachingPopover_unstable }
 
@@ -3335,6 +3575,44 @@ export { subtitle2StrongerClassNames }
 
 export { SubtreeContextValue }
 
+export { swatchCSSVars }
+
+export { SwatchPicker }
+
+export { swatchPickerClassNames }
+
+export { swatchPickerContextDefaultValue }
+
+export { SwatchPickerContextValue }
+
+export { SwatchPickerContextValues }
+
+export { SwatchPickerGridProps }
+
+export { SwatchPickerOnSelectEventHandler }
+
+export { SwatchPickerOnSelectionChangeData }
+
+export { SwatchPickerProps }
+
+export { SwatchPickerProvider }
+
+export { SwatchPickerRow }
+
+export { swatchPickerRowClassNames }
+
+export { SwatchPickerRowProps }
+
+export { SwatchPickerRowSlots }
+
+export { SwatchPickerRowState }
+
+export { SwatchPickerSlots }
+
+export { SwatchPickerState }
+
+export { SwatchProps }
+
 export { Switch }
 
 export { switchClassNames }
@@ -3532,6 +3810,92 @@ export { TagGroupProps }
 export { TagGroupSlots }
 
 export { TagGroupState }
+
+export { TagPicker }
+
+export { TagPickerButton }
+
+export { tagPickerButtonClassNames }
+
+export { TagPickerButtonProps }
+
+export { TagPickerButtonSlots }
+
+export { TagPickerButtonState }
+
+export { TagPickerContextValues }
+
+export { TagPickerControl }
+
+export { tagPickerControlClassNames }
+
+export { TagPickerControlProps }
+
+export { TagPickerControlSlots }
+
+export { TagPickerControlState }
+
+export { TagPickerGroup }
+
+export { tagPickerGroupClassNames }
+
+export { TagPickerGroupProps }
+
+export { TagPickerGroupSlots }
+
+export { TagPickerGroupState }
+
+export { TagPickerInput }
+
+export { tagPickerInputClassNames }
+
+export { TagPickerInputProps }
+
+export { TagPickerInputSlots }
+
+export { TagPickerInputState }
+
+export { TagPickerList }
+
+export { tagPickerListClassNames }
+
+export { TagPickerListProps }
+
+export { TagPickerListSlots }
+
+export { TagPickerListState }
+
+export { TagPickerOnOpenChangeData }
+
+export { TagPickerOnOptionSelectData }
+
+export { TagPickerOption }
+
+export { tagPickerOptionClassNames }
+
+export { TagPickerOptionGroup }
+
+export { tagPickerOptionGroupClassNames }
+
+export { TagPickerOptionGroupProps }
+
+export { TagPickerOptionGroupSlots }
+
+export { TagPickerOptionGroupState }
+
+export { TagPickerOptionProps }
+
+export { TagPickerOptionSlots }
+
+export { TagPickerOptionState }
+
+export { TagPickerProps }
+
+export { TagPickerSize }
+
+export { TagPickerSlots }
+
+export { TagPickerState }
 
 export { TagProps }
 
@@ -3969,6 +4333,8 @@ export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
 
+export { useAnimationFrame }
+
 export { useAnnounce }
 
 export { useAriaLiveAnnouncer_unstable }
@@ -4048,6 +4414,10 @@ export { useCheckbox_unstable }
 export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
+
+export { useColorSwatch_unstable }
+
+export { useColorSwatchStyles_unstable }
 
 export { useColumnIdContext }
 
@@ -4139,6 +4509,10 @@ export { useDrawerBody_unstable }
 
 export { useDrawerBodyStyles_unstable }
 
+export { useDrawerContext_unstable }
+
+export { useDrawerContextValue }
+
 export { useDrawerFooter_unstable }
 
 export { useDrawerFooterStyles_unstable }
@@ -4160,6 +4534,10 @@ export { useDrawerStyles_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useEmptySwatch_unstable }
+
+export { useEmptySwatchStyles_unstable }
 
 export { useEventCallback }
 
@@ -4208,6 +4586,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useImageSwatch_unstable }
+
+export { useImageSwatchStyles_unstable }
 
 export { useInfoLabel_unstable }
 
@@ -4335,6 +4717,8 @@ export { useMessageBar_unstable }
 
 export { useMessageBarActions_unstable }
 
+export { useMessageBarActionsContextValue_unstable }
+
 export { useMessageBarActionsStyles_unstable }
 
 export { useMessageBarBody_unstable }
@@ -4342,6 +4726,8 @@ export { useMessageBarBody_unstable }
 export { useMessageBarBodyStyles_unstable }
 
 export { useMessageBarContext }
+
+export { useMessageBarContextValue_unstable }
 
 export { useMessageBarGroup_unstable }
 
@@ -4481,6 +4867,18 @@ export { useSplitButtonStyles_unstable }
 
 export { useSubtreeContext_unstable }
 
+export { useSwatchPicker_unstable }
+
+export { useSwatchPickerContextValue_unstable }
+
+export { useSwatchPickerContextValues }
+
+export { useSwatchPickerRow_unstable }
+
+export { useSwatchPickerRowStyles_unstable }
+
+export { useSwatchPickerStyles_unstable }
+
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
@@ -4563,6 +4961,38 @@ export { useTagGroupContextValues_unstable }
 
 export { useTagGroupStyles_unstable }
 
+export { useTagPicker_unstable }
+
+export { useTagPickerButton_unstable }
+
+export { useTagPickerButtonStyles_unstable }
+
+export { useTagPickerControl_unstable }
+
+export { useTagPickerControlStyles_unstable }
+
+export { useTagPickerFilter }
+
+export { useTagPickerGroup_unstable }
+
+export { useTagPickerGroupStyles_unstable }
+
+export { useTagPickerInput_unstable }
+
+export { useTagPickerInputStyles_unstable }
+
+export { useTagPickerList_unstable }
+
+export { useTagPickerListStyles_unstable }
+
+export { useTagPickerOption_unstable }
+
+export { useTagPickerOptionGroup }
+
+export { useTagPickerOptionGroupStyles }
+
+export { useTagPickerOptionStyles_unstable }
+
 export { useTagStyles_unstable }
 
 export { useTeachingPopover_unstable }
@@ -4622,6 +5052,8 @@ export { useTextareaStyles_unstable }
 export { useTextStyles_unstable }
 
 export { useThemeClassName }
+
+export { useTimeout }
 
 export { useToast_unstable }
 

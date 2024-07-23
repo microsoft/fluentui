@@ -16,7 +16,7 @@ const Component = () => <Card>Lorem ipsum, dolor sit amet consectetur adipisicin
 After:
 
 ```tsx
-import { Card } from '@fluentui/react-components/unstable';
+import { Card } from '@fluentui/react-components';
 const Component = () => <Card>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Card>;
 ```
 
@@ -65,7 +65,7 @@ After:
 
 ```tsx
 // in COMPONENT_NAME.tsx
-import { Card } from '@fluentui/react-components/unstable';
+import { Card } from '@fluentui/react-components';
 import { useStyles } from './COMPONENT_NAME.styles.ts';
 
 export const Component = () => {
@@ -75,7 +75,7 @@ export const Component = () => {
 };
 
 // in COMPONENT_NAME.styles.ts
-import { makeStyles, tokens } from '@fluentui/react-components/unstable';
+import { makeStyles, tokens } from '@fluentui/react-components';
 
 export const useStyles = makeStyles({
   actionCard: {
@@ -127,7 +127,7 @@ After:
 
 ```tsx
 // in COMPONENT_NAME.tsx
-import { Card, mergeClasses } from '@fluentui/react-components/unstable';
+import { Card, mergeClasses } from '@fluentui/react-components';
 import { useStyles } from './COMPONENT_NAME.styles.ts';
 
 export const Component = props => {
@@ -141,7 +141,7 @@ export const Component = props => {
 };
 
 // in COMPONENT_NAME.styles.ts
-import { makeStyles } from '@fluentui/react-components/unstable';
+import { makeStyles } from '@fluentui/react-components';
 
 export const useStyles = makeStyles({
   chatListGroupTitleAsHeader: {
@@ -168,8 +168,8 @@ After:
 
 ```tsx
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components/unstable';
-import { Card } from '@fluentui/react-components/unstable';
+import { makeStyles } from '@fluentui/react-components';
+import { Card } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   centeredCard: {
@@ -204,8 +204,8 @@ After:
 
 ```jsx
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components/unstable';
-import { Card } from '@fluentui/react-components/unstable';
+import { makeStyles } from '@fluentui/react-components';
+import { Card } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   parent: {

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/a11y-testing",
+  "name": "a11y-testing",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

@@ -1,6 +1,11 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  scaleBand as d3ScaleBand,
+  scaleUtc as d3ScaleUtc,
+  scaleTime as d3ScaleTime,
+} from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
@@ -8,6 +13,7 @@ import {
   timeFormat as d3TimeFormat,
   timeFormatLocale as d3TimeFormatLocale,
   TimeLocaleDefinition as d3TimeLocaleDefinition,
+  utcFormat as d3UtcFormat,
 } from 'd3-time-format';
 import {
   timeSecond as d3TimeSecond,
@@ -17,6 +23,13 @@ import {
   timeMonth as d3TimeMonth,
   timeWeek as d3TimeWeek,
   timeYear as d3TimeYear,
+  utcSecond as d3UtcSecond,
+  utcMinute as d3UtcMinute,
+  utcHour as d3UtcHour,
+  utcDay as d3UtcDay,
+  utcMonth as d3UtcMonth,
+  utcWeek as d3UtcWeek,
+  utcYear as d3UtcYear,
 } from 'd3-time';
 import {
   IAccessibilityProps,
@@ -177,8 +190,9 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeLocaleObject) {
-  const timeFormat = locale ? locale.format : d3TimeFormat;
+function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: boolean) {
+  const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
+
   const formatMillisecond = timeFormat('.%L');
   const formatSecond = timeFormat(':%S');
   const formatMinute = timeFormat('%I:%M');
@@ -188,20 +202,28 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject) {
   const formatMonth = timeFormat('%B');
   const formatYear = timeFormat('%Y');
 
+  const timeSecond = useUTC ? d3UtcSecond : d3TimeSecond;
+  const timeMinute = useUTC ? d3UtcMinute : d3TimeMinute;
+  const timeHour = useUTC ? d3UtcHour : d3TimeHour;
+  const timeDay = useUTC ? d3UtcDay : d3TimeDay;
+  const timeMonth = useUTC ? d3UtcMonth : d3TimeMonth;
+  const timeWeek = useUTC ? d3UtcWeek : d3TimeWeek;
+  const timeYear = useUTC ? d3UtcYear : d3TimeYear;
+
   return (
-    d3TimeSecond(date) < date
+    timeSecond(date) < date
       ? formatMillisecond
-      : d3TimeMinute(date) < date
+      : timeMinute(date) < date
       ? formatSecond
-      : d3TimeHour(date) < date
+      : timeHour(date) < date
       ? formatMinute
-      : d3TimeDay(date) < date
+      : timeDay(date) < date
       ? formatHour
-      : d3TimeMonth(date) < date
-      ? d3TimeWeek(date) < date
+      : timeMonth(date) < date
+      ? timeWeek(date) < date
         ? formatDay
         : formatWeek
-      : d3TimeYear(date) < date
+      : timeYear(date) < date
       ? formatMonth
       : formatYear
   )(date);
@@ -220,9 +242,11 @@ export function createDateXAxis(
   options?: Intl.DateTimeFormatOptions,
   timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
+  useUTC?: boolean,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
-  const xAxisScale = d3ScaleUtc()
+  const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
+  xAxisScale
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
@@ -238,13 +262,15 @@ export function createDateXAxis(
     const locale: d3TimeLocaleObject = d3TimeFormatLocale(timeFormatLocale!);
 
     xAxis.tickFormat((domainValue: Date, _index: number) => {
-      return multiFormat(domainValue, locale);
+      return multiFormat(domainValue, locale, useUTC);
     });
   }
 
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   if (culture === undefined) {
-    tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat(tickParams.tickFormat)) : '';
+    tickParams.tickFormat
+      ? xAxis.tickFormat(useUTC ? d3UtcFormat(tickParams.tickFormat) : d3TimeFormat(tickParams.tickFormat))
+      : '';
   }
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
@@ -252,7 +278,7 @@ export function createDateXAxis(
   const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
     const tickFormat = xAxis.tickFormat();
     // val is a Date object. So when the tick format is not set, format val as a string to calculate its width
-    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date);
+    return tickFormat ? tickFormat(val, idx) : multiFormat(val as Date, undefined, useUTC);
   });
   return { xScale: xAxisScale, tickValues };
 }
@@ -328,35 +354,7 @@ export function prepareDatapoints(
   return dataPointsArray;
 }
 
-/**
- * Creating Numeric Y axis of the chart
- * @export
- * @param {IYAxisParams} yAxisParams
- * @param {boolean} isRtl
- */
-export function createYAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  chartType: ChartTypes,
-  barWidth: number,
-  isIntegralDataset: boolean,
-  useSecondaryYScale: boolean = false,
-) {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createYAxisForHorizontalBarChartWithAxis(yAxisParams, isRtl, axisData, barWidth!);
-    default:
-      return createYAxisForOtherCharts(yAxisParams, isRtl, axisData, isIntegralDataset, useSecondaryYScale);
-  }
-}
-
-export function createYAxisForHorizontalBarChartWithAxis(
-  yAxisParams: IYAxisParams,
-  isRtl: boolean,
-  axisData: IAxisData,
-  barWidth: number,
-) {
+export function createYAxisForHorizontalBarChartWithAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
   const {
     yMinMaxValues = { startValue: 0, endValue: 0 },
     yAxisElement = null,
@@ -384,7 +382,7 @@ export function createYAxisForHorizontalBarChartWithAxis(
   return yAxisScale;
 }
 
-export function createYAxisForOtherCharts(
+export function createNumericYAxis(
   yAxisParams: IYAxisParams,
   isRtl: boolean,
   axisData: IAxisData,
@@ -428,22 +426,6 @@ export function createYAxisForOtherCharts(
   return yAxisScale;
 }
 
-export const createStringYAxis = (
-  yAxisParams: IYAxisParams,
-  dataPoints: string[],
-  isRtl: boolean,
-  chartType: ChartTypes,
-  barWidth: number | undefined,
-  culture?: string,
-) => {
-  switch (chartType) {
-    case ChartTypes.HorizontalBarChartWithAxis:
-      return createStringYAxisForHorizontalBarChartWithAxis(yAxisParams, dataPoints, isRtl, barWidth!, culture);
-    default:
-      return createStringYAxisForOtherCharts(yAxisParams, dataPoints, isRtl);
-  }
-};
-
 /**
  * Creating String Y axis of the chart for Horizontal Bar Chart With Axis
  * @param yAxisParams
@@ -455,7 +437,6 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
   dataPoints: string[],
   isRtl: boolean,
   barWidth: number,
-  culture?: string,
 ) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement } = yAxisParams;
 
@@ -477,7 +458,7 @@ export const createStringYAxisForHorizontalBarChartWithAxis = (
  * @param dataPoints
  * @param isRtl
  */
-export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
+export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[], isRtl: boolean) => {
   const { containerHeight, tickPadding = 12, margins, yAxisTickFormat, yAxisElement, yAxisPadding = 0 } = yAxisParams;
   const yAxisScale = d3ScaleBand()
     .domain(dataPoints)
@@ -713,7 +694,6 @@ export function createYAxisLabels(
   yAxis: any,
   noOfCharsToTruncate: number,
   truncateLabel: boolean,
-  xValue: number,
   isRtl: boolean,
 ) {
   if (node === null) {
@@ -1052,86 +1032,6 @@ export function domainRageOfVerticalNumeric(
 }
 
 /**
- * For creating X axis, need to calculate x axis domain and range values from given points.
- * This may vary based on chart type and type of x axis
- * So, this method will define which method need to call based on chart type and axis type.
- * @export
- * @param {*} points
- * @param {IMargins} margins
- * @param {number} width
- * @param {ChartTypes} chartType
- * @param {boolean} isRTL
- * @param {XAxisTypes} xAxisType
- * @param {number} [barWidth]
- * @returns {IDomainNRange}
- */
-export function getDomainNRangeValues(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  margins: IMargins,
-  width: number,
-  chartType: ChartTypes,
-  isRTL: boolean,
-  xAxisType: XAxisTypes,
-  barWidth: number,
-  tickValues: Date[] | number[] | undefined,
-  shiftX: number,
-): IDomainNRange {
-  let domainNRangeValue: IDomainNRange;
-  if (xAxisType === XAxisTypes.NumericAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-        domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
-        break;
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfVSBCNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.VerticalBarChart:
-        domainNRangeValue = domainRageOfVerticalNumeric(points, margins, width, isRTL, barWidth!);
-        break;
-      case ChartTypes.HorizontalBarChartWithAxis:
-        domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else if (xAxisType === XAxisTypes.DateAxis) {
-    switch (chartType) {
-      case ChartTypes.AreaChart:
-      case ChartTypes.LineChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.VerticalStackedBarChart:
-        domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
-          points,
-          margins,
-          width,
-          isRTL,
-          tickValues! as Date[],
-          chartType,
-          barWidth,
-        );
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  } else {
-    // String Axis type
-    switch (chartType) {
-      case ChartTypes.VerticalStackedBarChart:
-      case ChartTypes.GroupedVerticalBarChart:
-      case ChartTypes.VerticalBarChart:
-      case ChartTypes.HeatMapChart:
-        domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
-        break;
-      default:
-        domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
-    }
-  }
-  return domainNRangeValue;
-}
-
-/**
  * Calculating start and ending values of the Area chart and LineChart
  * @export
  * @param {ILineChartPoints[]} points
@@ -1216,45 +1116,6 @@ export function findHBCWANumericMinMaxOfY(
     return { startValue: yMin, endValue: yMax };
   }
   return { startValue: 0, endValue: 0 };
-}
-
-/**
- * For creating Y axis, need to calculate y axis domain values from given points. This may vary based on chart type.
- * So, this method will define which method need to call based on chart type to find out min and max values(For Domain).
- * For grouped vertical bar chart, Calculating yMax value in the base file and sending as MaxOfYVal to cartesian.
- * @export
- * @param {*} points
- * @param {ChartTypes} chartType
- * @returns {{ startValue: number; endValue: number }}
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getMinMaxOfYAxis(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  points: any,
-  chartType: ChartTypes,
-  yAxisType: YAxisType | undefined = YAxisType.NumericAxis,
-): { startValue: number; endValue: number } {
-  let minMaxValues: { startValue: number; endValue: number };
-
-  switch (chartType) {
-    case ChartTypes.AreaChart:
-    case ChartTypes.LineChart:
-      minMaxValues = findNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalStackedBarChart:
-      minMaxValues = findVSBCNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.VerticalBarChart:
-      minMaxValues = findVerticalNumericMinMaxOfY(points);
-      break;
-    case ChartTypes.HorizontalBarChartWithAxis:
-      minMaxValues = findHBCWANumericMinMaxOfY(points, yAxisType);
-      break;
-    default:
-      minMaxValues = { startValue: 0, endValue: 0 };
-  }
-
-  return minMaxValues;
 }
 
 /**
@@ -1517,4 +1378,9 @@ export const getScalePadding = (prop: number | undefined, shorthandProp?: number
 
 export const isScalePaddingDefined = (prop: number | undefined, shorthandProp?: number): boolean => {
   return typeof prop === 'number' || typeof shorthandProp === 'number';
+};
+
+export const formatDate = (date: Date, useUTC?: boolean) => {
+  const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
+  return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };

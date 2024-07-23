@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import { ButtonProps } from '@fluentui/react-components';
 import { ComponentProps } from '@fluentui/react-components';
 import type { ComponentProps as ComponentProps_2 } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
@@ -21,6 +22,79 @@ import { Slot } from '@fluentui/react-components';
 import { Slot as Slot_2 } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
+
+// @public (undocumented)
+export const Attachment: React_2.ForwardRefExoticComponent<AttachmentProps & React_2.RefAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export const AttachmentAction: React_2.ForwardRefExoticComponent<ButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
+
+// @public (undocumented)
+export const attachmentActionClassName = "fui-AttachmentAction";
+
+// @public (undocumented)
+export type AttachmentActionProps = ButtonProps;
+
+// @public (undocumented)
+export const AttachmentBody: React_2.FC<AttachmentBodyProps>;
+
+// @public (undocumented)
+export const attachmentBodyClassName = "fui-AttachmentBody";
+
+// @public (undocumented)
+export interface AttachmentBodyProps extends React_2.HTMLAttributes<HTMLDivElement> {
+}
+
+// @public (undocumented)
+export const attachmentClassName = "fui-Attachment";
+
+// @public (undocumented)
+export const AttachmentDescription: React_2.FC<AttachmentDescriptionProps>;
+
+// @public (undocumented)
+export const attachmentDescriptionClassName = "fui-AttachmentDescription";
+
+// @public (undocumented)
+export interface AttachmentDescriptionProps extends React_2.HTMLAttributes<HTMLSpanElement> {
+}
+
+// @public (undocumented)
+export const AttachmentHeader: React_2.FC<AttachmentHeaderProps>;
+
+// @public (undocumented)
+export const attachmentHeaderClassName = "fui-AttachmentHeader";
+
+// @public (undocumented)
+export interface AttachmentHeaderProps extends React_2.HTMLAttributes<HTMLSpanElement> {
+}
+
+// @public (undocumented)
+export const AttachmentIcon: React_2.FC<AttachmentIconProps>;
+
+// @public (undocumented)
+export const attachmentIconClassName = "fui-AttachmentIcon";
+
+// @public (undocumented)
+export interface AttachmentIconProps extends React_2.HTMLAttributes<HTMLSpanElement> {
+}
+
+// @public (undocumented)
+export const attachmentProgressBarClassName: string;
+
+// @public (undocumented)
+export const attachmentProgressContainerClassName: string;
+
+// @public (undocumented)
+export interface AttachmentProps extends React_2.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    actionable?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    onClick?: (event: React_2.MouseEvent<HTMLDivElement, MouseEvent>) => void;
+    // (undocumented)
+    progress?: string | number;
+}
 
 // @public (undocumented)
 export const Flex: React_2.ForwardRefExoticComponent<React_2.HTMLAttributes<HTMLElement> & FlexProps & React_2.RefAttributes<HTMLDivElement>>;
@@ -210,7 +284,7 @@ export type StyledTextSlots = {
 };
 
 // @public (undocumented)
-export const useFlexStyles: () => Record<"flex" | "fill" | "column" | "wrap" | "inline" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
+export const useFlexStyles: () => Record<"flex" | "fill" | "inline" | "column" | "wrap" | "alignItemsFlexStart" | "alignItemsCenter" | "alignItemsFlexEnd" | "alignItemsStretch" | "justifyContentFlexStart" | "justifyContentCenter" | "justifyContentFlexEnd" | "justifyContentStretch" | "justifyContentSpaceAround" | "justifyContentSpaceBetween" | "justifyContentSpaceEvenly" | "gapForColumnFlexSmall" | "gapForColumnFlexSmaller" | "gapForColumnFlexMedium" | "gapForColumnFlexLarge" | "gapForRowFlexSmall" | "gapForRowFlexSmaller" | "gapForRowFlexMedium" | "gapForRowFlexLarge" | "paddingMedium", string>;
 
 // @public (undocumented)
 export const useGridStyles: () => Record<"grid" | "onlyRows" | "rows1" | "rows2" | "rows3" | "columns1" | "columns2" | "columns3" | "columnsDefault", string>;

@@ -1,4 +1,4 @@
-<%= npmPackageName %>
+@<%= npmScope %>/<%= projectName %>
 
 Copyright (c) Microsoft Corporation
 
