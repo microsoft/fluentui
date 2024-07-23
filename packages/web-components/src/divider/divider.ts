@@ -4,11 +4,11 @@ import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole
 
 /**
  * A Divider Custom HTML Element.
- *
- * @remarks
  * A divider groups sections of content to create visual rhythm and hierarchy. Use dividers along with spacing and headers to organize content in your layout.
+ *
+ * @public
  */
-export class Divider extends FASTElement {
+export class BaseDivider extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -36,6 +36,60 @@ export class Divider extends FASTElement {
   @attr
   public orientation?: DividerOrientation;
 
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    this.elementInternals.role = this.role ?? DividerRole.separator;
+
+    if (this.role !== DividerRole.presentation) {
+      this.elementInternals.ariaOrientation = this.orientation ?? DividerOrientation.horizontal;
+    }
+  }
+
+  /**
+   * Sets the element's internal role when the role attribute changes.
+   *
+   * @param previous - the previous role value
+   * @param next - the current role value
+   * @internal
+   */
+  public roleChanged(previous: string | null, next: string | null): void {
+    if (this.$fastController.isConnected) {
+      this.elementInternals.role = `${next ?? DividerRole.separator}`;
+    }
+
+    if (next === DividerRole.presentation) {
+      this.elementInternals.ariaOrientation = null;
+    }
+  }
+
+  /**
+   * Sets the element's internal orientation when the orientation attribute changes.
+   *
+   * @param previous - the previous orientation value
+   * @param next - the current orientation value
+   * @internal
+   */
+  public orientationChanged(previous: string | null, next: string | null): void {
+    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next : null;
+
+    if (previous) {
+      toggleState(this.elementInternals, `${previous}`, false);
+    }
+
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+}
+
+/**
+ * A Divider Custom HTML Element.
+ * Based on BaseDivider and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Divider extends BaseDivider {
   /**
    * @public
    * @remarks
@@ -95,51 +149,5 @@ export class Divider extends FASTElement {
    */
   public insetChanged(prev: boolean, next: boolean) {
     toggleState(this.elementInternals, 'inset', next);
-  }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    this.elementInternals.role = this.role ?? DividerRole.separator;
-
-    if (this.role !== DividerRole.presentation) {
-      this.elementInternals.ariaOrientation = this.orientation ?? DividerOrientation.horizontal;
-    }
-  }
-
-  /**
-   * Sets the element's internal role when the role attribute changes.
-   *
-   * @param previous - the previous role value
-   * @param next - the current role value
-   * @internal
-   */
-  public roleChanged(previous: string | null, next: string | null): void {
-    if (this.$fastController.isConnected) {
-      this.elementInternals.role = `${next ?? DividerRole.separator}`;
-    }
-
-    if (next === DividerRole.presentation) {
-      this.elementInternals.ariaOrientation = null;
-    }
-  }
-
-  /**
-   * Sets the element's internal orientation when the orientation attribute changes.
-   *
-   * @param previous - the previous orientation value
-   * @param next - the current orientation value
-   * @internal
-   */
-  public orientationChanged(previous: string | null, next: string | null): void {
-    this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next : null;
-
-    if (previous) {
-      toggleState(this.elementInternals, `${previous}`, false);
-    }
-
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
   }
 }

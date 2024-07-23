@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Jul 2024 07:31:11 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.119.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.3)
+
+Tue, 23 Jul 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.2..@fluentui/react_v8.119.3)
+
+### Patches
+
+- fix(TimePicker): Clear text when date value changes to null ([PR #31626](https://github.com/microsoft/fluentui/pull/31626) by behowell@microsoft.com)
 
 ## [8.119.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.2)
 

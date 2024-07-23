@@ -2,6 +2,29 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 07:32:52 GMT",
+      "tag": "@fluentui/react_v8.119.3",
+      "version": "8.119.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "5c3c0ba435ef92e861911213807515aa003a4337",
+            "comment": "fix(TimePicker): Clear text when date value changes to null"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "b147de918bfc0282085ffa586ef5973f76d63b71",
+            "comment": "chore: introduce bundle aware build:react task for v8 packages that ship UMD to production(npm registry)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 07:31:11 GMT",
       "tag": "@fluentui/react_v8.119.2",
       "version": "8.119.2",

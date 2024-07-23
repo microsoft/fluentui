@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 19 Jul 2024 04:08:32 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 04:07:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.47)
+
+Tue, 23 Jul 2024 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.46..@fluentui/web-components_v3.0.0-beta.47)
+
+### Changes
+
+- fix: move spinner animation off of main thread ([PR #32056](https://github.com/microsoft/fluentui/pull/32056) by rupertdavid@microsoft.com)
+- chore: create divider base class to abstract style specfic api ([PR #32065](https://github.com/microsoft/fluentui/pull/32065) by jes@microsoft.com)
 
 ## [3.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.46)
 
