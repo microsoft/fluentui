@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: improve Web Animations API detection in tests",
-  "packageName": "@fluentui/react-motion",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
