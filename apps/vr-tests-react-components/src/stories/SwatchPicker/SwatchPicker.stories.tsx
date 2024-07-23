@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { SwatchPicker } from '@fluentui/react-swatch-picker-preview';
+import type { Meta } from '@storybook/react';
+import { SwatchPicker } from '@fluentui/react-swatch-picker';
 import { SampleSwatchPickerColors, SampleSwatchPickerImages, SampleSwatchPickerGrid, steps } from './utils';
-import { ComponentMeta } from '@storybook/react';
-import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
+
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';
 
 export default {
   title: 'SwatchPicker Converged',
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof SwatchPicker>;
+} satisfies Meta<typeof SwatchPicker>;
 
 export const Default = () => (
   <>
@@ -19,11 +20,12 @@ export const Default = () => (
     <SampleSwatchPickerGrid />
   </>
 );
-
 Default.storyName = 'default';
 
-export const AppearanceDarkMode = getStoryVariant(Default, DARK_MODE);
+export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
+
 export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
+
 export const DefaultRTL = getStoryVariant(Default, RTL);
 
 export const Size = () => (
@@ -45,7 +47,6 @@ export const Size = () => (
     <SampleSwatchPickerGrid size="large" />
   </>
 );
-
 Size.storyName = 'size';
 
 export const Shape = () => (
@@ -63,7 +64,6 @@ export const Shape = () => (
     <SampleSwatchPickerGrid shape="circular" />
   </>
 );
-
 Size.storyName = 'shape';
 
 export const Spacing = () => (
@@ -79,5 +79,4 @@ export const Spacing = () => (
     <SampleSwatchPickerGrid spacing="small" />
   </>
 );
-
 Size.storyName = 'spacing';

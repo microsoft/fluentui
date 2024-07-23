@@ -614,7 +614,7 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
   );
 });
 
-describe.skip('Line chart - Subcomponent Event', () => {
+describe('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   // Replace the original method with the mock implementation
   Object.defineProperty(
@@ -627,13 +627,22 @@ describe.skip('Line chart - Subcomponent Event', () => {
   testWithWait(
     'Should render events with defined data',
     LineChart,
-    { data: simplePoints, eventAnnotationProps, tickValues, tickFormat: '%m/%d' },
+    { data: simplePoints, eventAnnotationProps: eventAnnotationProps },
     container => {
       // Arrange
-      const event = screen.queryByText('3 events');
+      const events = screen.queryByText('events');
       // Assert
-      expect(event).toBeDefined();
-      fireEvent.click(event!);
+      expect(events).not.toBeNull();
+      expect(screen.queryByText('3')).not.toBeNull();
+
+      const clubbedEvents = events!.closest('g');
+      expect(clubbedEvents).not.toBeNull();
+      fireEvent.click(clubbedEvents!);
+
+      expect(screen.queryByText('event 1 message')).not.toBeNull();
+      expect(screen.queryByText('event 2 message')).not.toBeNull();
+      expect(screen.queryByText('event 3 message')).not.toBeNull();
+      expect(screen.queryByText('event 4 message')).toBeNull();
     },
   );
 });

@@ -4,1730 +4,3695 @@
 
 ```ts
 
-import { Accordion } from '@microsoft/fast-foundation';
-import { AccordionItem } from '@microsoft/fast-foundation';
-import { AccordionItemOptions } from '@microsoft/fast-foundation';
-import { Anchor as Anchor_2 } from '@microsoft/fast-foundation';
-import { AnchoredRegion } from '@microsoft/fast-foundation';
-import { Badge as Badge_2 } from '@microsoft/fast-foundation';
-import { BaseProgress } from '@microsoft/fast-foundation';
-import { Behavior } from '@microsoft/fast-element';
-import { Breadcrumb } from '@microsoft/fast-foundation';
-import { BreadcrumbItem } from '@microsoft/fast-foundation';
-import { BreadcrumbItemOptions } from '@microsoft/fast-foundation';
-import { Button as Button_2 } from '@microsoft/fast-foundation';
-import { CalendarOptions } from '@microsoft/fast-foundation';
-import { Card as Card_2 } from '@microsoft/fast-foundation';
-import { CheckboxOptions } from '@microsoft/fast-foundation';
-import { Combobox as Combobox_2 } from '@microsoft/fast-foundation';
-import { ComboboxOptions } from '@microsoft/fast-foundation';
-import { Constructable } from '@microsoft/fast-element';
-import type { Container } from '@microsoft/fast-foundation';
-import { CSSDesignToken } from '@microsoft/fast-foundation';
+/// <reference types="web" />
+
 import { CSSDirective } from '@microsoft/fast-element';
-import { DataGrid } from '@microsoft/fast-foundation';
-import { DataGridCell } from '@microsoft/fast-foundation';
-import { DataGridRow } from '@microsoft/fast-foundation';
-import { DesignSystem } from '@microsoft/fast-foundation';
-import { DesignToken } from '@microsoft/fast-foundation';
-import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
-import { Divider } from '@microsoft/fast-foundation';
-import { ElementDefinitionContext } from '@microsoft/fast-foundation';
 import { ElementStyles } from '@microsoft/fast-element';
+import { ElementViewTemplate } from '@microsoft/fast-element';
 import { FASTElement } from '@microsoft/fast-element';
-import { Flipper } from '@microsoft/fast-foundation';
-import { FlipperOptions } from '@microsoft/fast-foundation';
-import { FoundationElement } from '@microsoft/fast-foundation';
-import { FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { FoundationElementRegistry } from '@microsoft/fast-foundation';
-import { HorizontalScroll as HorizontalScroll_2 } from '@microsoft/fast-foundation';
-import { HorizontalScrollOptions } from '@microsoft/fast-foundation';
-import { Listbox as Listbox_2 } from '@microsoft/fast-foundation';
-import { ListboxOption } from '@microsoft/fast-foundation';
-import { Menu as Menu_2 } from '@microsoft/fast-foundation';
-import { MenuItem } from '@microsoft/fast-foundation';
-import { MenuItemOptions } from '@microsoft/fast-foundation';
-import { NumberField as NumberField_2 } from '@microsoft/fast-foundation';
-import { NumberFieldOptions } from '@microsoft/fast-foundation';
-import { OverrideFoundationElementDefinition } from '@microsoft/fast-foundation';
-import { ProgressOptions } from '@microsoft/fast-foundation';
-import { ProgressRingOptions } from '@microsoft/fast-foundation';
-import { Radio } from '@microsoft/fast-foundation';
-import { RadioGroup } from '@microsoft/fast-foundation';
-import { RadioOptions } from '@microsoft/fast-foundation';
-import { Search as Search_2 } from '@microsoft/fast-foundation';
-import { SearchOptions } from '@microsoft/fast-foundation';
-import { Select as Select_2 } from '@microsoft/fast-foundation';
-import { SelectOptions } from '@microsoft/fast-foundation';
-import { Skeleton } from '@microsoft/fast-foundation';
-import { Slider } from '@microsoft/fast-foundation';
-import { SliderLabel } from '@microsoft/fast-foundation';
-import { SliderOptions } from '@microsoft/fast-foundation';
-import { Switch } from '@microsoft/fast-foundation';
-import { SwitchOptions } from '@microsoft/fast-foundation';
-import { Tab } from '@microsoft/fast-foundation';
-import { TabPanel } from '@microsoft/fast-foundation';
-import { Tabs } from '@microsoft/fast-foundation';
-import { TextArea as TextArea_2 } from '@microsoft/fast-foundation';
-import { TextField as TextField_2 } from '@microsoft/fast-foundation';
-import { Toolbar as Toolbar_2 } from '@microsoft/fast-foundation';
-import { Tooltip as Tooltip_2 } from '@microsoft/fast-foundation';
-import { TreeItem } from '@microsoft/fast-foundation';
-import { TreeItemOptions } from '@microsoft/fast-foundation';
-import { TreeView } from '@microsoft/fast-foundation';
+import { FASTElementDefinition } from '@microsoft/fast-element';
+import type { HostBehavior } from '@microsoft/fast-element';
+import type { HostController } from '@microsoft/fast-element';
+import { HTMLDirective } from '@microsoft/fast-element';
+import { Orientation } from '@microsoft/fast-web-utilities';
+import type { SyntheticViewTemplate } from '@microsoft/fast-element';
+import type { Theme } from '@fluentui/tokens';
 import { ViewTemplate } from '@microsoft/fast-element';
 
-// @public (undocumented)
-export const accentBaseColor: CSSDesignToken<Swatch>;
-
-// Warning: (ae-internal-missing-underscore) The name "AccentButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const AccentButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
-// @public (undocumented)
-export const accentFillActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentFillActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentFillFocus: CSSDesignToken<Swatch>;
+// @public
+export class Accordion extends FASTElement {
+    // @internal (undocumented)
+    protected accordionItems: Element[];
+    expandmode: AccordionExpandMode;
+    // (undocumented)
+    expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    // @internal (undocumented)
+    slottedAccordionItems: HTMLElement[];
+    // @internal (undocumented)
+    slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
+}
 
 // @public (undocumented)
-export const accentFillFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentFillHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentFillHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentFillRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const accentFillRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentFillRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentForegroundActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentForegroundActiveDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const accentForegroundCut: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const accentForegroundCutLarge: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentForegroundFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentForegroundFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentForegroundHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentForegroundHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentForegroundRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const accentForegroundRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentForegroundRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const accentPalette: DesignToken<Palette<Swatch>>;
-
-// @public (undocumented)
-export const accentStrokeControlActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentStrokeControlFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentStrokeControlHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const accentStrokeControlRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const accentStrokeControlRest: CSSDesignToken<Swatch>;
-
-export { Accordion }
-
-export { AccordionItem }
+export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
 
 // @public
-export const accordionItemStyles: (context: ElementDefinitionContext, definition: AccordionItemOptions) => ElementStyles;
-
-// @public
-export const accordionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const allComponents: {
-    fluentAccordion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Accordion>;
-    fluentAccordionItem: (overrideDefinition?: OverrideFoundationElementDefinition<AccordionItemOptions> | undefined) => FoundationElementRegistry<AccordionItemOptions, Constructable<FoundationElement>>;
-    fluentAnchor: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Anchor>;
-    fluentAnchoredRegion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof AnchoredRegion>;
-    fluentBadge: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Badge>;
-    fluentBreadcrumb: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Breadcrumb>;
-    fluentBreadcrumbItem: (overrideDefinition?: OverrideFoundationElementDefinition<BreadcrumbItemOptions> | undefined) => FoundationElementRegistry<BreadcrumbItemOptions, Constructable<FoundationElement>>;
-    fluentButton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Button>;
-    fluentCalendar: (overrideDefinition?: OverrideFoundationElementDefinition<CalendarOptions> | undefined) => FoundationElementRegistry<CalendarOptions, Constructable<FoundationElement>>;
-    fluentCard: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Card>;
-    fluentCheckbox: (overrideDefinition?: OverrideFoundationElementDefinition<CheckboxOptions> | undefined) => FoundationElementRegistry<CheckboxOptions, Constructable<FoundationElement>>;
-    fluentCombobox: (overrideDefinition?: OverrideFoundationElementDefinition<ComboboxOptions> | undefined) => FoundationElementRegistry<ComboboxOptions, Constructable<FoundationElement>>;
-    fluentDataGrid: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGrid>;
-    fluentDataGridCell: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, DataGridCell>;
-    fluentDataGridRow: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, DataGridRow>;
-    fluentDesignSystemProvider: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-    baseName: string;
-    template: ViewTemplate<any, any>;
-    styles: ElementStyles;
-    }> | undefined) => FoundationElementRegistry<    {
-    baseName: string;
-    template: ViewTemplate<any, any>;
-    styles: ElementStyles;
-    }, DesignSystemProvider>;
-    fluentDialog: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Dialog>;
-    fluentDivider: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Divider>;
-    fluentFlipper: (overrideDefinition?: OverrideFoundationElementDefinition<FlipperOptions> | undefined) => FoundationElementRegistry<FlipperOptions, Constructable<FoundationElement>>;
-    fluentHorizontalScroll: (overrideDefinition?: OverrideFoundationElementDefinition<HorizontalScrollOptions> | undefined) => FoundationElementRegistry<HorizontalScrollOptions, Constructable<FoundationElement>>;
-    fluentListbox: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Listbox>;
-    fluentOption: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof ListboxOption>;
-    fluentMenu: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Menu>;
-    fluentMenuItem: (overrideDefinition?: OverrideFoundationElementDefinition<MenuItemOptions> | undefined) => FoundationElementRegistry<MenuItemOptions, Constructable<FoundationElement>>;
-    fluentNumberField: (overrideDefinition?: OverrideFoundationElementDefinition<NumberFieldOptions> | undefined) => FoundationElementRegistry<NumberFieldOptions, Constructable<FoundationElement>>;
-    fluentProgress: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressOptions> | undefined) => FoundationElementRegistry<ProgressOptions, Constructable<FoundationElement>>;
-    fluentProgressRing: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressRingOptions> | undefined) => FoundationElementRegistry<ProgressRingOptions, Constructable<FoundationElement>>;
-    fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinition<RadioOptions> | undefined) => FoundationElementRegistry<RadioOptions, Constructable<FoundationElement>>;
-    fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof RadioGroup>;
-    fluentSearch: (overrideDefinition?: OverrideFoundationElementDefinition<SearchOptions> | undefined) => FoundationElementRegistry<SearchOptions, Constructable<FoundationElement>>;
-    fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
-    fluentSkeleton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Skeleton>;
-    fluentSlider: (overrideDefinition?: OverrideFoundationElementDefinition<SliderOptions> | undefined) => FoundationElementRegistry<SliderOptions, Constructable<FoundationElement>>;
-    fluentSliderLabel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof SliderLabel>;
-    fluentSwitch: (overrideDefinition?: OverrideFoundationElementDefinition<SwitchOptions> | undefined) => FoundationElementRegistry<SwitchOptions, Constructable<FoundationElement>>;
-    fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tabs>;
-    fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tab>;
-    fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TabPanel>;
-    fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextArea>;
-    fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, TextField>;
-    fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Toolbar>;
-    fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, Tooltip>;
-    fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TreeView>;
-    fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
-    register(container?: Container, ...rest: any[]): void;
+export const AccordionExpandMode: {
+    readonly single: "single";
+    readonly multi: "multi";
 };
 
-// Warning: (ae-internal-missing-underscore) The name "ambientShadow" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-forgotten-export) The symbol "ValuesOf" needs to be exported by the entry point index.d.ts
 //
-// @internal @deprecated
-export const ambientShadow = "0 0 2px rgba(0, 0, 0, 0.14)";
+// @public
+export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 
-// Warning: (ae-internal-missing-underscore) The name "Anchor" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AccordionItem" because one of its declarations is marked as @internal
 //
-// @internal
-export class Anchor extends Anchor_2 {
-    // @public
-    appearance?: AnchorAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: AnchorAppearance, newValue: AnchorAppearance): void;
-    // (undocumented)
-    connectedCallback(): void;
-    defaultSlottedContentChanged(): void;
-}
-
-// @public
-export type AnchorAppearance = ButtonAppearance | 'hypertext';
-
-export { AnchoredRegion }
-
-// @public
-export const anchoredRegionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const anchorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "Badge" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export class Badge extends Badge_2 {
-    // (undocumented)
-    appearance: BadgeAppearance;
-}
-
-// @public
-export type BadgeAppearance = 'accent' | 'lightweight' | 'neutral' | string;
-
-// @public
-export const badgeStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "baseButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const baseButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
 // @public (undocumented)
-export const baseHeightMultiplier: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const baseHorizontalSpacingMultiplier: CSSDesignToken<number>;
-
-// Warning: (ae-internal-missing-underscore) The name "baseInputStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const baseInputStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
-
-// @public (undocumented)
-export const baseLayerLuminance: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const bodyFont: CSSDesignToken<string>;
-
-export { Breadcrumb }
-
-export { BreadcrumbItem }
-
-// @public
-export const breadcrumbItemStyles: (context: ElementDefinitionContext, definition: BreadcrumbItemOptions) => ElementStyles;
-
-// @public
-export const breadcrumbStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "Button" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export class Button extends Button_2 {
-    // @public
-    appearance: ButtonAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: ButtonAppearance, newValue: ButtonAppearance): void;
-    // (undocumented)
-    connectedCallback(): void;
-    defaultSlottedContentChanged(): void;
-}
-
-// @public
-export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' | 'stealth';
-
-// @public
-export const buttonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public (undocumented)
-export class Card extends Card_2 {
-    cardFillColor: string;
-    // (undocumented)
-    connectedCallback(): void;
+export class AccordionItem extends FASTElement {
+    block: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
+    disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
-    handleChange(source: any, propertyName: string): void;
-    neutralPaletteSource: string;
+    expandbutton: HTMLElement;
+    expanded: boolean;
+    expandedChanged(prev: boolean, next: boolean): void;
+    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
+    id: string;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
+    size?: AccordionItemSize;
+    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
-// @public
-export const cardStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const checkboxStyles: (context: ElementDefinitionContext, definition: CheckboxOptions) => ElementStyles;
-
-// @public (undocumented)
-export interface ColorRecipe {
-    // (undocumented)
-    evaluate(element: HTMLElement, reference?: Swatch): Swatch;
-}
-
-// Warning: (ae-internal-missing-underscore) The name "Combobox" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
 //
 // @internal
-export class Combobox extends Combobox_2 {
-    // @public
-    appearance: ComboboxAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
-    // (undocumented)
-    connectedCallback(): void;
+export interface AccordionItem extends StartEnd {
+}
+
+// @public (undocumented)
+export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
+
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AccordionItemMarkerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
+
+// Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
+//
+// @public
+export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
+    expandedIcon?: StaticallyComposableHTML<AccordionItem>;
+    collapsedIcon?: StaticallyComposableHTML<AccordionItem>;
+};
+
+// Warning: (ae-missing-release-tag) "AccordionItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AccordionItemSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const accordionItemStyles: ElementStyles;
+
+// @public
+export const accordionItemTemplate: ElementViewTemplate<AccordionItem>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const accordionStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const accordionTemplate: ElementViewTemplate<Accordion>;
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
+//
+// @public
+export class AnchorButton extends BaseAnchor {
+    appearance?: AnchorButtonAppearance | undefined;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
+    iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
+    shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
+    size?: AnchorButtonSize;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
+}
+
+// @internal
+export interface AnchorButton extends StartEnd {
 }
 
 // @public
-export type ComboboxAppearance = 'filled' | 'outline';
+export const AnchorButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
 
 // @public
-export const comboboxStyles: (context: ElementDefinitionContext, definition: ComboboxOptions) => ElementStyles;
+export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
-export const controlCornerRadius: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const cornerRadius: CSSDesignToken<number>;
-
-export { DataGrid }
-
-export { DataGridCell }
+export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
 
 // @public
-export const dataGridCellStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-export { DataGridRow }
-
-// @public
-export const dataGridRowStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const dataGridStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public (undocumented)
-export const density: CSSDesignToken<number>;
+export const AnchorButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
 
 // @public
-export class DesignSystemProvider extends FoundationElement {
+export type AnchorButtonShape = ValuesOf<typeof AnchorButtonShape>;
+
+// @public
+export const AnchorButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type AnchorButtonSize = ValuesOf<typeof AnchorButtonSize>;
+
+// @public
+export const AnchorButtonTemplate: ElementViewTemplate<AnchorButton>;
+
+// @public
+export const AnchorTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export class Avatar extends FASTElement {
     constructor();
-    accentBaseColor: Swatch;
-    accentFillActiveDelta: number;
-    accentFillFocusDelta: number;
-    accentFillHoverDelta: number;
-    accentFillRestDelta: number;
-    accentForegroundActiveDelta: number;
-    accentForegroundFocusDelta: number;
-    accentForegroundHoverDelta: number;
-    accentForegroundRestDelta: number;
-    baseHeightMultiplier: number;
-    baseHorizontalSpacingMultiplier: number;
-    baseLayerLuminance: number;
+    active?: AvatarActive | undefined;
+    appearance?: AvatarAppearance | undefined;
+    color?: AvatarColor | undefined;
+    colorId?: AvatarNamedColor | undefined;
+    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
     // (undocumented)
     connectedCallback(): void;
-    controlCornerRadius: number;
-    density: number;
-    designUnit: number;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
+    // @internal
+    generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    initials?: string | undefined;
+    name?: string | undefined;
+    shape?: AvatarShape | undefined;
+    size?: AvatarSize | undefined;
+}
+
+// Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AvatarActive: {
+    readonly active: "active";
+    readonly inactive: "inactive";
+};
+
+// @public
+export type AvatarActive = ValuesOf<typeof AvatarActive>;
+
+// Warning: (ae-missing-release-tag) "AvatarAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AvatarAppearance: {
+    readonly ring: "ring";
+    readonly shadow: "shadow";
+    readonly ringShadow: "ring-shadow";
+};
+
+// @public
+export type AvatarAppearance = ValuesOf<typeof AvatarAppearance>;
+
+// Warning: (ae-missing-release-tag) "AvatarColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AvatarColor: {
+    readonly darkRed: "dark-red";
+    readonly cranberry: "cranberry";
+    readonly red: "red";
+    readonly pumpkin: "pumpkin";
+    readonly peach: "peach";
+    readonly marigold: "marigold";
+    readonly gold: "gold";
+    readonly brass: "brass";
+    readonly brown: "brown";
+    readonly forest: "forest";
+    readonly seafoam: "seafoam";
+    readonly darkGreen: "dark-green";
+    readonly lightTeal: "light-teal";
+    readonly teal: "teal";
+    readonly steel: "steel";
+    readonly blue: "blue";
+    readonly royalBlue: "royal-blue";
+    readonly cornflower: "cornflower";
+    readonly navy: "navy";
+    readonly lavender: "lavender";
+    readonly purple: "purple";
+    readonly grape: "grape";
+    readonly lilac: "lilac";
+    readonly pink: "pink";
+    readonly magenta: "magenta";
+    readonly plum: "plum";
+    readonly beige: "beige";
+    readonly mink: "mink";
+    readonly platinum: "platinum";
+    readonly anchor: "anchor";
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly colorful: "colorful";
+};
+
+// @public
+export type AvatarColor = ValuesOf<typeof AvatarColor>;
+
+// @public
+export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
+
+// Warning: (ae-missing-release-tag) "AvatarNamedColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AvatarNamedColor: {
+    readonly darkRed: "dark-red";
+    readonly cranberry: "cranberry";
+    readonly red: "red";
+    readonly pumpkin: "pumpkin";
+    readonly peach: "peach";
+    readonly marigold: "marigold";
+    readonly gold: "gold";
+    readonly brass: "brass";
+    readonly brown: "brown";
+    readonly forest: "forest";
+    readonly seafoam: "seafoam";
+    readonly darkGreen: "dark-green";
+    readonly lightTeal: "light-teal";
+    readonly teal: "teal";
+    readonly steel: "steel";
+    readonly blue: "blue";
+    readonly royalBlue: "royal-blue";
+    readonly cornflower: "cornflower";
+    readonly navy: "navy";
+    readonly lavender: "lavender";
+    readonly purple: "purple";
+    readonly grape: "grape";
+    readonly lilac: "lilac";
+    readonly pink: "pink";
+    readonly magenta: "magenta";
+    readonly plum: "plum";
+    readonly beige: "beige";
+    readonly mink: "mink";
+    readonly platinum: "platinum";
+    readonly anchor: "anchor";
+};
+
+// @public
+export type AvatarNamedColor = ValuesOf<typeof AvatarNamedColor>;
+
+// Warning: (ae-missing-release-tag) "AvatarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const AvatarShape: {
+    readonly circular: "circular";
+    readonly square: "square";
+};
+
+// @public
+export type AvatarShape = ValuesOf<typeof AvatarShape>;
+
+// @public
+export const AvatarSize: {
+    readonly _16: 16;
+    readonly _20: 20;
+    readonly _24: 24;
+    readonly _28: 28;
+    readonly _32: 32;
+    readonly _36: 36;
+    readonly _40: 40;
+    readonly _48: 48;
+    readonly _56: 56;
+    readonly _64: 64;
+    readonly _72: 72;
+    readonly _96: 96;
+    readonly _120: 120;
+    readonly _128: 128;
+};
+
+// @public
+export type AvatarSize = ValuesOf<typeof AvatarSize>;
+
+// @public
+export const AvatarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const AvatarTemplate: ElementViewTemplate<Avatar>;
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
+//
+// @public
+export class Badge extends FASTElement {
+    appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
+    color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
+    size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
+}
+
+// @internal
+export interface Badge extends StartEnd {
+}
+
+// @public
+export const BadgeAppearance: {
+    readonly filled: "filled";
+    readonly ghost: "ghost";
+    readonly outline: "outline";
+    readonly tint: "tint";
+};
+
+// @public
+export type BadgeAppearance = ValuesOf<typeof BadgeAppearance>;
+
+// @public
+export const BadgeColor: {
+    readonly brand: "brand";
+    readonly danger: "danger";
+    readonly important: "important";
+    readonly informative: "informative";
+    readonly severe: "severe";
+    readonly subtle: "subtle";
+    readonly success: "success";
+    readonly warning: "warning";
+};
+
+// @public
+export type BadgeColor = ValuesOf<typeof BadgeColor>;
+
+// @public (undocumented)
+export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
+
+// @public
+export const BadgeShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type BadgeShape = ValuesOf<typeof BadgeShape>;
+
+// @public
+export const BadgeSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type BadgeSize = ValuesOf<typeof BadgeSize>;
+
+// @public
+export const BadgeStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const BadgeTemplate: ElementViewTemplate<Badge>;
+
+// @public
+export class BaseButton extends FASTElement {
+    constructor();
+    autofocus: boolean;
+    // @internal
+    clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    defaultSlottedContent: HTMLElement[];
+    disabled?: boolean;
+    disabledFocusable: boolean;
+    // @internal
+    disabledFocusableChanged(previous: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    formAction?: string;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    formEnctype?: string;
+    formMethod?: string;
+    formNoValidate?: boolean;
+    formTarget?: ButtonFormTarget;
+    keypressHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<Node>;
+    name?: string;
+    protected press(): void;
+    resetForm(): void;
+    tabIndex: number;
+    type: ButtonType;
+    // @internal
+    typeChanged(previous: ButtonType, next: ButtonType): void;
+    value?: string;
+}
+
+// @public
+export class BaseDivider extends FASTElement {
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
+    role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export const borderRadiusCircular = "var(--borderRadiusCircular)";
+
+// @public
+export const borderRadiusLarge = "var(--borderRadiusLarge)";
+
+// @public
+export const borderRadiusMedium = "var(--borderRadiusMedium)";
+
+// @public
+export const borderRadiusNone = "var(--borderRadiusNone)";
+
+// @public
+export const borderRadiusSmall = "var(--borderRadiusSmall)";
+
+// @public
+export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
+//
+// @public
+export class Button extends BaseButton {
+    appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
+    iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
+    shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
+    size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
+}
+
+// @internal (undocumented)
+export interface Button extends StartEnd {
+}
+
+// @public
+export const ButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type ButtonAppearance = ValuesOf<typeof ButtonAppearance>;
+
+// @public
+export const ButtonDefinition: FASTElementDefinition<typeof Button>;
+
+// @public
+export const ButtonFormTarget: {
+    readonly blank: "_blank";
+    readonly self: "_self";
+    readonly parent: "_parent";
+    readonly top: "_top";
+};
+
+// @public
+export type ButtonFormTarget = ValuesOf<typeof ButtonFormTarget>;
+
+// @public
+type ButtonOptions = StartEndOptions<Button>;
+export { ButtonOptions }
+export { ButtonOptions as MenuButtonOptions }
+export { ButtonOptions as ToggleButtonOptions }
+
+// @public
+export const ButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type ButtonShape = ValuesOf<typeof ButtonShape>;
+
+// @public
+export const ButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ButtonSize = ValuesOf<typeof ButtonSize>;
+
+// @public
+export const ButtonTemplate: ElementViewTemplate<Button>;
+
+// @public
+export const ButtonType: {
+    readonly submit: "submit";
+    readonly reset: "reset";
+    readonly button: "button";
+};
+
+// @public
+export type ButtonType = ValuesOf<typeof ButtonType>;
+
+// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class Checkbox extends BaseCheckbox {
+    constructor();
+    indeterminate?: boolean;
+    // @internal
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected setAriaChecked(value?: boolean): void;
+    shape?: CheckboxShape;
+    // @internal
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
+    size?: CheckboxSize;
+    // @internal
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    toggleChecked(force?: boolean): void;
+}
+
+// @public
+export const CheckboxDefinition: FASTElementDefinition<typeof Checkbox>;
+
+// @public
+export type CheckboxOptions = {
+    checkedIndicator?: StaticallyComposableHTML<Checkbox>;
+    indeterminateIndicator?: StaticallyComposableHTML<Checkbox>;
+};
+
+// @public
+export const CheckboxShape: {
+    readonly circular: "circular";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type CheckboxShape = ValuesOf<typeof CheckboxShape>;
+
+// @public
+export const CheckboxSize: {
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
+
+// @public
+export const CheckboxStyles: ElementStyles;
+
+// @public
+export const CheckboxTemplate: ElementViewTemplate<Checkbox>;
+
+// @public
+export const colorBackgroundOverlay = "var(--colorBackgroundOverlay)";
+
+// @public
+export const colorBrandBackground = "var(--colorBrandBackground)";
+
+// @public
+export const colorBrandBackground2 = "var(--colorBrandBackground2)";
+
+// @public
+export const colorBrandBackground2Hover = "var(--colorBrandBackground2Hover)";
+
+// @public
+export const colorBrandBackground2Pressed = "var(--colorBrandBackground2Pressed)";
+
+// @public
+export const colorBrandBackground3Static = "var(--colorBrandBackground3Static)";
+
+// @public
+export const colorBrandBackground4Static = "var(--colorBrandBackground4Static)";
+
+// @public
+export const colorBrandBackgroundHover = "var(--colorBrandBackgroundHover)";
+
+// @public
+export const colorBrandBackgroundInverted = "var(--colorBrandBackgroundInverted)";
+
+// @public
+export const colorBrandBackgroundInvertedHover = "var(--colorBrandBackgroundInvertedHover)";
+
+// @public
+export const colorBrandBackgroundInvertedPressed = "var(--colorBrandBackgroundInvertedPressed)";
+
+// @public
+export const colorBrandBackgroundInvertedSelected = "var(--colorBrandBackgroundInvertedSelected)";
+
+// @public
+export const colorBrandBackgroundPressed = "var(--colorBrandBackgroundPressed)";
+
+// @public
+export const colorBrandBackgroundSelected = "var(--colorBrandBackgroundSelected)";
+
+// @public
+export const colorBrandBackgroundStatic = "var(--colorBrandBackgroundStatic)";
+
+// @public
+export const colorBrandForeground1 = "var(--colorBrandForeground1)";
+
+// @public
+export const colorBrandForeground2 = "var(--colorBrandForeground2)";
+
+// @public
+export const colorBrandForeground2Hover = "var(--colorBrandForeground2Hover)";
+
+// @public
+export const colorBrandForeground2Pressed = "var(--colorBrandForeground2Pressed)";
+
+// @public
+export const colorBrandForegroundInverted = "var(--colorBrandForegroundInverted)";
+
+// @public
+export const colorBrandForegroundInvertedHover = "var(--colorBrandForegroundInvertedHover)";
+
+// @public
+export const colorBrandForegroundInvertedPressed = "var(--colorBrandForegroundInvertedPressed)";
+
+// @public
+export const colorBrandForegroundLink = "var(--colorBrandForegroundLink)";
+
+// @public
+export const colorBrandForegroundLinkHover = "var(--colorBrandForegroundLinkHover)";
+
+// @public
+export const colorBrandForegroundLinkPressed = "var(--colorBrandForegroundLinkPressed)";
+
+// @public
+export const colorBrandForegroundLinkSelected = "var(--colorBrandForegroundLinkSelected)";
+
+// @public
+export const colorBrandForegroundOnLight = "var(--colorBrandForegroundOnLight)";
+
+// @public
+export const colorBrandForegroundOnLightHover = "var(--colorBrandForegroundOnLightHover)";
+
+// @public
+export const colorBrandForegroundOnLightPressed = "var(--colorBrandForegroundOnLightPressed)";
+
+// @public
+export const colorBrandForegroundOnLightSelected = "var(--colorBrandForegroundOnLightSelected)";
+
+// @public
+export const colorBrandShadowAmbient = "var(--colorBrandShadowAmbient)";
+
+// @public
+export const colorBrandShadowKey = "var(--colorBrandShadowKey)";
+
+// @public
+export const colorBrandStroke1 = "var(--colorBrandStroke1)";
+
+// @public
+export const colorBrandStroke2 = "var(--colorBrandStroke2)";
+
+// @public
+export const colorBrandStroke2Contrast = "var(--colorBrandStroke2Contrast)";
+
+// @public
+export const colorBrandStroke2Hover = "var(--colorBrandStroke2Hover)";
+
+// @public
+export const colorBrandStroke2Pressed = "var(--colorBrandStroke2Pressed)";
+
+// @public
+export const colorCompoundBrandBackground = "var(--colorCompoundBrandBackground)";
+
+// @public
+export const colorCompoundBrandBackgroundHover = "var(--colorCompoundBrandBackgroundHover)";
+
+// @public
+export const colorCompoundBrandBackgroundPressed = "var(--colorCompoundBrandBackgroundPressed)";
+
+// @public
+export const colorCompoundBrandForeground1 = "var(--colorCompoundBrandForeground1)";
+
+// @public
+export const colorCompoundBrandForeground1Hover = "var(--colorCompoundBrandForeground1Hover)";
+
+// @public
+export const colorCompoundBrandForeground1Pressed = "var(--colorCompoundBrandForeground1Pressed)";
+
+// @public
+export const colorCompoundBrandStroke = "var(--colorCompoundBrandStroke)";
+
+// @public
+export const colorCompoundBrandStrokeHover = "var(--colorCompoundBrandStrokeHover)";
+
+// @public
+export const colorCompoundBrandStrokePressed = "var(--colorCompoundBrandStrokePressed)";
+
+// @public
+export const colorNeutralBackground1 = "var(--colorNeutralBackground1)";
+
+// @public
+export const colorNeutralBackground1Hover = "var(--colorNeutralBackground1Hover)";
+
+// @public
+export const colorNeutralBackground1Pressed = "var(--colorNeutralBackground1Pressed)";
+
+// @public
+export const colorNeutralBackground1Selected = "var(--colorNeutralBackground1Selected)";
+
+// @public
+export const colorNeutralBackground2 = "var(--colorNeutralBackground2)";
+
+// @public
+export const colorNeutralBackground2Hover = "var(--colorNeutralBackground2Hover)";
+
+// @public
+export const colorNeutralBackground2Pressed = "var(--colorNeutralBackground2Pressed)";
+
+// @public
+export const colorNeutralBackground2Selected = "var(--colorNeutralBackground2Selected)";
+
+// @public
+export const colorNeutralBackground3 = "var(--colorNeutralBackground3)";
+
+// @public
+export const colorNeutralBackground3Hover = "var(--colorNeutralBackground3Hover)";
+
+// @public
+export const colorNeutralBackground3Pressed = "var(--colorNeutralBackground3Pressed)";
+
+// @public
+export const colorNeutralBackground3Selected = "var(--colorNeutralBackground3Selected)";
+
+// @public
+export const colorNeutralBackground4 = "var(--colorNeutralBackground4)";
+
+// @public
+export const colorNeutralBackground4Hover = "var(--colorNeutralBackground4Hover)";
+
+// @public
+export const colorNeutralBackground4Pressed = "var(--colorNeutralBackground4Pressed)";
+
+// @public
+export const colorNeutralBackground4Selected = "var(--colorNeutralBackground4Selected)";
+
+// @public
+export const colorNeutralBackground5 = "var(--colorNeutralBackground5)";
+
+// @public
+export const colorNeutralBackground5Hover = "var(--colorNeutralBackground5Hover)";
+
+// @public
+export const colorNeutralBackground5Pressed = "var(--colorNeutralBackground5Pressed)";
+
+// @public
+export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Selected)";
+
+// @public
+export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
+
+// @public
+export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
+
+// @public
+export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)";
+
+// @public
+export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
+
+// @public
+export const colorNeutralBackgroundInverted = "var(--colorNeutralBackgroundInverted)";
+
+// @public
+export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgroundInvertedDisabled)";
+
+// @public
+export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
+
+// @public
+export const colorNeutralCardBackground = "var(--colorNeutralCardBackground)";
+
+// @public
+export const colorNeutralCardBackgroundDisabled = "var(--colorNeutralCardBackgroundDisabled)";
+
+// @public
+export const colorNeutralCardBackgroundHover = "var(--colorNeutralCardBackgroundHover)";
+
+// @public
+export const colorNeutralCardBackgroundPressed = "var(--colorNeutralCardBackgroundPressed)";
+
+// @public
+export const colorNeutralCardBackgroundSelected = "var(--colorNeutralCardBackgroundSelected)";
+
+// @public
+export const colorNeutralForeground1 = "var(--colorNeutralForeground1)";
+
+// @public
+export const colorNeutralForeground1Hover = "var(--colorNeutralForeground1Hover)";
+
+// @public
+export const colorNeutralForeground1Pressed = "var(--colorNeutralForeground1Pressed)";
+
+// @public
+export const colorNeutralForeground1Selected = "var(--colorNeutralForeground1Selected)";
+
+// @public
+export const colorNeutralForeground1Static = "var(--colorNeutralForeground1Static)";
+
+// @public
+export const colorNeutralForeground2 = "var(--colorNeutralForeground2)";
+
+// @public
+export const colorNeutralForeground2BrandHover = "var(--colorNeutralForeground2BrandHover)";
+
+// @public
+export const colorNeutralForeground2BrandPressed = "var(--colorNeutralForeground2BrandPressed)";
+
+// @public
+export const colorNeutralForeground2BrandSelected = "var(--colorNeutralForeground2BrandSelected)";
+
+// @public
+export const colorNeutralForeground2Hover = "var(--colorNeutralForeground2Hover)";
+
+// @public
+export const colorNeutralForeground2Link = "var(--colorNeutralForeground2Link)";
+
+// @public
+export const colorNeutralForeground2LinkHover = "var(--colorNeutralForeground2LinkHover)";
+
+// @public
+export const colorNeutralForeground2LinkPressed = "var(--colorNeutralForeground2LinkPressed)";
+
+// @public
+export const colorNeutralForeground2LinkSelected = "var(--colorNeutralForeground2LinkSelected)";
+
+// @public
+export const colorNeutralForeground2Pressed = "var(--colorNeutralForeground2Pressed)";
+
+// @public
+export const colorNeutralForeground2Selected = "var(--colorNeutralForeground2Selected)";
+
+// @public
+export const colorNeutralForeground3 = "var(--colorNeutralForeground3)";
+
+// @public
+export const colorNeutralForeground3BrandHover = "var(--colorNeutralForeground3BrandHover)";
+
+// @public
+export const colorNeutralForeground3BrandPressed = "var(--colorNeutralForeground3BrandPressed)";
+
+// @public
+export const colorNeutralForeground3BrandSelected = "var(--colorNeutralForeground3BrandSelected)";
+
+// @public
+export const colorNeutralForeground3Hover = "var(--colorNeutralForeground3Hover)";
+
+// @public
+export const colorNeutralForeground3Pressed = "var(--colorNeutralForeground3Pressed)";
+
+// @public
+export const colorNeutralForeground3Selected = "var(--colorNeutralForeground3Selected)";
+
+// @public
+export const colorNeutralForeground4 = "var(--colorNeutralForeground4)";
+
+// @public
+export const colorNeutralForegroundDisabled = "var(--colorNeutralForegroundDisabled)";
+
+// @public
+export const colorNeutralForegroundInverted = "var(--colorNeutralForegroundInverted)";
+
+// @public
+export const colorNeutralForegroundInverted2 = "var(--colorNeutralForegroundInverted2)";
+
+// @public
+export const colorNeutralForegroundInvertedDisabled = "var(--colorNeutralForegroundInvertedDisabled)";
+
+// @public
+export const colorNeutralForegroundInvertedHover = "var(--colorNeutralForegroundInvertedHover)";
+
+// @public
+export const colorNeutralForegroundInvertedLink = "var(--colorNeutralForegroundInvertedLink)";
+
+// @public
+export const colorNeutralForegroundInvertedLinkHover = "var(--colorNeutralForegroundInvertedLinkHover)";
+
+// @public
+export const colorNeutralForegroundInvertedLinkPressed = "var(--colorNeutralForegroundInvertedLinkPressed)";
+
+// @public
+export const colorNeutralForegroundInvertedLinkSelected = "var(--colorNeutralForegroundInvertedLinkSelected)";
+
+// @public
+export const colorNeutralForegroundInvertedPressed = "var(--colorNeutralForegroundInvertedPressed)";
+
+// @public
+export const colorNeutralForegroundInvertedSelected = "var(--colorNeutralForegroundInvertedSelected)";
+
+// @public
+export const colorNeutralForegroundOnBrand = "var(--colorNeutralForegroundOnBrand)";
+
+// @public
+export const colorNeutralForegroundStaticInverted = "var(--colorNeutralForegroundStaticInverted)";
+
+// @public
+export const colorNeutralShadowAmbient = "var(--colorNeutralShadowAmbient)";
+
+// @public
+export const colorNeutralShadowAmbientDarker = "var(--colorNeutralShadowAmbientDarker)";
+
+// @public
+export const colorNeutralShadowAmbientLighter = "var(--colorNeutralShadowAmbientLighter)";
+
+// @public
+export const colorNeutralShadowKey = "var(--colorNeutralShadowKey)";
+
+// @public
+export const colorNeutralShadowKeyDarker = "var(--colorNeutralShadowKeyDarker)";
+
+// @public
+export const colorNeutralShadowKeyLighter = "var(--colorNeutralShadowKeyLighter)";
+
+// @public
+export const colorNeutralStencil1 = "var(--colorNeutralStencil1)";
+
+// @public
+export const colorNeutralStencil1Alpha = "var(--colorNeutralStencil1Alpha)";
+
+// @public
+export const colorNeutralStencil2 = "var(--colorNeutralStencil2)";
+
+// @public
+export const colorNeutralStencil2Alpha = "var(--colorNeutralStencil2Alpha)";
+
+// @public
+export const colorNeutralStroke1 = "var(--colorNeutralStroke1)";
+
+// @public
+export const colorNeutralStroke1Hover = "var(--colorNeutralStroke1Hover)";
+
+// @public
+export const colorNeutralStroke1Pressed = "var(--colorNeutralStroke1Pressed)";
+
+// @public
+export const colorNeutralStroke1Selected = "var(--colorNeutralStroke1Selected)";
+
+// @public
+export const colorNeutralStroke2 = "var(--colorNeutralStroke2)";
+
+// @public
+export const colorNeutralStroke3 = "var(--colorNeutralStroke3)";
+
+// @public
+export const colorNeutralStrokeAccessible = "var(--colorNeutralStrokeAccessible)";
+
+// @public
+export const colorNeutralStrokeAccessibleHover = "var(--colorNeutralStrokeAccessibleHover)";
+
+// @public
+export const colorNeutralStrokeAccessiblePressed = "var(--colorNeutralStrokeAccessiblePressed)";
+
+// @public
+export const colorNeutralStrokeAccessibleSelected = "var(--colorNeutralStrokeAccessibleSelected)";
+
+// @public
+export const colorNeutralStrokeAlpha = "var(--colorNeutralStrokeAlpha)";
+
+// @public
+export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
+
+// @public
+export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
+
+// @public
+export const colorNeutralStrokeInvertedDisabled = "var(--colorNeutralStrokeInvertedDisabled)";
+
+// @public
+export const colorNeutralStrokeOnBrand = "var(--colorNeutralStrokeOnBrand)";
+
+// @public
+export const colorNeutralStrokeOnBrand2 = "var(--colorNeutralStrokeOnBrand2)";
+
+// @public
+export const colorNeutralStrokeOnBrand2Hover = "var(--colorNeutralStrokeOnBrand2Hover)";
+
+// @public
+export const colorNeutralStrokeOnBrand2Pressed = "var(--colorNeutralStrokeOnBrand2Pressed)";
+
+// @public
+export const colorNeutralStrokeOnBrand2Selected = "var(--colorNeutralStrokeOnBrand2Selected)";
+
+// @public
+export const colorNeutralStrokeSubtle = "var(--colorNeutralStrokeSubtle)";
+
+// @public
+export const colorPaletteAnchorBackground2 = "var(--colorPaletteAnchorBackground2)";
+
+// @public
+export const colorPaletteAnchorBorderActive = "var(--colorPaletteAnchorBorderActive)";
+
+// @public
+export const colorPaletteAnchorForeground2 = "var(--colorPaletteAnchorForeground2)";
+
+// @public
+export const colorPaletteBeigeBackground2 = "var(--colorPaletteBeigeBackground2)";
+
+// @public
+export const colorPaletteBeigeBorderActive = "var(--colorPaletteBeigeBorderActive)";
+
+// @public
+export const colorPaletteBeigeForeground2 = "var(--colorPaletteBeigeForeground2)";
+
+// @public
+export const colorPaletteBerryBackground1 = "var(--colorPaletteBerryBackground1)";
+
+// @public
+export const colorPaletteBerryBackground2 = "var(--colorPaletteBerryBackground2)";
+
+// @public
+export const colorPaletteBerryBackground3 = "var(--colorPaletteBerryBackground3)";
+
+// @public
+export const colorPaletteBerryBorder1 = "var(--colorPaletteBerryBorder1)";
+
+// @public
+export const colorPaletteBerryBorder2 = "var(--colorPaletteBerryBorder2)";
+
+// @public
+export const colorPaletteBerryBorderActive = "var(--colorPaletteBerryBorderActive)";
+
+// @public
+export const colorPaletteBerryForeground1 = "var(--colorPaletteBerryForeground1)";
+
+// @public
+export const colorPaletteBerryForeground2 = "var(--colorPaletteBerryForeground2)";
+
+// @public
+export const colorPaletteBerryForeground3 = "var(--colorPaletteBerryForeground3)";
+
+// @public
+export const colorPaletteBlueBackground2 = "var(--colorPaletteBlueBackground2)";
+
+// @public
+export const colorPaletteBlueBorderActive = "var(--colorPaletteBlueBorderActive)";
+
+// @public
+export const colorPaletteBlueForeground2 = "var(--colorPaletteBlueForeground2)";
+
+// @public
+export const colorPaletteBrassBackground2 = "var(--colorPaletteBrassBackground2)";
+
+// @public
+export const colorPaletteBrassBorderActive = "var(--colorPaletteBrassBorderActive)";
+
+// @public
+export const colorPaletteBrassForeground2 = "var(--colorPaletteBrassForeground2)";
+
+// @public
+export const colorPaletteBrownBackground2 = "var(--colorPaletteBrownBackground2)";
+
+// @public
+export const colorPaletteBrownBorderActive = "var(--colorPaletteBrownBorderActive)";
+
+// @public
+export const colorPaletteBrownForeground2 = "var(--colorPaletteBrownForeground2)";
+
+// @public
+export const colorPaletteCornflowerBackground2 = "var(--colorPaletteCornflowerBackground2)";
+
+// @public
+export const colorPaletteCornflowerBorderActive = "var(--colorPaletteCornflowerBorderActive)";
+
+// @public
+export const colorPaletteCornflowerForeground2 = "var(--colorPaletteCornflowerForeground2)";
+
+// @public
+export const colorPaletteCranberryBackground2 = "var(--colorPaletteCranberryBackground2)";
+
+// @public
+export const colorPaletteCranberryBorderActive = "var(--colorPaletteCranberryBorderActive)";
+
+// @public
+export const colorPaletteCranberryForeground2 = "var(--colorPaletteCranberryForeground2)";
+
+// @public
+export const colorPaletteDarkGreenBackground2 = "var(--colorPaletteDarkGreenBackground2)";
+
+// @public
+export const colorPaletteDarkGreenBorderActive = "var(--colorPaletteDarkGreenBorderActive)";
+
+// @public
+export const colorPaletteDarkGreenForeground2 = "var(--colorPaletteDarkGreenForeground2)";
+
+// @public
+export const colorPaletteDarkOrangeBackground1 = "var(--colorPaletteDarkOrangeBackground1)";
+
+// @public
+export const colorPaletteDarkOrangeBackground2 = "var(--colorPaletteDarkOrangeBackground2)";
+
+// @public
+export const colorPaletteDarkOrangeBackground3 = "var(--colorPaletteDarkOrangeBackground3)";
+
+// @public
+export const colorPaletteDarkOrangeBorder1 = "var(--colorPaletteDarkOrangeBorder1)";
+
+// @public
+export const colorPaletteDarkOrangeBorder2 = "var(--colorPaletteDarkOrangeBorder2)";
+
+// @public
+export const colorPaletteDarkOrangeBorderActive = "var(--colorPaletteDarkOrangeBorderActive)";
+
+// @public
+export const colorPaletteDarkOrangeForeground1 = "var(--colorPaletteDarkOrangeForeground1)";
+
+// @public
+export const colorPaletteDarkOrangeForeground2 = "var(--colorPaletteDarkOrangeForeground2)";
+
+// @public
+export const colorPaletteDarkOrangeForeground3 = "var(--colorPaletteDarkOrangeForeground3)";
+
+// @public
+export const colorPaletteDarkRedBackground2 = "var(--colorPaletteDarkRedBackground2)";
+
+// @public
+export const colorPaletteDarkRedBorderActive = "var(--colorPaletteDarkRedBorderActive)";
+
+// @public
+export const colorPaletteDarkRedForeground2 = "var(--colorPaletteDarkRedForeground2)";
+
+// @public
+export const colorPaletteForestBackground2 = "var(--colorPaletteForestBackground2)";
+
+// @public
+export const colorPaletteForestBorderActive = "var(--colorPaletteForestBorderActive)";
+
+// @public
+export const colorPaletteForestForeground2 = "var(--colorPaletteForestForeground2)";
+
+// @public
+export const colorPaletteGoldBackground2 = "var(--colorPaletteGoldBackground2)";
+
+// @public
+export const colorPaletteGoldBorderActive = "var(--colorPaletteGoldBorderActive)";
+
+// @public
+export const colorPaletteGoldForeground2 = "var(--colorPaletteGoldForeground2)";
+
+// @public
+export const colorPaletteGrapeBackground2 = "var(--colorPaletteGrapeBackground2)";
+
+// @public
+export const colorPaletteGrapeBorderActive = "var(--colorPaletteGrapeBorderActive)";
+
+// @public
+export const colorPaletteGrapeForeground2 = "var(--colorPaletteGrapeForeground2)";
+
+// @public
+export const colorPaletteGreenBackground1 = "var(--colorPaletteGreenBackground1)";
+
+// @public
+export const colorPaletteGreenBackground2 = "var(--colorPaletteGreenBackground2)";
+
+// @public
+export const colorPaletteGreenBackground3 = "var(--colorPaletteGreenBackground3)";
+
+// @public
+export const colorPaletteGreenBorder1 = "var(--colorPaletteGreenBorder1)";
+
+// @public
+export const colorPaletteGreenBorder2 = "var(--colorPaletteGreenBorder2)";
+
+// @public
+export const colorPaletteGreenBorderActive = "var(--colorPaletteGreenBorderActive)";
+
+// @public
+export const colorPaletteGreenForeground1 = "var(--colorPaletteGreenForeground1)";
+
+// @public
+export const colorPaletteGreenForeground2 = "var(--colorPaletteGreenForeground2)";
+
+// @public
+export const colorPaletteGreenForeground3 = "var(--colorPaletteGreenForeground3)";
+
+// @public
+export const colorPaletteGreenForegroundInverted = "var(--colorPaletteGreenForegroundInverted)";
+
+// @public
+export const colorPaletteLavenderBackground2 = "var(--colorPaletteLavenderBackground2)";
+
+// @public
+export const colorPaletteLavenderBorderActive = "var(--colorPaletteLavenderBorderActive)";
+
+// @public
+export const colorPaletteLavenderForeground2 = "var(--colorPaletteLavenderForeground2)";
+
+// @public
+export const colorPaletteLightGreenBackground1 = "var(--colorPaletteLightGreenBackground1)";
+
+// @public
+export const colorPaletteLightGreenBackground2 = "var(--colorPaletteLightGreenBackground2)";
+
+// @public
+export const colorPaletteLightGreenBackground3 = "var(--colorPaletteLightGreenBackground3)";
+
+// @public
+export const colorPaletteLightGreenBorder1 = "var(--colorPaletteLightGreenBorder1)";
+
+// @public
+export const colorPaletteLightGreenBorder2 = "var(--colorPaletteLightGreenBorder2)";
+
+// @public
+export const colorPaletteLightGreenBorderActive = "var(--colorPaletteLightGreenBorderActive)";
+
+// @public
+export const colorPaletteLightGreenForeground1 = "var(--colorPaletteLightGreenForeground1)";
+
+// @public
+export const colorPaletteLightGreenForeground2 = "var(--colorPaletteLightGreenForeground2)";
+
+// @public
+export const colorPaletteLightGreenForeground3 = "var(--colorPaletteLightGreenForeground3)";
+
+// @public
+export const colorPaletteLightTealBackground2 = "var(--colorPaletteLightTealBackground2)";
+
+// @public
+export const colorPaletteLightTealBorderActive = "var(--colorPaletteLightTealBorderActive)";
+
+// @public
+export const colorPaletteLightTealForeground2 = "var(--colorPaletteLightTealForeground2)";
+
+// @public
+export const colorPaletteLilacBackground2 = "var(--colorPaletteLilacBackground2)";
+
+// @public
+export const colorPaletteLilacBorderActive = "var(--colorPaletteLilacBorderActive)";
+
+// @public
+export const colorPaletteLilacForeground2 = "var(--colorPaletteLilacForeground2)";
+
+// @public
+export const colorPaletteMagentaBackground2 = "var(--colorPaletteMagentaBackground2)";
+
+// @public
+export const colorPaletteMagentaBorderActive = "var(--colorPaletteMagentaBorderActive)";
+
+// @public
+export const colorPaletteMagentaForeground2 = "var(--colorPaletteMagentaForeground2)";
+
+// @public
+export const colorPaletteMarigoldBackground1 = "var(--colorPaletteMarigoldBackground1)";
+
+// @public
+export const colorPaletteMarigoldBackground2 = "var(--colorPaletteMarigoldBackground2)";
+
+// @public
+export const colorPaletteMarigoldBackground3 = "var(--colorPaletteMarigoldBackground3)";
+
+// @public
+export const colorPaletteMarigoldBorder1 = "var(--colorPaletteMarigoldBorder1)";
+
+// @public
+export const colorPaletteMarigoldBorder2 = "var(--colorPaletteMarigoldBorder2)";
+
+// @public
+export const colorPaletteMarigoldBorderActive = "var(--colorPaletteMarigoldBorderActive)";
+
+// @public
+export const colorPaletteMarigoldForeground1 = "var(--colorPaletteMarigoldForeground1)";
+
+// @public
+export const colorPaletteMarigoldForeground2 = "var(--colorPaletteMarigoldForeground2)";
+
+// @public
+export const colorPaletteMarigoldForeground3 = "var(--colorPaletteMarigoldForeground3)";
+
+// @public
+export const colorPaletteMinkBackground2 = "var(--colorPaletteMinkBackground2)";
+
+// @public
+export const colorPaletteMinkBorderActive = "var(--colorPaletteMinkBorderActive)";
+
+// @public
+export const colorPaletteMinkForeground2 = "var(--colorPaletteMinkForeground2)";
+
+// @public
+export const colorPaletteNavyBackground2 = "var(--colorPaletteNavyBackground2)";
+
+// @public
+export const colorPaletteNavyBorderActive = "var(--colorPaletteNavyBorderActive)";
+
+// @public
+export const colorPaletteNavyForeground2 = "var(--colorPaletteNavyForeground2)";
+
+// @public
+export const colorPalettePeachBackground2 = "var(--colorPalettePeachBackground2)";
+
+// @public
+export const colorPalettePeachBorderActive = "var(--colorPalettePeachBorderActive)";
+
+// @public
+export const colorPalettePeachForeground2 = "var(--colorPalettePeachForeground2)";
+
+// @public
+export const colorPalettePinkBackground2 = "var(--colorPalettePinkBackground2)";
+
+// @public
+export const colorPalettePinkBorderActive = "var(--colorPalettePinkBorderActive)";
+
+// @public
+export const colorPalettePinkForeground2 = "var(--colorPalettePinkForeground2)";
+
+// @public
+export const colorPalettePlatinumBackground2 = "var(--colorPalettePlatinumBackground2)";
+
+// @public
+export const colorPalettePlatinumBorderActive = "var(--colorPalettePlatinumBorderActive)";
+
+// @public
+export const colorPalettePlatinumForeground2 = "var(--colorPalettePlatinumForeground2)";
+
+// @public
+export const colorPalettePlumBackground2 = "var(--colorPalettePlumBackground2)";
+
+// @public
+export const colorPalettePlumBorderActive = "var(--colorPalettePlumBorderActive)";
+
+// @public
+export const colorPalettePlumForeground2 = "var(--colorPalettePlumForeground2)";
+
+// @public
+export const colorPalettePumpkinBackground2 = "var(--colorPalettePumpkinBackground2)";
+
+// @public
+export const colorPalettePumpkinBorderActive = "var(--colorPalettePumpkinBorderActive)";
+
+// @public
+export const colorPalettePumpkinForeground2 = "var(--colorPalettePumpkinForeground2)";
+
+// @public
+export const colorPalettePurpleBackground2 = "var(--colorPalettePurpleBackground2)";
+
+// @public
+export const colorPalettePurpleBorderActive = "var(--colorPalettePurpleBorderActive)";
+
+// @public
+export const colorPalettePurpleForeground2 = "var(--colorPalettePurpleForeground2)";
+
+// @public
+export const colorPaletteRedBackground1 = "var(--colorPaletteRedBackground1)";
+
+// @public
+export const colorPaletteRedBackground2 = "var(--colorPaletteRedBackground2)";
+
+// @public
+export const colorPaletteRedBackground3 = "var(--colorPaletteRedBackground3)";
+
+// @public
+export const colorPaletteRedBorder1 = "var(--colorPaletteRedBorder1)";
+
+// @public
+export const colorPaletteRedBorder2 = "var(--colorPaletteRedBorder2)";
+
+// @public
+export const colorPaletteRedBorderActive = "var(--colorPaletteRedBorderActive)";
+
+// @public
+export const colorPaletteRedForeground1 = "var(--colorPaletteRedForeground1)";
+
+// @public
+export const colorPaletteRedForeground2 = "var(--colorPaletteRedForeground2)";
+
+// @public
+export const colorPaletteRedForeground3 = "var(--colorPaletteRedForeground3)";
+
+// @public
+export const colorPaletteRedForegroundInverted = "var(--colorPaletteRedForegroundInverted)";
+
+// @public
+export const colorPaletteRoyalBlueBackground2 = "var(--colorPaletteRoyalBlueBackground2)";
+
+// @public
+export const colorPaletteRoyalBlueBorderActive = "var(--colorPaletteRoyalBlueBorderActive)";
+
+// @public
+export const colorPaletteRoyalBlueForeground2 = "var(--colorPaletteRoyalBlueForeground2)";
+
+// @public
+export const colorPaletteSeafoamBackground2 = "var(--colorPaletteSeafoamBackground2)";
+
+// @public
+export const colorPaletteSeafoamBorderActive = "var(--colorPaletteSeafoamBorderActive)";
+
+// @public
+export const colorPaletteSeafoamForeground2 = "var(--colorPaletteSeafoamForeground2)";
+
+// @public
+export const colorPaletteSteelBackground2 = "var(--colorPaletteSteelBackground2)";
+
+// @public
+export const colorPaletteSteelBorderActive = "var(--colorPaletteSteelBorderActive)";
+
+// @public
+export const colorPaletteSteelForeground2 = "var(--colorPaletteSteelForeground2)";
+
+// @public
+export const colorPaletteTealBackground2 = "var(--colorPaletteTealBackground2)";
+
+// @public
+export const colorPaletteTealBorderActive = "var(--colorPaletteTealBorderActive)";
+
+// @public
+export const colorPaletteTealForeground2 = "var(--colorPaletteTealForeground2)";
+
+// @public
+export const colorPaletteYellowBackground1 = "var(--colorPaletteYellowBackground1)";
+
+// @public
+export const colorPaletteYellowBackground2 = "var(--colorPaletteYellowBackground2)";
+
+// @public
+export const colorPaletteYellowBackground3 = "var(--colorPaletteYellowBackground3)";
+
+// @public
+export const colorPaletteYellowBorder1 = "var(--colorPaletteYellowBorder1)";
+
+// @public
+export const colorPaletteYellowBorder2 = "var(--colorPaletteYellowBorder2)";
+
+// @public
+export const colorPaletteYellowBorderActive = "var(--colorPaletteYellowBorderActive)";
+
+// @public
+export const colorPaletteYellowForeground1 = "var(--colorPaletteYellowForeground1)";
+
+// @public
+export const colorPaletteYellowForeground2 = "var(--colorPaletteYellowForeground2)";
+
+// @public
+export const colorPaletteYellowForeground3 = "var(--colorPaletteYellowForeground3)";
+
+// @public
+export const colorPaletteYellowForegroundInverted = "var(--colorPaletteYellowForegroundInverted)";
+
+// @public
+export const colorScrollbarOverlay = "var(--colorScrollbarOverlay)";
+
+// @public
+export const colorStatusDangerBackground1 = "var(--colorStatusDangerBackground1)";
+
+// @public
+export const colorStatusDangerBackground2 = "var(--colorStatusDangerBackground2)";
+
+// @public
+export const colorStatusDangerBackground3 = "var(--colorStatusDangerBackground3)";
+
+// @public
+export const colorStatusDangerBackground3Hover = "var(--colorStatusDangerBackground3Hover)";
+
+// @public
+export const colorStatusDangerBackground3Pressed = "var(--colorStatusDangerBackground3Pressed)";
+
+// @public
+export const colorStatusDangerBorder1 = "var(--colorStatusDangerBorder1)";
+
+// @public
+export const colorStatusDangerBorder2 = "var(--colorStatusDangerBorder2)";
+
+// @public
+export const colorStatusDangerBorderActive = "var(--colorStatusDangerBorderActive)";
+
+// @public
+export const colorStatusDangerForeground1 = "var(--colorStatusDangerForeground1)";
+
+// @public
+export const colorStatusDangerForeground2 = "var(--colorStatusDangerForeground2)";
+
+// @public
+export const colorStatusDangerForeground3 = "var(--colorStatusDangerForeground3)";
+
+// @public
+export const colorStatusDangerForegroundInverted = "var(--colorStatusDangerForegroundInverted)";
+
+// @public
+export const colorStatusSuccessBackground1 = "var(--colorStatusSuccessBackground1)";
+
+// @public
+export const colorStatusSuccessBackground2 = "var(--colorStatusSuccessBackground2)";
+
+// @public
+export const colorStatusSuccessBackground3 = "var(--colorStatusSuccessBackground3)";
+
+// @public
+export const colorStatusSuccessBorder1 = "var(--colorStatusSuccessBorder1)";
+
+// @public
+export const colorStatusSuccessBorder2 = "var(--colorStatusSuccessBorder2)";
+
+// @public
+export const colorStatusSuccessBorderActive = "var(--colorStatusSuccessBorderActive)";
+
+// @public
+export const colorStatusSuccessForeground1 = "var(--colorStatusSuccessForeground1)";
+
+// @public
+export const colorStatusSuccessForeground2 = "var(--colorStatusSuccessForeground2)";
+
+// @public
+export const colorStatusSuccessForeground3 = "var(--colorStatusSuccessForeground3)";
+
+// @public
+export const colorStatusSuccessForegroundInverted = "var(--colorStatusSuccessForegroundInverted)";
+
+// @public
+export const colorStatusWarningBackground1 = "var(--colorStatusWarningBackground1)";
+
+// @public
+export const colorStatusWarningBackground2 = "var(--colorStatusWarningBackground2)";
+
+// @public
+export const colorStatusWarningBackground3 = "var(--colorStatusWarningBackground3)";
+
+// @public
+export const colorStatusWarningBorder1 = "var(--colorStatusWarningBorder1)";
+
+// @public
+export const colorStatusWarningBorder2 = "var(--colorStatusWarningBorder2)";
+
+// @public
+export const colorStatusWarningBorderActive = "var(--colorStatusWarningBorderActive)";
+
+// @public
+export const colorStatusWarningForeground1 = "var(--colorStatusWarningForeground1)";
+
+// @public
+export const colorStatusWarningForeground2 = "var(--colorStatusWarningForeground2)";
+
+// @public
+export const colorStatusWarningForeground3 = "var(--colorStatusWarningForeground3)";
+
+// @public
+export const colorStatusWarningForegroundInverted = "var(--colorStatusWarningForegroundInverted)";
+
+// @public
+export const colorStrokeFocus1 = "var(--colorStrokeFocus1)";
+
+// @public
+export const colorStrokeFocus2 = "var(--colorStrokeFocus2)";
+
+// @public
+export const colorSubtleBackground = "var(--colorSubtleBackground)";
+
+// @public
+export const colorSubtleBackgroundHover = "var(--colorSubtleBackgroundHover)";
+
+// @public
+export const colorSubtleBackgroundInverted = "var(--colorSubtleBackgroundInverted)";
+
+// @public
+export const colorSubtleBackgroundInvertedHover = "var(--colorSubtleBackgroundInvertedHover)";
+
+// @public
+export const colorSubtleBackgroundInvertedPressed = "var(--colorSubtleBackgroundInvertedPressed)";
+
+// @public
+export const colorSubtleBackgroundInvertedSelected = "var(--colorSubtleBackgroundInvertedSelected)";
+
+// @public
+export const colorSubtleBackgroundLightAlphaHover = "var(--colorSubtleBackgroundLightAlphaHover)";
+
+// @public
+export const colorSubtleBackgroundLightAlphaPressed = "var(--colorSubtleBackgroundLightAlphaPressed)";
+
+// @public
+export const colorSubtleBackgroundLightAlphaSelected = "var(--colorSubtleBackgroundLightAlphaSelected)";
+
+// @public
+export const colorSubtleBackgroundPressed = "var(--colorSubtleBackgroundPressed)";
+
+// @public
+export const colorSubtleBackgroundSelected = "var(--colorSubtleBackgroundSelected)";
+
+// @public
+export const colorTransparentBackground = "var(--colorTransparentBackground)";
+
+// @public
+export const colorTransparentBackgroundHover = "var(--colorTransparentBackgroundHover)";
+
+// @public
+export const colorTransparentBackgroundPressed = "var(--colorTransparentBackgroundPressed)";
+
+// @public
+export const colorTransparentBackgroundSelected = "var(--colorTransparentBackgroundSelected)";
+
+// @public
+export const colorTransparentStroke = "var(--colorTransparentStroke)";
+
+// @public
+export const colorTransparentStrokeDisabled = "var(--colorTransparentStrokeDisabled)";
+
+// @public
+export const colorTransparentStrokeInteractive = "var(--colorTransparentStrokeInteractive)";
+
+// @public
+export class CompoundButton extends Button {
+}
+
+// @public
+export const CompoundButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type CompoundButtonAppearance = ValuesOf<typeof CompoundButtonAppearance>;
+
+// @public (undocumented)
+export const CompoundButtonDefinition: FASTElementDefinition<typeof CompoundButton>;
+
+// @public
+export const CompoundButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type CompoundButtonShape = ValuesOf<typeof CompoundButtonShape>;
+
+// @public
+export const CompoundButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type CompoundButtonSize = ValuesOf<typeof CompoundButtonSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const CompoundButtonStyles: ElementStyles;
+
+// @public
+export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
+//
+// @public
+export class CounterBadge extends FASTElement {
+    appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
+    color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
+    count: number;
+    // (undocumented)
+    protected countChanged(): void;
+    dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    overflowCount: number;
+    // (undocumented)
+    protected overflowCountChanged(): void;
+    // @internal
+    setCount(): string | void;
+    shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
+    showZero: boolean;
+    size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
+}
+
+// @internal
+export interface CounterBadge extends StartEnd {
+}
+
+// @public
+export const CounterBadgeAppearance: {
+    readonly filled: "filled";
+    readonly ghost: "ghost";
+};
+
+// @public
+export type CounterBadgeAppearance = ValuesOf<typeof CounterBadgeAppearance>;
+
+// @public
+export const CounterBadgeColor: {
+    readonly brand: "brand";
+    readonly danger: "danger";
+    readonly important: "important";
+    readonly informative: "informative";
+    readonly severe: "severe";
+    readonly subtle: "subtle";
+    readonly success: "success";
+    readonly warning: "warning";
+};
+
+// @public
+export type CounterBadgeColor = ValuesOf<typeof CounterBadgeColor>;
+
+// @public (undocumented)
+export const CounterBadgeDefinition: FASTElementDefinition<typeof CounterBadge>;
+
+// @public
+export const CounterBadgeShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+};
+
+// @public
+export type CounterBadgeShape = ValuesOf<typeof CounterBadgeShape>;
+
+// @public
+export const CounterBadgeSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+};
+
+// @public
+export type CounterBadgeSize = ValuesOf<typeof CounterBadgeSize>;
+
+// @public
+export const CounterBadgeStyles: ElementStyles;
+
+// @public
+export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
+
+// @public
+export const curveAccelerateMax = "var(--curveAccelerateMax)";
+
+// @public
+export const curveAccelerateMid = "var(--curveAccelerateMid)";
+
+// @public
+export const curveAccelerateMin = "var(--curveAccelerateMin)";
+
+// @public
+export const curveDecelerateMax = "var(--curveDecelerateMax)";
+
+// @public
+export const curveDecelerateMid = "var(--curveDecelerateMid)";
+
+// @public
+export const curveDecelerateMin = "var(--curveDecelerateMin)";
+
+// @public
+export const curveEasyEase = "var(--curveEasyEase)";
+
+// @public
+export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
+
+// @public
+export const curveLinear = "var(--curveLinear)";
+
+// @public
+export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+
+// @public
+export class Dialog extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    show(): void;
+    type: DialogType;
+}
+
+// @public
+export class DialogBody extends FASTElement {
+    noTitleAction: boolean;
+}
+
+// @public
+export const DialogBodyDefinition: FASTElementDefinition<typeof DialogBody>;
+
+// @public
+export const DialogBodyStyles: ElementStyles;
+
+// @public
+export const DialogBodyTemplate: ElementViewTemplate;
+
+// @public
+export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+
+// @public
+export const DialogStyles: ElementStyles;
+
+// @public
+export const DialogTemplate: ElementViewTemplate<Dialog>;
+
+// Warning: (ae-missing-release-tag) "DialogType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DialogType: {
+    readonly modal: "modal";
+    readonly nonModal: "non-modal";
+    readonly alert: "alert";
+};
+
+// @public (undocumented)
+export type DialogType = ValuesOf<typeof DialogType>;
+
+// Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
+//
+// @public
+export function display(displayValue: CSSDisplayPropertyValue): string;
+
+// @public
+export class Divider extends BaseDivider {
+    // (undocumented)
+    alignContent?: DividerAlignContent;
+    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
+    // (undocumented)
+    appearance?: DividerAppearance;
+    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
+    // (undocumented)
+    inset?: boolean;
+    insetChanged(prev: boolean, next: boolean): void;
+}
+
+// @public
+export const DividerAlignContent: {
+    readonly center: "center";
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DividerAlignContent = ValuesOf<typeof DividerAlignContent>;
+
+// @public
+export const DividerAppearance: {
+    readonly strong: "strong";
+    readonly brand: "brand";
+    readonly subtle: "subtle";
+    readonly default: "default";
+};
+
+// @public
+export type DividerAppearance = ValuesOf<typeof DividerAppearance>;
+
+// @public
+export const DividerDefinition: FASTElementDefinition<typeof Divider>;
+
+// @public
+export const DividerOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * Divider roles
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type DividerOrientation = ValuesOf<typeof DividerOrientation>;
+
+// @public
+export const DividerRole: {
+    readonly separator: "separator";
+    readonly presentation: "presentation";
+};
+
+// @public
+export type DividerRole = ValuesOf<typeof DividerRole>;
+
+// @public
+export const DividerStyles: ElementStyles;
+
+// @public
+export const DividerTemplate: ElementViewTemplate<Divider>;
+
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class DrawerBody extends FASTElement {
+}
+
+// @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
+// @public
+export const durationFast = "var(--durationFast)";
+
+// @public
+export const durationFaster = "var(--durationFaster)";
+
+// @public
+export const durationGentle = "var(--durationGentle)";
+
+// @public
+export const durationNormal = "var(--durationNormal)";
+
+// @public
+export const durationSlow = "var(--durationSlow)";
+
+// @public
+export const durationSlower = "var(--durationSlower)";
+
+// @public
+export const durationUltraFast = "var(--durationUltraFast)";
+
+// @public
+export const durationUltraSlow = "var(--durationUltraSlow)";
+
+// @public
+export class Field extends FASTElement {
+    constructor();
+    // @internal
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
+    // @internal
+    invalidHandler(e: Event): boolean | void;
+    labelPosition: FieldLabelPosition;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
+    // @internal
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
+export const FieldDefinition: FASTElementDefinition<typeof Field>;
+
+// @public
+export const FieldLabelPosition: {
+    readonly above: "above";
+    readonly after: "after";
+    readonly before: "before";
+};
+
+// @public (undocumented)
+export type FieldLabelPosition = ValuesOf<typeof FieldLabelPosition>;
+
+// @public
+export const FieldStyles: ElementStyles;
+
+// @public
+export const FieldTemplate: ElementViewTemplate;
+
+// Warning: (ae-missing-release-tag) "FluentDesignSystem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const FluentDesignSystem: Readonly<{
+    prefix: "fluent";
+    shadowRootMode: "open";
+    registry: CustomElementRegistry;
+}>;
+
+// @public
+export const fontFamilyBase = "var(--fontFamilyBase)";
+
+// @public
+export const fontFamilyMonospace = "var(--fontFamilyMonospace)";
+
+// @public
+export const fontFamilyNumeric = "var(--fontFamilyNumeric)";
+
+// @public
+export const fontSizeBase100 = "var(--fontSizeBase100)";
+
+// @public
+export const fontSizeBase200 = "var(--fontSizeBase200)";
+
+// @public
+export const fontSizeBase300 = "var(--fontSizeBase300)";
+
+// @public
+export const fontSizeBase400 = "var(--fontSizeBase400)";
+
+// @public
+export const fontSizeBase500 = "var(--fontSizeBase500)";
+
+// @public
+export const fontSizeBase600 = "var(--fontSizeBase600)";
+
+// @public
+export const fontSizeHero1000 = "var(--fontSizeHero1000)";
+
+// @public
+export const fontSizeHero700 = "var(--fontSizeHero700)";
+
+// @public
+export const fontSizeHero800 = "var(--fontSizeHero800)";
+
+// @public
+export const fontSizeHero900 = "var(--fontSizeHero900)";
+
+// @public
+export const fontWeightBold = "var(--fontWeightBold)";
+
+// @public
+export const fontWeightMedium = "var(--fontWeightMedium)";
+
+// @public
+export const fontWeightRegular = "var(--fontWeightRegular)";
+
+// @public
+export const fontWeightSemibold = "var(--fontWeightSemibold)";
+
+// @public
+export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+
+// @public
+export const getDirection: (rootNode: HTMLElement) => Direction;
+
+// @public
+class Image_2 extends FASTElement {
+    block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
+    bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
+    shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
+    shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
+}
+export { Image_2 as Image }
+
+// @public
+export const ImageDefinition: FASTElementDefinition<typeof Image_2>;
+
+// @public
+export const ImageFit: {
+    readonly none: "none";
+    readonly center: "center";
+    readonly contain: "contain";
+    readonly cover: "cover";
+    readonly default: "default";
+};
+
+// @public
+export type ImageFit = ValuesOf<typeof ImageFit>;
+
+// Warning: (ae-missing-release-tag) "ImageShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const ImageShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type ImageShape = ValuesOf<typeof ImageShape>;
+
+// @public
+export const ImageStyles: ElementStyles;
+
+// @public
+export const ImageTemplate: ElementViewTemplate<Image_2>;
+
+// @public
+export class Label extends FASTElement {
+    disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    required: boolean;
+    size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
+    weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
+}
+
+// @public
+export const LabelDefinition: FASTElementDefinition<typeof Label>;
+
+// Warning: (ae-missing-release-tag) "LabelSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const LabelSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type LabelSize = ValuesOf<typeof LabelSize>;
+
+// @public
+export const LabelStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const LabelTemplate: ElementViewTemplate<Label>;
+
+// Warning: (ae-missing-release-tag) "LabelWeight" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const LabelWeight: {
+    readonly regular: "regular";
+    readonly semibold: "semibold";
+};
+
+// @public
+export type LabelWeight = ValuesOf<typeof LabelWeight>;
+
+// @public
+export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+
+// @public
+export const lineHeightBase100 = "var(--lineHeightBase100)";
+
+// @public
+export const lineHeightBase200 = "var(--lineHeightBase200)";
+
+// @public
+export const lineHeightBase300 = "var(--lineHeightBase300)";
+
+// @public
+export const lineHeightBase400 = "var(--lineHeightBase400)";
+
+// @public
+export const lineHeightBase500 = "var(--lineHeightBase500)";
+
+// @public
+export const lineHeightBase600 = "var(--lineHeightBase600)";
+
+// @public
+export const lineHeightHero1000 = "var(--lineHeightHero1000)";
+
+// @public
+export const lineHeightHero700 = "var(--lineHeightHero700)";
+
+// @public
+export const lineHeightHero800 = "var(--lineHeightHero800)";
+
+// @public
+export const lineHeightHero900 = "var(--lineHeightHero900)";
+
+// @public
+export class Link extends BaseAnchor {
+    appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
+    inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
+}
+
+// @public
+export const LinkAppearance: {
+    readonly subtle: "subtle";
+};
+
+// @public
+export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
+
+// @public (undocumented)
+export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// @public
+export const LinkTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type LinkTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export const LinkTemplate: ElementViewTemplate<Link>;
+
+// @public
+export abstract class MatchMediaBehavior implements HostBehavior {
+    constructor(query: MediaQueryList);
+    connectedCallback(controller: HostController): void;
+    protected abstract constructListener(controller: HostController): MediaQueryListListener;
+    disconnectedCallback(controller: HostController): void;
+    readonly query: MediaQueryList;
+}
+
+// @public
+export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
+    constructor(query: MediaQueryList, styles: ElementStyles);
+    protected constructListener(controller: HostController): MediaQueryListListener;
+    readonly query: MediaQueryList;
+    // @internal
+    removedCallback(controller: HostController<any>): void;
+    readonly styles: ElementStyles;
+    static with(query: MediaQueryList): (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
+}
+
+// @public
+export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListEvent) => void;
+
+// @public
+export class Menu extends FASTElement {
+    closeMenu: (event?: Event) => void;
+    closeOnScroll?: boolean;
+    closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
+    connectedCallback(): void;
+    disconnectedCallback(): void;
+    focusMenuList(): void;
+    focusTrigger(): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
+    openMenu: (e?: Event) => void;
+    openOnContext?: boolean;
+    openOnContextChanged(oldValue: boolean, newValue: boolean): void;
+    openOnHover?: boolean;
+    openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
+    persistOnItemClick?: boolean;
+    persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
+    setComponent(): void;
+    slottedMenuList: MenuList[];
+    slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
+    toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
+}
+
+// @public
+export class MenuButton extends Button {
+}
+
+// @public
+export const MenuButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type MenuButtonAppearance = ValuesOf<typeof MenuButtonAppearance>;
+
+// @public (undocumented)
+export const MenuButtonDefinition: FASTElementDefinition<typeof MenuButton>;
+
+// @public
+export const MenuButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type MenuButtonShape = ValuesOf<typeof MenuButtonShape>;
+
+// @public
+export const MenuButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type MenuButtonSize = ValuesOf<typeof MenuButtonSize>;
+
+// @public
+export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
+
+// @public
+export const MenuDefinition: FASTElementDefinition<typeof Menu>;
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "MenuItem" because one of its declarations is marked as @internal
+//
+// @public
+export class MenuItem extends FASTElement {
+    checked: boolean;
+    protected checkedChanged(prev: boolean, next: boolean): void;
+    // (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal (undocumented)
+    handleMenuItemClick: (e: MouseEvent) => boolean;
+    // @internal (undocumented)
+    handleMenuItemKeyDown: (e: KeyboardEvent) => boolean;
+    // @internal (undocumented)
+    handleMouseOut: (e: MouseEvent) => boolean;
+    // @internal (undocumented)
+    handleMouseOver: (e: MouseEvent) => boolean;
+    hidden: boolean;
+    role: MenuItemRole;
+    roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
+    // @internal
+    setSubmenuPosition: () => void;
+    // @internal
+    slottedSubmenu: HTMLElement[];
+    // @internal
+    protected slottedSubmenuChanged(prev: HTMLElement[] | undefined, next: HTMLElement[]): void;
+    // @internal (undocumented)
+    submenu: HTMLElement | undefined;
+    // @internal
+    toggleHandler: (e: ToggleEvent | Event) => void;
+}
+
+// @internal
+export interface MenuItem extends StartEnd {
+}
+
+// Warning: (ae-missing-release-tag) "MenuItemColumnCount" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type MenuItemColumnCount = 0 | 1 | 2;
+
+// @public (undocumented)
+export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
+
+// @public
+export type MenuItemOptions = StartEndOptions<MenuItem> & {
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
+};
+
+// @public
+export const MenuItemRole: {
+    readonly menuitem: "menuitem";
+    readonly menuitemcheckbox: "menuitemcheckbox";
+    readonly menuitemradio: "menuitemradio";
+};
+
+// @public
+export type MenuItemRole = ValuesOf<typeof MenuItemRole>;
+
+// @public
+export const MenuItemStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
+
+// @public
+export class MenuList extends FASTElement {
+    constructor();
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    focus(): void;
+    handleChange(source: any, propertyName: string): void;
+    // @internal
+    handleFocusOut: (e: FocusEvent) => void;
+    // @internal (undocumented)
+    handleMenuKeyDown(e: KeyboardEvent): void | boolean;
+    protected isMenuItemElement: (el: Element) => el is HTMLElement;
+    // @internal (undocumented)
+    readonly isNestedMenu: () => boolean;
+    // @internal (undocumented)
+    items: HTMLElement[];
+    // (undocumented)
+    protected itemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
+    // (undocumented)
+    protected menuItems: Element[] | undefined;
+    // (undocumented)
+    protected setItems(): void;
+}
+
+// @public (undocumented)
+export const MenuListDefinition: FASTElementDefinition<typeof MenuList>;
+
+// @public
+export const MenuListStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const MenuListTemplate: ElementViewTemplate<MenuList>;
+
+// @public
+export const MenuStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const MenuTemplate: ElementViewTemplate<Menu>;
+
+// @public
+export class ProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
+    shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
+    thickness?: ProgressBarThickness;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
+    validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+
+// @public
+export const ProgressBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public
+export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
+
+// @public
+export const ProgressBarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+
+// @public
+export const ProgressBarThickness: {
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ProgressBarThickness = ValuesOf<typeof ProgressBarThickness>;
+
+// @public
+export const ProgressBarValidationState: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+};
+
+// @public
+export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
+
+// @public
+export class Radio extends BaseCheckbox {
+    constructor();
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal @override
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
+    setFormValue(): void;
+    // @internal @override
+    setValidity(): void;
+    // @override
+    toggleChecked(force?: boolean): void;
+}
+
+// @public (undocumented)
+export type RadioControl = Pick<HTMLInputElement, 'checked' | 'disabled' | 'focus' | 'setAttribute' | 'getAttribute'>;
+
+// @public
+export const RadioDefinition: FASTElementDefinition<typeof Radio>;
+
+// @public
+export class RadioGroup extends FASTElement {
+    constructor();
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
+}
+
+// @public
+export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
+
+// @public
+export const RadioGroupOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * Radio Group orientation
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type RadioGroupOrientation = ValuesOf<typeof RadioGroupOrientation>;
+
+// @public
+export const RadioGroupStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const RadioGroupTemplate: ElementViewTemplate<RadioGroup>;
+
+// @public
+export type RadioOptions = {
+    checkedIndicator?: StaticallyComposableHTML<Radio>;
+};
+
+// @public
+export const RadioStyles: ElementStyles;
+
+// @public
+export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends FASTElement {
+    constructor();
+    color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
+    compact: boolean;
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
+    value?: number;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
+
+// Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const roleForMenuItem: {
+    [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
+};
+
+// Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const setTheme: (theme: Theme) => void;
+
+// Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
+
+// @public
+export const shadow16 = "var(--shadow16)";
+
+// @public
+export const shadow16Brand = "var(--shadow16Brand)";
+
+// @public
+export const shadow2 = "var(--shadow2)";
+
+// @public
+export const shadow28 = "var(--shadow28)";
+
+// @public
+export const shadow28Brand = "var(--shadow28Brand)";
+
+// @public
+export const shadow2Brand = "var(--shadow2Brand)";
+
+// @public
+export const shadow4 = "var(--shadow4)";
+
+// @public
+export const shadow4Brand = "var(--shadow4Brand)";
+
+// @public
+export const shadow64 = "var(--shadow64)";
+
+// @public
+export const shadow64Brand = "var(--shadow64Brand)";
+
+// @public
+export const shadow8 = "var(--shadow8)";
+
+// @public
+export const shadow8Brand = "var(--shadow8Brand)";
+
+// @public
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
+    // @internal
+    calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    decrement(): void;
+    // @internal (undocumented)
     direction: Direction;
-    disabledOpacity: number;
-    fillColor: Swatch;
-    focusStrokeWidth: number;
-    layerCornerRadius: number;
-    neutralBaseColor: Swatch;
-    neutralFillActiveDelta: number;
-    neutralFillFocusDelta: number;
-    neutralFillHoverDelta: number;
-    neutralFillInputActiveDelta: number;
-    neutralFillInputFocusDelta: number;
-    neutralFillInputHoverDelta: number;
-    neutralFillInputRestDelta: number;
-    neutralFillLayerRestDelta: number;
-    neutralFillRestDelta: number;
-    neutralFillStealthActiveDelta: number;
-    neutralFillStealthFocusDelta: number;
-    neutralFillStealthHoverDelta: number;
-    neutralFillStealthRestDelta: number;
-    neutralFillStrongActiveDelta: number;
-    neutralFillStrongFocusDelta: number;
-    neutralFillStrongHoverDelta: number;
-    neutralStrokeActiveDelta: number;
-    neutralStrokeDividerRestDelta: number;
-    neutralStrokeFocusDelta: number;
-    neutralStrokeHoverDelta: number;
-    neutralStrokeRestDelta: number;
-    noPaint: boolean;
-    strokeWidth: number;
-    typeRampBaseFontSize: string;
-    typeRampBaseLineHeight: string;
-    typeRampMinus1FontSize: string;
-    typeRampMinus1LineHeight: string;
-    typeRampMinus2FontSize: string;
-    typeRampMinus2LineHeight: string;
-    typeRampPlus1FontSize: string;
-    typeRampPlus1LineHeight: string;
-    typeRampPlus2FontSize: string;
-    typeRampPlus2LineHeight: string;
-    typeRampPlus3FontSize: string;
-    typeRampPlus3LineHeight: string;
-    typeRampPlus4FontSize: string;
-    typeRampPlus4LineHeight: string;
-    typeRampPlus5FontSize: string;
-    typeRampPlus5LineHeight: string;
-    typeRampPlus6FontSize: string;
-    typeRampPlus6LineHeight: string;
-}
-
-// @public (undocumented)
-export const designUnit: CSSDesignToken<number>;
-
-export { Dialog }
-
-// @public
-export const dialogStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public (undocumented)
-export const direction: CSSDesignToken<Direction>;
-
-// Warning: (ae-internal-missing-underscore) The name "directionalShadow" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal @deprecated (undocumented)
-export const directionalShadow = "0 calc(var(--elevation) * 0.5px) calc((var(--elevation) * 1px)) rgba(0, 0, 0, 0.2)";
-
-// @public
-export class DirectionalStyleSheetBehavior implements Behavior {
-    constructor(ltr: ElementStyles | null, rtl: ElementStyles | null);
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
-    bind(source: FASTElement & HTMLElement): void;
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // (undocumented)
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
+    increment(): void;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
-    unbind(source: FASTElement & HTMLElement): void;
-}
-
-// @public (undocumented)
-export const disabledOpacity: CSSDesignToken<number>;
-
-export { Divider }
-
-// @public
-export const dividerStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public @deprecated (undocumented)
-export const elevatedCornerRadius: CSSDesignToken<number>;
-
-// @public @deprecated
-export const elevation: string;
-
-// @public (undocumented)
-export interface ElevationRecipe {
+    isDragging: boolean;
     // (undocumented)
-    evaluate(element: HTMLElement, size: number, reference?: Swatch): string;
-}
-
-// @public (undocumented)
-export const elevationShadowCardActive: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowCardActiveSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowCardFocus: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowCardFocusSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowCardHover: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowCardHoverSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowCardRest: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowCardRestSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowDialog: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowDialogSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowFlyout: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowFlyoutSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const elevationShadowRecipe: DesignToken<ElevationRecipe>;
-
-// @public (undocumented)
-export const elevationShadowTooltip: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const elevationShadowTooltipSize: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const fillColor: CSSDesignToken<Swatch>;
-
-export { Flipper }
-
-// @public
-export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles;
-
-// @public
-export const fluentAccordion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Accordion>;
-
-// @public
-export const fluentAccordionItem: (overrideDefinition?: OverrideFoundationElementDefinition<AccordionItemOptions> | undefined) => FoundationElementRegistry<AccordionItemOptions, Constructable<FoundationElement>>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-//
-// @public
-export const fluentAnchor: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Anchor>;
-
-// @beta
-export const fluentAnchoredRegion: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof AnchoredRegion>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-//
-// @public
-export const fluentBadge: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Badge>;
-
-// @public
-export const fluentBreadcrumb: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Breadcrumb>;
-
-// @public
-export const fluentBreadcrumbItem: (overrideDefinition?: OverrideFoundationElementDefinition<BreadcrumbItemOptions> | undefined) => FoundationElementRegistry<BreadcrumbItemOptions, Constructable<FoundationElement>>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-//
-// @public
-export const fluentButton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Button>;
-
-// @public
-export const fluentCalendar: (overrideDefinition?: OverrideFoundationElementDefinition<CalendarOptions> | undefined) => FoundationElementRegistry<CalendarOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentCard: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Card>;
-
-// @public
-export const fluentCheckbox: (overrideDefinition?: OverrideFoundationElementDefinition<CheckboxOptions> | undefined) => FoundationElementRegistry<CheckboxOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentCombobox: (overrideDefinition?: OverrideFoundationElementDefinition<ComboboxOptions> | undefined) => FoundationElementRegistry<ComboboxOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentDataGrid: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGrid>;
-
-// @public
-export const fluentDataGridCell: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGridCell>;
-
-// @public
-export const fluentDataGridRow: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof DataGridRow>;
-
-// @public
-export const fluentDesignSystemProvider: (overrideDefinition?: OverrideFoundationElementDefinition<    {
-baseName: string;
-template: ViewTemplate<any, any>;
-styles: ElementStyles;
-}> | undefined) => FoundationElementRegistry<    {
-baseName: string;
-template: ViewTemplate<any, any>;
-styles: ElementStyles;
-}, typeof DesignSystemProvider>;
-
-// @public
-export const fluentDialog: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Dialog>;
-
-// @public
-export const fluentDivider: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Divider>;
-
-// @public
-export const fluentFlipper: (overrideDefinition?: OverrideFoundationElementDefinition<FlipperOptions> | undefined) => FoundationElementRegistry<FlipperOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentHorizontalScroll: (overrideDefinition?: OverrideFoundationElementDefinition<HorizontalScrollOptions> | undefined) => FoundationElementRegistry<HorizontalScrollOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentListbox: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Listbox>;
-
-// @public
-export const fluentMenu: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Menu>;
-
-// @public
-export const fluentMenuItem: (overrideDefinition?: OverrideFoundationElementDefinition<MenuItemOptions> | undefined) => FoundationElementRegistry<MenuItemOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentNumberField: (overrideDefinition?: OverrideFoundationElementDefinition<NumberFieldOptions> | undefined) => FoundationElementRegistry<NumberFieldOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentOption: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof ListboxOption>;
-
-// @public
-export const fluentProgress: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressOptions> | undefined) => FoundationElementRegistry<ProgressOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentProgressRing: (overrideDefinition?: OverrideFoundationElementDefinition<ProgressRingOptions> | undefined) => FoundationElementRegistry<ProgressRingOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentRadio: (overrideDefinition?: OverrideFoundationElementDefinition<RadioOptions> | undefined) => FoundationElementRegistry<RadioOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentRadioGroup: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof RadioGroup>;
-
-// @public
-export const fluentSearch: (overrideDefinition?: OverrideFoundationElementDefinition<SearchOptions> | undefined) => FoundationElementRegistry<SearchOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentSelect: (overrideDefinition?: OverrideFoundationElementDefinition<SelectOptions> | undefined) => FoundationElementRegistry<SelectOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentSkeleton: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Skeleton>;
-
-// @public
-export const fluentSlider: (overrideDefinition?: OverrideFoundationElementDefinition<SliderOptions> | undefined) => FoundationElementRegistry<SliderOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentSliderLabel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof SliderLabel>;
-
-// @public
-export const fluentSwitch: (overrideDefinition?: OverrideFoundationElementDefinition<SwitchOptions> | undefined) => FoundationElementRegistry<SwitchOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentTab: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tab>;
-
-// @public
-export const fluentTabPanel: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TabPanel>;
-
-// @public
-export const fluentTabs: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tabs>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-//
-// @public
-export const fluentTextArea: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextArea>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-//
-// @public
-export const fluentTextField: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TextField>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-//
-// @public
-export const fluentToolbar: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Toolbar>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
-//
-// @public
-export const fluentTooltip: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof Tooltip>;
-
-// @public
-export const fluentTreeItem: (overrideDefinition?: OverrideFoundationElementDefinition<TreeItemOptions> | undefined) => FoundationElementRegistry<TreeItemOptions, Constructable<FoundationElement>>;
-
-// @public
-export const fluentTreeView: (overrideDefinition?: OverrideFoundationElementDefinition<FoundationElementDefinition> | undefined) => FoundationElementRegistry<FoundationElementDefinition, typeof TreeView>;
-
-// @public @deprecated (undocumented)
-export const focusOutlineWidth: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const focusStrokeInner: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const focusStrokeInnerRecipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const focusStrokeOuter: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const focusStrokeOuterRecipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const focusStrokeWidth: CSSDesignToken<number>;
-
-// @public
-export const focusTreatmentBase: CSSDirective;
-
-// @public
-export const focusTreatmentTight: CSSDirective;
-
-// @public (undocumented)
-export const fontWeight: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const foregroundOnAccentActive: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentActiveLarge: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const foregroundOnAccentFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentFocusLarge: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const foregroundOnAccentHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentHoverLarge: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentLargeRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const foregroundOnAccentRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const foregroundOnAccentRest: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const foregroundOnAccentRestLarge: CSSDesignToken<Swatch>;
-
-// @public
-export const heightNumber: CSSDirective;
-
-// Warning: (ae-internal-missing-underscore) The name "HorizontalScroll" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export class HorizontalScroll extends HorizontalScroll_2 {
-    // @public (undocumented)
-    connectedCallback(): void;
-}
-
-// @public
-export const horizontalScrollStyles: (context: ElementDefinitionContext, definition: HorizontalScrollOptions) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "HypertextStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const HypertextStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "inputFilledStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const inputFilledStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "inputForcedColorStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const inputForcedColorStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "inputOutlineStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const inputOutlineStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string, interactivitySelector?: string) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "inputStateStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export const inputStateStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, logicalControlSelector: string) => ElementStyles;
-
-// @public (undocumented)
-export interface InteractiveColorRecipe {
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max: string;
     // (undocumented)
-    evaluate(element: HTMLElement, reference?: Swatch): InteractiveSwatchSet;
-}
-
-// @public (undocumented)
-export interface InteractiveSwatchSet {
-    active: Swatch;
-    focus: Swatch;
-    hover: Swatch;
-    rest: Swatch;
-}
-
-// Warning: (ae-internal-missing-underscore) The name "isDark" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export function isDark(color: Swatch): boolean;
-
-// @public (undocumented)
-export const layerCornerRadius: CSSDesignToken<number>;
-
-// Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export const LightweightButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
-// @public (undocumented)
-export class Listbox extends Listbox_2 {
-}
-
-// @public
-export const listboxStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export class Menu extends Menu_2 {
+    protected maxChanged(): void;
+    min: string;
+    // (undocumented)
+    protected minChanged(): void;
+    mode: SliderMode;
+    orientation?: Orientation;
+    // (undocumented)
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
-    connectedCallback(): void;
+    position: string;
+    reportValidity(): boolean;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size?: SliderSize;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step: string;
+    // (undocumented)
+    protected stepChanged(): void;
+    // @internal (undocumented)
+    stepMultiplier: number;
+    // @internal (undocumented)
+    thumb: HTMLDivElement;
+    // @internal (undocumented)
+    track: HTMLDivElement;
+    // @internal (undocumented)
+    trackHeight: number;
+    // @internal (undocumented)
+    trackLeft: number;
+    // @internal (undocumented)
+    trackMinHeight: number;
+    // @internal (undocumented)
+    trackMinWidth: number;
+    // @internal (undocumented)
+    trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get valueAsNumber(): number;
+    set valueAsNumber(next: number);
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
-export { MenuItem }
+// @public (undocumented)
+export interface SliderConfiguration {
+    // (undocumented)
+    direction?: Direction;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    max?: string;
+    // (undocumented)
+    min?: string;
+    // (undocumented)
+    orientation?: SliderOrientation;
+}
 
 // @public
-export const menuItemStyles: (context: ElementDefinitionContext, definition: MenuItemOptions) => ElementStyles;
-
-// @public
-export const menuStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+export const SliderDefinition: FASTElementDefinition<typeof Slider>;
 
 // @public (undocumented)
-export const neutralBaseColor: CSSDesignToken<Swatch>;
+export const SliderMode: {
+    readonly singleValue: "single-value";
+};
 
-// Warning: (ae-internal-missing-underscore) The name "NeutralButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// @public
+export type SliderMode = ValuesOf<typeof SliderMode>;
+
+// @public
+export type SliderOptions = {
+    thumb?: StaticallyComposableHTML<Slider>;
+};
+
+// @public (undocumented)
+export const SliderOrientation: {
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public
+export type SliderOrientation = ValuesOf<typeof SliderOrientation>;
+
+// @public
+export const SliderSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+};
+
+// @public
+export type SliderSize = ValuesOf<typeof SliderSize>;
+
+// @public
+export const SliderStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SliderTemplate: ElementViewTemplate<Slider>;
+
+// @public
+export type SlottableInput = HTMLElement & ElementInternals & {
+    elementInternals?: ElementInternals;
+    required: boolean;
+    disabled: boolean;
+    readOnly: boolean;
+    checked?: boolean;
+    value?: string;
+};
+
+// @public
+export const spacingHorizontalL = "var(--spacingHorizontalL)";
+
+// @public
+export const spacingHorizontalM = "var(--spacingHorizontalM)";
+
+// @public
+export const spacingHorizontalMNudge = "var(--spacingHorizontalMNudge)";
+
+// @public
+export const spacingHorizontalNone = "var(--spacingHorizontalNone)";
+
+// @public
+export const spacingHorizontalS = "var(--spacingHorizontalS)";
+
+// @public
+export const spacingHorizontalSNudge = "var(--spacingHorizontalSNudge)";
+
+// @public
+export const spacingHorizontalXL = "var(--spacingHorizontalXL)";
+
+// @public
+export const spacingHorizontalXS = "var(--spacingHorizontalXS)";
+
+// @public
+export const spacingHorizontalXXL = "var(--spacingHorizontalXXL)";
+
+// @public
+export const spacingHorizontalXXS = "var(--spacingHorizontalXXS)";
+
+// @public
+export const spacingHorizontalXXXL = "var(--spacingHorizontalXXXL)";
+
+// @public
+export const spacingVerticalL = "var(--spacingVerticalL)";
+
+// @public
+export const spacingVerticalM = "var(--spacingVerticalM)";
+
+// @public
+export const spacingVerticalMNudge = "var(--spacingVerticalMNudge)";
+
+// @public
+export const spacingVerticalNone = "var(--spacingVerticalNone)";
+
+// @public
+export const spacingVerticalS = "var(--spacingVerticalS)";
+
+// @public
+export const spacingVerticalSNudge = "var(--spacingVerticalSNudge)";
+
+// @public
+export const spacingVerticalXL = "var(--spacingVerticalXL)";
+
+// @public
+export const spacingVerticalXS = "var(--spacingVerticalXS)";
+
+// @public
+export const spacingVerticalXXL = "var(--spacingVerticalXXL)";
+
+// @public
+export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
+
+// @public
+export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
+
+// @public
+export class Spinner extends FASTElement {
+    constructor();
+    appearance?: SpinnerAppearance;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
+}
+
+// @public
+export const SpinnerAppearance: {
+    readonly primary: "primary";
+    readonly inverted: "inverted";
+};
+
+// @public
+export type SpinnerAppearance = ValuesOf<typeof SpinnerAppearance>;
+
+// @public (undocumented)
+export const SpinnerDefinition: FASTElementDefinition<typeof Spinner>;
+
+// @public
+export const SpinnerSize: {
+    readonly tiny: "tiny";
+    readonly extraSmall: "extra-small";
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly extraLarge: "extra-large";
+    readonly huge: "huge";
+};
+
+// @public
+export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SpinnerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SpinnerTemplate: ViewTemplate<Spinner, any>;
+
+// @public
+export const strokeWidthThick = "var(--strokeWidthThick)";
+
+// @public
+export const strokeWidthThicker = "var(--strokeWidthThicker)";
+
+// @public
+export const strokeWidthThickest = "var(--strokeWidthThickest)";
+
+// @public
+export const strokeWidthThin = "var(--strokeWidthThin)";
+
+// @public
+const styles: ElementStyles;
+export { styles as ButtonStyles }
+export { styles as MenuButtonStyles }
+
+// Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class Switch extends BaseCheckbox {
+    constructor();
+}
+
+// @public
+export const SwitchDefinition: FASTElementDefinition<typeof Switch>;
+
+// @public
+export const SwitchLabelPosition: {
+    readonly above: "above";
+    readonly after: "after";
+    readonly before: "before";
+};
+
+// @public
+export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
+
+// Warning: (ae-missing-release-tag) "SwitchOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type SwitchOptions = {
+    switch?: StaticallyComposableHTML<Switch>;
+};
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SwitchStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const SwitchTemplate: ElementViewTemplate<Switch>;
+
+// Warning: (ae-missing-release-tag) "Tab" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Tab" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Tab extends FASTElement {
+    // (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+}
+
+// @public (undocumented)
+export interface Tab extends StartEnd {
+}
+
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabDefinition: FASTElementDefinition<typeof Tab>;
+
+// @public
+export type TabOptions = StartEndOptions<Tab>;
+
+// Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TabPanel extends FASTElement {
+}
+
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabPanelStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
+
+// Warning: (ae-forgotten-export) The symbol "BaseTabs" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class Tabs extends BaseTabs {
+    // (undocumented)
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TabsAppearance;
+    disabled?: boolean;
+    size?: TabsSize;
+    // (undocumented)
+    tabsChanged(): void;
+}
+
+// @public (undocumented)
+export interface Tabs extends StartEnd {
+}
+
+// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabsAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public (undocumented)
+export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
+
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
+
+// @public
+export type TabsOptions = StartEndOptions<Tabs>;
+
+// @public
+export const TabsOrientation: {
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TabsOrientation = ValuesOf<typeof TabsOrientation>;
+
+// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabsSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TabsSize = ValuesOf<typeof TabsSize>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabsStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabsTemplate: ElementViewTemplate<Tabs, any>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const TabTemplate: ElementViewTemplate<Tab, any>;
+
+// @public
+class Text_2 extends FASTElement {
+    align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
+    block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    italic: boolean;
+    nowrap: boolean;
+    size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
+    strikethrough: boolean;
+    truncate: boolean;
+    underline: boolean;
+    weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
+}
+export { Text_2 as Text }
+
+// @public
+export const TextAlign: {
+    readonly start: "start";
+    readonly end: "end";
+    readonly center: "center";
+    readonly justify: "justify";
+};
+
+// @public
+export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// @public
+export const TextDefinition: FASTElementDefinition<typeof Text_2>;
+
+// @public
+export const TextFont: {
+    readonly base: "base";
+    readonly numeric: "numeric";
+    readonly monospace: "monospace";
+};
+
+// @public
+export type TextFont = ValuesOf<typeof TextFont>;
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "TextInput" because one of its declarations is marked as @internal
+//
+// @public
+export class TextInput extends FASTElement {
+    appearance?: TextInputAppearance;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
+    autocomplete?: string;
+    autofocus: boolean;
+    // @internal
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
+    controlSize?: TextInputControlSize;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // @internal
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    dirname?: string;
+    disabled?: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialValue: string;
+    // @internal
+    initialValueChanged(): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    list: string;
+    maxlength: number;
+    minlength: number;
+    multiple: boolean;
+    name: string;
+    pattern: string;
+    placeholder: string;
+    readOnly?: boolean;
+    // @internal
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    requiredChanged(previous: boolean, next: boolean): void;
+    select(): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size: number;
+    spellcheck: boolean;
+    type: TextInputType;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
+}
+
+// @internal (undocumented)
+export interface TextInput extends StartEnd {
+}
+
+// Warning: (ae-missing-release-tag) "TextInputAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextInputAppearance: {
+    readonly outline: "outline";
+    readonly underline: "underline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public (undocumented)
+export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+// Warning: (ae-missing-release-tag) "TextInputControlSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextInputControlSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
+
+// @public
+export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+
+// @public
+export type TextInputOptions = StartEndOptions<TextInput>;
+
+// @public
+export const TextInputStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextInputTemplate" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const NeutralButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
+export const TextInputTemplate: ElementViewTemplate<TextInput>;
 
-// @public @deprecated (undocumented)
-export const neutralContrastFillActive: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillActiveDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillFocusDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillHoverDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillRest: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralContrastFillRestDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralDivider: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralDividerRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillActiveDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillCard: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillCardDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputAltActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputAltActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputAltFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputAltFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputAltHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputAltHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputAltRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillInputAltRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputAltRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillInputRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillInputRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillInputRestDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseActive: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseActiveDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseFocusDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseHoverDelta: CSSDesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseRest: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillInverseRestDelta: CSSDesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillLayerActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillLayerActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillLayerAltRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillLayerAltRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillLayerAltRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillLayerHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillLayerHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillLayerRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillLayerRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillLayerRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillSecondaryActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillSecondaryActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillSecondaryFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillSecondaryFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillSecondaryHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillSecondaryHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillSecondaryRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillSecondaryRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillSecondaryRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStealthActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStealthActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStealthFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStealthFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStealthHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStealthHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStealthRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillStealthRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStealthRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStrongActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStrongActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStrongFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStrongFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStrongHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStrongHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralFillStrongRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralFillStrongRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralFillStrongRestDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleActive: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleActiveDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleFocusDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleHoverDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleRest: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFillToggleRestDelta: DesignToken<number>;
-
-// @public @deprecated (undocumented)
-export const neutralFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralFocusInnerAccent: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralForegroundActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralForegroundFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralForegroundHint: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralForegroundHintRecipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralForegroundHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralForegroundRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralForegroundRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayer1: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayer1Recipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralLayer2: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayer2Recipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralLayer3: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayer3Recipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralLayer4: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayer4Recipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralLayerCardContainer: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayerCardContainerRecipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralLayerFloating: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralLayerFloatingRecipe: DesignToken<ColorRecipe>;
-
-// @public @deprecated (undocumented)
-export const neutralLayerL1: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralLayerL2: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralLayerL3: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralLayerL4: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralOutlineActive: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralOutlineFocus: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralOutlineHover: CSSDesignToken<Swatch>;
-
-// @public @deprecated (undocumented)
-export const neutralOutlineRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralPalette: DesignToken<Palette<Swatch>>;
-
-// @public (undocumented)
-export const neutralStrokeActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeControlActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeControlActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeControlFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeControlFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeControlHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeControlHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeControlRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeControlRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeControlRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeDividerRecipe: DesignToken<ColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeDividerRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeDividerRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeInputActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeInputFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeInputHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeInputRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeInputRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeLayerActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeLayerActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeLayerHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeLayerHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeLayerRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeLayerRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeLayerRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeRest: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeRestDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeStrongActive: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeStrongActiveDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeStrongFocus: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeStrongFocusDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeStrongHover: CSSDesignToken<Swatch>;
-
-// @public (undocumented)
-export const neutralStrokeStrongHoverDelta: DesignToken<number>;
-
-// @public (undocumented)
-export const neutralStrokeStrongRecipe: DesignToken<InteractiveColorRecipe>;
-
-// @public (undocumented)
-export const neutralStrokeStrongRest: CSSDesignToken<Swatch>;
-
-// Warning: (ae-internal-missing-underscore) The name "NumberField" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-missing-release-tag) "TextInputType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal
-export class NumberField extends NumberField_2 {
-    // @public
-    appearance: NumberFieldAppearance;
-    // (undocumented)
-    connectedCallback(): void;
-}
+// @public
+export const TextInputType: {
+    readonly email: "email";
+    readonly password: "password";
+    readonly tel: "tel";
+    readonly text: "text";
+    readonly url: "url";
+};
+
+// @public (undocumented)
+export type TextInputType = ValuesOf<typeof TextInputType>;
 
 // @public
-export type NumberFieldAppearance = 'filled' | 'outline';
+export const TextSize: {
+    readonly _100: "100";
+    readonly _200: "200";
+    readonly _300: "300";
+    readonly _400: "400";
+    readonly _500: "500";
+    readonly _600: "600";
+    readonly _700: "700";
+    readonly _800: "800";
+    readonly _900: "900";
+    readonly _1000: "1000";
+};
 
 // @public
-export const numberFieldStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles;
+export type TextSize = ValuesOf<typeof TextSize>;
 
 // @public
-export const OptionStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+export const TextStyles: ElementStyles;
 
-// Warning: (ae-internal-missing-underscore) The name "OutlineButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-internal-missing-underscore) The name "TextTemplate" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
-export const OutlineButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
-// @public @deprecated (undocumented)
-export const outlineWidth: CSSDesignToken<number>;
+export const TextTemplate: ElementViewTemplate<Text_2>;
 
 // @public
-export interface Palette<T extends Swatch = Swatch> {
-    // Warning: (ae-forgotten-export) The symbol "RelativeLuminance" needs to be exported by the entry point index.d.ts
-    closestIndexOf(reference: RelativeLuminance): number;
-    colorContrast(reference: Swatch, contrast: number, initialIndex?: number, direction?: 1 | -1): T;
-    get(index: number): T;
-    // (undocumented)
-    readonly source: T;
-    // (undocumented)
-    readonly swatches: ReadonlyArray<T>;
-}
-
-// @public (undocumented)
-export type PaletteRGB = Palette<SwatchRGB>;
-
-// @public (undocumented)
-export const PaletteRGB: Readonly<{
-    create: typeof create;
-    from: typeof from;
-}>;
+export const TextWeight: {
+    readonly medium: "medium";
+    readonly regular: "regular";
+    readonly semibold: "semibold";
+    readonly bold: "bold";
+};
 
 // @public
-export class Progress extends BaseProgress {
-}
+export type TextWeight = ValuesOf<typeof TextWeight>;
 
 // @public
-export class ProgressRing extends BaseProgress {
-}
-
-// @public
-export const progressRingStyles: (context: ElementDefinitionContext, definition: ProgressRingOptions) => ElementStyles;
-
-// @public
-export const progressStyles: (context: ElementDefinitionContext, definition: ProgressOptions) => ElementStyles;
-
-// @public
-export function provideFluentDesignSystem(element?: HTMLElement): DesignSystem;
-
-export { Radio }
-
-export { RadioGroup }
-
-// @public
-export const radioGroupStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const RadioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles;
-
-// @public @deprecated (undocumented)
-export interface Recipe<T> {
-    // (undocumented)
-    evaluate(element: HTMLElement, reference?: Swatch): T;
-}
-
-// Warning: (ae-internal-missing-underscore) The name "Search" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export class Search extends Search_2 {
-    // @public
-    appearance: SearchAppearance;
-}
-
-// @public
-export type SearchAppearance = 'filled' | 'outline';
-
-// @public
-export const searchStyles: (context: ElementDefinitionContext, definition: SearchOptions) => ElementStyles;
-
-// @public (undocumented)
-export const searchTemplate: (context: ElementDefinitionContext, definition: SearchOptions) => ViewTemplate<Search_2>;
-
-// Warning: (ae-internal-missing-underscore) The name "Select" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal
-export class Select extends Select_2 {
-    // @public
-    appearance: SelectAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: SelectAppearance, newValue: SelectAppearance): void;
+export class ToggleButton extends Button {
     // (undocumented)
     connectedCallback(): void;
+    mixed?: boolean;
+    // @internal
+    protected mixedChanged(): void;
+    // @override
+    protected press(): void;
+    pressed: boolean;
+    // @internal
+    protected pressedChanged(): void;
 }
 
 // @public
-export type SelectAppearance = 'filled' | 'outline' | 'stealth';
+export const ToggleButtonAppearance: {
+    readonly primary: "primary";
+    readonly outline: "outline";
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
 
 // @public
-export const selectStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles;
+export type ToggleButtonAppearance = ValuesOf<typeof ToggleButtonAppearance>;
 
-export { Skeleton }
-
-// @public
-export const skeletonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-export { Slider }
-
-export { SliderLabel }
+// @public (undocumented)
+export const ToggleButtonDefinition: FASTElementDefinition<typeof ToggleButton>;
 
 // @public
-export const sliderLabelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
+export const ToggleButtonShape: {
+    readonly circular: "circular";
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
 
 // @public
-export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles;
+export type ToggleButtonShape = ValuesOf<typeof ToggleButtonShape>;
 
 // @public
-export enum StandardLuminance {
-    // (undocumented)
-    DarkMode = 0.15,
-    // (undocumented)
-    LightMode = 0.98
-}
+export const ToggleButtonSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
 
-// Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
+// @public
+export type ToggleButtonSize = ValuesOf<typeof ToggleButtonSize>;
+
+// @public
+export const ToggleButtonStyles: ElementStyles;
+
+// @public
+export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal (undocumented)
-export const StealthButtonStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition, interactivitySelector: string, nonInteractivitySelector?: string) => ElementStyles;
-
 // @public (undocumented)
-export const strokeWidth: CSSDesignToken<number>;
+export const typographyBody1StrongerStyles: CSSDirective;
 
-// @public
-export interface Swatch extends RelativeLuminance {
-    // (undocumented)
-    contrast(target: RelativeLuminance): number;
-    // (undocumented)
-    toColorString(): string;
-}
-
-// @public (undocumented)
-export interface SwatchRGB extends Swatch {
-    // (undocumented)
-    b: number;
-    // (undocumented)
-    g: number;
-    // (undocumented)
-    r: number;
-}
-
-// @public (undocumented)
-export const SwatchRGB: Readonly<{
-    create(r: number, g: number, b: number): SwatchRGB;
-    from(obj: {
-        r: number;
-        g: number;
-        b: number;
-    }): SwatchRGB;
-}>;
-
-export { Switch }
-
-// @public
-export const switchStyles: (context: ElementDefinitionContext, definition: SwitchOptions) => ElementStyles;
-
-export { Tab }
-
-export { TabPanel }
-
-// @public
-export const tabPanelStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-export { Tabs }
-
-// @public
-export const tabsStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public
-export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "TextArea" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-missing-release-tag) "typographyBody1StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal
-export class TextArea extends TextArea_2 {
-    // @public
-    appearance: TextAreaAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: TextAreaAppearance, newValue: TextAreaAppearance): void;
-    // (undocumented)
-    connectedCallback(): void;
-}
+// @public (undocumented)
+export const typographyBody1StrongStyles: CSSDirective;
 
-// @public
-export type TextAreaAppearance = 'filled' | 'outline';
-
-// @public
-export const textAreaStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "TextField" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-missing-release-tag) "typographyBody1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal
-export class TextField extends TextField_2 {
-    // @public
-    appearance: TextFieldAppearance;
-    // (undocumented)
-    appearanceChanged(oldValue: TextFieldAppearance, newValue: TextFieldAppearance): void;
-    // (undocumented)
-    connectedCallback(): void;
-}
+// @public (undocumented)
+export const typographyBody1Styles: CSSDirective;
 
-// @public
-export type TextFieldAppearance = 'filled' | 'outline';
-
-// @public
-export const textFieldStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// Warning: (ae-internal-missing-underscore) The name "Toolbar" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-missing-release-tag) "typographyBody2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal
-export class Toolbar extends Toolbar_2 {
-}
+// @public (undocumented)
+export const typographyBody2Styles: CSSDirective;
 
-// Warning: (ae-internal-missing-underscore) The name "Tooltip" should be prefixed with an underscore because the declaration is marked as @internal
+// Warning: (ae-missing-release-tag) "typographyCaption1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @internal
-export class Tooltip extends Tooltip_2 {
-    // (undocumented)
-    connectedCallback(): void;
-}
+// @public (undocumented)
+export const typographyCaption1StrongerStyles: CSSDirective;
 
-export { TreeItem }
+// Warning: (ae-missing-release-tag) "typographyCaption1StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyCaption1StrongStyles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyCaption1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyCaption1Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyCaption2StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyCaption2StrongStyles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyCaption2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyCaption2Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyDisplayStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyDisplayStyles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyLargeTitleStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyLargeTitleStyles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographySubtitle1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographySubtitle1Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographySubtitle2StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographySubtitle2StrongerStyles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographySubtitle2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographySubtitle2Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyTitle1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyTitle1Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyTitle2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyTitle2Styles: CSSDirective;
+
+// Warning: (ae-missing-release-tag) "typographyTitle3Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const typographyTitle3Styles: CSSDirective;
 
 // @public
-export const treeItemStyles: (context: ElementDefinitionContext, definition: TreeItemOptions) => ElementStyles;
-
-export { TreeView }
-
-// @public
-export const treeViewStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles;
-
-// @public (undocumented)
-export const typeRampBase: CSSDirective;
-
-// @public (undocumented)
-export const typeRampBaseFontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampBaseFontVariations: CSSDesignToken<string>;
+export const ValidationFlags: {
+    readonly badInput: "bad-input";
+    readonly customError: "custom-error";
+    readonly patternMismatch: "pattern-mismatch";
+    readonly rangeOverflow: "range-overflow";
+    readonly rangeUnderflow: "range-underflow";
+    readonly stepMismatch: "step-mismatch";
+    readonly tooLong: "too-long";
+    readonly tooShort: "too-short";
+    readonly typeMismatch: "type-mismatch";
+    readonly valueMissing: "value-missing";
+    readonly valid: "valid";
+};
 
 // @public (undocumented)
-export const typeRampBaseLineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus1: CSSDirective;
-
-// @public (undocumented)
-export const typeRampMinus1FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus1FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus1LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus2: CSSDirective;
-
-// @public (undocumented)
-export const typeRampMinus2FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus2FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampMinus2LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus1: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus1FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus1FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus1LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus2: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus2FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus2FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus2LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus3: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus3FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus3FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus3LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus4: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus4FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus4FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus4LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus5: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus5FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus5FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus5LineHeight: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus6: CSSDirective;
-
-// @public (undocumented)
-export const typeRampPlus6FontSize: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus6FontVariations: CSSDesignToken<string>;
-
-// @public (undocumented)
-export const typeRampPlus6LineHeight: CSSDesignToken<string>;
+export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
 
 // Warnings were encountered during analysis:
 //
-// dist/dts/color/palette.d.ts:70:5 - (ae-forgotten-export) The symbol "create" needs to be exported by the entry point index.d.ts
-// dist/dts/color/palette.d.ts:71:5 - (ae-forgotten-export) The symbol "from" needs to be exported by the entry point index.d.ts
-// dist/dts/custom-elements.d.ts:52:5 - (ae-incompatible-release-tags) The symbol "fluentAnchor" is marked as @public, but its signature references "Anchor" which is marked as @internal
-// dist/dts/custom-elements.d.ts:54:5 - (ae-incompatible-release-tags) The symbol "fluentBadge" is marked as @public, but its signature references "Badge" which is marked as @internal
-// dist/dts/custom-elements.d.ts:57:5 - (ae-incompatible-release-tags) The symbol "fluentButton" is marked as @public, but its signature references "Button" which is marked as @internal
-// dist/dts/custom-elements.d.ts:96:5 - (ae-incompatible-release-tags) The symbol "fluentTextArea" is marked as @public, but its signature references "TextArea" which is marked as @internal
-// dist/dts/custom-elements.d.ts:97:5 - (ae-incompatible-release-tags) The symbol "fluentTextField" is marked as @public, but its signature references "TextField" which is marked as @internal
-// dist/dts/custom-elements.d.ts:98:5 - (ae-incompatible-release-tags) The symbol "fluentToolbar" is marked as @public, but its signature references "Toolbar" which is marked as @internal
-// dist/dts/custom-elements.d.ts:99:5 - (ae-incompatible-release-tags) The symbol "fluentTooltip" is marked as @public, but its signature references "Tooltip" which is marked as @internal
+// dist/dts/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

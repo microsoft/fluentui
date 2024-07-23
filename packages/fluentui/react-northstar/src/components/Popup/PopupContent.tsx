@@ -13,7 +13,7 @@ import {
   ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PopperJs from '@popperjs/core';
+import type { BasePlacement as PopperJsBasePlacement, Placement as PopperJsPlacement } from '@popperjs/core';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -78,7 +78,7 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
-  basePlacement: PopperJs.BasePlacement;
+  basePlacement: PopperJsBasePlacement;
   autoSize?: AutoSize;
 };
 
@@ -195,7 +195,7 @@ PopupContent.displayName = 'PopupContent';
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  placement: PropTypes.oneOf<PopperJs.Placement>([
+  placement: PropTypes.oneOf<PopperJsPlacement>([
     'auto-start',
     'auto',
     'auto-end',

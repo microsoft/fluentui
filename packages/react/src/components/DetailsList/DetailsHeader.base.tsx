@@ -674,7 +674,12 @@ export class DetailsHeaderBase
     const classNames = this._classNames;
     const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
     return (
-      <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
+      <div
+        key={'dropHintKey'}
+        className={classNames.dropHintStyle}
+        id={`columnDropHint_${dropHintIndex}`}
+        aria-hidden={true}
+      >
         <div
           role="presentation"
           key={`dropHintCircleKey`}

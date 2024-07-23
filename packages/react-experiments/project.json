@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-experiments",
+  "name": "react-experiments",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

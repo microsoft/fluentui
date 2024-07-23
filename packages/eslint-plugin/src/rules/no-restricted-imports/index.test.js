@@ -1,5 +1,4 @@
-// @ts-nocheck
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { ESLintUtils } = require('@typescript-eslint/utils');
 const rule = require('./index');
 
 const ruleTester = new ESLintUtils.RuleTester({
@@ -187,9 +186,7 @@ ruleTester.run('no-restricted-imports', rule, {
       output: `import { Spinner, Text, makeStyles } from '@fluentui/react-components';`,
     },
     {
-      code:
-        // eslint-disable-next-line @fluentui/max-len
-        "import type { SpinnerProps } from '@fluentui/react-components';import type { TextProps } from '@fluentui/react-text';",
+      code: "import type { SpinnerProps } from '@fluentui/react-components';import type { TextProps } from '@fluentui/react-text';",
       errors: [{ messageId: 'restrictedImport' }],
       options: [
         {
@@ -217,13 +214,10 @@ ruleTester.run('no-restricted-imports', rule, {
         },
       ],
       output:
-        // eslint-disable-next-line @fluentui/max-len
         "import type { SpinnerProps } from '@fluentui/react-components';import { Text } from '@fluentui/react-components';",
     },
     {
-      code:
-        // eslint-disable-next-line @fluentui/max-len
-        "import type { SpinnerProps } from '@fluentui/react-spinner';import type { TextProps } from '@fluentui/react-text';",
+      code: "import type { SpinnerProps } from '@fluentui/react-spinner';import type { TextProps } from '@fluentui/react-text';",
       errors: [{ messageId: 'restrictedImport' }, { messageId: 'restrictedImport' }],
       options: [
         {
@@ -238,9 +232,7 @@ ruleTester.run('no-restricted-imports', rule, {
       output: "import type { SpinnerProps, TextProps } from '@fluentui/react-components';",
     },
     {
-      code:
-        // eslint-disable-next-line @fluentui/max-len
-        "import { Spinner } from '@fluentui/react-spinner';import { Text } from '@fluentui/react-text';import type { SpinnerProps } from '@fluentui/react-spinner';",
+      code: "import { Spinner } from '@fluentui/react-spinner';import { Text } from '@fluentui/react-text';import type { SpinnerProps } from '@fluentui/react-spinner';",
       errors: [{ messageId: 'restrictedImport' }, { messageId: 'restrictedImport' }, { messageId: 'restrictedImport' }],
       options: [
         {
@@ -253,7 +245,6 @@ ruleTester.run('no-restricted-imports', rule, {
         },
       ],
       output:
-        // eslint-disable-next-line @fluentui/max-len
         "import { Spinner, Text } from '@fluentui/react-components';import type { SpinnerProps } from '@fluentui/react-components';",
     },
   ],

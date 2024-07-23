@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite-setup",
-  "version": "0.3.28",
+  "version": "0.3.34",
   "description": "Bootstrap code for the Fluent UI website. Internal use only.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

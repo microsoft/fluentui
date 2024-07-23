@@ -17,12 +17,8 @@ import {
   createStringXAxis,
   IAxisData,
   getAccessibleDataObject,
-  getDomainNRangeValues,
   createDateXAxis,
-  createYAxis,
-  createStringYAxis,
   IMargins,
-  getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
@@ -257,7 +253,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     ) {
       this._isFirstRender = false;
       const XAxisParams = {
-        domainNRangeValues: getDomainNRangeValues(
+        domainNRangeValues: this.props.getDomainNRangeValues(
           points,
           this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
           this.state.containerWidth,
@@ -292,7 +288,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         yMaxValue: this.props.yMaxValue || 0,
         tickPadding: 10,
         maxOfYVal: this.props.maxOfYVal,
-        yMinMaxValues: getMinMaxOfYAxis(points, chartType, this.props.yAxisType),
+        yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html
@@ -319,6 +315,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             dateLocalizeOptions,
             timeFormatLocale,
             customDateTimeFormatter,
+            this.props.useUTC,
           ));
           break;
         case XAxisTypes.StringAxis:
@@ -367,13 +364,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-        yScale = createStringYAxis(
+        yScale = this.props.createStringYAxis(
           YAxisParams,
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
-          this.props.chartType,
           this.props.barwidth,
-          culture,
         );
       } else {
         if (this.props?.secondaryYScaleOptions) {
@@ -388,28 +383,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
             maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = createYAxis(
-            YAxisParamsSecondary,
-            this._isRtl,
-            axisData,
-            chartType,
-            this.props.barwidth!,
-            this.isIntegralDataset,
-            true,
-          );
+          yScaleSecondary = this.props.createYAxis(YAxisParamsSecondary, this._isRtl, axisData, this.isIntegralDataset);
         }
-        yScale = createYAxis(
-          YAxisParams,
-          this._isRtl,
-          axisData,
-          chartType,
-          this.props.barwidth!,
-          this.isIntegralDataset,
-        );
+        yScale = this.props.createYAxis(YAxisParams, this._isRtl, axisData, this.isIntegralDataset);
       }
 
       /*
@@ -424,7 +404,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           yScale,
           this.props.noOfCharsToTruncate || 4,
           this.props.showYAxisLablesTooltip || false,
-          this.state.startFromX,
           this._isRtl,
         );
 
@@ -498,7 +477,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       <div
         id={this.idForGraph}
         className={this._classNames.root}
-        role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
@@ -513,7 +491,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
-            aria-label={this.props.chartTitle}
+            role="region"
+            aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
             {...svgProps}
           >
@@ -536,6 +515,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   y: svgDimensions.height - this.titleMargin,
                   className: this._classNames.axisTitle!,
                   textAnchor: 'middle',
+                  'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
@@ -583,6 +563,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                       },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                       className: this._classNames.axisTitle!,
+                      'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
@@ -605,6 +586,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                   className: this._classNames.axisTitle!,
+                  'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
@@ -912,5 +894,33 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     return minChartWidth;
+  };
+
+  private _getChartDescription = (): string => {
+    return (
+      (this.props.chartTitle || 'Chart. ') +
+      this._getAxisTitle('X', this.props.xAxisTitle, this.props.xAxisType) +
+      this._getAxisTitle('Y', this.props.yAxisTitle, this.props.yAxisType || YAxisType.NumericAxis) +
+      (this.props.secondaryYScaleOptions
+        ? this._getAxisTitle('secondary Y', this.props.secondaryYAxistitle, YAxisType.NumericAxis)
+        : '')
+    );
+  };
+
+  private _getAxisTitle = (
+    axisLabel: string,
+    axisTitle: string | undefined,
+    axisType: XAxisTypes | YAxisType,
+  ): string => {
+    return (
+      `The ${axisLabel} axis displays ` +
+      (axisTitle ||
+        (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
+          ? 'categories'
+          : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
+          ? 'time'
+          : 'values')) +
+      '. '
+    );
   };
 }

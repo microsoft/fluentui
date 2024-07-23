@@ -9,39 +9,46 @@ import {
   logger,
   createProjectGraphAsync,
   ProjectGraph,
-  readProjectConfiguration,
 } from '@nx/devkit';
 import chalk from 'chalk';
 import semver from 'semver';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
 import { PackageJson } from '../../types';
+import { getNpmScope } from '../../utils';
 
 type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 
 const NORMALIZED_INNER_WORKSPACE_VERSION = '*';
-const NORMALIZED_PRERELEASE_RANGE_VERSION = '>=9.0.0-alpha';
-const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /<9.0.0$/;
+const NORMALIZED_PRERELEASE_RANGE_VERSION_REGEXP = /^>=\d\.\d\.\d-alpha$/;
+const BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP = /\s<\d\.0\.0$/;
 
 export default async function (tree: Tree, schema: NormalizePackageDependenciesGeneratorSchema) {
   const normalizedOptions = normalizeOptions(tree, schema);
 
   const graph = await createProjectGraphAsync();
 
+  const npmScope = getNpmScope(tree);
   const projects = getProjects(tree);
   const issues: ProjectIssues = {};
 
   projects.forEach(projectConfig => {
     if (normalizedOptions.verify) {
-      const foundIssues = getPackageJsonDependenciesIssues(tree, projectConfig, graph);
+      const foundIssues = getPackageJsonDependenciesIssues(tree, {
+        allProjects: projects,
+        projectConfig,
+        graph,
+        npmScope,
+      });
 
       if (foundIssues) {
         issues[projectConfig.name!] = foundIssues;
       }
+
       return;
     }
 
-    normalizePackageJsonDependencies(tree, projectConfig, graph);
+    normalizePackageJsonDependencies(tree, { allProjects: projects, projectConfig, graph, npmScope });
   });
 
   reportPackageJsonDependenciesIssues(issues);
@@ -49,7 +56,16 @@ export default async function (tree: Tree, schema: NormalizePackageDependenciesG
   await formatFiles(tree);
 }
 
-function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConfiguration, graph: ProjectGraph) {
+function normalizePackageJsonDependencies(
+  tree: Tree,
+  options: {
+    allProjects: ReturnType<typeof getProjects>;
+    projectConfig: ProjectConfiguration;
+    graph: ProjectGraph;
+    npmScope: string;
+  },
+) {
+  const { allProjects, graph, projectConfig, npmScope } = options;
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
   const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
 
@@ -66,18 +82,19 @@ function normalizePackageJsonDependencies(tree: Tree, projectConfig: ProjectConf
 
   return tree;
 
-  function updateDepType(json: PackageJson, depType: 'dependencies' | 'devDependencies' | 'peerDependencies') {
-    const deps = json[depType];
-    if (!deps) {
-      return;
-    }
+  function updateDepType(json: PackageJson, depType: DepType) {
+    processDepType(json, depType, npmScope, (deps, npmPackageName, projectName) => {
+      if (isProjectDependencyAnWorkspaceProject(graph, projectName, projectDependencies)) {
+        const { updated } = getVersion(tree, {
+          allProjects,
+          deps,
+          npmPackageName,
+          projectName,
+        });
 
-    for (const packageName in deps) {
-      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies)) {
-        const { updated } = getVersion(tree, deps, packageName);
-        deps[packageName] = updated;
+        deps[npmPackageName] = updated;
       }
-    }
+    });
   }
 }
 
@@ -89,7 +106,7 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
   }
 
   issueEntries.forEach(([projectName, dependencyIssues]) => {
-    logger.log(chalk.bold(chalk.red(`${projectName} has following dependency version issues:`)));
+    logger.log(chalk.red(`[${chalk.bold(projectName)}] project has following dependency version issues:`));
     // eslint-disable-next-line guard-for-in
     for (const dep in dependencyIssues) {
       logger.log(chalk.red(`  - ${dep}@${dependencyIssues[dep]}`));
@@ -98,15 +115,33 @@ function reportPackageJsonDependenciesIssues(issues: ProjectIssues) {
   });
 
   logger.info(
-    `All these dependencies version should be specified as '${NORMALIZED_INNER_WORKSPACE_VERSION}' or '${NORMALIZED_PRERELEASE_RANGE_VERSION}' `,
+    `All these dependencies version should be specified as '${NORMALIZED_INNER_WORKSPACE_VERSION}' or '>={MAJOR}.0.0-alpha' (NOTE: 'MAJOR' equals to specified package major version)`,
   );
-  logger.info(`Fix this by running 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'`);
+  logger.info(`🛠️ FIX: run 'nx g @fluentui/workspace-plugin:normalize-package-dependencies'`);
 
   throw new Error('package dependency violations found');
 }
 
-function getVersion(tree: Tree, deps: Record<string, string>, packageName: string) {
-  const current = deps[packageName];
+function getVersion(
+  tree: Tree,
+  options: {
+    allProjects: ReturnType<typeof getProjects>;
+    /**
+     * dependencies from package.json -> including npm scope
+     */
+    deps: Record<string, string>;
+    /**
+     * name from package.json - must contain npm scope
+     */
+    npmPackageName: string;
+    /**
+     * project name - doesn't contain npm scope
+     */
+    projectName: string;
+  },
+) {
+  const { allProjects, deps, npmPackageName, projectName } = options;
+  const current = deps[npmPackageName];
   const updated = getUpdatedVersion(current);
 
   const match = current === updated;
@@ -114,20 +149,25 @@ function getVersion(tree: Tree, deps: Record<string, string>, packageName: strin
   return { updated, match };
 
   function getUpdatedVersion(currentVersion: string) {
-    if (BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP.test(current)) {
-      return NORMALIZED_PRERELEASE_RANGE_VERSION;
+    if (BEACHBALL_UNWANTED_PRERELEASE_RANGE_VERSION_REGEXP.test(currentVersion)) {
+      return transformVersionToPreReleaseWorkspaceRange(currentVersion);
     }
 
-    if (currentVersion === NORMALIZED_PRERELEASE_RANGE_VERSION) {
-      const prereleasePkg = readProjectConfiguration(tree, packageName);
+    if (NORMALIZED_PRERELEASE_RANGE_VERSION_REGEXP.test(currentVersion)) {
+      const prereleasePkg = allProjects.get(projectName);
+      if (!prereleasePkg) {
+        throw new Error(`Package ${projectName} not found in the workspace`);
+      }
       const prereleasePkgJson = readJson<PackageJson>(tree, joinPathFragments(prereleasePkg.root, 'package.json'));
       const isPrerelease = semver.prerelease(prereleasePkgJson.version) !== null;
 
-      return isPrerelease ? NORMALIZED_PRERELEASE_RANGE_VERSION : NORMALIZED_INNER_WORKSPACE_VERSION;
+      return isPrerelease
+        ? transformVersionToPreReleaseWorkspaceRange(currentVersion)
+        : NORMALIZED_INNER_WORKSPACE_VERSION;
     }
 
-    if (semver.prerelease(current)) {
-      return NORMALIZED_PRERELEASE_RANGE_VERSION;
+    if (semver.prerelease(currentVersion)) {
+      return transformVersionToPreReleaseWorkspaceRange(currentVersion);
     }
 
     return NORMALIZED_INNER_WORKSPACE_VERSION;
@@ -136,14 +176,19 @@ function getVersion(tree: Tree, deps: Record<string, string>, packageName: strin
 
 function getPackageJsonDependenciesIssues(
   tree: Tree,
-  projectConfig: ProjectConfiguration,
-  graph: ProjectGraph,
+  options: {
+    allProjects: ReturnType<typeof getProjects>;
+    projectConfig: ProjectConfiguration;
+    graph: ProjectGraph;
+    npmScope: string;
+  },
 ): Record<string, string> | null {
+  const { allProjects, projectConfig, graph, npmScope } = options;
   const projectDependencies = getProjectDependenciesFromGraph(projectConfig.name!, graph);
-  const packageJsonPath = joinPathFragments(projectConfig.root, 'package.json');
-  const packageJson = readJson<PackageJson>(tree, packageJsonPath);
+  const packageJson = readJson<PackageJson>(tree, joinPathFragments(projectConfig.root, 'package.json'));
 
   let issues: Record<string, string> | null = null;
+
   checkDepType(packageJson, 'devDependencies');
 
   if (projectConfig.projectType === 'application') {
@@ -153,23 +198,51 @@ function getPackageJsonDependenciesIssues(
 
   return issues;
 
-  function checkDepType(json: PackageJson, depType: 'dependencies' | 'devDependencies' | 'peerDependencies') {
-    const deps = json[depType];
-    if (!deps) {
-      return null;
-    }
+  function checkDepType(json: PackageJson, depType: DepType) {
+    processDepType(json, depType, npmScope, (deps, npmPackageName, projectName) => {
+      const { match } = getVersion(tree, {
+        allProjects,
+        deps,
+        npmPackageName,
+        projectName,
+      });
 
-    // eslint-disable-next-line guard-for-in
-    for (const packageName in deps) {
-      const { match } = getVersion(tree, deps, packageName);
-
-      if (isProjectDependencyAnWorkspaceProject(graph, packageName, projectDependencies) && !match) {
+      if (isProjectDependencyAnWorkspaceProject(graph, projectName, projectDependencies) && !match) {
         issues = issues ?? {};
-        issues[packageName] = deps[packageName];
+        issues[npmPackageName] = deps[npmPackageName];
       }
+    });
+  }
+}
+
+type DepType = 'dependencies' | 'devDependencies' | 'peerDependencies';
+type Callback = (
+  /** package.json dependencies - names include npm scope */
+  deps: Record<string, string>,
+  /** npm valid package name - can include npm scope */
+  npmPackageName: string,
+  /** workspace project name - wont include npm scope */
+  projectName: string,
+) => void;
+
+function processDepType(json: PackageJson, depType: DepType, npmScope: string, callback: Callback) {
+  const deps = json[depType];
+
+  if (!deps) {
+    return;
+  }
+
+  const npmScopeToCheck = `@${npmScope}/`;
+
+  // eslint-disable-next-line guard-for-in
+  for (const npmPackageName in deps) {
+    if (!npmPackageName.startsWith(npmScopeToCheck)) {
+      continue;
     }
 
-    return issues;
+    const projectName = npmPackageName.replace(npmScopeToCheck, '');
+
+    callback(deps, npmPackageName, projectName);
   }
 }
 
@@ -198,4 +271,14 @@ function normalizeOptions(tree: Tree, schema: NormalizePackageDependenciesGenera
   return {
     ...options,
   };
+}
+
+function transformVersionToPreReleaseWorkspaceRange(version: string) {
+  const coercedVersion = semver.coerce(version);
+
+  if (!coercedVersion) {
+    throw new Error(`Invalid version: ${version}`);
+  }
+
+  return `>=${coercedVersion.major}.${coercedVersion.minor}.${coercedVersion.patch}-alpha`;
 }

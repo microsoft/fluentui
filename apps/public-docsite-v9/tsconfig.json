@@ -7,12 +7,14 @@
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "noImplicitAny": true,
-    "types": ["webpack-env"]
+    "noImplicitAny": true
   },
   "include": [],
   "files": [],
   "references": [
+    {
+      "path": "./tsconfig.spec.json"
+    },
     {
       "path": "./tsconfig.app.json"
     },

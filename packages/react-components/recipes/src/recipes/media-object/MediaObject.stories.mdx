@@ -1,0 +1,227 @@
+import LinkTo from '@storybook/addon-links/react';
+import { Meta } from '@storybook/addon-docs';
+import { TextPositionVariations, TextAlignmentVariations, FlexSkeleton, IconMediaObject } from './code-snippets';
+import { TemplateExample } from '../../templates';
+
+<Meta title="Concepts/Recipes/Media Object" />
+
+---
+
+# Media Object recipe
+
+### **Overview**
+
+A Media Object, is a pattern commonly used to display media content and a description of that content.
+A typical example of this patter is displaying an Avatar of a person (the media content) next to their name (the description). Fluent UI's <LinkTo kind="components-persona--default">Persona</LinkTo> is an example of this pattern.
+
+This recipe focuses on other uses of this patterns and will show you how to create a Media Object to display images, icons or any other media content you want to add.
+
+### **Ingredients**
+
+- <LinkTo kind="concepts-developer-icons-icons--page">@fluentui/react-icons</LinkTo>
+- <LinkTo kind="components-image--default">@fluentui/react-image</LinkTo>
+- <LinkTo kind="components-text--default">@fluentui/react-text</LinkTo>
+
+> **\*\*Note:\*\*** This recipe is meant to provide a way to use custom media. If you want to use
+> `Avatar` or `PresenceBadge` as media, please refer to our <LinkTo kind="components-persona--default">Persona component</LinkTo>.
+
+## Steps
+
+There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
+recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less DOM than the
+flex option.
+
+### **Flex Layout**
+
+The main idea behind the flex layout is to have a container and two children, as shown below. The parent div will
+contain the media and another div (text div) that will contain the text content.
+
+<TemplateExample centered>
+  <FlexSkeleton />
+</TemplateExample>
+
+To achieve this layout, we will follow these steps:
+
+#### **Step 1: Creating our parent and text container styles.**
+
+As seen above, we will first need to create our parent div and our text containers. These containers will need to have
+the `display: flex` css property and a `row` direction for the parent and a `column` direction for the text container, as shown in the `makeStyles` call below:
+
+```jsx
+const useStyles = makeStyles({
+  parent: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  textContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+});
+```
+
+#### **Step 2: Putting everything together.**
+
+After we have our styles, we just have to put our styles to work! Since we are using flex box we don't need to worry about dynamically placing items. Do take into account that using this approach will be heavier on the DOM than the grid approach.
+
+```jsx
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.parent}>
+      {children}
+      <div className={styles.textContainer}>
+        <Text>{text}</Text>
+      </div>
+    </div>
+  );
+};
+```
+
+After these steps you should be able to build something like the example below.
+
+<TemplateExample centered>
+  <IconMediaObject />
+</TemplateExample>
+
+### **Grid Layout**
+
+When using a grid for Media Object, we only need a parent div and we can pass the items directly into it.
+As you can tell, the grid layout has one less layer of DOM compared to the flex layout. This is especially important
+when the component is going to be used repeatedly in a list or the media or/and text have many layers themselves.
+
+To get started, we will follow these steps:
+
+#### **Step 1: Creating our grid.**
+
+To get the initial layout, we need to add these css properties to our parent div:
+
+- `display: grid`: This will create our grid layout and allow us to use the grid properties.
+- `grid-auto-flow: column`: This will make the grid flow as a column and allow our media to be on the left and our text on the right.
+
+Resulting in a `makeStyles` call like this:
+
+```jsx
+const useStyles = makeStyles({
+  parent: {
+    display: 'grid',
+    gridAutoFlow: 'column',
+  },
+});
+```
+
+#### **Step 2: Adding our media styles.**
+
+Our next step is to add our media styles. Unlike the flex layout, we will need to add some css properties to our media because we are using `grid-auto-flow: column`. To make our media take all the rows on the left, we will need to make our media span the number of rows the text will take. If we have 4 lines of text, we will need to add `grid-row-start: span 4`. While this could be done dynamically using line names, this is the simplest way to achieve a media object with grid. This will give us the following `makeStyles` call:
+
+```jsx
+const useStyles = makeStyles({
+  // parent styles
+  media: {
+    gridRowStart: 'span 4',
+  },
+});
+```
+
+#### **Step 3: Putting everything together.**
+
+After these steps we should be able to add our media and text, and get the desired layout shown above. We should have a component that looks like this:
+
+```jsx
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.parent}>
+      <div className={styles.media}>{children}</div>
+      <Text className={styles.text}>{text}</Text>
+    </div>
+  );
+};
+```
+
+#### **Step 3 (_optional_): Dynamically place media and text.**
+
+If you want to dynamically place your media and text, you can use `grid-template-columns` to achieve this. For the basic layout, we need to add the css property `grid-template-columns: max-content [middle] auto`. This will create two columns and a line name called middle. The max-content column will be the media which will help only use the space needed for the media and the auto column will be the text so we can wrap it when there is not enough space in our container. This will give us the following `makeStyles` call:
+
+```jsx
+const useStyles = makeStyles({
+  parent: {
+    display: 'grid',
+    gridTemplateColumns: 'max-content [middle] auto',
+  },
+});
+```
+
+#### **Step 4 (_optional_): Let your media and text know where to start and end.**
+
+Now that we have our template columns, we need to let our text know where to start and our media where to end. The media must end at the middle line and the text must start at the middle line. This has the pro of not having to know how many rows of text we will have, but the downside is that we have to let the media and text know where to start or end. We should a `makeStyles` call like this:
+
+```jsx
+const useStyles = makeStyles({
+  // parent styles
+  media: {
+    gridColumnEnd: 'middle',
+  },
+  text: {
+    gridColumnStart: 'middle',
+  },
+});
+```
+
+#### **Step 5 (_optional_): Putting everything together.**
+
+After our styles are ready to be used, we can put everything together and get the desired layout shown above. We should have a component that looks like this:
+
+```jsx
+import { Text, makeStyles } from '@fluentui/react-components';
+
+// Our makeStyles call from above
+
+const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.parent}>
+      <div className={styles.media}>{children}</div>
+      <Text className={styles.text}>{text}</Text>
+    </div>
+  );
+};
+```
+
+## Variants
+
+There are a few common variants that you might want to use when building a Media Object. These are some of them:
+
+- ### **Text Alignment Variations**
+
+There are text alignment variations that might be useful when building an application. These can be ones below where the
+first one is after the media, the second one is below, and the last one is before.
+
+<TemplateExample centered>
+  <TextPositionVariations />
+</TemplateExample>
+
+- ### **Text Vertical Alignment Variations**
+
+There are also vertical alignment variations, these include start and center as seen below.
+
+<TemplateExample centered>
+  <TextAlignmentVariations />
+</TemplateExample>
+
+## Best practices
+
+- The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
+- When using `grid-template-columns` make sure the DOM makes sense and not differ from how the grid is placing them. Do
+  not have your DOM be `<media> <text>` when the rendered result looks like `<text> <media>`.

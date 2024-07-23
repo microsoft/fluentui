@@ -18,7 +18,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           width: 100%;
         }
     id="chart_2"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_3"
@@ -36,8 +35,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -1019,7 +1020,6 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
           width: 100%;
         }
     id="chart_2"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_3"
@@ -1037,8 +1037,10 @@ exports[`Horizontal bar chart with axis - Screen resolution Should remain unchan
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -2033,7 +2035,6 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
             width: 100%;
           }
       id="chart_5"
-      role="presentation"
     >
       <div
         id="defaultTabbableElement_6"
@@ -2051,8 +2052,10 @@ exports[`Horizontal bar chart with axis - Theme Should reflect theme change 1`] 
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
+          aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
           focusable="false"
           height="292"
+          role="region"
           style="display: block;"
           width="650"
         >
@@ -3035,7 +3038,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           width: 100%;
         }
     id="chart_2"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_3"
@@ -3053,8 +3055,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4036,7 +4040,6 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
           width: 100%;
         }
     id="chart_2"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_3"
@@ -4054,8 +4057,10 @@ exports[`Horizontal bar chart with axis rendering Should render the Horizontal b
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays categories. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >
@@ -4893,7 +4898,6 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           width: 100%;
         }
     id="chart_2"
-    role="presentation"
   >
     <div
       id="defaultTabbableElement_3"
@@ -4911,8 +4915,10 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
+        aria-label="Horizontal bar chart with 4 bars. The X axis displays values. The Y axis displays values. "
         focusable="false"
         height="292"
+        role="region"
         style="display: block;"
         width="650"
       >

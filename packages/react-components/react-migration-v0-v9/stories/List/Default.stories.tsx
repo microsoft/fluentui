@@ -1,4 +1,4 @@
-import { Image } from '@fluentui/react-components';
+import { Button, Image } from '@fluentui/react-components';
 import { List, ListItem } from '@fluentui/react-migration-v0-v9';
 
 import * as React from 'react';
@@ -8,7 +8,7 @@ type Item = {
   media: string;
   header: string;
   headerMedia: string;
-  content: string;
+  content: string | JSX.Element;
 };
 
 const items: Item[] = [
@@ -17,7 +17,12 @@ const items: Item[] = [
     media: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
     header: 'Robert Tolbert',
     headerMedia: '7:26:56 AM',
-    content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
+    content: (
+      <>
+        Program the sensor to the SAS alarm through the haptic SQL card!{' '}
+        <Button onClick={() => alert('you clicked!')}>Click me</Button>
+      </>
+    ),
   },
   {
     key: 'celeste',
@@ -42,7 +47,6 @@ export const Default = () => {
         <ListItem
           key={key}
           value={key}
-          aria-label={header}
           media={<Image src={media} alt="" shape="circular" width={32} />}
           header={header}
           headerMedia={headerMedia}
