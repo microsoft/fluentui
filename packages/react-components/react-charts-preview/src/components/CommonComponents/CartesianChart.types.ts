@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
@@ -8,17 +6,11 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
-
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
  */
 export interface ICartesianChartStyleProps {
-  /**
-   * Theme (provided through customization.)
-   */
-  theme: ITheme;
-
   /**
    * Additional CSS class(es) to apply to the Chart.
    */
@@ -73,97 +65,107 @@ export interface ICartesianChartStyles {
   /**
    *  Style for the root element.
    */
-  root?: IStyle;
+  root?: string;
 
   /**
    * Style for the element containing the x-axis.
    */
-  xAxis?: IStyle;
+  xAxis?: string;
 
   /**
    * Style for the element containing the y-axis.
    */
-  yAxis?: IStyle;
+  yAxis?: string;
 
   /**
    * Style for legend container
    */
-  legendContainer?: IStyle;
+  legendContainer?: string;
 
   /**
    * line hover box css
    */
-  hover?: IStyle;
+  hover?: string;
 
   /**
    * styles for callout root-content
    */
-  calloutContentRoot?: IStyle;
+  calloutContentRoot?: string;
 
   /**
    * styles for callout x-content
    */
-  calloutContentX?: IStyle;
+  calloutContentX?: string;
 
   /**
    * styles for callout y-content
    */
-  calloutContentY?: IStyle;
+  calloutContentY?: string;
 
   /**
    * styles for description message
    */
-  descriptionMessage?: IStyle;
+  descriptionMessage?: string;
 
   /**
    * styles for callout Date time container
    */
-  calloutDateTimeContainer?: IStyle;
+  calloutDateTimeContainer?: string;
 
   /**
    * styles for callout info container
    */
-  calloutInfoContainer?: IStyle;
+  calloutInfoContainer?: string;
 
   /**
    * styles for callout block container
    */
-  calloutBlockContainer?: IStyle;
+  calloutBlockContainer?: string;
+
+  /**
+   * Styles for callout block container when toDrawShape is false
+   */
+  calloutBlockContainertoDrawShapefalse?: string;
+
+  /**
+   * Styles for callout block container when toDrawShape is true
+   */
+  calloutBlockContainertoDrawShapetrue?: string;
 
   /**
    * styles for callout legend text
    */
-  calloutlegendText?: IStyle;
+  calloutlegendText?: string;
 
   /**
    * styles for tooltip
    */
-  tooltip?: IStyle;
+  tooltip?: string;
 
   /**
    * styles for tooltip
    */
-  axisTitle?: IStyle;
+  axisTitle?: string;
 
   /**
    * Style for the chart Title.
    */
-  chartTitle?: IStyle;
+  chartTitle?: string;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
-  opacityChangeOnHover?: IStyle;
+  opacityChangeOnHover?: string;
 
   /**
    * styles for the shape object in the callout
    */
-  shapeStyles?: IStyle;
+  shapeStyles?: string;
 
   /**
    * Styles for the chart wrapper div
    */
-  chartWrapper?: IStyle;
+  chartWrapper?: string;
 }
 
 /**
@@ -194,11 +196,6 @@ export interface ICartesianChartProps {
    * Additional CSS class(es) to apply to the Chart.
    */
   className?: string;
-
-  /**
-   * Theme (provided through customization.)
-   */
-  theme?: ITheme;
 
   /**
    * Margins for the chart
@@ -380,7 +377,7 @@ export interface ICartesianChartProps {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
-  styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+  styles?: ICartesianChartStyles;
 
   /**
    * Callout customization props
