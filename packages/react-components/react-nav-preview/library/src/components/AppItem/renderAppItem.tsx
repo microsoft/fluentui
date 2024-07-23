@@ -2,13 +2,13 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { AppNodeState, AppNodeSlots } from './AppNode.types';
+import type { AppItemState, AppItemSlots } from './AppItem.types';
 
 /**
- * Render the final JSX of AppNode
+ * Render the final JSX of AppItem
  */
-export const renderAppNode_unstable = (state: AppNodeState) => {
-  assertSlots<AppNodeSlots>(state);
+export const renderAppItem_unstable = (state: AppItemState) => {
+  assertSlots<AppItemSlots>(state);
 
   // TODO Add additional slots in the appropriate place
   return <state.root />;
