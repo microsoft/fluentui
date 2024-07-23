@@ -9,20 +9,14 @@ export const skeletonItemClassNames: SlotClassNames<SkeletonItemSlots> = {
 };
 
 const skeletonWaveAnimation = {
-  from: {
-    backgroundPositionX: '300% /* @noflip */',
-  },
   to: {
-    backgroundPositionX: '0% /* @noflip */',
+    transform: 'translate(100%) /* @noflip */',
   },
 };
 
 const skeletonWaveAnimationRTL = {
-  from: {
-    backgroundPositionX: '0% /* @noflip */',
-  },
   to: {
-    backgroundPositionX: '300% /* @noflip */',
+    transform: 'translate(-100%) /* @noflip */',
   },
 };
 
@@ -45,54 +39,68 @@ const useStyles = makeStyles({
   root: {
     position: 'relative',
     overflow: 'hidden',
-    backgroundSize: '300% 100%',
-    backgroundPositionX: 'center',
-    backgroundPositionY: 'center',
-    backgroundAttachment: 'fixed',
-    animationIterationCount: 'infinite',
-    animationDuration: '3s',
-    animationTimingFunction: 'linear',
-    '@media screen and (prefers-reduced-motion: reduce)': {
-      animationDuration: '0.01ms',
-      animationIterationCount: '1',
+
+    ':after': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      inset: '0',
+      animationIterationCount: 'infinite',
+      animationDuration: '3s',
+      animationTimingFunction: 'ease-in-out',
+      '@media screen and (prefers-reduced-motion: reduce)': {
+        animationDuration: '0.01ms',
+        animationIterationCount: '1',
+      },
     },
   },
   wave: {
-    animationName: skeletonWaveAnimation,
-    backgroundImage: `linear-gradient(
-      to right,
-      ${tokens.colorNeutralStencil1} 0%,
-      ${tokens.colorNeutralStencil2} 50%,
-      ${tokens.colorNeutralStencil1} 100%)`,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'WindowText',
+    backgroundColor: tokens.colorNeutralStencil1,
+
+    ':after': {
+      animationName: skeletonWaveAnimation,
+      backgroundImage: `linear-gradient(
+        to right,
+        ${tokens.colorNeutralStencil1} 0%,
+        ${tokens.colorNeutralStencil2} 50%,
+        ${tokens.colorNeutralStencil1} 100%)`,
+      transform: 'translate(-100%) /* @noflip */',
+
+      '@media screen and (forced-colors: active)': {
+        backgroundColor: 'WindowText',
+      },
     },
   },
   waveRtl: {
-    animationName: skeletonWaveAnimationRTL,
-    backgroundImage: `linear-gradient(
-      to right,
-      ${tokens.colorNeutralStencil1} 0%,
-      ${tokens.colorNeutralStencil2} 50%,
-      ${tokens.colorNeutralStencil1} 100%)`,
-    '@media screen and (forced-colors: active)': {
-      backgroundColor: 'WindowText',
+    ':after': {
+      animationName: skeletonWaveAnimationRTL,
+      transform: 'translate(100%) /* @noflip */',
     },
   },
   pulse: {
-    animationName: skeletonPulseAnimation,
-    animationDuration: '1s',
-    backgroundColor: tokens.colorNeutralStencil1,
+    ':after': {
+      animationName: skeletonPulseAnimation,
+      animationDuration: '1s',
+      backgroundColor: tokens.colorNeutralStencil1,
+    },
   },
   translucent: {
-    backgroundImage: `linear-gradient(
+    backgroundColor: tokens.colorNeutralStencil1Alpha,
+
+    ':after': {
+      backgroundImage: `linear-gradient(
       to right,
-      ${tokens.colorNeutralStencil1Alpha} 0%,
-      ${tokens.colorNeutralStencil2Alpha} 50%,
-      ${tokens.colorNeutralStencil1Alpha} 100%)`,
+      transparent 0%,
+      ${tokens.colorNeutralStencil1Alpha} 50%,
+      transparent 100%)`,
+    },
   },
   translucentPulse: {
-    backgroundColor: tokens.colorNeutralStencil1Alpha,
+    backgroundColor: 'none',
+
+    ':after': {
+      backgroundColor: tokens.colorNeutralStencil1Alpha,
+    },
   },
 });
 
