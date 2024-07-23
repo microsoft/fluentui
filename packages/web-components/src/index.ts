@@ -26,6 +26,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,
