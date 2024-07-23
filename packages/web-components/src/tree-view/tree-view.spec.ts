@@ -178,4 +178,21 @@ test.describe('<tree-view> and <tree-item>', () => {
     expect(await treeItem1.getAttribute('selected')).not.toBeNull();
     expect(await elementHandle).toBe(false);
   });
+  test('keyboard navigation should work when the tree-item contains focusable elements', async ({ page }) => {
+    await page.setContent(`
+      <fluent-tree-view>
+        <fluent-tree-item>
+          Item1
+          <a href='edge://settings'>Link1</a>
+        </fluent-tree-item>
+        <fluent-tree-item>Item 2</fluent-tree-item>
+      </fluent-tree-view>
+    `);
+    const treeViewEl = page.locator('fluent-tree-view');
+    const treeItems = page.locator('fluent-tree-item');
+    await treeViewEl.focus();
+    expect(await page.evaluate(() => document.activeElement?.innerHTML)).toBe(await treeItems.nth(0).innerHTML());
+    await page.keyboard.press('Tab');
+    expect(await page.evaluate(() => document.activeElement?.innerHTML)).toBe(await page.locator('a').innerHTML());
+  });
 });

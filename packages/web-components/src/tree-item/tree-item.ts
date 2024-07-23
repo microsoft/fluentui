@@ -93,7 +93,12 @@ export class TreeItem extends FASTElement {
    * @internal
    */
   handleFocus = (e: FocusEvent): void => {
-    if (e.target === this) {
+    if (
+      e.target === this ||
+      // In case where the tree-item contains a focusable element, we should not set the tabindex to 0 when the focus is on its child focusable element,
+      // so users can shift+tab to navigate to the tree-item from its child focusable element.
+      this.contains(e.target as Node)
+    ) {
       this.setAttribute('tabindex', '0');
     }
   };
