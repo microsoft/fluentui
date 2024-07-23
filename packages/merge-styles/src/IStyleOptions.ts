@@ -1,4 +1,4 @@
-import { ShadowConfig } from './shadowConfig';
+import type { ShadowConfig } from './shadowConfig';
 import type { Stylesheet } from './Stylesheet';
 
 export interface IStyleOptions {

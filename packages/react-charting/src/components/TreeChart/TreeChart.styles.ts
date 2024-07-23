@@ -12,7 +12,7 @@ export const getStyles = (props: ITreeStyleProps): ITreeStyles => {
     ],
     link: {
       fill: 'none',
-      stroke: '#A1A1A1',
+      stroke: props.theme!.palette.neutralSecondary,
       strokeWidth: '2px',
     },
     rectNode: {

@@ -19,7 +19,6 @@ export function createPathAliasesConfig(tree: Tree) {
   const mergedTsConfig = {
     compilerOptions: {
       moduleResolution: 'node',
-      forceConsistentCasingInFileNames: true,
       skipLibCheck: true,
       typeRoots: ['node_modules/@types', './typings'],
       isolatedModules: true,

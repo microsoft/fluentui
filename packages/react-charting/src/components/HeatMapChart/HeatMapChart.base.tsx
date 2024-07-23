@@ -9,7 +9,18 @@ import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartTypes, getAccessibleDataObject, XAxisTypes, YAxisType, getTypeOfAxis } from '../../utilities/utilities';
+import {
+  ChartTypes,
+  createNumericYAxis,
+  getAccessibleDataObject,
+  XAxisTypes,
+  YAxisType,
+  getTypeOfAxis,
+  IMargins,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
+} from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
 import { timeFormat as d3TimeFormat } from 'd3-time-format';
@@ -179,15 +190,20 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={data}
         chartType={ChartTypes.HeatMapChart}
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
+        createYAxis={createNumericYAxis}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
+        createStringYAxis={createStringYAxis}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -214,6 +230,30 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
+
+  private _getDomainNRangeValues = (
+    points: IHeatMapChartDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
     let x: string | Date | number = '';
@@ -726,4 +766,10 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.length > 0);
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle } = this.props;
+    const numDataPoints = this.props.data.reduce((acc, curr) => acc + curr.data.length, 0);
+    return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
+  };
 }

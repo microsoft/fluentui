@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove npmScope from project name and update react config to accommodate project name change",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

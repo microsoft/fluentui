@@ -367,7 +367,7 @@ export class SankeyChartRebalanceExample extends React.Component<{}, ISankeyChar
           onChange={this._onDataSourceChange}
         />
         <label>change Width:</label>
-        <input type="range" value={this.state.width} min={912} max={1600} onChange={this._onWidthChange} />
+        <input type="range" value={this.state.width} min={400} max={1600} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={312} max={400} onChange={this._onHeightChange} />
         <div style={rootStyle}>

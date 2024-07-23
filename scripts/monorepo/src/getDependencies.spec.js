@@ -15,32 +15,32 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
-          "name": "@fluentui/react-shared-contexts",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/react-theme",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/tokens",
+          "name": "react-shared-contexts",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
-          "name": "@fluentui/react-utilities",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/keyboard-keys",
+          "name": "react-theme",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
-          "name": "@fluentui/react-jsx-runtime",
+          "name": "react-utilities",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "react-jsx-runtime",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "tokens",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "keyboard-keys",
         },
       ]
     `);
@@ -49,48 +49,48 @@ describe(`#getDependencies`, () => {
       Array [
         Object {
           "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/eslint-plugin",
+          "isTopLevel": true,
+          "name": "eslint-plugin",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "react-conformance",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "react-conformance-griffel",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "scripts-api-extractor",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": true,
+          "name": "scripts-tasks",
         },
         Object {
           "dependencyType": "devDependencies",
           "isTopLevel": false,
-          "name": "@fluentui/scripts-api-extractor",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/scripts-tasks",
+          "name": "scripts-jest",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": false,
-          "name": "@fluentui/scripts-monorepo",
+          "name": "scripts-monorepo",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": false,
-          "name": "@fluentui/scripts-utils",
+          "name": "scripts-utils",
         },
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": false,
-          "name": "@fluentui/scripts-prettier",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/react-conformance",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/scripts-jest",
-        },
-        Object {
-          "dependencyType": "devDependencies",
-          "isTopLevel": false,
-          "name": "@fluentui/react-conformance-griffel",
+          "name": "scripts-prettier",
         },
       ]
     `);
@@ -104,5 +104,11 @@ describe(`#getDependencies`, () => {
     expect(packageInfo?.dependencies).toEqual(expect.any(Object));
     expect(packageInfo?.main).toEqual('lib-commonjs/index.js');
     expect(packageInfo?.module).toEqual('lib/index.js');
+
+    const depResultWithoutProjectScope = await getDependencies('react-text');
+
+    expect(
+      depResultWithoutProjectScope.getProjectPackageJsonInfo('react-text', depResultWithoutProjectScope.projectGraph),
+    ).toEqual(packageInfo);
   });
 });

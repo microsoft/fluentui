@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
 import { Steps } from 'storywright';
 
@@ -25,9 +25,9 @@ const steps = new Steps()
 
 export default {
   title: 'InteractionTag Converged',
-  Component: InteractionTag,
+  component: InteractionTag,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof InteractionTag>;
+} satisfies Meta<typeof InteractionTag>;
 
 export const Filled = () => (
   <InteractionTag appearance="filled">

@@ -1,52 +1,100 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { elevationShadowDialog } from '../styles';
-import { fillColor, layerCornerRadius, strokeWidth } from '../design-tokens';
+import { css } from '@microsoft/fast-element';
+import {
+  borderRadiusXLarge,
+  colorBackgroundOverlay,
+  colorNeutralBackground1,
+  colorNeutralForeground1,
+  colorTransparentStroke,
+  curveAccelerateMid,
+  curveDecelerateMid,
+  curveLinear,
+  durationGentle,
+  shadow64,
+  strokeWidthThin,
+} from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 
-export const dialogStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
-  :host([hidden]) {
-    display: none;
+/** Dialog styles
+ * @public
+ */
+export const styles = css`
+  @layer base {
+    :host {
+      --dialog-backdrop: ${colorBackgroundOverlay};
+      --dialog-starting-scale: 0.85;
+    }
+
+    ::backdrop {
+      background: var(--dialog-backdrop, rgba(0, 0, 0, 0.4));
+    }
+
+    dialog {
+      background: ${colorNeutralBackground1};
+      border-radius: ${borderRadiusXLarge};
+      border: none;
+      box-shadow: ${shadow64};
+      color: ${colorNeutralForeground1};
+      max-height: calc(-48px + 100vh);
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    :host([type='non-modal']) dialog {
+      inset: 0;
+      position: fixed;
+      z-index: 2;
+      overflow: auto;
+    }
   }
 
-  :host {
-    --dialog-height: 480px;
-    --dialog-width: 640px;
-    display: block;
-  }
+  @layer animations {
+    /* Disable animations for reduced motion */
+    @media (prefers-reduced-motion: no-preference) {
+      dialog,
+      ::backdrop {
+        transition: display allow-discrete, opacity, overlay allow-discrete, scale;
+        transition-duration: ${durationGentle};
+        transition-timing-function: ${curveDecelerateMid};
+        /* Set opacity to 0 when closed */
+        opacity: 0;
+      }
+      ::backdrop {
+        transition-timing-function: ${curveLinear};
+      }
 
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    touch-action: none;
-  }
+      /* Set opacity to 1 when open */
+      [open],
+      [open]::backdrop {
+        opacity: 1;
+      }
 
-  .positioning-region {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: auto;
-  }
+      /* Exit styles for dialog */
+      dialog:not([open]) {
+        /* Make small when leaving */
+        scale: var(--dialog-starting-scale);
+        /* Faster leaving the stage then entering */
+        transition-timing-function: ${curveAccelerateMid};
+      }
+    }
 
-  .control {
-    box-shadow: ${elevationShadowDialog};
-    margin-top: auto;
-    margin-bottom: auto;
-    border-radius: calc(${layerCornerRadius} * 1px);
-    width: var(--dialog-width);
-    height: var(--dialog-height);
-    background: ${fillColor};
-    z-index: 1;
-    border: calc(${strokeWidth} * 1px) solid transparent;
+    @starting-style {
+      [open],
+      [open]::backdrop {
+        opacity: 0;
+      }
+
+      dialog {
+        scale: var(--dialog-starting-scale);
+      }
+    }
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    @layer base {
+      dialog {
+        border: ${strokeWidthThin} solid ${colorTransparentStroke};
+      }
+    }
+  `),
+);

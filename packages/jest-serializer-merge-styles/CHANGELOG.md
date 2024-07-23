@@ -1,8 +1,80 @@
 # Change Log - @fluentui/jest-serializer-merge-styles
 
-This log was last generated on Wed, 24 Apr 2024 07:27:48 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Jun 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.45](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.45)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.44..@fluentui/jest-serializer-merge-styles_v8.0.45)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.12 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+
+## [8.0.44](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.44)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.43..@fluentui/jest-serializer-merge-styles_v8.0.44)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.11 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+
+## [8.0.43](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.43)
+
+Fri, 14 Jun 2024 15:25:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.42..@fluentui/jest-serializer-merge-styles_v8.0.43)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.10 ([PR #31716](https://github.com/microsoft/fluentui/pull/31716) by beachball)
+
+## [8.0.42](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.42)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.41..@fluentui/jest-serializer-merge-styles_v8.0.42)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.9 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+
+## [8.0.41](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.41)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.40..@fluentui/jest-serializer-merge-styles_v8.0.41)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.8 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+
+## [8.0.40](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.40)
+
+Fri, 24 May 2024 07:28:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.39..@fluentui/jest-serializer-merge-styles_v8.0.40)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.7 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+
+## [8.0.39](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.39)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.38..@fluentui/jest-serializer-merge-styles_v8.0.39)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.6 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [8.0.38](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.38)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.37..@fluentui/jest-serializer-merge-styles_v8.0.38)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.5 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
 
 ## [8.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.37)
 

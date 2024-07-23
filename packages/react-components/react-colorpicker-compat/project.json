@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-colorpicker-compat",
+  "name": "react-colorpicker-compat",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

@@ -1,5 +1,5 @@
 {
-  "name": "<%= npmPackageName %>",
+  "name": "@<%= npmScope %>/<%= projectName %>",
   "version": "0.0.0",
   "private": true,
   "description": "New fluentui react package",
@@ -30,17 +30,17 @@
     "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "*",
-    "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@<%= npmScope %>/eslint-plugin": "*",
+    "@<%= npmScope %>/react-conformance": "*",
+    "@<%= npmScope %>/react-conformance-griffel": "*",
+    "@<%= npmScope %>/scripts-api-extractor": "*",
+    "@<%= npmScope %>/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "",
-    "@fluentui/react-shared-contexts": "",
-    "@fluentui/react-theme": "",
-    "@fluentui/react-utilities": "",
+    "@<%= npmScope %>/react-jsx-runtime": "",
+    "@<%= npmScope %>/react-shared-contexts": "",
+    "@<%= npmScope %>/react-theme": "",
+    "@<%= npmScope %>/react-utilities": "",
     "@griffel/react": "",
     "@swc/helpers": ""
   },

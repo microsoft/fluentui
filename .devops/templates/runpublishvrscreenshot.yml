@@ -16,6 +16,10 @@ steps:
     displayName: yarn (install packages)
 
   - script: |
+      yarn playwright install --with-deps
+    displayName: Install Playwright dependencies
+
+  - script: |
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
       if [[ $isPR == true ]]; then
@@ -34,12 +38,7 @@ steps:
     displayName: Check if vrTests should be skipped
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
-    displayName: Build VR tests components package
-    condition: eq(variables['vrTestSkip'], 'no')
-
-  - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
+      yarn lage test-vr --to ${{ parameters.vrTestPackageName }} --verbose
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 

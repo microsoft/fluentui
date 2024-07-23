@@ -4,9 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
   "pluginsConfig": {
     "@nx/js": {
       "analyzeSourceFiles": false
@@ -26,6 +23,11 @@
       "inputs": ["production", "^production"],
       "cache": true
     },
+    "build-storybook": {
+      "dependsOn": [],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "cache": true
+    },
     "generate-api": {
       "dependsOn": ["^generate-api"],
       "cache": true
@@ -43,8 +45,25 @@
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
+    "test-integration": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
     "test-ssr": {
       "cache": true
+    },
+    "test-vr": {
+      "dependsOn": ["build-storybook"],
+      "cache": true
+    },
+    "test-perf": {
+      "dependsOn": ["bundle"],
+      "cache": true
+    },
+    "e2e": {
+      "dependsOn": [],
+      "cache": true,
+      "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
     },
     "lint": {
       "dependsOn": ["build"],
@@ -95,5 +114,7 @@
       }
     }
   },
-  "parallel": 3
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

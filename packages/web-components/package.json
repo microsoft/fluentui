@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "sideEffects": false,
-  "version": "2.6.1",
+  "version": "3.0.0-beta.47",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -15,67 +14,257 @@
   "bugs": {
     "url": "https://github.com/Microsoft/fluentui/issues/new/choose"
   },
+  "type": "module",
   "main": "dist/esm/index.js",
   "types": "dist/web-components.d.ts",
   "unpkg": "dist/web-components.min.js",
+  "files": [
+    "*.md",
+    "dist/dts/",
+    "dist/esm/",
+    "dist/*.js",
+    "dist/*.d.ts"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/dts/index.d.ts",
+      "default": "./dist/esm/index.js"
+    },
+    "./accordion.js": {
+      "types": "./dist/dts/accordion/define.d.ts",
+      "default": "./dist/esm/accordion/define.js"
+    },
+    "./accordion-item.js": {
+      "types": "./dist/dts/accordion-item/define.d.ts",
+      "default": "./dist/esm/accordion-item/define.js"
+    },
+    "./anchor-button.js": {
+      "types": "./dist/dts/anchor-button/define.d.ts",
+      "default": "./dist/esm/anchor-button/define.js"
+    },
+    "./avatar.js": {
+      "types": "./dist/dts/avatar/define.d.ts",
+      "default": "./dist/esm/avatar/define.js"
+    },
+    "./badge.js": {
+      "types": "./dist/dts/badge/define.d.ts",
+      "default": "./dist/esm/badge/define.js"
+    },
+    "./button.js": {
+      "types": "./dist/dts/button/define.d.ts",
+      "default": "./dist/esm/button/define.js"
+    },
+    "./checkbox.js": {
+      "types": "./dist/dts/checkbox/define.d.ts",
+      "default": "./dist/esm/checkbox/define.js"
+    },
+    "./compound-button.js": {
+      "types": "./dist/dts/compound-button/define.d.ts",
+      "default": "./dist/esm/compound-button/define.js"
+    },
+    "./counter-badge.js": {
+      "types": "./dist/dts/counter-badge/define.d.ts",
+      "default": "./dist/esm/counter-badge/define.js"
+    },
+    "./dialog.js": {
+      "types": "./dist/dts/dialog/define.d.ts",
+      "default": "./dist/esm/dialog/define.js"
+    },
+    "./dialog-body.js": {
+      "types": "./dist/dts/dialog-body/define.d.ts",
+      "default": "./dist/esm/dialog-body/define.js"
+    },
+    "./divider.js": {
+      "types": "./dist/dts/divider/define.d.ts",
+      "default": "./dist/esm/divider/define.js"
+    },
+    "./drawer.js": {
+      "types": "./dist/dts/drawer/define.d.ts",
+      "default": "./dist/esm/drawer/define.js"
+    },
+    "./drawer-body.js": {
+      "types": "./dist/dts/drawer-body/define.d.ts",
+      "default": "./dist/esm/drawer-body/define.js"
+    },
+    "./field.js": {
+      "types": "./dist/dts/field/define.d.ts",
+      "default": "./dist/esm/field/define.js"
+    },
+    "./image.js": {
+      "types": "./dist/dts/image/define.d.ts",
+      "default": "./dist/esm/image/define.js"
+    },
+    "./label.js": {
+      "types": "./dist/dts/label/define.d.ts",
+      "default": "./dist/esm/label/define.js"
+    },
+    "./link.js": {
+      "types": "./dist/dts/link/define.d.ts",
+      "default": "./dist/esm/link/define.js"
+    },
+    "./menu.js": {
+      "types": "./dist/dts/menu/define.d.ts",
+      "default": "./dist/esm/menu/define.js"
+    },
+    "./menu-list.js": {
+      "types": "./dist/dts/menu-list/define.d.ts",
+      "default": "./dist/esm/menu-list/define.js"
+    },
+    "./menu-button.js": {
+      "types": "./dist/dts/menu-button/define.d.ts",
+      "default": "./dist/esm/menu-button/define.js"
+    },
+    "./menu-item.js": {
+      "types": "./dist/dts/menu-item/define.d.ts",
+      "default": "./dist/esm/menu-item/define.js"
+    },
+    "./message-bar.js": {
+      "types": "./dist/dts/message-bar/define.d.ts",
+      "default": "./dist/esm/message-bar/define.js"
+    },
+    "./progress-bar.js": {
+      "types": "./dist/dts/progress-bar/define.d.ts",
+      "default": "./dist/esm/progress-bar/define.js"
+    },
+    "./radio.js": {
+      "types": "./dist/dts/radio/define.d.ts",
+      "default": "./dist/esm/radio/define.js"
+    },
+    "./radio-group.js": {
+      "types": "./dist/dts/radio-group/define.d.ts",
+      "default": "./dist/esm/radio-group/define.js"
+    },
+    "./rating-display.js": {
+      "types": "./dist/dts/rating-display/define.d.ts",
+      "default": "./dist/esm/rating-display/define.js"
+    },
+    "./slider.js": {
+      "types": "./dist/dts/slider/define.d.ts",
+      "default": "./dist/esm/slider/define.js"
+    },
+    "./spinner.js": {
+      "types": "./dist/dts/spinner/define.d.ts",
+      "default": "./dist/esm/spinner/define.js"
+    },
+    "./switch.js": {
+      "types": "./dist/dts/switch/define.d.ts",
+      "default": "./dist/esm/switch/define.js"
+    },
+    "./tab.js": {
+      "types": "./dist/dts/tab/define.d.ts",
+      "default": "./dist/esm/tab/define.js"
+    },
+    "./tabs.js": {
+      "types": "./dist/dts/tabs/define.d.ts",
+      "default": "./dist/esm/tabs/define.js"
+    },
+    "./tab-panel.js": {
+      "types": "./dist/dts/tab-panel/define.d.ts",
+      "default": "./dist/esm/tab-panel/define.js"
+    },
+    "./text.js": {
+      "types": "./dist/dts/text/define.d.ts",
+      "default": "./dist/esm/text/define.js"
+    },
+    "./text-input.js": {
+      "types": "./dist/dts/text-input/define.d.ts",
+      "default": "./dist/esm/text-input/define.js"
+    },
+    "./toggle-button.js": {
+      "types": "./dist/dts/toggle-button/define.d.ts",
+      "default": "./dist/esm/toggle-button/define.js"
+    },
+    "./theme.js": {
+      "types": "./dist/dts/theme/index.d.ts",
+      "default": "./dist/esm/theme/index.js"
+    },
+    "./utilities.js": {
+      "types": "./dist/dts/utils/index.d.ts",
+      "default": "./dist/esm/utils/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/esm/accordion/define.js",
+    "./dist/esm/accordion-item/define.js",
+    "./dist/esm/anchor-button/define.js",
+    "./dist/esm/avatar/define.js",
+    "./dist/esm/badge/define.js",
+    "./dist/esm/button/define.js",
+    "./dist/esm/checkbox/define.js",
+    "./dist/esm/compound-button/define.js",
+    "./dist/esm/counter-badge/define.js",
+    "./dist/esm/dialog/define.js",
+    "./dist/esm/dialog-body/define.js",
+    "./dist/esm/divider/define.js",
+    "./dist/esm/drawer/define.js",
+    "./dist/esm/drawer-body/define.js",
+    "./dist/esm/field/define.js",
+    "./dist/esm/image/define.js",
+    "./dist/esm/label/define.js",
+    "./dist/esm/link/define.js",
+    "./dist/esm/menu/define.js",
+    "./dist/esm/menu-list/define.js",
+    "./dist/esm/menu-button/define.js",
+    "./dist/esm/menu-item/define.js",
+    "./dist/esm/progress-bar/define.js",
+    "./dist/esm/radio/define.js",
+    "./dist/esm/radio-group/define.js",
+    "./dist/esm/rating-display/define.js",
+    "./dist/esm/slider/define.js",
+    "./dist/esm/spinner/define.js",
+    "./dist/esm/switch/define.js",
+    "./dist/esm/tab/define.js",
+    "./dist/esm/tabs/define.js",
+    "./dist/esm/tab-panel/define.js",
+    "./dist/esm/text/define.js",
+    "./dist/esm/text-input/define.js",
+    "./dist/esm/toggle-button/define.js",
+    "./dist/web-components.js",
+    "./dist/web-components.min.js"
+  ],
   "scripts": {
-    "clean": "node ./build/clean.js dist",
-    "doc": "api-extractor run --local",
-    "doc:ci": "api-extractor run --local",
-    "build": "tsc -p ./tsconfig.json && rollup -c && yarn doc",
-    "dev": "tsc -p ./tsconfig.json -w",
-    "tdd": "yarn dev & yarn test-chrome:watch",
-    "prepare": "yarn clean && yarn build",
+    "verify-packaging": "node ./scripts/verify-packaging",
+    "type-check": "node ./scripts/type-check",
+    "benchmark": "yarn clean && yarn compile:benchmark && yarn compile && node ./scripts/run-benchmarks",
+    "compile": "node ./scripts/compile",
+    "compile:benchmark": "rollup -c rollup.bench.js",
+    "clean": "node ./scripts/clean dist",
+    "generate-api": "api-extractor run --local",
+    "build": "yarn compile && yarn rollup -c && yarn generate-api",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "format": "prettier -w 'src/**/(*.ts|*.html)' --ignore-path ../../.prettierignore",
+    "format": "prettier -w src/**/*.{ts,html} --ignore-path ../../.prettierignore",
     "format:check": "yarn format -c",
     "code-style": "yarn format:check && yarn lint",
-    "start": "yarn start-storybook -p 6006 --docs",
+    "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
-    "test": "yarn doc:ci && yarn test-chrome:verbose",
-    "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-chrome": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
-    "test-chrome:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
-    "test-chrome:debugger": "karma start karma.conf.js --browsers=ChromeDebugging",
-    "test-chrome:verbose:watch": "karma start karma.conf.js --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
-    "test-chrome:verbose:debugger": "karma start karma.conf.js --browsers=ChromeDebugging --reporter=mocha",
-    "test-firefox": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage",
-    "test-firefox:verbose": "karma start karma.conf.js --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
+    "e2e": "playwright test",
+    "test:dev": "playwright test"
   },
   "devDependencies": {
+    "@microsoft/fast-element": "2.0.0-beta.26",
+    "@tensile-perf/web-components": "~0.2.0",
+    "@types/web": "^0.0.142",
     "@storybook/html": "6.5.15",
-    "@types/chai": "4.3.3",
-    "@types/chai-spies": "1.0.3",
-    "@types/karma": "6.3.3",
-    "@types/mocha": "7.0.2",
-    "chai": "4.3.6",
-    "chai-spies": "1.0.0",
-    "esm": "3.2.25",
-    "ignore-loader": "0.1.2",
-    "istanbul": "0.4.5",
-    "istanbul-instrumenter-loader": "3.0.1",
-    "jsdom-global": "3.0.2",
-    "karma": "6.4.0",
-    "karma-chrome-launcher": "3.1.1",
-    "karma-coverage": "2.2.0",
-    "karma-coverage-istanbul-reporter": "3.0.3",
-    "karma-firefox-launcher": "^1.3.0",
-    "karma-mocha": "2.0.1",
-    "karma-mocha-reporter": "2.2.5",
-    "karma-source-map-support": "1.4.0",
-    "karma-sourcemap-loader": "0.3.8",
-    "karma-webpack": "5.0.0",
-    "mocha": "7.2.0"
+    "chromedriver": "^125.0.0"
   },
   "dependencies": {
-    "@microsoft/fast-colors": "^5.3.0",
-    "@microsoft/fast-element": "^1.13.0",
-    "@microsoft/fast-foundation": "^2.49.6",
-    "@microsoft/fast-web-utilities": "^5.4.0",
+    "@microsoft/fast-web-utilities": "^6.0.0",
+    "@fluentui/tokens": "1.0.0-alpha.16",
+    "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
+  },
+  "peerDependencies": {
+    "@microsoft/fast-element": "2.0.0-beta.26"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ],
+    "tag": "beta"
   }
 }

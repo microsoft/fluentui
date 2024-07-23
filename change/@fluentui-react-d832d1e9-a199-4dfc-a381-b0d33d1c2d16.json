@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Fixing SplitButton styles in High Contrast Mode.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

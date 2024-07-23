@@ -18,8 +18,8 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "token-pipeline": "node -r ../../scripts/ts-node/register ../../scripts/generators/token-pipeline.ts",
-    "type-check": "tsc -b tsconfig.json",
+    "token-pipeline": "node -r ../../scripts/ts-node/src/register ../../scripts/generators/src/token-pipeline.ts",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {

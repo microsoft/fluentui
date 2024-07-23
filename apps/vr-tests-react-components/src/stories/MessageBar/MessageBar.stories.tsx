@@ -6,7 +6,7 @@ import {
   MessageBarIntent,
   MessageBarTitle,
 } from '@fluentui/react-message-bar';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Button } from '@fluentui/react-button';
 import { Link } from '@fluentui/react-link';
@@ -17,9 +17,9 @@ const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
 
 export default {
   title: 'MessageBar',
-  Component: MessageBar,
+  component: MessageBar,
   decorators: [story => withStoryWrightSteps({ story, steps })],
-} as ComponentMeta<typeof MessageBar>;
+} satisfies Meta<typeof MessageBar>;
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
@@ -59,6 +59,23 @@ export const Multiline = () => (
           <Button>Action</Button>
           <Button>Action</Button>
         </MessageBarActions>
+      </MessageBar>
+    ))}
+  </div>
+);
+
+export const MultilineWithoutActions = () => (
+  <div
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 500, padding: 10 }}
+    className="testWrapper"
+  >
+    {intents.map(intent => (
+      <MessageBar layout="multiline" key={intent} intent={intent}>
+        <MessageBarBody>
+          <MessageBarTitle>{intent}</MessageBarTitle>
+          Message providing information to the user with actionable insights. <Link>Link</Link>
+        </MessageBarBody>
+        <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />} />
       </MessageBar>
     ))}
   </div>
