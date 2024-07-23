@@ -70,23 +70,6 @@ export type AppItemStaticSlots = {
 export type AppItemStaticState = ComponentState<AppItemStaticSlots>;
 
 // @public
-export const AppNode: ForwardRefComponent<AppNodeProps>;
-
-// @public (undocumented)
-export const appNodeClassNames: SlotClassNames<AppNodeSlots>;
-
-// @public
-export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
-
-// @public (undocumented)
-export type AppNodeSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type AppNodeState = ComponentState<AppNodeSlots>;
-
-// @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
 
 // @public (undocumented)
@@ -359,9 +342,6 @@ export const renderAppItem_unstable: (state: AppItemState) => JSX.Element;
 // @public
 export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.Element;
 
-// @public
-export const renderAppNode_unstable: (state: AppNodeState) => JSX.Element;
-
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
 
@@ -397,12 +377,6 @@ export const useAppItemStaticStyles_unstable: (state: AppItemStaticState) => App
 
 // @public
 export const useAppItemStyles_unstable: (state: AppItemState) => AppItemState;
-
-// @public
-export const useAppNode_unstable: (props: AppNodeProps, ref: React_2.Ref<HTMLDivElement>) => AppNodeState;
-
-// @public
-export const useAppNodeStyles_unstable: (state: AppNodeState) => AppNodeState;
 
 // @public
 export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;
