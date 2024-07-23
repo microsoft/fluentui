@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: move spinner animation off of main thread",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}
