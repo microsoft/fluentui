@@ -38,6 +38,7 @@ export {
   BadgeTemplate,
 } from './badge/index.js';
 export {
+  BaseButton,
   Button,
   ButtonAppearance,
   ButtonDefinition,
@@ -80,6 +81,7 @@ export {
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
+  BaseDivider,
   Divider,
   DividerAlignContent,
   DividerAppearance,
@@ -142,6 +144,7 @@ export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js'
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
 export {
+  BaseProgressBar,
   ProgressBar,
   ProgressBarDefinition,
   ProgressBarShape,
@@ -178,6 +181,7 @@ export {
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
+  BaseSpinner,
   Spinner,
   SpinnerAppearance,
   SpinnerDefinition,

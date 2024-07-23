@@ -1,8 +1,11 @@
+const fs = require('fs');
 const path = require('path');
 
 const { findRepoDeps } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
-const fs = require('fs-extra');
+
+const { isCI } = require('./environment');
+const { workersConfig } = require('./shared');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
@@ -31,7 +34,7 @@ const jestAliases = () => {
   }
 
   // Special aliases to look at src for the current package
-  const packageJson = fs.readJSONSync(packageJsonPath);
+  const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
   aliases[`^${packageJson.name}$`] = '<rootDir>/src/';
   aliases[`^${packageJson.name}/lib/(.*)$`] = '<rootDir>/src/$1';
 
@@ -80,6 +83,8 @@ const createConfig = (customConfig = {}) => {
     testEnvironment: 'jsdom',
     restoreMocks: true,
     clearMocks: true,
+
+    ...(isCI ? workersConfig : null),
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
     // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future

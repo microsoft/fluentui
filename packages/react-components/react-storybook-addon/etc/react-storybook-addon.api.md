@@ -31,6 +31,10 @@ export interface FluentParameters extends Parameters_2 {
     fluentTheme?: ThemeIds;
     // (undocumented)
     mode?: 'default' | 'vr-test';
+    // (undocumented)
+    reactStorybookAddon?: {
+        disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+    };
 }
 
 // @public (undocumented)
@@ -46,6 +50,9 @@ export function parameters(options?: FluentParameters): {
     dir: string;
     fluentTheme: string;
     mode: string;
+    reactStorybookAddon?: {
+        disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
+    } | undefined;
     fileName?: string | undefined;
     options?: OptionsParameter | undefined;
     layout?: "centered" | "fullscreen" | "padded" | "none" | undefined;

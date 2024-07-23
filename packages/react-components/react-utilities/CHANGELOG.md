@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 15 Jul 2024 17:25:23 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 20:13:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.13)
+
+Tue, 23 Jul 2024 20:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.12..@fluentui/react-utilities_v9.18.13)
+
+### Patches
+
+- chore: stops leaking HTMLElementConstructorName type ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+- chore: simplify SlotComponentType type ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.18.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.12)
 
