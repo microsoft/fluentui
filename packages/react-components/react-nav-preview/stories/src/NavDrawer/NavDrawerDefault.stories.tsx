@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  AppItem,
   Hamburger,
   NavCategory,
   NavCategoryItem,
@@ -43,6 +44,8 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  Person32Filled,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -107,7 +110,11 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
+
         <NavDrawerBody>
+          <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
+            Contoso HR
+          </AppItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -123,8 +130,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
             Performance Reviews
           </NavItem>
-
-          <NavSectionHeader>Employee Management</NavSectionHeader>
+          {/* <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
@@ -172,8 +178,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
                 Planning
               </NavSubItem>
             </NavSubItemGroup>
-          </NavCategory>
-
+          </NavCategory> */}
           <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data

@@ -20,7 +20,7 @@ export const navItemTokens = {
 
 /**
  * Styles for the root slot
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
@@ -60,7 +60,7 @@ export const useSmallStyles = makeStyles({
 
 /**
  * Styles for the content slot (children)
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,

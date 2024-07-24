@@ -13,8 +13,9 @@ import {
   NavSubItemGroup,
   NavSize,
   NavDivider,
+  AppItem,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -43,6 +44,8 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  PersonCircle32Regular,
+  PersonCircle24Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -85,8 +88,14 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
+  const linkLabelId = useId('link-label');
 
   const [size, setNavSize] = React.useState<NavSize>('small');
+  const [enabledLinks, setEnabledLinks] = React.useState(true);
+
+  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
+
+  const appItemIcon = size === 'small' ? <PersonCircle24Regular /> : <PersonCircle32Regular />;
 
   return (
     <div className={styles.root}>
@@ -97,6 +106,9 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           </Tooltip>
         </NavDrawerHeader>
         <NavDrawerBody>
+          <AppItem icon={appItemIcon} as="a" href={linkDestination}>
+            Contoso HR
+          </AppItem>
           <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
@@ -178,6 +190,13 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             <Radio value="medium" label="Medium" />
             <Radio value="small" label="Small" />
           </RadioGroup>
+          <Label id={linkLabelId}>Links</Label>
+          <Switch
+            checked={enabledLinks}
+            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+            label={enabledLinks ? 'Enabled' : 'Disabled'}
+            aria-labelledby={linkLabelId}
+          />
         </div>
       </div>
     </div>
