@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: create base class for progress bar and remove style and layout specfic api",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
