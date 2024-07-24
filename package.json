@@ -122,6 +122,7 @@
     "@swc/cli": "0.3.14",
     "@swc/core": "1.5.7",
     "@swc/helpers": "0.5.1",
+    "@swc/jest": "0.2.36",
     "@testing-library/dom": "8.11.3",
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "12.1.2",
