@@ -20,6 +20,15 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
  */
 export class BaseTablist extends FASTElement {
   /**
+   * Used for disabling all click and keyboard events for the tabs, child tab elements.
+   * @public
+   * @remarks
+   * HTML Attribute: disabled.
+   */
+  @attr({ mode: 'boolean' })
+  public disabled?: boolean;
+
+  /**
    * The orientation
    * @public
    * @remarks
@@ -158,30 +167,35 @@ export class BaseTablist extends FASTElement {
   }
 
   private handleTabKeyDown = (event: KeyboardEvent): void => {
-    if (this.isHorizontal()) {
-      switch (event.key) {
-        case keyArrowLeft:
-          event.preventDefault();
-          this.adjustBackward(event);
-          break;
-        case keyArrowRight:
-          event.preventDefault();
-          this.adjustForward(event);
-          break;
-      }
-    } else {
-      switch (event.key) {
-        case keyArrowUp:
-          event.preventDefault();
-          this.adjustBackward(event);
-          break;
-        case keyArrowDown:
-          event.preventDefault();
-          this.adjustForward(event);
-          break;
-      }
-    }
     switch (event.key) {
+      case keyArrowLeft:
+        if (!this.isHorizontal()) {
+          return;
+        }
+        event.preventDefault();
+        this.adjustBackward(event);
+        break;
+      case keyArrowRight:
+        if (!this.isHorizontal()) {
+          return;
+        }
+        event.preventDefault();
+        this.adjustForward(event);
+        break;
+      case keyArrowUp:
+        if (this.isHorizontal()) {
+          return;
+        }
+        event.preventDefault();
+        this.adjustBackward(event);
+        break;
+      case keyArrowDown:
+        if (this.isHorizontal()) {
+          return;
+        }
+        event.preventDefault();
+        this.adjustForward(event);
+        break;
       case keyHome:
         event.preventDefault();
         this.adjust(-this.activeTabIndex);
@@ -311,13 +325,6 @@ export class Tablist extends BaseTablist {
    */
   @attr
   public appearance?: TablistAppearance = TablistAppearance.transparent;
-
-  /**
-   * disabled
-   * Used for disabling all click and keyboard events for the tabs, child tab elements and tab panel elements. UI styling of content and tabs will appear as "grayed out."
-   */
-  @attr({ mode: 'boolean' })
-  public disabled?: boolean;
 
   /**
    * size
