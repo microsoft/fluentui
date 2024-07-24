@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(web-components): relax setTheme() argument type to allow custom tokens",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}

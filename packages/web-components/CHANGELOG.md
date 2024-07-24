@@ -1,8 +1,19 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 23 Jul 2024 04:07:05 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Jul 2024 04:07:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.48)
+
+Wed, 24 Jul 2024 04:07:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.47..@fluentui/web-components_v3.0.0-beta.48)
+
+### Changes
+
+- chore: create base class for progress bar and remove style and layout specfic api ([PR #32066](https://github.com/microsoft/fluentui/pull/32066) by jes@microsoft.com)
+- feat(web-components): relax setTheme() argument type to allow custom tokens ([PR #32087](https://github.com/microsoft/fluentui/pull/32087) by machi@microsoft.com)
+- chore: create base class for spinner and remove style and layout specfic api ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by jes@microsoft.com)
 
 ## [3.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.47)
 

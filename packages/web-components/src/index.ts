@@ -26,6 +26,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,
@@ -234,6 +235,7 @@ export {
   TextAreaTemplate,
 } from './textarea/index.js';
 export {
+  BaseTextInput,
   TextInput,
   TextInputAppearance,
   TextInputControlSize,

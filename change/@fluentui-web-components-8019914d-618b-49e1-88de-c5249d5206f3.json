@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "chore: create base class for spinner and remove style and layout specfic api",
+  "comment": "chore: create avatar base class to abstract style specfic api",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "patch"
