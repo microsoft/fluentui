@@ -9,7 +9,6 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, getAccessibleDataObject } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import React = require('react');
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
