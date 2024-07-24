@@ -2,6 +2,33 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 24 Jul 2024 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.48",
+      "version": "3.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "60952ac19534a4299c4b3263b21e3c07470bd099",
+            "comment": "chore: create base class for progress bar and remove style and layout specfic api"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "273f6aae649bbec4e36f300f6467ae72f1960cfd",
+            "comment": "feat(web-components): relax setTheme() argument type to allow custom tokens"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406",
+            "comment": "chore: create base class for spinner and remove style and layout specfic api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 04:07:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.47",
       "version": "3.0.0-beta.47",

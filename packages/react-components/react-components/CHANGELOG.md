@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 15 Jul 2024 17:25:14 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 20:13:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.6)
+
+Tue, 23 Jul 2024 20:13:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.5..@fluentui/react-components_v9.54.6)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: add presenceMotionSlot() API ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - feat: add motion slots (surfaceMotion to Dialog & backdropMotion to DialogSurface) ([PR #31132](https://github.com/microsoft/fluentui/pull/31132) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-motion`
+  - fix: improve Web Animations API detection in tests ([PR #32029](https://github.com/microsoft/fluentui/pull/32029) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat: add Fade motion component ([PR #32020](https://github.com/microsoft/fluentui/pull/32020) by olkatruk@microsoft.com)
+  - feat(motion): add Scale motion component ([PR #32021](https://github.com/microsoft/fluentui/pull/32021) by olkatruk@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: stops leaking HTMLElementConstructorName type ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+  - chore: simplify SlotComponentType type ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
 
 ## [9.54.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.5)
 

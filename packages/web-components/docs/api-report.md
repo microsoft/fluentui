@@ -17,7 +17,6 @@ import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
-import type { Theme } from '@fluentui/tokens';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -506,6 +505,35 @@ export class BaseDivider extends FASTElement {
     role: DividerRole;
     // @internal
     roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export class BaseProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
+    validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseSpinner extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
 }
 
 // @public
@@ -2587,29 +2615,11 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends FASTElement {
-    constructor();
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    max?: number;
-    // @internal
-    protected maxChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    min?: number;
-    protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
-    // @internal
-    value?: number;
-    // @internal
-    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -3091,12 +3101,9 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends FASTElement {
-    constructor();
+export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
     appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     size?: SpinnerSize;
     sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
@@ -3532,6 +3539,11 @@ export const TextWeight: {
 
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
+
+// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type Theme = Record<string, string | number>;
 
 // @public
 export class ToggleButton extends Button {

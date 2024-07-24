@@ -144,6 +144,7 @@ export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js'
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
 export {
+  BaseProgressBar,
   ProgressBar,
   ProgressBarDefinition,
   ProgressBarShape,
@@ -180,6 +181,7 @@ export {
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
+  BaseSpinner,
   Spinner,
   SpinnerAppearance,
   SpinnerDefinition,
@@ -242,7 +244,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor } from './theme/index.js';
+export { setTheme, setThemeFor, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-motion-components-preview",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 20:13:12 GMT",
+      "tag": "@fluentui/react-motion-components-preview_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "1678c8e0c9e2bb90b26d7d0c931ce9b15461bb23",
+            "comment": "feat: add Fade motion component"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "fd0552bb2c76653e6eced53bc20b6d8690184c93",
+            "comment": "feat(motion): add Scale motion component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:37 GMT",
       "tag": "@fluentui/react-motion-components-preview_v0.1.0",
       "version": "0.1.0",
