@@ -17,7 +17,6 @@ import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
-import type { Theme } from '@fluentui/tokens';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -3679,6 +3678,11 @@ export const TextWeight: {
 
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
+
+// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type Theme = Record<string, string | number>;
 
 // @public
 export class ToggleButton extends Button {
