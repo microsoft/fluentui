@@ -1,0 +1,8 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "$id": "MigrateJestToSwc",
+  "title": "",
+  "type": "object",
+  "properties": {},
+  "required": []
+}

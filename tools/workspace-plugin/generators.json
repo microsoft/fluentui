@@ -94,6 +94,11 @@
       "factory": "./src/generators/split-library-in-two/generator",
       "schema": "./src/generators/split-library-in-two/schema.json",
       "description": "split-library-in-two generator"
+    },
+    "migrate-jest-to-swc": {
+      "factory": "./src/generators/migrate-jest-to-swc/generator",
+      "schema": "./src/generators/migrate-jest-to-swc/schema.json",
+      "description": "migrate-jest-to-swc generator"
     }
   }
 }
