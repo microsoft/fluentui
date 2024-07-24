@@ -155,7 +155,7 @@ export type CarouselNavSlots = {
 
 // @public (undocumented)
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-    values: string[];
+    values: string[][];
     renderNavButton: NavButtonRenderFunction;
 };
 
@@ -166,6 +166,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     value?: string;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
+    groupSize?: number | 'auto';
 };
 
 // @public
@@ -194,7 +195,7 @@ export type CarouselSlots = {
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public (undocumented)
-export type NavButtonRenderFunction = (value: string) => React_2.ReactNode;
+export type NavButtonRenderFunction = (value: string[]) => React_2.ReactNode;
 
 // @public
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
