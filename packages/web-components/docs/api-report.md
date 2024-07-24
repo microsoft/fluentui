@@ -650,6 +650,7 @@ export class BaseTablist extends FASTElement {
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
+    disabled?: boolean;
     orientation: TablistOrientation;
     // @internal (undocumented)
     orientationChanged(): void;
@@ -3343,7 +3344,6 @@ export class Tablist extends BaseTablist {
     // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
-    disabled?: boolean;
     size?: TablistSize;
     // (undocumented)
     tabsChanged(): void;

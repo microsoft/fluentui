@@ -135,6 +135,7 @@ export class BaseTablist extends FASTElement {
           this.activetab = tab;
           this.activeid = tabId;
         }
+        this.change();
       }
     });
   }
@@ -167,20 +168,21 @@ export class BaseTablist extends FASTElement {
   }
 
   private handleTabKeyDown = (event: KeyboardEvent): void => {
+    const dir = window.getComputedStyle(this).direction;
     switch (event.key) {
       case keyArrowLeft:
         if (!this.isHorizontal()) {
           return;
         }
         event.preventDefault();
-        this.adjust(-1);
+        this.adjust(dir === 'ltr' ? -1 : 1);
         break;
       case keyArrowRight:
         if (!this.isHorizontal()) {
           return;
         }
         event.preventDefault();
-        this.adjust(1);
+        this.adjust(dir === 'ltr' ? 1 : -1);
         break;
       case keyArrowUp:
         if (this.isHorizontal()) {
@@ -402,5 +404,9 @@ export class Tablist extends BaseTablist {
   public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();
+
+    if (this.activetab) {
+      this.animationLoop(this.activetab as Tab);
+    }
   }
 }
