@@ -12,6 +12,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Label } from '@fluentui/react';
 
 interface IVerticalChartState {
   width: number;
@@ -172,11 +173,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <>
-        <p>
-          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-          So instead of a numeric value, the callout will show the date that is passed in the{' '}
-          <code>xAxisCalloutData</code> property.
-        </p>
+        <Label>
+          In this example the xAxisCalloutData property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the xAxisCalloutData property.
+        </Label>
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"

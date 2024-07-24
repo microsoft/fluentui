@@ -1,22 +1,13 @@
 import * as React from 'react';
 import { HeatMapChart, IHeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
-import { Label } from '@fluentui/react';
+import { Label, ThemeContext } from '@fluentui/react';
 
-interface IHeatMapChartBasicExampleState {
-  width: number;
-  height: number;
-}
+export const HeatMapChartBasicExample: React.FunctionComponent<{}> = () => {
+  const theme = React.useContext(ThemeContext);
+  const [width, setWidth] = React.useState<number>(450);
+  const [height, setHeight] = React.useState<number>(350);
 
-export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartBasicExampleState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      width: 450,
-      height: 350,
-    };
-  }
-  public render(): React.ReactNode {
-    const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
+  const rootStyle = { width: `${width}px`, height: `${height}px` };
     const yPointMapping: { [key: string]: string } = {
       p1: 'Ohio',
       p2: 'Alaska',
@@ -298,27 +289,35 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
         ],
       },
     ];
-    return (
+
+    const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setWidth(parseInt(e.target.value, 10));
+    };
+    const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setHeight(parseInt(e.target.value, 10));
+    };
+
+  return (
       <>
         <label htmlFor="changeWidth_Example">Change Width:</label>
         <input
           type="range"
-          value={this.state.width}
+          value={width}
           min={200}
           max={1000}
-          onChange={this._onWidthChange}
+          onChange={_onWidthChange}
           id="changeWidth_Example"
-          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+          aria-valuetext={`ChangeWidthSlider${width}`}
         />
         <label htmlFor="changeHeight_Example">Change Height:</label>
         <input
           type="range"
-          value={this.state.height}
+          value={height}
           min={200}
           max={1000}
           id="changeHeight_Example"
-          onChange={this._onHeightChange}
-          aria-valuetext={`ChangeHeightSlider${this.state.height}`}
+          onChange={_onHeightChange}
+          aria-valuetext={`ChangeHeightSlider${height}`}
         />
         <Label>Heat map explaining the Air Quality Index</Label>
         <div style={rootStyle}>
@@ -330,25 +329,19 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             yAxisStringFormatter={(point: string) => yPointMapping[point as string]}
             xAxisNumberFormatString=".7s"
             yAxisNumberFormatString=".3s"
-            width={this.state.width}
-            height={this.state.height}
+            width={width}
+            height={height}
             domainValuesForColorScale={[0, 200, 400, 600]}
             rangeValuesForColorScale={[
-              getColorFromToken(DataVizPalette.success),
-              getColorFromToken(DataVizPalette.warning),
-              getColorFromToken(DataVizPalette.error),
-              getColorFromToken(DataVizPalette.highError),
+              getColorFromToken(DataVizPalette.success, theme?.isInverted),
+              getColorFromToken(DataVizPalette.warning, theme?.isInverted),
+              getColorFromToken(DataVizPalette.error, theme?.isInverted),
+              getColorFromToken(DataVizPalette.highError, theme?.isInverted),
             ]}
             enableReflow={true}
           />
         </div>
       </>
-    );
-  }
-  private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ width: parseInt(e.target.value, 10) });
-  };
-  private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ height: parseInt(e.target.value, 10) });
-  };
-}
+  );
+  
+};
