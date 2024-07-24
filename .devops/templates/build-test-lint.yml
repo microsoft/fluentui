@@ -92,12 +92,20 @@ steps:
   #   displayName: test v8 (runInBand)
 
   - script: |
+      yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=75%
+    displayName: test v8 (maxWorkers 75)
+
+  - script: |
       yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=50%
     displayName: test v8 (maxWorkers 50)
 
   - script: |
       yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=25%
     displayName: test v8 (maxWorkers 25)
+
+  - script: |
+      yarn nx run-many -t test -p tag:v8 --exclude 'tag:vNext,apps/**' --maxWorkers=50% --workerThreads
+    displayName: test v8 (workerThreads + maxWorkers 50)
 
   # REACT NORTHSTAR v0
 
@@ -107,18 +115,26 @@ steps:
 
   - script: |
       yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**'
-    displayName: test react-northstar (default mw=4)
+    displayName: test v0 (default mw=4)
+
+  # - script: |
+  #     yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --runInBand
+  #   displayName: test v0 (runInBand)
 
   - script: |
-      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --runInBand
-    displayName: test react-northstar (runInBand)
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=75%
+    displayName: test v0 (maxWorkers 75)
 
   - script: |
       yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=50%
-    displayName: test react-northstar (maxWorkers 50)
+    displayName: test v0 (maxWorkers 50)
 
   - script: |
       yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=25%
-    displayName: test react-northstar (maxWorkers 25)
+    displayName: test v0 (maxWorkers 25)
+
+  - script: |
+      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=50% --workerThreads
+    displayName: test v0 (workerThreads + maxWorkers 50)
 
   - template: cleanup.yml
