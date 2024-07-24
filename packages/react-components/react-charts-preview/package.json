@@ -29,6 +29,9 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "type-check": "tsc -b tsconfig.json"
   },
+  "syncpack": {
+    "dependencyTypes": []
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
