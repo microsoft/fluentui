@@ -35,8 +35,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
     const color = d && d.data && d.data.color;
-    // loop back to first color if the last one is reached
-    const nextColor = (this.props.data[i + 1] && this.props.data[i + 1].color) ?? this.props.data[0].color;
+    const nextColor = darkenLightenColor(color!, 50);
 
     return (
       <Arc
