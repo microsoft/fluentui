@@ -26,6 +26,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,
@@ -224,6 +225,7 @@ export {
 } from './tabs/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextInput,
   TextInput,
   TextInputAppearance,
   TextInputControlSize,
