@@ -36,7 +36,6 @@ export const styles = css`
     --tabPaddingBlock: inherit;
     --tabIndicatorInsetInline: 0;
     --tabIndicatorInsetBlock: 0;
-
     box-sizing: border-box;
     color: ${colorNeutralForeground2};
     flex-direction: row;

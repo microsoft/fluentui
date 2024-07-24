@@ -31,7 +31,7 @@ const tabsHorizontal = html`
     <fluent-tab> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
 `;
 export const TablistHorizontal = renderComponent(tabsHorizontal).bind({});
 
@@ -41,7 +41,7 @@ const tabsVertical = html`
     <fluent-tab> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
 `;
 export const TablistVertical = renderComponent(tabsVertical).bind({});
 
@@ -51,13 +51,13 @@ const tabsAppearance = html`
     <fluent-tab> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
   <fluent-tablist appearance="subtle">
     <fluent-tab active> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
 `;
 export const TablistAppearance = renderComponent(tabsAppearance).bind({});
 
@@ -67,14 +67,14 @@ const tabsDisabledTablist = html`
     <fluent-tab> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
 
   <fluent-tablist>
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab disabled> Second Tab</fluent-tab>
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
-  </fluent-tabs>
+  </fluent-tablist>
 `;
 export const TablistDisabled = renderComponent(tabsDisabledTablist).bind({});
 

@@ -10,12 +10,12 @@ test.describe('Tablist', () => {
   let tabs: Locator;
 
   const template = /* html */ `
-        <fluent-tablist>
-            <fluent-tab>Tab one</fluent-tab>
-            <fluent-tab>Tab two</fluent-tab>
-            <fluent-tab>Tab three</fluent-tab>
-        </fluent-tablist>
-    `;
+    <fluent-tablist>
+        <fluent-tab>Tab one</fluent-tab>
+        <fluent-tab>Tab two</fluent-tab>
+        <fluent-tab>Tab three</fluent-tab>
+    </fluent-tablist>
+  `;
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
@@ -192,11 +192,11 @@ test.describe('Tablist', () => {
 
   test('should not allow selecting a tab that has been disabled after it has been connected', async () => {
     await page.setContent(/* html */ `
-          <fluent-tablist>
-              <fluent-tab id="tab-1">Tab one</fluent-tab>
-              <fluent-tab id="tab-2">Tab two</fluent-tab>
-              <fluent-tab id="tab-3">Tab three</fluent-tab>
-          </fluent-tablist>
+        <fluent-tablist>
+            <fluent-tab id="tab-1">Tab one</fluent-tab>
+            <fluent-tab id="tab-2">Tab two</fluent-tab>
+            <fluent-tab id="tab-3">Tab three</fluent-tab>
+        </fluent-tablist>
       `);
 
     await (await element.elementHandle())?.waitForElementState('stable');
@@ -240,12 +240,12 @@ test.describe('Tablist', () => {
     test.slow();
 
     await page.setContent(/* html */ `
-          <fluent-tablist>
-                      <fluent-tab>Tab one</fluent-tab>
-                      <fluent-tab disabled>Tab two</fluent-tab>
-                      <fluent-tab>Tab three</fluent-tab>
-                  </fluent-tablist>
-      `);
+      <fluent-tablist>
+          <fluent-tab>Tab one</fluent-tab>
+          <fluent-tab disabled>Tab two</fluent-tab>
+          <fluent-tab>Tab three</fluent-tab>
+      </fluent-tablist>
+    `);
 
     const firstTab = tabs.nth(0);
 
@@ -325,7 +325,7 @@ test.describe('Tablist', () => {
           <fluent-tab>Tab two</fluent-tab>
           <fluent-tab hidden>Tab three</fluent-tab>
       </fluent-tablist>
-  `);
+    `);
 
     const firstTab = tabs.nth(0);
 
