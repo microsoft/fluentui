@@ -173,28 +173,28 @@ export class BaseTablist extends FASTElement {
           return;
         }
         event.preventDefault();
-        this.adjustBackward(event);
+        this.adjust(-1);
         break;
       case keyArrowRight:
         if (!this.isHorizontal()) {
           return;
         }
         event.preventDefault();
-        this.adjustForward(event);
+        this.adjust(1);
         break;
       case keyArrowUp:
         if (this.isHorizontal()) {
           return;
         }
         event.preventDefault();
-        this.adjustBackward(event);
+        this.adjust(-1);
         break;
       case keyArrowDown:
         if (this.isHorizontal()) {
           return;
         }
         event.preventDefault();
-        this.adjustForward(event);
+        this.adjust(1);
         break;
       case keyHome:
         event.preventDefault();
@@ -224,48 +224,6 @@ export class BaseTablist extends FASTElement {
 
     if (nextIndex > -1) {
       this.moveToTabByIndex(this.tabs, nextIndex);
-    }
-  }
-
-  private adjustForward(e: KeyboardEvent): void {
-    const group: HTMLElement[] = this.tabs;
-    let index: number = 0;
-
-    index = this.activetab ? group.indexOf(this.activetab) + 1 : 1;
-    if (index === group.length) {
-      index = 0;
-    }
-
-    while (index < group.length && group.length > 1) {
-      if (this.isFocusableElement(group[index])) {
-        this.moveToTabByIndex(group, index);
-        break;
-      } else if (this.activetab && index === group.indexOf(this.activetab)) {
-        break;
-      } else if (index + 1 >= group.length) {
-        index = 0;
-      } else {
-        index += 1;
-      }
-    }
-  }
-
-  private adjustBackward(e: KeyboardEvent): void {
-    const group: HTMLElement[] = this.tabs;
-    let index: number = 0;
-
-    index = this.activetab ? group.indexOf(this.activetab) - 1 : 0;
-    index = index < 0 ? group.length - 1 : index;
-
-    while (index >= 0 && group.length > 1) {
-      if (this.isFocusableElement(group[index])) {
-        this.moveToTabByIndex(group, index);
-        break;
-      } else if (index - 1 < 0) {
-        index = group.length - 1;
-      } else {
-        index -= 1;
-      }
     }
   }
 
