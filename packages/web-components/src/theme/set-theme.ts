@@ -1,7 +1,12 @@
-import type { Theme } from '@fluentui/tokens';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-
 import * as tokens from './design-tokens.js';
+
+/**
+ * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
+ * tokens to be added.
+ * @internal
+ */
+export type Theme = Record<string, string | number>;
 
 const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
