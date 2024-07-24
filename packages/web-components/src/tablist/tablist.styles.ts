@@ -25,6 +25,9 @@ import {
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
 
+/**
+ * @public
+ */
 export const styles = css`
   ${display('flex')}
 

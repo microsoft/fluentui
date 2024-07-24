@@ -15,8 +15,7 @@ import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.op
 type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 
 /**
- * A Tabs component that wraps a collection of tab and tab panel elements.
- *
+ * A Tablist element that wraps a collection of tab elements
  * @public
  */
 export class BaseTablist extends FASTElement {
@@ -280,6 +279,10 @@ export class BaseTablist extends FASTElement {
   }
 }
 
+/**
+ * A BaseTablist component with extra logic for handling the styled active tab indicator.
+ * @public
+ */
 export class Tablist extends BaseTablist {
   /**
    * activeTabData

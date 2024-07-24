@@ -228,6 +228,7 @@ export {
   TabsTemplate,
 } from './tabs/index.js';
 export {
+  BaseTablist,
   Tablist,
   TablistAppearance,
   TablistDefinition,
