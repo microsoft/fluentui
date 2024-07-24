@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { AppNodeProps, AppNodeState } from './AppNode.types';
+import type { AppItemProps, AppItemState } from './AppItem.types';
 
 /**
- * Create the state required to render AppNode.
+ * Create the state required to render AppItem.
  *
- * The returned state can be modified with hooks such as useAppNodeStyles_unstable,
- * before being passed to renderAppNode_unstable.
+ * The returned state can be modified with hooks such as useAppItemStyles_unstable,
+ * before being passed to renderAppItem_unstable.
  *
- * @param props - props from this instance of AppNode
- * @param ref - reference to root HTMLDivElement of AppNode
+ * @param props - props from this instance of AppItem
+ * @param ref - reference to root HTMLDivElement of AppItem
  */
-export const useAppNode_unstable = (props: AppNodeProps, ref: React.Ref<HTMLDivElement>): AppNodeState => {
+export const useAppItem_unstable = (props: AppItemProps, ref: React.Ref<HTMLDivElement>): AppItemState => {
   return {
     // TODO add appropriate props/defaults
     components: {

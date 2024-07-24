@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
-import { AppNode } from './AppNode';
+import { AppItemStatic } from './AppItemStatic';
 
-describe('AppNode', () => {
+describe('AppItemStatic', () => {
   isConformant({
-    Component: AppNode,
-    displayName: 'AppNode',
+    Component: AppItemStatic,
+    displayName: 'AppItemStatic',
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<AppNode>Default AppNode</AppNode>);
+    const result = render(<AppItemStatic>Default AppItemStatic</AppItemStatic>);
     expect(result.container).toMatchSnapshot();
   });
 });
