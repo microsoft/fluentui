@@ -199,29 +199,9 @@ export const AnchorTarget: {
 export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
-export class Avatar extends FASTElement {
-    constructor();
-    active?: AvatarActive | undefined;
+export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor | undefined;
-    colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    generateColor(): void;
-    // @internal
-    generateInitials(): string | void;
-    // @internal
-    handleChange(source: any, propertyName: string): void;
-    initials?: string | undefined;
-    name?: string | undefined;
     shape?: AvatarShape | undefined;
-    size?: AvatarSize | undefined;
 }
 
 // Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -457,6 +437,30 @@ export const BadgeStyles: ElementStyles;
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
 // @public
+export class BaseAvatar extends FASTElement {
+    constructor();
+    active?: AvatarActive | undefined;
+    color?: AvatarColor | undefined;
+    colorId?: AvatarNamedColor | undefined;
+    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    generateColor(): void;
+    // @internal
+    generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    initials?: string | undefined;
+    name?: string | undefined;
+    size?: AvatarSize | undefined;
+}
+
+// @public
 export class BaseButton extends FASTElement {
     constructor();
     autofocus: boolean;
@@ -534,6 +538,73 @@ export class BaseSpinner extends FASTElement {
     constructor();
     // @internal
     elementInternals: ElementInternals;
+}
+
+// @public
+export class BaseTextInput extends FASTElement {
+    autocomplete?: string;
+    autofocus: boolean;
+    // @internal
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // @internal
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    dirname?: string;
+    disabled?: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialValue: string;
+    // @internal
+    initialValueChanged(): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    list: string;
+    maxlength: number;
+    minlength: number;
+    multiple: boolean;
+    name: string;
+    pattern: string;
+    placeholder: string;
+    readOnly?: boolean;
+    // @internal
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    requiredChanged(previous: boolean, next: boolean): void;
+    select(): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size: number;
+    spellcheck: boolean;
+    type: TextInputType;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
 }
 
 // @public
@@ -3377,74 +3448,11 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "TextInput" because one of its declarations is marked as @internal
 //
 // @public
-export class TextInput extends FASTElement {
+export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
     appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
-    autocomplete?: string;
-    autofocus: boolean;
-    // @internal
-    beforeinputHandler(e: InputEvent): boolean | void;
-    // @internal
-    changeHandler(e: InputEvent): boolean | void;
-    checkValidity(): boolean;
-    clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    control: HTMLInputElement;
-    // @internal
-    controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
     controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
-    // @internal
-    defaultSlottedNodes: Node[];
-    // @internal
-    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
-    dirname?: string;
-    disabled?: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
-    get form(): HTMLFormElement | null;
-    static readonly formAssociated = true;
-    formAttribute?: string;
-    // @internal
-    formResetCallback(): void;
-    initialValue: string;
-    // @internal
-    initialValueChanged(): void;
-    // @internal
-    inputHandler(e: InputEvent): boolean | void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    list: string;
-    maxlength: number;
-    minlength: number;
-    multiple: boolean;
-    name: string;
-    pattern: string;
-    placeholder: string;
-    readOnly?: boolean;
-    // @internal
-    readOnlyChanged(): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // @internal
-    requiredChanged(previous: boolean, next: boolean): void;
-    select(): void;
-    setCustomValidity(message: string): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    size: number;
-    spellcheck: boolean;
-    type: TextInputType;
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string;
-    set value(value: string);
-    get willValidate(): boolean;
 }
 
 // @internal (undocumented)
