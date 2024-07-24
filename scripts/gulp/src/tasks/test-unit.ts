@@ -7,6 +7,7 @@ const argv = yargs
   .option('cache', {})
   .option('runInBand', {})
   .option('maxWorkers', {})
+  .option('workerThreads', {})
   .option('detectLeaks', {})
   .option('coverage', {})
   .option('testNamePattern', { alias: 't' })
@@ -17,6 +18,7 @@ const jestConfigFromArgv: Partial<JestPluginConfig> = {
   runInBand: argv.runInBand as boolean,
   coverage: argv.coverage as boolean,
   maxWorkers: argv.maxWorkers as number,
+  workerThreads: argv.workerThreads as number,
   detectLeaks: argv.detectLeaks as boolean,
   testNamePattern: argv.testNamePattern as string,
   testFilePattern: argv.testFilePattern as string,

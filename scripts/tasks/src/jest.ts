@@ -38,7 +38,8 @@ type JestTaskConfig = {
   clearCache?: boolean;
   coverage?: boolean;
   detectLeaks?: boolean;
-  maxWorkers?: number;
+  maxWorkers?: number | string;
+  workerThreads?: boolean;
   rootDir?: string;
   runInBand?: boolean;
   testNamePattern?: string;
@@ -67,6 +68,7 @@ const jestTask = (config: JestTaskConfig) => () => {
     config.coverage && '--coverage',
     config.runInBand && '--runInBand',
     config.maxWorkers && `--maxWorkers=${config.maxWorkers}`,
+    config.workerThreads && `--workerThreads`,
     config.detectLeaks && '--detectLeaks',
     config.testNamePattern && `--testNamePattern="${config.testNamePattern}"`,
     config.verbose && '--verbose',

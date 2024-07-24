@@ -6,6 +6,7 @@ export type JestPluginConfig = {
   coverage?: boolean;
   detectLeaks?: boolean;
   maxWorkers?: number;
+  workerThreads?: number | string;
   rootDir?: string;
   runInBand?: boolean;
   testNamePattern?: string;
@@ -27,6 +28,7 @@ const jest = (config: JestPluginConfig) => () => {
     config.watchAll && '--watchAll',
     config.runInBand && '--runInBand',
     config.maxWorkers && `--maxWorkers=${config.maxWorkers}`,
+    config.workerThreads && `--workerThreads`,
     config.detectLeaks && '--detectLeaks',
     config.testNamePattern && `--testNamePattern="${config.testNamePattern}"`,
     config.rootDir && `--rootDir ${config.rootDir}`,
