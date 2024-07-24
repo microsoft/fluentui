@@ -125,13 +125,13 @@ steps:
   #     yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --runInBand
   #   displayName: test v0 (runInBand)
 
-  - script: |
-      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=75%
-    displayName: test v0 (maxWorkers 75)
+  # - script: |
+  #     yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=75%
+  #   displayName: test v0 (maxWorkers 75)
 
-  - script: |
-      yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=60%
-    displayName: test v0 (maxWorkers 60)
+  # - script: |
+  #     yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=60%
+  #   displayName: test v0 (maxWorkers 60)
 
   - script: |
       yarn nx run-many -t test -p tag:react-northstar --exclude 'tag:vNext,apps/**' --maxWorkers=50%
