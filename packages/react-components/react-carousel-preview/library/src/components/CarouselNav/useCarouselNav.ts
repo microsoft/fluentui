@@ -28,6 +28,12 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
 
   useIsomorphicLayoutEffect(() => {
     subscribeForValues((data: CarouselReinitData) => {
+      // Check group lists first
+      if (data.groupIndexList && data.groupIndexList.length > 0) {
+        setTotalSlides(data.groupIndexList.length);
+        return;
+      }
+      // Else number of nodes
       setTotalSlides(data.nodes.length);
     });
   }, []);

@@ -1,7 +1,6 @@
 import {
   getIntrinsicElementProps,
   slot,
-  useControllableState,
   useEventCallback,
   useIsomorphicLayoutEffect,
   useMergedRefs,
@@ -26,7 +25,7 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', circular = false, onValueChange } = props;
+  const { align = 'center', circular = false, onValueChange, groupSize = 'auto' } = props;
   const [store] = React.useState(() => createCarouselStore(props.defaultIndex ?? 0));
 
   useIsomorphicLayoutEffect(() => {
@@ -41,6 +40,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     align,
     direction: dir,
     loop: circular,
+    slidesToScroll: groupSize,
     startIndex: props.defaultIndex ?? 0,
     setActiveIndex: store.setActiveIndex,
   });
