@@ -3,7 +3,6 @@ import { shorthands, makeStyles, mergeClasses, makeResetStyles } from '@griffel/
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { textClassNames } from '@fluentui/react-text';
-import { buttonClassNames } from '@fluentui/react-button';
 import { FocusOutlineStyleOptions, createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import { cardPreviewClassNames } from '../CardPreview/useCardPreviewStyles.styles';
@@ -148,10 +147,6 @@ const useCardStyles = makeStyles({
 
   interactive: {
     [`& .${textClassNames.root}`]: {
-      color: 'currentColor',
-    },
-
-    [`& .${buttonClassNames.root}`]: {
       color: 'currentColor',
     },
   },

@@ -28,10 +28,10 @@
     "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
-    "@fluentui/react-provider": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/react-conformance": "*",
+    "@fluentui/react-provider": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
