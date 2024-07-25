@@ -4,5 +4,5 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/react-components/babel-preset-storybook-full-source/src",
-  "tags": ["vNext", "platform:node"]
+  "tags": ["vNext", "platform:node", "tools"]
 }

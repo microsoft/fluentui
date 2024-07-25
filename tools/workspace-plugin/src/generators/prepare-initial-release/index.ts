@@ -385,7 +385,7 @@ function generateChangefileTask(
 }
 
 function generateApiMarkdownTask(tree: Tree, projectName: string) {
-  const cmd = `yarn lage generate-api --to ${projectName}`;
+  const cmd = `yarn nx run ${projectName}:generate-api`;
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 

@@ -93,7 +93,7 @@ const createStorybookWebpackConfig = config => {
 
   config.plugins = [...(config.plugins || []), new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })];
 
-  if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
+  if (process.env.TF_BUILD) {
     // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
     config.plugins = config.plugins.filter(value => value && value.constructor.name !== 'ProgressPlugin');
   }

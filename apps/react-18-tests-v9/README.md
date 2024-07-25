@@ -1,6 +1,6 @@
 # @fluentui/react-18-tests-v9
 
-**Tests for React 18 compatability in [Fluent UI React v9](https://react.fluentui.dev)**.
+**Tests for React 18 compatibility in [Fluent UI React v9](https://react.fluentui.dev)**.
 
 ## Usage
 
@@ -31,11 +31,11 @@ For that purpose we use `tsconfig.react-compat-check.json` as target for `type-c
 **Local machine flow:**
 
 ```sh
-lage build --to @fluentui/react-18-tests-v9
+yarn nx run react-18-tests-v9:build
 
-yarn workspace @fluentui/react-18-tests-v9 type-check
+yarn nx run react-18-tests-v9:type-check
 ```
 
 **CI:**
 
-lage defines `build` targets to be executed prior to `type-check`.
+nx defines `build` targets to be executed prior to `type-check`.

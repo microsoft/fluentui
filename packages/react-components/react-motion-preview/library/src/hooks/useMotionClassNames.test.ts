@@ -1,17 +1,21 @@
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useMotionClassNames } from './useMotionClassNames';
-import * as reducedMotionStyles from '../styles/useReducedMotionStyles.styles';
+import { useReducedMotionStyles } from '../styles/useReducedMotionStyles.styles';
 import { getDefaultMotionState, MotionState } from './useMotion';
 
+jest.mock('../styles/useReducedMotionStyles.styles', () => {
+  return {
+    useReducedMotionStyles: jest.fn(),
+  };
+});
+
 describe('useMotionClassNames', () => {
-  let useReducedMotionStylesMock: jest.SpyInstance;
+  const useReducedMotionStylesMock = useReducedMotionStyles as jest.Mock;
   let consoleWarnMock: jest.SpyInstance;
 
   beforeEach(() => {
-    useReducedMotionStylesMock = jest.spyOn(reducedMotionStyles, 'useReducedMotionStyles').mockReturnValue({
-      reduced: 'reduced',
-    });
+    useReducedMotionStylesMock.mockReturnValue({ reduced: 'reduced' });
     consoleWarnMock = jest.spyOn(console, 'warn').mockImplementation(message => message);
   });
 

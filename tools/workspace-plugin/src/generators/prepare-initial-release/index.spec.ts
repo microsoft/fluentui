@@ -548,7 +548,7 @@ describe('prepare-initial-release generator', () => {
         `,
         );
 
-        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn lage generate-api --to react-components"`);
+        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn nx run react-components:generate-api"`);
         expect(execCalls[2].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
           `
