@@ -1,5 +1,5 @@
+import { ImmutableSet } from '@fluentui/react-utilities';
 import { TreeItemProps, TreeItemType, TreeItemValue } from '../TreeItem';
-import { ImmutableSet } from './ImmutableSet';
 
 export type HeadlessTreeItemProps = Omit<TreeItemProps, 'itemType' | 'value'> & {
   value: TreeItemValue;

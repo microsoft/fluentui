@@ -1,12 +1,11 @@
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { ImmutableSet, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { HeadlessTreeItem, HeadlessTreeItemProps, createHeadlessTree } from '../../utils/createHeadlessTree';
 import { treeDataTypes } from '../../utils/tokens';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
-import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
+import { useControllableOpenItems } from '../../hooks/useControllableOpenItems';
 import type { TreeItemValue } from '../../TreeItem';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
-import { ImmutableSet } from '../../utils/ImmutableSet';
 import { createNextFlatCheckedItems, useFlatControllableCheckedItems } from './useFlatControllableCheckedItems';
 import { FlatTreeProps } from './FlatTree.types';
 import {
@@ -41,7 +40,6 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
     Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>
   > & {
     ref: React.Ref<HTMLDivElement>;
-    openItems: ImmutableSet<TreeItemValue>;
   };
   /**
    * internal method used to react to an `onNavigation` event.
@@ -128,12 +126,8 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const treeRef = React.useRef<HTMLDivElement>(null);
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    const nextOpenItems = createNextOpenItems(data, openItems);
-    options.onOpenChange?.(event, {
-      ...data,
-      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
-    });
-    setOpenItems(nextOpenItems);
+    options.onOpenChange?.(event, data);
+    setOpenItems(new ImmutableSet(data.openItems));
   });
 
   const handleCheckedChange = useEventCallback((event: TreeCheckedChangeEvent, data: TreeCheckedChangeData) => {

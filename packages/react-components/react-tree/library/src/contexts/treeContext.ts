@@ -1,7 +1,7 @@
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { TreeItemType, TreeItemValue } from '../TreeItem';
 import type { SelectionMode, DistributiveOmit } from '@fluentui/react-utilities';
-import { ImmutableSet } from '../utils/ImmutableSet';
+import { ImmutableSet } from '@fluentui/react-utilities';
 import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
@@ -34,7 +34,7 @@ const defaultTreeContextValue: TreeContextValue = {
   contextType: 'root',
   treeType: 'nested',
   selectionMode: 'none',
-  openItems: ImmutableSet.empty,
+  openItems: ImmutableSet.empty(),
   checkedItems: ImmutableMap.empty,
   requestTreeResponse: noop,
   appearance: 'subtle',

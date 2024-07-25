@@ -1,8 +1,6 @@
-import { useControllableState } from '@fluentui/react-utilities';
+import { useControllableState, ImmutableSet } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ImmutableSet } from '../utils/ImmutableSet';
 import type { TreeItemValue } from '../components/TreeItem/TreeItem.types';
-import { createOpenItems } from '../utils/createOpenItems';
 import { TreeOpenChangeData, TreeProps } from '../Tree';
 
 /**
@@ -10,9 +8,12 @@ import { TreeOpenChangeData, TreeProps } from '../Tree';
  */
 export function useControllableOpenItems(props: Pick<TreeProps, 'openItems' | 'defaultOpenItems'>) {
   return useControllableState({
-    state: React.useMemo(() => props.openItems && createOpenItems(props.openItems), [props.openItems]),
-    defaultState: props.defaultOpenItems && (() => createOpenItems(props.defaultOpenItems)),
-    initialState: ImmutableSet.empty,
+    state: React.useMemo(() => props.openItems && ImmutableSet.from(props.openItems), [props.openItems]),
+    defaultState: React.useMemo(
+      () => props.defaultOpenItems && ImmutableSet.from(props.defaultOpenItems),
+      [props.defaultOpenItems],
+    ),
+    initialState: ImmutableSet.empty(),
   });
 }
 
@@ -30,6 +31,5 @@ export function createNextOpenItems(
   if (data.open ? previousOpenItemsHasId : !previousOpenItemsHasId) {
     return previousOpenItems;
   }
-  const nextOpenItems = ImmutableSet.create(previousOpenItems);
-  return data.open ? nextOpenItems.add(data.value) : nextOpenItems.delete(data.value);
+  return data.open ? previousOpenItems.add(data.value) : previousOpenItems.delete(data.value);
 }

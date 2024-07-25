@@ -69,6 +69,7 @@ export {
   isInteractiveHTMLElement,
   omit,
   createPriorityQueue,
+  ImmutableSet,
 } from './utils/index';
 
 export type { DistributiveOmit, UnionToIntersection } from './utils/types';

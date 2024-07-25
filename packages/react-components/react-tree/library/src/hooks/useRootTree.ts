@@ -1,8 +1,7 @@
-import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, slot, ImmutableSet } from '@fluentui/react-utilities';
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
 import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
-import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
 import { createNextOpenItems } from './useControllableOpenItems';
@@ -21,13 +20,13 @@ export function useRootTree(
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
-  const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
+  const openItems = React.useMemo(() => ImmutableSet.from(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
 
   const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
     props.onOpenChange?.(request.event, {
       ...request,
-      openItems: createNextOpenItems(request, openItems).dangerouslyGetInternalSet_unstable(),
+      openItems: new Set(createNextOpenItems(request, openItems)),
     });
   };
 

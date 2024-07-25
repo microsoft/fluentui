@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { ImmutableSet, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeProps, TreeState } from './Tree.types';
-import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
+import { useControllableOpenItems } from '../../hooks/useControllableOpenItems';
 import { createNextNestedCheckedItems, useNestedCheckedItems } from './useNestedControllableCheckedItems';
 import { SubtreeContext } from '../../contexts/subtreeContext';
 import { useRootTree } from '../../hooks/useRootTree';
@@ -33,12 +33,10 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
         openItems,
         checkedItems,
         onOpenChange: useEventCallback((event, data) => {
-          const nextOpenItems = createNextOpenItems(data, openItems);
-          props.onOpenChange?.(event, {
-            ...data,
-            openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
-          });
-          setOpenItems(nextOpenItems);
+          props.onOpenChange?.(event, data);
+          if (!event.isDefaultPrevented()) {
+            setOpenItems(new ImmutableSet(data.openItems));
+          }
         }),
         onNavigation: useEventCallback((event, data) => {
           props.onNavigation?.(event, data);

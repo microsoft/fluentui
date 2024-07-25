@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: uses ImmutableSet from @fluentui/react-utilities instead of internal implementation",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

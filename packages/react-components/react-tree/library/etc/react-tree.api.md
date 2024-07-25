@@ -26,6 +26,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import { ImmutableSet } from '@fluentui/react-utilities';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
@@ -83,7 +84,6 @@ export type FlatTreeState = ComponentState<FlatTreeSlots> & TreeContextValue & {
 export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
     getTreeProps(): Required<Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>> & {
         ref: React_2.Ref<HTMLDivElement>;
-        openItems: ImmutableSet<TreeItemValue>;
     };
     navigate(data: TreeNavigationData_unstable): void;
     getNextNavigableItem(visibleItems: HeadlessTreeItem<Props>[], data: TreeNavigationData_unstable): HeadlessTreeItem<Props> | undefined;

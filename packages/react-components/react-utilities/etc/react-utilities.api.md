@@ -118,6 +118,30 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 export const IdPrefixProvider: React_2.Provider<string | undefined>;
 
 // @public
+export class ImmutableSet<T> implements Iterable<T> {
+    // (undocumented)
+    static [Symbol.hasInstance](instance: object): boolean;
+    // (undocumented)
+    [Symbol.iterator](): Iterator<T>;
+    constructor(internalSet: Set<T>);
+    // (undocumented)
+    add(value: T): ImmutableSet<T>;
+    // (undocumented)
+    copy(): ImmutableSet<T>;
+    // (undocumented)
+    delete(value: T): ImmutableSet<T>;
+    // (undocumented)
+    static empty(): ImmutableSet<never>;
+    static from<Value>(iterable?: Iterable<Value>): ImmutableSet<Value>;
+    // (undocumented)
+    has(value: T): boolean;
+    // (undocumented)
+    static isDisposed<T>(instance: ImmutableSet<T>): instance is DisposedImmutableSet<T>;
+    // (undocumented)
+    readonly size: number;
+}
+
+// @public
 export type InferredElementRefType<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? Element : never : never;
 
 // @internal

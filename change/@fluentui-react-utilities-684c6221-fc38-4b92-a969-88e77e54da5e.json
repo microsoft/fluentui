@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: ImmutableSet class as a wrapper around native Set",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

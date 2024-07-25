@@ -7,6 +7,7 @@ import {
   slot,
   elementContains,
   useMergedRefs,
+  ImmutableSet,
 } from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -85,8 +86,20 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       }
     }, [hasTreeContext]);
   }
+  const previousOpenRef = React.useRef<boolean>(props.open ?? false);
+  const open = useTreeContext_unstable(ctx => {
+    if (props.open !== undefined) {
+      return props.open;
+    }
+    // if openItems is disposed, return the previous open state
+    if (ImmutableSet.isDisposed(ctx.openItems)) {
+      return previousOpenRef.current;
+    }
+    const nextOpen = props.open ?? ctx.openItems.has(value);
+    previousOpenRef.current = nextOpen;
+    return nextOpen;
+  });
 
-  const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const getNextOpen = () => (itemType === 'branch' ? !open : open);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
 import { FlatTreeProps, FlatTreeState } from './FlatTree.types';
-import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs, ImmutableSet } from '@fluentui/react-utilities';
 import { useFlatTreeNavigation } from '../../hooks/useFlatTreeNavigation';
 import { useSubtree } from '../../hooks/useSubtree';
-import { ImmutableSet } from '../../utils/ImmutableSet';
 import { ImmutableMap } from '../../utils/ImmutableMap';
 import { SubtreeContext } from '../../contexts/subtreeContext';
+import { TreeContextValue } from '../../contexts/treeContext';
 
 export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLElement>) => FlatTreeState = (
   props,
@@ -51,17 +51,7 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
   }
   return {
     ...useSubtree(props, ref),
-    // ------ defaultTreeContextValue
-    level: 0,
-    contextType: 'root',
-    treeType: 'nested',
-    selectionMode: 'none',
-    openItems: ImmutableSet.empty,
-    checkedItems: ImmutableMap.empty,
-    requestTreeResponse: noop,
-    appearance: 'subtle',
-    size: 'medium',
-    // ------ defaultTreeContextValue
+    ...defaultTreeContextValue,
     open: false,
   };
 }
@@ -69,3 +59,15 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
 function noop() {
   /* do nothing */
 }
+
+const defaultTreeContextValue: Required<TreeContextValue> = {
+  level: 0,
+  contextType: 'root',
+  treeType: 'nested',
+  selectionMode: 'none',
+  openItems: ImmutableSet.empty(),
+  checkedItems: ImmutableMap.empty,
+  requestTreeResponse: noop,
+  appearance: 'subtle',
+  size: 'medium',
+} as const;
