@@ -90,7 +90,7 @@ export function useEmblaCarousel({
         }
       },
     };
-  }, []);
+  }, [slidesToScroll]);
 
   const api = React.useMemo(
     () => ({
