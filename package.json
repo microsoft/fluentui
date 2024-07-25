@@ -139,7 +139,7 @@
     "@types/chrome-remote-interface": "0.30.0",
     "@types/circular-dependency-plugin": "5.0.5",
     "@types/copy-webpack-plugin": "10.1.0",
-    "@types/dedent": "0.7.0",
+    "@types/dedent": "0.7.2",
     "@types/doctrine": "0.0.5",
     "@types/ejs": "3.1.2",
     "@types/enzyme": "3.10.7",
