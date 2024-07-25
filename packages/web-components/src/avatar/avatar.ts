@@ -14,7 +14,7 @@ import {
  * The base class used for constructing a fluent-avatar custom element
  * @public
  */
-export class Avatar extends FASTElement {
+export class BaseAvatar extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -60,16 +60,6 @@ export class Avatar extends FASTElement {
   public size?: AvatarSize | undefined;
 
   /**
-   * The avatar can have a circular or square shape.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: AvatarShape | undefined;
-
-  /**
    * Optional activity indicator
    * * active: the avatar will be decorated according to activeAppearance
    * * inactive: the avatar will be reduced in size and partially transparent
@@ -81,16 +71,6 @@ export class Avatar extends FASTElement {
    */
   @attr
   public active?: AvatarActive | undefined;
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: AvatarAppearance | undefined;
 
   /**
    * The color when displaying either an icon or initials.
@@ -199,6 +179,34 @@ export class Avatar extends FASTElement {
    * An array of the available Avatar named colors
    */
   public static colors = Object.values(AvatarNamedColor);
+}
+
+/**
+ * An Avatar Custom HTML Element.
+ * Based on BaseAvatar and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Avatar extends BaseAvatar {
+  /**
+   * The avatar can have a circular or square shape.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: shape
+   */
+  @attr
+  public shape?: AvatarShape | undefined;
+
+  /**
+   * The appearance when `active="active"`
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance?: AvatarAppearance | undefined;
 }
 
 // copied from React avatar
