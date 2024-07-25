@@ -4,13 +4,14 @@ import { createCarouselStore } from './createCarouselStore';
 import { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
-  store: createCarouselStore(null),
+  store: createCarouselStore(0),
   selectPageByDirection: () => {
     /** noop */
   },
-  selectPageByValue: () => {
+  selectPageByIndex: () => {
     /** noop */
   },
+  subscribeForValues: () => () => {},
   circular: false,
 };
 

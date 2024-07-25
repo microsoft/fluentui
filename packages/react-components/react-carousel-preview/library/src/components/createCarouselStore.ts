@@ -1,41 +1,13 @@
 import { type CarouselStore } from './CarouselContext.types';
 
-export const createCarouselStore = (initialValue: string | null): CarouselStore => {
-  let values: string[] = [];
-  let activeValue: string | null = initialValue;
+export const createCarouselStore = (initialValue: number): CarouselStore => {
+  let activeIndex: number = initialValue;
 
   let listeners: Array<() => void> = [];
 
   const carouselStore = {
-    setActiveValue(newValue: string | null) {
-      activeValue = newValue;
-      emitChange();
-    },
-    clearValues() {
-      values = [];
-      emitChange();
-    },
-    addValue(value: string) {
-      values = [...values, value];
-
-      emitChange();
-    },
-    insertValue(value: string, prev: string | null) {
-      if (!prev) {
-        values = [value, ...values];
-      } else {
-        const pos = values.indexOf(prev);
-        values.splice(pos + 1, 0, value);
-        // Required to be defined as a 'new' array for useSyncExternalStore
-        values = [...values];
-      }
-      emitChange();
-    },
-    removeValue(value: string) {
-      const pos = values.indexOf(value);
-      values.splice(pos, 1);
-      // Required to be defined as a 'new' array for useSyncExternalStore
-      values = [...values];
+    setActiveIndex(newValue: number) {
+      activeIndex = newValue;
       emitChange();
     },
     subscribe(listener: () => void) {
@@ -47,7 +19,7 @@ export const createCarouselStore = (initialValue: string | null): CarouselStore 
     },
 
     getSnapshot() {
-      return { activeValue, values };
+      return { activeIndex };
     },
   };
 

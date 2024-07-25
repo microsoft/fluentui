@@ -24,14 +24,14 @@ export const useCarouselNavButton_unstable = (
 
   const value = useCarouselNavContext();
 
-  const { selectPageByValue } = useCarouselContext_unstable();
-  const selected = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
+  const { selectPageByIndex } = useCarouselContext_unstable();
+  const selected = useCarouselStore_unstable(snapshot => snapshot.activeIndex === value);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
 
     if (!event.defaultPrevented && isHTMLElement(event.target)) {
-      selectPageByValue(event, value);
+      selectPageByIndex(event, value);
     }
   });
 

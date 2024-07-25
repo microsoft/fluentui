@@ -12,7 +12,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * The initial page to display in uncontrolled mode.
    */
-  defaultValue?: string;
+  defaultIndex?: number;
 
   /**
    * The alignment of the carousel.
@@ -22,7 +22,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * The value of the currently active page.
    */
-  value?: string;
+  activeIndex?: number;
 
   /**
    * Callback to notify a page change.
@@ -45,3 +45,9 @@ export interface CarouselVisibilityEventDetail {
 }
 
 export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;
+
+export interface CarouselReinitData {
+  nodes: HTMLElement[];
+  groupIndexList?: number[][];
+  activeIndex: number;
+}

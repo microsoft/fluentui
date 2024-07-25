@@ -23,17 +23,19 @@ export const useCarouselButton_unstable = (
 ): CarouselButtonState => {
   const { navType } = props;
 
+  const activeIndex = React.useRef(0);
+  const totalIndex = React.useRef(0);
   const { circular, selectPageByDirection } = useCarouselContext_unstable();
   const isTrailing = useCarouselStore_unstable(snapshot => {
-    if (!snapshot.activeValue || circular) {
+    if (!snapshot.activeIndex || circular) {
       return false;
     }
 
     if (navType === 'prev') {
-      return snapshot.values.indexOf(snapshot.activeValue) === 0;
+      return activeIndex.current === 0;
     }
 
-    return snapshot.values.indexOf(snapshot.activeValue) === snapshot.values.length - 1;
+    return activeIndex.current === totalIndex.current;
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {

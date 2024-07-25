@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { useCarouselStore_unstable } from '../useCarouselStore';
+import { useCarouselContext_unstable } from '../CarouselContext';
+import { CarouselReinitData } from '../Carousel/Carousel.types';
 
 /**
  * Create the state required to render CarouselNav.
@@ -22,10 +23,17 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const values = useCarouselStore_unstable(snapshot => snapshot.values);
+  const [totalSlides, setTotalSlides] = React.useState(0);
+  const { subscribeForValues } = useCarouselContext_unstable();
+
+  useIsomorphicLayoutEffect(() => {
+    subscribeForValues((data: CarouselReinitData) => {
+      setTotalSlides(data.nodes.length);
+    });
+  }, []);
 
   return {
-    values,
+    totalSlides,
     renderNavButton: props.children,
     components: {
       root: 'div',

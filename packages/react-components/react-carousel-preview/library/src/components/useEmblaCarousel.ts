@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselReinitChangeCallback, CarouselReinitData, CarouselVisibilityEventDetail } from '../Carousel';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -16,9 +16,46 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
-export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop'>) {
-  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop });
+export function useEmblaCarousel({
+  align,
+  direction,
+  loop,
+  slidesToScroll,
+  startIndex,
+  setActiveIndex,
+}: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex'> & {
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+}) {
+  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll, startIndex });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
+
+  // Listeners contains callbacks for UI elements that may require state update based on embla changes
+  const listeners = React.useRef<Set<CarouselReinitChangeCallback>>(new Set());
+  const subscribeForValues = React.useCallback((listener: (data: CarouselReinitData) => void) => {
+    listeners.current.add(listener);
+
+    return () => {
+      listeners.current.delete(listener);
+    };
+  }, []);
+
+  const handleIndexChange = () => {
+    console.log('index change: ', emblaApi.current?.selectedScrollSnap());
+    const activeIndex = emblaApi.current?.selectedScrollSnap() ?? startIndex ?? 0;
+    setActiveIndex(activeIndex);
+  };
+
+  const handleReinit = () => {
+    const data: CarouselReinitData = {
+      nodes: emblaApi.current?.slideNodes() ?? [],
+      groupIndexList: emblaApi.current?.internalEngine().slideRegistry ?? [[]],
+      activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+    };
+
+    for (const listener of listeners.current) {
+      listener(data);
+    }
+  };
 
   const ref = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
@@ -39,8 +76,11 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
 
     return {
       set current(newElement: HTMLDivElement | null) {
+        console.log('Setting: ', newElement);
         if (currentElement) {
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
+          emblaApi.current?.off('select', handleIndexChange);
+          emblaApi.current?.off('reInit', handleReinit);
           emblaApi.current?.destroy();
         }
 
@@ -51,15 +91,19 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
             ...DEFAULT_EMBLA_OPTIONS,
           });
 
+          emblaApi.current?.on('reInit', handleReinit);
           emblaApi.current?.on('slidesInView', handleVisibilityChange);
+          emblaApi.current?.on('select', handleIndexChange);
         }
       },
     };
-  }, []);
+  }, [emblaApi]);
 
   const api = React.useMemo(
     () => ({
       scrollToIndex: (index: number, jump?: boolean) => {
+        console.log('Scrolling to index - 2:', index);
+        console.log('emblaApi.current:', emblaApi.current);
         emblaApi.current?.scrollTo(index, jump);
       },
       scrollInDirection: (dir: 'prev' | 'next') => {
@@ -70,16 +114,16 @@ export function useEmblaCarousel({ align, direction, loop }: Pick<EmblaOptionsTy
         }
       },
     }),
-    [],
+    [emblaApi],
   );
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop };
+    emblaOptions.current = { align, direction, loop, slidesToScroll, startIndex };
     emblaApi.current?.reInit({
       ...emblaOptions.current,
       ...DEFAULT_EMBLA_OPTIONS,
     });
-  }, [align, direction, loop]);
+  }, [align, direction, loop, slidesToScroll, startIndex]);
 
-  return [ref, api] as const;
+  return [ref, api, subscribeForValues] as const;
 }
