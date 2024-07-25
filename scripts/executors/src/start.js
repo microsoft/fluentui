@@ -1,26 +1,36 @@
-const { spawnSync } = require('child_process');
+const { spawnSync } = require('node:child_process');
+
+const { workspaceRoot, output } = require('@nx/devkit');
 const prompts = require('prompts');
-const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
 
-const allPackages = getAllPackageInfo();
-const extraArgs = process.argv.slice(2);
+const targetDescription = {
+  build: 'Build the project',
+  'bundle-size': 'Check the bundle size diff of the project',
+  bundle: 'Bundle the project with webpack',
+  storybook: 'Start storybook for the project',
+  'build-storybook': 'Build production version of storybook for project',
+  'generate-api': 're-generate projects api.md',
+  lint: 'Run eslint on the project',
+  'type-check': 'type-check the project',
+  test: 'Run tests for the project',
+  'test-integration': 'Run integration tests for the project',
+  'test-ssr': 'Run server-side rendering tests for the project',
+  'test-vr': 'Run visual regression tests for the project',
+  'test-perf': 'Run performance tests for the project',
+  e2e: 'Run e2e/component tests for the project (cypress)',
+  'verify-packaging': 'Verify npm packaging of the project',
+  start: 'Start the project',
+};
 
-const defaults = ['@fluentui/react', '@fluentui/docs', '@fluentui/react-components'];
+const omitTargets = ['nx-release-publish', 'just'];
 
-const projectsWithStartCommand = Object.entries(allPackages)
-  .reduce((acc, [pkg, info]) => {
-    if (info.packageJson.scripts && info.packageJson.scripts.start) {
-      acc.push({ title: pkg, value: { pkg, command: 'start' } });
-    }
-
-    if (info.packageJson.scripts && info.packageJson.scripts['start:profile']) {
-      acc.push({ title: `${pkg} (profile)`, value: { pkg, command: 'start:profile' } });
-    }
-
-    return acc;
-  }, /** @type {import('prompts').Choice[]} */ ([]))
-  .filter(n => n && !defaults.includes(n.title))
-  .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
+/**
+ * @type {string[]}
+ */
+const allProjects = JSON.parse(
+  spawnSync('nx', ['show', 'projects', '--json'], { cwd: workspaceRoot }).stdout.toString(),
+);
+const extraArgs = process.argv.slice(2) ?? [];
 
 /**
  *
@@ -29,22 +39,70 @@ const projectsWithStartCommand = Object.entries(allPackages)
  */
 const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.includes(input)));
 
-(async () => {
-  const response = await prompts({
+async function main() {
+  const projectPrompt = await prompts({
     type: 'autocomplete',
     name: 'project',
 
     message: 'Which project to start (select or type partial name)?',
     suggest,
-    choices: [...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
+    choices: [...allProjects.map(p => ({ title: p }))],
   });
 
-  spawnSync(
-    'yarn',
-    ['workspace', response.project.pkg, response.project.command, ...(extraArgs.length > 0 ? [extraArgs] : [])],
-    {
-      shell: true,
-      stdio: 'inherit',
-    },
+  const projectTargets = JSON.parse(
+    spawnSync('nx', ['show', 'project', projectPrompt.project, '--json'], { cwd: workspaceRoot }).stdout.toString(),
   );
-})();
+
+  const availableTargets = /** @type {Array<keyof typeof  targetDescription>} */ (
+    Object.keys(projectTargets.targets).filter(targetName => {
+      return omitTargets.includes(targetName) ? false : true;
+    })
+  );
+
+  const targetPrompt = await prompts({
+    type: 'autocomplete',
+    name: 'target',
+
+    message: 'Which target to start (select or type partial name)?',
+    suggest,
+    choices: [
+      ...availableTargets.map(targetName => ({
+        title: targetName,
+        description: createTaskDescription(targetName, projectTargets.targets),
+      })),
+    ],
+  });
+
+  /**
+   *
+   * @param {keyof typeof  targetDescription} targetName
+   * @param {{[targetName:string]:{metadata:{executor:string;scriptContent:string;runCommand:string}}}} targetsMetadata
+   * @returns
+   */
+  function createTaskDescription(targetName, targetsMetadata) {
+    if (targetName === 'start') {
+      const startTarget = targetsMetadata[targetName];
+      const scriptContent = startTarget.metadata.scriptContent;
+      if (scriptContent.includes('storybook')) {
+        return `Start the project (Alias of "storybook" target)`;
+      }
+      return targetDescription[targetName];
+    }
+
+    return targetDescription[targetName];
+  }
+
+  const cmd = `${projectPrompt.project}:${targetPrompt.target}`;
+
+  output.logSingleLine(`Running nx run ${cmd} ${extraArgs.join(' ')}`);
+
+  spawnSync('nx', ['run', cmd, ...extraArgs], {
+    shell: true,
+    stdio: 'inherit',
+  });
+}
+
+main().catch(e => {
+  console.error(e);
+  process.exit(1);
+});
