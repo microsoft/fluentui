@@ -7,5 +7,5 @@ import { ExtendedPeoplePickerControlledExample } from './ExtendedPeoplePicker.Co
 export const Controlled = () => <ExtendedPeoplePickerControlledExample />;
 
 export default {
-  title: 'Components/ExtendedPeoplePicker',
+  title: 'Components/ExtendedPicker',
 };
