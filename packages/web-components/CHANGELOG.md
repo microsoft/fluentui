@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 24 Jul 2024 04:07:07 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Jul 2024 04:08:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.49)
+
+Thu, 25 Jul 2024 04:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.48..@fluentui/web-components_v3.0.0-beta.49)
+
+### Changes
+
+- chore: create avatar base class to abstract style specfic api ([PR #32083](https://github.com/microsoft/fluentui/pull/32083) by jes@microsoft.com)
+- chore: create base class for textinput and remove style and layout specific api ([PR #32080](https://github.com/microsoft/fluentui/pull/32080) by jes@microsoft.com)
 
 ## [3.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.48)
 

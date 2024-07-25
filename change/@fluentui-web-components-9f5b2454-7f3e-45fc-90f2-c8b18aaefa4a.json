@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: create base class for textinput and remove style and layout specific api",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
