@@ -27,6 +27,12 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
+      - template: .devops/templates/runpublishvrscreenshot.yml
+        parameters:
+          fluentVersion: webcomponents
+          vrTestPackageName: '@fluentui/vr-tests-web-components'
+          vrTestPackagePath: 'apps/vr-tests-web-components'
+
       - bash: |
           set -exuo pipefail
           yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
@@ -38,12 +44,6 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-      - template: .devops/templates/runpublishvrscreenshot.yml
-        parameters:
-          fluentVersion: webcomponents
-          vrTestPackageName: '@fluentui/vr-tests-web-components'
-          vrTestPackagePath: 'apps/vr-tests-web-components'
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
@@ -80,6 +80,12 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
+      - template: .devops/templates/runpublishvrscreenshot.yml
+        parameters:
+          fluentVersion: v9
+          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackagePath: 'apps/vr-tests-react-components'
+
       - bash: |
           set -exuo pipefail
           yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
@@ -91,12 +97,6 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-      - template: .devops/templates/runpublishvrscreenshot.yml
-        parameters:
-          fluentVersion: v9
-          vrTestPackageName: '@fluentui/vr-tests-react-components'
-          vrTestPackagePath: 'apps/vr-tests-react-components'
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
@@ -132,6 +132,12 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
+      - template: .devops/templates/runpublishvrscreenshot.yml
+        parameters:
+          fluentVersion: v8
+          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackagePath: 'apps/vr-tests'
+
       - bash: |
           set -exuo pipefail
           yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
@@ -143,12 +149,6 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-      - template: .devops/templates/runpublishvrscreenshot.yml
-        parameters:
-          fluentVersion: v8
-          vrTestPackageName: '@fluentui/vr-tests'
-          vrTestPackagePath: 'apps/vr-tests'
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
@@ -185,6 +185,12 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
+      - template: .devops/templates/runpublishvrscreenshot.yml
+        parameters:
+          fluentVersion: v0
+          vrTestPackageName: '@fluentui/docs'
+          vrTestPackagePath: 'packages/fluentui/docs'
+
       - bash: |
           set -exuo pipefail
           yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
@@ -196,12 +202,6 @@ jobs:
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
-      - template: .devops/templates/runpublishvrscreenshot.yml
-        parameters:
-          fluentVersion: v0
-          vrTestPackageName: '@fluentui/docs'
-          vrTestPackagePath: 'packages/fluentui/docs'
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
