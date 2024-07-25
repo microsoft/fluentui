@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject, getColorFromToken, getNextColor } from '../../utilities/index';
+import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
@@ -229,9 +229,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
+
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color!;
+      const color: string = this.props.enableGradient
+        ? (point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0])
+        : point.color!;
+
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,

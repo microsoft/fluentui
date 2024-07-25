@@ -35,7 +35,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
     let color = d && d.data && d.data.color;
-    let nextColor = darkenLightenColor(color!, 0.2);
+    let nextColor = "";
 
     if(this.props.enableGradient) {
       color = this.props.data[i].gradient?.[0] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[0];
