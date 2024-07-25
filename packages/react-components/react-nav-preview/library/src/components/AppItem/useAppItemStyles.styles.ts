@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     gap: '10px',
     marginInlineStart: '-6px',
     marginInlineEnd: '0px',
-    ...typographyStyles.body1Strong,
+    ...typographyStyles.subtitle2,
   },
   small: {
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalXS} 14px`,
