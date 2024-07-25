@@ -20,10 +20,11 @@ const useStyles = makeStyles({
     gap: '10px',
     marginInlineStart: '-6px',
     marginInlineEnd: '0px',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
     ...typographyStyles.subtitle2,
   },
   small: {
-    padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalXS} 14px`,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalS} 14px`,
     gap: '14px',
   },
   absentIconRootAdjustment: {
