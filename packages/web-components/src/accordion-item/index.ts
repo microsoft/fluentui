@@ -1,4 +1,4 @@
-export { AccordionItem } from './accordion-item.js';
+export { AccordionItem, BaseAccordionItem } from './accordion-item.js';
 export type { AccordionItemOptions } from './accordion-item.js';
 export { AccordionItemSize, AccordionItemMarkerPosition } from './accordion-item.options.js';
 export { styles as AccordionItemStyles } from './accordion-item.styles.js';

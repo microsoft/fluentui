@@ -5,6 +5,7 @@ export {
   AccordionItemSize,
   AccordionItemStyles,
   AccordionItemTemplate,
+  BaseAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
