@@ -3,6 +3,10 @@ import { Spinner, SpinnerSize } from '@fluentui/react/lib/Spinner';
 import { Label } from '@fluentui/react/lib/Label';
 import { IStackProps, Stack } from '@fluentui/react/lib/Stack';
 
+export default {
+  title: 'Components/Spinner',
+};
+
 export const SpinnerBasicExample: React.FunctionComponent = () => {
   // This is just for laying out the label and spinner (spinners don't have to be inside a Stack)
   const rowProps: IStackProps = { horizontal: true, verticalAlign: 'center' };

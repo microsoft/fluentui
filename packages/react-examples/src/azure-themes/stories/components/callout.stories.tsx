@@ -10,6 +10,10 @@ import {
   getId,
 } from '@fluentui/react';
 
+export default {
+  title: 'Components/Callout',
+};
+
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;
 }

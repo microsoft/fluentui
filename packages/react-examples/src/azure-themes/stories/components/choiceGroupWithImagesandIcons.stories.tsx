@@ -2,6 +2,10 @@ import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { TestImages } from '@fluentui/example-data';
 
+export default {
+  title: 'Components/ChoiceGroup',
+};
+
 const options: IChoiceGroupOption[] = [
   {
     key: 'bar',
