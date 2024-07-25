@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "adds kumo accordion",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}
