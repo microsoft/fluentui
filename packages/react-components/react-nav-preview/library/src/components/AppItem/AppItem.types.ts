@@ -29,4 +29,9 @@ export type AppItemState = ComponentState<AppItemSlots> & {
    * @default 'medium'
    */
   size: NavSize;
+
+  /**
+   * If an icon is present. Controls some padding.
+   */
+  isIconPresent: boolean;
 };

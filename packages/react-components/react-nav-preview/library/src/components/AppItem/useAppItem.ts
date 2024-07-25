@@ -39,6 +39,8 @@ export const useAppItem_unstable = (
     },
   );
 
+  const isIconPresent = Boolean(icon);
+
   return {
     components: {
       root: rootElementType,
@@ -49,5 +51,6 @@ export const useAppItem_unstable = (
       elementType: 'span',
     }),
     size,
+    isIconPresent,
   };
 };

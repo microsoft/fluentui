@@ -89,13 +89,21 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
 
   const labelId = useId('type-label');
   const linkLabelId = useId('link-label');
+  const appItemIconLabelId = useId('app-item-icon-label');
 
   const [size, setNavSize] = React.useState<NavSize>('small');
   const [enabledLinks, setEnabledLinks] = React.useState(true);
+  const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
-  const appItemIcon = size === 'small' ? <PersonCircle24Regular /> : <PersonCircle32Regular />;
+  const appItemIcon = isAppItemIconPresent ? (
+    size === 'small' ? (
+      <PersonCircle24Regular />
+    ) : (
+      <PersonCircle32Regular />
+    )
+  ) : undefined;
 
   return (
     <div className={styles.root}>
@@ -196,6 +204,13 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
+          />
+          <Label id={appItemIconLabelId}>App Item Icon</Label>
+          <Switch
+            checked={isAppItemIconPresent}
+            onChange={(_, data) => setIsAppItemIconPresent(data.checked as boolean)}
+            label={isAppItemIconPresent ? 'Present' : 'Absent'}
+            aria-labelledby={appItemIconLabelId}
           />
         </div>
       </div>

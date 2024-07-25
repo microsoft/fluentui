@@ -26,6 +26,9 @@ const useStyles = makeStyles({
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalXS} 14px`,
     gap: '14px',
   },
+  absentIconRootAdjustment: {
+    paddingInlineStart: '16px',
+  },
 });
 
 /**
@@ -38,14 +41,14 @@ export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => 
   const iconStyles = useIconStyles();
   const appItemSpecificStyles = useStyles();
 
-  const { size } = state;
+  const { size, isIconPresent } = state;
 
   state.root.className = mergeClasses(
     appItemClassNames.root,
     rootDefaultClassName,
     appItemSpecificStyles.root,
     size === 'small' && appItemSpecificStyles.small,
-
+    !isIconPresent && appItemSpecificStyles.absentIconRootAdjustment,
     state.root.className,
   );
 
