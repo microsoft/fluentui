@@ -6,8 +6,6 @@ import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
 
 const { mainColorVar, thumbColorVar, sliderStepsPercentVar, sliderProgressVar } = colorAreaCSSVars;
 
-const MAX_COLOR_HUE = 360;
-
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
 };
@@ -15,12 +13,12 @@ const getPercent = (value: number, min: number, max: number) => {
 export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAreaProps) => {
   'use no memo';
 
-  const { min = 0, max = MAX_COLOR_HUE, color = 'red' } = props;
+  const { min = 0, max = 100, color = 'red' } = props;
   const step = 1;
   const [currentValue, setCurrentValue] = useControllableState({
     state: props.value,
-    defaultState: props.value,
     initialState: 0,
+    // think about default state
   });
   const clampedValue = clamp(currentValue, min, max);
   const valuePercent = getPercent(clampedValue, min, max);

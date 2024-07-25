@@ -21,14 +21,16 @@ const useStyles = makeStyles({
 export const Default = () => {
   const styles = useStyles();
   const id = useId();
-  const [sliderValue, setSliderValue] = React.useState(160);
-  const onSliderChange: ColorAreaProps['onChange'] = (_, data) => setSliderValue(data.value);
-  const resetSlider = () => setSliderValue(0);
+  const COLOR = '#00ffaa';
+  const HUE = 160;
+  const [saturationSliderValue, setSaturationSliderValue] = React.useState(100);
+  const onSaturationSliderChange: ColorAreaProps['onChange'] = (_, data) => setSaturationSliderValue(data.value);
+  const resetSlider = () => setSaturationSliderValue(0);
   return (
     <div className={styles.example}>
-      <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
-      <ColorArea color="#00ffaa" value={sliderValue} max={360} onChange={onSliderChange} id={id} />
-      <div className={styles.previewColor} style={{ backgroundColor: `hsl(${sliderValue}, 100%, 50%)` }} />
+      <Label htmlFor={id}>Control Slider [ Current Value: {saturationSliderValue} ]</Label>
+      <ColorArea color={COLOR} value={saturationSliderValue} onChange={onSaturationSliderChange} id={id} />
+      <div className={styles.previewColor} style={{ backgroundColor: `hsl(${HUE}, ${saturationSliderValue}%, 50%)` }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );
