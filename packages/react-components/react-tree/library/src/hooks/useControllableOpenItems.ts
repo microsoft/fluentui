@@ -13,7 +13,7 @@ export function useControllableOpenItems(props: Pick<TreeProps, 'openItems' | 'd
       () => props.defaultOpenItems && ImmutableSet.from(props.defaultOpenItems),
       [props.defaultOpenItems],
     ),
-    initialState: ImmutableSet.empty(),
+    initialState: ImmutableSet.empty,
   });
 }
 

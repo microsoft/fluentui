@@ -127,16 +127,16 @@ export class ImmutableSet<T> implements Iterable<T> {
     // (undocumented)
     add(value: T): ImmutableSet<T>;
     // (undocumented)
-    copy(): ImmutableSet<T>;
+    static copy<T>(immutableSet: ImmutableSet<T>): ImmutableSet<T>;
+    // (undocumented)
+    static dangerouslyGetInternalSet<Value>(set: ImmutableSet<Value>): Set<Value>;
     // (undocumented)
     delete(value: T): ImmutableSet<T>;
     // (undocumented)
-    static empty(): ImmutableSet<never>;
+    static empty: ImmutableSet<never>;
     static from<Value>(iterable?: Iterable<Value>): ImmutableSet<Value>;
     // (undocumented)
     has(value: T): boolean;
-    // (undocumented)
-    static isDisposed<T>(instance: ImmutableSet<T>): instance is DisposedImmutableSet<T>;
     // (undocumented)
     readonly size: number;
 }

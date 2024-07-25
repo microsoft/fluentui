@@ -34,7 +34,7 @@ const defaultTreeContextValue: TreeContextValue = {
   contextType: 'root',
   treeType: 'nested',
   selectionMode: 'none',
-  openItems: ImmutableSet.empty(),
+  openItems: ImmutableSet.empty,
   checkedItems: ImmutableMap.empty,
   requestTreeResponse: noop,
   appearance: 'subtle',

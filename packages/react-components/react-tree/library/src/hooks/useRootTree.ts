@@ -26,7 +26,7 @@ export function useRootTree(
   const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
     props.onOpenChange?.(request.event, {
       ...request,
-      openItems: new Set(createNextOpenItems(request, openItems)),
+      openItems: ImmutableSet.dangerouslyGetInternalSet(createNextOpenItems(request, openItems)),
     });
   };
 
