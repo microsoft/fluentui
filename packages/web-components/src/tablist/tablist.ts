@@ -1,4 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { wrapInBounds } from '@microsoft/fast-web-utilities';
 import {
   keyArrowDown,
   keyArrowLeft,
@@ -6,7 +7,6 @@ import {
   keyArrowUp,
   keyEnd,
   keyHome,
-  limit,
   uniqueId,
 } from '@microsoft/fast-web-utilities';
 import { Tab } from '../index.js';
@@ -219,7 +219,7 @@ export class BaseTablist extends FASTElement {
     const focusableTabs = this.tabs.filter(t => this.isFocusableElement(t));
     const currentActiveTabIndex = focusableTabs.indexOf(this.activetab);
 
-    const nextTabIndex = limit(0, focusableTabs.length - 1, currentActiveTabIndex + adjustment);
+    const nextTabIndex = wrapInBounds(0, focusableTabs.length - 1, currentActiveTabIndex + adjustment);
 
     // the index of the next focusable tab within the context of all available tabs
     const nextIndex = this.tabs.indexOf(focusableTabs[nextTabIndex]);
@@ -331,8 +331,7 @@ export class Tablist extends BaseTablist {
    */
   private applyUpdatedCSSValues(tab: Tab) {
     this.calculateAnimationProperties(tab);
-    this.setTabScaleCSSVar();
-    this.setTabOffsetCSSVar();
+    this.setAnimationVars();
   }
 
   /**
@@ -384,11 +383,8 @@ export class Tablist extends BaseTablist {
     }
   }
 
-  private setTabOffsetCSSVar() {
+  private setAnimationVars() {
     this.style.setProperty('--tabIndicatorOffset', `${this.activeTabOffset}px`);
-  }
-
-  private setTabScaleCSSVar() {
     this.style.setProperty('--tabIndicatorScale', this.activeTabScale.toString());
   }
 
