@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 25 Jul 2024 04:08:33 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.49",
+      "version": "3.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf6be2bc0e92b7e5024faaa4a45d1e953f7bcf61",
+            "comment": "chore: create avatar base class to abstract style specfic api"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fe4b9c436349b43129c04f62c5febdbb6e89d0f0",
+            "comment": "chore: create base class for textinput and remove style and layout specific api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Jul 2024 04:07:07 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.48",
       "version": "3.0.0-beta.48",
