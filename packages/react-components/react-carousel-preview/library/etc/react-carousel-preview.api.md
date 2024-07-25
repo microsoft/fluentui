@@ -66,9 +66,7 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
-    value: string;
-};
+export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
 
 // @public (undocumented)
 export type CarouselCardSlots = {
@@ -76,7 +74,7 @@ export type CarouselCardSlots = {
 };
 
 // @public
-export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'value'>;
+export type CarouselCardState = ComponentState<CarouselCardSlots>;
 
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
@@ -155,17 +153,18 @@ export type CarouselNavSlots = {
 
 // @public (undocumented)
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-    values: string[];
+    totalSlides: number;
     renderNavButton: NavButtonRenderFunction;
 };
 
 // @public
 export type CarouselProps = ComponentProps<CarouselSlots> & {
-    defaultValue?: string;
+    defaultIndex?: number;
     align?: 'center' | 'start' | 'end';
-    value?: string;
+    activeIndex?: number;
     onValueChange?: EventHandler<CarouselValueChangeData>;
     circular?: boolean;
+    groupSize?: number | 'auto';
 };
 
 // @public
@@ -194,7 +193,7 @@ export type CarouselSlots = {
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public (undocumented)
-export type NavButtonRenderFunction = (value: string) => React_2.ReactNode;
+export type NavButtonRenderFunction = (value: number) => React_2.ReactNode;
 
 // @public
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;

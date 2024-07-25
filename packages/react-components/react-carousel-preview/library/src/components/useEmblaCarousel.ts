@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselReinitChangeCallback, CarouselReinitData, CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselReinitData, CarouselVisibilityEventDetail } from '../Carousel';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -30,7 +30,7 @@ export function useEmblaCarousel({
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
-  const listeners = React.useRef<Set<CarouselReinitChangeCallback>>(new Set());
+  const listeners = React.useRef<Set<(data: CarouselReinitData) => void>>(new Set());
   const subscribeForValues = React.useCallback((listener: (data: CarouselReinitData) => void) => {
     listeners.current.add(listener);
 

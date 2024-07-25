@@ -1,7 +1,6 @@
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useCarouselStore_unstable } from '../useCarouselStore';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
