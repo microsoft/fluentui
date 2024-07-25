@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Aligned casing of named exports for accordion component",
+  "packageName": "@fluentui/web-components",
+  "email": "abel.van.beek@tromsfylke.no",
+  "dependentChangeType": "patch"
+}
