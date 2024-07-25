@@ -42,7 +42,7 @@ const config = {
 };
 
 function getStories() {
-  const packageName = path.basename(__dirname);
+  const packageName = path.basename(process.cwd());
 
   if (!fs.existsSync(path.resolve(__dirname, '../src', packageName))) {
     throw new Error(`Package ${packageName} does not have examples!`);
