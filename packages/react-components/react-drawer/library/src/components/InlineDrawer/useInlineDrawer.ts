@@ -60,8 +60,6 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
     // Deprecated props
     motion: STATIC_MOTION,
   };
-  if (typeof state.components.surfaceMotion === 'function') {
-    state.components.surfaceMotion.defaultProps;
-  }
+
   return state;
 };
