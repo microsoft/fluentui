@@ -56,6 +56,18 @@ const useRootStyles = makeStyles({
   },
 });
 
+const useInputStyles = makeStyles({
+  small: {
+    paddingRight: tokens.spacingHorizontalSNudge,
+  },
+  medium: {
+    paddingRight: tokens.spacingHorizontalS,
+  },
+  large: {
+    paddingRight: tokens.spacingHorizontalMNudge,
+  },
+});
+
 const useContentAfterStyles = makeStyles({
   contentAfter: {
     paddingLeft: tokens.spacingHorizontalM,
@@ -103,6 +115,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const { disabled, focused, size } = state;
 
   const rootStyles = useRootStyles();
+  const inputStyles = useInputStyles();
   const contentAfterStyles = useContentAfterStyles();
   const dismissClassName = useDismissClassName();
   const dismissStyles = useDismissStyles();
@@ -113,7 +126,12 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
     !state.contentAfter && rootStyles.unfocusedNoContentAfter,
     state.root.className,
   );
-  state.input.className = mergeClasses(searchBoxClassNames.input, rootStyles.input, state.input.className);
+  state.input.className = mergeClasses(
+    searchBoxClassNames.input,
+    rootStyles.input,
+    !state.contentAfter && inputStyles[size],
+    state.input.className,
+  );
 
   if (state.dismiss) {
     state.dismiss.className = mergeClasses(
