@@ -108,6 +108,8 @@ export function useEmblaCarousel({
         } else {
           emblaApi.current?.scrollNext();
         }
+
+        return emblaApi.current?.selectedScrollSnap();
       },
     }),
     [],

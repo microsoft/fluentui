@@ -26,8 +26,7 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', circular = false } = props;
-
+  const { align = 'center', circular = false, onValueChange } = props;
   const [store] = React.useState(() => createCarouselStore(props.defaultIndex ?? 0));
 
   useIsomorphicLayoutEffect(() => {
@@ -48,10 +47,12 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
     emblaApi?.scrollToIndex(index, jump);
+    onValueChange?.(event, { event, type: 'click', value: index });
   });
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
-    emblaApi.scrollInDirection(direction);
+    const nextPage = emblaApi.scrollInDirection(direction);
+    onValueChange?.(event, { event, type: 'click', value: nextPage });
   });
 
   return {

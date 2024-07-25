@@ -10,16 +10,11 @@ export type CarouselStore = {
   };
 };
 
-export type CarouselItem = {
-  el: HTMLElement;
-  value: string | null;
-};
-
 export type CarouselValueChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value to be set after event has occurred.
    */
-  value?: string;
+  value?: number;
 };
 
 export type CarouselContextValue = {
