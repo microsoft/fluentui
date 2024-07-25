@@ -103,7 +103,7 @@ export const MultipleLevels = () => {
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
               <ToolbarGroup>
-                <IconPresenceMotion visible={level === 2}>
+                <IconPresenceMotion visible={level === 2} unmountOnExit>
                   <ToolbarButton
                     aria-label="Back"
                     appearance="subtle"
@@ -114,7 +114,7 @@ export const MultipleLevels = () => {
               </ToolbarGroup>
 
               <ToolbarGroup>
-                <IconPresenceMotion visible={level === 1}>
+                <IconPresenceMotion visible={level === 1} unmountOnExit>
                   <ToolbarButton
                     aria-label="Go to calendar"
                     appearance="subtle"
@@ -135,15 +135,15 @@ export const MultipleLevels = () => {
         </DrawerHeader>
 
         <div className={styles.body}>
-          <BodyPresenceMotion level={1} visible={level === 1}>
-            <DrawerBody>
+          <BodyPresenceMotion level={1} visible={level === 1} unmountOnExit>
+            <DrawerBody className={styles.level}>
               <DrawerHeaderTitle>Level 1 title</DrawerHeaderTitle>
               <p>Level 1 content</p>
             </DrawerBody>
           </BodyPresenceMotion>
 
-          <BodyPresenceMotion level={2} visible={level === 2}>
-            <DrawerBody>
+          <BodyPresenceMotion level={2} visible={level === 2} unmountOnExit>
+            <DrawerBody className={styles.level}>
               <DrawerHeaderTitle>Level 2 title</DrawerHeaderTitle>
               <p>Level 2 content</p>
             </DrawerBody>
@@ -175,7 +175,8 @@ MultipleLevels.parameters = {
         'When there is a need to display multiple levels of content, the drawer can be used to display them.',
         'It is not recommended to invoke one drawer from another, as it can lead to a confusing experience for the user.',
         'Instead, when a second level of a Drawer is required, the L2 content pushes the L1 Drawer content to the side and out of the Drawer.',
-        'This can be achieved by using the `useMotion` hook to animate the inner content of the Drawer.',
+        '\n\n',
+        'This can be achieved by using the Motion APIs to animate the inner content of the Drawer.',
       ].join('\n'),
     },
   },
