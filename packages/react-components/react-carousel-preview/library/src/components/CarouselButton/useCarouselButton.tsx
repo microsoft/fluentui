@@ -30,6 +30,12 @@ export const useCarouselButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     subscribeForValues((data: CarouselReinitData) => {
+      // Check group lists first
+      if (data.groupIndexList && data.groupIndexList.length > 0) {
+        setTotalSlides(data.groupIndexList.length);
+        return;
+      }
+      // Else number of nodes
       setTotalSlides(data.nodes.length);
     });
   }, []);

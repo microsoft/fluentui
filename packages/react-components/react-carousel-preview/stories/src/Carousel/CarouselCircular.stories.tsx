@@ -32,7 +32,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 };
 
 export const Circular = () => (
-  <Carousel circular>
+  <Carousel circular groupSize={1}>
     <CarouselSlider>
       <CarouselCard>
         <TestComponent accentColor="#B99095">Card 1</TestComponent>

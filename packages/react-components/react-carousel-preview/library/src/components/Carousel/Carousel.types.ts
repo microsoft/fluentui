@@ -33,7 +33,8 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    */
   circular?: boolean;
   /**
-   * Circular enables the carousel to loop back around on navigation past trailing index.
+   * Controls the number of carousel cards per navigation element, will default to 'auto'
+   * Recommended to set to '1' when using full page carousel cards.
    */
   groupSize?: number | 'auto';
 };
