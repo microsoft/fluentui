@@ -277,7 +277,7 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> & FunctionComponent<{
+export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> & FunctionComponent<{
     children?: ReactNode;
 }> & {
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
