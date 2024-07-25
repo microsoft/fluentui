@@ -1,7 +1,7 @@
 // @ts-check
 
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
 
 const { eslintConstants } = require('@fluentui/scripts-monorepo');
 const { ESLint } = require('eslint');
@@ -65,7 +65,7 @@ async function run() {
 
   // Format results
   const formatter = await eslint.loadFormatter();
-  const resultText = formatter.format(results);
+  const resultText = await formatter.format(results);
 
   if (!resultText) {
     return;
