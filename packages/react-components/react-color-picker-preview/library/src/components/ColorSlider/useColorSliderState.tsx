@@ -21,7 +21,7 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   const { dir } = useFluent();
   const [currentValue, setCurrentValue] = useControllableState({
     state: props.value,
-    defaultState: props.value,
+    // defaultState: props.value,
     initialState: 0,
   });
   const clampedValue = clamp(currentValue, min, max);
