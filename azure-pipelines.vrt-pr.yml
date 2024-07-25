@@ -29,7 +29,7 @@ jobs:
 
       - bash: |
           set -exuo pipefail
-          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
@@ -82,7 +82,7 @@ jobs:
 
       - bash: |
           set -exuo pipefail
-          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
@@ -134,7 +134,7 @@ jobs:
 
       - bash: |
           set -exuo pipefail
-          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
@@ -187,7 +187,7 @@ jobs:
 
       - bash: |
           set -exuo pipefail
-          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
