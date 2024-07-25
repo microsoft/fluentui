@@ -39,7 +39,7 @@ export const MultipleCards = () => {
   const classes = useClasses();
 
   return (
-    <Carousel defaultValue="card-5">
+    <Carousel>
       <CarouselSlider>
         <CarouselCard className={classes.card} value="card-1">
           <TestComponent accentColor="#B99095">Card 1</TestComponent>

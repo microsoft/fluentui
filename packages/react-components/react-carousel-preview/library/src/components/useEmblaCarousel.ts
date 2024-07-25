@@ -24,7 +24,7 @@ export function useEmblaCarousel({
   startIndex,
   setActiveIndex,
 }: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex'> & {
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+  setActiveIndex: (newValue: number) => void;
 }) {
   const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll, startIndex });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -40,7 +40,6 @@ export function useEmblaCarousel({
   }, []);
 
   const handleIndexChange = () => {
-    console.log('index change: ', emblaApi.current?.selectedScrollSnap());
     const activeIndex = emblaApi.current?.selectedScrollSnap() ?? startIndex ?? 0;
     setActiveIndex(activeIndex);
   };
@@ -76,7 +75,6 @@ export function useEmblaCarousel({
 
     return {
       set current(newElement: HTMLDivElement | null) {
-        console.log('Setting: ', newElement);
         if (currentElement) {
           emblaApi.current?.off('slidesInView', handleVisibilityChange);
           emblaApi.current?.off('select', handleIndexChange);
@@ -97,13 +95,11 @@ export function useEmblaCarousel({
         }
       },
     };
-  }, [emblaApi]);
+  }, []);
 
   const api = React.useMemo(
     () => ({
       scrollToIndex: (index: number, jump?: boolean) => {
-        console.log('Scrolling to index - 2:', index);
-        console.log('emblaApi.current:', emblaApi.current);
         emblaApi.current?.scrollTo(index, jump);
       },
       scrollInDirection: (dir: 'prev' | 'next') => {
@@ -114,7 +110,7 @@ export function useEmblaCarousel({
         }
       },
     }),
-    [emblaApi],
+    [],
   );
 
   React.useEffect(() => {

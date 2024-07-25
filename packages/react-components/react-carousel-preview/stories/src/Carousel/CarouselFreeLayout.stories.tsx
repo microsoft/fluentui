@@ -38,7 +38,7 @@ export const FreeLayout = () => {
   const classes = useClasses();
 
   return (
-    <Carousel defaultValue="card-4">
+    <Carousel>
       <CarouselSlider>
         <CarouselCard className={classes.card} value="card-1" style={{ maxWidth: '30%' }}>
           <TestComponent accentColor="#B99095">Card 1</TestComponent>

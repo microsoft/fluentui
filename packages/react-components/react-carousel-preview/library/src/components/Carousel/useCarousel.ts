@@ -3,6 +3,7 @@ import {
   slot,
   useControllableState,
   useEventCallback,
+  useIsomorphicLayoutEffect,
   useMergedRefs,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
@@ -27,26 +28,25 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
   const { align = 'center', circular = false } = props;
 
-  const [activeIndex, setActiveIndex] = useControllableState({
-    defaultState: props.defaultIndex,
-    state: props.activeIndex,
-    initialState: 0,
-  });
+  const [store] = React.useState(() => createCarouselStore(props.defaultIndex ?? 0));
+
+  useIsomorphicLayoutEffect(() => {
+    // Allow user to control active index
+    if (props.activeIndex !== undefined) {
+      store.setActiveIndex(props.activeIndex);
+    }
+  }, [props.activeIndex]);
 
   const { dir } = useFluent();
   const [emblaRef, emblaApi, subscribeForValues] = useEmblaCarousel({
     align,
     direction: dir,
     loop: circular,
-    startIndex: props.defaultIndex,
-    setActiveIndex,
+    startIndex: props.defaultIndex ?? 0,
+    setActiveIndex: store.setActiveIndex,
   });
 
-  const [store] = React.useState(() => createCarouselStore(activeIndex));
-
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
-    console.log('Selected page:', index);
-    console.log('emblaApi:', emblaApi);
     emblaApi?.scrollToIndex(index, jump);
   });
 
