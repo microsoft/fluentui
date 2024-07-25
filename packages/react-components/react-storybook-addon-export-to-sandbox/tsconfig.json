@@ -1,6 +1,7 @@
 {
   "extends": "../../../tsconfig.base.json",
   "compilerOptions": {
+    "esModuleInterop": true,
     "target": "ES2019",
     "noEmit": true,
     "isolatedModules": true,
