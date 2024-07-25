@@ -5,7 +5,7 @@ import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
-import { darkenLightenColor, wrapTextInsideDonut } from '../../../utilities/index';
+import { darkenLightenColor, getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;
@@ -34,8 +34,13 @@ export class Pie extends React.Component<IPieProps, {}> {
   }
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
-    const color = d && d.data && d.data.color;
-    const nextColor = darkenLightenColor(color!, 50);
+    let color = d && d.data && d.data.color;
+    let nextColor = darkenLightenColor(color!, 0.2);
+
+    if(this.props.enableGradient) {
+      color = this.props.data[i].gradient?.[0] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[0];
+      nextColor = this.props.data[i].gradient?.[1] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[1];
+    }
 
     return (
       <Arc

@@ -8,6 +8,7 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-charting/lib/utilities/gradients';
 
 interface IDonutChartState {
   enableGradient: boolean;
@@ -25,11 +26,18 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
+      {
+        legend: 'first',
+        data: 20000,
+        color: getColorFromToken(DataVizPalette.color1),
+        gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
+        xAxisCalloutData: '2020/04/30',
+      },
       {
         legend: 'second',
         data: 39000,
         color: getColorFromToken(DataVizPalette.color2),
+        gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         xAxisCalloutData: '2020/04/20',
       },
     ];

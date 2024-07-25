@@ -42,36 +42,36 @@ const defaultGradientPalette: GradientPalette = {
     ['#4F6BED', '#637CEF'], // [cornflower.shade10, cornflower.tint10],
   ],
   '2': [
-    ['#E61C99', '#EE5FB7'], // [hotPink.tint10, hotPink.tint30],
-    ['#E61C99', '#EE5FB7'] // [hotPink.tint10, hotPink.tint30],
+    ['#795AA6', '#9373C0'], // [orchid.shade20, orchid.tint10],
+    ['#8764B8', '#A083C9'] // [orchid.primary, orchid.tint20],
   ],
   '3': [
     ['#159195', '#2AA0A4'], // [teal.tint10, teal.tint20],
     ['#159195', '#2AA0A4'], // [teal.tint10, teal.tint20],
   ],
   '4': [
-    ['#795AA6', '#9373C0'], // [orchid.shade20, orchid.tint10],
-    ['#8764B8', '#A083C9'] // [orchid.primary, orchid.tint20],
+    ['#B146C2', '#C36BD1'], // [lilac.primary, lilac.tint20],
+    ['#B146C2', '#C36BD1'], // [lilac.primary, lilac.tint20],
   ],
   '5': [
-    ['#0E7A0B', '#13A10E'], // [lightGreen.shade20, lightGreen.primary],
-    ['#11910D', '#27AC22'] // [lightGreen.shade10, lightGreen.tint10],
-  ],
-  '6': [
     ['#3487C7', '#3A96DD'], // [lightBlue.shade10, lightBlue.primary],
     ['#3487C7', '#3A96DD'], // [lightBlue.shade20, lightBlue.primary],
   ],
+  '6': [
+    ['#0E7A0B', '#13A10E'], // [lightGreen.shade20, lightGreen.primary],
+    ['#11910D', '#27AC22'] // [lightGreen.shade10, lightGreen.tint10],
+  ],
   '7': [
+    ['#E61C99', '#EE5FB7'], // [hotPink.tint10, hotPink.tint30],
+    ['#E61C99', '#EE5FB7'] // [hotPink.tint10, hotPink.tint30],
+  ],
+  '8': [
     ['#CA5010', '#D77440'], // [pumpkin.primary, pumpkin.tint20],
     ['#CA5010', '#D77440'], // [pumpkin.primary, pumpkin.tint10],
   ],
-  '8': [
-    ['#57811B', '#689920'], // [lime.shade20, lime.shade10],
-    ['#57811B', '#689920'], // [lime.shade20, lime.shade10],
-  ],
   '9': [
-    ['#B146C2', '#C36BD1'], // [lilac.primary, lilac.tint20],
-    ['#B146C2', '#C36BD1'], // [lilac.primary, lilac.tint20],
+    ['#57811B', '#689920'], // [lime.shade20, lime.shade10],
+    ['#57811B', '#689920'], // [lime.shade20, lime.shade10],
   ],
   '10': [
     ['#937700', '#AE8C00'], // [gold.shade20, gold.shade10],
