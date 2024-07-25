@@ -50,6 +50,10 @@ const useRootStyles = makeStyles({
       display: 'none',
     },
   },
+
+  unfocusedNoContentAfter: {
+    paddingRight: 0,
+  },
 });
 
 const useContentAfterStyles = makeStyles({
@@ -103,7 +107,12 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const dismissClassName = useDismissClassName();
   const dismissStyles = useDismissStyles();
 
-  state.root.className = mergeClasses(searchBoxClassNames.root, rootStyles[size], state.root.className);
+  state.root.className = mergeClasses(
+    searchBoxClassNames.root,
+    rootStyles[size],
+    !state.contentAfter && rootStyles.unfocusedNoContentAfter,
+    state.root.className,
+  );
   state.input.className = mergeClasses(searchBoxClassNames.input, rootStyles.input, state.input.className);
 
   if (state.dismiss) {
