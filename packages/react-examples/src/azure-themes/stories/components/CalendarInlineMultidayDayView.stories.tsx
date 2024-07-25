@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Calendar, Dropdown, IDropdownOption, mergeStyleSets, defaultCalendarStrings } from '@fluentui/react';
 
+export default {
+  title: 'Components/CalendarInlineMultidayDayView',
+};
+
 const styles = mergeStyleSets({
   wrapper: { height: 360 },
   dropdown: { width: 230 },
