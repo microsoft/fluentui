@@ -5,6 +5,7 @@ export {
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
+  BaseAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
@@ -26,6 +27,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,
@@ -38,6 +40,7 @@ export {
   BadgeTemplate,
 } from './badge/index.js';
 export {
+  BaseButton,
   Button,
   ButtonAppearance,
   ButtonDefinition,
@@ -80,6 +83,7 @@ export {
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
+  BaseDivider,
   Divider,
   DividerAlignContent,
   DividerAppearance,
@@ -142,6 +146,7 @@ export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js'
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
 export {
+  BaseProgressBar,
   ProgressBar,
   ProgressBarDefinition,
   ProgressBarShape,
@@ -178,6 +183,7 @@ export {
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
+  BaseSpinner,
   Spinner,
   SpinnerAppearance,
   SpinnerDefinition,
@@ -220,6 +226,7 @@ export {
 } from './tabs/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextInput,
   TextInput,
   TextInputAppearance,
   TextInputControlSize,
@@ -240,7 +247,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor } from './theme/index.js';
+export { setTheme, setThemeFor, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,

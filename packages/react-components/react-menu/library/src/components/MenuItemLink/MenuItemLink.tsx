@@ -4,6 +4,7 @@ import { renderMenuItemLink_unstable } from './renderMenuItemLink';
 import { useMenuItemLinkStyles_unstable } from './useMenuItemLinkStyles.styles';
 import type { MenuItemLinkProps } from './MenuItemLink.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * MenuItemLink component
@@ -12,6 +13,9 @@ export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps> = React.forwar
   const state = useMenuItemLink_unstable(props, ref);
 
   useMenuItemLinkStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useMenuItemLinkStyles_unstable')(state);
+
   return renderMenuItemLink_unstable(state);
 });
 

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 09 Jul 2024 07:36:33 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 07:32:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.119.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.3)
+
+Tue, 23 Jul 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.2..@fluentui/react_v8.119.3)
+
+### Patches
+
+- fix(TimePicker): Clear text when date value changes to null ([PR #31626](https://github.com/microsoft/fluentui/pull/31626) by behowell@microsoft.com)
+
+## [8.119.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.2)
+
+Thu, 18 Jul 2024 07:31:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.1..@fluentui/react_v8.119.2)
+
+### Patches
+
+- fix: item.onClick is called when SplitMenuItem checkmark is clicked ([PR #31908](https://github.com/microsoft/fluentui/pull/31908) by sarah.higley@microsoft.com)
+- Fix WindowProvider utilities always returning window/document/undefined ([PR #31968](https://github.com/microsoft/fluentui/pull/31968) by jamie@index.hm)
 
 ## [8.119.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.1)
 

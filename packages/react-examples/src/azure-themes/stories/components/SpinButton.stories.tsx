@@ -2,6 +2,10 @@ import * as React from 'react';
 import { SpinButton, ISpinButtonStyles, Position, IIconProps } from '@fluentui/react';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 
+export default {
+  title: 'Components/SpinButton',
+};
+
 const stackTokens: IStackTokens = { childrenGap: 20 };
 // By default the field grows to fit available width. Constrain the width instead.
 const styles: Partial<ISpinButtonStyles> = { spinButtonWrapper: { width: 75 } };

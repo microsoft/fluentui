@@ -11,6 +11,8 @@
     "test-ssr": "test-ssr \"./src/**/*.stories.tsx\""
   },
   "devDependencies": {
+    "@fluentui/react-components": "*",
+    "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/scripts-storybook": "*",

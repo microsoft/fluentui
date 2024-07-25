@@ -132,8 +132,9 @@ export function preset() {
 
   task('build:node-lib', series('clean', 'copy', 'ts:commonjs')).cached!();
 
+  // === React v8 build  tasks / START ===
   task(
-    'build',
+    'build:react',
     series(
       'clean',
       'copy',
@@ -144,6 +145,14 @@ export function preset() {
       condition('lint-imports:amd', () => metadata.isConverged() && metadata.shipsAMD()),
     ),
   ).cached!();
+  task('build', 'build:react')?.cached!();
+  task('build:react-with-umd', () => {
+    return series(
+      'build:react',
+      condition('bundle', () => Boolean(args.production)),
+    );
+  })?.cached!();
+  // === React v8 build  tasks / END ===
 
   task('build:react-components', () => {
     return series(
@@ -156,7 +165,7 @@ export function preset() {
 
   task(
     'bundle',
-    condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
+    condition('webpack', () => metadata.hasWebpack()),
   );
 
   function resolveModuleCompilation(moduleFlag?: JustArgs['module']) {

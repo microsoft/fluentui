@@ -2,6 +2,36 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 07:32:54 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.3.68",
+      "version": "1.3.68",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "b147de918bfc0282085ffa586ef5973f76d63b71",
+            "comment": "chore: introduce bundle aware build:react task for v8 packages that ship UMD to production(npm registry)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Jul 2024 07:33:35 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.3.68",
+      "version": "1.3.68",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "ff2c81325d734ddff92e606ac681c22c710f262f",
+            "comment": "remove redundant forceConsistentCasingInFileNames option"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Jul 2024 07:36:36 GMT",
       "tag": "@fluentui/react-icon-provider_v1.3.68",
       "version": "1.3.68",

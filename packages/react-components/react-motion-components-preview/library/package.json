@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-motion-components-preview",
-  "version": "0.0.0",
-  "private": true,
-  "description": "New fluentui react package",
+  "version": "0.1.1",
+  "description": "A preview package for Fluent UI motion components, providing a collection of components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -36,6 +35,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-motion": "*",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

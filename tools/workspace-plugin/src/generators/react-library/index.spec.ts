@@ -47,8 +47,8 @@ describe('react-library generator', () => {
 
     await generator(tree, { name: 'react-one', owner: '@org/chosen-one' });
 
-    const library = readProjectConfiguration(tree, '@proj/react-one-preview');
-    const stories = readProjectConfiguration(tree, '@proj/react-one-preview-stories');
+    const library = readProjectConfiguration(tree, 'react-one-preview');
+    const stories = readProjectConfiguration(tree, 'react-one-preview-stories');
 
     // library
     expect(tree.children(library.root)).toMatchInlineSnapshot(`
@@ -81,7 +81,7 @@ describe('react-library generator', () => {
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
         "implicitDependencies": Array [],
-        "name": "@proj/react-one-preview",
+        "name": "react-one-preview",
         "projectType": "library",
         "root": "packages/react-components/react-one-preview/library",
         "sourceRoot": "packages/react-components/react-one-preview/library/src",
@@ -107,10 +107,10 @@ describe('react-library generator', () => {
         version: '0.0.0',
         files: ['*.md', 'dist/*.d.ts', 'lib', 'lib-commonjs'],
         dependencies: {
-          '@fluentui/react-jsx-runtime': '^9.0.0',
-          '@fluentui/react-shared-contexts': '^9.0.0',
-          '@fluentui/react-theme': '^9.0.0',
-          '@fluentui/react-utilities': '^9.0.0',
+          '@proj/react-jsx-runtime': '^9.0.0',
+          '@proj/react-shared-contexts': '^9.0.0',
+          '@proj/react-theme': '^9.0.0',
+          '@proj/react-utilities': '^9.0.0',
           '@griffel/react': '^1.2.3',
           '@swc/helpers': '^0.4.5',
         },
@@ -187,11 +187,11 @@ describe('react-library generator', () => {
       version: '0.0.0',
       private: true,
       devDependencies: {
-        '@fluentui/eslint-plugin': '*',
-        '@fluentui/react-storybook-addon': '*',
-        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
-        '@fluentui/scripts-storybook': '*',
-        '@fluentui/scripts-tasks': '*',
+        '@proj/eslint-plugin': '*',
+        '@proj/react-storybook-addon': '*',
+        '@proj/react-storybook-addon-export-to-sandbox': '*',
+        '@proj/scripts-storybook': '*',
+        '@proj/scripts-tasks': '*',
       },
       scripts: {
         format: 'just-scripts prettier',
@@ -207,7 +207,7 @@ describe('react-library generator', () => {
       Object {
         "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
         "implicitDependencies": Array [],
-        "name": "@proj/react-one-preview-stories",
+        "name": "react-one-preview-stories",
         "projectType": "library",
         "root": "packages/react-components/react-one-preview/stories",
         "sourceRoot": "packages/react-components/react-one-preview/stories/src",
@@ -250,12 +250,9 @@ describe('react-library generator', () => {
       ['@proj/react-one-preview']: ['packages/react-components/react-one-preview/library/src/index.ts'],
       ['@proj/react-one-preview-stories']: ['packages/react-components/react-one-preview/stories/src/index.ts'],
     };
-    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
-    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
+
+    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(expectedPathAlias);
+    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(expectedPathAlias);
 
     expect(tree.read('.github/CODEOWNERS', 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`
@@ -269,8 +266,8 @@ describe('react-library generator', () => {
     setup(tree);
 
     await generator(tree, { name: 'react-one', owner: '@org/chosen-one', kind: 'compat' });
-    const library = readProjectConfiguration(tree, '@proj/react-one-compat');
-    const stories = readProjectConfiguration(tree, '@proj/react-one-compat-stories');
+    const library = readProjectConfiguration(tree, 'react-one-compat');
+    const stories = readProjectConfiguration(tree, 'react-one-compat-stories');
 
     // library
 
@@ -341,11 +338,12 @@ function setup(tree: Tree) {
 }
 
 function createLibrary(tree: Tree, name: string) {
-  const projectName = '@fluentui/' + name;
+  const projectName = name;
+  const npmProjectName = '@proj/' + projectName;
   const root = `packages/react-components/${name}`;
   addProjectConfiguration(tree, projectName, { root, tags: ['vNext'] });
   writeJson(tree, joinPathFragments(root, 'package.json'), {
-    name: projectName,
+    name: npmProjectName,
     version: '9.0.0',
   });
 
