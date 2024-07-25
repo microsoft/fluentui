@@ -263,7 +263,7 @@ export type SlotClassNames<Slots> = {
  * A definition of a slot, as a component, very similar to how a React component is declared,
  * but with some additional metadata that is used to determine how to render the slot.
  */
-export type SlotComponentType<Props extends SlotPropsDataType> = WithoutSlotRenderFunction<Props> &
+export type SlotComponentType<Props> = WithoutSlotRenderFunction<Props> &
   FunctionComponent<{ children?: ReactNode }> & {
     /**
      * @internal
