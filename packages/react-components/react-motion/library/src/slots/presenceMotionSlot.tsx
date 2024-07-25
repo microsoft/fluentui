@@ -30,8 +30,6 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
    */
   as?: keyof JSX.IntrinsicElements;
 
-  // TODO: remove once React v18 slot API is modified ComponentProps is not properly adding render function as a
-  //       possible value for children
   children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & { children: React.ReactElement }>;
 };
 

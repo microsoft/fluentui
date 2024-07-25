@@ -405,7 +405,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
-    tableRef: React_2.Ref<HTMLDivElement>;
+    tableRef: React_2.Ref<HTMLDivElement & HTMLTableElement>;
 }
 
 // @public

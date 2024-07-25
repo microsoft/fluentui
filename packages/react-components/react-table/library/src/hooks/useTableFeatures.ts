@@ -22,7 +22,7 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   columns: [],
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: defaultColumnSizingState,
-  tableRef: React.createRef<HTMLDivElement>(),
+  tableRef: React.createRef<HTMLDivElement & HTMLTableElement>(),
 };
 
 export function useTableFeatures<TItem>(
