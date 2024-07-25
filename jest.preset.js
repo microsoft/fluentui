@@ -39,7 +39,7 @@ const baseConfig = {
    *
    *  **CI:**
    *
-   * not spawning additional workers provides FASTER jest runs on CI.
+   * based on testing not spawning additional workers and rely on task orchestrator (NX) parallelization is fastest on our CI env atm ( 8 Core machine, 16GB RAM)
    */
   maxWorkers: isCI ? 1 : '50%',
 };

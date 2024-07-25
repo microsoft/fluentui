@@ -6,7 +6,7 @@
  *
  *  **CI:**
  *
- * based on testing the same setting is fastest on our CI env atm ( 8 Core machine, 16GB RAM)
+ * based on testing spawning only 50% of available workers is fastest on both Local Machine and CI env atm ( 8 Core machine, 16GB RAM)
  */
 const workersConfig = { maxWorkers: '50%' };
 
