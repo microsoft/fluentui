@@ -1,7 +1,6 @@
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { CAROUSEL_ACTIVE_ITEM, CAROUSEL_ITEM } from '../constants';
 import { useCarouselStore_unstable } from '../useCarouselStore';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
@@ -21,10 +20,7 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  const { value } = props;
-
   const elementRef = React.useRef<HTMLDivElement>(null);
-  const isActiveIndex = useCarouselStore_unstable(snapshot => snapshot.activeValue === value);
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -49,15 +45,12 @@ export const useCarouselCard_unstable = (
   }, []);
 
   const state: CarouselCardState = {
-    value,
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
-        [CAROUSEL_ITEM]: value,
-        [CAROUSEL_ACTIVE_ITEM]: isActiveIndex,
         role: 'presentation',
         ...props,
       }),

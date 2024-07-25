@@ -41,25 +41,25 @@ export const MultipleCards = () => {
   return (
     <Carousel>
       <CarouselSlider>
-        <CarouselCard className={classes.card} value="card-1">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#B99095">Card 1</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-2">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-3">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-4">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-5">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-6">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-7">
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#FFD898">Card 7</TestComponent>
         </CarouselCard>
       </CarouselSlider>
