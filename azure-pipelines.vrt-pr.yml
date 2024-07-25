@@ -39,7 +39,7 @@ jobs:
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
@@ -52,7 +52,7 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
@@ -92,7 +92,7 @@ jobs:
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
@@ -105,7 +105,7 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
@@ -144,7 +144,7 @@ jobs:
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
@@ -157,7 +157,7 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
@@ -197,7 +197,7 @@ jobs:
         displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
           SERVICE_CONNECTION_ID: $(ServiceConnectionId)
@@ -210,7 +210,7 @@ jobs:
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
           STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
           PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
