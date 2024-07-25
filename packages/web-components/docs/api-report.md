@@ -53,6 +53,8 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 //
 // @public
 export class AccordionItem extends BaseAccordionItem {
+    block: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
     markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
@@ -426,8 +428,6 @@ export const BadgeTemplate: ElementViewTemplate<Badge>;
 
 // @public (undocumented)
 export class BaseAccordionItem extends FASTElement {
-    block: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     disabled: boolean;
     disabledChanged(prev: boolean, next: boolean): void;
     // @internal

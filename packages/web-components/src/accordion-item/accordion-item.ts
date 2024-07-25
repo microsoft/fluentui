@@ -101,25 +101,6 @@ export class BaseAccordionItem extends FASTElement {
   public id: string = uniqueId('accordion-');
 
   /**
-   * Sets the width of the focus state.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: block
-   */
-  @attr({ mode: 'boolean' })
-  public block: boolean = false;
-
-  /**
-   * Handles changes to block attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public blockChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'block', next);
-  }
-
-  /**
    * @internal
    */
   public expandbutton!: HTMLElement;
@@ -178,6 +159,25 @@ export class AccordionItem extends BaseAccordionItem {
     if (next) {
       toggleState(this.elementInternals, `align-${next}`, true);
     }
+  }
+
+  /**
+   * Sets the width of the focus state.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: block
+   */
+  @attr({ mode: 'boolean' })
+  public block: boolean = false;
+
+  /**
+   * Handles changes to block attribute
+   * @param prev - previous value
+   * @param next - next value
+   */
+  public blockChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'block', next);
   }
 }
 
