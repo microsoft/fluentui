@@ -24603,10 +24603,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vr-approval-cli@0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/vr-approval-cli/-/vr-approval-cli-0.4.4.tgz#a9377056996a69e2d54fa561118abdf599bab458"
-  integrity sha512-rQ3nFyHds7gy1paVb1pkQJVJuzf2CJyzvq2g4x1Qe9JQHSgAWITdpD0tfPTvCuwLh6JcZ3z3hTr+sTSHg5976Q==
+vr-approval-cli@0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/vr-approval-cli/-/vr-approval-cli-0.4.5.tgz#315b5708f5a6cd6750887f5983f125dbe2d51169"
+  integrity sha512-ahZrf0WphWSx3YZ9JtYCO+FCxAuTmryg035k4Nv3DAZV01KjNrXrk8qfRu/uo2NdTizNUjx483pkeZkgihGHXA==
   dependencies:
     "@azure/identity" "^4.3.0"
     "@azure/storage-blob" "12.11.0"
