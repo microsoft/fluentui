@@ -28,37 +28,16 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET})
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrtfunctionappv0.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
+          set -exuo pipefail
+          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+        displayName: VR App - Create Policy
         env:
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
+          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          TENANT_ID: $(TenantId)
+          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
@@ -102,37 +81,16 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrtfunctionappv0.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
+          set -exuo pipefail
+          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+        displayName: VR App - Create Policy
         env:
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
+          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          TENANT_ID: $(TenantId)
+          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
@@ -175,37 +133,16 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET})
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrtfunctionappv0.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
+          set -exuo pipefail
+          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+        displayName: VR App - Create Policy
         env:
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
+          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          TENANT_ID: $(TenantId)
+          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
@@ -249,36 +186,16 @@ jobs:
       - template: .devops/templates/tools.yml
 
       - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET})
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrtfunctionappv0.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
+          set -exuo pipefail
+          vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+        displayName: VR App - Create Policy
         env:
           VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
+          VR_APP_API_URL: $(VR_APP_API_URL_NEW)
+          TENANT_ID: $(TenantId)
+          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
