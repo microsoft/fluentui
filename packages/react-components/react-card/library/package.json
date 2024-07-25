@@ -29,6 +29,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-button": "*",
     "@fluentui/react-conformance-griffel": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-provider": "*",
