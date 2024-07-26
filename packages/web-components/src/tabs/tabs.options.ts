@@ -1,4 +1,3 @@
-import { Orientation } from '@microsoft/fast-web-utilities';
 import { StartEndOptions } from '../patterns/index.js';
 import type { ValuesOf } from '../utils/index.js';
 import { Tabs } from './tabs.js';
@@ -28,7 +27,10 @@ export type TabsOptions = StartEndOptions<Tabs>;
  * The orientation of the component
  * @public
  */
-export const TabsOrientation = Orientation;
+export const TabsOrientation = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+} as const;
 
 /**
  * The types for the Tabs component

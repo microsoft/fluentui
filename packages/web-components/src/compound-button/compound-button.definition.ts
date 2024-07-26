@@ -6,7 +6,7 @@ import { template } from './compound-button.template.js';
 /**
  * @public
  * @remarks
- * HTML Element: \<fluent-comopund-button\>
+ * HTML Element: \<fluent-compound-button\>
  */
 export const definition = CompoundButton.compose({
   name: `${FluentDesignSystem.prefix}-compound-button`,

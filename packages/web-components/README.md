@@ -76,6 +76,16 @@ import { ButtonDefinition, FluentDesignSystem } from '@fluentui/web-components';
 ButtonDefinition.define(FluentDesignSystem.registry);
 ```
 
+## Developer Experience
+
+For convenience we have included a [CEM (custom elements manifest)](https://github.com/webcomponents/custom-elements-manifest).
+
+```js
+import CEM from '@fluentui/custom-elements.json';
+```
+
+We have also included an [HTML custom data file for VS Code](./vs-code.md).
+
 ## Development
 
 To start the component development environment, run `yarn start`.

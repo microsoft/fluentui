@@ -1,4 +1,5 @@
-import { tagNameFix } from "./custom-elements-manifest.plugins.js";
+import { tagNameFix, typescriptTypeTextSanitize } from "./custom-elements-manifest.plugins.js";
+import { customElementVsCodePlugin } from "custom-element-vs-code-integration";
 
 export default {
     /** Globs to analyze */
@@ -24,5 +25,11 @@ export default {
     dev: false,
     /** Enable special handling for fast */
     fast: true,
-    plugins: [tagNameFix()],
+    plugins: [
+      tagNameFix(),
+      typescriptTypeTextSanitize(),
+      customElementVsCodePlugin({
+        outdir: "dist"
+      })
+    ],
 };

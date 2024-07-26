@@ -1,4 +1,3 @@
-import { Orientation } from '@microsoft/fast-web-utilities';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
@@ -27,7 +26,10 @@ export type DividerRole = ValuesOf<typeof DividerRole>;
  * Divider orientation
  * @public
  */
-export const DividerOrientation = Orientation;
+export const DividerOrientation = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+} as const;
 
 /**
  * The types for Divider orientation

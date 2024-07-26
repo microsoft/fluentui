@@ -1638,10 +1638,10 @@
   resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
   integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
 
-"@custom-elements-manifest/analyzer@^0.10.2":
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.2.tgz#5f71d02f45c3db691e752ca19e4bee8ea4068ded"
-  integrity sha512-YkfAfaNGSulnXxyIAHU3K8Z7bYGmIU2MlPvEaQPXnWUaIFMo0p3VEVYvByvENnVCQKPPDyjlkCm73u/zRnRvMA==
+"@custom-elements-manifest/analyzer@9.8.0":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@custom-elements-manifest/analyzer/-/analyzer-0.10.3.tgz#3b12957514475b24672ed08f48e007c7e5f018ea"
+  integrity sha512-e2Ax59vK9sNedmDlPqZS11L54iAlKSjOJuv5etpTy5SygLBW3GcUtocHZm8wO013L0griTPpgWB0tuV7/JXy5A==
   dependencies:
     "@custom-elements-manifest/find-dependencies" "^0.0.5"
     "@github/catalyst" "^1.6.0"
@@ -3476,6 +3476,13 @@
   version "2.11.8"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
+
+"@prettier/sync@^0.5.2":
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/@prettier/sync/-/sync-0.5.2.tgz#f8401e45b667e8d6207015fd03619ea2c2e3e680"
+  integrity sha512-Yb569su456XNx5BsH/Vyem7xD6g/y9iLmLUzRKM1a/dhU/D7HqqvkAG72znulXlMXztbV0iiu9O5AL8K98TzZQ==
+  dependencies:
+    make-synchronized "^0.2.8"
 
 "@react-native/babel-plugin-codegen@0.73.4":
   version "0.73.4"
@@ -10026,6 +10033,13 @@ currently-unhandled@^0.4.1:
   integrity sha1-mI3zP+qxke95mmE2nddsF635V+o=
   dependencies:
     array-find-index "^1.0.1"
+
+custom-element-vs-code-integration@^1.4.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/custom-element-vs-code-integration/-/custom-element-vs-code-integration-1.4.1.tgz#3afb347705a48d0cea3606349c06c795e919c75e"
+  integrity sha512-aOQpNayEzXHUg7JRo/eIS8aCMiOPLuMwhANj4iFdAz3NnHy5Y0Us7uS/qSeJhYbl+5NddygQvp3is8L0ggxMbQ==
+  dependencies:
+    "@prettier/sync" "^0.5.2"
 
 custom-elements-manifest@1.0.0:
   version "1.0.0"
@@ -17548,6 +17562,11 @@ make-iterator@^1.0.0:
   integrity sha512-pxiuXh0iVEq7VM7KMIhs5gxsfxCux2URptUQaXo4iZZJxBAzTPOLE2BumO5dbfVYq/hBJFBR/a1mFDmOx5AGmw==
   dependencies:
     kind-of "^6.0.2"
+
+make-synchronized@^0.2.8:
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/make-synchronized/-/make-synchronized-0.2.9.tgz#edcbe2d8e7aeac8e0f41a0bb25b05cc7a7e2e8e4"
+  integrity sha512-4wczOs8SLuEdpEvp3vGo83wh8rjJ78UsIk7DIX5fxdfmfMJGog4bQzxfvOwq7Q3yCHLC4jp1urPHIxRS/A93gA==
 
 makeerror@1.0.12:
   version "1.0.12"
