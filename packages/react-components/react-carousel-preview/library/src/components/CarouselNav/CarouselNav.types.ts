@@ -8,7 +8,7 @@ export type CarouselNavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type NavButtonRenderFunction = (value: number) => React.ReactNode;
+export type NavButtonRenderFunction = (index: number) => React.ReactNode;
 
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   /**

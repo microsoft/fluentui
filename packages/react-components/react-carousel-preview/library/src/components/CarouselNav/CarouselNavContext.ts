@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const carouselNavContext = React.createContext<number>(0);
+const carouselNavContext = React.createContext<number | undefined>(undefined);
 
 export const carouselNavContextDefaultValue = 0;
 

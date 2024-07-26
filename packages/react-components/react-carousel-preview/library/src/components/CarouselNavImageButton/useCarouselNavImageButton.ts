@@ -22,16 +22,16 @@ export const useCarouselNavImageButton_unstable = (
 ): CarouselNavImageButtonState => {
   const { onClick, as = 'button' } = props;
 
-  const value = useCarouselNavContext();
-
+  const index = useCarouselNavContext();
   const { selectPageByIndex } = useCarouselContext_unstable();
-  const selected = useCarouselStore_unstable(snapshot => snapshot.activeIndex === value);
+
+  const selected = useCarouselStore_unstable(snapshot => snapshot.activeIndex === index);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
 
     if (!event.defaultPrevented && isHTMLElement(event.target)) {
-      selectPageByIndex(event, value);
+      selectPageByIndex(event, index);
     }
   });
 
