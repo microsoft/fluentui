@@ -30,6 +30,7 @@ export const useCarouselButton_unstable = (
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
+  // TODO: this should be a part of subscribeForValues() handler to avoid pulling "activeIndex"
   const isTrailing = useCarouselContext(ctx => {
     if (ctx.activeIndex === undefined || circular) {
       return false;
