@@ -8,6 +8,7 @@ import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
+import { useId } from '@fluentui/react-utilities';
 import {
   Popover,
   PopoverSurface,
@@ -26,10 +27,10 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
   (props, forwardedRef) => {
     let colors: ScaleOrdinal<string, {}>;
     let _rootElem: HTMLElement | null;
-    let _uniqText: string;
+    const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
-    let _calloutId: string;
+    const _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
 
@@ -325,16 +326,18 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
             </svg>
           </div>
         </div>
-        <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} openOnHover>
-          <PopoverSurface tabIndex={-1}>
-            <ChartHoverCard
-              Legend={xCalloutValue ? xCalloutValue : legend}
-              YValue={yCalloutValue ? yCalloutValue : value}
-              color={color}
-              culture={props.culture}
-            />
-          </PopoverSurface>
-        </Popover>
+        <div id={_calloutId}>
+          <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} openOnHover>
+            <PopoverSurface tabIndex={-1}>
+              <ChartHoverCard
+                Legend={xCalloutValue ? xCalloutValue : legend}
+                YValue={yCalloutValue ? yCalloutValue : value}
+                color={color}
+                culture={props.culture}
+              />
+            </PopoverSurface>
+          </Popover>
+        </div>
         {!hideLegend && <div className={classes.legendContainer}>{legendBars}</div>}
       </div>
     ) : (

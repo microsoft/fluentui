@@ -1,11 +1,6 @@
 import * as React from 'react';
 
-import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
-import { HoverCard, HoverCardType, IExpandingCardProps } from '@fluentui/react/lib/HoverCard';
-import { classNamesFunction, find, getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
-import { ResizeGroup } from '@fluentui/react/lib/ResizeGroup';
-import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react/lib/OverflowSet';
+import { classNamesFunction, getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
 import { Button } from '@fluentui/react-button';
 import {
   ILegend,
@@ -67,18 +62,37 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       setSelectedLegends(defaultSelectedLegends);
     }, [props.canSelectMultipleLegends, props.defaultSelectedLegend, props.defaultSelectedLegends]);
 
-    const { styles } = props;
     const classes = useLegendStyles_unstable(props);
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
+    const { allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    const itemIds = dataToRender.primary.map((item, index) => index.toString());
+    const overflowHoverCardLegends: JSX.Element[] = [];
+    props.legends.map((legend, index) => {
+      const hoverCardElement = _renderButton(legend, index, true);
+      overflowHoverCardLegends.push(hoverCardElement);
+    });
+    const overflowString = props.overflowText ? props.overflowText : 'more';
+
     return (
-      <div className={classes.root}>
-        <ResizeGroup
-          data={dataToRender}
-          onReduceData={_onReduceData}
-          onRenderData={_onRenderData}
-          onGrowData={_onGrowData}
-        />
+      <div
+        {...focusAttributes}
+        {...(allowFocusOnLegends && {
+          role: 'listbox',
+          'aria-label': 'Legends',
+          'aria-multiselectable': canSelectMultipleLegends,
+        })}
+      >
+        <Overflow>
+          <div className={classes.resizableArea}>
+            {dataToRender.primary.map((item, id) => (
+              <OverflowItem key={id} id={id.toString()}>
+                {_renderButton(item)}
+              </OverflowItem>
+            ))}
+            <OverflowMenu itemIds={itemIds} title={`${overflowString}`} items={overflowHoverCardLegends} />
+          </div>
+        </Overflow>
       </div>
     );
 
@@ -110,78 +124,6 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
         overflow: [],
       };
       return result;
-    }
-
-    function _onRenderData(data: IOverflowSetItemProps | ILegendOverflowData): JSX.Element {
-      const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-      const rootStyles = {
-        root: {
-          justifyContent: props.centerLegends ? 'center' : 'unset',
-          flexWrap: 'wrap',
-        },
-      };
-      console.log('overflowProps = ', overflowProps);
-      console.log('data = ', data);
-      // const itemIds = new Array(8).fill(0).map((_, i) => i.toString());
-      // map the keys from data.primary to itemids
-      const itemIds = data.primary.map(item => item.key.toString());
-      return (
-        <div
-          {...focusAttributes}
-          {...(allowFocusOnLegends && {
-            role: 'listbox',
-            'aria-label': 'Legends',
-            'aria-multiselectable': canSelectMultipleLegends,
-          })}
-        >
-          <OverflowSet
-            items={data.primary}
-            overflowItems={data.overflow}
-            onRenderItem={_renderButton}
-            onRenderOverflowButton={_renderOverflowItems}
-            {...overflowProps}
-            styles={{ ...rootStyles, ...overflowProps?.styles }}
-          />
-          {/* <Overflow overflowDirection="start">
-            <div>
-              <OverflowMenu itemIds={data.primary} {...overflowProps} />
-              {data.primary.map(i => (
-                <OverflowItem key={i} id={i}>
-                  <Button>Item {i}</Button>
-                </OverflowItem>
-              ))}
-            </div>
-          </Overflow> */}
-          {/* <Overflow overflowAxis="vertical">
-            <div>
-              {data.overflow.map(i => (
-                <OverflowItem key={i} id={i}>
-                  <Button>Item {i}</Button>
-                </OverflowItem>
-              ))}
-              <OverflowMenu itemIds={itemIds} />
-            </div>
-          </Overflow> */}
-        </div>
-      );
-    }
-
-    function _onReduceData(currentdata: IOverflowSetItemProps): {} | void {
-      if (currentdata.primary.length === 0) {
-        return;
-      }
-      const overflow = [...currentdata.primary.slice(-1), ...currentdata.overflow];
-      const primary = currentdata.primary.slice(0, -1);
-      return { primary, overflow };
-    }
-
-    function _onGrowData(currentdata: IOverflowSetItemProps): {} | void {
-      if (currentdata.overflow.length === 0) {
-        return;
-      }
-      const overflow = currentdata.overflow.slice(1);
-      const primary = [...currentdata.primary, ...currentdata.overflow.slice(0, 1)];
-      return { primary, overflow };
     }
 
     /**
@@ -236,90 +178,6 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       legend.action?.();
     }
 
-    function _onRenderCompactCard(expandingCard: IExpandingCardProps): JSX.Element {
-      const { allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-      const overflowHoverCardLegends: JSX.Element[] = [];
-      expandingCard.renderData.forEach((legend: IOverflowSetItemProps, index: number) => {
-        const hoverCardElement = _renderButton(legend, index, true);
-        overflowHoverCardLegends.push(hoverCardElement);
-      });
-
-      const hoverCardData = (
-        <div
-          {...focusAttributes}
-          {...(allowFocusOnLegends && {
-            role: 'listbox',
-            'aria-label': 'Legends',
-            'aria-multiselectable': canSelectMultipleLegends,
-          })}
-          {...props.focusZonePropsInHoverCard}
-          className={classes.hoverCardRoot}
-        >
-          {overflowHoverCardLegends}
-        </div>
-      );
-      return hoverCardData;
-    }
-
-    function _renderOverflowItems(legends: ILegend[]) {
-      const { allowFocusOnLegends = true } = props;
-      const items: IContextualMenuItem[] = [];
-      legends.forEach((legend: ILegend, i: number) => {
-        items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
-      });
-      const renderOverflowData: IExpandingCardProps = { renderData: legends };
-      const { overflowText } = props;
-      const plainCardProps = {
-        onRenderPlainCard: _onRenderCompactCard,
-        renderData: renderOverflowData,
-      };
-
-      const overflowString = overflowText ? overflowText : 'more';
-      // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
-      const onHoverCardHideHandler = () => {
-        setIsHoverCardVisible(false);
-        // Unhighlight the focused legend in the hover card
-        const activeOverflowItem = find(legends, (legend: ILegend) => legend.title === activeLegend);
-        if (activeOverflowItem) {
-          setActiveLegend('');
-          if (activeOverflowItem.onMouseOutAction) {
-            activeOverflowItem.onMouseOutAction();
-          }
-        }
-      };
-      return (
-        <HoverCard
-          type={HoverCardType.plain}
-          plainCardProps={plainCardProps}
-          instantOpenOnClick={true}
-          // eslint-disable-next-line react/jsx-no-bind
-          onCardHide={onHoverCardHideHandler}
-          setInitialFocus={true}
-          trapFocus={true}
-          onCardVisible={_hoverCardVisible}
-          cardDismissDelay={300}
-          target={_hoverCardRef}
-        >
-          <div
-            className={classes.overflowIndicationTextStyle}
-            ref={(rootElem: HTMLDivElement) => (_hoverCardRef = rootElem)}
-            {...(allowFocusOnLegends && {
-              role: 'button',
-              'aria-expanded': isHoverCardVisible,
-              'aria-label': `${items.length} ${overflowString}`,
-            })}
-            data-is-focusable={allowFocusOnLegends}
-          >
-            {items.length} {overflowString}
-          </div>
-        </HoverCard>
-      );
-    }
-
-    function _hoverCardVisible() {
-      setIsHoverCardVisible(true);
-    }
-
     function _onHoverOverLegend(legend: ILegend) {
       if (legend.hoverAction) {
         setActiveLegend(legend.title);
@@ -334,7 +192,8 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       }
     }
 
-    function _renderButton(data: IOverflowSetItemProps, index?: number, overflow?: boolean) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function _renderButton(data: any, index?: number, overflow?: boolean) {
       const { allowFocusOnLegends = true } = props;
       const legend: ILegend = {
         title: data.title,

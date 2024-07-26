@@ -92,20 +92,21 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
 
     const { href, focusedArcId } = props;
     //TO DO 'replace' is throwing error
-    // const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
-    const id = 'abcd';
+    const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (
           // TODO innerradius and outerradius were absent
           <path
+            id={id + 'focusRing'}
             d={arc({ ...props.focusData, innerRadius: props.innerRadius, outerRadius: props.outerRadius })}
             className={classes.focusRing}
           />
         )}
         <path
           // TODO innerradius and outerradius were absent
+          id={id}
           d={arc({ ...props.data, innerRadius: props.innerRadius, outerRadius: props.outerRadius })}
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
