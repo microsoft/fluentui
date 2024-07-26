@@ -191,18 +191,14 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
-          <RadioGroup
-            value={type}
-            onChange={(_, data) => setType(data.value as DrawerType)}
-            aria-labelledby={typeLableId}
-          >
+          <RadioGroup value={type} onChange={(_, data) => setType(!!data.value)} aria-labelledby={typeLableId}>
             <Radio value="overlay" label="Overlay (Default)" />
             <Radio value="inline" label="Inline" />
           </RadioGroup>
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
-            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+            onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />

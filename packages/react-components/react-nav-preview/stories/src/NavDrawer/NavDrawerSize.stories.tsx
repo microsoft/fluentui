@@ -200,14 +200,14 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
-            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+            onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />
           <Label id={appItemIconLabelId}>App Item Icon</Label>
           <Switch
             checked={isAppItemIconPresent}
-            onChange={(_, data) => setIsAppItemIconPresent(data.checked as boolean)}
+            onChange={(_, data) => setIsAppItemIconPresent(!!data.checked)}
             label={isAppItemIconPresent ? 'Present' : 'Absent'}
             aria-labelledby={appItemIconLabelId}
           />
