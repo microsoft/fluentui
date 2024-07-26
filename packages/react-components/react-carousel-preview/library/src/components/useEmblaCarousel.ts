@@ -18,19 +18,25 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex'> & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, startIndex } = options;
+  const { align, direction, loop, slidesToScroll } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
     initialState: 0,
   });
 
-  const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll, startIndex });
+  const emblaOptions = React.useRef<EmblaOptionsType>({
+    align,
+    direction,
+    loop,
+    slidesToScroll,
+    startIndex: activeIndex,
+  });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
@@ -122,12 +128,12 @@ export function useEmblaCarousel(
   );
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll, startIndex };
+    emblaOptions.current = { align, direction, loop, slidesToScroll };
     emblaApi.current?.reInit({
       ...emblaOptions.current,
       ...DEFAULT_EMBLA_OPTIONS,
     });
-  }, [align, direction, loop, slidesToScroll, startIndex]);
+  }, [align, direction, loop, slidesToScroll]);
 
   return {
     activeIndex,
