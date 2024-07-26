@@ -13,7 +13,7 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, darkenLightenColor, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -348,8 +348,14 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      const color2 = darkenLightenColor(color, 70);
+      let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let color2 = color;
+
+      if (this.props.enableGradient && index !== 1) {
+        color = point.gradient?.[0] || getNextGradient(chartNumber, 0, this.props.theme?.isInverted)[0];
+        color2 = point.gradient?.[1] || getNextGradient(chartNumber, 0, this.props.theme?.isInverted)[1];
+      }
+
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -395,8 +401,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${chartNumber}`} >
-                <stop offset="0" stopColor={color2} />
-                <stop offset="100%" stopColor={color} />
+                <stop offset="0" stopColor={color} />
+                <stop offset="100%" stopColor={color2} />
               </linearGradient>
             </defs>
           )}
@@ -407,7 +413,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
                 : startingPoint[index] + index * this.state.barSpacingInPercent
             }%`}
-            rx={this.props.roundCorners ? this._barHeight / 2 : 0}
+            rx={this.props.roundCorners ? 3 : 0}
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={this._barHeight}

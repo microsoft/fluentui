@@ -38,7 +38,7 @@ import {
   IDomainNRange,
   domainRangeOfNumericForHorizontalBarChartWithAxis,
   createStringYAxisForHorizontalBarChartWithAxis,
-  darkenLightenColor,
+  getNextGradient,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -476,15 +476,20 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       }
 
       color = point.color && !useSingleColor ? point.color : color;
-      const color2 = darkenLightenColor(color, 70);
+      let color2 = color;
+
+      if (this.props.enableGradient) {
+        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+      }
 
       return (
         <React.Fragment key={point.y}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${point.y}`} >
-                <stop offset="0" stopColor={color2} />
-                <stop offset="100%" stopColor={color} />
+                <stop offset="0" stopColor={color} />
+                <stop offset="100%" stopColor={color2} />
               </linearGradient>
             </defs>
           )}
@@ -503,7 +508,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
-            rx={this.props.roundCorners ? this._barHeight / 2 : 0}
+            rx={this.props.roundCorners ? 3 : 0}
             onClick={point.onClick}
             onMouseOver={this._onBarHover.bind(this, point, color)}
             aria-label={this._getAriaLabel(point)}
@@ -580,15 +585,20 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       }
 
       color = point.color && !useSingleColor ? point.color : color;
-      const color2 = darkenLightenColor(color, 70);
+      let color2 = color;
+
+      if (this.props.enableGradient) {
+        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+      }
 
       return (
         <React.Fragment key={point.x}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${point.x}`} >
-                <stop offset="0" stopColor={color2} />
-                <stop offset="100%" stopColor={color} />
+                <stop offset="0" stopColor={color} />
+                <stop offset="100%" stopColor={color2} />
               </linearGradient>
             </defs>
           )}
@@ -597,7 +607,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             key={point.x}
             x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
             y={yBarScale(point.y)}
-            rx={this.props.roundCorners ? this._barHeight / 2 : 0}
+            rx={this.props.roundCorners ? 3 : 0}
             width={
               this._isRtl
                 ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
@@ -698,12 +708,18 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   private _getLegendData = (data: IHorizontalBarChartWithAxisDataPoint[], palette: IPalette): JSX.Element => {
     const { useSingleColor } = this.props;
     const actions: ILegend[] = [];
+
     data.forEach((point: IHorizontalBarChartWithAxisDataPoint, _index: number) => {
-      const color: string = useSingleColor
+      let color: string = useSingleColor
         ? this.props.colors
           ? this._createColors()(1)
           : getNextColor(1, 0, this.props.theme?.isInverted)
         : point.color!;
+
+      if (this.props.enableGradient) {
+        color = point.gradient?.[0] || getNextGradient(_index, 0, this.props.theme?.isInverted)[0];
+      }
+
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
