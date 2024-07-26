@@ -1,6 +1,3 @@
-variables:
-  - template: .devops/templates/variables.yml
-
 parameters:
   - name: fluentVersion
     type: string
@@ -25,6 +22,7 @@ steps:
   - script: |
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
+      echo "##vso[task.setvariable variable=isPR;]$isPR"
       if [[ $isPR == true ]]; then
         packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
         if [[ $packageAffected == false ]]; then
