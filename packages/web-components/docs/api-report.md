@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -2500,7 +2498,6 @@ export abstract class MatchMediaBehavior implements HostBehavior {
 export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
     constructor(query: MediaQueryList, styles: ElementStyles);
     protected constructListener(controller: HostController): MediaQueryListListener;
-    readonly query: MediaQueryList;
     // @internal
     removedCallback(controller: HostController<any>): void;
     readonly styles: ElementStyles;
