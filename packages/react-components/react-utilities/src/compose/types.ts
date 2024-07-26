@@ -2,8 +2,9 @@ import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 import {
   ComponentType,
-  DistributiveOmit,
   FunctionComponent,
+  PropsWithoutChildren,
+  PropsWithoutRef,
   ReactNode,
   ReplaceNullWithUndefined,
 } from '../utils/types';
@@ -162,24 +163,6 @@ export type IsSingleton<T extends string> = { [K in T]: Exclude<T, K> extends ne
  * ```
  */
 export type AsIntrinsicElement<As extends keyof JSX.IntrinsicElements> = { as?: As };
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutRef<P> = 'ref' extends keyof P ? DistributiveOmit<P, 'ref'> : P;
-
-/**
- * Removes the 'ref' prop from the given Props type, leaving unions intact (such as the discriminated union created by
- * IntrinsicSlotProps). This allows IntrinsicSlotProps to be used with React.forwardRef.
- *
- * The conditional "extends unknown" (always true) exploits a quirk in the way TypeScript handles conditional
- * types, to prevent unions from being expanded.
- */
-export type PropsWithoutChildren<P> = 'children' extends keyof P ? DistributiveOmit<P, 'children'> : P;
 
 /**
  * Removes SlotShorthandValue and null from the slot type, extracting just the slot's Props object.
