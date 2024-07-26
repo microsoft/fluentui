@@ -42,14 +42,14 @@ export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => 
   const iconStyles = useIconStyles();
   const appItemSpecificStyles = useStyles();
 
-  const { size, isIconPresent } = state;
+  const { size, icon } = state;
 
   state.root.className = mergeClasses(
-    appItemClassNames.root,
     rootDefaultClassName,
+    appItemClassNames.root,
     appItemSpecificStyles.root,
     size === 'small' && appItemSpecificStyles.small,
-    !isIconPresent && appItemSpecificStyles.absentIconRootAdjustment,
+    !icon && appItemSpecificStyles.absentIconRootAdjustment,
     state.root.className,
   );
 
