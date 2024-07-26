@@ -55,93 +55,11 @@ export class BaseAvatar extends FASTElement {
   @attr
   public active?: AvatarActive | undefined;
 
-  /**
-   * The color when displaying either an icon or initials.
-   * * neutral (default): gray
-   * * brand: color from the brand palette
-   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or colorId if provided)
-   * * [AvatarNamedColor]: a specific color from the theme
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: color
-   */
-  @attr
-  public color?: AvatarColor | undefined;
-
-  /**
-   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
-   * Use this when a name is not available, but there is another unique identifier that can be used instead.
-   */
-  @attr({ attribute: 'color-id' })
-  public colorId?: AvatarNamedColor | undefined;
-
-  /**
-   * Holds the current color state
-   */
-  private currentColor: string | undefined;
-
   constructor() {
     super();
 
     this.elementInternals.role = 'img';
   }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Observable.getNotifier(this).subscribe(this);
-
-    this.generateColor();
-  }
-
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    Observable.getNotifier(this).unsubscribe(this);
-  }
-
-  /**
-   * Handles changes to observable properties
-   * @internal
-   * @param source - the source of the change
-   * @param propertyName - the property name being changed
-   */
-  public handleChange(source: any, propertyName: string) {
-    switch (propertyName) {
-      case 'color':
-      case 'colorId':
-        this.generateColor();
-        break;
-      default:
-        break;
-    }
-  }
-
-  /**
-   * Sets the data-color attribute used for the visual presentation
-   * @internal
-   */
-  public generateColor(): void {
-    const colorful: boolean = this.color === AvatarColor.colorful;
-    const prev = this.currentColor;
-
-    toggleState(this.elementInternals, `${prev}`, false);
-
-    this.currentColor =
-      colorful && this.colorId
-        ? this.colorId
-        : colorful
-        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
-        : this.color ?? AvatarColor.neutral;
-
-    toggleState(this.elementInternals, `${this.currentColor}`, true);
-  }
-
-  /**
-   * An array of the available Avatar named colors
-   */
-  public static colors = Object.values(AvatarNamedColor);
 }
 
 /**
@@ -189,6 +107,49 @@ export class Avatar extends BaseAvatar {
   public size?: AvatarSize | undefined;
 
   /**
+   * The color when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or colorId if provided)
+   * * [AvatarNamedColor]: a specific color from the theme
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: color
+   */
+  @attr
+  public color?: AvatarColor | undefined;
+
+  /**
+   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
+   * Use this when a name is not available, but there is another unique identifier that can be used instead.
+   */
+  @attr({ attribute: 'color-id' })
+  public colorId?: AvatarNamedColor | undefined;
+
+  /**
+   * Holds the current color state
+   */
+  private currentColor: string | undefined;
+
+  /**
+   * Handles changes to observable properties
+   * @internal
+   * @param source - the source of the change
+   * @param propertyName - the property name being changed
+   */
+  public handleChange(source: any, propertyName: string) {
+    switch (propertyName) {
+      case 'color':
+      case 'colorId':
+        this.generateColor();
+        break;
+      default:
+        break;
+    }
+  }
+
+  /**
    * Generates and sets the initials for the template
    * @internal
    */
@@ -206,6 +167,45 @@ export class Avatar extends BaseAvatar {
         firstInitialOnly: size <= 16,
       })
     );
+  }
+
+  /**
+   * Sets the data-color attribute used for the visual presentation
+   * @internal
+   */
+  public generateColor(): void {
+    const colorful: boolean = this.color === AvatarColor.colorful;
+    const prev = this.currentColor;
+
+    toggleState(this.elementInternals, `${prev}`, false);
+
+    this.currentColor =
+      colorful && this.colorId
+        ? this.colorId
+        : colorful
+        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
+        : this.color ?? AvatarColor.neutral;
+
+    toggleState(this.elementInternals, `${this.currentColor}`, true);
+  }
+
+  /**
+   * An array of the available Avatar named colors
+   */
+  public static colors = Object.values(AvatarNamedColor);
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    Observable.getNotifier(this).subscribe(this);
+
+    this.generateColor();
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this);
   }
 }
 
