@@ -12,6 +12,7 @@ jest.mock('embla-carousel', () => ({
     slidesInView: jest.fn(),
     scrollTo: jest.fn(),
     reInit: jest.fn(),
+    selectedScrollSnap: () => 0,
   }),
 }));
 
@@ -19,9 +20,7 @@ describe('Carousel', () => {
   isConformant({
     Component: Carousel,
     displayName: 'Carousel',
-    requiredProps: {
-      defaultValue: 'test',
-    },
+    requiredProps: {},
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests

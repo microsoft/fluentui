@@ -134,6 +134,7 @@ export function useEmblaCarousel(
       emblaApi.current?.scrollTo(activeIndex);
     }
   }, [activeIndex]);
+
   React.useEffect(() => {
     emblaOptions.current = { align, direction, loop, slidesToScroll };
     emblaApi.current?.reInit({
