@@ -10,6 +10,7 @@ export {
   resolveShorthand,
   isResolvedShorthand,
   getIntrinsicElementProps,
+  fc,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
@@ -17,6 +18,7 @@ export type {
   ExtractSlotProps,
   ComponentProps,
   ComponentState,
+  // eslint-disable-next-line deprecation/deprecation
   ForwardRefComponent,
   // eslint-disable-next-line deprecation/deprecation
   ResolveShorthandFunction,
@@ -33,6 +35,7 @@ export type {
   UnknownSlotProps,
   SlotComponentType,
   SlotOptions,
+  // eslint-disable-next-line deprecation/deprecation
   InferredElementRefType,
   EventData,
   EventHandler,
@@ -72,7 +75,7 @@ export {
   createPriorityQueue,
 } from './utils/index';
 
-export type { DistributiveOmit, UnionToIntersection } from './utils/types';
+export type { DistributiveOmit, DistributivePick, UnionToIntersection } from './utils/types';
 
 export type { PriorityQueue } from './utils/priorityQueue';
 

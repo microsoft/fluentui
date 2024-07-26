@@ -11,6 +11,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  *
  * TeachingPopoverCarouselNav provides an index-based pagination list to jump to any page within the carousel.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarouselNav: ForwardRefComponent<TeachingPopoverCarouselNavProps> = React.forwardRef(
   (props, ref) => {
     const state = useTeachingPopoverCarouselNav_unstable(props, ref);

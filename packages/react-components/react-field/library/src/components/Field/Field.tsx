@@ -6,6 +6,8 @@ import { useField_unstable } from './useField';
 import { useFieldStyles_unstable } from './useFieldStyles.styles';
 import { useFieldContextValues_unstable } from '../../contexts/index';
 
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Field: ForwardRefComponent<FieldProps> = React.forwardRef((props, ref) => {
   const state = useField_unstable(props, ref);
   useFieldStyles_unstable(state);

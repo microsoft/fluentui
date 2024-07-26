@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * DataGridBody component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
   (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
   const state = useDataGridBody_unstable(props, ref);
@@ -18,6 +20,7 @@ export const DataGridBody: ForwardRefComponent<DataGridBodyProps> &
   useCustomStyleHook_unstable('useDataGridBodyStyles_unstable')(state);
 
   return renderDataGridBody_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<DataGridBodyProps> & (<TItem>(props: DataGridBodyProps<TItem>) => JSX.Element);
 
 DataGridBody.displayName = 'DataGridBody';

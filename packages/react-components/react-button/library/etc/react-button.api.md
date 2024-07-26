@@ -9,6 +9,7 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -46,7 +47,7 @@ export type ButtonSlots = {
 };
 
 // @public (undocumented)
-export type ButtonState = ComponentState<ButtonSlots> & Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+export type ButtonState = ComponentState<ButtonSlots> & Required<DistributivePick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
     iconOnly: boolean;
 };
 
@@ -106,7 +107,7 @@ export const SplitButton: ForwardRefComponent<SplitButtonProps>;
 export const splitButtonClassNames: SlotClassNames<SplitButtonSlots>;
 
 // @public (undocumented)
-export type SplitButtonProps = ComponentProps<SplitButtonSlots> & Omit<ButtonProps, 'root' | 'as'> & Omit<MenuButtonProps, 'root' | 'as'>;
+export type SplitButtonProps = ComponentProps<SplitButtonSlots> & DistributivePick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'icon' | 'iconPosition' | 'shape' | 'size'> & DistributivePick<MenuButtonProps, 'menuIcon'>;
 
 // @public (undocumented)
 export type SplitButtonSlots = {
@@ -155,7 +156,7 @@ export const useMenuButton_unstable: ({ menuIcon, ...props }: MenuButtonProps, r
 export const useMenuButtonStyles_unstable: (state: MenuButtonState) => MenuButtonState;
 
 // @public
-export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => SplitButtonState;
+export const useSplitButton_unstable: (props: SplitButtonProps, ref: React_2.Ref<HTMLDivElement>) => SplitButtonState;
 
 // @public (undocumented)
 export const useSplitButtonStyles_unstable: (state: SplitButtonState) => SplitButtonState;

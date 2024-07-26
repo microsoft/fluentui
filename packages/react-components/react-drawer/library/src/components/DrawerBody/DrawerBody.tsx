@@ -10,6 +10,8 @@ import type { DrawerBodyProps } from './DrawerBody.types';
 /**
  * DrawerBody provides with a container for the main content of a Drawer.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DrawerBody: ForwardRefComponent<DrawerBodyProps> = React.forwardRef((props, ref) => {
   const state = useDrawerBody_unstable(props, ref);
 

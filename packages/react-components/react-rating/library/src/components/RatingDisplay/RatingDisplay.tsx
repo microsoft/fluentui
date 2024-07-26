@@ -10,6 +10,8 @@ import { useRatingDisplayContextValues } from './useRatingDisplayContextValues';
  * RatingDisplay is a wrapper for one or more rating items that will be used to display a rating value
  * as well as the label for the rating.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const RatingDisplay: ForwardRefComponent<RatingDisplayProps> = React.forwardRef((props, ref) => {
   const state = useRatingDisplay_unstable(props, ref);
   const contextValues = useRatingDisplayContextValues(state);

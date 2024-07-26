@@ -4,7 +4,6 @@ import type {
   SlotRenderFunction,
   SlotShorthandValue,
   SlotPropsDataType,
-  InferredElementRefType,
 } from './types';
 import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
@@ -13,7 +12,7 @@ export type SlotOptions<Props extends SlotPropsDataType> = {
   elementType:
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-  defaultProps?: Partial<Props & { ref?: React.Ref<InferredElementRefType<Props>> }>;
+  defaultProps?: Partial<Props>;
 };
 
 /**

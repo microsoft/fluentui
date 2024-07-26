@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Buttons give people a way to trigger an action.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props, ref) => {
   const state = useButton_unstable(props, ref);
 
@@ -17,7 +19,9 @@ export const Button: ForwardRefComponent<ButtonProps> = React.forwardRef((props,
   useCustomStyleHook_unstable('useButtonStyles_unstable')(state);
 
   return renderButton_unstable(state);
+  //FIXME: migrate to fc to remove this assertion
   // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<ButtonProps>;
 
 Button.displayName = 'Button';

@@ -12,6 +12,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * ToolbarRadioGroup component is a Button to be used inside Toolbar
  * which will respect toolbar props such as `size`
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = React.forwardRef((props, ref) => {
   const state = useToolbarGroup_unstable({ role: 'radiogroup', ...props }, ref);
 
@@ -20,7 +22,9 @@ export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = Re
   useCustomStyleHook_unstable('useToolbarGroupStyles_unstable')(state);
 
   return renderToolbarGroup_unstable(state);
+  //FIXME: migrate to fc to remove this assertion
   // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<ToolbarRadioGroupProps>;
 
 ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';

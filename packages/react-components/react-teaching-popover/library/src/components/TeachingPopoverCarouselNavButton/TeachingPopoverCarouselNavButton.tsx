@@ -10,6 +10,8 @@ import type { TeachingPopoverCarouselNavButtonProps } from './TeachingPopoverCar
  *
  * It's value is injected via context and must be wrapped with a ValueIdContextProvider (automatically handled via TeachingPopoverCarouselNav)
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopoverCarouselNavButtonProps> =
   React.forwardRef((props, ref) => {
     const state = useTeachingPopoverCarouselNavButton_unstable(props, ref);
@@ -17,6 +19,7 @@ export const TeachingPopoverCarouselNavButton: ForwardRefComponent<TeachingPopov
     useTeachingPopoverCarouselNavButtonStyles_unstable(state);
 
     return renderTeachingPopoverCarouselNavButton_unstable(state);
+    // eslint-disable-next-line deprecation/deprecation
   }) as ForwardRefComponent<TeachingPopoverCarouselNavButtonProps>;
 
 TeachingPopoverCarouselNavButton.displayName = 'TeachingPopoverCarouselNavButton';

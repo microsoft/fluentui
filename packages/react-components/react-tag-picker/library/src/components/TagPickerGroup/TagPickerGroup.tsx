@@ -11,6 +11,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * TagPickerGroup component -
  * A TagPickerGroup is a composite component that allows users to group tags together.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TagPickerGroup: ForwardRefComponent<TagPickerGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerGroup_unstable(props, ref);
 

@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Switches enable users to trigger an option on or off through pressing the component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Switch: ForwardRefComponent<SwitchProps> = React.forwardRef((props, ref) => {
   const state = useSwitch_unstable(props, ref);
 

@@ -49,6 +49,8 @@ type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
 /**
  * FixedSizeTree is a recomposition of Tree component that uses react-window FixedSizeList to render items.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef((props, ref) => {
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);

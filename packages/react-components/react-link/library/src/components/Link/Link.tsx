@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * A Link is a reference to data that a user can follow by clicking or tapping it.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref) => {
   const state = useLink_unstable(props, ref);
 
@@ -15,6 +17,7 @@ export const Link: ForwardRefComponent<LinkProps> = React.forwardRef((props, ref
 
   return renderLink_unstable(state);
   // Work around some small mismatches in inferred types which don't matter in practice
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<LinkProps>;
 
 Link.displayName = 'Link';

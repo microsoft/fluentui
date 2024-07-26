@@ -12,6 +12,7 @@ import {
   useTableCompositeNavigation,
 } from '../../hooks';
 import { CELL_WIDTH } from '../TableSelectionCell';
+import { TableProps } from '../Table/Table.types';
 
 /**
  * Create the state required to render DataGrid.
@@ -117,7 +118,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       ...props,
       onKeyDown,
       ...(resizableColumns ? tableState.columnSizing_unstable.getTableProps(props) : {}),
-    },
+    } as TableProps,
     useMergedRefs(ref, tableState.tableRef, innerRef),
   );
 

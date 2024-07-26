@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * ToolbarToggleButton component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> = React.forwardRef((props, ref) => {
   const state = useToolbarToggleButton_unstable(props, ref);
 
@@ -17,6 +19,7 @@ export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps> 
   useCustomStyleHook_unstable('useToolbarToggleButtonStyles_unstable')(state);
 
   return renderToggleButton_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<ToolbarToggleButtonProps>;
 
 ToolbarToggleButton.displayName = 'ToolbarToggleButton';

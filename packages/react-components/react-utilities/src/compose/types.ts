@@ -3,8 +3,8 @@ import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constan
 import {
   ComponentType,
   FunctionComponent,
+  NamedExoticComponent,
   PropsWithoutChildren,
-  PropsWithoutRef,
   ReactNode,
   ReplaceNullWithUndefined,
 } from '../utils/types';
@@ -182,7 +182,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
   //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
+    WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>;
 
 /**
  * Defines the State object of a component given its slots.
@@ -220,6 +220,8 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 type ObscureEventName = 'onLostPointerCaptureCapture';
 
 /**
+ * @deprecated ref type should be inferred from the component's props.
+ *
  * Infers the element type from props that are declared using ComponentProps.
  */
 export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
@@ -229,11 +231,17 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
   : never;
 
 /**
+ * @deprecated ref type should be inferred from the component's props,
+ * use {@link React.FC} instead of this.
+ *
  * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
  *
- * Note: {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into forwardRef components, forwardRef component do not support string refs.
+ * **Note:** _This type is not compatible with React v18. {@link React.RefAttributes} introduces {@link React.LegacyRef}, which we do not support internally._
  */
-export type ForwardRefComponent<Props> = FunctionComponent<Props & React.RefAttributes<InferredElementRefType<Props>>>;
+export type ForwardRefComponent<Props> = 'ref' extends keyof Props
+  ? NamedExoticComponent<Props>
+  : // eslint-disable-next-line deprecation/deprecation
+    NamedExoticComponent<Props & React.RefAttributes<InferredElementRefType<Props>>>;
 
 /**
  * Helper type to correctly define the slot class names object.

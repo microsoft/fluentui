@@ -10,6 +10,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Define a styled AccordionItem, using the `useAccordionItem_unstable` and `useAccordionItemStyles_unstable` hooks.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const AccordionItem: ForwardRefComponent<AccordionItemProps> = React.forwardRef((props, ref) => {
   const state = useAccordionItem_unstable(props, ref);
   const contextValues = useAccordionItemContextValues_unstable(state);

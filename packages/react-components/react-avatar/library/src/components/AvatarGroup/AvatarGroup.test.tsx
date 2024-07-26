@@ -4,9 +4,10 @@ import { AvatarGroupItem } from '../AvatarGroupItem';
 import { isConformant } from '../../testing/isConformant';
 import { AvatarGroupPopover } from '../AvatarGroupPopover/AvatarGroupPopover';
 import { render, screen } from '@testing-library/react';
+import { AvatarGroupProps } from './AvatarGroup.types';
 
 describe('AvatarGroup', () => {
-  isConformant({
+  isConformant<AvatarGroupProps>({
     Component: AvatarGroup,
     displayName: 'AvatarGroup',
     disabledTests: ['make-styles-overrides-win'],

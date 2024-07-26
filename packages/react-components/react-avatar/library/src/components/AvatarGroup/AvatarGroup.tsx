@@ -11,6 +11,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * The AvatarGroup component represents a group of multiple people or entities by taking care of the arrangement
  * of individual Avatars in a spread, stack, or pie layout.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const AvatarGroup: ForwardRefComponent<AvatarGroupProps> = React.forwardRef((props, ref) => {
   const state = useAvatarGroup_unstable(props, ref);
   const contextValues = useAvatarGroupContextValues(state);

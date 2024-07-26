@@ -1,5 +1,5 @@
 import { DrawerProps, DrawerSlots, DrawerState } from '@fluentui/react-drawer';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, DistributiveOmit } from '@fluentui/react-utilities';
 import { NavProps } from '../Nav/Nav.types';
 import { NavContextValue } from '../NavContext.types';
 
@@ -11,7 +11,7 @@ export type NavDrawerSlots = DrawerSlots;
 /**
  * NavDrawer Props
  */
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DistributiveOmit<DrawerProps, 'ref'> & NavProps;
 
 /**
  * State used in rendering NavDrawer

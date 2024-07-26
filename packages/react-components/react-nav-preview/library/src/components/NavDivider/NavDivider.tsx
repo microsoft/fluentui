@@ -9,6 +9,8 @@ import type { NavDividerProps } from './NavDivider.types';
 /**
  * NavDivider component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavDivider: ForwardRefComponent<NavDividerProps> = React.forwardRef((props, ref) => {
   const state = useNavDivider_unstable(props, ref);
 

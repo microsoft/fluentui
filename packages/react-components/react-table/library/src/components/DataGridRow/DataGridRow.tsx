@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * DataGridRow component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
   const state = useDataGridRow_unstable(props, ref);
@@ -18,6 +20,7 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   useCustomStyleHook_unstable('useDataGridRowStyles_unstable')(state);
 
   return renderDataGridRow_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
 
 DataGridRow.displayName = 'DataGridRow';

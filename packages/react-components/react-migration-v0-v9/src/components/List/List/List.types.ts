@@ -1,5 +1,12 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot, SelectionMode, SelectionItemId } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  Slot,
+  SelectionMode,
+  SelectionItemId,
+  DistributivePick,
+} from '@fluentui/react-utilities';
 import type { ListSelectionState } from '../hooks/types';
 
 type ListLayout = 'horizontal' | 'vertical' | 'grid';
@@ -86,4 +93,4 @@ export type ListContextValues = {
 /**
  * State used in rendering List
  */
-export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'layout'>> & ListContextValue;
+export type ListState = ComponentState<ListSlots> & Required<DistributivePick<ListProps, 'layout'>> & ListContextValue;

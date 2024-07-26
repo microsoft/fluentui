@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * TableCellActions component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TableCellActions: ForwardRefComponent<TableCellActionsProps> = React.forwardRef((props, ref) => {
   const state = useTableCellActions_unstable(props, ref);
 

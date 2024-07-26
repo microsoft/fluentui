@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The `DialogContent` is a container where the content of the dialog is rendered.
  * Apart from styling, this component does not have other behavior.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DialogContent: ForwardRefComponent<DialogContentProps> = React.forwardRef((props, ref) => {
   const state = useDialogContent_unstable(props, ref);
 

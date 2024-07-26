@@ -9,6 +9,8 @@ import type { NavSubItemGroupProps } from './NavSubItemGroup.types';
 /**
  * NavSubItemGroup component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavSubItemGroup: ForwardRefComponent<NavSubItemGroupProps> = React.forwardRef((props, ref) => {
   const state = useNavSubItemGroup_unstable(props, ref);
 

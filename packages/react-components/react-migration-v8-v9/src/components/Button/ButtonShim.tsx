@@ -11,7 +11,6 @@ import { CompoundButtonShim } from './CompoundButtonShim';
 export const ButtonShim: React.ForwardRefExoticComponent<IBaseButtonProps & React.RefAttributes<HTMLButtonElement>> =
   React.forwardRef((props, _ref) => {
     const shimProps = shimButtonProps(props);
-
     if (props.toggle) {
       return <ToggleButtonShim {...props}>{props.children}</ToggleButtonShim>;
     }
@@ -19,5 +18,5 @@ export const ButtonShim: React.ForwardRefExoticComponent<IBaseButtonProps & Reac
       return <CompoundButtonShim {...props} />;
     }
 
-    return <Button {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+    return <Button {...(props as React.RefAttributes<HTMLButtonElement & HTMLAnchorElement>)} {...shimProps} />;
   });

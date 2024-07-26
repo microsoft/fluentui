@@ -9,6 +9,8 @@ import type { CarouselSliderProps } from './CarouselSlider.types';
 /**
  * CarouselSlider component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps> = React.forwardRef((props, ref) => {
   const state = useCarouselSlider_unstable(props, ref);
 

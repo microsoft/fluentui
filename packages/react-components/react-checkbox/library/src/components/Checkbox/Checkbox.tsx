@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * Checkboxes give people a way to select one or more items from a group,
  * or switch between two mutually exclusive options (checked or unchecked).
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Checkbox: ForwardRefComponent<CheckboxProps> = React.forwardRef((props, ref) => {
   const state = useCheckbox_unstable(props, ref);
 

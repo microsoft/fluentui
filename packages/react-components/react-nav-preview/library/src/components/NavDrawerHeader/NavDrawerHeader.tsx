@@ -9,6 +9,8 @@ import type { NavDrawerHeaderProps } from './NavDrawerHeader.types';
 /**
  * NavDrawerHeader component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavDrawerHeader: ForwardRefComponent<NavDrawerHeaderProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerHeader_unstable(props, ref);
 

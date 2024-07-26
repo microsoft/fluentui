@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * BreadcrumbItem component is a wrapper for BreadcrumbLink and BreadcrumbButton.
  * It can be used as a non-interactive item.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const BreadcrumbItem: ForwardRefComponent<BreadcrumbItemProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumbItem_unstable(props, ref);
 

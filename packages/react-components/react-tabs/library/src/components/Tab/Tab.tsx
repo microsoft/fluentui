@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * A tab provides a selectable item in a tab list.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Tab: ForwardRefComponent<TabProps> = React.forwardRef((props, ref) => {
   const state = useTab_unstable(props, ref);
 

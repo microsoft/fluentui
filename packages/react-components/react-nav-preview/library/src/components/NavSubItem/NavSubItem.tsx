@@ -9,6 +9,8 @@ import type { NavSubItemProps } from './NavSubItem.types';
 /**
  * NavSubItem component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavSubItem: ForwardRefComponent<NavSubItemProps> = React.forwardRef((props, ref) => {
   const state = useNavSubItem_unstable(props, ref);
 
@@ -17,6 +19,9 @@ export const NavSubItem: ForwardRefComponent<NavSubItemProps> = React.forwardRef
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavSubItemStyles_unstable')(state);
   return renderNavSubItem_unstable(state);
-});
+  //FIXME: migrate to fc to remove this assertion
+  // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
+}) as ForwardRefComponent<NavSubItemProps>;
 
 NavSubItem.displayName = 'NavSubItem';

@@ -11,6 +11,8 @@ import { useTagGroupContextValues_unstable } from './useTagGroupContextValues';
  * TagGroup component - a container for multiple tags.
  * Provides context to size or dismiss children tags.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagGroup_unstable(props, ref);
 

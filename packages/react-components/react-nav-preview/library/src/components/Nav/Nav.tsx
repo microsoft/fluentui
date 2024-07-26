@@ -9,6 +9,8 @@ import type { NavProps } from './Nav.types';
 /**
  * Nav - A component that provides up to two levels of nesting for navigation.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Nav: ForwardRefComponent<NavProps> = React.forwardRef((props, ref) => {
   const state = useNav_unstable(props, ref);
 

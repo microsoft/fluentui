@@ -1,4 +1,4 @@
-import { Button, ButtonProps, mergeClasses } from '@fluentui/react-components';
+import { Button, ButtonProps, mergeClasses, ForwardRefComponent } from '@fluentui/react-components';
 import * as React from 'react';
 import { useAttachmentActionStyles } from './AttachmentAction.styles';
 
@@ -6,7 +6,9 @@ export type AttachmentActionProps = ButtonProps;
 
 export const attachmentActionClassName = 'fui-AttachmentAction';
 
-export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentActionProps>((props, ref) => {
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
+export const AttachmentAction: ForwardRefComponent<AttachmentActionProps> = React.forwardRef((props, ref) => {
   const { className, disabled, disabledFocusable, children, onClick, onKeyUp, onKeyDown, ...rest } = props;
   const classes = useAttachmentActionStyles();
 
@@ -59,6 +61,9 @@ export const AttachmentAction = React.forwardRef<HTMLButtonElement, AttachmentAc
       {children}
     </Button>
   );
-});
+  //FIXME: migrate to fc to remove this assertion
+  // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
+}) as ForwardRefComponent<AttachmentActionProps>;
 
 AttachmentAction.displayName = 'AttachmentAction';

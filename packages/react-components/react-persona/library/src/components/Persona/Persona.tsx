@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * A Persona is a visual representation of a person or status that showcases an Avatar, PresenceBadge,
  * or an Avatar with a PresenceBadge.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Persona: ForwardRefComponent<PersonaProps> = React.forwardRef((props, ref) => {
   const state = usePersona_unstable(props, ref);
 

@@ -1,7 +1,7 @@
 import { NavItemValue } from '../NavContext.types';
 
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributivePick, Slot } from '@fluentui/react-utilities';
 import { NavSize } from '../Nav/Nav.types';
 
 export type NavSubItemSlots = {
@@ -23,7 +23,7 @@ export type NavSubItemProps = ComponentProps<NavSubItemSlots> & {
  * State used in rendering NavSubItem
  */
 export type NavSubItemState = ComponentState<NavSubItemSlots> &
-  Pick<NavSubItemProps, 'value'> & {
+  DistributivePick<NavSubItemProps, 'value'> & {
     /**
      * If this NavSubItem is selected
      */

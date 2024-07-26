@@ -6,6 +6,8 @@ import { renderMenuItemSwitch_unstable } from './renderMenuItemSwitch';
 import { useMenuItemSwitchStyles_unstable } from './useMenuItemSwitchStyles.styles';
 import type { MenuItemSwitchProps } from './MenuItemSwitch.types';
 
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MenuItemSwitch: ForwardRefComponent<MenuItemSwitchProps> = React.forwardRef((props, ref) => {
   const state = useMenuItemSwitch_unstable(props, ref);
 

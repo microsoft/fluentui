@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Option component: a styled child option of a Combobox
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Option: ForwardRefComponent<OptionProps> = React.forwardRef((props, ref) => {
   const state = useOption_unstable(props, ref);
 

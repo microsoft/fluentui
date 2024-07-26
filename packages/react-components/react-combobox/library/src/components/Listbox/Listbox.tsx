@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Listbox component: a standalone selection control, or the popup in a Combobox
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Listbox: ForwardRefComponent<ListboxProps> = React.forwardRef((props, ref) => {
   const state = useListbox_unstable(props, ref);
   const contextValues = useListboxContextValues(state);

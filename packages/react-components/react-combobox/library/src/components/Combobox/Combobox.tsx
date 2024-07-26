@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Combobox component: a selection control that allows users to choose from a set of possible options
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Combobox: ForwardRefComponent<ComboboxProps> = React.forwardRef((props, ref) => {
   const state = useCombobox_unstable(props, ref);
   const contextValues = useComboboxContextValues(state);

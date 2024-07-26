@@ -12,6 +12,8 @@ import type { DrawerProps } from './Drawer.types';
 /**
  * Drawer contains supplementary content and are used for complex creation, edit, or management experiences.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Drawer: ForwardRefComponent<DrawerProps> = React.forwardRef((props, ref) => {
   const state = useDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();

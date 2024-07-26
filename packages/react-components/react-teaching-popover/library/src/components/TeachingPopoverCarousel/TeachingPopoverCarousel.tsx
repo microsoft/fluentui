@@ -14,6 +14,8 @@ import { useTeachingPopoverCarouselContextValues_unstable } from './useTeachingP
  *
  * TeachingPopoverCarousel injects context providers that are required for TeachingPopoverCarouselCard display and navigation functionality
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarousel: ForwardRefComponent<TeachingPopoverCarouselProps> = React.forwardRef(
   (props, ref) => {
     const state = useTeachingPopoverCarousel_unstable(props, ref);

@@ -11,6 +11,8 @@ import { useNavCategoryItemContextValues_unstable } from '../useNavCategoryItemC
  * A Nav Category Item provides provides a clickable accordion like header that exposes
  * a list of NavSubItems to take users to a new destination.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavCategoryItem: ForwardRefComponent<NavCategoryItemProps> = React.forwardRef((props, ref) => {
   const state = useNavCategoryItem_unstable(props, ref);
   const contextValues = useNavCategoryItemContextValues_unstable(state);

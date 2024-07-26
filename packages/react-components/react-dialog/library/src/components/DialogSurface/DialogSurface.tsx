@@ -11,6 +11,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * DialogSurface component represents the visual part of a `Dialog` as a whole,
  * it contains everything that should be visible.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DialogSurface: ForwardRefComponent<DialogSurfaceProps> = React.forwardRef((props, ref) => {
   const state = useDialogSurface_unstable(props, ref);
   const contextValues = useDialogSurfaceContextValues_unstable(state);

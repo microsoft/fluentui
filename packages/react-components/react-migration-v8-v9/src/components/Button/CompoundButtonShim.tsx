@@ -23,5 +23,5 @@ export const CompoundButtonShim: React.ForwardRefExoticComponent<
     secondaryContent: props.secondaryText || props.onRenderDescription?.(props),
   };
 
-  return <CompoundButton {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+  return <CompoundButton {...(props as React.RefAttributes<HTMLButtonElement & HTMLAnchorElement>)} {...shimProps} />;
 });

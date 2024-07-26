@@ -11,6 +11,8 @@ import { useTagAvatarContextValues_unstable } from '../../utils';
  * Tag component -  a visual representation of an attribute.
  * Provides visual attributes such as media, icon, primary and secondary text, as well as the ability to attach an action (by default it is dismiss)
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Tag: ForwardRefComponent<TagProps> = React.forwardRef((props, ref) => {
   const state = useTag_unstable(props, ref);
 

@@ -11,6 +11,8 @@ import { renderTeachingPopoverSurface_unstable } from './renderTeachingPopoverSu
  *
  * TeachingPopoverSurface is a direct extension of PopoverSurface, with it's own styling context hooks available.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverSurface: ForwardRefComponent<TeachingPopoverSurfaceProps> = React.forwardRef(
   (props, ref) => {
     const state = useTeachingPopoverSurface_unstable(props, ref);

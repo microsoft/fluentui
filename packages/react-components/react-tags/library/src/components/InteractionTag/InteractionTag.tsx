@@ -11,6 +11,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * InteractionTag component - a visual representation of an attribute with primary and secondary actions.
  * Can have `InteractionTagPrimary` and `InteractionTagSecondary` components as its children.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.forwardRef((props, ref) => {
   const state = useInteractionTag_unstable(props, ref);
 

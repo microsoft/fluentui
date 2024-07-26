@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * SearchBox component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const SearchBox: ForwardRefComponent<SearchBoxProps> = React.forwardRef((props, ref) => {
   const state = useSearchBox_unstable(props, ref);
 

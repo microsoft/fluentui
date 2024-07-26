@@ -1,5 +1,5 @@
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributivePick, Slot } from '@fluentui/react-utilities';
 
 export type ButtonSlots = {
   /**
@@ -70,7 +70,9 @@ export type ButtonProps = ComponentProps<ButtonSlots> & {
 };
 
 export type ButtonState = ComponentState<ButtonSlots> &
-  Required<Pick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>> & {
+  Required<
+    DistributivePick<ButtonProps, 'appearance' | 'disabledFocusable' | 'disabled' | 'iconPosition' | 'shape' | 'size'>
+  > & {
     /**
      * A button can contain only an icon.
      *

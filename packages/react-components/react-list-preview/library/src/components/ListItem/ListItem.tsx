@@ -6,6 +6,8 @@ import { renderListItem_unstable } from './renderListItem';
 import { useListItemStyles_unstable } from './useListItemStyles.styles';
 import type { ListItemProps } from './ListItem.types';
 
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ListItem: ForwardRefComponent<ListItemProps> = React.forwardRef<HTMLLIElement | HTMLDivElement>(
   (props, ref) => {
     const state = useListItem_unstable(props, ref);

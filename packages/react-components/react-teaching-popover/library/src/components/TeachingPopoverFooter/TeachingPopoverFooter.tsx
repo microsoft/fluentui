@@ -14,6 +14,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  *
  * Users must provide the localized text for each button within the footer via slots.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverFooter: ForwardRefComponent<TeachingPopoverFooterProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverFooter_unstable(props, ref);
 

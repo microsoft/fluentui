@@ -8,6 +8,8 @@ import type { RatingItemProps } from './RatingItem.types';
 /**
  * RatingItem is an item that will be used to set or display a rating value.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const RatingItem: ForwardRefComponent<RatingItemProps> = React.forwardRef((props, ref) => {
   const state = useRatingItem_unstable(props, ref);
 

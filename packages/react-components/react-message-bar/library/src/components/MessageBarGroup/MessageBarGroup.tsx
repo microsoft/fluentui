@@ -9,6 +9,8 @@ import type { MessageBarGroupProps } from './MessageBarGroup.types';
 /**
  * MessageBarGroup component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarGroup_unstable(props, ref);
 

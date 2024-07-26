@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Component to render Button actions in a Card component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CardFooter: ForwardRefComponent<CardFooterProps> = React.forwardRef((props, ref) => {
   const state = useCardFooter_unstable(props, ref);
 
