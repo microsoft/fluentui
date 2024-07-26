@@ -3,6 +3,10 @@ import { DatePicker, IDatePickerStrings, defaultDatePickerStrings } from '@fluen
 import { addMonths, addYears } from '@fluentui/date-time-utilities';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
+export default {
+  title: 'Components/DatePicker',
+};
+
 const today: Date = new Date(Date.now());
 const minDate: Date = addMonths(today, -1);
 const maxDate: Date = addYears(today, 1);

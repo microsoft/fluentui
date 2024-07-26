@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useTheme, PartialTheme, Theme, ThemeContext, ThemeProvider } from '@fluentui/react/lib/Theme';
 
 export default {
-  title: 'ThemeProvider',
+  title: 'Components/ThemeProvider',
 };
 
 const lightTheme: PartialTheme = {

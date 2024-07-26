@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { ActivityItem, Icon, Link, mergeStyleSets } from '@fluentui/react';
 
+export default {
+  title: 'Components/ActivityItem',
+};
+
 const classNames = mergeStyleSets({
   exampleRoot: {
     marginTop: '20px',
