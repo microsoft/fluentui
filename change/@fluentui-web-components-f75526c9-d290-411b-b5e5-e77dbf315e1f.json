@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Use lib replacement to avoid delivering web types overrides",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
