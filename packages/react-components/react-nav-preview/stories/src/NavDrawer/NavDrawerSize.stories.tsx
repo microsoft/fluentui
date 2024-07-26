@@ -117,7 +117,6 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={appItemIcon} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
-          <NavSectionHeader>Home</NavSectionHeader>
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
