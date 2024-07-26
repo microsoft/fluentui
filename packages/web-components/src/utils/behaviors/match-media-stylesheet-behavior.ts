@@ -78,11 +78,6 @@ export abstract class MatchMediaBehavior implements HostBehavior {
  */
 export class MatchMediaStyleSheetBehavior extends MatchMediaBehavior {
   /**
-   * The media query that the behavior operates on.
-   */
-  public readonly query!: MediaQueryList;
-
-  /**
    * The styles object to be managed by the behavior.
    */
   public readonly styles: ElementStyles;
