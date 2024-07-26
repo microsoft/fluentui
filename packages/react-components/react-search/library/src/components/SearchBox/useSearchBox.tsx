@@ -90,7 +90,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
         elementType: 'span',
       }),
       contentAfter: slot.optional(contentAfter, {
-        renderByDefault: focused || !!contentAfter,
+        renderByDefault: true,
         elementType: 'span',
       }),
       ...inputProps,

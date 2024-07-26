@@ -77,6 +77,7 @@ const useContentAfterStyles = makeStyles({
     opacity: 0,
     height: 0,
     width: 0,
+    paddingLeft: 0,
   },
 });
 
@@ -123,13 +124,13 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   state.root.className = mergeClasses(
     searchBoxClassNames.root,
     rootStyles[size],
-    !state.contentAfter && rootStyles.unfocusedNoContentAfter,
+    !focused && rootStyles.unfocusedNoContentAfter,
     state.root.className,
   );
   state.input.className = mergeClasses(
     searchBoxClassNames.input,
     rootStyles.input,
-    !state.contentAfter && inputStyles[size],
+    !focused && inputStyles[size],
     state.input.className,
   );
 
