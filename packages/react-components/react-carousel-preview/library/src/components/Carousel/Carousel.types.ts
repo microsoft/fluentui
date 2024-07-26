@@ -52,6 +52,8 @@ export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventD
 
 export interface CarouselReinitData {
   nodes: HTMLElement[];
-  groupIndexList?: number[][];
+  groupIndexList: number[][];
   activeIndex: number;
+
+  navItemsCount: number;
 }

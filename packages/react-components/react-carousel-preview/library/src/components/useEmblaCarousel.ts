@@ -1,3 +1,4 @@
+import { useEventCallback } from '@fluentui/react-utilities';
 import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
@@ -39,15 +40,21 @@ export function useEmblaCarousel({
     };
   }, []);
 
-  const handleIndexChange = () => {
+  const handleIndexChange = useEventCallback(() => {
     const activeIndex = emblaApi.current?.selectedScrollSnap() ?? startIndex ?? 0;
+
     setActiveIndex(activeIndex);
-  };
+  });
 
   const handleReinit = () => {
+    const nodes = emblaApi.current?.slideNodes() ?? [];
+    const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [[]];
+
+    const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
     const data: CarouselReinitData = {
-      nodes: emblaApi.current?.slideNodes() ?? [],
-      groupIndexList: emblaApi.current?.internalEngine().slideRegistry ?? [[]],
+      nodes,
+      groupIndexList,
+      navItemsCount,
       activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
     };
 
@@ -95,7 +102,7 @@ export function useEmblaCarousel({
         }
       },
     };
-  }, []);
+  }, [handleIndexChange]);
 
   const api = React.useMemo(
     () => ({
