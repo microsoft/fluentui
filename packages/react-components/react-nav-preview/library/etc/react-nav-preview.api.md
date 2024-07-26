@@ -55,7 +55,6 @@ export type AppItemSlots = {
 // @public
 export type AppItemState = ComponentState<AppItemSlots> & {
     size: NavSize;
-    isIconPresent: boolean;
 };
 
 // @public
