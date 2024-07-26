@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "chore: create base class for textinput and remove style and layout specific api",
+  "comment": "fix: reference accordion item base class in accordion",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
   "dependentChangeType": "patch"

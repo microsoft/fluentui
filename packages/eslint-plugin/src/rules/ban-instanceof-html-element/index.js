@@ -13,7 +13,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban usage of instanceof HTMLElement comparison',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       invalidBinaryExpression: 'instanceof {{right}} should be avoided, use isHTMLElement instead.',
@@ -44,66 +44,66 @@ module.exports = createRule({
 
 /** @type {HTMLElementConstructorName[]} */
 const constructorNames = [
-  'HTMLElement',
-  'HTMLAnchorElement',
-  'HTMLAreaElement',
-  'HTMLAudioElement',
-  'HTMLBaseElement',
-  'HTMLBodyElement',
-  'HTMLBRElement',
-  'HTMLButtonElement',
-  'HTMLCanvasElement',
-  'HTMLDataElement',
-  'HTMLDataListElement',
-  'HTMLDetailsElement',
-  'HTMLDialogElement',
-  'HTMLDivElement',
-  'HTMLDListElement',
-  'HTMLEmbedElement',
-  'HTMLFieldSetElement',
-  'HTMLFormElement',
-  'HTMLHeadingElement',
-  'HTMLHeadElement',
-  'HTMLHRElement',
-  'HTMLHtmlElement',
-  'HTMLIFrameElement',
-  'HTMLImageElement',
-  'HTMLInputElement',
-  'HTMLModElement',
-  'HTMLLabelElement',
-  'HTMLLegendElement',
-  'HTMLLIElement',
-  'HTMLLinkElement',
-  'HTMLMapElement',
-  'HTMLMetaElement',
-  'HTMLMeterElement',
-  'HTMLObjectElement',
-  'HTMLOListElement',
-  'HTMLOptGroupElement',
-  'HTMLOptionElement',
-  'HTMLOutputElement',
-  'HTMLParagraphElement',
-  'HTMLParamElement',
-  'HTMLPreElement',
-  'HTMLProgressElement',
-  'HTMLQuoteElement',
-  'HTMLSlotElement',
-  'HTMLScriptElement',
-  'HTMLSelectElement',
-  'HTMLSourceElement',
-  'HTMLSpanElement',
-  'HTMLStyleElement',
-  'HTMLTableElement',
-  'HTMLTableColElement',
-  'HTMLTableRowElement',
-  'HTMLTableSectionElement',
-  'HTMLTemplateElement',
-  'HTMLTextAreaElement',
-  'HTMLTimeElement',
-  'HTMLTitleElement',
-  'HTMLTrackElement',
-  'HTMLUListElement',
-  'HTMLVideoElement',
+  'HTMLElement', // Base class for all HTML elements
+  'HTMLAnchorElement', // <a> elements
+  'HTMLAreaElement', // <area> elements
+  'HTMLAudioElement', // <audio> elements
+  'HTMLBaseElement', // <base> elements
+  'HTMLBodyElement', // <body> elements
+  'HTMLBRElement', // <br> elements
+  'HTMLButtonElement', // <button> elements
+  'HTMLCanvasElement', // <canvas> elements
+  'HTMLDataElement', // <data> elements
+  'HTMLDataListElement', // <datalist> elements
+  'HTMLDetailsElement', // <details> elements
+  'HTMLDialogElement', // <dialog> elements
+  'HTMLDivElement', // <div> elements
+  'HTMLDListElement', // <dl> elements
+  'HTMLEmbedElement', // <embed> elements
+  'HTMLFieldSetElement', // <fieldset> elements
+  'HTMLFormElement', // <form> elements
+  'HTMLHeadingElement', // <h1> to <h6> elements
+  'HTMLHeadElement', // <head> elements
+  'HTMLHRElement', // <hr> elements
+  'HTMLHtmlElement', // <html> elements
+  'HTMLIFrameElement', // <iframe> elements
+  'HTMLImageElement', // <img> elements
+  'HTMLInputElement', // <input> elements
+  'HTMLModElement', // <ins> and <del> elements
+  'HTMLLabelElement', // <label> elements
+  'HTMLLegendElement', // <legend> elements
+  'HTMLLIElement', // <li> elements
+  'HTMLLinkElement', // <link> elements
+  'HTMLMapElement', // <map> elements
+  'HTMLMetaElement', // <meta> elements
+  'HTMLMeterElement', // <meter> elements
+  'HTMLObjectElement', // <object> elements
+  'HTMLOListElement', // <ol> elements
+  'HTMLOptGroupElement', // <optgroup> elements
+  'HTMLOptionElement', // <option> elements
+  'HTMLOutputElement', // <output> elements
+  'HTMLParagraphElement', // <p> elements
+  'HTMLParamElement', // <param> elements
+  'HTMLPreElement', // <pre> elements
+  'HTMLProgressElement', // <progress> elements
+  'HTMLQuoteElement', // <blockquote> and <q> elements
+  'HTMLSlotElement', // <slot> elements
+  'HTMLScriptElement', // <script> elements
+  'HTMLSelectElement', // <select> elements
+  'HTMLSourceElement', // <source> elements
+  'HTMLSpanElement', // <span> elements
+  'HTMLStyleElement', // <style> elements
+  'HTMLTableElement', // <table> elements
+  'HTMLTableColElement', // <col> and <colgroup> elements
+  'HTMLTableRowElement', // <tr> elements
+  'HTMLTableSectionElement', // <thead>, <tbody>, and <tfoot> elements
+  'HTMLTemplateElement', // <template> elements
+  'HTMLTextAreaElement', // <textarea> elements
+  'HTMLTimeElement', // <time> elements
+  'HTMLTitleElement', // <title> elements
+  'HTMLTrackElement', // <track> elements
+  'HTMLUListElement', // <ul> elements
+  'HTMLVideoElement', // <video> elements];
 ];
 
 /** @type {Set<string>} */
