@@ -50,7 +50,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
   const classes = useClasses();
 
   return (
-    <div key={`card-${accentColor}`} className={classes.test} style={{ backgroundColor: accentColor }}>
+    <div className={classes.test} style={{ backgroundColor: accentColor }}>
       {children}
     </div>
   );
@@ -97,7 +97,12 @@ export const Controlled = () => {
         <code className={classes.code}>{JSON.stringify({ activeIndex })}</code>
         <div className={classes.controls}>
           {new Array(5).fill(null).map((_, index) => (
-            <Button className={classes.control} disabled={index === activeIndex} onClick={() => setActiveIndex(index)}>
+            <Button
+              key={`externalCarouselNavButton-${index}`}
+              className={classes.control}
+              disabled={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            >
               {index}
             </Button>
           ))}
