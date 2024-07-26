@@ -13,9 +13,9 @@ export const Large = (props: Partial<ToolbarProps>) => (
       borderRadius: '8px',
     }}
   >
-    <ToolbarButton aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
-    <ToolbarButton aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
-    <ToolbarButton aria-label="Reset Font Size" icon={<TextFont24Regular />} />
+    <ToolbarButton size="large" aria-label="Increase Font Size" appearance="primary" icon={<FontIncrease24Regular />} />
+    <ToolbarButton size="large" aria-label="Decrease Font Size" icon={<FontDecrease24Regular />} />
+    <ToolbarButton size="large" aria-label="Reset Font Size" icon={<TextFont24Regular />} />
   </Toolbar>
 );
 

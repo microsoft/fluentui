@@ -47,7 +47,7 @@ It serves as an override on top of `Button` limiting the possible props only to 
 
 ```typescript
 type type ToolbarButtonProps = ComponentProps<ButtonSlots> &
-  Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
+  Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
 
   /**
    * A button can have its content and borders styled for greater emphasis or to be subtle.
