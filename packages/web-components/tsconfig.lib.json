@@ -1,9 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2019",
-    "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
+    "target": "ES2022",
+    "module": "NodeNext",
     "declaration": true,
     "declarationDir": "dist/dts",
     "outDir": "dist/esm",
