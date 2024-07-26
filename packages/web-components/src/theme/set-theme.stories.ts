@@ -1,8 +1,8 @@
 import { html, type HTMLView } from '@microsoft/fast-element';
-import { teamsDarkTheme, teamsLightTheme, type Theme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
+import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
 import { renderComponent } from '../helpers.stories.js';
-import { setTheme } from './set-theme.js';
+import { setTheme, type Theme } from './set-theme.js';
 
 const themes: Record<string, Theme | null> = {
   'web-light': webLightTheme,
