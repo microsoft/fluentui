@@ -1,7 +1,7 @@
 import type { EventData } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import type { CarouselReinitData } from '../Carousel';
+import type { CarouselUpdateData } from '../Carousel';
 
 export type CarouselValueChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
@@ -24,7 +24,7 @@ export type CarouselContextValue = {
     jump?: boolean,
   ) => void;
 
-  subscribeForValues: (listener: (data: CarouselReinitData) => void) => () => void;
+  subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
 };
 
 /**

@@ -1,10 +1,10 @@
-import { useEventCallback } from '@fluentui/react-utilities';
+import { useControllableState } from '@fluentui/react-utilities';
 import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
 import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
-import { CarouselReinitData, CarouselVisibilityEventDetail } from '../Carousel';
+import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -17,22 +17,25 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
-export function useEmblaCarousel({
-  align,
-  direction,
-  loop,
-  slidesToScroll,
-  startIndex,
-  setActiveIndex,
-}: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex'> & {
-  setActiveIndex: (newValue: number) => void;
-}) {
+export function useEmblaCarousel(
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'startIndex'> & {
+    defaultActiveIndex: number | undefined;
+    activeIndex: number | undefined;
+  },
+) {
+  const { align, direction, loop, slidesToScroll, startIndex } = options;
+  const [activeIndex, setActiveIndex] = useControllableState({
+    defaultState: options.defaultActiveIndex,
+    state: options.activeIndex,
+    initialState: 0,
+  });
+
   const emblaOptions = React.useRef<EmblaOptionsType>({ align, direction, loop, slidesToScroll, startIndex });
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
-  const listeners = React.useRef<Set<(data: CarouselReinitData) => void>>(new Set());
-  const subscribeForValues = React.useCallback((listener: (data: CarouselReinitData) => void) => {
+  const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
+  const subscribeForValues = React.useCallback((listener: (data: CarouselUpdateData) => void) => {
     listeners.current.add(listener);
 
     return () => {
@@ -40,32 +43,28 @@ export function useEmblaCarousel({
     };
   }, []);
 
-  const handleIndexChange = useEventCallback(() => {
-    const activeIndex = emblaApi.current?.selectedScrollSnap() ?? startIndex ?? 0;
-
-    setActiveIndex(activeIndex);
-  });
-
-  const handleReinit = () => {
-    const nodes = emblaApi.current?.slideNodes() ?? [];
-    const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [[]];
-
-    const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
-    const data: CarouselReinitData = {
-      nodes,
-      groupIndexList,
-      navItemsCount,
-      activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
-    };
-
-    for (const listener of listeners.current) {
-      listener(data);
-    }
-  };
-
-  const ref = React.useMemo(() => {
+  const containerRef = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
+    const handleIndexChange = () => {
+      const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+
+      setActiveIndex(newIndex);
+    };
+    const handleReinit = () => {
+      const nodes = emblaApi.current?.slideNodes() ?? [];
+      const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
+      const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
+
+      const data: CarouselUpdateData = {
+        navItemsCount,
+        activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+      };
+
+      for (const listener of listeners.current) {
+        listener(data);
+      }
+    };
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
@@ -102,9 +101,9 @@ export function useEmblaCarousel({
         }
       },
     };
-  }, [handleIndexChange]);
+  }, [setActiveIndex]);
 
-  const api = React.useMemo(
+  const carouselApi = React.useMemo(
     () => ({
       scrollToIndex: (index: number, jump?: boolean) => {
         emblaApi.current?.scrollTo(index, jump);
@@ -130,5 +129,10 @@ export function useEmblaCarousel({
     });
   }, [align, direction, loop, slidesToScroll, startIndex]);
 
-  return [ref, api, subscribeForValues] as const;
+  return {
+    activeIndex,
+    carouselApi,
+    containerRef,
+    subscribeForValues,
+  };
 }

@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
-import { CarouselReinitData } from '../Carousel/Carousel.types';
+import { CarouselUpdateData } from '../Carousel/Carousel.types';
 
 /**
  * Create the state required to render CarouselButton.
@@ -54,7 +54,7 @@ export const useCarouselButton_unstable = (
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
 
   useIsomorphicLayoutEffect(() => {
-    return subscribeForValues((data: CarouselReinitData) => {
+    return subscribeForValues((data: CarouselUpdateData) => {
       setTotalSlides(data.navItemsCount);
     });
   }, [subscribeForValues]);

@@ -1,10 +1,4 @@
-import {
-  getIntrinsicElementProps,
-  slot,
-  useControllableState,
-  useEventCallback,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 
@@ -25,29 +19,26 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   'use no memo';
 
   const { align = 'center', circular = false, onValueChange, groupSize = 'auto' } = props;
-  const [activeIndex, setActiveIndex] = useControllableState({
-    defaultState: props.defaultIndex,
-    state: props.activeIndex,
-    initialState: 0,
-  });
 
   const { dir } = useFluent();
-  const [emblaRef, emblaApi, subscribeForValues] = useEmblaCarousel({
+  const { activeIndex, carouselApi, containerRef, subscribeForValues } = useEmblaCarousel({
     align,
     direction: dir,
     loop: circular,
     slidesToScroll: groupSize,
-    startIndex: props.defaultIndex ?? 0,
-    setActiveIndex,
+
+    defaultActiveIndex: props.defaultActiveIndex,
+    activeIndex: props.activeIndex,
   });
 
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
-    emblaApi?.scrollToIndex(index, jump);
+    carouselApi.scrollToIndex(index, jump);
+
     onValueChange?.(event, { event, type: 'click', index });
   });
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
-    const nextPageIndex = emblaApi.scrollInDirection(direction);
+    const nextPageIndex = carouselApi.scrollInDirection(direction);
 
     onValueChange?.(event, { event, type: 'click', index: nextPageIndex });
   });
@@ -58,7 +49,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, emblaRef),
+        ref: useMergedRefs(ref, containerRef),
         role: 'region',
         ...props,
       }),

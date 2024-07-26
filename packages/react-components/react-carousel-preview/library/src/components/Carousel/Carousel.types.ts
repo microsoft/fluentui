@@ -12,7 +12,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * The initial page to display in uncontrolled mode.
    */
-  defaultIndex?: number;
+  defaultActiveIndex?: number;
 
   /**
    * The alignment of the carousel.
@@ -28,6 +28,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Callback to notify a page change.
    */
   onValueChange?: EventHandler<CarouselValueChangeData>;
+
   /**
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
@@ -50,10 +51,10 @@ export interface CarouselVisibilityEventDetail {
 
 export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;
 
-export interface CarouselReinitData {
-  nodes: HTMLElement[];
-  groupIndexList: number[][];
+/**
+ * @internal
+ */
+export interface CarouselUpdateData {
   activeIndex: number;
-
   navItemsCount: number;
 }
