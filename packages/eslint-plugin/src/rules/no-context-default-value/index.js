@@ -16,7 +16,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Restricts usage of default values on React context creation',
-      recommended: false,
     },
     messages: {
       invalidDefaultValue: 'Invalid default value for context declaration, default value should be undefined',

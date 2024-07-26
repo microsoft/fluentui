@@ -39,6 +39,10 @@ import { SpinnerBasicExample } from '../components/spinner.stories';
 import { DetailsListCustomColumnsExample } from '../components/DetailsListCustomColumnsExample.stories';
 import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandIcons.stories';
 
+export default {
+  title: 'Components/Themes',
+};
+
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
