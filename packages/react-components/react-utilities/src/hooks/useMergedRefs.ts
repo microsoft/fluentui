@@ -10,13 +10,24 @@ export type RefObjectFunction<T> = React.RefObject<T> & ((value: T | null) => vo
 type MutableRefObjectFunction<T> = React.MutableRefObject<T | null> & ((value: T | null) => void);
 
 /**
+ * This type is used to support both React 17 and React 18.
+ *
+ * In React 17, this is equivalent to  {@link React.Ref} | undefined,
+ * but in React 18, this is equivalent to {@link React.LegacyRef} | undefined.
+ *
+ * We have to support both types as {@link React.RefAttributes} is used in component creation that are
+ * using {@link React.forwardRef} method, which includes the majority of Fluent UI components.
+ */
+type ReactRefCompat<T> = React.RefAttributes<T>['ref'];
+
+/**
  * React hook to merge multiple React refs (either MutableRefObjects or ref callbacks) into a single ref callback that
  * updates all provided refs
  * @param refs - Refs to collectively update with one ref value.
  * @returns A function with an attached "current" prop, so that it can be treated like a RefObject.
  */
 // LegacyRef is actually not supported, but in React v18 types this is leaking directly from forwardRef component declaration
-export function useMergedRefs<T>(...refs: (React.LegacyRef<T> | undefined)[]): RefObjectFunction<T> {
+export function useMergedRefs<T>(...refs: ReactRefCompat<T>[]): RefObjectFunction<T> {
   'use no memo';
 
   const mergedCallback = React.useCallback(
