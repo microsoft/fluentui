@@ -80,6 +80,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
     transform: 'rotate(var(--fui-positioning-arrow-angle)) /* @noflip */',
 
+    padding: borderWidth,
     height: 'var(--fui-positioning-arrow-height)',
     width: 'var(--fui-positioning-arrow-height)',
 
