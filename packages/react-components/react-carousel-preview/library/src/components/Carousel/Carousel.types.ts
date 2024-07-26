@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CarouselContextValue, CarouselValueChangeData } from '../CarouselContext.types';
+import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
@@ -27,7 +27,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * Callback to notify a page change.
    */
-  onValueChange?: EventHandler<CarouselValueChangeData>;
+  onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
 
   /**
    * Circular enables the carousel to loop back around on navigation past trailing index.

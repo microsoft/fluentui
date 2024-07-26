@@ -18,7 +18,7 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', circular = false, onValueChange, groupSize = 'auto' } = props;
+  const { align = 'center', circular = false, onActiveIndexChange, groupSize = 'auto' } = props;
 
   const { dir } = useFluent();
   const { activeIndex, carouselApi, containerRef, subscribeForValues } = useEmblaCarousel({
@@ -34,13 +34,13 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
     carouselApi.scrollToIndex(index, jump);
 
-    onValueChange?.(event, { event, type: 'click', index });
+    onActiveIndexChange?.(event, { event, type: 'click', index });
   });
 
   const selectPageByDirection: CarouselContextValue['selectPageByDirection'] = useEventCallback((event, direction) => {
     const nextPageIndex = carouselApi.scrollInDirection(direction);
 
-    onValueChange?.(event, { event, type: 'click', index: nextPageIndex });
+    onActiveIndexChange?.(event, { event, type: 'click', index: nextPageIndex });
   });
 
   return {

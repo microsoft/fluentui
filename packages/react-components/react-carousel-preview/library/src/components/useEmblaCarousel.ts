@@ -128,6 +128,13 @@ export function useEmblaCarousel(
   );
 
   React.useEffect(() => {
+    const currentActiveIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
+
+    if (activeIndex !== currentActiveIndex) {
+      emblaApi.current?.scrollTo(activeIndex);
+    }
+  }, [activeIndex]);
+  React.useEffect(() => {
     emblaOptions.current = { align, direction, loop, slidesToScroll };
     emblaApi.current?.reInit({
       ...emblaOptions.current,
