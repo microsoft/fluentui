@@ -13,7 +13,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: d3Arc(),
+    arc: d3Arc().cornerRadius(3),
   };
 
   public state: {} = {};
@@ -53,7 +53,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
         <path
           id={id}
           d={arc(this.props.data)}
-          rx={100}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           fill="transparent"
@@ -88,7 +87,6 @@ export class Arc extends React.Component<IArcProps, IArcState> {
                 ? `conic-gradient(
                     from ${startAngle}rad,
                     ${this.props.color},
-                    ${this.props.color} ${endAngle/2}rad,
                     ${this.props.nextColor} ${endAngle}rad
                   )`
                 : this.props.color,
