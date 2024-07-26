@@ -193,7 +193,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <Label id={typeLableId}>Type</Label>
           <RadioGroup
             value={type}
-            onChange={(_, data) => setType(data.value as DrawerTypee)}
+            onChange={(_, data) => setType(data.value as DrawerType)}
             aria-labelledby={typeLableId}
           >
             <Radio value="overlay" label="Overlay (Default)" />
