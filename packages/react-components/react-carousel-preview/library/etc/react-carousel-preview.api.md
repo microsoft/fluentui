@@ -159,10 +159,10 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
 
 // @public
 export type CarouselProps = ComponentProps<CarouselSlots> & {
-    defaultIndex?: number;
+    defaultActiveIndex?: number;
     align?: 'center' | 'start' | 'end';
     activeIndex?: number;
-    onValueChange?: EventHandler<CarouselValueChangeData>;
+    onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
     groupSize?: number | 'auto';
 };
