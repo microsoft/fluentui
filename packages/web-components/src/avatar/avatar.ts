@@ -43,23 +43,6 @@ export class BaseAvatar extends FASTElement {
   public initials?: string | undefined;
 
   /**
-   * Size of the avatar in pixels.
-   *
-   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
-   * based on design guidelines for the Avatar control.
-   *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
-   * to override the rendered size.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: size
-   *
-   */
-  @attr({ converter: nullableNumberConverter })
-  public size?: AvatarSize | undefined;
-
-  /**
    * Optional activity indicator
    * * active: the avatar will be decorated according to activeAppearance
    * * inactive: the avatar will be reduced in size and partially transparent
@@ -156,26 +139,6 @@ export class BaseAvatar extends FASTElement {
   }
 
   /**
-   * Generates and sets the initials for the template
-   * @internal
-   */
-  public generateInitials(): string | void {
-    if (!this.name && !this.initials) {
-      return;
-    }
-
-    // size can be undefined since we default it in CSS only
-    const size = this.size ?? 32;
-
-    return (
-      this.initials ??
-      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
-        firstInitialOnly: size <= 16,
-      })
-    );
-  }
-
-  /**
    * An array of the available Avatar named colors
    */
   public static colors = Object.values(AvatarNamedColor);
@@ -207,6 +170,43 @@ export class Avatar extends BaseAvatar {
    */
   @attr
   public appearance?: AvatarAppearance | undefined;
+
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
+   * based on design guidelines for the Avatar control.
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * to override the rendered size.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: size
+   *
+   */
+  @attr({ converter: nullableNumberConverter })
+  public size?: AvatarSize | undefined;
+
+  /**
+   * Generates and sets the initials for the template
+   * @internal
+   */
+  public generateInitials(): string | void {
+    if (!this.name && !this.initials) {
+      return;
+    }
+
+    // size can be undefined since we default it in CSS only
+    const size = this.size ?? 32;
+
+    return (
+      this.initials ??
+      getInitials(this.name, window.getComputedStyle(this as unknown as HTMLElement).direction === 'rtl', {
+        firstInitialOnly: size <= 16,
+      })
+    );
+  }
 }
 
 // copied from React avatar

@@ -191,7 +191,10 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 // @public
 export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
+    // @internal
+    generateInitials(): string | void;
     shape?: AvatarShape | undefined;
+    size?: AvatarSize | undefined;
 }
 
 // Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -456,12 +459,9 @@ export class BaseAvatar extends FASTElement {
     // @internal
     generateColor(): void;
     // @internal
-    generateInitials(): string | void;
-    // @internal
     handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
-    size?: AvatarSize | undefined;
 }
 
 // @public
