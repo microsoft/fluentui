@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bug fix for 32063",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "vmoka@hawk.iit.edu",
+  "dependentChangeType": "patch"
+}
