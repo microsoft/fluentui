@@ -10,6 +10,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
@@ -78,6 +79,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 5000,
         legend: 'Oranges',
         color: getColorFromToken(DataVizPalette.color1),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '10%',
       },
@@ -86,6 +88,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 50000,
         legend: 'Dogs',
         color: getColorFromToken(DataVizPalette.color2),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '20%',
       },
@@ -94,15 +97,16 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 30000,
         legend: 'Apples',
         color: getColorFromToken(DataVizPalette.color3),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '37%',
       },
-
       {
         x: 40000,
         y: 13000,
         legend: 'Bananas',
         color: getColorFromToken(DataVizPalette.color4),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '88%',
       },
