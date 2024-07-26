@@ -1,24 +1,19 @@
+import type { EventData } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { EventData } from '@fluentui/react-utilities';
-import { CarouselReinitData } from '../Carousel';
 
-export type CarouselStore = {
-  setActiveIndex: (newValue: number) => void;
-  subscribe: (listener: () => void) => () => void;
-  getSnapshot: () => {
-    activeIndex: number;
-  };
-};
+import type { CarouselReinitData } from '../Carousel';
 
 export type CarouselValueChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
-   * The value to be set after event has occurred.
+   * The index to be set after event has occurred.
    */
-  value?: number;
+  index: number;
 };
 
 export type CarouselContextValue = {
-  store: CarouselStore;
+  activeIndex: number;
+  circular: boolean;
+
   selectPageByDirection: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     direction: 'next' | 'prev',
@@ -28,8 +23,8 @@ export type CarouselContextValue = {
     value: number,
     jump?: boolean,
   ) => void;
+
   subscribeForValues: (listener: (data: CarouselReinitData) => void) => () => void;
-  circular: boolean;
 };
 
 /**

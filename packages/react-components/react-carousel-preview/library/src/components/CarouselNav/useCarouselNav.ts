@@ -2,7 +2,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { useCarouselContext_unstable } from '../CarouselContext';
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 
 /**
@@ -24,7 +24,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
   });
 
   const [totalSlides, setTotalSlides] = React.useState(0);
-  const { subscribeForValues } = useCarouselContext_unstable();
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {

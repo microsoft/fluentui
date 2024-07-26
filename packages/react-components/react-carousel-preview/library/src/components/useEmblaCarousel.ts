@@ -116,7 +116,7 @@ export function useEmblaCarousel({
           emblaApi.current?.scrollNext();
         }
 
-        return emblaApi.current?.selectedScrollSnap();
+        return emblaApi.current?.selectedScrollSnap() ?? 0;
       },
     }),
     [],

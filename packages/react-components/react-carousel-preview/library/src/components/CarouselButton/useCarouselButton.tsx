@@ -1,12 +1,11 @@
-import * as React from 'react';
-import { mergeCallbacks, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
+import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
-import { useCarouselContext_unstable } from '../CarouselContext';
-import { useCarouselStore_unstable } from '../useCarouselStore';
-import { slot } from '@fluentui/react-utilities';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { ARIAButtonElement } from '@fluentui/react-aria';
+import { mergeCallbacks, useEventCallback, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
 import { CarouselReinitData } from '../Carousel/Carousel.types';
 
 /**
@@ -26,31 +25,21 @@ export const useCarouselButton_unstable = (
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
-  const { subscribeForValues } = useCarouselContext_unstable();
 
-  useIsomorphicLayoutEffect(() => {
-    subscribeForValues((data: CarouselReinitData) => {
-      // Check group lists first
-      if (data.groupIndexList && data.groupIndexList.length > 0) {
-        setTotalSlides(data.groupIndexList.length);
-        return;
-      }
-      // Else number of nodes
-      setTotalSlides(data.nodes.length);
-    });
-  }, []);
+  const circular = useCarouselContext(ctx => ctx.circular);
+  const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
-  const { circular, selectPageByDirection } = useCarouselContext_unstable();
-  const isTrailing = useCarouselStore_unstable(snapshot => {
-    if (snapshot.activeIndex === undefined || circular) {
+  const isTrailing = useCarouselContext(ctx => {
+    if (ctx.activeIndex === undefined || circular) {
       return false;
     }
 
     if (navType === 'prev') {
-      return snapshot.activeIndex === 0;
+      return ctx.activeIndex === 0;
     }
 
-    return snapshot.activeIndex === totalSlides - 1;
+    return ctx.activeIndex === totalSlides - 1;
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -62,6 +51,12 @@ export const useCarouselButton_unstable = (
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues((data: CarouselReinitData) => {
+      setTotalSlides(data.navItemsCount);
+    });
+  }, [subscribeForValues]);
 
   return {
     navType,

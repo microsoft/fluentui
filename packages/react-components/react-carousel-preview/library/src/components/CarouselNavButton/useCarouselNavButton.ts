@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
-import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
-import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
-import { useCarouselContext_unstable } from '../CarouselContext';
 import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { useCarouselStore_unstable } from '../useCarouselStore';
+import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
+import type { CarouselNavButtonProps, CarouselNavButtonState } from './CarouselNavButton.types';
 
 /**
  * Create the state required to render CarouselNavButton.
@@ -23,9 +23,8 @@ export const useCarouselNavButton_unstable = (
   const { onClick, as = 'button' } = props;
 
   const index = useCarouselNavContext();
-  const { selectPageByIndex } = useCarouselContext_unstable();
-
-  const selected = useCarouselStore_unstable(snapshot => snapshot.activeIndex === index);
+  const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
+  const selected = useCarouselContext(ctx => ctx.activeIndex === index);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
