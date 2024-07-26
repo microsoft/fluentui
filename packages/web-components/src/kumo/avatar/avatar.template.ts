@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import type { BaseAvatar } from '../../avatar/avatar.js';
+import type { KumoAvatar } from './avatar.js';
 
 const defaultIconTemplate = html`<svg
   width="1em"
@@ -19,11 +19,11 @@ const defaultIconTemplate = html`<svg
  * The template for the Avatar component.
  * @public
  */
-export function avatarTemplate<T extends BaseAvatar>(): ElementViewTemplate<T> {
+export function avatarTemplate<T extends KumoAvatar>(): ElementViewTemplate<T> {
   return html<T>`
     <slot>${x => (x.name || x.initials ? x.generateInitials() : defaultIconTemplate)}</slot>
     <slot name="badge"></slot>
   `;
 }
 
-export const template: ElementViewTemplate<BaseAvatar> = avatarTemplate();
+export const template: ElementViewTemplate<KumoAvatar> = avatarTemplate();

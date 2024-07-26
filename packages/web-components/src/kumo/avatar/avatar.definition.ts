@@ -1,4 +1,4 @@
-import { BaseAvatar } from '../../avatar/avatar.js';
+import { KumoAvatar } from './avatar.js';
 import { styles } from './avatar.styles.js';
 import { template } from './avatar.template.js';
 
@@ -9,7 +9,7 @@ import { template } from './avatar.template.js';
  * @remarks
  * HTML Element: \<fluent-badge\>
  */
-export const definition = BaseAvatar.compose({
+export const definition = KumoAvatar.compose({
   name: `kumo-avatar`,
   template,
   styles,
