@@ -22,6 +22,7 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "generate-api": "just-scripts generate-api",
+    "lint": "just-scripts lint",
     "start": "yarn storybook",
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
