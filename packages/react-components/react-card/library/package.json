@@ -41,7 +41,7 @@
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/react-tabster": "^9.22.3",
-    "@fluentui/react-text": "^9.4.21",
+    "@fluentui/react-text": "^9.4.23",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.13",
     "@griffel/react": "^1.5.22",

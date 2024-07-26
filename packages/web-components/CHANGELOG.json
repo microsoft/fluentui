@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 26 Jul 2024 04:08:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.50",
+      "version": "3.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da667ca385f85c30de192de376062ed0333f810c",
+            "comment": "[chore]: create base class for accordion item and remove style and layout specific api"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/no_unsafe_declaration-merging reports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Jul 2024 04:08:33 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.49",
       "version": "3.0.0-beta.49",
