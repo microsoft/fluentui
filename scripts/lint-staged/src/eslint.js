@@ -1,15 +1,15 @@
 // @ts-check
 
-// eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
-const child_process = require('child_process');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+const { exec: childProcessExec } = require('node:child_process');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 const { promisify } = require('util');
 
 const { findConfig } = require('@fluentui/scripts-utils');
 const { default: PQueue } = require('p-queue');
-const exec = promisify(child_process.exec);
+
+const exec = promisify(childProcessExec);
 
 /**
  * @see file://./eslint-for-package.js
