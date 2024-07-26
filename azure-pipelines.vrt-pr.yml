@@ -33,17 +33,6 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
-      - bash: |
-          set -exuo pipefail
-          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
-        displayName: VR App - Create Policy
-        env:
-          VR_APP_API_URL: $(VR_APP_API_URL)
-          TENANT_ID: $(TenantId)
-          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
         env:
@@ -83,17 +72,6 @@ jobs:
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: |
-          set -exuo pipefail
-          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
-        displayName: VR App - Create Policy
-        env:
-          VR_APP_API_URL: $(VR_APP_API_URL)
-          TENANT_ID: $(TenantId)
-          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
         env:
@@ -131,17 +109,6 @@ jobs:
           fluentVersion: v8
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
-
-      - bash: |
-          set -exuo pipefail
-          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
-        displayName: VR App - Create Policy
-        env:
-          VR_APP_API_URL: $(VR_APP_API_URL)
-          TENANT_ID: $(TenantId)
-          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
@@ -181,17 +148,6 @@ jobs:
           fluentVersion: v0
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
-
-      - bash: |
-          set -exuo pipefail
-          yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
-        displayName: VR App - Create Policy
-        env:
-          VR_APP_API_URL: $(VR_APP_API_URL)
-          TENANT_ID: $(TenantId)
-          PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
-          SERVICE_CONNECTION_ID: $(ServiceConnectionId)
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
 
       - task: AzureCLI@2
         displayName: 'Run fluentui-screenshotdiff'
