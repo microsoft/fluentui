@@ -5731,11 +5731,6 @@
     "@types/expect" "^1.20.4"
     "@types/node" "*"
 
-"@types/web@^0.0.142":
-  version "0.0.142"
-  resolved "https://registry.yarnpkg.com/@types/web/-/web-0.0.142.tgz#62eff3c6b24e2429d084a5a9d4061021cfe7c648"
-  integrity sha512-QWDvMW+P3sdq8rhiw3dNyBR64O5adSY80gBjRd2xI3BADGsAFpAglblWucsGUjKVKyPm4EbYZkvFs7BRxPsBOg==
-
 "@types/webpack-bundle-analyzer@4.7.0":
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-bundle-analyzer/-/webpack-bundle-analyzer-4.7.0.tgz#fe199e724ce3d38705f6f1ba4d62429b7c360541"
@@ -5970,6 +5965,11 @@
   dependencies:
     "@typescript-eslint/types" "7.13.1"
     eslint-visitor-keys "^3.4.3"
+
+"@typescript/lib-dom@npm:@types/web@^0.0.142":
+  version "0.0.142"
+  resolved "https://registry.yarnpkg.com/@types/web/-/web-0.0.142.tgz#62eff3c6b24e2429d084a5a9d4061021cfe7c648"
+  integrity sha512-QWDvMW+P3sdq8rhiw3dNyBR64O5adSY80gBjRd2xI3BADGsAFpAglblWucsGUjKVKyPm4EbYZkvFs7BRxPsBOg==
 
 "@uifabric/set-version@^7.0.23":
   version "7.0.23"
