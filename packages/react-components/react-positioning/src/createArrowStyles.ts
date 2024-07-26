@@ -78,7 +78,10 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     backgroundClip: 'content-box',
 
     borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
-    transform: 'rotate(var(--fui-positioning-angle)) /* @noflip */',
+    transform: 'rotate(var(--fui-positioning-arrow-angle)) /* @noflip */',
+
+    height: 'var(--fui-positioning-arrow-height)',
+    width: 'var(--fui-positioning-arrow-height)',
 
     '::before': {
       content: '""',
@@ -97,19 +100,19 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
     ':global([data-popper-placement^="top"])': {
       bottom: 'var(--fui-positioning-arrow-offset)',
-      '--fui-positioning-angle': '-45deg',
+      '--fui-positioning-arrow-angle': '-45deg',
     },
     ':global([data-popper-placement^="right"])': {
       left: `var(--fui-positioning-arrow-offset) /* @noflip */`,
-      '--fui-positioning-angle': '45deg',
+      '--fui-positioning-arrow-angle': '45deg',
     },
     ':global([data-popper-placement^="bottom"])': {
       top: 'var(--fui-positioning-arrow-offset)',
-      '--fui-positioning-angle': '135deg',
+      '--fui-positioning-arrow-angle': '135deg',
     },
     ':global([data-popper-placement^="left"])': {
       right: `var(--fui-positioning-arrow-offset) /* @noflip */`,
-      '--fui-positioning-angle': '225deg',
+      '--fui-positioning-arrow-angle': '225deg',
     },
   };
 }
@@ -127,8 +130,7 @@ export function createArrowHeightStyles(arrowHeight: number): GriffelStyle {
   const edgeLength = 1.414 * arrowHeight;
 
   return {
-    width: `${edgeLength}px`,
-    height: `${edgeLength}px`,
+    '--fui-positioning-arrow-height': `${edgeLength}px`,
     '--fui-positioning-arrow-offset': `${(edgeLength / 2) * -1}px`,
   };
 }
