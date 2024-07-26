@@ -25,7 +25,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
   const classes = useClasses();
 
   return (
-    <div className={classes.test} style={{ backgroundColor: accentColor }}>
+    <div key={`card-${accentColor}`} className={classes.test} style={{ backgroundColor: accentColor }}>
       {children}
     </div>
   );

@@ -28,7 +28,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
   const classes = useClasses();
 
   return (
-    <div className={classes.test} style={{ backgroundColor: accentColor }}>
+    <div key={`card-${accentColor}`} className={classes.test} style={{ backgroundColor: accentColor }}>
       {children}
     </div>
   );
@@ -40,25 +40,25 @@ export const FreeLayout = () => {
   return (
     <Carousel>
       <CarouselSlider>
-        <CarouselCard className={classes.card} value="card-1" style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
           <TestComponent accentColor="#B99095">Card 1</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-2" style={{ maxWidth: '45%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '45%' }}>
           <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-3" style={{ maxWidth: '20%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '20%' }}>
           <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-4" style={{ maxWidth: '80%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '80%' }}>
           <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-5" style={{ maxWidth: '75%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '75%' }}>
           <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-6" style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
           <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} value="card-7" style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
           <TestComponent accentColor="#FFD898">Card 7</TestComponent>
         </CarouselCard>
       </CarouselSlider>
