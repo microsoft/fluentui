@@ -5,8 +5,6 @@ import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselNavState, CarouselNavSlots } from './CarouselNav.types';
 import { CarouselNavContextProvider } from './CarouselNavContext';
 
-const carouselSlideKey = 'key-fui-carousel-slide-';
-
 /**
  * Render the final JSX of CarouselNav
  */
@@ -16,9 +14,9 @@ export const renderCarouselNav_unstable = (state: CarouselNavState) => {
 
   return (
     <state.root>
-      {new Array(totalSlides).fill('').map((value, index) => (
-        <CarouselNavContextProvider value={index} key={`${carouselSlideKey}${value}`}>
-          {renderNavButton(value)}
+      {new Array(totalSlides).fill(null).map((_, index) => (
+        <CarouselNavContextProvider value={index} key={index}>
+          {renderNavButton(index)}
         </CarouselNavContextProvider>
       ))}
     </state.root>
