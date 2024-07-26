@@ -80,7 +80,6 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
     borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
     transform: 'rotate(var(--fui-positioning-arrow-angle)) /* @noflip */',
 
-    padding: borderWidth,
     height: 'var(--fui-positioning-arrow-height)',
     width: 'var(--fui-positioning-arrow-height)',
 
@@ -88,6 +87,7 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
       content: '""',
 
       display: 'block',
+      backgroundColor: 'inherit',
       margin: `-${borderWidth}`,
       width: '100%',
       height: '100%',
