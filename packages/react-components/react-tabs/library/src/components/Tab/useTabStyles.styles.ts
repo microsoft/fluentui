@@ -1,9 +1,8 @@
-import type { TabSlots, TabState } from './Tab.types';
-
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import type { TabInternalSlots, TabSlots, TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
@@ -12,8 +11,9 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const reservedSpaceClassNames = {
-  content: 'fui-Tab__content--reserved-space',
+const tabInternalClassNames: SlotClassNames<TabInternalSlots> = {
+  ...tabClassNames,
+  contentReservedSpace: 'fui-Tab__content--reserved-space',
 };
 
 // These should match the constants defined in @fluentui/react-icons
@@ -440,22 +440,32 @@ const useContentStyles = makeStyles({
 export const useTabStyles_unstable = (state: TabState): TabState => {
   'use no memo';
 
+  useTabIndicatorStyles(state, tabInternalClassNames);
+
+  useTabButtonStyles(state, state.root);
+
+  useTabContentStyles(state, tabInternalClassNames);
+
+  return state;
+};
+
+export const useTabIndicatorStyles = (state: TabState, slotClassNames: SlotClassNames<TabInternalSlots>): TabState => {
+  'use no memo';
+
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
-  const iconStyles = useIconStyles();
-  const contentStyles = useContentStyles();
 
   const { appearance, disabled, selected, size, vertical } = state;
 
   state.root.className = mergeClasses(
-    tabClassNames.root,
+    slotClassNames.root,
     rootStyles.base,
     vertical ? rootStyles.vertical : rootStyles.horizontal,
-    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+    // size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    // size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    // size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
     focusStyles.base,
     !disabled && appearance === 'subtle' && rootStyles.subtle,
     !disabled && appearance === 'transparent' && rootStyles.transparent,
@@ -486,9 +496,53 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     state.root.className,
   );
 
+  useTabAnimatedIndicatorStyles_unstable(state);
+
+  return state;
+};
+
+export const useTabButtonStyles = (
+  state: TabState,
+  indicatorSlot: TabState['root'],
+  slotClassName?: string,
+): TabState => {
+  'use no memo';
+
+  const rootStyles = useRootStyles();
+  const focusStyles = useFocusStyles();
+
+  const { appearance, disabled, selected, size, vertical } = state;
+
+  indicatorSlot.className = mergeClasses(
+    slotClassName,
+    rootStyles.base,
+    vertical ? rootStyles.vertical : rootStyles.horizontal,
+    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+    focusStyles.base,
+    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    !disabled && appearance === 'transparent' && rootStyles.transparent,
+    !disabled && selected && rootStyles.selected,
+    disabled && rootStyles.disabled,
+
+    indicatorSlot.className,
+  );
+
+  return state;
+};
+
+export const useTabContentStyles = (state: TabState, slotClassNames: SlotClassNames<TabInternalSlots>): TabState => {
+  'use no memo';
+
+  const iconStyles = useIconStyles();
+  const contentStyles = useContentStyles();
+
+  const { selected, size } = state;
+
   if (state.icon) {
     state.icon.className = mergeClasses(
-      tabClassNames.icon,
+      slotClassNames.icon,
       iconStyles.base,
       iconStyles[size],
       selected && iconStyles.selected,
@@ -499,7 +553,7 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      reservedSpaceClassNames.content,
+      slotClassNames.contentReservedSpace,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
@@ -513,15 +567,13 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   }
 
   state.content.className = mergeClasses(
-    tabClassNames.content,
+    slotClassNames.content,
     contentStyles.base,
     size === 'large' && contentStyles.large,
     selected && (size === 'large' ? contentStyles.largeSelected : contentStyles.selected),
     state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
     state.content.className,
   );
-
-  useTabAnimatedIndicatorStyles_unstable(state);
 
   return state;
 };

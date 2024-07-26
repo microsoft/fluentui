@@ -722,6 +722,7 @@ export {
 } from '@fluentui/react-switch';
 export type { SwitchOnChangeData, SwitchProps, SwitchSlots, SwitchState } from '@fluentui/react-switch';
 export {
+  InteractiveTab,
   renderTab_unstable,
   Tab,
   tabClassNames,

@@ -62,6 +62,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useSpinnerStyles_unstable: CustomStyleHook;
   useSwitchStyles_unstable: CustomStyleHook;
   useTabStyles_unstable: CustomStyleHook;
+  useInteractiveTabStyles_unstable: CustomStyleHook;
   useTabListStyles_unstable: CustomStyleHook;
   useTextStyles_unstable: CustomStyleHook;
   useTextareaStyles_unstable: CustomStyleHook;
