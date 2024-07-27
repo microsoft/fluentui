@@ -34,7 +34,7 @@ export const setTheme = (theme: Theme) => {
           CSS.registerProperty({
             name: `--${tokenName}`,
             inherits: true,
-            initialValue: tokenValue as string,
+            initialValue: tokenValue.toString(),
           });
         } catch {}
       }
