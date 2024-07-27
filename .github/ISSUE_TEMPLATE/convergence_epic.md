@@ -1,7 +1,6 @@
 ---
 name: (internal) Component implementation epic
 about: (team member use only) Epic issue tracking implementation of a particular component
-
 ---
 <!--
 These issues are used by core contributors to track the list of items that should be

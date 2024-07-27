@@ -4,6 +4,7 @@ import { isConformant } from '../../testing/isConformant';
 import { Carousel } from './Carousel';
 
 jest.mock('embla-carousel', () => ({
+  __esModule: true,
   default: () => ({
     on: jest.fn(),
     off: jest.fn(),

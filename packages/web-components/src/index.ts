@@ -5,6 +5,7 @@ export {
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
+  BaseAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
@@ -26,6 +27,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,

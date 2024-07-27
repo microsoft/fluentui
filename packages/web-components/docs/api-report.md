@@ -51,20 +51,10 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AccordionItem" because one of its declarations is marked as @internal
 //
-// @public (undocumented)
-export class AccordionItem extends FASTElement {
+// @public
+export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
-    disabled: boolean;
-    disabledChanged(prev: boolean, next: boolean): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal (undocumented)
-    expandbutton: HTMLElement;
-    expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
-    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
     markerPosition?: AccordionItemMarkerPosition;
     markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
@@ -199,9 +189,7 @@ export const AnchorTarget: {
 export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
-export class Avatar extends FASTElement {
-    constructor();
-    active?: AvatarActive | undefined;
+export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
@@ -211,15 +199,11 @@ export class Avatar extends FASTElement {
     // (undocumented)
     disconnectedCallback(): void;
     // @internal
-    elementInternals: ElementInternals;
-    // @internal
     generateColor(): void;
     // @internal
     generateInitials(): string | void;
     // @internal
     handleChange(source: any, propertyName: string): void;
-    initials?: string | undefined;
-    name?: string | undefined;
     shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
@@ -455,6 +439,30 @@ export const BadgeStyles: ElementStyles;
 //
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
+
+// @public (undocumented)
+export class BaseAccordionItem extends FASTElement {
+    disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal (undocumented)
+    expandbutton: HTMLElement;
+    expanded: boolean;
+    expandedChanged(prev: boolean, next: boolean): void;
+    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
+    id: string;
+}
+
+// @public
+export class BaseAvatar extends FASTElement {
+    constructor();
+    active?: AvatarActive | undefined;
+    // @internal
+    elementInternals: ElementInternals;
+    initials?: string | undefined;
+    name?: string | undefined;
+}
 
 // @public
 export class BaseButton extends FASTElement {

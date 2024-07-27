@@ -1,4 +1,4 @@
-import * as dedent from 'dedent';
+import dedent from 'dedent';
 
 import type { Data } from './sandbox-utils';
 import { serializeJson } from './utils';

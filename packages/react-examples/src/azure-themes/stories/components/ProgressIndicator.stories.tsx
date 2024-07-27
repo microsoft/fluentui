@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
 
+export default {
+  title: 'Components/ProgressIndicator',
+};
+
 const intervalDelay = 100;
 const intervalIncrement = 0.01;
 
