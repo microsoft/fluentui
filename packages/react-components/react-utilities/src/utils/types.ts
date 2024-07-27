@@ -24,6 +24,16 @@ import * as React from 'react';
 export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
 
 /**
+ * @public
+ *
+ * Helper type that works similar to Pick,
+ * but when modifying an union type it will distribute the picking to all the union members.
+ *
+ * See {@link https://www.typescriptlang.org/docs/handbook/2/conditional-types.html#distributive-conditional-types} for more information
+ */
+export type DistributivePick<T, K> = T extends unknown ? Pick<T, K & keyof T> : never;
+
+/**
  * Converts a union type (`A | B | C`) to an intersection type (`A & B & C`)
  */
 export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
@@ -63,8 +73,23 @@ export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 export interface FunctionComponent<P> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (props: P): any;
-  defaultProps?: Partial<P>;
   displayName?: string;
+}
+
+export type FC<P> = FunctionComponent<P>;
+
+export interface ExoticComponent<P> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (props: P): any;
+  $$typeof: symbol;
+}
+
+export interface NamedExoticComponent<P> extends ExoticComponent<P> {
+  displayName?: string;
+}
+
+export interface RefAttributes<T> extends React.Attributes {
+  ref?: React.Ref<T> | undefined;
 }
 
 /**

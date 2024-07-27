@@ -63,7 +63,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = FunctionComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
+export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
@@ -359,7 +359,7 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
-export function useMergedRefs<T>(...refs: ReactRefCompat<T>[]): RefObjectFunction<T>;
+export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
