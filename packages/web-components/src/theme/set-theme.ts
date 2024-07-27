@@ -1,13 +1,9 @@
-import * as tokens from './design-tokens.js';
-
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
  * tokens to be added.
  * @internal
  */
 export type Theme = Record<string, string | number>;
-
-const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
 const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
 const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
@@ -32,17 +28,17 @@ export const setTheme = (theme: Theme) => {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
-    for (const t of tokenNames) {
+    for (const [tokenName, tokenValue] of Object.entries(theme)) {
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
           CSS.registerProperty({
-            name: `--${t}`,
+            name: `--${tokenName}`,
             inherits: true,
-            initialValue: theme[t] as string,
+            initialValue: tokenValue as string,
           });
         } catch {}
       }
-      tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
+      tokenDeclarations.push(`--${tokenName}: ${tokenValue};`);
     }
 
     themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
@@ -61,7 +57,7 @@ export const setTheme = (theme: Theme) => {
  * @internal
  */
 export const setThemeFor = (element: HTMLElement, theme: Theme) => {
-  for (const t of tokenNames) {
-    element.style.setProperty(`--${t}`, theme[t] as string);
+  for (const [tokenName, tokenValue] of Object.entries(theme)) {
+    element.style.setProperty(`--${tokenName}`, tokenValue.toString());
   }
 };
