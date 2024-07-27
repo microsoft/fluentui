@@ -1,6 +1,5 @@
 const { getWorkspaceProjectsAliases } = require('@fluentui/scripts-monorepo');
 
-const { isCI } = require('./environment');
 const { workersConfig } = require('./shared');
 
 // northstar packages should pull these from npm, not the repo
@@ -21,7 +20,7 @@ const createConfig = (/** @type {import('@jest/types').Config.InitialOptions} */
   testEnvironment: 'jsdom',
   restoreMocks: true,
   clearMocks: true,
-  ...(isCI ? workersConfig : null),
+  ...workersConfig,
   ...customConfig,
   moduleNameMapper: {
     ...getWorkspaceProjectsAliases({

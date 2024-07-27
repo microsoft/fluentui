@@ -191,7 +191,21 @@ export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 // @public
 export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
+    color?: AvatarColor | undefined;
+    colorId?: AvatarNamedColor | undefined;
+    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    generateColor(): void;
+    // @internal
+    generateInitials(): string | void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     shape?: AvatarShape | undefined;
+    size?: AvatarSize | undefined;
 }
 
 // Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -444,24 +458,10 @@ export class BaseAccordionItem extends FASTElement {
 export class BaseAvatar extends FASTElement {
     constructor();
     active?: AvatarActive | undefined;
-    color?: AvatarColor | undefined;
-    colorId?: AvatarNamedColor | undefined;
-    static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
-    // (undocumented)
-    connectedCallback(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
-    // @internal
-    generateColor(): void;
-    // @internal
-    generateInitials(): string | void;
-    // @internal
-    handleChange(source: any, propertyName: string): void;
     initials?: string | undefined;
     name?: string | undefined;
-    size?: AvatarSize | undefined;
 }
 
 // @public

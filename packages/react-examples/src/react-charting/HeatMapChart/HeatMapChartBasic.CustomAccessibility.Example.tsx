@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { HeatMapChart, IHeatMapChartDataPoint, IHeatMapChartProps } from '@fluentui/react-charting';
+import {
+  HeatMapChart,
+  IHeatMapChartDataPoint,
+  IHeatMapChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Label } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
@@ -123,7 +129,10 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
             width={this.state.width}
             height={this.state.height}
             domainValuesForColorScale={[0, 1500]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            rangeValuesForColorScale={[
+              getColorFromToken(DataVizPalette.color6),
+              getColorFromToken(DataVizPalette.color10),
+            ]}
             enableReflow={true}
           />
         </div>

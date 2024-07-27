@@ -40,7 +40,7 @@
     "@fluentui/react-utilities": "^9.18.13",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
-    "@types/dedent": "0.7.0",
+    "dedent": "^1.2.0",
     "codesandbox-import-utils": "2.2.3"
   },
   "peerDependencies": {

@@ -37,10 +37,10 @@ jest.mock(
   'enquirer',
   () =>
     ({
-      prompt: async () => ({
+      prompt: jest.fn(async () => ({
         name: '',
-      }),
-    } as Pick<Enquirer, 'prompt'>),
+      })),
+    } satisfies Pick<Enquirer, 'prompt'>),
 );
 
 describe('migrate-converged-pkg generator', () => {
