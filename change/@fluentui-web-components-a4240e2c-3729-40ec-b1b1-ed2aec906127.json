@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: move size and generate initials out of base class",
+  "packageName": "@fluentui/web-components",
+  "email": "jes@microsoft.com",
+  "dependentChangeType": "patch"
+}

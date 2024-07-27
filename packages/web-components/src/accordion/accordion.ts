@@ -1,6 +1,6 @@
 import { Observable } from '@microsoft/fast-element';
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { AccordionItem } from '../accordion-item/accordion-item.js';
+import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
@@ -40,7 +40,7 @@ export class Accordion extends FASTElement {
     }
 
     // Clean up single expand mode behavior
-    (expandedItem as AccordionItem)?.expandbutton.removeAttribute('aria-disabled');
+    (expandedItem as BaseAccordionItem)?.expandbutton.removeAttribute('aria-disabled');
   }
 
   /**
@@ -85,14 +85,15 @@ export class Accordion extends FASTElement {
    * Find the first expanded item in the accordion
    * @returns {void}
    */
-  private findExpandedItem(): AccordionItem | Element | null {
+  private findExpandedItem(): BaseAccordionItem | Element | null {
     if (this.accordionItems.length === 0) {
       return null;
     }
 
     return (
-      this.accordionItems.find((item: Element | AccordionItem) => item instanceof AccordionItem && item.expanded) ??
-      this.accordionItems[0]
+      this.accordionItems.find(
+        (item: Element | BaseAccordionItem) => item instanceof BaseAccordionItem && item.expanded,
+      ) ?? this.accordionItems[0]
     );
   }
 
@@ -116,7 +117,7 @@ export class Accordion extends FASTElement {
     // Add event listeners to each non-disabled AccordionItem
     this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
     this.accordionItems.forEach((item: Element, index: number) => {
-      if (item instanceof AccordionItem) {
+      if (item instanceof BaseAccordionItem) {
         item.addEventListener('click', this.expandedChangedHandler);
         // Subscribe to the expanded attribute of the item
         Observable.getNotifier(item).subscribe(this, 'expanded');
@@ -124,7 +125,7 @@ export class Accordion extends FASTElement {
     });
 
     if (this.isSingleExpandMode()) {
-      const expandedItem = this.findExpandedItem() as AccordionItem;
+      const expandedItem = this.findExpandedItem() as BaseAccordionItem;
       this.setSingleExpandMode(expandedItem);
     }
   };
@@ -150,7 +151,7 @@ export class Accordion extends FASTElement {
     this.activeItemIndex = currentItems.indexOf(expandedItem);
 
     currentItems.forEach((item: Element, index: number) => {
-      if (item instanceof AccordionItem) {
+      if (item instanceof BaseAccordionItem) {
         if (this.activeItemIndex === index) {
           item.expanded = true;
           item.expandbutton.setAttribute('aria-disabled', 'true');
@@ -185,7 +186,7 @@ export class Accordion extends FASTElement {
   private expandedChangedHandler: EventListener = (evt: Event): void => {
     const item = evt.target as HTMLElement;
 
-    if (item instanceof AccordionItem) {
+    if (item instanceof BaseAccordionItem) {
       if (!this.isSingleExpandMode()) {
         item.expanded = !item.expanded;
         // setSingleExpandMode sets activeItemIndex on its own

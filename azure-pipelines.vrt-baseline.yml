@@ -33,8 +33,6 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
@@ -66,8 +64,6 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
@@ -99,8 +95,6 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
@@ -131,8 +125,6 @@ jobs:
         env:
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
           VR_APP_API_URL: $(VR_APP_API_URL)
           STORAGE_ACCOUNT_ID: $(StorageAccountId)
           TENANT_ID: $(TenantId)
