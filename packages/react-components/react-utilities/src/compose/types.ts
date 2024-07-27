@@ -3,9 +3,11 @@ import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constan
 import {
   ComponentType,
   FunctionComponent,
+  NamedExoticComponent,
   PropsWithoutChildren,
   PropsWithoutRef,
   ReactNode,
+  RefAttributes,
   ReplaceNullWithUndefined,
 } from '../utils/types';
 
@@ -233,7 +235,7 @@ export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
  *
  * Note: {@link React.RefAttributes} is {@link https://github.com/DefinitelyTyped/DefinitelyTyped/discussions/69756 | leaking string references} into forwardRef components, forwardRef component do not support string refs.
  */
-export type ForwardRefComponent<Props> = FunctionComponent<Props & React.RefAttributes<InferredElementRefType<Props>>>;
+export type ForwardRefComponent<Props> = NamedExoticComponent<Props & RefAttributes<InferredElementRefType<Props>>>;
 
 /**
  * Helper type to correctly define the slot class names object.
