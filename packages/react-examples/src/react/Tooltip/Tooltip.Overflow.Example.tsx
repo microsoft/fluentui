@@ -11,6 +11,9 @@ const contentParent =
 const contentSelf =
   "If the TooltipHost's content overflows, hovering here will show a tooltip (anchored to the TooltipHost).";
 
+const contentLink =
+  "If the link's content overflows, hovering or focusing here will show a tooltip (anchored to the TooltipHost).";
+
 // The TooltipHost uses display: inline by default, which causes issues with this example's
 // styling and layout. Use display: block instead. (other styles are just to look nice)
 const theme = getTheme();
@@ -32,12 +35,16 @@ const classNames = mergeStyleSets({
     border: '2px dashed ' + theme.palette.neutralTertiary,
     selectors: { '> *:last-child': { marginTop: 10 } },
   },
+  // links are inline by default, so this allows the link to have overflow styles
+  link: {
+    display: 'inline-block',
+  },
 });
 
 export const TooltipOverflowExample: React.FunctionComponent = () => {
   const parentTooltipId = useId('text-tooltip');
   const [shouldOverflow, setShouldOverflow] = React.useState(false);
-  const [isParentTooltipVisible, setIsParentTooltipVisible] = React.useState(false);
+  const linkRef = React.useRef<HTMLAnchorElement>(null);
 
   const onOverflowChange = React.useCallback(() => setShouldOverflow(!shouldOverflow), [shouldOverflow]);
 
@@ -48,6 +55,10 @@ export const TooltipOverflowExample: React.FunctionComponent = () => {
       {/* Example of TooltipOverflowMode.Parent */}
       <div className={classNames.example}>
         <Label>Show tooltip when parent's content overflows</Label>
+        <p>
+          Warning! This is not keyboard accessible, and should only be done when users have another method to access the
+          content.
+        </p>
 
         {/* This parent element will overflow */}
         <div className={css(classNames.parent, shouldOverflow && classNames.overflow)}>
@@ -56,14 +67,10 @@ export const TooltipOverflowExample: React.FunctionComponent = () => {
             overflowMode={TooltipOverflowMode.Parent}
             // In a case like this, you should usually display the non-truncated content in the tooltip.
             content={contentParent}
-            // If targeting the tooltip to the parent, it's necessary to manually set and remove
-            // aria-describedby for the content when the tooltip is shown/hidden
-            onTooltipToggle={setIsParentTooltipVisible}
             id={parentTooltipId}
             styles={hostStyles}
           >
-            This is the TooltipHost area.{' '}
-            <span aria-describedby={isParentTooltipVisible ? parentTooltipId : undefined}>{contentParent}</span>
+            This is the TooltipHost area. {contentParent}
           </TooltipHost>
         </div>
       </div>
@@ -71,17 +78,36 @@ export const TooltipOverflowExample: React.FunctionComponent = () => {
       {/* Example of TooltipOverflowMode.Self */}
       <div className={classNames.example}>
         <Label>Show tooltip when TooltipHost's content overflows</Label>
+        <p>
+          Warning! This is not keyboard accessible, and should only be done when users have another method to access the
+          content.
+        </p>
 
         <TooltipHost
           overflowMode={TooltipOverflowMode.Self}
           // The TooltipHost itself will overflow
           hostClassName={css(shouldOverflow && classNames.overflow)}
           content={contentSelf}
-          onTooltipToggle={setIsParentTooltipVisible}
           styles={hostStyles}
-          // In this mode, aria-describedby is automatically added/removed based on tooltip visibility
         >
           This is the TooltipHost area. {contentSelf}
+        </TooltipHost>
+      </div>
+
+      {/* Example of TooltipOverflowMode.Custom */}
+      <div className={classNames.example}>
+        <Label>Show tooltip when a child link's content overflows</Label>
+        <p>Note: This is the only way to create an overflow tooltip that is keyboard-accessible.</p>
+
+        <TooltipHost
+          overflowMode={TooltipOverflowMode.Custom}
+          customOverflowTarget={linkRef.current}
+          content={contentSelf}
+          styles={hostStyles}
+        >
+          <a href="#" ref={linkRef} className={css(classNames.link, shouldOverflow && classNames.overflow)}>
+            This is a link in the TooltipHost area. {contentLink}
+          </a>
         </TooltipHost>
       </div>
     </div>
