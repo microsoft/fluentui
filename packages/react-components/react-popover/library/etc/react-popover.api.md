@@ -125,7 +125,7 @@ export type PopoverTriggerState = {
 };
 
 // @public
-export const renderPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderPopover_unstable: (state: PopoverState) => React_2.JSX.Element;
 
 // @public
 export const renderPopoverSurface_unstable: (state: PopoverSurfaceState) => JSX.Element;

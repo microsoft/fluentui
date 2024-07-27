@@ -207,7 +207,7 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;

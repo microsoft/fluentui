@@ -19,6 +19,9 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps> = 
   useCustomStyleHook_unstable('useDataGridHeaderCellStyles_unstable')(state);
 
   return renderDataGridHeaderCell_unstable(state);
-});
+  //FIXME: migrate to fc to remove this assertion
+  // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
+}) as ForwardRefComponent<DataGridHeaderCellProps>;
 
 DataGridHeaderCell.displayName = 'DataGridHeaderCell';
