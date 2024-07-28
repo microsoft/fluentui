@@ -81,6 +81,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useSpinnerStyles_unstable: (state: unknown) => void;
         useSwitchStyles_unstable: (state: unknown) => void;
         useTabStyles_unstable: (state: unknown) => void;
+        useInteractiveTabStyles_unstable: (state: unknown) => void;
         useTabListStyles_unstable: (state: unknown) => void;
         useTextStyles_unstable: (state: unknown) => void;
         useTextareaStyles_unstable: (state: unknown) => void;
