@@ -1,7 +1,7 @@
 import { html, type HTMLView } from '@microsoft/fast-element';
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
-import { renderComponent } from '../helpers.stories.js';
+import { renderComponent, type Story } from '../helpers.stories.js';
 import { setTheme, type Theme } from './set-theme.js';
 
 const themes: Record<string, Theme | null> = {
@@ -32,6 +32,12 @@ function updateTheme(c: HTMLView, type = 'global') {
 
 export default {
   title: 'Theme/SetTheme',
+  decorators: [
+    (story: any) => {
+      (window as any).setTheme = setTheme;
+      return story();
+    },
+  ],
 };
 
 const ComponentCloudTemplate = html`

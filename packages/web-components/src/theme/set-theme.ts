@@ -1,5 +1,4 @@
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import * as tokens from './design-tokens.js';
 
 /**
  * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
@@ -7,8 +6,6 @@ import * as tokens from './design-tokens.js';
  * @internal
  */
 export type Theme = Record<string, string | number>;
-
-const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
 const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
 const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
@@ -65,7 +62,7 @@ function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
-    for (const t of tokenNames) {
+    for (const t of Object.keys(theme)) {
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
           CSS.registerProperty({
@@ -78,6 +75,7 @@ function getThemeStyleText(theme: Theme): string {
       tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
     }
 
+    console.log(tokenDeclarations);
     themeStyleTextMap.set(theme, tokenDeclarations.join(''));
   }
 
@@ -169,7 +167,7 @@ function getScopedThemeKey(theme: Theme): string {
 }
 
 function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
-  for (const t of tokenNames) {
+  for (const t of Object.keys(theme!)) {
     element.style.setProperty(`--${t}`, theme !== null ? (theme[t] as string) : 'unset');
   }
 }

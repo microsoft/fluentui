@@ -2,16 +2,16 @@ import { expect, test } from '@playwright/test';
 import type { JSHandle, Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 
-import { setTheme, type Theme } from './set-theme.js';
+import { type Theme } from './set-theme.js';
 
 const theme1: Theme = {
-  '--foo': 'foo1',
-  '--bar': 'bar2',
+  'foo': 'foo1',
+  'bar': 'bar2',
 };
 
 const theme2: Theme = {
-  '--foo': 'foo1',
-  '--bar': 'bar2',
+  'foo': 'foo1',
+  'bar': 'bar2',
 };
 
 test.describe('setTheme()', () => {
@@ -23,7 +23,11 @@ test.describe('setTheme()', () => {
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
-    await page.exposeFunction('setTheme', setTheme);
+    await page.goto(fixtureURL('theme-settheme--set-theme'));
+
+    await page.setContent(`
+      <div></div>
+    `);
   });
 
   test.afterAll(async () => {
@@ -31,12 +35,8 @@ test.describe('setTheme()', () => {
   });
 
   test('should set tokens with the correct custom property values', async () => {
-    await page.setContent(`
-      <script>
-        setTheme(${JSON.stringify(theme1)});
-      </script>
-    `);
-    const body = page.locator('body');
-    await expect(body).toHaveCSS('--foo', 'foo1');
+    await page.evaluate(theme => window.setTheme(theme), theme1);
+    const val = await page.evaluate(() => getComputedStyle(document.body).getPropertyValue('--foo'));
+    expect(val).toBe('foo1');
   });
 });
