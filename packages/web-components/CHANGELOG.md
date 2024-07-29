@@ -1,8 +1,27 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 25 Jul 2024 04:08:33 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2024 04:07:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.51)
+
+Mon, 29 Jul 2024 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.50..@fluentui/web-components_v3.0.0-beta.51)
+
+### Changes
+
+- chore: move size and generate initials out of base class ([PR #32123](https://github.com/microsoft/fluentui/pull/32123) by jes@microsoft.com)
+- fix: reference accordion item base class in accordion ([PR #32117](https://github.com/microsoft/fluentui/pull/32117) by jes@microsoft.com)
+
+## [3.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.50)
+
+Fri, 26 Jul 2024 04:08:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.49..@fluentui/web-components_v3.0.0-beta.50)
+
+### Changes
+
+- [chore]: create base class for accordion item and remove style and layout specific api ([PR #32102](https://github.com/microsoft/fluentui/pull/32102) by jes@microsoft.com)
 
 ## [3.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.49)
 

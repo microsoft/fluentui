@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: suppress @typescript-eslint/no_unsafe_declaration-merging reports",
-  "packageName": "@fluentui/web-components",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}
