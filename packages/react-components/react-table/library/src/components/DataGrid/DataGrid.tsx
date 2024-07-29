@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * DataGrid component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DataGrid: ForwardRefComponent<DataGridProps> = React.forwardRef((props, ref) => {
   const state = useDataGrid_unstable(props, ref);
 

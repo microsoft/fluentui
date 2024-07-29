@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * TagPickerButton component -
  * A TagPickerButton is an alternative to TagPickerInput that does not include an input field.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TagPickerButton: ForwardRefComponent<TagPickerButtonProps> = React.forwardRef((props, ref) => {
   const state = useTagPickerButton_unstable(props, ref);
 

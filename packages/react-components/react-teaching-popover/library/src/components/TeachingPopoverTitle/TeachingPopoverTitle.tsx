@@ -13,6 +13,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * TeachingPopoverTitle is similar to TeachingPopoverHeader, but it is intended to be placed within a TeachingPopoverBody
  * TeachingPopoverTitle can also optionally render a dismiss button, however this should only be enabled when there is no TeachingPopoverHeader/dismiss.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverTitle: ForwardRefComponent<TeachingPopoverTitleProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverTitle_unstable(props, ref);
 

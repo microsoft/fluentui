@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * ToastFooter component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToastFooter: ForwardRefComponent<ToastFooterProps> = React.forwardRef((props, ref) => {
   const state = useToastFooter_unstable(props, ref);
 

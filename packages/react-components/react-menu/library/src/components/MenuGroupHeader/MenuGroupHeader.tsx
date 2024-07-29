@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Define a styled MenuGroupHeader, using the `useMenuGroupHeader_unstable` hook.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MenuGroupHeader: ForwardRefComponent<MenuGroupHeaderProps> = React.forwardRef((props, ref) => {
   const state = useMenuGroupHeader_unstable(props, ref);
 

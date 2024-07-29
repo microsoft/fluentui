@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * ToolbarDivider component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToolbarDivider: ForwardRefComponent<ToolbarDividerProps> = React.forwardRef((props, ref) => {
   const state = useToolbarDivider_unstable(props, ref);
 

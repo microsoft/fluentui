@@ -1,12 +1,9 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributivePick } from '@fluentui/react-utilities';
 import { PopoverContextValue } from '@fluentui/react-popover';
-import { ButtonProps, ButtonState } from '@fluentui/react-button';
-import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 import { ReactNode } from 'react';
 
-export type TeachingPopoverCarouselFooterButtonSlots = {
-  root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-};
+export type TeachingPopoverCarouselFooterButtonSlots = Pick<ButtonSlots, 'root'>;
 
 /**
  * TeachingPopoverCarouselFooterButton Props
@@ -29,7 +26,7 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
  */
 export type TeachingPopoverCarouselFooterButtonState = ButtonState &
   ComponentState<TeachingPopoverCarouselFooterButtonSlots> &
-  Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+  DistributivePick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
     /* Rename popover appearance to prevent conflict with button appearance */
     popoverAppearance: PopoverContextValue['appearance'];
   };

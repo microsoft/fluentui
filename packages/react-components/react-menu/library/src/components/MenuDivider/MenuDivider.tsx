@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Define a styled MenuDivider, using the `useMenuDivider_unstable` hook.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MenuDivider: ForwardRefComponent<MenuDividerProps> = React.forwardRef((props, ref) => {
   const state = useMenuDivider_unstable(props, ref);
 

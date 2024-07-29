@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Breadcrumb component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Breadcrumb: ForwardRefComponent<BreadcrumbProps> = React.forwardRef((props, ref) => {
   const state = useBreadcrumb_unstable(props, ref);
   const contextValues = useBreadcrumbContextValues_unstable(state);

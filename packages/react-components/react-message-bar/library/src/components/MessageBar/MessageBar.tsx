@@ -10,6 +10,8 @@ import { useMessageBarContextValue_unstable } from './useMessageBarContextValues
 /**
  * MessageBar component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MessageBar: ForwardRefComponent<MessageBarProps> = React.forwardRef((props, ref) => {
   const state = useMessageBar_unstable(props, ref);
 

@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * InteractionTagSecondary component - used as the second child of the `InteractionTag` component and provides the secondary action, which is dismiss by default.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps> = React.forwardRef(
   (props, ref) => {
     const state = useInteractionTagSecondary_unstable(props, ref);

@@ -12,6 +12,8 @@ import { useCarouselContextValues_unstable } from './useCarouselContextValues';
  *
  * Carousel also provides API interfaces for callbacks that will occur on navigation events.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Carousel: ForwardRefComponent<CarouselProps> = React.forwardRef((props, ref) => {
   const state = useCarousel_unstable(props, ref);
 

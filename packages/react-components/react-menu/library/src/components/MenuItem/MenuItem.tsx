@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Define a styled MenuItem, using the `useMenuItem_unstable` and `useMenuItemStyles_unstable` hook.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MenuItem: ForwardRefComponent<MenuItemProps> = React.forwardRef((props, ref) => {
   const state = useMenuItem_unstable(props, ref);
 

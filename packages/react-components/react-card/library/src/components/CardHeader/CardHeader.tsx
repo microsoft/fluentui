@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Component to render an image, text and an action in a Card component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CardHeader: ForwardRefComponent<CardHeaderProps> = React.forwardRef((props, ref) => {
   const state = useCardHeader_unstable(props, ref);
 

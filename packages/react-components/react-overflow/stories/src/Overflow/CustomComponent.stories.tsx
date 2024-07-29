@@ -42,6 +42,8 @@ const useStyles = makeStyles({
   },
 });
 
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 const ItemVisibleCustomComponent: ForwardRefComponent<{
   appId: string;
 }> = React.forwardRef((props, ref) => {

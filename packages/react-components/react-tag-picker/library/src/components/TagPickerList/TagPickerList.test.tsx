@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagPickerList } from './TagPickerList';
 import { TagPickerContextProvider, tagPickerContextDefaultValue } from '../../contexts/TagPickerContext';
+import { TagPickerListProps } from './TagPickerList.types';
 
 const Wrapper: React.FC = props => (
   <TagPickerContextProvider
@@ -16,7 +17,7 @@ const Wrapper: React.FC = props => (
 );
 
 describe('TagPickerList', () => {
-  isConformant({
+  isConformant<TagPickerListProps>({
     Component: TagPickerList,
     displayName: 'TagPickerList',
     renderOptions: { wrapper: Wrapper },

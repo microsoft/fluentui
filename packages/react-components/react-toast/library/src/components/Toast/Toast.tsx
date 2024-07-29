@@ -9,6 +9,8 @@ import { useToastContextValues_unstable } from './useToastContextValues';
 /**
  * Toast component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Toast: ForwardRefComponent<ToastProps> = React.forwardRef((props, ref) => {
   const state = useToast_unstable(props, ref);
 

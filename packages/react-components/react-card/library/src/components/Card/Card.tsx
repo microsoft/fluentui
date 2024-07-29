@@ -9,6 +9,8 @@ import { useCardContextValue } from './useCardContextValue';
 /**
  * A card provides scaffolding for hosting actions and content for a single topic.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Card: ForwardRefComponent<CardProps> = React.forwardRef<HTMLDivElement>((props, ref) => {
   const state = useCard_unstable(props, ref);
   const cardContextValue = useCardContextValue(state);

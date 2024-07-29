@@ -11,6 +11,8 @@ import { useTeachingPopoverCarouselCardStyles_unstable } from './useTeachingPopo
  *
  * TeachingPopoverCarouselCard is the definition of a single page view within the carousel, they are shown one at a time and can be navigated through sequentially.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarouselCard: ForwardRefComponent<TeachingPopoverCarouselCardProps> = React.forwardRef(
   (props, ref) => {
     const state = useTeachingPopoverCarouselCard_unstable(props, ref);

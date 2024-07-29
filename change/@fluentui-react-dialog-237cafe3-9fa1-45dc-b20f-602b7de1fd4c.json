@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "\u0002chore: slot API react v17/18 support",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

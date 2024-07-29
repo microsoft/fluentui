@@ -11,6 +11,8 @@ import type { CarouselNavProps } from './CarouselNav.types';
  * The children of this component will be wrapped in a context to
  * provide the appropriate value based on their index position.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CarouselNav: ForwardRefComponent<CarouselNavProps> = React.forwardRef((props, ref) => {
   const state = useCarouselNav_unstable(props, ref);
 

@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * ToastTitle component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToastTitle: ForwardRefComponent<ToastTitleProps> = React.forwardRef((props, ref) => {
   const state = useToastTitle_unstable(props, ref);
 

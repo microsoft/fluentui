@@ -13,6 +13,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * TeachingPopoverHeader is an info subtitle located at the top of the popover, it provides a dismiss button by default (can be nulled)
  * and an info-tip icon that can be overridden or removed, subtitle displayed will be the children elements of TeachingPopoverHeader.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverHeader: ForwardRefComponent<TeachingPopoverHeaderProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverHeader_unstable(props, ref);
 

@@ -9,6 +9,8 @@ import { useRatingContextValues } from './useRatingContextValues';
 /**
  * Rating is a wrapper for one or more rating items that will be used to set a rating value.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Rating: ForwardRefComponent<RatingProps> = React.forwardRef((props, ref) => {
   const state = useRating_unstable(props, ref);
   const contextValues = useRatingContextValues(state);

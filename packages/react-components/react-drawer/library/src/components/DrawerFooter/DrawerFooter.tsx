@@ -10,6 +10,8 @@ import type { DrawerFooterProps } from './DrawerFooter.types';
 /**
  * DrawerFooter provides a structured footer for the drawer component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef((props, ref) => {
   const state = useDrawerFooter_unstable(props, ref);
 

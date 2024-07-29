@@ -12,6 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * NavDrawer component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavDrawer: ForwardRefComponent<NavDrawerProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawer_unstable(props, ref);
   const contextValues = useNavContextValues_unstable(state as NavState);

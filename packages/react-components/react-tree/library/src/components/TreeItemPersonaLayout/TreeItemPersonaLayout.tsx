@@ -11,6 +11,8 @@ import { useTreeItemPersonaLayoutContextValues_unstable } from './useTreeItemPer
  * It provides a more visually appealing representation of a `TreeItem` and is typically used to display a list of people or topics.
  * This component should only be used as a direct child of `TreeItem`.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps> = React.forwardRef((props, ref) => {
   const state = useTreeItemPersonaLayout_unstable(props, ref);
 

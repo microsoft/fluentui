@@ -11,6 +11,8 @@ import type { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types
  *
  * If CarouselAutoplayButton is present, auto-play will default to true on mount.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps> = React.forwardRef(
   (props, ref) => {
     const state = useCarouselAutoplayButton_unstable(props, ref);

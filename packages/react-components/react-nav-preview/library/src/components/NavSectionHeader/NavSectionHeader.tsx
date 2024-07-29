@@ -8,6 +8,8 @@ import type { NavSectionHeaderProps } from './NavSectionHeader.types';
 /**
  * NavSectionHeader component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavSectionHeader: ForwardRefComponent<NavSectionHeaderProps> = React.forwardRef((props, ref) => {
   const state = useNavSectionHeader_unstable(props, ref);
 

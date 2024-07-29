@@ -9,6 +9,8 @@ import type { NavDrawerFooterProps } from './NavDrawerFooter.types';
 /**
  * NavDrawerFooter component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerFooter_unstable(props, ref);
 

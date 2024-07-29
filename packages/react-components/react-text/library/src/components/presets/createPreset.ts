@@ -10,6 +10,8 @@ export function createPreset(options: {
   useStyles: () => Record<'root', string>;
 }): React.FunctionComponent<TextPresetProps> {
   const { useStyles, className, displayName } = options;
+  //TODO: migrate to fc to ensure v18 compatibility
+  // eslint-disable-next-line deprecation/deprecation
   const Wrapper: ForwardRefComponent<TextPresetProps> = React.forwardRef((props, ref) => {
     'use no memo';
 

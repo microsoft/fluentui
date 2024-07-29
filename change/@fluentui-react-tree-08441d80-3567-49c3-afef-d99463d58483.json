@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": " chore: modifications to introduce fc method",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

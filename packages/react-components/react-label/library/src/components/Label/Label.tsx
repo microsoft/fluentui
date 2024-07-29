@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * A label component provides a title or name to a component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Label: ForwardRefComponent<LabelProps> = React.forwardRef((props, ref) => {
   const state = useLabel_unstable(props, ref);
 

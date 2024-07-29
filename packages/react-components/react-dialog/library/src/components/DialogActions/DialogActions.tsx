@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * `DialogActions` is a container for the actions of the dialog.
  * Apart from styling, this component does not have other behavior.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DialogActions: ForwardRefComponent<DialogActionsProps> = React.forwardRef((props, ref) => {
   const state = useDialogActions_unstable(props, ref);
 

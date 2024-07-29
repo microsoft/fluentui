@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * A divider visually segments content into groups.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Divider: ForwardRefComponent<DividerProps> = React.forwardRef((props, ref) => {
   const state = useDivider_unstable(props, ref);
 

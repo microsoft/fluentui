@@ -132,6 +132,8 @@ export {
 export type {
   ComponentProps,
   ComponentState,
+  // ForwardRefComponent is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   ForwardRefComponent,
   // ResolveShorthandFunction is deprecated but removing it would be a breaking change
   // eslint-disable-next-line deprecation/deprecation

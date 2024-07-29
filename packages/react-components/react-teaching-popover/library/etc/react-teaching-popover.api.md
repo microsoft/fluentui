@@ -9,12 +9,15 @@
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { Button } from '@fluentui/react-button';
 import { ButtonProps } from '@fluentui/react-button';
+import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ComponentState } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSX as JSX_2 } from 'react';
 import { JSXElementConstructor } from 'react';
 import { PopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -31,7 +34,7 @@ import { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const renderTeachingPopover_unstable: (state: PopoverState) => JSX.Element;
+export const renderTeachingPopover_unstable: (state: PopoverState) => JSX_2.Element;
 
 // @public
 export const renderTeachingPopoverBody_unstable: (state: TeachingPopoverBodyState) => JSX.Element;
@@ -136,12 +139,10 @@ export type TeachingPopoverCarouselFooterButtonProps = ComponentProps<TeachingPo
 };
 
 // @public (undocumented)
-export type TeachingPopoverCarouselFooterButtonSlots = {
-    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
-};
+export type TeachingPopoverCarouselFooterButtonSlots = Pick<ButtonSlots, 'root'>;
 
 // @public
-export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentState<TeachingPopoverCarouselFooterButtonSlots> & Pick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
+export type TeachingPopoverCarouselFooterButtonState = ButtonState & ComponentState<TeachingPopoverCarouselFooterButtonSlots> & DistributivePick<TeachingPopoverCarouselFooterButtonProps, 'navType' | 'altText'> & {
     popoverAppearance: PopoverContextValue['appearance'];
 };
 

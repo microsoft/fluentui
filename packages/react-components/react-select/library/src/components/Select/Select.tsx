@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Select component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Select: ForwardRefComponent<SelectProps> = React.forwardRef((props, ref) => {
   const state = useSelect_unstable(props, ref);
 

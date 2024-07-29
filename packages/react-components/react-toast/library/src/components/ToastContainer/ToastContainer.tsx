@@ -9,6 +9,8 @@ import { useToastContainerContextValues_unstable } from './useToastContainerCont
 /**
  * ToastContainer component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToastContainer: ForwardRefComponent<ToastContainerProps> = React.forwardRef((props, ref) => {
   const state = useToastContainer_unstable(props, ref);
 

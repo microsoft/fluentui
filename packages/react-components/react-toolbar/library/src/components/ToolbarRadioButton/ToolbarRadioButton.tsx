@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * ToolbarRadioButton component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps> = React.forwardRef((props, ref) => {
   const state = useToolbarRadioButton_unstable(props, ref);
 
@@ -17,6 +19,7 @@ export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps> = 
   useCustomStyleHook_unstable('useToolbarRadioButtonStyles_unstable')(state);
 
   return renderToggleButton_unstable(state);
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<ToolbarRadioButtonProps>;
 
 ToolbarRadioButton.displayName = 'ToolbarRadioButton';

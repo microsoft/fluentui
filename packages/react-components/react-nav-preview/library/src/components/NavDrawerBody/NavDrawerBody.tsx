@@ -9,6 +9,8 @@ import type { NavDrawerBodyProps } from './NavDrawerBody.types';
 /**
  * NavDrawerBody component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const NavDrawerBody: ForwardRefComponent<NavDrawerBodyProps> = React.forwardRef((props, ref) => {
   const state = useNavDrawerBody_unstable(props, ref);
 

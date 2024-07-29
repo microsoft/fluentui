@@ -10,6 +10,8 @@ import { renderTree_unstable } from './renderTree';
  * The `Tree` component renders nested items in a hierarchical structure.
  * Use it with `TreeItem` component and layouts components `TreeItemLayout` or `TreeItemPersonaLayout`.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Tree: ForwardRefComponent<TreeProps> = React.forwardRef((props, ref) => {
   const state = useTree_unstable(props, ref);
   const contextValues = useTreeContextValues_unstable(state);

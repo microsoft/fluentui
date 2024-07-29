@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The `DialogTitle` component expects to have a title/header
  * and when `Dialog` is `non-modal` a close (X icon) button is provided through `action` slot by default.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DialogTitle: ForwardRefComponent<DialogTitleProps> = React.forwardRef((props, ref) => {
   const state = useDialogTitle_unstable(props, ref);
 

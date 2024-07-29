@@ -11,6 +11,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  * Define a styled AccordionHeader, using the `useAccordionHeader_unstable` and `useAccordionHeaderStyles_unstable`
  * hooks.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const AccordionHeader: ForwardRefComponent<AccordionHeaderProps> = React.forwardRef((props, ref) => {
   const state = useAccordionHeader_unstable(props, ref);
   const contextValues = useAccordionHeaderContextValues_unstable(state);

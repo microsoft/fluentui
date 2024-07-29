@@ -13,6 +13,7 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -57,7 +58,7 @@ export type CarouselButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlots> & Pick<CarouselButtonProps, 'navType'>;
+export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlots> & DistributivePick<CarouselButtonProps, 'navType'>;
 
 // @public
 export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
@@ -108,7 +109,7 @@ export const CarouselNavButton: ForwardRefComponent<CarouselNavButtonProps>;
 export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots>;
 
 // @public
-export type CarouselNavButtonProps = ComponentProps<CarouselNavButtonSlots> & {};
+export type CarouselNavButtonProps = ComponentProps<CarouselNavButtonSlots>;
 
 // @public (undocumented)
 export type CarouselNavButtonSlots = {
@@ -130,7 +131,7 @@ export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonP
 export const carouselNavImageButtonClassNames: SlotClassNames<CarouselNavImageButtonSlots>;
 
 // @public
-export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots> & {};
+export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots>;
 
 // @public (undocumented)
 export type CarouselNavImageButtonSlots = {

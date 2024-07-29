@@ -377,7 +377,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 
 // @public (undocumented)
 export const TreeProvider: {
-    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): React_2.JSX.Element;
     displayName: string;
 };
 

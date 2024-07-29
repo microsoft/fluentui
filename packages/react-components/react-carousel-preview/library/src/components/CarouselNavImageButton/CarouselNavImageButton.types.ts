@@ -15,7 +15,7 @@ export type CarouselNavImageButtonSlots = {
 /**
  * CarouselNavImageButton Props
  */
-export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots> & {};
+export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonSlots>;
 
 /**
  * State used in rendering CarouselNavImageButton

@@ -9,6 +9,8 @@ import type { MessageBarTitleProps } from './MessageBarTitle.types';
 /**
  * MessageBarTitle component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarTitle_unstable(props, ref);
 

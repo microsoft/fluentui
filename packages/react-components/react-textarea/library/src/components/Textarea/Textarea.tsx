@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * The Textarea component allows the user to enter and edit text in multiple lines.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Textarea: ForwardRefComponent<TextareaProps> = React.forwardRef((props, ref) => {
   const state = useTextarea_unstable(props, ref);
 

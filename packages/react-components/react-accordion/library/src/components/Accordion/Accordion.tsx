@@ -10,6 +10,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Define a styled Accordion, using the `useAccordion_unstable` and `useAccordionStyles_unstable` hooks.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSX.Element) =
   React.forwardRef<HTMLDivElement, AccordionProps>((props, ref) => {
     const state = useAccordion_unstable(props, ref);
@@ -20,6 +22,7 @@ export const Accordion: ForwardRefComponent<AccordionProps> & (<TItem>(props: Ac
     useCustomStyleHook_unstable('useAccordionStyles_unstable')(state);
 
     return renderAccordion_unstable(state, contextValues);
+    // eslint-disable-next-line deprecation/deprecation
   }) as ForwardRefComponent<AccordionProps> & (<TItem>(props: AccordionProps<TItem>) => JSX.Element);
 
 Accordion.displayName = 'Accordion';

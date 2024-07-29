@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Define a styled MenuList, using the `useMenuList_unstable` hook.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const MenuList: ForwardRefComponent<MenuListProps> = React.forwardRef((props, ref) => {
   const state = useMenuList_unstable(props, ref);
   const contextValues = useMenuListContextValues_unstable(state);

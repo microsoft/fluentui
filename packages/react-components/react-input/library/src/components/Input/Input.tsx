@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * The Input component allows people to enter and edit text.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Input: ForwardRefComponent<InputProps> = React.forwardRef((props, ref) => {
   const state = useInput_unstable(props, ref);
 

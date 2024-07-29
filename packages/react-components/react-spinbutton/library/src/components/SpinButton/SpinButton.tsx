@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * A SpinButton allows someone to incrementally adjust a value in small steps.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const SpinButton: ForwardRefComponent<SpinButtonProps> = React.forwardRef((props, ref) => {
   const state = useSpinButton_unstable(props, ref);
 

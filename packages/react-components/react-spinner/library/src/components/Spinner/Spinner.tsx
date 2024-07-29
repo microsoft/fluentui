@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Converged Spinner component for the fluentui repo
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Spinner: ForwardRefComponent<SpinnerProps> = React.forwardRef((props, ref) => {
   const state = useSpinner_unstable(props, ref);
 

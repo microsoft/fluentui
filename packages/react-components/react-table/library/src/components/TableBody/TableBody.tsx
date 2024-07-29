@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * TableBody component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TableBody: ForwardRefComponent<TableBodyProps> = React.forwardRef((props, ref) => {
   const state = useTableBody_unstable(props, ref);
 

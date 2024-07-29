@@ -17,11 +17,12 @@ export const ToggleButtonShim: React.ForwardRefExoticComponent<IButtonProps & Re
       variantClassName: props.primary ? 'ms-Button--compoundPrimary' : 'ms-Button--compound',
     };
 
-    const shimProps: ToggleButtonProps = {
+    const shimProps = {
+      ...props,
       ...shimButtonProps(variantProps),
       checked: props.checked,
       defaultChecked: props.defaultChecked,
-    };
+    } as ToggleButtonProps;
 
-    return <ToggleButton {...(props as React.RefAttributes<HTMLButtonElement>)} {...shimProps} />;
+    return <ToggleButton {...shimProps} />;
   });

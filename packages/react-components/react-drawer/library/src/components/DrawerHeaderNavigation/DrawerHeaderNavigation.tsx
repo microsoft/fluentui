@@ -10,6 +10,8 @@ import type { DrawerHeaderNavigationProps } from './DrawerHeaderNavigation.types
 /**
  * DrawerHeaderNavigation provides a header navigation area for the Drawer.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DrawerHeaderNavigation: ForwardRefComponent<DrawerHeaderNavigationProps> = React.forwardRef(
   (props, ref) => {
     const state = useDrawerHeaderNavigation_unstable(props, ref);

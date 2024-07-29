@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FixedSizeList } from 'react-window';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem, ListProps } from '@fluentui/react-list-preview';
+import { ForwardRefComponent } from '@fluentui/react-components';
 
 const countries = [
   'Afghanistan',
@@ -201,9 +202,14 @@ const countries = [
   'Zimbabwe',
 ];
 
-const CountriesList = React.forwardRef<HTMLUListElement>((props: React.ComponentProps<typeof List>, ref) => (
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
+const CountriesList: ForwardRefComponent<ListProps> = React.forwardRef((props, ref) => (
   <List aria-label="Countries" tabIndex={0} {...props} ref={ref} />
-));
+  //FIXME: migrate to fc to remove this assertion
+  // Casting is required due to lack of distributive union to support unions on @types/react
+  // eslint-disable-next-line deprecation/deprecation
+)) as ForwardRefComponent<ListProps>;
 
 export const VirtualizedList = () => {
   return (

@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, DistributivePick, Slot } from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps, ButtonSlots, ButtonState } from '@fluentui/react-button';
 
@@ -22,4 +22,4 @@ export type CarouselButtonProps = ButtonProps &
  */
 export type CarouselButtonState = ButtonState &
   ComponentState<CarouselButtonSlots> &
-  Pick<CarouselButtonProps, 'navType'>;
+  DistributivePick<CarouselButtonProps, 'navType'>;

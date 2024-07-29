@@ -9,6 +9,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * Skeleton component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Skeleton: ForwardRefComponent<SkeletonProps> = React.forwardRef((props, ref) => {
   const state = useSkeleton_unstable(props, ref);
   const contextValues = useSkeletonContextValues(state);

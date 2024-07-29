@@ -10,6 +10,8 @@ import type { DrawerHeaderProps } from './DrawerHeader.types';
 /**
  * DrawerHeader provides a structured header for the drawer component.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DrawerHeader: ForwardRefComponent<DrawerHeaderProps> = React.forwardRef((props, ref) => {
   const state = useDrawerHeader_unstable(props, ref);
 

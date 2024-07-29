@@ -12,6 +12,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  *
  * TeachingPopoverBody is used to host content within a TeachingPopover, and provides a standardized media slot
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverBody: ForwardRefComponent<TeachingPopoverBodyProps> = React.forwardRef((props, ref) => {
   const state = useTeachingPopoverBody_unstable(props, ref);
 

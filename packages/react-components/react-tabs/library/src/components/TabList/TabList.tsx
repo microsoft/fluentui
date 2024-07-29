@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * A tab list provides single selection from a set of tabs.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TabList: ForwardRefComponent<TabListProps> = React.forwardRef((props, ref) => {
   const state = useTabList_unstable(props, ref);
   const contextValues = useTabListContextValues_unstable(state);

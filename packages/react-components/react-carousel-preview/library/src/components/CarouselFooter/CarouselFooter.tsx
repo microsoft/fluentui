@@ -12,6 +12,8 @@ import type { CarouselFooterProps } from './CarouselFooter.types';
  * The footer will have variant layouts that are condensed or extended,
  * as well as options to null out slots if not required or placed externally.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CarouselFooter: ForwardRefComponent<CarouselFooterProps> = React.forwardRef((props, ref) => {
   const state = useCarouselFooter_unstable(props, ref);
 

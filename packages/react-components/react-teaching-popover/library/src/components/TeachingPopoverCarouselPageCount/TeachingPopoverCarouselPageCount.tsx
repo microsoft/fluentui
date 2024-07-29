@@ -10,6 +10,8 @@ import type { TeachingPopoverCarouselPageCountProps } from './TeachingPopoverCar
  *
  * The child render function will provide both current and total page numbers for customization.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarouselPageCount: ForwardRefComponent<TeachingPopoverCarouselPageCountProps> =
   React.forwardRef((props, ref) => {
     const state = useTeachingPopoverCarouselPageCount_unstable(props, ref);

@@ -8,6 +8,8 @@ import type { AppItemProps } from './AppItem.types';
 /**
  * AppItem component - TODO: add more docs
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const AppItem: ForwardRefComponent<AppItemProps> = React.forwardRef((props, ref) => {
   const state = useAppItem_unstable(props, ref);
 

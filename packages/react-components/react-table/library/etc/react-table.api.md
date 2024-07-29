@@ -13,6 +13,7 @@ import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { DistributiveOmit } from '@fluentui/react-utilities';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
@@ -123,7 +124,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps = DistributiveOmit<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -206,7 +207,7 @@ export type DataGridState = TableState & {
 } & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
-export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
+export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => React_2.JSX.Element;
 
 // @public
 export const renderDataGridBody_unstable: (state: DataGridBodyState) => JSX.Element;
@@ -405,7 +406,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
-    tableRef: React_2.Ref<HTMLDivElement>;
+    tableRef: React_2.Ref<HTMLDivElement & HTMLTableElement>;
 }
 
 // @public

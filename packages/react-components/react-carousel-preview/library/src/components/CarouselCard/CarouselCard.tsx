@@ -13,6 +13,8 @@ import type { CarouselCardProps } from './CarouselCard.types';
  * Clickable actions within the content area are available via mouse and tab as expected,
  * non-active card content will be set to inert until moved to active card.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const CarouselCard: ForwardRefComponent<CarouselCardProps> = React.forwardRef((props, ref) => {
   const state = useCarouselCard_unstable(props, ref);
 

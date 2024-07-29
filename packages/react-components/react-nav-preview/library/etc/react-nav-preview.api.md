@@ -12,6 +12,8 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { DistributiveOmit } from '@fluentui/react-utilities';
+import type { DistributivePick } from '@fluentui/react-utilities';
 import type { DividerProps } from '@fluentui/react-divider';
 import { DividerSlots } from '@fluentui/react-divider';
 import type { DividerState } from '@fluentui/react-divider';
@@ -206,7 +208,7 @@ export type NavDrawerHeaderSlots = DrawerHeaderSlots;
 export type NavDrawerHeaderState = DrawerHeaderState;
 
 // @public
-export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DrawerProps & NavProps;
+export type NavDrawerProps = ComponentProps<NavDrawerSlots> & DistributiveOmit<DrawerProps, 'ref'> & NavProps;
 
 // @public
 export type NavDrawerSlots = DrawerSlots;
@@ -239,7 +241,7 @@ export type NavItemSlots = {
 };
 
 // @public
-export type NavItemState = ComponentState<NavItemSlots> & Pick<NavItemProps, 'value'> & {
+export type NavItemState = ComponentState<NavItemSlots> & DistributivePick<NavItemProps, 'value'> & {
     selected: boolean;
     size: NavSize;
 };
@@ -328,7 +330,7 @@ export type NavSubItemSlots = {
 };
 
 // @public
-export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemProps, 'value'> & {
+export type NavSubItemState = ComponentState<NavSubItemSlots> & DistributivePick<NavSubItemProps, 'value'> & {
     selected: boolean;
     size: NavSize;
 };

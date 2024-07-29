@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * Typography and styling abstraction component used to ensure consistency of text.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Text: ForwardRefComponent<TextProps> = React.forwardRef((props, ref) => {
   const state = useText_unstable(props, ref);
 
@@ -18,6 +20,7 @@ export const Text: ForwardRefComponent<TextProps> = React.forwardRef((props, ref
 
   return renderText_unstable(state);
   // Work around some small mismatches in inferred types which don't matter in practice
+  // eslint-disable-next-line deprecation/deprecation
 }) as ForwardRefComponent<TextProps>;
 
 Text.displayName = 'Text';

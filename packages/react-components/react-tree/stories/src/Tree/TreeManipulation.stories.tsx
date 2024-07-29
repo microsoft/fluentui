@@ -19,6 +19,7 @@ import {
   MenuPopover,
   MenuTrigger,
   useRestoreFocusTarget,
+  ForwardRefComponent,
 } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
@@ -40,47 +41,47 @@ type CustomTreeItemProps = FlatTreeItemProps & {
   onRemoveItem?: (value: string) => void;
 };
 
-const CustomTreeItem = React.forwardRef(
-  ({ onRemoveItem, ...props }: CustomTreeItemProps, ref: React.Ref<HTMLDivElement> | undefined) => {
-    const focusTargetAttribute = useRestoreFocusTarget();
-    const level = props['aria-level'];
-    const value = props.value as string;
-    const isItemRemovable = level !== 1 && !value.endsWith('-btn');
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
+const CustomTreeItem: ForwardRefComponent<CustomTreeItemProps> = React.forwardRef(({ onRemoveItem, ...props }, ref) => {
+  const focusTargetAttribute = useRestoreFocusTarget();
+  const level = props['aria-level'];
+  const value = props.value as string;
+  const isItemRemovable = level !== 1 && !value.endsWith('-btn');
 
-    const handleRemoveItem = React.useCallback(() => {
-      onRemoveItem?.(value);
-    }, [value, onRemoveItem]);
+  const handleRemoveItem = React.useCallback(() => {
+    onRemoveItem?.(value);
+  }, [value, onRemoveItem]);
 
-    return (
-      <Menu positioning="below-end" openOnContext>
-        <MenuTrigger disableButtonEnhancement>
-          <FlatTreeItem aria-description="has actions" {...focusTargetAttribute} {...props} ref={ref}>
-            <TreeItemLayout
-              actions={
-                isItemRemovable ? (
-                  // this button is accessible via context menu, hence aria-hidden='true'
-                  <Button
-                    aria-label="Remove item"
-                    appearance="subtle"
-                    onClick={handleRemoveItem}
-                    icon={<Delete20Regular />}
-                  />
-                ) : undefined
-              }
-            >
-              {props.children}
-            </TreeItemLayout>
-          </FlatTreeItem>
-        </MenuTrigger>
-        <MenuPopover>
-          <MenuList>
-            <MenuItem onClick={handleRemoveItem}>Remove item</MenuItem>
-          </MenuList>
-        </MenuPopover>
-      </Menu>
-    );
-  },
-);
+  return (
+    <Menu positioning="below-end" openOnContext>
+      <MenuTrigger disableButtonEnhancement>
+        <FlatTreeItem aria-description="has actions" {...focusTargetAttribute} {...props} ref={ref}>
+          <TreeItemLayout
+            actions={
+              isItemRemovable ? (
+                // this button is accessible via context menu, hence aria-hidden='true'
+                <Button
+                  aria-label="Remove item"
+                  appearance="subtle"
+                  onClick={handleRemoveItem}
+                  icon={<Delete20Regular />}
+                />
+              ) : undefined
+            }
+          >
+            {props.children}
+          </TreeItemLayout>
+        </FlatTreeItem>
+      </MenuTrigger>
+      <MenuPopover>
+        <MenuList>
+          <MenuItem onClick={handleRemoveItem}>Remove item</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  );
+});
 
 export const Manipulation = () => {
   const [trees, setTrees] = React.useState(subtrees);

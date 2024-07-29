@@ -11,6 +11,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * InteractionTagPrimary component - used as the first child of the `InteractionTag` component.
  * Provides visual attributes such as media, icon, primary and secondary text, as well as the ability to attach a primary action.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps> = React.forwardRef((props, ref) => {
   const state = useInteractionTagPrimary_unstable(props, ref);
 

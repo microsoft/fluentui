@@ -9,6 +9,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 /**
  * The Image component ensures the consistent styling of images.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const Image: ForwardRefComponent<ImageProps> = React.forwardRef((props, ref) => {
   const state = useImage_unstable(props, ref);
 

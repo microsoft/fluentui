@@ -6,6 +6,7 @@ export * from './constants';
 export * from './isSlot';
 export * from './assertSlots';
 export * from './getIntrinsicElementProps';
+export * from './fc';
 
 export * from './deprecated/getSlots';
 export * from './deprecated/resolveShorthand';

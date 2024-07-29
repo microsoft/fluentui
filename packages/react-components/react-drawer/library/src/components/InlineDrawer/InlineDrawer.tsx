@@ -13,6 +13,8 @@ import { useInlineDrawerStyles_unstable } from './useInlineDrawerStyles.styles';
  * InlineDrawer is often used for navigation that is not dismissible. As it is on the same level as
  * the main surface, users can still interact with other UI elements.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwardRef((props, ref) => {
   const state = useInlineDrawer_unstable(props, ref);
   const contextValue = useDrawerContextValue();

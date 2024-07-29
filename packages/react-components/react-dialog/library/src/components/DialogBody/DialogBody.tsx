@@ -10,6 +10,8 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * The `DialogBody` is a container where the content of the dialog is rendered.
  * Apart from styling, this component does not have other behavior.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const DialogBody: ForwardRefComponent<DialogBodyProps> = React.forwardRef((props, ref) => {
   const state = useDialogBody_unstable(props, ref);
 

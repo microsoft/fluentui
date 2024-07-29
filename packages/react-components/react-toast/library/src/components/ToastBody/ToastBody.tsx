@@ -8,6 +8,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 /**
  * ToastBody component
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const ToastBody: ForwardRefComponent<ToastBodyProps> = React.forwardRef((props, ref) => {
   const state = useToastBody_unstable(props, ref);
 

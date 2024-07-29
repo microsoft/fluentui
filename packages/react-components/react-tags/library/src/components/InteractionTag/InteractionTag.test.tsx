@@ -4,13 +4,14 @@ import { InteractionTag } from './InteractionTag';
 import { isConformant } from '../../testing/isConformant';
 import { InteractionTagPrimary } from '../InteractionTagPrimary';
 import { InteractionTagSecondary } from '../InteractionTagSecondary';
+import { InteractionTagProps } from './index';
 
 const requiredProps = {
   children: 'test',
 };
 
 describe('InteractionTag', () => {
-  isConformant({
+  isConformant<InteractionTagProps>({
     Component: InteractionTag,
     displayName: 'InteractionTag',
     requiredProps,

@@ -11,6 +11,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
  *
  * TeachingPopoverCarouselFooter contains previous/next buttons configured for carousel navigation, and a root slot for page count and/or page index navigation.
  */
+//TODO: migrate to fc to ensure v18 compatibility
+// eslint-disable-next-line deprecation/deprecation
 export const TeachingPopoverCarouselFooter: ForwardRefComponent<TeachingPopoverCarouselFooterProps> = React.forwardRef(
   (props, ref) => {
     const state = useTeachingPopoverCarouselFooter_unstable(props, ref);
