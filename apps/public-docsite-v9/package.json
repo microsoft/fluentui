@@ -46,6 +46,7 @@
     "react-hook-form": "^5.7.2",
     "@fluentui/react-nav-preview": "*",
     "@fluentui/react-motion-components-preview": "*",
-    "@fluentui/react-icons-compat": "*"
+    "@fluentui/react-icons-compat": "*",
+    "@fluentui/react-carousel-preview": "*"
   }
 }
