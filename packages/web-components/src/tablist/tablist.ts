@@ -9,6 +9,7 @@ import {
   keyHome,
   uniqueId,
 } from '@microsoft/fast-web-utilities';
+import { getDirection } from '../utils/index.js';
 import { Tab } from '../index.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
 
@@ -26,7 +27,7 @@ export class BaseTablist extends FASTElement {
    * HTML Attribute: disabled.
    */
   @attr({ mode: 'boolean' })
-  public disabled?: boolean;
+  public disabled: boolean = false;
 
   /**
    * The orientation
@@ -39,11 +40,12 @@ export class BaseTablist extends FASTElement {
   /**
    * @internal
    */
-  public orientationChanged(): void {
+  protected orientationChanged(): void {
     if (this.$fastController.isConnected) {
       this.setTabs();
     }
   }
+
   /**
    * The id of the active tab
    *
@@ -56,7 +58,7 @@ export class BaseTablist extends FASTElement {
   /**
    * @internal
    */
-  public activeidChanged(oldValue: string, newValue: string): void {
+  protected activeidChanged(oldValue: string, newValue: string): void {
     if (this.$fastController.isConnected && this.tabs.length > 0) {
       this.prevActiveTabIndex = this.tabs.findIndex((item: HTMLElement) => item.id === oldValue);
       this.setTabs();
@@ -71,7 +73,7 @@ export class BaseTablist extends FASTElement {
   /**
    * @internal
    */
-  public tabsChanged(): void {
+  protected tabsChanged(): void {
     if (this.$fastController.isConnected && this.tabs.length > 0) {
       this.tabIds = this.getTabIds();
       this.setTabs();
@@ -156,7 +158,8 @@ export class BaseTablist extends FASTElement {
 
   private handleTabClick = (event: MouseEvent): void => {
     const selectedTab = event.currentTarget as HTMLElement;
-    if (selectedTab.nodeType === 1 && this.isFocusableElement(selectedTab)) {
+    console.log('selectedTab', selectedTab.nodeType === Node.ELEMENT_NODE);
+    if (selectedTab.nodeType === Node.ELEMENT_NODE && this.isFocusableElement(selectedTab)) {
       this.prevActiveTabIndex = this.activeTabIndex;
       this.activeTabIndex = this.tabs.indexOf(selectedTab);
       this.setComponent();
@@ -168,7 +171,7 @@ export class BaseTablist extends FASTElement {
   }
 
   private handleTabKeyDown = (event: KeyboardEvent): void => {
-    const dir = window.getComputedStyle(this).direction;
+    const dir = getDirection(this);
     switch (event.key) {
       case keyArrowLeft:
         if (!this.isHorizontal()) {
@@ -225,11 +228,11 @@ export class BaseTablist extends FASTElement {
     const nextIndex = this.tabs.indexOf(focusableTabs[nextTabIndex]);
 
     if (nextIndex > -1) {
-      this.moveToTabByIndex(this.tabs, nextIndex);
+      this.activateTabByIndex(this.tabs, nextIndex);
     }
   }
 
-  private moveToTabByIndex(group: HTMLElement[], index: number) {
+  private activateTabByIndex(group: HTMLElement[], index: number) {
     const tab: HTMLElement = group[index] as HTMLElement;
     this.activetab = tab;
     this.prevActiveTabIndex = this.activeTabIndex;
