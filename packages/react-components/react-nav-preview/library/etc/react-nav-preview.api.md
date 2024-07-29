@@ -173,7 +173,7 @@ export type NavDrawerBodySlots = DrawerBodySlots;
 export type NavDrawerBodyState = DrawerBodyState;
 
 // @public (undocumented)
-export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+export const navDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;

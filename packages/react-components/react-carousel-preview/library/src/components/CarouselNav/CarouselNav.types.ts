@@ -8,11 +8,17 @@ export type CarouselNavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
-export type NavButtonRenderFunction = (value: string) => React.ReactNode;
+export type NavButtonRenderFunction = (index: number) => React.ReactNode;
 
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-  values: string[];
+  /**
+   * The total number of slides available.
+   */
+  totalSlides: number;
 
+  /**
+   * The function that will render nav items based on total slides and their index.
+   */
   renderNavButton: NavButtonRenderFunction;
 };
 

@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, EventHandler, Slot } from '@fluentui/react-utilities';
-import type { CarouselContextValue, CarouselValueChangeData } from '../CarouselContext.types';
+import type { CarouselContextValue, CarouselIndexChangeData } from '../CarouselContext.types';
 
 export type CarouselSlots = {
   root: Slot<'div'>;
@@ -12,7 +12,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * The initial page to display in uncontrolled mode.
    */
-  defaultValue?: string;
+  defaultActiveIndex?: number;
 
   /**
    * The alignment of the carousel.
@@ -22,17 +22,22 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   /**
    * The value of the currently active page.
    */
-  value?: string;
+  activeIndex?: number;
 
   /**
    * Callback to notify a page change.
    */
-  onValueChange?: EventHandler<CarouselValueChangeData>;
+  onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
 
   /**
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
   circular?: boolean;
+  /**
+   * Controls the number of carousel cards per navigation element, will default to 'auto'
+   * Recommended to set to '1' when using full page carousel cards.
+   */
+  groupSize?: number | 'auto';
 };
 
 /**
@@ -45,3 +50,11 @@ export interface CarouselVisibilityEventDetail {
 }
 
 export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventDetail>;
+
+/**
+ * @internal
+ */
+export interface CarouselUpdateData {
+  activeIndex: number;
+  navItemsCount: number;
+}

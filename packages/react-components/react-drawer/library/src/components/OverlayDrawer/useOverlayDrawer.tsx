@@ -1,11 +1,19 @@
+import { Dialog } from '@fluentui/react-dialog';
+import { slot } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
 
+import { OverlayDrawerMotion, OverlaySurfaceBackdropMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
-import { OverlayDrawerDialog } from './OverlayDrawerDialog';
 import { OverlayDrawerSurface } from './OverlayDrawerSurface';
+import { mergePresenceSlots } from '../../shared/drawerMotionUtils';
+
+const STATIC_MOTION = {
+  active: true,
+  canRender: true,
+  ref: React.createRef<HTMLDivElement>(),
+  type: 'idle' as const,
+};
 
 /**
  * Create the state required to render OverlayDrawer.
@@ -21,9 +29,7 @@ export const useOverlayDrawer_unstable = (
   ref: React.Ref<HTMLElement>,
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
-
-  const motion = useMotion<HTMLElement>(open);
+  const { backdropMotion, modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion } = props;
 
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
@@ -31,8 +37,9 @@ export const useOverlayDrawer_unstable = (
   const root = slot.always(
     {
       ...props,
-      ref: useMergedRefs(ref, motion.ref),
+      ref,
       backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
+      backdropMotion: mergePresenceSlots(backdropMotion, OverlaySurfaceBackdropMotion, { size }),
     },
     {
       /**
@@ -49,6 +56,7 @@ export const useOverlayDrawer_unstable = (
       onOpenChange,
       inertTrapFocus,
       modalType,
+      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size }),
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
@@ -56,21 +64,22 @@ export const useOverlayDrawer_unstable = (
       children: null as unknown as JSX.Element,
     },
     {
-      elementType: OverlayDrawerDialog,
+      elementType: Dialog,
     },
   );
 
   return {
     components: {
       root: OverlayDrawerSurface,
-      dialog: OverlayDrawerDialog,
+      dialog: Dialog,
     },
 
     root,
     dialog,
 
+    open,
     size,
     position,
-    motion,
+    motion: STATIC_MOTION,
   };
 };
