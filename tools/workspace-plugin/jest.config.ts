@@ -4,14 +4,7 @@ export default {
   displayName: 'workspace-plugin',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.[tj]s$': [
-      'ts-jest',
-      {
-        diagnostics: false,
-        isolatedModules: true,
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-      },
-    ],
+    '^.+\\.[tj]s$': ['@swc/jest', {}],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/tools/workspace-plugin',

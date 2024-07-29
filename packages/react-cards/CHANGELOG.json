@@ -2,6 +2,29 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 07:32:52 GMT",
+      "tag": "@fluentui/react-cards_v0.205.163",
+      "version": "0.205.163",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "b147de918bfc0282085ffa586ef5973f76d63b71",
+            "comment": "chore: introduce bundle aware build:react task for v8 packages that ship UMD to production(npm registry)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.119.3",
+            "commit": "8303652a141232be9e03658f295b8ab6512e43aa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 07:31:12 GMT",
       "tag": "@fluentui/react-cards_v0.205.162",
       "version": "0.205.162",

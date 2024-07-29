@@ -8,7 +8,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid use of deprecated KeyboardEvent props "which" and "keyCode".',
-      recommended: 'error',
+      recommended: 'recommended',
       requiresTypeChecking: true,
     },
     messages: {

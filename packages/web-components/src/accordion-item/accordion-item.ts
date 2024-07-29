@@ -29,7 +29,7 @@ export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
  *
  * @public
  */
-export class AccordionItem extends FASTElement {
+export class BaseAccordionItem extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -101,6 +101,19 @@ export class AccordionItem extends FASTElement {
   public id: string = uniqueId('accordion-');
 
   /**
+   * @internal
+   */
+  public expandbutton!: HTMLElement;
+}
+
+/**
+ * An Accordion Item Custom HTML Element.
+ * Based on BaseAccordionItem and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class AccordionItem extends BaseAccordionItem {
+  /**
    * Defines accordion header font size.
    *
    * @public
@@ -122,25 +135,6 @@ export class AccordionItem extends FASTElement {
     if (next) {
       toggleState(this.elementInternals, next, true);
     }
-  }
-
-  /**
-   * Sets the width of the focus state.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: block
-   */
-  @attr({ mode: 'boolean' })
-  public block: boolean = false;
-
-  /**
-   * Handles changes to block attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public blockChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'block', next);
   }
 
   /**
@@ -168,9 +162,23 @@ export class AccordionItem extends FASTElement {
   }
 
   /**
-   * @internal
+   * Sets the width of the focus state.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: block
    */
-  public expandbutton!: HTMLElement;
+  @attr({ mode: 'boolean' })
+  public block: boolean = false;
+
+  /**
+   * Handles changes to block attribute
+   * @param prev - previous value
+   * @param next - next value
+   */
+  public blockChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'block', next);
+  }
 }
 
 /**
