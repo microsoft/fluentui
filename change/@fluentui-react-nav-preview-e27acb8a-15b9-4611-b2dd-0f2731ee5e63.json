@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Adds slots & styling for AppItem.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}

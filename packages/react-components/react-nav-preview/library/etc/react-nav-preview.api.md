@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -42,15 +42,20 @@ export const AppItem: ForwardRefComponent<AppItemProps>;
 export const appItemClassNames: SlotClassNames<AppItemSlots>;
 
 // @public
-export type AppItemProps = ComponentProps<AppItemSlots> & {};
+export type AppItemProps = ComponentProps<AppItemSlots> & {
+    href?: string;
+};
 
 // @public (undocumented)
 export type AppItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type AppItemState = ComponentState<AppItemSlots>;
+export type AppItemState = ComponentState<AppItemSlots> & {
+    size: NavSize;
+};
 
 // @public
 export const AppItemStatic: ForwardRefComponent<AppItemStaticProps>;
@@ -367,7 +372,7 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
-export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLDivElement>) => AppItemState;
+export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => AppItemState;
 
 // @public
 export const useAppItemStatic_unstable: (props: AppItemStaticProps, ref: React_2.Ref<HTMLDivElement>) => AppItemStaticState;
