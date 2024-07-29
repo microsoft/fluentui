@@ -45,6 +45,7 @@
     "tslib": "^2.1.0",
     "react-hook-form": "^5.7.2",
     "@fluentui/react-nav-preview": "*",
-    "@fluentui/react-motion-components-preview": "*"
+    "@fluentui/react-motion-components-preview": "*",
+    "@fluentui/react-icons-compat": "*"
   }
 }
