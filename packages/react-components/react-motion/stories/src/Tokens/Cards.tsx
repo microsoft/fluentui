@@ -12,7 +12,7 @@ const useClasses = makeStyles({
     borderRadius: tokens.borderRadiusMedium,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    padding: '10px 20px',
+    padding: '6px 10px',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
     borderBottom: 'none',
     width: 'fit-content',
@@ -97,7 +97,7 @@ const useCardClasses = makeStyles({
     borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
     borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
 
-    overflow: 'visible'
+    overflow: 'visible',
 
     height: 'var(--container-size)',
     width: 'var(--container-size)',
@@ -154,7 +154,9 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
       <div className={classes.graph}>
         <svg className={classes.svg} viewBox="0 0 100 100">
           <path
-            d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${100 - easingPoints[3]}, 100 0`}
+            d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
+              100 - easingPoints[3]
+            }, 100 0`}
             fill="none"
             stroke={tokens.colorNeutralStrokeAccessible}
             strokeWidth="2"
@@ -201,9 +203,20 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
   );
 };
 
+function useAnimationEnabled() {
+  const [animationEnabled, setAnimationEnabled] = React.useState(() => {
+    // Heads up/ Not the best way to detect reduced motion as it breaks SSR, but it's good enough for Storybook
+    const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    return !isReducedMotion;
+  });
+
+  return [animationEnabled, setAnimationEnabled] as const;
+}
+
 export const MotionCurves = () => {
   const classes = useClasses();
-  const [animationEnabled, setAnimationEnabled] = React.useState(true);
+  const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 
   return (
     <div className={classes.container}>
@@ -235,7 +248,7 @@ export const MotionCurves = () => {
 
 export const MotionDuration = () => {
   const classes = useClasses();
-  const [animationEnabled, setAnimationEnabled] = React.useState(true);
+  const [animationEnabled, setAnimationEnabled] = useAnimationEnabled();
 
   return (
     <div className={classes.container}>
