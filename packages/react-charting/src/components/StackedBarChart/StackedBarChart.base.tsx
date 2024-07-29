@@ -370,7 +370,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             y={0}
             width={value + '%'}
             height={barHeight}
-            rx={this.props.roundCorners ? barHeight / 2 : 0}
+            rx={this.props.roundCorners ? 3 : 0}
             fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
           />
         </g>
