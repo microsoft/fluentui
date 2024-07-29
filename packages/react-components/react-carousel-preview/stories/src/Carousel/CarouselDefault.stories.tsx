@@ -6,6 +6,7 @@ import {
   CarouselNav,
   CarouselNavButton,
   CarouselSlider,
+  CarouselAutoplayButton,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
