@@ -4,16 +4,17 @@ import type { CarouselContextValues } from '../CarouselContext.types';
 import type { CarouselState } from './Carousel.types';
 
 export function useCarouselContextValues_unstable(state: CarouselState): CarouselContextValues {
-  const { store, selectPageByDirection, selectPageByValue, circular } = state;
+  const { activeIndex, selectPageByDirection, selectPageByIndex, subscribeForValues, circular } = state;
 
   const carousel = React.useMemo(
     () => ({
-      store,
+      activeIndex,
       selectPageByDirection,
-      selectPageByValue,
+      selectPageByIndex,
+      subscribeForValues,
       circular,
     }),
-    [store, selectPageByDirection, selectPageByValue, circular],
+    [activeIndex, selectPageByDirection, selectPageByIndex, subscribeForValues, circular],
   );
 
   return { carousel };

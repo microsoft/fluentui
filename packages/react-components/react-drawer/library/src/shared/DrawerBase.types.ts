@@ -64,7 +64,12 @@ export type DrawerBaseProps = {
 };
 
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
+  /**
+   * @deprecated Passed values will be static.
+   */
   motion: MotionState<HTMLElement>;
+
+  open?: boolean;
 };
 
 export type DrawerScrollState = 'none' | 'top' | 'middle' | 'bottom';
