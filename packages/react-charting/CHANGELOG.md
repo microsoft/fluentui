@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 23 Jul 2024 07:32:53 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Jul 2024 07:30:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.26)
+
+Mon, 29 Jul 2024 07:30:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.25..@fluentui/react-charting_v5.21.26)
+
+### Patches
+
+- Fix "aria-required-children" accessibility issue in legends ([PR #32119](https://github.com/microsoft/fluentui/pull/32119) by 110246001+krkshitij@users.noreply.github.com)
 
 ## [5.21.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.25)
 
