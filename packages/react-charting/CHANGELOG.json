@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 29 Jul 2024 07:30:53 GMT",
+      "tag": "@fluentui/react-charting_v5.21.26",
+      "version": "5.21.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "617c1410727852c28813e9aee8eb0dcf240144e0",
+            "comment": "Fix \"aria-required-children\" accessibility issue in legends"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:53 GMT",
       "tag": "@fluentui/react-charting_v5.21.25",
       "version": "5.21.25",

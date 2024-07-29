@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: improve arrow styles implementation",
+  "packageName": "@fluentui/react-positioning",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

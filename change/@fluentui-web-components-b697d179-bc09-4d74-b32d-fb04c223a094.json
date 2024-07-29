@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: reference accordion item base class in accordion",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
