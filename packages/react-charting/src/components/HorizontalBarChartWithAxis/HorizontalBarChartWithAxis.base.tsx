@@ -341,7 +341,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         isCalloutVisible: true,
         dataForHoverCard: point.x,
         selectedLegendTitle: point.legend!,
-        color: this.props.useSingleColor ? color : point.color,
+        color: (this.props.useSingleColor || this.props.enableGradient) ? color : point.color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue: point.yAxisCalloutData! || point.y.toString(),
         yCalloutValue: point.xAxisCalloutData || point.x.toString(),

@@ -290,12 +290,19 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
       this._currentHoverElement = e;
+      let color: string = data.color!;
+
+      if (this.props.enableGradient) {
+        const pointIndex = Math.max(this.props.data?.chartData?.findIndex((item) => item === data) || 0, 0);
+        color = data.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+      }
+
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
         showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         value: data.data!.toString(),
         legend: data.legend,
-        color: data.color!,
+        color,
         xCalloutValue: data.xAxisCalloutData!,
         yCalloutValue: data.yAxisCalloutData!,
         dataPointCalloutProps: data,

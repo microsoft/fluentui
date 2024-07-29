@@ -198,10 +198,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
       this._calloutAnchorPoint = point;
+      let color = point.color!;
+
+      if (this.props.enableGradient) {
+        const pointIndex = Math.max(
+          this.props.data?.map(v => v.chartData)?.findIndex(
+            (item) => item?.[0].data === point.data && item?.[0].legend === point.legend,
+          )
+          || 0, 0
+        );
+        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+      }
+
       this.setState({
         isCalloutVisible: true,
         hoverValue,
-        lineColor: point.color!,
+        lineColor: color,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
         xCalloutValue: point.xAxisCalloutData!,

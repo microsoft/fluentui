@@ -6,7 +6,7 @@ import { IAccessibilityProps, IChartDataPoint, IChartProps } from './index';
 import { IRefArrayData, IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from '../../index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 import { convertToLocaleString } from '../../utilities/locale-util';
 
@@ -275,8 +275,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      const color2: string = (data.chartData?.[index + 1] && data.chartData?.[index + 1].color) ?? color;
+      let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let color2: string = color;
+      if (this.props.enableGradient ) {
+        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+      }
+
       const pointData = point.data ? point.data : 0;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
