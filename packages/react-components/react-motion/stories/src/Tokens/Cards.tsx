@@ -97,6 +97,8 @@ const useCardClasses = makeStyles({
     borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
     borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
 
+    overflow: 'visible'
+
     height: 'var(--container-size)',
     width: 'var(--container-size)',
   },
@@ -152,7 +154,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
       <div className={classes.graph}>
         <svg className={classes.svg} viewBox="0 0 100 100">
           <path
-            d={`M 0 100 C ${easingPoints[0]} ${easingPoints[1]}, ${easingPoints[2]} ${easingPoints[3]}, 100 0`}
+            d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${100 - easingPoints[3]}, 100 0`}
             fill="none"
             stroke={tokens.colorNeutralStrokeAccessible}
             strokeWidth="2"
