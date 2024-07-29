@@ -74,6 +74,11 @@ export interface ILegendsStyles {
    * sub component styles
    */
   subComponentStyles?: ILegendSubComponentStyles;
+
+  /**
+   * Style for the area that is resizable
+   */
+  resizableArea?: string;
 }
 
 /**
