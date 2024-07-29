@@ -95,4 +95,4 @@ steps:
       # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
       inlineScript: |
         yarn vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix ${{ parameters.locationPrefix }} --locationPostfix ${{ parameters.locationPostfix }} --pipelineId $(pipelineId)  --clientName ${{ parameters.clientName }} --threshold '0.04' --cumThreshold '1'
-    condition: eq(variables['vrTestSkip'], 'no')
+    condition: and(eq(variables.isPR, true), eq(variables['vrTestSkip'], 'no'))
