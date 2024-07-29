@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat: Release react-carousel-preview to public preview",
+  "comment": "feat: Release react-carousel-preview to public preview",
   "packageName": "@fluentui/react-carousel-preview",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
