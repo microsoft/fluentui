@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "'feat: release react-icons-compat to stable'",
+  "comment": "feat: Release react-icons-compat to stable",
   "packageName": "@fluentui/react-icons-compat",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
