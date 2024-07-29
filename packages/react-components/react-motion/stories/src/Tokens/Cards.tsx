@@ -25,7 +25,7 @@ const useClasses = makeStyles({
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
     gap: '30px 50px',
-    alignItems: 'center',
+    placeItems: 'center',
     border: `2px solid ${tokens.colorNeutralStroke1}`,
   },
 });
