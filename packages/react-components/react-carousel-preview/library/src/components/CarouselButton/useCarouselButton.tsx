@@ -78,5 +78,6 @@ export const useCarouselButton_unstable = (
       },
       ref as React.Ref<HTMLButtonElement>,
     ),
+    appearance: 'subtle',
   };
 };
