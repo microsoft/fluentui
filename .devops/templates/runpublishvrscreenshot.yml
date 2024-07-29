@@ -8,6 +8,15 @@ parameters:
   - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
+  - name: locationPrefix
+    type: string
+    default: fluentuiv8
+  - name: locationPostfix
+    type: string
+    default: vrscreenshotv8
+  - name: clientName
+    type: string
+    default: fluentuiv8
 
 steps:
   - task: Bash@3
@@ -67,3 +76,23 @@ steps:
       SERVICE_CONNECTION_ID: $(ServiceConnectionId)
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
     condition: eq(variables.isPR, true)
+
+  - task: AzureCLI@2
+    displayName: 'Run fluentui-screenshotdiff'
+    env:
+      API_TOKEN: $(fabric-public-pipeline-access-PAT)
+      GITHUB_API_TOKEN: $(githubRepoStatusPAT)
+      VR_APP_API_URL: $(VR_APP_API_URL)
+      STORAGE_ACCOUNT_ID: $(StorageAccountId)
+      TENANT_ID: $(TenantId)
+      PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+      SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    inputs:
+      azureSubscription: $(AzureSubscription)
+      scriptType: bash
+      scriptLocation: 'inlineScript'
+      # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
+      inlineScript: |
+        yarn vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix ${{ parameters.locationPrefix }} --locationPostfix ${{ parameters.locationPostfix }} --pipelineId $(pipelineId)  --clientName ${{ parameters.clientName }} --threshold '0.04' --cumThreshold '1'
+    condition: eq(variables['vrTestSkip'], 'no')
