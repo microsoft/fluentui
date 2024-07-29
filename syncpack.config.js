@@ -83,6 +83,11 @@ const config = {
       packages: ['@fluentui/react-conformance'],
       dependencies: ['chalk'],
     },
+	{
+        packages: ["@fluentui/react-charts-preview"],
+        dependencies: ["d3-*", "@types/d3-*"],
+        isIgnored: true
+	},
   ],
 };
 
