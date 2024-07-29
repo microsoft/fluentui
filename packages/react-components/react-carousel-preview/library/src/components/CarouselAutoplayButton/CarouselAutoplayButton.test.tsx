@@ -2,10 +2,11 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { CarouselAutoplayButton } from './CarouselAutoplayButton';
+import { CarouselAutoplayButtonProps } from './CarouselAutoplayButton.types';
 
 describe('CarouselAutoplayButton', () => {
   isConformant({
-    Component: CarouselAutoplayButton,
+    Component: CarouselAutoplayButton as React.FunctionComponent<CarouselAutoplayButtonProps>,
     displayName: 'CarouselAutoplayButton',
   });
 

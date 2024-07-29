@@ -6,6 +6,7 @@ import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { mergeCallbacks } from '@fluentui/react-utilities';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import { ARIAButtonElement } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render CarouselAutoplayButton.
@@ -18,7 +19,7 @@ import { useCarouselContext_unstable as useCarouselContext } from '../CarouselCo
  */
 export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
-  ref: React.Ref<HTMLButtonElement>,
+  ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
   const [autoplay, setAutoplay] = useControllableState({
     state: props.autoplay,

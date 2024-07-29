@@ -30,15 +30,18 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots>;
 
 // @public
-export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonSlots> & {};
+export type CarouselAutoplayButtonProps = ButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
+    defaultAutoplay?: boolean;
+    autoplay?: boolean;
+};
 
 // @public (undocumented)
-export type CarouselAutoplayButtonSlots = {
-    root: Slot<'div'>;
+export type CarouselAutoplayButtonSlots = ButtonSlots & {
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
 };
 
 // @public
-export type CarouselAutoplayButtonState = ComponentState<CarouselAutoplayButtonSlots>;
+export type CarouselAutoplayButtonState = ButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'defaultAutoplay' | 'autoplay'>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
@@ -226,7 +229,7 @@ export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
 
 // @public
-export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselAutoplayButtonState;
+export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<ARIAButtonElement>) => CarouselAutoplayButtonState;
 
 // @public
 export const useCarouselAutoplayButtonStyles_unstable: (state: CarouselAutoplayButtonState) => CarouselAutoplayButtonState;
