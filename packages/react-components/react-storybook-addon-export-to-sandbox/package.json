@@ -33,7 +33,9 @@
     "dedent": "^1.2.0"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.5.15"
+    "@storybook/manager-api": "^7.6.20",
+    "@storybook/preview-api": "^7.6.20",
+    "@storybook/react": "^7.6.20"
   },
   "beachball": {
     "disallowedChangeTypes": [

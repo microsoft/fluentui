@@ -9,11 +9,8 @@ const tsPaths = new TsconfigPathsPlugin({
   configFile: tsConfigPath,
 });
 
-module.exports = /** @type {import('../../../.storybook/types').StorybookBaseConfig} */ ({
+module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [
-    {
-      name: '@storybook/addon-docs',
-    },
     {
       name: '@storybook/addon-essentials',
       options: {
@@ -27,8 +24,16 @@ module.exports = /** @type {import('../../../.storybook/types').StorybookBaseCon
 
   stories: ['../src/**/*.stories.tsx'],
   core: {
-    builder: 'webpack5',
     disableTelemetry: true,
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        fsCache: false,
+        lazyCompilation: false,
+      },
+    },
   },
   typescript: {
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)

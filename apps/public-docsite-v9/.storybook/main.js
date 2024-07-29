@@ -15,13 +15,17 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     ...getPackageStoriesGlob({
       packageName: '@fluentui/public-docsite-v9',
       callerPath: __dirname,
-      excludeStoriesInsertionFromPackages: ['@fluentui/react-storybook-addon', '@fluentui/theme-designer'],
+      excludeStoriesInsertionFromPackages: [
+        '@fluentui/react-storybook-addon',
+        '@fluentui/theme-designer',
+        '@fluentui/react-nav-preview',
+      ],
     }),
   ],
   staticDirs: ['../public'],
-  addons: [...rootMain.addons],
+  addons: [...(rootMain.addons ?? [])],
   webpackFinal: (config, options) => {
-    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal(config, options) });
+    const localConfig = /** @type config */ ({ ...rootMain.webpackFinal?.(config, options) });
 
     // add your own webpack tweaks if needed
     registerTsPaths({ configFile: tsConfigAllPath, config: localConfig });

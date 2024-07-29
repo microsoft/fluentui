@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Divider } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DividerExampleFittedShorthand from '../../examples/components/Divider/Variations/DividerExampleFitted.shorthand';
@@ -6,7 +6,7 @@ import DividerExampleFittedShorthand from '../../examples/components/Divider/Var
 export default {
   component: Divider,
   title: 'Divider',
-} as ComponentMeta<typeof Divider>;
+} as Meta<typeof Divider>;
 
 const DividerExampleFittedShorthandTeams = getThemeStoryVariant(DividerExampleFittedShorthand, 'teamsV2');
 

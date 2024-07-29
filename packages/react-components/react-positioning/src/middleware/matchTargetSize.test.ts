@@ -1,4 +1,4 @@
-import type { MiddlewareArguments } from '@floating-ui/dom';
+import type { MiddlewareState } from '@floating-ui/dom';
 import { matchTargetSize, matchTargetSizeCssVar } from './matchTargetSize';
 import { CSSProperties } from 'react';
 
@@ -21,7 +21,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -52,7 +52,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -82,7 +82,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: referenceWidth },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 
@@ -103,7 +103,7 @@ describe('matchTargetSize', () => {
         reference: { width: referenceWidth },
         floating: { width: '1px' },
       },
-    } as unknown as MiddlewareArguments;
+    } as unknown as MiddlewareState;
 
     const result = await middlewareFn(middlewareArguments);
 

@@ -132,12 +132,14 @@ const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
 
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
-
-  const dir = context.parameters?.dir ?? context.globals?.[DIR_ID] ?? 'ltr';
-  const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];
-  const videos = context.parameters?.videos ?? null;
+  const primaryStoryContext = context.getStoryContext(primaryStory);
+
+  const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
+
+  const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
   // DEBUG
   // console.log('FluentDocsPage', context);
@@ -152,7 +154,7 @@ export const FluentDocsPage = () => {
   // );
 
   return (
-    <div>
+    <div className="sb-unstyled">
       <Title />
       <div className={styles.wrapper}>
         <div className={styles.container}>

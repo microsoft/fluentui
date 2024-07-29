@@ -818,7 +818,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     updateJson(tree, options.paths.storybook.tsconfig, (json: TsConfig) => {
       json.compilerOptions.types = json.compilerOptions.types || [];
 
-      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
+      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []));
       json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
 
       return json;
@@ -850,7 +850,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
     updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
       const scripts = {
-        storybook: `start-storybook`,
+        storybook: `storybook dev`,
         start: 'yarn storybook',
       };
       json.scripts = json.scripts ?? {};

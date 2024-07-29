@@ -14,7 +14,7 @@ describe(`webpack`, () => {
 
     expect(actual.module?.rules).toEqual([
       {
-        enforce: 'post',
+        // enforce: 'post',
         test: /\.stories\.(jsx?$|tsx?$)/,
         use: {
           loader: 'babel-loader',
@@ -22,6 +22,16 @@ describe(`webpack`, () => {
             plugins: [[expect.stringContaining('babel-preset-storybook-full-source'), undefined]],
           },
         },
+      },
+      {
+        test: /\.stories\.[tj]sx?$/,
+        use: [
+          {
+            loader: expect.stringContaining('@storybook/source-loader'),
+            options: {},
+          },
+        ],
+        // enforce: 'pre',
       },
     ]);
   });
@@ -47,7 +57,7 @@ describe(`webpack`, () => {
 
     expect(actual.module?.rules).toEqual([
       {
-        enforce: 'post',
+        // enforce: 'post',
         test: /\.stories\.tsx?/,
         include: /foo-stories/,
         use: {
@@ -62,6 +72,16 @@ describe(`webpack`, () => {
             presets: ['babel-foo-bar-preset'],
           },
         },
+      },
+      {
+        test: /\.stories\.[tj]sx?$/,
+        use: [
+          {
+            loader: expect.stringContaining('@storybook/source-loader'),
+            options: {},
+          },
+        ],
+        // enforce: 'pre',
       },
     ]);
   });
