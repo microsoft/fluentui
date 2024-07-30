@@ -166,7 +166,7 @@ export const zIndexes: ZIndexTokens = {
 ```
 
 ```ts
-// partner side
+// Fluent/partner code
 
 import { tokens } from '@fluentui/theme';
 
