@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   root: {
     marginTop: 'auto',
     marginBottom: 'auto',
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
     ':hover': {

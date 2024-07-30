@@ -73,11 +73,11 @@ export const useCarouselButton_unstable = (
         }),
         disabled: isTrailing,
         'aria-disabled': isTrailing,
+        appearance: 'subtle',
         ...props,
         onClick: handleButtonClick,
       },
       ref as React.Ref<HTMLButtonElement>,
     ),
-    appearance: 'subtle',
   };
 };
