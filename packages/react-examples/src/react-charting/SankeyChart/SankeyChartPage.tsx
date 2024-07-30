@@ -30,6 +30,9 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
         componentName="SankeyChartExample"
         exampleCards={
           <div>
+            <ExampleCard title="SankeyChart Reflow" code={SankeyChartReflowExampleCode}>
+              <SankeyChartReflowExample />
+            </ExampleCard>
             <ExampleCard title="SankeyChart basic" code={SankeyChartBasicExampleCode}>
               <SankeyChartBasicExample />
             </ExampleCard>
@@ -38,9 +41,6 @@ export class SankeyChartPage extends React.Component<IComponentDemoPageProps, {}
             </ExampleCard>
             <ExampleCard title="SankeyChart Rebalance" code={SankeyChartRebalanceExampleCode}>
               <SankeyChartRebalanceExample />
-            </ExampleCard>
-            <ExampleCard title="SankeyChart Reflow" code={SankeyChartReflowExampleCode}>
-              <SankeyChartReflowExample />
             </ExampleCard>
           </div>
         }
