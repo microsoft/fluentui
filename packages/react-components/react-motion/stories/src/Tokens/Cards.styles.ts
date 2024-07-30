@@ -33,7 +33,7 @@ export const useCardClasses = makeStyles({
   container: {
     display: 'grid',
     gridTemplate: `
-        "graph point"
+        "view point"
         "title ." auto / min-content var(--point-size)
     `,
     gap: '10px',
@@ -51,8 +51,8 @@ export const useCardClasses = makeStyles({
     clipPath: 'polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 0% 50%)',
 
     animationName: {
-      '0%': { transform: 'translateY(calc(var(--container-size) - var(--point-size)))' },
-      '60%, 100%': { transform: 'translateY(0)' },
+      '0%': { transform: 'translateY(calc(var(--container-size) - var(--point-size) / 2))' },
+      '60%, 100%': { transform: 'translateY(calc(var(--point-size) / 2 * -1))' },
     },
     animationDuration: '2s',
     animationIterationCount: 'infinite',
@@ -60,22 +60,34 @@ export const useCardClasses = makeStyles({
   },
 
   graph: {
-    gridArea: 'graph',
-    position: 'relative',
+    gridArea: 'view',
+    display: 'grid',
+    gridTemplate: `
+      "graphP svg"
+      ".      graphT" / min-content 1fr
+    `,
+    gap: '6px',
   },
-  graphX: {
+  graphP: {
+    gridArea: 'graphP',
     color: tokens.colorNeutralStroke1,
     fontFamily: tokens.fontFamilyMonospace,
-    position: 'absolute',
-    left: '10px',
-    top: '10px',
   },
   graphT: {
+    gridArea: 'graphT',
+    justifySelf: 'end',
     color: tokens.colorNeutralStroke1,
     fontFamily: tokens.fontFamilyMonospace,
-    position: 'absolute',
-    bottom: '10px',
-    right: '10px',
+  },
+  svg: {
+    gridArea: 'svg',
+    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
+
+    overflow: 'visible',
+
+    height: 'var(--container-size)',
+    width: 'var(--container-size)',
   },
 
   duration: {
@@ -92,16 +104,10 @@ export const useCardClasses = makeStyles({
     },
     animationIterationCount: 'infinite',
   },
-  svg: {
-    borderLeft: `1px solid ${tokens.colorNeutralStroke1}`,
-    borderBottom: `1px solid ${tokens.colorNeutralStroke1}`,
 
-    overflow: 'visible',
-
-    height: 'var(--container-size)',
-    width: 'var(--container-size)',
+  view: {
+    gridArea: 'view',
   },
-
   title: {
     gridArea: 'title',
     justifySelf: 'center',

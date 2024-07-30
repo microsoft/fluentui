@@ -1,4 +1,5 @@
-import { Divider, motionTokens, tokens, Switch } from '@fluentui/react-components';
+import { Divider, tokens, Switch } from '@fluentui/react-components';
+import { curves, durations } from '@fluentui/react-motion';
 import * as React from 'react';
 
 import { useCardClasses, useClasses } from './Cards.styles';
@@ -25,7 +26,7 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
 
   return (
     <div className={classes.container}>
-      <div className={classes.graph}>
+      <div className={classes.graph} role="presentation">
         <svg className={classes.svg} viewBox="0 0 100 100">
           <path
             d={`M 0 100 C ${easingPoints[0]} ${100 - easingPoints[1]}, ${easingPoints[2]} ${
@@ -36,8 +37,13 @@ const MotionCurveCard: React.FC<{ animationEnabled: boolean; tokenName: string; 
             strokeWidth="2"
           />
         </svg>
-        <div className={classes.graphX}>X</div>
-        <div className={classes.graphT}>t</div>
+
+        <div className={classes.graphP} title="Progress">
+          p
+        </div>
+        <div className={classes.graphT} title="Time">
+          t
+        </div>
       </div>
       <div
         className={classes.point}
@@ -59,7 +65,7 @@ const MotionDurationCard: React.FC<{ animationEnabled: boolean; tokenName: strin
 
   return (
     <div className={classes.container}>
-      <div className={classes.graph}>
+      <div className={classes.view}>
         <div
           className={classes.duration}
           style={{
@@ -103,14 +109,12 @@ export const MotionCurves = () => {
         <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.card}>
-        {(
-          Object.keys(motionTokens).filter(tokenName => tokenName.startsWith('curve')) as (keyof typeof motionTokens)[]
-        ).map(curveToken => (
+        {Object.entries(curves).map(([tokenName, tokenValue]) => (
           <MotionCurveCard
             animationEnabled={animationEnabled}
-            key={curveToken}
-            tokenName={curveToken}
-            tokenValue={motionTokens[curveToken] as string}
+            key={tokenName}
+            tokenName={tokenName}
+            tokenValue={tokenValue}
           />
         ))}
       </div>
@@ -132,16 +136,12 @@ export const MotionDuration = () => {
         <Switch label="Enable animations" type="checkbox" checked={animationEnabled} onChange={handleChange} />
       </div>
       <div className={classes.card}>
-        {(
-          Object.keys(motionTokens).filter(tokenName =>
-            tokenName.startsWith('duration'),
-          ) as (keyof typeof motionTokens)[]
-        ).map(tokenName => (
+        {Object.entries(durations).map(([tokenName, tokenValue]) => (
           <MotionDurationCard
             animationEnabled={animationEnabled}
             key={tokenName}
             tokenName={tokenName}
-            tokenValue={motionTokens[tokenName] as string}
+            tokenValue={tokenValue.toString()}
           />
         ))}
       </div>
