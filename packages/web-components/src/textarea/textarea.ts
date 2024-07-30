@@ -313,7 +313,6 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
    */
   public get validity(): ValidityState {
-    this.setValidity();
     return this.elementInternals.validity;
   }
 
@@ -325,8 +324,7 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    this.setValidity();
-    return this.elementInternals.validationMessage;
+    return this.elementInternals.validationMessage || this.controlEl.validationMessage;
   }
 
   /**
@@ -408,7 +406,6 @@ export class TextArea extends FASTElement {
     super.connectedCallback();
 
     this.setDefaultValue();
-    this.setValidity();
     this.maybeDisplayShadow();
     this.maybeCreateAutoSizerEl();
 
@@ -504,7 +501,11 @@ export class TextArea extends FASTElement {
    *
    * @internal
    */
-  public setValidity(flags: Partial<ValidityState> = {}, message?: string, anchor?: HTMLElement): void {
+  public setValidity(
+    flags: Partial<ValidityState> = this.controlEl.validity,
+    message: string = this.validationMessage,
+    anchor: HTMLElement = this.controlEl,
+  ): void {
     if (!this.$fastController.isConnected) {
       return;
     }
@@ -514,11 +515,7 @@ export class TextArea extends FASTElement {
       return;
     }
 
-    this.elementInternals.setValidity(
-      Object.assign(this.controlEl.validity, flags),
-      message ?? this.controlEl.validationMessage,
-      anchor ?? this.controlEl,
-    );
+    this.elementInternals.setValidity(flags, message, anchor);
   }
 
   /**
@@ -604,6 +601,7 @@ export class TextArea extends FASTElement {
     }
 
     this.setFormValue(this.value);
+    this.setValidity();
   }
 
   /**
