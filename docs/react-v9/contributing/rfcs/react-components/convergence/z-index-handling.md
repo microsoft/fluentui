@@ -70,9 +70,8 @@ This proposal utilize this elevation system to define layers that translate into
 
 ## Options
 
-### Issues
-
-The approaches below only standardize the layers and define z-index values for them. This is great for the current state of our components that can define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dropdowns are created. Which of them should have higher priority and therefore be displayed on top?
+> [!NOTE]  
+> The approaches below only standardize the layers and define z-index values for them. This is great for the current state of our components that can define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dropdowns are created. Which of them should have higher priority and therefore be displayed on top?
 
 #### Option A: Expose a named map of layers to z-index values (similarly to typography styles)
 
