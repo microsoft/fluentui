@@ -172,7 +172,7 @@ import { tokens } from '@fluentui/theme';
 
 const styles = {
   root: {
-    zIndex: tokens.zIndexOverlay,
+    zIndex: tokens.zIndexOverlay /* var(--zIndexOverlay) */,
   },
 };
 ```
