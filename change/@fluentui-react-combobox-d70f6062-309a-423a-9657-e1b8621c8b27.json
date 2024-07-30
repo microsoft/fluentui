@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: only call activedescendant focus when combobox/dropdown is opened",
+  "packageName": "@fluentui/react-combobox",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
