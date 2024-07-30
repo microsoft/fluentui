@@ -90,7 +90,6 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useSpinnerStyles_unstable: CustomStyleHook;
     useSwitchStyles_unstable: CustomStyleHook;
     useTabStyles_unstable: CustomStyleHook;
-    useInteractiveTabStyles_unstable: CustomStyleHook;
     useTabListStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTextareaStyles_unstable: CustomStyleHook;
@@ -230,7 +229,6 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useSpinnerStyles_unstable: CustomStyleHook;
     useSwitchStyles_unstable: CustomStyleHook;
     useTabStyles_unstable: CustomStyleHook;
-    useInteractiveTabStyles_unstable: CustomStyleHook;
     useTabListStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTextareaStyles_unstable: CustomStyleHook;
@@ -370,7 +368,6 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useSpinnerStyles_unstable: CustomStyleHook;
     useSwitchStyles_unstable: CustomStyleHook;
     useTabStyles_unstable: CustomStyleHook;
-    useInteractiveTabStyles_unstable: CustomStyleHook;
     useTabListStyles_unstable: CustomStyleHook;
     useTextStyles_unstable: CustomStyleHook;
     useTextareaStyles_unstable: CustomStyleHook;

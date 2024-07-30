@@ -1,20 +1,14 @@
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { InteractiveTabInternalSlots, InteractiveTabSlots, InteractiveTabState } from './InteractiveTab.types';
-import { useTabButtonStyles, useTabContentStyles, useTabIndicatorStyles } from '../Tab/useTabStyles.styles';
-import type { TabState } from '../Tab/Tab.types';
+import type { InteractiveTabSlots, InteractiveTabState } from './InteractiveTab.types';
+import { tabClassNames, useTabButtonStyles, useTabContentStyles, useTabIndicatorStyles } from '../Tab';
+import type { TabState } from '../Tab';
+import { mergeClasses } from '@griffel/react';
 
 export const interactiveTabClassNames: SlotClassNames<InteractiveTabSlots> = {
-  root: 'fui-InteractiveTab',
-  button: 'fuiInteractiveTab__button',
-  icon: 'fuiInteractiveTab__icon',
-  content: 'fui-InteractiveTab__content',
-  contentBefore: 'fui-InteractiveTab__before-content',
-  contentAfter: 'fui-InteractiveTab__after-content',
-};
-
-const interactiveTabInternalClassNames: SlotClassNames<InteractiveTabInternalSlots> = {
-  ...interactiveTabClassNames,
-  contentReservedSpace: 'fui-InteractiveTab__content--reserved-space',
+  ...tabClassNames,
+  button: 'fui-Tab__button',
+  contentBefore: 'fui-Tab__content-before',
+  contentAfter: 'fui-Tab__content-after',
 };
 
 /**
@@ -25,11 +19,19 @@ export const useInteractiveTabStyles_unstable = (state: InteractiveTabState): In
 
   const tabState = state as TabState;
 
-  useTabIndicatorStyles(tabState, interactiveTabInternalClassNames);
+  useTabIndicatorStyles(tabState);
 
-  useTabContentStyles(tabState, interactiveTabInternalClassNames);
+  useTabContentStyles(tabState);
 
-  useTabButtonStyles(tabState, state.button, interactiveTabInternalClassNames.button);
+  useTabButtonStyles(tabState, state.button, interactiveTabClassNames.button);
+
+  if (state.contentBefore) {
+    state.contentBefore.className = mergeClasses(interactiveTabClassNames.contentBefore, state.contentBefore.className);
+  }
+
+  if (state.contentAfter) {
+    state.contentAfter.className = mergeClasses(interactiveTabClassNames.contentAfter, state.contentAfter.className);
+  }
 
   return state;
 };

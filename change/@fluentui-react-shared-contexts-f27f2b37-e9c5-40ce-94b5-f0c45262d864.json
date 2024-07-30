@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add useInteractiveTabStyles_unstable hook",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

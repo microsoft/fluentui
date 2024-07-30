@@ -1,6 +1,5 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import type { InteractiveTabProps } from './InteractiveTab.types';
 import { renderInteractiveTab_unstable } from './renderInteractiveTab';
 import { useInteractiveTab_unstable } from './useInteractiveTab';
@@ -13,8 +12,6 @@ export const InteractiveTab: ForwardRefComponent<InteractiveTabProps> = React.fo
   const state = useInteractiveTab_unstable(props, ref);
 
   useInteractiveTabStyles_unstable(state);
-
-  useCustomStyleHook_unstable('useInteractiveTabStyles_unstable')(state);
 
   return renderInteractiveTab_unstable(state);
 });

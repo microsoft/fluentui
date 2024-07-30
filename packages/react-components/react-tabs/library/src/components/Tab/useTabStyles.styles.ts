@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { SlotClassNames } from '@fluentui/react-utilities';
-import type { TabInternalSlots, TabSlots, TabState } from './Tab.types';
+import type { TabSlots, TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
@@ -11,8 +11,7 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const tabInternalClassNames: SlotClassNames<TabInternalSlots> = {
-  ...tabClassNames,
+const tabInternalClassNames = {
   contentReservedSpace: 'fui-Tab__content--reserved-space',
 };
 
@@ -28,7 +27,20 @@ const iconClassNames = {
  */
 /* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeStyles({
-  base: {
+  root: {
+    alignItems: 'center',
+    border: 'none',
+    borderRadius: tokens.borderRadiusMedium,
+    cursor: 'pointer',
+    display: 'grid',
+    flexShrink: 0,
+    gridAutoFlow: 'column',
+    gridTemplateColumns: 'auto',
+    gridTemplateRows: 'auto',
+    outlineStyle: 'none',
+    position: 'relative',
+  },
+  button: {
     alignItems: 'center',
     border: 'none',
     borderRadius: tokens.borderRadiusMedium,
@@ -409,7 +421,7 @@ const useContentStyles = makeStyles({
   base: {
     ...typographyStyles.body1,
     overflow: 'hidden',
-    // content padding is the same for medium & small, horiztonal & vertical
+    // content padding is the same for medium & small, horizontal & vertical
     padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalXXS}`,
   },
   selected: {
@@ -440,37 +452,27 @@ const useContentStyles = makeStyles({
 export const useTabStyles_unstable = (state: TabState): TabState => {
   'use no memo';
 
-  useTabIndicatorStyles(state, tabInternalClassNames);
+  useTabIndicatorStyles(state);
 
-  useTabButtonStyles(state, state.root);
+  useTabButtonStyles(state);
 
-  useTabContentStyles(state, tabInternalClassNames);
+  useTabContentStyles(state);
 
   return state;
 };
 
-export const useTabIndicatorStyles = (state: TabState, slotClassNames: SlotClassNames<TabInternalSlots>): TabState => {
+export const useTabIndicatorStyles = (state: TabState): TabState => {
   'use no memo';
 
   const rootStyles = useRootStyles();
-  const focusStyles = useFocusStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
 
-  const { appearance, disabled, selected, size, vertical } = state;
+  const { disabled, selected, size, vertical } = state;
 
   state.root.className = mergeClasses(
-    slotClassNames.root,
-    rootStyles.base,
-    vertical ? rootStyles.vertical : rootStyles.horizontal,
-    // size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    // size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    // size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
-    focusStyles.base,
-    !disabled && appearance === 'subtle' && rootStyles.subtle,
-    !disabled && appearance === 'transparent' && rootStyles.transparent,
-    !disabled && selected && rootStyles.selected,
-    disabled && rootStyles.disabled,
+    tabClassNames.root,
+    rootStyles.root,
 
     // pending indicator (before pseudo element)
     pendingIndicatorStyles.base,
@@ -501,11 +503,7 @@ export const useTabIndicatorStyles = (state: TabState, slotClassNames: SlotClass
   return state;
 };
 
-export const useTabButtonStyles = (
-  state: TabState,
-  indicatorSlot: TabState['root'],
-  slotClassName?: string,
-): TabState => {
+export const useTabButtonStyles = (state: TabState, slot: TabState['root'] = state.root): TabState => {
   'use no memo';
 
   const rootStyles = useRootStyles();
@@ -513,9 +511,8 @@ export const useTabButtonStyles = (
 
   const { appearance, disabled, selected, size, vertical } = state;
 
-  indicatorSlot.className = mergeClasses(
-    slotClassName,
-    rootStyles.base,
+  slot.className = mergeClasses(
+    rootStyles.button,
     vertical ? rootStyles.vertical : rootStyles.horizontal,
     size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
     size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
@@ -526,13 +523,13 @@ export const useTabButtonStyles = (
     !disabled && selected && rootStyles.selected,
     disabled && rootStyles.disabled,
 
-    indicatorSlot.className,
+    slot.className,
   );
 
   return state;
 };
 
-export const useTabContentStyles = (state: TabState, slotClassNames: SlotClassNames<TabInternalSlots>): TabState => {
+export const useTabContentStyles = (state: TabState): TabState => {
   'use no memo';
 
   const iconStyles = useIconStyles();
@@ -542,7 +539,7 @@ export const useTabContentStyles = (state: TabState, slotClassNames: SlotClassNa
 
   if (state.icon) {
     state.icon.className = mergeClasses(
-      slotClassNames.icon,
+      tabClassNames.icon,
       iconStyles.base,
       iconStyles[size],
       selected && iconStyles.selected,
@@ -553,7 +550,7 @@ export const useTabContentStyles = (state: TabState, slotClassNames: SlotClassNa
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      slotClassNames.contentReservedSpace,
+      tabInternalClassNames.contentReservedSpace,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
@@ -567,7 +564,7 @@ export const useTabContentStyles = (state: TabState, slotClassNames: SlotClassNa
   }
 
   state.content.className = mergeClasses(
-    slotClassNames.content,
+    tabClassNames.content,
     contentStyles.base,
     size === 'large' && contentStyles.large,
     selected && (size === 'large' ? contentStyles.largeSelected : contentStyles.selected),

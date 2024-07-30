@@ -1,5 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { TabSlots, TabInternalProps, TabInternalState } from '../Tab/Tab.types';
+import type { TabSlots, TabInternalProps, TabInternalSlots, TabInternalState } from '../Tab';
 
 export type InteractiveTabSlots = {
   /**
@@ -8,22 +8,25 @@ export type InteractiveTabSlots = {
   root: Slot<'div'>;
 
   /**
-   * button
-   */
+   * The button that represents the tab.
+   * This is the element that will be focused when the tab is selected.
+   **/
   button: NonNullable<TabSlots['root']>;
 
+  /**
+   * Element before the button, within the tab
+   **/
   contentBefore?: Slot<'span'>;
 
+  /**
+   * Element after the button, within the tab
+   **/
   contentAfter?: Slot<'span'>;
 } & Omit<TabSlots, 'root'>;
 
-export type InteractiveTabProps = Omit<ComponentProps<Partial<InteractiveTabSlots>, 'button'>, 'content'> &
-  Pick<Partial<InteractiveTabSlots>, 'content'> &
-  TabInternalProps;
+export type InteractiveTabProps = ComponentProps<Partial<InteractiveTabSlots>, 'button'> & TabInternalProps;
 
-export type InteractiveTabInternalSlots = InteractiveTabSlots & {
-  contentReservedSpace?: Slot<'span'>;
-};
+export type InteractiveTabInternalSlots = InteractiveTabSlots & Omit<TabInternalSlots, 'root'>;
 
 /**
  * State used in rendering InteractiveTab
