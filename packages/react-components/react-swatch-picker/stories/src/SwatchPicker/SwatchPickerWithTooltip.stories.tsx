@@ -39,7 +39,7 @@ export const SwatchPickerWithTooltip = () => {
   return (
     <>
       <h3>Row layout</h3>
-      <SwatchPicker aria-label="SwatchPicker default" selectedValue={selectedValue} onSelectionChange={handleSelect}>
+      <SwatchPicker aria-label="SwatchPicker row layout" selectedValue={selectedValue} onSelectionChange={handleSelect}>
         {colors.map(color => {
           return <ColorSwatchWithTooltip key={color.value} {...color} />;
         })}
@@ -47,7 +47,7 @@ export const SwatchPickerWithTooltip = () => {
       <h3>Grid layout</h3>
       <SwatchPicker
         layout="grid"
-        aria-label="SwatchPicker default"
+        aria-label="SwatchPicker grid layout"
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
       >
@@ -75,7 +75,7 @@ const ColorSwatchWithTooltip = (props: ColorSwatchProps) => {
   const label = props['aria-label'] ?? 'color swatch';
   return (
     <Tooltip withArrow content={label} relationship="label">
-      <ColorSwatch color={color} value={value} aria-label={label} />
+      <ColorSwatch color={color} value={value} />
     </Tooltip>
   );
 };
