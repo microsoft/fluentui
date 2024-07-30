@@ -1,7 +1,10 @@
-const { spawnSync } = require('node:child_process');
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference -- cannot just import .d.ts as that is causing failures within ts-node/register
+/// <reference types="./enquirer-types.d.ts" />
 
-const { workspaceRoot, output } = require('@nx/devkit');
-const { AutoComplete } = require('enquirer');
+import { spawnSync } from 'node:child_process';
+
+import { output, workspaceRoot } from '@nx/devkit';
+import { AutoComplete } from 'enquirer';
 
 const targetDescription = {
   build: 'transpile source TS to JS',
@@ -30,10 +33,7 @@ const targetDescription = {
 const omitTargets = ['nx-release-publish', 'just'];
 
 async function main() {
-  /**
-   * @type {string[]}
-   */
-  const allProjects = JSON.parse(
+  const allProjects: string[] = JSON.parse(
     spawnSync('nx', ['show', 'projects', '--json'], { cwd: workspaceRoot }).stdout.toString(),
   );
   const extraArgs = process.argv.slice(2) ?? [];
@@ -48,18 +48,17 @@ async function main() {
     },
   });
 
-  /** @type {string} */
-  const selectedProject = await projectPrompt.run();
+  const selectedProject: string = await projectPrompt.run();
 
   const projectTargets = JSON.parse(
     spawnSync('nx', ['show', 'project', selectedProject, '--json'], { cwd: workspaceRoot }).stdout.toString(),
   );
 
-  const availableTargets = /** @type {Array<keyof typeof  targetDescription>} */ (
-    Object.keys(projectTargets.targets).filter(targetName => {
+  const availableTargets = Object.keys(projectTargets.targets)
+    .filter(targetName => {
       return omitTargets.includes(targetName) ? false : true;
     })
-  ).concat('help');
+    .concat('help') as Array<keyof typeof targetDescription>;
 
   const longestTargetName = availableTargets.reduce((acc, targetName) => {
     return targetName.length > acc ? targetName.length : acc;
@@ -80,26 +79,19 @@ async function main() {
     },
   });
 
-  /** @type {string} */
-  const selectedTarget = await targetPrompt.run();
+  const selectedTarget: string = await targetPrompt.run();
 
-  /**
-   *
-   * @param {string} targetName
-   * @param {string} description
-   */
-  function formatTargetOutput(targetName, description) {
+  function formatTargetOutput(targetName: string, description: string) {
     const padding = ' '.repeat(longestTargetName - targetName.length);
     return `${targetName}${padding} - ${description}`;
   }
 
-  /**
-   *
-   * @param {keyof typeof  targetDescription} targetName
-   * @param {{[targetName:string]:{metadata:{executor:string;scriptContent:string;runCommand:string}}}} targetsMetadata
-   * @returns
-   */
-  function createTaskDescription(targetName, targetsMetadata) {
+  function createTaskDescription(
+    targetName: keyof typeof targetDescription,
+    targetsMetadata: {
+      [targetName: string]: { metadata: { executor: string; scriptContent: string; runCommand: string } };
+    },
+  ) {
     const description = targetDescription[targetName];
     const nxTargetDefinition = targetsMetadata[targetName];
 
@@ -123,11 +115,7 @@ async function main() {
 
     return description ?? nxTargetDefinition.metadata.scriptContent;
 
-    /**
-     * @param {string} scriptContent
-     * @returns {'cypress' | 'playwright'}
-     */
-    function getRunnerType(scriptContent) {
+    function getRunnerType(scriptContent: string): 'cypress' | 'playwright' {
       if (scriptContent.includes('cypress')) {
         return 'cypress';
       }

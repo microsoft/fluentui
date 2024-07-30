@@ -44,7 +44,7 @@
     "northstar:test:circulars": "gulp test:circulars:run",
     "rename-package": "node -r ./scripts/ts-node/src/register ./scripts/generators/src/rename-package.ts",
     "scrub": "node ./scripts/executors/src/scrub.js",
-    "start": "node ./scripts/executors/src/start.js",
+    "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
     "test": "nx run-many -t test --verbose",
     "update-snapshots": "nx run-many -t update-snapshots --verbose"
   },
