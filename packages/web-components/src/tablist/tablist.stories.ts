@@ -92,7 +92,6 @@ const tabsDisabledTablist = html`
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
   </fluent-tablist>
-
   <fluent-tablist>
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab disabled> Second Tab</fluent-tab>
@@ -109,6 +108,7 @@ const tabsSizeSmall = html`
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
   </fluent-tablist>
+  <br />
   <fluent-tablist size="small" orientation="vertical">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -125,6 +125,7 @@ const tabsSizeMedium = html`
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
   </fluent-tablist>
+  <br />
   <fluent-tablist size="medium" orientation="vertical">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -141,6 +142,7 @@ const tabsSizeLarge = html`
     <fluent-tab> Third Tab</fluent-tab>
     <fluent-tab> Fourth Tab</fluent-tab>
   </fluent-tablist>
+  <br />
   <fluent-tablist size="large" orientation="vertical">
     <fluent-tab> First Tab </fluent-tab>
     <fluent-tab> Second Tab</fluent-tab>
@@ -158,6 +160,7 @@ const rtl = html`
       <fluent-tab> Third Tab</fluent-tab>
       <fluent-tab> Fourth Tab</fluent-tab>
     </fluent-tablist>
+    <br />
     <fluent-tablist orientation="vertical">
       <fluent-tab> First Tab </fluent-tab>
       <fluent-tab> Second Tab</fluent-tab>

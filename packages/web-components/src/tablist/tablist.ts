@@ -10,6 +10,8 @@ import {
   uniqueId,
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
+import { toggleState } from '../utils/element-internals.js';
+import { isFocusableElement } from '../utils/focusable-element.js';
 import { Tab } from '../index.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
 
@@ -20,6 +22,10 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
  * @public
  */
 export class BaseTablist extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   */
+  elementInternals: ElementInternals = this.attachInternals();
   /**
    * Used for disabling all click and keyboard events for the tabs, child tab elements.
    * @public
@@ -40,7 +46,16 @@ export class BaseTablist extends FASTElement {
   /**
    * @internal
    */
-  protected orientationChanged(): void {
+  protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void {
+    this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
+
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+
     if (this.$fastController.isConnected) {
       this.setTabs();
     }
@@ -94,18 +109,6 @@ export class BaseTablist extends FASTElement {
     this.$emit('change', this.activetab);
   };
 
-  private isDisabledElement = (el: Element): el is HTMLElement => {
-    return el.getAttribute('aria-disabled') === 'true';
-  };
-
-  private isHiddenElement = (el: Element): el is HTMLElement => {
-    return el.hasAttribute('hidden');
-  };
-
-  private isFocusableElement = (el: Element): el is HTMLElement => {
-    return !this.isDisabledElement(el) && !this.isHiddenElement(el);
-  };
-
   private getActiveIndex(): number {
     const id: string = this.activeid;
     if (id !== undefined) {
@@ -121,11 +124,15 @@ export class BaseTablist extends FASTElement {
    * @public
    */
   protected setTabs(): void {
+    if (this.disabled) {
+      return;
+    }
+
     this.activeTabIndex = this.getActiveIndex();
 
     this.tabs.forEach((tab: HTMLElement, index: number) => {
       if (tab.slot === 'tab') {
-        const isActiveTab = this.activeTabIndex === index && this.isFocusableElement(tab);
+        const isActiveTab = this.activeTabIndex === index && isFocusableElement(tab);
 
         const tabId: string = this.tabIds[index];
         tab.setAttribute('id', tabId);
@@ -158,8 +165,7 @@ export class BaseTablist extends FASTElement {
 
   private handleTabClick = (event: MouseEvent): void => {
     const selectedTab = event.currentTarget as HTMLElement;
-    console.log('selectedTab', selectedTab.nodeType === Node.ELEMENT_NODE);
-    if (selectedTab.nodeType === Node.ELEMENT_NODE && this.isFocusableElement(selectedTab)) {
+    if (selectedTab.nodeType === Node.ELEMENT_NODE && isFocusableElement(selectedTab)) {
       this.prevActiveTabIndex = this.activeTabIndex;
       this.activeTabIndex = this.tabs.indexOf(selectedTab);
       this.setComponent();
@@ -219,7 +225,11 @@ export class BaseTablist extends FASTElement {
    * This method allows the active index to be adjusted by numerical increments
    */
   public adjust(adjustment: number): void {
-    const focusableTabs = this.tabs.filter(t => this.isFocusableElement(t));
+    if (this.disabled) {
+      return;
+    }
+
+    const focusableTabs = this.tabs.filter(t => isFocusableElement(t));
     const currentActiveTabIndex = focusableTabs.indexOf(this.activetab);
 
     const nextTabIndex = wrapInBounds(0, focusableTabs.length - 1, currentActiveTabIndex + adjustment);
@@ -296,6 +306,18 @@ export class Tablist extends BaseTablist {
    */
   @attr
   public size?: TablistSize;
+
+  /**
+   * @internal
+   */
+  protected sizeChanged(prev: TablistSize, next: TablistSize): void {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * calculateAnimationProperties

@@ -24,7 +24,7 @@ import {
   spacingVerticalXXS,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
-
+import { largeState, smallState, verticalState } from '../styles/states/index.js';
 /**
  * @public
  */
@@ -41,7 +41,7 @@ export const styles = css`
     flex-direction: row;
   }
 
-  :host([orientation='vertical']) {
+  :host(${verticalState}) {
     flex-direction: column;
   }
 
@@ -50,20 +50,20 @@ export const styles = css`
   }
 
   /* indicator animation  */
-  :host ::slotted([role='tab'][data-animate='true'])::after {
+  :host ::slotted([slot='tab'][data-animate='true'])::after {
     transition-property: transform;
     transition-duration: ${durationSlow};
     transition-timing-function: ${curveDecelerateMax};
   }
 
-  :host ::slotted([role='tab'])::after {
+  :host ::slotted([slot='tab'])::after {
     height: ${strokeWidthThicker};
     margin-block-start: auto;
     transform-origin: left;
     transform: translateX(var(--tabIndicatorOffset)) scaleX(var(--tabIndicatorScale));
   }
 
-  :host([orientation='vertical']) ::slotted([role='tab'])::after {
+  :host(${verticalState}) ::slotted([slot='tab'])::after {
     width: ${strokeWidthThicker};
     height: unset;
     margin-block-start: unset;
@@ -72,7 +72,7 @@ export const styles = css`
   }
 
   /* ::before adds a secondary indicator placeholder that appears right after click on the active tab */
-  :host ::slotted([role='tab'])::before {
+  :host ::slotted([slot='tab'])::before {
     height: ${strokeWidthThicker};
     border-radius: ${borderRadiusCircular};
     content: '';
@@ -82,42 +82,42 @@ export const styles = css`
     margin-top: auto;
   }
 
-  :host ::slotted([role='tab'])::before {
+  :host ::slotted([slot='tab'])::before {
     inset-inline: var(--tabIndicatorInsetInline);
     inset-block: var(--tabIndicatorInsetBlock);
   }
 
-  :host ::slotted([role='tab'][aria-selected='true'])::before {
+  :host ::slotted([slot='tab'][aria-selected='true'])::before {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host ::slotted([role='tab'][aria-selected='false']:hover)::after {
+  :host ::slotted([slot='tab'][aria-selected='false']:hover)::after {
     height: ${strokeWidthThicker};
     margin-block-start: auto;
     transform-origin: left;
   }
 
-  :host([orientation='vertical']) ::slotted([role='tab'])::before,
-  :host([orientation='vertical']) ::slotted([role='tab'][aria-selected='false']:hover)::after {
+  :host(${verticalState}) ::slotted([slot='tab'])::before,
+  :host(${verticalState}) ::slotted([slot='tab'][aria-selected='false']:hover)::after {
     height: unset;
     width: ${strokeWidthThicker};
     margin-inline-end: auto;
     transform-origin: top;
   }
 
-  :host(:where([size='small'], [size='large'])) ::slotted([role='tab']) {
+  :host(:where(${smallState}, ${largeState})) ::slotted([slot='tab']) {
     padding-inline: var(--tabPaddingInline);
     padding-block: var(--tabPaddingBlock);
   }
 
-  :host([size='small']) ::slotted([role='tab']) {
+  :host(${smallState}) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalSNudge};
     --tabPaddingInline: ${spacingHorizontalSNudge};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
   }
 
-  :host([size='large']) ::slotted([role='tab']) {
+  :host(${largeState}) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalL};
     --tabPaddingInline: ${spacingHorizontalMNudge};
     font-size: ${fontSizeBase400};
@@ -125,56 +125,56 @@ export const styles = css`
   }
 
   /* horizontal spacing for indicator */
-  :host ::slotted([role='tab'])::after,
-  :host ::slotted([role='tab'])::before,
-  :host ::slotted([role='tab']:hover)::after {
+  :host ::slotted([slot='tab'])::after,
+  :host ::slotted([slot='tab'])::before,
+  :host ::slotted([slot='tab']:hover)::after {
     inset-inline: var(--tabIndicatorInsetInline);
   }
 
-  :host ::slotted([role='tab']) {
+  :host ::slotted([slot='tab']) {
     --tabIndicatorInsetInline: ${spacingHorizontalMNudge};
   }
 
-  :host([size='small']) ::slotted([role='tab']) {
+  :host(${smallState}) ::slotted([slot='tab']) {
     --tabIndicatorInsetInline: ${spacingHorizontalSNudge};
   }
 
-  :host([size='large']) ::slotted([role='tab']) {
+  :host(${largeState}) ::slotted([slot='tab']) {
     --tabIndicatorInsetInline: ${spacingHorizontalMNudge};
   }
 
-  :host([orientation='vertical']) ::slotted([role='tab']) {
+  :host(${verticalState}) ::slotted([slot='tab']) {
     padding-block: var(--tabPaddingBlock);
   }
 
-  :host([orientation='vertical']) ::slotted([role='tab']) {
+  :host(${verticalState}) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalS};
   }
 
-  :host([orientation='vertical'][size='small']) ::slotted([role='tab']) {
+  :host(${verticalState}${smallState}) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalXXS};
   }
 
-  :host([orientation='vertical'][size='large']) ::slotted([role='tab']) {
+  :host(${verticalState}${largeState}) ::slotted([slot='tab']) {
     --tabPaddingBlock: ${spacingVerticalS};
   }
 
-  :host([orientation='vertical']) ::slotted([role='tab'])::after,
-  :host([orientation='vertical']) ::slotted([role='tab'])::before,
-  :host([orientation='vertical']) ::slotted([role='tab']:hover)::after {
+  :host(${verticalState}) ::slotted([slot='tab'])::after,
+  :host(${verticalState}) ::slotted([slot='tab'])::before,
+  :host(${verticalState}) ::slotted([slot='tab']:hover)::after {
     inset-inline: 0;
     inset-block: var(--tabIndicatorInsetBlock);
   }
 
-  :host([orientation='vertical']) {
+  :host(${verticalState}) {
     --tabIndicatorInsetBlock: ${spacingVerticalS};
   }
 
-  :host([orientation='vertical'][size='small']) {
+  :host(${verticalState}${smallState}) {
     --tabIndicatorInsetBlock: ${spacingVerticalSNudge};
   }
 
-  :host([orientation='vertical'][size='large']) {
+  :host(${verticalState}${largeState}) {
     --tabIndicatorInsetBlock: ${spacingVerticalMNudge};
   }
 
@@ -184,31 +184,31 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([role='tab']) {
+  :host([disabled]) ::slotted([slot='tab']) {
     pointer-events: none;
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([role='tab']:after) {
+  :host([disabled]) ::slotted([slot='tab']:after) {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([role='tab'][aria-selected='true'])::after {
+  :host([disabled]) ::slotted([slot='tab'][aria-selected='true'])::after {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([role='tab']:hover):before {
+  :host([disabled]) ::slotted([slot='tab']:hover):before {
     content: unset;
   }
 
-  :host([appearance='subtle']) ::slotted([role='tab']:hover) {
+  :host([appearance='subtle']) ::slotted([slot='tab']:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground1Hover};
     fill: ${colorCompoundBrandForeground1Hover};
   }
 
-  :host([appearance='subtle']) ::slotted([role='tab']:active) {
+  :host([appearance='subtle']) ::slotted([slot='tab']:active) {
     background-color: ${colorSubtleBackgroundPressed};
     fill: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground1};
