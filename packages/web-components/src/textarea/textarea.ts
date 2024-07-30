@@ -1,4 +1,4 @@
-import { attr, FASTElement, nullableNumberConverter, Observable, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import {
   TextAreaAppearance,
@@ -13,9 +13,7 @@ import {
  * A Text Area Custom HTML Element.
  * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea | `<textarea>`} element.
  *
- * @csspart textbox - The element contains the user input content.
- * @csspart placehoder - The placeholder text container.
- * @fires input - Fires when user types in content.
+ * @csspart control - The internal `<textarea>` element.
  * @fires change - Fires after the control loses focus, if the content has changed.
  * @fires select - Fires when the `select()` method is called.
  *
@@ -31,19 +29,26 @@ export class TextArea extends FASTElement {
   static readonly formAssociated = true;
 
   /**
-   * The textbox element.
-   * @internal
-   */
-  public textbox!: HTMLDivElement;
-
-  /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  private handleTextboxInputListener?: EventListener;
+  /**
+   * The `<textarea>` element.
+   * @internal
+   */
+  public controlEl!: HTMLTextAreaElement;
+
+  /**
+   * @internal
+   */
+  public autoSizerEl?: HTMLDivElement;
+
+  private autoSizerObserver?: ResizeObserver;
+
+  private lightDOMObserver!: MutationObserver;
 
   /**
    * Indicates the visual appearance of the element.
@@ -79,6 +84,8 @@ export class TextArea extends FASTElement {
 
   /**
    * Indicates whether the element’s block size (height) should be automatically changed based on the content.
+   * Note: When this property’s value is set to be `true`, the element should not have a fixed block-size
+   * defined in CSS. Instead, use `min-height` or `min-block-size`.
    *
    * @public
    * @remarks
@@ -87,6 +94,7 @@ export class TextArea extends FASTElement {
   @attr({ attribute: 'auto-resize', mode: 'boolean' })
   public autoResize = false;
   protected autoResizeChanged() {
+    this.maybeCreateAutoSizerEl();
     toggleState(this.elementInternals, `auto-resize`, this.autoResize);
   }
 
@@ -209,12 +217,6 @@ export class TextArea extends FASTElement {
    */
   @attr
   public placeholder?: string;
-  protected placeholderChanged() {
-    this.elementInternals.ariaPlaceholder = `${this.placeholder ?? ''}`;
-    if (this.$fastController.isConnected) {
-      this.togglePlaceholderShownState();
-    }
-  }
 
   /**
    * When true, the control will be immutable by user interaction.
@@ -228,9 +230,6 @@ export class TextArea extends FASTElement {
   public readOnly = false;
   protected readOnlyChanged() {
     this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
-    if (this.$fastController.isConnected) {
-      this.setContentEditable(!this.readOnly);
-    }
   }
 
   /**
@@ -244,9 +243,6 @@ export class TextArea extends FASTElement {
   public required!: boolean;
   protected requiredChanged() {
     this.elementInternals.ariaRequired = `${!!this.required}`;
-    if (this.$fastController.isConnected) {
-      this.setValidity();
-    }
   }
 
   /**
@@ -287,12 +283,6 @@ export class TextArea extends FASTElement {
       toggleState(this.elementInternals, `${next}`, true);
     }
   }
-
-  /**
-   * @internal
-   */
-  @observable
-  public sizeStyles = '';
 
   /**
    * Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.
@@ -351,6 +341,24 @@ export class TextArea extends FASTElement {
   }
 
   /**
+   * The text content of the element before user interaction.
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement#defaultvalue | `defaultValue`} property
+   *
+   * @public
+   * @remarks
+   * In order to set the initial/default value, an author should either add the default value in the HTML as the children
+   * of the component, or setting this property in JavaScript. Setting `innerHTML`, `innerText`, or `textContent` on this
+   * component will not change the default value or the content displayed inside the component.
+   */
+  public get defaultValue(): string {
+    return this.controlEl.defaultValue;
+  }
+
+  public set defaultValue(next: string) {
+    this.controlEl.defaultValue = next;
+  }
+
+  /**
    * The value of the element.
    *
    * @public
@@ -358,24 +366,18 @@ export class TextArea extends FASTElement {
    * Reflects the `value` property.
    */
   public get value(): string {
-    return this.textbox.textContent?.trim() ?? '';
+    return this.$fastController.isConnected ? this.controlEl.value : this.defaultValue;
   }
 
   public set value(next: string) {
-    if (this.disabled || this.readOnly) {
+    if (!this.$fastController.isConnected) {
       return;
     }
-    this.textbox.textContent = next.trim();
+
+    this.controlEl.value = next;
     this.setFormValue(next);
     this.setValidity();
   }
-
-  private valueBeforeFocus = '';
-
-  /**
-   * Whether the user has interacted with the element.
-   */
-  private userInteracted = false;
 
   public handleChange(_: any, propertyName: string) {
     switch (propertyName) {
@@ -394,8 +396,9 @@ export class TextArea extends FASTElement {
   constructor() {
     super();
 
-    this.elementInternals.role = 'textbox';
-    this.elementInternals.ariaMultiLine = 'true';
+    // TODO: Re-enabled this when Reference Target is out.
+    // this.elementInternals.role = 'textbox';
+    // this.elementInternals.ariaMultiLine = 'true';
   }
 
   /**
@@ -404,13 +407,12 @@ export class TextArea extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
 
-    this.setContentEditable(!this.disabled && !this.readOnly);
-    this.setInitialValue();
-    this.togglePlaceholderShownState();
+    this.setDefaultValue();
     this.setValidity();
     this.maybeDisplayShadow();
+    this.maybeCreateAutoSizerEl();
 
-    this.bindEvents();
+    this.observeLightDOM();
 
     Observable.getNotifier(this).subscribe(this, 'appearance');
     Observable.getNotifier(this).subscribe(this, 'displayShadow');
@@ -425,7 +427,8 @@ export class TextArea extends FASTElement {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
 
-    this.unbindEvents();
+    this.autoSizerObserver?.disconnect();
+    this.lightDOMObserver?.disconnect();
 
     Observable.getNotifier(this).unsubscribe(this, 'appearance');
     Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
@@ -440,7 +443,7 @@ export class TextArea extends FASTElement {
    * @internal
    */
   public formResetCallback(): void {
-    this.setInitialValue();
+    this.value = this.defaultValue;
   }
 
   /**
@@ -467,8 +470,6 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
    */
   public checkValidity(): boolean {
-    this.userInteracted = true;
-    this.setValidity();
     return this.elementInternals.checkValidity();
   }
 
@@ -480,8 +481,6 @@ export class TextArea extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
    */
   public reportValidity(): boolean {
-    this.userInteracted = true;
-    this.setValidity();
     return this.elementInternals.reportValidity();
   }
 
@@ -491,8 +490,7 @@ export class TextArea extends FASTElement {
    *
    * @public
    */
-  public setCustomValidity(message: string | undefined): void {
-    this.userInteracted = true;
+  public setCustomValidity(message: string | null): void {
     this.elementInternals.setValidity({ customError: !!message }, !!message ? message.toString() : undefined);
     this.reportValidity();
   }
@@ -507,48 +505,19 @@ export class TextArea extends FASTElement {
    * @internal
    */
   public setValidity(flags: Partial<ValidityState> = {}, message?: string, anchor?: HTMLElement): void {
-    if (this.$fastController.isConnected) {
+    if (!this.$fastController.isConnected) {
       return;
     }
 
-    if (this.disabled || !this.userInteracted) {
+    if (this.disabled) {
       this.elementInternals.setValidity({});
       return;
     }
 
-    const defaultValidity = {
-      valueMissing: false,
-      tooLong: false,
-      tooShort: false,
-    };
-    let defaultMessage = '';
-
-    if (this.required && !this.value.length) {
-      defaultValidity.valueMissing = true;
-      defaultMessage = 'valueMissing';
-    } else if (this.maxLength && this.value.length > this.maxLength) {
-      defaultValidity.tooLong = true;
-      defaultMessage = 'tooLong';
-    } else if (this.minLength && this.value.length < this.minLength) {
-      defaultValidity.tooShort = true;
-      defaultMessage = 'tooShort';
-    }
-
-    // Notes on the `defaultMessage`:
-    // There isn’t a way to get browser’s built-in validation messages for
-    // `tooShort` or `tooLong`, because these flags require real user
-    // interactions before they would be set by the browser, so creating a
-    // `<textarea>` in the memory and trying to get its `validationMessage`
-    // will not work for these 2 flags. `<fluent-field>` does provide the
-    // `message` slot for authors add their custom validation messages based
-    // on the validity state flags, and we do set the proper flags here.
     this.elementInternals.setValidity(
-      {
-        ...defaultValidity,
-        ...flags,
-      },
-      message ?? defaultMessage,
-      anchor ?? this.textbox,
+      Object.assign(this.controlEl.validity, flags),
+      message ?? this.controlEl.validationMessage,
+      anchor ?? this.controlEl,
     );
   }
 
@@ -558,84 +527,64 @@ export class TextArea extends FASTElement {
    * @public
    */
   public select() {
-    this.focus();
-    this.selectContent();
+    this.controlEl.select();
   }
 
-  private selectContent() {
-    const selection = document.getSelection();
-    selection?.selectAllChildren(this.textbox);
-    this.$emit('select');
+  private setDefaultValue() {
+    this.defaultValue = this.innerHTML.trim();
+    this.setFormValue(this.defaultValue);
+    this.setValidity();
   }
 
-  private setContentEditable(edtiable: boolean) {
-    if (!edtiable) {
-      this.textbox.contentEditable = 'false';
-    } else {
-      try {
-        this.textbox.contentEditable = 'plaintext-only';
-      } catch {
-        // Firefox does’t support `plaintext-only` yet.
-        this.textbox.contentEditable = 'true';
-      }
-    }
+  private observeLightDOM() {
+    this.lightDOMObserver = new MutationObserver(() => {
+      this.value = this.innerHTML.trim();
+    });
+    this.lightDOMObserver.observe(this, {
+      childList: true,
+    });
   }
 
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
-    if (this.$fastController.isConnected) {
-      this.tabIndex = disabled ? -1 : 0;
-      this.setContentEditable(!disabled);
+  }
+
+  // Technique inspired by https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
+  // TODO: This should be removed after `field-sizing: content` is widely supported
+  // https://caniuse.com/mdn-css_properties_field-sizing_content
+  private maybeCreateAutoSizerEl() {
+    if (CSS.supports('field-sizing: content')) {
+      return;
     }
-  }
 
-  private setInitialValue() {
-    // Don't set `this.value` directly here since it won't set if the element
-    // is read-only or disabled.
-    // TODO: double check security
-    const value = this.innerHTML.trim();
-    this.textbox.textContent = value;
-    this.setFormValue(value);
-  }
-
-  private bindEvents() {
-    this.handleTextboxInputListener = this.handleTextboxInput.bind(this);
-    this.textbox.addEventListener('input', this.handleTextboxInputListener, { passive: true });
-    this.textbox.addEventListener('input', () => (this.userInteracted = true), { once: true });
-  }
-
-  private unbindEvents() {
-    if (this.handleTextboxInputListener) {
-      this.textbox.removeEventListener('input', this.handleTextboxInputListener);
+    if (!this.autoResize) {
+      this.autoSizerEl?.remove();
+      this.autoSizerObserver?.disconnect();
+      return;
     }
-  }
 
-  private togglePlaceholderShownState() {
-    toggleState(this.elementInternals, 'placeholder-shown', !!this.placeholder && !this.value);
-  }
-
-  private handleTextboxInput() {
-    this.togglePlaceholderShownState();
-    this.setFormValue(this.value);
-  }
-
-  /**
-   * @internal
-   */
-  public handleTextboxFocus() {
-    this.valueBeforeFocus = this.value;
-  }
-
-  /**
-   * @internal
-   */
-  public handleTextboxBlur() {
-    this.setValidity();
-
-    if (this.valueBeforeFocus !== this.value) {
-      this.$emit('change');
+    if (!this.autoSizerEl) {
+      this.autoSizerEl = document.createElement('div');
+      this.autoSizerEl.classList.add('auto-sizer');
+      this.autoSizerEl.ariaHidden = 'true';
     }
-    this.valueBeforeFocus = '';
+    this.shadowRoot!.prepend(this.autoSizerEl);
+
+    // The `ResizeObserver` is used to observe when the component gains
+    // explicit block size, when so, the `autoSizerEl` element should be
+    // removed to let the defined blocked size dictate the component’s block size.
+    if (!this.autoSizerObserver) {
+      this.autoSizerObserver = new ResizeObserver((_, observer) => {
+        const blockSizePropName = window.getComputedStyle(this).writingMode.startsWith('horizontal')
+          ? 'height'
+          : 'width';
+        if (this.style.getPropertyValue(blockSizePropName) !== '') {
+          this.autoSizerEl?.remove();
+          observer.disconnect();
+        }
+      });
+    }
+    this.autoSizerObserver.observe(this);
   }
 
   private maybeDisplayShadow() {
@@ -644,5 +593,32 @@ export class TextArea extends FASTElement {
       'display-shadow',
       this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
     );
+  }
+
+  /**
+   * @internal
+   */
+  public handleControlInput() {
+    if (this.autoResize && this.autoSizerEl) {
+      this.autoSizerEl.textContent = this.value + ' ';
+    }
+
+    this.setFormValue(this.value);
+  }
+
+  /**
+   * @internal
+   */
+  public handleControlChange() {
+    this.$emit('change');
+    toggleState(this.elementInternals, 'user-invalid', !this.validity.valid);
+    toggleState(this.elementInternals, 'user-valid', this.validity.valid);
+  }
+
+  /**
+   * @internal
+   */
+  public handleControlSelect() {
+    this.$emit('select');
   }
 }

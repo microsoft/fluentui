@@ -11,7 +11,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     ?autofocus="${x => x.autofocus}"
     ?auto-resize="${x => x.autoResize}"
     ?block="${x => x.block}"
-    dirname="${x => x.dirname}"
+    dirname="${x => x.dirName}"
     ?disabled="${x => x.disabled}"
     ?display-shadow="${x => x.displayShadow}"
     form="${x => x.form}"

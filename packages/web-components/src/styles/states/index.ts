@@ -271,12 +271,6 @@ export const blockState = css.partial`:is([state--block], :state(block))`;
 export const resizeState = css.partial`:is([state--resize], :state(resize))`;
 
 /**
- * Selector for the `resized` state. This indicates the element has been resized by the user.
- * @public
- */
-export const resizedState = css.partial`:is([state--resized], :state(resized))`;
-
-/**
  * Selector for the `resize-horizontal` state.
  * @public
  */
@@ -306,8 +300,14 @@ export const autoResizeState = css.partial`:is([state--auto-resize], :state(auto
  */
 export const displayShadowState = css.partial`:is([state--display-shadow], :state(display-shadow))`;
 
-/**
- * Selector foer the `placeholder-shown` state.
+/*
+ * Selector for the `user-invalid` state.
  * @public
  */
-export const placeholderShownState = css.partial`:is([state-placeholder-shown], :state(placeholder-shown))`;
+export const userInvalidState = css.partial`:is([state--user-invalid], :state(user-invalid))`;
+
+/**
+ * Selector for the `user-valid` state.
+ * @public
+ */
+export const userValidState = css.partial`:is([state--user-valid], :state(user-valid))`;

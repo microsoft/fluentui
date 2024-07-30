@@ -245,7 +245,6 @@ export const ComponentExamples: Story<FluentField> = renderComponent(html`
         <fluent-radio value="orange">Orange</fluent-radio>
       </fluent-radio-group>
     </fluent-field>
-
     <fluent-field>
       <label slot="label" for="field-textarea">Text Area</label>
       <fluent-textarea slot="input" id="field-textarea" placeholder="Placeholder text" resize="both"> </fluent-textarea>

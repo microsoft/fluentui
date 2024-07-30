@@ -49,11 +49,11 @@ import {
   filledDarkerState,
   filledLighterState,
   largeState,
-  placeholderShownState,
   resizeBothState,
   resizeHorizontalState,
   resizeVerticalState,
   smallState,
+  userInvalidState,
 } from '../styles/states/index.js';
 
 /**
@@ -76,14 +76,14 @@ export const styles: ElementStyles = css`
     --block-size: var(--min-block-size);
     --inline-size: 18rem;
     --border-width: ${strokeWidthThin};
-    --textbox-padding-inline: ${spacingHorizontalXXS};
+    --control-padding-inline: ${spacingHorizontalXXS};
 
     /* colors */
     --color: ${colorNeutralForeground1};
     --background-color: ${colorNeutralBackground1};
     --border-color: ${colorNeutralStroke1};
     --border-block-end-color: ${colorNeutralStrokeAccessible};
-    --placeholder-color: transparent;
+    --placeholder-color: ${colorNeutralForeground4};
 
     /* elevations */
     --box-shadow: none;
@@ -136,7 +136,7 @@ export const styles: ElementStyles = css`
     --min-block-size: 40px;
     --padding-block: ${spacingVerticalXS};
     --padding-inline: ${spacingHorizontalSNudge};
-    --textbox-padding-inline: ${spacingHorizontalXXS};
+    --control-padding-inline: ${spacingHorizontalXXS};
   }
 
   :host(${largeState}) {
@@ -145,7 +145,7 @@ export const styles: ElementStyles = css`
     --min-block-size: 64px;
     --padding-block: ${spacingVerticalS};
     --padding-inline: ${spacingHorizontalM};
-    --textbox-padding-inline: ${spacingHorizontalSNudge};
+    --control-padding-inline: ${spacingHorizontalSNudge};
   }
 
   :host(${resizeBothState}:not(:disabled)) {
@@ -181,11 +181,7 @@ export const styles: ElementStyles = css`
     --box-shadow: ${shadow2};
   }
 
-  :host(${placeholderShownState}) {
-    --placeholder-color: ${colorNeutralForeground4};
-  }
-
-  :host(:invalid) {
+  :host(${userInvalidState}) {
     --border-color: ${colorPaletteRedBorder2};
     --border-block-end-color: ${colorPaletteRedBorder2};
   }
@@ -229,26 +225,43 @@ export const styles: ElementStyles = css`
     content: none;
   }
 
+  .auto-sizer,
+  .control {
+    box-sizing: border-box;
+    font: inherit;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    padding: 0 var(--control-padding-inline);
+  }
+
+  .auto-sizer {
+    display: none;
+    padding-block-end: 2px; /* avoid scroll bar in Firefox */
+    pointer-events: none;
+    visibility: hidden;
+    white-space: pre-wrap;
+  }
+
+  :host(${autoResizeState}) .auto-sizer {
+    display: block;
+  }
+
+  .control {
+    appearance: none;
+    background-color: transparent;
+    border: 0;
+    field-sizing: content;
+    max-block-size: 100%;
+    outline: 0;
+    resize: none;
+  }
+
+  .control::placeholder {
+    color: var(--placeholder-color);
+  }
+
   ::selection {
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
-  }
-
-  .textbox,
-  .placeholder {
-    box-sizing: border-box;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    padding-inline: var(--textbox-padding-inline);
-    overflow-wrap: break-word; /* Needed for Firefox */
-  }
-
-  .textbox {
-    overflow: auto;
-    outline: 0;
-  }
-
-  .placeholder {
-    color: var(--placeholder-color);
   }
 `;
