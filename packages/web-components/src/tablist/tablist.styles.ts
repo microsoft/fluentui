@@ -24,7 +24,7 @@ import {
   spacingVerticalXXS,
   strokeWidthThicker,
 } from '../theme/design-tokens.js';
-import { largeState, smallState, verticalState } from '../styles/states/index.js';
+import { disabledState, largeState, smallState, subtleState, verticalState } from '../styles/states/index.js';
 /**
  * @public
  */
@@ -179,36 +179,36 @@ export const styles = css`
   }
 
   /* disabled styles */
-  :host([disabled]) {
+  :host(${disabledState}) {
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='tab']) {
+  :host(${disabledState}) ::slotted([slot='tab']) {
     pointer-events: none;
     cursor: not-allowed;
     color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='tab']:after) {
+  :host(${disabledState}) ::slotted([slot='tab']:after) {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='tab'][aria-selected='true'])::after {
+  :host(${disabledState}) ::slotted([slot='tab'][aria-selected='true'])::after {
     background-color: ${colorNeutralForegroundDisabled};
   }
 
-  :host([disabled]) ::slotted([slot='tab']:hover):before {
+  :host(${disabledState}) ::slotted([slot='tab']:hover):before {
     content: unset;
   }
 
-  :host([appearance='subtle']) ::slotted([slot='tab']:hover) {
+  :host(${subtleState}) ::slotted([slot='tab']:hover) {
     background-color: ${colorSubtleBackgroundHover};
     color: ${colorNeutralForeground1Hover};
     fill: ${colorCompoundBrandForeground1Hover};
   }
 
-  :host([appearance='subtle']) ::slotted([slot='tab']:active) {
+  :host(${subtleState}) ::slotted([slot='tab']:active) {
     background-color: ${colorSubtleBackgroundPressed};
     fill: ${colorSubtleBackgroundPressed};
     color: ${colorNeutralForeground1};

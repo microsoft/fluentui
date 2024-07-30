@@ -36,6 +36,15 @@ export class BaseTablist extends FASTElement {
   public disabled: boolean = false;
 
   /**
+   * Handles disabled changes
+   * @param prev - previous value
+   * @param next - next value
+   */
+  public disabledChanged(prev: boolean, next: boolean): void {
+    toggleState(this.elementInternals, 'disabled', next);
+  }
+
+  /**
    * The orientation
    * @public
    * @remarks
@@ -298,6 +307,18 @@ export class Tablist extends BaseTablist {
    */
   @attr
   public appearance?: TablistAppearance = TablistAppearance.transparent;
+
+  /**
+   * @internal
+   */
+  protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
 
   /**
    * size
