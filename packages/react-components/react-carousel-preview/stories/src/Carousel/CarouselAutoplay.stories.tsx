@@ -33,7 +33,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 };
 
 export const Autoplay = () => {
-  const [enableAutoplay, setEnableAutoplay] = React.useState(false);
+  const [enableAutoplay, setEnableAutoplay] = React.useState(true);
 
   return (
     <div>

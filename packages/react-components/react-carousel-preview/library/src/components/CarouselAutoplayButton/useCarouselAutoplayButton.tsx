@@ -32,18 +32,12 @@ export const useCarouselAutoplayButton_unstable = (
   useIsomorphicLayoutEffect(() => {
     // Enable/disable autoplay on state change
     enableAutoplay(autoplay);
-  }, [autoplay]);
-
-  React.useEffect(() => {
-    // Enable/disable autoplay on mount
-    enableAutoplay(autoplay);
-  }, []);
+  }, [autoplay, enableAutoplay]);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
       return;
     }
-
     setAutoplay(!autoplay);
   };
 
@@ -60,6 +54,7 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
+        appearance: 'subtle',
         ...props,
         onClick: handleButtonClick,
       },
