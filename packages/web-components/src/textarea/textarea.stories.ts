@@ -243,6 +243,7 @@ export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 Disabled.args = {
   disabled: true,
   resize: TextAreaResize.both,
+  content: 'This textarea is disabled',
 };
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`

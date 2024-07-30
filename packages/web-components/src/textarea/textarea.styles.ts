@@ -41,6 +41,7 @@ import {
   spacingVerticalXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 import {
   autoResizeState,
@@ -84,6 +85,7 @@ export const styles: ElementStyles = css`
     --border-color: ${colorNeutralStroke1};
     --border-block-end-color: ${colorNeutralStrokeAccessible};
     --placeholder-color: ${colorNeutralForeground4};
+    --focus-indicator-color: ${colorCompoundBrandStroke};
 
     /* elevations */
     --box-shadow: none;
@@ -122,7 +124,7 @@ export const styles: ElementStyles = css`
   }
 
   :host(:focus-within) {
-    outline: transparent solid 2px;
+    outline: none;
   }
 
   :host(${blockState}) {
@@ -199,7 +201,7 @@ export const styles: ElementStyles = css`
   }
 
   :host::after {
-    border-bottom: 2px solid ${colorCompoundBrandStroke};
+    border-bottom: 2px solid var(--focus-indicator-color);
     border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
     box-sizing: border-box;
     clip-path: inset(calc(100% - 2px) 1px 0px);
@@ -256,6 +258,10 @@ export const styles: ElementStyles = css`
     resize: none;
   }
 
+  .control:disabled {
+    cursor: inherit;
+  }
+
   .control::placeholder {
     color: var(--placeholder-color);
   }
@@ -264,4 +270,27 @@ export const styles: ElementStyles = css`
     color: ${colorNeutralForegroundInverted};
     background-color: ${colorNeutralBackgroundInverted};
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      --border-color: FieldText;
+      --border-block-end-color: FieldText;
+      --focus-indicator-color: Highlight;
+      --placeholder-color: FieldText;
+    }
+
+    :host(:hover),
+    :host(:active),
+    :host(:focus-within) {
+      --border-color: Highlight;
+      --border-block-end-color: Highlight;
+    }
+
+    :host(:disabled) {
+      --color: GrayText;
+      --border-color: GrayText;
+      --border-block-end-color: GrayText;
+      --placeholder-color: GrayText;
+    }
+  `),
+);
