@@ -1326,7 +1326,6 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           : container.getBoundingClientRect().width);
       const currentContainerHeight = container && container.getBoundingClientRect().height;
       const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
-
       if (shouldResize) {
         this.setState({
           containerWidth: currentContainerWidth,
