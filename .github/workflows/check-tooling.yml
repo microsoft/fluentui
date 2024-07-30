@@ -26,6 +26,8 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
+      - run: yarn nx run scripts-executors:test -t start
+
       - run: yarn nx list @fluentui/workspace-plugin
 
       - run: yarn nx g @fluentui/workspace-plugin:react-library --name hello-world --owner '@mrWick' --kind standard --no-interactive
