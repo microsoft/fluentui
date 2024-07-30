@@ -10,6 +10,8 @@ export { FreeLayout } from './CarouselFreeLayout.stories';
 export { Controlled } from './CarouselControlled.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
 
+export { AutoplayControlled } from './CarouselAutoplayControlled.stories';
+
 export default {
   title: 'Preview Components/Carousel',
   component: Carousel,

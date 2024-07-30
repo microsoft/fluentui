@@ -26,12 +26,10 @@ export const useCarouselCard_unstable = (
 
     if (element) {
       const listener = (_e: Event) => {
-        const event = _e as CarouselVisibilityChangeEvent;
-        const hidden = !event.detail.isVisible;
-
-        element.ariaHidden = hidden.toString();
-        element.inert = hidden;
-
+        // const event = _e as CarouselVisibilityChangeEvent;
+        // const hidden = !event.detail.isVisible;
+        // element.ariaHidden = hidden.toString();
+        // element.inert = hidden;
         // TODO: handle "tabIndex" ?
       };
 
