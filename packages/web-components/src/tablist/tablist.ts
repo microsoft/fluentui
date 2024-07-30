@@ -133,10 +133,6 @@ export class BaseTablist extends FASTElement {
    * @public
    */
   protected setTabs(): void {
-    if (this.disabled) {
-      return;
-    }
-
     this.activeTabIndex = this.getActiveIndex();
 
     this.tabs.forEach((tab: HTMLElement, index: number) => {
@@ -148,7 +144,7 @@ export class BaseTablist extends FASTElement {
         tab.setAttribute('aria-selected', isActiveTab ? 'true' : 'false');
         tab.addEventListener('click', this.handleTabClick);
         tab.addEventListener('keydown', this.handleTabKeyDown);
-        tab.setAttribute('tabindex', isActiveTab ? '0' : '-1');
+        tab.setAttribute('tabindex', isActiveTab && !this.disabled ? '0' : '-1');
         if (isActiveTab) {
           this.activetab = tab;
           this.activeid = tabId;
@@ -234,10 +230,6 @@ export class BaseTablist extends FASTElement {
    * This method allows the active index to be adjusted by numerical increments
    */
   public adjust(adjustment: number): void {
-    if (this.disabled) {
-      return;
-    }
-
     const focusableTabs = this.tabs.filter(t => isFocusableElement(t));
     const currentActiveTabIndex = focusableTabs.indexOf(this.activetab);
 
