@@ -2,6 +2,29 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 07:32:51 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.91",
+      "version": "8.107.91",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "b147de918bfc0282085ffa586ef5973f76d63b71",
+            "comment": "chore: introduce bundle aware build:react task for v8 packages that ship UMD to production(npm registry)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.119.3",
+            "commit": "8303652a141232be9e03658f295b8ab6512e43aa"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Jul 2024 07:31:12 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.90",
       "version": "8.107.90",

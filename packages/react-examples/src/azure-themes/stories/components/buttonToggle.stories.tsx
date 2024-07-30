@@ -2,6 +2,10 @@ import * as React from 'react';
 import { IIconProps } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
+export default {
+  title: 'Components/ButtonToggle',
+};
+
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
   disabled?: boolean;

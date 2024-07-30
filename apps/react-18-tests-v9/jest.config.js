@@ -13,13 +13,7 @@ module.exports = {
     '^react-dom$': '<rootDir>/node_modules/react-dom',
   },
   transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-        isolatedModules: true,
-      },
-    ],
+    '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   coverageDirectory: './coverage',
   setupFilesAfterEnv: ['./config/tests.js'],

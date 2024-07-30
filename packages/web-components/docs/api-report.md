@@ -17,7 +17,6 @@ import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
-import type { Theme } from '@fluentui/tokens';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
@@ -52,20 +51,10 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AccordionItem" because one of its declarations is marked as @internal
 //
-// @public (undocumented)
-export class AccordionItem extends FASTElement {
+// @public
+export class AccordionItem extends BaseAccordionItem {
     block: boolean;
     blockChanged(prev: boolean, next: boolean): void;
-    disabled: boolean;
-    disabledChanged(prev: boolean, next: boolean): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal (undocumented)
-    expandbutton: HTMLElement;
-    expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
-    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
     markerPosition?: AccordionItemMarkerPosition;
     markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
@@ -200,9 +189,7 @@ export const AnchorTarget: {
 export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
-export class Avatar extends FASTElement {
-    constructor();
-    active?: AvatarActive | undefined;
+export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
     color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
@@ -212,15 +199,11 @@ export class Avatar extends FASTElement {
     // (undocumented)
     disconnectedCallback(): void;
     // @internal
-    elementInternals: ElementInternals;
-    // @internal
     generateColor(): void;
     // @internal
     generateInitials(): string | void;
     // @internal
     handleChange(source: any, propertyName: string): void;
-    initials?: string | undefined;
-    name?: string | undefined;
     shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
@@ -457,6 +440,177 @@ export const BadgeStyles: ElementStyles;
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
+// @public (undocumented)
+export class BaseAccordionItem extends FASTElement {
+    disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal (undocumented)
+    expandbutton: HTMLElement;
+    expanded: boolean;
+    expandedChanged(prev: boolean, next: boolean): void;
+    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
+    id: string;
+}
+
+// @public
+export class BaseAvatar extends FASTElement {
+    constructor();
+    active?: AvatarActive | undefined;
+    // @internal
+    elementInternals: ElementInternals;
+    initials?: string | undefined;
+    name?: string | undefined;
+}
+
+// @public
+export class BaseButton extends FASTElement {
+    constructor();
+    autofocus: boolean;
+    // @internal
+    clickHandler(e: Event): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    defaultSlottedContent: HTMLElement[];
+    disabled?: boolean;
+    disabledFocusable: boolean;
+    // @internal
+    disabledFocusableChanged(previous: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    formAction?: string;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    formEnctype?: string;
+    formMethod?: string;
+    formNoValidate?: boolean;
+    formTarget?: ButtonFormTarget;
+    keypressHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<Node>;
+    name?: string;
+    protected press(): void;
+    resetForm(): void;
+    tabIndex: number;
+    type: ButtonType;
+    // @internal
+    typeChanged(previous: ButtonType, next: ButtonType): void;
+    value?: string;
+}
+
+// @public
+export class BaseDivider extends FASTElement {
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
+    role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export class BaseProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
+    validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseSpinner extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+}
+
+// @public
+export class BaseTextInput extends FASTElement {
+    autocomplete?: string;
+    autofocus: boolean;
+    // @internal
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // @internal
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    dirname?: string;
+    disabled?: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialValue: string;
+    // @internal
+    initialValueChanged(): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    list: string;
+    maxlength: number;
+    minlength: number;
+    multiple: boolean;
+    name: string;
+    pattern: string;
+    placeholder: string;
+    readOnly?: boolean;
+    // @internal
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    requiredChanged(previous: boolean, next: boolean): void;
+    select(): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size: number;
+    spellcheck: boolean;
+    type: TextInputType;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
+}
+
 // @public
 export const borderRadiusCircular = "var(--borderRadiusCircular)";
 
@@ -476,7 +630,6 @@ export const borderRadiusSmall = "var(--borderRadiusSmall)";
 export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-forgotten-export) The symbol "BaseButton" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
 //
 // @public
@@ -1871,10 +2024,8 @@ export type DialogType = ValuesOf<typeof DialogType>;
 // @public
 export function display(displayValue: CSSDisplayPropertyValue): string;
 
-// Warning: (ae-missing-release-tag) "Divider" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
 // @public
-export class Divider extends FASTElement {
+export class Divider extends BaseDivider {
     // (undocumented)
     alignContent?: DividerAlignContent;
     alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
@@ -1882,18 +2033,8 @@ export class Divider extends FASTElement {
     appearance?: DividerAppearance;
     appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    // (undocumented)
     inset?: boolean;
     insetChanged(prev: boolean, next: boolean): void;
-    orientation?: DividerOrientation;
-    // @internal
-    orientationChanged(previous: string | null, next: string | null): void;
-    role: DividerRole;
-    // @internal
-    roleChanged(previous: string | null, next: string | null): void;
 }
 
 // @public
@@ -2549,29 +2690,11 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends FASTElement {
-    constructor();
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    max?: number;
-    // @internal
-    protected maxChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    min?: number;
-    protected minChanged(prev: number | undefined, next: number | undefined): void;
-    // @internal
-    get percentComplete(): number;
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
-    validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
-    // @internal
-    value?: number;
-    // @internal
-    protected valueChanged(prev: number | undefined, next: number | undefined): void;
 }
 
 // @public
@@ -3053,12 +3176,9 @@ export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends FASTElement {
-    constructor();
+export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
     appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
-    // @internal
-    elementInternals: ElementInternals;
     size?: SpinnerSize;
     sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
@@ -3332,74 +3452,11 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "TextInput" because one of its declarations is marked as @internal
 //
 // @public
-export class TextInput extends FASTElement {
+export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
     appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
-    autocomplete?: string;
-    autofocus: boolean;
-    // @internal
-    beforeinputHandler(e: InputEvent): boolean | void;
-    // @internal
-    changeHandler(e: InputEvent): boolean | void;
-    checkValidity(): boolean;
-    clickHandler(e: MouseEvent): boolean | void;
-    // (undocumented)
-    connectedCallback(): void;
-    // @internal
-    control: HTMLInputElement;
-    // @internal
-    controlLabel: HTMLLabelElement;
     controlSize?: TextInputControlSize;
     controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
-    // @internal
-    defaultSlottedNodes: Node[];
-    // @internal
-    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
-    dirname?: string;
-    disabled?: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    focusinHandler(e: FocusEvent): boolean | void;
-    get form(): HTMLFormElement | null;
-    static readonly formAssociated = true;
-    formAttribute?: string;
-    // @internal
-    formResetCallback(): void;
-    initialValue: string;
-    // @internal
-    initialValueChanged(): void;
-    // @internal
-    inputHandler(e: InputEvent): boolean | void;
-    // @internal
-    keydownHandler(e: KeyboardEvent): boolean | void;
-    list: string;
-    maxlength: number;
-    minlength: number;
-    multiple: boolean;
-    name: string;
-    pattern: string;
-    placeholder: string;
-    readOnly?: boolean;
-    // @internal
-    readOnlyChanged(): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // @internal
-    requiredChanged(previous: boolean, next: boolean): void;
-    select(): void;
-    setCustomValidity(message: string): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    size: number;
-    spellcheck: boolean;
-    type: TextInputType;
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string;
-    set value(value: string);
-    get willValidate(): boolean;
 }
 
 // @internal (undocumented)
@@ -3494,6 +3551,11 @@ export const TextWeight: {
 
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
+
+// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type Theme = Record<string, string | number>;
 
 // @public
 export class ToggleButton extends Button {

@@ -69,6 +69,7 @@ const config = {
         'webpack',
         'webpack-bundle-analyzer',
         'yargs',
+        'dedent',
       ],
     },
     {

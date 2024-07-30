@@ -13,7 +13,7 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { EventData } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
@@ -66,9 +66,7 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
-    value: string;
-};
+export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
 
 // @public (undocumented)
 export type CarouselCardSlots = {
@@ -76,7 +74,7 @@ export type CarouselCardSlots = {
 };
 
 // @public
-export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'value'>;
+export type CarouselCardState = ComponentState<CarouselCardSlots>;
 
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
@@ -155,17 +153,18 @@ export type CarouselNavSlots = {
 
 // @public (undocumented)
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-    values: string[];
+    totalSlides: number;
     renderNavButton: NavButtonRenderFunction;
 };
 
 // @public
 export type CarouselProps = ComponentProps<CarouselSlots> & {
-    defaultValue?: string;
+    defaultActiveIndex?: number;
     align?: 'center' | 'start' | 'end';
-    value?: string;
-    onValueChange?: EventHandler<CarouselValueChangeData>;
+    activeIndex?: number;
+    onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
+    groupSize?: number | 'auto';
 };
 
 // @public
@@ -194,7 +193,7 @@ export type CarouselSlots = {
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public (undocumented)
-export type NavButtonRenderFunction = (value: string) => React_2.ReactNode;
+export type NavButtonRenderFunction = (index: number) => React_2.ReactNode;
 
 // @public
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;

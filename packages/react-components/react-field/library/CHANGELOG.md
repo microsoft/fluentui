@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-field
 
-This log was last generated on Mon, 15 Jul 2024 17:25:29 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.71)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-field_v9.1.70..@fluentui/react-field_v9.1.71)
+
+### Patches
+
+- Bump @fluentui/react-context-selector to v9.1.65 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-label to v9.1.74 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.1.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-field_v9.1.70)
 

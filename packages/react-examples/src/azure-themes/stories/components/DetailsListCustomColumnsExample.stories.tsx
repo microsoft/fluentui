@@ -3,6 +3,10 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { Link } from '@fluentui/react/lib/Link';
 import { DetailsList, buildColumns, IColumn } from '@fluentui/react/lib/DetailsList';
 
+export default {
+  title: 'Components/DetailsList',
+};
+
 export interface IDetailsListCustomColumnsExampleState {
   sortedItems: IExampleItem[];
   columns: IColumn[];
