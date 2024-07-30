@@ -204,12 +204,12 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         switch (ev.key) {
           case 'ArrowLeft':
             if (columnIndex > 0) {
-              detailsList.updateColumn(column, { newColumnIndex: columnIndex + indexOffset - 1 });
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset - 1 });
             }
             break;
           case 'ArrowRight':
             if (columnIndex < columns.length - 1) {
-              detailsList.updateColumn(column, { newColumnIndex: columnIndex + indexOffset + 1 });
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset + 1 });
             }
             break;
         }
@@ -218,10 +218,14 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
         ev.preventDefault();
         switch (ev.key) {
           case 'ArrowLeft':
-            detailsList.updateColumn(column, { width: column.currentWidth * 0.9 });
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 0.9 : column.minWidth,
+            });
             break;
           case 'ArrowRight':
-            detailsList.updateColumn(column, { width: column.currentWidth * 1.1 });
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 1.1 : column.minWidth,
+            });
             break;
         }
       }
