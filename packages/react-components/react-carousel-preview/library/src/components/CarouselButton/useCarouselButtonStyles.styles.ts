@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselButtonSlots, CarouselButtonState } from './CarouselButton.types';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
