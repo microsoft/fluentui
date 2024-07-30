@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AppItemStaticSlots, AppItemStaticState } from './AppItemStatic.types';
-import { appItemClassNames, useAppItemStyles } from '../AppItem/useAppItemStyles.styles';
+import { useAppItemStyles } from '../AppItem/useAppItemStyles.styles';
 import { useIconStyles, useRootDefaultClassName } from '../sharedNavStyles.styles';
 
 export const appItemStaticClassNames: SlotClassNames<AppItemStaticSlots> = {
@@ -36,7 +36,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
 
   state.root.className = mergeClasses(
     rootDefaultClassName,
-    appItemClassNames.root,
+    appItemStaticClassNames.root,
     appItemSpecificStyles.root,
     appItemStaticStyles.root,
     size === 'small' && appItemSpecificStyles.small,
@@ -45,7 +45,7 @@ export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppI
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(appItemClassNames.icon, iconStyles.base, state.icon.className);
+    state.icon.className = mergeClasses(appItemStaticClassNames.icon, iconStyles.base, state.icon.className);
   }
 
   return state;
