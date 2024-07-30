@@ -19,13 +19,6 @@ const useStyles = makeStyles({
     height: '8px',
     width: '8px',
     backgroundColor: tokens.colorNeutralForeground1,
-    ':hover': {
-      cursor: 'pointer',
-      backgroundColor: tokens.colorNeutralForeground1Hover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralForeground1Pressed,
-    },
   },
   rootUnselected: {
     border: 'none',
@@ -43,12 +36,6 @@ const useStyles = makeStyles({
       opacity: 0.3,
       backgroundColor: tokens.colorNeutralForeground1,
     },
-    ':hover': {
-      backgroundColor: tokens.colorNeutralForeground1Hover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralForeground1Pressed,
-    },
   },
   rootSelected: {
     outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
@@ -61,12 +48,6 @@ const useStyles = makeStyles({
       borderRadius: tokens.borderRadiusMedium,
       ...shorthands.borderColor('transparent'),
     }),
-    ':hover': {
-      backgroundColor: tokens.colorNeutralForeground1Hover,
-    },
-    ':active': {
-      backgroundColor: tokens.colorNeutralForeground1Pressed,
-    },
   },
 });
 
