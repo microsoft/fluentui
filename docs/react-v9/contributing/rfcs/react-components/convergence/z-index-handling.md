@@ -197,7 +197,7 @@ _NOTE: The names above are not final and only serve as an example. As of the mom
 
 The options below were explored but discarded due to the complexity of the implementation. It can be revisited in the future if necessary.
 
-#### React Context for setting z-index values
+#### Option C: React Context for setting z-index values
 
 This context would provide a way to set the z-index values for components and retrieve them when necessary. That allows partners to set the z-index themselves delegating the decision of the z-index order, priority and values to the application. It would be possible to set z-index ordering for multiple elements in the same layer.
 
