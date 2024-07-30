@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.7)
+
+Tue, 30 Jul 2024 18:47:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.6..@fluentui/react-positioning_v9.15.7)
+
+### Patches
+
+- fix: improve arrow styles implementation ([PR #32092](https://github.com/microsoft/fluentui/pull/32092) by olfedias@microsoft.com)
 
 ## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.6)
 

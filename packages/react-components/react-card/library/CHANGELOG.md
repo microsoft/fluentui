@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.88)
+
+Tue, 30 Jul 2024 18:47:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.87..@fluentui/react-card_v9.0.88)
+
+### Patches
+
+- fix: improve hover for HC mode ([PR #31953](https://github.com/microsoft/fluentui/pull/31953) by marcosvmmoura@gmail.com)
 
 ## [9.0.87](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.87)
 
