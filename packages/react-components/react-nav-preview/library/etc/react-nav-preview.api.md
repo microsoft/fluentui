@@ -69,10 +69,13 @@ export type AppItemStaticProps = ComponentProps<AppItemStaticSlots> & {};
 // @public (undocumented)
 export type AppItemStaticSlots = {
     root: Slot<'div'>;
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type AppItemStaticState = ComponentState<AppItemStaticSlots>;
+export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
+    size: NavSize;
+};
 
 // @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
