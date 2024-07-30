@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-icons-compat",
   "version": "0.0.0",
-  "private": true,
   "description": "Package for icon utility methods used by font and svg icons.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

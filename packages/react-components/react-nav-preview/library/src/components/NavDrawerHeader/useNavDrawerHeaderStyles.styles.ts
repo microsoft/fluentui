@@ -14,7 +14,7 @@ export const navDrawerHeaderClassNames: SlotClassNames<NavDrawerHeaderSlots> = {
 const useStyles = makeStyles({
   root: {
     margin: 'unset',
-    paddingInlineStart: '12px',
+    paddingInlineStart: '14px',
     paddingBlock: '5px',
   },
 });

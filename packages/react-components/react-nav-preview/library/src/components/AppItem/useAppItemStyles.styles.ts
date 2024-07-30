@@ -1,11 +1,12 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AppItemSlots, AppItemState } from './AppItem.types';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useIconStyles, useRootDefaultClassName } from '../sharedNavStyles.styles';
 
 export const appItemClassNames: SlotClassNames<AppItemSlots> = {
   root: 'fui-AppItem',
-  // TODO: add class names for all slots on AppItemSlots.
-  // Should be of the form `<slotName>: 'fui-AppItem__<slotName>`
+  icon: 'fui-AppItem__icon',
 };
 
 /**
@@ -13,10 +14,22 @@ export const appItemClassNames: SlotClassNames<AppItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    marginInline: '4px',
+    width: 'revert',
+    alignItems: 'center',
+    gap: '10px',
+    marginInlineStart: '-6px',
+    marginInlineEnd: '0px',
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalS} ${tokens.spacingHorizontalMNudge}`,
+    ...typographyStyles.subtitle2,
   },
-
-  // TODO add additional classes for different states and/or slots
+  small: {
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalS} 14px`,
+    gap: '14px',
+  },
+  absentIconRootAdjustment: {
+    paddingInlineStart: '16px',
+  },
 });
 
 /**
@@ -25,11 +38,24 @@ const useStyles = makeStyles({
 export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => {
   'use no memo';
 
-  const styles = useStyles();
-  state.root.className = mergeClasses(appItemClassNames.root, styles.root, state.root.className);
+  const rootDefaultClassName = useRootDefaultClassName();
+  const iconStyles = useIconStyles();
+  const appItemSpecificStyles = useStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const { size, icon } = state;
+
+  state.root.className = mergeClasses(
+    rootDefaultClassName,
+    appItemClassNames.root,
+    appItemSpecificStyles.root,
+    size === 'small' && appItemSpecificStyles.small,
+    !icon && appItemSpecificStyles.absentIconRootAdjustment,
+    state.root.className,
+  );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(appItemClassNames.icon, iconStyles.base, state.icon.className);
+  }
 
   return state;
 };
