@@ -354,7 +354,6 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             <defs>
               <linearGradient id={`gradient_${index}_${pointData}`} >
                 <stop offset="0" stopColor={color} />
-                <stop offset="50%" stopColor={color} />
                 <stop offset="100%" stopColor={color2} />
               </linearGradient>
             </defs>
@@ -415,7 +414,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           color: color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: point,
+          dataPointCalloutProps: {...point, color},
           callOutAccessibilityData: point.callOutAccessibilityData!,
         });
       }
@@ -487,7 +486,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         color: color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
-        dataPointCalloutProps: point,
+        dataPointCalloutProps: {...point, color},
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }

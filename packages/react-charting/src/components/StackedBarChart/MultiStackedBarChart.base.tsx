@@ -14,7 +14,7 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject } from '../../utilities/index';
+import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -246,12 +246,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let value = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color
+      let color: string = point.color
         ? point.color
         : point.placeHolder
         ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      const color2: string = (data.chartData?.[index + 1] && data.chartData?.[index + 1].color) ?? color;
+      let color2: string = color;
+      if (this.props.enableGradient ) {
+        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+      }
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;
@@ -300,7 +304,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             <defs>
               <linearGradient id={`gradient_${index}_${pointData}`} >
                 <stop offset="0" stopColor={color} />
-                <stop offset="50%" stopColor={color} />
                 <stop offset="100%" stopColor={color2} />
               </linearGradient>
             </defs>
@@ -316,7 +319,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             y={0}
             width={value + '%'}
             height={barHeight}
-            rx={this.props.roundCorners ? barHeight / 2 : 0}
+            rx={this.props.roundCorners ? 3 : 0}
             fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
           />
         </g>
@@ -370,6 +373,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               width={'100%'}
               height={barHeight}
               fill={palette.neutralLight}
+              rx={this.props.roundCorners ? 3 : 0}
             />
           </g>,
         );
@@ -385,6 +389,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
               width={'100%'}
               height={barHeight}
               fill={palette.neutralLight}
+              rx={this.props.roundCorners ? 3 : 0}
             />
           </g>,
         );
@@ -453,7 +458,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: point,
+          dataPointCalloutProps: {...point, color},
           callOutAccessibilityData: point.callOutAccessibilityData!,
         });
       }
@@ -489,8 +494,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          validChartData!.forEach((point: IChartDataPoint) => {
-            const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          validChartData!.forEach((point: IChartDataPoint, index2: number) => {
+            let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+            if (this.props.enableGradient) {
+              color = point.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+            }
+
             const checkSimilarLegends = actions.filter(
               (leg: ILegend) => leg.title === point.legend! && leg.color === color,
             );
@@ -515,8 +524,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        validChartData!.forEach((point: IChartDataPoint) => {
-          const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        validChartData!.forEach((point: IChartDataPoint, index2: number) => {
+          let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+          if (this.props.enableGradient) {
+            color = point.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+          }
+
           const checkSimilarLegends = actions.filter(
             (leg: ILegend) => leg.title === point.legend! && leg.color === color,
           );
@@ -589,7 +602,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
-        dataPointCalloutProps: point,
+        dataPointCalloutProps: {...point, color},
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }

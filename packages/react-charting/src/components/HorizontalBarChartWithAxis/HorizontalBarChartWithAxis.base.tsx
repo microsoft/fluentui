@@ -479,7 +479,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       let color2 = color;
 
       if (this.props.enableGradient) {
-        const pointIndex = this._points.findIndex((item) => item === point);
+        const pointIndex = Math.max(this._points.findIndex((item) => item === point), 0);
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
       }

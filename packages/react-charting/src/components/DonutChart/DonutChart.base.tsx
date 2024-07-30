@@ -293,7 +293,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       let color: string = data.color!;
 
       if (this.props.enableGradient) {
-        const pointIndex = Math.max(this.props.data?.chartData?.findIndex((item) => item === data) || 0, 0);
+        const pointIndex = Math.max(
+          this.props.data?.chartData?.findIndex((item) => item.legend === data.legend) || 0, 0
+        );
         color = data.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
       }
 

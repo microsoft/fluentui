@@ -11,6 +11,7 @@ import {
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 export interface IExampleState {
   dynamicData: IChartProps;
@@ -68,6 +69,27 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       DefaultPalette.magentaLight,
     ],
   ];
+
+  private _gradientColors = [
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient1),
+      getGradientFromToken(DataVizGradientPalette.gradient3),
+      getGradientFromToken(DataVizGradientPalette.gradient9),
+    ],
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient2),
+      getGradientFromToken(DataVizGradientPalette.gradient4),
+    ],
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient5),
+      getGradientFromToken(DataVizGradientPalette.gradient6),
+      getGradientFromToken(DataVizGradientPalette.gradient10),
+    ],
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient7),
+      getGradientFromToken(DataVizGradientPalette.gradient8),
+    ],
+  ]
 
   constructor(props: IStackedBarChartProps) {
     super(props);
@@ -160,10 +182,30 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       dynamicData: {
         chartTitle: 'Stacked Bar chart',
         chartData: [
-          { ...prevState.dynamicData.chartData![0], legend: 'first', color: this._randomColor(0) },
-          { ...prevState.dynamicData.chartData![1], legend: 'second', color: this._randomColor(1) },
-          { ...prevState.dynamicData.chartData![2], legend: 'third', color: this._randomColor(2) },
-          { ...prevState.dynamicData.chartData![3], legend: 'fourth', color: this._randomColor(3) },
+          {
+            ...prevState.dynamicData.chartData![0],
+            legend: 'first',
+            color: this._randomColor(0),
+            gradient: this._randomGradient(0),
+          },
+          {
+            ...prevState.dynamicData.chartData![1],
+            legend: 'second',
+            color: this._randomColor(1),
+            gradient: this._randomGradient(1),
+          },
+          {
+            ...prevState.dynamicData.chartData![2],
+            legend: 'third',
+            color: this._randomColor(2),
+            gradient: this._randomGradient(2),
+          },
+          {
+            ...prevState.dynamicData.chartData![3],
+            legend: 'fourth',
+            color: this._randomColor(3),
+            gradient: this._randomGradient(3),
+          },
         ],
       },
       statusKey: prevState.statusKey + 1,
@@ -177,6 +219,10 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
 
   private _randomColor(index: number): string {
     return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
+  }
+
+  private _randomGradient(index: number): string[] {
+    return this._gradientColors[index][Math.floor(Math.random() * this._gradientColors[index].length)];
   }
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
