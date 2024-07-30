@@ -1,4 +1,5 @@
 import qs from 'qs';
+import { expect, type Locator } from '@playwright/test';
 
 /**
  * Returns a formatted URL for a given Storybook fixture.
@@ -28,4 +29,18 @@ export function fixtureURL(id: string = 'debug--blank', args?: Record<string, an
   });
 
   return url;
+}
+
+interface FluentElement extends HTMLElement {
+  elementInternals: ElementInternals;
+}
+/**
+ * Evaluate whether an element has the given state or not on its `elementInternals` property.
+ *
+ * @param locator - The Playwright locator for the element.
+ * @param state - The name of the state.
+ * @param has - Whether the element is expected to have or not have the given state, defaults to `true`.
+ */
+export async function expectToHaveState(locator: Locator, state: string, has: boolean = true) {
+  expect(await locator.evaluate((el: FluentElement, state: string) => el.elementInternals.states.has(state), state)).toBe(has);
 }

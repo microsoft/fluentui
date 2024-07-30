@@ -11,16 +11,13 @@ export function textAreaTemplate<T extends TextArea>(): ElementViewTemplate<T> {
     <template>
       <textarea
         ${ref('controlEl')}
-        id="control"
         class="control"
         part="control"
-        ?autofocus="${x => x.autofocus}"
         ?required="${x => x.required}"
         ?disabled="${x => x.disabled}"
         ?readonly="${x => x.readOnly}"
-        spellcheck="${x => x.spellcheck}"
+        ?spellcheck="${x => x.spellcheck}"
         autocomplete="${x => x.autocomplete}"
-        dirname="${x => x.dirName}"
         maxlength="${x => x.maxLength}"
         minlength="${x => x.minLength}"
         placeholder="${x => x.placeholder}"

@@ -50,6 +50,8 @@ export class TextArea extends FASTElement {
 
   private lightDOMObserver!: MutationObserver;
 
+  private preConnectTextareaEl: HTMLTextAreaElement | null = document.createElement('textarea');
+
   /**
    * Indicates the visual appearance of the element.
    *
@@ -95,7 +97,7 @@ export class TextArea extends FASTElement {
   public autoResize = false;
   protected autoResizeChanged() {
     this.maybeCreateAutoSizerEl();
-    toggleState(this.elementInternals, `auto-resize`, this.autoResize);
+    toggleState(this.elementInternals, 'auto-resize', this.autoResize);
   }
 
   /**
@@ -108,7 +110,7 @@ export class TextArea extends FASTElement {
   @attr({ mode: 'boolean' })
   public block: boolean = false;
   protected blockChanged() {
-    toggleState(this.elementInternals, `block`, this.block);
+    toggleState(this.elementInternals, 'block', this.block);
   }
 
   /**
@@ -296,6 +298,16 @@ export class TextArea extends FASTElement {
   public spellcheck = false;
 
   /**
+   * The length of the current value.
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement#textLength | 'textLength'} property
+   *
+   * @public
+   */
+  public get textLength(): number {
+    return this.value.length;
+  }
+
+  /**
    * The type of the element, which is always "textarea".
    * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/type | `type`} property
    *
@@ -349,11 +361,17 @@ export class TextArea extends FASTElement {
    * component will not change the default value or the content displayed inside the component.
    */
   public get defaultValue(): string {
-    return this.controlEl.defaultValue;
+    return this.$fastController.isConnected ?
+        this.controlEl.defaultValue :
+        this.preConnectTextareaEl!.defaultValue;
   }
 
   public set defaultValue(next: string) {
-    this.controlEl.defaultValue = next;
+    if (!this.$fastController.isConnected) {
+      this.preConnectTextareaEl!.defaultValue = next;
+    } else {
+      this.controlEl.defaultValue = next;
+    }
   }
 
   /**
@@ -369,6 +387,7 @@ export class TextArea extends FASTElement {
 
   public set value(next: string) {
     if (!this.$fastController.isConnected) {
+      this.preConnectTextareaEl!.defaultValue = next;
       return;
     }
 
@@ -394,8 +413,9 @@ export class TextArea extends FASTElement {
   constructor() {
     super();
 
+    // TODO: Change this to `'textbox'` when Reference Target is out.
+    this.elementInternals.role = 'presentation';
     // TODO: Re-enabled this when Reference Target is out.
-    // this.elementInternals.role = 'textbox';
     // this.elementInternals.ariaMultiLine = 'true';
   }
 
@@ -528,14 +548,19 @@ export class TextArea extends FASTElement {
   }
 
   private setDefaultValue() {
-    this.defaultValue = this.innerHTML.trim();
+    this.defaultValue = this.innerHTML.trim() || this.preConnectTextareaEl!.defaultValue || '';
+
     this.setFormValue(this.defaultValue);
     this.setValidity();
+
+    this.preConnectTextareaEl = null;
   }
 
   private observeLightDOM() {
     this.lightDOMObserver = new MutationObserver(() => {
-      this.value = this.innerHTML.trim();
+      const next = this.innerHTML.trim();
+      this.defaultValue = next;
+      this.value = next;
     });
     this.lightDOMObserver.observe(this, {
       childList: true,
@@ -608,9 +633,9 @@ export class TextArea extends FASTElement {
    * @internal
    */
   public handleControlChange() {
-    this.$emit('change');
     toggleState(this.elementInternals, 'user-invalid', !this.validity.valid);
     toggleState(this.elementInternals, 'user-valid', this.validity.valid);
+    this.$emit('change');
   }
 
   /**
