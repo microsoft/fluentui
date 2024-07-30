@@ -102,7 +102,7 @@ export const zIndexes: ZIndexLayers = {
 ```
 
 ```ts
-// partner side
+// Fluent/partner code
 
 import { zIndexes } from '@fluentui/theme';
 
