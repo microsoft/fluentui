@@ -1,21 +1,13 @@
 import * as React from 'react';
 
-import { classNamesFunction, getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
+import { getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
 import { Button } from '@fluentui/react-button';
-import {
-  ILegend,
-  ILegendsProps,
-  LegendShape,
-  ILegendsStyles,
-  ILegendStyleProps,
-  ILegendOverflowData,
-} from './Legends.types';
+import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './Legends.styles';
 import { Overflow, OverflowItem, useFocusableGroup } from '@fluentui/react-components';
 import { OverflowMenu } from './OverflowMenu';
-
-const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
+import { tokens } from '@fluentui/react-theme';
 
 // This is an internal interface used for rendering the legends with unique key
 interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -34,19 +26,16 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export interface ILegendState {
   activeLegend: string;
-  isHoverCardVisible: boolean;
   /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
 export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<HTMLDivElement, ILegendsProps>(
   (props, forwardedRef) => {
-    let _hoverCardRef: HTMLDivElement;
     /** Boolean variable to check if one or more legends are selected */
     let _isLegendSelected = false;
 
     // set states separately for each instance of the component
     const [activeLegend, setActiveLegend] = React.useState('');
-    const [isHoverCardVisible, setIsHoverCardVisible] = React.useState(false);
     const [selectedLegends, setSelectedLegends] = React.useState({});
     const focusAttributes = useFocusableGroup();
 
@@ -62,14 +51,22 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       setSelectedLegends(defaultSelectedLegends);
     }, [props.canSelectMultipleLegends, props.defaultSelectedLegend, props.defaultSelectedLegends]);
 
-    const classes = useLegendStyles_unstable(props);
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
-    const { allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-    const itemIds = dataToRender.primary.map((item, index) => index.toString());
+    const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    // TO DO need to set these styles
+    // const rootStyles = {
+    //   root: {
+    //     justifyContent: props.centerLegends ? 'center' : 'unset',
+    //     flexWrap: 'wrap',
+    //   },
+    // };
+    // props.styles.resizableArea = JSON.stringify({ ...rootStyles, ...overflowProps?.styles });
+    const classes = useLegendStyles_unstable(props);
+    const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
     props.legends.map((legend, index) => {
-      const hoverCardElement = _renderButton(legend, index, true);
+      const hoverCardElement = _renderButton(legend, index);
       overflowHoverCardLegends.push(hoverCardElement);
     });
     const overflowString = props.overflowText ? props.overflowText : 'more';
@@ -85,7 +82,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       >
         <Overflow>
           <div className={classes.resizableArea}>
-            {dataToRender.primary.map((item, id) => (
+            {dataToRender.map((item, id) => (
               <OverflowItem key={id} id={id.toString()}>
                 {_renderButton(item)}
               </OverflowItem>
@@ -96,7 +93,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       </div>
     );
 
-    function _generateData(): ILegendOverflowData {
+    function _generateData(): ILegendItem[] {
       const { allowFocusOnLegends = true, shape } = props;
       const dataItems: ILegendItem[] = props.legends.map((legend: ILegend, index: number) => {
         return {
@@ -119,11 +116,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           key: index,
         };
       });
-      const result: ILegendOverflowData = {
-        primary: dataItems,
-        overflow: [],
-      };
-      return result;
+      return dataItems;
     }
 
     /**
@@ -193,7 +186,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function _renderButton(data: any, index?: number, overflow?: boolean) {
+    function _renderButton(data: any, index?: number) {
       const { allowFocusOnLegends = true } = props;
       const legend: ILegend = {
         title: data.title,
@@ -216,7 +209,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       const onMouseOut = () => {
         _onLeave(legend);
       };
-      const shape = _getShape(classes, legend, color);
+      const shape = _getShape(legend, color);
       return (
         <Button
           {...(allowFocusOnLegends && {
@@ -252,7 +245,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       );
     }
 
-    function _getShape(classNames: ILegendsStyles, legend: ILegend, color: string): React.ReactNode | string {
+    function _getShape(legend: ILegend, color: string): React.ReactNode | string {
       const svgParentProps: React.SVGAttributes<SVGElement> = {
         className: classes.shape,
       };
@@ -292,7 +285,13 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       else {
         // if the given legend is hovered
         // or none of the legends is hovered
-        legendColor = color;
+        if (activeLegend === title || activeLegend === '') {
+          legendColor = color;
+        }
+        // // if there is a hovered legend but the given legend is not the one
+        // else {
+        //   legendColor = tokens.colorNeutralBackground1;
+        // }
       }
       return legendColor;
     }
