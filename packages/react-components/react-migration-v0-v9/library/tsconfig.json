@@ -1,28 +1,23 @@
 {
-  "extends": "../../tsconfig.base.v8.json",
+  "extends": "../../../../tsconfig.base.all.json",
   "compilerOptions": {
-    "module": "CommonJS",
+    "strict": true,
     "target": "ES2019",
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
     "jsx": "react",
     "noUnusedLocals": true,
-    "preserveConstEnums": true,
-    "experimentalDecorators": true,
-    "skipLibCheck": true
+    "preserveConstEnums": true
   },
   "include": [],
   "files": [],
   "references": [
     {
-      "path": "./tsconfig.app.json"
+      "path": "./tsconfig.lib.json"
     },
     {
       "path": "./tsconfig.spec.json"
-    },
-    {
-      "path": "./tsconfig.cy.json"
     }
   ]
 }
