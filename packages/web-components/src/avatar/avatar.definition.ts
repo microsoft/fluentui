@@ -8,7 +8,7 @@ import { template } from './avatar.template.js';
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-badge\>
+ * HTML Element: \<fluent-avatar\>
  */
 export const definition = Avatar.compose({
   name: `${FluentDesignSystem.prefix}-avatar`,

@@ -7,7 +7,7 @@ import { template } from './drawer-body.template.js';
  *
  * @public
  * @remarks
- * HTML Element: <fluent-drawer>
+ * HTML Element: <fluent-drawer-body>
  */
 
 export const definition = DrawerBody.compose({

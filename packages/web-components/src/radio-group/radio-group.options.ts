@@ -1,11 +1,13 @@
-import { Orientation } from '@microsoft/fast-web-utilities';
 import type { ValuesOf } from '../utils/index.js';
 
 /**
  * Radio Group orientation
  * @public
  */
-export const RadioGroupOrientation = Orientation;
+export const RadioGroupOrientation = {
+  horizontal: 'horizontal',
+  vertical: 'vertical',
+} as const;
 
 /**
  * Types of Radio Group orientation

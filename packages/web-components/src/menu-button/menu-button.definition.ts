@@ -6,7 +6,7 @@ import { template } from './menu-button.template.js';
 /**
  * @public
  * @remarks
- * HTML Element: \<fluent-button\>
+ * HTML Element: \<fluent-menu-button\>
  */
 export const definition = MenuButton.compose({
   name: `${FluentDesignSystem.prefix}-menu-button`,
