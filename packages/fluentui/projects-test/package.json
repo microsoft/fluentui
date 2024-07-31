@@ -15,7 +15,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "gulp bundle:package:no-umd",
+    "bundle": "gulp bundle:package:no-umd",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test-integration": "node -r @fluentui/scripts-babel/register src/index.ts"
