@@ -2,10 +2,11 @@ import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/reac
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
 import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
-import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
 import { createNextOpenItems } from './useControllableOpenItems';
+import { ImmutableSet } from '../utils/ImmutableSet';
+import { ImmutableMap } from '../utils/ImmutableMap';
 
 /**
  * Create the state required to render the root level tree.
@@ -21,13 +22,13 @@ export function useRootTree(
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
-  const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
+  const openItems = React.useMemo(() => ImmutableSet.from(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
 
   const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
     props.onOpenChange?.(request.event, {
       ...request,
-      openItems: createNextOpenItems(request, openItems).dangerouslyGetInternalSet_unstable(),
+      openItems: ImmutableSet.dangerouslyGetInternalSet(createNextOpenItems(request, openItems)),
     });
   };
 
@@ -38,7 +39,7 @@ export function useRootTree(
     props.onCheckedChange?.(request.event, {
       ...request,
       selectionMode,
-      checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
+      checkedItems: ImmutableMap.dangerouslyGetInternalMap(checkedItems),
       // Casting is required here due to selection | multiselection spreading the union problem
     } as TreeCheckedChangeData);
   };
