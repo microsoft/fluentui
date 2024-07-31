@@ -24,8 +24,10 @@ type TabData = Omit<DOMRect, 'top' | 'bottom' | 'left' | 'right' | 'toJSON'>;
 export class BaseTablist extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
    */
-  elementInternals: ElementInternals = this.attachInternals();
+  public elementInternals: ElementInternals = this.attachInternals();
   /**
    * Used for disabling all click and keyboard events for the tabs, child tab elements.
    * @public
@@ -39,8 +41,10 @@ export class BaseTablist extends FASTElement {
    * Handles disabled changes
    * @param prev - previous value
    * @param next - next value
+   *
+   * @internal
    */
-  public disabledChanged(prev: boolean, next: boolean): void {
+  protected disabledChanged(prev: boolean, next: boolean): void {
     toggleState(this.elementInternals, 'disabled', next);
   }
 
@@ -421,11 +425,20 @@ export class Tablist extends BaseTablist {
     }
   }
 
+  /**
+   * Sets the css variables for the active tab indicator.
+   * @internal
+   */
   private setAnimationVars() {
     this.style.setProperty('--tabIndicatorOffset', `${this.activeTabOffset}px`);
-    this.style.setProperty('--tabIndicatorScale', this.activeTabScale.toString());
+    this.style.setProperty('--tabIndicatorScale', `${this.activeTabScale}`);
   }
 
+  /**
+   * Initiates the active tab indicator animation loop when activeid changes.
+   * @param oldValue - the previous tabId
+   * @param newValue - the new tabId
+   */
   public activeidChanged(oldValue: string, newValue: string) {
     super.activeidChanged(oldValue, newValue);
     this.setTabData();
@@ -435,6 +448,9 @@ export class Tablist extends BaseTablist {
     }
   }
 
+  /**
+   * Initiates the active tab indicator animation loop when tabs change.
+   */
   public tabsChanged(): void {
     super.tabsChanged();
     this.setTabData();

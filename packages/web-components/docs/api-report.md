@@ -645,20 +645,24 @@ export class BaseTextInput extends FASTElement {
 export class BaseTablist extends FASTElement {
     activeid: string;
     // @internal (undocumented)
-    activeidChanged(oldValue: string, newValue: string): void;
+    protected activeidChanged(oldValue: string, newValue: string): void;
     activetab: HTMLElement;
     adjust(adjustment: number): void;
     // @internal (undocumented)
     connectedCallback(): void;
-    disabled?: boolean;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     orientation: TablistOrientation;
     // @internal (undocumented)
-    orientationChanged(): void;
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
     protected setTabs(): void;
     // @internal (undocumented)
     tabs: HTMLElement[];
     // @internal (undocumented)
-    tabsChanged(): void;
+    protected tabsChanged(): void;
 }
 
 // @public
@@ -3341,11 +3345,13 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 
 // @public
 export class Tablist extends BaseTablist {
-    // (undocumented)
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
     size?: TablistSize;
-    // (undocumented)
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
     tabsChanged(): void;
 }
 

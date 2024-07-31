@@ -20,7 +20,7 @@ Tablists allow for navigation between two or more content views and relies on te
 
 ### Outputs
 
-- [activeid: unkown] - the selected value of the currently selected tab
+- [activeid: unknown] - the selected value of the currently selected tab
 
 ### Events
 
@@ -67,7 +67,7 @@ The Fluent/FAST web component differs from the Fluent React Control as follows:
 
 ### Default
 
-By default Tablists are arranged horizontally. The developer sets `activeid` Tablist attribute. The Component handles the logic of what is shown and hidden when user clicks on the tabs. For switcing to work correctly the tab list requires that the indexing of the tabs and tab-panels be organized to correspond to their matching items - the order of the tabs must match the order of the tab panels:
+By default Tablists are arranged horizontally. The developer sets `activeid` Tablist attribute. The Component handles the logic of what is shown and hidden when user clicks on the tabs. For switching to work correctly the tab list requires that the indexing of the tabs and tab-panels be organized to correspond to their matching items - the order of the tabs must match the order of the tab panels:
 
 ```html
 <fluent-tablist>
