@@ -6,21 +6,8 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  OverflowItemProps,
-  useIsOverflowItemVisible,
   useOverflowMenu,
 } from '../../../../react-components/src/index';
-const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
-  const { id } = props;
-  const isVisible = useIsOverflowItemVisible(id);
-
-  if (isVisible) {
-    return null;
-  }
-
-  // As an union between button props and div props may be conflicting, casting is required
-  return <MenuItem>Item {id}</MenuItem>;
-};
 
 export const OverflowMenu: React.FC<{ itemIds: string[]; title: string; items: JSX.Element[] }> = ({
   itemIds,

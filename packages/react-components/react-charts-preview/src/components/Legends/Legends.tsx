@@ -288,6 +288,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
         if (activeLegend === title || activeLegend === '') {
           legendColor = color;
         }
+        // TO DO: this is removing the shape's color for all legends
         // // if there is a hovered legend but the given legend is not the one
         // else {
         //   legendColor = tokens.colorNeutralBackground1;
