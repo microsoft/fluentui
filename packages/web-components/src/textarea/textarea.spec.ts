@@ -561,6 +561,23 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('validity.valid', false);
     });
 
+    test('should always be valid if read-only', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea required readonly></fluent-textarea>
+        `;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.readOnly = false;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', true);
+      await expect(element).toHaveJSProperty('validity.valid', false);
+    });
+
     // TODO: Update validation messages for other browsers.
     test('should set the correct validation messages', async () => {
       await root.evaluate(node => {
@@ -608,9 +625,157 @@ test.describe('TextArea', () => {
   });
 
   test.describe('with form', () => {
-    // form disabled
-    // form reset
-    // form data
+    test('should connect to the given `<form>` element', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <form id="form1">
+            <fluent-textarea></fluent-textarea>
+          </form>
+          <form id="form2"></form>
+        `;
+      });
+
+      await expect(element).toHaveJSProperty('form.id', 'form1');
+
+      await element.evaluate((el: TextArea) => {
+        el.setAttribute('form', 'form2');
+      });
+
+      await expect(element).toHaveJSProperty('form.id', 'form2');
+    });
+
+    test('should be disabled when the parent `<fieldset>` is disabled', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <form>
+            <fieldset>
+              <fluent-textarea></fluent-textarea>
+            </fieldset>
+          </form>
+        `;
+      });
+
+      const fieldset = page.locator('fieldset');
+
+      await fieldset.evaluate((node: HTMLFieldSetElement) => {
+        node.disabled = true;
+      });
+
+      // The `disabled` property and attribute should not be affected.
+      await expect(element).toHaveJSProperty('disabled', false);
+      await expect(element).not.toHaveAttribute('disabled');
+      // But `ariaDisabled` and `tabIndex` should be updated.
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+
+      await fieldset.evaluate((node: HTMLFieldSetElement) => {
+        node.disabled = false;
+      });
+
+      // The `disabled` property and attribute should not be affected.
+      await expect(element).toHaveJSProperty('disabled', false);
+      await expect(element).not.toHaveAttribute('disabled');
+      // But `ariaDisabled` and `tabIndex` should be updated.
+      await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+    });
+
+    test.describe('form reset', () => {
+      let form: Locator;
+      let reset: Locator;
+
+      test.beforeEach(async () => {
+        form = page.locator('form');
+        reset = form.locator('button[type=reset]');
+      });
+
+      test('should reset value to empty if no `defaultValue`', async () => {
+        await root.evaluate(node => {
+          node.innerHTML = /* html */ `
+            <form>
+              <fluent-textarea></fluent-textarea>
+              <button type="reset"></button>
+            </form>
+          `;
+        });
+
+        await control.fill('1234');
+
+        await expect(element).toHaveJSProperty('value', '1234');
+
+        await reset.click();
+
+        await expect(element).toHaveJSProperty('value', '');
+      });
+
+      test('should reset value to `defaultvalue`', async () => {
+        await root.evaluate(node => {
+          node.innerHTML = /* html */ `
+            <form>
+              <fluent-textarea>1234</fluent-textarea>
+              <button type="reset"></button>
+            </form>
+          `;
+        });
+
+        await control.selectText();
+        await element.press('ArrowRight');
+        await element.press('5');
+
+        await expect(element).toHaveJSProperty('value', '12345');
+
+        await reset.click();
+
+        await expect(element).toHaveJSProperty('value', '1234');
+      });
+
+      test('should reset value to updated `defaultValue`', async () => {
+        await root.evaluate(node => {
+          node.innerHTML = /* html */ `
+            <form>
+              <fluent-textarea>1234</fluent-textarea>
+              <button type="reset"></button>
+            </form>
+          `;
+        });
+
+        await element.evaluate((el: TextArea) => {
+          el.defaultValue = '7890';
+        });
+
+        await control.fill('abcd');
+
+        await expect(element).toHaveJSProperty('value', 'abcd');
+
+        await reset.click();
+
+        await expect(element).toHaveJSProperty('value', '7890');
+      });
+    });
+
+    test('should set form value', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <form>
+            <fluent-textarea name="content"></fluent-textarea>
+          </form>
+        `;
+      });
+
+      let formData;
+
+      const form = page.locator('form');
+      formData = await form.evaluate((node: HTMLFormElement) => {
+        return Array.from(new FormData(node).entries());
+      });
+
+      expect(formData).toStrictEqual([['content', '']]);
+
+      await control.fill('some text');
+      formData = await form.evaluate((node: HTMLFormElement) => {
+        return Array.from(new FormData(node).entries());
+      });
+
+      expect(formData).toStrictEqual([['content', 'some text']]);
+    });
   });
 
   test.describe('events', () => {

@@ -306,7 +306,7 @@ export class TextArea extends FASTElement {
    * @public
    */
   public get textLength(): number {
-    return this.value.length;
+    return this.controlEl.textLength;
   }
 
   /**
@@ -398,6 +398,7 @@ export class TextArea extends FASTElement {
       case 'displayShadow':
         this.maybeDisplayShadow();
         break;
+      case 'readOnly':
       case 'required':
       case 'minLength':
       case 'maxLength':
@@ -431,6 +432,7 @@ export class TextArea extends FASTElement {
     Observable.getNotifier(this).subscribe(this, 'appearance');
     Observable.getNotifier(this).subscribe(this, 'displayShadow');
     Observable.getNotifier(this).subscribe(this, 'required');
+    Observable.getNotifier(this).subscribe(this, 'readOnly');
     Observable.getNotifier(this).subscribe(this, 'minLength');
     Observable.getNotifier(this).subscribe(this, 'maxLength');
   }
@@ -447,6 +449,7 @@ export class TextArea extends FASTElement {
     Observable.getNotifier(this).unsubscribe(this, 'appearance');
     Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
     Observable.getNotifier(this).unsubscribe(this, 'required');
+    Observable.getNotifier(this).unsubscribe(this, 'readOnly');
     Observable.getNotifier(this).unsubscribe(this, 'minLength');
     Observable.getNotifier(this).unsubscribe(this, 'maxLength');
   }
@@ -523,7 +526,7 @@ export class TextArea extends FASTElement {
       return;
     }
 
-    if (this.disabled) {
+    if (this.disabled || this.readOnly) {
       this.elementInternals.setValidity({});
     } else {
       this.elementInternals.setValidity(
@@ -663,10 +666,14 @@ export class TextArea extends FASTElement {
 
   // TODO: Figure if there’s a better way to do this
   private async waitUntilAttrChangedOnControl(attr: string) {
-    if (
-      !['disabled', 'required', 'minlength', 'maxlength'].includes(attr.toLowerCase()) ||
-      !this.controlEl
-    ) {
+    const validAttrs = [
+      'disabled',
+      'required',
+      'readonly',
+      'minlength',
+      'maxlength',
+    ];
+    if (!validAttrs.includes(attr.toLowerCase()) || !this.controlEl) {
       return;
     }
 
