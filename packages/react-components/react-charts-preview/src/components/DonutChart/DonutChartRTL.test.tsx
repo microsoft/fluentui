@@ -28,16 +28,14 @@ describe('Donut chart interactions', () => {
     const { container } = render(
       <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
-
+    const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(container, /Pie/i)[0]);
-    expect(getById(container, /callout/i)[0]).toBeDefined();
+    expect(getByClass(container, /PopoverSurface/i)[0]).toBeDefined();
     fireEvent.mouseLeave(getById(container, /Pie/i)[0]);
-
     // Assert
-    //console.log(getById(container, /callout/i)[0]);
-    expect(getById(container, /callout/i)[0]).toHaveStyle('opacity: 1');
+    expect(getByClass(container, /PopoverSurface/i)[0]).not.toBeDefined();
     expect(container).toMatchSnapshot();
   });
 
@@ -99,7 +97,7 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('aria-label', 'first');
+    expect(firstLegend).toHaveAttribute('tabIndex', '0');
   });
 
   test('Should deselect legend on double mouse click on legends', () => {
@@ -116,7 +114,7 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('aria-label', 'first');
+    expect(firstLegend).toHaveAttribute('tabIndex', '0');
     // double click on same first legend
     fireEvent.click(legend!);
 
@@ -149,9 +147,7 @@ describe('Donut chart interactions', () => {
 
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
-    const pieList = getById(container, '_Pie_15first20000');
     fireEvent.mouseOver(getById(container, /Pie/i)[0]);
-    screen.debug(container, Infinity);
     expect(getById(container, /callout/i)[0]).toHaveTextContent('20,000');
     fireEvent.mouseLeave(getById(container, /Pie/i)[0]);
     fireEvent.mouseOver(getById(container, /Pie/i)[1]);
