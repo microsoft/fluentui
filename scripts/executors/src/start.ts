@@ -3,10 +3,18 @@
 
 import { spawnSync } from 'node:child_process';
 
-import { ProjectGraphProjectNode, createProjectGraphAsync, output } from '@nx/devkit';
+import { createProjectGraphAsync, output } from '@nx/devkit';
+import type { ProjectGraph, ProjectGraphProjectNode } from '@nx/devkit';
+import type { Choice } from 'enquirer';
 import { AutoComplete } from 'enquirer';
 
-const targetDescription = {
+const projectTitleDefault = 'Fluent UI';
+const repoNpmNameDefault = 'fluentui-repo';
+const projectHeaderDefault = {
+  projectNameCell: 'Project Name',
+  descriptionCell: '   Type   /      Scope      /      Access      ',
+};
+const defaultTargetDescription = {
   build: 'transpile source TS to JS',
   'bundle-size': 'check the bundle size diff',
   bundle: 'bundle source with webpack',
@@ -22,26 +30,87 @@ const targetDescription = {
   'test-perf': 'run performance tests',
   e2e: 'run e2e/component tests for the project',
   'verify-packaging': 'verify packaging assets that will be shipped to npm',
-  // non default targets
+  // non default targets - not defined in nx.json
   format: 'format code with prettier',
   'code-style': 'format code with prettier and run eslint',
   clean: 'remove build artifacts',
   start: 'start the project',
+  // special target to trigger `nx show project <project>` cmd
   help: 'show project help',
 };
-
-const omitTargets = ['nx-release-publish', 'just'];
+const defaultOmitTargets = ['nx-release-publish'];
 
 main().catch(e => {
   console.error(e);
   process.exit(1);
 });
 
-// ========================
+async function main() {
+  await cli({
+    projectTitle: projectTitleDefault,
+    projectHeader: projectHeaderDefault,
+    omitTargets: [...defaultOmitTargets, 'just'],
+    projectDescriptionFactory: createProjectDescription,
+    targetDescriptionFactory: createTargetDescription,
+  });
+}
 
-function welcome() {
+// ========================
+type ProjectHeader = { projectNameCell: string; descriptionCell: string };
+type ProjectDescriptionFn = (projectConfig: ProjectGraphProjectNode) => string;
+type TargetDescriptionFn = (
+  projectConfig: ProjectGraphProjectNode,
+  targetName: string,
+  targetsDescription: Record<string, string>,
+) => string;
+
+export async function cli(options: {
+  graph?: ProjectGraph;
+  projectTitle: string;
+  projectHeader?: ProjectHeader;
+  targetsDescription?: Record<string, string>;
+  omitTargets?: string[];
+  projectDescriptionFactory: ProjectDescriptionFn;
+  targetDescriptionFactory: TargetDescriptionFn;
+}) {
+  const {
+    graph = await createProjectGraphAsync(),
+    projectTitle,
+    projectHeader,
+    targetsDescription = defaultTargetDescription,
+    omitTargets = defaultOmitTargets,
+    projectDescriptionFactory,
+    targetDescriptionFactory,
+  } = options;
+
+  const allProjects = graph.nodes;
+
+  welcome(projectTitle);
+
+  const selectedProject = await getSelectedProject(allProjects, projectHeader, projectDescriptionFactory);
+  const selectedTarget = await getSelectedTarget(
+    allProjects,
+    selectedProject,
+    targetsDescription,
+    omitTargets,
+    targetDescriptionFactory,
+  );
+
+  if (selectedTarget === 'help') {
+    runCommand('nx', ['show', 'project', selectedProject]);
+    return;
+  }
+
+  const cmd = `${selectedProject}:${selectedTarget}`;
+
+  output.logSingleLine(`Running 'nx run ${cmd}'`);
+
+  runCommand('nx', ['run', cmd]);
+}
+
+function welcome(title: string) {
   output.log({
-    title: output.bold('Welcome to Fluent UI'.toUpperCase()),
+    title: output.bold(`Welcome to ${title}`.toUpperCase()),
     bodyLines: [
       'This is our "nx-console" cli alternative to run common tasks for the selected project.',
       '',
@@ -56,114 +125,90 @@ function welcome() {
   });
 }
 
-async function main() {
-  welcome();
-
-  const graph = await createProjectGraphAsync();
-  const allProjects = graph.nodes;
-
-  const selectedProject = await getSelectedProject(allProjects);
-  const selectedTarget = await getSelectedTarget(allProjects, selectedProject);
-
-  if (selectedTarget === 'help') {
-    spawnSync('nx', ['show', 'project', selectedProject], {
-      shell: true,
-      stdio: 'inherit',
-    });
-
-    process.exit(0);
-  }
-
-  const cmd = `${selectedProject}:${selectedTarget}`;
-
-  output.logSingleLine(`Running nx run ${cmd}`);
-
-  spawnSync('nx', ['run', cmd], {
-    shell: true,
-    stdio: 'inherit',
-  });
-}
-
-async function getSelectedProject(projects: Record<string, ProjectGraphProjectNode>): Promise<string> {
+async function getSelectedProject(
+  projects: Record<string, ProjectGraphProjectNode>,
+  projectHeader: ProjectHeader | undefined,
+  createDescription: ProjectDescriptionFn,
+): Promise<string> {
   const availableProjectNames = Object.keys(projects);
   const longestProjectName = getLongestStringValue(availableProjectNames);
   const projectChoices = availableProjectNames.map(projectName => ({
-    name: formatTargetOutput(projectName, createDescription(projects[projectName]), longestProjectName),
+    name: formatOutput(projectName, createDescription(projects[projectName]), longestProjectName),
     value: projectName,
   }));
 
-  const heading = formatTargetOutput(
-    'Project Name',
-    '   Type   /      Scope      /      Access      ',
-    longestProjectName,
-  );
+  const heading = projectHeader
+    ? formatOutput(projectHeader.projectNameCell, projectHeader.descriptionCell, longestProjectName)
+    : null;
+  const header = heading ? [heading, '-'.repeat(heading.length)].join('\n') : undefined;
 
   const projectPrompt = new AutoComplete({
     name: 'project',
     message: 'Select project to run',
     choices: projectChoices,
     limit: 10,
-    suggest: (typed, choices) => {
-      const matches = choices.filter(choice => choice.value.includes(typed));
-      return matches.length ? matches : [];
-    },
-    header: ['='.repeat(heading.length), `${heading}`, '='.repeat(heading.length)].join('\n'),
+    suggest,
+    header,
     footer: () => {
       return output.dim('(Scroll up and down to reveal more choices)');
     },
   });
 
   return projectPrompt.run();
+}
 
-  function createDescription(projectConfig: ProjectGraphProjectNode) {
-    if (projectConfig.name === 'fluentui-repo') {
-      return 'monorepo root';
+function createProjectDescription(projectConfig: ProjectGraphProjectNode) {
+  if (projectConfig.name === repoNpmNameDefault) {
+    return 'monorepo root';
+  }
+
+  const tags = projectConfig.data.tags ?? [];
+
+  const access = tags.includes('npm:private') ? 'private' : 'published';
+  const projectScope = getProjectScope(tags) + (tags.includes('tools') ? ' (tool)' : '');
+  const projectType = projectConfig.data.projectType;
+
+  return `${projectType} / ${projectScope} / ${access}`;
+
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  function getProjectScope(tags: string[]) {
+    if (tags.includes('vNext')) {
+      return 'react-components (v9)';
+    }
+    if (tags.includes('v8')) {
+      return 'react (v8)';
+    }
+    if (tags.includes('react-northstar')) {
+      return 'react-northstar (v0)';
+    }
+    if (tags.includes('web-components')) {
+      return 'web-components';
     }
 
-    const tags = projectConfig.data.tags ?? [];
-
-    const access = tags.includes('npm:private') ? 'private' : 'published';
-    const projectScope = getProjectScope(tags) + (tags.includes('tools') ? ' (tool)' : '');
-    const projectType = projectConfig.data.projectType;
-
-    return `${projectType} / ${projectScope} / ${access}`;
-
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    function getProjectScope(tags: string[]) {
-      if (tags.includes('vNext')) {
-        return 'react-components (v9)';
-      }
-      if (tags.includes('v8')) {
-        return 'react (v8)';
-      }
-      if (tags.includes('react-northstar')) {
-        return 'react-northstar (v0)';
-      }
-      if (tags.includes('web-components')) {
-        return 'web-components';
-      }
-
-      return '';
-    }
+    return '';
   }
 }
 
 async function getSelectedTarget(
   projects: Record<string, ProjectGraphProjectNode>,
   selectedProject: string,
+  targetsDescription: Record<string, string>,
+  omitTargets: string[],
+  createDescription: TargetDescriptionFn,
 ): Promise<string> {
-  const projectTargets = projects[selectedProject].data.targets ?? {};
+  const projectConfig = projects[selectedProject];
+  const projectTargets = projectConfig.data.targets ?? {};
 
   const availableTargets = Object.keys(projectTargets)
     .filter(targetName => {
       return omitTargets.includes(targetName) ? false : true;
     })
-    .concat('help') as Array<keyof typeof targetDescription>;
+    .concat('help');
 
   const targetChoices = availableTargets.map(targetName => ({
-    name: formatTargetOutput(
+    name: formatOutput(
       targetName,
-      createTaskDescription(targetName, projectTargets),
+      createDescription(projectConfig, targetName, targetsDescription),
       getLongestStringValue(availableTargets),
     ),
     value: targetName,
@@ -173,6 +218,7 @@ async function getSelectedTarget(
     name: 'target',
     message: 'Select target to run',
     choices: targetChoices,
+    suggest,
     limit: 5,
     footer() {
       return output.dim('(Scroll up and down to reveal more choices)');
@@ -180,47 +226,48 @@ async function getSelectedTarget(
   });
 
   return targetPrompt.run();
+}
 
-  function createTaskDescription(
-    targetName: keyof typeof targetDescription,
-    targetsMetadata: NonNullable<ProjectGraphProjectNode['data']['targets']>,
-  ) {
-    const description = targetDescription[targetName];
-    const nxTargetConfiguration = targetsMetadata[targetName];
+function createTargetDescription(
+  projectConfig: ProjectGraphProjectNode,
+  targetName: string,
+  targetsDescription: Record<string, string>,
+) {
+  const description = targetsDescription[targetName];
+  const nxTargetConfiguration = projectConfig.data.targets?.[targetName];
 
-    if (!nxTargetConfiguration) {
-      return description;
+  if (!nxTargetConfiguration) {
+    return description;
+  }
+
+  if (targetName === 'start') {
+    const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
+    if (scriptContent.includes('storybook')) {
+      return `Start the project (Alias of "storybook" target)`;
     }
+    return description;
+  }
 
-    if (targetName === 'start') {
-      const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
-      if (scriptContent.includes('storybook')) {
-        return `Start the project (Alias of "storybook" target)`;
-      }
-      return description;
+  if (targetName === 'e2e') {
+    const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
+    const runnerType = getRunnerType(scriptContent);
+    return description + ` (using ${runnerType})`;
+  }
+
+  return description ?? nxTargetConfiguration.metadata?.scriptContent;
+
+  function getRunnerType(scriptContent: string): 'cypress' | 'playwright' {
+    if (scriptContent.includes('cypress')) {
+      return 'cypress';
     }
-
-    if (targetName === 'e2e') {
-      const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
-      const runnerType = getRunnerType(scriptContent);
-      return description + ` (using ${runnerType})`;
+    if (scriptContent.includes('playwright')) {
+      return 'playwright';
     }
-
-    return description ?? nxTargetConfiguration.metadata?.scriptContent;
-
-    function getRunnerType(scriptContent: string): 'cypress' | 'playwright' {
-      if (scriptContent.includes('cypress')) {
-        return 'cypress';
-      }
-      if (scriptContent.includes('playwright')) {
-        return 'playwright';
-      }
-      throw new Error('invalid runner type');
-    }
+    throw new Error('invalid runner type');
   }
 }
 
-function formatTargetOutput(value: string, description: string, longestStringCharCount: number) {
+function formatOutput(value: string, description: string, longestStringCharCount: number) {
   const padding = ' '.repeat(longestStringCharCount - value.length);
   return `${value}${padding} - ${description}`;
 }
@@ -228,4 +275,20 @@ function getLongestStringValue(values: string[]) {
   return values.reduce((acc, value) => {
     return value.length > acc ? value.length : acc;
   }, 0);
+}
+
+/**
+ *
+ * Filter autocomplete choices based on project name only.
+ */
+function suggest(typed: string, choices: Array<Choice>) {
+  const matches = choices.filter(choice => choice.value.includes(typed));
+  return matches.length ? matches : [];
+}
+
+function runCommand(command: string, args: string[]) {
+  spawnSync(command, args, {
+    stdio: 'inherit',
+    shell: true,
+  });
 }
