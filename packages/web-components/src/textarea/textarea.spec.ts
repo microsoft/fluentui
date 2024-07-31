@@ -454,7 +454,157 @@ test.describe('TextArea', () => {
   });
 
   test.describe('validity and validation message', () => {
-    // min max required disabled change
+    test('should set `valueMissing` flag if required and value is empty', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea required></fluent-textarea>
+        `;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', true);
+
+      await control.fill('some text');
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      await control.selectText();
+      await element.press('Backspace');
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.required = false;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+    });
+
+    test('should set `tooShort` flag if value is shorter than `minlength`', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea minlength="10"></fluent-textarea>
+        `;
+      });
+
+      // `tooShort` is not set until user interacted.
+      await expect(element).toHaveJSProperty('validity.tooShort', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      await element.pressSequentially('123');
+
+      await expect(element).toHaveJSProperty('validity.tooShort', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.minLength = 2;
+      });
+
+      await expect(element).toHaveJSProperty('validity.tooShort', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+    });
+
+    test('should set `tooLong` flag if value is longer than `maxlength`', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea maxlength="3">12345</fluent-textarea>
+        `;
+      });
+
+      // `tooLong` is not set until user interacted.
+      await expect(element).toHaveJSProperty('validity.tooLong', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      // Move cursor to the end of the text then press backspace
+      await control.selectText();
+      await element.press('ArrowRight');
+      await element.press('Backspace'); // value = 1234
+
+      await expect(element).toHaveJSProperty('validity.tooLong', true);
+
+      // Move cursor to the end of the text then press backspace
+      await control.selectText();
+      await element.press('ArrowRight');
+      await element.press('Backspace'); // value = 123
+
+      await expect(element).toHaveJSProperty('validity.tooLong', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.maxLength = 2;
+      });
+
+      await expect(element).toHaveJSProperty('validity.tooLong', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.maxLength = 4;
+      });
+
+      await expect(element).toHaveJSProperty('validity.tooLong', false);
+      await expect(element).toHaveJSProperty('validity.valid', true);
+    });
+
+    test('should always be valid if disabled', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea required disabled></fluent-textarea>
+        `;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valid', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.disabled = false;
+      });
+
+      await expect(element).toHaveJSProperty('validity.valueMissing', true);
+      await expect(element).toHaveJSProperty('validity.valid', false);
+    });
+
+    // TODO: Update validation messages for other browsers.
+    test('should set the correct validation messages', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea required></fluent-textarea>
+        `;
+      });
+
+      await expect(element).toHaveJSProperty('validationMessage', 'Please fill out this field.');
+
+      await control.fill('12345');
+
+      await expect(element).toHaveJSProperty('validationMessage', '');
+
+      await element.evaluate((el: TextArea) => {
+        el.setAttribute('minlength', '6');
+      });
+
+      await expect(element).toHaveJSProperty(
+        'validationMessage', 
+        'Please lengthen this text to 6 characters or more (you are currently using 5 characters).'
+      );
+
+      await element.press('6');
+
+      await expect(element).toHaveJSProperty('validationMessage', '');
+
+      await element.pressSequentially('78');
+
+      await element.evaluate((el: TextArea) => {
+        el.setAttribute('maxlength', '7');
+      });
+
+      await expect(element).toHaveJSProperty(
+        'validationMessage', 
+        'Please shorten this text to 7 characters or less (you are currently using 8 characters).'
+      );
+
+      await element.evaluate((el: TextArea) => {
+        el.setAttribute('disabled', '');
+      });
+
+      await expect(element).toHaveJSProperty('validationMessage', '');
+    });
   });
 
   test.describe('with form', () => {

@@ -25,13 +25,17 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     ?spellcheck="${x => x.spellcheck}"
     resize="${x => x.resize}"
     value="${x => x.value}"
-    >${x => x.content ?? ''}</fluent-textarea
+    >${x => x.defaultContent ?? ''}</fluent-textarea
   >
 `;
 
 export default {
   title: 'Components/TextArea',
   argTypes: {
+    defaultContent: {
+      description: 'Content inside the component',
+      control: 'text',
+    },
     appearance: {
       description: 'Sets the visual appearance of the control',
       table: {
@@ -243,7 +247,7 @@ export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 Disabled.args = {
   disabled: true,
   resize: TextAreaResize.both,
-  content: 'This textarea is disabled',
+  defaultContent: 'This textarea is disabled',
 };
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
@@ -260,7 +264,7 @@ export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 ReadOnly.args = {
   readOnly: true,
   resize: TextAreaResize.both,
-  content: 'Some content',
+  defaultContent: 'Some content',
 };
 
 export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`

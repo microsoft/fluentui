@@ -401,7 +401,7 @@ export class TextArea extends FASTElement {
       case 'required':
       case 'minLength':
       case 'maxLength':
-        this.setValidity();
+        this.waitUntilAttrChangedOnControl(propertyName).then(() => this.setValidity());
         break;
     }
   }
@@ -525,14 +525,17 @@ export class TextArea extends FASTElement {
 
     if (this.disabled) {
       this.elementInternals.setValidity({});
-      return;
+    } else {
+      this.elementInternals.setValidity(
+        flags ?? this.controlEl.validity,
+        message ?? this.controlEl.validationMessage,
+        anchor ?? this.controlEl,
+      );
     }
 
-    this.elementInternals.setValidity(
-      flags ?? this.controlEl.validity,
-      message ?? this.validationMessage,
-      anchor ?? this.controlEl,
-    );
+    if (this.userInteracted) {
+      this.toggleUserValidityState();
+    }
   }
 
   /**
@@ -577,7 +580,7 @@ export class TextArea extends FASTElement {
 
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
-    this.setValidity();
+    this.waitUntilAttrChangedOnControl('disabled').then(() => this.setValidity());
   }
 
   private maybeDisplayShadow() {
@@ -586,6 +589,11 @@ export class TextArea extends FASTElement {
       'display-shadow',
       this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
     );
+  }
+
+  private toggleUserValidityState() {
+    toggleState(this.elementInternals, 'user-invalid', !this.validity.valid);
+    toggleState(this.elementInternals, 'user-valid', this.validity.valid);
   }
 
   // Technique inspired by https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
@@ -642,8 +650,7 @@ export class TextArea extends FASTElement {
    * @internal
    */
   public handleControlChange() {
-    toggleState(this.elementInternals, 'user-invalid', !this.validity.valid);
-    toggleState(this.elementInternals, 'user-valid', this.validity.valid);
+    this.toggleUserValidityState();
     this.$emit('change');
   }
 
@@ -652,5 +659,26 @@ export class TextArea extends FASTElement {
    */
   public handleControlSelect() {
     this.$emit('select');
+  }
+
+  // TODO: Figure if there’s a better way to do this
+  private async waitUntilAttrChangedOnControl(attr: string) {
+    if (
+      !['disabled', 'required', 'minlength', 'maxlength'].includes(attr.toLowerCase()) ||
+      !this.controlEl
+    ) {
+      return;
+    }
+
+    return new Promise(resolve => {
+      const observer = new MutationObserver(() => {
+        observer.disconnect();
+        resolve(null);
+      });
+      observer.observe(this.controlEl, {
+        attributes: true,
+        attributeFilter: [attr.toLowerCase()],
+      });
+    });
   }
 }
