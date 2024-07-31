@@ -27,6 +27,7 @@ jobs:
       - script: |
           yarn nx affected -t bundle-size --nxBail $(sinceArg)
         displayName: build packages & create reports
+        condition: eq(variables.isPR, true)
 
       - script: |
           npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
@@ -42,6 +43,11 @@ jobs:
           blobFilePath: 'monosize-report.md'
           status: 'success'
           uniqueId: 'bundleSizeComment9423'
+
+      - script: |
+          yarn nx run-many -t bundle-size --nxBail
+        displayName: build all packages & create reports
+        condition: eq(variables.isPR, false)
 
       - script: |
           yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
