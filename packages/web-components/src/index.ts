@@ -145,6 +145,8 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
+export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
   BaseProgressBar,
   ProgressBar,
