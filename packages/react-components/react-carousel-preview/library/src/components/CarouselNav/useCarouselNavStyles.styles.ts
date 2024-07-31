@@ -25,6 +25,9 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusXLarge,
     margin: `auto ${tokens.spacingHorizontalS}`,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    transitionDuration: '0s',
+    animationDuration: '0s',
+    transition: 'none !important',
   },
 });
 

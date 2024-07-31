@@ -86,7 +86,6 @@ export function useEmblaCarousel(
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
-
       cardElements?.forEach((cardElement, index) => {
         cardElement.dispatchEvent(
           new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
@@ -127,6 +126,21 @@ export function useEmblaCarousel(
 
   const carouselApi = React.useMemo(
     () => ({
+      scrollToRef: (element: HTMLElement, jump?: boolean) => {
+        const cardElements = emblaApi.current?.slideNodes();
+        const index = cardElements?.indexOf(element) ?? 0;
+        const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
+        let foundIndex = index;
+        if (groupIndexList) {
+          groupIndexList.forEach((group, _index) => {
+            if (group.includes(index)) {
+              foundIndex = _index;
+            }
+          });
+        }
+        emblaApi.current?.scrollTo(foundIndex, jump);
+        return foundIndex;
+      },
       scrollToIndex: (index: number, jump?: boolean) => {
         emblaApi.current?.scrollTo(index, jump);
       },

@@ -2,6 +2,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselSliderProps, CarouselSliderState } from './CarouselSlider.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render CarouselSlider.
@@ -16,6 +17,11 @@ export const useCarouselSlider_unstable = (
   props: CarouselSliderProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselSliderState => {
+  const focusableGroupAttr = useArrowNavigationGroup({
+    axis: 'horizontal',
+    memorizeCurrent: false,
+  });
+
   return {
     components: {
       root: 'div',
@@ -24,6 +30,7 @@ export const useCarouselSlider_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        ...focusableGroupAttr,
       }),
       { elementType: 'div' },
     ),
