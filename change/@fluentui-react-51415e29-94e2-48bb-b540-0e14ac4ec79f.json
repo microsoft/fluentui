@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Expose onKeyDown handling for header cells through columns onColumnKeyDown",
-  "packageName": "@fluentui/react",
-  "email": "destinywu@microsoft.com",
-  "dependentChangeType": "patch"
-}

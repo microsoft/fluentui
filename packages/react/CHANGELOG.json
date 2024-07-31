@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 31 Jul 2024 07:33:07 GMT",
+      "tag": "@fluentui/react_v8.120.0",
+      "version": "8.120.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "destinywu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0750a84481f1c2f5fe35d79c07375a69cd8c0ce8",
+            "comment": "Expose onKeyDown handling for header cells through columns onColumnKeyDown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:52 GMT",
       "tag": "@fluentui/react_v8.119.3",
       "version": "8.119.3",
