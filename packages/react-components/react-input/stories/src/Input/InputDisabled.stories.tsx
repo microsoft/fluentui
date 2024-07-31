@@ -1,26 +1,101 @@
 import * as React from 'react';
-import { makeStyles, useId, Input, Label } from '@fluentui/react-components';
+import { makeStyles, useId, Input, Label, tokens, mergeClasses, Switch } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
-    // Stack the label above the field
     display: 'flex',
     flexDirection: 'column',
-    // Use 2px gap below the label (per the design system)
-    gap: '2px',
-    // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
+  },
+  field: {
+    display: 'grid',
+    gridRowGap: tokens.spacingVerticalXXS,
+    marginTop: tokens.spacingVerticalMNudge,
+    padding: tokens.spacingHorizontalMNudge,
+  },
+  filledLighter: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    '> label': {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+  filledDarker: {
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+    '> label': {
+      color: tokens.colorNeutralForegroundInverted2,
+    },
+  },
+  toggle: {
+    marginTop: tokens.spacingVerticalXL,
   },
 });
 
 export const Disabled = () => {
-  const inputId = useId('input');
+  const idPrefix = 'input-disabled-story';
+  const inputIds = {
+    default: useId(idPrefix),
+    underline: useId(idPrefix),
+    filledLighter: useId(idPrefix),
+    filledLighterShadow: useId(idPrefix),
+    filledDarker: useId(idPrefix),
+    filledDarkerShadow: useId(idPrefix),
+  };
   const styles = useStyles();
+
+  let [disabled, setDisabled] = React.useState(true);
 
   return (
     <div className={styles.root}>
-      <Label htmlFor={inputId}>Disabled input</Label>
-      <Input disabled id={inputId} defaultValue="disabled value" />
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.default}>Disabled (default outline appearance)</Label>
+        <Input disabled={disabled} id={inputIds.default} defaultValue="disabled value" />
+      </div>
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.underline}>Disabled (underline appearance)</Label>
+        <Input appearance="underline" disabled={disabled} id={inputIds.underline} defaultValue="disabled value" />
+      </div>
+      <div className={mergeClasses(styles.field, styles.filledLighter)}>
+        <Label htmlFor={inputIds.filledLighter}>Disabled (filled lighter appearance)</Label>
+        <Input
+          appearance="filled-lighter"
+          disabled={disabled}
+          id={inputIds.filledLighter}
+          defaultValue="disabled value"
+        />
+      </div>
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.filledLighterShadow}>Disabled (filled lighter shadow appearance)</Label>
+        <Input
+          appearance="filled-lighter-shadow"
+          disabled={disabled}
+          id={inputIds.filledLighterShadow}
+          defaultValue="disabled value"
+        />
+      </div>
+      <div className={mergeClasses(styles.field, styles.filledDarker)}>
+        <Label htmlFor={inputIds.filledDarker}>Disabled (filled darker appearance)</Label>
+        <Input
+          appearance="filled-darker"
+          disabled={disabled}
+          id={inputIds.filledDarker}
+          defaultValue="disabled value"
+        />
+      </div>
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.filledDarkerShadow}>Disabled (filled darker shadow appearance)</Label>
+        <Input
+          appearance="filled-darker-shadow"
+          disabled={disabled}
+          id={inputIds.filledDarkerShadow}
+          defaultValue="disabled value"
+        />
+      </div>
+      <Switch
+        className={styles.toggle}
+        checked={disabled}
+        label="Disabled"
+        onChange={(_e, data) => setDisabled(data.checked)}
+      />
     </div>
   );
 };

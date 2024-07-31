@@ -28,32 +28,43 @@ const useStyles = makeStyles({
 });
 
 export const Appearance = () => {
-  const outlineId = useId('input-outline');
-  const underlineId = useId('input-underline');
-  const filledLighterId = useId('input-filledLighter');
-  const filledDarkerId = useId('input-filledDarker');
+  const idPrefix = 'input-appearance-story';
+  const inputIds = {
+    default: useId(idPrefix),
+    underline: useId(idPrefix),
+    filledLighter: useId(idPrefix),
+    filledLighterShadow: useId(idPrefix),
+    filledDarker: useId(idPrefix),
+    filledDarkerShadow: useId(idPrefix),
+  };
+
   const styles = useStyles();
 
   return (
     <div className={styles.base}>
       <div className={styles.field}>
-        <Label htmlFor={outlineId}>Outline appearance (default)</Label>
-        <Input appearance="outline" id={outlineId} />
+        <Label htmlFor={inputIds.default}>Outline appearance (default)</Label>
+        <Input appearance="outline" id={inputIds.default} />
       </div>
-
       <div className={styles.field}>
-        <Label htmlFor={underlineId}>Underline appearance</Label>
-        <Input appearance="underline" id={underlineId} />
+        <Label htmlFor={inputIds.underline}>Underline appearance</Label>
+        <Input appearance="underline" id={inputIds.underline} />
       </div>
-
       <div className={mergeClasses(styles.field, styles.filledLighter)}>
-        <Label htmlFor={filledLighterId}>Filled lighter appearance</Label>
-        <Input appearance="filled-lighter" id={filledLighterId} />
+        <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance</Label>
+        <Input appearance="filled-lighter" id={inputIds.filledLighter} />
       </div>
-
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.filledLighterShadow}>Filled lighter shadow appearance</Label>
+        <Input appearance="filled-lighter-shadow" id={inputIds.filledLighterShadow} />
+      </div>
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
-        <Label htmlFor={filledDarkerId}>Filled darker appearance</Label>
-        <Input appearance="filled-darker" id={filledDarkerId} />
+        <Label htmlFor={inputIds.filledDarker}>Filled darker appearance</Label>
+        <Input appearance="filled-darker" id={inputIds.filledDarker} />
+      </div>
+      <div className={styles.field}>
+        <Label htmlFor={inputIds.filledDarkerShadow}>Filled darker shadow appearance</Label>
+        <Input appearance="filled-darker-shadow" id={inputIds.filledDarkerShadow} />
       </div>
     </div>
   );
