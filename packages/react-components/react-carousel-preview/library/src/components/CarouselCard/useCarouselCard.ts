@@ -32,7 +32,8 @@ export const useCarouselCard_unstable = (
   const selectPageByFocus = useCarouselContext(ctx => ctx.selectPageByFocus);
 
   const focusAttr = useFocusableGroup({ tabBehavior: 'limited' });
-  const focusAttrProps = tabIndex !== undefined ? focusAttr : {};
+  const isFocusable = tabIndex !== undefined && tabIndex >= 0;
+  const focusAttrProps = isFocusable ? focusAttr : {};
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -40,13 +41,12 @@ export const useCarouselCard_unstable = (
     if (element) {
       const listener = (_e: Event) => {
         const event = _e as CarouselVisibilityChangeEvent;
-        if (tabIndex === undefined) {
-          // When there is no tab index present, only current cards internals should be focusable
+        // When there is no tab index present, only current cards should be visible to accessibility
+        if (!isFocusable) {
           const hidden = !event.detail.isVisible;
           element.ariaHidden = hidden.toString();
           element.inert = hidden;
         }
-        element.ariaSelected = event.detail.isVisible.toString();
       };
 
       element.addEventListener(EMBLA_VISIBILITY_EVENT, listener);
@@ -55,7 +55,7 @@ export const useCarouselCard_unstable = (
         element.removeEventListener(EMBLA_VISIBILITY_EVENT, listener);
       };
     }
-  }, [tabIndex]);
+  }, [isFocusable]);
 
   const onFocus = React.useCallback(
     (e: React.FocusEvent) => {
@@ -75,7 +75,7 @@ export const useCarouselCard_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
-        role: 'presentation',
+        role: isFocusable ? 'tab' : 'tabpanel',
         ...props,
         onFocusCapture: _onFocus,
         ...focusAttrProps,

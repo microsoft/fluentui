@@ -30,6 +30,7 @@ export const useCarouselSlider_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
+        role: 'tablist',
         ...props,
         ...focusableGroupAttr,
       }),

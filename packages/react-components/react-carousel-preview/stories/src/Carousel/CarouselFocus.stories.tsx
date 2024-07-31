@@ -38,8 +38,8 @@ export const CardFocus = () => {
   const classes = useClasses();
 
   return (
-    <Carousel circular aria-multiselectable="true">
-      <CarouselSlider>
+    <Carousel aria-roledescription="carousel">
+      <CarouselSlider aria-label="carousel slider">
         <CarouselCard className={classes.card} tabIndex={0}>
           <TestComponent accentColor="#B99095">
             <Button>Card 1</Button>
@@ -89,9 +89,9 @@ export const CardFocus = () => {
           justifyContent: 'center',
         }}
       >
-        <CarouselButton navType="prev" />
-        <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
-        <CarouselButton navType="next" />
+        <CarouselButton navType="prev" aria-label="previous carousel page" />
+        <CarouselNav aria-roledescription="carousel page navigation">{() => <CarouselNavButton />}</CarouselNav>
+        <CarouselButton navType="next" aria-label="next carousel page" />
       </div>
     </Carousel>
   );

@@ -46,6 +46,7 @@ export const useCarouselNavImageButton_unstable = (
         ref: ref as React.Ref<HTMLButtonElement>,
         role: 'tab',
         type: 'button',
+        'aria-selected': selected,
         ...defaultTabProps,
       },
     },
