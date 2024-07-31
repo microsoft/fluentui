@@ -22,6 +22,7 @@ export const useTableCellLayout_unstable = (
   props: TableCellLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TableCellLayoutState => {
+  const { content, ...rest } = props;
   const { size } = useTableContext();
 
   return {
@@ -38,7 +39,7 @@ export const useTableCellLayout_unstable = (
         // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
         ref: ref as React.Ref<HTMLDivElement>,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),

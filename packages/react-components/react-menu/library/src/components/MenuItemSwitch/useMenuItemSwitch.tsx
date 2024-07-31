@@ -29,6 +29,7 @@ export const useMenuItemSwitch_unstable = (
       },
     }),
     components: {
+      // eslint-disable-next-line deprecation/deprecation
       ...baseState.components,
       switchIndicator: 'span',
     },

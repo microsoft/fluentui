@@ -3,16 +3,17 @@ import type {
   SlotComponentType,
   SlotRenderFunction,
   SlotShorthandValue,
-  UnknownSlotProps,
+  SlotPropsDataType,
+  InferredElementRefType,
 } from './types';
 import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
-export type SlotOptions<Props extends UnknownSlotProps> = {
+export type SlotOptions<Props extends SlotPropsDataType> = {
   elementType:
     | React.ComponentType<Props>
     | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
-  defaultProps?: Partial<Props>;
+  defaultProps?: Partial<Props & { ref?: React.Ref<InferredElementRefType<Props>> }>;
 };
 
 /**
@@ -23,7 +24,7 @@ export type SlotOptions<Props extends UnknownSlotProps> = {
  * * `elementType` - the base element type of a slot, defaults to `'div'`
  * * `defaultProps` - similar to a React component declaration, you can provide a slot default properties to be merged with the shorthand/properties provided.
  */
-export function always<Props extends UnknownSlotProps>(
+export function always<Props extends SlotPropsDataType>(
   value: Props | SlotShorthandValue | undefined,
   options: SlotOptions<Props>,
 ): SlotComponentType<Props> {
@@ -64,7 +65,7 @@ export function always<Props extends UnknownSlotProps>(
  * with the values provided by `options.defaultProps` (or `{}`). This is useful for cases such as providing a default content
  * in case no shorthand is provided, like the case of the `expandIcon` slot for the `AccordionHeader`
  */
-export function optional<Props extends UnknownSlotProps>(
+export function optional<Props extends SlotPropsDataType>(
   value: Props | SlotShorthandValue | undefined | null,
   options: { renderByDefault?: boolean } & SlotOptions<Props>,
 ): SlotComponentType<Props> | undefined {
@@ -79,13 +80,13 @@ export function optional<Props extends UnknownSlotProps>(
  * The main difference between this function and `slot` is that this function does not return the metadata required for a slot to be considered a properly renderable slot, it only converts the value to a slot properties object
  * @param value - the value of the slot, it can be a slot shorthand or a slot properties object
  */
-export function resolveShorthand<Props extends UnknownSlotProps | null | undefined>(
+export function resolveShorthand<Props extends SlotPropsDataType | null | undefined>(
   value: Props | SlotShorthandValue,
 ): Props {
   if (
     typeof value === 'string' ||
     typeof value === 'number' ||
-    Array.isArray(value) ||
+    isIterable(value) ||
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     React.isValidElement<any>(value)
   ) {
@@ -104,3 +105,7 @@ export function resolveShorthand<Props extends UnknownSlotProps | null | undefin
 
   return value;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isIterable = (value: unknown): value is Iterable<any> =>
+  typeof value === 'object' && value !== null && Symbol.iterator in value;

@@ -42,7 +42,7 @@ export const brandWeb: BrandVariants;
 export const ButtonShim: React_2.ForwardRefExoticComponent<IBaseButtonProps & React_2.RefAttributes<HTMLButtonElement>>;
 
 // @public (undocumented)
-export const CheckboxShim: React_2.ForwardRefExoticComponent<Pick<ICheckboxProps, "label" | "title" | "className" | "key" | "disabled" | "name" | "defaultChecked" | "id" | "onChange" | "componentRef" | "styles" | "theme" | "checked" | "ariaLabel" | "required" | "ariaDescribedBy" | "ariaLabelledBy" | "ariaPositionInSet" | "ariaSetSize" | "boxSide" | "checkmarkIconProps" | "defaultIndeterminate" | "indeterminate" | "inputProps" | "onRenderLabel"> & React_2.RefAttributes<HTMLInputElement>>;
+export const CheckboxShim: React_2.ForwardRefExoticComponent<Pick<ICheckboxProps, "label" | "title" | "key" | "disabled" | "name" | "defaultChecked" | "className" | "id" | "onChange" | "componentRef" | "styles" | "theme" | "checked" | "ariaLabel" | "required" | "ariaDescribedBy" | "ariaLabelledBy" | "ariaPositionInSet" | "ariaSetSize" | "boxSide" | "checkmarkIconProps" | "defaultIndeterminate" | "indeterminate" | "inputProps" | "onRenderLabel"> & React_2.RefAttributes<HTMLInputElement>>;
 
 // @public
 export type ColorVariants = {

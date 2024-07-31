@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: deprecates ComponentState.components property",
+  "packageName": "@fluentui/react-drawer",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

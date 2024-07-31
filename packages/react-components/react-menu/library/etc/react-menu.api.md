@@ -12,6 +12,7 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
@@ -157,7 +158,7 @@ export type MenuItemLinkSlots = {
 export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
 
 // @public (undocumented)
-export type MenuItemProps = Omit<ComponentProps<Partial<MenuItemSlots>>, 'content'> & Pick<Partial<MenuItemSlots>, 'content'> & {
+export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
     persistOnClick?: boolean;
     disabled?: boolean;
@@ -189,7 +190,7 @@ export type MenuItemSelectableState = MenuItemSelectableProps & {
 
 // @public (undocumented)
 export type MenuItemSlots = {
-    root: Slot<'div'>;
+    root: Slot<Omit<ExtractSlotProps<Slot<'div'>>, 'content'>>;
     icon?: Slot<'span'>;
     checkmark?: Slot<'span'>;
     submenuIndicator?: Slot<'span'>;
