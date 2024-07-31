@@ -12,7 +12,7 @@ export const appItemClassNames: SlotClassNames<AppItemSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+export const useAppItemStyles = makeStyles({
   root: {
     marginInline: '4px',
     width: 'revert',
@@ -40,7 +40,7 @@ export const useAppItemStyles_unstable = (state: AppItemState): AppItemState => 
 
   const rootDefaultClassName = useRootDefaultClassName();
   const iconStyles = useIconStyles();
-  const appItemSpecificStyles = useStyles();
+  const appItemSpecificStyles = useAppItemStyles();
 
   const { size, icon } = state;
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-search",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2024 18:47:34 GMT",
+      "tag": "@fluentui/react-search_v9.0.13",
+      "version": "9.0.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "ccc8cf3d47fa4eae38d6b3625f41871499970619",
+            "comment": "fix: replace useEventCallback with useCallback for focus"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "709930bd388956152df740c6278c1e439fca4a5a",
+            "comment": "fix: Expand hit target when there's no content after."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search",
+            "comment": "Bump @fluentui/react-input to v9.4.84",
+            "commit": "9b3f8910e276278ca313e3a7209d6c089c2950de"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-search_v9.0.12",
       "version": "9.0.12",

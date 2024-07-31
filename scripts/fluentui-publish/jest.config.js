@@ -10,5 +10,7 @@ module.exports = {
     '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   coverageDirectory: './coverage',
+  testTimeout: 20000,
   testEnvironment: 'node',
+  setupFiles: ['<rootDir>/jest-setup.js'],
 };

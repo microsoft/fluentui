@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 29 Jul 2024 07:30:53 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jul 2024 07:33:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.21.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.27)
+
+Wed, 31 Jul 2024 07:33:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.26..@fluentui/react-charting_v5.21.27)
+
+### Patches
+
+- Add chart reflow examples ([PR #32035](https://github.com/microsoft/fluentui/pull/32035) by 110246001+krkshitij@users.noreply.github.com)
+- Bump @fluentui/theme-samples to v8.7.164 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
+- Bump @fluentui/react to v8.120.0 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
 
 ## [5.21.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.26)
 

@@ -193,6 +193,46 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const input = React.useRef<number | null>(null);
   const focusZoneRef = React.useRef<IFocusZone>(null);
 
+  /** This callback provides support for keyboard shortcuts to resize & reorder columns */
+  const onColumnKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent, column: IColumn): void => {
+      const detailsList = detailsListRef.current;
+
+      if (ev.shiftKey) {
+        const indexOffset = 1 + selection.mode ? 1 : 0;
+        const columnIndex = columns.findIndex(x => x.key === column.key) + indexOffset;
+        switch (ev.key) {
+          case 'ArrowLeft':
+            if (columnIndex > 0) {
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset - 1 });
+            }
+            break;
+          case 'ArrowRight':
+            if (columnIndex < columns.length - 1) {
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset + 1 });
+            }
+            break;
+        }
+      }
+      if (ev.ctrlKey) {
+        ev.preventDefault();
+        switch (ev.key) {
+          case 'ArrowLeft':
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 0.9 : column.minWidth,
+            });
+            break;
+          case 'ArrowRight':
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 1.1 : column.minWidth,
+            });
+            break;
+        }
+      }
+    },
+    [columns, selection.mode],
+  );
+
   const insertBeforeItem = React.useCallback(
     (item: IExampleItem) => {
       const draggedItems = selection.isIndexSelected(draggedIndex)
@@ -312,7 +352,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           focusZoneProps={{ componentRef: focusZoneRef }}
           setKey="items"
           items={sortedItems}
-          columns={columns}
+          columns={columns.map(x => ({ ...x, onColumnKeyDown }))}
           selection={selection}
           selectionPreservedOnEmptyClick={true}
           onItemInvoked={onItemInvoked}

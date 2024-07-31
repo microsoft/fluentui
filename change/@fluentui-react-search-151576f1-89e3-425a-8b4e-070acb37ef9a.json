@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: replace useEventCallback with useCallback for focus",
-  "packageName": "@fluentui/react-search",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "patch"
-}
