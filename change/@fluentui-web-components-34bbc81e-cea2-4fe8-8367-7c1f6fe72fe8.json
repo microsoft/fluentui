@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Export patterns.",
+  "packageName": "@fluentui/web-components",
+  "email": "mlijanto@microsoft.com",
+  "dependentChangeType": "patch"
+}
