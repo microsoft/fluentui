@@ -501,9 +501,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     point: IVerticalBarChartDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
-    const { theme, useSingleColor = false } = this.props;
+    const { theme, useSingleColor = false, enableGradient } = this.props;
     const { data, lineLegendText, lineLegendColor = theme!.palette.yellow } = this.props;
     const selectedPoint = data!.filter((xDataPoint: IVerticalBarChartDataPoint) => xDataPoint.x === point.x);
+    const pointIndex = data!.indexOf(selectedPoint[0]);
+    const calloutColor = !useSingleColor
+      ? selectedPoint[0].color
+        ? selectedPoint[0].color
+        : this._createColors()(selectedPoint[0].y)
+      : this._createColors()(1);
+
     // there might be no y value of the line for the hovered bar. so we need to check this condition
     if (this._isHavingLine && selectedPoint[0].lineData?.y !== undefined) {
       // callout data for the  line
@@ -519,11 +526,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     YValueHover.push({
       legend: selectedPoint[0].legend,
       y: selectedPoint[0].y,
-      color: !useSingleColor
-        ? selectedPoint[0].color
-          ? selectedPoint[0].color
-          : this._createColors()(selectedPoint[0].y)
-        : this._createColors()(1),
+      color: enableGradient ? (selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0]) : calloutColor,
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
@@ -1003,7 +1006,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         const pointIndex = Math.max(
           this.props.data?.findIndex((item) => item.legend === point.legend) || 0, 0
         );
-        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
       }
 
       // mapping data to the format Legends component needs
