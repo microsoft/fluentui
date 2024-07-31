@@ -21,6 +21,8 @@ interface IVerticalChartState {
   useSingleColor: boolean;
   hideLabels: boolean;
   showAxisTitles: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -38,6 +40,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       useSingleColor: false,
       hideLabels: false,
       showAxisTitles: true,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -69,6 +73,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
     this.forceUpdate();
     this.setState({ showAxisTitles: checked });
   };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  }
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  }
 
   private _basicExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
@@ -218,6 +230,20 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundCorners}
+          />
+        </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
             <VerticalBarChart
@@ -240,6 +266,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}
@@ -263,6 +291,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               })}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}
