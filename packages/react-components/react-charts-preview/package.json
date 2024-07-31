@@ -28,6 +28,9 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
     "type-check": "tsc -b tsconfig.json"
   },
+  "syncpack": {
+    "dependencyTypes": []
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
@@ -36,13 +39,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.36",
-    "@fluentui/react-shared-contexts": "^9.17.0",
+    "@fluentui/react-jsx-runtime": "^9.0.41",
+    "@fluentui/react-popover": "^9.9.14",
+    "@fluentui/react-shared-contexts": "^9.19.1",
+    "@fluentui/react-tabster": "^9.22.2",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.7",
-    "@fluentui/react-popover": "^9.9.0",
-    "@fluentui/react-tabster": "^9.22.0",
-    "@griffel/react": "^1.5.14",
+    "@fluentui/react-utilities": "^9.18.12",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@types/d3-array": "3",
     "@types/d3-axis": "3",
@@ -52,8 +55,8 @@
     "@types/d3-scale": "4",
     "@types/d3-selection": "3",
     "@types/d3-shape": "3",
-    "@types/d3-time-format": "3",
     "@types/d3-time": "3",
+    "@types/d3-time-format": "3",
     "d3-array": "3",
     "d3-axis": "3",
     "d3-format": "3",
@@ -62,8 +65,8 @@
     "d3-scale": "4",
     "d3-selection": "3",
     "d3-shape": "3",
-    "d3-time-format": "3",
-    "d3-time": "3"
+    "d3-time": "3",
+    "d3-time-format": "3"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
