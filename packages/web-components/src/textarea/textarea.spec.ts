@@ -778,8 +778,87 @@ test.describe('TextArea', () => {
     });
   });
 
-  test.describe('events', () => {
-    // select
-    // change
+  test.describe('`select` events', () => {
+    test.beforeEach(async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea>12345</fluent-textarea>
+        `;
+      });
+    });
+
+    test('should emit when text is selected', async () => {
+      const [wasSelected] = await Promise.all([
+        element.evaluate(
+          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true }))
+        ),
+        control.selectText(),
+      ]);
+
+      expect(wasSelected).toBe(true);
+    });
+
+    test('should emit when `select()` is called', async () => {
+      const [wasSelected] = await Promise.all([
+        element.evaluate(
+          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true }))
+        ),
+        element.evaluate((el: TextArea) => {
+          el.select();
+        }),
+      ]);
+
+      expect(wasSelected).toBe(true);
+    });
+  });
+
+  test.describe('`change` events', () => {
+    test.beforeEach(async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea>12345</fluent-textarea>
+        `;
+      });
+    });
+
+    test('should emit if value changed before blur', async () => {
+      const [wasChanged] = await Promise.all([
+        element.evaluate(
+          el => new Promise(resolve => el.addEventListener('change', () => resolve(true), { once: true }))
+        ),
+        (async () => {
+          await element.press('0');
+          await element.blur();
+        })(),
+      ]);
+
+      expect(wasChanged).toBe(true);
+    });
+
+    test('should not emit if value didn’t change before blur', async () => {
+      const [wasChanged] = await Promise.all([
+        element.evaluate(el => {
+          return new Promise(resolve => {
+            // If, after 1 second, the promise hasn’t fulfilled, consider the
+            // event didn’t fire.
+            const timeout = setTimeout(() => {
+              resolve(false);
+            }, 1000);
+
+            el.addEventListener('change', () => {
+              clearTimeout(timeout);
+              resolve(true);
+            }, { once: true });
+          });
+        }),
+        (async () => {
+          await element.press('0');
+          await element.press('Backspace');
+          await element.blur();
+        })(),
+      ]);
+
+      expect(wasChanged).toBe(false);
+    });
   });
 });
