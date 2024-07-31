@@ -42,7 +42,7 @@ export const Disabled = () => {
   };
   const styles = useStyles();
 
-  let [disabled, setDisabled] = React.useState(true);
+  const [disabled, setDisabled] = React.useState(true);
 
   return (
     <div className={styles.root}>
