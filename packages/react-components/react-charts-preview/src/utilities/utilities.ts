@@ -104,7 +104,7 @@ export interface IDomainNRange {
 
 export interface IXAxisParams {
   domainNRangeValues: IDomainNRange;
-  xAxisElement?: SVGElement | null;
+  xAxisElement?: SVGSVGElement | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
   xAxistickSize?: number;
@@ -129,7 +129,7 @@ export interface IYAxisParams {
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
-  yAxisElement?: SVGElement | null;
+  yAxisElement?: SVGSVGElement | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
   yAxisTickCount: number;
@@ -252,7 +252,7 @@ export function createDateXAxis(
   }
   if (xAxisElement) {
     d3Select(xAxisElement)
-      .call(g => xAxis)
+      .call(xAxis)
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }
@@ -445,7 +445,7 @@ export function createYAxisForOtherCharts(
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
   yAxisElement
     ? d3Select(yAxisElement)
-        .call(g => yAxis)
+        .call(yAxis)
         .selectAll('text')
         .attr('aria-hidden', 'true')
     : '';

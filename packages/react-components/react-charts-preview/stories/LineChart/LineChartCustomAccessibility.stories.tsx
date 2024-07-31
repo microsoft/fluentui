@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps } from '@fluentui/react-charting';
+import {  ILineChartProps, LineChart} from '../../src/LineChart';
 import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 

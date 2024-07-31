@@ -38,11 +38,11 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
-  let chartContainer: HTMLDivElement;
+  const chartContainer = React.useRef<HTMLDivElement>(null);
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 32;
-  let xAxisElement: SVGElement | null;
-  let yAxisElement: SVGElement | null;
+  const xAxisElement = React.useRef<SVGElement | null>(null);
+  const yAxisElement = React.useRef<SVGElement | null>(null);
   let yAxisElementSecondary: SVGElement | null;
   let margins: IMargins;
   const idForGraph: string = 'chart_';
@@ -51,7 +51,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const _isRtl: boolean = isRtl();
   let _tickValues: (string | number)[];
   const titleMargin: number = 8;
-  let _isFirstRender: boolean = true;
+  const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
   let isIntegralDataset: boolean = true;
@@ -93,7 +93,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     if (props !== null) {
       setPrevProps(props);
     }
-    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement) {
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
@@ -133,7 +133,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         setIsRemoveValCalculated(false);
       }
     }
-    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement) {
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
@@ -461,8 +461,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   let callout: JSX.Element | null = null;
 
   let children = null;
-  if ((props.enableFirstRenderOptimization && chartContainer) || !props.enableFirstRenderOptimization) {
-    _isFirstRender = false;
+  if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
+    _isFirstRender.current = false;
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
@@ -478,7 +478,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
-      xAxisElement: xAxisElement!,
+      xAxisElement: xAxisElement.current!,
       showRoundOffXTickValues: true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
@@ -492,7 +492,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       margins: margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
-      yAxisElement: yAxisElement,
+      yAxisElement: yAxisElement.current,
       yAxisTickFormat: props.yAxisTickFormat!,
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
@@ -550,7 +550,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
      * */
     if (props.wrapXAxisLables || props.showXAxisLablesTooltip) {
       const wrapLabelProps = {
-        node: xAxisElement,
+        node: xAxisElement.current,
         xAxis: xScale,
         showXAxisLablesTooltip: props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: props.noOfCharsToTruncate || 4,
@@ -613,20 +613,34 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
 
     /*
-   * To create y axis tick values by if specified
-  truncating the rest of the text and showing elipsis
-  or showing the whole string,
-   * */
+     * To create y axis tick values by if specified
+    truncating the rest of the text and showing elipsis
+    or showing the whole string,
+     * */
     props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
       yScale &&
       createYAxisLabels(
-        yAxisElement,
+        yAxisElement.current,
         yScale,
         props.noOfCharsToTruncate || 4,
         props.showYAxisLablesTooltip || false,
         startFromX,
         _isRtl,
       );
+
+    // Call back to the chart.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const _getData = (xScale: any, yScale: any) => {
+      props.getGraphData &&
+        props.getGraphData(
+          xScale,
+          yScale,
+          containerHeight - removalValueForTextTuncate!,
+          containerWidth,
+          xAxisElement.current,
+          yAxisElement.current,
+        );
+    };
 
     props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
@@ -660,6 +674,96 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - removalValueForTextTuncate! - titleMargin;
   /**
+   * When screen resizes, along with screen, chart also auto adjusted.
+   * This method used to adjust height and width of the charts.
+   */
+  function _fitParentContainer(): void {
+    _reqID = requestAnimationFrame(() => {
+      let legendContainerHeight;
+      if (props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
+        legendContainerHeight = 0;
+      } else {
+        const legendContainerComputedStyles = legendContainer && getComputedStyle(legendContainer);
+        legendContainerHeight =
+          ((legendContainer && legendContainer.getBoundingClientRect().height) || minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
+      }
+      if (props.parentRef || chartContainer.current) {
+        const container = props.parentRef ? props.parentRef : chartContainer.current;
+        const currentContainerWidth =
+          props.enableReflow && !_isFirstRender.current
+            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          setContainerWidth(currentContainerWidth);
+          setContainerHeight(currentContainerHeight - legendContainerHeight);
+        }
+      }
+    });
+  }
+
+  function _onChartLeave(): void {
+    props.onChartMouseLeave && props.onChartMouseLeave();
+  }
+
+  function _calculateChartMinWidth(): number {
+    let labelWidth = 10; // Total padding on the left and right sides of the label
+
+    // Case: rotated labels
+    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
+    }
+    // Case: truncated labels
+    else if (props.showXAxisLablesTooltip) {
+      const tickValues = _tickValues.map(val => {
+        const numChars = props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+    // Case: wrapped labels
+    else if (props.wrapXAxisLables) {
+      const words: string[] = [];
+      _tickValues.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${classes.xAxis} text`);
+      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
+    }
+    // Default case
+    else {
+      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+
+    let minChartWidth = margins.left! + margins.right! + labelWidth * (_tickValues.length - 1);
+
+    if (
+      [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
+        props.chartType,
+      )
+    ) {
+      const minDomainMargin = 8;
+      minChartWidth += minDomainMargin * 2;
+    }
+
+    return minChartWidth;
+  }
+
+  /**
    * We have use the {@link defaultTabbableElement } to fix
    * the Focus not landing on chart while tabbing, instead  goes to legend.
    * This issue is observed in Area, line chart after performance optimization done in the PR {@link https://github.com/microsoft/fluentui/pull/27721 }
@@ -684,17 +788,17 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       id={idForGraph}
       className={classes.root}
       role={'presentation'}
-      ref={(rootElem: HTMLDivElement) => (chartContainer = rootElem)}
+      ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
       onMouseLeave={_onChartLeave}
     >
-      {!_isFirstRender && <div id={idForDefaultTabbableElement} />}
+      {!_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <FocusZone
         direction={focusDirection}
         className={classes.chartWrapper}
         defaultTabbableElement={`#${idForDefaultTabbableElement}`}
         {...svgFocusZoneProps}
       >
-        {_isFirstRender && <div id={idForDefaultTabbableElement} />}
+        {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
         <svg
           width={svgDimensions.width}
           height={svgDimensions.height}
@@ -704,7 +808,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         >
           <g
             ref={(e: SVGElement | null) => {
-              xAxisElement = e;
+              xAxisElement.current = e;
             }}
             id={`xAxisGElement${idForGraph}`}
             // To add wrap of x axis lables feature, need to remove word height from svg height.
@@ -726,7 +830,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           )}
           <g
             ref={(e: SVGElement | null) => {
-              yAxisElement = e;
+              yAxisElement.current = e;
             }}
             id={`yAxisGElement${idForGraph}`}
             transform={`translate(${

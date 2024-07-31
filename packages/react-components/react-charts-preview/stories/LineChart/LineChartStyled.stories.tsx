@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { LineChart, ILineChartProps, ChartHoverCard, ICustomizedCalloutData } from '@fluentui/react-charting';
+import { ILineChartProps, LineChart, ICustomizedCalloutData } from '../../src/LineChart';
 import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -75,16 +75,18 @@ export const LCStyled = (props: ILineChartProps) => {
           tickFormat={'%m/%d'}
           tickValues={[new Date('2018-01-01'), new Date('2018-02-09')]}
           // eslint-disable-next-line react/jsx-no-bind
-          onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-            props ? (
-              <ChartHoverCard
-                XValue={`${props.values[0].xAxisCalloutData}`}
-                Legend={'Custom Legend'}
-                YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-                color={'red'}
-              />
-            ) : null
-          }
+
+          //onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+          //   props ? (
+          //    <ChartHoverCard
+          //     XValue={`${props.values[0].xAxisCalloutData}`}
+          //    Legend={'Custom Legend'}
+          //    YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
+          //    color={'red'}
+          //  />
+          // ) : null
+          // }
+
           enablePerfOptimization={true}
           legendProps={{
             styles: {

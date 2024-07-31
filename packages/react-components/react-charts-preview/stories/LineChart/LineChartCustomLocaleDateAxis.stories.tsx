@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
+import {  ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
+import { DataVizPalette } from '../../src/utilities/colors';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export const LCCustomLocale = (props: ILineChartProps) => {

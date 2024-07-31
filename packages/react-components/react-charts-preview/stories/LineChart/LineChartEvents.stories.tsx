@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
+import {  ILineChartProps, LineChart, IChartProps} from '../../src/LineChart';
+import { DataVizPalette } from '../../src/utilities/colors';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { Toggle } from '@fluentui/react/lib/Toggle';
