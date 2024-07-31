@@ -29,7 +29,7 @@ function checkPackageManager() {
     process.exit(1);
   }
 
-  console.log(`✅ package manager found - yarn v.${yarnInfo.version} \n`);
+  console.log(`✅ package manager found - yarn v${yarnInfo.version} \n`);
 }
 
 function userInvokedNpmInstall() {
