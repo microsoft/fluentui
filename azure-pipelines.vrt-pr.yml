@@ -8,7 +8,7 @@ trigger: none
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - template: .devops/templates/variables.yml
 

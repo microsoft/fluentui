@@ -44,7 +44,13 @@ steps:
       DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
   - script: |
-      yarn buildci $(sinceArg)
-    displayName: build, test, lint, test-ssr
+      yarn nx affected -t build test lint type-check test-ssr test-integration verify-packaging --nxBail $(sinceArg)
+    displayName: build, test, lint, test-ssr (affected)
+    condition: eq(variables.isPR, true)
+
+  - script: |
+      yarn nx run-many -t build test lint type-check test-ssr test-integration verify-packaging --nxBail
+    displayName: build, test, lint, test-ssr (all)
+    condition: eq(variables.isPR, false)
 
   - template: cleanup.yml
