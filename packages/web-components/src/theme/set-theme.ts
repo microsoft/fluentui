@@ -1,5 +1,11 @@
-import type { Theme } from '@fluentui/tokens';
 import * as tokens from './design-tokens.js';
+
+/**
+ * Not using the `Theme` type from `@fluentui/tokens` package to allow custom
+ * tokens to be added.
+ * @internal
+ */
+export type Theme = Record<string, string | number>;
 
 const tokenNames = Object.keys(tokens) as (keyof Theme)[];
 
@@ -42,13 +48,12 @@ export const setTheme = (theme: Theme) => {
     themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
   }
 
+  // Update the CSSStyleSheet with the new theme
+  themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
+
+  // Adopt the updated CSSStyleSheet if it hasn't been adopted yet
   if (!document.adoptedStyleSheets.includes(themeStyleSheet)) {
     document.adoptedStyleSheets.push(themeStyleSheet);
-  } else {
-    // The very first call to `setTheme()` within a document doesn’t need to
-    // call `replaceSync()`, because `CSS.registerProperty()` above is
-    // sufficient to set the tokens.
-    themeStyleSheet.replaceSync(themeStyleTextMap.get(theme)!);
   }
 };
 

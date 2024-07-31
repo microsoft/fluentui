@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 26 Jun 2024 07:31:38 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jul 2024 07:33:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.0)
+
+Wed, 31 Jul 2024 07:33:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.3..@fluentui/react_v8.120.0)
+
+### Minor changes
+
+- Expose onKeyDown handling for header cells through columns onColumnKeyDown ([PR #32005](https://github.com/microsoft/fluentui/pull/32005) by destinywu@microsoft.com)
+
+## [8.119.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.3)
+
+Tue, 23 Jul 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.2..@fluentui/react_v8.119.3)
+
+### Patches
+
+- fix(TimePicker): Clear text when date value changes to null ([PR #31626](https://github.com/microsoft/fluentui/pull/31626) by behowell@microsoft.com)
+
+## [8.119.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.2)
+
+Thu, 18 Jul 2024 07:31:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.1..@fluentui/react_v8.119.2)
+
+### Patches
+
+- fix: item.onClick is called when SplitMenuItem checkmark is clicked ([PR #31908](https://github.com/microsoft/fluentui/pull/31908) by sarah.higley@microsoft.com)
+- Fix WindowProvider utilities always returning window/document/undefined ([PR #31968](https://github.com/microsoft/fluentui/pull/31968) by jamie@index.hm)
+
+## [8.119.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.1)
+
+Tue, 09 Jul 2024 07:36:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.0..@fluentui/react_v8.119.1)
+
+### Patches
+
+- fix: update Spinner styles to address CSS bug ([PR #31913](https://github.com/microsoft/fluentui/pull/31913) by seanmonahan@microsoft.com)
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/foundation-legacy to v8.4.13 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.47 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/react-focus to v8.9.10 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/react-hooks to v8.8.10 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/style-utilities to v8.10.18 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/theme to v2.6.56 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
+- Bump @fluentui/utilities to v8.15.13 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
 
 ## [8.119.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.0)
 

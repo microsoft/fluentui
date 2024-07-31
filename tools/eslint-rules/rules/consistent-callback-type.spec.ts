@@ -1,8 +1,8 @@
-import { TSESLint } from '@typescript-eslint/utils';
+import { RuleTester } from '@typescript-eslint/rule-tester';
 import { rule, RULE_NAME } from './consistent-callback-type';
-const ruleTester = new TSESLint.RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-});
+
+const ruleTester = new RuleTester();
+
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     // Valid when prop is TSTypeAliasDeclaration and the callback uses EventHandler

@@ -1869,7 +1869,13 @@ export type {
   EmptySwatchState,
 } from '@fluentui/react-swatch-picker';
 
-export { motionTokens, createMotionComponent, createPresenceComponent, PresenceGroup } from '@fluentui/react-motion';
+export {
+  motionTokens,
+  createMotionComponent,
+  createPresenceComponent,
+  createPresenceComponentVariant,
+  PresenceGroup,
+} from '@fluentui/react-motion';
 export type {
   AtomMotion,
   AtomMotionFn,

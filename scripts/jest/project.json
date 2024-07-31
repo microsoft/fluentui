@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-jest",
+  "name": "scripts-jest",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/jest/src",
   "projectType": "library",

@@ -8,7 +8,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Prevent accidental references to the global React namespace',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       missingImport: 'You must explicitly import React to reference it',

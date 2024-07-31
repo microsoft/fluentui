@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-executors",
+  "name": "scripts-executors",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/executors/src",
   "projectType": "library",

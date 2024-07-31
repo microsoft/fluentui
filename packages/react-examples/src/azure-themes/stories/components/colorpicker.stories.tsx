@@ -2,6 +2,10 @@ import * as React from 'react';
 import { ColorPicker, Toggle, getColorFromString, IColor, IColorPickerStyles, updateA } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
+export default {
+  title: 'Components/ColorPicker',
+};
+
 const classNames = mergeStyleSets({
   wrapper: { display: 'flex' },
   column2: { marginLeft: 10 },

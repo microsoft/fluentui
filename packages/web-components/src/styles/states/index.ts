@@ -1,6 +1,18 @@
 import { css } from '@microsoft/fast-element';
 
 /**
+ * Selector for the `checked` state.
+ * @public
+ */
+export const checkedState = css.partial`:is([state--checked], :state(checked))`;
+
+/**
+ * Selector for the `disabled` state.
+ * @public
+ */
+export const disabledState = css.partial`:is([state--disabled], :state(disabled))`;
+
+/**
  * Selector for the `filled-lighter` state.
  * @public
  */
@@ -101,6 +113,12 @@ export const extraSmallState = css.partial`:is([state--extra-small], :state(extr
  * @public
  */
 export const smallState = css.partial`:is([state--small], :state(small))`;
+
+/**
+ * Selector for the `medium` state.
+ * @public
+ */
+export const mediumState = css.partial`:is([state--medium], :state(medium))`;
 
 /**
  * Selector for the `large` state.
@@ -233,3 +251,15 @@ export const singleLineState = css.partial`:is([state--singleline], :state(singl
  * @public
  */
 export const multiLineState = css.partial`:is([state--multiline], :state(multiline))`;
+
+/**
+ * Selector for the `expanded` state.
+ * @public
+ */
+export const expandedState = css.partial`:is([state--expanded], :state(expanded))`;
+
+/**
+ * Selector for the `block` state.
+ * @public
+ */
+export const blockState = css.partial`:is([state--block], :state(block))`;

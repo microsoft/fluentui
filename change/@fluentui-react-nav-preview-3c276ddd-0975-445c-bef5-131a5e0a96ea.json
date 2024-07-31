@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Builds out and styles AppItemStatic",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}

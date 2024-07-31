@@ -3,6 +3,10 @@ import { DefaultButton } from '@fluentui/react/lib/Button';
 import { TooltipHost, ITooltipHostStyles } from '@fluentui/react/lib/Tooltip';
 import { useId } from '@fluentui/react-hooks';
 
+export default {
+  title: 'Components/Tooltip',
+};
+
 const calloutProps = { gapSpace: 0 };
 // The TooltipHost root uses display: inline by default.
 // If that's causing sizing issues or tooltip positioning issues, try overriding to inline-block.

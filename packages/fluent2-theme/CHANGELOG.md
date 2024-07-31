@@ -1,8 +1,44 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Wed, 26 Jun 2024 07:31:38 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jul 2024 07:33:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.92](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.92)
+
+Wed, 31 Jul 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.91..@fluentui/fluent2-theme_v8.107.92)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.0 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
+
+## [8.107.91](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.91)
+
+Tue, 23 Jul 2024 07:32:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.90..@fluentui/fluent2-theme_v8.107.91)
+
+### Patches
+
+- Bump @fluentui/react to v8.119.3 ([commit](https://github.com/microsoft/fluentui/commit/8303652a141232be9e03658f295b8ab6512e43aa) by beachball)
+
+## [8.107.90](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.90)
+
+Thu, 18 Jul 2024 07:31:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.89..@fluentui/fluent2-theme_v8.107.90)
+
+### Patches
+
+- Bump @fluentui/react to v8.119.2 ([commit](https://github.com/microsoft/fluentui/commit/3c9750e01f3e8b55a1e3b36744c2e855c864c78e) by beachball)
+
+## [8.107.89](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.89)
+
+Tue, 09 Jul 2024 07:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.88..@fluentui/fluent2-theme_v8.107.89)
+
+### Patches
+
+- Bump @fluentui/react to v8.119.1 ([commit](https://github.com/microsoft/fluentui/commit/71daccf5b87388209fe648aeb64adf0b4cbdd9e6) by beachball)
 
 ## [8.107.88](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.88)
 

@@ -18,12 +18,12 @@ import {
   FontDecreaseRegular,
   TextFontRegular,
 } from '@fluentui/react-icons';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { steps } from './utils';
 
 export default {
   title: 'Toolbar Converged',
-  Component: Toolbar,
+  component: Toolbar,
   decorators: [
     story => (
       <StoryWright steps={steps}>
@@ -33,7 +33,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toolbar>;
+} satisfies Meta<typeof Toolbar>;
 
 export const Default = (props: Partial<ToolbarProps>) => (
   <Toolbar {...props}>

@@ -5,6 +5,8 @@
 ```ts
 
 import * as React_2 from 'react';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotRenderFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
 export type AtomMotion = {
@@ -20,7 +22,10 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export function createMotionComponent<MotionParams extends Record<string, MotionParam> = {}>(value: AtomMotion | AtomMotion[] | AtomMotionFn<MotionParams>): React_2.FC<MotionComponentProps & MotionParams>;
 
 // @public (undocumented)
-export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): React_2.FC<PresenceComponentProps & MotionParams>;
+export function createPresenceComponent<MotionParams extends Record<string, MotionParam> = {}>(value: PresenceMotion | PresenceMotionFn<MotionParams>): PresenceComponent<MotionParams>;
+
+// @public (undocumented)
+export function createPresenceComponentVariant<MotionParams extends Record<string, MotionParam> = {}>(component: PresenceComponent<MotionParams>, override: PresenceOverride): PresenceComponent<MotionParams>;
 
 // @public (undocumented)
 export const curves: {
@@ -84,22 +89,31 @@ export const motionTokens: {
 };
 
 // @public (undocumented)
+export type PresenceComponent<MotionParams extends Record<string, MotionParam> = {}> = {
+    (props: PresenceComponentProps & MotionParams): React_2.ReactElement | null;
+    [MOTION_DEFINITION]: PresenceMotionFn<MotionParams>;
+};
+
+// @public (undocumented)
 export type PresenceComponentProps = {
     appear?: boolean;
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
     onMotionFinish?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     onMotionCancel?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     onMotionStart?: (ev: null, data: {
-        direction: 'enter' | 'exit';
+        direction: PresenceDirection;
     }) => void;
     visible?: boolean;
     unmountOnExit?: boolean;
 };
+
+// @public (undocumented)
+export type PresenceDirection = 'enter' | 'exit';
 
 // @public (undocumented)
 export class PresenceGroup extends React_2.Component<PresenceGroupProps, PresenceGroupState> {
@@ -118,15 +132,26 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 }
 
 // @public (undocumented)
-export type PresenceMotion = {
-    enter: AtomMotion | AtomMotion[];
-    exit: AtomMotion | AtomMotion[];
-};
+export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 // @public (undocumented)
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
 } & MotionParams) => PresenceMotion;
+
+// @public (undocumented)
+export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: PresenceMotionSlotProps<MotionParams> | null | undefined, options: {
+    elementType: React_2.FC<PresenceComponentProps & MotionParams>;
+    defaultProps: PresenceMotionSlotRenderProps & MotionParams;
+}): SlotComponentType<PresenceMotionSlotRenderProps & MotionParams>;
+
+// @public (undocumented)
+export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionParam> = {}> = Pick<PresenceComponentProps, 'imperativeRef' | 'onMotionFinish' | 'onMotionStart'> & {
+    as?: keyof JSX.IntrinsicElements;
+    children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
+        children: React_2.ReactElement;
+    }>;
+};
 
 // (No @packageDocumentation comment for this package)
 

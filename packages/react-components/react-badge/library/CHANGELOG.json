@@ -2,6 +2,74 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 20:13:14 GMT",
+      "tag": "@fluentui/react-badge_v9.2.41",
+      "version": "9.2.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.42",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.0",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.18.13",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jul 2024 17:25:52 GMT",
+      "tag": "@fluentui/react-badge_v9.2.40",
+      "version": "9.2.40",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.41",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.1",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-badge",
+            "comment": "Bump @fluentui/react-utilities to v9.18.12",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:41 GMT",
       "tag": "@fluentui/react-badge_v9.2.39",
       "version": "9.2.39",

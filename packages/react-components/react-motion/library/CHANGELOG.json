@@ -2,6 +2,105 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 20:13:12 GMT",
+      "tag": "@fluentui/react-motion_v9.4.0",
+      "version": "9.4.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "dec6f1577fe8b81810e46f92de0f7c2530e49e7e",
+            "comment": "feat: add presenceMotionSlot() API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.0",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.13",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ace4b733099377694522c11f2d033cb0c915491f",
+            "comment": "fix: improve Web Animations API detection in tests"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jul 2024 17:25:35 GMT",
+      "tag": "@fluentui/react-motion_v9.3.0",
+      "version": "9.3.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ccdcfa5819bfbf749e3a0625eaba2a157a6ec100",
+            "comment": "feat: add createPresenceComponentVariant()"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "a0477b8bea0eea5de98538049a9799dd0f1571cf",
+            "comment": "feat(motion): add PresenceDirection type"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.19.1",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion",
+            "comment": "Bump @fluentui/react-utilities to v9.18.12",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2024 15:14:35 GMT",
+      "tag": "@fluentui/react-motion_v9.2.2",
+      "version": "9.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "0ad7f7c26cc01a9b45312bae5ef4833ee32d9c2c",
+            "comment": "fix: Check if DOM is available before using Element global to avoid breaks in build."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:22 GMT",
       "tag": "@fluentui/react-motion_v9.2.1",
       "version": "9.2.1",

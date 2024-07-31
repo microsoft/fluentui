@@ -9,6 +9,7 @@ import { getAllPackageInfo, isConvergedPackage } from '@fluentui/scripts-monorep
  */
 export function getConfig({ version }: { version: 'web-components' }): { scope: string[] };
 export function getConfig({ version }: { version: 'v8' }): { scope: string[] };
+export function getConfig({ version }: { version: 'tools' }): { scope: string[] };
 export function getConfig({ version }: { version: 'vNext' }): {
   scope: string[];
   groupConfig: {
@@ -17,8 +18,8 @@ export function getConfig({ version }: { version: 'vNext' }): {
     include: string[];
   };
 };
-export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' }) {
-  const { vNextPaths, webComponentsPaths } = getPackagePaths();
+export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-components' | 'tools' }) {
+  const { vNextPaths, webComponentsPaths, toolsPaths, v8Paths } = getPackagePaths();
 
   if (version === 'vNext') {
     return {
@@ -37,10 +38,14 @@ export function getConfig({ version }: { version: 'v8' | 'vNext' | 'web-componen
     };
   }
 
-  const ignoreV8Scope = vNextPaths.concat(webComponentsPaths).map(path => `!${path}`);
-
   if (version === 'v8') {
-    return { scope: [...ignoreV8Scope] };
+    return { scope: [...v8Paths] };
+  }
+
+  if (version === 'tools') {
+    return {
+      scope: [...toolsPaths],
+    };
   }
 
   throw new Error('Unsupported version scopes acquisition');
@@ -50,10 +55,24 @@ const isWebComponentPackage: typeof isConvergedPackage = metadata => {
   return Boolean(metadata.project.tags?.includes('web-components'));
 };
 
+const isV8Package: typeof isConvergedPackage = metadata => {
+  const hasV8Tag = Boolean(metadata.project.tags?.includes('v8'));
+
+  return hasV8Tag && !isWebComponentPackage(metadata) && !isConvergedPackage(metadata);
+};
+const isToolsPackage: typeof isConvergedPackage = metadata => {
+  const hasVNextTag = Boolean(metadata.project.tags?.includes('vNext'));
+  const hasToolsTag = Boolean(metadata.project.tags?.includes('tools'));
+
+  return hasToolsTag && !isV8Package(metadata) && !hasVNextTag;
+};
+
 function getPackagePaths() {
   const allProjects = getAllPackageInfo();
   const vNextPaths: string[] = [];
   const webComponentsPaths: string[] = [];
+  const v8Paths: string[] = [];
+  const toolsPaths: string[] = [];
 
   for (const project of Object.values(allProjects)) {
     const metadata = { project: project.projectConfig, packageJson: project.packageJson };
@@ -63,7 +82,13 @@ function getPackagePaths() {
     if (isWebComponentPackage(metadata)) {
       webComponentsPaths.push(project.packagePath);
     }
+    if (isToolsPackage(metadata)) {
+      toolsPaths.push(project.packagePath);
+    }
+    if (isV8Package(metadata)) {
+      v8Paths.push(project.packagePath);
+    }
   }
 
-  return { vNextPaths, webComponentsPaths };
+  return { vNextPaths, webComponentsPaths, toolsPaths, v8Paths };
 }

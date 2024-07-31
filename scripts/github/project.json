@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-github",
+  "name": "scripts-github",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/github/src",
   "projectType": "library",

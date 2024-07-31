@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Mon, 01 Jul 2024 20:30:29 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.13)
+
+Tue, 30 Jul 2024 18:47:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.12..@fluentui/react-search_v9.0.13)
+
+### Patches
+
+- fix: replace useEventCallback with useCallback for focus ([PR #32079](https://github.com/microsoft/fluentui/pull/32079) by vgenaev@gmail.com)
+- fix: Expand hit target when there's no content after. ([PR #32114](https://github.com/microsoft/fluentui/pull/32114) by estebanmu@microsoft.com)
+- Bump @fluentui/react-input to v9.4.84 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.12)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.11..@fluentui/react-search_v9.0.12)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.83 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.11)
+
+Mon, 15 Jul 2024 17:25:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.10..@fluentui/react-search_v9.0.11)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- Bump @fluentui/react-input to v9.4.82 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.41 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.10)
+
+Thu, 04 Jul 2024 15:14:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.9..@fluentui/react-search_v9.0.10)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.81 ([PR #31893](https://github.com/microsoft/fluentui/pull/31893) by beachball)
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.9)
 

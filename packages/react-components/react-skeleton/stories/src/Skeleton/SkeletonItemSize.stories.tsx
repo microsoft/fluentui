@@ -26,7 +26,7 @@ export const Size = () => {
       {SIZES.map(size => (
         <div key={size} className={styles.innerWrapper}>
           <Text align="center">{size}</Text>
-          <Skeleton>
+          <Skeleton aria-label="Loading Content">
             <SkeletonItem size={size} />
           </Skeleton>
         </div>

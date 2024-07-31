@@ -2,6 +2,1188 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2024 18:47:31 GMT",
+      "tag": "@fluentui/react-components_v9.54.7",
+      "version": "9.54.7",
+      "comments": {
+        "minor": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d33f99300343a23873218036873002e7dcc60370",
+            "comment": "feat: add collapse motion to Accordion"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "cf68d198b62eeccb0031517a4558f73877ff92f1",
+            "comment": "feat: Release react-carousel-preview to public preview"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "5cd1fede4340fbc8637694897fe94ecb785daf11",
+            "comment": "feat: Release react-icons-compat to stable"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "c5f079db7466c4fd81e10694d43f45aadb1fac7b",
+            "comment": "Adds AppItem and AppItemStatic, removes AppNode"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "c36de8c968d7b5d770e8a6c45103e22d4f294d0e",
+            "comment": "feat: Adds slots & styling for AppItem."
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "f2f9fd6d42fc495685d42461fca95060cfed7b4c",
+            "comment": "fix: improve hover for HC mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "02284e605470c0305e21e33cab916cf5a9965d97",
+            "comment": "fix: only call activedescendant focus when combobox/dropdown is opened"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f903b6dc4b28a6e421f24695b07729d1c4ab31fa",
+            "comment": "chore: migrate to stable motion APIs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "f903b6dc4b28a6e421f24695b07729d1c4ab31fa",
+            "comment": "chore: update types for navDrawerClassNames"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "ceacd96379e6d7268d1807a318a9b6f7c48f519b",
+            "comment": "fix: improve arrow styles implementation"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "ccc8cf3d47fa4eae38d6b3625f41871499970619",
+            "comment": "fix: replace useEventCallback with useCallback for focus"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "709930bd388956152df740c6278c1e439fca4a5a",
+            "comment": "fix: Expand hit target when there's no content after."
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "41038cccfe937dcfa8e1a347ed2535d4f3c6de24",
+            "comment": "docs: update combobox examples and positioning description"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/naming-convention report on TabsterTypes_6_0_1_DoNotUse"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2024 20:13:11 GMT",
+      "tag": "@fluentui/react-components_v9.54.6",
+      "version": "9.54.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e4c67eea483587289d435b3165ba640c382c3d4c",
+            "comment": "feat: add motion slots (surfaceMotion to Dialog & backdropMotion to DialogSurface)"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c4558a5330549324debd15bc2d07e985452a8b0c",
+            "comment": "chore: adds custom style hook for MenuItemLink"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ace4b733099377694522c11f2d033cb0c915491f",
+            "comment": "fix: improve Web Animations API detection in tests"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "1678c8e0c9e2bb90b26d7d0c931ce9b15461bb23",
+            "comment": "feat: add Fade motion component"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "fd0552bb2c76653e6eced53bc20b6d8690184c93",
+            "comment": "feat(motion): add Scale motion component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "5e3705df32a47dcfdea9c47cf8da209d80a1aabd",
+            "comment": "chore: stops leaking HTMLElementConstructorName type"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "dec6f1577fe8b81810e46f92de0f7c2530e49e7e",
+            "comment": "chore: simplify SlotComponentType type"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "38eff0b0a7019df7906880082f33112f4d07b9d9",
+            "comment": "fix: make generate-api build valid d.ts file structure on par with build target"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "dec6f1577fe8b81810e46f92de0f7c2530e49e7e",
+            "comment": "feat: add presenceMotionSlot() API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "c4558a5330549324debd15bc2d07e985452a8b0c",
+            "comment": "chore: adds custom style hook for MenuItemLink"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c4558a5330549324debd15bc2d07e985452a8b0c",
+            "comment": "chore: adds custom style hook for MenuItemLink"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Jul 2024 17:25:14 GMT",
+      "tag": "@fluentui/react-components_v9.54.5",
+      "version": "9.54.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "891b1f327c20c228ec73bc0a202476002ad8a23b",
+            "comment": "bump tabster to 8.0.1 to fix memorized elements focusing"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3fec451f7e18afb05cd27345c607a863c8b00859",
+            "comment": "bugfix: defaultCheckedItems conflicts with checkedItems"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2fe1e29e7ba3b494b7bb108aaf0df6d0fda40d17",
+            "comment": "chore: fix With* internal helper types 'children' verification"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "410e072c95a28f559da5243475e3afbf2f0e0d48",
+            "comment": "bugfix: fix useMergedRefs signature to include null"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "ccdcfa5819bfbf749e3a0625eaba2a157a6ec100",
+            "comment": "feat: add createPresenceComponentVariant()"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "7bedcaafc120017d22ce65e1832f9ac18231a796",
+            "comment": "Add key handling only for selectable and navigable"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ccdcfa5819bfbf749e3a0625eaba2a157a6ec100",
+            "comment": "feat: add createPresenceComponentVariant()"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "878e1756c4cb8e6ae0c6388472ce107368cf7a16",
+            "comment": "fix(react-positioning): export fallbackPositions prop"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "8cdac1a5cd2a884f69befa6632dc0db400db0039",
+            "comment": "chore: remove default 'aria-label' value from Skeleton and update stories"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-context-selector",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ff2c81325d734ddff92e606ac681c22c710f262f",
+            "comment": "chore: re-generate api.md"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-rating",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "ff2c81325d734ddff92e606ac681c22c710f262f",
+            "comment": "chore: re-generate api.md"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/global-context",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          }
+        ],
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "a0477b8bea0eea5de98538049a9799dd0f1571cf",
+            "comment": "feat(motion): add PresenceDirection type"
+          },
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-motion-components-preview",
+            "commit": "55bc89dc28b64931d4ec0af78e85dd56e45a6493",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2024 15:14:34 GMT",
+      "tag": "@fluentui/react-components_v9.54.4",
+      "version": "9.54.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align combobox and dropdown components"
+          }
+        ],
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add nx-project-tag"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add tools nx project tag"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align input component"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-motion",
+            "commit": "0ad7f7c26cc01a9b45312bae5ef4833ee32d9c2c",
+            "comment": "fix: Check if DOM is available before using Element global to avoid breaks in build."
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align spinbutton component"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "65769d82e2520185548eb7a92d85ce22e8a2b151",
+            "comment": "vertically align textarea component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f5aad264fa9d16a0724c1c2dfcbf940d11fcdcce",
+            "comment": "fix(Tree): Roving tabindexes should be refreshed if current element is unmounted"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Jul 2024 20:30:20 GMT",
       "tag": "@fluentui/react-components_v9.54.3",
       "version": "9.54.3",

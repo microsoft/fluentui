@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-search",
+  "name": "react-search",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

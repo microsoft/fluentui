@@ -1,5 +1,5 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, writeJson, joinPathFragments } from '@nx/devkit';
+import { Tree, addProjectConfiguration, writeJson, joinPathFragments, offsetFromRoot } from '@nx/devkit';
 
 import generator from './index';
 
@@ -14,20 +14,18 @@ describe('react-component generator', () => {
     it(`should throw error if one wants to add component to non v9 package`, async () => {
       createLibrary(tree, 'react-old', { tags: ['v8'], version: '8.123.4' });
       try {
-        await generator(tree, { project: '@proj/react-old', name: 'MyOne' });
+        await generator(tree, { project: 'react-old', name: 'MyOne' });
       } catch (err) {
-        expect(err).toMatchInlineSnapshot(
-          `[Error: this generator works only with v9 packages. "@proj/react-old" is not!]`,
-        );
+        expect(err).toMatchInlineSnapshot(`[Error: this generator works only with v9 packages. "react-old" is not!]`);
       }
     });
 
     it(`should throw error if component already exists`, async () => {
       createLibrary(tree, 'react-one');
-      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+      await generator(tree, { project: 'react-one', name: 'MyOne' });
 
       try {
-        await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+        await generator(tree, { project: 'react-one', name: 'MyOne' });
       } catch (err) {
         expect(err).toMatchInlineSnapshot(`[Error: The component "MyOne" already exists]`);
       }
@@ -50,13 +48,15 @@ describe('react-component generator', () => {
           createSplitProject(tree, 'react-one');
         }
 
-        await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+        await generator(tree, { project: 'react-one', name: 'MyOne' });
 
         const projectSourceRootPath =
           type === 'old'
             ? 'packages/react-components/react-one/src'
             : 'packages/react-components/react-one/library/src';
         const componentRootPath = `${projectSourceRootPath}/components/MyOne`;
+
+        const rootOffset = offsetFromRoot(componentRootPath);
 
         expect(tree.read(joinPathFragments(projectSourceRootPath, 'MyOne.ts'), 'utf-8')).toMatchInlineSnapshot(`
       "export * from './components/MyOne/index';
@@ -78,7 +78,6 @@ describe('react-component generator', () => {
         expect(tree.read(joinPathFragments(componentRootPath, 'MyOne.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as React from 'react';
       import type { ForwardRefComponent } from '@fluentui/react-utilities';
-      import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
       import { useMyOne_unstable } from './useMyOne';
       import { renderMyOne_unstable } from './renderMyOne';
       import { useMyOneStyles_unstable } from './useMyOneStyles.styles';
@@ -92,9 +91,17 @@ describe('react-component generator', () => {
           const state = useMyOne_unstable(props, ref);
 
           useMyOneStyles_unstable(state);
-          // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
-          // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
-          useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
+
+          /**
+           * @see https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/react-components/convergence/custom-styling.md
+           *
+           * TODO: 💡 once package will become stable (PR which will be part of promoting PREVIEW package to STABLE),
+           *      - uncomment this line
+           *      - update types {@link file://./${rootOffset}packages/react-components/react-shared-contexts/library/src/CustomStyleHooksContext/CustomStyleHooksContext.ts#CustomStyleHooksContextValue}
+           *      - verify that custom global style override works for your component
+           */
+          // useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
+
           return renderMyOne_unstable(state);
         }
       );
@@ -158,7 +165,7 @@ describe('react-component generator', () => {
           createSplitProject(tree, 'react-one');
         }
 
-        await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+        await generator(tree, { project: 'react-one', name: 'MyOne' });
 
         const projectSourceRootPath =
           type === 'old'
@@ -171,7 +178,7 @@ describe('react-component generator', () => {
       "
     `);
 
-        await generator(tree, { project: '@proj/react-one', name: 'MyTwo' });
+        await generator(tree, { project: 'react-one', name: 'MyTwo' });
 
         expect(tree.read(barrelPath, 'utf-8')).toMatchInlineSnapshot(`
       "export * from './MyOne';
@@ -188,7 +195,7 @@ describe('react-component generator', () => {
       const gitkeepPath = joinPathFragments(joinPathFragments(metadata.paths.root, 'stories'), '.gitkeep');
       expect(tree.exists(gitkeepPath)).toBe(true);
 
-      await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+      await generator(tree, { project: 'react-one', name: 'MyOne' });
 
       expect(tree.exists(gitkeepPath)).toBe(false);
     });
@@ -218,7 +225,7 @@ describe('react-component generator', () => {
           type === 'old'
             ? 'packages/react-components/react-one/stories/MyOne'
             : 'packages/react-components/react-one/stories/src/MyOne';
-        await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+        await generator(tree, { project: 'react-one', name: 'MyOne' });
 
         expect(tree.children(componentStoryRootPath)).toMatchInlineSnapshot(`
       Array [
@@ -261,7 +268,7 @@ describe('react-component generator', () => {
             ? `packages/react-components/${packageFolderName[phase]}/stories/MyOne`
             : `packages/react-components/${packageFolderName[phase]}/stories/src/MyOne`;
 
-        await generator(tree, { project: `@proj/${packageFolderName[phase]}`, name: 'MyOne' });
+        await generator(tree, { project: packageFolderName[phase], name: 'MyOne' });
 
         expect(tree.read(joinPathFragments(componentStoryRootPath, 'index.stories.tsx'), 'utf-8'))
           .toMatchInlineSnapshot(`
@@ -313,12 +320,13 @@ function createLibrary(
     ...options,
   };
   const root = _options.root ?? `packages/react-components/${name}`;
-  const projectName = '@proj/' + name;
+  const projectName = name;
+  const npmProjectName = '@proj/' + projectName;
 
   const sourceRoot = `${root}/src`;
   addProjectConfiguration(tree, projectName, { root, tags: _options.tags, sourceRoot });
   writeJson(tree, joinPathFragments(root, 'package.json'), {
-    name: projectName,
+    name: npmProjectName,
     version: _options.version,
   });
   tree.write(joinPathFragments(root, 'stories/.gitkeep'), '');

@@ -17,7 +17,7 @@ export function useFlatControllableCheckedItems<Props extends HeadlessTreeItemPr
       () => (props.selectionMode ? props.checkedItems && createCheckedItems(props.checkedItems) : undefined),
       [props.checkedItems, props.selectionMode],
     ),
-    defaultState: () => initializeCheckedItems(props, headlessTree),
+    defaultState: props.defaultCheckedItems ? () => initializeCheckedItems(props, headlessTree) : undefined,
   });
 }
 

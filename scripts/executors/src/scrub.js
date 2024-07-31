@@ -1,8 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/naming-convention, camelcase
-const child_process = require('child_process');
-const fs = require('fs');
-const os = require('os');
-const path = require('path');
+const { execSync, spawnSync } = require('node:child_process');
+const fs = require('node:fs');
+const os = require('node:os');
+const path = require('node:path');
 // This script MUST NOT have any deps aside from Node built-ins, because it deletes all node_modules!
 
 const verbose = process.argv.includes('--verbose') || process.argv.includes('-v');
@@ -81,7 +80,7 @@ function getChildren(parentFolder) {
  */
 function spawn(cmd, args) {
   const maxBuffer = 1024 * 1024 * 10; // default is 1024 * 1024
-  const result = child_process.spawnSync(cmd, args, { stdio: 'inherit', maxBuffer });
+  const result = spawnSync(cmd, args, { stdio: 'inherit', maxBuffer });
   if (result.error) {
     throw result.error;
   } else if (result.status) {
@@ -95,7 +94,7 @@ async function run() {
     process.exit(1);
   }
 
-  const gitStatus = child_process.execSync('git status --porcelain').toString().trim();
+  const gitStatus = execSync('git status --porcelain').toString().trim();
 
   if (!process.argv.includes('-y')) {
     console.log(

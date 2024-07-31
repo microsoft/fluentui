@@ -8,6 +8,15 @@ parameters:
   - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
+  - name: locationPrefix
+    type: string
+    default: fluentuiv8
+  - name: locationPostfix
+    type: string
+    default: vrscreenshotv8
+  - name: clientName
+    type: string
+    default: fluentuiv8
 
 steps:
   - task: Bash@3
@@ -22,6 +31,7 @@ steps:
   - script: |
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
+      echo "##vso[task.setvariable variable=isPR;]$isPR"
       if [[ $isPR == true ]]; then
         packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
         if [[ $packageAffected == false ]]; then
@@ -38,12 +48,7 @@ steps:
     displayName: Check if vrTests should be skipped
 
   - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:build
-    displayName: Build VR tests components package
-    condition: eq(variables['vrTestSkip'], 'no')
-
-  - script: |
-      yarn workspace ${{ parameters.vrTestPackageName }} vr:test --verbose
+      yarn lage test-vr --to ${{ parameters.vrTestPackageName }} --verbose
     displayName: 'Run VR tests'
     condition: eq(variables['vrTestSkip'], 'no')
 
@@ -59,3 +64,35 @@ steps:
       ArtifactName: 'vrscreenshot${{ parameters.fluentVersion }}'
       publishLocation: 'Container'
     condition: eq(variables['vrTestSkip'], 'no')
+
+  - bash: |
+      set -exuo pipefail
+      yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+    displayName: VR App - Create Policy
+    env:
+      VR_APP_API_URL: $(VR_APP_API_URL)
+      TENANT_ID: $(TenantId)
+      PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+      SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    condition: eq(variables.isPR, true)
+
+  - task: AzureCLI@2
+    displayName: 'Run fluentui-screenshotdiff'
+    env:
+      API_TOKEN: $(fabric-public-pipeline-access-PAT)
+      GITHUB_API_TOKEN: $(githubRepoStatusPAT)
+      VR_APP_API_URL: $(VR_APP_API_URL)
+      STORAGE_ACCOUNT_ID: $(StorageAccountId)
+      TENANT_ID: $(TenantId)
+      PRINCIPAL_CLIENT_ID: $(PrincipalClientId)
+      SERVICE_CONNECTION_ID: $(ServiceConnectionId)
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+    inputs:
+      azureSubscription: $(AzureSubscription)
+      scriptType: bash
+      scriptLocation: 'inlineScript'
+      # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
+      inlineScript: |
+        yarn vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix ${{ parameters.locationPrefix }} --locationPostfix ${{ parameters.locationPostfix }} --pipelineId $(pipelineId)  --clientName ${{ parameters.clientName }} --threshold '0.04' --cumThreshold '1'
+    condition: and(eq(variables.isPR, true), eq(variables['vrTestSkip'], 'no'))

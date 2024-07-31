@@ -8,7 +8,7 @@ import { createPresenceComponent } from './createPresenceComponent';
 const keyframes = [{ opacity: 0 }, { opacity: 1 }];
 const options = { duration: 500, fill: 'forwards' as const };
 
-const TestAtom = createPresenceComponent({
+const TestPresence = createPresenceComponent({
   enter: { keyframes, ...options },
   exit: { keyframes: keyframes.slice().reverse(), ...options },
 });
@@ -23,9 +23,9 @@ const TestComponent: React.FC<{ appear?: boolean; finish?: () => void }> = props
   return (
     <>
       <button onClick={() => setVisible(v => !v)}>Click me</button>
-      <TestAtom appear={appear} onMotionFinish={onMotionFinish} visible={visible} unmountOnExit>
+      <TestPresence appear={appear} onMotionFinish={onMotionFinish} visible={visible} unmountOnExit>
         <div>Hello</div>
-      </TestAtom>
+      </TestPresence>
     </>
   );
 };
@@ -37,7 +37,7 @@ const TestComponent: React.FC<{ appear?: boolean; finish?: () => void }> = props
 //
 // This test suite ensures that the component works correctly in tests using that environment.
 
-describe('createPresenceComponent', () => {
+describe('createPresenceComponent (jest)', () => {
   it('does not support .animate()', () => {
     expect(Element.prototype.animate).toBeUndefined();
   });

@@ -1,63 +1,7 @@
 import * as React from 'react';
 import type { AnimationHandle, AtomMotion } from '../types';
 
-// Heads up! "Element." is a side-effect for minifiers, should be kept as IIFE to avoid leaking after minification.
-const SUPPORTS_WEB_ANIMATIONS = /*@__PURE__*/ (() => typeof Element.prototype.animate === 'function')();
-
-/**
- * In test environments, this hook is used to delay the execution of a callback until the next render. This is necessary
- * to ensure that the callback is not executed synchronously, which would cause the test to fail.
- *
- * @see https://github.com/microsoft/fluentui/issues/31701
- */
-function useAnimateAtomsInTestEnvironment() {
-  const [count, setCount] = React.useState(0);
-  const callbackRef = React.useRef<() => void>();
-
-  React.useEffect(() => {
-    if (count > 0) {
-      callbackRef.current?.();
-    }
-  }, [count]);
-
-  return React.useCallback((): AnimationHandle => {
-    return {
-      setMotionEndCallbacks(onfinish: () => void) {
-        callbackRef.current = onfinish;
-        setCount(v => v + 1);
-      },
-
-      set playbackRate(rate: number) {
-        /* no-op */
-      },
-      cancel() {
-        /* no-op */
-      },
-      pause() {
-        /* no-op */
-      },
-      play() {
-        /* no-op */
-      },
-      finish() {
-        /* no-op */
-      },
-    };
-  }, []);
-}
-
-/**
- * @internal
- */
-export function useAnimateAtoms() {
-  'use no memo';
-
-  if (process.env.NODE_ENV === 'test' && !SUPPORTS_WEB_ANIMATIONS) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useAnimateAtomsInTestEnvironment();
-  }
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function useAnimateAtomsInSupportedEnvironment() {
   return React.useCallback(
     (
       element: HTMLElement,
@@ -131,4 +75,80 @@ export function useAnimateAtoms() {
     },
     [],
   );
+}
+
+/**
+ * In test environments, this hook is used to delay the execution of a callback until the next render. This is necessary
+ * to ensure that the callback is not executed synchronously, which would cause the test to fail.
+ *
+ * @see https://github.com/microsoft/fluentui/issues/31701
+ */
+function useAnimateAtomsInTestEnvironment() {
+  const [count, setCount] = React.useState(0);
+  const callbackRef = React.useRef<() => void>();
+
+  const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
+
+  React.useEffect(() => {
+    if (count > 0) {
+      callbackRef.current?.();
+    }
+  }, [count]);
+
+  return React.useCallback(
+    (
+      element: HTMLElement,
+      value: AtomMotion | AtomMotion[],
+      options: {
+        isReducedMotion: boolean;
+      },
+    ): AnimationHandle => {
+      const ELEMENT_SUPPORTS_WEB_ANIMATIONS = typeof element.animate === 'function';
+
+      // Heads up!
+      // If the environment supports Web Animations API, we can use the native implementation.
+      if (ELEMENT_SUPPORTS_WEB_ANIMATIONS) {
+        return realAnimateAtoms(element, value, options);
+      }
+
+      return {
+        setMotionEndCallbacks(onfinish: () => void) {
+          callbackRef.current = onfinish;
+          setCount(v => v + 1);
+        },
+
+        set playbackRate(rate: number) {
+          /* no-op */
+        },
+        cancel() {
+          /* no-op */
+        },
+        pause() {
+          /* no-op */
+        },
+        play() {
+          /* no-op */
+        },
+        finish() {
+          /* no-op */
+        },
+      };
+    },
+    [realAnimateAtoms],
+  );
+}
+
+/**
+ * @internal
+ */
+export function useAnimateAtoms() {
+  'use no memo';
+
+  if (process.env.NODE_ENV === 'test') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    return useAnimateAtomsInTestEnvironment();
+  }
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return useAnimateAtomsInSupportedEnvironment();
 }
