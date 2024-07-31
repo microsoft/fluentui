@@ -8,7 +8,7 @@ trigger: none
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - template: .devops/templates/variables.yml
 
@@ -30,7 +30,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
-          vrTestPackageName: '@fluentui/vr-tests-web-components'
+          vrTestPackageName: 'vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
           locationPrefix: 'FluentUI-web-components'
           locationPostfix: 'vrscreenshotwebcomponents'
@@ -52,7 +52,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
-          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackageName: 'vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
           locationPrefix: 'fluentuiv9'
           locationPostfix: 'vrscreenshotv9'
@@ -73,7 +73,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
-          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackageName: 'vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
           locationPrefix: 'fluentuiv8'
           locationPostfix: 'vrscreenshotv8'
@@ -95,7 +95,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
-          vrTestPackageName: '@fluentui/docs'
+          vrTestPackageName: 'docs'
           vrTestPackagePath: 'packages/fluentui/docs'
           locationPrefix: 'FluentUI-v0'
           locationPostfix: 'vrscreenshotv0'

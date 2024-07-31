@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 23 Jul 2024 07:32:52 GMT and should not be manually modified.
+This log was last generated on Wed, 31 Jul 2024 07:33:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.0)
+
+Wed, 31 Jul 2024 07:33:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.119.3..@fluentui/react_v8.120.0)
+
+### Minor changes
+
+- Expose onKeyDown handling for header cells through columns onColumnKeyDown ([PR #32005](https://github.com/microsoft/fluentui/pull/32005) by destinywu@microsoft.com)
 
 ## [8.119.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.119.3)
 

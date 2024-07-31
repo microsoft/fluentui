@@ -4,12 +4,11 @@ import {
   CarouselButton,
   CarouselCard,
   CarouselNav,
-  CarouselNavImageButton,
+  CarouselNavButton,
   CarouselSlider,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
-const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 const useClasses = makeStyles({
   test: {
     ...typographyStyles.largeTitle,
@@ -64,7 +63,7 @@ export const Default = () => (
       }}
     >
       <CarouselButton navType="prev" />
-      <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
+      <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
       <CarouselButton navType="next" />
     </div>
   </Carousel>

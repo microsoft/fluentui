@@ -41,7 +41,6 @@ Add new env variables as needed
 // ↓↓↓
 interface ExtendedProcessEnv {
   NODE_ENV?: 'production' | 'development' | 'test';
-  LAGE_PACKAGE_NAME?: string;
   CI?: string;
   TF_BUILD?: string;
 + NX_ENV?: string
