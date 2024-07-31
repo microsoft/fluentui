@@ -23,13 +23,11 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  console.log('Re-rendering');
   const [totalSlides, setTotalSlides] = React.useState(0);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
-      console.log('Set total slides:', data.navItemsCount);
       setTotalSlides(data.navItemsCount);
     });
   }, [subscribeForValues]);
