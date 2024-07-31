@@ -7,7 +7,7 @@ trigger:
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - template: .devops/templates/variables.yml
 
@@ -25,7 +25,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage bundle-size --verbose $(sinceArg)
+          yarn nx affected -t bundle-size --nxBail $(sinceArg)
         displayName: build packages & create reports
 
       - script: |
