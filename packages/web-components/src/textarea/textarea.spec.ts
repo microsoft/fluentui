@@ -12,9 +12,9 @@ test.describe('TextArea', () => {
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
-    element = page.locator('fluent-textarea');
     root = page.locator('#root');
-    control = root.locator('textarea');
+    element = root.locator('fluent-textarea');
+    control = element.locator('textarea');
 
     await page.goto(fixtureURL('components-textarea--text-area'));
   });
@@ -68,6 +68,51 @@ test.describe('TextArea', () => {
     await expect(control).toHaveJSProperty('maxLength', 100);
     await expect(control).toHaveJSProperty('minLength', 10);
     await expect(control).toHaveJSProperty('placeholder', 'Placeholder');
+  });
+
+  test('should be associated with the given labels', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <label for="textarea" data-testid="label1">Text area</label>
+        <fluent-textarea id="textarea"></fluent-textarea>
+        <label for="textarea" data-testid="label2">Text area</lable>
+      `;
+    });
+
+    const label1El = await root.getByTestId('label1').evaluate(node => node);
+    const label2El = await root.getByTestId('label2').evaluate(node => node);
+    const labelsValue = await element.evaluate((el: TextArea) => Array.from(el.labels));
+
+    expect(labelsValue).toStrictEqual([label1El, label2El]);
+  });
+
+  test('should be focused when associated label is clicked', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <label for="textarea">Text area</label>
+        <fluent-textarea id="textarea"></fluent-textarea>
+      `;
+    });
+
+    const label = root.locator('label');
+
+    await label.click();
+
+    await expect(control).toBeFocused();
+  });
+
+  test('should have the contrl focused when `focus()` is called', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-textarea id="textarea"></fluent-textarea>
+      `;
+    });
+
+    await element.evaluate((el: TextArea) => {
+      el.focus();
+    });
+
+    await expect(control).toBeFocused();
   });
 
   test.describe('visual styles', () => {
@@ -655,7 +700,7 @@ test.describe('TextArea', () => {
         `;
       });
 
-      const fieldset = page.locator('fieldset');
+      const fieldset = root.locator('fieldset');
 
       await fieldset.evaluate((node: HTMLFieldSetElement) => {
         node.disabled = true;
@@ -683,7 +728,7 @@ test.describe('TextArea', () => {
       let reset: Locator;
 
       test.beforeEach(async () => {
-        form = page.locator('form');
+        form = root.locator('form');
         reset = form.locator('button[type=reset]');
       });
 
@@ -762,7 +807,7 @@ test.describe('TextArea', () => {
 
       let formData;
 
-      const form = page.locator('form');
+      const form = root.locator('form');
       formData = await form.evaluate((node: HTMLFormElement) => {
         return Array.from(new FormData(node).entries());
       });
