@@ -9,6 +9,7 @@
     "jsx": "react",
     "noUnusedLocals": true,
     "preserveConstEnums": true,
+    "experimentalDecorators": true,
     "skipLibCheck": true
   },
   "include": [],

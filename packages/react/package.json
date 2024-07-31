@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.119.3",
+  "version": "8.120.0",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,7 +21,7 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/executors/src/local-codepen.js",
-    "e2e": "yarn lage e2e --to @fluentui/react-examples --verbose",
+    "e2e": "yarn nx run react-examples:e2e --verbose",
     "e2e:local": "yarn workspace @fluentui/react-examples e2e:local",
     "just": "just-scripts",
     "lint": "just-scripts lint",

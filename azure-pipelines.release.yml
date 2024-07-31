@@ -102,22 +102,16 @@ extends:
                 displayName: Generate version files
 
               - script: |
-                  yarn run:published build --production
-                displayName: yarn build
-
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
-              - script: |
-                  yarn run:published test --only
-                displayName: yarn [test]
+                  yarn nx run-many -t build bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail --production
+                displayName: build,bundle
 
               - script: |
-                  yarn run:published lint --only
-                displayName: yarn lint
+                  yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: test
 
               - script: |
-                  yarn run:published bundle --only --production
-                displayName: yarn bundle
+                  yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: lint
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'

@@ -21,9 +21,9 @@ jobs:
         displayName: yarn
 
       - script: |
-          NorthstarAffected=$(yarn --silent check:affected --package @fluentui/react-northstar)
-          V8Affected=$(yarn --silent check:affected --package @fluentui/react)
-          ReactComponentsAffected=$(yarn --silent check:affected --package @fluentui/react-components)
+          NorthstarAffected=$(yarn --silent check:affected --project react-northstar)
+          V8Affected=$(yarn --silent check:affected --project react)
+          ReactComponentsAffected=$(yarn --silent check:affected --project react-components)
           if [[ $NorthstarAffected == true ]]; then
             echo "##vso[task.setvariable variable=NorthstarPackageAffected;isOutput=true]true"
           fi
@@ -51,12 +51,12 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage test-perf --to perf-test-northstar --base --verbose
+          yarn nx run perf-test-northstar:test-perf --base
         condition: eq(variables.isPR, false)
         displayName: Run Perf Test Base (Northstar)
 
       - script: |
-          yarn lage test-perf --to perf-test-northstar --verbose
+          yarn nx run perf-test-northstar:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test (Northstar)
 
@@ -120,7 +120,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage test-perf --to perf-test --verbose
+          yarn nx run perf-test:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 
@@ -166,7 +166,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn lage test-perf --to @fluentui/perf-test-react-components --verbose
+          yarn nx run perf-test-react-components:test-perf
         condition: eq(variables.isPR, true)
         displayName: Run Perf Test
 

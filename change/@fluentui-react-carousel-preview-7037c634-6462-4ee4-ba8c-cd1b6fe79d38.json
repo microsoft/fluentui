@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Button styles on hover/active state",
+  "packageName": "@fluentui/react-carousel-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
