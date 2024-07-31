@@ -1,5 +1,5 @@
-const path = require('path');
-const { spawnSync } = require('child_process');
+const { spawnSync } = require('node:child_process');
+const { basename } = require('node:path');
 
 const npmPath = process.env.npm_execpath;
 const COMMAND_PREFIX = `\x1B[36m>\x1B[39m \x1B[7m\x1B[1m\x1B[36m PACKAGE MANAGER CHECKER \x1B[39m\x1B[22m\x1B[27m`;
@@ -13,9 +13,7 @@ const Strings = {
 `,
 };
 
-main();
-
-function main() {
+function checkPackageManager() {
   console.log(COMMAND_PREFIX);
   console.log(`⌛️ checking existing package manager`);
 
@@ -31,7 +29,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`✅ package manager Yarn found v.${yarnInfo.version} \n`);
+  console.log(`✅ package manager found - yarn v.${yarnInfo.version} \n`);
 }
 
 function userInvokedNpmInstall() {
@@ -39,10 +37,12 @@ function userInvokedNpmInstall() {
     return false;
   }
 
-  return path.basename(npmPath).includes('npm');
+  return basename(npmPath).includes('npm');
 }
 
 function detectYarnInstallation() {
   const yarnResult = spawnSync('yarn', ['--version'], { shell: true }); // Need to execute this in a shell for Windows:  https://nodejs.org/api/child_process.html#spawning-bat-and-cmd-files-on-windows
   return { exists: yarnResult.status === 0, version: yarnResult.stdout };
 }
+
+exports.checkPackageManager = checkPackageManager;

@@ -32,7 +32,7 @@
     "lint": "nx run-many -t lint --verbose",
     "lint:log": "FORCE_COLOR=0 yarn lint > lint.log 2>&1",
     "postinstall": "node ./scripts/package-manager/src/postinstall.js",
-    "preinstall": "node ./scripts/package-manager/src/use-yarn-please.js",
+    "preinstall": "node ./scripts/package-manager/src/preinstall.js",
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "rebuild": "node ./scripts/executors/src/invalidate-just-cache.js && yarn build --reset-cache",
     "northstar:release": "northstar-release",
