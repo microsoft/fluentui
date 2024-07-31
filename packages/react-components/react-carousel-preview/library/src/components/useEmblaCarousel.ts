@@ -84,22 +84,23 @@ export function useEmblaCarousel(
       }
     };
     const handleVisibilityChange = () => {
-      // const cardElements = emblaApi.current?.slideNodes();
-      // const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
-      // cardElements?.forEach((cardElement, index) => {
-      //   cardElement.dispatchEvent(
-      //     new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
-      //       bubbles: false,
-      //       detail: { isVisible: visibleIndexes.includes(index) },
-      //     }),
-      //   );
-      // });
+      const cardElements = emblaApi.current?.slideNodes();
+      const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
+
+      cardElements?.forEach((cardElement, index) => {
+        cardElement.dispatchEvent(
+          new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
+            bubbles: false,
+            detail: { isVisible: visibleIndexes.includes(index) },
+          }),
+        );
+      });
     };
 
     return {
       set current(newElement: HTMLDivElement | null) {
         if (currentElement) {
-          // emblaApi.current?.off('slidesInView', handleVisibilityChange);
+          emblaApi.current?.off('slidesInView', handleVisibilityChange);
           emblaApi.current?.off('select', handleIndexChange);
           emblaApi.current?.off('reInit', handleReinit);
           emblaApi.current?.destroy();
@@ -117,7 +118,7 @@ export function useEmblaCarousel(
           );
 
           emblaApi.current?.on('reInit', handleReinit);
-          // emblaApi.current?.on('slidesInView', handleVisibilityChange);
+          emblaApi.current?.on('slidesInView', handleVisibilityChange);
           emblaApi.current?.on('select', handleIndexChange);
         }
       },
