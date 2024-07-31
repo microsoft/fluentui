@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { expectToHaveState, fixtureURL } from '../helpers.tests.js';
-import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js'; 
+import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
 
 test.describe('TextArea', () => {
@@ -30,7 +30,18 @@ test.describe('TextArea', () => {
         <fluent-textarea></fluent-textarea>
       `;
     });
+
     await expect(element).toHaveJSProperty('elementInternals.role', 'presentation');
+  });
+
+  test("should always return 'textarea' for the `type` prop", async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-textarea></fluent-textarea>
+      `;
+    });
+
+    await expect(element).toHaveJSProperty('type', 'textarea');
   });
 
   test('should pass down attributes to the internal control', async () => {
@@ -238,14 +249,12 @@ test.describe('TextArea', () => {
       await expectToHaveState(element, 'user-valid', false);
       await expectToHaveState(element, 'user-invalid', false);
 
-      await element.focus();
-      await element.press('a');
+      await control.fill('a');
       await element.blur();
 
       await expectToHaveState(element, 'user-valid', true);
       await expectToHaveState(element, 'user-invalid', false);
 
-      await element.focus();
       await element.press('Backspace');
       await element.blur();
 
@@ -254,8 +263,8 @@ test.describe('TextArea', () => {
     });
   });
 
-  test.describe('default value', () => {
-    test('should have default value as empty string if no children', async () => {
+  test.describe('`value` and `defaultValue` props', () => {
+    test('should have `defaultValue` as empty string if no children', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea></fluent-textarea>
@@ -266,7 +275,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', '');
     });
 
-    test('should have default value as its inner text if has text content', async () => {
+    test('should have `defaultValue` as its inner text if has text content', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea>
@@ -279,7 +288,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should have default value as its inner HTML if has HTML content', async () => {
+    test('should have `defaultValue` as its inner HTML if has HTML content', async () => {
       await root.evaluate(node => {
         node.innerHTML = [
           '<fluent-textarea>',
@@ -294,7 +303,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', expectedValue);
     });
 
-    test('should have default value as set to defaultValue prop', async () => {
+    test('should have `defaultValue` as set to `defaultValue` prop', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea></fluent-textarea>
@@ -309,7 +318,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should not have default value as set to value prop', async () => {
+    test('should not have `defaultValue` as set to `value` prop', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea></fluent-textarea>
@@ -324,7 +333,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some text');
     });
 
-    test('should have default value as set to innerText', async () => {
+    test('should have `defaultValue` as set to `innerText`', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea></fluent-textarea>
@@ -339,7 +348,7 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some<br>text');
     });
 
-    test('should have default value as set to textContent', async () => {
+    test('should have `defaultValue` as set to `textContent`', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
           <fluent-textarea></fluent-textarea>
@@ -354,8 +363,8 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('value', 'some\ntext');
     });
 
-    test('should have default value as set to the defaultValue prop before connected', async () => {
-      await root.evaluate(async (node) => {
+    test('should have `defaultValue` as set to the `defaultValue` prop before connected', async () => {
+      await root.evaluate(async node => {
         node.innerHTML = '';
 
         const textarea = document.createElement('fluent-textarea') as TextArea;
@@ -366,5 +375,96 @@ test.describe('TextArea', () => {
       await expect(element).toHaveJSProperty('defaultValue', 'some text');
       await expect(element).toHaveJSProperty('value', 'some text');
     });
+
+    test('should set `value` before connected', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = '';
+
+        const textarea = document.createElement('fluent-textarea') as TextArea;
+        textarea.value = 'some text';
+        node.append(textarea);
+      });
+
+      await expect(element).toHaveJSProperty('defaultValue', '');
+      await expect(element).toHaveJSProperty('value', 'some text');
+      await expect(control).toHaveValue('some text');
+    });
+
+    // This behavior is consistent with the built-in `<textarea>` element
+    test('should only downstream to the `value` prop before user interaction', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea>1</fluent-textarea>
+        `;
+      });
+
+      await element.evaluate((el: TextArea) => {
+        el.defaultValue = '2';
+      });
+
+      await expect(element).toHaveJSProperty('value', '2');
+      await expect(element).toHaveJSProperty('defaultValue', '2');
+
+      await control.fill('3');
+
+      await expect(element).toHaveJSProperty('value', '3');
+      await expect(element).toHaveJSProperty('defaultValue', '2');
+
+      await element.evaluate((el: TextArea) => {
+        el.defaultValue = '4';
+      });
+
+      await expect(element).toHaveJSProperty('value', '3');
+      await expect(element).toHaveJSProperty('defaultValue', '4');
+
+      await element.evaluate((el: TextArea) => {
+        el.value = '5';
+      });
+
+      await expect(element).toHaveJSProperty('value', '5');
+      await expect(element).toHaveJSProperty('defaultValue', '4');
+    });
+
+    test('should never be upstreamed by the `value` prop', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea>1</fluent-textarea>
+        `;
+      });
+
+      await element.evaluate((el: TextArea) => {
+        el.value = '2';
+      });
+
+      await expect(element).toHaveJSProperty('value', '2');
+      await expect(element).toHaveJSProperty('defaultValue', '1');
+    });
+
+    test('should return the text length of the value with `textLength` prop', async () => {
+      await root.evaluate(node => {
+        node.innerHTML = /* html */ `
+          <fluent-textarea></fluent-textarea>
+        `;
+      });
+
+      await control.fill('123456\n7890 ');
+
+      await expect(element).toHaveJSProperty('textLength', 12);
+    });
+  });
+
+  test.describe('validity and validation message', () => {
+    // min max required disabled change
+  });
+
+  test.describe('with form', () => {
+    // form disabled
+    // form reset
+    // form data
+  });
+
+  test.describe('events', () => {
+    // select
+    // change
   });
 });

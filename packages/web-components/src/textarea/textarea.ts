@@ -46,11 +46,13 @@ export class TextArea extends FASTElement {
    */
   public autoSizerEl?: HTMLDivElement;
 
+  private userInteracted = false;
+
   private autoSizerObserver?: ResizeObserver;
 
   private lightDOMObserver!: MutationObserver;
 
-  private preConnectTextareaEl: HTMLTextAreaElement | null = document.createElement('textarea');
+  private preConnectControlEl: HTMLTextAreaElement | null = document.createElement('textarea');
 
   /**
    * Indicates the visual appearance of the element.
@@ -361,16 +363,14 @@ export class TextArea extends FASTElement {
    * component will not change the default value or the content displayed inside the component.
    */
   public get defaultValue(): string {
-    return this.$fastController.isConnected ?
-        this.controlEl.defaultValue :
-        this.preConnectTextareaEl!.defaultValue;
+    return this.controlEl?.defaultValue ?? this.preConnectControlEl!.defaultValue;
   }
 
   public set defaultValue(next: string) {
-    if (!this.$fastController.isConnected) {
-      this.preConnectTextareaEl!.defaultValue = next;
-    } else {
-      this.controlEl.defaultValue = next;
+    const controlEl = this.controlEl ?? this.preConnectControlEl;
+    controlEl.defaultValue = next;
+    if (this.controlEl && !this.userInteracted) {
+      this.controlEl.value = next;
     }
   }
 
@@ -382,16 +382,12 @@ export class TextArea extends FASTElement {
    * Reflects the `value` property.
    */
   public get value(): string {
-    return this.$fastController.isConnected ? this.controlEl.value : this.defaultValue;
+    return this.controlEl?.value ?? this.preConnectControlEl!.value;
   }
 
   public set value(next: string) {
-    if (!this.$fastController.isConnected) {
-      this.preConnectTextareaEl!.defaultValue = next;
-      return;
-    }
-
-    this.controlEl.value = next;
+    const controlEl = this.controlEl ?? this.preConnectControlEl;
+    controlEl.value = next;
     this.setFormValue(next);
     this.setValidity();
   }
@@ -429,6 +425,7 @@ export class TextArea extends FASTElement {
     this.maybeDisplayShadow();
     this.maybeCreateAutoSizerEl();
 
+    this.bindEvents();
     this.observeLightDOM();
 
     Observable.getNotifier(this).subscribe(this, 'appearance');
@@ -521,11 +518,7 @@ export class TextArea extends FASTElement {
    *
    * @internal
    */
-  public setValidity(
-    flags: Partial<ValidityState> = this.controlEl.validity,
-    message: string = this.validationMessage,
-    anchor: HTMLElement = this.controlEl,
-  ): void {
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
     if (!this.$fastController.isConnected) {
       return;
     }
@@ -535,7 +528,11 @@ export class TextArea extends FASTElement {
       return;
     }
 
-    this.elementInternals.setValidity(flags, message, anchor);
+    this.elementInternals.setValidity(
+      flags ?? this.controlEl.validity,
+      message ?? this.validationMessage,
+      anchor ?? this.controlEl,
+    );
   }
 
   /**
@@ -548,12 +545,23 @@ export class TextArea extends FASTElement {
   }
 
   private setDefaultValue() {
-    this.defaultValue = this.innerHTML.trim() || this.preConnectTextareaEl!.defaultValue || '';
+    this.defaultValue = this.innerHTML.trim() || this.preConnectControlEl!.defaultValue || '';
+    this.value = this.preConnectControlEl!.value || this.defaultValue;
 
-    this.setFormValue(this.defaultValue);
+    this.setFormValue(this.value);
     this.setValidity();
 
-    this.preConnectTextareaEl = null;
+    this.preConnectControlEl = null;
+  }
+
+  private bindEvents() {
+    this.controlEl.addEventListener(
+      'input',
+      () => {
+        this.userInteracted = true;
+      },
+      { once: true },
+    );
   }
 
   private observeLightDOM() {
@@ -569,6 +577,15 @@ export class TextArea extends FASTElement {
 
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
+    this.setValidity();
+  }
+
+  private maybeDisplayShadow() {
+    toggleState(
+      this.elementInternals,
+      'display-shadow',
+      this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
+    );
   }
 
   // Technique inspired by https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
@@ -607,14 +624,6 @@ export class TextArea extends FASTElement {
       });
     }
     this.autoSizerObserver.observe(this);
-  }
-
-  private maybeDisplayShadow() {
-    toggleState(
-      this.elementInternals,
-      'display-shadow',
-      this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
-    );
   }
 
   /**
