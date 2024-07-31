@@ -545,6 +545,77 @@ export class BaseSpinner extends FASTElement {
 }
 
 // @public
+export class BaseTextArea extends FASTElement {
+    constructor();
+    autocomplete?: TextAreaAutocomplete;
+    autoResize: boolean;
+    // (undocumented)
+    protected autoResizeChanged(): void;
+    // @internal (undocumented)
+    autoSizerEl?: HTMLDivElement;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal
+    controlEl: HTMLTextAreaElement;
+    get defaultValue(): string;
+    set defaultValue(next: string);
+    dirName?: string;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // @internal (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // @internal (undocumented)
+    handleControlChange(): void;
+    // @internal (undocumented)
+    handleControlInput(): void;
+    // @internal (undocumented)
+    handleControlSelect(): void;
+    initialForm?: string;
+    get labels(): NodeList;
+    maxLength?: number;
+    minLength?: number;
+    name: string;
+    placeholder?: string;
+    readOnly: boolean;
+    // (undocumented)
+    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    protected requiredChanged(): void;
+    resize: TextAreaResize;
+    // (undocumented)
+    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    select(): void;
+    setCustomValidity(message: string | null): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    spellcheck: boolean;
+    get textLength(): number;
+    get type(): 'textarea';
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(next: string);
+    get willValidate(): boolean;
+}
+
+// @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
@@ -3435,83 +3506,25 @@ export const TextAlign: {
 // @public
 export type TextAlign = ValuesOf<typeof TextAlign>;
 
-// @public
-export class TextArea extends FASTElement {
-    constructor();
+// Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TextArea extends BaseTextArea {
     appearance: TextAreaAppearance;
     // (undocumented)
     protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
-    autocomplete?: TextAreaAutocomplete;
-    autoResize: boolean;
-    // (undocumented)
-    protected autoResizeChanged(): void;
     block: boolean;
     // (undocumented)
     protected blockChanged(): void;
-    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
-    dirName?: string;
-    disabled: boolean;
-    // (undocumented)
-    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
-    // @internal
-    elementInternals: ElementInternals;
-    get form(): HTMLFormElement | null;
-    static readonly formAssociated = true;
     // @internal (undocumented)
-    formDisabledCallback(disabled: boolean): void;
-    // @internal
-    formResetCallback(): void;
-    // (undocumented)
-    handleChange(_: any, propertyName: string): void;
-    // @internal (undocumented)
-    handleTextboxBlur(): void;
-    // @internal (undocumented)
-    handleTextboxFocus(): void;
-    initialForm?: string;
-    get labels(): NodeList;
-    maxLength?: number;
-    minLength?: number;
-    name: string;
-    placeholder?: string;
-    // (undocumented)
-    protected placeholderChanged(): void;
-    // @internal
-    placeholderContainer: HTMLDivElement;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
-    reportValidity(): boolean;
-    required: boolean;
-    // (undocumented)
-    protected requiredChanged(): void;
-    resize: TextAreaResize;
-    // (undocumented)
-    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
-    select(): void;
-    setCustomValidity(message: string | undefined): void;
-    // @internal
-    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
-    // @internal
-    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    handleChange(source: any, propertyName: string): void;
     size?: TextAreaSize;
     // (undocumented)
     protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
-    // @internal (undocumented)
-    sizeStyles: string;
-    spellcheck: boolean;
-    // @internal
-    textbox: HTMLDivElement;
-    get type(): 'textarea';
-    get validationMessage(): string;
-    get validity(): ValidityState;
-    get value(): string;
-    set value(next: string);
-    get willValidate(): boolean;
 }
 
 // Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)

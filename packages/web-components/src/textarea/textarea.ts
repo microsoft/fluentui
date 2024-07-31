@@ -1,6 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { BaseTextInput } from '../text-input/text-input.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
@@ -595,13 +594,7 @@ export class BaseTextArea extends FASTElement {
 
   // TODO: Figure if there’s a better way to do this
   private async waitUntilAttrChangedOnControl(attr: string) {
-    const validAttrs = [
-      'disabled',
-      'required',
-      'readonly',
-      'minlength',
-      'maxlength',
-    ];
+    const validAttrs = ['disabled', 'required', 'readonly', 'minlength', 'maxlength'];
 
     if (!validAttrs.includes(attr.toLowerCase()) || !this.controlEl) {
       return;

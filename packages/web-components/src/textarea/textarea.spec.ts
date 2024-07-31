@@ -1,6 +1,6 @@
-import { expect, test } from '@playwright/test';
+import { test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
-import { expectToHaveState, fixtureURL } from '../helpers.tests.js';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
 
@@ -123,11 +123,11 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'outline');
-      await expectToHaveState(element, 'auto-resize', false);
-      await expectToHaveState(element, 'block', false);
-      await expectToHaveState(element, 'display-shadow', false);
-      await expectToHaveState(element, 'resize', false);
+      await expect(element).toHaveCustomState('outline');
+      await expect(element).toHaveCustomState('auto-resize', false);
+      await expect(element).toHaveCustomState('block', false);
+      await expect(element).toHaveCustomState('display-shadow', false);
+      await expect(element).toHaveCustomState('resize', false);
     });
 
     test('should toggle appearance states', async () => {
@@ -137,25 +137,25 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'filled-darker');
-      await expectToHaveState(element, 'filled-lighter', false);
-      await expectToHaveState(element, 'outline', false);
+      await expect(element).toHaveCustomState('filled-darker');
+      await expect(element).toHaveCustomState('filled-lighter', false);
+      await expect(element).toHaveCustomState('outline', false);
 
       await element.evaluate((node: TextArea) => {
         node.appearance = 'filled-lighter';
       });
 
-      await expectToHaveState(element, 'filled-lighter');
-      await expectToHaveState(element, 'filled-darker', false);
-      await expectToHaveState(element, 'outline', false);
+      await expect(element).toHaveCustomState('filled-lighter');
+      await expect(element).toHaveCustomState('filled-darker', false);
+      await expect(element).toHaveCustomState('outline', false);
 
       await element.evaluate((node: TextArea) => {
         node.removeAttribute('appearance');
       });
 
-      await expectToHaveState(element, 'outline');
-      await expectToHaveState(element, 'filled-lighter', false);
-      await expectToHaveState(element, 'filled-darker', false);
+      await expect(element).toHaveCustomState('outline');
+      await expect(element).toHaveCustomState('filled-lighter', false);
+      await expect(element).toHaveCustomState('filled-darker', false);
     });
 
     test('should toggle auto-resize state', async () => {
@@ -165,13 +165,13 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'auto-resize');
+      await expect(element).toHaveCustomState('auto-resize');
 
       await element.evaluate((node: TextArea) => {
         node.autoResize = false;
       });
 
-      await expectToHaveState(element, 'auto-resize', false);
+      await expect(element).toHaveCustomState('auto-resize', false);
     });
 
     test('should toggle block state', async () => {
@@ -181,13 +181,13 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'block');
+      await expect(element).toHaveCustomState('block');
 
       await element.evaluate((node: TextArea) => {
         node.block = false;
       });
 
-      await expectToHaveState(element, 'block', false);
+      await expect(element).toHaveCustomState('block', false);
     });
 
     test('should toggle display-shadow state', async () => {
@@ -198,26 +198,26 @@ test.describe('TextArea', () => {
       });
 
       // Expecting `false` because the default appearance, outline, shouldn’t have shadow
-      await expectToHaveState(element, 'display-shadow', false);
+      await expect(element).toHaveCustomState('display-shadow', false);
 
       await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
         el.appearance = apperance;
       }, TextAreaAppearance.filledDarker);
 
-      await expectToHaveState(element, 'display-shadow');
+      await expect(element).toHaveCustomState('display-shadow');
 
       await element.evaluate((el: TextArea) => {
         el.displayShadow = false;
       });
 
-      await expectToHaveState(element, 'display-shadow', false);
+      await expect(element).toHaveCustomState('display-shadow', false);
 
       await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
         el.displayShadow = true;
         el.appearance = apperance;
       }, TextAreaAppearance.filledLighter);
 
-      await expectToHaveState(element, 'display-shadow');
+      await expect(element).toHaveCustomState('display-shadow');
     });
 
     test('should toggle resize states', async () => {
@@ -227,36 +227,36 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'resize');
-      await expectToHaveState(element, 'resize-both');
-      await expectToHaveState(element, 'resize-vertical', false);
-      await expectToHaveState(element, 'resize-horizontal', false);
+      await expect(element).toHaveCustomState('resize');
+      await expect(element).toHaveCustomState('resize-both');
+      await expect(element).toHaveCustomState('resize-vertical', false);
+      await expect(element).toHaveCustomState('resize-horizontal', false);
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
       }, TextAreaResize.horizontal);
 
-      await expectToHaveState(element, 'resize');
-      await expectToHaveState(element, 'resize-horizontal');
-      await expectToHaveState(element, 'resize-vertical', false);
-      await expectToHaveState(element, 'resize-both', false);
+      await expect(element).toHaveCustomState('resize');
+      await expect(element).toHaveCustomState('resize-horizontal');
+      await expect(element).toHaveCustomState('resize-vertical', false);
+      await expect(element).toHaveCustomState('resize-both', false);
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
       }, TextAreaResize.vertical);
 
-      await expectToHaveState(element, 'resize');
-      await expectToHaveState(element, 'resize-vertical');
-      await expectToHaveState(element, 'resize-horizontal', false);
-      await expectToHaveState(element, 'resize-both', false);
+      await expect(element).toHaveCustomState('resize');
+      await expect(element).toHaveCustomState('resize-vertical');
+      await expect(element).toHaveCustomState('resize-horizontal', false);
+      await expect(element).toHaveCustomState('resize-both', false);
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
       }, TextAreaResize.none);
 
-      await expectToHaveState(element, 'resize', false);
-      await expectToHaveState(element, 'resize-horizontal', false);
-      await expectToHaveState(element, 'resize-vertical', false);
+      await expect(element).toHaveCustomState('resize', false);
+      await expect(element).toHaveCustomState('resize-horizontal', false);
+      await expect(element).toHaveCustomState('resize-vertical', false);
     });
 
     test('should toggle size states', async () => {
@@ -266,22 +266,22 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'small');
-      await expectToHaveState(element, 'large', false);
+      await expect(element).toHaveCustomState('small');
+      await expect(element).toHaveCustomState('large', false);
 
       await element.evaluate((node: TextArea, size: TextAreaSize) => {
         node.size = size;
       }, TextAreaSize.large);
 
-      await expectToHaveState(element, 'large');
-      await expectToHaveState(element, 'small', false);
+      await expect(element).toHaveCustomState('large');
+      await expect(element).toHaveCustomState('small', false);
 
       await element.evaluate((node: TextArea) => {
         node.removeAttribute('size');
       });
 
-      await expectToHaveState(element, 'small', false);
-      await expectToHaveState(element, 'large', false);
+      await expect(element).toHaveCustomState('small', false);
+      await expect(element).toHaveCustomState('large', false);
     });
 
     test('should toggle user-invalid state', async () => {
@@ -291,20 +291,20 @@ test.describe('TextArea', () => {
         `;
       });
 
-      await expectToHaveState(element, 'user-valid', false);
-      await expectToHaveState(element, 'user-invalid', false);
+      await expect(element).toHaveCustomState('user-valid', false);
+      await expect(element).toHaveCustomState('user-invalid', false);
 
       await control.fill('a');
       await element.blur();
 
-      await expectToHaveState(element, 'user-valid', true);
-      await expectToHaveState(element, 'user-invalid', false);
+      await expect(element).toHaveCustomState('user-valid', true);
+      await expect(element).toHaveCustomState('user-invalid', false);
 
       await element.press('Backspace');
       await element.blur();
 
-      await expectToHaveState(element, 'user-valid', false);
-      await expectToHaveState(element, 'user-invalid', true);
+      await expect(element).toHaveCustomState('user-valid', false);
+      await expect(element).toHaveCustomState('user-invalid', true);
     });
   });
 
@@ -642,8 +642,8 @@ test.describe('TextArea', () => {
       });
 
       await expect(element).toHaveJSProperty(
-        'validationMessage', 
-        'Please lengthen this text to 6 characters or more (you are currently using 5 characters).'
+        'validationMessage',
+        'Please lengthen this text to 6 characters or more (you are currently using 5 characters).',
       );
 
       await element.press('6');
@@ -657,8 +657,8 @@ test.describe('TextArea', () => {
       });
 
       await expect(element).toHaveJSProperty(
-        'validationMessage', 
-        'Please shorten this text to 7 characters or less (you are currently using 8 characters).'
+        'validationMessage',
+        'Please shorten this text to 7 characters or less (you are currently using 8 characters).',
       );
 
       await element.evaluate((el: TextArea) => {
@@ -835,7 +835,7 @@ test.describe('TextArea', () => {
     test('should emit when text is selected', async () => {
       const [wasSelected] = await Promise.all([
         element.evaluate(
-          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true }))
+          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true })),
         ),
         control.selectText(),
       ]);
@@ -846,7 +846,7 @@ test.describe('TextArea', () => {
     test('should emit when `select()` is called', async () => {
       const [wasSelected] = await Promise.all([
         element.evaluate(
-          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true }))
+          el => new Promise(resolve => el.addEventListener('select', () => resolve(true), { once: true })),
         ),
         element.evaluate((el: TextArea) => {
           el.select();
@@ -869,7 +869,7 @@ test.describe('TextArea', () => {
     test('should emit if value changed before blur', async () => {
       const [wasChanged] = await Promise.all([
         element.evaluate(
-          el => new Promise(resolve => el.addEventListener('change', () => resolve(true), { once: true }))
+          el => new Promise(resolve => el.addEventListener('change', () => resolve(true), { once: true })),
         ),
         (async () => {
           await element.press('0');
@@ -890,10 +890,14 @@ test.describe('TextArea', () => {
               resolve(false);
             }, 1000);
 
-            el.addEventListener('change', () => {
-              clearTimeout(timeout);
-              resolve(true);
-            }, { once: true });
+            el.addEventListener(
+              'change',
+              () => {
+                clearTimeout(timeout);
+                resolve(true);
+              },
+              { once: true },
+            );
           });
         }),
         (async () => {
