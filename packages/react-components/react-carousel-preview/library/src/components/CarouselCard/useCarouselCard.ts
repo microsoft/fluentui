@@ -11,6 +11,7 @@ import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
 import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render CarouselCard.
@@ -28,6 +29,8 @@ export const useCarouselCard_unstable = (
 ): CarouselCardState => {
   const elementRef = React.useRef<HTMLDivElement>(null);
   const selectPageByFocus = useCarouselContext(ctx => ctx.selectPageByFocus);
+
+  const groupperAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -70,6 +73,7 @@ export const useCarouselCard_unstable = (
         role: 'presentation',
         ...props,
         onFocus: _onFocus,
+        ...groupperAttr,
       }),
       { elementType: 'div' },
     ),
