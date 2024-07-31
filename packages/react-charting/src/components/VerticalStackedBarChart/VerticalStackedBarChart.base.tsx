@@ -51,6 +51,7 @@ import {
   domainRangeOfXStringAxis,
   createStringYAxis,
   formatDate,
+  getNextGradient,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -583,11 +584,18 @@ export class VerticalStackedBarChartBase extends React.Component<
     }
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
-    const { allowHoverOnLegend = true } = this.props;
+    const { allowHoverOnLegend = true, theme } = this.props;
 
     data.forEach((singleChartData: IVerticalStackedChartProps) => {
       singleChartData.chartData.forEach((point: IVSChartDataPoint) => {
-        const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        if (this.props.enableGradient) {
+          const pointIndex = Math.max(
+            singleChartData.chartData?.findIndex((item) => item.legend === point.legend) || 0, 0
+          );
+          color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
+        }
+
         const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
           return;
@@ -851,8 +859,14 @@ export class VerticalStackedBarChartBase extends React.Component<
       }
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
-        const color = point.color ? point.color : this._colors[index];
-        const color2 = singleChartData.chartData[index + 1]?.color ?? color;
+        let color = point.color ? point.color : this._colors[index];
+        let color2 = color;
+
+        if (this.props.enableGradient) {
+          color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+          color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+          singleChartData.chartData[index].color = color;
+        }
 
         const ref: IRefArrayData = {};
 
@@ -889,7 +903,6 @@ export class VerticalStackedBarChartBase extends React.Component<
                 <defs>
                   <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
                     <stop offset="0" stopColor={color} />
-                    <stop offset="50%" stopColor={color} />
                     <stop offset="100%" stopColor={color2} />
                   </linearGradient>
                 </defs>
@@ -906,7 +919,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                   z
                 `}
                 fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
-                rx={this.props.roundCorners ? this._barWidth / 2 : 0}
+                rx={this.props.roundCorners ? 3 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
                 {...rectFocusProps}
@@ -919,11 +932,10 @@ export class VerticalStackedBarChartBase extends React.Component<
         }
         return (
           <React.Fragment key={index + indexNumber}>
-             {this.props.enableGradient && (
+            {this.props.enableGradient && (
               <defs>
                 <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
                   <stop offset="0" stopColor={color} />
-                  <stop offset="50%" stopColor={color} />
                   <stop offset="100%" stopColor={color2} />
                 </linearGradient>
               </defs>
@@ -935,7 +947,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               width={this._barWidth}
               height={barHeight}
               fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
-              rx={this.props.roundCorners ? this._barWidth / 2 : 0}
+              rx={this.props.roundCorners ? 3 : 0}
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
