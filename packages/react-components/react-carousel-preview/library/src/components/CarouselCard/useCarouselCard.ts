@@ -27,10 +27,12 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
+  const { tabIndex } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
   const selectPageByFocus = useCarouselContext(ctx => ctx.selectPageByFocus);
 
-  const groupperAttr = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
+  const focusAttr = useFocusableGroup({ tabBehavior: 'unlimited' });
+  const focusAttrProps = tabIndex !== undefined ? focusAttr : {};
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -38,9 +40,12 @@ export const useCarouselCard_unstable = (
     if (element) {
       const listener = (_e: Event) => {
         const event = _e as CarouselVisibilityChangeEvent;
-        // const hidden = !event.detail.isVisible;
-        // element.ariaHidden = hidden.toString();
-        // element.inert = hidden;
+        if (tabIndex === undefined) {
+          // When there is no tab index present, only current cards internals should be focusable
+          const hidden = !event.detail.isVisible;
+          element.ariaHidden = hidden.toString();
+          element.inert = hidden;
+        }
         element.ariaSelected = event.detail.isVisible.toString();
       };
 
@@ -50,7 +55,7 @@ export const useCarouselCard_unstable = (
         element.removeEventListener(EMBLA_VISIBILITY_EVENT, listener);
       };
     }
-  }, []);
+  }, [tabIndex]);
 
   const onFocus = React.useCallback(
     (e: React.FocusEvent) => {
@@ -73,7 +78,7 @@ export const useCarouselCard_unstable = (
         role: 'presentation',
         ...props,
         onFocus: _onFocus,
-        ...groupperAttr,
+        ...focusAttrProps,
       }),
       { elementType: 'div' },
     ),
