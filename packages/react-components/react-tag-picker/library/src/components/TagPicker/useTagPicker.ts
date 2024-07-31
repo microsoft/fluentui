@@ -27,7 +27,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   const triggerInnerRef = React.useRef<HTMLInputElement | HTMLButtonElement>(null);
   const secondaryActionRef = React.useRef<HTMLSpanElement>(null);
   const tagPickerGroupRef = React.useRef<HTMLDivElement>(null);
-  const { positioning, size = 'medium', inline = false } = props;
+  const { positioning, size = 'medium', inline = false, noPopover = false } = props;
 
   const { targetRef, containerRef } = usePositioning({
     position: 'below' as const,
@@ -69,7 +69,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     size: 'medium',
   });
 
-  const { trigger, popover } = childrenToTriggerAndPopover(props.children);
+  const { trigger, popover } = childrenToTriggerAndPopover(props.children, noPopover);
 
   return {
     activeDescendantController,
@@ -105,18 +105,18 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
   };
 };
 
-const childrenToTriggerAndPopover = (children?: React.ReactNode) => {
+const childrenToTriggerAndPopover = (children: React.ReactNode, noPopover: boolean) => {
   const childrenArray = React.Children.toArray(children) as React.ReactElement[];
 
   if (process.env.NODE_ENV !== 'production') {
     if (childrenArray.length === 0) {
       // eslint-disable-next-line no-console
-      console.warn('Picker must contain at least one child');
+      console.warn('TagPicker must contain at least one child');
     }
 
     if (childrenArray.length > 2) {
       // eslint-disable-next-line no-console
-      console.warn('Picker must contain at most two children');
+      console.warn('TagPicker must contain at most two children');
     }
   }
 
@@ -126,7 +126,11 @@ const childrenToTriggerAndPopover = (children?: React.ReactNode) => {
     trigger = childrenArray[0];
     popover = childrenArray[1];
   } else if (childrenArray.length === 1) {
-    popover = childrenArray[0];
+    if (noPopover) {
+      trigger = childrenArray[0];
+    } else {
+      popover = childrenArray[0];
+    }
   }
   return { trigger, popover };
 };
