@@ -1,4 +1,4 @@
-import { makeStyles, ToggleButton, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
