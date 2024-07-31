@@ -711,6 +711,7 @@ test.describe('TextArea', () => {
       await expect(element).not.toHaveAttribute('disabled');
       // But `ariaDisabled` and `tabIndex` should be updated.
       await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
+      await expect(control).toBeDisabled();
 
       await fieldset.evaluate((node: HTMLFieldSetElement) => {
         node.disabled = false;
@@ -721,6 +722,7 @@ test.describe('TextArea', () => {
       await expect(element).not.toHaveAttribute('disabled');
       // But `ariaDisabled` and `tabIndex` should be updated.
       await expect(element).toHaveJSProperty('elementInternals.ariaDisabled', 'false');
+      await expect(control).toBeEnabled();
     });
 
     test.describe('form reset', () => {

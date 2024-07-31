@@ -52,6 +52,8 @@ export class BaseTextArea extends FASTElement {
 
   private lightDOMObserver!: MutationObserver;
 
+  private controlElAttrObserver!: MutationObserver;
+
   private preConnectControlEl: HTMLTextAreaElement | null = document.createElement('textarea');
 
   /**
@@ -340,20 +342,6 @@ export class BaseTextArea extends FASTElement {
     this.setValidity();
   }
 
-  /**
-   * @internal
-   */
-  public handleChange(_: any, propertyName: string) {
-    switch (propertyName) {
-      case 'readOnly':
-      case 'required':
-      case 'minLength':
-      case 'maxLength':
-        this.waitUntilAttrChangedOnControl(propertyName).then(() => this.setValidity());
-        break;
-    }
-  }
-
   constructor() {
     super();
 
@@ -374,11 +362,7 @@ export class BaseTextArea extends FASTElement {
 
     this.bindEvents();
     this.observeLightDOM();
-
-    Observable.getNotifier(this).subscribe(this, 'required');
-    Observable.getNotifier(this).subscribe(this, 'readOnly');
-    Observable.getNotifier(this).subscribe(this, 'minLength');
-    Observable.getNotifier(this).subscribe(this, 'maxLength');
+    this.observeControlElAttrs();
   }
 
   /**
@@ -389,11 +373,7 @@ export class BaseTextArea extends FASTElement {
 
     this.autoSizerObserver?.disconnect();
     this.lightDOMObserver?.disconnect();
-
-    Observable.getNotifier(this).unsubscribe(this, 'required');
-    Observable.getNotifier(this).unsubscribe(this, 'readOnly');
-    Observable.getNotifier(this).unsubscribe(this, 'minLength');
-    Observable.getNotifier(this).unsubscribe(this, 'maxLength');
+    this.controlElAttrObserver?.disconnect();
   }
 
   /**
@@ -410,6 +390,7 @@ export class BaseTextArea extends FASTElement {
    */
   public formDisabledCallback(disabled: boolean) {
     this.setDisabledSideEffect(disabled);
+    this.setValidity();
   }
 
   /**
@@ -517,9 +498,28 @@ export class BaseTextArea extends FASTElement {
     });
   }
 
+  private observeControlElAttrs() {
+    this.controlElAttrObserver = new MutationObserver(() => {
+      this.setValidity();
+    });
+    this.controlElAttrObserver.observe(this.controlEl, {
+      attributes: true,
+      attributeFilter: [
+        'disabled',
+        'required',
+        'readonly',
+        'maxlength',
+        'minlength',
+      ],
+    });
+  }
+
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
-    this.waitUntilAttrChangedOnControl('disabled').then(() => this.setValidity());
+
+    if (this.controlEl) {
+      this.controlEl.disabled = disabled;
+    }
   }
 
   private toggleUserValidityState() {
@@ -591,26 +591,6 @@ export class BaseTextArea extends FASTElement {
   public handleControlSelect() {
     this.$emit('select');
   }
-
-  // TODO: Figure if there’s a better way to do this
-  private async waitUntilAttrChangedOnControl(attr: string) {
-    const validAttrs = ['disabled', 'required', 'readonly', 'minlength', 'maxlength'];
-
-    if (!validAttrs.includes(attr.toLowerCase()) || !this.controlEl) {
-      return;
-    }
-
-    return new Promise(resolve => {
-      const observer = new MutationObserver(() => {
-        observer.disconnect();
-        resolve(null);
-      });
-      observer.observe(this.controlEl, {
-        attributes: true,
-        attributeFilter: [attr.toLowerCase()],
-      });
-    });
-  }
 }
 
 export class TextArea extends BaseTextArea {
@@ -669,9 +649,7 @@ export class TextArea extends BaseTextArea {
   /**
    * @internal
    */
-  public handleChange(source: any, propertyName: string) {
-    super.handleChange(source, propertyName);
-
+  public handleChange(_: any, propertyName: string) {
     switch (propertyName) {
       case 'appearance':
       case 'displayShadow':
