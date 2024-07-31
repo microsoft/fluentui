@@ -226,6 +226,7 @@ export {
 } from './tabs/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextArea,
   TextArea,
   TextAreaAppearance,
   TextAreaAutocomplete,

@@ -1,5 +1,6 @@
 import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { BaseTextInput } from '../text-input/text-input.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
@@ -19,7 +20,7 @@ import {
  *
  * @public
  */
-export class TextArea extends FASTElement {
+export class BaseTextArea extends FASTElement {
   /**
    * The form-associated flag.
    * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
@@ -55,27 +56,6 @@ export class TextArea extends FASTElement {
   private preConnectControlEl: HTMLTextAreaElement | null = document.createElement('textarea');
 
   /**
-   * Indicates the visual appearance of the element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr({ mode: 'fromView' })
-  public appearance: TextAreaAppearance = TextAreaAppearance.outline;
-  protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-
-    if (!next || !Array.from(Object.values(TextAreaAppearance)).includes(next)) {
-      toggleState(this.elementInternals, TextAreaAppearance.outline, true);
-    } else {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
-  /**
    * Indicates the element's autocomplete state.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/autocomplete | `autocomplete`} attribute
    *
@@ -100,19 +80,6 @@ export class TextArea extends FASTElement {
   protected autoResizeChanged() {
     this.maybeCreateAutoSizerEl();
     toggleState(this.elementInternals, 'auto-resize', this.autoResize);
-  }
-
-  /**
-   * Indicates whether the textarea should be a block-level element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `block`
-   */
-  @attr({ mode: 'boolean' })
-  public block: boolean = false;
-  protected blockChanged() {
-    toggleState(this.elementInternals, 'block', this.block);
   }
 
   /**
@@ -271,24 +238,6 @@ export class TextArea extends FASTElement {
   }
 
   /**
-   * Sets the size of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: TextAreaSize;
-  protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
-  /**
    * Controls whether or not to enable spell checking for the input field, or if the default spell checking configuration should be used.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Global_attributes/spellcheck | `spellcheck`} attribute
    *
@@ -392,12 +341,11 @@ export class TextArea extends FASTElement {
     this.setValidity();
   }
 
+  /**
+   * @internal
+   */
   public handleChange(_: any, propertyName: string) {
     switch (propertyName) {
-      case 'appearance':
-      case 'displayShadow':
-        this.maybeDisplayShadow();
-        break;
       case 'readOnly':
       case 'required':
       case 'minLength':
@@ -423,14 +371,11 @@ export class TextArea extends FASTElement {
     super.connectedCallback();
 
     this.setDefaultValue();
-    this.maybeDisplayShadow();
     this.maybeCreateAutoSizerEl();
 
     this.bindEvents();
     this.observeLightDOM();
 
-    Observable.getNotifier(this).subscribe(this, 'appearance');
-    Observable.getNotifier(this).subscribe(this, 'displayShadow');
     Observable.getNotifier(this).subscribe(this, 'required');
     Observable.getNotifier(this).subscribe(this, 'readOnly');
     Observable.getNotifier(this).subscribe(this, 'minLength');
@@ -446,8 +391,6 @@ export class TextArea extends FASTElement {
     this.autoSizerObserver?.disconnect();
     this.lightDOMObserver?.disconnect();
 
-    Observable.getNotifier(this).unsubscribe(this, 'appearance');
-    Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
     Observable.getNotifier(this).unsubscribe(this, 'required');
     Observable.getNotifier(this).unsubscribe(this, 'readOnly');
     Observable.getNotifier(this).unsubscribe(this, 'minLength');
@@ -561,13 +504,7 @@ export class TextArea extends FASTElement {
   }
 
   private bindEvents() {
-    this.controlEl.addEventListener(
-      'input',
-      () => {
-        this.userInteracted = true;
-      },
-      { once: true },
-    );
+    this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
   }
 
   private observeLightDOM() {
@@ -584,14 +521,6 @@ export class TextArea extends FASTElement {
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
     this.waitUntilAttrChangedOnControl('disabled').then(() => this.setValidity());
-  }
-
-  private maybeDisplayShadow() {
-    toggleState(
-      this.elementInternals,
-      'display-shadow',
-      this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
-    );
   }
 
   private toggleUserValidityState() {
@@ -673,6 +602,7 @@ export class TextArea extends FASTElement {
       'minlength',
       'maxlength',
     ];
+
     if (!validAttrs.includes(attr.toLowerCase()) || !this.controlEl) {
       return;
     }
@@ -687,5 +617,103 @@ export class TextArea extends FASTElement {
         attributeFilter: [attr.toLowerCase()],
       });
     });
+  }
+}
+
+export class TextArea extends BaseTextArea {
+  /**
+   * Indicates the visual appearance of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr({ mode: 'fromView' })
+  public appearance: TextAreaAppearance = TextAreaAppearance.outline;
+  protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+
+    if (!next || !Array.from(Object.values(TextAreaAppearance)).includes(next)) {
+      toggleState(this.elementInternals, TextAreaAppearance.outline, true);
+    } else {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
+   * Indicates whether the textarea should be a block-level element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `block`
+   */
+  @attr({ mode: 'boolean' })
+  public block: boolean = false;
+  protected blockChanged() {
+    toggleState(this.elementInternals, 'block', this.block);
+  }
+
+  /**
+   * Sets the size of the control.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: TextAreaSize;
+  protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
+   * @internal
+   */
+  public handleChange(source: any, propertyName: string) {
+    super.handleChange(source, propertyName);
+
+    switch (propertyName) {
+      case 'appearance':
+      case 'displayShadow':
+        this.maybeDisplayShadow();
+        break;
+    }
+  }
+
+  /**
+   * @internal
+   */
+  public connectedCallback() {
+    super.connectedCallback();
+
+    this.maybeDisplayShadow();
+
+    Observable.getNotifier(this).subscribe(this, 'appearance');
+    Observable.getNotifier(this).subscribe(this, 'displayShadow');
+  }
+
+  /**
+   * @internal
+   */
+  public disconnectedCallback() {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this, 'appearance');
+    Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
+  }
+
+  private maybeDisplayShadow() {
+    toggleState(
+      this.elementInternals,
+      'display-shadow',
+      this.displayShadow && TextAreaAppearancesForDisplayShadow.includes(this.appearance),
+    );
   }
 }
