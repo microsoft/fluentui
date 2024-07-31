@@ -18,8 +18,9 @@ export const useCarouselSlider_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselSliderState => {
   const focusableGroupAttr = useArrowNavigationGroup({
+    circular: false, //Todo: Should we enable circular focus on circular carousel?
     axis: 'horizontal',
-    memorizeCurrent: false,
+    memorizeCurrent: true,
   });
 
   return {

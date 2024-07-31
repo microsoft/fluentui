@@ -31,7 +31,7 @@ export const useCarouselCard_unstable = (
   const elementRef = React.useRef<HTMLDivElement>(null);
   const selectPageByFocus = useCarouselContext(ctx => ctx.selectPageByFocus);
 
-  const focusAttr = useFocusableGroup({ tabBehavior: 'unlimited' });
+  const focusAttr = useFocusableGroup({ tabBehavior: 'limited' });
   const focusAttrProps = tabIndex !== undefined ? focusAttr : {};
 
   React.useEffect(() => {
@@ -77,7 +77,7 @@ export const useCarouselCard_unstable = (
         ref: useMergedRefs(elementRef, ref),
         role: 'presentation',
         ...props,
-        onFocus: _onFocus,
+        onFocusCapture: _onFocus,
         ...focusAttrProps,
       }),
       { elementType: 'div' },
