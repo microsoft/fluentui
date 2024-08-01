@@ -40,16 +40,18 @@ export const setTheme = (theme: Theme) => {
         throw new Error(`"${tokenName}" must be a string or a number.`);
       }
 
+      const name = `--${tokenName}`;
+      const initialValue = tokenValue.toString();
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
           CSS.registerProperty({
-            name: `--${tokenName}`,
+            name,
+            initialValue,
             inherits: true,
-            initialValue: tokenValue.toString(),
           });
         } catch {}
       }
-      tokenDeclarations.push(`--${tokenName}: ${tokenValue};`);
+      tokenDeclarations.push(`${name}:${initialValue};`);
     }
 
     themeStyleTextMap.set(theme, `html{${tokenDeclarations.join('')}}`);
