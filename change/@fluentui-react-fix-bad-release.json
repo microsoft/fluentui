@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix bad release and restore missing files in the dist folder.",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
