@@ -263,3 +263,20 @@ export const expandedState = css.partial`:is([state--expanded], :state(expanded)
  * @public
  */
 export const blockState = css.partial`:is([state--block], :state(block))`;
+
+/**
+ * Selector for the `selected` state.
+ * @public
+ */
+export const selectedState = css.partial`:is([state--selected], :state(selected))`;
+
+/**
+ * Selector for the `placeholder-visible` state.
+ * @public
+ */
+export const placeholderVisibleState = css.partial`:is([state--placeholder-visible], :state(placeholder-visible))`;
+
+/**
+ * Selector for the `multiselect` state.
+ */
+export const multipleState = css.partial`:is([state--multiple], :state(multiple))`;

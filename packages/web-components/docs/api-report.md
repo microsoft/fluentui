@@ -516,6 +516,60 @@ export class BaseDivider extends FASTElement {
 }
 
 // @public
+export class BaseDropdown extends FASTElement {
+    autofocus: boolean;
+    beforetoggleHandler(e: ToggleEvent): boolean | void;
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    checkedIndex: number;
+    // @internal
+    checkedOptions: Set<Option_2>;
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    control: HTMLButtonElement;
+    disabled: boolean;
+    // @internal
+    displayValue: string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledOptions(): Option_2[];
+    // @internal
+    focus(): void;
+    static formAssociated: boolean;
+    initialValue?: string;
+    // (undocumented)
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // (undocumented)
+    listbox: HTMLDivElement;
+    // (undocumented)
+    multiple: boolean;
+    // (undocumented)
+    protected multipleChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    name: string;
+    open: boolean;
+    // (undocumented)
+    openChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    options: Option_2[];
+    optionsChanged(prev: Option_2[] | undefined, next: Option_2[] | undefined): void;
+    placeholder: string;
+    protected placeholderChanged(prev: string | undefined, next: string | undefined): void;
+    required: boolean;
+    // (undocumented)
+    selectOption(index?: number): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    tabIndex: number;
+    protected updateDisplayValue(): void;
+    // @internal
+    get validationMessage(): string;
+    get value(): string | null;
+    set value(next: string | null);
+}
+
+// @public
 export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
@@ -721,14 +775,14 @@ export class Checkbox extends BaseCheckbox {
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     shape?: CheckboxShape;
     // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
     // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
 }
 
 // @public
@@ -2172,6 +2226,54 @@ export const DrawerType: {
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
+export class Dropdown extends BaseDropdown {
+    appearance: DropdownAppearance;
+    // @internal
+    appearanceChanged(prev?: DropdownAppearance, next?: DropdownAppearance): void;
+    size: DropdownSize;
+    // @internal
+    protected sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
+}
+
+// @public
+export const DropdownAppearance: {
+    readonly filled: "filled";
+    readonly filledDarker: "filled-darker";
+    readonly filledLighter: "filled-lighter";
+    readonly outline: "outline";
+    readonly transparent: "transparent";
+};
+
+// @public (undocumented)
+export type DropdownAppearance = ValuesOf<typeof DropdownAppearance>;
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// Warning: (ae-missing-release-tag) "DropdownOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type DropdownOptions = {
+    indicator?: StaticallyComposableHTML<Dropdown>;
+};
+
+// @public
+export const DropdownSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type DropdownSize = ValuesOf<typeof DropdownSize>;
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// @public
+export const DropdownTemplate: ElementViewTemplate<Dropdown>;
+
+// @public
 export const durationFast = "var(--durationFast)";
 
 // @public
@@ -2690,6 +2792,41 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
+class Option_2 extends BaseCheckbox {
+    constructor();
+    // @internal
+    formResetCallback(): void;
+    // @override
+    id: string;
+    // @internal @override (undocumented)
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // Warning: (ae-forgotten-export) The symbol "CheckboxMode" needs to be exported by the entry point index.d.ts
+    //
+    // @internal
+    protected mode: CheckboxMode;
+    get selected(): boolean;
+    set selected(next: boolean);
+    // @internal
+    protected setAriaProperties(value?: boolean): void;
+    tabIndex: number;
+}
+export { Option_2 as Option }
+
+// @public
+export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
+
+// Warning: (ae-missing-release-tag) "OptionOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type OptionOptions = Record<string, any>;
+
+// @public
+export const OptionStyles: ElementStyles;
+
+// @public
+export const OptionTemplate: ElementViewTemplate<Option_2>;
+
+// @public
 export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
@@ -2750,7 +2887,7 @@ export class Radio extends BaseCheckbox {
     // @internal @override
     setValidity(): void;
     // @override
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
 }
 
 // @public (undocumented)

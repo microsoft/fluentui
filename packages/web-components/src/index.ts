@@ -1,8 +1,8 @@
 export {
   AccordionItem,
-  accordionItemDefinition,
   AccordionItemMarkerPosition,
   AccordionItemSize,
+  accordionItemDefinition,
   accordionItemStyles,
   accordionItemTemplate,
   BaseAccordionItem,
@@ -10,12 +10,20 @@ export {
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
   Accordion,
-  accordionDefinition,
   AccordionExpandMode,
+  accordionDefinition,
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
+export {
+  AnchorButton,
+  AnchorButtonAppearance,
+  AnchorButtonDefinition,
+  AnchorButtonShape,
+  AnchorButtonSize,
+  AnchorButtonTemplate,
+  AnchorTarget,
+} from './anchor-button/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -80,8 +88,8 @@ export {
   CounterBadgeStyles,
   CounterBadgeTemplate,
 } from './counter-badge/index.js';
-export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
-export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
+export { DialogBody, DialogBodyDefinition, DialogBodyStyles, DialogBodyTemplate } from './dialog-body/index.js';
+export { Dialog, DialogDefinition, DialogStyles, DialogTemplate, DialogType } from './dialog/index.js';
 export {
   BaseDivider,
   Divider,
@@ -93,37 +101,31 @@ export {
   DividerStyles,
   DividerTemplate,
 } from './divider/index.js';
+export { DrawerBody, DrawerBodyDefinition, DrawerBodyStyles, DrawerBodyTemplate } from './drawer-body/index.js';
 export {
   Drawer,
   DrawerDefinition,
   DrawerPosition,
   DrawerSize,
-  DrawerType,
-  DrawerTemplate,
   DrawerStyles,
+  DrawerTemplate,
+  DrawerType,
 } from './drawer/index.js';
-export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
+export { BaseDropdown, Dropdown, DropdownDefinition, DropdownStyles, DropdownTemplate } from './dropdown/index.js';
+export type { DropdownAppearance, DropdownOptions, DropdownSize } from './dropdown/index.js';
 export {
   Field,
-  FieldLabelPosition,
-  ValidationFlags,
   FieldDefinition,
+  FieldLabelPosition,
   FieldStyles,
   FieldTemplate,
+  ValidationFlags,
 } from './field/index.js';
 export type { SlottableInput } from './field/index.js';
 export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
-export {
-  AnchorButton,
-  AnchorButtonAppearance,
-  AnchorButtonDefinition,
-  AnchorButtonShape,
-  AnchorButtonSize,
-  AnchorButtonTemplate,
-  AnchorTarget,
-} from './anchor-button/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTarget, LinkTemplate } from './link/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
@@ -145,6 +147,8 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export { Option, OptionDefinition, OptionStyles, OptionTemplate } from './option/index.js';
+export type { OptionOptions } from './option/index.js';
 export {
   BaseProgressBar,
   ProgressBar,
@@ -192,12 +196,12 @@ export {
   SpinnerTemplate,
 } from './spinner/index.js';
 export {
-  typographyBody1StrongerStyles,
   typographyBody1StrongStyles,
+  typographyBody1StrongerStyles,
   typographyBody1Styles,
   typographyBody2Styles,
-  typographyCaption1StrongerStyles,
   typographyCaption1StrongStyles,
+  typographyCaption1StrongerStyles,
   typographyCaption1Styles,
   typographyCaption2StrongStyles,
   typographyCaption2Styles,
@@ -259,11 +263,11 @@ export {
 } from './toggle-button/index.js';
 export type { ToggleButtonOptions } from './toggle-button/index.js';
 export {
+  MatchMediaBehavior,
+  MatchMediaStyleSheetBehavior,
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
   lightModeStylesheetBehavior,
-  MatchMediaBehavior,
-  MatchMediaStyleSheetBehavior,
 } from './utils/behaviors/match-media-stylesheet-behavior.js';
 export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
 export { getDirection } from './utils/direction.js';
