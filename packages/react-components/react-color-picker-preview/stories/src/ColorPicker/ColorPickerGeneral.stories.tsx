@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const ColorPickerGeneral = () => {
   const styles = useStyles();
   const COLOR = '#00ffaa';
   const [selectedColor, setSelectedColor] = React.useState(COLOR);
