@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, omit, slot } from '@fluentui/react-utilities';
 import type { InteractiveTabProps, InteractiveTabState } from './InteractiveTab.types';
 import { useTab_unstable } from '../Tab/useTab';
 
@@ -16,7 +16,14 @@ export const useInteractiveTab_unstable = (
   props: InteractiveTabProps,
   ref: React.Ref<HTMLElement>,
 ): InteractiveTabState => {
-  const tabState = useTab_unstable(props, ref);
+  const { button, root, contentBefore, contentAfter } = props;
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'button',
+  });
+
+  const tabState = useTab_unstable(omit(props, ['root', 'style', 'className']), ref);
 
   return {
     ...tabState,
@@ -27,9 +34,18 @@ export const useInteractiveTab_unstable = (
       contentBefore: 'span',
       contentAfter: 'span',
     },
-    root: slot.always<React.ComponentPropsWithoutRef<'div'>>('div', { elementType: 'div' }),
-    button: tabState.root,
-    contentBefore: slot.optional(props.contentBefore, { elementType: 'span' }),
-    contentAfter: slot.optional(props.contentAfter, { elementType: 'span' }),
+    root: slot.always(root, {
+      defaultProps: nativeProps.root,
+      elementType: 'div',
+    }),
+    button: slot.always(button, {
+      defaultProps: {
+        ...tabState.root,
+        ...nativeProps.primary,
+      },
+      elementType: 'button',
+    }),
+    contentBefore: slot.optional(contentBefore, { elementType: 'span' }),
+    contentAfter: slot.optional(contentAfter, { elementType: 'span' }),
   };
 };

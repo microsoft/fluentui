@@ -14,21 +14,6 @@ const useStyles = makeStyles({
     padding: '50px 20px',
     rowGap: '20px',
   },
-  tab: {
-    paddingInline: '20px',
-  },
-  contentBefore: {
-    position: 'absolute',
-    top: '6px',
-    left: '6px',
-    zIndex: 1,
-  },
-  contentAfter: {
-    position: 'absolute',
-    top: '6px',
-    right: '6px',
-    zIndex: 1,
-  },
 });
 
 export const Interactive = (props: Partial<TabListProps>) => {
@@ -36,13 +21,11 @@ export const Interactive = (props: Partial<TabListProps>) => {
 
   return (
     <div className={styles.root}>
-      <TabList appearance="subtle" {...props}>
+      <TabList {...props}>
         <InteractiveTab
           value="tab1"
-          className={styles.tab}
           contentBefore={
             <Button
-              className={styles.contentBefore}
               appearance="subtle"
               icon={<CalendarMonth />}
               tabIndex={-1}
@@ -51,11 +34,10 @@ export const Interactive = (props: Partial<TabListProps>) => {
           }
           contentAfter={
             <Button
-              className={styles.contentAfter}
               appearance="subtle"
               icon={<CalendarMonth />}
-              onClick={() => alert('Button was clicked')}
               tabIndex={-1}
+              onClick={() => alert('Button was clicked')}
             />
           }
         >

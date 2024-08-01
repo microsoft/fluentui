@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 import { InteractiveTab } from './InteractiveTab';
 import { isConformant } from '../../testing/isConformant';
-import { TabListContext } from '../TabList/TabListContext';
-import { TabListContextValue } from '../TabList/TabList.types';
-import { CalendarMonthRegular } from '@fluentui/react-icons';
+import { TabListContext } from '../TabList';
+import type { TabListContextValue } from '../TabList';
 
 describe('InteractiveTab', () => {
   isConformant({
     Component: InteractiveTab,
     displayName: 'InteractiveTab',
+    primarySlot: 'button',
     testOptions: {
       'has-static-classnames': [
         {
           props: {
             icon: 'Test Icon',
-            content: 'Test Content',
+            children: 'Test Content',
+            contentBefore: 'Test Content Before',
+            contentAfter: 'Test Content After',
           },
         },
       ],
@@ -47,7 +50,9 @@ describe('InteractiveTab', () => {
 
     const result = render(
       <TabListContext.Provider value={contextValues.tabList}>
-        <InteractiveTab value="1">Default Tab</InteractiveTab>
+        <InteractiveTab value="1" contentBefore="Before" contentAfter="After">
+          Default Tab
+        </InteractiveTab>
       </TabListContext.Provider>,
     );
 
@@ -63,7 +68,9 @@ describe('InteractiveTab', () => {
 
     const result = render(
       <TabListContext.Provider value={contextValues.tabList}>
-        <InteractiveTab value="1">Default Tab</InteractiveTab>
+        <InteractiveTab value="1" contentBefore="Before" contentAfter="After">
+          Default Tab
+        </InteractiveTab>
       </TabListContext.Provider>,
     );
 
@@ -88,7 +95,7 @@ describe('InteractiveTab', () => {
 
     const result = render(
       <TabListContext.Provider value={contextValues.tabList}>
-        <InteractiveTab icon={<CalendarMonthRegular />} value="1">
+        <InteractiveTab icon={<CalendarMonthRegular />} value="1" contentBefore="Before" contentAfter="After">
           Default Tab
         </InteractiveTab>
       </TabListContext.Provider>,
@@ -104,7 +111,7 @@ describe('InteractiveTab', () => {
 
     const result = render(
       <TabListContext.Provider value={contextValues.tabList}>
-        <InteractiveTab value="1" disabled>
+        <InteractiveTab value="1" disabled contentBefore="Before" contentAfter="After">
           Default Tab
         </InteractiveTab>
       </TabListContext.Provider>,

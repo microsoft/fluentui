@@ -11,8 +11,8 @@ export const tabClassNames: SlotClassNames<TabSlots> = {
   content: 'fui-Tab__content',
 };
 
-const tabInternalClassNames = {
-  contentReservedSpace: 'fui-Tab__content--reserved-space',
+const reservedSpaceClassNames = {
+  content: 'fui-Tab__content--reserved-space',
 };
 
 // These should match the constants defined in @fluentui/react-icons
@@ -25,13 +25,9 @@ const iconClassNames = {
 /**
  * Styles for the root slot
  */
-/* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeStyles({
   root: {
     alignItems: 'center',
-    border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    cursor: 'pointer',
     display: 'grid',
     flexShrink: 0,
     gridAutoFlow: 'column',
@@ -176,7 +172,6 @@ const useRootStyles = makeStyles({
     },
   },
 });
-/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Focus styles for the root slot
@@ -204,6 +199,9 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
+    '::before': {
+      zIndex: 1,
+    },
     ':hover::before': {
       backgroundColor: tokens.colorNeutralStroke1Hover,
       borderRadius: tokens.borderRadiusCircular,
@@ -550,7 +548,7 @@ export const useTabContentStyles = (state: TabState): TabState => {
   // This needs to be before state.content.className is updated
   if (state.contentReservedSpace) {
     state.contentReservedSpace.className = mergeClasses(
-      tabInternalClassNames.contentReservedSpace,
+      reservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
       state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,

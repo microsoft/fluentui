@@ -22,11 +22,11 @@ export const InteractiveTab: ForwardRefComponent<InteractiveTabProps>;
 export const interactiveTabClassNames: SlotClassNames<InteractiveTabSlots>;
 
 // @public (undocumented)
-export type InteractiveTabProps = Omit<ComponentProps<Partial<InteractiveTabSlots>, 'button'>, 'content'> & Pick<Partial<InteractiveTabSlots>, 'content'> & TabInternalProps;
+export type InteractiveTabProps = ComponentProps<Partial<InteractiveTabSlots>, 'button'> & TabInternalProps;
 
 // @public (undocumented)
 export type InteractiveTabSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
     button: NonNullable<TabSlots['root']>;
     contentBefore?: Slot<'span'>;
     contentAfter?: Slot<'span'>;

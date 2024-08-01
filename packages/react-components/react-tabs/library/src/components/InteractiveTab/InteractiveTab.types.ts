@@ -5,7 +5,7 @@ export type InteractiveTabSlots = {
   /**
    * Root of the component.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * The button that represents the tab.
