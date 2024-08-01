@@ -268,3 +268,5 @@ export {
 export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
 export { getDirection } from './utils/direction.js';
 export { display } from './utils/display.js';
+export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
+export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
