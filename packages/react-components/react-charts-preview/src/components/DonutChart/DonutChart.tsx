@@ -30,7 +30,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
-    const _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
 
@@ -314,7 +313,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
                 activeArc={_getHighlightedLegend()}
                 focusedArcId={focusedArcId || ''}
                 href={props.href!}
-                calloutId={_calloutId}
                 valueInsideDonut={_toLocaleString(valueInsideDonut)}
                 showLabelsInPercent={props.showLabelsInPercent}
                 hideLabels={props.hideLabels}
@@ -322,7 +320,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
             </svg>
           </div>
         </div>
-        <div id={_calloutId}>
           <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} inline>
             <PopoverSurface tabIndex={-1}>
               <ChartHoverCard
@@ -333,7 +330,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
               />
             </PopoverSurface>
           </Popover>
-        </div>
         {!hideLegend && <div className={classes.legendContainer}>{legendBars}</div>}
       </div>
     ) : (

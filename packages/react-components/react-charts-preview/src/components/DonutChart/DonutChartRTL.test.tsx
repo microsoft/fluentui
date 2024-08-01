@@ -139,21 +139,23 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '1');
   });
 
-  test('Should display correct callout data on mouse move', () => {
+  test('Should display correct callout data on mouse move', async () => {
     // Arrange
     const { container } = render(
       <DonutChart data={chartPointsDC} innerRadius={55} calloutProps={{ doNotLayer: true }} />,
     );
-
+    const getByClass = queryAllByAttribute.bind(null, 'class');
     // Act
     const getById = queryAllByAttribute.bind(null, 'id');
     fireEvent.mouseOver(getById(container, /Pie/i)[0]);
-    expect(getById(container, /callout/i)[0]).toHaveTextContent('20,000');
+    expect(getByClass(container, /PopoverSurface/i)[0]).toHaveTextContent('20,000');
     fireEvent.mouseLeave(getById(container, /Pie/i)[0]);
     fireEvent.mouseOver(getById(container, /Pie/i)[1]);
 
     // Assert
-    expect(getById(container, /callout/i)[0]).toHaveTextContent('39,000');
+    await(() => {
+      expect(getByClass(container, /PopoverSurface/i)[1]).toHaveTextContent('39,000');
+    });
   });
 
   test('Should change value inside donut with the legend value on mouseOver legend ', () => {

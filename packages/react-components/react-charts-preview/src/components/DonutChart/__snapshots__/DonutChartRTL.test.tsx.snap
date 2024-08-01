@@ -58,9 +58,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       </div>
     </div>
     <div
-      id="callout2"
-    />
-    <div
       class="fui-donut__legendContainer"
     >
       <div
@@ -196,7 +193,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
-                  id="_Pie_23first20000"
+                  id="_Pie_14first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -208,7 +205,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
-                  id="_Pie_23second39000"
+                  id="_Pie_14second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -220,7 +217,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
-                  id="_Pie_23third45000"
+                  id="_Pie_14third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -230,9 +227,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           </svg>
         </div>
       </div>
-      <div
-        id="callout24"
-      />
       <div
         class="fui-donut__legendContainer"
       >
