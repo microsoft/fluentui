@@ -3,7 +3,7 @@ import type { TreeSlots, TreeState } from './Tree.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-export const treeClassNames: SlotClassNames<TreeSlots> = {
+export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>> = {
   root: 'fui-Tree',
 };
 
