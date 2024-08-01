@@ -5,13 +5,13 @@ import { fixtureURL } from '../helpers.tests.js';
 import { type Theme } from './set-theme.js';
 
 const theme1: Theme = {
-  'foo': 'foo1',
-  'bar': 'bar2',
+  foo: 'foo1',
+  bar: 'bar2',
 };
 
 const theme2: Theme = {
-  'foo': 'foo1',
-  'bar': 'bar2',
+  foo: 'foo1',
+  bar: 'bar2',
 };
 
 test.describe('setTheme()', () => {
