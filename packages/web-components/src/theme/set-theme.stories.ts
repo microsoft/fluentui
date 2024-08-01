@@ -2,7 +2,8 @@ import { html } from '@microsoft/fast-element';
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
 import { renderComponent } from '../helpers.stories.js';
-import { setTheme, type Theme } from './set-theme.js';
+import type { Theme } from './set-theme.js';
+import { setTheme } from './set-theme.js';
 
 const fluentTheme: Record<string, Theme> = {
   teamsDarkTheme,
@@ -18,13 +19,10 @@ export default {
       type: 'string',
       control: 'select',
       options: Object.keys(fluentTheme),
-      description: [
-        'Flat object of theme tokens. Each object entry’s key is the',
-        'name of the token (usually in camel case) and used as the CSS Custom',
-        'Property’s name. Note that this argument is not limited to existing',
-        'theme objects (from `@fluentui/tokens`), you can pass in an arbitrary',
-        'theme object as long as each entry’s value is either a string or a number.',
-      ].join(' '),
+      description: `Flat object of theme tokens. Each object entry's key is the name of the token (usually in camel
+        case) and used as the CSS Custom Property’s name. Note that this argument is not limited to existing theme
+        objects (from \`@fluentui/tokens/\`), you can pass in an arbitrary theme object as long as each entry’s value
+        is either a string or a number.`,
     },
   },
   args: {

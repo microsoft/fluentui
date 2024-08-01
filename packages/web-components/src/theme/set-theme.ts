@@ -38,7 +38,7 @@ export const setTheme = (theme: Theme) => {
     for (const [tokenName, tokenValue] of Object.entries(theme)) {
       if (typeof tokenValue !== 'string' && Number.isNaN(tokenValue)) {
         throw new Error(
-          `The value of "${tokenName}" must be a string or a number, but got "${tokenValue.toString()}" instead.`,
+          `"${tokenName}" must be a string or a number.`,
         );
       }
 
