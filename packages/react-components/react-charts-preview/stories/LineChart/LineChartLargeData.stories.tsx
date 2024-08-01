@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {  ILineChartProps, LineChart, IChartProps, ILineChartDataPoint} from '../../src/LineChart';
+import { ILineChartProps, LineChart, IChartProps, ILineChartDataPoint } from '../../src/LineChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Switch } from '@fluentui/react-components';
 
 export const LCLargeData = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
@@ -16,9 +16,12 @@ export const LCLargeData = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setAllowMultipleShapes(checked);
-  };
+  const _onShapeChange = React.useCallback(
+    ev => {
+      setAllowMultipleShapes(ev.currentTarget.checked);
+    },
+    [allowMultipleShapes],
+  );
 
   const _getdata = () => {
     const data: ILineChartDataPoint[] = [];
@@ -109,10 +112,8 @@ export const LCLargeData = (props: ILineChartProps) => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <Toggle
-        label="Enabled  multiple shapes for each line"
-        onText="On"
-        offText="Off"
+      <Switch
+        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />

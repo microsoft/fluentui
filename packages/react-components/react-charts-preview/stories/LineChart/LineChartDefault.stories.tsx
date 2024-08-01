@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
-import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Switch } from '@fluentui/react-components';
 
 export const LCBasic = (props: ILineChartProps) => {

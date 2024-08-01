@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ILineChartProps, LineChart, ICustomizedCalloutData } from '../../src/LineChart';
 import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
-import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export const LCStyled = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
