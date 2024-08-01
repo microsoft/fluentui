@@ -164,8 +164,14 @@
       "@fluentui/react-menu-stories": ["packages/react-components/react-menu/stories/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/library/src/index.ts"],
       "@fluentui/react-message-bar-stories": ["packages/react-components/react-message-bar/stories/src/index.ts"],
-      "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
-      "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
+      "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/library/src/index.ts"],
+      "@fluentui/react-migration-v0-v9-stories": [
+        "packages/react-components/react-migration-v0-v9/stories/src/index.ts"
+      ],
+      "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/library/src/index.ts"],
+      "@fluentui/react-migration-v8-v9-stories": [
+        "packages/react-components/react-migration-v8-v9/stories/src/index.ts"
+      ],
       "@fluentui/react-motion": ["packages/react-components/react-motion/library/src/index.ts"],
       "@fluentui/react-motion-components-preview": [
         "packages/react-components/react-motion-components-preview/library/src/index.ts"
