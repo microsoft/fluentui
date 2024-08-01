@@ -576,6 +576,30 @@ export class BaseSpinner extends FASTElement {
 }
 
 // @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
+}
+
+// @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
@@ -640,29 +664,6 @@ export class BaseTextInput extends FASTElement {
     get value(): string;
     set value(value: string);
     get willValidate(): boolean;
-}
-
-export class BaseTablist extends FASTElement {
-    activeid: string;
-    // @internal (undocumented)
-    protected activeidChanged(oldValue: string, newValue: string): void;
-    activetab: HTMLElement;
-    adjust(adjustment: number): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // @internal
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    // @internal
-    elementInternals: ElementInternals;
-    orientation: TablistOrientation;
-    // @internal (undocumented)
-    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
-    protected setTabs(): void;
-    // @internal (undocumented)
-    tabs: HTMLElement[];
-    // @internal (undocumented)
-    protected tabsChanged(): void;
 }
 
 // @public
