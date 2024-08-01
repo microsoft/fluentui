@@ -233,6 +233,7 @@ export const styles: ElementStyles = css`
     font: inherit;
     grid-column: 1 / -1;
     grid-row: 1 / -1;
+    letter-space: inherit;
     padding: 0 var(--control-padding-inline);
   }
 
@@ -252,10 +253,12 @@ export const styles: ElementStyles = css`
     appearance: none;
     background-color: transparent;
     border: 0;
+    color: inherit;
     field-sizing: content;
     max-block-size: 100%;
     outline: 0;
     resize: none;
+    text-align: inherit;
   }
 
   .control:disabled {
