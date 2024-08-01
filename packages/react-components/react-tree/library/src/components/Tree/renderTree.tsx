@@ -8,7 +8,13 @@ export const renderTree_unstable = (state: TreeState, contextValues: TreeContext
   assertSlots<TreeSlots>(state);
   return (
     <TreeProvider value={contextValues.tree}>
-      {state.open && <state.root>{state.root.children}</state.root>}
+      {state.collapseMotion ? (
+        <state.collapseMotion>
+          <state.root />
+        </state.collapseMotion>
+      ) : (
+        <state.root />
+      )}
     </TreeProvider>
   );
 };
