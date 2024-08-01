@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add useInteractiveTabStyles hook",
-  "packageName": "@fluentui/react-provider",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}
