@@ -1,7 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselAutoplayButtonSlots, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
-import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
 
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots> = {
@@ -37,10 +37,7 @@ export const useCarouselAutoplayButtonStyles_unstable = (
 
   const styles = useStyles();
 
-  state = {
-    ...state,
-    ...useButtonStyles_unstable(state),
-  };
+  state = useToggleButtonStyles_unstable(state);
 
   state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
   if (state.icon) {

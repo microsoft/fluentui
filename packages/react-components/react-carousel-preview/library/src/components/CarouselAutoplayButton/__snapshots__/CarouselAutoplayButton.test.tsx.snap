@@ -3,11 +3,12 @@
 exports[`CarouselAutoplayButton renders a default state 1`] = `
 <div>
   <button
-    class="fui-CarouselAutoplayButton fui-Button"
+    aria-pressed="true"
+    class="fui-CarouselAutoplayButton fui-Button fui-ToggleButton"
     type="button"
   >
     <span
-      class="fui-CarouselAutoplayButton__icon fui-Button__icon"
+      class="fui-CarouselAutoplayButton__icon fui-Button__icon fui-ToggleButton__icon"
     >
       <svg
         aria-hidden="true"

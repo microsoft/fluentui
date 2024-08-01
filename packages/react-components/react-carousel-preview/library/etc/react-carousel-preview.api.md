@@ -19,6 +19,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;
@@ -30,9 +32,10 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots>;
 
 // @public
-export type CarouselAutoplayButtonProps = ButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
+export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
     defaultAutoplay?: boolean;
     autoplay?: boolean;
+    onAutoplayChange: EventHandler<CarouselAutoplayChangeData>;
 };
 
 // @public (undocumented)
@@ -41,7 +44,7 @@ export type CarouselAutoplayButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselAutoplayButtonState = ButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'defaultAutoplay' | 'autoplay'>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'autoplay'>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;

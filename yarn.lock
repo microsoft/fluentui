@@ -10734,15 +10734,15 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.1"
     minimalistic-crypto-utils "^1.0.1"
 
-embla-carousel-autoplay@8.1.7:
-  version "8.1.7"
-  resolved "https://registry.yarnpkg.com/embla-carousel-autoplay/-/embla-carousel-autoplay-8.1.7.tgz#ac061c3ff29353bae23955899ec719254ba5b134"
-  integrity sha512-UXt1XvCNwzC/Sqd7iU8nYd1CjuDLweIwJClfBL3gVTzHQBVwb68GBBfC/oPFsEeIWNUZe8NO5xDQSI9aTnYO7Q==
+embla-carousel-autoplay@8.1.8:
+  version "8.1.8"
+  resolved "https://registry.yarnpkg.com/embla-carousel-autoplay/-/embla-carousel-autoplay-8.1.8.tgz#84cd2d68e7498c2919ef102410484b0bb50d36c5"
+  integrity sha512-H3vVKt4HR2PGeMlCutE3+a8wv7Jq1rg31Fjb8ZDZaiuSnT/1XTwA83KpkJ02BdImVJci9RS0uEBiXBax2kfnMQ==
 
-embla-carousel@8.1.5:
-  version "8.1.5"
-  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-8.1.5.tgz#d958083cb16f19e7412bf8f93fa125b21311ac93"
-  integrity sha512-R6xTf7cNdR2UTNM6/yUPZlJFRmZSogMiRjJ5vXHO65II5MoUlrVYUAP0fHQei/py82Vf15lj+WI+QdhnzBxA2g==
+embla-carousel@8.1.8:
+  version "8.1.8"
+  resolved "https://registry.yarnpkg.com/embla-carousel/-/embla-carousel-8.1.8.tgz#cb4e02a1467909d8d59aba2063ab8e2e6262b68c"
+  integrity sha512-KuHPA8qcAts6YE6ELtt38XYAb26hnKw8Ga0lSXmrhm1oI97t6oACFkqSsy33dfeZQEhaZB6VwWvaWQJRJVgSgA==
 
 emittery@^0.13.1:
   version "0.13.1"

@@ -42,14 +42,14 @@ export function useEmblaCarousel(
 
   const autoplayRef = React.useRef<boolean>(false);
   /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
-  const enableAutoplay = (autoplay: boolean) => {
+  const enableAutoplay = React.useCallback((autoplay: boolean) => {
     autoplayRef.current = autoplay;
     if (autoplay) {
       emblaApi.current?.plugins().autoplay.play();
     } else {
       emblaApi.current?.plugins().autoplay.stop();
     }
-  };
+  }, []);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());

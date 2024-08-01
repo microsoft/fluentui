@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { slot, useControllableState, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import type { CarouselAutoplayButtonProps, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
-import { useButton_unstable } from '@fluentui/react-button';
+import { useToggleButton_unstable } from '@fluentui/react-button';
 import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { mergeCallbacks } from '@fluentui/react-utilities';
@@ -21,6 +21,7 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
+  const { onAutoplayChange } = props;
   const [autoplay, setAutoplay] = useControllableState({
     state: props.autoplay,
     defaultState: props.defaultAutoplay,
@@ -38,14 +39,17 @@ export const useCarouselAutoplayButton_unstable = (
     if (event.isDefaultPrevented()) {
       return;
     }
-    setAutoplay(!autoplay);
+    const newValue = !autoplay;
+    setAutoplay(newValue);
+    onAutoplayChange?.(event, { event, type: 'click', autoplay: newValue });
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
 
   return {
+    autoplay,
     // We lean on react-button class to handle styling and icon enhancements
-    ...useButton_unstable(
+    ...useToggleButton_unstable(
       {
         icon: slot.optional(props.icon, {
           defaultProps: {
@@ -54,8 +58,9 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
-        appearance: 'subtle',
+        // appearance: 'subtle',
         ...props,
+        checked: autoplay,
         onClick: handleButtonClick,
       },
       ref as React.Ref<HTMLButtonElement>,
