@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
-import { colorNeutralBackground1, colorNeutralBackground3, } from '../theme/design-tokens.js';
+import { colorNeutralBackground1, colorNeutralBackground3 } from '../theme/design-tokens.js';
 import { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 
