@@ -6,5 +6,5 @@
     "noEmit": true,
     "types": ["node", "web"]
   },
-  "include": ["*", "../public", "../src/**/*.stories.*"]
+  "include": ["*", "../public/*", "../src/**/*.stories.*"]
 }
