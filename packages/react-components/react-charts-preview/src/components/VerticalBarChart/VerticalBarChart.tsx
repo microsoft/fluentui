@@ -80,6 +80,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const _vbcBarId: string = useId('_VBC_bar_');
   let _xAxisInnerPadding: number;
   let _xAxisOuterPadding: number;
+  let vbcLineCounter = 0;
+  let vbcPointCounter = 0;
+  let vbcBarCounter = 0;
+
 
   type ColorScale = (_p?: number) => string;
 
@@ -99,6 +103,18 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [calloutLegend, setCalloutLegend] = React.useState<string>('');
   const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<IAccessibilityProps>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
+
+  function _uniqueLineId(): string {
+    return `${_vbcLineId}-${vbcLineCounter++}`;
+  }
+
+  function _uniquePointId(): string {
+    return `${_vbcPointId}-${vbcPointCounter++}`;
+  }
+
+  function _uniqueBarId(): string {
+    return `${_vbcBarId}-${vbcBarCounter++}`;
+  }
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -142,8 +158,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     if (lineBorderWidth > 0) {
       line.push(
         <path
-          key={_vbcLineId}
-          id={_vbcLineId}
+          key={_uniqueLineId()}
+          id = {_uniqueLineId()}
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
@@ -182,7 +198,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         return (
           <circle
             key={index}
-            id={_vbcPointId}
+            id={_uniquePointId()}
             cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={
@@ -550,7 +566,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       return (
         <g key={point.x as string}>
           <rect
-            id={_vbcBarId}
+            id={_uniqueBarId()}
             x={xPoint}
             className={classes.opacityChangeOnHover}
             y={yPoint}
@@ -623,7 +639,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           transform={`translate(${0.5 * (xBarScale.bandwidth() - _barWidth)}, 0)`}
         >
           <rect
-            id={_vbcBarId}
+            id={_uniqueBarId()}
             x={xPoint}
             y={yPoint}
             width={_barWidth}
@@ -693,7 +709,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       return (
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
           <rect
-            id={_vbcBarId}
+            id={_uniqueBarId()}
             x={xPoint}
             className={classes.opacityChangeOnHover}
             y={yPoint}
