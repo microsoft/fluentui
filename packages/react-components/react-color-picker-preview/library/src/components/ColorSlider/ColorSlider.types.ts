@@ -1,6 +1,7 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
-export type SwatchPickerOnSelectEventHandler = EventHandler<SliderOnChangeData>;
+
+export type SliderOnSelectEventHandler = EventHandler<SliderOnChangeData>;
 
 export type SliderOnChangeData = EventData<'click', React.MouseEvent<HTMLInputElement>> & {
   value: number;
@@ -41,18 +42,18 @@ export type ColorSliderProps = Omit<
    */
   min?: number;
 
-  onChange?: EventHandler<SliderOnChangeData>; //(ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void;
+  onChange?: EventHandler<SliderOnChangeData>;
 
   /**
    * Render the Slider in a vertical orientation, smallest value on the bottom.
    * @default `false`
    */
   vertical?: boolean;
-  variant?: 'hue' | 'saturation' | 'lightness' | 'alpha';
+  channel?: 'hue' | 'saturation' | 'lightness' | 'alpha';
   color?: string;
 };
 
 /**
  * State used in rendering ColorSlider
  */
-export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'variant'>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical' | 'channel'>;

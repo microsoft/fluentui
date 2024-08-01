@@ -25,12 +25,12 @@ export const useColorSlider_unstable = (
     input,
     rail,
     thumb,
-    variant = 'hue',
+    channel = 'hue',
   } = props;
 
   const state: ColorSliderState = {
     vertical,
-    variant,
+    channel,
     components: {
       input: 'input',
       rail: 'div',

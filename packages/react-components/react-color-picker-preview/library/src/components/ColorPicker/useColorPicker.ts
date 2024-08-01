@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useControllableState, useEventCallback } from '@fluentui/react-utilities';
 import type { ColorPickerProps, ColorPickerState } from './ColorPicker.types';
+import { tinycolor } from '@ctrl/tinycolor';
 
 /**
  * Create the state required to render ColorPicker.
@@ -12,20 +13,51 @@ import type { ColorPickerProps, ColorPickerState } from './ColorPicker.types';
  * @param ref - reference to root HTMLDivElement of ColorPicker
  */
 export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<HTMLDivElement>): ColorPickerState => {
+  const { defaultColor, color, onChange, ...rest } = props;
+  const hslColor = tinycolor(color).toHsl();
+
+  const [selectedValue, setSelectedValue] = useControllableState({
+    state: hslColor.h,
+    initialState: 0,
+  });
+
+  const [channel, setSelectedChannel] = useControllableState({
+    state: 'hue',
+    initialState: '',
+  });
+
+  const [selectedColor, setSelectedColor] = React.useState(color);
+
+  const requestChange: ColorPickerState['requestChange'] = useEventCallback((event, data) => {
+    onChange?.(event, {
+      type: 'change',
+      event,
+      value: data.value,
+      channel: data.channel,
+    });
+
+    setSelectedValue(data.value);
+    setSelectedChannel(data.channel);
+
+    const newColor = tinycolor({ h: data.value, s: hslColor.s, l: hslColor.l }).toHex();
+    setSelectedColor(newColor);
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
-        ...props,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
+    color: selectedColor,
+    requestChange,
+    onChange,
+    channel,
+    value: selectedValue,
   };
 };
