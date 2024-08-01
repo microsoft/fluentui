@@ -11,12 +11,12 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["build", "^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "bundle": {
       "cache": true,
-      "dependsOn": ["build", "^build"]
+      "dependsOn": ["^build"]
     },
     "build": {
       "dependsOn": ["^build"],
@@ -76,7 +76,7 @@
       ]
     },
     "verify-packaging": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "@nx/jest:jest": {
