@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Add transparent to the appearance prop in ToolbarButton",
+  "packageName": "@fluentui/react-toolbar",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
