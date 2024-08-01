@@ -526,7 +526,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     YValueHover.push({
       legend: selectedPoint[0].legend,
       y: selectedPoint[0].y,
-      color: enableGradient ? (selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0]) : calloutColor,
+      color: enableGradient
+        ? useSingleColor
+          ? getNextGradient(0, 0)[0]
+          : (selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0])
+        : calloutColor,
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
     });
@@ -716,6 +720,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (this.props.enableGradient) {
         color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+        }
+        this._points[index].color = color;
       }
 
       return (
@@ -778,6 +787,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   }
 
   private _createStringBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
+    const { useSingleColor = false } = this.props;
     const { xBarScale, yBarScale } = this._getScales(containerHeight, containerWidth);
     const colorScale = this._createColors();
 
@@ -803,6 +813,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (this.props.enableGradient) {
         color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+        }
+        this._points[index].color = color;
       }
 
       return (
@@ -898,6 +913,11 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       if (this.props.enableGradient) {
         color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+        }
+        this._points[index].color = color;
       }
 
       return (
@@ -1007,6 +1027,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           this.props.data?.findIndex((item) => item.legend === point.legend) || 0, 0
         );
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+        }
       }
 
       // mapping data to the format Legends component needs

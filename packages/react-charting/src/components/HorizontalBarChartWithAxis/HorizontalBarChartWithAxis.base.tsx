@@ -208,7 +208,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
   };
 
   private _renderContentForOnlyBars = (point: IHorizontalBarChartWithAxisDataPoint): JSX.Element => {
-    const { useSingleColor = false } = this.props;
+    const { useSingleColor = false, enableGradient = false } = this.props;
     let selectedPointIndex = 0;
     this.props.data!.forEach((yDataPoint: IHorizontalBarChartWithAxisDataPoint, index: number) => {
       if (yDataPoint.y === point.y) {
@@ -220,6 +220,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       //if useSingle color , then check if user has given a palette or not
       // and pick the first color from that or else from our paltette.
       color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+      if (enableGradient) {
+        color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+      }
     } else {
       color = point.color
         ? point.color
@@ -289,7 +292,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     point: IHorizontalBarChartWithAxisDataPoint,
   ): { YValueHover: IYValueHover[]; hoverXValue: string | number | null } => {
     const YValueHover: IYValueHover[] = [];
-    const { useSingleColor = false } = this.props;
+    const { useSingleColor = false, enableGradient = false } = this.props;
     const { data } = this.props;
     const selectedPoint = data!.filter((yDataPoint: IHorizontalBarChartWithAxisDataPoint) => yDataPoint.y === point.y);
     let selectedPointIndex = 0;
@@ -303,6 +306,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       //if useSingle color , then check if user has given a palette or not
       // and pick the first color from that or else from our paltette.
       color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+      if (enableGradient) {
+        color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+      }
     } else {
       color = selectedPoint[0].color
         ? selectedPoint[0].color
@@ -482,6 +488,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         const pointIndex = Math.max(this._points.findIndex((item) => item === point), 0);
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+        }
+        this._points[pointIndex].color = color;
       }
 
       return (
@@ -592,6 +603,11 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         const pointIndex = this._points.findIndex((item) => item === point);
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
         color2 = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+        }
+        this._points[pointIndex].color = color;
       }
 
       return (
@@ -720,6 +736,9 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       if (this.props.enableGradient) {
         color = point.gradient?.[0] || getNextGradient(_index, 0, this.props.theme?.isInverted)[0];
+        if (useSingleColor) {
+          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+        }
       }
 
       // mapping data to the format Legends component needs
