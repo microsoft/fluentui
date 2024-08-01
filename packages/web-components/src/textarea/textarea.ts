@@ -504,13 +504,7 @@ export class BaseTextArea extends FASTElement {
     });
     this.controlElAttrObserver.observe(this.controlEl, {
       attributes: true,
-      attributeFilter: [
-        'disabled',
-        'required',
-        'readonly',
-        'maxlength',
-        'minlength',
-      ],
+      attributeFilter: ['disabled', 'required', 'readonly', 'maxlength', 'minlength'],
     });
   }
 
