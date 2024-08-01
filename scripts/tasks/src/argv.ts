@@ -14,7 +14,13 @@ export interface JustArgs extends Arguments {
 }
 
 export function getJustArgv() {
-  return parseModule(argv()) as Partial<JustArgs>;
+  const production = Boolean(process.env.FLUENT_PROD_BUILD);
+  const cliArgs = argv();
+  if (production) {
+    cliArgs.production = true;
+  }
+
+  return parseModule(cliArgs) as Partial<JustArgs>;
 }
 
 const moduleDefaults = { esm: false, cjs: false, amd: false };

@@ -1,4 +1,5 @@
 import type * as React from 'react';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
 import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
@@ -12,6 +13,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
+  collapseMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

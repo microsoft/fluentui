@@ -8,17 +8,7 @@ import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.
  *
  * @public
  */
-export class Field extends FASTElement {
-  /**
-   * The position of the label relative to the input.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `label-position`
-   */
-  @attr({ attribute: 'label-position' })
-  public labelPosition: LabelPosition = LabelPosition.above;
-
+export class BaseField extends FASTElement {
   /**
    * The slotted label elements.
    *
@@ -232,4 +222,22 @@ export class Field extends FASTElement {
       toggleState(this.elementInternals, value, this.input.validity[flag as keyof ValidityState]);
     }
   }
+}
+
+/**
+ * A Field Custom HTML Element.
+ * Based on BaseField and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Field extends BaseField {
+  /**
+   * The position of the label relative to the input.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `label-position`
+   */
+  @attr({ attribute: 'label-position' })
+  public labelPosition: LabelPosition = LabelPosition.above;
 }

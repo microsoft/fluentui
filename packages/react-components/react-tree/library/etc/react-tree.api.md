@@ -26,6 +26,7 @@ import type { EventHandler } from '@fluentui/react-utilities';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Radio } from '@fluentui/react-radio';
 import { RadioProps } from '@fluentui/react-radio';
 import * as React_2 from 'react';
@@ -46,7 +47,7 @@ export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree'
 export const FlatTree: ForwardRefComponent<FlatTreeProps>;
 
 // @public (undocumented)
-export const flatTreeClassNames: SlotClassNames<FlatTreeSlots>;
+export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>>;
 
 // @public
 export const FlatTreeItem: ForwardRefComponent<FlatTreeItemProps>;
@@ -145,7 +146,7 @@ export type TreeCheckedChangeData = {
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 // @public (undocumented)
-export const treeClassNames: SlotClassNames<TreeSlots>;
+export const treeClassNames: SlotClassNames<Omit<TreeSlots, 'collapseMotion'>>;
 
 // @public (undocumented)
 export type TreeContextValue = {
@@ -387,6 +388,7 @@ export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 // @public (undocumented)
 export type TreeSlots = {
     root: Slot<'div'>;
+    collapseMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public

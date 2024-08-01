@@ -187,10 +187,12 @@ const useRootStyles = makeStyles({
   'filled-lighter': {
     backgroundColor: tokens.colorNeutralBackground1,
   },
+  // This shadow appearance is deprecated and will be removed in a future release.
   'filled-darker-shadow': {
     backgroundColor: tokens.colorNeutralBackground3,
     boxShadow: tokens.shadow2,
   },
+  // This shadow appearance is deprecated and will be removed in a future release.
   'filled-lighter-shadow': {
     backgroundColor: tokens.colorNeutralBackground1,
     boxShadow: tokens.shadow2,

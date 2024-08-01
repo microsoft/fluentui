@@ -5,6 +5,7 @@
   "implicitDependencies": [],
   "tags": ["platform:web", "web-components"],
   "targets": {
-    "e2e": { "dependsOn": ["build-storybook"] }
+    "e2e": { "dependsOn": ["build-storybook"] },
+    "type-check": { "dependsOn": ["build"] }
   }
 }

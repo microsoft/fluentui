@@ -516,6 +516,40 @@ export class BaseDivider extends FASTElement {
 }
 
 // @public
+export class BaseField extends FASTElement {
+    constructor();
+    // @internal
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
+    // @internal
+    invalidHandler(e: Event): boolean | void;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
+    // @internal
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
 export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
@@ -2196,38 +2230,8 @@ export const durationUltraFast = "var(--durationUltraFast)";
 export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
-export class Field extends FASTElement {
-    constructor();
-    // @internal
-    changeHandler(e: Event): boolean | void;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    input: SlottableInput;
-    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
-    // @internal
-    invalidHandler(e: Event): boolean | void;
+export class Field extends BaseField {
     labelPosition: FieldLabelPosition;
-    // @internal
-    labelSlot: Node[];
-    protected labelSlotChanged(prev: Node[], next: Node[]): void;
-    // @internal
-    messageSlot: Element[];
-    // @internal
-    messageSlotChanged(prev: Element[], next: Element[]): void;
-    // @internal
-    setStates(): void;
-    // (undocumented)
-    setValidationStates(): void;
-    // @internal
-    slottedInputs: SlottableInput[];
-    // @internal
-    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
 }
 
 // @public
