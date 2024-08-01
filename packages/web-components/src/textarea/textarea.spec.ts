@@ -1,5 +1,4 @@
 import { test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
