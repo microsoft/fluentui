@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Tue, 09 Jul 2024 07:36:31 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2024 07:24:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.14](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.14)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.13..@fluentui/utilities_v8.15.14)
+
+### Patches
+
+- Bump @fluentui/react-window-provider to v2.2.28 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
 
 ## [8.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.13)
 

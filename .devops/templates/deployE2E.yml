@@ -29,7 +29,6 @@ steps:
   - script: |
       yarn nx run pr-deploy-site:generate:site
     displayName: generate PR Deploy Site
-    condition: eq(variables.isPR, true)
 
   - task: AzureCLI@2
     displayName: Upload PR deploy site
