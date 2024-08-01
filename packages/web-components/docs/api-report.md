@@ -2227,6 +2227,14 @@ export const durationUltraFast = "var(--durationUltraFast)";
 export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
+export type EndOptions<TSource = any, TParent = any> = {
+    end?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
 export class Field extends BaseField {
     labelPosition: FieldLabelPosition;
 }
