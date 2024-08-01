@@ -33,7 +33,7 @@ export type CarouselAutoplayButtonProps = ToggleButtonProps &
     /**
      * Callback that informs the user when internal autoplay value has changed
      */
-    onAutoplayChange: EventHandler<CarouselAutoplayChangeData>;
+    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
   };
 
 /**

@@ -58,7 +58,6 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
-        // appearance: 'subtle',
         ...props,
         checked: autoplay,
         onClick: handleButtonClick,
