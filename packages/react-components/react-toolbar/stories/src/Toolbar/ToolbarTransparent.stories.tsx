@@ -3,7 +3,7 @@ import { TextBold24Regular, TextItalic24Regular, TextUnderline24Regular } from '
 import { Toolbar, ToolbarToggleButton } from '@fluentui/react-components';
 import type { ToolbarProps } from '@fluentui/react-components';
 
-export const transparent = (props: Partial<ToolbarProps>) => (
+export const Transparent = (props: Partial<ToolbarProps>) => (
   <Toolbar aria-label="transparent" {...props}>
     <ToolbarToggleButton
       appearance="transparent"
