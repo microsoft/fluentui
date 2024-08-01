@@ -37,9 +37,7 @@ export const setTheme = (theme: Theme) => {
 
     for (const [tokenName, tokenValue] of Object.entries(theme)) {
       if (typeof tokenValue !== 'string' && Number.isNaN(tokenValue)) {
-        throw new Error(
-          `"${tokenName}" must be a string or a number.`,
-        );
+        throw new Error(`"${tokenName}" must be a string or a number.`);
       }
 
       if (SUPPORTS_REGISTER_PROPERTY) {
