@@ -1,4 +1,4 @@
-# Tabs
+# Tablist
 
 Tablists allow for navigation between two or more content views and relies on text headers to articulate the different sections of content. Tablist wraps a set of Tab components and manages the roving tabindex (aka "focusgroup") around the elements.
 
