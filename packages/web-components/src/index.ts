@@ -104,6 +104,7 @@ export {
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
+  BaseField,
   Field,
   FieldLabelPosition,
   ValidationFlags,
