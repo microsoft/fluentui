@@ -67,7 +67,7 @@ steps:
 
   - bash: |
       set -exuo pipefail
-      yarn vr-app create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
+      npx vr-approval-cli@0.4.5 create-policy --nonBlockingPipelines '{"$(pipelineId)":{"pipelineStatus": "PENDING","pipelineName": "$(pipelineName)"}}' --clientType 'FLUENTUI'
     displayName: VR App - Create Policy
     env:
       VR_APP_API_URL: $(VR_APP_API_URL)
@@ -94,5 +94,5 @@ steps:
       scriptLocation: 'inlineScript'
       # ciDefinitionId is set to 205 because that is the ID of the baseline pipeline (https://uifabric.visualstudio.com/fabricpublic/_build?definitionId=205) used by the master branch
       inlineScript: |
-        yarn vr-app run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix ${{ parameters.locationPrefix }} --locationPostfix ${{ parameters.locationPostfix }} --pipelineId $(pipelineId)  --clientName ${{ parameters.clientName }} --threshold '0.04' --cumThreshold '1'
+        npx vr-approval-cli@0.4.5 run-diff --screenshotsDirectory ./screenshots  --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix ${{ parameters.locationPrefix }} --locationPostfix ${{ parameters.locationPostfix }} --pipelineId $(pipelineId)  --clientName ${{ parameters.clientName }} --threshold '0.04' --cumThreshold '1'
     condition: and(eq(variables.isPR, true), eq(variables['vrTestSkip'], 'no'))

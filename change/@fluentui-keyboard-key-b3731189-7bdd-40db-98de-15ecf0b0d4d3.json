@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add project.json tags",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
