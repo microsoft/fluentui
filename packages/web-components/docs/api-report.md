@@ -6,6 +6,7 @@
 
 /// <reference types="web" />
 
+import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -61,8 +62,6 @@ export class AccordionItem extends BaseAccordionItem {
     sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
-//
 // @internal
 export interface AccordionItem extends StartEnd {
 }
@@ -81,8 +80,6 @@ export const AccordionItemMarkerPosition: {
 // @public
 export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
-// Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
     expandedIcon?: StaticallyComposableHTML<AccordionItem>;
@@ -2196,6 +2193,14 @@ export const durationUltraFast = "var(--durationUltraFast)";
 export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
+export type EndOptions<TSource = any, TParent = any> = {
+    end?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
 export class Field extends FASTElement {
     constructor();
     // @internal
@@ -3218,6 +3223,25 @@ export const SpinnerStyles: ElementStyles;
 //
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
+
+// @public
+export class StartEnd {
+    // (undocumented)
+    end: HTMLSlotElement;
+    // (undocumented)
+    start: HTMLSlotElement;
+}
+
+// @public
+export type StartEndOptions<TSource = any, TParent = any> = StartOptions<TSource, TParent> & EndOptions<TSource, TParent>;
+
+// @public
+export type StartOptions<TSource = any, TParent = any> = {
+    start?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
 
 // @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
