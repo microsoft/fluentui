@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 
+import type { Story } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Theme } from './set-theme.js';
 import { setTheme } from './set-theme.js';
@@ -83,9 +84,10 @@ const ComponentCloudTemplate = html`
   </p>
 `;
 
-export const SetTheme = renderComponent(html`
-  <script>
-    ${x => setTheme(fluentTheme[x.theme])};
-  </script>
-  ${ComponentCloudTemplate}
-`);
+export const SetTheme: Story = renderComponent(ComponentCloudTemplate);
+SetTheme.decorators = [
+  (Story, { args: { theme } }) => {
+    theme && setTheme(fluentTheme[theme]);
+    return Story();
+  },
+];
