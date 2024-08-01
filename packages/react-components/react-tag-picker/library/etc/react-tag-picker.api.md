@@ -216,7 +216,10 @@ export type TagPickerOptionSlots = Pick<OptionSlots, 'root'> & {
 export type TagPickerOptionState = ComponentState<TagPickerOptionSlots> & Pick<OptionState, 'components' | 'root'>;
 
 // @public
-export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+export type TagPickerProps = ComponentProps<TagPickerSlots> & Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'open'> & Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    selectedOptions?: Iterable<string>;
+    defaultSelectedOptions?: Iterable<string>;
+    noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
     children: [JSX.Element, JSX.Element] | JSX.Element;

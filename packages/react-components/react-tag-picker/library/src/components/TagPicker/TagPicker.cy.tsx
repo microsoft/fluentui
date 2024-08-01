@@ -43,7 +43,7 @@ const options = [
 type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions'>;
 
 const TagPickerControlled = ({ open, defaultOpen, defaultSelectedOptions = [] }: TagPickerControlledProps) => {
-  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
+  const [selectedOptions, setSelectedOptions] = React.useState<string[]>(() => Array.from(defaultSelectedOptions));
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
   };

@@ -48,6 +48,16 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
 
   const comboboxState = useComboboxBaseState({
     ...props,
+    // TODO: Combobox state should support iterables as well, for now converting it to array is fine
+    selectedOptions: React.useMemo(
+      () => props.selectedOptions && arrayFrom(props.selectedOptions),
+      [props.selectedOptions],
+    ),
+    // TODO: Combobox state should support iterables as well, for now converting it to array is fine
+    defaultSelectedOptions: React.useMemo(
+      () => props.defaultSelectedOptions && arrayFrom(props.defaultSelectedOptions),
+      [props.defaultSelectedOptions],
+    ),
     onOptionSelect: useEventCallback((event, data) =>
       props.onOptionSelect?.(event, {
         selectedOptions: data.selectedOptions,
@@ -130,3 +140,9 @@ const childrenToTriggerAndPopover = (children?: React.ReactNode) => {
   }
   return { trigger, popover };
 };
+
+/**
+ * Convert an iterable to an array.
+ * If the value is already an array, it will be returned as is.
+ */
+const arrayFrom = <T>(value: Iterable<T>): T[] => (Array.isArray(value) ? value : Array.from(value));

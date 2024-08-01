@@ -28,11 +28,17 @@ export type TagPickerOnOpenChangeData = { open: boolean } & (
  * Picker Props
  */
 export type TagPickerProps = ComponentProps<TagPickerSlots> &
-  Pick<
-    ComboboxProps,
-    'positioning' | 'disabled' | 'defaultOpen' | 'selectedOptions' | 'defaultSelectedOptions' | 'open'
-  > &
+  Pick<ComboboxProps, 'positioning' | 'disabled' | 'defaultOpen' | 'open'> &
   Pick<Partial<TagPickerContextValue>, 'size' | 'appearance'> & {
+    selectedOptions?: Iterable<string>;
+    defaultSelectedOptions?: Iterable<string>;
+    /**
+     * By default, when a single children is provided, the TagPicker will assume that the children
+     * is a popover. By setting this prop to true, the children will be treated as a trigger instead.
+     *
+     * @default false
+     */
+    noPopover?: boolean;
     onOpenChange?: EventHandler<TagPickerOnOpenChangeData>;
     onOptionSelect?: EventHandler<TagPickerOnOptionSelectData>;
 
