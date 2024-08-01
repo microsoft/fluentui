@@ -36,9 +36,7 @@ export const Disabled = () => {
     default: useId(idPrefix),
     underline: useId(idPrefix),
     filledLighter: useId(idPrefix),
-    filledLighterShadow: useId(idPrefix),
     filledDarker: useId(idPrefix),
-    filledDarkerShadow: useId(idPrefix),
   };
   const styles = useStyles();
 
@@ -63,30 +61,12 @@ export const Disabled = () => {
           defaultValue="disabled value"
         />
       </div>
-      <div className={styles.field}>
-        <Label htmlFor={inputIds.filledLighterShadow}>Disabled (filled lighter shadow appearance)</Label>
-        <Input
-          appearance="filled-lighter-shadow"
-          disabled={disabled}
-          id={inputIds.filledLighterShadow}
-          defaultValue="disabled value"
-        />
-      </div>
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={inputIds.filledDarker}>Disabled (filled darker appearance)</Label>
         <Input
           appearance="filled-darker"
           disabled={disabled}
           id={inputIds.filledDarker}
-          defaultValue="disabled value"
-        />
-      </div>
-      <div className={styles.field}>
-        <Label htmlFor={inputIds.filledDarkerShadow}>Disabled (filled darker shadow appearance)</Label>
-        <Input
-          appearance="filled-darker-shadow"
-          disabled={disabled}
-          id={inputIds.filledDarkerShadow}
           defaultValue="disabled value"
         />
       </div>

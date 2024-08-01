@@ -33,9 +33,7 @@ export const Appearance = () => {
     default: useId(idPrefix),
     underline: useId(idPrefix),
     filledLighter: useId(idPrefix),
-    filledLighterShadow: useId(idPrefix),
     filledDarker: useId(idPrefix),
-    filledDarkerShadow: useId(idPrefix),
   };
 
   const styles = useStyles();
@@ -54,17 +52,9 @@ export const Appearance = () => {
         <Label htmlFor={inputIds.filledLighter}>Filled lighter appearance</Label>
         <Input appearance="filled-lighter" id={inputIds.filledLighter} />
       </div>
-      <div className={styles.field}>
-        <Label htmlFor={inputIds.filledLighterShadow}>Filled lighter shadow appearance</Label>
-        <Input appearance="filled-lighter-shadow" id={inputIds.filledLighterShadow} />
-      </div>
       <div className={mergeClasses(styles.field, styles.filledDarker)}>
         <Label htmlFor={inputIds.filledDarker}>Filled darker appearance</Label>
         <Input appearance="filled-darker" id={inputIds.filledDarker} />
-      </div>
-      <div className={styles.field}>
-        <Label htmlFor={inputIds.filledDarkerShadow}>Filled darker shadow appearance</Label>
-        <Input appearance="filled-darker-shadow" id={inputIds.filledDarkerShadow} />
       </div>
     </div>
   );
