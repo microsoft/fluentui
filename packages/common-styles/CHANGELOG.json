@@ -2,6 +2,27 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2024 07:24:43 GMT",
+      "tag": "@fluentui/common-styles_v1.2.56",
+      "version": "1.2.56",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/common-styles",
+            "commit": "3da4204265901049d9ef777df15cb25b881a6284",
+            "comment": "chore: add project.json tags"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/common-styles",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jul 2023 07:36:52 GMT",
       "tag": "@fluentui/common-styles_v1.2.32",
       "version": "1.2.32",

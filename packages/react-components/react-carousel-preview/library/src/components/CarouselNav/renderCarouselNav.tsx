@@ -10,13 +10,13 @@ import { CarouselNavContextProvider } from './CarouselNavContext';
  */
 export const renderCarouselNav_unstable = (state: CarouselNavState) => {
   assertSlots<CarouselNavSlots>(state);
-  const { values, renderNavButton } = state;
+  const { totalSlides, renderNavButton } = state;
 
   return (
     <state.root>
-      {values.map(value => (
-        <CarouselNavContextProvider value={value} key={value}>
-          {renderNavButton(value)}
+      {new Array(totalSlides).fill(null).map((_, index) => (
+        <CarouselNavContextProvider value={index} key={index}>
+          {renderNavButton(index)}
         </CarouselNavContextProvider>
       ))}
     </state.root>

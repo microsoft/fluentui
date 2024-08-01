@@ -82,22 +82,33 @@ Primary source of our generators lives in [workspace-plugin](../../../tools//wor
 >
 > `<project-name>` is project name without `@npmScope`
 
+> [!NOTE]
+>
+> Following commands should be invoked from monorepo root !
+
 ```shell
+# dependencies
 yarn # installs everything. It fixes many things.
-yarn buildto package-name # Does a yarn build scoped to a specific package and its dependencies for faster speeds vs building the whole repo.
-yarn test # runs a test suite. It is slightly different from the test suite in the CI/CD test suite. Can be run from inside a given package to run faster.
+yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
+
+# generators
 yarn create-package # scaffolds a new package
 yarn create-component # scaffolds a new component
 yarn change # creates a new change file, if needed
-yarn clean # tidies any cached dependencies
+
+# NOTE: following tasks will be executed against all monorepo projects ( avoid = SLOW )
+yarn clean # tidies any cached dependencies in all packages
 yarn build # generates and relinks all packages and temporary files, this can be a good option if you see errors unrelated to the packages you are working on
 yarn start # runs a package. You can select the package of choice.
-yarn update-snapshots # updates snapshot tests
-yarn run dedupe # dedupes dependencies - necessary to run after any kind of package bump/changes
-yarn nx run <project-name>:generate-api # updates API files
+yarn update-snapshots # updates snapshot tests in whole monorepo
+
+# running project tasks
 yarn nx run <project-name>:<target-name> # runs tasks within a package. [More help here](https://nx.dev/features/run-tasks#running-tasks)
+yarn nx run <package-name>:build # Does a yarn build scoped to a specific package and its dependencies for faster speeds vs building the whole repo.
+yarn nx run <package-name>:test # runs a test suite. It is slightly different from the test suite in the CI/CD test suite.
+yarn nx run <project-name>:generate-api # updates API files
 yarn nx run <project-name>:type-check # quickly runs type checks and associated linting
-yarn lage build --to react # build v8 so intellisense works.
+yarn nx run react:build  # build v8 so intellisense works.
 ```
 
 ```shell

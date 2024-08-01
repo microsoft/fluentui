@@ -451,6 +451,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-a"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -664,6 +665,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-b"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -909,6 +911,7 @@ exports[`DetailsHeader can render 1`] = `
         id="header0-c"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -1331,6 +1334,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         id="header2-a"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -1544,6 +1548,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         id="header2-b"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -1789,6 +1794,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         id="header2-c"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -2373,6 +2379,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header6-a"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -2587,6 +2594,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header6-b"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=
@@ -2858,6 +2866,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         id="header6-c"
         onClick={[Function]}
         onContextMenu={[Function]}
+        onKeyDown={[Function]}
       >
         <span
           className=

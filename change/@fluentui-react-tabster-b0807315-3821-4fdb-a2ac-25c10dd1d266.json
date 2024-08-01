@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: suppress @typescript-eslint/naming-convention report on TabsterTypes_6_0_1_DoNotUse",
-  "packageName": "@fluentui/react-tabster",
-  "email": "vgenaev@gmail.com",
-  "dependentChangeType": "none"
-}

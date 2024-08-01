@@ -3,7 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { DrawerSlots, DrawerState } from './Drawer.types';
 
-export const drawerClassNames: SlotClassNames<DrawerSlots> = {
+export const drawerClassNames: SlotClassNames<Omit<DrawerSlots, 'surfaceMotion'>> = {
   root: 'fui-Drawer',
 };
 

@@ -31,10 +31,10 @@ For that purpose we use `tsconfig.react-compat-check.json` as target for `type-c
 **Local machine flow:**
 
 ```sh
-lage build --to @fluentui/react-18-tests-v8
-yarn workspace @fluentui/react-18-tests-v8 type-check
+yarn nx run react-18-tests-v8:build
+yarn nx run react-18-tests-v8:type-check
 ```
 
 **CI:**
 
-lage defines `build` targets to be executed prior to `type-check`.
+nx defines `build` targets to be executed prior to `type-check`.

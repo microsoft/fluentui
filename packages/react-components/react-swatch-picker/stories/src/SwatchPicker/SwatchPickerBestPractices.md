@@ -16,12 +16,11 @@
 
 ### Accessibility
 
-- Use contrast borders for swatches when contrast ratio between background and swatch is less than 3.
-- Minimum size of the target for pointer inputs should be at least 24 by 24 CSS pixels. It's not recommended to use smaller size.
-- Labels for the swathces are part of `aria-label` and a tooltip.
+- Use contrasting borders for swatches when contrast ratio between background and swatch is less than 3.
+- The minimum size of the target for pointer inputs should be at least 24 by 24 CSS pixels. This is required to meet the [WCAG target size requirement](https://w3c.github.io/wcag/guidelines/22/#target-size-minimum).
+- Labels for the swatches can be handled with either `aria-label` or a Tooltip. These are required for both voice control and screen reader users.
 
 _Known limitations:_
 
-- `radiogroup` role is not expected for the SwatchPicker because color selection must be confirmed by pressing enter/space unlike Radiogroup. But because `aria-checked` attribute is supported everywhere the role `radiogroup` will be used for the `row` layout.
-
-- For the `grid` layout role `grid` is used with rows inside and swatches with a role `gridcell`. But `aria-selected` attribute is not supported on Mac and there is no better alternative.
+- The `radiogroup` role used for the SwatchPicker does not fully match standard radio keyboard behavior because color selection must be confirmed by pressing enter/space, unlike Radiogroup. But because this pattern has more robust cross-platform support, the `radiogroup` role will be used for the `row` layout.
+- For the `grid` layout the `grid` role is used, and swatches have a role of `gridcell`. This is because the grid pattern is the only one that supports a two-dimensional layout and arrowing behavior, even though the `aria-selected` attribute on `gridcell` is not well-supported on all screen readers, and there is no better alternative.

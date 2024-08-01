@@ -67,7 +67,7 @@ extends:
                 displayName: 'Manually set package version'
 
               - script: |
-                  yarn buildto @fluentui/react --production
+                  yarn nx run react:build --production
                 displayName: yarn build to FUIR (Create production build)
 
               - script: yarn workspace @fluentui/react bundle --production

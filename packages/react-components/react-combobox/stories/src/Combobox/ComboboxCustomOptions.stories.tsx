@@ -31,9 +31,6 @@ const useStyles = makeStyles({
     gap: '2px',
     maxWidth: '400px',
   },
-  listbox: {
-    maxHeight: '200px',
-  },
 });
 
 export const CustomOptions = (props: Partial<ComboboxProps>) => {
@@ -44,12 +41,7 @@ export const CustomOptions = (props: Partial<ComboboxProps>) => {
   return (
     <div className={styles.root}>
       <label id={comboId}>Best pet</label>
-      <Combobox
-        aria-labelledby={comboId}
-        listbox={{ className: styles.listbox }}
-        placeholder="Select an animal"
-        {...props}
-      >
+      <Combobox aria-labelledby={comboId} placeholder="Select an animal" {...props}>
         <CustomOptionGroup label="Land" options={land} />
         <CustomOptionGroup label="Sea" options={water} />
       </Combobox>

@@ -1,21 +1,23 @@
-import * as React from 'react';
-
-import { createCarouselStore } from './createCarouselStore';
-import { CarouselContextValue } from './CarouselContext.types';
+import { ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
+import type { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
-  store: createCarouselStore(null),
+  activeIndex: 0,
   selectPageByDirection: () => {
     /** noop */
   },
-  selectPageByValue: () => {
+  selectPageByIndex: () => {
+    /** noop */
+  },
+  subscribeForValues: () => () => {
     /** noop */
   },
   circular: false,
 };
 
-const CarouselContext = React.createContext<CarouselContextValue | undefined>(undefined);
+const CarouselContext = createContext<CarouselContextValue | undefined>(undefined);
 
 export const CarouselProvider = CarouselContext.Provider;
 
-export const useCarouselContext_unstable = () => React.useContext(CarouselContext) ?? carouselContextDefaultValue;
+export const useCarouselContext_unstable = <T>(selector: ContextSelector<CarouselContextValue, T>): T =>
+  useContextSelector(CarouselContext, (ctx = carouselContextDefaultValue) => selector(ctx));

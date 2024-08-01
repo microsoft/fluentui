@@ -305,11 +305,13 @@ packages/tokens @microsoft/teams-prg
 packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-tags/library @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-tags/stories @microsoft/cxe-red @microsoft/teams-prg
-packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
+packages/react-components/react-migration-v0-v9/library @microsoft/teams-prg
+packages/react-components/react-migration-v0-v9/stories @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-datepicker-compat/library @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-datepicker-compat/stories @microsoft/cxe-red @sopranopillow @khmakoto
-packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
+packages/react-components/react-migration-v8-v9/library @microsoft/cxe-red @geoffcoxmsft
+packages/react-components/react-migration-v8-v9/stories @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-breadcrumb/library @microsoft/cxe-prg
 packages/react-components/react-breadcrumb/stories @microsoft/cxe-prg

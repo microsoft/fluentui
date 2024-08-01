@@ -4,7 +4,7 @@ import type { ComponentProps, Slot } from '@fluentui/react-utilities';
 /**
  * OverlayDrawerSurface slots
  */
-export type OverlayDrawerSurfaceSlots = Pick<DialogSurfaceSlots, 'backdrop'> & {
+export type OverlayDrawerSurfaceSlots = Partial<Pick<DialogSurfaceSlots, 'backdrop' | 'backdropMotion'>> & {
   root: Slot<'div', 'aside'>;
 };
 

@@ -1,18 +1,23 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { AppItem } from './AppItem';
+import type { AppItemProps } from './AppItem.types';
+import { appItemClassNames } from './useAppItemStyles.styles';
 
 describe('AppItem', () => {
   isConformant({
-    Component: AppItem,
+    Component: AppItem as React.FunctionComponent<AppItemProps>,
     displayName: 'AppItem',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<AppItem>Default AppItem</AppItem>);
-    expect(result.container).toMatchSnapshot();
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: { icon: 'Test Icon', content: 'Some Content' },
+          expectedClassNames: {
+            root: appItemClassNames.root,
+            icon: appItemClassNames.icon,
+          },
+        },
+      ],
+    },
   });
 });

@@ -24,13 +24,13 @@ export const ColorSwatchVariants = () => {
         color="#c8eeff"
         icon={<HeartFilled color="red" className={styles.icon} />}
         value="icon"
-        aria-label="heart-icon"
+        aria-label="heart icon"
       />
       <ColorSwatch color="#016ab0" disabled value="blue" aria-label="blue" />
       <ColorSwatch color="#ff659a" value="initials" aria-label="initials">
         A
       </ColorSwatch>
-      <ColorSwatch disabled color="#c8eeff" value="icon" aria-label="heart-icon" />
+      <ColorSwatch disabled color="#c8eeff" value="light-blue" aria-label="light blue" />
     </div>
   );
 };

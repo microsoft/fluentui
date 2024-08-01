@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Expand hit target when there's no content after.",
-  "packageName": "@fluentui/react-search",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

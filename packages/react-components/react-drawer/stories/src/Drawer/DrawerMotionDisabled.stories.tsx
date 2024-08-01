@@ -25,10 +25,6 @@ const useStyles = makeStyles({
     backgroundColor: '#fff',
   },
 
-  drawer: {
-    transitionDuration: '0ms',
-  },
-
   content: {
     flex: '1',
     padding: '16px',
@@ -36,13 +32,13 @@ const useStyles = makeStyles({
     display: 'grid',
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
-    gridRowGap: tokens.spacingVerticalXXL,
+    gap: tokens.spacingVerticalXXL,
     gridAutoRows: 'max-content',
   },
 
   field: {
     display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
+    gap: tokens.spacingVerticalS,
   },
 });
 
@@ -58,10 +54,8 @@ export const MotionDisabled = () => {
   return (
     <div className={styles.root}>
       <Drawer
-        backdrop={{
-          className: styles.drawer,
-        }}
-        className={styles.drawer}
+        backdropMotion={null}
+        surfaceMotion={null}
         type={type}
         separator
         open={isOpen}

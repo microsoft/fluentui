@@ -20,7 +20,7 @@ export const navItemTokens = {
 
 /**
  * Styles for the root slot
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useRootDefaultClassName = makeResetStyles({
   display: 'flex',
@@ -37,6 +37,7 @@ export const useRootDefaultClassName = makeResetStyles({
   // this element can change between a button and an anchor
   // so we need to reset box sizing to prevent horizontal overflow
   boxSizing: 'border-box',
+  cursor: 'pointer',
 
   transitionDuration: navItemTokens.animationTokens.animationDuration,
   transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
@@ -60,7 +61,7 @@ export const useSmallStyles = makeStyles({
 
 /**
  * Styles for the content slot (children)
- * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * Shared across NavItem, NavCategoryItem, NavSubItem, and AppItem
  */
 export const useContentStyles = makeStyles({
   selected: typographyStyles.body1Strong,
@@ -98,6 +99,7 @@ export const useIndicatorStyles = makeStyles({
 /**
  * Styles for the icon slot
  * Shared across NavItem, NavCategoryItem, and NavSubItem
+ * We use the grid trick to stack the filled and regular icons on top of each other
  */
 export const useIconStyles = makeStyles({
   base: {

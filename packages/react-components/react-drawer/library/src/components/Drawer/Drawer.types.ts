@@ -3,7 +3,7 @@ import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { OverlayDrawerProps, OverlayDrawerSlots } from '../OverlayDrawer';
 import type { InlineDrawerProps, InlineDrawerSlots } from '../InlineDrawer';
 
-export type DrawerSlots = OverlayDrawerSlots | InlineDrawerSlots;
+export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
 
 /**
  * Drawer Props

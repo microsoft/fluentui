@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2024 18:47:34 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.7",
+      "version": "9.15.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "ceacd96379e6d7268d1807a318a9b6f7c48f519b",
+            "comment": "fix: improve arrow styles implementation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-positioning_v9.15.6",
       "version": "9.15.6",

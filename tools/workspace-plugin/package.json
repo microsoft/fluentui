@@ -5,9 +5,10 @@
   "type": "commonjs",
   "generators": "./generators.json",
   "scripts": {
-    "test": "nx run workspace-plugin:test",
+    "test": "jest --passWithNoTests",
     "type-check": "node  ./scripts/type-check.mjs",
-    "lint": "eslint --ext .ts,.js,.json ."
+    "lint": "eslint --ext .ts,.js,.json .",
+    "check-graph": "node ./scripts/check-dep-graph.js"
   },
   "dependencies": {
     "@nx/devkit": "~19.3.2"

@@ -4,7 +4,7 @@ import { tokens } from '@fluentui/react-theme';
 
 import type { AccordionPanelSlots, AccordionPanelState } from './AccordionPanel.types';
 
-export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots> = {
+export const accordionPanelClassNames: SlotClassNames<Omit<AccordionPanelSlots, 'collapseMotion'>> = {
   root: 'fui-AccordionPanel',
 };
 

@@ -3,7 +3,7 @@ import PresenceGroupDescription from './PresenceGroupDescription.md';
 export { PresenceGroupDefault as Default } from './PresenceGroupDefault.stories';
 
 export default {
-  title: 'Utilities/Motion/PresenceGroup',
+  title: 'Motion/APIs/PresenceGroup',
   component: null,
   parameters: {
     docs: {

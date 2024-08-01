@@ -25,7 +25,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
-          vrTestPackageName: '@fluentui/vr-tests-web-components'
+          vrTestPackageName: 'vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
 
       - task: AzureCLI@2
@@ -44,7 +44,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V9
     variables:
@@ -56,7 +56,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
-          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackageName: 'vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
       - task: AzureCLI@2
@@ -75,7 +75,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V8
     variables:
@@ -87,7 +87,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
-          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackageName: 'vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
       - task: AzureCLI@2
@@ -106,7 +106,8 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+
   - job: VRToolUpdateBaseline_V0
     variables:
       pipelineId: '313'
@@ -117,7 +118,7 @@ jobs:
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
-          vrTestPackageName: '@fluentui/docs'
+          vrTestPackageName: 'docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
       - task: AzureCLI@2
@@ -136,4 +137,4 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)

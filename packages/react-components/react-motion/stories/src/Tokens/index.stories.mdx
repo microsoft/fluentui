@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs';
+import { MotionCurves, MotionDuration } from './Cards';
+
+<Meta title="Motion/Tokens" />
+
+<h1 class="sbdocs-title">Motion tokens</h1>
+
+Fluent UI React v9 offers predefined tokens for creating custom motions. These tokens can be used as CSS variables or plain JavaScript values, depending on the scenario.
+
+```ts
+import { createMotionComponent, makeStyles, motionTokens, tokens } from '@fluentui/react-components';
+
+// 💡 Use `tokens` for defining CSS based animations
+const useClasses = makeStyles({
+  root: {
+    animationDuration: tokens.curveAccelerateMid,
+  },
+});
+
+// 💡 Use `motionTokens` for defining JS based animations
+const Motion = createMotionComponent({
+  duration: motionTokens.curveAccelerateMid,
+});
+```
+
+## Curves
+
+Motion curves are predefined easing functions that can be used to create smooth animations.
+
+<MotionCurves />
+
+## Durations
+
+Motion durations are predefined time values that can be used to create smooth animations.
+
+<MotionDuration />

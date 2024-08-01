@@ -336,7 +336,6 @@ configuration:
                   files:
                     - package.json
                     - scripts
-                    - rush.json
                     - apps/vr-tests/screener.config.js
                     - apps/vr-tests/screener.local.config.js
                     - apps/pr-deploy-site
@@ -348,7 +347,7 @@ configuration:
                     - packages/codemods
                     - packages/monaco-editor
                     - packages/eslint-plugin
-                    - lage.config.js
+                    - nx.json
                     - tools
                   excludedFiles:
                     - change

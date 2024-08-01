@@ -1813,6 +1813,7 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2025,6 +2026,7 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2237,6 +2239,7 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2895,6 +2898,7 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3051,6 +3055,7 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3207,6 +3212,7 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3363,6 +3369,7 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3519,6 +3526,7 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4122,6 +4130,7 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4334,6 +4343,7 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4546,6 +4556,7 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5205,6 +5216,7 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5417,6 +5429,7 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5629,6 +5642,7 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6287,6 +6301,7 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6446,6 +6461,7 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6605,6 +6621,7 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6764,6 +6781,7 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6923,6 +6941,7 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7375,6 +7394,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7587,6 +7607,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7799,6 +7820,7 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=

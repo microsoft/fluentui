@@ -34,29 +34,6 @@
           }
         ]
       }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["{projectRoot}/src/**/*.ts", "{projectRoot}/package.json", "{projectRoot}/generators.json"]
-      }
-    },
-    "lint-old": {
-      "command": "eslint --ext .ts,.js,.json tools/workspace-plugin"
-    },
-    "test": {
-      "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
-      "options": {
-        "jestConfig": "tools/workspace-plugin/jest.config.ts"
-      }
-    },
-    "type-check": {
-      "command": "tsc -b tools/workspace-plugin/tsconfig.json"
-    },
-    "check-graph": {
-      "command": "node ./tools/workspace-plugin/scripts/check-dep-graph.js"
     }
   },
   "tags": ["platform:node", "tools"]

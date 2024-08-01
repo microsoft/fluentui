@@ -37,6 +37,8 @@ export const EmptySwatchExample = () => {
   const [selectedColor, setSelectedColor] = React.useState('#00B053');
 
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const colorFocusTargetRef = React.useRef<HTMLButtonElement>(null);
+  const [colorFocusTarget, setColorFocusTarget] = React.useState<string | null>(null);
   const [items, setItems] = React.useState<Array<{ color: string; value: string; 'aria-label': string }>>(defaultItems);
   const emptyItems = new Array(ITEMS_LIMIT - items.length).fill(null);
 
@@ -49,43 +51,41 @@ export const EmptySwatchExample = () => {
     // "value" should be unique as it's used as a key and for selection
     const newValue = `custom-${newColor} [${items.length - ITEMS_LIMIT}]`;
 
-    setItems([...items, { color: newColor, value: newValue, 'aria-label': `swatch-${newColor}` }]);
+    setItems([...items, { color: newColor, value: newValue, 'aria-label': newColor }]);
+    setColorFocusTarget(newValue);
   };
+
+  const resetColors = () => {
+    setItems(defaultItems);
+    setColorFocusTarget(selectedValue);
+  };
+
+  React.useEffect(() => {
+    if (colorFocusTarget) {
+      colorFocusTargetRef.current?.focus();
+    }
+  }, [colorFocusTarget]);
 
   return (
     <>
       <SwatchPicker
-        aria-label="SwatchPicker with empty swatch"
+        aria-label="SwatchPicker with empty swatches"
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
       >
         {items.map(item => (
-          <ColorSwatch key={item.value} aria-live="polite" aria-controls="add-new-color" {...item} />
+          <ColorSwatch key={item.value} ref={item.value === colorFocusTarget ? colorFocusTargetRef : null} {...item} />
         ))}
         {emptyItems.map((_, index) => (
-          <EmptySwatch
-            disabled
-            key={index}
-            aria-label={`empty-swatch-${index}`}
-            aria-live="polite"
-            aria-controls="reset-example"
-          />
+          <EmptySwatch disabled key={index} aria-label="empty swatch" />
         ))}
       </SwatchPicker>
 
       <div className={styles.example} style={{ backgroundColor: selectedColor }} />
       <Label htmlFor="color-select">Add more colors:</Label>
-      <input
-        aria-label="Open color picker"
-        className={styles.input}
-        ref={inputRef}
-        type="color"
-        id="color-select"
-        name="color-select"
-      />
+      <input className={styles.input} ref={inputRef} type="color" id="color-select" name="color-select" />
       <Button
         id="add-new-color"
-        aria-label="Add new color"
         className={styles.button}
         appearance="primary"
         disabled={items.length >= ITEMS_LIMIT}
@@ -93,12 +93,7 @@ export const EmptySwatchExample = () => {
       >
         Add new color
       </Button>
-      <Button
-        id="reset-example"
-        aria-label="Reset example"
-        className={styles.button}
-        onClick={() => setItems(defaultItems)}
-      >
+      <Button id="reset-example" className={styles.button} onClick={resetColors}>
         Reset example
       </Button>
     </>

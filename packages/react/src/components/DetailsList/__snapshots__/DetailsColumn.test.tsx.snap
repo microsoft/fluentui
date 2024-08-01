@@ -494,6 +494,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                 id="header1-1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
                 role="button"
               >
                 <span

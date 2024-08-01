@@ -2,6 +2,103 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2024 18:47:31 GMT",
+      "tag": "@fluentui/react-components_v9.54.7",
+      "version": "9.54.7",
+      "comments": {
+        "minor": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d33f99300343a23873218036873002e7dcc60370",
+            "comment": "feat: add collapse motion to Accordion"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "cf68d198b62eeccb0031517a4558f73877ff92f1",
+            "comment": "feat: Release react-carousel-preview to public preview"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "5cd1fede4340fbc8637694897fe94ecb785daf11",
+            "comment": "feat: Release react-icons-compat to stable"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "c5f079db7466c4fd81e10694d43f45aadb1fac7b",
+            "comment": "Adds AppItem and AppItemStatic, removes AppNode"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "c36de8c968d7b5d770e8a6c45103e22d4f294d0e",
+            "comment": "feat: Adds slots & styling for AppItem."
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "f2f9fd6d42fc495685d42461fca95060cfed7b4c",
+            "comment": "fix: improve hover for HC mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "02284e605470c0305e21e33cab916cf5a9965d97",
+            "comment": "fix: only call activedescendant focus when combobox/dropdown is opened"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "f903b6dc4b28a6e421f24695b07729d1c4ab31fa",
+            "comment": "chore: migrate to stable motion APIs"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "f903b6dc4b28a6e421f24695b07729d1c4ab31fa",
+            "comment": "chore: update types for navDrawerClassNames"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "ceacd96379e6d7268d1807a318a9b6f7c48f519b",
+            "comment": "fix: improve arrow styles implementation"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-search",
+            "commit": "ccc8cf3d47fa4eae38d6b3625f41871499970619",
+            "comment": "fix: replace useEventCallback with useCallback for focus"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-search",
+            "commit": "709930bd388956152df740c6278c1e439fca4a5a",
+            "comment": "fix: Expand hit target when there's no content after."
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "41038cccfe937dcfa8e1a347ed2535d4f3c6de24",
+            "comment": "docs: update combobox examples and positioning description"
+          },
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/naming-convention report on TabsterTypes_6_0_1_DoNotUse"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:11 GMT",
       "tag": "@fluentui/react-components_v9.54.6",
       "version": "9.54.6",

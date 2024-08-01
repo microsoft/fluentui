@@ -5,8 +5,7 @@
   "implicitDependencies": [],
   "tags": ["v8"],
   "targets": {
-    "bundle": {
-      "dependsOn": []
-    }
+    "test-perf": { "dependsOn": ["bundle"] },
+    "bundle": { "dependsOn": [] }
   }
 }

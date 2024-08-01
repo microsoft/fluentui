@@ -72,7 +72,7 @@ module.exports =
       );
 
       // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
-      if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
+      if (process.env.TF_BUILD) {
         config.plugins = config.plugins.filter(value => value && value.constructor.name !== 'ProgressPlugin');
       }
 

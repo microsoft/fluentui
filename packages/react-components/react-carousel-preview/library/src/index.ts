@@ -70,4 +70,13 @@ export {
   useCarouselNavImageButtonStyles_unstable,
   useCarouselNavImageButton_unstable,
 } from './CarouselNavImageButton';
-export * from './CarouselSlider';
+export {
+  CarouselSlider,
+  carouselSliderClassNames,
+  renderCarouselSlider_unstable,
+  useCarouselSliderStyles_unstable,
+  useCarouselSlider_unstable,
+  type CarouselSliderProps,
+  type CarouselSliderSlots,
+  type CarouselSliderState,
+} from './CarouselSlider';

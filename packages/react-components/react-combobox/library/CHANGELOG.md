@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.3)
+
+Tue, 30 Jul 2024 18:47:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.13.2..@fluentui/react-combobox_v9.13.3)
+
+### Patches
+
+- fix: only call activedescendant focus when combobox/dropdown is opened ([PR #32156](https://github.com/microsoft/fluentui/pull/32156) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-field to v9.1.72 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+- Bump @fluentui/react-positioning to v9.15.7 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.2)
 

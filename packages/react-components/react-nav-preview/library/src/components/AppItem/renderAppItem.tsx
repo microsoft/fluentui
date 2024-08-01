@@ -10,6 +10,10 @@ import type { AppItemState, AppItemSlots } from './AppItem.types';
 export const renderAppItem_unstable = (state: AppItemState) => {
   assertSlots<AppItemSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.icon && <state.icon />}
+      {state.root.children}
+    </state.root>
+  );
 };

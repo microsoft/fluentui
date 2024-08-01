@@ -7,7 +7,7 @@ export { Exaggerated } from './CollapseExaggerated.stories';
 export { Customization } from './CollapseCustomization.stories';
 
 export default {
-  title: 'Utilities/Motion/Components (preview)/Collapse',
+  title: 'Motion/Components (preview)/Collapse',
   component: Collapse,
   parameters: {
     docs: {

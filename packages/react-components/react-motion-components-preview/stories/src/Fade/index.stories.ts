@@ -7,7 +7,7 @@ export { Exaggerated } from './FadeExaggerated.stories';
 export { Customization } from './FadeCustomization.stories';
 
 export default {
-  title: 'Utilities/Motion/Components (preview)/Fade',
+  title: 'Motion/Components (preview)/Fade',
   component: Fade,
   parameters: {
     docs: {

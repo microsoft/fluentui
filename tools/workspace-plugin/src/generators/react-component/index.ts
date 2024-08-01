@@ -22,9 +22,9 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 
   return () => {
     const root = workspaceRoot;
-    const { npmPackageName, componentName } = options;
+    const { npmPackageName, project, componentName } = options;
 
-    execSync(`yarn lage generate-api --to ${npmPackageName}`, {
+    execSync(`yarn nx run ${project}:generate-api`, {
       cwd: root,
       stdio: 'inherit',
     });

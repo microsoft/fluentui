@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-radio",
-  "version": "9.2.27",
+  "version": "9.2.28",
   "description": "Fluent UI Radio component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.71",
+    "@fluentui/react-field": "^9.1.72",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/react-label": "^9.1.74",
     "@fluentui/react-shared-contexts": "^9.20.0",

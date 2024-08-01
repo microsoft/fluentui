@@ -1,22 +1,24 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { AppItemStaticSlots, AppItemStaticState } from './AppItemStatic.types';
+import { useAppItemStyles } from '../AppItem/useAppItemStyles.styles';
+import { useIconStyles, useRootDefaultClassName } from '../sharedNavStyles.styles';
 
 export const appItemStaticClassNames: SlotClassNames<AppItemStaticSlots> = {
   root: 'fui-AppItemStatic',
-  // TODO: add class names for all slots on AppItemStaticSlots.
-  // Should be of the form `<slotName>: 'fui-AppItemStatic__<slotName>`
+  icon: 'fui-AppItemStatic__icon',
 };
 
-/**
- * Styles for the root slot
- */
-const useStyles = makeStyles({
+const useAppItemStaticStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    cursor: 'default',
+    ':hover': {
+      backgroundColor: 'unset',
+    },
+    ':active': {
+      backgroundColor: 'unset',
+    },
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -25,11 +27,26 @@ const useStyles = makeStyles({
 export const useAppItemStaticStyles_unstable = (state: AppItemStaticState): AppItemStaticState => {
   'use no memo';
 
-  const styles = useStyles();
-  state.root.className = mergeClasses(appItemStaticClassNames.root, styles.root, state.root.className);
+  const rootDefaultClassName = useRootDefaultClassName();
+  const iconStyles = useIconStyles();
+  const appItemSpecificStyles = useAppItemStyles();
+  const appItemStaticStyles = useAppItemStaticStyles();
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const { size, icon } = state;
+
+  state.root.className = mergeClasses(
+    rootDefaultClassName,
+    appItemStaticClassNames.root,
+    appItemSpecificStyles.root,
+    appItemStaticStyles.root,
+    size === 'small' && appItemSpecificStyles.small,
+    !icon && appItemSpecificStyles.absentIconRootAdjustment,
+    state.root.className,
+  );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(appItemStaticClassNames.icon, iconStyles.base, state.icon.className);
+  }
 
   return state;
 };

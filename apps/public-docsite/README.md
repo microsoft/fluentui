@@ -12,10 +12,9 @@ Once your repo is set up, run the following to start a local copy of the website
 
 ```
 yarn
-yarn buildto public-docsite
-cd apps
-cd public-docsite
-yarn start
+yarn nx run public-docsite:build
+
+yarn nx run public-docsite:start
 ```
 
-`yarn start` will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.
+`yarn nx run public-docsite:start` will open your operating system's default web browser with the website. You can make changes to the code which will automatically build and refresh the page using live-reload.

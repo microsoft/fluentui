@@ -12,6 +12,7 @@ import type { DialogProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -125,7 +126,7 @@ export type DrawerProps = ComponentProps<DrawerSlots> & {
 export const DrawerProvider: React_2.Provider<DrawerContextValue | undefined>;
 
 // @public (undocumented)
-export type DrawerSlots = OverlayDrawerSlots | InlineDrawerSlots;
+export type DrawerSlots = Pick<OverlayDrawerSlots, 'root'> | Pick<InlineDrawerSlots, 'root'>;
 
 // @public
 export type DrawerState = ComponentState<DrawerSlots>;
@@ -134,7 +135,7 @@ export type DrawerState = ComponentState<DrawerSlots>;
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
 // @public (undocumented)
-export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+export const inlineDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
 
 // @public
 export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBaseProps & {
@@ -144,16 +145,17 @@ export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBasePr
 // @public (undocumented)
 export type InlineDrawerSlots = {
     root: Slot<'div', 'aside'>;
+    surfaceMotion?: Slot<SurfaceMotionSlotProps>;
 };
 
 // @public
-export type InlineDrawerState = Required<ComponentState<InlineDrawerSlots> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'>>;
+export type InlineDrawerState = Required<ComponentState<NonNullable<InlineDrawerSlots>> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'>>;
 
 // @public
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 
 // @public (undocumented)
-export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
+export const overlayDrawerClassNames: SlotClassNames<Omit<OverlayDrawerSurfaceSlots, 'backdropMotion'>>;
 
 // @public
 export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'> & DrawerBaseProps & {
@@ -163,6 +165,8 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<Dialo
 // @public
 export type OverlayDrawerSlots = {
     root: Slot<OverlayDrawerSurfaceProps>;
+    backdropMotion?: Slot<PresenceMotionSlotProps<OverlayDrawerSurfaceMotionParams>>;
+    surfaceMotion?: Slot<PresenceMotionSlotProps<DrawerMotionParams>>;
 };
 
 // @public
@@ -187,10 +191,10 @@ export const renderDrawerHeaderNavigation_unstable: (state: DrawerHeaderNavigati
 export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) => JSX.Element;
 
 // @public
-export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
+export const renderInlineDrawer_unstable: (state: InlineDrawerState, contextValue: DrawerContextValue) => JSX.Element;
 
 // @public
-export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSX.Element | null;
+export const renderOverlayDrawer_unstable: (state: OverlayDrawerState, contextValue: DrawerContextValue) => JSX.Element;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;

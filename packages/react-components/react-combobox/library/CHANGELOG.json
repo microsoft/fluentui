@@ -2,6 +2,41 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Tue, 30 Jul 2024 18:47:32 GMT",
+      "tag": "@fluentui/react-combobox_v9.13.3",
+      "version": "9.13.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "41038cccfe937dcfa8e1a347ed2535d4f3c6de24",
+            "comment": "docs: update combobox examples and positioning description"
+          }
+        ],
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "02284e605470c0305e21e33cab916cf5a9965d97",
+            "comment": "fix: only call activedescendant focus when combobox/dropdown is opened"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-field to v9.1.72",
+            "commit": "9b3f8910e276278ca313e3a7209d6c089c2950de"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-combobox",
+            "comment": "Bump @fluentui/react-positioning to v9.15.7",
+            "commit": "9b3f8910e276278ca313e3a7209d6c089c2950de"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-combobox_v9.13.2",
       "version": "9.13.2",

@@ -1,0 +1,8 @@
+{
+  "name": "react-migration-v8-v9",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-migration-v8-v9/library/src",
+  "tags": ["vNext", "v8", "platform:web"],
+  "implicitDependencies": []
+}
