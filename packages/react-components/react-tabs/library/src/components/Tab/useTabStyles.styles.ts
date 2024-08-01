@@ -199,9 +199,6 @@ const useFocusStyles = makeStyles({
 /** Indicator styles for when pending selection */
 const usePendingIndicatorStyles = makeStyles({
   base: {
-    '::before': {
-      zIndex: 1,
-    },
     ':hover::before': {
       backgroundColor: tokens.colorNeutralStroke1Hover,
       borderRadius: tokens.borderRadiusCircular,
