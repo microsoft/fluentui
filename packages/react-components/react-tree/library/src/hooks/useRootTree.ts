@@ -1,6 +1,8 @@
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
+import { Collapse } from '@fluentui/react-motion-components-preview';
+import { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
@@ -75,7 +77,14 @@ export function useRootTree(
   });
 
   return {
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+      // TODO: remove once React v18 slot API is modified
+      // This is a problem at the moment due to UnknownSlotProps assumption
+      // that `children` property is `ReactNode`, which in this case is not valid
+      // as PresenceComponentProps['children'] is `ReactElement`
+      collapseMotion: Collapse as React.FC<PresenceMotionSlotProps>,
+    },
     contextType: 'root',
     selectionMode,
     open: true,
@@ -97,6 +106,7 @@ export function useRootTree(
       }),
       { elementType: 'div' },
     ),
+    collapseMotion: undefined,
   };
 }
 
