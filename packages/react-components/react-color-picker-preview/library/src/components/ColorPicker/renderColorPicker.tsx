@@ -3,13 +3,18 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { ColorPickerState, ColorPickerSlots } from './ColorPicker.types';
+import type { ColorPickerContextValues } from '../../contexts/colorPicker';
+import { ColorPickerProvider } from '../../contexts/colorPicker';
 
 /**
  * Render the final JSX of ColorPicker
  */
-export const renderColorPicker_unstable = (state: ColorPickerState) => {
+export const renderColorPicker_unstable = (state: ColorPickerState, contextValues: ColorPickerContextValues) => {
   assertSlots<ColorPickerSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root>{state.root.children}</state.root>;
+  return (
+    <ColorPickerProvider value={contextValues.colorPicker}>
+      <state.root>{state.root.children}</state.root>
+    </ColorPickerProvider>
+  );
 };

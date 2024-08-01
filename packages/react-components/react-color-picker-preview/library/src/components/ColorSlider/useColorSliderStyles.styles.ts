@@ -23,7 +23,6 @@ export const colorSliderCSSVars = {
 // Internal CSS variables
 const thumbSizeVar = `--fui-Slider__thumb--size`;
 const railSizeVar = `--fui-Slider__rail--size`;
-const progressColorVar = `--fui-Slider__progress--color`;
 
 const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar, thumbColorVar, railColorVar } =
   colorSliderCSSVars;
@@ -58,24 +57,6 @@ const useStyles = makeStyles({
     [thumbSizeVar]: '20px',
     [railSizeVar]: '20px',
     minHeight: '32px',
-    /// enabled
-    [railColorVar]: tokens.colorNeutralStrokeAccessible,
-    [progressColorVar]: tokens.colorCompoundBrandBackground,
-    ':hover': {
-      [progressColorVar]: tokens.colorCompoundBrandBackgroundHover,
-    },
-    ':active': {
-      [progressColorVar]: tokens.colorCompoundBrandBackgroundPressed,
-    },
-    '@media (forced-colors: active)': {
-      [railColorVar]: 'CanvasText',
-      [thumbColorVar]: 'Highlight',
-      [progressColorVar]: 'Highlight',
-      ':hover': {
-        [thumbColorVar]: 'Highlight',
-        [progressColorVar]: 'Highlight',
-      },
-    },
   },
   alpha: {
     backgroundImage: `linear-gradient(to right, transparent, var(${railColorVar})), url(${TransparentImage})`,
@@ -120,39 +101,12 @@ const useRailStyles = makeStyles({
     gridColumnEnd: '2',
     position: 'relative',
     forcedColorAdjust: 'none',
-    // Background gradient represents the progress of the slider
-    // backgroundImage: `linear-gradient(
-    //   var(${sliderDirectionVar}),
-    //   var(${progressColorVar}) 0%,
-    //   var(${progressColorVar}) var(${sliderProgressVar}),
-    //   var(${railColorVar}) var(${sliderProgressVar})
-    // )`,
-    // backgroundImage: hueStyle.background,
-
     outlineWidth: '1px',
     outlineStyle: 'solid',
     outlineColor: tokens.colorTransparentStroke,
     '::before': {
       content: "''",
       position: 'absolute',
-      // Repeating gradient represents the steps if provided
-      // backgroundImage: `repeating-linear-gradient(
-      //   var(${sliderDirectionVar}),
-      //   #0000 0%,
-      //   #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-      //   ${tokens.colorNeutralBackground1} calc(var(${sliderStepsPercentVar}) - 1px),
-      //   ${tokens.colorNeutralBackground1} var(${sliderStepsPercentVar})
-      // )`,
-      // force steps to use HighlightText for high contrast mode
-      '@media (forced-colors: active)': {
-        backgroundImage: `repeating-linear-gradient(
-          var(${sliderDirectionVar}),
-          #0000 0%,
-          #0000 calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText calc(var(${sliderStepsPercentVar}) - 1px),
-          HighlightText var(${sliderStepsPercentVar})
-        )`,
-      },
     },
   },
 
@@ -267,14 +221,14 @@ export const useColorSliderStyles_unstable = (state: ColorSliderState): ColorSli
     styles.root,
     isVertical ? styles.focusIndicatorVertical : styles.focusIndicatorHorizontal,
     isVertical ? styles.vertical : styles.horizontal,
-    state.variant === 'alpha' ? styles.alpha : undefined,
+    state.channel === 'alpha' ? styles.alpha : undefined,
     state.root.className,
   );
 
   state.rail.className = mergeClasses(
     colorSliderClassNames.rail,
     railStyles.rail,
-    state.variant === 'hue' ? styles.hue : undefined,
+    state.channel === 'hue' ? styles.hue : undefined,
     isVertical ? railStyles.vertical : railStyles.horizontal,
     state.rail.className,
   );
