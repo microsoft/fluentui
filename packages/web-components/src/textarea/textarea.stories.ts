@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
+import { colorNeutralBackground1, colorNeutralBackground3, } from '../theme/design-tokens.js';
 import { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 
@@ -149,19 +150,19 @@ export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<
       <fluent-textarea></fluent-textarea>
     </div>
     <p>Filled darker</p>
-    <div style="padding: 1rem; width: fit-content; background-color: #fff;">
+    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground1};">
       <fluent-textarea appearance="filled-darker"></fluent-textarea>
     </div>
     <p>Filled darker with shadow</p>
-    <div style="padding: 1rem; width: fit-content; background-color: #fff;">
+    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground1};">
       <fluent-textarea appearance="filled-darker" display-shadow></fluent-textarea>
     </div>
     <p>Filled lighter</p>
-    <div style="padding: 1rem; width: fit-content; background-color: #f5f5f5;">
+    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground3};">
       <fluent-textarea appearance="filled-lighter"></fluent-textarea>
     </div>
     <p>Filled lighter with shadow</p>
-    <div style="padding: 1rem; width: fit-content; background-color: #f5f5f5;">
+    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground3};">
       <fluent-textarea appearance="filled-lighter" display-shadow></fluent-textarea>
     </div>
   </div>
