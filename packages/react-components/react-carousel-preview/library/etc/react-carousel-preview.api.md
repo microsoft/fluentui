@@ -35,7 +35,7 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
     defaultAutoplay?: boolean;
     autoplay?: boolean;
-    onAutoplayChange: EventHandler<CarouselAutoplayChangeData>;
+    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
 };
 
 // @public (undocumented)
