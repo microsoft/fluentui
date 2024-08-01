@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - 'tools/workspace-plugin/**'
+      - 'scripts/executors/**'
 
 env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
+  NX_VERBOSE_LOGGING: true
 
 jobs:
   check-tools:
