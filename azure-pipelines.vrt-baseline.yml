@@ -44,7 +44,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V9
     variables:
@@ -75,7 +75,7 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
 
   - job: VRToolUpdateBaseline_V8
     variables:
@@ -106,7 +106,8 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+
   - job: VRToolUpdateBaseline_V0
     variables:
       pipelineId: '313'
@@ -136,4 +137,4 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+            npx vr-approval-cli@0.4.5 run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)

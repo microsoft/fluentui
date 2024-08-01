@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { ChevronRight12Regular } from '@fluentui/react-icons';
+import { durations, curves } from '@fluentui/react-motion';
 import { useTreeItemContext_unstable } from '../contexts/treeItemContext';
 
 export const TreeItemChevron = React.memo(() => {
@@ -9,7 +10,14 @@ export const TreeItemChevron = React.memo(() => {
   const { dir } = useFluent_unstable();
 
   const expandIconRotation = open ? 90 : dir !== 'rtl' ? 0 : 180;
-  return <ChevronRight12Regular style={expandIconInlineStyles[expandIconRotation]} />;
+  return (
+    <ChevronRight12Regular
+      style={{
+        ...expandIconInlineStyles[expandIconRotation],
+        transition: `transform ${durations.durationNormal}ms ${curves.curveEasyEaseMax}`,
+      }}
+    />
+  );
 });
 TreeItemChevron.displayName = 'TreeItemChevron';
 
