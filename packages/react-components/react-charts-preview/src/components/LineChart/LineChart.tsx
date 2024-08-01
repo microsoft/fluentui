@@ -150,6 +150,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     );
     let _firstRenderOptimization: boolean = true;
     let _emptyChartId: string = useId('_LineChart_empty');
+    const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps;
 
@@ -822,7 +823,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.length; i++) {
         const colorFillBar = _colorFillBars[i];
-        const colorFillBarId = useId(colorFillBar.legend.replace(/\W/g, ''));
+        const colorFillBarId = `${_colorFillBarId}-${i++}`;
         // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color);
 
@@ -1266,7 +1267,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={_getCustomizedCallout()}
         onChartMouseLeave={_handleChartMouseLeave}
-        //enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
+        enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
