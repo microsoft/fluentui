@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "ci: ensure package is built first before running type-check to mitigate build error.",
-  "packageName": "@fluentui/web-components",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "none"
-}
