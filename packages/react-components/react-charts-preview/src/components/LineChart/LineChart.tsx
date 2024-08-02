@@ -11,7 +11,6 @@ import { find, memoizeFunction } from '@fluentui/utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
-  IBasestate,
   IChildProps,
   ILineChartPoints,
   ICustomizedCalloutData,
@@ -22,6 +21,7 @@ import {
   ILineChartDataPoint,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
+import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
   ChartTypes,
@@ -36,7 +36,6 @@ import {
   getColorFromToken,
   isRtl,
 } from '../../utilities/index';
-import { ForwardRefRenderFunction, ForwardedRef, PropsWithChildren } from 'react';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -151,6 +150,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     );
     let _firstRenderOptimization: boolean = true;
     let _emptyChartId: string = useId('_LineChart_empty');
+    const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps;
 
@@ -188,9 +188,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
             let color: string;
             // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
-              color = getNextColor(index, 0, props.theme?.isInverted);
+              color = getNextColor(index, 0);
             } else {
-              color = getColorFromToken(item.color, props.theme?.isInverted);
+              color = getColorFromToken(item.color);
             }
             return {
               ...item,
@@ -288,7 +288,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
             // isInverted property is applicable to v8 themes only
-            const color = getColorFromToken(colorFillBar.color, props.theme?.isInverted);
+            const color = getColorFromToken(colorFillBar.color);
             const legend: ILegend = {
               title,
               color,
@@ -366,24 +366,24 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       return _getPointPath(xPos, yPos, w, index);
     }
     function _getPointFill(lineColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
-      const { theme, allowMultipleShapesForPoints = false } = props;
+      const { allowMultipleShapesForPoints = false } = props;
       if (allowMultipleShapesForPoints) {
         if (pointIndex === 1 || isLastPoint) {
           if (activePoint === pointId) {
-            return theme!.semanticColors.bodyBackground;
+            return tokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         } else {
           if (activePoint === pointId) {
-            return theme!.semanticColors.bodyBackground;
+            return tokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         }
       } else {
         if (activePoint === pointId) {
-          return theme!.semanticColors.bodyBackground;
+          return tokens.colorNeutralBackground1;
         } else {
           return lineColor;
         }
@@ -404,7 +404,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
 
         const legendVal: string = _points[i].legend;
         const lineColor: string = _points[i].color!;
-        const { theme } = props;
         const verticaLineHeight = containerHeight - margins.bottom! + 6;
         if (_points[i].data.length === 1) {
           // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -418,7 +417,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               r={activePoint === circleId ? 5.5 : 3.5}
               cx={_xAxisScale(x1)}
               cy={_yAxisScale(y1)}
-              fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
+              fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
               opacity={isLegendSelected ? 1 : 0.1}
               onMouseOver={_handleHover.bind(
                 x1,
@@ -493,7 +492,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   fill="transparent"
                   strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                   strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                  stroke={_points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                  stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
                   opacity={1}
                 />,
               );
@@ -549,7 +548,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               r={5.5}
               cx={0}
               cy={0}
-              fill={theme!.semanticColors.bodyBackground}
+              fill={tokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={isPointHighlighted ? 'visibility' : 'hidden'}
@@ -708,7 +707,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                       y2={_yAxisScale(y2)}
                       strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                       strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                      stroke={_points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                      stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
                       opacity={1}
                     />,
                   );
@@ -775,7 +774,17 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           }
         }
 
-        lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
+        lines.push(
+          <g
+            key={`line_${i}`}
+            role="region"
+            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
+          >
+            {bordersForLine}
+            {linesForLine}
+            {pointsForLine}
+          </g>,
+        );
       }
       const classes = useLineChartStyles_unstable(props);
       // Removing un wanted tooltip div from DOM, when prop not provided.
@@ -814,9 +823,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.length; i++) {
         const colorFillBar = _colorFillBars[i];
-        const colorFillBarId = useId(colorFillBar.legend.replace(/\W/g, ''));
+        const colorFillBarId = `${_colorFillBarId}-${i++}`;
         // isInverted property is applicable to v8 themes only
-        const color = getColorFromToken(colorFillBar.color, props.theme?.isInverted);
+        const color = getColorFromToken(colorFillBar.color);
 
         if (colorFillBar.applyPattern) {
           // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
@@ -1018,7 +1027,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
       mouseEvent: React.MouseEvent<SVGElement>,
     ) {
-      mouseEvent.persist();
+      mouseEvent?.persist();
       const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);

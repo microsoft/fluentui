@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 
 export const VCRotateLabels = () => {
   const points: IVerticalBarChartDataPoint[] = [
@@ -34,7 +34,7 @@ export const VCRotateLabels = () => {
           height={350}
           width={650}
           hideLegend={true}
-          rotateXAxisLables={true}
+          //rotateXAxisLables={true}
           enableReflow={true}
         />
       </div>

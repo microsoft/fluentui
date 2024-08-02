@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
-import { Toggle } from '@fluentui/react/lib/Toggle';
+import { ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
+import { DataVizPalette } from '../../src/utilities/colors';
+import { Switch } from '@fluentui/react-components';
 
 export const LCBasic = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
@@ -16,13 +17,19 @@ export const LCBasic = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setAllowMultipleShapes(checked);
-  };
+  const _onShapeChange = React.useCallback(
+    ev => {
+      setAllowMultipleShapes(ev.currentTarget.checked);
+    },
+    [allowMultipleShapes],
+  );
 
-  const _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setShowAxisTitles(checked);
-  };
+  const _onToggleAxisTitlesCheckChange = React.useCallback(
+    ev => {
+      setShowAxisTitles(ev.currentTarget.checked);
+    },
+    [showAxisTitles],
+  );
 
   const data: IChartProps = {
     chartTitle: 'Line Chart Basic Example',
@@ -157,20 +164,16 @@ export const LCBasic = (props: ILineChartProps) => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <Toggle
-        label="Enabled  multiple shapes for each line"
-        onText="On"
-        offText="Off"
+      <br />
+      <Switch
+        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
-      <Toggle
-        label="Toggle Axis titles"
-        onText="Show axis titles"
-        offText="Hide axis titles"
+      <Switch
+        label={showAxisTitles ? 'Hide axis titles' : 'Show axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
-        styles={{ root: { marginTop: '10px' } }}
       />
       {showAxisTitles && (
         <div style={rootStyle}>

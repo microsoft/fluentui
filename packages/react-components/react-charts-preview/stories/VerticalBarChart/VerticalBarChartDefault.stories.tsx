@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Switch } from '@fluentui/react-components';
 
 export const VCBasic = () => {
   const [width, setWidth] = React.useState<number>(650);
@@ -38,10 +38,12 @@ export const VCBasic = () => {
   const _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setHideLabels(checked);
   };
-  const _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setShowAxisTitles(checked);
-  };
-
+  const _onToggleAxisTitlesCheckChange = React.useCallback(
+    ev => {
+      setShowAxisTitles(ev.currentTarget.checked);
+    },
+    [showAxisTitles],
+  );
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: 0,
@@ -178,13 +180,11 @@ export const VCBasic = () => {
         onChange={_onHideLabelsCheckChange}
         styles={{ root: { marginTop: '10px' } }}
       />
-      <Toggle
-        label="Toggle Axis titles"
-        onText="Show axis titles"
-        offText="Hide axis titles"
+      <Switch
+        label={showAxisTitles ? 'Hide axis titles' : 'Show axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
-        styles={{ root: { marginTop: '10px' } }}
+        style={{ marginTop: '10px' }}
       />
       {showAxisTitles && (
         <div style={rootStyle}>
@@ -194,7 +194,7 @@ export const VCBasic = () => {
             data={points}
             height={height}
             width={width}
-            hideLegend={true}
+            hideLegend={false}
             enableReflow={true}
             yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
@@ -209,7 +209,7 @@ export const VCBasic = () => {
             data={points}
             height={height}
             width={width}
-            hideLegend={true}
+            hideLegend={false}
             enableReflow={true}
             yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
