@@ -21,12 +21,11 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   const { align = 'center', circular = false, onActiveIndexChange, groupSize = 'auto' } = props;
 
   const { dir } = useFluent();
-  const { activeIndex, carouselApi, containerRef, subscribeForValues } = useEmblaCarousel({
+  const { activeIndex, carouselApi, containerRef, subscribeForValues, enableAutoplay } = useEmblaCarousel({
     align,
     direction: dir,
     loop: circular,
     slidesToScroll: groupSize,
-
     defaultActiveIndex: props.defaultActiveIndex,
     activeIndex: props.activeIndex,
   });
@@ -63,5 +62,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     selectPageByIndex,
 
     subscribeForValues,
+    enableAutoplay,
   };
 }
