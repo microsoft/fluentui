@@ -22,12 +22,10 @@ export const useHueSlider_unstable = (props: HueSliderProps, ref: React.Ref<HTML
     input,
     rail,
     thumb,
-    channel = 'hue',
   } = props;
 
   const state: HueSliderState = {
     vertical,
-    channel,
     components: {
       input: 'input',
       rail: 'div',

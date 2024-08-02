@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { clamp, useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { hueSliderCSSVars } from './useHueSliderStyles.styles';
 import type { HueSliderState, HueSliderProps } from './HueSlider.types';
@@ -16,22 +16,25 @@ const getPercent = (value: number, min: number, max: number) => {
 export const useHueSliderState_unstable = (state: HueSliderState, props: HueSliderProps) => {
   'use no memo';
 
+  const step = 1;
   const { dir } = useFluent();
   const { min = 0, value } = props;
   const ctxColor = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const ctxHue = useColorPickerContextValue_unstable(ctx => ctx.hueValue);
+  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const color = props.color ?? ctxColor;
   const max = props.max || MAX_COLOR_HUE;
-  const step = 1;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
+    defaultState: ctxHue,
     initialState: 0,
   });
+
   const clampedValue = clamp(currentValue, min, max);
   const valuePercent = getPercent(clampedValue, min, max);
 
   const inputOnChange = state.input.onChange;
-  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.onChange);
   const propsOnChange = props.onChange || ctxOnChange;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
@@ -44,6 +47,14 @@ export const useHueSliderState_unstable = (state: HueSliderState, props: HueSlid
       propsOnChange(ev, { value: newValue });
     }
   });
+
+  const requestOnChange = useEventCallback(
+    mergeCallbacks(onChange, (event: React.ChangeEventHandler<HTMLInputElement>) =>
+      ctxOnChange(event, {
+        hue: currentValue,
+      }),
+    ),
+  );
 
   const rootVariables = {
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
@@ -61,7 +72,7 @@ export const useHueSliderState_unstable = (state: HueSliderState, props: HueSlid
 
   // Input Props
   state.input.value = clampedValue;
-  state.input.onChange = onChange;
+  state.input.onChange = requestOnChange;
 
   return state;
 };

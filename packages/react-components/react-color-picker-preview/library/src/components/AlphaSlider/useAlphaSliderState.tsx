@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { clamp, useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
@@ -17,13 +17,17 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const { dir } = useFluent();
   const { min = 0, value } = props;
-  const ctxColor = useColorPickerContextValue_unstable(ctx => ctx.color);
-  const color = props.color ?? ctxColor;
+  const ctxOverlayColor = useColorPickerContextValue_unstable(ctx => ctx.overlayColor);
+  const ctxAlpha = useColorPickerContextValue_unstable(ctx => ctx.alphaValue);
+  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+
+  const overlayColor = props.overlayColor ?? ctxOverlayColor;
   const max = props.max || 100;
   const step = 1;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
+    defaultState: ctxAlpha,
     initialState: 0,
   });
 
@@ -31,8 +35,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const valuePercent = getPercent(clampedValue, min, max);
 
   const inputOnChange = state.input.onChange;
-  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.onChange);
-  const propsOnChange = props.onChange || ctxOnChange;
+  const propsOnChange = props.onChange;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
     const newValue = Number(ev.target.value);
@@ -41,16 +44,24 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     if (inputOnChange && inputOnChange !== propsOnChange) {
       inputOnChange(ev);
     } else if (propsOnChange) {
-      propsOnChange(ev, { value: newValue });
+      propsOnChange(ev, { value: currentValue });
     }
   });
+
+  const requestOnChange = useEventCallback(
+    mergeCallbacks(onChange, (event: React.ChangeEventHandler<HTMLInputElement>) =>
+      ctxOnChange(event, {
+        alpha: currentValue,
+      }),
+    ),
+  );
 
   const rootVariables = {
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
     [thumbColorVar]: 'transparent',
-    [railColorVar]: color,
+    [railColorVar]: overlayColor,
   };
 
   // Root props
@@ -61,7 +72,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   // Input Props
   state.input.value = clampedValue;
-  state.input.onChange = onChange;
+  state.input.onChange = requestOnChange;
 
   return state;
 };

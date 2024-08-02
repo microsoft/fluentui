@@ -5,8 +5,11 @@ import { ColorPickerContextValue } from '../../contexts/colorPicker';
 export type ColorPickerOnSelectEventHandler = EventHandler<ColorPickerOnChangeData>;
 
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
-  value: number;
-  channel: 'hue' | 'saturation' | 'lightness' | 'alpha';
+  hue?: number;
+  saturation?: number;
+  lightness?: number;
+  alpha?: number;
+  channel?: 'hue' | 'saturation' | 'lightness' | 'alpha';
   color?: string;
 };
 
@@ -26,8 +29,4 @@ export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
 /**
  * State used in rendering ColorPicker
  */
-export type ColorPickerState = ComponentState<ColorPickerSlots> &
-  ColorPickerContextValue & {
-    channel: 'hue' | 'saturation' | 'lightness' | 'alpha';
-    value: number;
-  };
+export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerContextValue;
