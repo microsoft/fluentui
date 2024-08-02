@@ -9,32 +9,38 @@ import type { ColorPickerProps, ColorPickerState } from '../components/ColorPick
 export type ColorPickerContextValue = Pick<ColorPickerProps, 'color'> & {
   /**
    * @internal
-   * Callback used by ColorSwatch to request a change on it's selected state
-   * Should be used to select ColorSwatch
+   * Callback used by Sliders to request a change on it's selected value
+   * Should be used to get value of color channel
    */
-  onChange: (
-    event: React.ChangeEvent<HTMLInputElement>,
-    data: { value: number; channel: 'hue' | 'saturation' | 'lightness' | 'alpha'; color?: string },
-  ) => void;
+  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { hue?: number; alpha?: number }) => void;
+  overlayColor?: string;
+  hueValue?: number;
+  alphaValue?: number;
 };
 
 export const useColorPickerContextValues = (state: ColorPickerState): ColorPickerContextValues => {
-  const { color, onChange } = state;
+  const { color, requestChange, overlayColor, hueValue, alphaValue } = state;
 
   // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
   const colorPicker: ColorPickerContextValue = {
-    onChange,
+    requestChange,
     color,
+    overlayColor,
+    hueValue,
+    alphaValue,
   };
 
   return { colorPicker };
 };
 
 export const colorPickerContextDefaultValue: ColorPickerContextValue = {
-  onChange: () => {
+  requestChange: () => {
     /*noop*/
   },
   color: undefined,
+  overlayColor: undefined,
+  hueValue: undefined,
+  alphaValue: undefined,
 };
 
 export type ColorPickerContextValues = {

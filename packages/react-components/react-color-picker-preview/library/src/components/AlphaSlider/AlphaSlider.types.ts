@@ -50,6 +50,7 @@ export type AlphaSliderProps = Omit<
    */
   vertical?: boolean;
   color?: string;
+  overlayColor?: string;
 };
 
 /**

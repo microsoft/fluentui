@@ -13,18 +13,15 @@ import { tinycolor } from '@ctrl/tinycolor';
  * @param ref - reference to root HTMLDivElement of ColorPicker
  */
 export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<HTMLDivElement>): ColorPickerState => {
-  const { defaultColor, color, onChange, ...rest } = props;
+  const { color, onChange, ...rest } = props;
   const hslColor = tinycolor(color).toHsl();
+  const overlayColor = tinycolor(`hsl(${hslColor.h}, ${hslColor.s}, ${hslColor.l})`).toHslString();
+  const hue = parseInt(hslColor.h.toFixed(), 10);
+  const alpha = hslColor.a * 100;
 
-  const [selectedValue, setSelectedValue] = useControllableState({
-    state: hslColor.h,
-    initialState: 0,
-  });
-
-  const [channel, setSelectedChannel] = useControllableState({
-    state: 'hue',
-    initialState: '',
-  });
+  const [alphaValue, setAlphaValue] = React.useState(alpha);
+  const [hueValue, setHueValue] = React.useState(hue);
+  // TODO clean up
 
   const [selectedColor, setSelectedColor] = React.useState(color);
 
@@ -32,15 +29,11 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
     onChange?.(event, {
       type: 'change',
       event,
-      value: data.value,
-      channel: data.channel,
+      alpha: data.alpha,
+      hue: data.hue,
     });
-
-    setSelectedValue(data.value);
-    setSelectedChannel(data.channel);
-
-    const newColor = tinycolor({ h: data.value, s: hslColor.s, l: hslColor.l }).toHex();
-    setSelectedColor(newColor);
+    setAlphaValue(data.alpha);
+    setHueValue(data.hue);
   });
 
   return {
@@ -54,10 +47,10 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
       }),
       { elementType: 'div' },
     ),
-    color: selectedColor,
+    color,
     requestChange,
-    onChange,
-    channel,
-    value: selectedValue,
+    overlayColor,
+    hueValue,
+    alphaValue,
   };
 };
