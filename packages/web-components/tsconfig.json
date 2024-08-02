@@ -5,8 +5,7 @@
     "module": "ESNext",
     "experimentalDecorators": true,
     "resolveJsonModule": true,
-    "allowJs": true,
-    "typeRoots": ["./node_modules/*", "../../../node_modules/@types", "../../../typings"]
+    "allowJs": true
   },
   "files": [],
   "references": [
