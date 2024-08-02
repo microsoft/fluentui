@@ -206,7 +206,7 @@ export const LegendsOverflow = () => {
 LegendsOverflow.parameters = {
   docs: {
     description: {
-      story: 'Donut Chart Story.',
+      story: 'Legends overflow story.',
     },
   },
 };

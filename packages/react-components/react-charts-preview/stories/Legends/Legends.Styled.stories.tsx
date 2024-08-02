@@ -87,7 +87,7 @@ export const LegendsStyled = () => {
 LegendsStyled.parameters = {
   docs: {
     description: {
-      story: 'Donut Chart Story.',
+      story: 'Legends styled story.',
     },
   },
 };

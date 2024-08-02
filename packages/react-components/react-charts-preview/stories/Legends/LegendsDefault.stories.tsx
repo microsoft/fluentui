@@ -57,7 +57,7 @@ export const LegendsBasic = () => {
 LegendsBasic.parameters = {
   docs: {
     description: {
-      story: 'Legends Story.',
+      story: 'Legends default story.',
     },
   },
 };
