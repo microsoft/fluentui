@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: abstracts layout api from field class",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
