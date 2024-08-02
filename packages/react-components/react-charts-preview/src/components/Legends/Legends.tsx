@@ -1,11 +1,16 @@
 import * as React from 'react';
 
-import { getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
 import { Button } from '@fluentui/react-button';
 import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './Legends.styles';
-import { Overflow, OverflowItem, useFocusableGroup } from '@fluentui/react-components';
+import {
+  getIntrinsicElementProps,
+  buttonProperties,
+  Overflow,
+  OverflowItem,
+  useFocusableGroup,
+} from '@fluentui/react-components';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
 
@@ -54,14 +59,6 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
     const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
-    // TO DO need to set these styles
-    // const rootStyles = {
-    //   root: {
-    //     justifyContent: props.centerLegends ? 'center' : 'unset',
-    //     flexWrap: 'wrap',
-    //   },
-    // };
-    // props.styles.resizableArea = JSON.stringify({ ...rootStyles, ...overflowProps?.styles });
     const classes = useLegendStyles_unstable(props);
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
@@ -79,6 +76,8 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           'aria-label': 'Legends',
           'aria-multiselectable': canSelectMultipleLegends,
         })}
+        style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowProps?.styles }}
+        className={classes.root}
       >
         <Overflow>
           <div className={classes.resizableArea}>
@@ -98,9 +97,14 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       const dataItems: ILegendItem[] = props.legends.map((legend: ILegend, index: number) => {
         return {
           ...(allowFocusOnLegends && {
-            nativeButtonProps: getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(legend, buttonProperties, [
-              'title',
-            ]),
+            nativeButtonProps: getIntrinsicElementProps(
+              'div',
+              {
+                legend,
+                ...buttonProperties,
+              },
+              ['title'],
+            ),
             'aria-setsize': props.legends.length,
             'aria-posinset': index + 1,
           }),

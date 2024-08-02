@@ -37,132 +37,14 @@ export const LegendsBasic = () => {
       hoverAction: () => {
         console.log('hover action');
       },
+      shape: 'diamond',
     },
     {
       title: 'Legend 4',
       color: getColorFromToken(DataVizPalette.color4),
+      shape: 'triangle',
       action: () => {
         alert('Legend4 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 5',
-      color: getColorFromToken(DataVizPalette.color5),
-      action: () => {
-        alert('Legend5 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 6',
-      color: getColorFromToken(DataVizPalette.color6),
-      action: () => {
-        alert('Legend6 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 7',
-      color: getColorFromToken(DataVizPalette.color7),
-      action: () => {
-        alert('Legend7 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 8',
-      color: getColorFromToken(DataVizPalette.color8),
-      action: () => {
-        alert('Legend8 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 9',
-      color: getColorFromToken(DataVizPalette.color9),
-      action: () => {
-        alert('Legend9 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 10',
-      color: getColorFromToken(DataVizPalette.color10),
-      action: () => {
-        alert('Legend10 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 11',
-      color: getColorFromToken(DataVizPalette.color11),
-      action: () => {
-        alert('Legend11 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 12',
-      color: getColorFromToken(DataVizPalette.color12),
-      action: () => {
-        alert('Legend12 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 13',
-      color: getColorFromToken(DataVizPalette.color13),
-      action: () => {
-        alert('Legend13 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 14',
-      color: getColorFromToken(DataVizPalette.color14),
-      action: () => {
-        alert('Legend14 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 15',
-      color: getColorFromToken(DataVizPalette.color15),
-      action: () => {
-        alert('Legend15 clicked');
-      },
-      hoverAction: () => {
-        console.log('hover action');
-      },
-    },
-    {
-      title: 'Legend 16',
-      color: getColorFromToken(DataVizPalette.color16),
-      action: () => {
-        alert('Legend16 clicked');
       },
       hoverAction: () => {
         console.log('hover action');
@@ -175,7 +57,7 @@ export const LegendsBasic = () => {
 LegendsBasic.parameters = {
   docs: {
     description: {
-      story: 'Donut Chart Story.',
+      story: 'Legends Story.',
     },
   },
 };
