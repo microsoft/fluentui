@@ -7,11 +7,14 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IGroupedBarChartState {
   width: number;
   height: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Component<{}, IGroupedBarChartState> {
@@ -21,6 +24,8 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
       width: 700,
       height: 400,
       selectedCallout: 'singleCallout',
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -38,6 +43,14 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
   private _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
     this.setState({ selectedCallout: option.key as IGroupedBarChartState['selectedCallout'] });
   };
+
+  private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  }
+
+  private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  }
 
   private _basicExample(): JSX.Element {
     const data: IGroupedVerticalBarChartData[] = [
@@ -196,6 +209,21 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
           onChange={this._onChange}
           label="Pick one"
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onEnableGradientChange}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onRoundCornersChange}
+          />
+        </div>
+
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             chartTitle="Grouped Vertical Bar chart custom accessibility example"
@@ -206,6 +234,8 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

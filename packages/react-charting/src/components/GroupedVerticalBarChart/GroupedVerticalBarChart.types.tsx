@@ -109,6 +109,18 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * Only applicable to string x-axis.
    */
   xAxisOuterPadding?: number;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
 }
 
 /**

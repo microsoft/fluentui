@@ -22,6 +22,8 @@ import {
   IDomainNRange,
   domainRangeOfXStringAxis,
   createStringYAxis,
+  getNextGradient,
+  getNextColor,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -392,33 +394,55 @@ export class GroupedVerticalBarChartBase extends React.Component<
       // use the following addend.
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
       const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
+      let color = pointData.color ? pointData.color : getNextColor(index, this.props.theme?.isInverted);
+      let color2 = color;
+
+      if (this.props.enableGradient) {
+        color = pointData.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        color2 = pointData.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        pointData.color = color;
+      }
+
       // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
-          <rect
-            className={this._classNames.opacityChangeOnHover}
-            key={`${singleSet.indexNum}-${index}`}
-            height={Math.max(yBarScale(pointData.data), 0)}
-            width={this._barWidth}
-            x={xPoint}
-            y={yPoint}
-            data-is-focusable={
-              !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
-            }
-            opacity={this._getOpacity(pointData.legend)}
-            ref={(e: SVGRectElement | null) => {
-              this._refCallback(e!, pointData.legend, refIndexNumber);
-            }}
-            fill={pointData.color}
-            onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
-            onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
-            onMouseOut={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
-            onBlur={this._onBarLeave}
-            onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
-            aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
-            role="img"
-          />,
+          <React.Fragment key={`${singleSet.indexNum}-${index}`}>
+            {this.props.enableGradient && (
+              <defs>
+                <linearGradient
+                  id={`gradient_${index}_${singleSet.indexNum}_${color2}`}
+                  x1="0%" y1="100%" x2="0%" y2="0%"
+                >
+                  <stop offset="0" stopColor={color} />
+                  <stop offset="100%" stopColor={color2} />
+                </linearGradient>
+              </defs>
+            )}
+            <rect
+              className={this._classNames.opacityChangeOnHover}
+              height={Math.max(yBarScale(pointData.data), 0)}
+              width={this._barWidth}
+              x={xPoint}
+              y={yPoint}
+              data-is-focusable={
+                !this.props.hideTooltip && (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+              }
+              opacity={this._getOpacity(pointData.legend)}
+              ref={(e: SVGRectElement | null) => {
+                this._refCallback(e!, pointData.legend, refIndexNumber);
+              }}
+              fill={this.props.enableGradient ? `url(#gradient_${index}_${singleSet.indexNum}_${color2})` : color}
+              rx={this.props.roundCorners ? 3 : 0}
+              onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
+              onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
+              onMouseOut={this._onBarLeave}
+              onFocus={this._onBarFocus.bind(this, pointData, singleSet, refIndexNumber)}
+              onBlur={this._onBarLeave}
+              onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : pointData.onClick}
+              aria-label={this._getAriaLabel(pointData, singleSet.xAxisPoint)}
+              role="img"
+            />
+          </React.Fragment>,
         );
       if (
         pointData.data &&
@@ -476,7 +500,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const singleDatasetPointForBars: any = {};
       const singleDataSeries: IGVBarChartSeriesPoint[] = [];
 
-      point.series.forEach((seriesPoint: IGVBarChartSeriesPoint) => {
+      point.series.forEach((seriesPoint: IGVBarChartSeriesPoint, index2) => {
+        if(this.props.enableGradient) {
+          seriesPoint.color = seriesPoint.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+        }
         singleDatasetPoint[seriesPoint.key] = seriesPoint.data;
         singleDatasetPointForBars[seriesPoint.key] = {
           ...seriesPoint,
@@ -560,7 +587,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
     data.forEach((singleChartData: IGroupedVerticalBarChartData) => {
       singleChartData.series.forEach((point: IGVBarChartSeriesPoint) => {
-        const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        if (this.props.enableGradient) {
+          const pointIndex = Math.max(
+            singleChartData.series?.findIndex((item) => item.legend === point.legend) || 0, 0
+          );
+          color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+        }
         const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
           return;

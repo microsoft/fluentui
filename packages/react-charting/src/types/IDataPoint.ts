@@ -672,6 +672,12 @@ export interface IGVBarChartSeriesPoint {
   color: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: string[];
+
+  /**
    * Legend text in the chart
    */
   legend: string;
