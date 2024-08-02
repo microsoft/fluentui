@@ -48,6 +48,8 @@ export function verifyPackaging(options: Options) {
   const isV8package = tags.indexOf('v8') !== -1;
   const isV9package = tags.indexOf('vNext') !== -1;
   const shipsAMD = isV8package || tags.indexOf('ships-amd') !== -1;
+  const shipsBundle = tags.indexOf('ships-bundle') !== -1;
+  const shipsUmd = tags.indexOf('ships-umd') !== -1;
   const platform = { web: tags.indexOf('platform:web') !== -1, node: tags.indexOf('platform:node') !== -1 };
 
   // shared assertions
@@ -74,6 +76,13 @@ export function verifyPackaging(options: Options) {
 
   if (isV8package) {
     assert.ok(micromatch(processedResultArr, '(lib|lib-commonjs)/**/*.d.ts').length, `ships dts`);
+
+    if (options.production && shipsBundle) {
+      assert.ok(micromatch(processedResultArr, '(dist/**/*.(min)?.js').length, `ships bundle (*.min.js,*.js)`);
+    }
+    if (options.production && shipsUmd) {
+      assert.ok(micromatch(processedResultArr, '(dist/**/*.umd.js').length, `ships umd`);
+    }
   }
 
   // @FIXME `amd` is created only on release pipeline where `--production` flag is used on build commands which triggers it
