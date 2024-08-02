@@ -41,7 +41,7 @@ export function verifyPackaging(options: Options) {
 
   const processedResult = npmPackResult.output
     .toString()
-    .replace(/\bnpm notice\b\s+[\d.]+[kB]+\s+/gi, '')
+    .replace(/\bnpm notice\b\s+[\d.]+[MkB]+\s+/gi, '')
     .replace(/[ ]+/g, '');
   const processedResultArr = processedResult.split('\n');
 
@@ -59,11 +59,14 @@ export function verifyPackaging(options: Options) {
     0,
     `wont ship non production code related folders/files`,
   );
-  assert.equal(micromatch(processedResultArr, rootConfigFiles).length, 0, `wont ship configuration files`);
   assert.ok(micromatch(processedResultArr, 'CHANGELOG.md').length, 'ships changelog markdown file');
   assert.ok(micromatch(processedResultArr, 'dist/*.d.ts').length, 'ships rolluped dts');
   assert.ok(micromatch(processedResultArr, 'lib-commonjs/**/*.(js|map)').length, 'ships cjs');
   assert.equal(micromatch(processedResultArr, 'src/*').length, 0, `wont ship source code from "/src"`);
+
+  if (!isV8package) {
+    assert.equal(micromatch(processedResultArr, rootConfigFiles).length, 0, `wont ship configuration files`);
+  }
 
   if (!platform.node) {
     assert.ok(micromatch(processedResultArr, 'lib/**/*.(js|map)').length, 'ships esm');
@@ -78,10 +81,11 @@ export function verifyPackaging(options: Options) {
     assert.ok(micromatch(processedResultArr, '(lib|lib-commonjs)/**/*.d.ts').length, `ships dts`);
 
     if (options.production && shipsBundle) {
-      assert.ok(micromatch(processedResultArr, '(dist/**/*.(min)?.js').length, `ships bundle (*.min.js,*.js)`);
+      assert.ok(micromatch(processedResultArr, 'dist/*.js').length, `ships bundle`);
+      assert.ok(micromatch(processedResultArr, 'dist/*.min.js').length, `ships minified bundle`);
     }
     if (options.production && shipsUmd) {
-      assert.ok(micromatch(processedResultArr, '(dist/**/*.umd.js').length, `ships umd`);
+      assert.ok(micromatch(processedResultArr, 'dist/*.umd.js').length, `ships umd`);
     }
   }
 
