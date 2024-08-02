@@ -345,9 +345,8 @@ export class BaseTextArea extends FASTElement {
   constructor() {
     super();
 
-    // TODO: Change this to `'textbox'` when Reference Target is out.
-    this.elementInternals.role = 'presentation';
     // TODO: Re-enabled this when Reference Target is out.
+    // this.elementInternals.role = 'textbox';
     // this.elementInternals.ariaMultiLine = 'true';
   }
 

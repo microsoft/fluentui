@@ -9,7 +9,7 @@ test.describe('TextArea', () => {
     await page.waitForFunction(() => customElements.whenDefined('fluent-textarea'));
   });
 
-  // TODO: This should test elementInternals.role === 'textbox' when Reference Target is widely supported.
+  // TODO: This should test 'elementInternals.role' as 'textbox' when Reference Target is widely supported.
   test('should not have a role on element internals', async ({ page }) => {
     const element = page.locator('fluent-textarea');
 
@@ -17,7 +17,7 @@ test.describe('TextArea', () => {
       <fluent-textarea></fluent-textarea>
     `);
 
-    await expect(element).toHaveJSProperty('elementInternals.role', 'presentation');
+    await expect(element).toHaveJSProperty('elementInternals.role', null);
   });
 
   test("should always return 'textarea' for the `type` prop", async ({ page }) => {
