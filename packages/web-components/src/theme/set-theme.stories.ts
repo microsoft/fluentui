@@ -7,11 +7,22 @@ import type { Theme } from './set-theme.js';
 import { setTheme } from './set-theme.js';
 
 const fluentTheme: Record<string, Theme> = {
-  teamsDarkTheme,
-  teamsLightTheme,
-  webDarkTheme,
   webLightTheme,
+  webDarkTheme,
+  teamsLightTheme,
+  teamsDarkTheme,
 };
+
+const themeDescription = `
+Flat object of theme tokens. Each object entry must follow these rules:
+
+* Key: the name of the token, usually in camel case. It must be a valid CSS Custom Property name
+  **without** the starting two dashes (\`--\`), the two dashes are added inside the function
+* Value: must be a valid CSS value, e.g. it cannot contain semicolons (\`;\`)
+
+Note that this argument is not limited to existing theme objects (from \`@fluentui/tokens\`),
+you can pass in an arbitrary theme object as long as each entry’s value is either a string or a number.
+`;
 
 export default {
   title: 'Theme/SetTheme',
@@ -20,10 +31,7 @@ export default {
       type: 'string',
       control: 'select',
       options: Object.keys(fluentTheme),
-      description: `Flat object of theme tokens. Each object entry's key is the name of the token (usually in camel
-        case) and used as the CSS Custom Property’s name. Note that this argument is not limited to existing theme
-        objects (from \`@fluentui/tokens/\`), you can pass in an arbitrary theme object as long as each entry’s value
-        is either a string or a number.`,
+      description: themeDescription,
     },
   },
   args: {
