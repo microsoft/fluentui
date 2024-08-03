@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import { expect, fixtureURL } from '../helpers.tests.js';
+import { LabelSize } from '../label/label.options.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
 import type { TextArea } from './textarea.js';
 
@@ -57,7 +58,7 @@ test.describe('TextArea', () => {
     await expect(control).toHaveJSProperty('placeholder', 'Placeholder');
   });
 
-  test('should be associated with the given labels', async ({ page }) => {
+  test('should be associated with the given external labels', async ({ page }) => {
     const element = page.locator('fluent-textarea');
 
     await page.setContent(/* html */ `
@@ -73,23 +74,23 @@ test.describe('TextArea', () => {
     expect(labelsValue).toStrictEqual([label1El, label2El]);
   });
 
-  test('should be focused when associated label is clicked', async ({ page }) => {
+  test('should be focused when associated external label is clicked', async ({ page }) => {
     const element = page.locator('fluent-textarea');
     const control = element.locator('textarea');
 
     await page.setContent(/* html */ `
-      <label for="textarea">Text area</label>
+      <label for="textarea" data-testid="label">Text area</label>
       <fluent-textarea id="textarea"></fluent-textarea>
     `);
 
-    const label = page.locator('label');
+    const label = page.getByTestId('label');
 
     await label.click();
 
     await expect(control).toBeFocused();
   });
 
-  test('should have the contrl focused when `focus()` is called', async ({ page }) => {
+  test('should have the control focused when `focus()` is called', async ({ page }) => {
     const element = page.locator('fluent-textarea');
     const control = element.locator('textarea');
 
@@ -298,6 +299,116 @@ test.describe('TextArea', () => {
     });
   });
 
+  test.describe('internal label', () => {
+    test('should not display label if no elements assigned to the `label` slot', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+      const label = element.locator('label');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea></fluent-textarea>
+      `);
+
+      await expect(label).toBeHidden();
+    });
+
+    test('should display label when defined and associate to the internal textarea', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+      const label = element.locator('label');
+      const control = element.locator('textarea');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea>
+          <fluent-label slot="label">Details</fluent-label>
+        </fluent-textarea>
+      `);
+
+      await expect(label).toBeVisible();
+      await expect(control).toHaveAccessibleName('Details');
+    });
+
+    test('should not include `label` slotted elements in its value', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea>
+          <fluent-label slot="label">Details</fluent-label>
+          Some text
+        </fluent-textarea>
+      `);
+
+      await expect(element).toHaveJSProperty('value', 'Some text');
+    });
+
+    test('should downstream `required` to the label', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+      const label = element.locator('fluent-label');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea required>
+          <fluent-label slot="label">Details</fluent-label>
+        </fluent-textarea>
+      `);
+
+      await expect(label).toHaveJSProperty('required', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.required = false;
+      });
+
+      await expect(label).toHaveJSProperty('required', false);
+    });
+
+    test('should downstream `disabled` to the label', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+      const label = element.locator('fluent-label');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea disabled>
+          <fluent-label slot="label">Details</fluent-label>
+        </fluent-textarea>
+      `);
+
+      await expect(label).toHaveJSProperty('disabled', true);
+
+      await element.evaluate((el: TextArea) => {
+        el.disabled = false;
+      });
+
+      await expect(label).toHaveJSProperty('disabled', false);
+    });
+
+    test('should downstream `size` to the label', async ({ page }) => {
+      const element = page.locator('fluent-textarea');
+      const label = element.locator('fluent-label');
+
+      await page.setContent(/* html */ `
+        <fluent-textarea size="${TextAreaSize.small}">
+          <fluent-label slot="label">Details</fluent-label>
+        </fluent-textarea>
+      `);
+
+      await expect(label).toHaveJSProperty('size', LabelSize.small);
+
+      await element.evaluate((el: TextArea, size: TextAreaSize) => {
+        el.size = size;
+      }, TextAreaSize.medium);
+
+      await expect(label).toHaveJSProperty('size', LabelSize.medium);
+
+      await element.evaluate((el: TextArea, size: TextAreaSize) => {
+        el.size = size;
+      }, TextAreaSize.large);
+
+      await expect(label).toHaveJSProperty('size', LabelSize.large);
+
+      await element.evaluate((el: TextArea) => {
+        el.size = undefined;
+      });
+
+      await expect(label).toHaveJSProperty('size', undefined);
+    });
+  });
+
   test.describe('`value` and `defaultValue` props', () => {
     test('should have `defaultValue` as empty string if no children', async ({ page }) => {
       const element = page.locator('fluent-textarea');
@@ -330,7 +441,7 @@ test.describe('TextArea', () => {
         ['<fluent-textarea>', '  <div>some text</div>', '  <p>more text</p>', '</fluent-textarea>'].join('\n'),
       );
 
-      const expectedValue = '<div>some text</div>\n  <p>more text</p>';
+      const expectedValue = '<div>some text</div><p>more text</p>';
       await expect(element).toHaveJSProperty('defaultValue', expectedValue);
       await expect(element).toHaveJSProperty('value', expectedValue);
     });

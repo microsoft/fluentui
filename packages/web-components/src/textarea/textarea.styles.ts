@@ -35,6 +35,7 @@ import {
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalSNudge,
+  spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalS,
   spacingVerticalSNudge,
@@ -63,7 +64,7 @@ import {
  * @public
  */
 export const styles: ElementStyles = css`
-  ${display('inline-grid')}
+  ${display('inline-block')}
 
   :host {
     /* typography */
@@ -90,26 +91,15 @@ export const styles: ElementStyles = css`
     /* elevations */
     --box-shadow: none;
 
+    /* others */
     --contain-size: size;
+    --resize: none;
 
-    background-color: var(--background-color);
-    border: var(--border-width) solid var(--border-color);
-    border-block-end-color: var(--border-block-end-color);
-    border-radius: ${borderRadiusMedium};
-    box-sizing: border-box;
-    box-shadow: var(--box-shadow);
     color: var(--color);
-    contain: paint layout style var(--contain-size);
     font-family: ${fontFamilyBase};
     font-size: var(--font-size);
     font-weight: ${fontWeightRegular};
-    grid-template: 1fr / 1fr;
     line-height: var(--line-height);
-    inline-size: var(--inline-size);
-    min-block-size: var(--min-block-size);
-    block-size: var(--block-size);
-    overflow: hidden;
-    padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
 
@@ -128,8 +118,7 @@ export const styles: ElementStyles = css`
   }
 
   :host(${blockState}) {
-    display: grid;
-    inline-size: auto;
+    display: block;
   }
 
   :host(${smallState}) {
@@ -151,15 +140,15 @@ export const styles: ElementStyles = css`
   }
 
   :host(${resizeBothState}:not(:disabled)) {
-    resize: both;
+    --resize: both;
   }
 
   :host(${resizeHorizontalState}:not(:disabled)) {
-    resize: horizontal;
+    --resize: horizontal;
   }
 
   :host(${resizeVerticalState}:not(:disabled)) {
-    resize: vertical;
+    --resize: vertical;
   }
 
   :host(${autoResizeState}) {
@@ -200,6 +189,29 @@ export const styles: ElementStyles = css`
     user-select: none;
   }
 
+  .root {
+    background-color: var(--background-color);
+    border: var(--border-width) solid var(--border-color);
+    border-block-end-color: var(--border-block-end-color);
+    border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
+    box-shadow: var(--box-shadow);
+    contain: paint layout style var(--contain-size);
+    display: grid;
+    grid-template: 1fr / 1fr;
+    inline-size: var(--inline-size);
+    min-block-size: var(--min-block-size);
+    block-size: var(--block-size);
+    overflow: hidden;
+    padding: var(--padding-block) var(--padding-inline);
+    position: relative;
+    resize: var(--resize);
+  }
+
+  :host(${blockState}) .root {
+    inline-size: auto;
+  }
+
   :host::after {
     border-bottom: 2px solid var(--focus-indicator-color);
     border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
@@ -225,6 +237,19 @@ export const styles: ElementStyles = css`
   :host([readonly])::after,
   :host(:disabled)::after {
     content: none;
+  }
+
+  label {
+    color: var(--color);
+    display: flex;
+    inline-size: fit-content;
+    padding-block-end: ${spacingVerticalXS};
+    padding-inline-end: ${spacingHorizontalXS};
+  }
+
+  :host(:empty) label,
+  label[hidden] {
+    display: none;
   }
 
   .auto-sizer,

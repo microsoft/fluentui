@@ -1,5 +1,6 @@
-import { attr, FASTElement, nullableNumberConverter, Observable } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import type { Label } from '../label/label.js';
 import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
@@ -13,6 +14,10 @@ import {
  * A Text Area Custom HTML Element.
  * Based largely on the {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea | `<textarea>`} element.
  *
+ * @slot - The default content/value of the component.
+ * @slot label - The content for the `<label>`, it should be a `<fluent-label>` element.
+ * @csspart label - The `<label>` element.
+ * @csspart root - The container element of the `<textarea>` element.
  * @csspart control - The internal `<textarea>` element.
  * @fires change - Fires after the control loses focus, if the content has changed.
  * @fires select - Fires when the `select()` method is called.
@@ -36,6 +41,12 @@ export class BaseTextArea extends FASTElement {
   public elementInternals: ElementInternals = this.attachInternals();
 
   /**
+   * The `<label>` element.
+   * @internal
+   */
+  public labelEl!: HTMLLabelElement;
+
+  /**
    * The `<textarea>` element.
    * @internal
    */
@@ -46,11 +57,37 @@ export class BaseTextArea extends FASTElement {
    */
   public autoSizerEl?: HTMLDivElement;
 
+  /**
+   * The list of nodes that are assigned to the default slot.
+   * @internal
+   */
+  @observable
+  public defaultSlottedNodes!: Node[];
+  protected defaultSlottedNodesChanged() {
+    const next = this.getContent();
+    this.defaultValue = next;
+    this.value = next;
+  }
+
+  /**
+   * The list of nodes that are assigned to the `label` slot.
+   * @internal
+   */
+  @observable
+  public labelSlottedNodes!: Label[];
+  protected labelSlottedNodesChanged() {
+    if (this.labelEl) {
+      this.labelEl.hidden = !this.labelSlottedNodes.length;
+    }
+    this.labelSlottedNodes.forEach(node => {
+      node.disabled = this.disabled;
+      node.required = this.required;
+    });
+  }
+
   private userInteracted = false;
 
   private autoSizerObserver?: ResizeObserver;
-
-  private lightDOMObserver!: MutationObserver;
 
   private controlElAttrObserver!: MutationObserver;
 
@@ -212,9 +249,12 @@ export class BaseTextArea extends FASTElement {
    * HTML Attribute: `required`
    */
   @attr({ mode: 'boolean' })
-  public required!: boolean;
+  public required = false;
   protected requiredChanged() {
     this.elementInternals.ariaRequired = `${!!this.required}`;
+    if (this.labelSlottedNodes?.length) {
+      this.labelSlottedNodes.forEach(node => (node.required = this.required));
+    }
   }
 
   /**
@@ -360,7 +400,6 @@ export class BaseTextArea extends FASTElement {
     this.maybeCreateAutoSizerEl();
 
     this.bindEvents();
-    this.observeLightDOM();
     this.observeControlElAttrs();
   }
 
@@ -371,7 +410,6 @@ export class BaseTextArea extends FASTElement {
     super.disconnectedCallback();
 
     this.autoSizerObserver?.disconnect();
-    this.lightDOMObserver?.disconnect();
     this.controlElAttrObserver?.disconnect();
   }
 
@@ -486,15 +524,24 @@ export class BaseTextArea extends FASTElement {
     this.controlEl.addEventListener('input', () => (this.userInteracted = true), { once: true });
   }
 
-  private observeLightDOM() {
-    this.lightDOMObserver = new MutationObserver(() => {
-      const next = this.innerHTML.trim();
-      this.defaultValue = next;
-      this.value = next;
-    });
-    this.lightDOMObserver.observe(this, {
-      childList: true,
-    });
+  /**
+   * Gets the content inside the light DOM, if any HTML element is present, use its `outerHTML` value.
+   */
+  private getContent(): string {
+    return (
+      this.defaultSlottedNodes
+        .map(node => {
+          switch (node.nodeType) {
+            case Node.ELEMENT_NODE:
+              return (node as Element).outerHTML;
+            case Node.TEXT_NODE:
+              return node.textContent!.trim();
+            default:
+              return '';
+          }
+        })
+        .join('') || ''
+    );
   }
 
   private observeControlElAttrs() {
@@ -512,6 +559,10 @@ export class BaseTextArea extends FASTElement {
 
     if (this.controlEl) {
       this.controlEl.disabled = disabled;
+    }
+
+    if (this.labelSlottedNodes?.length) {
+      this.labelSlottedNodes.forEach(node => (node.disabled = this.disabled));
     }
   }
 
@@ -587,6 +638,14 @@ export class BaseTextArea extends FASTElement {
 }
 
 export class TextArea extends BaseTextArea {
+  protected labelSlottedNodesChanged() {
+    super.labelSlottedNodesChanged();
+
+    this.labelSlottedNodes.forEach(node => {
+      node.size = this.size;
+    });
+  }
+
   /**
    * Indicates the visual appearance of the element.
    *
@@ -644,6 +703,11 @@ export class TextArea extends BaseTextArea {
    */
   public handleChange(_: any, propertyName: string) {
     switch (propertyName) {
+      case 'size':
+        this.labelSlottedNodes.forEach(node => {
+          node.size = this.size;
+        });
+        break;
       case 'appearance':
       case 'displayShadow':
         this.maybeDisplayShadow();
@@ -661,6 +725,7 @@ export class TextArea extends BaseTextArea {
 
     Observable.getNotifier(this).subscribe(this, 'appearance');
     Observable.getNotifier(this).subscribe(this, 'displayShadow');
+    Observable.getNotifier(this).subscribe(this, 'size');
   }
 
   /**
@@ -671,6 +736,7 @@ export class TextArea extends BaseTextArea {
 
     Observable.getNotifier(this).unsubscribe(this, 'appearance');
     Observable.getNotifier(this).unsubscribe(this, 'displayShadow');
+    Observable.getNotifier(this).unsubscribe(this, 'size');
   }
 
   private maybeDisplayShadow() {

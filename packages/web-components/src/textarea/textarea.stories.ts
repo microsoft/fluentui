@@ -26,13 +26,19 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     ?spellcheck="${x => x.spellcheck}"
     resize="${x => x.resize}"
     value="${x => x.value}"
-    >${x => x.defaultContent ?? ''}</fluent-textarea
   >
+    ${x => (x.label ? html`<fluent-label slot="label" ?required="${x => x.required}">${x.label}</fluent-label>` : '')}
+    ${x => x.defaultContent ?? ''}
+  </fluent-textarea>
 `;
 
 export default {
   title: 'Components/TextArea',
   argTypes: {
+    label: {
+      description: 'Label of the control',
+      control: 'text',
+    },
     defaultContent: {
       description: 'Content inside the component',
       control: 'text',
@@ -253,10 +259,9 @@ Disabled.args = {
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <form id="required-form" action="#">
-    <fluent-field>
-      <label slot="label">Required Input</label>
-      <fluent-textarea slot="input" name="required-input" required></fluent-textarea>
-    </fluent-field>
+    <fluent-textarea slot="input" name="required-input" required>
+      <fluent-label slot="label">Required Input</fluent-label>
+    </fluent-textarea>
     <div><button type="submit">Submit</button></div>
   </form>
 `);
@@ -269,7 +274,7 @@ ReadOnly.args = {
 };
 
 export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <fluent-textarea style="inline-size: 300px; min-block-size: 200px;" auto-resize resize="both" size="large">
+  <fluent-textarea auto-resize resize="both" size="large">
     <p>This text should show up as plain text.</p>
     <img src="logo.svg" alt="" />
     <script>
