@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "migrate to storybook v7",
-  "packageName": "@fluentui/web-components",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "none"
-}

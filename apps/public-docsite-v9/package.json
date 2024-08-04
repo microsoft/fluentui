@@ -47,7 +47,6 @@
     "@fluentui/react-nav-preview": "*",
     "@fluentui/react-motion-components-preview": "*",
     "@fluentui/react-icons-compat": "*",
-    "@fluentui/react-carousel-preview": "*",
-    "@storybook/preview-api": "^7.6.20"
+    "@fluentui/react-carousel-preview": "*"
   }
 }

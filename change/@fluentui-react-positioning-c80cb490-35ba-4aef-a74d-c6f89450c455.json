@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "updated deprecated types",
-  "packageName": "@fluentui/react-positioning",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

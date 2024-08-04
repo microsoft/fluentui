@@ -1,4 +1,3 @@
-import 'cypress-storybook/react';
 import './docs-root.css';
 import '../packages/react-components/react-storybook-addon-export-to-sandbox/src/styles.css';
 import { withLinks } from '@storybook/addon-links';

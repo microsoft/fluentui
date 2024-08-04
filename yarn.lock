@@ -4307,7 +4307,7 @@
     semver "^7.3.7"
     webpack "5"
 
-"@storybook/preview-api@7.6.20", "@storybook/preview-api@^7.6.20":
+"@storybook/preview-api@7.6.20":
   version "7.6.20"
   resolved "https://registry.yarnpkg.com/@storybook/preview-api/-/preview-api-7.6.20.tgz#688a435ee2cfe57eeb1e3053c18025a9e0a03bbb"
   integrity sha512-3ic2m9LDZEPwZk02wIhNc3n3rNvbi7VDKn52hDXfAxnL5EYm7yDICAkaWcVaTfblru2zn0EDJt7ROpthscTW5w==
@@ -9172,11 +9172,6 @@ cypress-real-events@1.11.0:
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/cypress-real-events/-/cypress-real-events-1.11.0.tgz#292fe5281c5b6e955524e766ab7fec46930c7763"
   integrity sha512-4LXVRsyq+xBh5TmlEyO1ojtBXtN7xw720Pwb9rEE9rkJuXmeH3VyoR1GGayMGr+Itqf11eEjfDewtDmcx6PWPQ==
-
-cypress-storybook@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/cypress-storybook/-/cypress-storybook-1.0.0.tgz#349384b7d0a1d5076706e3420f7607cc51f3a2aa"
-  integrity sha512-tXEhJwkD9SNsg9o9ZKI4XReTV4bpW60bcUQA6X7+j40Oqgt7atBg+oG2nMBJFf172v9cp6LX3fNTxvv7JFGVOA==
 
 cypress@13.6.4:
   version "13.6.4"

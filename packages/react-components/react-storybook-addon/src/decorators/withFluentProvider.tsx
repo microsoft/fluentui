@@ -22,8 +22,8 @@ const themes: Record<ThemeIds, Theme> = {
   'teams-high-contrast': teamsHighContrastTheme,
 } as const;
 
-const findTheme = (themeId: ThemeIds = defaultTheme.id) => {
-  return themes[themeId];
+const findTheme = (themeId?: ThemeIds) => {
+  return themeId ? themes[themeId] : null;
 };
 
 export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
@@ -38,7 +38,7 @@ export const withFluentProvider = (StoryFn: () => JSX.Element, context: FluentSt
   const dir = parameters.dir ?? globals[DIR_ID] ?? 'ltr';
   const globalTheme = findTheme(globals[THEME_ID]);
   const paramTheme = findTheme(parameters.fluentTheme);
-  const theme = paramTheme ?? globalTheme;
+  const theme = paramTheme ?? globalTheme ?? themes[defaultTheme.id];
 
   return (
     <FluentProvider theme={theme} dir={dir}>

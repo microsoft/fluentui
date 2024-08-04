@@ -15,7 +15,6 @@ module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig}
     name: '@storybook/react-webpack5',
     options: {
       builder: {
-        fsCache: false,
         useSWC: true,
         lazyCompilation: false,
       },
