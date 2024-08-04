@@ -1,7 +1,5 @@
-var __STORY__ =
-  'import { Button } from "@fluentui/react-components";\nimport * as React from "react";\n\nexport const Default = () => <Button>Click me</Button>;\n';
-const Default = () => '<Button>Click me</Button>';
-Default.storyName = 'Default';
+import * as React from 'react';
+export const Default = () => /*#__PURE__*/ React.createElement(Button, null, 'Click me');
 Default.parameters = {
   docsMode: {
     description: {
@@ -9,4 +7,5 @@ Default.parameters = {
     },
   },
 };
-Default.parameters.fullSource = __STORY__;
+Default.parameters.fullSource =
+  'import * as React from "react";\n\nexport const Default = () => <Button>Click me</Button>;\n';

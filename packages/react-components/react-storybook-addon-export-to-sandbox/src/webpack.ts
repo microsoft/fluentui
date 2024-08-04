@@ -7,7 +7,7 @@ export type WebpackFinalOptions = Parameters<WebpackFinalFn>[1];
 export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions) {
   const addonPresetConfig = getAddonOptions(options);
 
-  registerRules({ config, rules: [createBabelLoaderRule(addonPresetConfig), createStorybookSourceLoaderRule()] });
+  registerRules({ config, rules: [createBabelLoaderRule(addonPresetConfig)] });
 
   return config;
 }
@@ -36,32 +36,13 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
      * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
      * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
      */
-    // enforce: 'post',
+    enforce: 'post',
     use: {
       loader: 'babel-loader',
       options: babelLoaderOptionsUpdater({
         plugins: [plugin],
       }),
     },
-  };
-}
-
-/**
- * Storybook Source Loader is used to extract the source code from the stories by the babel plugin,
- * and it was removed in Storybook 7. So we need to add it manually.
- *
- * https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#dropped-source-loader--storiesof-static-snippets
- */
-function createStorybookSourceLoaderRule(): import('webpack').RuleSetRule {
-  return {
-    test: /\.stories\.[tj]sx?$/,
-    use: [
-      {
-        loader: require.resolve('@storybook/source-loader'),
-        options: {},
-      },
-    ],
-    // enforce: 'pre',
   };
 }
 

@@ -1,13 +1,12 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
   HeaderMdx,
   Primary,
-  PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
 import type { SBEnumType } from '@storybook/csf';
@@ -172,7 +171,7 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgTypes of={primaryStory.component} />
           {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
             <div className={styles.nativeProps}>
               <InfoFilled className={styles.nativePropsIcon} />

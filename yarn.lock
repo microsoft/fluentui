@@ -4396,17 +4396,6 @@
     memoizerific "^1.11.3"
     qs "^6.10.0"
 
-"@storybook/source-loader@7.6.20":
-  version "7.6.20"
-  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-7.6.20.tgz#ce559aad34093a361bc8266d9c8d30079761083c"
-  integrity sha512-AlOX5w95tajmZEsEcbYCtwtpKYW0xLV2hRzk2MZfc6XUXC9/n2jwhz1X4EKilwKGCWFUj/HAYbNc2XChS9juvg==
-  dependencies:
-    "@storybook/csf" "^0.1.2"
-    "@storybook/types" "7.6.20"
-    estraverse "^5.2.0"
-    lodash "^4.17.21"
-    prettier "^2.8.0"
-
 "@storybook/telemetry@7.6.20":
   version "7.6.20"
   resolved "https://registry.yarnpkg.com/@storybook/telemetry/-/telemetry-7.6.20.tgz#5b3705eb5100b21070d76767dde1040ed5d9b35b"

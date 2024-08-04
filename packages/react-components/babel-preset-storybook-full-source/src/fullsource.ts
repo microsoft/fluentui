@@ -1,5 +1,6 @@
 import * as Babel from '@babel/core';
 import * as prettier from 'prettier';
+import * as fs from 'fs';
 
 import { modifyImportsPlugin } from './modifyImports';
 import { removeStorybookParameters } from './removeStorybookParameters';
@@ -13,11 +14,7 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
  *
  * Specifically, it finds this expression in a story file: Story.parameters = ...
  * In case Story.parameters doesn't exist, it creates it.
- * And adds the following expression after it: Story.parameters.fullSource = __STORY__;
- *
- * The __STORY__ variable is added to each story file by
- * [Storybook’s webpack loader](https://github.com/storybookjs/storybook/tree/next/code/lib/source-loader)
- * and contains source code of the story file.
+ * And adds the following expression after it: Story.parameters.fullSource = `...`;
  *
  * This plugin is utilized by Export to CodeSandbox.
  *
@@ -27,100 +24,97 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
 export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj {
   const { types: t } = babel;
 
+  let storyName: string;
+  let parametersAssignment: Babel.NodePath<Babel.types.AssignmentExpression> | undefined;
+
+  const createStoryParametersAssignmentExpression = () => {
+    const storyParameters = t.assignmentExpression(
+      '=',
+      t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+      t.objectExpression([]),
+    );
+
+    return t.expressionStatement(storyParameters);
+  };
+
+  const createFullSourceAssignmentExpression = (fullSource: string) => {
+    return t.expressionStatement(
+      t.assignmentExpression(
+        '=',
+        t.memberExpression(
+          t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+          t.identifier('fullSource'),
+        ),
+        t.stringLiteral(fullSource),
+      ),
+    );
+  };
+
   return {
     name: PLUGIN_NAME,
     visitor: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      Program(programPath, state) {
-        programPath.traverse({
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          VariableDeclarator(path) {
-            if (
-              t.isIdentifier(path.node.id) &&
-              t.isStringLiteral(path.node.init) &&
-              path.node.id.name === '__STORY__' &&
-              path.parentPath.isVariableDeclaration()
-            ) {
-              const transformedCode = babel.transformSync(path.node.init.value, {
-                ...state.file.opts,
-                compact: false,
-                retainLines: true,
-                comments: false,
-                plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
-              })?.code;
-              const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
+      VariableDeclarator(path) {
+        if (
+          t.isArrowFunctionExpression(path.node.init) &&
+          t.isIdentifier(path.node.id) &&
+          isComponentLikeName(path.node.id.name)
+        ) {
+          storyName = path.node.id.name;
+          path.stop();
+        }
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      AssignmentExpression(path) {
+        if (
+          t.isMemberExpression(path.node.left) &&
+          t.isIdentifier(path.node.left.object) &&
+          path.node.left.object.name === storyName &&
+          t.isIdentifier(path.node.left.property) &&
+          path.node.left.property.name === 'parameters'
+        ) {
+          parametersAssignment = path;
+          path.stop();
+        }
+      },
+      Program: {
+        enter() {
+          storyName = '';
+          parametersAssignment = undefined;
+        },
+        exit(path, state) {
+          if (!storyName || !state.filename) {
+            return;
+          }
 
-              path.get('init').replaceWith(t.stringLiteral(code));
+          const fileContents = fs.readFileSync(state.filename, 'utf-8');
+          const transformedCode = babel.transformSync(fileContents, {
+            ...state.file.opts,
+            compact: false,
+            retainLines: true,
+            comments: false,
+            plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
+          })?.code;
 
-              path.stop();
-            }
-          },
-        });
+          const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
 
-        programPath.traverse({
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          VariableDeclarator(path) {
-            if (t.isArrowFunctionExpression(path.node.init) && t.isIdentifier(path.node.id)) {
-              const storyName = path.node.id.name;
+          if (!parametersAssignment) {
+            path.pushContainer('body', createStoryParametersAssignmentExpression());
+          }
 
-              let parametersAssignment: Babel.NodePath<Babel.types.AssignmentExpression> | undefined;
-
-              // Find `Story.parameters` assignment
-              programPath.traverse({
-                // eslint-disable-next-line @typescript-eslint/naming-convention
-                AssignmentExpression(assignmentPath) {
-                  if (
-                    t.isMemberExpression(assignmentPath.node.left) &&
-                    t.isIdentifier(assignmentPath.node.left.object) &&
-                    assignmentPath.node.left.object.name === storyName &&
-                    t.isIdentifier(assignmentPath.node.left.property) &&
-                    assignmentPath.node.left.property.name === 'parameters'
-                  ) {
-                    parametersAssignment = assignmentPath;
-                  }
-                },
-              });
-
-              if (parametersAssignment) {
-                // If `Story.parameters` exists, add `StoryParameters.fullSource` property
-                parametersAssignment.insertAfter(
-                  t.expressionStatement(
-                    t.assignmentExpression(
-                      '=',
-                      t.memberExpression(
-                        t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
-                        t.identifier('fullSource'),
-                      ),
-                      t.identifier('__STORY__'),
-                    ),
-                  ),
-                );
-              } else {
-                // If `Story.parameters` doesn't exist, create it and add `StoryParameters.fullSource` property
-                path.parentPath.insertAfter([
-                  t.expressionStatement(
-                    t.assignmentExpression(
-                      '=',
-                      t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
-                      t.objectExpression([]),
-                    ),
-                  ),
-                  t.expressionStatement(
-                    t.assignmentExpression(
-                      '=',
-                      t.memberExpression(
-                        t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
-                        t.identifier('fullSource'),
-                      ),
-                      t.identifier('__STORY__'),
-                    ),
-                  ),
-                ]);
-              }
-            }
-          },
-        });
+          path.pushContainer('body', createFullSourceAssignmentExpression(code));
+        },
       },
     },
   };
+}
+
+/**
+ * Checks if the name is a component-like name.
+ *
+ * @param name - name to check
+ * @returns true if the name is a component-like name (starts with a capital letter)
+ */
+function isComponentLikeName(name: string) {
+  return name.charAt(0) === name.charAt(0).toUpperCase();
 }
