@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: add collapse motion to Tree",
+  "packageName": "@fluentui/react-tree",
+  "email": "olkatruk@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Fri, 05 May 2023 18:14:05 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2024 07:24:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.24)
+
+Thu, 01 Aug 2024 07:24:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.3.11..@fluentui/monaco-editor_v1.3.24)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [1.3.9](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.3.9)
 

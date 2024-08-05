@@ -1,12 +1,12 @@
-import * as React from 'react';
-import { mergeCallbacks, useEventCallback } from '@fluentui/react-utilities';
-import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
+import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
-import { useCarouselContext_unstable } from '../CarouselContext';
-import { useCarouselStore_unstable } from '../useCarouselStore';
-import { slot } from '@fluentui/react-utilities';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { ARIAButtonElement } from '@fluentui/react-aria';
+import { mergeCallbacks, useEventCallback, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
+import { CarouselUpdateData } from '../Carousel/Carousel.types';
 
 /**
  * Create the state required to render CarouselButton.
@@ -23,17 +23,24 @@ export const useCarouselButton_unstable = (
 ): CarouselButtonState => {
   const { navType } = props;
 
-  const { circular, selectPageByDirection } = useCarouselContext_unstable();
-  const isTrailing = useCarouselStore_unstable(snapshot => {
-    if (!snapshot.activeValue || circular) {
+  // Locally tracks the total number of slides, will only update if this changes.
+  const [totalSlides, setTotalSlides] = React.useState(0);
+
+  const circular = useCarouselContext(ctx => ctx.circular);
+  const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+
+  // TODO: this should be a part of subscribeForValues() handler to avoid pulling "activeIndex"
+  const isTrailing = useCarouselContext(ctx => {
+    if (ctx.activeIndex === undefined || circular) {
       return false;
     }
 
     if (navType === 'prev') {
-      return snapshot.values.indexOf(snapshot.activeValue) === 0;
+      return ctx.activeIndex === 0;
     }
 
-    return snapshot.values.indexOf(snapshot.activeValue) === snapshot.values.length - 1;
+    return ctx.activeIndex === totalSlides - 1;
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -45,6 +52,12 @@ export const useCarouselButton_unstable = (
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues((data: CarouselUpdateData) => {
+      setTotalSlides(data.navItemsCount);
+    });
+  }, [subscribeForValues]);
 
   return {
     navType,
@@ -60,6 +73,7 @@ export const useCarouselButton_unstable = (
         }),
         disabled: isTrailing,
         'aria-disabled': isTrailing,
+        appearance: 'subtle',
         ...props,
         onClick: handleButtonClick,
       },

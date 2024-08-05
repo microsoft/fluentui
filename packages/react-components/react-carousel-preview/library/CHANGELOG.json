@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-carousel-preview",
+  "entries": [
+    {
+      "date": "Tue, 30 Jul 2024 18:47:32 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "cf68d198b62eeccb0031517a4558f73877ff92f1",
+            "comment": "feat: Release react-carousel-preview to public preview"
+          }
+        ]
+      }
+    }
+  ]
+}

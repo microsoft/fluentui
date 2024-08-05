@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 23 Jul 2024 20:13:11 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.7)
+
+Tue, 30 Jul 2024 18:47:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.6..@fluentui/react-components_v9.54.7)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: add collapse motion to Accordion ([PR #32086](https://github.com/microsoft/fluentui/pull/32086) by olkatruk@microsoft.com)
+- `@fluentui/react-carousel-preview`
+  - feat: Release react-carousel-preview to public preview ([PR #32152](https://github.com/microsoft/fluentui/pull/32152) by mifraser@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - feat: Release react-icons-compat to stable ([PR #32151](https://github.com/microsoft/fluentui/pull/32151) by ololubek@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - Adds AppItem and AppItemStatic, removes AppNode ([PR #32088](https://github.com/microsoft/fluentui/pull/32088) by matejera@microsoft.com)
+  - feat: Adds slots & styling for AppItem. ([PR #32103](https://github.com/microsoft/fluentui/pull/32103) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: improve hover for HC mode ([PR #31953](https://github.com/microsoft/fluentui/pull/31953) by marcosvmmoura@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: only call activedescendant focus when combobox/dropdown is opened ([PR #32156](https://github.com/microsoft/fluentui/pull/32156) by sarah.higley@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: migrate to stable motion APIs ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: update types for navDrawerClassNames ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: improve arrow styles implementation ([PR #32092](https://github.com/microsoft/fluentui/pull/32092) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix: replace useEventCallback with useCallback for focus ([PR #32079](https://github.com/microsoft/fluentui/pull/32079) by vgenaev@gmail.com)
+  - fix: Expand hit target when there's no content after. ([PR #32114](https://github.com/microsoft/fluentui/pull/32114) by estebanmu@microsoft.com)
 
 ## [9.54.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.6)
 
