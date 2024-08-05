@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 02 Aug 2024 04:07:54 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 04:08:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.53)
+
+Mon, 05 Aug 2024 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.52..@fluentui/web-components_v3.0.0-beta.53)
+
+### Changes
+
+- fix(web-components): detach design tokens from existing themes ([PR #32130](https://github.com/microsoft/fluentui/pull/32130) by machi@microsoft.com)
 
 ## [3.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.52)
 
