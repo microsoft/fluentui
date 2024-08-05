@@ -1,31 +1,31 @@
-import { html, type HTMLView } from '@microsoft/fast-element';
+import { html, repeat, when } from '@microsoft/fast-element';
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
-import type { Story } from '../helpers.stories.js';
+import type { Meta } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Theme } from './set-theme.js';
 import { setTheme } from './set-theme.js';
 
-const themes: Record<string, Theme | null> = {
-  'web-light': webLightTheme,
-  'web-dark': webDarkTheme,
-  'team-light': teamsLightTheme,
-  'team-dark': teamsDarkTheme,
-  null: null,
-};
+const themes: Map<string, Theme | null> = new Map([
+  ['web-light', webLightTheme],
+  ['web-dark', webDarkTheme],
+  ['team-light', teamsLightTheme],
+  ['team-dark', teamsDarkTheme],
+  ['unset', null],
+]);
 
-function updateTheme(c: HTMLView, type = 'global') {
-  const { value } = c.event.target as HTMLSelectElement;
+function updateTheme(evt: Event, type = 'global') {
+  const { value } = evt.target as HTMLSelectElement;
 
-  if (themes[value] !== undefined) {
+  if (themes.has(value) !== undefined) {
     switch (type) {
       case 'global':
-        setTheme(themes[value]);
+        setTheme(themes.get(value)!);
         break;
       case 'local':
-        setTheme(themes[value], document.querySelector('.local') as HTMLElement);
+        setTheme(themes.get(value)!, document.querySelector('.local') as HTMLElement);
         break;
       case 'shadow':
-        setTheme(themes[value], document.querySelector('.shadow') as HTMLElement);
+        setTheme(themes.get(value)!, document.querySelector('.shadow') as HTMLElement);
         break;
     }
   }
@@ -44,24 +44,13 @@ you can pass in an arbitrary theme object as long as each entry’s value is eit
 
 export default {
   title: 'Theme/SetTheme',
-  decorators: [
-    (story: any) => {
-      (window as any).setTheme = setTheme;
-      return story();
-    },
-  ],
-};
+} as Meta;
 
 const ComponentCloudTemplate = html`
-  <p><fluent-button>A button</fluent-button></p>
-  <p><fluent-spinner></fluent-spinner></p>
   <p>
-    <fluent-text-input>
-      <fluent-label>Text input</fluent-label>
-    </fluent-text-input>
-  </p>
-  <fluent-divider></fluent-divider>
-  <p>
+    <fluent-button>A button</fluent-button>
+    <fluent-spinner></fluent-spinner>
+    <fluent-slider step="10" min="0" max="100"></fluent-slider>
     <fluent-menu>
       <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
       <fluent-menu-list>
@@ -72,11 +61,15 @@ const ComponentCloudTemplate = html`
       </fluent-menu-list>
     </fluent-menu>
   </p>
-  <fluent-divider></fluent-divider>
+  <p>
+    <fluent-text-input>
+      <fluent-label>Text input</fluent-label>
+    </fluent-text-input>
+  </p>
   <p>
     <fluent-field>
       <label slot="label" for="radiogroup">Radio group</label>
-      <fluent-radio-group slot="input" id="radiogroup" orientation="vertical">
+      <fluent-radio-group slot="input" id="radiogroup">
         <fluent-field label-position="after">
           <fluent-radio slot="input" id="radiogroup-radio-1"></fluent-radio>
           <label slot="label" for="radiogroup-radio-1">Option 1</label>
@@ -92,22 +85,29 @@ const ComponentCloudTemplate = html`
       </fluent-radio-group>
     </fluent-field>
   </p>
-  <fluent-divider></fluent-divider>
   <p>
     <fluent-field label-position="after">
       <label slot="label" for="checkbox">I would like this option</label>
       <fluent-checkbox slot="input" id="checkbox"></fluent-checkbox>
     </fluent-field>
   </p>
-  <fluent-divider></fluent-divider>
   <p>
-    <fluent-slider step="10" min="0" max="100"></fluent-slider>
   </p>
+`;
+
+const ThemeOptionsTemplate = (selected: string = '', hasUnset = false) => html`
+  ${when(hasUnset, html`<option value="unset">unset</option>`)}
+  ${repeat(Array.from(themes.keys()), html`
+    ${when(k => k !== 'unset', html`
+      <option ?selected=${k => selected === k} value="${k => k}">${k => k}</option>
+    `)}
+  `)}
 `;
 
 export const SetTheme = renderComponent(html`
   <style>
     .toolbar {
+      align-items: end;
       display: flex;
       gap: 1rem;
       border-block-end: 1px solid #ccc;
@@ -154,37 +154,30 @@ export const SetTheme = renderComponent(html`
         color: var(--colorNeutralForeground2);
       }
     }
+
+    fluent-spinner {
+      vertical-align: middle;
+    }
   </style>
   <div class="toolbar">
     <label>
       Global theme
-      <select @change="${(_, c) => updateTheme(c as HTMLView)}">
-        <option selected value="web-light">Web Light</option>
-        <option value="web-dark">Web Dark</option>
-        <option value="team-light">Team Light</option>
-        <option value="team-dark">Team Dark</option>
+      <select @change="${(_, c) => updateTheme(c.event)}">
+        ${ThemeOptionsTemplate('web-light')}
       </select>
     </label>
 
     <label>
       Local theme (element without shadow root)
-      <select @change="${(_, c) => updateTheme(c as HTMLView, 'local')}">
-        <option value="null">Unset</option>
-        <option value="web-light">Web Light</option>
-        <option value="web-dark">Web Dark</option>
-        <option value="team-light">Team Light</option>
-        <option value="team-dark">Team Dark</option>
+      <select @change="${(_, c) => updateTheme(c.event, 'local')}">
+        ${ThemeOptionsTemplate('', true)}
       </select>
     </label>
 
     <label>
       Local theme (element with shadow root)
-      <select @change="${(_, c) => updateTheme(c as HTMLView, 'shadow')}">
-        <option value="null">Unset</option>
-        <option value="web-light">Web Light</option>
-        <option value="web-dark">Web Dark</option>
-        <option value="team-light">Team Light</option>
-        <option value="team-dark">Team Dark</option>
+      <select @change="${(_, c) => updateTheme(c.event, 'shadow')}">
+        ${ThemeOptionsTemplate('', true)}
       </select>
     </label>
   </div>
@@ -200,7 +193,7 @@ export const SetTheme = renderComponent(html`
 
     <fluent-divider></fluent-divider>
 
-    <p>This element (which has shadow root) follows its own theme</p>
+    <p>This element (which has shadow root) follows its own theme when set</p>
     <fluent-text-input class="shadow">
       <fluent-label>Text input</fluent-label>
     </fluent-text-input>

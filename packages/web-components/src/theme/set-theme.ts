@@ -90,7 +90,6 @@ function getThemeStyleText(theme: Theme): string {
       tokenDeclarations.push(`${name}:${initialValue};`);
     }
 
-    console.log(tokenDeclarations);
     themeStyleTextMap.set(theme, tokenDeclarations.join(''));
   }
 
