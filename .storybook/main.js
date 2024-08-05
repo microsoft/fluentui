@@ -6,8 +6,6 @@ const {
   registerTsPaths,
   processBabelLoaderOptions,
   getImportMappingsForExportToSandboxAddon,
-  registerRules,
-  rules,
 } = require('@fluentui/scripts-storybook');
 
 const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
