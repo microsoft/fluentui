@@ -3,5 +3,15 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/fluentui-publish/src",
   "projectType": "library",
-  "tags": ["tools"]
+  "tags": ["tools"],
+  "targets": {
+    "test": {
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js",
+        "{workspaceRoot}/packages/fluentui/*/project.json"
+      ]
+    }
+  }
 }
