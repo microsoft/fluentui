@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { DataVizPalette, GaugeChart, GaugeChartVariant } from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IGCBasicExampleState {
   width: number;
   height: number;
   chartValue: number;
   hideMinMax: boolean;
+  enableGradient: boolean;
+  roundedCorners: boolean;
 }
 
 export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
@@ -18,6 +21,8 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
       height: 128,
       chartValue: 50,
       hideMinMax: false,
+      enableGradient: true,
+      roundedCorners: true,
     };
   }
 
@@ -72,6 +77,23 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           styles={{ root: { marginTop: '20px' } }}
         />
 
+        <div style={{display: "flex"}}>
+          <Toggle
+            label="Enable gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            checked={this.state.enableGradient}
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            checked={this.state.roundedCorners}
+            onChange={this._onToggleRoundedCorners}
+          />
+        </div>
+
         <GaugeChart
           width={this.state.width}
           height={this.state.height}
@@ -83,6 +105,8 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           chartValue={this.state.chartValue}
           hideMinMax={this.state.hideMinMax}
           variant={GaugeChartVariant.MultipleSegments}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundedCorners}
         />
       </>
     );
@@ -100,5 +124,13 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
 
   private _onHideMinMaxCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideMinMax: checked });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundedCorners: checked });
   };
 }

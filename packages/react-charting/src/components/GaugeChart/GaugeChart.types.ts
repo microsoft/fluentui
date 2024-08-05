@@ -25,6 +25,11 @@ export interface IGaugeChartSegment {
   color?: string;
 
   /**
+   * Gradient color of the segment
+   */
+  gradient?: string[];
+
+  /**
    * Accessibility data for the segment
    */
   accessibilityData?: IAccessibilityProps;
@@ -151,6 +156,18 @@ export interface IGaugeChartProps {
    * @defaultvalue GaugeChartVariant.MultipleSegments
    */
   variant?: GaugeChartVariant;
+
+  /**
+   * Prop to enable the gradient in the chart
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
 /**

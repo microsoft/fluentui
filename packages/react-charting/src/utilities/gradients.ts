@@ -26,6 +26,7 @@ export const DataVizGradientPalette = {
   warning: 'semantic.warning',
   error: 'semantic.error',
   highError: 'semantic.highError',
+  disabled: 'semantic.disabled',
 };
 
 /**
@@ -99,6 +100,10 @@ const semanticGradientPalette: GradientPalette = {
   'highError': [
     ['#6E0811', '#B10E1C'], // [cranberry.shade30, cranberry.shade10],
     ['#D33F4C', '#DC626D'], // [cranberry.tint20, cranberry.tint30],
+  ],
+  'disabled': [
+    ['#E6E6E6', '#F0F0F0'],
+    ['#E6E6E6', '#F0F0F0'],
   ],
 };
 
