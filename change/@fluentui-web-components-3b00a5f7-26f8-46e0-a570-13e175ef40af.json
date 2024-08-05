@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(web-components): detach design tokens from existing themes",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
