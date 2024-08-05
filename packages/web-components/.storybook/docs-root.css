@@ -336,11 +336,11 @@
 }
 
 #docs-root .docblock-argstable tr > :nth-child(1) {
-  width: 4%;
+  width: 10%;
 }
 
 #docs-root .docblock-argstable tr > :nth-child(2) {
-  width: 100%;
+  width: 60%;
 }
 
 #docs-root .os-padding {
