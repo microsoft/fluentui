@@ -61,7 +61,6 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           isComponentLikeName(path.node.id.name)
         ) {
           storyName = path.node.id.name;
-          path.stop();
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -74,7 +73,6 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
           path.node.left.property.name === 'parameters'
         ) {
           parametersAssignment = path;
-          path.stop();
         }
       },
       Program: {
