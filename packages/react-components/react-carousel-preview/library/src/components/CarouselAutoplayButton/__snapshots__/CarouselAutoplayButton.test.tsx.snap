@@ -2,10 +2,29 @@
 
 exports[`CarouselAutoplayButton renders a default state 1`] = `
 <div>
-  <div
-    class="fui-CarouselAutoplayButton"
+  <button
+    aria-pressed="true"
+    class="fui-CarouselAutoplayButton fui-Button fui-ToggleButton"
+    type="button"
   >
-    Default CarouselAutoplayButton
-  </div>
+    <span
+      class="fui-CarouselAutoplayButton__icon fui-Button__icon fui-ToggleButton__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 7.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5Zm3 0a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5ZM10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
+          fill="currentColor"
+        />
+      </svg>
+    </span>
+  </button>
 </div>
 `;

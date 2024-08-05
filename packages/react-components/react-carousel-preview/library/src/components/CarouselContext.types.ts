@@ -25,6 +25,7 @@ export type CarouselContextValue = {
   ) => void;
 
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
+  enableAutoplay: (autoplay: boolean) => void;
 };
 
 /**

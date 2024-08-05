@@ -19,6 +19,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;
@@ -30,15 +32,19 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots>;
 
 // @public
-export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonSlots> & {};
+export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
+    defaultAutoplay?: boolean;
+    autoplay?: boolean;
+    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+};
 
 // @public (undocumented)
-export type CarouselAutoplayButtonSlots = {
-    root: Slot<'div'>;
+export type CarouselAutoplayButtonSlots = ButtonSlots & {
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
 };
 
 // @public
-export type CarouselAutoplayButtonState = ComponentState<CarouselAutoplayButtonSlots>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'autoplay'>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
@@ -226,7 +232,7 @@ export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
 
 // @public
-export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselAutoplayButtonState;
+export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<ARIAButtonElement>) => CarouselAutoplayButtonState;
 
 // @public
 export const useCarouselAutoplayButtonStyles_unstable: (state: CarouselAutoplayButtonState) => CarouselAutoplayButtonState;

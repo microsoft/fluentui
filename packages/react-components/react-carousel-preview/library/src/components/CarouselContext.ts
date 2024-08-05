@@ -12,6 +12,9 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   subscribeForValues: () => () => {
     /** noop */
   },
+  enableAutoplay: () => {
+    /** noop */
+  },
   circular: false,
 };
 

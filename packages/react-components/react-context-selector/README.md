@@ -45,7 +45,7 @@ const CounterContext = createContext<CounterContextValue>({});
 const CounterProvider = CounterContext.Provider;
 
 // not necessary but can be a good layer to mock for unit testing
-const useCounterContext = <T>(selector: ContextSelector<CounterCountext, T>) =>
+const useCounterContext = <T>(selector: ContextSelector<CounterContextValue, T>) =>
   useContextSelector(CounterContext, selector);
 
 const Counter1 = () => {
