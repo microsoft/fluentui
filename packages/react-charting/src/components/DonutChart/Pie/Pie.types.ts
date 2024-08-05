@@ -91,6 +91,12 @@ export interface IPieProps {
    * @default false
    */
   enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
 export interface IPieStyles {

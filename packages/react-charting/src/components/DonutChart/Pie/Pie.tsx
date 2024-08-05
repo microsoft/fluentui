@@ -35,7 +35,7 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public arcGenerator = (d: IArcData, i: number, focusData: IArcData, href?: string): JSX.Element => {
     let color = d && d.data && d.data.color;
-    let nextColor = "";
+    let nextColor = color;
 
     if(this.props.enableGradient) {
       color = this.props.data[i].gradient?.[0] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[0];
@@ -52,6 +52,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         color={color!}
         nextColor={nextColor}
         enableGradient={this.props.enableGradient}
+        roundCorners={this.props.roundCorners}
         onFocusCallback={this._focusCallback}
         hoverOnCallback={this._hoverCallback}
         onBlurCallback={this.props.onBlurCallback}

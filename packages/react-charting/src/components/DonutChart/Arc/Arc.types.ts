@@ -107,6 +107,12 @@ export interface IArcProps {
   enableGradient?: boolean;
 
   /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
+
+  /**
    * Next color stop for the gradient
    * [Only used when enableGradient is True].
    */

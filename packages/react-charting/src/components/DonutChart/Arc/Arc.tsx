@@ -13,7 +13,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: d3Arc().cornerRadius(3),
+    arc: d3Arc(),
   };
 
   public state: {} = {};
@@ -43,16 +43,21 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
     const startAngle = this.props.data?.startAngle ?? 0;
     const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
+    const cornerRadius = this.props.roundCorners ? 3 : 0;
 
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
-          <path id={id + 'focusRing'} d={arc(this.props.focusData)} className={classNames.focusRing} />
+          <path
+            id={id + 'focusRing'}
+            d={arc.cornerRadius(cornerRadius)(this.props.focusData)}
+            className={classNames.focusRing}
+          />
         )}
 
         <path
           id={id}
-          d={arc(this.props.data)}
+          d={arc.cornerRadius(cornerRadius)(this.props.data)}
           onFocus={this._onFocus.bind(this, this.props.data!.data, id)}
           className={classNames.root}
           fill="transparent"
@@ -70,7 +75,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
         {this._renderArcLabel(classNames.arcLabel)}
 
         <clipPath id={`clip_${this.props.color}_${this.props.nextColor}`}>
-          <path d={arc(this.props.data)} />
+          <path d={arc.cornerRadius(cornerRadius)(this.props.data)} />
         </clipPath>
         <foreignObject
           x="-50%"

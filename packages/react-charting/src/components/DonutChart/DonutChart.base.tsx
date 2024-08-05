@@ -132,7 +132,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 innerRadius={outerRadius * 0.75}
                 data={chartData!}
                 enableGradient={this.props.enableGradient}
-                // roundCorners={this.props.roundCorners}
+                roundCorners={this.props.roundCorners}
                 onFocusCallback={this._focusCallback}
                 hoverOnCallback={this._hoverCallback}
                 hoverLeaveCallback={this._hoverLeave}

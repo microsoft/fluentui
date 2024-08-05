@@ -12,7 +12,7 @@ import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-ch
 
 interface IDonutChartState {
   enableGradient: boolean;
-  // roundCorners: boolean;
+  roundCorners: boolean;
 }
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, IDonutChartState> {
@@ -20,7 +20,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
     super(props);
     this.state = {
       enableGradient: false,
-      // roundCorners: false,
+      roundCorners: false,
     };
   }
 
@@ -49,13 +49,21 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
 
     return (
       <>
-        <div>
+        <div style={{display: 'flex'}}>
           <Toggle
             label="Enable Gradient"
             onText="On"
             offText="Off"
             onChange={this._onToggleGradient}
             checked={this.state.enableGradient}
+          />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Round Corners"
+            onText="On"
+            offText="Off"
+            onChange={this._onToggleRoundCorners}
+            checked={this.state.roundCorners}
           />
         </div>
 
@@ -70,6 +78,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
           width={176}
           valueInsideDonut={39000}
           enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
       </>
     );
@@ -77,5 +86,9 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
+  }
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   }
 }
