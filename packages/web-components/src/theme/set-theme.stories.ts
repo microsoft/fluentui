@@ -91,17 +91,17 @@ const ComponentCloudTemplate = html`
       <fluent-checkbox slot="input" id="checkbox"></fluent-checkbox>
     </fluent-field>
   </p>
-  <p>
-  </p>
+  <p></p>
 `;
 
 const ThemeOptionsTemplate = (selected: string = '', hasUnset = false) => html`
   ${when(hasUnset, html`<option value="unset">unset</option>`)}
-  ${repeat(Array.from(themes.keys()), html`
-    ${when(k => k !== 'unset', html`
-      <option ?selected=${k => selected === k} value="${k => k}">${k => k}</option>
-    `)}
-  `)}
+  ${repeat(
+    Array.from(themes.keys()),
+    html`
+      ${when(k => k !== 'unset', html` <option ?selected=${k => selected === k} value="${k => k}">${k => k}</option> `)}
+    `,
+  )}
 `;
 
 export const SetTheme = renderComponent(html`
