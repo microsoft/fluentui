@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update animation be offloadable to the compositor thread",
+  "comment": "update wave animation",
   "packageName": "@fluentui/react-skeleton",
   "email": "kirpadv@gmail.com",
   "dependentChangeType": "patch"
