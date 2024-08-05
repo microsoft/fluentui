@@ -28,9 +28,18 @@ const shadowAdoptedStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
 const globalThemeStyleSheet = new CSSStyleSheet();
 
 /**
- * Sets the theme tokens on defaultNode.
- * @param theme - Flat object of theme token values, set to `null` to unset
- *     the theme.
+ * Sets the theme tokens as CSS Custom Properties. The Custom Properties are
+ * set in a constructed stylesheet on `document.adoptedStyleSheets` if
+ * supported, and on `document.documentElement.style` as a fallback.
+ *
+ * @param theme - Flat object of theme tokens. Each object entry must follow
+ *     these rules: the key is the name of the token, usually in camel case, it
+ *     must be a valid CSS Custom Property name WITHOUT the starting two dashes
+ *     (`--`), the two dashes are added inside the function; the value must be
+ *     a valid CSS value, e.g. it cannot contain semicolons (`;`).
+ *     Note that this argument is not limited to existing theme objects (from
+ *     `@fluentui/tokens`), you can pass in an arbitrary theme object as long
+ *     as each entry’s value is either a string or a number.
  * @param node - The node to set the theme on, defaults to `document` for
  *     setting global theme.
  * @internal
@@ -62,17 +71,23 @@ function getThemeStyleText(theme: Theme): string {
   if (!themeStyleTextMap.has(theme)) {
     const tokenDeclarations: string[] = [];
 
-    for (const t of Object.keys(theme)) {
+    for (const [tokenName, tokenValue] of Object.entries(theme)) {
+      if (typeof tokenValue !== 'string' && Number.isNaN(tokenValue)) {
+        throw new Error(`"${tokenName}" must be a string or a number.`);
+      }
+
+      const name = `--${tokenName}`;
+      const initialValue = tokenValue.toString();
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
           CSS.registerProperty({
-            name: `--${t}`,
+            name,
+            initialValue,
             inherits: true,
-            initialValue: theme[t] as string,
           });
         } catch {}
       }
-      tokenDeclarations.push(`--${t}: ${theme[t] as string};`);
+      tokenDeclarations.push(`${name}:${initialValue};`);
     }
 
     console.log(tokenDeclarations);
@@ -167,8 +182,9 @@ function getScopedThemeKey(theme: Theme): string {
 }
 
 function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
-  for (const t of Object.keys(theme!)) {
-    element.style.setProperty(`--${t}`, theme !== null ? (theme[t] as string) : 'unset');
+  // FIXME
+  for (const [tokenName, tokenValue] of Object.entries(theme)) {
+    element.style.setProperty(`--${tokenName}`, theme !== null ? tokenValue.toString() : 'unset');
   }
 }
 
