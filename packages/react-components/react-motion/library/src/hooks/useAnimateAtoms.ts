@@ -89,7 +89,8 @@ function useAnimateAtomsInTestEnvironment() {
 
   const realAnimateAtoms = useAnimateAtomsInSupportedEnvironment();
 
-  React.useEffect(() => {
+  // eslint-disable-next-line no-restricted-properties
+  React.useLayoutEffect(() => {
     if (count > 0) {
       callbackRef.current?.();
     }
