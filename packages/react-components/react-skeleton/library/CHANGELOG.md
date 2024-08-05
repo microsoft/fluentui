@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Tue, 30 Jul 2024 18:47:35 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.1.12)
+
+Mon, 05 Aug 2024 22:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.1.11..@fluentui/react-skeleton_v9.1.12)
+
+### Patches
+
+- update wave animation ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by kirpadv@gmail.com)
 
 ## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.1.11)
 
