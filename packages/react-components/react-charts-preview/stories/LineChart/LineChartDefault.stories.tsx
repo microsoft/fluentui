@@ -188,6 +188,7 @@ export const LCBasic = (props: ILineChartProps) => {
             xAxisTickCount={10}
             allowMultipleShapesForPoints={allowMultipleShapes}
             enablePerfOptimization={true}
+            enableReflow={true}
             yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
@@ -204,6 +205,7 @@ export const LCBasic = (props: ILineChartProps) => {
             height={height}
             width={width}
             xAxisTickCount={10}
+            enableReflow={true}
             allowMultipleShapesForPoints={allowMultipleShapes}
             enablePerfOptimization={true}
           />

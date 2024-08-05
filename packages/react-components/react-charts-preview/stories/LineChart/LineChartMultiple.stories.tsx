@@ -294,6 +294,7 @@ export const LCMultiple = (props: ILineChartProps) => {
           width={width}
           legendProps={{ canSelectMultipleLegends: true, allowFocusOnLegends: true }}
           colorFillBars={colorFillBarData}
+          enableReflow={true}
           allowMultipleShapesForPoints={allowMultipleShapes}
           enablePerfOptimization={true}
         />

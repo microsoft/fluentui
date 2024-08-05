@@ -72,6 +72,7 @@ export const LCStyled = (props: ILineChartProps) => {
           height={height}
           width={width}
           tickFormat={'%m/%d'}
+          enableReflow={true}
           tickValues={[new Date('2018-01-01'), new Date('2018-02-09')]}
           // eslint-disable-next-line react/jsx-no-bind
 

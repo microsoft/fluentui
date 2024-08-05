@@ -537,7 +537,7 @@ describe('Line chart - Subcomponent legend', () => {
     },
     container => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
-      expect(legends).toHaveLength(5);
+      expect(legends).toHaveLength(6);
       expect(legends[3]).toBeDefined();
       fireEvent.click(legends[3]!);
       expect(legends[4]).toBeDefined();
