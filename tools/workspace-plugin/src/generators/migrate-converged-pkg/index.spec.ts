@@ -780,7 +780,7 @@ describe('migrate-converged-pkg generator', () => {
         compilerOptions: {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
-          types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
+          types: ['node', 'cypress', 'cypress-real-events'],
         },
         include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });

@@ -38,7 +38,11 @@ function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack'
      */
     enforce: 'post',
     use: {
-      loader: 'babel-loader',
+      /**
+       * Custom babel loader wraps the original babel-loader and fixes the incorrect `inputSourceMap` parameter
+       * that is passed to babel-loader.
+       **/
+      loader: require.resolve('./custom-babel-loader'),
       options: babelLoaderOptionsUpdater({
         plugins: [plugin],
       }),
@@ -54,7 +58,7 @@ function registerRules(options: { rules: import('webpack').RuleSetRule[]; config
   const { config, rules } = options;
   config.module = config.module ?? {};
   config.module.rules = config.module.rules ?? [];
-  config.module.rules.unshift(...rules);
+  config.module.rules.push(...rules);
 
   return config;
 }

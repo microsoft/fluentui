@@ -1,5 +1,4 @@
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
-import 'cypress-storybook/react';
 import { withPerformance } from 'storybook-addon-performance';
 import { globalTypes, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
