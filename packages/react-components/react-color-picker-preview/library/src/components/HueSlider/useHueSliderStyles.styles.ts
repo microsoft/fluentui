@@ -53,8 +53,8 @@ const useStyles = makeStyles({
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
-    [thumbSizeVar]: '20px',
-    [railSizeVar]: '20px',
+    [thumbSizeVar]: '24px',
+    [railSizeVar]: '28px',
     minHeight: '32px',
   },
   horizontal: {
@@ -70,15 +70,6 @@ const useStyles = makeStyles({
     gridTemplateRows: `1fr calc(100% - var(${thumbSizeVar})) 1fr`,
     gridTemplateColumns: `1fr var(${thumbSizeVar}) 1fr`,
   },
-  focusIndicatorHorizontal: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
-  }),
-
-  focusIndicatorVertical: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
-  }),
 });
 
 /**
@@ -86,7 +77,7 @@ const useStyles = makeStyles({
  */
 const useRailStyles = makeStyles({
   rail: {
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: '4px',
     pointerEvents: 'none',
     gridRowStart: '2',
     gridRowEnd: '2',
@@ -105,7 +96,8 @@ const useRailStyles = makeStyles({
   },
 
   horizontal: {
-    width: '100%',
+    // width: '100%',
+    width: '300px',
     height: `var(${railSizeVar})`,
     '::before': {
       left: '-1px',
@@ -141,7 +133,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .15) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     '::before': {
       position: 'absolute',
@@ -152,9 +144,18 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${thumbSizeVar}) * .05) solid #959595`, //${tokens.colorNeutralStroke1}`,
     },
   },
+  focusIndicatorHorizontal: createFocusOutlineStyle({
+    // selector: 'focus-within',
+    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
+  }),
+
+  focusIndicatorVertical: createFocusOutlineStyle({
+    // selector: 'focus-within',
+    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
+  }),
   disabled: {
     '::before': {
       border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralForegroundDisabled}`,
@@ -213,7 +214,6 @@ export const useHueSliderStyles_unstable = (state: HueSliderState): HueSliderSta
   state.root.className = mergeClasses(
     hueSliderClassNames.root,
     styles.root,
-    isVertical ? styles.focusIndicatorVertical : styles.focusIndicatorHorizontal,
     isVertical ? styles.vertical : styles.horizontal,
     state.root.className,
   );
@@ -229,6 +229,7 @@ export const useHueSliderStyles_unstable = (state: HueSliderState): HueSliderSta
     hueSliderClassNames.thumb,
     thumbStyles.thumb,
     isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    isVertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
     state.thumb.className,
   );
 

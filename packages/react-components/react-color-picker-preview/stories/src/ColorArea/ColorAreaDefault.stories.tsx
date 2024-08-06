@@ -24,12 +24,27 @@ export const Default = () => {
   const COLOR = '#00ffaa';
   const HUE = 160;
   const [saturationSliderValue, setSaturationSliderValue] = React.useState(100);
-  const onSaturationSliderChange: ColorAreaProps['onChange'] = (_, data) => setSaturationSliderValue(data.value);
+  const [lightnessSliderValue, setLightnessSliderValue] = React.useState(50);
+  const onClick: ColorAreaProps['onClick'] = (_, data) => {
+    setSaturationSliderValue(data.x);
+    setLightnessSliderValue(data.y);
+    // setL(Math.round(10 * Math.sqrt(data.y)));
+  };
+
   const resetSlider = () => setSaturationSliderValue(0);
   return (
     <div className={styles.example}>
-      <Label htmlFor={id}>Control Slider [ Current Value: {saturationSliderValue} ]</Label>
-      <ColorArea color={COLOR} value={saturationSliderValue} onChange={onSaturationSliderChange} id={id} />
+      <Label htmlFor={id}>
+        Control Slider [ Current Value x: {saturationSliderValue} y: {lightnessSliderValue} ]
+      </Label>
+      <ColorArea
+        // x={saturationSliderValue}
+        // y={lightnessSliderValue}
+        color={COLOR}
+        onClick={onClick}
+        onChange={onClick}
+        id={id}
+      />
       <div className={styles.previewColor} style={{ backgroundColor: `hsl(${HUE}, ${saturationSliderValue}%, 50%)` }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

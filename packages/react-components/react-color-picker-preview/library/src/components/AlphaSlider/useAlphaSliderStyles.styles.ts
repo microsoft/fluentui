@@ -38,9 +38,13 @@ const useStyles = makeStyles({
     touchAction: 'none',
     alignItems: 'center',
     justifyItems: 'center',
-    [thumbSizeVar]: '20px',
+    [thumbSizeVar]: '24px',
     [railSizeVar]: '20px',
     minHeight: '32px',
+    height: '28px',
+    boxSizing: 'border-box',
+    borderRadius: '4px',
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
     backgroundImage: `linear-gradient(to right, transparent, var(${railColorVar})), url(${TransparentImage})`,
     /// enabled
     [railColorVar]: tokens.colorNeutralStrokeAccessible,
@@ -171,7 +175,7 @@ const useThumbStyles = makeStyles({
     outlineStyle: 'none',
     forcedColorAdjust: 'none',
     borderRadius: tokens.borderRadiusCircular,
-    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .2) ${tokens.colorNeutralBackground1} inset`,
+    boxShadow: `0 0 0 calc(var(${thumbSizeVar}) * .15) ${tokens.colorNeutralBackground1} inset`,
     backgroundColor: `var(${thumbColorVar})`,
     '::before': {
       position: 'absolute',
@@ -182,7 +186,7 @@ const useThumbStyles = makeStyles({
       borderRadius: tokens.borderRadiusCircular,
       boxSizing: 'border-box',
       content: "''",
-      border: `calc(var(${thumbSizeVar}) * .05) solid ${tokens.colorNeutralStroke1}`,
+      border: `calc(var(${thumbSizeVar}) * .05) solid #959595`, //${tokens.colorNeutralStroke1}`,
     },
   },
   disabled: {
