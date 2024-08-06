@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: improve ImmutableSet and ImmutableMap internal implementation",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
