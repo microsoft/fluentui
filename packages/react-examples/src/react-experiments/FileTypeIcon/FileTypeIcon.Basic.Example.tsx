@@ -9,19 +9,19 @@ export class FileTypeIconBasicExample extends React.Component<{}, {}> {
     return (
       <div>
         <h3>Size 16 accdb icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'mp4', size: 16, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'mdb', size: 16, imageFileType: 'png' })} />
         <h3>Size 20 archive icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'wav', size: 20, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: '7z', size: 20, imageFileType: 'png' })} />
         <h3>Size 32 audio icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'mov', size: 32, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'oga', size: 32, imageFileType: 'png' })} />
         <h3>Size 40 code icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: '.mp3', size: 40, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: '.cpp', size: 40, imageFileType: 'png' })} />
         <h3>Size 48 csv icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: '.clipchamp', size: 48, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'csv', size: 48, imageFileType: 'png' })} />
         <h3>Size 64 model icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'm4a', size: 64, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'blend', size: 64, imageFileType: 'png' })} />
         <h3>Size 96 docx icon as .png</h3>
-        <Icon {...getFileTypeIconProps({ extension: 'ogg', size: 96, imageFileType: 'png' })} />
+        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'png' })} />
         <h3>Size 16 dotx icon as .svg</h3>
         <Icon {...getFileTypeIconProps({ extension: 'dot', size: 16, imageFileType: 'svg' })} />
         <h3>Size 20 email icon as .svg</h3>
