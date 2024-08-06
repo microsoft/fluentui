@@ -117,7 +117,7 @@ export const styles: ElementStyles = css`
     outline: none;
   }
 
-  :host(${blockState}) {
+  :host(${blockState}:not([hidden])) {
     display: block;
   }
 
