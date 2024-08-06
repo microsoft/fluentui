@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec6b5c70deabef4c992e4f1f2b052971fa9569b2",
+            "comment": "Add Tablist component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2024 04:08:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.53",
       "version": "3.0.0-beta.53",
