@@ -550,7 +550,6 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     get percentComplete(): number;
     validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
@@ -679,13 +678,10 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 // @public
 export class Button extends BaseButton {
     appearance?: ButtonAppearance;
-    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     iconOnly: boolean;
     iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: ButtonShape;
-    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
-    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
 }
 
 // @internal (undocumented)
@@ -767,11 +763,7 @@ export class Checkbox extends BaseCheckbox {
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    // @internal
-    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    // @internal
-    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
 
@@ -2070,10 +2062,8 @@ export class Divider extends BaseDivider {
     alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
-    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
     inset?: boolean;
-    insetChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2381,14 +2371,11 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
-    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
-    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2461,9 +2448,7 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
-    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
     inline: boolean;
-    inlineChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2705,9 +2690,7 @@ export const MenuTemplate: ElementViewTemplate<Menu>;
 // @public
 export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
-    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
-    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
 
 // @public
@@ -2870,7 +2853,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends FASTElement {
     constructor();
     color?: RatingDisplayColor;
-    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     count?: number;
     // @internal
@@ -2881,7 +2863,6 @@ export class RatingDisplay extends FASTElement {
     generateIcons(): string;
     max?: number;
     size?: RatingDisplaySize;
-    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
     value?: number;
 }
 
@@ -3023,8 +3004,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3482,7 +3461,6 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
-    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
     // (undocumented)
     connectedCallback(): void;
@@ -3491,7 +3469,6 @@ class Text_2 extends FASTElement {
     // @internal
     elementInternals: ElementInternals;
     font?: TextFont;
-    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
     italic: boolean;
@@ -3502,7 +3479,6 @@ class Text_2 extends FASTElement {
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
-    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -3536,9 +3512,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
-    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     controlSize?: TextInputControlSize;
-    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
 }
 
 // @internal (undocumented)

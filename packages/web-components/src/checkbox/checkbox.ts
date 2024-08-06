@@ -1,5 +1,5 @@
 import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
@@ -43,6 +43,7 @@ export class BaseCheckbox extends FASTElement {
    *
    * @public
    */
+  @toggleAttrState
   @observable
   public disabled?: boolean;
 
@@ -53,7 +54,6 @@ export class BaseCheckbox extends FASTElement {
    */
   protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.elementInternals.ariaDisabled = this.disabled ? 'true' : 'false';
-    toggleState(this.elementInternals, 'disabled', this.disabled);
   }
 
   /**
@@ -482,6 +482,7 @@ export class Checkbox extends BaseCheckbox {
    *
    * @public
    */
+  @toggleAttrState
   @observable
   public indeterminate?: boolean;
 
@@ -494,7 +495,6 @@ export class Checkbox extends BaseCheckbox {
    */
   protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void {
     this.setAriaChecked();
-    toggleState(this.elementInternals, 'indeterminate', next);
   }
 
   /**
@@ -504,24 +504,9 @@ export class Checkbox extends BaseCheckbox {
    * @remarks
    * HTML Attribute: `shape`
    */
+  @toggleAttrState
   @attr
   public shape?: CheckboxShape;
-
-  /**
-   * Applies shape states when the `shape` property changes.
-   *
-   * @param prev - the previous shape value
-   * @param next - the next shape value
-   * @internal
-   */
-  protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * Indicates the size of the control.
@@ -530,24 +515,9 @@ export class Checkbox extends BaseCheckbox {
    * @remarks
    * HTML Attribute: `size`
    */
+  @toggleAttrState
   @attr
   public size?: CheckboxSize;
-
-  /**
-   * Applies size states when the `size` property changes.
-   *
-   * @param prev - the previous state
-   * @param next - the next state
-   * @internal
-   */
-  protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   constructor() {
     super();
