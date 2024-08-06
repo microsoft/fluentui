@@ -1,4 +1,5 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
 export type ColorAreaSlots = {
   root: NonNullable<Slot<'div'>>;
@@ -10,11 +11,9 @@ export type ColorAreaSlots = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = Omit<
-  ComponentProps<Partial<ColorAreaSlots>, 'inputX'>,
-  'defaultValue' | 'onChange' | 'size' | 'value'
-> & {
-  value?: number;
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+  x?: number;
+  y?: number;
   /**
    * The max value of the Slider.
    * @default 100
@@ -27,13 +26,15 @@ export type ColorAreaProps = Omit<
    */
   min?: number;
 
-  onChange?: (ev: React.ChangeEvent<HTMLInputElement>, data: SliderOnChangeData) => void; // Use EventHandler<SliderOnChangeData>;
+  onClick?: EventHandler<ColorAreaOnChangeData>;
+  onChange?: EventHandler<ColorAreaOnChangeData>;
 
   color?: string;
 };
 
-export type SliderOnChangeData = {
-  value: number;
+export type ColorAreaOnChangeData = EventData<'click', React.MouseEvent<HTMLInputElement>> & {
+  x: number;
+  y: number;
 };
 
 /**
