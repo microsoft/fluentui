@@ -6,6 +6,7 @@
 
 /// <reference types="web" />
 
+import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -61,8 +62,6 @@ export class AccordionItem extends BaseAccordionItem {
     sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
-//
 // @internal
 export interface AccordionItem extends StartEnd {
 }
@@ -81,8 +80,6 @@ export const AccordionItemMarkerPosition: {
 // @public
 export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
-// Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
     expandedIcon?: StaticallyComposableHTML<AccordionItem>;
@@ -516,6 +513,40 @@ export class BaseDivider extends FASTElement {
 }
 
 // @public
+export class BaseField extends FASTElement {
+    constructor();
+    // @internal
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
+    // @internal
+    invalidHandler(e: Event): boolean | void;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
+    // @internal
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
 export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
@@ -542,6 +573,30 @@ export class BaseSpinner extends FASTElement {
     constructor();
     // @internal
     elementInternals: ElementInternals;
+}
+
+// @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
 }
 
 // @public
@@ -2196,38 +2251,16 @@ export const durationUltraFast = "var(--durationUltraFast)";
 export const durationUltraSlow = "var(--durationUltraSlow)";
 
 // @public
-export class Field extends FASTElement {
-    constructor();
-    // @internal
-    changeHandler(e: Event): boolean | void;
-    // @internal
-    clickHandler(e: MouseEvent): boolean | void;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    focusinHandler(e: FocusEvent): boolean | void;
-    // @internal
-    focusoutHandler(e: FocusEvent): boolean | void;
-    input: SlottableInput;
-    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
-    // @internal
-    invalidHandler(e: Event): boolean | void;
+export type EndOptions<TSource = any, TParent = any> = {
+    end?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
+export class Field extends BaseField {
     labelPosition: FieldLabelPosition;
-    // @internal
-    labelSlot: Node[];
-    protected labelSlotChanged(prev: Node[], next: Node[]): void;
-    // @internal
-    messageSlot: Element[];
-    // @internal
-    messageSlotChanged(prev: Element[], next: Element[]): void;
-    // @internal
-    setStates(): void;
-    // (undocumented)
-    setValidationStates(): void;
-    // @internal
-    slottedInputs: SlottableInput[];
-    // @internal
-    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
 }
 
 // @public
@@ -3220,6 +3253,25 @@ export const SpinnerStyles: ElementStyles;
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
 // @public
+export class StartEnd {
+    // (undocumented)
+    end: HTMLSlotElement;
+    // (undocumented)
+    start: HTMLSlotElement;
+}
+
+// @public
+export type StartEndOptions<TSource = any, TParent = any> = StartOptions<TSource, TParent> & EndOptions<TSource, TParent>;
+
+// @public
+export type StartOptions<TSource = any, TParent = any> = {
+    start?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
 
 // @public
@@ -3291,6 +3343,58 @@ export interface Tab extends StartEnd {
 //
 // @public (undocumented)
 export const TabDefinition: FASTElementDefinition<typeof Tab>;
+
+// @public
+export class Tablist extends BaseTablist {
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
+    size?: TablistSize;
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
+    tabsChanged(): void;
+}
+
+// @public
+export const TablistAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
+
+// @public (undocumented)
+export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+
+// @public
+export const TablistOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+// @public
+export const TablistSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TablistSize = ValuesOf<typeof TablistSize>;
+
+// @public (undocumented)
+export const TablistStyles: ElementStyles;
+
+// @public (undocumented)
+export const TablistTemplate: ViewTemplate<Tablist, any>;
 
 // @public
 export type TabOptions = StartEndOptions<Tab>;

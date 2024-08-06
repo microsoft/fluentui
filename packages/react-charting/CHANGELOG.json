@@ -2,6 +2,96 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2024 21:38:31 GMT",
+      "tag": "@fluentui/react-charting_v5.21.29",
+      "version": "5.21.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.166",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.2",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/react-charting_v5.21.28",
+      "version": "5.21.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.11",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.165",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.1",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jul 2024 07:33:07 GMT",
+      "tag": "@fluentui/react-charting_v5.21.27",
+      "version": "5.21.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "819e573514e49c88866dde6042982a682545f378",
+            "comment": "Add chart reflow examples"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.164",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.0",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 07:30:53 GMT",
+      "tag": "@fluentui/react-charting_v5.21.26",
+      "version": "5.21.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "110246001+krkshitij@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "617c1410727852c28813e9aee8eb0dcf240144e0",
+            "comment": "Fix \"aria-required-children\" accessibility issue in legends"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:53 GMT",
       "tag": "@fluentui/react-charting_v5.21.25",
       "version": "5.21.25",

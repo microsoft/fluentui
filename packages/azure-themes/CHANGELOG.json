@@ -2,6 +2,51 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Thu, 01 Aug 2024 21:38:31 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.90",
+      "version": "8.6.90",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.120.2",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.89",
+      "version": "8.6.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.120.1",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jul 2024 07:33:08 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.88",
+      "version": "8.6.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.120.0",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:50 GMT",
       "tag": "@fluentui/azure-themes_v8.6.87",
       "version": "8.6.87",

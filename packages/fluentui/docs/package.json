@@ -67,13 +67,14 @@
   },
   "scripts": {
     "bundle": "gulp build:docs",
-    "prebuild-storybook": "lage build:info --to react-northstar react-component-ref react-bindings",
+    "prepare-storybook": "nx run-many -t build:info -p react-northstar react-component-ref react-bindings --nxBail",
+    "prebuild-storybook": "yarn run prepare-storybook --verbose",
     "build-storybook": "build-storybook --no-manager-cache -o dist/storybook",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
-    "prestart:storybook": "lage build:info --to react-northstar react-component-ref react-bindings",
+    "prestart:storybook": "yarn run prepare-storybook",
     "start:storybook": "start-storybook",
     "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }

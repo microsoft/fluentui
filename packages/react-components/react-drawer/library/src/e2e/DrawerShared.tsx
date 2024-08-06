@@ -3,13 +3,15 @@ import { mount } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
-import type { DrawerProps } from '../Drawer';
+import { InlineDrawer } from '../components/InlineDrawer';
+import { OverlayDrawer } from '../components/OverlayDrawer';
+import { Drawer, DrawerProps } from '../Drawer';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-export function testDrawerBaseScenarios(Component: React.ComponentType<DrawerProps>) {
+export function testDrawerBaseScenarios(Component: typeof Drawer | typeof OverlayDrawer | typeof InlineDrawer) {
   describe('basic functionality', () => {
     it('should not render any element when closed', () => {
       mountFluent(<Component id="drawer" />);

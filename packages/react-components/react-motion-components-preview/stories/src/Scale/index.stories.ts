@@ -7,7 +7,7 @@ export { Exaggerated } from './ScaleExaggerated.stories';
 export { Customization } from './ScaleCustomization.stories';
 
 export default {
-  title: 'Utilities/Motion/Components (preview)/Scale',
+  title: 'Motion/Components (preview)/Scale',
   component: Scale,
   parameters: {
     docs: {

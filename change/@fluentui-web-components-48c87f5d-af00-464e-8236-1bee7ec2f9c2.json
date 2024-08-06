@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: revert type-check definition and follow repo target defaults for consistency and type-check speeds",
+  "packageName": "@fluentui/web-components",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

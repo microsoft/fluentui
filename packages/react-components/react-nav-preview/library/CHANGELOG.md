@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.0)
+
+Mon, 05 Aug 2024 22:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.6.0..@fluentui/react-nav-preview_v0.7.0)
+
+### Minor changes
+
+- feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.8 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.6.0)
+
+Tue, 30 Jul 2024 18:47:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.5.3..@fluentui/react-nav-preview_v0.6.0)
+
+### Minor changes
+
+- Adds AppItem and AppItemStatic, removes AppNode ([PR #32088](https://github.com/microsoft/fluentui/pull/32088) by matejera@microsoft.com)
+- feat: Adds slots & styling for AppItem. ([PR #32103](https://github.com/microsoft/fluentui/pull/32103) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.7 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+
+### Patches
+
+- chore: update types for navDrawerClassNames ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
 
 ## [0.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.5.3)
 
