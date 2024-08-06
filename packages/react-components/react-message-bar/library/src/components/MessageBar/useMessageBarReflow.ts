@@ -28,12 +28,11 @@ export function useMessageBarReflow(enabled: boolean = false) {
 
       const entry = entries[0];
       // `borderBoxSize` is not supported before Chrome 84, Firefox 92, nor Safari 15.4
-      const borderBoxSize = entry?.borderBoxSize?.[0];
-      if (!borderBoxSize || !entry) {
+      const inlineSize = entry?.borderBoxSize?.[0].inlineSize ?? entry?.target.getBoundingClientRect().width;
+      if (!inlineSize || !entry) {
         return;
       }
 
-      const { inlineSize } = borderBoxSize;
       const { target } = entry;
 
       if (!isHTMLElement(target)) {
