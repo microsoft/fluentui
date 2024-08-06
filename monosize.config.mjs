@@ -8,7 +8,9 @@ import createAzureStorage from 'monosize-storage-azure';
 const config = {
   repository: 'https://github.com/microsoft/fluentui',
   storage: createAzureStorage({
-    endpoint: 'https://fluentbundlesize.azurewebsites.net/api/latest',
+    endpoint: 'https://fluent-bundlesize.azurewebsites.net/api/fluentuilatest',
+    authType: 'AzurePipelinesCredential',
+    tableName: 'fluentuilatest',
   }),
   bundler: webpackBundler(config => {
     return config;
