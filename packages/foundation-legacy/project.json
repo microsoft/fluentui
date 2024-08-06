@@ -4,5 +4,5 @@
   "projectType": "library",
   "implicitDependencies": [],
   "sourceRoot": "packages/foundation-legacy/src",
-  "tags": ["v8"]
+  "tags": ["v8", "ships-bundle"]
 }

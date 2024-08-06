@@ -2,6 +2,27 @@
   "name": "@fluentui/react-nav-preview",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2024 22:33:03 GMT",
+      "tag": "@fluentui/react-nav-preview_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f",
+            "comment": "feat: Builds out and styles AppItemStatic"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-nav-preview",
+            "comment": "Bump @fluentui/react-drawer to v9.5.8",
+            "commit": "7584f78dd64820adba7e90ce0a544f8105eb2aa4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:33 GMT",
       "tag": "@fluentui/react-nav-preview_v0.6.0",
       "version": "0.6.0",

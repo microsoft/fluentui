@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tag-picker",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2024 22:33:04 GMT",
+      "tag": "@fluentui/react-tag-picker_v9.2.5",
+      "version": "9.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tag-picker",
+            "comment": "Bump @fluentui/react-tags to v9.3.14",
+            "commit": "7584f78dd64820adba7e90ce0a544f8105eb2aa4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-tag-picker_v9.2.4",
       "version": "9.2.4",

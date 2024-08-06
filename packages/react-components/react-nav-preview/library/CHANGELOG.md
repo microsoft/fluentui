@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Tue, 30 Jul 2024 18:47:33 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.0)
+
+Mon, 05 Aug 2024 22:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.6.0..@fluentui/react-nav-preview_v0.7.0)
+
+### Minor changes
+
+- feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+- Bump @fluentui/react-drawer to v9.5.8 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.6.0)
 

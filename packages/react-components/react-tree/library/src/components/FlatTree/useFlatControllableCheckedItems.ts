@@ -27,7 +27,7 @@ export function createNextFlatCheckedItems(
   headlessTree: HeadlessTree<HeadlessTreeItemProps>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
   if (data.selectionMode === 'single') {
-    return ImmutableMap.create([[data.value, data.checked]]);
+    return ImmutableMap.from([[data.value, data.checked]]);
   }
   const treeItem = headlessTree.get(data.value);
   if (!treeItem) {
@@ -40,34 +40,35 @@ export function createNextFlatCheckedItems(
     }
     return previousCheckedItems;
   }
-  const nextCheckedItems = new Map(previousCheckedItems);
+  let nextCheckedItems = previousCheckedItems;
   for (const children of headlessTree.subtree(data.value)) {
-    nextCheckedItems.set(children.value, data.checked);
+    nextCheckedItems = nextCheckedItems.set(children.value, data.checked);
   }
-  nextCheckedItems.set(data.value, data.checked);
+  nextCheckedItems = nextCheckedItems.set(data.value, data.checked);
 
   let isAncestorsMixed = false;
   for (const parent of headlessTree.ancestors(treeItem.value)) {
     // if one parent is mixed, all ancestors are mixed
     if (isAncestorsMixed) {
-      nextCheckedItems.set(parent.value, 'mixed');
+      nextCheckedItems = nextCheckedItems.set(parent.value, 'mixed');
       continue;
     }
-    const checkedChildren = [];
+    let checkedChildrenAmount = 0;
     for (const child of headlessTree.children(parent.value)) {
-      if ((nextCheckedItems.get(child.value) ?? false) === data.checked) {
-        checkedChildren.push(child);
+      if ((nextCheckedItems.get(child.value) || false) === data.checked) {
+        checkedChildrenAmount++;
       }
     }
-    if (checkedChildren.length === parent.childrenValues.length) {
-      nextCheckedItems.set(parent.value, data.checked);
+    // if all children are checked, parent is checked
+    if (checkedChildrenAmount === parent.childrenValues.length) {
+      nextCheckedItems = nextCheckedItems.set(parent.value, data.checked);
     } else {
       // if one parent is mixed, all ancestors are mixed
       isAncestorsMixed = true;
-      nextCheckedItems.set(parent.value, 'mixed');
+      nextCheckedItems = nextCheckedItems.set(parent.value, 'mixed');
     }
   }
-  return ImmutableMap.dangerouslyCreate_unstable(nextCheckedItems);
+  return nextCheckedItems;
 }
 
 function initializeCheckedItems(
@@ -78,6 +79,8 @@ function initializeCheckedItems(
     return ImmutableMap.empty;
   }
   let state = createCheckedItems(props.defaultCheckedItems);
+  // if selectionMode is multiselect, we need to calculate the checked state of all children
+  // and ancestors of the defaultCheckedItems
   if (props.selectionMode === 'multiselect') {
     for (const [value, checked] of state) {
       state = createNextFlatCheckedItems({ value, checked, selectionMode: props.selectionMode }, state, headlessTree);

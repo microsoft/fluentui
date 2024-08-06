@@ -30,7 +30,8 @@
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
     "update-snapshots": "just-scripts jest -u",
-    "mf": "just-scripts mf"
+    "mf": "just-scripts mf",
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/common-styles": "*",

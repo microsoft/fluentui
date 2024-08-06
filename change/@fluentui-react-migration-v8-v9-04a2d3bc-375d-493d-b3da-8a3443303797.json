@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: split migraton packages to follow our /library /story structure",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

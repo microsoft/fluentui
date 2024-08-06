@@ -2,6 +2,21 @@
   "name": "@fluentui/react-input",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2024 22:33:02 GMT",
+      "tag": "@fluentui/react-input_v9.4.85",
+      "version": "9.4.85",
+      "comments": {
+        "patch": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "102904a1f1aa2f7fcff4efe2837b084c7b4be6cd",
+            "comment": "Added comments on deprecated appearances"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-input_v9.4.84",
       "version": "9.4.84",

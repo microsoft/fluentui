@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 30 Jul 2024 18:47:31 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.8)
+
+Mon, 05 Aug 2024 22:33:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.7..@fluentui/react-components_v9.54.8)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Implement carousel autoplay button and functionality ([PR #32154](https://github.com/microsoft/fluentui/pull/32154) by mifraser@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - fix: Button styles on hover/active state ([PR #32155](https://github.com/microsoft/fluentui/pull/32155) by mifraser@microsoft.com)
+- `@fluentui/react-input`
+  - Added comments on deprecated appearances ([PR #32176](https://github.com/microsoft/fluentui/pull/32176) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - fix(Popover): fix shadows on arrows ([PR #32138](https://github.com/microsoft/fluentui/pull/32138) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - update wave animation ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by kirpadv@gmail.com)
+- `@fluentui/react-table`
+  - bugfix: removes Partial from TableProps usage ([PR #32159](https://github.com/microsoft/fluentui/pull/32159) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - feat: add collapse motion to Tree ([PR #32163](https://github.com/microsoft/fluentui/pull/32163) by olkatruk@microsoft.com)
 
 ## [9.54.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.7)
 

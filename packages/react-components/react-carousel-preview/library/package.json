@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-carousel-preview",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A composable carousel component that enables pagination with minimal rerenders",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

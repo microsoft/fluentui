@@ -63,6 +63,8 @@ describe(`utils`, () => {
           "react-builder",
           "code-sandbox",
           "digest",
+          "styles",
+          "state",
         ]
       `);
     });
