@@ -1,10 +1,10 @@
-import type { MiddlewareState } from '@floating-ui/dom';
+import type { MiddlewareArguments } from '@floating-ui/dom';
 import type { PositioningOptions } from '../types';
 import { isHTMLElement } from '@fluentui/react-utilities';
 import { listScrollParents } from './listScrollParents';
 import { fromFloatingUIPlacement } from './fromFloatingUIPlacement';
 
-export const devtoolsCallback = (options: PositioningOptions) => (middlewareState: MiddlewareState) => {
+export const devtoolsCallback = (options: PositioningOptions) => (middlewareState: MiddlewareArguments) => {
   const {
     elements: { floating, reference },
   } = middlewareState;
