@@ -222,7 +222,7 @@ export class BaseTablist extends FASTElement {
         break;
       case keyEnd:
         event.preventDefault();
-        this.adjust(this.tabs.length - this.activeTabIndex - 1);
+        this.adjust(this.tabs.filter(t => isFocusableElement(t)).length - this.activeTabIndex - 1);
         break;
     }
   };
