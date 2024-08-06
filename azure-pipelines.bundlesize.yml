@@ -42,7 +42,7 @@ jobs:
       #     status: 'success'
       #     uniqueId: 'bundleSizeComment9423'
       - script: |
-          yarn nx bundle-size react-button --nxBail
+          yarn nx run-many -t bundle-size --nxBail
         displayName: build all packages & create reports
         # condition: eq(variables.isPR, false)
 
