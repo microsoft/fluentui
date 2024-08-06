@@ -44,7 +44,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
     if (inputOnChange && inputOnChange !== propsOnChange) {
       inputOnChange(ev);
     } else if (propsOnChange) {
-      propsOnChange(ev, { value: currentValue });
+      propsOnChange(ev, { value: newValue });
     }
   });
 
