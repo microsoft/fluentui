@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
 /**
@@ -21,17 +21,9 @@ export class Image extends FASTElement {
    * @remarks
    * HTML attribute: block.
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public block?: boolean;
-
-  /**
-   * Handles changes to block custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public blockChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'block', next);
-  }
 
   /**
    * Image border
@@ -40,17 +32,9 @@ export class Image extends FASTElement {
    * @remarks
    * HTML attribute: border.
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public bordered?: boolean;
-
-  /**
-   * Handles changes to bordered custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public borderedChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'bordered', next);
-  }
 
   /**
    * Image shadow
@@ -59,17 +43,9 @@ export class Image extends FASTElement {
    * @remarks
    * HTML attribute: shadow.
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public shadow?: boolean;
-
-  /**
-   * Handles changes to shadow custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shadowChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'shadow', next);
-  }
 
   /**
    * Image fit
@@ -102,20 +78,7 @@ export class Image extends FASTElement {
    * @remarks
    * HTML attribute: shape.
    */
+  @toggleAttrState
   @attr
   public shape?: ImageShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 }

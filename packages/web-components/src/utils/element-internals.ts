@@ -32,3 +32,35 @@ export function toggleState(elementInternals: ElementInternals, state: string, f
   // @ts-expect-error - Baseline 2024
   elementInternals.states.delete(state);
 }
+
+/**
+ * A decorator for toggling the element internals of an element
+ *
+ * @internal
+ */
+export function toggleAttrState(target: any, attr: string): any {
+  // Stash the original method
+  const method = target[`${attr}Changed`];
+
+  // Replace the attrChanged method with a new one
+  target[`${attr}Changed`] = function (prev: string | boolean | undefined, next: string | boolean | undefined): void {
+    // Call original method
+    if (method) {
+      method.call(this, prev, next);
+    }
+    // Update elementInternals state for booleans
+    if (typeof next === 'boolean') {
+      toggleState(this.elementInternals, attr, next);
+      return;
+    }
+
+    // Update elementInternals state for strings
+    // TODO: Flip to `${attr}-${next}` when Custom States are supported
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  };
+}
