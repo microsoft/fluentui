@@ -52,11 +52,13 @@ async function main() {
     omitTargets: [...defaultOmitTargets, 'just'],
     projectDescriptionFactory: createProjectDescription,
     targetDescriptionFactory: createTargetDescription,
+    preselectTargetFactory: createPreselectedTarget,
   });
 }
 
 // ========================
 type ProjectHeader = { projectNameCell: string; descriptionCell: string };
+type PreselectTargetFn = (projectConfig: ProjectGraphProjectNode) => string | null;
 type ProjectDescriptionFn = (projectConfig: ProjectGraphProjectNode) => string;
 type TargetDescriptionFn = (
   projectConfig: ProjectGraphProjectNode,
@@ -72,6 +74,7 @@ export async function cli(options: {
   omitTargets?: string[];
   projectDescriptionFactory: ProjectDescriptionFn;
   targetDescriptionFactory: TargetDescriptionFn;
+  preselectTargetFactory: PreselectTargetFn;
 }) {
   const {
     graph = await createProjectGraphAsync(),
@@ -81,6 +84,7 @@ export async function cli(options: {
     omitTargets = defaultOmitTargets,
     projectDescriptionFactory,
     targetDescriptionFactory,
+    preselectTargetFactory,
   } = options;
 
   const allProjects = graph.nodes;
@@ -94,6 +98,7 @@ export async function cli(options: {
     targetsDescription,
     omitTargets,
     targetDescriptionFactory,
+    preselectTargetFactory,
   );
 
   if (selectedTarget === 'help') {
@@ -195,15 +200,22 @@ async function getSelectedTarget(
   targetsDescription: Record<string, string>,
   omitTargets: string[],
   createDescription: TargetDescriptionFn,
+  preselectTarget: PreselectTargetFn,
 ): Promise<string> {
   const projectConfig = projects[selectedProject];
   const projectTargets = projectConfig.data.targets ?? {};
+  const preselectedTarget = preselectTarget(projectConfig);
 
   const availableTargets = Object.keys(projectTargets)
     .filter(targetName => {
       return omitTargets.includes(targetName) ? false : true;
     })
+    .sort()
     .concat('help');
+  const preselectedTargetChoice =
+    preselectedTarget && availableTargets.indexOf(preselectedTarget) !== -1
+      ? availableTargets.indexOf(preselectedTarget)
+      : 0;
 
   const targetChoices = availableTargets.map(targetName => ({
     name: formatOutput(
@@ -218,14 +230,38 @@ async function getSelectedTarget(
     name: 'target',
     message: 'Select target to run',
     choices: targetChoices,
+    initial: preselectedTargetChoice,
     suggest,
-    limit: 5,
+    limit: targetChoices.length,
     footer() {
       return output.dim('(Scroll up and down to reveal more choices)');
     },
   });
 
   return targetPrompt.run();
+}
+
+function createPreselectedTarget(projectConfig: ProjectGraphProjectNode) {
+  const projectTargets = projectConfig.data.targets;
+
+  if (!projectTargets) {
+    return null;
+  }
+
+  const isNode = projectConfig.data.tags?.includes('platform:node');
+  const hasTestTarget = Boolean(projectTargets.test);
+  const isWeb = projectConfig.data.tags?.includes('platform:web');
+  const hasStorybookTarget = Boolean(projectTargets.storybook);
+
+  if (isWeb && hasStorybookTarget) {
+    return 'storybook';
+  }
+
+  if (isNode && hasTestTarget) {
+    return 'test';
+  }
+
+  return null;
 }
 
 function createTargetDescription(

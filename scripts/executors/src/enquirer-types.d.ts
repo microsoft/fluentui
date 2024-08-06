@@ -9,6 +9,11 @@ declare module 'enquirer' {
     name: string;
     message: string;
     choices: Array<string | Choice>;
+    /**
+     * Preselected item in the list of choices.
+     * @default 0
+     */
+    initial?: number;
     limit?: number;
     header?: string;
     footer?: () => string;
