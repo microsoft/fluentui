@@ -198,7 +198,11 @@ function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) 
   }
 
   for (const [tokenName, tokenValue] of Object.entries(tokens)) {
-    element.style.setProperty(`--${tokenName}`, theme !== null ? tokenValue.toString() : 'unset');
+    if (theme === null) {
+      element.style.removeProperty(`--${tokenName}`);
+    } else {
+      element.style.setProperty(`--${tokenName}`, tokenValue.toString());
+    }
   }
 }
 
