@@ -21,9 +21,6 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
 
   const [alphaValue, setAlphaValue] = React.useState(alpha);
   const [hueValue, setHueValue] = React.useState(hue);
-  // TODO clean up
-
-  const [selectedColor, setSelectedColor] = React.useState(color);
 
   const requestChange: ColorPickerState['requestChange'] = useEventCallback((event, data) => {
     onChange?.(event, {

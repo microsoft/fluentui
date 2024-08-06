@@ -26,8 +26,7 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const step = 1;
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value,
-    defaultState: ctxAlpha,
+    state: value || ctxAlpha,
     initialState: 0,
   });
 
@@ -49,9 +48,9 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   });
 
   const requestOnChange = useEventCallback(
-    mergeCallbacks(onChange, (event: React.ChangeEventHandler<HTMLInputElement>) =>
+    mergeCallbacks(onChange, (event: React.ChangeEvent<HTMLInputElement>) =>
       ctxOnChange(event, {
-        alpha: currentValue,
+        alpha: event.target.value,
       }),
     ),
   );

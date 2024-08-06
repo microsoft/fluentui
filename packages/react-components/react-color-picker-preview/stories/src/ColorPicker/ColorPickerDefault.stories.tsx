@@ -36,10 +36,10 @@ export const Default = () => {
 
   const [hueValue, setHueValue] = React.useState(160);
 
-  // const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
-  // setAlpha(data.alpha);
-  // setSelectedColor(tinycolor({ h: sliderValue, s: hslColor.s, l: hslColor.l, a: alpha }).toHex());
-  // };
+  const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
+    data.alpha && setAlpha(data.alpha);
+    data.hue && setHueValue(data.hue);
+  };
 
   React.useEffect(() => {
     const newColor = tinycolor({ h: hueValue, s: hslColor.s, l: hslColor.l, a: alpha / 100 }).toRgbString();
@@ -49,9 +49,9 @@ export const Default = () => {
 
   return (
     <div className={styles.example}>
-      <ColorPicker color={selectedColor}>
-        <AlphaSlider onChange={(_, data) => setAlpha(data.value)} />
-        <HueSlider max={360} onChange={(_, data) => setHueValue(data.value)} />
+      <ColorPicker color={selectedColor} onChange={handleChange}>
+        <AlphaSlider />
+        <HueSlider max={360} value={hueValue} />
       </ColorPicker>
       <div className={styles.previewColor} style={{ backgroundColor: `${selectedColor}` }} />
     </div>
