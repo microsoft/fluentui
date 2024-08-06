@@ -576,6 +576,30 @@ export class BaseSpinner extends FASTElement {
 }
 
 // @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
+}
+
+// @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
@@ -3319,6 +3343,58 @@ export interface Tab extends StartEnd {
 //
 // @public (undocumented)
 export const TabDefinition: FASTElementDefinition<typeof Tab>;
+
+// @public
+export class Tablist extends BaseTablist {
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
+    size?: TablistSize;
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
+    tabsChanged(): void;
+}
+
+// @public
+export const TablistAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
+
+// @public (undocumented)
+export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+
+// @public
+export const TablistOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+// @public
+export const TablistSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TablistSize = ValuesOf<typeof TablistSize>;
+
+// @public (undocumented)
+export const TablistStyles: ElementStyles;
+
+// @public (undocumented)
+export const TablistTemplate: ViewTemplate<Tablist, any>;
 
 // @public
 export type TabOptions = StartEndOptions<Tab>;

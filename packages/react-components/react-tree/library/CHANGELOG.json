@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2024 22:33:04 GMT",
+      "tag": "@fluentui/react-tree_v9.7.7",
+      "version": "9.7.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olkatruk@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d0d61f6db78ed997b4574b166fc453731ba643b",
+            "comment": "feat: add collapse motion to Tree"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.6.35",
+            "commit": "7584f78dd64820adba7e90ce0a544f8105eb2aa4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-tree_v9.7.6",
       "version": "9.7.6",
