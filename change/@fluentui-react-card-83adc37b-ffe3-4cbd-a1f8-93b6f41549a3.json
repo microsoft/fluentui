@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Card does not override specified focusMode based on event listeners",
+  "packageName": "@fluentui/react-card",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
