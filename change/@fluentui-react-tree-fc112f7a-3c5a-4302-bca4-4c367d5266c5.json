@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensures Tree width grows with content",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -11,6 +11,7 @@ const useBaseStyles = makeResetStyles({
   display: 'flex',
   flexDirection: 'column',
   rowGap: tokens.spacingVerticalXXS,
+  width: 'max-content',
 });
 
 const useStyles = makeStyles({
