@@ -26,8 +26,7 @@ export const useHueSliderState_unstable = (state: HueSliderState, props: HueSlid
   const max = props.max || MAX_COLOR_HUE;
 
   const [currentValue, setCurrentValue] = useControllableState({
-    state: value,
-    defaultState: ctxHue,
+    state: value || ctxHue,
     initialState: 0,
   });
 
@@ -49,9 +48,9 @@ export const useHueSliderState_unstable = (state: HueSliderState, props: HueSlid
   });
 
   const requestOnChange = useEventCallback(
-    mergeCallbacks(onChange, (event: React.ChangeEventHandler<HTMLInputElement>) =>
+    mergeCallbacks(onChange, (event: React.ChangeEvent<HTMLInputElement>) =>
       ctxOnChange(event, {
-        hue: currentValue,
+        hue: Number(event.target.value),
       }),
     ),
   );
