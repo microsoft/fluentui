@@ -1,15 +1,26 @@
-import { switchTheme } from '../public/theme-switch.js';
+import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
 import webcomponentsTheme from './theme.mjs';
+import { setTheme } from '../src/theme/set-theme.js';
 
 import '../src/index-rollup.js';
 import './docs-root.css';
 
+const themes = {
+  'web-light': webLightTheme,
+  'web-dark': webDarkTheme,
+  'teams-light': teamsLightTheme,
+  'teams-dark': teamsDarkTheme,
+};
+
 function changeTheme(/** @type {Event} */ e) {
-  switchTheme(/** @type {Parameters<typeof switchTheme>[number]} */ (/** @type {HTMLInputElement}*/ (e.target).value));
+  setTheme(themes[/** @type {keyof themes} */ (/** @type {HTMLInputElement}*/ (e.target).value)]);
 }
 
+// This is needed in Playwright.
+Object.defineProperty(window, 'setTheme', { value: setTheme });
+
 document.getElementById('theme-switch')?.addEventListener('change', changeTheme, false);
-switchTheme('web-light');
+setTheme(themes['web-light']);
 
 export const parameters = {
   layout: 'fullscreen',
