@@ -569,6 +569,20 @@ export class BaseProgressBar extends FASTElement {
 }
 
 // @public
+export class BaseRatingDisplay extends FASTElement {
+    constructor();
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    max?: number;
+    value?: number;
+}
+
+// @public
 export class BaseSpinner extends FASTElement {
     constructor();
     // @internal
@@ -2887,22 +2901,14 @@ export const RadioStyles: ElementStyles;
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
-export class RatingDisplay extends FASTElement {
-    constructor();
+export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
-    count?: number;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get formattedCount(): string;
     // @internal
     generateIcons(): string;
-    max?: number;
     size?: RatingDisplaySize;
     sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
-    value?: number;
 }
 
 // @public

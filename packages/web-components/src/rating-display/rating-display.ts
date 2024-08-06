@@ -6,45 +6,13 @@ import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.
  * The base class used for constructing a fluent-rating-display custom element
  * @public
  */
-export class RatingDisplay extends FASTElement {
+export class BaseRatingDisplay extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The color of the rating display icons.
-   *
-   * @public
-   * @default `marigold`
-   * @remarks
-   * HTML Attribute: `color`
-   */
-  @attr
-  public color?: RatingDisplayColor;
-
-  /**
-   * Handles changes to the color attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
-
-  /**
-   * Renders a single filled icon with a label next to it.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `compact`
-   */
-  @attr({ mode: 'boolean' })
-  public compact: boolean = false;
 
   /**
    * The number of ratings.
@@ -67,28 +35,6 @@ export class RatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public max?: number;
-
-  /**
-   * The size of the component.
-   *
-   * @public
-   * @default 'medium'
-   * @remarks
-   * HTML Attribute: `size`
-   */
-  @attr
-  public size?: RatingDisplaySize;
-
-  /**
-   * Handles changes to the size attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
 
   /**
    * The value of the rating.
@@ -123,6 +69,92 @@ export class RatingDisplay extends FASTElement {
    * @internal
    */
   public generateIcons(): string {
+    let htmlString: string = '';
+
+    // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
+    const selectedValue: number = Math.round((this.value ?? 0) * 2) / 2;
+
+    // Render the icons based on the "max" attribute. If "max" is not set, render 5 icons.
+    // If "compact" is true, only render one filled icon.
+    for (let i: number = 0; i < (this.max ?? 5) * 2; i++) {
+      const iconValue: number = (i + 1) / 2;
+
+      htmlString += `<svg aria-hidden="true" ${
+        iconValue === selectedValue ? 'selected' : ''
+      }><use href="#star"></use></svg>`;
+    }
+
+    return htmlString;
+  }
+}
+
+/**
+ * A Rating Dislpay Custom HTML Element.
+ * Based on BaseRatingDisplay and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class RatingDisplay extends BaseRatingDisplay {
+  /**
+   * The color of the rating display icons.
+   *
+   * @public
+   * @default `marigold`
+   * @remarks
+   * HTML Attribute: `color`
+   */
+  @attr
+  public color?: RatingDisplayColor;
+
+  /**
+   * Handles changes to the color attribute.
+   *
+   * @param prev - The previous state
+   * @param next - The next state
+   */
+  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
+    if (prev) toggleState(this.elementInternals, prev, false);
+    if (next) toggleState(this.elementInternals, next, true);
+  }
+
+  /**
+   * The size of the component.
+   *
+   * @public
+   * @default 'medium'
+   * @remarks
+   * HTML Attribute: `size`
+   */
+  @attr
+  public size?: RatingDisplaySize;
+
+  /**
+   * Handles changes to the size attribute.
+   *
+   * @param prev - The previous state
+   * @param next - The next state
+   */
+  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
+    if (prev) toggleState(this.elementInternals, prev, false);
+    if (next) toggleState(this.elementInternals, next, true);
+  }
+
+  /**
+   * Renders a single filled icon with a label next to it.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `compact`
+   */
+  @attr({ mode: 'boolean' })
+  public compact: boolean = false;
+
+  /**
+   * Generates the icon SVG elements based on the "max" and "compact" attribute.
+   *
+   * @internal
+   */
+  public override generateIcons(): string {
     let htmlString: string = '';
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
