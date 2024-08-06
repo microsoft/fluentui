@@ -2,6 +2,178 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec6b5c70deabef4c992e4f1f2b052971fa9569b2",
+            "comment": "Add Tablist component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2024 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.53",
+      "version": "3.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "89959ae94f9f7aa53a761ca9f2f778693462bd02",
+            "comment": "fix(web-components): detach design tokens from existing themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2024 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.52",
+      "version": "3.0.0-beta.52",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mlijanto@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aafddb7a0cc9042ea1aec71bfa1c0c0cda524d75",
+            "comment": "Export patterns."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "449457bbf21af43db4c83590edee402e2b637f22",
+            "comment": "feat: abstracts layout api from field class"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6336863c0bd99c7167508bb6feae8967ad444a79",
+            "comment": "ci: ensure package is built first before running type-check to mitigate build error."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 04:07:23 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.51",
+      "version": "3.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "04c9a2ab618abe651852098544321339463daa92",
+            "comment": "chore: move size and generate initials out of base class"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "29df42688cd3237dcefc86691a54a4ba9f37e616",
+            "comment": "fix: reference accordion item base class in accordion"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jul 2024 04:08:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.50",
+      "version": "3.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da667ca385f85c30de192de376062ed0333f810c",
+            "comment": "[chore]: create base class for accordion item and remove style and layout specific api"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/no_unsafe_declaration-merging reports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jul 2024 04:08:33 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.49",
+      "version": "3.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf6be2bc0e92b7e5024faaa4a45d1e953f7bcf61",
+            "comment": "chore: create avatar base class to abstract style specfic api"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fe4b9c436349b43129c04f62c5febdbb6e89d0f0",
+            "comment": "chore: create base class for textinput and remove style and layout specific api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jul 2024 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.48",
+      "version": "3.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "60952ac19534a4299c4b3263b21e3c07470bd099",
+            "comment": "chore: create base class for progress bar and remove style and layout specfic api"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "273f6aae649bbec4e36f300f6467ae72f1960cfd",
+            "comment": "feat(web-components): relax setTheme() argument type to allow custom tokens"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406",
+            "comment": "chore: create base class for spinner and remove style and layout specfic api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2024 04:07:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.47",
+      "version": "3.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "1bfb9c97a65007e4a97936a3f189d0495864f2f9",
+            "comment": "fix: move spinner animation off of main thread"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "233720f2ebe83f3127427e6dfc6c29643c4704bf",
+            "comment": "chore: create divider base class to abstract style specfic api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Jul 2024 04:08:32 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.46",
       "version": "3.0.0-beta.46",

@@ -156,10 +156,13 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       };
 
   React.useEffect(() => {
-    if (!hasParentActiveDescendantContext) {
-      // disable focus-visible attributes until focus is received
-      activeDescendantController.hideFocusVisibleAttributes();
+    // if the listbox has a parent context, that parent context should handle the activedescendant
+    if (hasParentActiveDescendantContext) {
+      return;
     }
+
+    // disable focus-visible attributes until focus is received
+    activeDescendantController.hideFocusVisibleAttributes();
 
     if (!disableAutoFocus) {
       // if it is single-select and there is a selected option, start at the selected option

@@ -17,31 +17,7 @@ import { ImplicitSubmissionBlockingTypes, TextInputAppearance, TextInputType } f
  * @csspart control - The internal `<input>` control
  * @public
  */
-export class TextInput extends FASTElement {
-  /**
-   * Indicates the styled appearance of the element.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `appearance`
-   */
-  @attr
-  public appearance?: TextInputAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
+export class BaseTextInput extends FASTElement {
   /**
    * Indicates the element's autocomplete state.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/autocomplete | `autocomplete`} attribute
@@ -63,30 +39,6 @@ export class TextInput extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public autofocus!: boolean;
-
-  /**
-   * Sets the size of the control.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `control-size`
-   */
-  @attr({ attribute: 'control-size' })
-  public controlSize?: TextInputControlSize;
-
-  /**
-   * Handles changes to `control-size` attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The default slotted content. This is the content that appears in the text field label.
@@ -639,6 +591,62 @@ export class TextInput extends FASTElement {
       }
 
       this.elementInternals.setValidity(flags, message, anchor);
+    }
+  }
+}
+
+/**
+ * A Text Input Custom HTML Element.
+ * Based on BaseTextInput and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class TextInput extends BaseTextInput {
+  /**
+   * Indicates the styled appearance of the element.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `appearance`
+   */
+  @attr
+  public appearance?: TextInputAppearance;
+
+  /**
+   * Handles changes to appearance attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
+   * Sets the size of the control.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `control-size`
+   */
+  @attr({ attribute: 'control-size' })
+  public controlSize?: TextInputControlSize;
+
+  /**
+   * Handles changes to `control-size` attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
     }
   }
 }

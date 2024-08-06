@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Mon, 15 Jul 2024 17:25:35 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Jul 2024 20:13:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.4.0)
+
+Tue, 23 Jul 2024 20:13:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.3.0..@fluentui/react-motion_v9.4.0)
+
+### Minor changes
+
+- feat: add presenceMotionSlot() API ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+
+### Patches
+
+- fix: improve Web Animations API detection in tests ([PR #32029](https://github.com/microsoft/fluentui/pull/32029) by olfedias@microsoft.com)
 
 ## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.3.0)
 

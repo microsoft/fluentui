@@ -2,6 +2,10 @@ import * as React from 'react';
 import { IStackTokens, Stack } from '@fluentui/react/lib/Stack';
 import { Dropdown, DropdownMenuItemType, IDropdownStyles, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 
+export default {
+  title: 'Components/Dropdown',
+};
+
 const dropdownStyles: Partial<IDropdownStyles> = {
   dropdown: { width: 300 },
 };

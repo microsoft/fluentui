@@ -1,8 +1,97 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 15 Jul 2024 17:25:14 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.8)
+
+Mon, 05 Aug 2024 22:33:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.7..@fluentui/react-components_v9.54.8)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Implement carousel autoplay button and functionality ([PR #32154](https://github.com/microsoft/fluentui/pull/32154) by mifraser@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - fix: Button styles on hover/active state ([PR #32155](https://github.com/microsoft/fluentui/pull/32155) by mifraser@microsoft.com)
+- `@fluentui/react-input`
+  - Added comments on deprecated appearances ([PR #32176](https://github.com/microsoft/fluentui/pull/32176) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - fix(Popover): fix shadows on arrows ([PR #32138](https://github.com/microsoft/fluentui/pull/32138) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - update wave animation ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by kirpadv@gmail.com)
+- `@fluentui/react-table`
+  - bugfix: removes Partial from TableProps usage ([PR #32159](https://github.com/microsoft/fluentui/pull/32159) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - feat: add collapse motion to Tree ([PR #32163](https://github.com/microsoft/fluentui/pull/32163) by olkatruk@microsoft.com)
+
+## [9.54.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.7)
+
+Tue, 30 Jul 2024 18:47:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.6..@fluentui/react-components_v9.54.7)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: add collapse motion to Accordion ([PR #32086](https://github.com/microsoft/fluentui/pull/32086) by olkatruk@microsoft.com)
+- `@fluentui/react-carousel-preview`
+  - feat: Release react-carousel-preview to public preview ([PR #32152](https://github.com/microsoft/fluentui/pull/32152) by mifraser@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - feat: Release react-icons-compat to stable ([PR #32151](https://github.com/microsoft/fluentui/pull/32151) by ololubek@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - Adds AppItem and AppItemStatic, removes AppNode ([PR #32088](https://github.com/microsoft/fluentui/pull/32088) by matejera@microsoft.com)
+  - feat: Adds slots & styling for AppItem. ([PR #32103](https://github.com/microsoft/fluentui/pull/32103) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: improve hover for HC mode ([PR #31953](https://github.com/microsoft/fluentui/pull/31953) by marcosvmmoura@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: only call activedescendant focus when combobox/dropdown is opened ([PR #32156](https://github.com/microsoft/fluentui/pull/32156) by sarah.higley@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: migrate to stable motion APIs ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: update types for navDrawerClassNames ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: improve arrow styles implementation ([PR #32092](https://github.com/microsoft/fluentui/pull/32092) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix: replace useEventCallback with useCallback for focus ([PR #32079](https://github.com/microsoft/fluentui/pull/32079) by vgenaev@gmail.com)
+  - fix: Expand hit target when there's no content after. ([PR #32114](https://github.com/microsoft/fluentui/pull/32114) by estebanmu@microsoft.com)
+
+## [9.54.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.6)
+
+Tue, 23 Jul 2024 20:13:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.5..@fluentui/react-components_v9.54.6)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: add presenceMotionSlot() API ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - feat: add motion slots (surfaceMotion to Dialog & backdropMotion to DialogSurface) ([PR #31132](https://github.com/microsoft/fluentui/pull/31132) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-motion`
+  - fix: improve Web Animations API detection in tests ([PR #32029](https://github.com/microsoft/fluentui/pull/32029) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat: add Fade motion component ([PR #32020](https://github.com/microsoft/fluentui/pull/32020) by olkatruk@microsoft.com)
+  - feat(motion): add Scale motion component ([PR #32021](https://github.com/microsoft/fluentui/pull/32021) by olkatruk@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: stops leaking HTMLElementConstructorName type ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+  - chore: simplify SlotComponentType type ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
 
 ## [9.54.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.5)
 

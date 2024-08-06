@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Mon, 15 Jul 2024 17:25:52 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.35)
+
+Mon, 05 Aug 2024 22:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.6.34..@fluentui/react-avatar_v9.6.35)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.9.17 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
+
+## [9.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.34)
+
+Tue, 30 Jul 2024 18:47:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.6.33..@fluentui/react-avatar_v9.6.34)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.9.16 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.35 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
+
+## [9.6.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.33)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.6.32..@fluentui/react-avatar_v9.6.33)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.2.41 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.65 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-popover to v9.9.15 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tooltip to v9.4.34 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.6.32)
 

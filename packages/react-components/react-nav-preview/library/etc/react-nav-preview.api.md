@@ -6,7 +6,7 @@
 
 /// <reference types="react" />
 
-import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import { ButtonProps } from '@fluentui/react-button';
 import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
@@ -36,21 +36,46 @@ import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
-export const AppNode: ForwardRefComponent<AppNodeProps>;
+export const AppItem: ForwardRefComponent<AppItemProps>;
 
 // @public (undocumented)
-export const appNodeClassNames: SlotClassNames<AppNodeSlots>;
+export const appItemClassNames: SlotClassNames<AppItemSlots>;
 
 // @public
-export type AppNodeProps = ComponentProps<AppNodeSlots> & {};
+export type AppItemProps = ComponentProps<AppItemSlots> & {
+    href?: string;
+};
 
 // @public (undocumented)
-export type AppNodeSlots = {
-    root: Slot<'div'>;
+export type AppItemSlots = {
+    root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
+    icon?: Slot<'span'>;
 };
 
 // @public
-export type AppNodeState = ComponentState<AppNodeSlots>;
+export type AppItemState = ComponentState<AppItemSlots> & {
+    size: NavSize;
+};
+
+// @public
+export const AppItemStatic: ForwardRefComponent<AppItemStaticProps>;
+
+// @public (undocumented)
+export const appItemStaticClassNames: SlotClassNames<AppItemStaticSlots>;
+
+// @public
+export type AppItemStaticProps = ComponentProps<AppItemStaticSlots> & {};
+
+// @public (undocumented)
+export type AppItemStaticSlots = {
+    root: Slot<'div'>;
+    icon?: Slot<'span'>;
+};
+
+// @public
+export type AppItemStaticState = ComponentState<AppItemStaticSlots> & {
+    size: NavSize;
+};
 
 // @public
 export const Hamburger: ForwardRefComponent<HamburgerProps>;
@@ -156,7 +181,7 @@ export type NavDrawerBodySlots = DrawerBodySlots;
 export type NavDrawerBodyState = DrawerBodyState;
 
 // @public (undocumented)
-export const navDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+export const navDrawerClassNames: SlotClassNames<Omit<InlineDrawerSlots, 'surfaceMotion'>>;
 
 // @public
 export const NavDrawerFooter: ForwardRefComponent<NavDrawerFooterProps>;
@@ -320,7 +345,10 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
 // @public
-export const renderAppNode_unstable: (state: AppNodeState) => JSX.Element;
+export const renderAppItem_unstable: (state: AppItemState) => JSX.Element;
+
+// @public
+export const renderAppItemStatic_unstable: (state: AppItemStaticState) => JSX.Element;
 
 // @public (undocumented)
 export const renderNav_unstable: (state: NavState, contextValues: NavContextValues) => JSX.Element;
@@ -347,10 +375,16 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
-export const useAppNode_unstable: (props: AppNodeProps, ref: React_2.Ref<HTMLDivElement>) => AppNodeState;
+export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => AppItemState;
 
 // @public
-export const useAppNodeStyles_unstable: (state: AppNodeState) => AppNodeState;
+export const useAppItemStatic_unstable: (props: AppItemStaticProps, ref: React_2.Ref<HTMLDivElement>) => AppItemStaticState;
+
+// @public
+export const useAppItemStaticStyles_unstable: (state: AppItemStaticState) => AppItemStaticState;
+
+// @public
+export const useAppItemStyles_unstable: (state: AppItemState) => AppItemState;
 
 // @public
 export const useHamburger_unstable: (props: HamburgerProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => HamburgerState;

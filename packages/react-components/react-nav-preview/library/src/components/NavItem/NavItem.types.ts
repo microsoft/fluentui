@@ -4,6 +4,9 @@ import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type NavItemSlots = {
+  /**
+   * The root element of the NavItem.
+   */
   root: NonNullable<Slot<ARIAButtonSlotProps<'a'>>>;
 
   /**

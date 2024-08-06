@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 18 Jul 2024 07:31:12 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2024 21:38:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.205.166](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.166)
+
+Thu, 01 Aug 2024 21:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.165..@fluentui/react-cards_v0.205.166)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.2 ([PR #32198](https://github.com/microsoft/fluentui/pull/32198) by beachball)
+
+## [0.205.165](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.165)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.164..@fluentui/react-cards_v0.205.165)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.1 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.14 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+
+## [0.205.164](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.164)
+
+Wed, 31 Jul 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.163..@fluentui/react-cards_v0.205.164)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.0 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
+
+## [0.205.163](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.163)
+
+Tue, 23 Jul 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v0.205.162..@fluentui/react-cards_v0.205.163)
+
+### Patches
+
+- Bump @fluentui/react to v8.119.3 ([commit](https://github.com/microsoft/fluentui/commit/8303652a141232be9e03658f295b8ab6512e43aa) by beachball)
 
 ## [0.205.162](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v0.205.162)
 
