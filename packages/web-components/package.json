@@ -216,6 +216,7 @@
     "./dist/esm/switch/define.js",
     "./dist/esm/tab/define.js",
     "./dist/esm/tabs/define.js",
+    "./dist/esm/tablist/define.js",
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
     "./dist/esm/text-input/define.js",
