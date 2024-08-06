@@ -55,11 +55,9 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public
 export class AccordionItem extends BaseAccordionItem {
     block: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
     markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
 // @internal
@@ -124,13 +122,10 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // @public
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
     iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
-    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
-    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -362,15 +357,11 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
-    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
-    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     shape?: BadgeShape;
-    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
-    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -440,13 +431,11 @@ export const BadgeTemplate: ElementViewTemplate<Badge>;
 // @public (undocumented)
 export class BaseAccordionItem extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
 }
@@ -1915,14 +1904,11 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
-    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
-    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
-    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     overflowCount: number;
@@ -1931,10 +1917,8 @@ export class CounterBadge extends FASTElement {
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
-    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
-    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -2351,17 +2335,13 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
-    borderedChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     fit?: ImageFit;
     fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
-    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
-    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -3211,9 +3191,7 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 // @public
 export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
-    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     size?: SpinnerSize;
-    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public

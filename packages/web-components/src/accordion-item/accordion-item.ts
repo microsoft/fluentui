@@ -4,7 +4,7 @@ import type { StaticallyComposableHTML } from '../utils/index.js';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
@@ -59,17 +59,9 @@ export class BaseAccordionItem extends FASTElement {
    * @remarks
    * HTML attribute: expanded
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public expanded: boolean = false;
-
-  /**
-   * Handles expanded changes
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public expandedChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'expanded', next);
-  }
 
   /**
    * Disables an accordion item
@@ -78,17 +70,9 @@ export class BaseAccordionItem extends FASTElement {
    * @remarks
    * HTML attribute: disabled
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
-
-  /**
-   * Handles disabled changes
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public disabledChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'disabled', next);
-  }
 
   /**
    * The item ID
@@ -120,22 +104,9 @@ export class AccordionItem extends BaseAccordionItem {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: AccordionItemSize;
-
-  /**
-   * Handles changes to size attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * Sets expand and collapsed icon position.
@@ -168,17 +139,9 @@ export class AccordionItem extends BaseAccordionItem {
    * @remarks
    * HTML Attribute: block
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public block: boolean = false;
-
-  /**
-   * Handles changes to block attribute
-   * @param prev - previous value
-   * @param next - next value
-   */
-  public blockChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'block', next);
-  }
 }
 
 /**
