@@ -42,7 +42,7 @@ jobs:
       #     status: 'success'
       #     uniqueId: 'bundleSizeComment9423'
       - script: |
-          yarn nx run-many -t bundle-size --nxBail
+          yarn nx bundle-size react-button --nxBail
         displayName: build all packages & create reports
         # condition: eq(variables.isPR, false)
 
@@ -56,7 +56,7 @@ jobs:
           AZURE_SERVICE_CONNECTION_ID: $(AzureServiceConnectionId)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
-          azureSubscription: $(AzureSubscription)
+          azureSubscription: 'Bundlesize Testing'
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
