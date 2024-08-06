@@ -1,21 +1,21 @@
 import { expect, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 
-import type { setTheme, Theme } from './set-theme.js';
+import type { setTheme as _setTheme, Theme } from './set-theme.js';
 
 const theme1: Theme = {
   foo: 'foo1',
-  bar: 'bar2',
+  bar: 'bar1',
 };
 
 const theme2: Theme = {
-  foo: 'foo1',
+  foo: 'foo2',
   bar: 'bar2',
 };
 
 declare global {
   interface Window {
-    setTheme: typeof setTheme;
+    setTheme: typeof _setTheme;
   }
 }
 
@@ -26,8 +26,17 @@ test.describe('setTheme()', () => {
   });
 
   test('should set tokens with the correct custom property values', async ({ page }) => {
-    await page.evaluate(theme => window.setTheme(theme), theme1);
-    const val = await page.evaluate(() => getComputedStyle(document.body).getPropertyValue('--foo'));
-    expect(val).toBe('foo1');
+    await page.evaluate(theme => {
+      window.setTheme(theme);
+    }, theme1);
+    const body = page.locator('body');
+
+    await expect(body).toHaveCSS('--foo', 'foo1');
+
+    await page.evaluate(theme => {
+      window.setTheme(theme);
+    }, theme2);
+
+    await expect(body).toHaveCSS('--foo', 'foo2');
   });
 });

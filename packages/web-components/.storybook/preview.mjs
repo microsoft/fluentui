@@ -16,7 +16,8 @@ function changeTheme(/** @type {Event} */ e) {
   setTheme(themes[/** @type {keyof themes} */ (/** @type {HTMLInputElement}*/ (e.target).value)]);
 }
 
-Object.defineProperty(globalThis, 'setTheme', { value: setTheme });
+// This is needed in Playwright.
+Object.defineProperty(window, 'setTheme', { value: setTheme });
 
 document.getElementById('theme-switch')?.addEventListener('change', changeTheme, false);
 setTheme(themes['web-light']);

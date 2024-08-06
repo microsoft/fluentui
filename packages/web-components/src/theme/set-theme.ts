@@ -25,6 +25,10 @@ const scopedThemeKeyMap = new Map<Theme, string>();
 // references its local theme style sheet.
 const shadowAdoptedStyleSheetMap = new Map<HTMLElement, CSSStyleSheet>();
 
+// A map from an element to its set theme. This is used only when
+// `document.adoptedStyleSheets` or CSS Scope is not supported.
+const elementThemeMap = new Map<HTMLElement, Theme>();
+
 const globalThemeStyleSheet = new CSSStyleSheet();
 
 /**
@@ -181,8 +185,19 @@ function getScopedThemeKey(theme: Theme): string {
 }
 
 function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) {
-  // FIXME
-  for (const [tokenName, tokenValue] of Object.entries(theme)) {
+  let tokens: Theme;
+
+  if (theme === null) {
+    if (!elementThemeMap.has(element)) {
+      return;
+    }
+    tokens = elementThemeMap.get(element)!;
+  } else {
+    elementThemeMap.set(element, theme);
+    tokens = theme;
+  }
+
+  for (const [tokenName, tokenValue] of Object.entries(tokens)) {
     element.style.setProperty(`--${tokenName}`, theme !== null ? tokenValue.toString() : 'unset');
   }
 }
