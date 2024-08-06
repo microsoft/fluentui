@@ -49,13 +49,20 @@ jobs:
         displayName: build all packages & create reports
         condition: eq(variables.isPR, false)
 
-      - script: |
-          yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+      - task: AzureCLI@2
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
-          # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
-          BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
-          BUNDLESIZE_ACCOUNT_NAME: fluentbundlesize
+          BUNDLESIZE_ACCOUNT_NAME: $(StorageAccount)
+          AZURE_TENANT_ID: $(AzureTenantId)
+          AZURE_CLIENT_ID: $(AzureClientId)
+          AZURE_SERVICE_CONNECTION_ID: $(AzureServiceConnectionId)
+          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+        inputs:
+          azureSubscription: $(AzureSubscription)
+          scriptType: bash
+          scriptLocation: 'inlineScript'
+          inlineScript: |
+            yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
 
       - template: .devops/templates/cleanup.yml
