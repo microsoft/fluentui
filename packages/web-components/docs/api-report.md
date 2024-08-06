@@ -667,8 +667,6 @@ export class BaseTablist extends FASTElement {
     connectedCallback(): void;
     disabled: boolean;
     // @internal
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    // @internal
     elementInternals: ElementInternals;
     orientation: TablistOrientation;
     // @internal (undocumented)
@@ -3471,11 +3469,7 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
-    // @internal (undocumented)
-    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
     size?: TablistSize;
-    // @internal (undocumented)
-    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
     tabsChanged(): void;
 }
 

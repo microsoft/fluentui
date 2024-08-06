@@ -43,11 +43,9 @@ export function toggleAttrState(target: any, attr: string): any {
   const method = target[`${attr}Changed`];
 
   // Replace the attrChanged method with a new one
-  target[`${attr}Changed`] = function (prev: string | boolean | undefined, next: string | boolean | undefined): void {
+  target[`${attr}Changed`] = function (prev: any, next: any): void {
     // Call original method
-    if (method) {
-      method.call(this, prev, next);
-    }
+    method?.call(this, prev, next);
 
     // Update elementInternals state for booleans
     if (typeof next === 'boolean') {
@@ -56,7 +54,7 @@ export function toggleAttrState(target: any, attr: string): any {
     }
 
     // Update elementInternals state for strings
-    // NOTE: Change to `${attr}-${next}`?
+    // TODO: Change to `${attr}-${next}` https://github.com/microsoft/fluentui/issues/32069
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }
