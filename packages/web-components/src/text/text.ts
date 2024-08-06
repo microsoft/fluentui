@@ -1,5 +1,5 @@
 import { attr, FASTElement, Observable } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import type { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 /**
@@ -108,22 +108,9 @@ export class Text extends FASTElement {
    * @remarks
    * HTML Attribute: font
    */
+  @toggleAttrState
   @attr
   font?: TextFont;
-
-  /**
-   * Handles changes to font attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public fontChanged(prev: TextFont | undefined, next: TextFont | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * The Text weight
@@ -132,22 +119,9 @@ export class Text extends FASTElement {
    * @remarks
    * HTML Attribute: weight
    */
+  @toggleAttrState
   @attr
   weight?: TextWeight;
-
-  /**
-   * Handles changes to weight attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * THe Text align
@@ -156,22 +130,9 @@ export class Text extends FASTElement {
    * @remarks
    * HTML Attribute: align
    */
+  @toggleAttrState
   @attr
   align?: TextAlign;
-
-  /**
-   * Handles changes to align attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   public connectedCallback(): void {
     super.connectedCallback();

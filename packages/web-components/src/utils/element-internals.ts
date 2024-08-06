@@ -48,6 +48,7 @@ export function toggleAttrState(target: any, attr: string): any {
     if (method) {
       method.call(this, prev, next);
     }
+
     // Update elementInternals state for booleans
     if (typeof next === 'boolean') {
       toggleState(this.elementInternals, attr, next);
@@ -55,7 +56,7 @@ export function toggleAttrState(target: any, attr: string): any {
     }
 
     // Update elementInternals state for strings
-    // TODO: Flip to `${attr}-${next}` when Custom States are supported
+    // NOTE: Change to `${attr}-${next}`?
     if (prev) {
       toggleState(this.elementInternals, `${prev}`, false);
     }

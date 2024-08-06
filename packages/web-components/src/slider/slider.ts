@@ -13,7 +13,7 @@ import {
 } from '@microsoft/fast-web-utilities';
 import { numberLikeStringConverter } from '../utils/converters.js';
 import { getDirection } from '../utils/direction.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { SliderConfiguration, SliderMode, SliderOrientation, SliderSize } from './slider.options.js';
 import { convertPixelToPercent } from './slider-utilities.js';
 
@@ -58,16 +58,9 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: SliderSize;
-  protected sizeChanged(prev: string, next: string): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   public handleChange(_: any, propertyName: string): void {
     switch (propertyName) {
@@ -499,17 +492,11 @@ export class Slider extends FASTElement implements SliderConfiguration {
    * orientation-related behavior should consider horizontal as default, and
    * apply different behavior when it’s vertical.
    */
+  @toggleAttrState
   @attr
   public orientation?: Orientation;
   protected orientationChanged(prev: string | undefined, next: string | undefined): void {
     this.elementInternals.ariaOrientation = next ?? Orientation.horizontal;
-
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
 
     if (this.$fastController.isConnected) {
       this.setSliderPosition(this.direction);

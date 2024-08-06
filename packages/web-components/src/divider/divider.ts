@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 
 /**
@@ -33,6 +33,7 @@ export class BaseDivider extends FASTElement {
    * @remarks
    * HTML Attribute: orientation
    */
+  @toggleAttrState
   @attr
   public orientation?: DividerOrientation;
 
@@ -72,14 +73,6 @@ export class BaseDivider extends FASTElement {
    */
   public orientationChanged(previous: string | null, next: string | null): void {
     this.elementInternals.ariaOrientation = this.role !== DividerRole.presentation ? next : null;
-
-    if (previous) {
-      toggleState(this.elementInternals, `${previous}`, false);
-    }
-
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
   }
 }
 
@@ -117,37 +110,16 @@ export class Divider extends BaseDivider {
    * @remarks
    * A divider can have one of the preset appearances. Select from strong, brand, subtle. When not specified, the divider has its default appearance.
    */
+  @toggleAttrState
   @attr
   public appearance?: DividerAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * @public
    * @remarks
    * Adds padding to the beginning and end of the divider.
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public inset?: boolean;
-
-  /**
-   * Handles changes to inset custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public insetChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'inset', next);
-  }
 }
