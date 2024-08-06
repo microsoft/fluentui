@@ -576,6 +576,30 @@ export class BaseSpinner extends FASTElement {
 }
 
 // @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
+}
+
+// @public
 export class BaseTextArea extends FASTElement {
     constructor();
     autocomplete?: TextAreaAutocomplete;
@@ -589,6 +613,10 @@ export class BaseTextArea extends FASTElement {
     connectedCallback(): void;
     // @internal
     controlEl: HTMLTextAreaElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // (undocumented)
+    protected defaultSlottedNodesChanged(): void;
     get defaultValue(): string;
     set defaultValue(next: string);
     dirName?: string;
@@ -607,15 +635,19 @@ export class BaseTextArea extends FASTElement {
     // @internal
     formResetCallback(): void;
     // @internal (undocumented)
-    handleChange(_: any, propertyName: string): void;
-    // @internal (undocumented)
     handleControlChange(): void;
     // @internal (undocumented)
     handleControlInput(): void;
     // @internal (undocumented)
     handleControlSelect(): void;
     initialForm?: string;
+    // @internal
+    labelEl: HTMLLabelElement;
     get labels(): NodeList;
+    // @internal
+    labelSlottedNodes: Label[];
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
     maxLength?: number;
     minLength?: number;
     name: string;
@@ -3392,6 +3424,58 @@ export interface Tab extends StartEnd {
 export const TabDefinition: FASTElementDefinition<typeof Tab>;
 
 // @public
+export class Tablist extends BaseTablist {
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
+    size?: TablistSize;
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
+    tabsChanged(): void;
+}
+
+// @public
+export const TablistAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
+
+// @public (undocumented)
+export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+
+// @public
+export const TablistOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+// @public
+export const TablistSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TablistSize = ValuesOf<typeof TablistSize>;
+
+// @public (undocumented)
+export const TablistStyles: ElementStyles;
+
+// @public (undocumented)
+export const TablistTemplate: ViewTemplate<Tablist, any>;
+
+// @public
 export type TabOptions = StartEndOptions<Tab>;
 
 // Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -3549,7 +3633,9 @@ export class TextArea extends BaseTextArea {
     // @internal (undocumented)
     disconnectedCallback(): void;
     // @internal (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
     size?: TextAreaSize;
     // (undocumented)
     protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;

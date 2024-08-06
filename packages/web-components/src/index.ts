@@ -227,6 +227,16 @@ export {
   TabsStyles,
   TabsTemplate,
 } from './tabs/index.js';
+export {
+  BaseTablist,
+  Tablist,
+  TablistAppearance,
+  TablistDefinition,
+  TablistOrientation,
+  TablistSize,
+  TablistStyles,
+  TablistTemplate,
+} from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
   BaseTextArea,
