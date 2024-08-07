@@ -24,31 +24,34 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      # - script: |
-      #     yarn nx affected -t bundle-size --nxBail $(sinceArg)
-      #   displayName: build packages & create reports
-      #   condition: eq(variables.isPR, true)
-      # - script: |
-      #     npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
-      #   displayName: compare bundle size with base (PR only)
-      #   condition: eq(variables.isPR, true)
-      # - task: GithubPRComment@0
-      #   displayName: Post results to PR (PR only)
-      #   condition: eq(variables.isPR, true)
-      #   inputs:
-      #     githubOwner: microsoft
-      #     githubRepo: 'fluentui'
-      #     blobFilePath: 'monosize-report.md'
-      #     status: 'success'
-      #     uniqueId: 'bundleSizeComment9423'
+      - script: |
+          yarn nx affected -t bundle-size --nxBail $(sinceArg)
+        displayName: build packages & create reports
+        condition: eq(variables.isPR, true)
+
+      - script: |
+          npx monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --quiet > ./monosize-report.md
+        displayName: compare bundle size with base (PR only)
+        condition: eq(variables.isPR, true)
+
+      - task: GithubPRComment@0
+        displayName: Post results to PR (PR only)
+        condition: eq(variables.isPR, true)
+        inputs:
+          githubOwner: microsoft
+          githubRepo: 'fluentui'
+          blobFilePath: 'monosize-report.md'
+          status: 'success'
+          uniqueId: 'bundleSizeComment9423'
+
       - script: |
           yarn nx run-many -t bundle-size --nxBail
         displayName: build all packages & create reports
-        # condition: eq(variables.isPR, false)
+        condition: eq(variables.isPR, false)
 
       - task: AzureCLI@2
         displayName: upload a report (base only)
-        # condition: eq(variables.isPR, false)
+        condition: eq(variables.isPR, false)
         env:
           BUNDLESIZE_ACCOUNT_NAME: $(StorageAccount)
           AZURE_TENANT_ID: $(AzureTenantId)
@@ -60,6 +63,6 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn monosize upload-report --branch=master --commit-sha $(Build.SourceVersion)
+            yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
 
       - template: .devops/templates/cleanup.yml
