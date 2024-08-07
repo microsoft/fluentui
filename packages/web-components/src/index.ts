@@ -168,6 +168,7 @@ export {
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
 export {
+  BaseRatingDisplay,
   RatingDisplay,
   RatingDisplayColor,
   RatingDisplayDefinition,
