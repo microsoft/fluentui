@@ -595,7 +595,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },
@@ -857,7 +857,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight: shouldHighlight,
+          shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
@@ -1001,9 +1001,13 @@ export class VerticalStackedBarChartBase extends React.Component<
       const xMin = d3Min(this._dataset, (point: IVerticalStackedBarDataPoint) => point.x as number)!;
 
       const xBarScale = d3ScaleLinear()
-        .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
+        .domain([xMin, xMax])
         .nice()
-        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        );
 
       return { xBarScale, yBarScale };
     }
@@ -1016,8 +1020,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       })!;
       const xBarScale = this.props.useUTC ? d3ScaleUtc() : d3ScaleTime();
       xBarScale
-        .domain(this._isRtl ? [lDate, sDate] : [sDate, lDate])
-        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin]);
+        .domain([sDate, lDate])
+        .range(
+          this._isRtl
+            ? [containerWidth - this.margins.right! - this._domainMargin, this.margins.left! + this._domainMargin]
+            : [this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin],
+        );
 
       return { xBarScale, yBarScale };
     }
