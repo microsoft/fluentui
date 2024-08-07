@@ -578,9 +578,7 @@ export class BaseRatingDisplay extends FASTElement {
     get formattedCount(): string;
     // @internal
     generateIcons(): string;
-    // @internal
     getMaxIcons(): number;
-    // @internal
     getSelectedValue(): number;
     max?: number;
     value?: number;

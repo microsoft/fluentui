@@ -66,7 +66,7 @@ export class BaseRatingDisplay extends FASTElement {
   /**
    * Gets the selected value
    *
-   * @internal
+   * @protected
    */
   public getSelectedValue(): number {
     return Math.round((this.value ?? 0) * 2) / 2;
@@ -75,7 +75,7 @@ export class BaseRatingDisplay extends FASTElement {
   /**
    * Gets the maximum icons to render
    *
-   * @internal
+   * @protected
    */
   public getMaxIcons(): number {
     return (this.max ?? 5) * 2;
