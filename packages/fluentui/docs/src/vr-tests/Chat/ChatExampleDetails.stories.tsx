@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Chat } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import ChatExampleDetails from '../../examples/components/Chat/Types/ChatExampleDetails.shorthand';
@@ -6,7 +6,7 @@ import ChatExampleDetails from '../../examples/components/Chat/Types/ChatExample
 export default {
   component: Chat,
   title: 'Chat',
-} as ComponentMeta<typeof Chat>;
+} as Meta<typeof Chat>;
 
 const ChatExampleDetailsTeams = getThemeStoryVariant(ChatExampleDetails, 'teamsV2');
 

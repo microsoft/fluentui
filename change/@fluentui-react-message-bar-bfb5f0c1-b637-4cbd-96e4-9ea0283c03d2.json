@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix undefined reference in older browsers in useMessageBarReflow",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "miclo@microsoft.com",
-  "dependentChangeType": "patch"
-}

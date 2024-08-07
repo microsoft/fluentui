@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Menu } from '@fluentui/react-northstar';
 import MenuExamplePositioningUpdateShorthand from '../../examples/components/Menu/Visual/MenuExamplePositioningUpdate.shorthand';
 
@@ -23,6 +23,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Menu>;
+} as Meta<typeof Menu>;
 
 export { MenuExamplePositioningUpdateShorthand };

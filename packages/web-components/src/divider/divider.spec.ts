@@ -15,7 +15,7 @@ test.describe('Divider', () => {
 
     element = page.locator('fluent-divider');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
   });
 
   test.afterAll(async () => {

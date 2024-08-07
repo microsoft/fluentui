@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { StoryContext } from '@storybook/addons';
-import { ComponentStory } from '@storybook/react';
+import type { Decorator, StoryFn } from '@storybook/react';
 import { FASTElement, customElement, html, attr } from '@microsoft/fast-element';
 import { teamsLightTheme, teamsDarkTheme, webLightTheme, webDarkTheme } from '@fluentui/tokens';
 import { setThemeFor } from '@fluentui/web-components';
@@ -15,13 +14,6 @@ const themes = [
 const defaultTheme = themes[0];
 
 type ThemeId = (typeof themes)[number]['id'];
-
-interface WCStoryContext extends StoryContext {
-  parameters: {
-    dir?: 'ltr' | 'rtl';
-    fluentTheme?: ThemeId;
-  };
-}
 
 @customElement({
   name: 'fast-theme-decorator',
@@ -48,10 +40,10 @@ export class FASTThemeDecorator extends FASTElement {
   }
 }
 
-export const WCThemeDecorator = (StoryFn: () => JSX.Element, context: WCStoryContext) => {
+export const WCThemeDecorator: Decorator = (storyFn, context) => {
   const { dir = 'ltr', fluentTheme = defaultTheme.id } = context.parameters;
 
-  return React.createElement('fast-theme-decorator', { dir, 'fluent-theme': fluentTheme }, StoryFn());
+  return React.createElement('fast-theme-decorator', { dir, 'fluent-theme': fluentTheme }, storyFn(context));
 };
 
 export const DARK_MODE = 'Dark Mode';
@@ -59,19 +51,19 @@ export const RTL = 'RTL';
 
 type Variant = typeof DARK_MODE | typeof RTL;
 
-function getStoryName(story: ComponentStory<never>) {
+function getStoryName(story: StoryFn) {
   if (story.storyName) {
     return story.storyName;
   }
 
-  return story.name.replace(/([a-z])([A-Z])/g, '$1 $2');
+  return story.name?.replace(/([a-z])([A-Z])/g, '$1 $2');
 }
 
 export const getStoryVariant = (story: () => string | JSX.Element | JSX.Element[], variant: Variant) => {
   return {
     ...story,
     render: story,
-    storyName: `${getStoryName(story as ComponentStory<never>)} - ${variant}`,
+    storyName: `${getStoryName(story as StoryFn)} - ${variant}`,
     parameters: {
       ...(variant === DARK_MODE && { fluentTheme: 'teams-dark' }),
       ...(variant === RTL && { dir: 'rtl' }),

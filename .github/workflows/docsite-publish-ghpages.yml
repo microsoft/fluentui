@@ -43,9 +43,6 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Build dependencies
-        run: yarn nx run public-docsite-v9:build --nxBail
-
       - name: Build storybook
         run: yarn nx run public-docsite-v9:build-storybook --nxBail
         env:
