@@ -255,6 +255,7 @@ export const LCGaps = (props: ILineChartProps) => {
           calloutProps={{
             calloutMaxWidth: 200,
           }}
+          enableReflow={true}
           getCalloutDescriptionMessage={_calculateCalloutDescription}
           enablePerfOptimization={true}
         />

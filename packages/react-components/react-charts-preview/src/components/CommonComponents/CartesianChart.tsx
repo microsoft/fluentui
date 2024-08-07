@@ -36,7 +36,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
 >((props, forwardedRef) => {
   const chartContainer = React.useRef<HTMLDivElement>(null);
   let legendContainer: HTMLDivElement;
-  const minLegendContainerHeight: number = 32;
+  const minLegendContainerHeight: number = 40;
   const xAxisElement = React.useRef<SVGElement | null>(null);
   const yAxisElement = React.useRef<SVGElement | null>(null);
   let yAxisElementSecondary: SVGElement | null;
