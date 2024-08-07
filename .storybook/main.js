@@ -10,54 +10,19 @@ const {
 
 const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
 
-/**
- * @typedef {import('./types').StorybookConfig} StorybookBaseConfig
- *
- * @typedef {import('./types').StorybookExtraConfig} StorybookExtraConfig
- *
- * @typedef {import('./types').StorybookConfig} StorybookConfig
- */
-
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
-module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
-  features: {
-    // Enables code splitting
-    storyStoreV7: true,
-  },
+module.exports = /** @type {import('./types').StorybookConfig} */ ({
   stories: [],
   addons: [
-    {
-      name: 'storybook-addon-swc',
-      options: /** @type {import('storybook-addon-swc').StoryBookAddonSwcOptions} */ ({
-        swcLoaderOptions: {
-          jsc: {
-            target: 'es2019',
-            parser: {
-              syntax: 'typescript',
-              tsx: true,
-              decorators: true,
-              dynamicImport: true,
-            },
-            transform: {
-              decoratorMetadata: true,
-              legacyDecorator: true,
-            },
-            keepClassNames: true,
-            externalHelpers: true,
-            loose: true,
-          },
-        },
-        swcMinifyOptions: { mangle: false },
-      }),
-    },
+    // external custom addons
+
     '@storybook/addon-essentials',
     '@storybook/addon-a11y',
     '@storybook/addon-links',
-    '@storybook/addon-knobs/preset',
     'storybook-addon-performance',
-
-    // external custom addons
+    // https://storybook.js.org/docs/writing-docs/mdx#markdown-tables-arent-rendering-correctly
+    '@storybook/addon-mdx-gfm',
 
     // internal monorepo custom addons
 
@@ -88,13 +53,51 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
     return config;
   },
   core: {
-    builder: 'webpack5',
-    lazyCompilation: true,
     disableTelemetry: true,
+  },
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        lazyCompilation: true,
+        useSWC: true,
+      },
+    },
+  },
+  docs: {
+    autodocs: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
    * @see https://storybook.js.org/docs/addons/writing-presets#ui-configuration
    */
   previewHead: head => head + previewHeadTemplate,
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
+
+  swc() {
+    return {
+      jsc: {
+        target: 'es2019',
+        parser: {
+          syntax: 'typescript',
+          tsx: true,
+          decorators: true,
+          dynamicImport: true,
+        },
+        transform: {
+          decoratorMetadata: true,
+          legacyDecorator: true,
+        },
+        keepClassNames: true,
+        externalHelpers: true,
+        loose: true,
+        minify: {
+          mangle: false,
+        },
+      },
+    };
+  },
 });

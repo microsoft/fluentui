@@ -556,7 +556,7 @@ describe('migrate-converged-pkg generator', () => {
       expect(readJson(tree, paths.packageJson).scripts).toEqual(
         expect.objectContaining({
           start: 'yarn storybook',
-          storybook: 'start-storybook',
+          storybook: 'storybook dev',
         }),
       );
 
@@ -566,7 +566,7 @@ describe('migrate-converged-pkg generator', () => {
           allowJs: true,
           checkJs: true,
           outDir: '',
-          types: ['static-assets', 'environment', 'storybook__addons'],
+          types: ['static-assets', 'environment'],
         },
         include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       });
@@ -780,7 +780,7 @@ describe('migrate-converged-pkg generator', () => {
         compilerOptions: {
           isolatedModules: false,
           lib: ['ES2019', 'dom'],
-          types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
+          types: ['node', 'cypress', 'cypress-real-events'],
         },
         include: ['**/*.cy.ts', '**/*.cy.tsx'],
       });
