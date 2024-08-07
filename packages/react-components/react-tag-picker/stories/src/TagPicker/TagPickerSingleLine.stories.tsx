@@ -10,10 +10,10 @@ import {
   makeStyles,
   tagPickerGroupClassNames,
   useOverflowCount,
-  Button,
   TagPickerInputProps,
   useTagPickerContext_unstable,
   useEventCallback,
+  InteractionTagPrimary,
 } from '@fluentui/react-components';
 import { Tag, Avatar, Overflow, OverflowItem } from '@fluentui/react-components';
 import { ChevronDownRegular, ChevronUpRegular } from '@fluentui/react-icons';
@@ -63,9 +63,9 @@ const ExpandIcon = (props: ExpandIconProps) => {
     return <ChevronDownRegular />;
   }
   return (
-    <Button tabIndex={-1} size="small" className={styles.countButton} appearance="transparent">
-      + {overflowCount}
-    </Button>
+    <InteractionTagPrimary tabIndex={-1} className={styles.countButton}>
+      +{overflowCount}
+    </InteractionTagPrimary>
   );
 };
 
