@@ -53,10 +53,10 @@ jobs:
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
-          BUNDLESIZE_ACCOUNT_NAME: $(StorageAccount)
           AZURE_TENANT_ID: $(AzureTenantId)
           AZURE_CLIENT_ID: $(AzureClientId)
           AZURE_SERVICE_CONNECTION_ID: $(AzureServiceConnectionId)
+          BUNDLESIZE_ACCOUNT_NAME: $(StorageAccount)
           SYSTEM_ACCESSTOKEN: $(System.AccessToken)
         inputs:
           azureSubscription: 'Bundlesize Testing'
