@@ -1,11 +1,14 @@
 import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TreeCheckedChangeData, TreeProps, TreeState } from '../Tree';
 import * as React from 'react';
+import { Collapse } from '@fluentui/react-motion-components-preview';
+import { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
-import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
 import { createNextOpenItems } from './useControllableOpenItems';
+import { ImmutableSet } from '../utils/ImmutableSet';
+import { ImmutableMap } from '../utils/ImmutableMap';
 
 /**
  * Create the state required to render the root level tree.
@@ -21,13 +24,13 @@ export function useRootTree(
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
-  const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
+  const openItems = React.useMemo(() => ImmutableSet.from(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
 
   const requestOpenChange = (request: Extract<TreeItemRequest, { requestType: 'open' }>) => {
     props.onOpenChange?.(request.event, {
       ...request,
-      openItems: createNextOpenItems(request, openItems).dangerouslyGetInternalSet_unstable(),
+      openItems: ImmutableSet.dangerouslyGetInternalSet(createNextOpenItems(request, openItems)),
     });
   };
 
@@ -38,7 +41,7 @@ export function useRootTree(
     props.onCheckedChange?.(request.event, {
       ...request,
       selectionMode,
-      checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
+      checkedItems: ImmutableMap.dangerouslyGetInternalMap(checkedItems),
       // Casting is required here due to selection | multiselection spreading the union problem
     } as TreeCheckedChangeData);
   };
@@ -75,7 +78,14 @@ export function useRootTree(
   });
 
   return {
-    components: { root: 'div' },
+    components: {
+      root: 'div',
+      // TODO: remove once React v18 slot API is modified
+      // This is a problem at the moment due to UnknownSlotProps assumption
+      // that `children` property is `ReactNode`, which in this case is not valid
+      // as PresenceComponentProps['children'] is `ReactElement`
+      collapseMotion: Collapse as React.FC<PresenceMotionSlotProps>,
+    },
     contextType: 'root',
     selectionMode,
     open: true,
@@ -97,6 +107,7 @@ export function useRootTree(
       }),
       { elementType: 'div' },
     ),
+    collapseMotion: undefined,
   };
 }
 

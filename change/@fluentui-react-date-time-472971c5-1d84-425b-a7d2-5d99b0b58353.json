@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: ship bundled and umd code to registry",
+  "packageName": "@fluentui/react-date-time",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

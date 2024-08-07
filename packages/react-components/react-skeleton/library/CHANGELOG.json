@@ -2,6 +2,21 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Mon, 05 Aug 2024 22:33:03 GMT",
+      "tag": "@fluentui/react-skeleton_v9.1.12",
+      "version": "9.1.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "7584f78dd64820adba7e90ce0a544f8105eb2aa4",
+            "comment": "update wave animation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-skeleton_v9.1.11",
       "version": "9.1.11",

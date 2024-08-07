@@ -2,6 +2,21 @@
   "name": "@fluentui/react-message-bar",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 21:40:44 GMT",
+      "tag": "@fluentui/react-message-bar_v9.2.7",
+      "version": "9.2.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "f239694de65d5987e0dfaaa07d4dc54a2a4b869f",
+            "comment": "Fix undefined reference in older browsers in useMessageBarReflow"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-message-bar_v9.2.6",
       "version": "9.2.6",

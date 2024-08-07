@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 21:40:44 GMT",
+      "tag": "@fluentui/react-toolbar_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "d9541c4016946a6d80b532fc2f9fea83eab22b04",
+            "comment": "feat: Add transparent as an option for the appearance prop in ToolbarButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-toolbar_v9.1.91",
       "version": "9.1.91",

@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Tue, 30 Jul 2024 18:47:35 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.8)
+
+Tue, 06 Aug 2024 21:40:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.7.7..@fluentui/react-tree_v9.7.8)
+
+### Patches
+
+- chore: improve ImmutableSet and ImmutableMap internal implementation ([PR #32167](https://github.com/microsoft/fluentui/pull/32167) by bernardo.sunderhus@gmail.com)
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.7)
+
+Mon, 05 Aug 2024 22:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.7.6..@fluentui/react-tree_v9.7.7)
+
+### Patches
+
+- feat: add collapse motion to Tree ([PR #32163](https://github.com/microsoft/fluentui/pull/32163) by olkatruk@microsoft.com)
+- Bump @fluentui/react-avatar to v9.6.35 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
 
 ## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.6)
 

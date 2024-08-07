@@ -102,16 +102,24 @@ extends:
                 displayName: Generate version files
 
               - script: |
-                  yarn nx run-many -t build bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail --production
-                displayName: build,bundle
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: build
 
               - script: |
-                  yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: test
 
               - script: |
-                  yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: lint
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: bundle
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: verify packaged assets
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'

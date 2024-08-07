@@ -2,6 +2,80 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 04:08:14 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "30765e0d03df293c466e93b631f93b4d09a455b2",
+            "comment": "chore: revert type-check definition and follow repo target defaults for consistency and type-check speeds"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec6b5c70deabef4c992e4f1f2b052971fa9569b2",
+            "comment": "Add Tablist component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2024 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.53",
+      "version": "3.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "89959ae94f9f7aa53a761ca9f2f778693462bd02",
+            "comment": "fix(web-components): detach design tokens from existing themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2024 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.52",
+      "version": "3.0.0-beta.52",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mlijanto@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aafddb7a0cc9042ea1aec71bfa1c0c0cda524d75",
+            "comment": "Export patterns."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "449457bbf21af43db4c83590edee402e2b637f22",
+            "comment": "feat: abstracts layout api from field class"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6336863c0bd99c7167508bb6feae8967ad444a79",
+            "comment": "ci: ensure package is built first before running type-check to mitigate build error."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 29 Jul 2024 04:07:23 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.51",
       "version": "3.0.0-beta.51",

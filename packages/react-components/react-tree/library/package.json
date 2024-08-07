@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tree",
-  "version": "9.7.6",
+  "version": "9.7.8",
   "description": "Tree component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,11 +35,13 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
     "@fluentui/react-aria": "^9.13.2",
-    "@fluentui/react-avatar": "^9.6.34",
+    "@fluentui/react-avatar": "^9.6.35",
     "@fluentui/react-button": "^9.3.87",
     "@fluentui/react-checkbox": "^9.2.33",
     "@fluentui/react-context-selector": "^9.1.65",
     "@fluentui/react-icons": "^2.0.245",
+    "@fluentui/react-motion-components-preview": "^0.1.1",
+    "@fluentui/react-motion": "^9.4.0",
     "@fluentui/react-radio": "^9.2.28",
     "@fluentui/react-shared-contexts": "^9.20.0",
     "@fluentui/react-tabster": "^9.22.3",
