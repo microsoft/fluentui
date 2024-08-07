@@ -43,7 +43,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const minLegendContainerHeight: number = 40;
   const xAxisElement = React.useRef<SVGElement | null>(null);
   const yAxisElement = React.useRef<SVGElement | null>(null);
-  let yAxisElementSecondary: SVGElement | null;
+  const yAxisElementSecondary = React.useRef<SVGElement | null>(null);
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
@@ -120,7 +120,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
       const rotateLabelProps = {
-        node: xAxisElement,
+        node: xAxisElement.current,
         xAxis: _xScale,
       };
       const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
@@ -485,7 +485,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           margins: margins,
           containerWidth: containerWidth,
           containerHeight: containerHeight - removalValueForTextTuncate!,
-          yAxisElement: yAxisElementSecondary,
+          yAxisElement: yAxisElementSecondary.current,
           yAxisTickFormat: props.yAxisTickFormat!,
           yAxisTickCount: props.yAxisTickCount!,
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
@@ -739,7 +739,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
             <g>
               <g
                 ref={(e: SVGElement | null) => {
-                  yAxisElementSecondary = e;
+                  yAxisElementSecondary.current = e;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
                 transform={`translate(${_isRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}

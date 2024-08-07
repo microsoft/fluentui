@@ -173,7 +173,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   }
   if (xAxisElement) {
     d3Select(xAxisElement)
-      .call(g => xAxis)
+      .call(xAxis)
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }
@@ -303,7 +303,7 @@ export function createStringXAxis(
 
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement)
-      .call(g => xAxis)
+      .call(xAxis)
       .selectAll('text')
       .attr('aria-hidden', 'true');
   }

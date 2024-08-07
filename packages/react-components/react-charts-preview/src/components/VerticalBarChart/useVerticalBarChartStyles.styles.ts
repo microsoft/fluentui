@@ -14,7 +14,7 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
 };
 const useStyles = makeStyles({
   opacityChangeOnHover: {
-    opacity: '0.1', // support custom opacity change
+    opacity: '1', // support custom opacity change
   },
   xAxisTicks: {},
   yAxisTicks: {
