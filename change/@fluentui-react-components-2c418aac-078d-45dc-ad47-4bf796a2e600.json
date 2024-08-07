@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feature: re-export react-tag-picker context",
+  "packageName": "@fluentui/react-components",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

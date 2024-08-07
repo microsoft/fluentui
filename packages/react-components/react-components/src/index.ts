@@ -1780,6 +1780,7 @@ export {
   useTagPickerOptionGroupStyles,
   useTagPickerOptionGroup,
   useTagPickerFilter,
+  useTagPickerContext_unstable,
 } from '@fluentui/react-tag-picker';
 export type {
   TagPickerContextValues,
@@ -1810,6 +1811,7 @@ export type {
   TagPickerOptionGroupProps,
   TagPickerOptionGroupSlots,
   TagPickerOptionGroupState,
+  TagPickerContextValue,
 } from '@fluentui/react-tag-picker';
 
 export {

@@ -71,3 +71,6 @@ export type {
 } from './TagPickerOptionGroup';
 
 export { useTagPickerFilter } from './utils/useTagPickerFilter';
+
+export { useTagPickerContext_unstable } from './contexts/TagPickerContext';
+export type { TagPickerContextValue } from './contexts/TagPickerContext';

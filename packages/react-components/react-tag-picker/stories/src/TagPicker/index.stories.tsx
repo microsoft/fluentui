@@ -23,6 +23,7 @@ export { SecondaryAction } from './TagPickerSecondaryAction.stories';
 export { Grouped } from './TagPickerGrouped.stories';
 export { TruncatedText } from './TagPickerTruncatedText.stories';
 export { SingleSelect } from './TagPickerSingleSelect.stories';
+export { SingleLine } from './TagPickerSingleLine.stories';
 
 export default {
   title: 'Components/TagPicker',
