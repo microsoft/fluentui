@@ -367,7 +367,8 @@
       "typings"
     ],
     "nohoist": [
-      "@fluentui/web-components/@storybook/html"
+      "@fluentui/web-components/@storybook/html",
+      "@fluentui/web-components/@typescript/lib-dom"
     ]
   },
   "resolutions": {
