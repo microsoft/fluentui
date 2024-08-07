@@ -3,5 +3,12 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": ["tag:type:stories"],
-  "tags": ["platform:web", "vNext"]
+  "tags": ["platform:web", "vNext"],
+  "targets": {
+    "build-storybook": {
+      "dependsOn": [
+        { "projects": ["react-storybook-addon", "react-storybook-addon-export-to-sandbox"], "target": "build" }
+      ]
+    }
+  }
 }
