@@ -68,7 +68,7 @@ export class BaseRatingDisplay extends FASTElement {
    *
    * @protected
    */
-  public getSelectedValue(): number {
+  protected getSelectedValue(): number {
     return Math.round((this.value ?? 0) * 2) / 2;
   }
 
@@ -77,7 +77,7 @@ export class BaseRatingDisplay extends FASTElement {
    *
    * @protected
    */
-  public getMaxIcons(): number {
+  protected getMaxIcons(): number {
     return (this.max ?? 5) * 2;
   }
 
@@ -171,7 +171,7 @@ export class RatingDisplay extends BaseRatingDisplay {
    *
    * @override
    */
-  public override getSelectedValue(): number {
+  protected override getSelectedValue(): number {
     return Math.round((this.compact ? 1 : this.value ?? 0) * 2) / 2;
   }
 
@@ -180,7 +180,7 @@ export class RatingDisplay extends BaseRatingDisplay {
    *
    * @override
    */
-  public override getMaxIcons(): number {
+  protected override getMaxIcons(): number {
     return (this.compact ? 1 : this.max ?? 5) * 2;
   }
 }

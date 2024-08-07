@@ -578,8 +578,8 @@ export class BaseRatingDisplay extends FASTElement {
     get formattedCount(): string;
     // @internal
     generateIcons(): string;
-    getMaxIcons(): number;
-    getSelectedValue(): number;
+    protected getMaxIcons(): number;
+    protected getSelectedValue(): number;
     max?: number;
     value?: number;
 }
@@ -2908,9 +2908,9 @@ export class RatingDisplay extends BaseRatingDisplay {
     colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     // @override
-    getMaxIcons(): number;
+    protected getMaxIcons(): number;
     // @override
-    getSelectedValue(): number;
+    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
     sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
 }
