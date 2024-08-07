@@ -171,4 +171,5 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorNeutralShadowKeyDarker: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined
   colorBrandShadowAmbient: 'rgba(0,0,0,0.30)', // rgba(0,0,0,0.30) undefined
   colorBrandShadowKey: 'rgba(0,0,0,0.25)', // rgba(0,0,0,0.25) undefined
+  colorMaterialTertiaryBackground: white,
 });

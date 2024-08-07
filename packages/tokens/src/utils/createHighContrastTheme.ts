@@ -1,7 +1,7 @@
 import { colorPaletteTokens, colorStatusTokens } from '../alias/highContrastColorPalette';
 import { generateColorTokens } from '../alias/highContrastColor';
 
-import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights } from '../global/index';
+import { borderRadius, fontSizes, lineHeights, fontFamilies, strokeWidths, fontWeights, noBlur } from '../global/index';
 import { createShadowTokens } from './shadows';
 import type { Theme } from '../types';
 import { durations } from '../global/durations';
@@ -22,6 +22,7 @@ export const createHighContrastTheme = (): Theme => {
     ...verticalSpacings,
     ...durations,
     ...curves,
+    ...noBlur,
 
     ...colorTokens,
     ...colorPaletteTokens,

@@ -1,5 +1,20 @@
-export { teamsDarkTheme, teamsHighContrastTheme, teamsLightTheme, webDarkTheme, webLightTheme } from './themes/index';
-export { createDarkTheme, createHighContrastTheme, createLightTheme, createTeamsDarkTheme } from './utils/index';
+export {
+  webDarkTheme,
+  webLightTheme,
+  teamsDarkTheme,
+  teamsLightTheme,
+  teamsDarkGlassTheme,
+  teamsLightGlassTheme,
+  teamsHighContrastTheme,
+} from './themes/index';
+export {
+  createDarkTheme,
+  createHighContrastTheme,
+  createLightTheme,
+  createTeamsDarkTheme,
+  createLightGlassTheme,
+  createTeamsDarkGlassTheme,
+} from './utils/index';
 
 export { themeToTokensObject } from './themeToTokensObject';
 export { tokens } from './tokens';
@@ -58,6 +73,7 @@ export type {
   ColorPalettePlatinum,
   ColorPaletteAnchor,
   ColorTokens,
+  BlurTokens,
   PartialTheme,
   Theme,
   TypographyStyle,

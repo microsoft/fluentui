@@ -5,6 +5,11 @@
 ```ts
 
 // @public (undocumented)
+export type BlurTokens = {
+    blurMaterialTertiary: string;
+};
+
+// @public (undocumented)
 export type BorderRadiusTokens = {
     borderRadiusNone: string;
     borderRadiusSmall: string;
@@ -296,16 +301,23 @@ export type ColorTokens = {
     colorNeutralShadowKeyDarker: string;
     colorBrandShadowAmbient: string;
     colorBrandShadowKey: string;
+    colorMaterialTertiaryBackground: string;
 };
 
 // @public (undocumented)
-export const createDarkTheme: (brand: BrandVariants) => Theme;
+export const createDarkTheme: (brand: BrandVariants, glass?: boolean) => Theme;
 
 // @public (undocumented)
 export const createHighContrastTheme: () => Theme;
 
 // @public (undocumented)
+export const createLightGlassTheme: (brand: BrandVariants) => Theme;
+
+// @public (undocumented)
 export const createLightTheme: (brand: BrandVariants) => Theme;
+
+// @public (undocumented)
+export const createTeamsDarkGlassTheme: (brand: BrandVariants) => Theme;
 
 // @public (undocumented)
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme;
@@ -440,16 +452,22 @@ export type StrokeWidthTokens = {
 };
 
 // @public (undocumented)
+export const teamsDarkGlassTheme: Theme;
+
+// @public (undocumented)
 export const teamsDarkTheme: Theme;
 
 // @public (undocumented)
 export const teamsHighContrastTheme: Theme;
 
 // @public (undocumented)
+export const teamsLightGlassTheme: Theme;
+
+// @public (undocumented)
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens & BlurTokens;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;
