@@ -14,18 +14,16 @@
   - [Layering/elevation concept](#layeringelevation-concept)
     - [What will be covered](#what-will-be-covered)
     - [What won't be covered](#what-wont-be-covered)
-  - [Options](#options)
-    - [Issues](#issues)
-      - [Option A: Expose a named map of layers to z-index values (similarly to typography styles)](#option-a-expose-a-named-map-of-layers-to-z-index-values-similarly-to-typography-styles)
-        - [Pros](#pros)
-        - [Cons](#cons)
-      - [Option B: Update tokens to include a map from layer to z-index](#option-b-update-tokens-to-include-a-map-from-layer-to-z-index)
-        - [Pros](#pros-1)
-        - [Cons](#cons-1)
-    - [Explored options, but already discarded](#explored-options-but-already-discarded)
-      - [React Context for setting z-index values](#react-context-for-setting-z-index-values)
-        - [Pros](#pros-2)
-        - [Cons](#cons-2)
+  - [Implementation](#implementation)
+    - [Pros](#pros)
+    - [Cons](#cons)
+  - [Discarded Options](#discarded-options)
+    - [Expose a named map of layers to z-index values (similarly to typography styles)](#expose-a-named-map-of-layers-to-z-index-values-similarly-to-typography-styles)
+      - [Pros](#pros-1)
+      - [Cons](#cons-1)
+    - [React Context for setting z-index values](#react-context-for-setting-z-index-values)
+      - [Pros](#pros-2)
+      - [Cons](#cons-2)
 
 ## Summary
 
@@ -68,65 +66,10 @@ This proposal utilize this elevation system to define layers that translate into
 - Negative z-indexes. Components can define negative z-index values to represent background objects. Since this is very subjective, it'll be up to the component to define its own negative z-index values.
 - Correlation between shadows and z-indexes. Even though it might be related, this is out of the scope of this proposal. If necessary, it can be covered by a follow-up RFC.
 
-## Options
+## Implementation
 
-> [!NOTE]  
-> The approaches below only standardize the layers and define z-index values for them. This is great for the current state of our components that can define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dropdowns are created. Which of them should have higher priority and therefore be displayed on top?
-
-#### Option A: Expose a named map of layers to z-index values (similarly to typography styles)
-
-Exposes a named map of layers to z-index values. This map can be used by components to define their z-index values.
-This would required the creation of a new file and export under `@fluentui/tokens`, to make the map available.
-
-The layers can be defined as follows:
-
-```ts
-// packages/tokens/src/global/zIndexes.ts
-
-import { ZIndexLayers } from '../types';
-
-/**
- * Global z-index values for elements
- */
-export const zIndexes: ZIndexLayers = {
-  background: 0, // default
-  content: 1, // content - header, footer, sidebar
-  overlay: 1000, // overlay elements - drawer, nav
-  popup: 2000, // popup layers - popups, modals, dialogs
-  messages: 3000, // communication elements - banners, messages, toasts, snackbar
-  floating: 4000, // floating elements - dropdowns, teaching
-  priority: 5000, // priority elements - tooltips
-  debug: 6000, // debug - error overlays, debug messages
-};
-```
-
-```ts
-// Fluent/partner code
-
-import { zIndexes } from '@fluentui/theme';
-
-const styles = {
-  root: {
-    zIndex: zIndexes.overlay,
-  },
-};
-```
-
-<!-- FIXME: Update section after alignment with designers -->
-
-_NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
-
-##### Pros
-
-- 👍 Clear separation by group of UI elements
-- 👍 Easy to override, extend and update
-
-##### Cons
-
-- 👎 Naming convention can be hard
-- 👎 The values would be fixed globally and not possible for partners to override
-
-#### Option B: Update tokens to include a map from layer to z-index
+> [!NOTE]
+> The approach here only standardize the layers and define z-index values for them. This is great for the current state of our components that can define arbitrary values, but won't solve a very specific problem: Defining priority for similar UI elements. e.g. Two Dropdowns are created. Which of them should have higher priority and therefore be displayed on top?
 
 Expose the z-index values as tokens. This would map the layers into token values that can be used anywhere in styles.
 
@@ -180,23 +123,76 @@ const styles = {
 
 _NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
 
-##### Pros
+### Pros
 
 - 👍 Clear separation by group of UI elements
 - 👍 Easy to override, extend and update
 - 👍 Partners can override the tokens through themes
 
-##### Cons
+### Cons
 
 - 👎 Naming convention can be hard
 - 👎 Bloating the tokens with more variables
 - 👎 Not possible to validate for user errors. Partners can override the tokens freely.
 
-### Explored options, but already discarded
+## Discarded Options
 
 The options below were explored but discarded due to the complexity of the implementation. It can be revisited in the future if necessary.
 
-#### Option C: React Context for setting z-index values
+### Expose a named map of layers to z-index values (similarly to typography styles)
+
+Exposes a named map of layers to z-index values. This map can be used by components to define their z-index values.
+This would required the creation of a new file and export under `@fluentui/tokens`, to make the map available.
+
+The layers can be defined as follows:
+
+```ts
+// packages/tokens/src/global/zIndexes.ts
+
+import { ZIndexLayers } from '../types';
+
+/**
+ * Global z-index values for elements
+ */
+export const zIndexes: ZIndexLayers = {
+  background: 0, // default
+  content: 1, // content - header, footer, sidebar
+  overlay: 1000, // overlay elements - drawer, nav
+  popup: 2000, // popup layers - popups, modals, dialogs
+  messages: 3000, // communication elements - banners, messages, toasts, snackbar
+  floating: 4000, // floating elements - dropdowns, teaching
+  priority: 5000, // priority elements - tooltips
+  debug: 6000, // debug - error overlays, debug messages
+};
+```
+
+```ts
+// Fluent/partner code
+
+import { zIndexes } from '@fluentui/theme';
+
+const styles = {
+  root: {
+    zIndex: zIndexes.overlay,
+  },
+};
+```
+
+<!-- FIXME: Update section after alignment with designers -->
+
+_NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
+
+#### Pros
+
+- 👍 Clear separation by group of UI elements
+- 👍 Easy to override, extend and update
+
+#### Cons
+
+- 👎 Naming convention can be hard
+- 👎 The values would be fixed globally and not possible for partners to override
+
+### React Context for setting z-index values
 
 This context would provide a way to set the z-index values for components and retrieve them when necessary. That allows partners to set the z-index themselves delegating the decision of the z-index order, priority and values to the application. It would be possible to set z-index ordering for multiple elements in the same layer.
 
@@ -307,11 +303,11 @@ export const Component = (props: ComponentProps) => {
 };
 ```
 
-##### Pros
+#### Pros
 
 - 👍 Allows partners to set the z-index values individually per context
 
-##### Cons
+#### Cons
 
 - 👎 Inline styles
 - 👎 Merging styles
