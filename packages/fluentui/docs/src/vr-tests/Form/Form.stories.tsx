@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Form } from '@fluentui/react-northstar';
 import FormExampleRtl from '../../examples/components/Form/Rtl/FormExample.rtl';
 import FormExample from '../../examples/components/Form/Types/FormExampleBase';
@@ -8,7 +8,7 @@ import FormExampleErrorAndSatisfactory from '../../examples/components/Form/Usag
 import FormExampleSlider from '../../examples/components/Form/Usage/FormExampleSlider';
 import FormExampleComponents from '../../examples/components/Form/Variants/FormExampleComponents';
 
-export default { component: Form, title: 'Form' } as ComponentMeta<typeof Form>;
+export default { component: Form, title: 'Form' } as Meta<typeof Form>;
 
 export {
   FormExampleRtl,

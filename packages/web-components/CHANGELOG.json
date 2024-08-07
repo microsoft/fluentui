@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 04:08:14 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "30765e0d03df293c466e93b631f93b4d09a455b2",
+            "comment": "chore: revert type-check definition and follow repo target defaults for consistency and type-check speeds"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec6b5c70deabef4c992e4f1f2b052971fa9569b2",
+            "comment": "Add Tablist component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2024 04:08:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.53",
       "version": "3.0.0-beta.53",

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeStyles, Label, Switch, useId, typographyStyles } from '@fluentui/react-components';
 import type { SwitchProps } from '@fluentui/react-components';
 import { DIR_ID } from '@fluentui/react-storybook-addon';
-import addons from '@storybook/addons';
+import { addons } from '@storybook/preview-api';
 
 const useStyles = makeStyles({
   container: {

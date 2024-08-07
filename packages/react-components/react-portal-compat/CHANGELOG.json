@@ -2,6 +2,51 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 12:31:57 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.158",
+      "version": "9.0.158",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.54.10",
+            "commit": "6ce9dc956999e24aa29d9b95710072c2f945e040"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 21:40:45 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.157",
+      "version": "9.0.157",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.54.9",
+            "commit": "edd363739604b199194b5ab8f99b503641044906"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2024 22:33:04 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.156",
+      "version": "9.0.156",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.54.8",
+            "commit": "7584f78dd64820adba7e90ce0a544f8105eb2aa4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.155",
       "version": "9.0.155",
