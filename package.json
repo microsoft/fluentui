@@ -368,11 +368,11 @@
     ]
   },
   "resolutions": {
-    "@storybook/react-docgen-typescript-plugin": "1.0.6--canary.9.0c3f3b7.0",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "@typescript-eslint/utils": "6.21.0",
     "@types/jest-axe/axe-core": "4.7.2",
+    "esbuild": "0.20.1",
     "eslint": "8.57.0",
     "swc-loader": "^0.2.6",
     "prettier": "2.8.8",
