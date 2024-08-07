@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
@@ -22,19 +22,9 @@ export class RatingDisplay extends FASTElement {
    * @remarks
    * HTML Attribute: `color`
    */
+  @toggleAttrState
   @attr
   public color?: RatingDisplayColor;
-
-  /**
-   * Handles changes to the color attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
 
   /**
    * Renders a single filled icon with a label next to it.
@@ -76,19 +66,9 @@ export class RatingDisplay extends FASTElement {
    * @remarks
    * HTML Attribute: `size`
    */
+  @toggleAttrState
   @attr
   public size?: RatingDisplaySize;
-
-  /**
-   * Handles changes to the size attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
 
   /**
    * The value of the rating.

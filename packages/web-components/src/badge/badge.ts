@@ -2,7 +2,7 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 // TODO: Remove with https://github.com/microsoft/fast/pull/6797
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 /**
@@ -24,22 +24,9 @@ export class Badge extends FASTElement {
    * @remarks
    * HTML Attribute: appearance
    */
+  @toggleAttrState
   @attr
   public appearance: BadgeAppearance = BadgeAppearance.filled;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The color the badge should have.
@@ -48,22 +35,9 @@ export class Badge extends FASTElement {
    * @remarks
    * HTML Attribute: color
    */
+  @toggleAttrState
   @attr
   public color: BadgeColor = BadgeColor.brand;
-
-  /**
-   * Handles changes to color attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The shape the badge should have.
@@ -72,22 +46,9 @@ export class Badge extends FASTElement {
    * @remarks
    * HTML Attribute: shape
    */
+  @toggleAttrState
   @attr
   public shape?: BadgeShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The size the badge should have.
@@ -96,22 +57,9 @@ export class Badge extends FASTElement {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: BadgeSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 }
 
 /**

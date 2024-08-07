@@ -1,5 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter, volatile } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
@@ -21,25 +21,9 @@ export class BaseProgressBar extends FASTElement {
    * @public
    * HTML Attribute: `validation-state`
    */
+  @toggleAttrState
   @attr({ attribute: 'validation-state' })
   public validationState: ProgressBarValidationState | null = null;
-
-  /**
-   * Handles changes to validation-state attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public validationStateChanged(
-    prev: ProgressBarValidationState | undefined,
-    next: ProgressBarValidationState | undefined,
-  ) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The value of the progress
@@ -129,42 +113,16 @@ export class ProgressBar extends BaseProgressBar {
    * @public
    * HTML Attribute: `thickness`
    */
+  @toggleAttrState
   @attr
   public thickness?: ProgressBarThickness;
-
-  /**
-   * Handles changes to thickness attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The shape of the progress bar
    * @public
    * HTML Attribute: `shape`
    */
+  @toggleAttrState
   @attr
   public shape?: ProgressBarShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 }

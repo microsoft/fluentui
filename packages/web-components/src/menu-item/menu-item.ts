@@ -1,7 +1,7 @@
 import { attr, ElementsFilter, FASTElement, observable } from '@microsoft/fast-element';
 import { keyArrowLeft, keyArrowRight, keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import type { StartEndOptions } from '../patterns/start-end.js';
 import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
@@ -58,6 +58,7 @@ export class MenuItem extends FASTElement {
    * @remarks
    * HTML Attribute: disabled
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public disabled!: boolean;
 
@@ -68,7 +69,6 @@ export class MenuItem extends FASTElement {
    */
   public disabledChanged(prev: boolean | undefined, next: boolean | undefined) {
     this.elementInternals.ariaDisabled = !!next ? `${next}` : null;
-    toggleState(this.elementInternals, 'disabled', next);
   }
 
   /**

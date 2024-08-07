@@ -55,11 +55,9 @@ export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 // @public
 export class AccordionItem extends BaseAccordionItem {
     block: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     markerPosition?: AccordionItemMarkerPosition;
     markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
-    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
 // @internal
@@ -124,13 +122,10 @@ export const accordionTemplate: ElementViewTemplate<Accordion>;
 // @public
 export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
     iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
-    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
-    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
 // @internal
@@ -362,15 +357,11 @@ export const AvatarTemplate: ElementViewTemplate<Avatar>;
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
-    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
-    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     shape?: BadgeShape;
-    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
-    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -440,13 +431,11 @@ export const BadgeTemplate: ElementViewTemplate<Badge>;
 // @public (undocumented)
 export class BaseAccordionItem extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     // @internal (undocumented)
     expandbutton: HTMLElement;
     expanded: boolean;
-    expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
 }
@@ -561,7 +550,6 @@ export class BaseProgressBar extends FASTElement {
     // @internal
     get percentComplete(): number;
     validationState: ProgressBarValidationState | null;
-    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
     // @internal
     value?: number;
     // @internal
@@ -585,8 +573,6 @@ export class BaseTablist extends FASTElement {
     // @internal (undocumented)
     connectedCallback(): void;
     disabled: boolean;
-    // @internal
-    protected disabledChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     orientation: TablistOrientation;
@@ -690,13 +676,10 @@ export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
 // @public
 export class Button extends BaseButton {
     appearance?: ButtonAppearance;
-    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
     iconOnly: boolean;
     iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: ButtonShape;
-    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
     size?: ButtonSize;
-    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
 }
 
 // @internal (undocumented)
@@ -778,11 +761,7 @@ export class Checkbox extends BaseCheckbox {
     // @internal @override
     protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
-    // @internal
-    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
-    // @internal
-    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
     toggleChecked(force?: boolean): void;
 }
 
@@ -1915,14 +1894,11 @@ export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
-    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
-    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
-    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     overflowCount: number;
@@ -1931,10 +1907,8 @@ export class CounterBadge extends FASTElement {
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
-    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
-    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -2086,10 +2060,8 @@ export class Divider extends BaseDivider {
     alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
     // (undocumented)
     appearance?: DividerAppearance;
-    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
     // (undocumented)
     inset?: boolean;
-    insetChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2351,17 +2323,13 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
-    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
-    borderedChanged(prev: boolean, next: boolean): void;
     // @internal
     elementInternals: ElementInternals;
     fit?: ImageFit;
     fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
-    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
-    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2401,14 +2369,11 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
-    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal
     elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
-    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
-    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
@@ -2481,9 +2446,7 @@ export const lineHeightHero900 = "var(--lineHeightHero900)";
 // @public
 export class Link extends BaseAnchor {
     appearance?: LinkAppearance | undefined;
-    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
     inline: boolean;
-    inlineChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -2725,9 +2688,7 @@ export const MenuTemplate: ElementViewTemplate<Menu>;
 // @public
 export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
-    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
-    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
 
 // @public
@@ -2890,7 +2851,6 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export class RatingDisplay extends FASTElement {
     constructor();
     color?: RatingDisplayColor;
-    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
     count?: number;
     // @internal
@@ -2901,7 +2861,6 @@ export class RatingDisplay extends FASTElement {
     generateIcons(): string;
     max?: number;
     size?: RatingDisplaySize;
-    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
     value?: number;
 }
 
@@ -3043,8 +3002,6 @@ export class Slider extends FASTElement implements SliderConfiguration {
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    // (undocumented)
-    protected sizeChanged(prev: string, next: string): void;
     step: string;
     // (undocumented)
     protected stepChanged(): void;
@@ -3211,9 +3168,7 @@ export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 // @public
 export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
-    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     size?: SpinnerSize;
-    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -3348,11 +3303,7 @@ export const TabDefinition: FASTElementDefinition<typeof Tab>;
 export class Tablist extends BaseTablist {
     activeidChanged(oldValue: string, newValue: string): void;
     appearance?: TablistAppearance;
-    // @internal (undocumented)
-    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
     size?: TablistSize;
-    // @internal (undocumented)
-    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
     tabsChanged(): void;
 }
 
@@ -3504,7 +3455,6 @@ export const TabTemplate: ElementViewTemplate<Tab, any>;
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
-    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
     // (undocumented)
     connectedCallback(): void;
@@ -3513,7 +3463,6 @@ class Text_2 extends FASTElement {
     // @internal
     elementInternals: ElementInternals;
     font?: TextFont;
-    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
     italic: boolean;
@@ -3524,7 +3473,6 @@ class Text_2 extends FASTElement {
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
-    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -3558,9 +3506,7 @@ export type TextFont = ValuesOf<typeof TextFont>;
 // @public
 export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
-    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     controlSize?: TextInputControlSize;
-    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
 }
 
 // @internal (undocumented)
