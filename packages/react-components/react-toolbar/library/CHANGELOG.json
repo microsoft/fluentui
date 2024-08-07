@@ -2,6 +2,21 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 12:31:56 GMT",
+      "tag": "@fluentui/react-toolbar_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "0c43a227ac779d017ab4c315cea2f5fceb7d3fc0",
+            "comment": "fix: hardcode size of `ToolbarButton`"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 06 Aug 2024 21:40:44 GMT",
       "tag": "@fluentui/react-toolbar_v9.2.0",
       "version": "9.2.0",

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: hardcode size of `ToolbarButton`",
-  "packageName": "@fluentui/react-toolbar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
