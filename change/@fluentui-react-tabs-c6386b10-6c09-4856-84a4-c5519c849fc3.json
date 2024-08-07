@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ignore ref for tab reserved space content slot",
-  "packageName": "@fluentui/react-tabs",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

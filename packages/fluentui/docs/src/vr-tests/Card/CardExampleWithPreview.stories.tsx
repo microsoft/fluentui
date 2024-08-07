@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Card } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import CardExampleWithPreview from '../../examples/components/Card/Usage/CardExampleWithPreview';
@@ -6,7 +6,7 @@ import CardExampleWithPreview from '../../examples/components/Card/Usage/CardExa
 export default {
   component: Card,
   title: 'Card',
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
 const CardExampleWithPreviewTeams = getThemeStoryVariant(CardExampleWithPreview, 'teamsV2');
 

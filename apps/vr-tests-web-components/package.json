@@ -5,10 +5,10 @@
   "description": "Visual regression tests for @fluentui/web-components",
   "type": "module",
   "scripts": {
-    "build-storybook": "build-storybook -o dist/storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "eslint src --ext .ts,.tsx",
-    "start": "start-storybook",
+    "start": "storybook dev",
     "type-check": "tsc -p . --baseUrl . --noEmit",
     "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
