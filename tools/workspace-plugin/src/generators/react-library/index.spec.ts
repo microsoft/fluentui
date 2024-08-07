@@ -155,9 +155,10 @@ describe('react-library generator', () => {
     expect(readJson(tree, `${library.root}/.babelrc.json`)).toEqual(
       expect.objectContaining({ extends: '../../../../.babelrc-v9.json' }),
     );
-    expect(tree.read(`${library.root}/jest.config.js`, 'utf-8')).toEqual(
-      expect.stringContaining(`displayName: 'react-one-preview',`),
-    );
+
+    const jestConfig = tree.read(`${library.root}/jest.config.js`, 'utf-8');
+    expect(jestConfig).toEqual(expect.stringContaining(`displayName: 'react-one-preview',`));
+    expect(jestConfig).toEqual(expect.stringContaining(`'^.+\\\\.tsx?$': ['@swc/jest', swcJestConfig],`));
     expect(tree.read(`${library.root}/README.md`, 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`
       # @proj/react-one-preview
@@ -197,7 +198,7 @@ describe('react-library generator', () => {
         format: 'just-scripts prettier',
         lint: 'eslint src/',
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'storybook dev',
         'type-check': 'just-scripts type-check',
         'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
       },

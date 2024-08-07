@@ -1,5 +1,5 @@
-import { useGlobals as useStorybookGlobals, Args as StorybookArgs } from '@storybook/api';
-import { StoryContext as StorybookContext, Parameters } from '@storybook/addons';
+import { useGlobals as useStorybookGlobals } from '@storybook/manager-api';
+import { Args as StorybookArgs, StoryContext as StorybookContext, Parameters } from '@storybook/react';
 
 import { DIR_ID, STRICT_MODE_ID, THEME_ID } from './constants';
 import type { ThemeIds } from './theme';

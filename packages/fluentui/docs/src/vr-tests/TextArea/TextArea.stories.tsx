@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { TextArea } from '@fluentui/react-northstar';
 import TextAreaDisabledExample from '../../examples/components/TextArea/States/TextAreaDisabledExample.shorthand';
 import TextAreaValueExample from '../../examples/components/TextArea/States/TextAreaValueExample.shorthand';
@@ -7,7 +7,7 @@ import TextAreaExampleMaxLength from '../../examples/components/TextArea/Usage/T
 import TextAreaExampleResize from '../../examples/components/TextArea/Usage/TextAreaExampleResize.shorthand';
 import TextAreaExampleFluid from '../../examples/components/TextArea/Variations/TextAreaExampleFluid.shorthand';
 
-export default { component: TextArea, title: 'TextArea' } as ComponentMeta<typeof TextArea>;
+export default { component: TextArea, title: 'TextArea' } as Meta<typeof TextArea>;
 
 export {
   TextAreaDisabledExample,

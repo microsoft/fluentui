@@ -1,7 +1,7 @@
 import * as React from 'react';
-import type { DecoratorFn } from '@storybook/react';
+import type { Decorator } from '@storybook/react';
 
-export const TestWrapperDecorator: DecoratorFn = (story, context) => (
+export const TestWrapperDecorator: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story(context)}
@@ -9,7 +9,7 @@ export const TestWrapperDecorator: DecoratorFn = (story, context) => (
   </div>
 );
 
-export const TestWrapperDecoratorTall: DecoratorFn = (story, context) => (
+export const TestWrapperDecoratorTall: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story(context)}
@@ -17,7 +17,7 @@ export const TestWrapperDecoratorTall: DecoratorFn = (story, context) => (
   </div>
 );
 
-export const TestWrapperDecoratorTallFixedWidth: DecoratorFn = (story, context) => (
+export const TestWrapperDecoratorTallFixedWidth: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story(context)}
@@ -25,7 +25,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFn = (story, context) 
   </div>
 );
 
-export const TestWrapperDecoratorFixedWidth: DecoratorFn = (story, context) => (
+export const TestWrapperDecoratorFixedWidth: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story(context)}
@@ -33,7 +33,7 @@ export const TestWrapperDecoratorFixedWidth: DecoratorFn = (story, context) => (
   </div>
 );
 
-export const TestWrapperDecoratorFullWidth: DecoratorFn = (story, context) => (
+export const TestWrapperDecoratorFullWidth: Decorator = (story, context) => (
   <div style={{ display: 'flex' }}>
     <div
       className="testWrapper"

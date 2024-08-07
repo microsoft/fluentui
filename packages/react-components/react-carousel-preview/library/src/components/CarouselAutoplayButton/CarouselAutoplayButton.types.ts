@@ -1,17 +1,44 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import { ButtonSlots, ToggleButtonProps, ToggleButtonState } from '@fluentui/react-button';
+import type { ComponentProps, ComponentState, EventData, EventHandler, Slot } from '@fluentui/react-utilities';
 
-export type CarouselAutoplayButtonSlots = {
-  root: Slot<'div'>;
+export type CarouselAutoplayButtonSlots = ButtonSlots & {
+  root: NonNullable<Slot<ARIAButtonSlotProps>>;
+};
+
+export type CarouselAutoplayChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+  /**
+   * The updated autoplay value.
+   */
+  autoplay: boolean;
 };
 
 /**
  * CarouselAutoplayButton Props
  */
-export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonSlots> & {};
+export type CarouselAutoplayButtonProps = ToggleButtonProps &
+  ComponentProps<CarouselAutoplayButtonSlots> & {
+    /**
+     * Controls whether autoplay will initialized as true or false
+     * Default: true
+     */
+    defaultAutoplay?: boolean;
+
+    /**
+     * User controlled autoplay state
+     */
+    autoplay?: boolean;
+
+    /**
+     * Callback that informs the user when internal autoplay value has changed
+     */
+    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+  };
 
 /**
  * State used in rendering CarouselAutoplayButton
  */
-export type CarouselAutoplayButtonState = ComponentState<CarouselAutoplayButtonSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from CarouselAutoplayButtonProps.
-// & Required<Pick<CarouselAutoplayButtonProps, 'propName'>>
+export type CarouselAutoplayButtonState = ToggleButtonState &
+  ComponentState<CarouselAutoplayButtonSlots> &
+  Pick<CarouselAutoplayButtonProps, 'autoplay'>;

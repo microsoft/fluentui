@@ -8,4 +8,5 @@ export default {
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   coverageDirectory: '../../coverage/tools/workspace-plugin',
+  setupFiles: ['<rootDir>/jest-setup.js'],
 } as import('@jest/types').Config.InitialOptions;

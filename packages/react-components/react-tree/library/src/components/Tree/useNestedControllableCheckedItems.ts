@@ -13,7 +13,7 @@ export function createNextNestedCheckedItems(
   previousCheckedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>,
 ): ImmutableMap<TreeItemValue, 'mixed' | boolean> {
   if (data.selectionMode === 'single') {
-    return ImmutableMap.create([[data.value, data.checked]]);
+    return ImmutableMap.from([[data.value, data.checked]]);
   }
   if (data.selectionMode === 'multiselect') {
     return previousCheckedItems.set(data.value, data.checked);
