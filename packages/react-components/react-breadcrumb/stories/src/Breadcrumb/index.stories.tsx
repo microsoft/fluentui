@@ -5,9 +5,9 @@ export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
 export { BreadcrumbWithTooltip } from './BreadcrumbWithTooltip.stories';
 
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 
-const metadata: ComponentMeta<typeof Breadcrumb> = {
+const metadata: Meta<typeof Breadcrumb> = {
   title: 'Components/Breadcrumb',
   component: Breadcrumb,
   subcomponents: {
