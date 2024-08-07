@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DropdownExampleLoading from '../../examples/components/Dropdown/State/DropdownExampleLoading.shorthand';
@@ -27,7 +27,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 const DropdownExampleLoadingTeams = getThemeStoryVariant(DropdownExampleLoading, 'teamsV2');
 

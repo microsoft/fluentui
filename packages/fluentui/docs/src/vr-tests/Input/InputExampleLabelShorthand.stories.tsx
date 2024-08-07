@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Input } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import InputExampleLabelShorthand from '../../examples/components/Input/Slots/InputExampleLabel.shorthand';
@@ -21,7 +21,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
 const InputExampleLabelShorthandTeams = getThemeStoryVariant(InputExampleLabelShorthand, 'teamsV2');
 

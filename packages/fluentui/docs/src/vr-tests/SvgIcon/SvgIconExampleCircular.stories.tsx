@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { SvgIcon } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import SvgIconExampleCircular from '../../examples/components/SvgIcon/Variations/SvgIconExampleCircular.shorthand';
@@ -6,7 +6,7 @@ import SvgIconExampleCircular from '../../examples/components/SvgIcon/Variations
 export default {
   component: SvgIcon,
   title: 'SvgIcon',
-} as ComponentMeta<typeof SvgIcon>;
+} as Meta<typeof SvgIcon>;
 
 const SvgIconExampleCircularTeams = getThemeStoryVariant(SvgIconExampleCircular, 'teamsV2');
 

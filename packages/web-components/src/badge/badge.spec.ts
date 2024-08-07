@@ -12,7 +12,7 @@ test.describe('Badge component', () => {
     page = await browser.newPage();
 
     element = page.locator('fluent-badge');
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-badge--badge'));
   });

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Toolbar, toolbarItemClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import ToolbarExamplePopupShorthand from '../../examples/components/Toolbar/Content/ToolbarExamplePopup.shorthand';
@@ -22,7 +22,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toolbar>;
+} as Meta<typeof Toolbar>;
 
 const ToolbarExamplePopupShorthandTeams = getThemeStoryVariant(ToolbarExamplePopupShorthand, 'teamsV2');
 

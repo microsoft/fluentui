@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { MenuButton, buttonClassName } from '@fluentui/react-northstar';
 import MenuButtonExampleRtl from '../../examples/components/MenuButton/Rtl/MenuButtonExample.rtl';
 
@@ -14,6 +14,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof MenuButton>;
+} as Meta<typeof MenuButton>;
 
 export { MenuButtonExampleRtl };

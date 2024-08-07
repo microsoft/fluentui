@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Alert } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
 import AlertExampleDanger from '../../examples/components/Alert/Variations/AlertExampleDanger.shorthand';
@@ -6,7 +6,7 @@ import AlertExampleDanger from '../../examples/components/Alert/Variations/Alert
 export default {
   component: Alert,
   title: 'Alert',
-} as ComponentMeta<typeof Alert>;
+} as Meta<typeof Alert>;
 
 const AlertExampleDangerTeams = getThemeStoryVariant(AlertExampleDanger, 'teamsV2');
 

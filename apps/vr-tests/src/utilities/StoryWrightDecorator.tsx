@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { DecoratorFn } from '@storybook/react';
+import type { Decorator } from '@storybook/react';
 import { StoryWright, Step } from 'storywright';
 
 /**
@@ -10,6 +10,6 @@ import { StoryWright, Step } from 'storywright';
  * @returns The decorator function.
  */
 export const StoryWrightDecorator =
-  (steps: Step[] = []): DecoratorFn =>
+  (steps: Step[] = []): Decorator =>
   (story, context) =>
     <StoryWright steps={steps}> {story(context)} </StoryWright>;

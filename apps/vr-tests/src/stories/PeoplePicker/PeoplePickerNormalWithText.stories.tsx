@@ -13,7 +13,7 @@ export default {
       new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
+        .snapshot('suggestion: a')
         .end(),
     ),
   ],

@@ -2,7 +2,7 @@
 
 import { setRTL } from '@fluentui/react/lib/Utilities';
 
-/** @type {import('@storybook/react').DecoratorFn[]} */
+/** @type {import('@storybook/react').Decorator[]} */
 export const decorators = [
   (storyFn, context) => {
     setRTL(false);

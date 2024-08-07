@@ -4,7 +4,7 @@
     "allowJs": true,
     "checkJs": true,
     "jsx": "react",
-    "types": ["node", "static-assets", "storybook__addons"]
+    "types": ["node", "static-assets"]
   },
   "include": ["*.js"]
 }

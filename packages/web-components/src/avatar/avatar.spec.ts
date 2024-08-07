@@ -14,7 +14,7 @@ test.describe('Avatar Component', () => {
 
     element = page.locator('fluent-avatar');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-avatar--avatar'));
   });

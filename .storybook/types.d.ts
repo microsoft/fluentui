@@ -1,11 +1,4 @@
-import type { StorybookConfig as StorybookBaseConfig } from '@storybook/core-common';
-
-export type { StorybookBaseConfig };
-export type StorybookExtraConfig = {
-  babel?: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
-  previewHead?: (head: string) => string;
-};
+import type { StorybookConfig as StorybookBaseConfig } from '@storybook/react-webpack5';
 
 export type StorybookConfig = StorybookBaseConfig &
-  Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
-  StorybookExtraConfig;
+  Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>>;

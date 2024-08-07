@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Avatar } from '@fluentui/react-northstar';
 import AvatarDefaultBsize from '../../examples/components/Avatar/Performance/AvatarDefault.bsize';
 import AvatarExampleRtl from '../../examples/components/Avatar/Rtl/AvatarExample.rtl';
@@ -16,7 +16,7 @@ import AvatarExampleStatusShorthand from '../../examples/components/Avatar/Varia
 import AvatarExampleStatusCustomizationShorthand from '../../examples/components/Avatar/Variations/AvatarExampleStatusCustomization.shorthand';
 import AvatarExampleStatusImageShorthand from '../../examples/components/Avatar/Variations/AvatarExampleStatusImage.shorthand';
 
-export default { component: Avatar, title: 'Avatar' } as ComponentMeta<typeof Avatar>;
+export default { component: Avatar, title: 'Avatar' } as Meta<typeof Avatar>;
 
 export {
   AvatarDefaultBsize,

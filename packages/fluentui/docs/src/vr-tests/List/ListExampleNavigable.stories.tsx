@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { List, listItemClassName, listClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import ListExampleNavigable from '../../examples/components/List/Types/ListExampleNavigable.shorthand';
@@ -34,7 +34,7 @@ export default {
       <StoryWright steps={new Steps().keys('body', Keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
     ),
   ],
-} as ComponentMeta<typeof List>;
+} as Meta<typeof List>;
 
 const ListExampleNavigableTeams = getThemeStoryVariant(ListExampleNavigable, 'teamsV2');
 

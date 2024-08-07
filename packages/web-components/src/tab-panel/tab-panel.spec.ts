@@ -12,7 +12,7 @@ test.describe('TabPanel', () => {
 
     element = page.locator('fluent-tab-panel');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-tabs--tabs-default'));
   });

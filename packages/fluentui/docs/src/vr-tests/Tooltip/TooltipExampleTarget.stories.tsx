@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Tooltip, buttonClassName } from '@fluentui/react-northstar';
 import TooltipExampleTarget from '../../examples/components/Tooltip/Usage/TooltipExampleTarget.shorthand';
 
@@ -14,6 +14,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Tooltip>;
+} as Meta<typeof Tooltip>;
 
 export { TooltipExampleTarget };

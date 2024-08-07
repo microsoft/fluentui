@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Popup, buttonClassName } from '@fluentui/react-northstar';
 import PopupScrollExample from '../../examples/components/Popup/Visual/PopupScrollExample';
 
@@ -39,6 +39,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Popup>;
+} as Meta<typeof Popup>;
 
 export { PopupScrollExample };

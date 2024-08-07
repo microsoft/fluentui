@@ -10,17 +10,21 @@ const tsPaths = new TsconfigPathsPlugin({
 });
 
 module.exports =
-  /** @type {Omit<import('../../../.storybook/types').StorybookConfig,'typescript'|'babel'|'previewHead'>} */ ({
-    stories: ['../src/**/*.stories.@(ts|mdx)'],
+  /** @type {import('@storybook/html-webpack5').StorybookConfig} */
+  ({
+    features: {
+      // On-demand code splitting is disabled for now, as it causes issues e2e tests.
+      storyStoreV7: false,
+    },
+    // helpers.stories.ts is a file that contains helper functions for stories,
+    // and should not be treated as a story itself.
+    stories: ['../src/**/!(helpers)*.stories.@(ts|mdx)'],
     staticDirs: ['../public'],
     core: {
-      builder: 'webpack5',
       disableTelemetry: true,
     },
+    framework: '@storybook/html-webpack5',
     addons: [
-      {
-        name: '@storybook/addon-docs',
-      },
       {
         name: '@storybook/addon-essentials',
         options: {
@@ -77,5 +81,8 @@ module.exports =
       }
 
       return config;
+    },
+    docs: {
+      autodocs: true,
     },
   });

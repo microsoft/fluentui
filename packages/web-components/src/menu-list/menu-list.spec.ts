@@ -14,7 +14,7 @@ test.describe('Menu', () => {
 
     element = page.locator('fluent-menu-list');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     menuItems = element.locator('fluent-menu-item');
 

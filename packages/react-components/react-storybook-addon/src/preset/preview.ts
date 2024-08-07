@@ -12,7 +12,12 @@
 import { withFluentProvider } from '../decorators/withFluentProvider';
 import { withReactStrictMode } from '../decorators/withReactStrictMode';
 import { withAriaLive } from '../decorators/withAriaLive';
-import { THEME_ID } from '../constants';
+import { DIR_ID, STRICT_MODE_ID, THEME_ID } from '../constants';
 
 export const decorators = [withFluentProvider, withAriaLive, withReactStrictMode];
-export const globals = { [THEME_ID]: undefined }; // allow theme to be set by URL query param
+export const globals = { [THEME_ID]: undefined, [DIR_ID]: undefined, [STRICT_MODE_ID]: undefined }; // allow theme to be set by URL query param
+
+export default {
+  decorators,
+  globals,
+};

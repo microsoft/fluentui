@@ -6,6 +6,9 @@ const fixturesDir = path.join(__dirname, `__fixtures__/${PLUGIN_NAME}`);
 const defaultDependencyReplace = { replace: '@fluentui/react-components' };
 
 pluginTester({
+  babelOptions: {
+    presets: ['@babel/preset-react'],
+  },
   fixtures: fixturesDir,
   pluginOptions: {
     '@fluentui/react-button': defaultDependencyReplace,

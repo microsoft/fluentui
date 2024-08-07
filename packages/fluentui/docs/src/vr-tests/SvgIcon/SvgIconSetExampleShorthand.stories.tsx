@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { SvgIcon } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import SvgIconSetExampleShorthand from '../../examples/components/SvgIcon/Usage/SvgIconSetExample.shorthand';
@@ -6,7 +6,7 @@ import SvgIconSetExampleShorthand from '../../examples/components/SvgIcon/Usage/
 export default {
   component: SvgIcon,
   title: 'SvgIcon',
-} as ComponentMeta<typeof SvgIcon>;
+} as Meta<typeof SvgIcon>;
 
 const SvgIconSetExampleShorthandTeams = getThemeStoryVariant(SvgIconSetExampleShorthand, 'teamsV2');
 

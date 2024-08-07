@@ -15,7 +15,7 @@ test.describe('Accordion item', () => {
 
     element = page.locator('fluent-accordion-item');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     heading = page.locator(`[role="heading"]`);
 

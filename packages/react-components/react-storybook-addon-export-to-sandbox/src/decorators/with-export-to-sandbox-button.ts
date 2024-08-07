@@ -1,4 +1,4 @@
-import { useEffect } from '@storybook/addons';
+import { useEffect } from '@storybook/preview-api';
 import { addDemoActionButton } from '../sandbox-factory';
 
 import { StoryContext } from '../types';

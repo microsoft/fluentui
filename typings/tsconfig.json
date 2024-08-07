@@ -17,9 +17,6 @@
       "path": "./static-assets/tsconfig.json"
     },
     {
-      "path": "./storybook__addons/tsconfig.json"
-    },
-    {
       "path": "./ignore-not-found-export-webpack-plugin/tsconfig.json"
     },
     {

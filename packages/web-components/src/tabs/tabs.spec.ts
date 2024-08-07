@@ -27,7 +27,7 @@ test.describe('Tabs', () => {
 
     element = page.locator('fluent-tabs');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     tablist = element.locator('.tablist');
 

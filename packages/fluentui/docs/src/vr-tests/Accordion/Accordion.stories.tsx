@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Accordion } from '@fluentui/react-northstar';
 import AccordionDefaultBsize from '../../examples/components/Accordion/Performance/AccordionDefault.bsize';
 import AccordionExampleRtl from '../../examples/components/Accordion/Rtl/AccordionExample.rtl';
@@ -9,7 +9,7 @@ import AccordionPanelCustomContentExample from '../../examples/components/Accord
 import AccordionPanelCustomTitleExample from '../../examples/components/Accordion/Usage/AccordionPanelCustomTitleExample.shorthand';
 import AccordionDefaultExample from '../../examples/components/Accordion/Visual/AccordionExampleDefault.shorthand';
 
-export default { component: Accordion, title: 'Accordion' } as ComponentMeta<typeof Accordion>;
+export default { component: Accordion, title: 'Accordion' } as Meta<typeof Accordion>;
 
 export {
   AccordionDefaultBsize,

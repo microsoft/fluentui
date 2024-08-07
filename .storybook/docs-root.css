@@ -1,24 +1,26 @@
-#docs-root .sbdocs-content {
+#storybook-docs .sbdocs-content {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   max-width: 1200px;
 }
 
-#docs-root h1.sbdocs-title {
+#storybook-docs h1.sbdocs-title {
+  font-family: inherit;
   font-size: 44px;
   line-height: 60px;
   /* identical to box height, or 143% */
+  font-weight: 900;
   letter-spacing: -0.04em;
   color: #000000;
   margin-top: 49px;
 }
 
-#docs-root details {
+#storybook-docs details {
   position: relative;
   z-index: 99;
 }
 
-#docs-root .sbdocs-p {
+#storybook-docs .sbdocs:not(.sbdocs-preview) p {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
@@ -28,28 +30,28 @@
   margin-top: 24px;
 }
 
-#docs-root .sbdocs-wrapper {
+#storybook-docs .sbdocs-wrapper {
   background: white;
   min-height: auto;
 }
 
-#docs-root .sbdocs-img.featured-image {
+#storybook-docs .sbdocs-img.featured-image {
   max-width: 100%;
   margin: 48px 0;
   display: block;
 }
 
-#docs-root .sbdocs-img {
+#storybook-docs .sbdocs-img {
   border-radius: 24px;
 }
 
-#docs-root .sbdocs-hr {
+#storybook-docs .sbdocs:not(.sbdocs-preview) hr {
   margin: 48px 0;
   height: 0;
   border-top: 1px solid #ebebeb;
 }
 
-#docs-root .sbdocs-h2 {
+#storybook-docs .sbdocs h2 {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -62,12 +64,12 @@
   padding: 48px 0 0 0;
 }
 
-#docs-root .sbdocs-h2 code {
+#storybook-docs .sbdocs h2 code {
   border-radius: 4px;
   font-size: 20px;
 }
 
-#docs-root .sbdocs-h3 {
+#storybook-docs .sbdocs-h3 {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
@@ -77,20 +79,20 @@
   color: #000000;
 }
 
-#docs-root .sbdocs-h3 code {
+#storybook-docs .sbdocs-h3 code {
   border-radius: 3px;
   font-size: 16px;
 }
 
 /* Only apply to H3s inside of stories which have a parent with an ID */
-#docs-root [id] > .sbdocs-h3:before {
+#storybook-docs [id] > .sbdocs-h3:before {
   content: '';
   display: block;
   height: 40px;
   margin: -40px 0 0;
 }
 
-#docs-root .sbdocs-li {
+#storybook-docs .sbdocs:not(.sbdocs-preview) li {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 16px;
@@ -102,16 +104,16 @@
   margin-top: 8px;
 }
 
-#docs-root .sbdocs-ul {
+#storybook-docs .sbdocs:not(.sbdocs-preview) ul {
   margin: 12px 0;
 }
 
-#docs-root .sbdocs-ul .sbdocs-li {
+#storybook-docs .sbdocs-ul .sbdocs:not(.sbdocs-preview) li {
   list-style: none;
   position: relative;
 }
 
-#docs-root .sbdocs-ul .sbdocs-li::before {
+#storybook-docs .sbdocs-ul .sbdocs-li::before {
   position: absolute;
   content: '•';
   color: #8d8d8d;
@@ -119,11 +121,11 @@
   left: -15px;
 }
 
-#docs-root .sbdocs-ol .sbdocs-li::marker {
+#storybook-docs .sbdocs-ol .sbdocs-li::marker {
   color: #8d8d8d;
 }
 
-#docs-root .sbdocs-preview {
+#storybook-docs .sbdocs-preview {
   border-radius: 16px;
   background: var(--colorBrandBackgroundInverted, #fff);
   padding: 0;
@@ -131,33 +133,37 @@
   border: 1px solid var(--colorNeutralStroke1, #e1dfdd);
 }
 
-#docs-root .innerZoomElementWrapper {
+#storybook-docs .sbdocs .docs-story div[scale] {
+  height: auto !important;
+}
+
+#storybook-docs .innerZoomElementWrapper {
   padding: 30px;
 }
 
-#docs-root .sbdocs-preview > .os-host {
+#storybook-docs .sbdocs-preview > .os-host {
   display: none;
 }
 
-#docs-root span + .sbdocs .docblock-argstable tbody tr td button {
+#storybook-docs span + .sbdocs .docblock-argstable tbody tr td button {
   color: #0078d4;
   color: red;
 }
 
-#docs-root .docs-story + div {
+#storybook-docs .docs-story + div {
   background: #11100f;
 }
 
-#docs-root .sbdocs-content > div:last-child {
+#storybook-docs .sbdocs-content > div:last-child {
   margin-bottom: 96px;
 }
 
-#docs-root .docs-story > div {
+#storybook-docs .docs-story > div {
   padding: 0;
   background: none;
 }
 
-#docs-root .docs-story > div:last-child {
+#storybook-docs .docs-story > div:last-child {
   right: 31px;
   border-radius: 24px;
 }
@@ -179,22 +185,46 @@
   letter-spacing: -0.01em;
 }
 
-#docs-root a.sbdocs-a {
+#storybook-docs a.sbdocs-a {
   color: #0078d4;
   text-decoration: underline;
+}
+
+/* Styles for Github-flawored Markdown tables */
+#storybook-docs table:not(.docblock-argstable) {
+  margin: 16px 0px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0;
+  border-collapse: collapse;
+}
+#storybook-docs table:not(.docblock-argstable) tr {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#storybook-docs table:not(.docblock-argstable) th {
+  font-weight: bold;
+  color: rgb(51, 51, 51);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 13px;
+}
+
+#storybook-docs table:not(.docblock-argstable) td {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 13px;
 }
 
 /*  */
 /* Args Table */
 /*  */
 
-#docs-root .docblock-argstable tbody {
+#storybook-docs .docblock-argstable tbody {
   box-shadow: none;
   border-left: none;
   border-right: none;
 }
 
-#docs-root .docblock-argstable-head th {
+#storybook-docs .docblock-argstable-head th {
   letter-spacing: -0.01em;
   color: black;
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
@@ -204,30 +234,30 @@
   font-weight: 600;
 }
 
-#docs-root thead.docblock-argstable-head {
+#storybook-docs thead.docblock-argstable-head {
   border-bottom: 1px solid #edebe9;
 }
 
-#docs-root .docblock-argstable-body > tr > td:nth-child(4) {
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(4) {
   display: none;
 }
 
-#docs-root .docblock-argstable-head > tr > th:nth-child(4) {
+#storybook-docs .docblock-argstable-head > tr > th:nth-child(4) {
   display: none;
 }
 
-#docs-root .docblock-argstable tbody tr {
+#storybook-docs .docblock-argstable tbody tr {
   border: none;
 }
 
-#docs-root table.docblock-argstable tbody.docblock-argstable-body td,
-#docs-root .docblock-argstable th {
+#storybook-docs table.docblock-argstable tbody.docblock-argstable-body td,
+#storybook-docs .docblock-argstable th {
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 16px;
 }
 
-#docs-root .docblock-argstable tbody tr td:nth-child(1) span {
+#storybook-docs .docblock-argstable tbody tr td:nth-child(1) span {
   font-weight: normal;
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -237,20 +267,20 @@
   color: #616161;
 }
 
-#docs-root .docblock-argstable tbody tr td {
+#storybook-docs .docblock-argstable tbody tr td {
   vertical-align: top;
 }
 
-#docs-root .docblock-argstable-body > tr > td > div > div > button {
+#storybook-docs .docblock-argstable-body > tr > td > div > div > button {
   color: #0078d4;
   line-height: 21px;
 }
 
-#docs-root code,
-#docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
-#docs-root .css-16d4d7t {
+#storybook-docs code,
+#storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+#storybook-docs .css-16d4d7t {
   font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
   font-style: normal;
   font-weight: normal;
@@ -261,14 +291,14 @@
   -webkit-box-decoration-break: clone;
 }
 
-#docs-root code.sbdocs-code,
-#docs-root .sbdocs-p code,
-#docs-root .sbdocs-li code,
-#docs-root .docblock-argstable code,
-#docs-root .docblock-argstable tbody tr td:nth-child(3) > div > span,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
-#docs-root .css-16d4d7t {
+#storybook-docs code.sbdocs-code,
+#storybook-docs .sbdocs-p code,
+#storybook-docs .sbdocs-li code,
+#storybook-docs .docblock-argstable code,
+#storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
+#storybook-docs .css-16d4d7t {
   font-size: 14px;
   background: #f0f0f0;
   border-radius: 4px;
@@ -279,11 +309,11 @@
   line-height: 1.5;
 }
 
-#docs-root .docblock-argstable code {
+#storybook-docs .docblock-argstable code {
   white-space: normal;
 }
 
-#docs-root code {
+#storybook-docs code {
   padding: 0.1em 0.2em;
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
@@ -294,26 +324,26 @@
   width: auto !important;
 }
 
-#docs-root .sbdocs-preview .prismjs {
+#storybook-docs .sbdocs-preview .prismjs {
   overflow: hidden;
 }
 
-#docs-root .os-content .prismjs * {
+#storybook-docs .os-content .prismjs * {
   font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
   font-size: 14px;
   line-height: 1.4em;
 }
 
-#docs-root .sbdocs-preview .prismjs code {
+#storybook-docs .sbdocs-preview .prismjs code {
   color: white;
   background: #11100f;
   margin: 0;
   overflow-x: auto;
 }
 
-#docs-root .docblock-argstable-body td > div > p,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) p,
-#docs-root .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
+#storybook-docs .docblock-argstable-body td > div > p,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) p,
+#storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > span {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 16px;
@@ -322,15 +352,15 @@
   letter-spacing: -0.01em;
 }
 
-#docs-root .docblock-argstable tr > :nth-child(1) {
+#storybook-docs .docblock-argstable tr > :nth-child(1) {
   width: 4%;
 }
 
-#docs-root .docblock-argstable tr > :nth-child(2) {
+#storybook-docs .docblock-argstable tr > :nth-child(2) {
   width: 100%;
 }
 
-#docs-root .os-padding {
+#storybook-docs .os-padding {
   z-index: 0;
 }
 
@@ -380,6 +410,8 @@
 }
 
 body,
+body h1,
+body h2,
 body p,
 body ul,
 body ul li {

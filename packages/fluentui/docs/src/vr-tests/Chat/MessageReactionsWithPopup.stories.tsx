@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Chat } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import MessageReactionsWithPopup from '../../examples/components/Chat/Content/ChatExampleReactionGroupMeReacting.shorthand';
@@ -6,7 +6,7 @@ import MessageReactionsWithPopup from '../../examples/components/Chat/Content/Ch
 export default {
   component: Chat,
   title: 'Chat',
-} as ComponentMeta<typeof Chat>;
+} as Meta<typeof Chat>;
 
 const MessageReactionsWithPopupTeams = getThemeStoryVariant(MessageReactionsWithPopup, 'teamsV2');
 
