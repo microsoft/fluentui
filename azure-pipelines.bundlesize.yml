@@ -63,6 +63,6 @@ jobs:
           scriptType: bash
           scriptLocation: 'inlineScript'
           inlineScript: |
-            yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+            yarn monosize upload-report --branch=master --commit-sha $(Build.SourceVersion)
 
       - template: .devops/templates/cleanup.yml
