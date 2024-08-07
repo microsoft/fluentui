@@ -1,6 +1,6 @@
 import path from 'path';
 import { execSync } from 'child_process';
-import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
+import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot, offsetFromRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
 import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
@@ -22,14 +22,18 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 
   return () => {
     const root = workspaceRoot;
-    const { npmPackageName, componentName } = options;
+    const { npmPackageName, project, componentName } = options;
 
-    execSync(`yarn lage generate-api --to ${npmPackageName}`, {
+    execSync(`yarn nx run ${project}:generate-api`, {
       cwd: root,
       stdio: 'inherit',
     });
 
-    execSync(`yarn workspace ${npmPackageName} test -t ${componentName}`, {
+    // This is used only for integration testing purposes on CI as jest disables snapshot updates by default
+    const forceSnapshotUpdate = Boolean(process.env.__FORCE_SNAPSHOT_UPDATE__);
+    const testCmd = `yarn workspace ${npmPackageName} test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
+
+    execSync(testCmd, {
       cwd: root,
       stdio: 'inherit',
     });
@@ -82,6 +86,7 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
 
   const templateOptions = {
     ...options,
+    rootOffset: offsetFromRoot(joinPathFragments(sourceRoot, options.directory, options.componentName)),
     storiesTitle: createStoriesTitle(options),
     tmpl: '',
   };

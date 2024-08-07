@@ -5,11 +5,15 @@
   "implicitDependencies": [],
   "tags": ["react-northstar"],
   "targets": {
-    "build": {
+    "bundle": {
       "dependsOn": [
         {
           "projects": ["react-northstar"],
           "target": "build:info"
+        },
+        {
+          "projects": ["react-portal-compat-context"],
+          "target": "build"
         }
       ]
     }

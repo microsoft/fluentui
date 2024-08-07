@@ -114,7 +114,6 @@ export const styles = css`
     align-items: center;
     gap: 0 ${spacingHorizontalM};
     justify-items: start;
-    padding: ${spacingVerticalS} ${spacingHorizontalS};
     position: relative;
   }
 

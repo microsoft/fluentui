@@ -133,8 +133,8 @@ async function runMeasures(
     for (let i = 0; i < times; i++) {
       const page = await browser.openPage(url);
 
-      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
-      measures.push(measuresFromStep);
+      const measuresFromStep = await page.executeJavaScript(codeToExecute);
+      measures.push(measuresFromStep as ProfilerMeasureCycle);
       bar.tick();
 
       await page.close();
@@ -143,12 +143,12 @@ async function runMeasures(
     const page = await browser.openPage(url);
 
     // Empty run to skip slow first run
-    await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
+    await page.executeJavaScript(codeToExecute);
 
     for (let i = 0; i < times; i++) {
-      const measuresFromStep = await page.executeJavaScript<ProfilerMeasureCycle>(codeToExecute);
+      const measuresFromStep = await page.executeJavaScript(codeToExecute);
 
-      measures.push(measuresFromStep);
+      measures.push(measuresFromStep as ProfilerMeasureCycle);
       bar.tick();
     }
 

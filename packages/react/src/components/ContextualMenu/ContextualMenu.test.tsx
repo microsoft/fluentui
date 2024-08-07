@@ -570,6 +570,54 @@ describe('ContextualMenu', () => {
     expect(document.querySelector('.is-expanded')).toBeTruthy();
   });
 
+  it('toggles a split button', () => {
+    const onPrimaryClick = jest.fn();
+    const onItemClick = jest.fn();
+    const items: IContextualMenuItem[] = [
+      {
+        text: 'TestText 1',
+        key: 'TestKey1',
+        split: true,
+        canCheck: true,
+        onClick: onPrimaryClick,
+        subMenuProps: {
+          items: [
+            {
+              text: 'SubmenuText 1',
+              key: 'SubmenuKey1',
+              className: 'SubMenuClass',
+            },
+          ],
+        },
+      },
+    ];
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <ContextualMenu items={items} onItemClick={onItemClick} />,
+      );
+    });
+
+    const menuItem = document.getElementsByTagName('button')[0] as HTMLButtonElement;
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(menuItem);
+    });
+
+    const checkIcon = document.querySelector('.ms-ContextualMenu-checkmarkIcon') as HTMLElement;
+
+    expect(checkIcon).toBeTruthy();
+    expect(onPrimaryClick).toHaveBeenCalled();
+    onPrimaryClick.mockClear();
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.Simulate.click(checkIcon);
+    });
+
+    expect(onPrimaryClick).toHaveBeenCalled();
+    expect(onItemClick).not.toHaveBeenCalled();
+  });
+
   it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {

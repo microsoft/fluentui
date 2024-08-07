@@ -2,12 +2,12 @@ const { getAffectedPackages } = require('@fluentui/scripts-monorepo');
 const yargs = require('yargs');
 
 const args = yargs
-  .option('package', {
+  .option('project', {
     alias: 'p',
     type: 'array',
     // eslint-disable-next-line @typescript-eslint/naming-convention
     string: true,
-    description: 'Package to check modified files from',
+    description: 'project to check modified files from',
     demandOption: false,
   })
   .option('base', {
@@ -15,15 +15,16 @@ const args = yargs
     description: 'Base of the current branch (usually main or master)',
     default: 'origin/master',
   })
+  .strict(true)
   .version(false).argv;
 
 const isPackageAffected = () => {
-  const { package: packages, base } = args;
+  const { project: projects, base } = args;
   const affectedPackages = getAffectedPackages(base);
 
-  if (packages) {
-    for (const pkg of packages) {
-      if (affectedPackages.has(pkg)) {
+  if (projects) {
+    for (const pkg of projects) {
+      if (affectedPackages.has(normalizeProjectName(pkg))) {
         return true;
       }
     }
@@ -32,6 +33,10 @@ const isPackageAffected = () => {
 
   return affectedPackages;
 };
+
+function normalizeProjectName(/** @type {string} */ value) {
+  return value.replace('@fluentui/', '');
+}
 
 function main() {
   /**

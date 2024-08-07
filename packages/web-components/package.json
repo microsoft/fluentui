@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.42",
+  "version": "3.0.0-beta.54",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -216,6 +216,7 @@
     "./dist/esm/switch/define.js",
     "./dist/esm/tab/define.js",
     "./dist/esm/tabs/define.js",
+    "./dist/esm/tablist/define.js",
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
     "./dist/esm/text-input/define.js",

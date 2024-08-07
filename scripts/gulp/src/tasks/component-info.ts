@@ -1,11 +1,12 @@
+import path from 'path';
+import { Transform } from 'stream';
+
 import chalk from 'chalk';
+import del from 'del';
 import gulp from 'gulp';
 import cache from 'gulp-cache';
 import { log } from 'gulp-util';
-import del from 'del';
-import path from 'path';
 import readPkgUp from 'read-pkg-up';
-import { Transform } from 'stream';
 
 import config from '../config';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';

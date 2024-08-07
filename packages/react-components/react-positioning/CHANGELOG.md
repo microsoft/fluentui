@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Mon, 01 Jul 2024 20:30:27 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Jul 2024 18:47:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.7)
+
+Tue, 30 Jul 2024 18:47:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.6..@fluentui/react-positioning_v9.15.7)
+
+### Patches
+
+- fix: improve arrow styles implementation ([PR #32092](https://github.com/microsoft/fluentui/pull/32092) by olfedias@microsoft.com)
+
+## [9.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.6)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.5..@fluentui/react-positioning_v9.15.6)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+
+## [9.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.5)
+
+Mon, 15 Jul 2024 17:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.15.4..@fluentui/react-positioning_v9.15.5)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+- fix(react-positioning): export fallbackPositions prop ([PR #31891](https://github.com/microsoft/fluentui/pull/31891) by vkozlova@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.19.1 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
+- Bump @fluentui/react-utilities to v9.18.12 ([PR #31998](https://github.com/microsoft/fluentui/pull/31998) by beachball)
 
 ## [9.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.15.4)
 

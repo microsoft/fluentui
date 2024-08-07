@@ -25,6 +25,7 @@ export interface FluentParameters extends Parameters {
   dir?: 'ltr' | 'rtl';
   fluentTheme?: ThemeIds;
   mode?: 'default' | 'vr-test';
+  reactStorybookAddon?: { disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'] };
 }
 
 export function useGlobals(): [FluentGlobals, (newGlobals: FluentGlobals) => void] {

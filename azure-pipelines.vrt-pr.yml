@@ -8,7 +8,7 @@ trigger: none
 variables:
   - ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:
       - name: sinceArg
-        value: --since $(targetBranch)
+        value: --base $(targetBranch)
 
   - template: .devops/templates/variables.yml
 
@@ -26,73 +26,15 @@ jobs:
         fetchDepth: 0
 
       - template: .devops/templates/tools.yml
-      - template: download-vr-cli.yml
-
-      - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
-        env:
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: webcomponents
-          vrTestPackageName: '@fluentui/vr-tests-web-components'
+          vrTestPackageName: 'vr-tests-web-components'
           vrTestPackagePath: 'apps/vr-tests-web-components'
-
-      - powershell: |
-          $url = "https://dev.azure.com/uifabric/fabricpublic/_apis/build/builds?definitions=$env:BASELINE_PIPELINE_ID&statusFilter=completed&resultFilter=succeeded&queryOrder=finishTimeDescending&`$top=1"
-          Write-Host "Looking up latest official build via url: $url"
-          $pipelineBuildInfo = Invoke-RestMethod -Uri $url -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-          Write-Host "Response: $pipelineBuildInfo"
-          [int]$latestBuildId = $pipelineBuildInfo.value.id
-          Write-Host "Setting variable LatestBuildId=$latestBuildId"
-          Write-Host "##vso[task.setvariable variable=LatestBuildId]$latestBuildId"
-        name: GetLatestGreenCIBuild
-        env:
-          SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-          # TODO: When web-components-v3 branch is merged with master,
-          # BASELINE-PIPELINE-ID-WEBCOMPONENTS should be changed to simply BASELINE-PIPELINE-ID.
-          BASELINE_PIPELINE_ID: $(BASELINE-PIPELINE-ID-WEBCOMPONENTS)
-        condition: eq(variables['vrTestSkip'], 'no')
-
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 214 --groupName $(pipelineName) --locationPrefix 'FluentUI-web-components' --locationPostfix 'vrscreenshotwebcomponents' --pipelineId $(pipelineId)  --clientName 'fluentui-web-components-v3' --threshold '0.04' --cumThreshold '1'
-        displayName: 'Run fluentui-screenshotdiff'
-        env:
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL)
-        condition: eq(variables['vrTestSkip'], 'no')
+          locationPrefix: 'FluentUI-web-components'
+          locationPostfix: 'vrscreenshotwebcomponents'
+          clientName: 'fluentui-web-components-v3'
 
   - job: VisualRegressionTest_V9
     variables:
@@ -107,57 +49,14 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
-      - template: download-vr-cli.yml
-
-      - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
-        env:
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
-
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
-          vrTestPackageName: '@fluentui/vr-tests-react-components'
+          vrTestPackageName: 'vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
-
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId) --clientName 'fluentuiv9' --threshold '0.04' --cumThreshold '1'
-        displayName: 'Run fluentui-screenshotdiff'
-        env:
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL)
-        condition: eq(variables['vrTestSkip'], 'no')
+          locationPrefix: 'fluentuiv9'
+          locationPostfix: 'vrscreenshotv9'
+          clientName: 'fluentuiv9'
 
   - job: VisualRegressionTest_V8
     variables:
@@ -171,57 +70,14 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
-      - template: download-vr-cli.yml
-
-      - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
-        env:
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
-
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
-          vrTestPackageName: '@fluentui/vr-tests'
+          vrTestPackageName: 'vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
-
-      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType pr --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)  --clientName 'fluentuiv8' --threshold '0.04' --cumThreshold '1'
-        displayName: 'Run fluentui-screenshotdiff'
-        env:
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL)
-        condition: eq(variables['vrTestSkip'], 'no')
+          locationPrefix: 'fluentuiv8'
+          locationPostfix: 'vrscreenshotv8'
+          clientName: 'fluentuiv8'
 
   - job: VisualRegressionTest_V0
     variables:
@@ -236,53 +92,11 @@ jobs:
 
       - template: .devops/templates/tools.yml
 
-      - template: download-vr-cli.yml
-
-      - bash: |
-          postPolicy="true";
-          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
-            parsedResponse=${response/*"access_token"/}
-            token=${parsedResponse:3:${#parsedResponse}-5}
-            curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
-            --header 'Authorization: Bearer '"$token" \
-            --header 'Content-Type: application/json' \
-            --data-raw '	{
-            "organization": "uifabric",
-            "projectName": "fabricpublic",
-            "prId": $(System.PullRequest.PullRequestNumber),
-            "commitId": "$(Build.SourceVersion)",
-              "generate":true,
-              "clientType":"FLUENTUI",
-              "blockingPipeline":{
-              },
-              "nonBlockingPipeline":{
-                "$(pipelineId)": {
-                  "pipelineStatus": "PENDING",
-                  "pipelineName": "$(pipelineName)"
-                }
-              },
-              "postPolicy": '${postPolicy}',
-              "policyType": "OPTIONAL"
-            }'
-        displayName: 'Call policy State Api'
-        env:
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
-
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
-          vrTestPackageName: '@fluentui/docs'
+          vrTestPackageName: 'docs'
           vrTestPackagePath: 'packages/fluentui/docs'
-
-      - bash: vr-app run-diff --buildType pr --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --ciDefinitionId 205 --groupName $(pipelineName) --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId) --clientName 'FluentUIV0' --threshold '0.04' --cumThreshold '1'
-        displayName: 'Run fluentui-screenshotdiff'
-        env:
-          API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
-          VR_APP_API_URL: $(VR_APP_API_URL)
-        condition: eq(variables['vrTestSkip'], 'no')
+          locationPrefix: 'FluentUI-v0'
+          locationPostfix: 'vrscreenshotv0'
+          clientName: 'FluentUIV0'

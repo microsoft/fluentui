@@ -2,6 +2,10 @@ import * as React from 'react';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
 import { IButtonProps } from '@fluentui/react/lib/Button';
 
+export default {
+  title: 'Components/CommandBar',
+};
+
 const overflowProps: IButtonProps = { ariaLabel: 'More commands' };
 
 export const CommandBarBasicExample: React.FunctionComponent = () => {

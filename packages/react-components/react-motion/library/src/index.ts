@@ -10,6 +10,8 @@ export { createPresenceComponentVariant } from './factories/createPresenceCompon
 
 export { PresenceGroup } from './components/PresenceGroup';
 
+export { presenceMotionSlot, type PresenceMotionSlotProps } from './slots/presenceMotionSlot';
+
 export type {
   AtomMotion,
   AtomMotionFn,

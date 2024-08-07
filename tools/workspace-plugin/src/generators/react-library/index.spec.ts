@@ -155,9 +155,10 @@ describe('react-library generator', () => {
     expect(readJson(tree, `${library.root}/.babelrc.json`)).toEqual(
       expect.objectContaining({ extends: '../../../../.babelrc-v9.json' }),
     );
-    expect(tree.read(`${library.root}/jest.config.js`, 'utf-8')).toEqual(
-      expect.stringContaining(`displayName: 'react-one-preview',`),
-    );
+
+    const jestConfig = tree.read(`${library.root}/jest.config.js`, 'utf-8');
+    expect(jestConfig).toEqual(expect.stringContaining(`displayName: 'react-one-preview',`));
+    expect(jestConfig).toEqual(expect.stringContaining(`'^.+\\\\.tsx?$': ['@swc/jest', swcJestConfig],`));
     expect(tree.read(`${library.root}/README.md`, 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`
       # @proj/react-one-preview
@@ -250,12 +251,9 @@ describe('react-library generator', () => {
       ['@proj/react-one-preview']: ['packages/react-components/react-one-preview/library/src/index.ts'],
       ['@proj/react-one-preview-stories']: ['packages/react-components/react-one-preview/stories/src/index.ts'],
     };
-    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
-    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(
-      expect.objectContaining(expectedPathAlias),
-    );
+
+    expect(readJson(tree, `tsconfig.base.json`).compilerOptions.paths).toEqual(expectedPathAlias);
+    expect(readJson(tree, `tsconfig.base.all.json`).compilerOptions.paths).toEqual(expectedPathAlias);
 
     expect(tree.read('.github/CODEOWNERS', 'utf-8')).toEqual(
       expect.stringContaining(stripIndents`

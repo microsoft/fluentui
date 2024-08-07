@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-motion-preview": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",

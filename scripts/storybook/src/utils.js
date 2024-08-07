@@ -239,11 +239,11 @@ function getPackageStoriesGlob(options) {
   const packages = Object.keys(dependencies);
 
   const result = packages.reduce((acc, pkgName) => {
-    if (!(pkgName.startsWith('@fluentui/') && !excludeStoriesInsertionFromPackages.includes(pkgName))) {
+    const projectName = normalizeProjectName(pkgName);
+
+    if (!pkgName.startsWith('@fluentui/') || excludeStoriesInsertionFromPackages.includes(projectName)) {
       return acc;
     }
-
-    const projectName = normalizeProjectName(pkgName);
 
     const pkgMetadata = getMetadata(projectName, projects, { throwIfNotFound: false });
 

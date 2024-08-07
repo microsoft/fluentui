@@ -11,7 +11,7 @@ import {
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
-export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
+export const dialogSurfaceClassNames: SlotClassNames<Omit<DialogSurfaceSlots, 'backdropMotion'>> = {
   root: 'fui-DialogSurface',
   backdrop: 'fui-DialogSurface__backdrop',
 };

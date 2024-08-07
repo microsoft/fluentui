@@ -11,7 +11,7 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "bundle": {
@@ -45,7 +45,19 @@
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
+    "test-integration": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
     "test-ssr": {
+      "cache": true
+    },
+    "test-vr": {
+      "dependsOn": ["build-storybook"],
+      "cache": true
+    },
+    "test-perf": {
+      "dependsOn": [],
       "cache": true
     },
     "e2e": {
@@ -64,7 +76,7 @@
       ]
     },
     "verify-packaging": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "@nx/jest:jest": {
