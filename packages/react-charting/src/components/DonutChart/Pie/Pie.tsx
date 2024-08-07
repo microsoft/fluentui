@@ -5,7 +5,7 @@ import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 import { classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Pie.styles';
-import { darkenLightenColor, getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
+import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 
 const getClassNames = classNamesFunction<IPieStyleProps, IPieStyles>();
 const TEXT_PADDING: number = 5;

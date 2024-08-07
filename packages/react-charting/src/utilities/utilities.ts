@@ -40,8 +40,6 @@ import {
   IVerticalStackedBarDataPoint,
   IVerticalBarChartDataPoint,
   IHorizontalBarChartWithAxisDataPoint,
-  DataVizPalette,
-  getColorFromToken,
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
@@ -1386,49 +1384,3 @@ export const formatDate = (date: Date, useUTC?: boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
   return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };
-
-/**
- * Darken or lighten a color
- * @param color - The color to darken or lighten as hex string
- * @param amount - The amount to darken or lighten (negative values darken, positive values lighten)
- * @returns The darkened or lightened color as hex string
- */
-export function darkenLightenColor(color: string, amount: number) {
-  // Remove '#' if present
-  const col = color.replace(/^#/, '');
-
-  // Convert to RGB
-  const num = parseInt(col, 16);
-  // eslint-disable-next-line no-bitwise
-  let r = (num >> 16) + amount;
-  // eslint-disable-next-line no-bitwise
-  let g = ((num >> 8) & 0x00ff) + amount;
-  // eslint-disable-next-line no-bitwise
-  let b = (num & 0x0000ff) + amount;
-
-  // Ensure within 0-255 range
-  r = Math.min(Math.max(0, r), 255);
-  g = Math.min(Math.max(0, g), 255);
-  b = Math.min(Math.max(0, b), 255);
-
-  // Convert back to hex
-  // eslint-disable-next-line no-bitwise
-  return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-}
-
-
-type Palette = { [key: string]: string };
-
-/**
- * Gets a random color from a color palette
- * @param palette - palette to pick from. (@default DataVizPalette)
- * @returns color as hex string
-*/
-export function getRandomColorFromPalette(palette: Palette = DataVizPalette) {
-  const colors = Object.keys(palette).filter((key) => key.startsWith('color'));
-  const min = 1;
-  const max = colors.length; // 40 for DatavizPalette
-
-  const colorNum = Math.floor(Math.random() * (max - min + 1)) + min;
-  return getColorFromToken(palette[`color${colorNum}`]);
-}
