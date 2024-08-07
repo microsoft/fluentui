@@ -64,6 +64,24 @@ export class BaseRatingDisplay extends FASTElement {
   }
 
   /**
+   * Gets the selected value
+   *
+   * @internal
+   */
+  public getSelectedValue(): number {
+    return Math.round((this.value ?? 0) * 2) / 2;
+  }
+
+  /**
+   * Gets the maximum icons to render
+   *
+   * @internal
+   */
+  public getMaxIcons(): number {
+    return (this.max ?? 5) * 2;
+  }
+
+  /**
    * Generates the icon SVG elements based on the "max" attribute.
    *
    * @internal
@@ -72,11 +90,10 @@ export class BaseRatingDisplay extends FASTElement {
     let htmlString: string = '';
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
-    const selectedValue: number = Math.round((this.value ?? 0) * 2) / 2;
+    const selectedValue: number = this.getSelectedValue();
 
     // Render the icons based on the "max" attribute. If "max" is not set, render 5 icons.
-    // If "compact" is true, only render one filled icon.
-    for (let i: number = 0; i < (this.max ?? 5) * 2; i++) {
+    for (let i: number = 0; i < this.getMaxIcons(); i++) {
       const iconValue: number = (i + 1) / 2;
 
       htmlString += `<svg aria-hidden="true" ${
@@ -150,26 +167,20 @@ export class RatingDisplay extends BaseRatingDisplay {
   public compact: boolean = false;
 
   /**
-   * Generates the icon SVG elements based on the "max" and "compact" attribute.
+   * Overrides the selected value and returns 1 if compact is true.
    *
-   * @internal
+   * @override
    */
-  public override generateIcons(): string {
-    let htmlString: string = '';
+  public override getSelectedValue(): number {
+    return Math.round((this.compact ? 1 : this.value ?? 0) * 2) / 2;
+  }
 
-    // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
-    const selectedValue: number = Math.round((this.compact ? 1 : this.value ?? 0) * 2) / 2;
-
-    // Render the icons based on the "max" attribute. If "max" is not set, render 5 icons.
-    // If "compact" is true, only render one filled icon.
-    for (let i: number = 0; i < (this.compact ? 1 : this.max ?? 5) * 2; i++) {
-      const iconValue: number = (i + 1) / 2;
-
-      htmlString += `<svg aria-hidden="true" ${
-        iconValue === selectedValue ? 'selected' : ''
-      }><use href="#star"></use></svg>`;
-    }
-
-    return htmlString;
+  /**
+   * Overrides the maximum icons and returns a max of 1 if compact is true.
+   *
+   * @override
+   */
+  public override getMaxIcons(): number {
+    return (this.compact ? 1 : this.max ?? 5) * 2;
   }
 }
