@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: do not require ref forwarding",
-  "packageName": "@fluentui/react-dialog",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

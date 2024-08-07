@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 05 Aug 2024 22:33:01 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.9)
+
+Tue, 06 Aug 2024 21:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.8..@fluentui/react-components_v9.54.9)
+
+### Minor changes
+
+- `@fluentui/react-toolbar`
+  - feat: Add transparent as an option for the appearance prop in ToolbarButton ([PR #32205](https://github.com/microsoft/fluentui/pull/32205) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: Card does not override specified focusMode based on event listeners ([PR #32200](https://github.com/microsoft/fluentui/pull/32200) by sarah.higley@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: do not require ref forwarding ([PR #32095](https://github.com/microsoft/fluentui/pull/32095) by olfedias@microsoft.com)
+- `@fluentui/react-message-bar`
+  - Fix undefined reference in older browsers in useMessageBarReflow ([PR #32238](https://github.com/microsoft/fluentui/pull/32238) by miclo@microsoft.com)
+- `@fluentui/react-tabs`
+  - ignore ref for tab reserved space content slot ([PR #31775](https://github.com/microsoft/fluentui/pull/31775) by kirpadv@gmail.com)
+- `@fluentui/react-tree`
+  - chore: improve ImmutableSet and ImmutableMap internal implementation ([PR #32167](https://github.com/microsoft/fluentui/pull/32167) by bernardo.sunderhus@gmail.com)
 
 ## [9.54.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.8)
 

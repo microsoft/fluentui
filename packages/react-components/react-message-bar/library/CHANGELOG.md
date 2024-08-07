@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-message-bar
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.7)
+
+Tue, 06 Aug 2024 21:40:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar_v9.2.6..@fluentui/react-message-bar_v9.2.7)
+
+### Patches
+
+- Fix undefined reference in older browsers in useMessageBarReflow ([PR #32238](https://github.com/microsoft/fluentui/pull/32238) by miclo@microsoft.com)
 
 ## [9.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar_v9.2.6)
 
