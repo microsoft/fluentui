@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 06 Aug 2024 21:40:43 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2024 12:31:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.10)
+
+Wed, 07 Aug 2024 12:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.9..@fluentui/react-components_v9.54.10)
+
+### Patches
+
+- `@fluentui/react-toolbar`
+  - fix: hardcode size of `ToolbarButton` ([PR #32185](https://github.com/microsoft/fluentui/pull/32185) by olfedias@microsoft.com)
 
 ## [9.54.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.9)
 
