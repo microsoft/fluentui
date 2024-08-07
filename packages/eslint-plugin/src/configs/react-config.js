@@ -28,6 +28,7 @@ module.exports = {
      */
     '@griffel/hook-naming': 'error',
     '@griffel/no-shorthands': 'error',
+    '@griffel/pseudo-element-naming': 'error',
     '@griffel/styles-file': 'error',
     'no-restricted-globals': restrictedGlobals,
     /**
