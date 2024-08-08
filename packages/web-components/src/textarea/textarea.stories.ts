@@ -31,7 +31,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
       x => x.label,
       html`<fluent-label slot="label" ?required="${x => x.required}">${x => x.label}</fluent-label>`,
     )}
-    ${x => x.defaultContent ?? ''}
+    ${x => x.storyContent ?? ''}
   </fluent-textarea>
 `;
 
@@ -42,7 +42,7 @@ export default {
       description: 'Label of the control',
       control: 'text',
     },
-    defaultContent: {
+    storyContent: {
       description: 'Content inside the component',
       control: 'text',
     },
@@ -278,7 +278,7 @@ export const Disabled: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 Disabled.args = {
   disabled: true,
   resize: TextAreaResize.both,
-  defaultContent: 'This textarea is disabled',
+  storyContent: 'This textarea is disabled',
 };
 
 export const Required: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
@@ -294,7 +294,7 @@ export const ReadOnly: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fl
 ReadOnly.args = {
   readOnly: true,
   resize: TextAreaResize.both,
-  defaultContent: 'Some content',
+  storyContent: 'Some content',
 };
 
 export const WithHTMLCode: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
