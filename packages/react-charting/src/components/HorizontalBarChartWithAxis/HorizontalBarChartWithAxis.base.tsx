@@ -164,7 +164,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         getAxisData={this._getAxisData}
         onChartMouseLeave={this._handleChartMouseLeave}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
             <>
@@ -440,7 +439,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createNumericBars(
     containerHeight: number,
     containerWidth: number,
@@ -470,29 +468,29 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      let color: string;
+      let startColor: string;
       if (useSingleColor) {
         //if useSingle color , then check if user has given a palette or not
         // and pick the first color from that or else from our paltette.
-        color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+        startColor = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
       } else {
-        color = this.props.colors
+        startColor = this.props.colors
           ? this._createColors()(point.x)
           : getNextColor(index, 0, this.props.theme?.isInverted);
       }
 
-      color = point.color && !useSingleColor ? point.color : color;
-      let color2 = color;
+      startColor = point.color && !useSingleColor ? point.color : startColor;
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
         const pointIndex = Math.max(this._points.findIndex((item) => item === point), 0);
-        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
-          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
-          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+          startColor = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          endColor = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
         }
-        this._points[pointIndex].color = color;
+        this._points[pointIndex].color = startColor;
       }
 
       return (
@@ -500,8 +498,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${point.y}`} >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -522,14 +520,14 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             }}
             rx={this.props.roundCorners ? 3 : 0}
             onClick={point.onClick}
-            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             aria-labelledby={`toolTip${this._calloutId}`}
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, color)}
+            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y})` : color}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y})` : startColor}
           />
         </React.Fragment>
       );
@@ -571,7 +569,6 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     }
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createStringBars(
     containerHeight: number,
     containerWidth: number,
@@ -585,29 +582,29 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       if (barHeight < 1) {
         return <React.Fragment key={point.x}> </React.Fragment>;
       }
-      let color: string;
+      let startColor: string;
       if (useSingleColor) {
         //if useSingle color , then check if user has given a palette or not
         // and pick the first color from that or else from our paltette.
-        color = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
+        startColor = this.props.colors ? this._createColors()(1) : getNextColor(1, 0, this.props.theme?.isInverted);
       } else {
-        color = this.props.colors
+        startColor = this.props.colors
           ? this._createColors()(point.x)
           : getNextColor(index, 0, this.props.theme?.isInverted);
       }
 
-      color = point.color && !useSingleColor ? point.color : color;
-      let color2 = color;
+      startColor = point.color && !useSingleColor ? point.color : startColor;
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
         const pointIndex = this._points.findIndex((item) => item === point);
-        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
-          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
-          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+          startColor = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          endColor = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
         }
-        this._points[pointIndex].color = color;
+        this._points[pointIndex].color = startColor;
       }
 
       return (
@@ -615,8 +612,8 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${point.x}`} >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -639,12 +636,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
               this._refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
             data-is-focusable={true}
-            onFocus={this._onBarFocus.bind(this, point, index, color)}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.x})` : color}
+            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.x})` : startColor}
           />
         </React.Fragment>
       );

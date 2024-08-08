@@ -239,7 +239,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             xAxisOuterPadding: this._xAxisOuterPadding,
           })}
           /* eslint-disable react/jsx-no-bind */
-          // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
             return (
               <>
@@ -603,7 +602,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },
@@ -859,13 +858,13 @@ export class VerticalStackedBarChartBase extends React.Component<
       }
 
       const singleBar = barsToDisplay.map((point: IVSChartDataPoint, index: number) => {
-        let color = point.color ? point.color : this._colors[index];
-        let color2 = color;
+        let startColor = point.color ? point.color : this._colors[index];
+        let endColor = startColor;
 
         if (this.props.enableGradient) {
-          color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-          color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
-          singleChartData.chartData[index].color = color;
+          startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+          endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+          singleChartData.chartData[index].color = startColor;
         }
 
         const ref: IRefArrayData = {};
@@ -873,16 +872,16 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight: shouldHighlight,
+          shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
           'data-is-focusable': !this.props.hideTooltip && shouldHighlight,
           'aria-label': this._getAriaLabel(singleChartData, point),
-          onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
-          onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
+          onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
+          onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, startColor),
           onMouseLeave: this._handleMouseOut,
-          onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, ref),
+          onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, startColor, ref),
           onBlur: this._handleMouseOut,
           onClick: this._onClick.bind(this, point),
           role: 'img',
@@ -901,9 +900,15 @@ export class VerticalStackedBarChartBase extends React.Component<
             <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
               {this.props.enableGradient && (
                 <defs>
-                  <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
-                    <stop offset="0" stopColor={color} />
-                    <stop offset="100%" stopColor={color2} />
+                  <linearGradient
+                    id={`gradient_${index}_${indexNumber}_${endColor}`}
+                    x1="0%"
+                    y1="100%"
+                    x2="0%"
+                    y2="0%"
+                  >
+                    <stop offset="0" stopColor={startColor} />
+                    <stop offset="100%" stopColor={endColor} />
                   </linearGradient>
                 </defs>
               )}
@@ -918,7 +923,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                   h ${-this._barWidth}
                   z
                 `}
-                fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
+                fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${endColor})` : startColor}
                 rx={this.props.roundCorners ? 3 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
@@ -934,9 +939,9 @@ export class VerticalStackedBarChartBase extends React.Component<
           <React.Fragment key={index + indexNumber}>
             {this.props.enableGradient && (
               <defs>
-                <linearGradient id={`gradient_${index}_${indexNumber}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
-                  <stop offset="0" stopColor={color} />
-                  <stop offset="100%" stopColor={color2} />
+                <linearGradient id={`gradient_${index}_${indexNumber}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                  <stop offset="0" stopColor={startColor} />
+                  <stop offset="100%" stopColor={endColor} />
                 </linearGradient>
               </defs>
             )}
@@ -946,7 +951,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               y={yPoint}
               width={this._barWidth}
               height={barHeight}
-              fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${color2})` : color}
+              fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${endColor})` : startColor}
               rx={this.props.roundCorners ? 3 : 0}
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}

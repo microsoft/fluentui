@@ -27,7 +27,7 @@ export interface IGaugeChartSegment {
   /**
    * Gradient color of the segment
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * Accessibility data for the segment

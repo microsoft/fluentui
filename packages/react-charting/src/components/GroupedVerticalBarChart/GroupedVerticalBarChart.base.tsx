@@ -204,7 +204,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
         })}
         barwidth={this._barWidth}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={() => {
           return <g>{this._groupedVerticalBarGraph}</g>;
         }}
@@ -394,13 +393,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
       // use the following addend.
       const xPoint = xScale1(datasetKey) + (xScale1.bandwidth() - this._barWidth) / 2;
       const yPoint = Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0);
-      let color = pointData.color ? pointData.color : getNextColor(index, this.props.theme?.isInverted);
-      let color2 = color;
+      let startColor = pointData.color ? pointData.color : getNextColor(index, this.props.theme?.isInverted);
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
-        color = pointData.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = pointData.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
-        pointData.color = color;
+        startColor = pointData.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = pointData.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        pointData.color = startColor;
       }
 
       // Not rendering data with 0.
@@ -410,11 +409,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
             {this.props.enableGradient && (
               <defs>
                 <linearGradient
-                  id={`gradient_${index}_${singleSet.indexNum}_${color2}`}
+                  id={`gradient_${index}_${singleSet.indexNum}_${endColor}`}
                   x1="0%" y1="100%" x2="0%" y2="0%"
                 >
-                  <stop offset="0" stopColor={color} />
-                  <stop offset="100%" stopColor={color2} />
+                  <stop offset="0" stopColor={startColor} />
+                  <stop offset="100%" stopColor={endColor} />
                 </linearGradient>
               </defs>
             )}
@@ -431,7 +430,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
               ref={(e: SVGRectElement | null) => {
                 this._refCallback(e!, pointData.legend, refIndexNumber);
               }}
-              fill={this.props.enableGradient ? `url(#gradient_${index}_${singleSet.indexNum}_${color2})` : color}
+              fill={this.props.enableGradient
+                ? `url(#gradient_${index}_${singleSet.indexNum}_${endColor})`
+                : startColor
+              }
               rx={this.props.roundCorners ? 3 : 0}
               onMouseOver={this._onBarHover.bind(this, pointData, singleSet)}
               onMouseMove={this._onBarHover.bind(this, pointData, singleSet)}
@@ -500,9 +502,10 @@ export class GroupedVerticalBarChartBase extends React.Component<
       const singleDatasetPointForBars: any = {};
       const singleDataSeries: IGVBarChartSeriesPoint[] = [];
 
-      point.series.forEach((seriesPoint: IGVBarChartSeriesPoint, index2) => {
+      point.series.forEach((seriesPoint: IGVBarChartSeriesPoint, seriesIndex) => {
         if(this.props.enableGradient) {
-          seriesPoint.color = seriesPoint.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+          seriesPoint.color = seriesPoint.gradient?.[0]
+            || getNextGradient(seriesIndex, 0, this.props.theme?.isInverted)[0];
         }
         singleDatasetPoint[seriesPoint.key] = seriesPoint.data;
         singleDatasetPointForBars[seriesPoint.key] = {
@@ -600,7 +603,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         }
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },

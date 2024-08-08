@@ -138,7 +138,7 @@ export interface IChartDataPoint {
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * placeholder data point
@@ -193,7 +193,7 @@ export interface IVerticalBarChartDataPoint {
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -253,7 +253,7 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -584,7 +584,7 @@ export interface IVSChartDataPoint {
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -675,7 +675,7 @@ export interface IGVBarChartSeriesPoint {
    * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
    * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
    */
-  gradient?: string[];
+  gradient?: [string, string];
 
   /**
    * Legend text in the chart

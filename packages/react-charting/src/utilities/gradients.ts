@@ -35,7 +35,7 @@ export const DataVizGradientPalette = {
  * Index 0 - Default gradient for light theme,
  * Index 1 - gradient for dark theme
  */
-type GradientPalette = { [key: string]: string[][] };
+type GradientPalette = { [key: string]: [string, string][] };
 
 const defaultGradientPalette: GradientPalette = {
   '1': [
@@ -116,7 +116,7 @@ const Gradients: { [key: string]: GradientPalette } = {
 const DEFAULT_COLORS = Object.values(defaultGradientPalette);
 const TOKENS = Object.values(DataVizGradientPalette);
 
-const getThemeSpecificGradient = (gradients: string[][], isDarkTheme: boolean): string[] => {
+const getThemeSpecificGradient = (gradients: [string, string][], isDarkTheme: boolean): [string, string] => {
   if (gradients.length === 0) {
     return ['', ''];
   }
@@ -130,12 +130,12 @@ const getThemeSpecificGradient = (gradients: string[][], isDarkTheme: boolean): 
   return gradients[0];
 };
 
-export const getNextGradient = (index: number, offset: number = 0, isDarkTheme: boolean = false): string[] => {
+export const getNextGradient = (index: number, offset: number = 0, isDarkTheme: boolean = false): [string, string] => {
   const gradients = DEFAULT_COLORS[(index + offset) % DEFAULT_COLORS.length];
   return getThemeSpecificGradient(gradients, isDarkTheme);
 };
 
-export const getGradientFromToken = (token: string, isDarkTheme: boolean = false): string[] => {
+export const getGradientFromToken = (token: string, isDarkTheme: boolean = false): [string, string] => {
   if (TOKENS.indexOf(token) >= 0) {
     const [paletteName, colorCode] = token.split('.');
     const colors = Gradients[paletteName][colorCode];

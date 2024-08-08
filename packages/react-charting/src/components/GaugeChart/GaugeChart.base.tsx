@@ -241,7 +241,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   <React.Fragment key={index}>
                     <path
                       d={arc.d}
-                      fill="transparent"
+                      fill={this.props.enableGradient ? "transparent" : segment.color}
                       fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
                       strokeWidth={this.state.focusedElement === segment.legend ? ARC_PADDING : 0}
                       className={this._classNames.segment}
@@ -259,31 +259,34 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                       onMouseMove={e => this._handleMouseOver(e, segment.legend)}
                       data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
                     />
-                    <clipPath id={`clip_${index}_${arc.segmentIndex}`}>
-                      <path d={arc.d} />
-                    </clipPath>
-                    <foreignObject
-                      x="-50%"
-                      y="-100%"
-                      width="100%"
-                      height="100%"
-                      clipPath={`url(#clip_${index}_${arc.segmentIndex})`}
-                    >
-                      <div
-                        style={{
-                          width: '100%',
-                          height: '100%',
-                          background: this.props.enableGradient
-                            ? `conic-gradient(
-                                from ${arc.startAngle}rad at 50% 100%,
-                                ${segment.gradient![0]},
-                                ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
-                              )`
-                            : segment.color,
-                          opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
-                        }}
-                      />
-                    </foreignObject>
+
+                    {this.props.enableGradient && (<>
+                      <clipPath id={`clip_${index}_${arc.segmentIndex}`}>
+                        <path d={arc.d} />
+                      </clipPath>
+                      <foreignObject
+                        x="-50%"
+                        y="-100%"
+                        width="100%"
+                        height="100%"
+                        clipPath={`url(#clip_${index}_${arc.segmentIndex})`}
+                      >
+                        <div
+                          style={{
+                            width: '100%',
+                            height: '100%',
+                            background: this.props.enableGradient
+                              ? `conic-gradient(
+                                  from ${arc.startAngle}rad at 50% 100%,
+                                  ${segment.gradient![0]},
+                                  ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
+                                )`
+                              : segment.color,
+                            opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
+                          }}
+                        />
+                      </foreignObject>
+                    </>)}
                   </React.Fragment>
                 );
               })}

@@ -195,7 +195,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           xAxisOuterPadding: this._xAxisOuterPadding,
         })}
         /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
           return (
             <>
@@ -714,26 +713,26 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
 
-      let color = point.color && !useSingleColor ? point.color : colorScale(point.y);
-      let color2 = color;
+      let startColor = point.color && !useSingleColor ? point.color : colorScale(point.y);
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
-        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
-          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
-          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+          startColor = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          endColor = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
         }
-        this._points[index].color = color;
+        this._points[index].color = startColor;
       }
 
       return (
         <g key={point.x as string}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.y}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+              <linearGradient id={`gradient_${index}_${point.y}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -749,13 +748,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               this._refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, color)}
+            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${color2})` : color}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -807,17 +806,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // that rely on the width of bars in vertical bar charts with string x-axis.
       this._barWidth = getBarWidth(this.props.barWidth, this.props.maxBarWidth, xBarScale.bandwidth());
 
-      let color = point.color ? point.color : colorScale(point.y);
-      let color2 = color;
+      let startColor = point.color ? point.color : colorScale(point.y);
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
-        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
-          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
-          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+          startColor = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          endColor = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
         }
-        this._points[index].color = color;
+        this._points[index].color = startColor;
       }
 
       return (
@@ -827,9 +826,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.y}_${color2}`} x1="0%" y1="100%" x2="0%" y2="0%" >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+              <linearGradient id={`gradient_${index}_${point.y}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -845,12 +844,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               this._refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseOver={this._onBarHover.bind(this, point, startColor)}
             onMouseLeave={this._onBarLeave}
             onBlur={this._onBarLeave}
             data-is-focusable={!this.props.hideTooltip}
-            onFocus={this._onBarFocus.bind(this, point, index, color)}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${color2})` : color}
+            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -893,7 +892,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       let adjustedBarHeight = 0;
@@ -907,17 +906,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const xPoint = xBarScale(point.x as number) - this._barWidth / 2;
       const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
 
-      let color = point.color && !useSingleColor ? point.color : colorScale(point.y);
-      let color2 = color;
+      let startColor = point.color && !useSingleColor ? point.color : colorScale(point.y);
+      let endColor = startColor;
 
       if (this.props.enableGradient) {
-        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
-          color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
-          color2 = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
+          startColor = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
+          endColor = getNextGradient(0, 0, this.props.theme?.isInverted)[1];
         }
-        this._points[index].color = color;
+        this._points[index].color = startColor;
       }
 
       return (
@@ -925,14 +924,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           {this.props.enableGradient && (
             <defs>
               <linearGradient
-                id={`gradient_${index}_${point.y}_${color2}`}
+                id={`gradient_${index}_${point.y}_${endColor}`}
                 x1="0%"
                 y1="100%"
                 x2="0%"
                 y2="0%"
                >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -948,13 +947,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
               this._refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={this._onBarHover.bind(this, point, color)}
+            onMouseOver={this._onBarHover.bind(this, point, startColor)}
             aria-label={this._getAriaLabel(point)}
             role="img"
             onMouseLeave={this._onBarLeave}
-            onFocus={this._onBarFocus.bind(this, point, index, color)}
+            onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${color2})` : color}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}

@@ -246,15 +246,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let value = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      let color: string = point.color
+      let startColor: string = point.color
         ? point.color
         : point.placeHolder
         ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      let color2: string = color;
+      let endColor: string = startColor;
       if (this.props.enableGradient ) {
-        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
       }
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
@@ -273,7 +273,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       const styles = this.props.styles;
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
-      const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : color;
+      const hoverCardYColor = point.placeHolder ? this.props.theme!.semanticColors.bodyText : startColor;
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
@@ -303,8 +303,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${pointData}`} >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -320,7 +320,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             width={value + '%'}
             height={barHeight}
             rx={this.props.roundCorners ? 3 : 0}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : startColor}
           />
         </g>
       );
@@ -494,10 +494,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (validChartData!.length < 3) {
         const hideNumber = hideRatio[index] === undefined ? false : hideRatio[index];
         if (hideNumber) {
-          validChartData!.forEach((point: IChartDataPoint, index2: number) => {
+          validChartData!.forEach((point: IChartDataPoint, pointIndex: number) => {
             let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
             if (this.props.enableGradient) {
-              color = point.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+              color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
             }
 
             const checkSimilarLegends = actions.filter(
@@ -524,10 +524,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           });
         }
       } else {
-        validChartData!.forEach((point: IChartDataPoint, index2: number) => {
+        validChartData!.forEach((point: IChartDataPoint, pointIndex: number) => {
           let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
           if (this.props.enableGradient) {
-            color = point.gradient?.[0] || getNextGradient(index2, 0, this.props.theme?.isInverted)[0];
+            color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
           }
 
           const checkSimilarLegends = actions.filter(

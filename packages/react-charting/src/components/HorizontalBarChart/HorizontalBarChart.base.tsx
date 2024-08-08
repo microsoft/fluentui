@@ -52,7 +52,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       lineColor: '',
       legend: '',
       refSelected: null,
-      // eslint-disable-next-line react/no-unused-state
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
@@ -319,7 +318,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
    * Extra margin is also provided, in the x value to provide some spacing in between the bars
    */
 
-  private _createBars(data: IChartProps, palette: IPalette, chartNumber: number): JSX.Element[] {
+  private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSX.Element[] {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
@@ -360,12 +359,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      let color2 = color;
+      let startColor: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let endColor = startColor;
 
       if (this.props.enableGradient && index !== 1) {
-        color = point.gradient?.[0] || getNextGradient(chartNumber, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(chartNumber, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(dataPointIndex, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(dataPointIndex, 0, this.props.theme?.isInverted)[1];
       }
 
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
@@ -412,9 +411,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         <React.Fragment key={index}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${chartNumber}`} >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+              <linearGradient id={`gradient_${index}_${dataPointIndex}`} >
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -429,7 +428,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={this._barHeight}
-            fill={this.props.enableGradient? `url(#gradient_${index}_${chartNumber})` : color}
+            fill={this.props.enableGradient? `url(#gradient_${index}_${dataPointIndex})` : startColor}
             onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             role="img"

@@ -275,18 +275,18 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-      let color2: string = color;
+      let startColor: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let endColor: string = startColor;
       if (this.props.enableGradient ) {
-        color = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
-        color2 = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
+        startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
       }
 
       const pointData = point.data ? point.data : 0;
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color: startColor,
         action:
           total > 0
             ? () => {
@@ -328,7 +328,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
         href: this.props.href!,
       });
 
@@ -340,12 +340,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             this._refCallback(e, legend.title);
           }}
           data-is-focusable={!this.props.hideTooltip && shouldHighlight}
-          onFocus={this._onBarFocus.bind(this, pointData, color, point)}
+          onFocus={this._onBarFocus.bind(this, pointData, startColor, point)}
           onBlur={this._onBarLeave}
           aria-label={this._getAriaLabel(point)}
           role="img"
-          onMouseOver={this._onBarHover.bind(this, pointData, color, point)}
-          onMouseMove={this._onBarHover.bind(this, pointData, color, point)}
+          onMouseOver={this._onBarHover.bind(this, pointData, startColor, point)}
+          onMouseMove={this._onBarHover.bind(this, pointData, startColor, point)}
           onMouseLeave={this._onBarLeave}
           pointerEvents="all"
           onClick={this.props.href ? this._redirectToUrl.bind(this, this.props.href!) : point.onClick}
@@ -353,8 +353,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={`gradient_${index}_${pointData}`} >
-                <stop offset="0" stopColor={color} />
-                <stop offset="100%" stopColor={color2} />
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
               </linearGradient>
             </defs>
           )}
@@ -370,7 +370,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             width={value + '%'}
             height={barHeight}
             rx={this.props.roundCorners ? 3 : 0}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : color}
+            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : startColor}
           />
         </g>
       );
@@ -411,7 +411,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color: color,
+          color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: {...point, color},
@@ -483,7 +483,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color: color,
+        color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: {...point, color},
