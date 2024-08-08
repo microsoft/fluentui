@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AppItemStaticProps, AppItemStaticState } from './AppItemStatic.types';
+import { useNavContext_unstable } from '../NavContext';
 
 /**
  * Create the state required to render AppItemStatic.
@@ -15,14 +16,14 @@ export const useAppItemStatic_unstable = (
   props: AppItemStaticProps,
   ref: React.Ref<HTMLDivElement>,
 ): AppItemStaticState => {
+  const { icon } = props;
+
+  const { size = 'medium' } = useNavContext_unstable();
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
+      icon: 'span',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
@@ -30,5 +31,9 @@ export const useAppItemStatic_unstable = (
       }),
       { elementType: 'div' },
     ),
+    icon: slot.optional(icon, {
+      elementType: 'span',
+    }),
+    size,
   };
 };

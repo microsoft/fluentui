@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Wed, 07 Aug 2024 12:31:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.2.1)
+
+Wed, 07 Aug 2024 12:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.2.0..@fluentui/react-toolbar_v9.2.1)
+
+### Patches
+
+- fix: hardcode size of `ToolbarButton` ([PR #32185](https://github.com/microsoft/fluentui/pull/32185) by olfedias@microsoft.com)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.2.0)
+
+Tue, 06 Aug 2024 21:40:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.91..@fluentui/react-toolbar_v9.2.0)
+
+### Minor changes
+
+- feat: Add transparent as an option for the appearance prop in ToolbarButton ([PR #32205](https://github.com/microsoft/fluentui/pull/32205) by ololubek@microsoft.com)
+
+## [9.1.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.91)
+
+Tue, 30 Jul 2024 18:47:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.90..@fluentui/react-toolbar_v9.1.91)
+
+### Patches
+
+- Bump @fluentui/react-radio to v9.2.28 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
 
 ## [9.1.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.90)
 

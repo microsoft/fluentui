@@ -6,6 +6,7 @@ import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-compon
 
 const useStyles = makeStyles({
   listbox: {
+    // maxHeight will be applied only positioning autoSize set.
     maxHeight: '250px',
   },
   option: {
@@ -33,6 +34,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
         <Combobox
           id={`${comboId}`}
           placeholder="Select a number"
+          positioning={{ autoSize: 'width' }}
           listbox={{ ref: scrollRef, className: styles.listbox }}
         >
           <Virtualizer
@@ -62,7 +64,9 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
 ComboboxVirtualizer.parameters = {
   docs: {
     description: {
-      story: 'A Combobox can use Virtualizer to display a large number of options.',
+      story:
+        'A Combobox can use Virtualizer to display a large number of options\n' +
+        `To manually control the maxHeight of the listbox, refer to the [positioning autoSize property](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)`,
     },
   },
 };

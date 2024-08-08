@@ -43,14 +43,8 @@ jobs:
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Build dependencies
-        uses: ./.github/actions/build-to
-        with:
-          workspaces: '@fluentui/public-docsite-v9'
-          backfill-cache-provider-options: ${{ secrets.BACKFILL_CACHE_PROVIDER_OPTIONS }}
-
       - name: Build storybook
-        run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+        run: yarn nx run public-docsite-v9:build-storybook --nxBail
         env:
           STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
 

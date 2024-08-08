@@ -14,6 +14,7 @@ import {
   NavSize,
   NavDivider,
   AppItem,
+  AppItemStatic,
 } from '@fluentui/react-nav-preview';
 import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
@@ -90,10 +91,12 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const labelId = useId('type-label');
   const linkLabelId = useId('link-label');
   const appItemIconLabelId = useId('app-item-icon-label');
+  const appItemStaticLabelId = useId('app-item-static-label');
 
   const [size, setNavSize] = React.useState<NavSize>('small');
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
+  const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
@@ -105,6 +108,14 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
     )
   ) : undefined;
 
+  const appItem = isAppItemStatic ? (
+    <AppItemStatic icon={appItemIcon}>Contoso HR</AppItemStatic>
+  ) : (
+    <AppItem icon={appItemIcon} href={linkDestination}>
+      Contoso HR
+    </AppItem>
+  );
+
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
@@ -114,9 +125,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           </Tooltip>
         </NavDrawerHeader>
         <NavDrawerBody>
-          <AppItem icon={appItemIcon} as="a" href={linkDestination}>
-            Contoso HR
-          </AppItem>
+          {appItem}
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -203,6 +212,13 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
+          />
+          <Label id={appItemStaticLabelId}>App Item</Label>
+          <Switch
+            checked={isAppItemStatic}
+            onChange={(_, data) => setIsAppItemStatic(!!data.checked)}
+            label={isAppItemStatic ? 'Static' : 'Href'}
+            aria-labelledby={appItemStaticLabelId}
           />
           <Label id={appItemIconLabelId}>App Item Icon</Label>
           <Switch

@@ -2,6 +2,54 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:17 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.74",
+      "version": "1.3.74",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.3.70",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.15.15",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.3.73",
+      "version": "1.3.73",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/react-icon-provider to v1.3.69",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icons-mdl2",
+            "comment": "Bump @fluentui/utilities to v8.15.14",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:54 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.3.72",
       "version": "1.3.72",

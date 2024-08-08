@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-search
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.14)
+
+Mon, 05 Aug 2024 22:33:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.13..@fluentui/react-search_v9.0.14)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.85 ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by beachball)
+
+## [9.0.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.13)
+
+Tue, 30 Jul 2024 18:47:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search_v9.0.12..@fluentui/react-search_v9.0.13)
+
+### Patches
+
+- fix: replace useEventCallback with useCallback for focus ([PR #32079](https://github.com/microsoft/fluentui/pull/32079) by vgenaev@gmail.com)
+- fix: Expand hit target when there's no content after. ([PR #32114](https://github.com/microsoft/fluentui/pull/32114) by estebanmu@microsoft.com)
+- Bump @fluentui/react-input to v9.4.84 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
 
 ## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-search_v9.0.12)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-list-preview",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "React List v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-checkbox": "^9.2.32",
+    "@fluentui/react-checkbox": "^9.2.33",
     "@fluentui/react-context-selector": "^9.1.65",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/keyboard-keys": "^9.0.7",

@@ -112,4 +112,22 @@ describe('Tab', () => {
 
     expect(result.container).toMatchSnapshot();
   });
+
+  it('calls the ref function for content slot once', () => {
+    const contextValues = {
+      tabList: { ...defaultContext },
+    };
+
+    const ref = jest.fn();
+
+    render(
+      <TabListContext.Provider value={contextValues.tabList}>
+        <Tab value="1" content={{ ref }}>
+          Default Tab
+        </Tab>
+      </TabListContext.Provider>,
+    );
+
+    expect(ref).toHaveBeenCalledTimes(1);
+  });
 });

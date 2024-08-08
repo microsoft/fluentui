@@ -2,6 +2,51 @@
   "name": "@fluentui/react-toolbar",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 12:31:56 GMT",
+      "tag": "@fluentui/react-toolbar_v9.2.1",
+      "version": "9.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "0c43a227ac779d017ab4c315cea2f5fceb7d3fc0",
+            "comment": "fix: hardcode size of `ToolbarButton`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 21:40:44 GMT",
+      "tag": "@fluentui/react-toolbar_v9.2.0",
+      "version": "9.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "d9541c4016946a6d80b532fc2f9fea83eab22b04",
+            "comment": "feat: Add transparent as an option for the appearance prop in ToolbarButton"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2024 18:47:35 GMT",
+      "tag": "@fluentui/react-toolbar_v9.1.91",
+      "version": "9.1.91",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-toolbar",
+            "comment": "Bump @fluentui/react-radio to v9.2.28",
+            "commit": "9b3f8910e276278ca313e3a7209d6c089c2950de"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-toolbar_v9.1.90",
       "version": "9.1.90",

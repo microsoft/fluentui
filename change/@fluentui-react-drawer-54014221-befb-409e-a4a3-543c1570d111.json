@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate to stable motion APIs",
-  "packageName": "@fluentui/react-drawer",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

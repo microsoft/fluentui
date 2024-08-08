@@ -67,7 +67,7 @@ export const SwatchPickerMixedSwatches = () => {
     <>
       <SwatchPicker
         layout="grid"
-        aria-label="SwatchPicker grid layout"
+        aria-label="SwatchPicker with both colors and images"
         selectedValue={selectedValue}
         onSelectionChange={handleSelect}
       >

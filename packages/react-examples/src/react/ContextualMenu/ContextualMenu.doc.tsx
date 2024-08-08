@@ -18,6 +18,7 @@ import { ContextualMenuWithCustomMenuListExample } from './ContextualMenu.Custom
 import { ContextualMenuHeaderExample } from './ContextualMenu.Header.Example';
 import { ContextualMenuPersistedExample } from './ContextualMenu.Persisted.Example';
 import { ContextualMenuScreenReaderExample } from './ContextualMenu.ScreenReader.Example';
+import { ContextualMenuWithWrappingMenuItemExample } from './ContextualMenu.WrappingMenuItem.Example';
 
 const ContextualMenuBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Basic.Example.tsx') as string;
@@ -51,6 +52,8 @@ const ContextualMenuHeaderExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.Header.Example.tsx') as string;
 const ContextualMenuScreenReaderExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.ScreenReader.Example.tsx') as string;
+const ContextualMenuWithWrappingMenuItemExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ContextualMenu/ContextualMenu.WrappingMenuItem.Example.tsx') as string;
 
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
@@ -121,6 +124,11 @@ export const ContextualMenuPageProps: IDocPageProps = {
       title: 'ContextualMenu with custom rendered menu items',
       code: ContextualMenuWithCustomMenuItemExampleCode,
       view: <ContextualMenuWithCustomMenuItemExample />,
+    },
+    {
+      title: 'ContextualMenu with wrapping menu item text',
+      code: ContextualMenuWithWrappingMenuItemExampleCode,
+      view: <ContextualMenuWithWrappingMenuItemExample />,
     },
     {
       title: 'ContextualMenu with custom rendered menu list that renders a search box to filter menu items',

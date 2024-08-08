@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Mon, 05 Aug 2024 22:33:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.17)
+
+Mon, 05 Aug 2024 22:33:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.9.16..@fluentui/react-popover_v9.9.17)
+
+### Patches
+
+- fix(Popover): fix shadows on arrows ([PR #32138](https://github.com/microsoft/fluentui/pull/32138) by olfedias@microsoft.com)
+
+## [9.9.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.16)
+
+Tue, 30 Jul 2024 18:47:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.9.15..@fluentui/react-popover_v9.9.16)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.15.7 ([PR #32157](https://github.com/microsoft/fluentui/pull/32157) by beachball)
 
 ## [9.9.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.9.15)
 

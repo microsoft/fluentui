@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Tree, treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import TreeMultiselectExample from '../../examples/components/Tree/Usage/TreeMultiselectExample.shorthand';
@@ -51,7 +51,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Tree>;
+} as Meta<typeof Tree>;
 
 const TreeMultiselectExampleTeams = getThemeStoryVariant(TreeMultiselectExample, 'teamsV2');
 

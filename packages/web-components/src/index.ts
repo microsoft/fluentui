@@ -104,6 +104,7 @@ export {
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
+  BaseField,
   Field,
   FieldLabelPosition,
   ValidationFlags,
@@ -145,6 +146,8 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
+export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
   BaseProgressBar,
   ProgressBar,
@@ -165,6 +168,7 @@ export {
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
 export {
+  BaseRatingDisplay,
   RatingDisplay,
   RatingDisplayColor,
   RatingDisplayDefinition,
@@ -224,6 +228,16 @@ export {
   TabsStyles,
   TabsTemplate,
 } from './tabs/index.js';
+export {
+  BaseTablist,
+  Tablist,
+  TablistAppearance,
+  TablistDefinition,
+  TablistOrientation,
+  TablistSize,
+  TablistStyles,
+  TablistTemplate,
+} from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
   BaseTextInput,

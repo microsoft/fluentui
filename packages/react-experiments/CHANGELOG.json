@@ -2,6 +2,156 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:16 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.164",
+      "version": "8.14.164",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-experiments",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.120.3",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/theme to v2.6.58",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/example-data to v8.4.25",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.15",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.49",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/merge-styles to v8.6.13",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react-hooks to v8.8.12",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/style-utilities to v8.10.20",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/utilities to v8.15.15",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 21:38:31 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.163",
+      "version": "8.14.163",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.120.2",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.162",
+      "version": "8.14.162",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.120.1",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/theme to v2.6.57",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.14",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.48",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react-hooks to v8.8.11",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/style-utilities to v8.10.19",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/utilities to v8.15.14",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jul 2024 07:33:08 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.161",
+      "version": "8.14.161",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.120.0",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:53 GMT",
       "tag": "@fluentui/react-experiments_v8.14.160",
       "version": "8.14.160",

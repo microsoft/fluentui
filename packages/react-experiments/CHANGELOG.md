@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 23 Jul 2024 07:32:53 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.164](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.164)
+
+Thu, 08 Aug 2024 07:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.163..@fluentui/react-experiments_v8.14.164)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.120.3 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/theme to v2.6.58 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/example-data to v8.4.25 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.15 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.49 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/merge-styles to v8.6.13 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/react-hooks to v8.8.12 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/style-utilities to v8.10.20 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/utilities to v8.15.15 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [8.14.163](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.163)
+
+Thu, 01 Aug 2024 21:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.162..@fluentui/react-experiments_v8.14.163)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.2 ([PR #32198](https://github.com/microsoft/fluentui/pull/32198) by beachball)
+
+## [8.14.162](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.162)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.161..@fluentui/react-experiments_v8.14.162)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.1 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/theme to v2.6.57 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.14 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.48 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/react-hooks to v8.8.11 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/style-utilities to v8.10.19 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+- Bump @fluentui/utilities to v8.15.14 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+
+## [8.14.161](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.161)
+
+Wed, 31 Jul 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.160..@fluentui/react-experiments_v8.14.161)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.0 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
 
 ## [8.14.160](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.160)
 
