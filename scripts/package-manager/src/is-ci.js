@@ -1,9 +1,13 @@
 function isCI() {
-  return (
-    (process.env.CI && process.env.CI !== 'false') ||
-    process.env.TF_BUILD === 'true' ||
-    process.env.GITHUB_ACTIONS === 'true'
-  );
+  return checkEnvVar('CI') || checkEnvVar('TF_BUILD') || checkEnvVar('GITHUB_ACTIONS');
+}
+
+/**
+ *
+ * @param {string} varName
+ */
+function checkEnvVar(varName) {
+  return Boolean(process.env[varName] && process.env[varName] !== 'false');
 }
 
 exports.isCI = isCI;
