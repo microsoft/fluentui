@@ -2,6 +2,7 @@ import * as React from 'react';
 import { DataVizPalette, GaugeChart, GaugeChartVariant } from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/src/utilities/gradients';
 
 interface IGCBasicExampleState {
   width: number;
@@ -98,9 +99,21 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: 33, color: DataVizPalette.success, legend: 'Low Risk' },
-            { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
-            { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
+            { size: 33,
+              color: DataVizPalette.success,
+              gradient: getGradientFromToken(DataVizGradientPalette.success),
+              legend: 'Low Risk',
+            },
+            { size: 34,
+              color: DataVizPalette.warning,
+              gradient: getGradientFromToken(DataVizGradientPalette.warning),
+              legend: 'Medium Risk',
+            },
+            { size: 33,
+              color: DataVizPalette.error,
+              gradient: getGradientFromToken(DataVizGradientPalette.error),
+              legend: 'High Risk',
+            },
           ]}
           chartValue={this.state.chartValue}
           hideMinMax={this.state.hideMinMax}
