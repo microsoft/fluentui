@@ -114,10 +114,10 @@ test.describe('TextArea', () => {
       `);
 
       await expect(element).toHaveCustomState('outline');
-      await expect(element).toHaveCustomState('auto-resize', false);
-      await expect(element).toHaveCustomState('block', false);
-      await expect(element).toHaveCustomState('display-shadow', false);
-      await expect(element).toHaveCustomState('resize', false);
+      await expect(element).not.toHaveCustomState('auto-resize');
+      await expect(element).not.toHaveCustomState('block');
+      await expect(element).not.toHaveCustomState('display-shadow');
+      await expect(element).not.toHaveCustomState('resize');
     });
 
     test('should toggle appearance states', async ({ page }) => {
@@ -128,24 +128,24 @@ test.describe('TextArea', () => {
       `);
 
       await expect(element).toHaveCustomState('filled-darker');
-      await expect(element).toHaveCustomState('filled-lighter', false);
-      await expect(element).toHaveCustomState('outline', false);
+      await expect(element).not.toHaveCustomState('filled-lighter');
+      await expect(element).not.toHaveCustomState('outline');
 
       await element.evaluate((node: TextArea) => {
         node.appearance = 'filled-lighter';
       });
 
       await expect(element).toHaveCustomState('filled-lighter');
-      await expect(element).toHaveCustomState('filled-darker', false);
-      await expect(element).toHaveCustomState('outline', false);
+      await expect(element).not.toHaveCustomState('filled-darker');
+      await expect(element).not.toHaveCustomState('outline');
 
       await element.evaluate((node: TextArea) => {
         node.removeAttribute('appearance');
       });
 
       await expect(element).toHaveCustomState('outline');
-      await expect(element).toHaveCustomState('filled-lighter', false);
-      await expect(element).toHaveCustomState('filled-darker', false);
+      await expect(element).not.toHaveCustomState('filled-lighter');
+      await expect(element).not.toHaveCustomState('filled-darker');
     });
 
     test('should toggle auto-resize state', async ({ page }) => {
@@ -161,7 +161,7 @@ test.describe('TextArea', () => {
         node.autoResize = false;
       });
 
-      await expect(element).toHaveCustomState('auto-resize', false);
+      await expect(element).not.toHaveCustomState('auto-resize');
     });
 
     test('should toggle block state', async ({ page }) => {
@@ -177,7 +177,7 @@ test.describe('TextArea', () => {
         node.block = false;
       });
 
-      await expect(element).toHaveCustomState('block', false);
+      await expect(element).not.toHaveCustomState('block');
     });
 
     test('should toggle display-shadow state', async ({ page }) => {
@@ -188,7 +188,7 @@ test.describe('TextArea', () => {
       `);
 
       // Expecting `false` because the default appearance, outline, shouldn’t have shadow
-      await expect(element).toHaveCustomState('display-shadow', false);
+      await expect(element).not.toHaveCustomState('display-shadow');
 
       await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
         el.appearance = apperance;
@@ -200,7 +200,7 @@ test.describe('TextArea', () => {
         el.displayShadow = false;
       });
 
-      await expect(element).toHaveCustomState('display-shadow', false);
+      await expect(element).not.toHaveCustomState('display-shadow');
 
       await element.evaluate((el: TextArea, apperance: TextAreaAppearance) => {
         el.displayShadow = true;
@@ -219,8 +219,8 @@ test.describe('TextArea', () => {
 
       await expect(element).toHaveCustomState('resize');
       await expect(element).toHaveCustomState('resize-both');
-      await expect(element).toHaveCustomState('resize-vertical', false);
-      await expect(element).toHaveCustomState('resize-horizontal', false);
+      await expect(element).not.toHaveCustomState('resize-vertical');
+      await expect(element).not.toHaveCustomState('resize-horizontal');
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
@@ -228,8 +228,8 @@ test.describe('TextArea', () => {
 
       await expect(element).toHaveCustomState('resize');
       await expect(element).toHaveCustomState('resize-horizontal');
-      await expect(element).toHaveCustomState('resize-vertical', false);
-      await expect(element).toHaveCustomState('resize-both', false);
+      await expect(element).not.toHaveCustomState('resize-vertical');
+      await expect(element).not.toHaveCustomState('resize-both');
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
@@ -237,16 +237,16 @@ test.describe('TextArea', () => {
 
       await expect(element).toHaveCustomState('resize');
       await expect(element).toHaveCustomState('resize-vertical');
-      await expect(element).toHaveCustomState('resize-horizontal', false);
-      await expect(element).toHaveCustomState('resize-both', false);
+      await expect(element).not.toHaveCustomState('resize-horizontal');
+      await expect(element).not.toHaveCustomState('resize-both');
 
       await element.evaluate((node: TextArea, resize: TextAreaResize) => {
         node.resize = resize;
       }, TextAreaResize.none);
 
-      await expect(element).toHaveCustomState('resize', false);
-      await expect(element).toHaveCustomState('resize-horizontal', false);
-      await expect(element).toHaveCustomState('resize-vertical', false);
+      await expect(element).not.toHaveCustomState('resize');
+      await expect(element).not.toHaveCustomState('resize-horizontal');
+      await expect(element).not.toHaveCustomState('resize-vertical');
     });
 
     test('should toggle size states', async ({ page }) => {
@@ -257,21 +257,21 @@ test.describe('TextArea', () => {
       `);
 
       await expect(element).toHaveCustomState('small');
-      await expect(element).toHaveCustomState('large', false);
+      await expect(element).not.toHaveCustomState('large');
 
       await element.evaluate((node: TextArea, size: TextAreaSize) => {
         node.size = size;
       }, TextAreaSize.large);
 
       await expect(element).toHaveCustomState('large');
-      await expect(element).toHaveCustomState('small', false);
+      await expect(element).not.toHaveCustomState('small');
 
       await element.evaluate((node: TextArea) => {
         node.removeAttribute('size');
       });
 
-      await expect(element).toHaveCustomState('small', false);
-      await expect(element).toHaveCustomState('large', false);
+      await expect(element).not.toHaveCustomState('small');
+      await expect(element).not.toHaveCustomState('large');
     });
 
     test('should toggle user-invalid state', async ({ page }) => {
@@ -282,20 +282,20 @@ test.describe('TextArea', () => {
         <fluent-textarea required></fluent-textarea>
       `);
 
-      await expect(element).toHaveCustomState('user-valid', false);
-      await expect(element).toHaveCustomState('user-invalid', false);
+      await expect(element).not.toHaveCustomState('user-valid');
+      await expect(element).not.toHaveCustomState('user-invalid');
 
       await control.fill('a');
       await element.blur();
 
-      await expect(element).toHaveCustomState('user-valid', true);
-      await expect(element).toHaveCustomState('user-invalid', false);
+      await expect(element).toHaveCustomState('user-valid');
+      await expect(element).not.toHaveCustomState('user-invalid');
 
       await element.press('Backspace');
       await element.blur();
 
-      await expect(element).toHaveCustomState('user-valid', false);
-      await expect(element).toHaveCustomState('user-invalid', true);
+      await expect(element).not.toHaveCustomState('user-valid');
+      await expect(element).toHaveCustomState('user-invalid');
     });
   });
 

@@ -29,7 +29,7 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
   >
     ${when(
       x => x.label,
-      html`<fluent-label slot="label" ?required="${x => x.required}">${x => x.label}</fluent-label>`
+      html`<fluent-label slot="label" ?required="${x => x.required}">${x => x.label}</fluent-label>`,
     )}
     ${x => x.defaultContent ?? ''}
   </fluent-textarea>

@@ -31,9 +31,6 @@ export function fixtureURL(id: string = 'debug--blank', args?: Record<string, an
   return url;
 }
 
-interface FluentElement extends HTMLElement {
-  elementInternals: ElementInternals;
-}
 /**
  * Evaluate whether an element has the given state or not on its `elementInternals` property.
  *
