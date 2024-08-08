@@ -212,7 +212,7 @@ export const styles: ElementStyles = css`
     inline-size: auto;
   }
 
-  :host::after {
+  .root::after {
     border-bottom: 2px solid var(--focus-indicator-color);
     border-radius: 0 0 ${borderRadiusMedium} ${borderRadiusMedium};
     box-sizing: border-box;
@@ -227,15 +227,15 @@ export const styles: ElementStyles = css`
     transition-property: transform;
   }
 
-  :host(:focus-within)::after {
+  :host(:focus-within) .root::after {
     transform: scaleX(1);
     transition-property: transform;
     transition-duration: ${durationNormal};
     transition-delay: ${curveDecelerateMid};
   }
 
-  :host([readonly])::after,
-  :host(:disabled)::after {
+  :host([readonly]) .root::after,
+  :host(:disabled) .root::after {
     content: none;
   }
 

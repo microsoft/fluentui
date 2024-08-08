@@ -1,4 +1,4 @@
-import { html } from '@microsoft/fast-element';
+import { html, when } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackground1, colorNeutralBackground3 } from '../theme/design-tokens.js';
@@ -27,7 +27,10 @@ const storyTemplate = html<StoryArgs<FluentTextArea>>`
     resize="${x => x.resize}"
     value="${x => x.value}"
   >
-    ${x => (x.label ? html`<fluent-label slot="label" ?required="${x => x.required}">${x.label}</fluent-label>` : '')}
+    ${when(
+      x => x.label,
+      html`<fluent-label slot="label" ?required="${x => x.required}">${x => x.label}</fluent-label>`
+    )}
     ${x => x.defaultContent ?? ''}
   </fluent-textarea>
 `;
@@ -143,6 +146,9 @@ export default {
 } as Meta<FluentTextArea>;
 
 export const TextArea: Story<FluentTextArea> = renderComponent(storyTemplate).bind({});
+TextArea.args = {
+  label: 'Sample textarea',
+};
 
 export const Placeholder: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>` ${storyTemplate} `);
 Placeholder.args = {
@@ -150,26 +156,31 @@ Placeholder.args = {
 };
 
 export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
-  <div>
-    <p>Outlined (default)</p>
-    <div style="padding: 1rem; width: fit-content;">
-      <fluent-textarea></fluent-textarea>
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
+    <div style="padding: 1rem;">
+      <fluent-textarea>
+        <fluent-label slot="label">Outlined (default)</fluent-label>
+      </fluent-textarea>
     </div>
-    <p>Filled darker</p>
-    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground1};">
-      <fluent-textarea appearance="filled-darker"></fluent-textarea>
+    <div style="padding: 1rem; background-color: ${colorNeutralBackground1};">
+      <fluent-textarea appearance="filled-darker">
+        <fluent-label slot="label">Filled darker</fluent-label>
+      </fluent-textarea>
     </div>
-    <p>Filled darker with shadow</p>
-    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground1};">
-      <fluent-textarea appearance="filled-darker" display-shadow></fluent-textarea>
+    <div style="padding: 1rem; background-color: ${colorNeutralBackground1};">
+      <fluent-textarea appearance="filled-darker" display-shadow>
+        <fluent-label slot="label">Filled darker with shadow</fluent-label>
+      </fluent-textarea>
     </div>
-    <p>Filled lighter</p>
-    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground3};">
-      <fluent-textarea appearance="filled-lighter"></fluent-textarea>
+    <div style="padding: 1rem; background-color: ${colorNeutralBackground3};">
+      <fluent-textarea appearance="filled-lighter">
+        <fluent-label slot="label">Filled lighter</fluent-label>
+      </fluent-textarea>
     </div>
-    <p>Filled lighter with shadow</p>
-    <div style="padding: 1rem; width: fit-content; background-color: ${colorNeutralBackground3};">
-      <fluent-textarea appearance="filled-lighter" display-shadow></fluent-textarea>
+    <div style="padding: 1rem; background-color: ${colorNeutralBackground3};">
+      <fluent-textarea appearance="filled-lighter" display-shadow>
+        <fluent-label slot="label">Filled lighter with shadow</fluent-label>
+      </fluent-textarea>
     </div>
   </div>
 `);
@@ -177,12 +188,14 @@ export const Appearance: Story<FluentTextArea> = renderComponent(html<StoryArgs<
 export const Block: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
     <div>
-      <p>Non-block (default)</p>
-      <fluent-textarea></fluent-textarea>
+      <fluent-textarea>
+        <fluent-label slot="label">Inline (default)</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Block</p>
-      <fluent-textarea block></fluent-textarea>
+      <fluent-textarea block>
+        <fluent-label slot="label">Block</fluent-label>
+      </fluent-textarea>
     </div>
   </div>
 `);
@@ -190,16 +203,19 @@ export const Block: Story<FluentTextArea> = renderComponent(html<StoryArgs<Fluen
 export const Size: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
     <div>
-      <p>Medium (default)</p>
-      <fluent-textarea></fluent-textarea>
+      <fluent-textarea>
+        <fluent-label slot="label">Medium (default)</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Small</p>
-      <fluent-textarea size="small"></fluent-textarea>
+      <fluent-textarea size="small">
+        <fluent-label slot="label">Small</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Large</p>
-      <fluent-textarea size="large"></fluent-textarea>
+      <fluent-textarea size="large">
+        <fluent-label slot="label">Large</fluent-label>
+      </fluent-textarea>
     </div>
   </div>
 `);
@@ -211,20 +227,24 @@ export const AutoResize: Story<FluentTextArea> = renderComponent(html<StoryArgs<
 export const Resize: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
     <div>
-      <p>None (default)</p>
-      <fluent-textarea resize="none"></fluent-textarea>
+      <fluent-textarea resize="none">
+        <fluent-label slot="label">None (default)</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Horizontal</p>
-      <fluent-textarea resize="horizontal"></fluent-textarea>
+      <fluent-textarea resize="horizontal">
+        <fluent-label slot="label">Horizontal</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Vertical</p>
-      <fluent-textarea resize="vertical"></fluent-textarea>
+      <fluent-textarea resize="vertical">
+        <fluent-label slot="label">Vertical</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Both</p>
-      <fluent-textarea resize="both"></fluent-textarea>
+      <fluent-textarea resize="both">
+        <fluent-label slot="label">Both</fluent-label>
+      </fluent-textarea>
     </div>
   </div>
 `);
@@ -232,20 +252,24 @@ export const Resize: Story<FluentTextArea> = renderComponent(html<StoryArgs<Flue
 export const RTL: Story<FluentTextArea> = renderComponent(html<StoryArgs<FluentTextArea>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;" dir="rtl">
     <div>
-      <p>None (default)</p>
-      <fluent-textarea resize="none"></fluent-textarea>
+      <fluent-textarea resize="none">
+        <fluent-label slot="label">None (default)</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Horizontal</p>
-      <fluent-textarea resize="horizontal"></fluent-textarea>
+      <fluent-textarea resize="horizontal">
+        <fluent-label slot="label">Horizontal</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Vertical</p>
-      <fluent-textarea resize="vertical"></fluent-textarea>
+      <fluent-textarea resize="vertical">
+        <fluent-label slot="label">Vertical</fluent-label>
+      </fluent-textarea>
     </div>
     <div>
-      <p>Both</p>
-      <fluent-textarea resize="both"></fluent-textarea>
+      <fluent-textarea resize="both">
+        <fluent-label slot="label">Both</fluent-label>
+      </fluent-textarea>
     </div>
   </div>
 `);
