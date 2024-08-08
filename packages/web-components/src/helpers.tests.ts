@@ -43,24 +43,20 @@ interface FluentElement extends HTMLElement {
  * @param has - Whether the element is expected to have or not have the given state, defaults to `true`.
  */
 async function toHaveCustomState(
+  this: ExpectMatcherState,
   locator: Locator,
   state: string,
-  expected: boolean = true,
   options?: { timeout?: number },
 ) {
-  const assertionName = 'toHaveCusomtState';
+  const assertionName = 'toHaveCustomState';
   let pass: boolean;
   let matcherResult: any;
+  const expected: boolean = !this.isNot;
 
   try {
-    const actual = await locator.evaluate(
-      (el: FluentElement, state: string) => {
-        return el.elementInternals?.states.has(state);
-      },
-      state,
-      options,
-    );
-    baseExpect(actual).toBe(expected);
+    baseExpect(
+      await locator.evaluate((el, state) => el.matches(`:state(${state})`), state, options),
+    ).toEqual(true);
     pass = true;
   } catch (err: any) {
     matcherResult = err.matcherResult;
@@ -68,24 +64,18 @@ async function toHaveCustomState(
   }
 
   const message = pass
-    ? function (this: ExpectMatcherState) {
-        return (
-          this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
-          '\n\n' +
-          `Locator: ${locator}\n` +
-          `Expected: ${this.isNot ? 'not' : ''}${this.utils.printExpected(expected)}\n` +
-          (matcherResult ? `Received: ${this.utils.printReceived(matcherResult.actual)}` : '')
-        );
-      }
-    : function (this: ExpectMatcherState) {
-        return (
-          this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
-          '\n\n' +
-          `Locator: ${locator}\n` +
-          `Expected: ${this.utils.printExpected(expected)}\n` +
-          (matcherResult ? `Received: ${this.utils.printReceived(matcherResult.actual)}` : '')
-        );
-      };
+    ? () =>
+        this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+        '\n\n' +
+        `Locator: ${locator}\n` +
+        `Expected: ${this.isNot ? 'not' : ''}${this.utils.printExpected(expected)}\n` +
+        (matcherResult ? `Received: ${this.utils.printReceived(matcherResult.actual)}` : '')
+    : () =>
+        this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+        '\n\n' +
+        `Locator: ${locator}\n` +
+        `Expected: ${this.utils.printExpected(expected)}\n` +
+        (matcherResult ? `Received: ${this.utils.printReceived(matcherResult.actual)}` : '');
 
   return {
     name: assertionName,
