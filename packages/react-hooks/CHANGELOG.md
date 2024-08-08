@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Thu, 01 Aug 2024 07:24:48 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.8.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.8.12)
+
+Thu, 08 Aug 2024 07:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.8.11..@fluentui/react-hooks_v8.8.12)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/utilities to v8.15.15 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
 
 ## [8.8.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.8.11)
 
