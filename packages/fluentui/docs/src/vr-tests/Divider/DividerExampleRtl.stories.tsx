@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Divider } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DividerExampleRtl from '../../examples/components/Divider/Rtl/DividerExample.rtl';
@@ -6,7 +6,7 @@ import DividerExampleRtl from '../../examples/components/Divider/Rtl/DividerExam
 export default {
   component: Divider,
   title: 'Divider',
-} as ComponentMeta<typeof Divider>;
+} as Meta<typeof Divider>;
 
 const DividerExampleRtlTeams = getThemeStoryVariant(DividerExampleRtl, 'teamsV2');
 

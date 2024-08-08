@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.4.28)
+
+Tue, 06 Aug 2024 21:40:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.4.27..@fluentui/react-tabs_v9.4.28)
+
+### Patches
+
+- ignore ref for tab reserved space content slot ([PR #31775](https://github.com/microsoft/fluentui/pull/31775) by kirpadv@gmail.com)
 
 ## [9.4.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.4.27)
 

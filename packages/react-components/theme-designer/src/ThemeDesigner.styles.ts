@@ -1,7 +1,7 @@
 import { makeStaticStyles, makeStyles } from '@fluentui/react-components';
 
 export const useStaticStyles = makeStaticStyles({
-  '#docs-root .sbdocs-content > div:last-child': {
+  '#storybook-docs .sbdocs-content > div:last-child': {
     marginBottom: '0px',
   },
 });

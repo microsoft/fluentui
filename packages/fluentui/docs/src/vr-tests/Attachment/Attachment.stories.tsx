@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import AttachmentDefaultBsize from '../../examples/components/Attachment/Performance/AttachmentDefault.bsize';
 import AttachmentExampleRtl from '../../examples/components/Attachment/Rtl/AttachmentExample.rtl';
@@ -8,7 +8,7 @@ import AttachmentIconExampleShorthand from '../../examples/components/Attachment
 import AttachmentExampleShorthand from '../../examples/components/Attachment/Types/AttachmentExample.shorthand';
 import AttachmentProgressExampleShorthand from '../../examples/components/Attachment/Types/AttachmentProgressExample.shorthand';
 
-export default { component: Attachment, title: 'Attachment' } as ComponentMeta<typeof Attachment>;
+export default { component: Attachment, title: 'Attachment' } as Meta<typeof Attachment>;
 
 export {
   AttachmentDefaultBsize,
