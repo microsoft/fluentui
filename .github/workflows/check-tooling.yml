@@ -4,10 +4,12 @@ on:
   pull_request:
     paths:
       - 'tools/workspace-plugin/**'
+      - 'scripts/executors/**'
 
 env:
   __FORCE_API_MD_UPDATE__: true
   __FORCE_SNAPSHOT_UPDATE__: true
+  NX_VERBOSE_LOGGING: true
 
 jobs:
   check-tools:
@@ -25,6 +27,8 @@ jobs:
           node-version: 20.x
 
       - run: yarn install --frozen-lockfile
+
+      - run: yarn nx run scripts-executors:test -t start
 
       - run: yarn nx list @fluentui/workspace-plugin
 
