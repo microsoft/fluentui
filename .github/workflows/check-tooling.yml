@@ -1,10 +1,11 @@
 name: Check tooling
 on:
-  workflow_dispatch:
   pull_request:
     paths:
-      - 'tools/workspace-plugin/**'
-      - 'scripts/executors/**'
+      - yarn.lock
+      - tools/workspace-plugin/**
+      - scripts/executors/**
+  workflow_dispatch:
 
 env:
   __FORCE_API_MD_UPDATE__: true
