@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DropdownCustomClearableExample from '../../examples/components/Dropdown/Visual/DropdownExampleCustomClearable.shorthand';
@@ -6,7 +6,7 @@ import DropdownCustomClearableExample from '../../examples/components/Dropdown/V
 export default {
   component: Dropdown,
   title: 'Dropdown',
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 const DropdownCustomClearableExampleTeams = getThemeStoryVariant(DropdownCustomClearableExample, 'teamsV2');
 

@@ -1,5 +1,5 @@
 import type { FASTElement, ViewTemplate } from '@microsoft/fast-element';
-import type { AnnotatedStoryFn, Args, ComponentAnnotations, StoryAnnotations } from '@storybook/csf';
+import type { AnnotatedStoryFn, Args, ComponentAnnotations, Renderer, StoryAnnotations } from '@storybook/csf';
 
 /**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.
@@ -21,7 +21,7 @@ export function renderComponent<TArgs = Args>(template: ViewTemplate): (args: TA
 /**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.
  */
-export type FASTFramework = {
+export type FASTFramework = Renderer & {
   component: typeof FASTElement;
   storyResult: FASTElement | Element | DocumentFragment;
 };

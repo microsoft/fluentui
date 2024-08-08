@@ -59,7 +59,7 @@ export default {
           summary: 'The maximum possible value of the rating. This attribute determines the number of icons displayed.',
         },
         defaultValue: {
-          summary: 5,
+          summary: '5',
         },
       },
     },
@@ -84,7 +84,7 @@ export default {
           summary: 'The value of the rating',
         },
         defaultValue: {
-          summary: 0,
+          summary: '0',
         },
       },
     },

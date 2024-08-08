@@ -12,7 +12,7 @@ test.describe('Accordion', () => {
 
     element = page.locator('fluent-accordion');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-accordion--accordion'));
   });

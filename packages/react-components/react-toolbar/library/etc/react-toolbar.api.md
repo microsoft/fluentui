@@ -34,7 +34,7 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps>;
 
 // @public
 export type ToolbarButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ButtonProps, 'disabled' | 'disabledFocusable'>> & {
-    appearance?: 'primary' | 'subtle';
+    appearance?: 'primary' | 'subtle' | 'transparent';
 } & {
     vertical?: boolean;
 };
@@ -93,7 +93,7 @@ export const ToolbarRadioButton: ForwardRefComponent<ToolbarRadioButtonProps>;
 
 // @public
 export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
-    appearance?: 'primary' | 'subtle';
+    appearance?: 'primary' | 'subtle' | 'transparent';
     name: string;
     value: string;
 };
@@ -126,7 +126,7 @@ export const ToolbarToggleButton: ForwardRefComponent<ToolbarToggleButtonProps>;
 
 // @public
 export type ToolbarToggleButtonProps = ComponentProps<ButtonSlots> & Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
-    appearance?: 'primary' | 'subtle';
+    appearance?: 'primary' | 'subtle' | 'transparent';
     name: string;
     value: string;
 };

@@ -2,6 +2,39 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:16 GMT",
+      "tag": "@fluentui/react-focus_v8.9.12",
+      "version": "8.9.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-focus",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/merge-styles to v8.6.13",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/style-utilities to v8.10.20",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-focus",
+            "comment": "Bump @fluentui/utilities to v8.15.15",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2024 07:24:48 GMT",
       "tag": "@fluentui/react-focus_v8.9.11",
       "version": "8.9.11",

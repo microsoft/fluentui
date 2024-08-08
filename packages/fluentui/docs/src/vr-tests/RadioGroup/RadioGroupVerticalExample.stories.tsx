@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Divider, RadioGroup } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 
@@ -51,7 +51,7 @@ export default {
       <StoryWright steps={new Steps().keys('body', Keys.tab).snapshot('Focuses item').end()}>{story()}</StoryWright>
     ),
   ],
-} as ComponentMeta<typeof RadioGroup>;
+} as Meta<typeof RadioGroup>;
 
 const RadioGroupVerticalExampleTeams = getThemeStoryVariant(RadioGroupVerticalExample, 'teamsV2');
 

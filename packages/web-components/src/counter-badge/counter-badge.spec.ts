@@ -11,7 +11,7 @@ test.describe('CounterBadge component', () => {
   test.beforeEach(async ({ browser }) => {
     page = await browser.newPage();
     element = page.locator('fluent-counter-badge');
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
     await page.goto(fixtureURL('components-badge-counter-badge--counter-badge'));
   });
 

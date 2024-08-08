@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { TextArea, textAreaClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import TextAreaExample from '../../examples/components/TextArea/Types/TextAreaExample.shorthand';
@@ -15,7 +15,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof TextArea>;
+} as Meta<typeof TextArea>;
 
 const TextAreaExampleTeams = getThemeStoryVariant(TextAreaExample, 'teamsV2');
 

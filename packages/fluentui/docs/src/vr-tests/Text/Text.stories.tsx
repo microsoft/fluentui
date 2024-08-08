@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Text } from '@fluentui/react-northstar';
 import TextExampleRtl from '../../examples/components/Text/Rtl/TextExample.rtl';
 import TextExampleDisabledShorthand from '../../examples/components/Text/States/TextExampleDisabled.shorthand';
@@ -24,7 +24,7 @@ import TextExampleImportant from '../../examples/components/Text/Variations/Text
 import TextExampleTimestampShorthand from '../../examples/components/Text/Variations/TextExampleTimestamp.shorthand';
 import TextExampleTimestamp from '../../examples/components/Text/Variations/TextExampleTimestamp';
 
-export default { component: Text, title: 'Text' } as ComponentMeta<typeof Text>;
+export default { component: Text, title: 'Text' } as Meta<typeof Text>;
 
 export {
   TextExampleRtl,

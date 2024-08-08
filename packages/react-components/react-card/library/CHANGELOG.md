@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 30 Jul 2024 18:47:32 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.89)
+
+Tue, 06 Aug 2024 21:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.88..@fluentui/react-card_v9.0.89)
+
+### Patches
+
+- fix: Card does not override specified focusMode based on event listeners ([PR #32200](https://github.com/microsoft/fluentui/pull/32200) by sarah.higley@microsoft.com)
 
 ## [9.0.88](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.88)
 

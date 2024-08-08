@@ -2,6 +2,68 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 07 Aug 2024 12:31:56 GMT",
+      "tag": "@fluentui/react-components_v9.54.10",
+      "version": "9.54.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "0c43a227ac779d017ab4c315cea2f5fceb7d3fc0",
+            "comment": "fix: hardcode size of `ToolbarButton`"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 21:40:43 GMT",
+      "tag": "@fluentui/react-components_v9.54.9",
+      "version": "9.54.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "edd363739604b199194b5ab8f99b503641044906",
+            "comment": "fix: Card does not override specified focusMode based on event listeners"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e3d6a872ead53cce8c5684b4648cd1c57598da95",
+            "comment": "fix: do not require ref forwarding"
+          },
+          {
+            "author": "miclo@microsoft.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "f239694de65d5987e0dfaaa07d4dc54a2a4b869f",
+            "comment": "Fix undefined reference in older browsers in useMessageBarReflow"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "ba1dcc42dad00aad42b5942718da22bfb7d9fcac",
+            "comment": "ignore ref for tab reserved space content slot"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "955bf54aa4942033f2b94658eb86ede7a7598b7c",
+            "comment": "chore: improve ImmutableSet and ImmutableMap internal implementation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "d9541c4016946a6d80b532fc2f9fea83eab22b04",
+            "comment": "feat: Add transparent as an option for the appearance prop in ToolbarButton"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2024 22:33:01 GMT",
       "tag": "@fluentui/react-components_v9.54.8",
       "version": "9.54.8",

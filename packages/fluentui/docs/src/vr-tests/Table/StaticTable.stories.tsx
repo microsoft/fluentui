@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Table } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import StaticTable from '../../examples/components/Table/Usage/TableExampleNavigable.shorthand';
@@ -6,7 +6,7 @@ import StaticTable from '../../examples/components/Table/Usage/TableExampleNavig
 export default {
   component: Table,
   title: 'Table',
-} as ComponentMeta<typeof Table>;
+} as Meta<typeof Table>;
 
 const StaticTableTeams = getThemeStoryVariant(StaticTable, 'teamsV2');
 

@@ -14,14 +14,14 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "build-storybook": "build-storybook -o ./dist/storybook",
+    "build-storybook": "storybook build -o ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
-    "storybook": "start-storybook",
+    "storybook": "storybook dev",
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
@@ -32,7 +32,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.54.8",
+    "@fluentui/react-components": "^9.54.10",
     "@fluentui/react-context-selector": "^9.1.65",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",

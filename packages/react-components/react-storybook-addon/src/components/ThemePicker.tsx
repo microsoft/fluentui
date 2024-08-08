@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconButton, Icons, TooltipLinkList, WithTooltip } from '@storybook/components';
-import { useParameter } from '@storybook/api';
+import { useParameter } from '@storybook/manager-api';
 
 import { ThemeIds, themes, defaultTheme } from '../theme';
 import { THEME_ID } from '../constants';
@@ -70,7 +70,7 @@ export const ThemePicker = () => {
     <>
       <WithTooltip placement="top" trigger="click" closeOnClick tooltip={renderTooltip}>
         <IconButton key={THEME_ID} title="Change Fluent theme" active={isActive}>
-          <Icons icon="chevrondown" />
+          <Icons icon="arrowdown" />
           <span style={{ marginLeft: 5 }}>Theme: {selectedTheme?.label}</span>
         </IconButton>
       </WithTooltip>

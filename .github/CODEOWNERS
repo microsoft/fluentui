@@ -331,9 +331,6 @@ packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopi
 packages/react-components/react-nav-preview @microsoft/cxe-red @microsoft/xc-uxe @mltejera
 packages/react-components/react-nav-preview/library @microsoft/cxe-red @microsoft/xc-uxe @mltejera
 packages/react-components/react-nav-preview/stories @microsoft/cxe-red @microsoft/xc-uxe @mltejera
-packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-motion-preview/library @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-motion-preview/stories @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar @microsoft/teams-prg
 packages/react-components/react-message-bar/library @microsoft/teams-prg
 packages/react-components/react-message-bar/stories @microsoft/teams-prg

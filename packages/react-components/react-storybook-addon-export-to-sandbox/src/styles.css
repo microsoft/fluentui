@@ -4,7 +4,7 @@
   z-index: auto;
 }
 
-#docs-root .docblock-code-toggle,
+#storybook-docs .docblock-code-toggle,
 .docs-story .with-code-sandbox-button {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
@@ -30,7 +30,7 @@
 /* https://github.com/microsoft/fluentui/issues/22764 */
 
 @media screen and (max-width: 380px) {
-  #docs-root .docblock-code-toggle,
+  #storybook-docs .docblock-code-toggle,
   .docs-story .with-code-sandbox-button {
     font-size: 10px !important;
   }

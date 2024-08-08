@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Divider, RadioGroup } from '@fluentui/react-northstar';
 import RadioGroupItemExample from '../../examples/components/RadioGroup/Item/RadioGroupItemExample.shorthand';
 import RadioGroupItemExampleCheckedShorthand from '../../examples/components/RadioGroup/Item/RadioGroupItemExampleChecked.shorthand';
@@ -33,7 +33,7 @@ const RadioGroupColorPickerExample = () => {
   );
 };
 
-export default { component: RadioGroup, title: 'RadioGroup' } as ComponentMeta<typeof RadioGroup>;
+export default { component: RadioGroup, title: 'RadioGroup' } as Meta<typeof RadioGroup>;
 
 export {
   RadioGroupItemExample,

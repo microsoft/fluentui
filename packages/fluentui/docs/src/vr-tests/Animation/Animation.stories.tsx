@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Animation } from '@fluentui/react-northstar';
 import AnimationExample from '../../examples/components/Animation/Types/AnimationExample.shorthand';
 import AnimationExampleDelay from '../../examples/components/Animation/Types/AnimationExampleDelay.shorthand';
@@ -9,7 +9,7 @@ import AnimationExampleIterationCount from '../../examples/components/Animation/
 import AnimationExampleTimingFunction from '../../examples/components/Animation/Types/AnimationExampleTimingFunction.shorthand';
 import AnimationExampleVisible from '../../examples/components/Animation/Usage/AnimationExampleVisible.shorthand';
 
-export default { component: Animation, title: 'Animation' } as ComponentMeta<typeof Animation>;
+export default { component: Animation, title: 'Animation' } as Meta<typeof Animation>;
 
 export {
   AnimationExample,

@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:13 GMT",
+      "tag": "@fluentui/example-data_v8.4.25",
+      "version": "8.4.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/example-data",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:51 GMT",
       "tag": "@fluentui/example-data_v8.4.24",
       "version": "8.4.24",

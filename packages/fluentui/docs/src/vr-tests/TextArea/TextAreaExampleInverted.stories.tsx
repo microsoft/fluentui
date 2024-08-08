@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { TextArea } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import TextAreaExampleInverted from '../../examples/components/TextArea/Variations/TextAreaExampleInverted.shorthand';
@@ -6,7 +6,7 @@ import TextAreaExampleInverted from '../../examples/components/TextArea/Variatio
 export default {
   component: TextArea,
   title: 'TextArea',
-} as ComponentMeta<typeof TextArea>;
+} as Meta<typeof TextArea>;
 
 const TextAreaExampleInvertedTeams = getThemeStoryVariant(TextAreaExampleInverted, 'teamsV2');
 

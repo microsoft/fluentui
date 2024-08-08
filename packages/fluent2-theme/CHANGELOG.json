@@ -2,6 +2,27 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:14 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.95",
+      "version": "8.107.95",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.120.3",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 01 Aug 2024 21:38:31 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.94",
       "version": "8.107.94",

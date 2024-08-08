@@ -6,7 +6,7 @@ import { ToggleButtonProps, ButtonSlots, ToggleButtonState } from '@fluentui/rea
  */
 export type ToolbarRadioButtonProps = ComponentProps<ButtonSlots> &
   Partial<Pick<ToggleButtonProps, 'disabled' | 'disabledFocusable' | 'size'>> & {
-    appearance?: 'primary' | 'subtle';
+    appearance?: 'primary' | 'subtle' | 'transparent';
     name: string;
     value: string;
   };

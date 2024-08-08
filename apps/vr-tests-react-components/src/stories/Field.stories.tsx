@@ -11,12 +11,12 @@ import { Slider } from '@fluentui/react-slider';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
-import type { Meta, DecoratorFn } from '@storybook/react';
+import type { Meta, Decorator } from '@storybook/react';
 import { Steps } from 'storywright';
 
 import { withStoryWrightSteps } from '../utilities';
 
-const TestWrapperDecoratorFixedWidth400: DecoratorFn = story => (
+const TestWrapperDecoratorFixedWidth400: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '400px' }}>
       {story()}

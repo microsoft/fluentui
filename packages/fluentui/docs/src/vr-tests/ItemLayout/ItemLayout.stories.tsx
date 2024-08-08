@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { ItemLayout } from '@fluentui/react-northstar';
 import ItemLayoutExampleContent from '../../examples/components/ItemLayout/Content/ItemLayoutExampleContent.shorthand';
 import ItemLayoutExampleContentMediaShorthand from '../../examples/components/ItemLayout/Content/ItemLayoutExampleContentMedia.shorthand';
@@ -11,7 +11,7 @@ import ItemLayoutExampleRtlShorthand from '../../examples/components/ItemLayout/
 import ItemLayoutExampleShorthand from '../../examples/components/ItemLayout/Types/ItemLayoutExample.shorthand';
 import ItemLayoutExampleSelectionShorthand from '../../examples/components/ItemLayout/Types/ItemLayoutExampleSelection.shorthand';
 
-export default { component: ItemLayout, title: 'ItemLayout' } as ComponentMeta<typeof ItemLayout>;
+export default { component: ItemLayout, title: 'ItemLayout' } as Meta<typeof ItemLayout>;
 
 export {
   ItemLayoutExampleContent,

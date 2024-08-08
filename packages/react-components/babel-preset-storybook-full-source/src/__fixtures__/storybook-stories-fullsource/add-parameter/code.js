@@ -1,2 +1,10 @@
-var __STORY__ = "import { Button } from '@fluentui/react-button';";
-storyName.parameters = {};
+import * as React from 'react';
+
+export const Default = () => <Button>Click me</Button>;
+Default.parameters = {
+  docsMode: {
+    description: {
+      story: 'The default story',
+    },
+  },
+};

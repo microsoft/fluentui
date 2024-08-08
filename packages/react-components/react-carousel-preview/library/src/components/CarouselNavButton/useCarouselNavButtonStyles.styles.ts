@@ -39,7 +39,7 @@ const useStyles = makeStyles({
       margin: `calc(-1 * ${tokens.strokeWidthThick})`,
       borderRadius: tokens.borderRadiusMedium,
     }),
-    ':after': {
+    '::after': {
       opacity: 0.3,
     },
   },
@@ -51,7 +51,7 @@ const useStyles = makeStyles({
       margin: `calc(-1 * ${tokens.strokeWidthThick})`,
       borderRadius: tokens.borderRadiusMedium,
     }),
-    ':after': {
+    '::after': {
       width: '16px',
       borderRadius: '4px',
     },

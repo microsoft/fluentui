@@ -2,6 +2,21 @@
   "name": "@fluentui/react-dialog",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 21:40:43 GMT",
+      "tag": "@fluentui/react-dialog_v9.11.9",
+      "version": "9.11.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e3d6a872ead53cce8c5684b4648cd1c57598da95",
+            "comment": "fix: do not require ref forwarding"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:11 GMT",
       "tag": "@fluentui/react-dialog_v9.11.6",
       "version": "9.11.6",

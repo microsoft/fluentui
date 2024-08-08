@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Card } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import CardExampleFocusable from '../../examples/components/Card/Usage/CardExampleFocusable';
@@ -13,7 +13,7 @@ export default {
       <StoryWright steps={new Steps().keys('body', Keys.tab).snapshot('Focus on a card').end()}>{story()}</StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Card>;
+} as Meta<typeof Card>;
 
 const CardExampleFocusableTeams = getThemeStoryVariant(CardExampleFocusable, 'teamsV2');
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Datepicker, inputClassName } from '@fluentui/react-northstar';
 import { datepickerCalendarCellSelector } from './utils';
 import { getThemeStoryVariant } from '../utilities';
@@ -25,7 +25,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Datepicker>;
+} as Meta<typeof Datepicker>;
 
 const DatepickerCellExampleTeams = getThemeStoryVariant(DatepickerCellExample, 'teamsV2');
 

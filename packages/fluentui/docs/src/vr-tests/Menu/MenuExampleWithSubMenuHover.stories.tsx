@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Menu, menuClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import MenuExampleWithSubMenuHover from '../../examples/components/Menu/Usage/MenuExampleWithSubmenuHover.shorthand';
@@ -26,7 +26,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Menu>;
+} as Meta<typeof Menu>;
 
 const MenuExampleWithSubMenuHoverTeams = getThemeStoryVariant(MenuExampleWithSubMenuHover, 'teamsV2');
 

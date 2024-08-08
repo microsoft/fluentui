@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Provider } from '@fluentui/react-northstar';
 import ProviderExampleAnimation from '../../examples/components/Provider/Types/ProviderDisableAnimationsExample.shorthand';
 import ProviderExampleShorthand from '../../examples/components/Provider/Types/ProviderExample.shorthand';
@@ -7,7 +7,7 @@ import ProviderRtlExample from '../../examples/components/Provider/Types/Provide
 import ProviderExampleTarget from '../../examples/components/Provider/Usage/ProviderExampleTarget';
 import ProviderExampleTargetFrame from '../../examples/components/Provider/Usage/ProviderExampleTargetFrame';
 
-export default { component: Provider, title: 'Provider' } as ComponentMeta<typeof Provider>;
+export default { component: Provider, title: 'Provider' } as Meta<typeof Provider>;
 
 export {
   ProviderExampleAnimation,

@@ -14,7 +14,7 @@ test.describe('Slider', () => {
 
     element = page.locator('fluent-slider');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-slider--slider'));
   });

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Header } from '@fluentui/react-northstar';
 import HeaderExampleRtl from '../../examples/components/Header/Rtl/HeaderExample.rtl';
 import HeadersExampleShorthand from '../../examples/components/Header/Types/HeaderExample.shorthand';
@@ -10,7 +10,7 @@ import HeaderExampleDescription from '../../examples/components/Header/Variation
 import HeaderExampleDescriptionCustomizationShorthand from '../../examples/components/Header/Variations/HeaderExampleDescriptionCustomization.shorthand';
 import HeaderExampleDescriptionCustomization from '../../examples/components/Header/Variations/HeaderExampleDescriptionCustomization';
 
-export default { component: Header, title: 'Header' } as ComponentMeta<typeof Header>;
+export default { component: Header, title: 'Header' } as Meta<typeof Header>;
 
 export {
   HeaderExampleRtl,

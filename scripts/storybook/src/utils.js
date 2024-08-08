@@ -379,7 +379,7 @@ function processBabelLoaderOptions(loaderConfig) {
  *
  * **Note:**
  * - this function mutates `rules` argument which is a reference to `modules.rules` webpack config property
- * - to print used babel-loader config run: `yarn start-storybook --no-manager-cache --debug-webpack` and look for
+ * - to print used babel-loader config run: `yarn start-storybook --debug-webpack` and look for
  * webpack rule set containing both:
  *  - `test: /\.(mjs|tsx?|jsx?)$/`
  *  - `node_modules/babel-loader/lib/index.js` as `loader` within module.rules

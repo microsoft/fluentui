@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
 import ToolbarExampleMenuShorthand from '../../examples/components/Toolbar/Visual/ToolbarExampleCompose.shorthand';
 
@@ -12,6 +12,6 @@ export default {
       <StoryWright steps={new Steps().click('#open-menu').snapshot('Shows a menu').end()}>{story()}</StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toolbar>;
+} as Meta<typeof Toolbar>;
 
 export { ToolbarExampleMenuShorthand };

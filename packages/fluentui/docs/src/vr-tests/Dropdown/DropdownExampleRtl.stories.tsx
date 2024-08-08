@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import DropdownExampleRtl from '../../examples/components/Dropdown/Rtl/DropdownExample.rtl';
 
@@ -26,6 +26,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 export { DropdownExampleRtl };

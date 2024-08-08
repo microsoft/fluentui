@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { Args, DecoratorFn, StoryFn, StoryObj } from '@storybook/react';
+import type { Args, Decorator, StoryFn, StoryObj } from '@storybook/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, webDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
 
@@ -13,6 +13,7 @@ type StoryVariant = typeof DARK_MODE | typeof HIGH_CONTRAST | typeof RTL;
 export function getStoryVariant(story: StoryFn, variant: StoryVariant) {
   const theme = getTheme(variant);
   const dir = getDir(variant);
+  const decorators = story.decorators ?? [];
 
   return {
     ...story,
@@ -24,11 +25,11 @@ export function getStoryVariant(story: StoryFn, variant: StoryVariant) {
       mode: 'vr-test',
       theme,
     },
-    decorators: [...(story.decorators ?? []), StoryVariantDecorator],
+    decorators: [...(Array.isArray(decorators) ? decorators : [decorators]), StoryVariantDecorator],
   } satisfies StoryObj;
 }
 
-const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
+const StoryVariantDecorator: Decorator = (storyFn, context) => {
   return (
     <FluentProvider applyStylesToPortals={false} theme={context.parameters.theme} dir={context.parameters.dir}>
       {storyFn(context)}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Provider, buttonClassName } from '@fluentui/react-northstar';
 import ProviderExampleFocusBorderShorthand from '../../examples/components/Provider/Types/ProviderExampleFocusBorder.shorthand';
 
@@ -22,6 +22,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Provider>;
+} as Meta<typeof Provider>;
 
 export { ProviderExampleFocusBorderShorthand };

@@ -1,13 +1,13 @@
 import type { PresetConfig } from './types';
 
-type WebpackFinalFn = NonNullable<import('@storybook/core-common').StorybookConfig['webpackFinal']>;
+type WebpackFinalFn = NonNullable<import('@storybook/react-webpack5').StorybookConfig['webpackFinal']>;
 export type WebpackFinalConfig = Parameters<WebpackFinalFn>[0];
 export type WebpackFinalOptions = Parameters<WebpackFinalFn>[1];
 
 export function webpack(config: WebpackFinalConfig, options: WebpackFinalOptions) {
   const addonPresetConfig = getAddonOptions(options);
 
-  registerRules({ config, rules: [createRule(addonPresetConfig)] });
+  registerRules({ config, rules: [createBabelLoaderRule(addonPresetConfig)] });
 
   return config;
 }
@@ -24,7 +24,7 @@ const PLUGIN_PATH =
     ? '@fluentui/babel-preset-storybook-full-source/__dev'
     : '@fluentui/babel-preset-storybook-full-source';
 
-function createRule(config: Required<PresetConfig>): import('webpack').RuleSetRule {
+function createBabelLoaderRule(config: Required<PresetConfig>): import('webpack').RuleSetRule {
   const { babelLoaderOptionsUpdater, importMappings, webpackRule } = config;
 
   const plugin = [require.resolve(PLUGIN_PATH), importMappings];
@@ -38,7 +38,11 @@ function createRule(config: Required<PresetConfig>): import('webpack').RuleSetRu
      */
     enforce: 'post',
     use: {
-      loader: 'babel-loader',
+      /**
+       * Custom babel loader wraps the original babel-loader and fixes the incorrect `inputSourceMap` parameter
+       * that is passed to babel-loader.
+       **/
+      loader: require.resolve('./custom-babel-loader'),
       options: babelLoaderOptionsUpdater({
         plugins: [plugin],
       }),

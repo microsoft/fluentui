@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "upgrade to storybook v7",
+  "packageName": "@fluentui/react-swatch-picker",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "none"
+}

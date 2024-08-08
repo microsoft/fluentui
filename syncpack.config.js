@@ -29,6 +29,7 @@ const config = {
     {
       packages: ['@fluentui/fluentui-repo'],
       dependencies: [
+        '@floating-ui/dom',
         '@babel/core',
         '@babel/preset-typescript',
         '@babel/generator',

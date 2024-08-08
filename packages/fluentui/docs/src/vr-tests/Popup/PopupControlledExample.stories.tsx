@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Popup, buttonClassName, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import PopupControlledExample from '../../examples/components/Popup/Usage/PopupExampleCloseButton.shorthand';
@@ -34,7 +34,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Popup>;
+} as Meta<typeof Popup>;
 
 const PopupControlledExampleTeams = getThemeStoryVariant(PopupControlledExample, 'teamsV2');
 

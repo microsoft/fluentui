@@ -12,7 +12,7 @@ test.describe('Label', () => {
     page = await browser.newPage();
 
     element = page.locator('fluent-label');
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-label--label'));
   });

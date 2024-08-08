@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Flex, Text, Video } from '@fluentui/react-northstar';
 
-export default { component: Video, title: 'Video' } as ComponentMeta<typeof Video>;
+export default { component: Video, title: 'Video' } as Meta<typeof Video>;
 
 const VideoExample = () => (
   <Flex column>

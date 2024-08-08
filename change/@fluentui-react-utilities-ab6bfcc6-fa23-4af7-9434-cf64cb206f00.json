@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "upgrade to storybook v7",
+  "packageName": "@fluentui/react-utilities",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "none"
+}

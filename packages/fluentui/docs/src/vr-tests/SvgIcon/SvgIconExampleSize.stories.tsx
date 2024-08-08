@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { SvgIcon } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import SvgIconExampleSize from '../../examples/components/SvgIcon/Variations/SvgIconExampleSize.shorthand';
@@ -6,7 +6,7 @@ import SvgIconExampleSize from '../../examples/components/SvgIcon/Variations/Svg
 export default {
   component: SvgIcon,
   title: 'SvgIcon',
-} as ComponentMeta<typeof SvgIcon>;
+} as Meta<typeof SvgIcon>;
 
 const SvgIconExampleSizeTeams = getThemeStoryVariant(SvgIconExampleSize, 'teamsV2');
 

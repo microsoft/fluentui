@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Toolbar } from '@fluentui/react-northstar';
 import ToolbarExampleOverflowPositioningShorthandRtl from '../../examples/components/Toolbar/Visual/ToolbarExampleOverflowPositioning.rtl';
 
@@ -19,6 +19,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toolbar>;
+} as Meta<typeof Toolbar>;
 
 export { ToolbarExampleOverflowPositioningShorthandRtl };

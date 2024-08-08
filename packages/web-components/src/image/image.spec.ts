@@ -11,7 +11,7 @@ test.describe('Image', () => {
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     element = page.locator('fluent-image');
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
     await page.goto(fixtureURL('components-image--image'));
   });
 

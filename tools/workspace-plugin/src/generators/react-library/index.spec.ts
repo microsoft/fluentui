@@ -198,7 +198,7 @@ describe('react-library generator', () => {
         format: 'just-scripts prettier',
         lint: 'eslint src/',
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'storybook dev',
         'type-check': 'just-scripts type-check',
         'test-ssr': 'test-ssr "./src/**/*.stories.tsx"',
       },

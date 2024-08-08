@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Datepicker, buttonClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DatepickerExampleRestrictedDates from '../../examples/components/Datepicker/Types/DatepickerExampleRestrictedDates.shorthand';
@@ -15,7 +15,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Datepicker>;
+} as Meta<typeof Datepicker>;
 
 const DatepickerExampleRestrictedDatesTeams = getThemeStoryVariant(DatepickerExampleRestrictedDates, 'teamsV2');
 

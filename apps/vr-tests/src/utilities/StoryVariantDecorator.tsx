@@ -1,10 +1,10 @@
 import * as React from 'react';
-import type { Args, DecoratorFn, StoryFn, StoryObj } from '@storybook/react';
+import type { Args, Decorator, StoryFn } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
 import { ThemeProvider } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 
-const StoryVariantDecorator: DecoratorFn = (storyFn, context) => {
+const StoryVariantDecorator: Decorator = (storyFn, context) => {
   const { dir, theme } = context.parameters;
 
   setRTL(dir === 'rtl');
@@ -24,10 +24,9 @@ export const RTL = 'RTL';
 type StoryVariant = typeof DARK_MODE | typeof RTL;
 
 /** Helper function that returns RTL or Dark Mode variant of an existing story. */
-export function getStoryVariant<TArgs = Args>(
-  story: StoryFn<TArgs>,
-  variant: StoryVariant,
-): StoryObj<TArgs> {
+export function getStoryVariant<TArgs = Args>(story: StoryFn<TArgs>, variant: StoryVariant) {
+  const decorators = story.decorators ?? [];
+
   const theme = getTheme(variant);
   const dir = getDir(variant);
 
@@ -36,7 +35,7 @@ export function getStoryVariant<TArgs = Args>(
     render: story,
     storyName: `${getStoryName(story)} - ${variant}`,
     parameters: { ...story.parameters, dir, theme },
-    decorators: [...(story.decorators ?? []), StoryVariantDecorator],
+    decorators: [...(Array.isArray(decorators) ? decorators : [decorators]), StoryVariantDecorator],
   };
 }
 

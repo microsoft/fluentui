@@ -4,6 +4,6 @@ import { DetailsListKeyboardAccessibleResizeAndReorderProps as ExternalProps } f
 export const DetailsListKeyboardDragDropPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    title: 'DetailsList - Keyboard Column Reorder & Resize',
+    title: 'DetailsList - Accessible Column Reorder & Resize',
   },
 };
