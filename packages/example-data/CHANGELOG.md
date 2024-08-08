@@ -1,8 +1,17 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.4.25](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.25)
+
+Thu, 08 Aug 2024 07:24:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.4.24..@fluentui/example-data_v8.4.25)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
 
 ## [8.4.12](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.4.12)
 
