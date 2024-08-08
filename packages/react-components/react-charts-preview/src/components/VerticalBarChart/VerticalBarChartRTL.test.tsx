@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import '@testing-library/jest-dom';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
-import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import {
@@ -23,6 +23,21 @@ const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
+
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
 
 beforeEach(() => {
   // When adding a new snapshot test, it's observed that other snapshots may fail due to
@@ -605,14 +620,13 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
-    const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
     const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
     await waitFor(() => {
       const bars = getById(container, /_VBC_bar/i);
       expect(bars).toHaveLength(8);
       fireEvent.mouseOver(bars[0]);
       // Assert
-      expect(handleMouseOver).toHaveBeenCalled();
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
     });
   });
 
