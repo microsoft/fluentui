@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[chore]: [rating-display] move size, color and generate icons out of base class",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}

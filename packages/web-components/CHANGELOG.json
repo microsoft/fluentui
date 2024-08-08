@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 04:07:16 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.55",
+      "version": "3.0.0-beta.55",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c971f0fec783527bebbafbcd687034e3f0aa4ca3",
+            "comment": "[chore]: [rating-display] move size, color and generate icons out of base class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2024 04:08:14 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.54",
       "version": "3.0.0-beta.54",
