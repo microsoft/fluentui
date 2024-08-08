@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint, ILineChartLineOptions} from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Switch } from '@fluentui/react-components';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 
 export const VCBasic = () => {
   const [width, setWidth] = React.useState<number>(650);
@@ -139,6 +140,7 @@ export const VCBasic = () => {
       },
     },
   ];
+  const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
@@ -196,6 +198,17 @@ export const VCBasic = () => {
             width={width}
             hideLegend={false}
             enableReflow={true}
+            useSingleColor={useSingleColor}
+            hideLabels={hideLabels}
+            lineLegendText={'just line'}
+            lineLegendColor={'brown'}
+            lineOptions={lineOptions}
+            {...(isCalloutselected && {
+              onRenderCalloutPerDataPoint: (
+                props: IVerticalBarChartDataPoint,
+                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+              ) => (props ? defaultRender(props) : null),
+            })}
             yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
@@ -211,6 +224,17 @@ export const VCBasic = () => {
             width={width}
             hideLegend={false}
             enableReflow={true}
+            useSingleColor={useSingleColor}
+            hideLabels={hideLabels}
+            lineLegendText={'just line'}
+            lineLegendColor={'brown'}
+            lineOptions={lineOptions}
+            {...(isCalloutselected && {
+              onRenderCalloutPerDataPoint: (
+                props: IVerticalBarChartDataPoint,
+                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+              ) => (props ? defaultRender(props) : null),
+            })}
             yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />

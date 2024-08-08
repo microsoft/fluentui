@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint} from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -64,6 +64,7 @@ export const VCCustomAccess = () => {
           colors={customColors}
           hideLegend={true}
           enableReflow={true}
+          lineLegendColor={`rgb(174, 140, 0)`}
         />
       </div>
     </>

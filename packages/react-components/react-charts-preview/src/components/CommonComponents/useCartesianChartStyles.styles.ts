@@ -61,7 +61,7 @@ const useStyles = makeStyles({
     fill: tokens.colorNeutralForeground1,
   },
   xAxis: {
-    text: {
+    '& text': {
       fill: tokens.colorNeutralForeground1,
       fontWeight: '600',
       selectors: {
@@ -70,7 +70,7 @@ const useStyles = makeStyles({
         },
       },
     },
-    line: {
+    '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       width: '1px',
@@ -81,12 +81,12 @@ const useStyles = makeStyles({
         },
       },
     },
-    path: {
+    '& path': {
       display: 'none',
     },
   },
   yAxis: {
-    text: {
+    '& text': {
       fontSize: tokens.fontSizeBase100,
       fill: tokens.colorNeutralForeground1,
       fontWeight: '600',
@@ -96,7 +96,7 @@ const useStyles = makeStyles({
         },
       },
     },
-    line: {
+    '& line': {
       opacity: 0.2,
       stroke: tokens.colorNeutralForeground1,
       selectors: {
@@ -106,10 +106,10 @@ const useStyles = makeStyles({
         },
       },
     },
-    path: {
+    '& path': {
       display: 'none',
     },
-    g: {
+    '& g': {
       ...(isRtl &&
         !isIE11Var && {
           textAnchor: 'end',
