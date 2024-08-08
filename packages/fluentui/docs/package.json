@@ -22,7 +22,7 @@
     "@fluentui/react-telemetry": "*",
     "@fluentui/styles": "*",
     "@hot-loader/react-dom": "17.0.2",
-    "@mdx-js/react": "^1.5.5",
+    "@mdx-js/react": "^2.3.0",
     "classnames": "^2.2.6",
     "color": "^3.1.0",
     "copy-to-clipboard": "^3.2.0",
@@ -69,13 +69,13 @@
     "bundle": "gulp build:docs",
     "prepare-storybook": "nx run-many -t build:info -p react-northstar react-component-ref react-bindings --nxBail",
     "prebuild-storybook": "yarn run prepare-storybook --verbose",
-    "build-storybook": "build-storybook --no-manager-cache -o dist/storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
     "prestart:storybook": "yarn run prepare-storybook",
-    "start:storybook": "start-storybook",
-    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "start:storybook": "storybook dev",
+    "test-vr": "storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }

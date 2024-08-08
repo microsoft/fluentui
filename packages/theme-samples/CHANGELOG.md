@@ -1,8 +1,19 @@
 # Change Log - @fluentui/theme-samples
 
-This log was last generated on Thu, 01 Aug 2024 21:38:31 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.7.167](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.167)
+
+Thu, 08 Aug 2024 07:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme-samples_v8.7.166..@fluentui/theme-samples_v8.7.167)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.120.3 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/scheme-utilities to v8.3.59 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
 
 ## [8.7.166](https://github.com/microsoft/fluentui/tree/@fluentui/theme-samples_v8.7.166)
 
