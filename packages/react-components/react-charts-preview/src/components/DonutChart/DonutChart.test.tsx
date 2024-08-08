@@ -6,14 +6,14 @@ import { resetIds } from '../../Utilities';
 import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 import { IDonutChartProps, DonutChart } from './index';
-import { IDonutChartState, DonutChartBase } from './DonutChart.base';
+//import { IDonutChartState, DonutChartBase } from './DonutChart.base';
 import { IChartProps, IChartDataPoint } from '../../index';
 import toJson from 'enzyme-to-json';
 const rendererAct = renderer.act;
 import { act as domAct } from 'react-dom/test-utils';
 
 // Wrapper of the DonutChart to be tested.
-let wrapper: ReactWrapper<IDonutChartProps, IDonutChartState, DonutChartBase> | undefined;
+let wrapper: ReactWrapper<IDonutChartProps> | undefined;
 
 function sharedBeforeEach() {
   resetIds();
