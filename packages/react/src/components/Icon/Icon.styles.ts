@@ -5,6 +5,7 @@ import type { IIconStyleProps, IIconStyles } from './Icon.types';
 export const classNames = mergeStyleSets({
   root: {
     display: 'inline-block',
+    textDecoration: 'inherit',
   },
   placeholder: [
     'ms-Icon-placeHolder',
