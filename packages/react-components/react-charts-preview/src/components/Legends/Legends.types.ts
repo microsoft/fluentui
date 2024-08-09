@@ -65,11 +65,6 @@ export interface ILegendsStyles {
   hoverCardRoot?: string;
 
   /**
-   * sub component styles
-   */
-  subComponentStyles?: ILegendSubComponentStyles;
-
-  /**
    * Style for the area that is resizable
    */
   resizableArea?: string;

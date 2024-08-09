@@ -93,7 +93,7 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
         <>
           <path
             className="line"
-            d={line(points)}
+            d={line(points.map(point => [point.x as number, point.y]))}
             fill={'transparent'}
             opacity={1}
             strokeWidth={2}
@@ -101,7 +101,7 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
           />
           <path
             className="area"
-            d={area(points)}
+            d={area(points.map(point => [point.x as number, point.y]))}
             opacity={1}
             fillOpacity={0.2}
             fill={data!.lineChartData![0].color!}

@@ -172,10 +172,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
   if (xAxisElement) {
-    d3Select(xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   const tickValues = xAxisScale.ticks(xAxisCount).map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -251,10 +248,7 @@ export function createDateXAxis(
     tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat(tickParams.tickFormat)) : '';
   }
   if (xAxisElement) {
-    d3Select(xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(xAxisCount)).map((val, idx) => {
     const tickFormat = xAxis.tickFormat();
@@ -302,10 +296,7 @@ export function createStringXAxis(
     });
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement)
-      .call(xAxis)
-      .selectAll('text')
-      .attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
   const tickValues = dataset.map(xAxis.tickFormat()!);
   return { xScale: xAxisScale, tickValues };
@@ -443,12 +434,7 @@ export function createYAxisForOtherCharts(
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
 
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement
-    ? d3Select(yAxisElement)
-        .call(yAxis)
-        .selectAll('text')
-        .attr('aria-hidden', 'true')
-    : '';
+  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
   axisData.yAxisDomainValues = domainValues;
   return yAxisScale;
 }

@@ -13,7 +13,7 @@ export interface IPopoverComponentProps {
   dataPointCalloutProps?: IChartDataPoint;
   customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
-  hoverXValue: string | number;
+  hoverXValue?: string | number;
   YValueHover?: IYValueHover[];
   descriptionMessage?: string;
 }

@@ -26,6 +26,8 @@ export const linechartClassNames: SlotClassNames<ILineChartStyles> = {
   opacityChangeOnHover: 'fui-line__opacityChangeOnHover',
   shapeStyles: 'fui-line__shapeStyles',
   chartWrapper: 'fui-line__chartWrapper',
+  calloutBlockContainertoDrawShapefalse: '', // Not used so marked as empty. ToDo - How to configure inheritence properly
+  calloutBlockContainertoDrawShapetrue: '', // Not used so marked as empty. ToDo - How to configure inheritence properly
 };
 
 /**

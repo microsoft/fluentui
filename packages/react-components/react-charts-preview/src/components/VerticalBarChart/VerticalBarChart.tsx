@@ -142,7 +142,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       line.push(
         <path
           key={_vbcLineId}
-          id = {_vbcLineId}
+          id={_vbcLineId}
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
@@ -288,7 +288,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           Legend={_props.legend}
           YValue={_props.yAxisCalloutData || _props.y}
-          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(props.y)}
+          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
           culture={props.culture}
         />
       </>

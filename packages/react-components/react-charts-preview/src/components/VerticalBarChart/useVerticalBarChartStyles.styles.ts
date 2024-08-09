@@ -1,4 +1,3 @@
-import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { IVerticalBarChartProps, IVerticalBarChartStyles, IVerticalBarChartStyleProps } from '../../index';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
@@ -11,6 +10,25 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
   yAxisDomain: 'fui-vbc__yAxisDomain',
   tooltip: 'fui-vbc__tooltip',
   barLabel: 'fui-vbc__barLabel',
+  root: '',
+  xAxis: '',
+  yAxis: '',
+  legendContainer: '',
+  hover: '',
+  calloutContentRoot: '',
+  calloutContentX: '',
+  calloutContentY: '',
+  descriptionMessage: '',
+  calloutDateTimeContainer: '',
+  calloutInfoContainer: '',
+  calloutBlockContainer: '',
+  calloutBlockContainertoDrawShapefalse: '',
+  calloutBlockContainertoDrawShapetrue: '',
+  calloutlegendText: '',
+  axisTitle: '',
+  chartTitle: '',
+  shapeStyles: '',
+  chartWrapper: '',
 };
 const useStyles = makeStyles({
   opacityChangeOnHover: {
@@ -32,12 +50,12 @@ const useStyles = makeStyles({
     textAlign: 'center',
     top: '0px',
     fill: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius('2px'),
+    borderRadius: '2px',
     pointerEvents: 'none',
   },
   barLabel: {
-    fontSize: FontSizes.small,
-    fontWeight: FontWeights.semibold,
+    fontSize: tokens.fontSizeBase200,
+    fontWeight: tokens.fontWeightSemibold,
     //fill: neutrals.neutralPrimary,
   },
 });

@@ -29,10 +29,14 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLineLegendInBarChart?: boolean;
 }
 
+interface LegendMap {
+  [key: string]: boolean;
+}
+
 export interface ILegendState {
   activeLegend: string;
   /** Set of legends selected, both for multiple selection and single selection */
-  selectedLegends: { [key: string]: boolean };
+  selectedLegends: LegendMap;
 }
 export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<HTMLDivElement, ILegendsProps>(
   (props, forwardedRef) => {
@@ -41,7 +45,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
 
     // set states separately for each instance of the component
     const [activeLegend, setActiveLegend] = React.useState('');
-    const [selectedLegends, setSelectedLegends] = React.useState({});
+    const [selectedLegends, setSelectedLegends] = React.useState<LegendMap>({});
     const focusAttributes = useFocusableGroup();
 
     React.useEffect(() => {
