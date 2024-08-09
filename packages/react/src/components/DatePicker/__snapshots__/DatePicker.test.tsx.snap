@@ -196,6 +196,7 @@ exports[`DatePicker renders DatePicker allowing text input correctly 1`] = `
                   position: absolute;
                   right: 4px;
                   speak: none;
+                  text-decoration: inherit;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
@@ -427,6 +428,7 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                   position: absolute;
                   right: 4px;
                   speak: none;
+                  text-decoration: inherit;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
@@ -666,6 +668,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   position: absolute;
                   right: 4px;
                   speak: none;
+                  text-decoration: inherit;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}

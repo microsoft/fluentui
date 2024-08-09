@@ -60,6 +60,7 @@ exports[`PersonaPresence renders available + out of office 1`] = `
           font-weight: normal;
           line-height: 12px;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -113,6 +114,7 @@ exports[`PersonaPresence renders available 1`] = `
           font-weight: normal;
           line-height: 12px;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -186,6 +188,7 @@ exports[`PersonaPresence renders away + out of office 1`] = `
           line-height: 12px;
           position: relative;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -241,6 +244,7 @@ exports[`PersonaPresence renders away 1`] = `
           line-height: 12px;
           position: relative;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -312,6 +316,7 @@ exports[`PersonaPresence renders blocked + out of office 1`] = `
           display: inline-block;
           font-size: 6px;
           line-height: 12px;
+          text-decoration: inherit;
           vertical-align: top;
           width: 1em;
         }
@@ -382,6 +387,7 @@ exports[`PersonaPresence renders blocked 1`] = `
           display: inline-block;
           font-size: 6px;
           line-height: 12px;
+          text-decoration: inherit;
           vertical-align: top;
           width: 1em;
         }
@@ -448,6 +454,7 @@ exports[`PersonaPresence renders busy + out of office 1`] = `
           display: inline-block;
           font-size: 6px;
           line-height: 12px;
+          text-decoration: inherit;
           vertical-align: top;
           width: 1em;
         }
@@ -495,6 +502,7 @@ exports[`PersonaPresence renders busy 1`] = `
           display: inline-block;
           font-size: 6px;
           line-height: 12px;
+          text-decoration: inherit;
           vertical-align: top;
           width: 1em;
         }
@@ -566,6 +574,7 @@ exports[`PersonaPresence renders do not disturb + out of office 1`] = `
           font-weight: normal;
           line-height: 12px;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -619,6 +628,7 @@ exports[`PersonaPresence renders do not disturb 1`] = `
           font-weight: normal;
           line-height: 12px;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -695,6 +705,7 @@ exports[`PersonaPresence renders offline + out of office 1`] = `
           font-weight: normal;
           line-height: 12px;
           speak: none;
+          text-decoration: inherit;
           vertical-align: top;
         }
         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
@@ -762,6 +773,7 @@ exports[`PersonaPresence renders offline 1`] = `
           display: inline-block;
           font-size: 6px;
           line-height: 12px;
+          text-decoration: inherit;
           vertical-align: top;
           width: 1em;
         }
