@@ -3,7 +3,6 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { HueSliderSlots, HueSliderState } from './HueSlider.types';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import TransparentImage from '../../../docs/assets/transparent-pattern.png'; // Use DNS
 
 export const hueSliderClassNames: SlotClassNames<HueSliderSlots> = {
   root: 'fui-HueSlider',

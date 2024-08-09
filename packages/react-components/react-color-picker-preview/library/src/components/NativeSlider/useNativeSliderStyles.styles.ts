@@ -13,7 +13,8 @@ export const nativeSliderClassNames: SlotClassNames<NativeSliderSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    accentColor: 'coral',
+    height: '28px',
   },
 
   // TODO add additional classes for different states and/or slots

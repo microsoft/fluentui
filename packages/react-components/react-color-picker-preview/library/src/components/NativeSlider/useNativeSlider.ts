@@ -13,22 +13,23 @@ import type { NativeSliderProps, NativeSliderState } from './NativeSlider.types'
  */
 export const useNativeSlider_unstable = (
   props: NativeSliderProps,
-  ref: React.Ref<HTMLDivElement>,
+  ref: React.Ref<HTMLInputElement>,
 ): NativeSliderState => {
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
-      root: 'div',
+      root: 'input',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getIntrinsicElementProps('div', {
+      getIntrinsicElementProps('input', {
         ref,
+        type: 'range',
         ...props,
       }),
-      { elementType: 'div' },
+      { elementType: 'input' },
     ),
   };
 };
