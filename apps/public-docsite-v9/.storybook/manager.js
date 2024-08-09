@@ -7,6 +7,7 @@ addons.setConfig({
   enableShortcuts: false,
   theme: fluentStorybookTheme,
   showPanel: false,
+  showToolbar: false,
 });
 
 addons.register('application-insights', api => {
