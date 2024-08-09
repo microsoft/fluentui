@@ -87,7 +87,7 @@ module.exports = createRule({
   },
   defaultOptions: [],
   create: context => {
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     /**
      * Generates the report for rule violations
