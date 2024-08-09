@@ -24,7 +24,7 @@ import {
   isRtl,
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
-import PopoverComponent from './PopoverComponent';
+import PopoverComponent from './Popover';
 
 /**
  * Cartesian Chart component
