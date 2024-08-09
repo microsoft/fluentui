@@ -27,27 +27,26 @@ export type TabInternalSlots = TabSlots & {
   contentReservedSpace?: Slot<'span'>;
 };
 
+export type TabInternalProps = {
+  /**
+   * A tab can be set to disable interaction.
+   * @default false
+   */
+  disabled?: boolean;
+  /**
+   * The value that identifies this tab when selected.
+   */
+  value: TabValue;
+};
+
 /**
  * Tab Props
  */
 export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> &
-  Pick<Partial<TabSlots>, 'content'> & {
-    /**
-     * A tab can be set to disable interaction.
-     * @default false
-     */
-    disabled?: boolean;
-    /**
-     * The value that identifies this tab when selected.
-     */
-    value: TabValue;
-  };
+  Pick<Partial<TabSlots>, 'content'> &
+  TabInternalProps;
 
-/**
- * State used in rendering Tab
- */
-export type TabState = ComponentState<TabInternalSlots> &
-  Pick<TabProps, 'value'> &
+export type TabInternalState = Pick<TabProps, 'value'> &
   Required<Pick<TabProps, 'disabled'>> & {
     /**
      * A tab supports 'transparent' and 'subtle' appearance.
@@ -77,3 +76,8 @@ export type TabState = ComponentState<TabInternalSlots> &
      */
     vertical: boolean;
   };
+
+/**
+ * State used in rendering Tab
+ */
+export type TabState = ComponentState<TabInternalSlots> & TabInternalState;

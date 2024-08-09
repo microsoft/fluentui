@@ -15,8 +15,31 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export const InteractiveTab: ForwardRefComponent<InteractiveTabProps>;
+
+// @public (undocumented)
+export const interactiveTabClassNames: SlotClassNames<InteractiveTabSlots>;
+
+// @public (undocumented)
+export type InteractiveTabProps = ComponentProps<Partial<InteractiveTabSlots>, 'button'> & TabInternalProps;
+
+// @public (undocumented)
+export type InteractiveTabSlots = {
+    root: NonNullable<Slot<'div'>>;
+    button: NonNullable<TabSlots['root']>;
+    contentBefore?: Slot<'span'>;
+    contentAfter?: Slot<'span'>;
+} & Omit<TabSlots, 'root'>;
+
+// @public
+export type InteractiveTabState = ComponentState<InteractiveTabInternalSlots> & Pick<InteractiveTabProps, 'value'> & Required<Pick<InteractiveTabProps, 'disabled'>> & TabInternalState;
+
 // @public (undocumented)
 export type RegisterTabEventHandler = (data: TabRegisterData) => void;
+
+// @public
+export const renderInteractiveTab_unstable: (state: InteractiveTabState) => JSX.Element;
 
 // @public
 export const renderTab_unstable: (state: TabState) => JSX.Element;
@@ -89,10 +112,7 @@ export type TabListSlots = {
 export type TabListState = ComponentState<Required<TabListSlots>> & TabListContextValue;
 
 // @public
-export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick<Partial<TabSlots>, 'content'> & {
-    disabled?: boolean;
-    value: TabValue;
-};
+export type TabProps = Omit<ComponentProps<Partial<TabSlots>>, 'content'> & Pick<Partial<TabSlots>, 'content'> & TabInternalProps;
 
 // @public (undocumented)
 export type TabRegisterData = {
@@ -108,17 +128,16 @@ export type TabSlots = {
 };
 
 // @public
-export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
-    appearance?: 'transparent' | 'subtle';
-    iconOnly: boolean;
-    selected: boolean;
-    contentReservedSpaceClassName?: string;
-    size: 'small' | 'medium' | 'large';
-    vertical: boolean;
-};
+export type TabState = ComponentState<TabInternalSlots> & TabInternalState;
 
 // @public
 export type TabValue = unknown;
+
+// @public
+export const useInteractiveTab_unstable: (props: InteractiveTabProps, ref: React_2.Ref<HTMLElement>) => InteractiveTabState;
+
+// @public
+export const useInteractiveTabStyles_unstable: (state: InteractiveTabState) => InteractiveTabState;
 
 // @public
 export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) => TabState;

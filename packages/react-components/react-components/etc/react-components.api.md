@@ -426,6 +426,11 @@ import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
 import { InteractionTagSecondaryState } from '@fluentui/react-tags';
 import { InteractionTagSlots } from '@fluentui/react-tags';
 import { InteractionTagState } from '@fluentui/react-tags';
+import { InteractiveTab } from '@fluentui/react-tabs';
+import { interactiveTabClassNames } from '@fluentui/react-tabs';
+import { InteractiveTabProps } from '@fluentui/react-tabs';
+import { InteractiveTabSlots } from '@fluentui/react-tabs';
+import { InteractiveTabState } from '@fluentui/react-tabs';
 import { isTruncatableBreadcrumbContent } from '@fluentui/react-breadcrumb';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
@@ -747,6 +752,7 @@ import { renderInput_unstable } from '@fluentui/react-input';
 import { renderInteractionTag_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
+import { renderInteractiveTab_unstable } from '@fluentui/react-tabs';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
@@ -1453,6 +1459,8 @@ import { useInteractionTagPrimaryStyles_unstable } from '@fluentui/react-tags';
 import { useInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { useInteractionTagSecondaryStyles_unstable } from '@fluentui/react-tags';
 import { useInteractionTagStyles_unstable } from '@fluentui/react-tags';
+import { useInteractiveTab_unstable } from '@fluentui/react-tabs';
+import { useInteractiveTabStyles_unstable } from '@fluentui/react-tabs';
 import { useIsInTableHeader } from '@fluentui/react-table';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
@@ -2563,6 +2571,16 @@ export { InteractionTagSlots }
 
 export { InteractionTagState }
 
+export { InteractiveTab }
+
+export { interactiveTabClassNames }
+
+export { InteractiveTabProps }
+
+export { InteractiveTabSlots }
+
+export { InteractiveTabState }
+
 export { isTruncatableBreadcrumbContent }
 
 export { Label }
@@ -3204,6 +3222,8 @@ export { renderInteractionTag_unstable }
 export { renderInteractionTagPrimary_unstable }
 
 export { renderInteractionTagSecondary_unstable }
+
+export { renderInteractiveTab_unstable }
 
 export { renderLabel_unstable }
 
@@ -4616,6 +4636,10 @@ export { useInteractionTagSecondary_unstable }
 export { useInteractionTagSecondaryStyles_unstable }
 
 export { useInteractionTagStyles_unstable }
+
+export { useInteractiveTab_unstable }
+
+export { useInteractiveTabStyles_unstable }
 
 export { useIsInTableHeader }
 

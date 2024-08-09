@@ -16,6 +16,7 @@ export { IconOnly } from './TabListIconOnly.stories';
 export { SelectTabOnFocus } from './TabListSelectTabOnFocus.stories';
 export { WithOverflow } from './TabListWithOverflow.stories';
 export { WithPanels } from './TabListWithPanels.stories';
+export { Interactive } from './TabListInteractive.stories';
 
 export default {
   title: 'Components/TabList',
