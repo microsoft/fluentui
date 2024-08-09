@@ -113,3 +113,5 @@ export {
   useAppItemStaticStyles_unstable,
   useAppItemStatic_unstable,
 } from './AppItemStatic';
+export type { SplitNavItemProps, SplitNavItemSlots, SplitNavItemState } from './SplitNavItem';
+export { SplitNavItem, renderSplitNavItem_unstable, splitNavItemClassNames, useSplitNavItemStyles_unstable, useSplitNavItem_unstable } from './SplitNavItem';
