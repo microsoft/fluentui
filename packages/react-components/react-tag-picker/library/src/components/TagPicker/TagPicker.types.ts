@@ -46,7 +46,7 @@ export type TagPickerProps = ComponentProps<TagPickerSlots> &
     /**
      * Can contain two children including a trigger and a popover
      */
-    children: [JSX.Element, JSX.Element] | JSX.Element;
+    children: [JSX.Element, JSX.Element | undefined | false] | JSX.Element;
     /**
      * TagPickers are rendered out of DOM order on `document.body` by default,
      * use this to render the popover in DOM order
@@ -81,7 +81,14 @@ export type TagPickerState = ComponentState<TagPickerSlots> &
   > &
   Pick<
     TagPickerContextValue,
-    'triggerRef' | 'secondaryActionRef' | 'popoverId' | 'popoverRef' | 'targetRef' | 'tagPickerGroupRef' | 'size'
+    | 'triggerRef'
+    | 'secondaryActionRef'
+    | 'popoverId'
+    | 'popoverRef'
+    | 'targetRef'
+    | 'tagPickerGroupRef'
+    | 'size'
+    | 'noPopover'
   > & {
     trigger: React.ReactNode;
     popover?: React.ReactNode;

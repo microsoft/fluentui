@@ -77,6 +77,7 @@ export const useTagPicker_unstable = (props: TagPickerProps): TagPickerState => 
     trigger,
     popover: comboboxState.open || comboboxState.hasFocus ? popover : undefined,
     popoverId,
+    noPopover,
     disabled: comboboxState.disabled,
     triggerRef: useMergedRefs(triggerInnerRef, activeParentRef),
     popoverRef: useMergedRefs(listboxRef, containerRef),
@@ -120,17 +121,19 @@ const childrenToTriggerAndPopover = (children: React.ReactNode, noPopover: boole
     }
   }
 
+  if (noPopover) {
+    return { trigger: childrenArray[0] };
+  }
+
   let trigger: React.ReactElement | undefined = undefined;
   let popover: React.ReactElement | undefined = undefined;
+
   if (childrenArray.length === 2) {
     trigger = childrenArray[0];
     popover = childrenArray[1];
   } else if (childrenArray.length === 1) {
-    if (noPopover) {
-      trigger = childrenArray[0];
-    } else {
-      popover = childrenArray[0];
-    }
+    popover = childrenArray[0];
   }
+
   return { trigger, popover };
 };

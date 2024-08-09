@@ -10,6 +10,7 @@ import { Tag, Avatar, Field } from '@fluentui/react-components';
 
 export const NoPopover = () => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>([]);
+  const [inputValue, setInputValue] = React.useState('');
 
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (_, data) => {
     setSelectedOptions(data.selectedOptions);
@@ -20,16 +21,14 @@ export const NoPopover = () => {
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter' && inputValue) {
       setInputValue('');
-      setSelectedOptions(curr => [...curr, inputValue]);
+      setSelectedOptions(curr => (curr.includes(inputValue) ? curr : [...curr, inputValue]));
     }
   };
-
-  const [inputValue, setInputValue] = React.useState('');
 
   return (
     <Field label="Add Employees" style={{ maxWidth: 400 }}>
       <TagPicker noPopover onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
-        <TagPickerControl expandIcon={null}>
+        <TagPickerControl>
           <TagPickerGroup>
             {selectedOptions.map((option, index) => (
               <Tag
