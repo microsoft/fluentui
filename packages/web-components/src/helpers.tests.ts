@@ -51,9 +51,7 @@ async function toHaveCustomState(
   const expected: boolean = !this.isNot;
 
   try {
-    baseExpect(
-      await locator.evaluate((el, state) => el.matches(`:state(${state})`), state, options),
-    ).toEqual(true);
+    baseExpect(await locator.evaluate((el, state) => el.matches(`:state(${state})`), state, options)).toEqual(true);
     pass = true;
   } catch (err: any) {
     matcherResult = err.matcherResult;
