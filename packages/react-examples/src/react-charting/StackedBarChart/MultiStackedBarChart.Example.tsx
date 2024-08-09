@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { ChartHoverCard, IChartDataPoint, MultiStackedBarChart, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
+  const [enableGradient, setEnableGradient] = React.useState(false);
+  const [roundCorners, setRoundCorners] = React.useState(false);
+
   const firstChartPoints: IChartDataPoint[] = [
     {
       legend: 'Debit card numbers (EU and USA)',
@@ -114,22 +118,51 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
     },
   ];
 
+  function onToggleGradient(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    setEnableGradient(checked);
+  }
+
+  function onToggleRoundCorners(ev: React.MouseEvent<HTMLElement>, checked: boolean) {
+    setRoundCorners(checked);
+  }
+
   return (
-    <MultiStackedBarChart
-      culture={window.navigator.language}
-      data={data}
-      hideDenominator={hideDenominator}
-      hideRatio={hideRatio}
-      width={600}
-      href={'https://developer.microsoft.com/en-us/'}
-      focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
-      legendsOverflowText={'OverFlow Items'}
-      // eslint-disable-next-line react/jsx-no-bind
-      onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
-        props ? (
-          <ChartHoverCard Legend={props.legend} YValue={props.yAxisCalloutData || props.data} color={props.color} />
-        ) : null
-      }
-    />
+    <>
+      <div style={{ display: 'flex' }}>
+        <Toggle
+          label="Enable Gradient"
+          onText="Gradient enabled"
+          offText="Gradient disabled"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onToggleGradient}
+        />
+        <Toggle
+          label="Rounded corners"
+          onText="ON"
+          offText="OFF"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={onToggleRoundCorners}
+        />
+      </div>
+      <br />
+      <MultiStackedBarChart
+        culture={window.navigator.language}
+        data={data}
+        hideDenominator={hideDenominator}
+        hideRatio={hideRatio}
+        width={600}
+        href={'https://developer.microsoft.com/en-us/'}
+        focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
+        legendsOverflowText={'OverFlow Items'}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
+          props ? (
+            <ChartHoverCard Legend={props.legend} YValue={props.yAxisCalloutData || props.data} color={props.color} />
+          ) : null
+        }
+        enableGradient={enableGradient}
+        roundCorners={roundCorners}
+      />
+    </>
   );
 };

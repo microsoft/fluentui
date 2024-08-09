@@ -2,9 +2,12 @@ import * as React from 'react';
 import { StackedBarChart, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IStackedBarState {
   hideTooltip: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class StackedBarChartBasicExample extends React.Component<{}, IStackedBarState> {
@@ -12,6 +15,8 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
     super(props);
     this.state = {
       hideTooltip: false,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
   public render(): JSX.Element {
@@ -44,12 +49,28 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
           onChange={this._onHideTooltipChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
+        <Toggle
+          label="Enable Gradient"
+          onText="Gradient enabled"
+          offText="Gradient disabled"
+          onChange={this._onToggleGradient}
+        />
+        <Toggle
+          label="Rounded corners"
+          onText="ON"
+          offText="OFF"
+          onChange={this._onToggleRoundCorners}
+        />
+
+        <br />
         <StackedBarChart
           culture={window.navigator.language}
           data={data0}
           href={'https://developer.microsoft.com/en-us/'}
           ignoreFixStyle={false}
           hideTooltip={this.state.hideTooltip}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
         <br />
         <StackedBarChart
@@ -58,6 +79,8 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
           href={'https://developer.microsoft.com/en-us/'}
           ignoreFixStyle={true}
           hideTooltip={this.state.hideTooltip}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
       </>
     );
@@ -65,5 +88,13 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
 
   private _onHideTooltipChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ hideTooltip: checked });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ roundCorners: checked });
   };
 }

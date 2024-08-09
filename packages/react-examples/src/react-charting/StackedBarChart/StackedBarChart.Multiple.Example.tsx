@@ -6,9 +6,24 @@ import {
   DataVizPalette,
   getColorFromToken,
 } from '@fluentui/react-charting';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-export class StackedBarChartMultipleExample extends React.Component<{}, {}> {
+interface IStackedBarState {
+  enableGradient: boolean;
+  roundCorners: boolean;
+}
+
+export class StackedBarChartMultipleExample extends React.Component<{}, IStackedBarState> {
+
+  constructor(props = {}) {
+    super(props);
+    this.state = {
+      enableGradient: false,
+      roundCorners: false,
+    };
+  }
+
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
       { legend: 'This is the first legend of the chart', data: 40, color: DefaultPalette.magentaDark },
@@ -27,6 +42,38 @@ export class StackedBarChartMultipleExample extends React.Component<{}, {}> {
       chartData: points,
     };
 
-    return <StackedBarChart data={data} enabledLegendsWrapLines={true} />;
+    return (
+      <>
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="Gradient enabled"
+            offText="Gradient disabled"
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundCorners}
+          />
+        </div>
+        <br />
+        <StackedBarChart
+          data={data}
+          enabledLegendsWrapLines={true}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
+        />
+      </>
+    );
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({ roundCorners: checked });
+  };
 }

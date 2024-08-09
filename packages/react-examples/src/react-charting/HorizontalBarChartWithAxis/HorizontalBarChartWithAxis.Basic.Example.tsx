@@ -9,12 +9,16 @@ import {
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
+import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -33,6 +37,8 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -58,6 +64,14 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     this.setState({ useSingleColor: checked });
   };
 
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked});
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked});
+  }
+
   private _basicExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
@@ -65,6 +79,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 5000,
         legend: 'Oranges',
         color: getColorFromToken(DataVizPalette.color1),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '10%',
       },
@@ -73,6 +88,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 50000,
         legend: 'Dogs',
         color: getColorFromToken(DataVizPalette.color2),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '20%',
       },
@@ -81,15 +97,16 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         y: 30000,
         legend: 'Apples',
         color: getColorFromToken(DataVizPalette.color3),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '37%',
       },
-
       {
         x: 40000,
         y: 13000,
         legend: 'Bananas',
         color: getColorFromToken(DataVizPalette.color4),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '88%',
       },
@@ -128,6 +145,20 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <Toggle
+          label="Enable Gradient"
+          onText="Gradient enabled"
+          offText="Gradient disabled"
+          onChange={this._onToggleGradient}
+        />
+        <Toggle
+          label="Rounded corners"
+          onText="ON"
+          offText="OFF"
+          onChange={this._onToggleRoundCorners}
+        />
+        <br />
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             culture={window.navigator.language}
@@ -143,6 +174,8 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
               ) => (props ? defaultRender(props) : null),
             })}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

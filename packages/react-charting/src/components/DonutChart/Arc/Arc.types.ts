@@ -99,6 +99,24 @@ export interface IArcProps {
    * Prop to hide the arc labels
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable the gradient in the arc
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
+
+  /**
+   * Next color stop for the gradient
+   * [Only used when enableGradient is True].
+   */
+  nextColor: string;
 }
 
 export interface IArcData {
