@@ -128,6 +128,27 @@ describe('Tree', () => {
       cy.get(`#action`).realClick();
       cy.get('[data-testid="item1__item1"]').should('not.exist');
     });
+    it('should show actions when clicked', () => {
+      mount(
+        <TreeTest defaultOpenItems={['item1']} id="tree" aria-label="Tree">
+          <TreeItem itemType="branch" value="item1" data-testid="item1">
+            <TreeItemLayout actions={<Button id="branch-action">action!</Button>}>level 1, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+                <TreeItemLayout actions={<Button id="leaf-action">action!</Button>}>level 2, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </TreeTest>,
+      );
+      cy.get(`#branch-action`).should('not.exist');
+      cy.get('[data-testid="item1"]').realClick();
+      cy.get(`#branch-action`).should('exist');
+      cy.get(`#leaf-action`).should('not.exist');
+      cy.get('[data-testid="item1__item1"]').realClick();
+      cy.get(`#branch-action`).should('not.exist');
+      cy.get(`#leaf-action`).should('exist');
+    });
   });
   describe('Keyboard interactions', () => {
     it('should expand/collapse item on Enter key', () => {

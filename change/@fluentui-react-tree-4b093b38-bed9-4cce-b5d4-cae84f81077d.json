@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
