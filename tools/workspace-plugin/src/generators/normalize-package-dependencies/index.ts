@@ -234,7 +234,6 @@ function processDepType(json: PackageJson, depType: DepType, npmScope: string, c
 
   const npmScopeToCheck = `@${npmScope}/`;
 
-  // eslint-disable-next-line guard-for-in
   for (const npmPackageName in deps) {
     if (!npmPackageName.startsWith(npmScopeToCheck)) {
       continue;
