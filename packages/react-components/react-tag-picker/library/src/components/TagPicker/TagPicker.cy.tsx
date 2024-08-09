@@ -13,6 +13,7 @@ import { TagPickerOption } from '../TagPickerOption/TagPickerOption';
 import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 
+import 'cypress-real-events';
 /**
  * This error means that ResizeObserver
  * was not able to deliver all observations within a single animation frame.
@@ -40,9 +41,14 @@ const options = [
   'Maria Rossi',
 ];
 
-type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions'>;
+type TagPickerControlledProps = Pick<TagPickerProps, 'open' | 'defaultOpen' | 'defaultSelectedOptions' | 'noPopover'>;
 
-const TagPickerControlled = ({ open, defaultOpen, defaultSelectedOptions = [] }: TagPickerControlledProps) => {
+const TagPickerControlled = ({
+  open,
+  defaultOpen,
+  defaultSelectedOptions = [],
+  noPopover = false,
+}: TagPickerControlledProps) => {
   const [selectedOptions, setSelectedOptions] = React.useState<string[]>(defaultSelectedOptions);
   const onOptionSelect: TagPickerProps['onOptionSelect'] = (e, data) => {
     setSelectedOptions(data.selectedOptions);
@@ -54,6 +60,7 @@ const TagPickerControlled = ({ open, defaultOpen, defaultSelectedOptions = [] }:
   return (
     <div style={{ maxWidth: 400 }}>
       <TagPicker
+        noPopover={noPopover}
         onOptionSelect={onOptionSelect}
         selectedOptions={selectedOptions}
         open={open}
@@ -89,22 +96,24 @@ const TagPickerControlled = ({ open, defaultOpen, defaultSelectedOptions = [] }:
           </TagPickerGroup>
           <TagPickerInput data-testid="tag-picker-input" />
         </TagPickerControl>
-        <TagPickerList data-testid="tag-picker-list">
-          {options
-            .filter(option => !selectedOptions.includes(option))
-            .map((option, index) => (
-              <TagPickerOption
-                id={`tag-picker-option--${index}`}
-                data-testid={`tag-picker-option--${option}`}
-                secondaryContent="Microsoft FTE"
-                media={<Avatar name={option} color="colorful" />}
-                value={option}
-                key={option}
-              >
-                {option}
-              </TagPickerOption>
-            ))}
-        </TagPickerList>
+        {noPopover ? undefined : (
+          <TagPickerList data-testid="tag-picker-list">
+            {options
+              .filter(option => !selectedOptions.includes(option))
+              .map((option, index) => (
+                <TagPickerOption
+                  id={`tag-picker-option--${index}`}
+                  data-testid={`tag-picker-option--${option}`}
+                  secondaryContent="Microsoft FTE"
+                  media={<Avatar name={option} color="colorful" />}
+                  value={option}
+                  key={option}
+                >
+                  {option}
+                </TagPickerOption>
+              ))}
+          </TagPickerList>
+        )}
       </TagPicker>
     </div>
   );
@@ -304,5 +313,12 @@ describe('TagPicker', () => {
         cy.get('[data-testid="tag-picker-input"]').should('be.focused');
       });
     });
+  });
+  it('should not render popover when "noPopover"', () => {
+    mount(<TagPickerControlled noPopover />);
+    cy.get('[data-testid="tag-picker-control"]').should('exist');
+    cy.get('[data-testid="tag-picker-list"]').should('not.exist');
+    cy.get('[data-testid="tag-picker-input"]').realClick();
+    cy.get('[data-testid="tag-picker-list"]').should('not.exist');
   });
 });
