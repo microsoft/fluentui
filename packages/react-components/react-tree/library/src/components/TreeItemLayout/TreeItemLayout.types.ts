@@ -48,7 +48,6 @@ export type TreeItemLayoutSlots = {
   expandIcon?: Slot<'div'>;
   /**
    * Aside content is normally used to render a badge or other non-actionable content
-   * It is aria-hidden by default and is only meant to be used as visual aid.
    */
   aside?: Slot<'div'>;
   /**

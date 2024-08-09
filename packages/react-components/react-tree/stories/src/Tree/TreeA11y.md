@@ -11,7 +11,6 @@ VoiceOver/Chromium
 
 1. [Issue 1273540: Tree as table in Mac > VoiceOver narrates " 0 items enclosed " when user navigates to expaded treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273540)
 2. [Issue 1273544: Tree as table in Mac > VoiceOver doesn't narrate aria-labelledby element on treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273544)
-3. [Issue 1377818: Tree - Treeitem - Accessibility name received from content includes the aria-hidden button name](https://bugs.chromium.org/p/chromium/issues/detail?id=1377818)
 
 VoiceOver
 

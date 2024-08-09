@@ -208,12 +208,10 @@ export const useTreeItemLayout_unstable = (
         elementType: 'div',
       },
     ),
-    iconBefore: slot.optional(iconBefore, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
+    iconBefore: slot.optional(iconBefore, { elementType: 'div' }),
     main: slot.always(main, { elementType: 'div' }),
-    iconAfter: slot.optional(iconAfter, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
-    aside: !isActionsVisible
-      ? slot.optional(props.aside, { defaultProps: { 'aria-hidden': true }, elementType: 'div' })
-      : undefined,
+    iconAfter: slot.optional(iconAfter, { elementType: 'div' }),
+    aside: !isActionsVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
     actions,
     expandIcon,
     selector: slot.optional(props.selector, {
