@@ -1,47 +1,41 @@
-import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 import type { Tab } from './tab.js';
 
 test.describe('Tab', () => {
-  test.describe('States, attributes, and properties', () => {
-    let page: Page;
-    let element: Locator;
+  test.beforeEach(async ({ page }) => {
+    await page.goto(fixtureURL('components-tabs--tabs-default'));
 
-    test.beforeAll(async ({ browser }) => {
-      page = await browser.newPage();
+    await page.waitForFunction(() => customElements.whenDefined('fluent-tab'));
+  });
 
-      await page.goto(fixtureURL('components-tabs--tabs-default'));
+  test('should have a role of `tab`', async ({ page }) => {
+    const element = page.locator('fluent-tab').nth(0);
 
-      element = page.locator('fluent-tab').nth(0);
+    await expect(element).toHaveAttribute('role', 'tab');
+  });
+
+  test('should have a slot attribute of `tab`', async ({ page }) => {
+    const element = page.locator('fluent-tab').nth(0);
+
+    await expect(element).toHaveAttribute('slot', 'tab');
+  });
+
+  test('should set the `aria-disabled` attribute when `disabled` is true', async ({ page }) => {
+    const element = page.locator('fluent-tab').nth(0);
+
+    await expect(element).not.toHaveAttribute('aria-disabled');
+
+    await element.nth(0).evaluate((node: Tab) => {
+      node.disabled = true;
     });
 
-    test.afterAll(async () => {
-      await page.close();
+    await expect(element).toHaveAttribute('aria-disabled', 'true');
+
+    await element.nth(0).evaluate((node: Tab) => {
+      node.disabled = false;
     });
 
-    test('should have a role of `tab`', async () => {
-      await expect(element).toHaveAttribute('role', 'tab');
-    });
-
-    test('should have a slot attribute of `tab`', async () => {
-      await expect(element).toHaveAttribute('slot', 'tab');
-    });
-
-    test('should set the `aria-disabled` attribute when `disabled` is true', async () => {
-      await expect(element).not.toHaveAttribute('aria-disabled', '');
-
-      await element.nth(0).evaluate<void, Tab>(node => {
-        node.disabled = true;
-      });
-
-      await expect(element).toHaveAttribute('aria-disabled', 'true');
-
-      await element.nth(0).evaluate<void, Tab>(element => {
-        element.disabled = false;
-      });
-
-      await expect(element).toHaveAttribute('aria-disabled', 'false');
-    });
+    await expect(element).toHaveAttribute('aria-disabled', 'false');
   });
 });
