@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { mergeClasses, PositioningVirtualElement } from '../../../../react-components/src/index';
+import { mergeClasses, PositioningVirtualElement, useFocusableGroup } from '../../../../react-components/src/index';
 import { ChartHoverCard, getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { IChartDataPoint } from '../DonutChart/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
-import { usePopoverStyles_unstable } from './PopoverComponent.styles';
+import { usePopoverStyles_unstable } from './Popover.styles';
 import { IYValueHover } from './CartesianChart.types';
 import { LegendShape } from '../Legends/Legends.types';
-import { IPopoverComponentProps } from './PopoverComponent.types';
+import { IPopoverComponentProps } from './Popover.types';
 
 const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.forwardRef<
   HTMLDivElement,
@@ -28,25 +28,28 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   };
 
   const classes = usePopoverStyles_unstable(props);
+  const focusAttributes = useFocusableGroup();
 
   return (
-    <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
-      <PopoverSurface tabIndex={-1}>
-        {/** Given custom callout, then it will render */}
-        {props.customizedCallout && props.customizedCallout}
-        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-        {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout()}
-        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-        {!props.customizedCallout && !props.isCalloutForStack && (
-          <ChartHoverCard
-            Legend={props.xCalloutValue ? props.xCalloutValue : props.legend}
-            YValue={props.yCalloutValue ? props.yCalloutValue : props.YValue}
-            color={props.color}
-            culture={props.culture}
-          />
-        )}
-      </PopoverSurface>
-    </Popover>
+    <div {...focusAttributes}>
+      <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
+        <PopoverSurface tabIndex={-1}>
+          {/** Given custom callout, then it will render */}
+          {props.customizedCallout && props.customizedCallout}
+          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+          {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout()}
+          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+          {!props.customizedCallout && !props.isCalloutForStack && (
+            <ChartHoverCard
+              Legend={props.xCalloutValue ? props.xCalloutValue : props.legend}
+              YValue={props.yCalloutValue ? props.yCalloutValue : props.YValue}
+              color={props.color}
+              culture={props.culture}
+            />
+          )}
+        </PopoverSurface>
+      </Popover>
+    </div>
   );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -95,9 +98,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 </div>
               );
             })}
-          {!!props.descriptionMessage && (
-            <div className={classes.descriptionMessage}>{props.descriptionMessage}</div>
-          )}
+          {!!props.descriptionMessage && <div className={classes.descriptionMessage}>{props.descriptionMessage}</div>}
         </div>
       </div>
     );
