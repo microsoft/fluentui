@@ -129,6 +129,28 @@ const useGridExampleStyles = makeStyles({
   },
 });
 
+const PositionedComponent = (props: {
+  positioning: PositioningShorthand;
+  gridArea?: string;
+  targetContent?: React.ReactNode;
+  targetClassName?: string;
+}) => {
+  const { positioning, targetContent = 'Click me', targetClassName } = props;
+  const styles = useExampleStyles();
+  return (
+    <Popover positioning={positioning}>
+      <PopoverTrigger disableButtonEnhancement>
+        <Button appearance="primary" className={mergeClasses(styles.target, targetClassName)}>
+          <div>{targetContent}</div>
+          <div>↑</div>
+        </Button>
+      </PopoverTrigger>
+
+      <PopoverSurface className={styles.popoverSurface}>Container</PopoverSurface>
+    </Popover>
+  );
+};
+
 export const ShorthandPositions = () => {
   const styles = useGridExampleStyles();
 
@@ -191,25 +213,3 @@ ShorthandPositions.decorators = [
     </div>
   ),
 ];
-
-const PositionedComponent = (props: {
-  positioning: PositioningShorthand;
-  gridArea?: string;
-  targetContent?: React.ReactNode;
-  targetClassName?: string;
-}) => {
-  const { positioning, targetContent = 'Click me', targetClassName } = props;
-  const styles = useExampleStyles();
-  return (
-    <Popover positioning={positioning}>
-      <PopoverTrigger disableButtonEnhancement>
-        <Button appearance="primary" className={mergeClasses(styles.target, targetClassName)}>
-          <div>{targetContent}</div>
-          <div>↑</div>
-        </Button>
-      </PopoverTrigger>
-
-      <PopoverSurface className={styles.popoverSurface}>Container</PopoverSurface>
-    </Popover>
-  );
-};
