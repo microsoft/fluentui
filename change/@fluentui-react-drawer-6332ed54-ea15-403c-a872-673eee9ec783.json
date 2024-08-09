@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bug fix for issue 31724",
+  "packageName": "@fluentui/react-drawer",
+  "email": "lakshmimanasasai.t@gmail.com",
+  "dependentChangeType": "patch"
+}
