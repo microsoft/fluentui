@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Picking up new color/style for audio/video/ClipChamp filetype icons.",
+  "packageName": "@fluentui/style-utilities",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
