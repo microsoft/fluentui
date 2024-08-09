@@ -6,6 +6,7 @@ import {
   ICartesianChartStyles,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
+import { IComponentErrorProps } from '../CommonComponents/ErrorBoundary.types';
 
 /**
  * Horizontal Bar Chart with Axis properties
@@ -70,6 +71,11 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * Props for handling error in the component
+   */
+  errorProps?: IComponentErrorProps;
 }
 
 /**

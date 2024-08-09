@@ -7,6 +7,7 @@ import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.Cus
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
 import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
+import { HorizontalBarChartEmptyExample } from './HorizontalBarChart.Empty.Example';
 
 const HorizontalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
@@ -18,6 +19,8 @@ const HorizontalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
 const HorizontalBarChartVariantExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Variant.Example.tsx') as string;
+const HorizontalBarChartEmptyExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Empty.Example.tsx') as string;
 
 export const HorizontalBarChartPageProps: IDocPageProps = {
   title: 'HorizontalBarChart',
@@ -49,6 +52,11 @@ export const HorizontalBarChartPageProps: IDocPageProps = {
       title: 'HorizontalBarChart custom callout',
       code: HorizontalBarChartCustomCalloutExampleCode,
       view: <HorizontalBarChartCustomCalloutExample />,
+    },
+    {
+      title: 'HorizontalBarChart empty data scenario',
+      code: HorizontalBarChartEmptyExampleCode,
+      view: <HorizontalBarChartEmptyExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartOverview.md'),

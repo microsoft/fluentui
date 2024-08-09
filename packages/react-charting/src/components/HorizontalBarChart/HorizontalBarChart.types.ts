@@ -2,6 +2,7 @@ import { IChartProps, IChartDataPoint } from './index';
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IComponentErrorProps } from '../CommonComponents/ErrorBoundary.types';
 
 /**
  * Horizontal Bar Chart properties
@@ -92,6 +93,11 @@ export interface IHorizontalBarChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Props for handling error in the component
+   */
+  errorProps?: IComponentErrorProps;
 }
 
 /**

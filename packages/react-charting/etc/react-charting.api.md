@@ -405,6 +405,14 @@ export interface IColorFillBarsProps {
 }
 
 // @public
+export interface IComponentErrorProps {
+    customEmptyMsg?: string;
+    customErrorMsg?: string;
+    handleEmptyState?: () => JSX.Element;
+    handleError?: () => JSX.Element;
+}
+
+// @public
 export interface ICustomizedCalloutData {
     // (undocumented)
     values: ICustomizedCalloutDataPoint[];
@@ -461,6 +469,38 @@ export interface IDonutChartStyles {
     chart?: IStyle;
     legendContainer: IStyle;
     root?: IStyle;
+}
+
+// @public
+export interface IErrorBoundaryProps {
+    className?: string;
+    customEmptyMsg?: string;
+    customErrorMsg?: string;
+    handleEmptyState?: () => JSX.Element;
+    handleError?: () => JSX.Element;
+    hasEmptyState?: boolean;
+    height?: number;
+    styles?: IStyleFunctionOrObject_2<IErrorBoundaryProps, IErrorBoundaryStyles>;
+    theme?: ITheme;
+    width?: number;
+}
+
+// @public
+export interface IErrorBoundaryStyleProps {
+    className?: string;
+    height?: number;
+    width?: number;
+}
+
+// @public
+export interface IErrorBoundaryStyles {
+    className?: string;
+    dataLoadErrorSubText: IStyle_2;
+    dataLoadErrorText: IStyle_2;
+    errorIconDarkTheme: IStyle_2;
+    errorIconDiv: IStyle_2;
+    errorIconLightTheme: IStyle_2;
+    root: IStyle_2;
 }
 
 // @public (undocumented)
@@ -681,6 +721,7 @@ export interface IHorizontalBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    errorProps?: IComponentErrorProps;
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
@@ -738,6 +779,7 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
+    errorProps?: IComponentErrorProps;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;

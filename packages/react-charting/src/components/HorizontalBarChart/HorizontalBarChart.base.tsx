@@ -42,7 +42,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
-  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -62,7 +61,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
-    this._emptyChartId = getId('_HBC_empty');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
@@ -80,7 +78,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return !this._isChartEmpty() ? (
+    return (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -176,13 +174,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           </>
         </Callout>
       </div>
-    ) : (
-      <div
-        id={this._emptyChartId}
-        role={'alert'}
-        style={{ opacity: '0' }}
-        aria-label={'Graph has no data to display'}
-      />
     );
   }
 
@@ -431,8 +422,4 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       (legend ? `${legend}, ` : '') + `${yValue}.` + (benchMark ? 'with benchmark at ' + `${benchMark}, ` : '')
     );
   };
-
-  private _isChartEmpty(): boolean {
-    return !(this.props.data && this.props.data.length > 0);
-  }
 }
