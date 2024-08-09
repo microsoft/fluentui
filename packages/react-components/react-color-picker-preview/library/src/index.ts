@@ -3,3 +3,4 @@ export * from './ColorArea';
 export * from './ColorSlider';
 export * from './AlphaSlider';
 export * from './HueSlider';
+export * from './NativeSlider';
