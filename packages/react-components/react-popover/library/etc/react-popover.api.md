@@ -9,13 +9,11 @@ import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
-import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
@@ -64,7 +62,7 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
 };
 
 // @public (undocumented)
-export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
+export const PopoverProvider: (props: ProviderProps<PopoverContextValue>) => ReactElement<any, string | JSXElementConstructor<any>>;
 
 // @public
 export type PopoverSize = 'small' | 'medium' | 'large';

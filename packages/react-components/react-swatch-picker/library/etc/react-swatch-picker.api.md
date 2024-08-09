@@ -160,7 +160,7 @@ export type SwatchPickerProps = ComponentProps<SwatchPickerSlots> & {
 };
 
 // @public (undocumented)
-export const SwatchPickerProvider: React_2.Provider<SwatchPickerContextValue> & React_2.FC<React_2.ProviderProps<SwatchPickerContextValue>>;
+export const SwatchPickerProvider: (props: React_2.ProviderProps<SwatchPickerContextValue>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public
 export const SwatchPickerRow: ForwardRefComponent<SwatchPickerRowProps>;

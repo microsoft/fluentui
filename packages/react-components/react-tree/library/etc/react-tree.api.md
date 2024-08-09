@@ -275,7 +275,7 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
 };
 
 // @public (undocumented)
-export const TreeItemProvider: React_2.Provider<TreeItemContextValue | undefined> & React_2.FC<React_2.ProviderProps<TreeItemContextValue | undefined>>;
+export const TreeItemProvider: (props: React_2.ProviderProps<TreeItemContextValue | undefined>) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
 
 // @public (undocumented)
 export type TreeItemSlots = {
