@@ -6,7 +6,6 @@ import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
-import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
 import { act } from 'react-dom/test-utils';
 import { chartPointsVBC } from '../../utilities/test-data';
 
@@ -18,6 +17,21 @@ let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, Vertic
 function sharedBeforeEach() {
   resetIds();
 }
+
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -185,7 +199,6 @@ describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
       data: chartPointsVBC,
       height: 300,
@@ -194,13 +207,12 @@ describe('Render calling with respective to props', () => {
     act(() => {
       wrapper = mount(<VerticalBarChart {...props} />);
     });
-    wrapper!.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(wrapper).toMatchSnapshot();
+    wrapper.setProps({ ...props });
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
       data: chartPointsVBC,
       height: 300,
@@ -209,10 +221,10 @@ describe('Render calling with respective to props', () => {
     };
     act(() => {
       wrapper = mount(<VerticalBarChart {...props} />);
+      expect(wrapper.props().hideTooltip).toBe(undefined);
+      wrapper.setProps({ ...props, hideTooltip: true });
     });
-    wrapper!.setProps({ ...props, hideTooltip: true });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(wrapper.props().hideTooltip).toBe(true);
   });
 });
 
@@ -242,28 +254,24 @@ describe('Render empty chart calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
     const props = {
       data: chartPointsVBC,
     };
     act(() => {
-      const component = mount(<VerticalBarChart {...props} />);
-      component.setProps({ ...props });
+      wrapper = mount(<VerticalBarChart {...props} />);
+      wrapper.setProps({ ...props });
     });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('Prop changes', () => {
-    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
-    const props = {
+    const props: { data: any[] } = {
       data: [],
     };
     act(() => {
-      const component = mount(<VerticalBarChart {...props} />);
-      component.setProps({ ...props, data: chartPointsVBC });
+      wrapper = mount(<VerticalBarChart {...props} />);
+      wrapper.setProps({ ...props, data: chartPointsVBC, hideTooltip: true });
     });
-    expect(renderMock).toHaveBeenCalledTimes(2);
-    renderMock.mockRestore();
+    expect(wrapper.props().hideTooltip).toBe(true);
   });
 });

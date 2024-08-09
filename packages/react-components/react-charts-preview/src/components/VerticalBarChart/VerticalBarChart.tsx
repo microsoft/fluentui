@@ -560,7 +560,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={_onBarHover.bind(point, colorScale(point.y))}
+            onMouseOver={event => _onBarHover(point, colorScale(point.y),event)}
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
@@ -633,7 +633,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={_onBarHover.bind(point, colorScale(point.y))}
+            onMouseOver={event => _onBarHover.bind(point, colorScale(point.y),event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
             data-is-focusable={!props.hideTooltip}
@@ -703,7 +703,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={_onBarHover.bind(point, colorScale(point.y))}
+            onMouseOver={event => _onBarHover.bind(point, colorScale(point.y),event)}
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
