@@ -12,6 +12,7 @@ import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { conditionalDescribe, isTimezoneSet } from './TestUtility.test';
 import * as vbcUtils from './vbc-utils';
+import { getGradientFromToken, getNextGradient } from './gradients';
 const { Timezone } = require('../../scripts/constants');
 const env = require('../../config/tests');
 
@@ -1092,5 +1093,59 @@ describe('getClosestPairDiffAndRange', () => {
     const data: Date[] = [new Date('2022-01-01'), new Date('2022-01-05'), new Date('2022-01-03')];
     const result = vbcUtils.getClosestPairDiffAndRange(data);
     expect(result).toEqual([2 * 24 * 60 * 60 * 1000, 4 * 24 * 60 * 60 * 1000]);
+  });
+});
+
+/** -------- dataviz gradient tests ------ */
+const mockGradients = { // as per gradients.ts
+  'default': [
+    [['#4760D5', '#637CEF'], ['#4F6BED', '#637CEF']],
+    [['#795AA6', '#9373C0'], ['#8764B8', '#A083C9']],
+    // Add more
+  ],
+  'semantic': [
+    [['#0C5E0C', '#107C10'], ['#218C21', '#359B35']],
+    [['#107C10', '#359B35'], ['#359B35', '#9FD89F']],
+    // Add more
+  ]
+};
+
+describe('getNextGradient', () => {
+  it('should return the correct gradient based on index and offset in light theme', () => {
+    const result = getNextGradient(0, 0, false);
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+
+  it('should return the correct gradient based on index and offset in dark theme', () => {
+    const result = getNextGradient(1, 0, true);
+    expect(result).toEqual(mockGradients.default[1][1]);
+  });
+
+  it('should wrap around when index + offset exceeds gradient length', () => {
+    const result = getNextGradient(10, 0, false); // 10 is outside the range of available gradients
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+});
+
+describe('getGradientFromToken', () => {
+  it('should return the correct gradient for a valid token in light theme', () => {
+    const result = getGradientFromToken('default.1', false);
+    expect(result).toEqual(mockGradients.default[0][0]);
+  });
+
+  it('should return the correct gradient for a valid token in dark theme', () => {
+    const result = getGradientFromToken('semantic.success', true);
+    expect(result).toEqual(mockGradients.semantic[0][1]);
+  });
+
+  it('should return the token itself if the token does not match any gradient', () => {
+    const invalidToken = 'nonexistent.token';
+    const result = getGradientFromToken(invalidToken, false);
+    expect(result).toEqual([invalidToken, invalidToken]);
+  });
+
+  it('should handle invalid tokens with split error gracefully', () => {
+    const result = getGradientFromToken('invalidTokenWithoutDot', false);
+    expect(result).toEqual(['invalidTokenWithoutDot', 'invalidTokenWithoutDot']);
   });
 });
