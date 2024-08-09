@@ -240,6 +240,17 @@ export {
 } from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextArea,
+  TextArea,
+  TextAreaAppearance,
+  TextAreaAutocomplete,
+  TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
+  TextAreaStyles,
+  TextAreaTemplate,
+} from './textarea/index.js';
+export {
   BaseTextInput,
   TextInput,
   TextInputAppearance,
