@@ -4,6 +4,6 @@
   "projectType": "application",
   "tags": ["vNext"],
   "targets": {
-    "test-integration": { "dependsOn": [{ "target": "build", "projects": "react" }] }
+    "test-integration": { "dependsOn": [{ "target": "build", "projects": "react-components" }] }
   }
 }
