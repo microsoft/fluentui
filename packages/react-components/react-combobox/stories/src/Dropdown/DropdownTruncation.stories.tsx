@@ -40,7 +40,7 @@ export const TruncatedValue = (props: Partial<DropdownProps>) => {
     'Fox',
     'Hamster',
     'Snake',
-    'SuperLongName_123456789@soyouwantalongurl.com',
+    'SuperLongName_123456789_SomeMoreStuffToMakeItLonger@fluentui.dev',
     'Screaming hairy armadillo (Chaetophractus vellerosus)',
   ];
   const styles = useStyles();
