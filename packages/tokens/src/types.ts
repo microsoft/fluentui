@@ -5,6 +5,8 @@ import {
   mappedStatusColorNames,
 } from './sharedColorNames';
 
+import { SemanticTokens } from './semantic';
+
 /**
  * Design tokens for alias colors
  */
@@ -773,6 +775,7 @@ export type Theme = FontSizeTokens &
   FontWeightTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
-  ColorTokens;
+  ColorTokens &
+  SemanticTokens;
 
 export type PartialTheme = Partial<Theme>;
