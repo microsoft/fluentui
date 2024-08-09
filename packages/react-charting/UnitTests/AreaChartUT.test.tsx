@@ -1,6 +1,6 @@
 import { screen, fireEvent } from '@testing-library/react';
 import { AreaChart } from '../src/components/AreaChart/index';
-import { getById, testWithoutWait, isTimezoneSet, forEachTimezone } from '../src/utilities/TestUtility.test';
+import { getById, testWithoutWait, isTimezoneSet, forEachTimezone, isTestEnv } from '../src/utilities/TestUtility.test';
 import { resetIds } from '@fluentui/react';
 import { DarkTheme } from '@fluentui/theme-samples';
 
@@ -605,7 +605,7 @@ runTest('_getAriaLabel', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
 
     testWithoutWait(
@@ -635,7 +635,7 @@ runTest('_getAriaLabel', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
 
     testWithoutWait(
@@ -665,7 +665,7 @@ runTest('_getAriaLabel', () => {
       },
       undefined,
       undefined,
-      !(isTimezoneSet(tzIdentifier) && env === 'TEST'),
+      !(isTimezoneSet(tzIdentifier) && isTestEnv()),
     );
   });
 
