@@ -5,7 +5,7 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
-import { IPopoverComponentProps } from './PopoverComponent.types';
+import { IPopoverComponentProps } from './Popover.types';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}

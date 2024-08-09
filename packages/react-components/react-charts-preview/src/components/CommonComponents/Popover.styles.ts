@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens } from '@fluentui/react-theme';
-import { IPopoverComponentProps, IPopoverComponentStyles } from './PopoverComponent.types';
+import { IPopoverComponentProps, IPopoverComponentStyles } from './Popover.types';
 
 /**
  * @internal
