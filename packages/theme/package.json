@@ -48,12 +48,12 @@
     "./lib/colors/DefaultPalette": {
       "types": "./lib/colors/DefaultPalette.d.ts",
       "import": "./lib/colors/DefaultPalette.js",
-      "require": "./lib-commonjs/DefaultPalette.js"
+      "require": "./lib-commonjs/colors/DefaultPalette.js"
     },
     "./lib/colors/FluentColors": {
       "types": "./lib/colors/FluentColors.d.ts",
       "import": "./lib/colors/FluentColors.js",
-      "require": "./lib-commonjs/FluentColors.js"
+      "require": "./lib-commonjs/colors/FluentColors.js"
     },
     "./lib/createTheme": {
       "types": "./lib/createTheme.d.ts",
@@ -63,32 +63,32 @@
     "./lib/effects/DefaultEffects": {
       "types": "./lib/effects/DefaultEffects.d.ts",
       "import": "./lib/effects/DefaultEffects.js",
-      "require": "./lib-commonjs/DefaultEffects.js"
+      "require": "./lib-commonjs/effects/DefaultEffects.js"
     },
     "./lib/fonts/DefaultFontStyles": {
       "types": "./lib/fonts/DefaultFontStyles.d.ts",
       "import": "./lib/fonts/DefaultFontStyles.js",
-      "require": "./lib-commonjs/DefaultFontStyles.js"
+      "require": "./lib-commonjs/fonts/DefaultFontStyles.js"
     },
     "./lib/fonts/FluentFonts": {
       "types": "./lib/fonts/FluentFonts.d.ts",
       "import": "./lib/fonts/FluentFonts.js",
-      "require": "./lib-commonjs/FluentFonts.js"
+      "require": "./lib-commonjs/fonts/FluentFonts.js"
     },
     "./lib/fonts/index": {
       "types": "./lib/fonts/index.d.ts",
       "import": "./lib/fonts/index.js",
-      "require": "./lib-commonjs/index.js"
+      "require": "./lib-commonjs/fonts/index.js"
     },
     "./lib/motion/AnimationStyles": {
       "types": "./lib/motion/AnimationStyles.d.ts",
       "import": "./lib/motion/AnimationStyles.js",
-      "require": "./lib-commonjs/AnimationStyles.js"
+      "require": "./lib-commonjs/motion/AnimationStyles.js"
     },
     "./lib/spacing/DefaultSpacing": {
       "types": "./lib/spacing/DefaultSpacing.d.ts",
       "import": "./lib/spacing/DefaultSpacing.js",
-      "require": "./lib-commonjs/DefaultSpacing.js"
+      "require": "./lib-commonjs/spacing/DefaultSpacing.js"
     },
     "./lib/types/IAnimationStyles": {
       "types": "./lib/types/IAnimationStyles.d.ts"
