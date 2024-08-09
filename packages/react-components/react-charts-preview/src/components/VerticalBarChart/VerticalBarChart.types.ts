@@ -123,28 +123,10 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
  */
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
-   * Style for the chart label.
-   * @deprecated This style cannot be customized anymore
-   */
-  chartLabel?: string;
-
-  /**
-   * Style for the line representing the domain of the x-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  xAxisDomain?: string;
-
-  /**
    * Style for the lines representing the ticks along the x-axis.
    * @deprecated This style cannot be customized anymore
    */
   xAxisTicks?: string;
-
-  /**
-   * Style for the text labeling each tick along the x-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  xAxisText?: string;
 
   /**
    * Style for the line representing the domain of the y-axis.
@@ -157,12 +139,6 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
    * @deprecated This style cannot be customized anymore
    */
   yAxisTicks?: string;
-
-  /**
-   * Style for the text labeling each tick along the y-axis.
-   * @deprecated This style cannot be customized anymore
-   */
-  yAxisText?: string;
 
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

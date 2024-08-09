@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
-import { Toggle } from '@fluentui/react/lib/Toggle';
+import {  ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
+import { DataVizPalette } from '../../src/utilities/colors';
+import { Switch } from '@fluentui/react-components';
 
 export const LCCustomLocale = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
@@ -16,9 +17,12 @@ export const LCCustomLocale = (props: ILineChartProps) => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setAllowMultipleShapes(checked);
-  };
+  const _onShapeChange = React.useCallback(
+    ev => {
+      setAllowMultipleShapes(ev.currentTarget.checked);
+    },
+    [allowMultipleShapes],
+  );
 
   const _getCustomLocale = () => {
     const locale = require('d3-time-format/locale/it-IT.json');
@@ -148,10 +152,8 @@ export const LCCustomLocale = (props: ILineChartProps) => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <Toggle
-        label="Enabled  multiple shapes for each line"
-        onText="On"
-        offText="Off"
+       <Switch
+        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
@@ -166,6 +168,7 @@ export const LCCustomLocale = (props: ILineChartProps) => {
           width={width}
           margins={margins}
           xAxisTickCount={10}
+          enableReflow={true}
           allowMultipleShapesForPoints={allowMultipleShapes}
           rotateXAxisLables={true}
           timeFormatLocale={customLocale}

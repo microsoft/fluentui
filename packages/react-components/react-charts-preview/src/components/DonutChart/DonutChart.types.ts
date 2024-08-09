@@ -30,9 +30,14 @@ export interface IDonutChartProps extends ICartesianChartProps {
   valueInsideDonut?: string | number;
 
   /**
+   * Define a custom callout renderer for a data point
+   */
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element;
+
+  /**
    * props for the callout in the chart
    */
-  calloutProps?: Partial<ICalloutProps>;
+  calloutProps: Partial<ICalloutProps>;
 
   /**
    * The prop used to define the culture to localized the numbers

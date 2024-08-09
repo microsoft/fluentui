@@ -1,15 +1,12 @@
 import * as React from 'react';
-// import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { IModifiedCartesianChartProps, IYValueHover, IHorizontalBarChartWithAxisDataPoint } from '../../index';
+import { IModifiedCartesianChartProps, IHorizontalBarChartWithAxisDataPoint } from '../../index';
 import { useCartesianChartStyles_unstable } from './useCartesianChartStyles.styles';
-import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
-  //getAccessibleDataObject,
   getDomainNRangeValues,
   createDateXAxis,
   createYAxis,
@@ -20,16 +17,15 @@ import {
   YAxisType,
   createWrapOfXLabels,
   rotateXAxisLabels,
-  Points,
-  pointTypes,
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
   wrapContent,
   isRtl,
 } from '../../utilities/index';
-import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import PopoverComponent from './Popover';
+
 /**
  * Cartesian Chart component
  * {@docCategory CartesianChart}
@@ -38,12 +34,12 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
-  let chartContainer: HTMLDivElement;
+  const chartContainer = React.useRef<HTMLDivElement>(null);
   let legendContainer: HTMLDivElement;
-  const minLegendContainerHeight: number = 32;
-  let xAxisElement: SVGElement | null;
-  let yAxisElement: SVGElement | null;
-  let yAxisElementSecondary: SVGElement | null;
+  const minLegendContainerHeight: number = 40;
+  const xAxisElement = React.useRef<SVGElement | null>(null);
+  const yAxisElement = React.useRef<SVGElement | null>(null);
+  const yAxisElementSecondary = React.useRef<SVGElement | null>(null);
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
@@ -51,7 +47,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const _isRtl: boolean = isRtl();
   let _tickValues: (string | number)[];
   const titleMargin: number = 8;
-  let _isFirstRender: boolean = true;
+  const _isFirstRender = React.useRef<boolean>(true);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
   let isIntegralDataset: boolean = true;
@@ -93,7 +89,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     if (props !== null) {
       setPrevProps(props);
     }
-    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement) {
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
@@ -120,7 +116,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
       const rotateLabelProps = {
-        node: xAxisElement,
+        node: xAxisElement.current,
         xAxis: _xScale,
       };
       const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
@@ -133,7 +129,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         setIsRemoveValCalculated(false);
       }
     }
-    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement) {
+    if (props.chartType === ChartTypes.HorizontalBarChartWithAxis && props.showYAxisLables && yAxisElement.current) {
       const maxYAxisLabelLength = calculateLongestLabelWidth(
         props.points.map((point: IHorizontalBarChartWithAxisDataPoint) => point.y),
         `.${classes.yAxis} text`,
@@ -159,279 +155,15 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
-    return (
-      // <Callout
-      //   hidden={!(!props.hideTooltip && calloutProps!.isCalloutVisible)}
-      //   /** Keep the callout updated with details of focused/hovered chart element */
-      //   shouldUpdateWhenHidden={true}
-      //   {...calloutProps}
-      // >
-      //   {/** Given custom callout, then it will render */}
-      //   {props.customizedCallout && props.customizedCallout}
-      //   {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-      //   {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout(calloutProps)}
-      //   {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-      //   {!props.customizedCallout && !props.isCalloutForStack && (
-      //     <ChartHoverCard
-      //       XValue={calloutProps.XValue}
-      //       Legend={calloutProps.legend!}
-      //       YValue={calloutProps.YValue!}
-      //       color={calloutProps.color!}
-      //       culture={props.culture}
-      //       {...chartHoverProps}
-      //     />
-      //   )}
-      // </Callout>
-      <></>
-    );
+    const popoverProps = {
+      ...calloutProps,
+      ...chartHoverProps,
+      customizedCallout: props.customizedCallout,
+      isCalloutForStack: props.isCalloutForStack,
+    };
+    return <PopoverComponent {...popoverProps} />;
   }
 
-  // TO DO: Write a common functional component for Multi value callout and divide sub count method
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  /*   private _multiValueCallout = (calloutProps: any) => {
-    const yValueHoverSubCountsExists: boolean = _yValueHoverSubCountsExists(calloutProps.YValueHover);
-    return (
-      <div className={classes.calloutContentRoot}>
-        <div
-          className={classes.calloutDateTimeContainer}
-          style={yValueHoverSubCountsExists ? { marginBottom: '11px' } : {}}
-        >
-          <div
-            className={classes.calloutContentX}
-            {...getAccessibleDataObject(calloutProps!.xAxisCalloutAccessibilityData, 'text', false)}
-          >
-            {convertToLocaleString(calloutProps!.hoverXValue, props.culture)}
-          </div>
-        </div>
-        <div
-          className={classes.calloutInfoContainer}
-          style={yValueHoverSubCountsExists ? { display: 'flex' } : {}}
-        >
-          {calloutProps!.YValueHover &&
-            calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
-              const isLast: boolean = index + 1 === yValues.length;
-              const { shouldDrawBorderBottom = false } = yValue;
-              return (
-                <div
-                  {...getAccessibleDataObject(yValue.callOutAccessibilityData, 'text', false)}
-                  key={`callout-content-${index}`}
-                  style={
-                    yValueHoverSubCountsExists
-                      ? {
-                          display: 'inline-block',
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                      : {
-                          ...(shouldDrawBorderBottom && {
-                            borderBottom: `1px solid ${props.theme!.semanticColors.menuDivider}`,
-                            paddingBottom: '10px',
-                          }),
-                        }
-                  }
-                >
-                  {_getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
-                </div>
-              );
-            })}
-          {!!calloutProps.descriptionMessage && (
-            <div className={classes.descriptionMessage}>{calloutProps.descriptionMessage}</div>
-          )}
-        </div>
-      </div>
-    );
-  }; */
-
-  /*   private _yValueHoverSubCountsExists(yValueHover?: IYValueHover[]) {
-    if (yValueHover) {
-      return yValueHover.some(
-        (yValue: {
-          legend?: string;
-          y?: number;
-          color?: string;
-          yAxisCalloutData?: string | { [id: string]: number };
-        }) => yValue.yAxisCalloutData && typeof yValue.yAxisCalloutData !== 'string',
-      );
-    }
-    return false;
-  }
- */
-  /*   private _getCalloutContent(
-    xValue: IYValueHover,
-    index: number,
-    yValueHoverSubCountsExists: boolean,
-    isLast: boolean,
-  ): React.ReactNode {
-    const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
-    const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
-    const classes = getClassNames(props.styles!, {
-      theme: props.theme!,
-      width: width,
-      height: height,
-      className: props.className,
-      isRtl: _isRtl,
-      lineColor: xValue.color,
-      toDrawShape,
-    });
-    const { culture } = props;
-    const yValue = convertToLocaleString(xValue.y, culture);
-    if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
-      return (
-        <div style={yValueHoverSubCountsExists ? marginStyle : {}}>
-          {yValueHoverSubCountsExists && (
-            <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-              {xValue.legend!} ({yValue})
-            </div>
-          )}
-          <div id={`${index}_${xValue.y}`} className={classes.calloutBlockContainer}>
-            {toDrawShape && (
-              <Shape
-                svgProps={{
-                  className: classes.shapeStyles,
-                }}
-                pathProps={{ fill: xValue.color }}
-                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
-              />
-            )}
-            <div>
-              <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
-                  culture,
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      );
-    } else {
-      const subcounts: { [id: string]: number } = xValue.yAxisCalloutData as { [id: string]: number };
-      return (
-        <div style={marginStyle}>
-          <div className="ms-fontWeight-semibold" style={{ fontSize: '12pt' }}>
-            {xValue.legend!} ({yValue})
-          </div>
-          {Object.keys(subcounts).map((subcountName: string) => {
-            return (
-              <div key={subcountName} className={classes.calloutBlockContainer}>
-                <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
-                <div className={classes.calloutContentY}>
-                  {convertToLocaleString(subcounts[subcountName], culture)}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      );
-    }
-  } */
-
-  /**
-   * When screen resizes, along with screen, chart also auto adjusted.
-   * This method used to adjust height and width of the charts.
-   */
-  function _fitParentContainer(): void {
-    _reqID = requestAnimationFrame(() => {
-      let legendContainerHeight;
-      if (props.hideLegend) {
-        // If there is no legend, need not to allocate some space from total chart space.
-        legendContainerHeight = 0;
-      } else {
-        const legendContainerComputedStyles = legendContainer && getComputedStyle(legendContainer);
-        legendContainerHeight =
-          ((legendContainer && legendContainer.getBoundingClientRect().height) || minLegendContainerHeight) +
-          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
-          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
-      }
-      if (props.parentRef || chartContainer) {
-        const container = props.parentRef ? props.parentRef : chartContainer;
-        const currentContainerWidth =
-          props.enableReflow && !_isFirstRender
-            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
-            : container.getBoundingClientRect().width;
-        const currentContainerHeight =
-          container.getBoundingClientRect().height > legendContainerHeight
-            ? container.getBoundingClientRect().height
-            : 350;
-        const shouldResize =
-          containerWidth !== currentContainerWidth ||
-          containerHeight !== currentContainerHeight - legendContainerHeight;
-        if (shouldResize) {
-          setContainerWidth(currentContainerWidth);
-          setContainerHeight(currentContainerHeight - legendContainerHeight);
-        }
-      }
-    });
-  }
-
-  // Call back to the chart.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const _getData = (xScale: any, yScale: any) => {
-    props.getGraphData &&
-      props.getGraphData(
-        xScale,
-        yScale,
-        containerHeight - removalValueForTextTuncate!,
-        containerWidth,
-        xAxisElement,
-        yAxisElement,
-      );
-  };
-
-  function _onChartLeave(): void {
-    props.onChartMouseLeave && props.onChartMouseLeave();
-  }
-
-  function _calculateChartMinWidth(): number {
-    let labelWidth = 10; // Total padding on the left and right sides of the label
-
-    // Case: rotated labels
-    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
-      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
-    }
-    // Case: truncated labels
-    else if (props.showXAxisLablesTooltip) {
-      const tickValues = _tickValues.map(val => {
-        const numChars = props.noOfCharsToTruncate || 4;
-        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${classes.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
-    // Case: wrapped labels
-    else if (props.wrapXAxisLables) {
-      const words: string[] = [];
-      _tickValues.forEach((val: string) => {
-        words.push(...val.toString().split(/\s+/));
-      });
-
-      const longestLabelWidth = calculateLongestLabelWidth(words, `.${classes.xAxis} text`);
-      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
-    }
-    // Default case
-    else {
-      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
-      labelWidth += Math.ceil(longestLabelWidth);
-    }
-
-    let minChartWidth = margins.left! + margins.right! + labelWidth * (_tickValues.length - 1);
-
-    if (
-      [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
-        props.chartType,
-      )
-    ) {
-      const minDomainMargin = 8;
-      minChartWidth += minDomainMargin * 2;
-    }
-
-    return minChartWidth;
-  }
   const {
     calloutProps,
     points,
@@ -461,8 +193,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   let callout: JSX.Element | null = null;
 
   let children = null;
-  if ((props.enableFirstRenderOptimization && chartContainer) || !props.enableFirstRenderOptimization) {
-    _isFirstRender = false;
+  if ((props.enableFirstRenderOptimization && chartContainer.current) || !props.enableFirstRenderOptimization) {
+    _isFirstRender.current = false;
     const XAxisParams = {
       domainNRangeValues: getDomainNRangeValues(
         points,
@@ -478,7 +210,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       ),
       containerHeight: containerHeight - removalValueForTextTuncate!,
       margins: margins,
-      xAxisElement: xAxisElement!,
+      xAxisElement: xAxisElement.current! as SVGSVGElement,
       showRoundOffXTickValues: true,
       xAxisCount: props.xAxisTickCount,
       xAxistickSize: props.xAxistickSize,
@@ -492,7 +224,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       margins: margins,
       containerWidth: containerWidth,
       containerHeight: containerHeight - removalValueForTextTuncate!,
-      yAxisElement: yAxisElement,
+      yAxisElement: yAxisElement.current as SVGSVGElement,
       yAxisTickFormat: props.yAxisTickFormat!,
       yAxisTickCount: props.yAxisTickCount!,
       yMinValue: props.yMinValue || 0,
@@ -550,7 +282,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
      * */
     if (props.wrapXAxisLables || props.showXAxisLablesTooltip) {
       const wrapLabelProps = {
-        node: xAxisElement,
+        node: xAxisElement.current,
         xAxis: xScale,
         showXAxisLablesTooltip: props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: props.noOfCharsToTruncate || 4,
@@ -588,7 +320,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           margins: margins,
           containerWidth: containerWidth,
           containerHeight: containerHeight - removalValueForTextTuncate!,
-          yAxisElement: yAxisElementSecondary,
+          yAxisElement: yAxisElementSecondary.current as SVGSVGElement,
           yAxisTickFormat: props.yAxisTickFormat!,
           yAxisTickCount: props.yAxisTickCount!,
           yMinValue: props.secondaryYScaleOptions?.yMinValue || 0,
@@ -613,20 +345,34 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
 
     /*
-   * To create y axis tick values by if specified
-  truncating the rest of the text and showing elipsis
-  or showing the whole string,
-   * */
+     * To create y axis tick values by if specified
+    truncating the rest of the text and showing elipsis
+    or showing the whole string,
+     * */
     props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
       yScale &&
       createYAxisLabels(
-        yAxisElement,
+        yAxisElement.current,
         yScale,
         props.noOfCharsToTruncate || 4,
         props.showYAxisLablesTooltip || false,
         startFromX,
         _isRtl,
       );
+
+    // Call back to the chart.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const _getData = (xScale: any, yScale: any) => {
+      props.getGraphData &&
+        props.getGraphData(
+          xScale,
+          yScale,
+          containerHeight - removalValueForTextTuncate!,
+          containerWidth,
+          xAxisElement.current,
+          yAxisElement.current,
+        );
+    };
 
     props.getAxisData && props.getAxisData(axisData);
     // Callback function for chart, returns axis
@@ -638,7 +384,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       yScaleSecondary,
     });
 
-    if (!props.hideTooltip && calloutProps!.isCalloutVisible) {
+    if (!props.hideTooltip && calloutProps!.isPopoverOpen) {
       callout = _generateCallout(calloutProps, chartHoverProps);
     }
   }
@@ -659,6 +405,96 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - removalValueForTextTuncate! - titleMargin;
+  /**
+   * When screen resizes, along with screen, chart also auto adjusted.
+   * This method used to adjust height and width of the charts.
+   */
+  function _fitParentContainer(): void {
+    _reqID = requestAnimationFrame(() => {
+      let legendContainerHeight;
+      if (props.hideLegend) {
+        // If there is no legend, need not to allocate some space from total chart space.
+        legendContainerHeight = 0;
+      } else {
+        const legendContainerComputedStyles = legendContainer && getComputedStyle(legendContainer);
+        legendContainerHeight =
+          ((legendContainer && legendContainer.getBoundingClientRect().height) || minLegendContainerHeight) +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginTop) || '0') +
+          parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
+      }
+      if (props.parentRef || chartContainer.current) {
+        const container = props.parentRef ? props.parentRef : chartContainer.current;
+        const currentContainerWidth =
+          props.enableReflow && !_isFirstRender.current
+            ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
+        const currentContainerHeight =
+          container.getBoundingClientRect().height > legendContainerHeight
+            ? container.getBoundingClientRect().height
+            : 350;
+        const shouldResize =
+          containerWidth !== currentContainerWidth ||
+          containerHeight !== currentContainerHeight - legendContainerHeight;
+        if (shouldResize) {
+          setContainerWidth(currentContainerWidth);
+          setContainerHeight(currentContainerHeight - legendContainerHeight);
+        }
+      }
+    });
+  }
+
+  function _onChartLeave(): void {
+    props.onChartMouseLeave && props.onChartMouseLeave();
+  }
+
+  function _calculateChartMinWidth(): number {
+    let labelWidth = 10; // Total padding on the left and right sides of the label
+
+    // Case: rotated labels
+    if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
+      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth * Math.cos(Math.PI / 4));
+    }
+    // Case: truncated labels
+    else if (props.showXAxisLablesTooltip) {
+      const tickValues = _tickValues.map(val => {
+        const numChars = props.noOfCharsToTruncate || 4;
+        return val.toString().length > numChars ? `${val.toString().slice(0, numChars)}...` : val;
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+    // Case: wrapped labels
+    else if (props.wrapXAxisLables) {
+      const words: string[] = [];
+      _tickValues.forEach((val: string) => {
+        words.push(...val.toString().split(/\s+/));
+      });
+
+      const longestLabelWidth = calculateLongestLabelWidth(words, `.${classes.xAxis} text`);
+      labelWidth += Math.max(Math.ceil(longestLabelWidth), 10);
+    }
+    // Default case
+    else {
+      const longestLabelWidth = calculateLongestLabelWidth(_tickValues, `.${classes.xAxis} text`);
+      labelWidth += Math.ceil(longestLabelWidth);
+    }
+
+    let minChartWidth = margins.left! + margins.right! + labelWidth * (_tickValues.length - 1);
+
+    if (
+      [ChartTypes.GroupedVerticalBarChart, ChartTypes.VerticalBarChart, ChartTypes.VerticalStackedBarChart].includes(
+        props.chartType,
+      )
+    ) {
+      const minDomainMargin = 8;
+      minChartWidth += minDomainMargin * 2;
+    }
+
+    return minChartWidth;
+  }
+
   /**
    * We have use the {@link defaultTabbableElement } to fix
    * the Focus not landing on chart while tabbing, instead  goes to legend.
@@ -684,17 +520,17 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       id={idForGraph}
       className={classes.root}
       role={'presentation'}
-      ref={(rootElem: HTMLDivElement) => (chartContainer = rootElem)}
+      ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
       onMouseLeave={_onChartLeave}
     >
-      {!_isFirstRender && <div id={idForDefaultTabbableElement} />}
+      {!_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <FocusZone
         direction={focusDirection}
         className={classes.chartWrapper}
         defaultTabbableElement={`#${idForDefaultTabbableElement}`}
         {...svgFocusZoneProps}
       >
-        {_isFirstRender && <div id={idForDefaultTabbableElement} />}
+        {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
         <svg
           width={svgDimensions.width}
           height={svgDimensions.height}
@@ -704,7 +540,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         >
           <g
             ref={(e: SVGElement | null) => {
-              xAxisElement = e;
+              xAxisElement.current = e;
             }}
             id={`xAxisGElement${idForGraph}`}
             // To add wrap of x axis lables feature, need to remove word height from svg height.
@@ -726,7 +562,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           )}
           <g
             ref={(e: SVGElement | null) => {
-              yAxisElement = e;
+              yAxisElement.current = e;
             }}
             id={`yAxisGElement${idForGraph}`}
             transform={`translate(${
@@ -738,7 +574,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
             <g>
               <g
                 ref={(e: SVGElement | null) => {
-                  yAxisElementSecondary = e;
+                  yAxisElementSecondary.current = e;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
                 transform={`translate(${_isRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}

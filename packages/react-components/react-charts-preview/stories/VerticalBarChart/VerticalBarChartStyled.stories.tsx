@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -8,7 +8,7 @@ export const VCStyled = () => {
   const [useSingleColor, setUseSingleColor] = React.useState<boolean>(true);
 
   const _onChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setIsChecked(isChecked);
+    setIsChecked(checked);
   };
   const _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     setUseSingleColor(checked);
@@ -51,6 +51,7 @@ export const VCStyled = () => {
           useSingleColor={useSingleColor}
           yAxisTickCount={6}
           colors={customColors}
+          lineLegendColor={`rgb(174, 140, 0)`}
           hideLegend={true}
           enableReflow={true}
         />

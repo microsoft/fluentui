@@ -15,6 +15,7 @@ export const legendClassNames: SlotClassNames<ILegendsStyles> = {
   hoverChange: 'fui-legend__hoverChange',
   overflowIndicationTextStyle: 'fui-legend__overflowIndicationTextStyle',
   hoverCardRoot: 'fui-legend__hoverCardRoot',
+  resizableArea: 'fui-legend__resizableArea',
 };
 
 const useStyles = makeStyles({
@@ -25,8 +26,10 @@ const useStyles = makeStyles({
     ...shorthands.margin('-8px 0 0 -8px'),
   },
   legend: {
-    display: 'flex',
+    // setting display to flex does not work
+    // display: 'flex',
     alignItems: 'center',
+    justifyContent: 'left',
     cursor: 'pointer',
     ...shorthands.border('none'),
     ...shorthands.padding('8px'),
@@ -80,6 +83,20 @@ const useStyles = makeStyles({
   hoverCardRoot: {
     ...shorthands.padding('8px'),
   },
+  resizableArea: {
+    position: 'relative',
+    textAlign: 'center',
+    transform: 'translate(-50%, -50%)',
+    top: 'auto',
+    left: '50%',
+    minWidth: '200px',
+    maxWidth: '800px',
+    '::after': {
+      ...shorthands.padding('1px 4px 1px'),
+      ...shorthands.borderTop('-2px'),
+      ...shorthands.borderLeft('-2px'),
+    },
+  },
 });
 
 export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles => {
@@ -100,5 +117,6 @@ export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles =
       props.styles?.overflowIndicationTextStyle,
     ),
     hoverCardRoot: mergeClasses(legendClassNames.hoverCardRoot, baseStyles.hoverCardRoot, props.styles?.hoverCardRoot),
+    resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
   };
 };

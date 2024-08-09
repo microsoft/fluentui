@@ -11,7 +11,6 @@ import { find, memoizeFunction } from '@fluentui/utilities';
 import {
   IAccessibilityProps,
   CartesianChart,
-  IBasestate,
   IChildProps,
   ILineChartPoints,
   ICustomizedCalloutData,
@@ -22,6 +21,7 @@ import {
   ILineChartDataPoint,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
+import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
   ChartTypes,
@@ -36,7 +36,6 @@ import {
   getColorFromToken,
   isRtl,
 } from '../../utilities/index';
-import { ForwardRefRenderFunction, ForwardedRef, PropsWithChildren } from 'react';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -151,6 +150,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     );
     let _firstRenderOptimization: boolean = true;
     let _emptyChartId: string = useId('_LineChart_empty');
+    const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps;
 
@@ -159,7 +159,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [YValueHover, setYValueHover] = React.useState<[]>([]);
     const [refSelected, setRefSelected] = React.useState<SVGGElement | null | string | undefined>(null);
     const [selectedLegend, setSelectedLegend] = React.useState<string>('');
-    const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
     const [selectedLegendPoints, setSelectedLegendPoints] = React.useState<any[]>([]);
     const [selectedColorBarLegend, setSelectedColorBarLegend] = React.useState<any[]>([]);
     const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
@@ -168,6 +167,8 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [activeLine, setActiveLine] = React.useState<number>(0);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
+    const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+    const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
     const pointsRef = React.useRef([]);
     const calloutPointsRef = React.useRef([]);
@@ -188,9 +189,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
             let color: string;
             // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
-              color = getNextColor(index, 0, props.theme?.isInverted);
+              color = getNextColor(index, 0);
             } else {
-              color = getColorFromToken(item.color, props.theme?.isInverted);
+              color = getColorFromToken(item.color);
             }
             return {
               ...item,
@@ -199,6 +200,18 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
             };
           })
         : [];
+    }
+
+    function updatePosition(newX: number, newY: number) {
+      const threshold = 1; // Set a threshold for movement
+      const { x, y } = clickPosition;
+      // Calculate the distance moved
+      const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+      // Update the position only if the distance moved is greater than the threshold
+      if (distance > threshold) {
+        setClickPosition({ x: newX, y: newY });
+        setPopoverOpen(true);
+      }
     }
 
     function _getCustomizedCallout() {
@@ -288,7 +301,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
             // isInverted property is applicable to v8 themes only
-            const color = getColorFromToken(colorFillBar.color, props.theme?.isInverted);
+            const color = getColorFromToken(colorFillBar.color);
             const legend: ILegend = {
               title,
               color,
@@ -324,10 +337,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           {...props.legendProps}
         />
       );
-    }
-
-    function _closeCallout() {
-      setIsCalloutVisible(false);
     }
 
     function _getBoxWidthOfShape(pointId: string, pointIndex: number, isLastPoint: boolean) {
@@ -366,24 +375,24 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       return _getPointPath(xPos, yPos, w, index);
     }
     function _getPointFill(lineColor: string, pointId: string, pointIndex: number, isLastPoint: boolean) {
-      const { theme, allowMultipleShapesForPoints = false } = props;
+      const { allowMultipleShapesForPoints = false } = props;
       if (allowMultipleShapesForPoints) {
         if (pointIndex === 1 || isLastPoint) {
           if (activePoint === pointId) {
-            return theme!.semanticColors.bodyBackground;
+            return tokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         } else {
           if (activePoint === pointId) {
-            return theme!.semanticColors.bodyBackground;
+            return tokens.colorNeutralBackground1;
           } else {
             return lineColor;
           }
         }
       } else {
         if (activePoint === pointId) {
-          return theme!.semanticColors.bodyBackground;
+          return tokens.colorNeutralBackground1;
         } else {
           return lineColor;
         }
@@ -404,7 +413,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
 
         const legendVal: string = _points[i].legend;
         const lineColor: string = _points[i].color!;
-        const { theme } = props;
         const verticaLineHeight = containerHeight - margins.bottom! + 6;
         if (_points[i].data.length === 1) {
           // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -418,24 +426,30 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               r={activePoint === circleId ? 5.5 : 3.5}
               cx={_xAxisScale(x1)}
               cy={_yAxisScale(y1)}
-              fill={activePoint === circleId ? theme!.semanticColors.bodyBackground : lineColor}
+              fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
               opacity={isLegendSelected ? 1 : 0.1}
-              onMouseOver={_handleHover.bind(
-                x1,
-                y1,
-                verticaLineHeight,
-                xAxisCalloutData,
-                circleId,
-                xAxisCalloutAccessibilityData,
-              )}
-              onMouseMove={_handleHover.bind(
-                x1,
-                y1,
-                verticaLineHeight,
-                xAxisCalloutData,
-                circleId,
-                xAxisCalloutAccessibilityData,
-              )}
+              onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                _handleHover(
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                  event,
+                )
+              }
+              onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                _handleHover(
+                  x1,
+                  y1,
+                  verticaLineHeight,
+                  xAxisCalloutData,
+                  circleId,
+                  xAxisCalloutAccessibilityData,
+                  event,
+                )
+              }
               onMouseOut={_handleMouseOut}
               strokeWidth={activePoint === circleId ? DEFAULT_LINE_STROKE_SIZE : 0}
               stroke={activePoint === circleId ? lineColor : ''}
@@ -493,7 +507,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   fill="transparent"
                   strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                   strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                  stroke={_points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                  stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
                   opacity={1}
                 />,
               );
@@ -509,15 +523,11 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 stroke={lineColor}
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
-                onMouseMove={_onMouseOverLargeDataset.bind(i, verticaLineHeight)}
-                onMouseOver={_onMouseOverLargeDataset.bind(i, verticaLineHeight)}
+                onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
+                onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
-                role="img"
-                aria-label={`${legendVal}, series ${i + 1} of ${_points.length} with ${
-                  _points[i].data.length
-                } data points.`}
               />,
             );
           } else {
@@ -532,10 +542,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                 opacity={0.1}
-                role="img"
-                aria-label={`${legendVal}, series ${i + 1} of ${_points.length} with ${
-                  _points[i].data.length
-                } data points.`}
               />,
             );
           }
@@ -549,12 +555,12 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               r={5.5}
               cx={0}
               cy={0}
-              fill={theme!.semanticColors.bodyBackground}
+              fill={tokens.colorNeutralBackground1}
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={isPointHighlighted ? 'visibility' : 'hidden'}
-              onMouseMove={_onMouseOverLargeDataset.bind(i, verticaLineHeight)}
-              onMouseOver={_onMouseOverLargeDataset.bind(i, verticaLineHeight)}
+              onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
+              onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOut={_handleMouseOut}
             />,
           );
@@ -582,22 +588,28 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 key={circleId}
                 d={path}
                 data-is-focusable={isLegendSelected}
-                onMouseOver={_handleHover.bind(
-                  x1,
-                  y1,
-                  verticaLineHeight,
-                  xAxisCalloutData,
-                  circleId,
-                  xAxisCalloutAccessibilityData,
-                )}
-                onMouseMove={_handleHover.bind(
-                  x1,
-                  y1,
-                  verticaLineHeight,
-                  xAxisCalloutData,
-                  circleId,
-                  xAxisCalloutAccessibilityData,
-                )}
+                onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                  _handleHover(
+                    x1,
+                    y1,
+                    verticaLineHeight,
+                    xAxisCalloutData,
+                    circleId,
+                    xAxisCalloutAccessibilityData,
+                    event,
+                  )
+                }
+                onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                  _handleHover(
+                    x1,
+                    y1,
+                    verticaLineHeight,
+                    xAxisCalloutData,
+                    circleId,
+                    xAxisCalloutAccessibilityData,
+                    event,
+                  )
+                }
                 onMouseOut={_handleMouseOut}
                 onFocus={() => _handleFocus(lineId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)}
                 onBlur={_handleMouseOut}
@@ -627,22 +639,28 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                     key={lastCircleId}
                     d={path}
                     data-is-focusable={isLegendSelected}
-                    onMouseOver={_handleHover.bind(
-                      x2,
-                      y2,
-                      verticaLineHeight,
-                      lastCirlceXCallout,
-                      lastCircleId,
-                      lastCirlceXCalloutAccessibilityData,
-                    )}
-                    onMouseMove={_handleHover.bind(
-                      x2,
-                      y2,
-                      verticaLineHeight,
-                      lastCirlceXCallout,
-                      lastCircleId,
-                      lastCirlceXCalloutAccessibilityData,
-                    )}
+                    onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x2,
+                        y2,
+                        verticaLineHeight,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                        event,
+                      )
+                    }
+                    onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x2,
+                        y2,
+                        verticaLineHeight,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                        event,
+                      )
+                    }
                     onMouseOut={_handleMouseOut}
                     onFocus={() =>
                       _handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
@@ -665,22 +683,28 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                     cy={_yAxisScale(y2)}
                     opacity={0}
                     width={0}
-                    onMouseOver={_handleHover.bind(
-                      x2,
-                      y2,
-                      verticaLineHeight,
-                      lastCirlceXCallout,
-                      lastCircleId,
-                      lastCirlceXCalloutAccessibilityData,
-                    )}
-                    onMouseMove={_handleHover.bind(
-                      x2,
-                      y2,
-                      verticaLineHeight,
-                      lastCirlceXCallout,
-                      lastCircleId,
-                      lastCirlceXCalloutAccessibilityData,
-                    )}
+                    onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x2,
+                        y2,
+                        verticaLineHeight,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                        event,
+                      )
+                    }
+                    onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x2,
+                        y2,
+                        verticaLineHeight,
+                        lastCirlceXCallout,
+                        lastCircleId,
+                        lastCirlceXCalloutAccessibilityData,
+                        event,
+                      )
+                    }
                     onMouseOut={_handleMouseOut}
                     strokeWidth={0}
                     focusable={false}
@@ -708,7 +732,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                       y2={_yAxisScale(y2)}
                       strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                       strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
-                      stroke={_points[i].lineOptions?.lineBorderColor || theme!.semanticColors.bodyBackground}
+                      stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
                       opacity={1}
                     />,
                   );
@@ -726,22 +750,28 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                     ref={(e: SVGLineElement | null) => {
                       _refCallback(e!, lineId);
                     }}
-                    onMouseOver={_handleHover.bind(
-                      x1,
-                      y1,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                    )}
-                    onMouseMove={_handleHover.bind(
-                      x1,
-                      y1,
-                      verticaLineHeight,
-                      xAxisCalloutData,
-                      circleId,
-                      xAxisCalloutAccessibilityData,
-                    )}
+                    onMouseOver={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x1,
+                        y1,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                      )
+                    }
+                    onMouseMove={(event: React.MouseEvent<SVGElement>) =>
+                      _handleHover(
+                        x1,
+                        y1,
+                        verticaLineHeight,
+                        xAxisCalloutData,
+                        circleId,
+                        xAxisCalloutAccessibilityData,
+                        event,
+                      )
+                    }
                     onMouseOut={_handleMouseOut}
                     stroke={lineColor}
                     strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
@@ -775,7 +805,17 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           }
         }
 
-        lines.push(...bordersForLine, ...linesForLine, ...pointsForLine);
+        lines.push(
+          <g
+            key={`line_${i}`}
+            role="region"
+            aria-label={`${legendVal}, line ${i + 1} of ${_points.length} with ${_points[i].data.length} data points.`}
+          >
+            {bordersForLine}
+            {linesForLine}
+            {pointsForLine}
+          </g>,
+        );
       }
       const classes = useLineChartStyles_unstable(props);
       // Removing un wanted tooltip div from DOM, when prop not provided.
@@ -814,9 +854,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.length; i++) {
         const colorFillBar = _colorFillBars[i];
-        const colorFillBarId = useId(colorFillBar.legend.replace(/\W/g, ''));
+        const colorFillBarId = `${_colorFillBarId}-${i++}`;
         // isInverted property is applicable to v8 themes only
-        const color = getColorFromToken(colorFillBar.color, props.theme?.isInverted);
+        const color = getColorFromToken(colorFillBar.color);
 
         if (colorFillBar.applyPattern) {
           // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
@@ -957,7 +997,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           .attr('y2', `${lineHeight - _yAxisScale(pointToHighlight.y)}`);
 
         setNearestCircleToHighlight(pointToHighlight);
-        setIsCalloutVisible(true);
+        updatePosition(mouseEvent.clientX, mouseEvent.clientY);
         setRefSelected(`#${_staticHighlightCircle}_${linenumber}`);
         setStackCalloutProps(found!);
         setYValueHover(found.values);
@@ -968,7 +1008,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       if (!found) {
-        setIsCalloutVisible(false);
+        setPopoverOpen(false);
         setNearestCircleToHighlight(pointToHighlight);
         setActivePoint('');
         setActiveLine(linenumber);
@@ -995,7 +1035,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           .attr('visibility', 'visibility');
         _refArray.forEach((obj: IRefArrayData) => {
           if (obj.index === lineId) {
-            setIsCalloutVisible(true);
+            setPopoverOpen(true);
             setRefSelected(obj.refElement);
             xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
             setYValueHover(found.values);
@@ -1018,7 +1058,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       xAxisCalloutAccessibilityData: IAccessibilityProps | undefined,
       mouseEvent: React.MouseEvent<SVGElement>,
     ) {
-      mouseEvent.persist();
+      mouseEvent?.persist();
       const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
@@ -1029,9 +1069,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           .attr('transform', () => `translate(${_xAxisScale(x)}, ${_yAxisScale(y)})`)
           .attr('visibility', 'visibility')
           .attr('y2', `${lineHeight - _yAxisScale(y)}`);
+
         if (_uniqueCallOutID !== circleId) {
           _uniqueCallOutID = circleId;
-          setIsCalloutVisible(true);
+          updatePosition(mouseEvent.clientX, mouseEvent.clientY);
           setRefSelected(`#${circleId}`);
           xAxisCalloutData ? setHoverXValue(xAxisCalloutData) : setHoverXValue('' + formattedData);
           setYValueHover(found.values);
@@ -1068,9 +1109,11 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
 
     function _handleChartMouseLeave() {
       _uniqueCallOutID = null;
-      setIsCalloutVisible(false);
       setActivePoint('');
       setActiveLine(null);
+      if (isPopoverOpen) {
+        setPopoverOpen(false);
+      }
     }
 
     function _handleMultipleLineLegendSelectionAction(selectedLine: LineChartDataWithIndex) {
@@ -1220,16 +1263,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       legendBars = _createLegendsMemoized(_points!);
     }
     const calloutProps = {
-      isCalloutVisible: isCalloutVisible,
+      id: `toolTip${_uniqueCallOutID}`,
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
-      id: `toolTip${_uniqueCallOutID}`,
-      target: refSelected,
-      isBeakVisible: false,
-      gapSpace: 15,
-      onDismiss: _closeCallout,
-      preventDismissOnEvent: () => true,
-      hidden: !(!props.hideTooltip && isCalloutVisible),
       descriptionMessage:
         props.getCalloutDescriptionMessage && stackCalloutProps
           ? props.getCalloutDescriptionMessage(stackCalloutProps)
@@ -1237,6 +1273,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       'data-is-focusable': true,
       xAxisCalloutAccessibilityData: xAxisCalloutAccessibilityData,
       ...props.calloutProps,
+      clickPosition: clickPosition,
+      isPopoverOpen: isPopoverOpen,
+      isCalloutForStack: true,
+      culture: props.culture,
     };
     const tickParams = {
       tickValues,
@@ -1277,11 +1317,11 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
                 />
-                {/*{props.optimizeLargeData ? (
+                {props.optimizeLargeData ? (
                   <rect id={_rectId} width={props.containerWidth} height={props.containerHeight} fill={'transparent'} />
                 ) : (
                   <></>
-                )}*/}
+                )}
                 <g>
                   {_renderedColorFillBars}
                   {lines}

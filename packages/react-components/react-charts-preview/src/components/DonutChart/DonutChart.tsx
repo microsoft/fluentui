@@ -6,15 +6,11 @@ import { useDonutChartStyles_unstable } from './DonutChart.styles';
 import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
-import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
+import { IAccessibilityProps, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
-import {
-  Popover,
-  PopoverSurface,
-  PositioningVirtualElement,
-  useFocusableGroup,
-} from '../../../../react-components/src/index';
+import { useFocusableGroup } from '../../../../react-components/src/index';
+import PopoverComponent from '../CommonComponents/Popover';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -260,19 +256,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       }
     }
 
-    const virtualElement: PositioningVirtualElement = {
-      getBoundingClientRect: () => ({
-        top: clickPosition.y,
-        left: clickPosition.x,
-        right: clickPosition.x,
-        bottom: clickPosition.y,
-        x: clickPosition.x,
-        y: clickPosition.y,
-        width: 0,
-        height: 0,
-      }),
-    };
-
     const { data, hideLegend = false } = props;
     const points = _addDefaultColors(data?.chartData);
 
@@ -285,7 +268,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     const chartData = _elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = _valueInsideDonut(props.valueInsideDonut!, chartData!);
     const focusAttributes = useFocusableGroup();
-
     return !_isChartEmpty() ? (
       <div
         className={classes.root}
@@ -320,16 +302,21 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
             </svg>
           </div>
         </div>
-          <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} inline>
-            <PopoverSurface tabIndex={-1}>
-              <ChartHoverCard
-                Legend={xCalloutValue ? xCalloutValue : legend}
-                YValue={yCalloutValue ? yCalloutValue : value}
-                color={color}
-                culture={props.culture}
-              />
-            </PopoverSurface>
-          </Popover>
+        <PopoverComponent
+          xCalloutValue={xCalloutValue}
+          yCalloutValue={yCalloutValue}
+          culture={props.culture}
+          clickPosition={clickPosition}
+          isPopoverOpen={isPopoverOpen}
+          legend={legend!}
+          YValue={value!}
+          color={color}
+          dataPointCalloutProps={dataPointCalloutProps}
+          isCalloutForStack={false}
+          customizedCallout={
+            props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined
+          }
+        />
         {!hideLegend && <div className={classes.legendContainer}>{legendBars}</div>}
       </div>
     ) : (

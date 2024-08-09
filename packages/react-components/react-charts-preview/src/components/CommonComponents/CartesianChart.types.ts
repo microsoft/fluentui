@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
+import { IPopoverComponentProps } from './Popover.types';
 /**
  * Cartesian Chart style properties
  * {@docCategory CartesianChart}
@@ -382,7 +382,7 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: Partial<ICalloutProps>;
+  calloutProps: Partial<IPopoverComponentProps>;
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag
@@ -439,6 +439,7 @@ export interface IChildProps {
   yScaleSecondary?: any;
   containerHeight?: number;
   containerWidth?: number;
+  optimizeLargeData?: boolean;
 }
 
 // Only used for Cartesian chart base
@@ -479,8 +480,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps: Partial<ICalloutProps> & {
-    isCalloutVisible: boolean;
+  calloutProps: Partial<IPopoverComponentProps> & {
     id: string;
     YValueHover?: IYValueHover[];
     hoverXValue?: string | number | null;

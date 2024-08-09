@@ -4136,3 +4136,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Render calling with respective to props No prop changes 1`] = `ReactWrapper {}`;
+
+exports[`Render calling with respective to props No prop changes 2`] = `ReactWrapper {}`;

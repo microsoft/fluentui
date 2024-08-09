@@ -1,11 +1,6 @@
 import * as React from 'react';
-import {
-  IChartProps,
-  ICustomizedCalloutData,
-  ILineChartProps,
-  LineChart,
-  DataVizPalette,
-} from '@fluentui/react-charting';
+import {  ILineChartProps, LineChart, IChartProps, ICustomizedCalloutData} from '../../src/LineChart';
+import { DataVizPalette } from '../../src/utilities/colors';
 
 export const LCGaps = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
@@ -260,6 +255,7 @@ export const LCGaps = (props: ILineChartProps) => {
           calloutProps={{
             calloutMaxWidth: 200,
           }}
+          enableReflow={true}
           getCalloutDescriptionMessage={_calculateCalloutDescription}
           enablePerfOptimization={true}
         />
