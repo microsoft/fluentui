@@ -4,7 +4,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { sliderCSSVars } from './useSliderStyles.styles';
 import type { SliderState, SliderProps } from './Slider.types';
 
-const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar } = sliderCSSVars;
+const { sliderStepsPercentVar, sliderProgressVar, sliderDirectionVar, sliderThumbOffsetRatio } = sliderCSSVars;
 
 const getPercent = (value: number, min: number, max: number) => {
   return max === min ? 0 : ((value - min) / (max - min)) * 100;
@@ -22,6 +22,7 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
   });
   const clampedValue = clamp(currentValue, min, max);
   const valuePercent = getPercent(clampedValue, min, max);
+  const thumbOffsetRatio = 0.5 - (valuePercent / 100);
 
   const inputOnChange = state.input.onChange;
   const propsOnChange = props.onChange;
@@ -41,6 +42,7 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
     [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
+    [sliderThumbOffsetRatio]: thumbOffsetRatio,
   };
 
   // Root props
