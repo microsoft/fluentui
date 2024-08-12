@@ -84,7 +84,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
-  const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
   const [refSelected, setRefSelected] = React.useState<React.MouseEvent<SVGElement> | SVGElement | undefined | null>(
     null,
   );
@@ -98,6 +97,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [calloutLegend, setCalloutLegend] = React.useState<string>('');
   const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<IAccessibilityProps>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
+  const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
+  const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -130,7 +131,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       });
     const linePath = d3Line()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .x((d: any) => (isStringAxis ? xBarScale(d.x) + 0.5 * xBarScale.bandwidth() : xScale(d.x)))
+      .x((d: any) => (isStringAxis ? xScale(d.x) + 0.5 * xScale.bandwidth() : xScale(d.x)))
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .y((d: any) => (d.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(d.y) : yScale(d.y)));
     const shouldHighlight = _legendHighlighted(lineLegendText!) || _noLegendHighlighted() ? true : false;
@@ -142,7 +143,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       line.push(
         <path
           key={_vbcLineId}
-          id = {_vbcLineId}
+          id={_vbcLineId}
           opacity={shouldHighlight ? 1 : 0.1}
           d={linePath(lineData)!}
           fill="transparent"
@@ -187,7 +188,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onMouseOver={
               _legendHighlighted(lineLegendText!)
                 ? _lineHover.bind(item.point)
-                : _onBarHover.bind(item.point, colorScale(item.y))
+                : event => _onBarHover(item.point, colorScale(item.y), event)
             }
             onMouseOut={_onBarLeave}
             r={_getCircleVisibilityAndRadius(item.x, lineLegendText!).radius}
@@ -288,7 +289,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           Legend={_props.legend}
           YValue={_props.yAxisCalloutData || _props.y}
-          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(props.y)}
+          color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
           culture={props.culture}
         />
       </>
@@ -397,7 +398,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       _calloutAnchorPoint = point;
       setRefSelected(mouseEvent);
       /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-      setIsCalloutVisible(selectedLegend === '' || selectedLegend === point.legend);
+      updatePosition(mouseEvent.clientX, mouseEvent.clientY);
+      setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
       setDataForHoverCard(point.y);
       setCalloutLegend(point.legend!);
       setColor(point.color || color);
@@ -420,7 +422,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   function _handleChartMouseLeave(): void {
     _calloutAnchorPoint = null;
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
     setActiveXDatapoint(null);
     setYValueHover([]);
     setHoverXValue('');
@@ -434,7 +436,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
         setRefSelected(obj.refElement);
         /** Show the callout if highlighted bar is hovered and Hide it if unhighlighted bar is hovered */
-        setIsCalloutVisible(selectedLegend === '' || selectedLegend === point.legend);
+        setPopoverOpen(selectedLegend === '' || selectedLegend === point.legend);
         setDataForHoverCard(point.y);
         setCalloutLegend(point.legend!);
         setColor(point.color || color);
@@ -470,7 +472,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   ) {
     const { lineLegendText = '', lineLegendColor = tokens.colorPaletteYellowBackground1 } = props;
     setRefSelected(_refSelected);
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
     setCalloutLegend(lineLegendText);
     setDataForHoverCard(point.lineData!.y);
     setColor(lineLegendColor);
@@ -560,7 +562,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={event => _onBarHover(point, colorScale(point.y),event)}
+            onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
@@ -633,7 +635,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={event => _onBarHover.bind(point, colorScale(point.y),event)}
+            onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             onMouseLeave={_onBarLeave}
             onBlur={_onBarLeave}
             data-is-focusable={!props.hideTooltip}
@@ -703,7 +705,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
               _refCallback(e, point.legend!);
             }}
             onClick={point.onClick}
-            onMouseOver={event => _onBarHover.bind(point, colorScale(point.y),event)}
+            onMouseOver={event => _onBarHover(point, colorScale(point.y), event)}
             aria-label={_getAriaLabel(point)}
             role="img"
             onMouseLeave={_onBarLeave}
@@ -742,7 +744,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   }
 
   function _closeCallout() {
-    setIsCalloutVisible(false);
+    setPopoverOpen(false);
   }
 
   function _onLegendClick(legendTitle: string): void {
@@ -920,15 +922,25 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       _points.length === 0 || (d3Max(_points, (point: IVerticalBarChartDataPoint) => point.y)! <= 0 && !_isHavingLine)
     );
   }
+
+  function updatePosition(newX: number, newY: number) {
+    const threshold = 1; // Set a threshold for movement
+    const { x, y } = clickPosition;
+    // Calculate the distance moved
+    const distance = Math.sqrt(Math.pow(newX - x, 2) + Math.pow(newY - y, 2));
+    // Update the position only if the distance moved is greater than the threshold
+    if (distance > threshold) {
+      setClickPosition({ x: newX, y: newY });
+      setPopoverOpen(true);
+    }
+  }
+
   _adjustProps();
   _xAxisLabels = _points.map((point: IVerticalBarChartDataPoint) => point.x as string);
   _yMax = Math.max(d3Max(_points, (point: IVerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   const legendBars: JSX.Element = _getLegendData(_points);
   const calloutProps = {
-    isCalloutVisible: isCalloutVisible,
     id: `toolTip${_calloutId}`,
-    target: refSelected,
-    isBeakVisible: false,
     ...(_isHavingLine && {
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
@@ -938,11 +950,14 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     legend: calloutLegend,
     XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
-    onDismiss: _closeCallout,
-    preventDismissOnLostFocus: true,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
+    clickPosition: clickPosition,
+    isPopoverOpen: isPopoverOpen,
+    isCalloutForStack: true,
+    culture: props.culture,
   };
+
   const tickParams = {
     tickValues: props.tickValues,
     tickFormat: props.tickFormat,
