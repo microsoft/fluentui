@@ -46,7 +46,7 @@
       "cache": true
     },
     "test-integration": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build", "^build"],
       "cache": true
     },
     "test-ssr": {

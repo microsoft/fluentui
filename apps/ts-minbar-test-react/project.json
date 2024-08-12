@@ -2,6 +2,5 @@
   "name": "ts-minbar-test-react",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "tags": ["v8"],
-  "targets": { "test-integration": { "dependsOn": [{ "target": "build", "projects": "react" }] } }
+  "tags": ["v8"]
 }
