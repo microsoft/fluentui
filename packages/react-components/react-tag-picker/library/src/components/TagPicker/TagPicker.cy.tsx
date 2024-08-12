@@ -14,6 +14,7 @@ import { Avatar } from '@fluentui/react-avatar';
 import { Button } from '@fluentui/react-button';
 
 import 'cypress-real-events';
+import { tagPickerControlClassNames } from '../TagPickerControl/useTagPickerControlStyles.styles';
 /**
  * This error means that ResizeObserver
  * was not able to deliver all observations within a single animation frame.
@@ -67,7 +68,6 @@ const TagPickerControlled = ({
         defaultOpen={defaultOpen}
       >
         <TagPickerControl
-          expandIcon={{ 'data-testid': 'tag-picker-control__expandIcon' } as {}}
           data-testid="tag-picker-control"
           secondaryAction={
             <Button
@@ -143,10 +143,10 @@ describe('TagPicker', () => {
     it('should open/close a listbox once expandIcon is clicked', () => {
       mount(<TagPickerControlled />);
       cy.get('[data-testid="tag-picker-list"]').should('not.exist');
-      cy.get('[data-testid="tag-picker-control__expandIcon"]').realClick();
+      cy.get(`.${tagPickerControlClassNames.expandIcon}`).realClick();
       cy.get('[data-testid="tag-picker-list"]').should('be.visible');
       cy.get('[data-testid="tag-picker-input"]').should('be.focused');
-      cy.get('[data-testid="tag-picker-control__expandIcon"]').realClick();
+      cy.get(`.${tagPickerControlClassNames.expandIcon}`).realClick();
       cy.get('[data-testid="tag-picker-list"]').should('not.be.visible');
     });
     it('should open/close a listbox once surface (control) is clicked', () => {
@@ -317,6 +317,7 @@ describe('TagPicker', () => {
   it('should not render popover when "noPopover"', () => {
     mount(<TagPickerControlled noPopover />);
     cy.get('[data-testid="tag-picker-control"]').should('exist');
+    cy.get(`.${tagPickerControlClassNames.expandIcon}`).should('not.exist');
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
     cy.get('[data-testid="tag-picker-input"]').realClick();
     cy.get('[data-testid="tag-picker-list"]').should('not.exist');
