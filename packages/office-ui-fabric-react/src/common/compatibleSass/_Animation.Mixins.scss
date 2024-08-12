@@ -1,0 +1,451 @@
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Fabric Animations
+
+
+// Outputs the keyframes used by the animation classes
+@mixin ms-animation-keyframes() {
+  // Set a default value for the version-scoped variable if it isn't assigned
+  $ms-fabric-version-suffix: '' !default;
+
+  @keyframes ms-slideRightIn10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(-10px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideRightIn20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(-20px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideRightIn40#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(-40px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideRightIn400#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(-400px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideRightOut40#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 0px, 0px); }
+    to { transform: translate3d(40px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideRightOut400#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0, 0px, 0px); }
+    to { transform: translate3d(400px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftIn10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(10px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftIn20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(20px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftIn40#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(40px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftIn400#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(400px, 0px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftOut40#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0, 0px, 0px); }
+    to { transform: translate3d(-40px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideLeftOut400#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0, 0px, 0px); }
+    to { transform: translate3d(-400px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideUpIn10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 10px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideUpIn20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 20px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideDownIn10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, -10px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideDownIn20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, -20px, 0px); }
+    to { transform: translate3d(0px, 0px, 0px); }
+  }
+
+  @keyframes ms-slideUpOut10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 0, 0px); }
+    to { transform: translate3d(0px, -10px, 0px); }
+  }
+
+  @keyframes ms-slideUpOut20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 0, 0px); }
+    to { transform: translate3d(0px, -20px, 0px); }
+  }
+
+  @keyframes ms-slideDownOut10#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 0, 0px); }
+    to { transform: translate3d(0px, 10px, 0px); }
+  }
+
+  @keyframes ms-slideDownOut20#{$ms-fabric-version-suffix} {
+    from { transform: translate3d(0px, 0, 0px); }
+    to { transform: translate3d(0px, 20px, 0px); }
+  }
+
+  @keyframes ms-scaleUp100#{$ms-fabric-version-suffix} {
+    from { transform: scale3d(.98, .98, 1); }
+    to { transform: scale3d(1, 1, 1); }
+  }
+
+  @keyframes ms-scaleUp103#{$ms-fabric-version-suffix} {
+    from { transform: scale3d(1, 1, 1); }
+    to { transform: scale3d(1.03, 1.03, 1); }
+  }
+
+  @keyframes ms-scaleDown98#{$ms-fabric-version-suffix} {
+    from { transform: scale3d(1, 1, 1); }
+    to { transform: scale3d(0.98, 0.98, 1); }
+  }
+
+  @keyframes ms-scaleDown100#{$ms-fabric-version-suffix} {
+    from { transform: scale3d(1.03, 1.03, 1); }
+    to { transform: scale3d(1, 1, 1); }
+  }
+
+  @keyframes ms-fadeIn#{$ms-fabric-version-suffix} {
+    from {
+      opacity: 0;
+      animation-timing-function: $ms-animation-ease-2;
+    }
+    to { opacity: 1; }
+  }
+
+  @keyframes ms-fadeOut#{$ms-fabric-version-suffix} {
+    from {
+      opacity: 1;
+      animation-timing-function: $ms-animation-ease-2;
+    }
+    to { opacity: 0; }
+  }
+
+  @keyframes ms-rotate90#{$ms-fabric-version-suffix} {
+    from { transform: rotateZ(0deg); }
+    to { transform: rotateZ(90deg); }
+  }
+
+  @keyframes ms-rotateN90#{$ms-fabric-version-suffix} {
+    from { transform: rotateZ(90deg); }
+    to { transform: rotateZ(0deg); }
+  }
+}
+
+// Wraps content in a 'prefers-reduced-motion' media query, so that it will only be
+// applied where the user has opted to reduce motion. This is currently supported by
+// Safari on iOS and macOS, and will likely be coming to other browsers in the future.
+//
+// See this article: https://css-tricks.com/introduction-reduced-motion-media-query/
+@mixin ms-prefers-reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+// Outputs the properties for an animation.
+@mixin ms-animation($names, $duration, $timing: $ms-animation-ease-1, $fillMode: both) {
+  // Set a default value for the version-scoped variable if it isn't assigned.
+  $ms-fabric-version-suffix: '' !default;
+
+  // Append the scoping suffix to each animation name.
+  $namelist: ();
+  @each $name in $names {
+    $newname: $name#{$ms-fabric-version-suffix};
+    $namelist: append($namelist, $newname, 'comma');
+  }
+
+  // Output the animation's properties.
+  animation-name: $namelist;
+  animation-duration: $duration;
+  animation-timing-function: $timing;
+  animation-fill-mode: $fillMode;
+
+  // Make the animation instant for users who prefer no motion.
+  @include ms-prefers-reduced-motion {
+    animation: none;
+  }
+}
+
+// Ouptuts the properties for a transition.
+@mixin ms-transition($transition) {
+  transition: $transition;
+
+  // Make the transition instant for users who prefer no motion.
+  @include ms-prefers-reduced-motion {
+    transition: none;
+  }
+}
+
+// Slide
+@mixin ms-slideRightIn10 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn10), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn10), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideRightIn20 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideRightIn40 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn40), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn40), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideRightIn400 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn400), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn400), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideRightOut40 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeOut, ms-slideRightOut40), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeOut, ms-slideLeftOut40), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+}
+
+@mixin ms-slideRightOut400 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeOut, ms-slideRightOut400), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeOut, ms-slideLeftOut400), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+}
+
+@mixin ms-slideLeftIn10 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn10), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn10), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideLeftIn20 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideLeftIn40 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn40), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn40), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideLeftIn400 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeIn, ms-slideLeftIn400), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeIn, ms-slideRightIn400), $ms-animation-duration-3, $ms-animation-ease-1);
+  }
+}
+
+@mixin ms-slideLeftOut40 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeOut, ms-slideLeftOut40), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeOut, ms-slideRightOut40), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+}
+
+@mixin ms-slideLeftOut400 {
+  @include ms-LTR {
+    @include ms-animation((ms-fadeOut, ms-slideLeftOut400), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation((ms-fadeOut, ms-slideRightOut400), $ms-animation-duration-1, $ms-animation-ease-2);
+  }
+}
+
+@mixin ms-slideUpIn10 {
+  @include ms-animation((ms-fadeIn, ms-slideUpIn10), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-slideUpIn20 {
+  @include ms-animation((ms-fadeIn, ms-slideUpIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+}
+
+@mixin ms-slideDownIn10 {
+  @include ms-animation((ms-fadeIn, ms-slideDownIn10), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-slideDownIn20 {
+  @include ms-animation((ms-fadeIn, ms-slideDownIn20), $ms-animation-duration-3, $ms-animation-ease-1);
+}
+
+@mixin ms-slideUpOut10 {
+  @include ms-animation((ms-fadeOut, ms-slideUpOut10), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-slideUpOut20 {
+  @include ms-animation((ms-fadeOut, ms-slideUpOut20), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-slideDownOut10 {
+  @include ms-animation((ms-fadeOut, ms-slideDownOut10), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-slideDownOut20 {
+  @include ms-animation((ms-fadeOut, ms-slideDownOut20), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+// Scale
+@mixin ms-scaleUpIn100 {
+  @include ms-animation((ms-fadeIn, ms-scaleUp100), $ms-animation-duration-3, $ms-animation-ease-1);
+}
+
+@mixin ms-scaleUpOut103 {
+  @include ms-animation((ms-fadeOut, ms-scaleUp103), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-scaleDownOut98 {
+  @include ms-animation((ms-fadeOut, ms-scaleDown98), $ms-animation-duration-1, $ms-animation-ease-2);
+}
+
+@mixin ms-scaleDownIn100 {
+  @include ms-animation((ms-fadeIn, ms-scaleDown100), $ms-animation-duration-3, $ms-animation-ease-1);
+}
+
+// Rotate
+// @todo: These durations should use a variable, likely $ms-animation-duration-1
+@mixin ms-rotate90deg {
+  @include ms-LTR {
+    @include ms-animation(ms-rotate90, 0.1s, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation(ms-rotateN90, 0.1s, $ms-animation-ease-2);
+  }
+}
+
+@mixin ms-rotateN90deg {
+  @include ms-LTR {
+    @include ms-animation(ms-rotateN90, 0.1s, $ms-animation-ease-2);
+  }
+  
+  @include ms-RTL {
+    @include ms-animation(ms-rotate90, 0.1s, $ms-animation-ease-2);
+  }
+}
+
+// Fade
+@mixin ms-fadeIn100 {
+  @include ms-animation(ms-fadeIn, $ms-animation-duration-1);
+}
+
+@mixin ms-fadeIn200 {
+  @include ms-animation(ms-fadeIn, $ms-animation-duration-2);
+}
+
+@mixin ms-fadeIn400 {
+  @include ms-animation(ms-fadeIn, $ms-animation-duration-3);
+}
+
+@mixin ms-fadeIn500 {
+  @include ms-animation(ms-fadeIn, $ms-animation-duration-4);
+}
+
+@mixin ms-fadeOut100 {
+  @include ms-animation(ms-fadeOut, 0.1s); // @todo: This is the only duration that matches the class name
+}
+
+@mixin ms-fadeOut200 {
+  @include ms-animation(ms-fadeOut, $ms-animation-duration-1); // @todo: Based on class name, likely intended to be 0.2s
+}
+
+@mixin ms-fadeOut400 {
+  @include ms-animation(ms-fadeOut, $ms-animation-duration-3); // @todo: Based on class name, likely intended to be 0.4s
+}
+
+@mixin ms-fadeOut500 {
+  @include ms-animation(ms-fadeOut, $ms-animation-duration-4); // @todo: Based on class name, likely intended to be 0.5s
+}
+
+// Expand-collapse
+@mixin ms-expandCollapse100 {
+  @include ms-transition(height 0.1s $ms-animation-ease-2); // @todo: This is the only duration that matches the class name
+}
+
+@mixin ms-expandCollapse200 {
+  @include ms-transition(height $ms-animation-duration-1 $ms-animation-ease-2); // @todo: Based on class name, likely intended to be 0.2s
+}
+
+@mixin ms-expandCollapse400 {
+  @include ms-transition(height $ms-animation-duration-3 $ms-animation-ease-2); // @todo: Based on class name, likely intended to be 0.4s
+}
+
+// Utilities to set the animation delay property.
+@mixin ms-delay100 {
+  animation-delay: $ms-animation-duration-1; // @todo: Based on class name, likely intended to be 0.1s
+}
+
+@mixin ms-delay200 {
+  animation-delay: $ms-animation-duration-2; // @todo: Based on class name, likely intended to be 0.2s
+}

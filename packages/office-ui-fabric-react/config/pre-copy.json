@@ -12,6 +12,9 @@
     ],
     "dist/css": [
       "node_modules/office-ui-fabric-core/dist/css/**/*"
+    ],
+    "dist/sass/mixins": [
+      "src/common/compatibleSass/_Animation.Mixins.scss"
     ]
   }
 }
