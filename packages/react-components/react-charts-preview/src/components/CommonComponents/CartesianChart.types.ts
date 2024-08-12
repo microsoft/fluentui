@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
-import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
 import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
@@ -311,18 +309,8 @@ export interface ICartesianChartProps {
    */
   chartLabel?: string;
 
-  /**
-   * overflow props for the legends
-   */
-  legendsOverflowProps?: Partial<IOverflowSetProps>;
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   legendsOverflowText?: any;
-
-  /**
-   * focus zone props in hover card for legends
-   */
-  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 
   /**
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
@@ -558,20 +546,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   stringDatasetForYAxisDomain?: string[];
 
   /**
-   * Focus zone direction to the chart
-   * @default FocusZoneDirection.horizontal
-   */
-  focusZoneDirection?: FocusZoneDirection;
-
-  /**
    * props to send into the chart hover card
    */
   chartHoverProps?: IChartHoverCardProps;
-
-  /**
-   * props to send to the focuszone
-   */
-  svgFocusZoneProps?: IFocusZoneProps;
 
   /**
    * The prop used to define the culture to localize the numbers and date

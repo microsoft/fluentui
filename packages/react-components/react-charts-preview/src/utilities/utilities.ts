@@ -1574,3 +1574,11 @@ export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T 
 
   return array[index];
 }
+
+export const HighContrastSelector = '@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)';
+export const HighContrastSelectorWhite =
+  // eslint-disable-next-line @fluentui/max-len
+  '@media screen and (-ms-high-contrast: black-on-white), screen and (forced-colors: active) and (prefers-color-scheme: light)';
+export const HighContrastSelectorBlack =
+  // eslint-disable-next-line @fluentui/max-len
+  '@media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark)';
