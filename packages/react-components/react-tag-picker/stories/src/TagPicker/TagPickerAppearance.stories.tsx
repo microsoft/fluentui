@@ -7,6 +7,7 @@ import {
   TagPickerProps,
   TagPickerOption,
   TagPickerGroup,
+  Label,
 } from '@fluentui/react-components';
 import { Tag, Avatar, tokens, makeStyles, Field } from '@fluentui/react-components';
 
@@ -28,8 +29,15 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
+  const labelColor =
+    appearance === 'filled-lighter' || appearance === 'filled-darker'
+      ? tokens.colorNeutralForegroundInverted2
+      : tokens.colorNeutralForeground1;
+
+  const label = <Label style={{ color: labelColor }}>Select Employees</Label>;
+
   return (
-    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+    <Field label={label} style={{ maxWidth: 400 }}>
       <TagPicker appearance={appearance} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
           <TagPickerGroup>
