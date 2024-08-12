@@ -13,7 +13,7 @@ const tagGroupContextDefaultValue: TagGroupContextValue = {
  * Context shared between TagGroup and its children components
  */
 export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismiss' | 'size'>> &
-  Partial<Pick<TagGroupState, 'appearance' | 'dismissible' | 'role'>>;
+  Partial<Pick<TagGroupState, `disabled` | 'appearance' | 'dismissible' | 'role'>>;
 
 export const TagGroupContextProvider = TagGroupContext.Provider;
 

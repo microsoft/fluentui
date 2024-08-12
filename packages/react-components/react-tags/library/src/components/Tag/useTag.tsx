@@ -29,6 +29,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
   const {
     handleTagDismiss,
     size: contextSize,
+    disabled: contextDisabled,
     appearance: contextAppearance,
     dismissible: contextDismissible,
     role: tagGroupRole,
@@ -38,7 +39,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
 
   const {
     appearance = contextAppearance ?? 'filled',
-    disabled = false,
+    disabled = contextDisabled ?? false,
     dismissible = contextDismissible ?? false,
     shape = 'rounded',
     size = contextSize,

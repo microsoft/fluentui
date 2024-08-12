@@ -7,6 +7,7 @@ export { Default } from './TagGroupDefault.stories';
 export { Dismiss } from './TagGroupDismiss.stories';
 export { Sizes } from './TagGroupSizes.stories';
 export { WithOverflow } from './TagGroupOverflow.stories';
+export { Disabled } from './TagGroupDisabled.stories';
 
 export default {
   title: 'Components/Tag/TagGroup',
