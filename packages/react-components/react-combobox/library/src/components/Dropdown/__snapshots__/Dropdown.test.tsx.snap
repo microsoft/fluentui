@@ -34,7 +34,7 @@ exports[`Dropdown renders a default state 1`] = `
     <button
       aria-label="Clear selection"
       class="fui-Dropdown__clearButton"
-      tabindex="0"
+      tabindex="-1"
       type="button"
     >
       <svg
@@ -92,7 +92,7 @@ exports[`Dropdown renders an open listbox 1`] = `
     <button
       aria-label="Clear selection"
       class="fui-Dropdown__clearButton"
-      tabindex="0"
+      tabindex="-1"
       type="button"
     >
       <svg
