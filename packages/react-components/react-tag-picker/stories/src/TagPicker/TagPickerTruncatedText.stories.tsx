@@ -60,7 +60,7 @@ export const TruncatedText = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions.map(option => option.value)}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Select Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option.value}

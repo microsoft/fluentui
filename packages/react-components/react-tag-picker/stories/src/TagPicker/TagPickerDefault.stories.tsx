@@ -32,7 +32,7 @@ export const Default = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Select Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}

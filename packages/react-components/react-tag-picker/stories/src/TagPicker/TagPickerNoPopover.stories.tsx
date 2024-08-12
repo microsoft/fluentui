@@ -29,7 +29,7 @@ export const NoPopover = () => {
     <Field label="Add Employees" style={{ maxWidth: 400 }}>
       <TagPicker noPopover onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Select Employees">
             {selectedOptions.map((option, index) => (
               <Tag
                 key={index}

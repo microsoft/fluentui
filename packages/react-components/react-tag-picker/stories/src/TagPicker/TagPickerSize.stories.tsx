@@ -32,7 +32,7 @@ const Example = ({ size }: Pick<TagPickerProps, 'size'>) => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker size={size} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Select Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
