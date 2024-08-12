@@ -104,7 +104,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
         'aria-label': 'Clear selection',
         children: <DismissIcon />,
         // Safari doesn't allow to focus an element with this
-        tabIndex: 0,
+        // when the element is not visible (display: none) we need to set it to -1 to avoid tabster issues
+        tabIndex: showClearButton ? 0 : -1,
         type: 'button',
       },
       elementType: 'button',
