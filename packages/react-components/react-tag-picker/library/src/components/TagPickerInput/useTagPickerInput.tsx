@@ -45,7 +45,7 @@ export const useTagPickerInput_unstable = (
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
   const clearSelection = useTagPickerContext_unstable(ctx => ctx.clearSelection);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
-  const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
+  const popoverId = useTagPickerContext_unstable(ctx => (ctx.noPopover ? undefined : ctx.popoverId));
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const contextValue = useTagPickerContext_unstable(ctx => ctx.value);
