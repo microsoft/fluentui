@@ -27,6 +27,7 @@ export const useTagPickerGroup_unstable = (
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const size = useTagPickerContext_unstable(ctx => tagPickerSizeToTagSize(ctx.size));
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
+  const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
 
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: false,
@@ -37,6 +38,7 @@ export const useTagPickerGroup_unstable = (
   const state = useTagGroup_unstable(
     {
       role: 'listbox',
+      disabled,
       ...props,
       ...arrowNavigationProps,
       size,
