@@ -11,14 +11,6 @@ const config = createConfig({
   snapshotSerializers: ['@fluentui/jest-serializer-merge-styles'],
 });
 
-if (config.globals) {
-  // override ts-jest config, otherwise it gets merged
-  config.globals['ts-jest'] = {
-    tsconfig: '<rootDir>/tsconfig.spec.json',
-    isolatedModules: true,
-  };
-}
-
 // use default jest config to properly resolve react-18
 delete config.moduleDirectories;
 
