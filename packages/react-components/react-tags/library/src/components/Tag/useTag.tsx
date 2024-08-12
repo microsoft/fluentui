@@ -104,7 +104,6 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
       renderByDefault: dismissible,
       defaultProps: {
         children: <DismissRegular />,
-        role: 'img',
       },
       elementType: 'span',
     }),
