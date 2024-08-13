@@ -35,14 +35,14 @@ To contribute to packages in this folder, follow [these setup instructions](setu
 From repo root:
 
 ```sh
-yarn northstar:start                 # start doc site: choose `@fluentui/docs`
+yarn start                 # start doc site: choose `docs`
 
 yarn test                  # run all packages' tests once
 
-yarn build                 # build all packages
-yarn northstar:build:docs   # build docs
+yarn nx run-many -t build -p tag:react-northstar  # build all northstar packages
+yarn nx run docs:bundle   # build docs
 
-yarn lint                  # lint all packages
+yarn nx run-many -t lint -p tag:react-northstar   # lint all packages
 
 yarn format              # run prettier on changed files
 ```

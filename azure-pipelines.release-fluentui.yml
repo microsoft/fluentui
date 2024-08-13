@@ -156,7 +156,7 @@ extends:
                 inputs:
                   script: |
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
-                    NODE_ENV=production yarn northstar:build:docs
+                    NODE_ENV=production yarn nx run docs:bundle
 
               - task: AzureCLI@2
                 displayName: Upload to Azure
