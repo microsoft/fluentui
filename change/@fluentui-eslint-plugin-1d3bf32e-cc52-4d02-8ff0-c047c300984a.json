@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add Griffel's pseudo element lint rule",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

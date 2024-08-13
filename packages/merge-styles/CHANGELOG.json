@@ -2,6 +2,21 @@
   "name": "@fluentui/merge-styles",
   "entries": [
     {
+      "date": "Thu, 08 Aug 2024 07:24:14 GMT",
+      "tag": "@fluentui/merge-styles_v8.6.13",
+      "version": "8.6.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/merge-styles",
+            "commit": "e4a5df025623e3c7d8c4a44259105baa2e52826c",
+            "comment": "fix: ship bundled and umd code to registry"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:51 GMT",
       "tag": "@fluentui/merge-styles_v8.6.12",
       "version": "8.6.12",

@@ -118,11 +118,8 @@ extends:
                 displayName: bundle
 
               - script: |
-                  ls -la packages/react/dist
-                  ls -la packages/react/lib
-                  ls -la packages/react/lib-commonjs
-                  ls -la packages/react/lib-amd
-                displayName: verify packaged react assets
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: verify packaged assets
 
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 23 Jul 2024 20:13:11 GMT and should not be manually modified.
+This log was last generated on Tue, 06 Aug 2024 21:40:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.9)
+
+Tue, 06 Aug 2024 21:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.6..@fluentui/react-dialog_v9.11.9)
+
+### Patches
+
+- fix: do not require ref forwarding ([PR #32095](https://github.com/microsoft/fluentui/pull/32095) by olfedias@microsoft.com)
 
 ## [9.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.6)
 

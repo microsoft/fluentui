@@ -28,14 +28,14 @@ const useStyles = makeResetStyles({
 
 const useDrawerHeaderStyles = makeStyles({
   separator: {
-    ':after': {
+    '::after': {
       ...drawerSeparatorStyles,
       bottom: 0,
     },
   },
 
   separatorVisible: {
-    ':after': {
+    '::after': {
       opacity: 1,
     },
   },

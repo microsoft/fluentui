@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 05 Aug 2024 04:08:39 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 04:07:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.55)
+
+Thu, 08 Aug 2024 04:07:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.54..@fluentui/web-components_v3.0.0-beta.55)
+
+### Changes
+
+- [chore]: [rating-display] move size, color and generate icons out of base class ([PR #32239](https://github.com/microsoft/fluentui/pull/32239) by jes@microsoft.com)
+
+## [3.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.54)
+
+Tue, 06 Aug 2024 04:07:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.53..@fluentui/web-components_v3.0.0-beta.54)
+
+### Changes
+
+- Add Tablist component ([PR #32098](https://github.com/microsoft/fluentui/pull/32098) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.53)
 
