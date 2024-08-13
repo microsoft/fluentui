@@ -13,7 +13,12 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import {
+  ChartHoverCard,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
@@ -201,10 +206,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
       if (this.props.enableGradient) {
         const pointIndex = Math.max(
-          this.props.data?.map(v => v.chartData)?.findIndex(
-            (item) => item?.[0].data === point.data && item?.[0].legend === point.legend,
-          )
-          || 0, 0
+          this.props.data
+            ?.map(v => v.chartData)
+            ?.findIndex(item => item?.[0].data === point.data && item?.[0].legend === point.legend) || 0,
+          0,
         );
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
       }
@@ -413,7 +418,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         <React.Fragment key={index}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} >
+              <linearGradient id={gradientId}>
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -430,7 +435,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={this._barHeight}
-            fill={this.props.enableGradient? `url(#${gradientId})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             role="img"

@@ -277,7 +277,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       let startColor: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       let endColor: string = startColor;
-      if (this.props.enableGradient ) {
+      if (this.props.enableGradient) {
         startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
         endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
       }
@@ -354,7 +354,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} >
+              <linearGradient id={gradientId}>
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -416,7 +416,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: {...point, color},
+          dataPointCalloutProps: { ...point, color },
           callOutAccessibilityData: point.callOutAccessibilityData!,
         });
       }
@@ -488,7 +488,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
-        dataPointCalloutProps: {...point, color},
+        dataPointCalloutProps: { ...point, color },
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }

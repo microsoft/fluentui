@@ -233,7 +233,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
       const color: string = this.props.enableGradient
-        ? (point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0])
+        ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
         : point.color!;
 
       // mapping data to the format Legends component needs
@@ -293,9 +293,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       let color: string = data.color!;
 
       if (this.props.enableGradient) {
-        const pointIndex = Math.max(
-          this.props.data?.chartData?.findIndex((item) => item.legend === data.legend) || 0, 0
-        );
+        const pointIndex = Math.max(this.props.data?.chartData?.findIndex(item => item.legend === data.legend) || 0, 0);
         color = data.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
       }
 

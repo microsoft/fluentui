@@ -312,6 +312,7 @@ export interface IChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data?: number;
+    gradient?: [string, string];
     horizontalBarChartdata?: IHorizontalDataPoint;
     legend?: string;
     onClick?: VoidFunction;
@@ -444,9 +445,11 @@ export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
     culture?: string;
     data?: IChartProps;
+    enableGradient?: boolean;
     hideLabels?: boolean;
     innerRadius?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     showLabelsInPercent?: boolean;
     styles?: IStyleFunctionOrObject<IDonutChartStyleProps, IDonutChartStyles>;
     valueInsideDonut?: string | number;
@@ -489,6 +492,7 @@ export interface IGaugeChartProps {
     chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
     className?: string;
     culture?: string;
+    enableGradient?: boolean;
     height?: number;
     hideLegend?: boolean;
     hideMinMax?: boolean;
@@ -497,6 +501,7 @@ export interface IGaugeChartProps {
     legendProps?: Partial<ILegendsProps>;
     maxValue?: number;
     minValue?: number;
+    roundCorners?: boolean;
     segments: IGaugeChartSegment[];
     styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
     sublabel?: string;
@@ -509,6 +514,7 @@ export interface IGaugeChartProps {
 export interface IGaugeChartSegment {
     accessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend: string;
     size: number;
 }
@@ -559,12 +565,14 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     chartTitle?: string;
     culture?: string;
     data: IGroupedVerticalBarChartData[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     // @deprecated
     legendColor?: string;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
+    roundCorners?: boolean;
     // @deprecated
     showXAxisGridLines?: boolean;
     // @deprecated
@@ -593,6 +601,7 @@ export interface IGVBarChartSeriesPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color: string;
     data: number;
+    gradient?: [string, string];
     key: string;
     legend: string;
     onClick?: VoidFunction;
@@ -686,6 +695,7 @@ export interface IHorizontalBarChartProps {
     hideRatio?: boolean[];
     hideTooltip?: boolean;
     onRenderCalloutPerHorizontalBar?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>;
     theme?: ITheme;
     variant?: HorizontalBarChartVariant;
@@ -724,6 +734,7 @@ export interface IHorizontalBarChartStyles {
 export interface IHorizontalBarChartWithAxisDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     onClick?: VoidFunction;
     x: number;
@@ -739,7 +750,9 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IHorizontalBarChartWithAxisDataPoint[];
+    enableGradient?: boolean;
     onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
+    roundCorners?: boolean;
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     styles?: IStyleFunctionOrObject<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>;
@@ -1029,6 +1042,7 @@ export interface IMultiStackedBarChartProps {
     className?: string;
     culture?: string;
     data?: IChartProps[];
+    enableGradient?: boolean;
     focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     hideDenominator?: boolean[];
     hideLabels?: boolean;
@@ -1040,6 +1054,7 @@ export interface IMultiStackedBarChartProps {
     legendsOverflowProps?: Partial<IOverflowSetProps>;
     legendsOverflowText?: string;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
     theme?: ITheme;
     variant?: MultiStackedBarChartVariant;
@@ -1228,6 +1243,7 @@ export interface IStackedBarChartProps {
     culture?: string;
     data?: IChartProps;
     enabledLegendsWrapLines?: boolean;
+    enableGradient?: boolean;
     focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     hideDenominator?: boolean;
     hideLegend?: boolean;
@@ -1239,6 +1255,7 @@ export interface IStackedBarChartProps {
     legendsOverflowProps?: Partial<IOverflowSetProps>;
     legendsOverflowText?: string;
     onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
     targetData?: IChartDataPoint;
     theme?: ITheme;
@@ -1343,6 +1360,7 @@ export interface ITreeStyles {
 export interface IVerticalBarChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
+    gradient?: [string, string];
     legend?: string;
     lineData?: ILineDataInVerticalBarChart;
     onClick?: VoidFunction;
@@ -1359,12 +1377,14 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data?: IVerticalBarChartDataPoint[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     lineLegendColor?: string;
     lineLegendText?: string;
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
@@ -1410,6 +1430,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     colors?: string[];
     culture?: string;
     data: IVerticalStackedChartProps[];
+    enableGradient?: boolean;
     hideLabels?: boolean;
     isCalloutForStack?: boolean;
     lineOptions?: ILineChartLineOptions;
@@ -1417,6 +1438,7 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
     onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
+    roundCorners?: boolean;
     styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -1467,6 +1489,7 @@ export interface IVSChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
     color?: string;
     data: number;
+    gradient?: [string, string];
     legend: string;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;

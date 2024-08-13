@@ -241,7 +241,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   <React.Fragment key={index}>
                     <path
                       d={arc.d}
-                      fill={this.props.enableGradient ? "transparent" : segment.color}
+                      fill={this.props.enableGradient ? 'transparent' : segment.color}
                       fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
                       strokeWidth={this.state.focusedElement === segment.legend ? ARC_PADDING : 0}
                       className={this._classNames.segment}
@@ -260,33 +260,35 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                       data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
                     />
 
-                    {this.props.enableGradient && (<>
-                      <clipPath id={`clip_${index}_${arc.segmentIndex}`}>
-                        <path d={arc.d} />
-                      </clipPath>
-                      <foreignObject
-                        x="-50%"
-                        y="-100%"
-                        width="100%"
-                        height="100%"
-                        clipPath={`url(#clip_${index}_${arc.segmentIndex})`}
-                      >
-                        <div
-                          style={{
-                            width: '100%',
-                            height: '100%',
-                            background: this.props.enableGradient
-                              ? `conic-gradient(
+                    {this.props.enableGradient && (
+                      <>
+                        <clipPath id={`clip_${index}_${arc.segmentIndex}`}>
+                          <path d={arc.d} />
+                        </clipPath>
+                        <foreignObject
+                          x="-50%"
+                          y="-100%"
+                          width="100%"
+                          height="100%"
+                          clipPath={`url(#clip_${index}_${arc.segmentIndex})`}
+                        >
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              background: this.props.enableGradient
+                                ? `conic-gradient(
                                   from ${arc.startAngle}rad at 50% 100%,
                                   ${segment.gradient![0]},
                                   ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
                                 )`
-                              : segment.color,
-                            opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
-                          }}
-                        />
-                      </foreignObject>
-                    </>)}
+                                : segment.color,
+                              opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
+                            }}
+                          />
+                        </foreignObject>
+                      </>
+                    )}
                   </React.Fragment>
                 );
               })}
@@ -408,7 +410,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
 
     const arcGenerator = d3Arc()
-      .cornerRadius(this.props.roundCorners ? 3: 0)
+      .cornerRadius(this.props.roundCorners ? 3 : 0)
       .padAngle(ARC_PADDING / this._outerRadius)
       .padRadius(this._outerRadius);
     const rtlSafeSegments = this._isRTL ? Array.from(segments).reverse() : segments;
@@ -481,8 +483,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
     const legends: ILegend[] = this._segments.map((segment, index) => {
       const color: string = this.props.enableGradient
-        ? (segment.gradient?.[0] || getNextGradient(index, 0, this.props.theme!.isInverted)[0])
-        : (segment.color || getNextColor(index, 0, this.props.theme!.isInverted));
+        ? segment.gradient?.[0] || getNextGradient(index, 0, this.props.theme!.isInverted)[0]
+        : segment.color || getNextColor(index, 0, this.props.theme!.isInverted);
 
       return {
         title: segment.legend,
@@ -563,7 +565,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       const yValue: IYValue = {
         legend: segment.legend,
         y: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant),
-        color: this.props.enableGradient? segment.gradient?.[0] : segment.color,
+        color: this.props.enableGradient ? segment.gradient?.[0] : segment.color,
       };
       return yValue;
     });

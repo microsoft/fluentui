@@ -14,7 +14,12 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { ChartHoverCard, formatValueWithSIPrefix, getAccessibleDataObject, getNextGradient } from '../../utilities/index';
+import {
+  ChartHoverCard,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -252,7 +257,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         ? palette.neutralLight
         : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       let endColor: string = startColor;
-      if (this.props.enableGradient ) {
+      if (this.props.enableGradient) {
         startColor = point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0];
         endColor = point.gradient?.[1] || getNextGradient(index, 0, this.props.theme?.isInverted)[1];
       }
@@ -304,7 +309,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} >
+              <linearGradient id={gradientId}>
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -460,7 +465,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
-          dataPointCalloutProps: {...point, color},
+          dataPointCalloutProps: { ...point, color },
           callOutAccessibilityData: point.callOutAccessibilityData!,
         });
       }
@@ -604,7 +609,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
-        dataPointCalloutProps: {...point, color},
+        dataPointCalloutProps: { ...point, color },
         callOutAccessibilityData: point.callOutAccessibilityData!,
       });
     }

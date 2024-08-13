@@ -346,7 +346,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         isCalloutVisible: true,
         dataForHoverCard: point.x,
         selectedLegendTitle: point.legend!,
-        color: (this.props.useSingleColor || this.props.enableGradient) ? color : point.color,
+        color: this.props.useSingleColor || this.props.enableGradient ? color : point.color,
         // To display callout value, if no callout value given, taking given point.x value as a string.
         xCalloutValue: point.yAxisCalloutData! || point.y.toString(),
         yCalloutValue: point.xAxisCalloutData || point.x.toString(),
@@ -483,7 +483,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       let endColor = startColor;
 
       if (this.props.enableGradient) {
-        const pointIndex = Math.max(this._points.findIndex((item) => item === point), 0);
+        const pointIndex = Math.max(
+          this._points.findIndex(item => item === point),
+          0,
+        );
         startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
         endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
@@ -499,7 +502,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         <React.Fragment key={point.y}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} >
+              <linearGradient id={gradientId}>
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -599,7 +602,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       let endColor = startColor;
 
       if (this.props.enableGradient) {
-        const pointIndex = this._points.findIndex((item) => item === point);
+        const pointIndex = this._points.findIndex(item => item === point);
         startColor = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
         endColor = point.gradient?.[1] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[1];
         if (useSingleColor) {
@@ -615,7 +618,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         <React.Fragment key={point.x}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} >
+              <linearGradient id={gradientId}>
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>

@@ -1097,17 +1097,30 @@ describe('getClosestPairDiffAndRange', () => {
 });
 
 /** -------- dataviz gradient tests ------ */
-const mockGradients = { // as per gradients.ts
-  'default': [
-    [['#4760D5', '#637CEF'], ['#4F6BED', '#637CEF']],
-    [['#795AA6', '#9373C0'], ['#8764B8', '#A083C9']],
+const mockGradients = {
+  // as per gradients.ts
+  default: [
+    [
+      ['#4760D5', '#637CEF'],
+      ['#4F6BED', '#637CEF'],
+    ],
+    [
+      ['#795AA6', '#9373C0'],
+      ['#8764B8', '#A083C9'],
+    ],
     // Add more
   ],
-  'semantic': [
-    [['#0C5E0C', '#107C10'], ['#218C21', '#359B35']],
-    [['#107C10', '#359B35'], ['#359B35', '#9FD89F']],
+  semantic: [
+    [
+      ['#0C5E0C', '#107C10'],
+      ['#218C21', '#359B35'],
+    ],
+    [
+      ['#107C10', '#359B35'],
+      ['#359B35', '#9FD89F'],
+    ],
     // Add more
-  ]
+  ],
 };
 
 describe('getNextGradient', () => {

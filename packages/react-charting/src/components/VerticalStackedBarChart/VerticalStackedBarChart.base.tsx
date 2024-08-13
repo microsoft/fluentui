@@ -590,7 +590,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         let color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
         if (this.props.enableGradient) {
           const pointIndex = Math.max(
-            singleChartData.chartData?.findIndex((item) => item.legend === point.legend) || 0, 0
+            singleChartData.chartData?.findIndex(item => item.legend === point.legend) || 0,
+            0,
           );
           color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
         }
@@ -902,7 +903,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
               {this.props.enableGradient && (
                 <defs>
-                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
+                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
                     <stop offset="0" stopColor={startColor} />
                     <stop offset="100%" stopColor={endColor} />
                   </linearGradient>
@@ -935,7 +936,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           <React.Fragment key={index + indexNumber}>
             {this.props.enableGradient && (
               <defs>
-                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
+                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
                   <stop offset="0" stopColor={startColor} />
                   <stop offset="100%" stopColor={endColor} />
                 </linearGradient>

@@ -37,7 +37,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     let color = d && d.data && d.data.color;
     let nextColor = color;
 
-    if(this.props.enableGradient) {
+    if (this.props.enableGradient) {
       color = this.props.data[i].gradient?.[0] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[0];
       nextColor = this.props.data[i].gradient?.[1] ?? getNextGradient(i, 0, this.props.theme!.isInverted)[1];
     }

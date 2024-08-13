@@ -528,7 +528,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       color: enableGradient
         ? useSingleColor
           ? getNextGradient(0, 0)[0]
-          : (selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0])
+          : selectedPoint[0].gradient?.[0] || getNextGradient(pointIndex, 0)[0]
         : calloutColor,
       data: selectedPoint[0].yAxisCalloutData,
       yAxisCalloutData: selectedPoint[0].yAxisCalloutData,
@@ -732,7 +732,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         <g key={point.x as string}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -830,7 +830,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -929,7 +929,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -1022,9 +1022,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       let color: string = !useSingleColor ? point.color! : this._createColors()(1);
 
       if (this.props.enableGradient) {
-        const pointIndex = Math.max(
-          this.props.data?.findIndex((item) => item.legend === point.legend) || 0, 0
-        );
+        const pointIndex = Math.max(this.props.data?.findIndex(item => item.legend === point.legend) || 0, 0);
         color = point.gradient?.[0] || getNextGradient(pointIndex, 0, theme?.isInverted)[0];
         if (useSingleColor) {
           color = getNextGradient(0, 0, this.props.theme?.isInverted)[0];
