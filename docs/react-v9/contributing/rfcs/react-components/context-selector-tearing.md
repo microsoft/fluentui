@@ -471,6 +471,10 @@ While there might be tearing, the final result will not contain _stale_ values:
 >
 > _https://github.com/reactwg/react-18/discussions/70_
 
+#### Can we avoid `useLayoutEffect`?
+
+**Not really.** There will still be situations where we need to propagate the value within effects, particularly when some consumer components are memoized and skip re-renders. If we were to use `useEffect` instead of `useLayoutEffect`, we might encounter cases where the value isn’t propagated in time, making tearing **more** apparent. Additionally, using `useEffect` breaks unit tests in Fluent itself and products 😥
+
 ## Options
 
 ### Option A: Do nothing (safe)
