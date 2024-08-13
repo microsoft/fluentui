@@ -7,6 +7,7 @@ exports[`FontIcon renders FontIcon correctly 1`] = `
       ms-Icon
       {
         display: inline-block;
+        text-decoration: inherit;
       }
       {
         -moz-osx-font-smoothing: grayscale;
@@ -34,6 +35,7 @@ exports[`FontIcon renders FontIcon with children correctly 1`] = `
       ms-Icon
       {
         display: inline-block;
+        text-decoration: inherit;
       }
       {
         -moz-osx-font-smoothing: grayscale;
@@ -61,6 +63,7 @@ exports[`FontIcon renders named FontIcon correctly 1`] = `
       ms-Icon
       {
         display: inline-block;
+        text-decoration: inherit;
       }
       {
         -moz-osx-font-smoothing: grayscale;

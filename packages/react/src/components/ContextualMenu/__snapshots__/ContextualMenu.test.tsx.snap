@@ -118,6 +118,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           ms-Button-menuIcon
           {
             display: inline-block;
+            text-decoration: inherit;
           }
           {
             -moz-osx-font-smoothing: grayscale;
@@ -492,6 +493,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   line-height: 36px;
                                   speak: none;
                                   text-align: center;
+                                  text-decoration: inherit;
                                   vertical-align: middle;
                                 }
                                 &:hover {

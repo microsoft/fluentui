@@ -8,6 +8,7 @@ exports[`ImageIcon renders ImageIcon correctly 1`] = `
       ms-Icon-imageContainer
       {
         display: inline-block;
+        text-decoration: inherit;
       }
       {
         overflow: hidden;
