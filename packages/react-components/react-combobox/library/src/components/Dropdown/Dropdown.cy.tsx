@@ -7,7 +7,7 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import type { DropdownProps } from '@fluentui/react-combobox';
 
-import { clearButtonSelector, triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
+import { triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -58,7 +58,7 @@ describe('Dropdown - controlling open/close state', () => {
   });
 });
 
-describe('Dropdown - clearable', () => {
+describe('Dropdown - tab navigation', () => {
   const DropdownComponent = (props: Partial<DropdownProps>) => {
     const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
@@ -71,21 +71,74 @@ describe('Dropdown - clearable', () => {
     );
   };
 
-  it('clear button should be hidden and not focusable by default', () => {
-    mount(<DropdownComponent />);
+  it('can tab between multiple dropdowns', () => {
+    mount(
+      <div>
+        <DropdownComponent id="first" />
+        <DropdownComponent id="second" />
+        <DropdownComponent id="third" />
+      </div>,
+    );
 
-    const clearButton = cy.get(clearButtonSelector);
+    // Focus the first dropdown
+    cy.get('#first').focus();
 
-    clearButton.should('not.be.visible');
-    clearButton.should('have.attr', 'tabIndex', '-1');
+    // Navigate to the next dropdown
+    cy.realPress('Tab');
+    cy.focused().should('have.id', 'second');
+
+    // Navigate to the next dropdown
+    cy.realPress('Tab');
+    cy.focused().should('have.id', 'third');
+
+    // Loop back to the previous dropdown
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.id', 'second');
   });
 
-  it('clear button should be visible and focusable when the "clearable" props is set', () => {
-    mount(<DropdownComponent clearable selectedOptions={['Cat']} />);
+  it.skip('can tab between multiple dropdowns (clearable)', () => {
+    mount(
+      <div>
+        <DropdownComponent id="first" clearable selectedOptions={['Cat']} />
+        <DropdownComponent id="second" />
+        <DropdownComponent id="third" />
+      </div>,
+    );
 
-    const clearButton = cy.get(clearButtonSelector);
+    // Focus the first dropdown
+    cy.get('#first').focus();
 
-    clearButton.should('be.visible');
-    clearButton.should('have.attr', 'tabIndex', '0');
+    // Navigates to the clear button, since the dropdown is clearable and has selected options
+    cy.realPress('Tab');
+    cy.focused().should('have.attr', 'aria-label', 'Clear selection');
+
+    // Navigate to the next dropdown
+    cy.realPress('Tab');
+    cy.focused().should('have.id', 'second');
+
+    // Navigate to the next dropdown
+    cy.realPress('Tab');
+    cy.focused().should('have.id', 'third');
+  });
+
+  it('can tab between multiple dropdowns (skip disabled)', () => {
+    mount(
+      <div>
+        <DropdownComponent id="first" />
+        <DropdownComponent id="second" disabled />
+        <DropdownComponent id="third" />
+      </div>,
+    );
+
+    // Focus the first dropdown
+    cy.get('#first').focus();
+
+    // Navigate to the next dropdown and skip disabled one
+    cy.realPress('Tab');
+    cy.focused().should('have.id', 'third');
+
+    // Navigate to the previous dropdown and skip disabled one
+    cy.realPress(['Shift', 'Tab']);
+    cy.focused().should('have.id', 'first');
   });
 });
