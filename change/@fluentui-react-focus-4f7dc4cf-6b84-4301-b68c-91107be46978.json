@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: define scoped test target dependants in v8 projects",
+  "packageName": "@fluentui/react-focus",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
