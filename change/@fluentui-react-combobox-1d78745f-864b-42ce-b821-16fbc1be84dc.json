@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Combobox): remove \"defaultValue\" from hooks dependencies",
+  "packageName": "@fluentui/react-combobox",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
