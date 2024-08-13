@@ -53,6 +53,9 @@ const highContrastDarkExtendedSemanticColors: Partial<IExtendedSemanticColors> =
   checkBoxDisabled: HighContrastDarkSemanticColors.checkBox.disabled.border,
   checkBoxIndeterminateBackground: HighContrastDarkSemanticColors.checkBox.checked.background,
   checkBoxIndeterminateDefaultChecked: HighContrastDarkSemanticColors.checkBox.checked.default,
+  checkBoxIndeterminateDetailsRowCheck: HighContrastDarkSemanticColors.checkBox.indeterminate.circle.background,
+  checkBoxIndeterminateDetailsRowCheckHover:
+    HighContrastDarkSemanticColors.checkBox.indeterminate.circle.hoverBackground,
   choiceGroupUncheckedDotHover: HighContrastDarkSemanticColors.choiceGroup.circle.hover,
   choiceGroupFocusBorder: HighContrastDarkSemanticColors.choiceGroup.focus,
   commandBarBorder: HighContrastDarkSemanticColors.commandBar.border,
