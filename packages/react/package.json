@@ -22,7 +22,7 @@
     "code-style": "just-scripts code-style",
     "codepen": "node ../../scripts/executors/src/local-codepen.js",
     "e2e": "yarn nx run react-examples:e2e --verbose",
-    "e2e:local": "yarn workspace @fluentui/react-examples e2e:local",
+    "e2e:local": "yarn nx run react-examples:e2e:local",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts dev:storybook",
