@@ -1,5 +1,6 @@
 import * as Babel from '@babel/core';
 import * as prettier from 'prettier';
+import * as fs from 'fs';
 
 import { modifyImportsPlugin } from './modifyImports';
 import { removeStorybookParameters } from './removeStorybookParameters';
@@ -11,12 +12,9 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
  * This Babel plugin adds `context.parameters.fullSource` property to Storybook stories,
  * which contains source of the file where story is present.
  *
- * Specifically, it finds this expression in a story file: storyName.parameters = ...
- * And adds the following expression after it: storyName.parameters.fullSource = __STORY__;
- *
- * The __STORY__ variable is added to each story file by
- * [Storybook’s webpack loader](https://github.com/storybookjs/storybook/tree/next/lib/source-loader)
- * and contains source code of the story file.
+ * Specifically, it finds this expression in a story file: Story.parameters = ...
+ * In case Story.parameters doesn't exist, it creates it.
+ * And adds the following expression after it: Story.parameters.fullSource = `...`;
  *
  * This plugin is utilized by Export to CodeSandbox.
  *
@@ -26,54 +24,110 @@ export const PLUGIN_NAME = 'storybook-stories-fullsource';
 export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj {
   const { types: t } = babel;
 
+  let storyName: string;
+  let parametersAssignment: Babel.NodePath<Babel.types.AssignmentExpression> | undefined;
+
+  const createStoryParametersAssignmentExpression = () => {
+    const storyParameters = t.assignmentExpression(
+      '=',
+      t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+      t.objectExpression([]),
+    );
+
+    return t.expressionStatement(storyParameters);
+  };
+
+  const createFullSourceAssignmentExpression = (fullSource: string) => {
+    return t.expressionStatement(
+      t.assignmentExpression(
+        '=',
+        t.memberExpression(
+          t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
+          t.identifier('fullSource'),
+        ),
+        t.stringLiteral(fullSource),
+      ),
+    );
+  };
+
   return {
     name: PLUGIN_NAME,
     visitor: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      VariableDeclarator(path, state) {
+      ExportNamedDeclaration(path) {
+        const declaration = path.node.declaration;
+
+        // Check if it's a function declaration
         if (
-          t.isIdentifier(path.node.id) &&
-          t.isStringLiteral(path.node.init) &&
-          path.node.id.name === '__STORY__' &&
-          path.parentPath.isVariableDeclaration()
+          t.isFunctionDeclaration(declaration) &&
+          t.isIdentifier(declaration.id) &&
+          isComponentLikeName(declaration.id.name)
         ) {
-          const transformedCode = babel.transformSync(path.node.init.value, {
+          storyName = declaration.id.name;
+          return;
+        }
+
+        // Check if it's a variable declaration
+        if (
+          t.isVariableDeclaration(declaration) &&
+          declaration.declarations.length === 1 &&
+          t.isIdentifier(declaration.declarations[0].id) &&
+          isComponentLikeName(declaration.declarations[0].id.name)
+        ) {
+          storyName = declaration.declarations[0].id.name;
+          return;
+        }
+      },
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      AssignmentExpression(path) {
+        if (
+          t.isMemberExpression(path.node.left) &&
+          t.isIdentifier(path.node.left.object) &&
+          path.node.left.object.name === storyName &&
+          t.isIdentifier(path.node.left.property) &&
+          path.node.left.property.name === 'parameters'
+        ) {
+          parametersAssignment = path;
+        }
+      },
+      Program: {
+        enter() {
+          storyName = '';
+          parametersAssignment = undefined;
+        },
+        exit(path, state) {
+          if (!storyName || !state.filename) {
+            return;
+          }
+
+          const fileContents = fs.readFileSync(state.filename, 'utf-8');
+          const transformedCode = babel.transformSync(fileContents, {
             ...state.file.opts,
             compact: false,
             retainLines: true,
             comments: false,
             plugins: [[modifyImportsPlugin, options], removeStorybookParameters],
           })?.code;
+
           const code = prettier.format(transformedCode ?? '', { parser: 'babel-ts' });
 
-          path.get('init').replaceWith(t.stringLiteral(code));
-        }
-      },
+          if (!parametersAssignment) {
+            path.pushContainer('body', createStoryParametersAssignmentExpression());
+          }
 
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      MemberExpression(path) {
-        if (
-          t.isIdentifier(path.node.property) &&
-          t.isIdentifier(path.node.object) &&
-          path.node.property.name === 'parameters' &&
-          path.parentPath.isAssignmentExpression()
-        ) {
-          const storyName = path.node.object.name;
-          const expression = t.expressionStatement(
-            t.assignmentExpression(
-              '=',
-              t.memberExpression(
-                t.memberExpression(t.identifier(storyName), t.identifier('parameters')),
-                t.identifier('fullSource'),
-              ),
-              t.identifier('__STORY__'),
-            ),
-          );
-          const expressionStatement = path.findParent(p => p.isExpressionStatement());
-          expressionStatement?.insertAfter(expression);
-          path.stop();
-        }
+          path.pushContainer('body', createFullSourceAssignmentExpression(code));
+        },
       },
     },
   };
+}
+
+/**
+ * Checks if the name is a component-like name.
+ *
+ * @param name - name to check
+ * @returns true if the name is a component-like name (starts with a capital letter)
+ */
+function isComponentLikeName(name: string) {
+  return name.charAt(0) === name.charAt(0).toUpperCase();
 }

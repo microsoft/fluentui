@@ -12,7 +12,7 @@ test.describe('Accordion', () => {
 
     element = page.locator('fluent-accordion');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-accordion--accordion'));
   });
@@ -38,52 +38,6 @@ test.describe('Accordion', () => {
     });
 
     await expect(element).toHaveAttribute('expand-mode', 'multi');
-  });
-  test('should navigate the accordion on arrow up/down keys', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-          <fluent-accordion>
-            <fluent-accordion-item id="accordion-1" tabindex="0">
-                <span slot="heading">Heading 1</span>
-                <div>Content 1</div>
-            </fluent-accordion-item>
-            <fluent-accordion-item id="accordion-2">
-                <span slot="heading">Heading 2</span>
-                <div>Content 2</div>
-            </fluent-accordion-item>
-            <fluent-accordion-item id="accordion-3">
-                <span slot="heading">Heading 3</span>
-                <div>Content 3</div>
-            </fluent-accordion-item>
-          </fluent-accordion>
-      `;
-    });
-
-    const accordionItems = page.locator('fluent-accordion-item') as Locator;
-
-    await expect(accordionItems).toHaveCount(3);
-
-    const firstItem = accordionItems.nth(0);
-    const secondItem = accordionItems.nth(1);
-    const thirdItem = accordionItems.nth(2);
-
-    await firstItem.evaluate(node => {
-      node.focus();
-    });
-
-    await expect(firstItem).toBeFocused();
-
-    await firstItem.press('ArrowDown');
-    await expect(secondItem).toBeFocused();
-
-    await secondItem.press('ArrowDown');
-    await expect(thirdItem).toBeFocused();
-
-    await thirdItem.press('ArrowUp');
-    await expect(secondItem).toBeFocused();
-
-    await secondItem.press('ArrowUp');
-    await expect(firstItem).toBeFocused();
   });
 
   test('should open/close appropriate accordion items on Enter key in multiple expand mode', async () => {
@@ -117,11 +71,7 @@ test.describe('Accordion', () => {
 
     await expect(firstItem).toBeFocused();
 
-    await firstItem.press('ArrowDown');
-
-    await expect(secondItem).toBeFocused();
-
-    await secondItem.press('Enter');
+    await secondItem.locator('button').press('Enter');
 
     await expect(firstItem).not.toHaveAttribute('expanded', '');
     await expect(firstItem).toHaveJSProperty('expanded', false);
@@ -161,11 +111,7 @@ test.describe('Accordion', () => {
 
     await expect(firstItem).toBeFocused();
 
-    await firstItem.press('ArrowDown');
-
-    await expect(secondItem).toBeFocused();
-
-    await secondItem.press('Enter');
+    await secondItem.locator('button').press('Enter');
 
     await expect(secondItem).toHaveAttribute('expanded', '');
     await expect(secondItem).toHaveJSProperty('expanded', true);

@@ -29,10 +29,7 @@ export function isHTMLElement<ConstructorName extends HTMLElementConstructorName
   );
 }
 
-/**
- * @internal
- */
-export type HTMLElementConstructorName =
+type HTMLElementConstructorName =
   | 'HTMLElement'
   | 'HTMLAnchorElement'
   | 'HTMLAreaElement'

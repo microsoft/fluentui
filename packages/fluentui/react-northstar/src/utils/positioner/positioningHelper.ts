@@ -1,4 +1,4 @@
-import * as PopperJs from '@popperjs/core';
+import type { Placement as PopperJsPlacement } from '@popperjs/core';
 import { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from './types';
 
 enum PlacementParts {
@@ -49,13 +49,13 @@ const shouldAlignToCenter = (p: Position, a: Alignment) => {
  * | after    | center    |  right          |  left
  * | after    | bottom    |  right-end      |  left-end
  */
-export const getPlacement = (align: Alignment, position: Position, rtl: boolean): PopperJs.Placement => {
+export const getPlacement = (align: Alignment, position: Position, rtl: boolean): PopperJsPlacement => {
   const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align;
   const computedPosition = getPositionMap(rtl)[position];
   const computedAlignment = getAlignmentMap(rtl)[alignment];
   const stringifiedAlignment = computedAlignment && `-${computedAlignment}`;
 
-  return `${computedPosition}${stringifiedAlignment}` as PopperJs.Placement;
+  return `${computedPosition}${stringifiedAlignment}` as PopperJsPlacement;
 };
 
 export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined => {

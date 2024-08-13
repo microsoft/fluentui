@@ -14,7 +14,7 @@ test.describe('Menu', () => {
 
     element = page.locator('fluent-menu-list');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     menuItems = element.locator('fluent-menu-item');
 
@@ -34,7 +34,7 @@ test.describe('Menu', () => {
             `;
     });
 
-    await expect(element).toHaveAttribute('role', 'menu');
+    await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
   test('should set `tabindex` of the first focusable menu item to 0', async () => {
@@ -55,12 +55,12 @@ test.describe('Menu', () => {
       node.innerHTML = /* html */ `
                 <fluent-menu-list>
                     <fluent-menu-item>Menu item</fluent-menu-item>
-                    <div>Not a menu item</div>
+                    <div class="divider">Not a menu item</div>
                 </fluent-menu-list>
             `;
     });
 
-    const divider = element.locator('div');
+    const divider = element.locator('div.divider');
 
     expect(await divider.getAttribute('tabindex')).toBeNull();
   });
@@ -130,7 +130,8 @@ test.describe('Menu', () => {
 
     const firstMenuItem = menuItems.first();
 
-    await expect(firstMenuItem).toBeDisabled();
+    await expect(firstMenuItem).toHaveAttribute('disabled');
+    await expect(firstMenuItem).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
 
     await expect(firstMenuItem).toHaveAttribute('tabindex', '0');
 
@@ -232,15 +233,15 @@ test.describe('Menu', () => {
     for (let i = 0; i < menuItemsCount; i++) {
       const item = menuItems.nth(i);
 
-      await expect(item).toHaveAttribute('aria-checked', 'false');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
       await item.click();
 
-      await expect(item).toHaveAttribute('aria-checked', 'true');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
       await item.click();
 
-      await expect(item).toHaveAttribute('aria-checked', 'false');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'false');
     }
   });
 
@@ -257,27 +258,27 @@ test.describe('Menu', () => {
 
     await menuItems.first().click();
 
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(1).click();
 
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(2).click();
 
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
   });
 
   test('should use elements with `[role="separator"]` to divide radio menu items into different radio groups', async () => {
@@ -295,31 +296,31 @@ test.describe('Menu', () => {
 
     await menuItems.nth(0).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(1).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(2).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(3).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
   });
 
   test('should navigate the menu on arrow up/down keys', async () => {

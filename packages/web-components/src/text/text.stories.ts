@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { colorNeutralBackground6 } from '../theme/design-tokens.js';
 import type { Text as FluentText } from './text.js';
-import './define.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
 type TextStoryArgs = Args & FluentText;
@@ -15,7 +14,7 @@ type TextStoryMeta = Meta<TextStoryArgs>;
  * @param content - the content for the element
  * @returns ViewTemplate
  */
-const generateSemanticElementTemplate = (as: string, content) => {
+const generateSemanticElementTemplate = (as: string, content: string) => {
   switch (as) {
     case 'h1':
       return html`<h1>${content}</h1>`;

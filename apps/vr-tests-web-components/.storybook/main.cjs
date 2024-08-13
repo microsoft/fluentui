@@ -9,16 +9,8 @@ const tsPaths = new TsconfigPathsPlugin({
   configFile: tsConfigPath,
 });
 
-// TODO - these types are copied from root ./storybook/main.js as if we would like to use those as is, it will force us to add our custom storybook plugins as devDeps to WC
-//      - refactor this to be shared
-
-/** @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig */
-
-module.exports = /** @type {StorybookBaseConfig} */ ({
+module.exports = /** @type {import('@storybook/react-webpack5').StorybookConfig} */ ({
   addons: [
-    {
-      name: '@storybook/addon-docs',
-    },
     {
       name: '@storybook/addon-essentials',
       options: {
@@ -32,10 +24,16 @@ module.exports = /** @type {StorybookBaseConfig} */ ({
 
   stories: ['../src/**/*.stories.tsx'],
   core: {
-    builder: 'webpack5',
     disableTelemetry: true,
   },
-  babel: {},
+  framework: {
+    name: '@storybook/react-webpack5',
+    options: {
+      builder: {
+        lazyCompilation: false,
+      },
+    },
+  },
   typescript: {
     // disable react-docgen-typescript (totally not needed here, slows things down a lot)
     reactDocgen: false,
@@ -81,7 +79,7 @@ module.exports = /** @type {StorybookBaseConfig} */ ({
     );
 
     // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
-    if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {
+    if (process.env.TF_BUILD) {
       config.plugins = config.plugins.filter(({ constructor }) => constructor.name !== 'ProgressPlugin');
     }
 

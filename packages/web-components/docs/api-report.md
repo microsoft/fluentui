@@ -4,7 +4,9 @@
 
 ```ts
 
-import type { Constructable } from '@microsoft/fast-element';
+/// <reference types="web" />
+
+import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
 import { ElementStyles } from '@microsoft/fast-element';
@@ -16,17 +18,16 @@ import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
-import type { Theme } from '@fluentui/tokens';
 import { ViewTemplate } from '@microsoft/fast-element';
 
 // @public
 export class Accordion extends FASTElement {
-    // (undocumented)
+    // @internal (undocumented)
     protected accordionItems: Element[];
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
-    // @internal (undocumented)
+    // @internal
     handleChange(source: any, propertyName: string): void;
     // @internal (undocumented)
     slottedAccordionItems: HTMLElement[];
@@ -48,25 +49,19 @@ export const AccordionExpandMode: {
 // @public
 export type AccordionExpandMode = ValuesOf<typeof AccordionExpandMode>;
 
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AccordionItem" because one of its declarations is marked as @internal
 //
 // @public
-export class AccordionItem extends FASTElement {
+export class AccordionItem extends BaseAccordionItem {
     block: boolean;
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    disabled: boolean;
-    // @internal (undocumented)
-    expandbutton: HTMLElement;
-    expanded: boolean;
-    expandIconPosition?: AccordionItemExpandIconPosition;
-    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
-    id: string;
+    blockChanged(prev: boolean, next: boolean): void;
+    markerPosition?: AccordionItemMarkerPosition;
+    markerPositionChanged(prev: AccordionItemMarkerPosition, next: AccordionItemMarkerPosition): void;
     size?: AccordionItemSize;
+    sizeChanged(prev: AccordionItemSize, next: AccordionItemSize): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "StartEnd" needs to be exported by the entry point index.d.ts
-//
 // @internal
 export interface AccordionItem extends StartEnd {
 }
@@ -74,23 +69,25 @@ export interface AccordionItem extends StartEnd {
 // @public (undocumented)
 export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
+// Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
-export const AccordionItemExpandIconPosition: {
+export const AccordionItemMarkerPosition: {
     readonly start: "start";
     readonly end: "end";
 };
 
 // @public
-export type AccordionItemExpandIconPosition = ValuesOf<typeof AccordionItemExpandIconPosition>;
+export type AccordionItemMarkerPosition = ValuesOf<typeof AccordionItemMarkerPosition>;
 
-// Warning: (ae-forgotten-export) The symbol "StartEndOptions" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
     expandedIcon?: StaticallyComposableHTML<AccordionItem>;
     collapsedIcon?: StaticallyComposableHTML<AccordionItem>;
 };
 
+// Warning: (ae-missing-release-tag) "AccordionItemSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AccordionItemSize: {
     readonly small: "small";
@@ -102,53 +99,42 @@ export const AccordionItemSize: {
 // @public
 export type AccordionItemSize = ValuesOf<typeof AccordionItemSize>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const accordionItemStyles: ElementStyles;
 
 // @public
 export const accordionItemTemplate: ElementViewTemplate<AccordionItem>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const accordionStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
-export class AnchorButton extends FASTElement {
+export class AnchorButton extends BaseAnchor {
     appearance?: AnchorButtonAppearance | undefined;
-    // (undocumented)
-    connectedCallback(): void;
-    control: HTMLAnchorElement;
-    // @internal
-    defaultSlottedContent: HTMLElement[];
-    disabled?: boolean;
-    // (undocumented)
-    protected disabledChanged(prev: boolean, next: boolean): void;
-    disabledFocusable?: boolean;
-    // (undocumented)
-    protected disabledFocusableChanged(prev: boolean, next: boolean): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    download: string;
-    href: string;
-    hreflang: string;
+    appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined): void;
     iconOnly: boolean;
-    ping: string;
-    referrerpolicy: string;
-    rel: string;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
     shape?: AnchorButtonShape | undefined;
+    shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined): void;
     size?: AnchorButtonSize;
-    target: AnchorTarget;
-    type: string;
+    sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIALink" needs to be exported by the entry point index.d.ts
-//
 // @internal
-export interface AnchorButton extends StartEnd, DelegatesARIALink {
+export interface AnchorButton extends StartEnd {
 }
 
 // @public
@@ -156,7 +142,6 @@ export const AnchorButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -165,9 +150,6 @@ export type AnchorButtonAppearance = ValuesOf<typeof AnchorButtonAppearance>;
 
 // @public (undocumented)
 export const AnchorButtonDefinition: FASTElementDefinition<typeof AnchorButton>;
-
-// @public
-export type AnchorButtonOptions = StartEndOptions<AnchorButton>;
 
 // @public
 export const AnchorButtonShape: {
@@ -204,22 +186,28 @@ export const AnchorTarget: {
 export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
 
 // @public
-export class Avatar extends FASTElement {
-    active?: AvatarActive | undefined;
+export class Avatar extends BaseAvatar {
     appearance?: AvatarAppearance | undefined;
-    color?: AvatarColor;
+    color?: AvatarColor | undefined;
     colorId?: AvatarNamedColor | undefined;
     static colors: ("anchor" | "dark-red" | "cranberry" | "red" | "pumpkin" | "peach" | "marigold" | "gold" | "brass" | "brown" | "forest" | "seafoam" | "dark-green" | "light-teal" | "teal" | "steel" | "blue" | "royal-blue" | "cornflower" | "navy" | "lavender" | "purple" | "grape" | "lilac" | "pink" | "magenta" | "plum" | "beige" | "mink" | "platinum")[];
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
-    generateColor(): AvatarColor | void;
+    generateColor(): void;
     // @internal
     generateInitials(): string | void;
-    initials?: string | undefined;
-    name?: string | undefined;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     shape?: AvatarShape | undefined;
     size?: AvatarSize | undefined;
 }
 
+// Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarActive" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AvatarActive: {
     readonly active: "active";
@@ -229,6 +217,9 @@ export const AvatarActive: {
 // @public
 export type AvatarActive = ValuesOf<typeof AvatarActive>;
 
+// Warning: (ae-missing-release-tag) "AvatarAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AvatarAppearance: {
     readonly ring: "ring";
@@ -239,6 +230,9 @@ export const AvatarAppearance: {
 // @public
 export type AvatarAppearance = ValuesOf<typeof AvatarAppearance>;
 
+// Warning: (ae-missing-release-tag) "AvatarColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AvatarColor: {
     readonly darkRed: "dark-red";
@@ -282,6 +276,8 @@ export type AvatarColor = ValuesOf<typeof AvatarColor>;
 // @public
 export const AvatarDefinition: FASTElementDefinition<typeof Avatar>;
 
+// Warning: (ae-missing-release-tag) "AvatarNamedColor" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AvatarNamedColor: {
     readonly darkRed: "dark-red";
@@ -319,6 +315,9 @@ export const AvatarNamedColor: {
 // @public
 export type AvatarNamedColor = ValuesOf<typeof AvatarNamedColor>;
 
+// Warning: (ae-missing-release-tag) "AvatarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "AvatarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const AvatarShape: {
     readonly circular: "circular";
@@ -352,17 +351,26 @@ export type AvatarSize = ValuesOf<typeof AvatarSize>;
 // @public
 export const AvatarStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const AvatarTemplate: ElementViewTemplate<Avatar>;
 
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Badge" because one of its declarations is marked as @internal
 //
 // @public
 export class Badge extends FASTElement {
     appearance: BadgeAppearance;
+    appearanceChanged(prev: BadgeAppearance | undefined, next: BadgeAppearance | undefined): void;
     color: BadgeColor;
+    colorChanged(prev: BadgeColor | undefined, next: BadgeColor | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     shape?: BadgeShape;
+    shapeChanged(prev: BadgeShape | undefined, next: BadgeShape | undefined): void;
     size?: BadgeSize;
+    sizeChanged(prev: BadgeSize | undefined, next: BadgeSize | undefined): void;
 }
 
 // @internal
@@ -424,33 +432,38 @@ export type BadgeSize = ValuesOf<typeof BadgeSize>;
 // @public
 export const BadgeStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const BadgeTemplate: ElementViewTemplate<Badge>;
 
 // @public (undocumented)
-export const borderRadiusCircular = "var(--borderRadiusCircular)";
+export class BaseAccordionItem extends FASTElement {
+    disabled: boolean;
+    disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal (undocumented)
+    expandbutton: HTMLElement;
+    expanded: boolean;
+    expandedChanged(prev: boolean, next: boolean): void;
+    headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
+    id: string;
+}
 
-// @public (undocumented)
-export const borderRadiusLarge = "var(--borderRadiusLarge)";
-
-// @public (undocumented)
-export const borderRadiusMedium = "var(--borderRadiusMedium)";
-
-// @public (undocumented)
-export const borderRadiusNone = "var(--borderRadiusNone)";
-
-// @public (undocumented)
-export const borderRadiusSmall = "var(--borderRadiusSmall)";
-
-// @public (undocumented)
-export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
-
-// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
-//
 // @public
-export class Button extends FASTElement {
+export class BaseAvatar extends FASTElement {
     constructor();
-    appearance?: ButtonAppearance;
+    active?: AvatarActive | undefined;
+    // @internal
+    elementInternals: ElementInternals;
+    initials?: string | undefined;
+    name?: string | undefined;
+}
+
+// @public
+export class BaseButton extends FASTElement {
+    constructor();
     autofocus: boolean;
     // @internal
     clickHandler(e: Event): boolean | void;
@@ -462,7 +475,7 @@ export class Button extends FASTElement {
     // @internal
     disabledFocusableChanged(previous: boolean, next: boolean): void;
     // @internal
-    protected elementInternals: ElementInternals;
+    elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
     formAction?: string;
     static readonly formAssociated = true;
@@ -473,18 +486,233 @@ export class Button extends FASTElement {
     formMethod?: string;
     formNoValidate?: boolean;
     formTarget?: ButtonFormTarget;
-    iconOnly: boolean;
     keypressHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<Node>;
     name?: string;
     protected press(): void;
     resetForm(): void;
-    shape?: ButtonShape;
-    size?: ButtonSize;
+    tabIndex: number;
     type: ButtonType;
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
     value?: string;
+}
+
+// @public
+export class BaseDivider extends FASTElement {
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation?: DividerOrientation;
+    // @internal
+    orientationChanged(previous: string | null, next: string | null): void;
+    role: DividerRole;
+    // @internal
+    roleChanged(previous: string | null, next: string | null): void;
+}
+
+// @public
+export class BaseField extends FASTElement {
+    constructor();
+    // @internal
+    changeHandler(e: Event): boolean | void;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    input: SlottableInput;
+    inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined): void;
+    // @internal
+    invalidHandler(e: Event): boolean | void;
+    // @internal
+    labelSlot: Node[];
+    protected labelSlotChanged(prev: Node[], next: Node[]): void;
+    // @internal
+    messageSlot: Element[];
+    // @internal
+    messageSlotChanged(prev: Element[], next: Element[]): void;
+    // @internal
+    setStates(): void;
+    // (undocumented)
+    setValidationStates(): void;
+    // @internal
+    slottedInputs: SlottableInput[];
+    // @internal
+    slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined): void;
+}
+
+// @public
+export class BaseProgressBar extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    max?: number;
+    // @internal
+    protected maxChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    min?: number;
+    protected minChanged(prev: number | undefined, next: number | undefined): void;
+    // @internal
+    get percentComplete(): number;
+    validationState: ProgressBarValidationState | null;
+    validationStateChanged(prev: ProgressBarValidationState | undefined, next: ProgressBarValidationState | undefined): void;
+    // @internal
+    value?: number;
+    // @internal
+    protected valueChanged(prev: number | undefined, next: number | undefined): void;
+}
+
+// @public
+export class BaseRatingDisplay extends FASTElement {
+    constructor();
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    protected getMaxIcons(): number;
+    protected getSelectedValue(): number;
+    max?: number;
+    value?: number;
+}
+
+// @public
+export class BaseSpinner extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
+}
+
+// @public
+export class BaseTablist extends FASTElement {
+    activeid: string;
+    // @internal (undocumented)
+    protected activeidChanged(oldValue: string, newValue: string): void;
+    activetab: HTMLElement;
+    adjust(adjustment: number): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
+    orientation: TablistOrientation;
+    // @internal (undocumented)
+    protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void;
+    protected setTabs(): void;
+    // @internal (undocumented)
+    tabs: HTMLElement[];
+    // @internal (undocumented)
+    protected tabsChanged(): void;
+}
+
+// @public
+export class BaseTextInput extends FASTElement {
+    autocomplete?: string;
+    autofocus: boolean;
+    // @internal
+    beforeinputHandler(e: InputEvent): boolean | void;
+    // @internal
+    changeHandler(e: InputEvent): boolean | void;
+    checkValidity(): boolean;
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    // @internal
+    control: HTMLInputElement;
+    // @internal
+    controlLabel: HTMLLabelElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // @internal
+    defaultSlottedNodesChanged(prev: Node[] | undefined, next: Node[] | undefined): void;
+    dirname?: string;
+    disabled?: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    focusinHandler(e: FocusEvent): boolean | void;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialValue: string;
+    // @internal
+    initialValueChanged(): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    list: string;
+    maxlength: number;
+    minlength: number;
+    multiple: boolean;
+    name: string;
+    pattern: string;
+    placeholder: string;
+    readOnly?: boolean;
+    // @internal
+    readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    requiredChanged(previous: boolean, next: boolean): void;
+    select(): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    size: number;
+    spellcheck: boolean;
+    type: TextInputType;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
+}
+
+// @public
+export const borderRadiusCircular = "var(--borderRadiusCircular)";
+
+// @public
+export const borderRadiusLarge = "var(--borderRadiusLarge)";
+
+// @public
+export const borderRadiusMedium = "var(--borderRadiusMedium)";
+
+// @public
+export const borderRadiusNone = "var(--borderRadiusNone)";
+
+// @public
+export const borderRadiusSmall = "var(--borderRadiusSmall)";
+
+// @public
+export const borderRadiusXLarge = "var(--borderRadiusXLarge)";
+
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "Button" because one of its declarations is marked as @internal
+//
+// @public
+export class Button extends BaseButton {
+    appearance?: ButtonAppearance;
+    appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined): void;
+    iconOnly: boolean;
+    iconOnlyChanged(prev: boolean, next: boolean): void;
+    shape?: ButtonShape;
+    shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined): void;
+    size?: ButtonSize;
+    sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined): void;
 }
 
 // @internal (undocumented)
@@ -496,7 +724,6 @@ export const ButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -556,36 +783,27 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedCheckbox" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
 //
 // @public
-export class Checkbox extends FormAssociatedCheckbox {
+export class Checkbox extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    indeterminate: boolean;
+    indeterminate?: boolean;
     // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    labelPosition?: CheckboxLabelPosition;
+    protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected setAriaChecked(value?: boolean): void;
     shape?: CheckboxShape;
+    // @internal
+    protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
+    // @internal
+    protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
+    toggleChecked(force?: boolean): void;
 }
 
 // @public
 export const CheckboxDefinition: FASTElementDefinition<typeof Checkbox>;
-
-// @public
-export const CheckboxLabelPosition: {
-    readonly before: "before";
-    readonly after: "after";
-};
-
-// @public (undocumented)
-export type CheckboxLabelPosition = ValuesOf<typeof CheckboxLabelPosition>;
 
 // @public
 export type CheckboxOptions = {
@@ -617,1048 +835,1048 @@ export const CheckboxStyles: ElementStyles;
 // @public
 export const CheckboxTemplate: ElementViewTemplate<Checkbox>;
 
-// @public (undocumented)
+// @public
 export const colorBackgroundOverlay = "var(--colorBackgroundOverlay)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground = "var(--colorBrandBackground)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground2 = "var(--colorBrandBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground2Hover = "var(--colorBrandBackground2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground2Pressed = "var(--colorBrandBackground2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground3Static = "var(--colorBrandBackground3Static)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackground4Static = "var(--colorBrandBackground4Static)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundHover = "var(--colorBrandBackgroundHover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundInverted = "var(--colorBrandBackgroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundInvertedHover = "var(--colorBrandBackgroundInvertedHover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundInvertedPressed = "var(--colorBrandBackgroundInvertedPressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundInvertedSelected = "var(--colorBrandBackgroundInvertedSelected)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundPressed = "var(--colorBrandBackgroundPressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundSelected = "var(--colorBrandBackgroundSelected)";
 
-// @public (undocumented)
+// @public
 export const colorBrandBackgroundStatic = "var(--colorBrandBackgroundStatic)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForeground1 = "var(--colorBrandForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForeground2 = "var(--colorBrandForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForeground2Hover = "var(--colorBrandForeground2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForeground2Pressed = "var(--colorBrandForeground2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundInverted = "var(--colorBrandForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundInvertedHover = "var(--colorBrandForegroundInvertedHover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundInvertedPressed = "var(--colorBrandForegroundInvertedPressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundLink = "var(--colorBrandForegroundLink)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundLinkHover = "var(--colorBrandForegroundLinkHover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundLinkPressed = "var(--colorBrandForegroundLinkPressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundLinkSelected = "var(--colorBrandForegroundLinkSelected)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundOnLight = "var(--colorBrandForegroundOnLight)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundOnLightHover = "var(--colorBrandForegroundOnLightHover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundOnLightPressed = "var(--colorBrandForegroundOnLightPressed)";
 
-// @public (undocumented)
+// @public
 export const colorBrandForegroundOnLightSelected = "var(--colorBrandForegroundOnLightSelected)";
 
-// @public (undocumented)
+// @public
 export const colorBrandShadowAmbient = "var(--colorBrandShadowAmbient)";
 
-// @public (undocumented)
+// @public
 export const colorBrandShadowKey = "var(--colorBrandShadowKey)";
 
-// @public (undocumented)
+// @public
 export const colorBrandStroke1 = "var(--colorBrandStroke1)";
 
-// @public (undocumented)
+// @public
 export const colorBrandStroke2 = "var(--colorBrandStroke2)";
 
-// @public (undocumented)
+// @public
 export const colorBrandStroke2Contrast = "var(--colorBrandStroke2Contrast)";
 
-// @public (undocumented)
+// @public
 export const colorBrandStroke2Hover = "var(--colorBrandStroke2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorBrandStroke2Pressed = "var(--colorBrandStroke2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandBackground = "var(--colorCompoundBrandBackground)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandBackgroundHover = "var(--colorCompoundBrandBackgroundHover)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandBackgroundPressed = "var(--colorCompoundBrandBackgroundPressed)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandForeground1 = "var(--colorCompoundBrandForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandForeground1Hover = "var(--colorCompoundBrandForeground1Hover)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandForeground1Pressed = "var(--colorCompoundBrandForeground1Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandStroke = "var(--colorCompoundBrandStroke)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandStrokeHover = "var(--colorCompoundBrandStrokeHover)";
 
-// @public (undocumented)
+// @public
 export const colorCompoundBrandStrokePressed = "var(--colorCompoundBrandStrokePressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground1 = "var(--colorNeutralBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground1Hover = "var(--colorNeutralBackground1Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground1Pressed = "var(--colorNeutralBackground1Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground1Selected = "var(--colorNeutralBackground1Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground2 = "var(--colorNeutralBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground2Hover = "var(--colorNeutralBackground2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground2Pressed = "var(--colorNeutralBackground2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground2Selected = "var(--colorNeutralBackground2Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground3 = "var(--colorNeutralBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground3Hover = "var(--colorNeutralBackground3Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground3Pressed = "var(--colorNeutralBackground3Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground3Selected = "var(--colorNeutralBackground3Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground4 = "var(--colorNeutralBackground4)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground4Hover = "var(--colorNeutralBackground4Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground4Pressed = "var(--colorNeutralBackground4Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground4Selected = "var(--colorNeutralBackground4Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground5 = "var(--colorNeutralBackground5)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground5Hover = "var(--colorNeutralBackground5Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground5Pressed = "var(--colorNeutralBackground5Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground5Selected = "var(--colorNeutralBackground5Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackground6 = "var(--colorNeutralBackground6)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundAlpha = "var(--colorNeutralBackgroundAlpha)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundAlpha2 = "var(--colorNeutralBackgroundAlpha2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundDisabled = "var(--colorNeutralBackgroundDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundInverted = "var(--colorNeutralBackgroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundInvertedDisabled = "var(--colorNeutralBackgroundInvertedDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralBackgroundStatic = "var(--colorNeutralBackgroundStatic)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralCardBackground = "var(--colorNeutralCardBackground)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralCardBackgroundDisabled = "var(--colorNeutralCardBackgroundDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralCardBackgroundHover = "var(--colorNeutralCardBackgroundHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralCardBackgroundPressed = "var(--colorNeutralCardBackgroundPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralCardBackgroundSelected = "var(--colorNeutralCardBackgroundSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground1 = "var(--colorNeutralForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground1Hover = "var(--colorNeutralForeground1Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground1Pressed = "var(--colorNeutralForeground1Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground1Selected = "var(--colorNeutralForeground1Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground1Static = "var(--colorNeutralForeground1Static)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2 = "var(--colorNeutralForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2BrandHover = "var(--colorNeutralForeground2BrandHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2BrandPressed = "var(--colorNeutralForeground2BrandPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2BrandSelected = "var(--colorNeutralForeground2BrandSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2Hover = "var(--colorNeutralForeground2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2Link = "var(--colorNeutralForeground2Link)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2LinkHover = "var(--colorNeutralForeground2LinkHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2LinkPressed = "var(--colorNeutralForeground2LinkPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2LinkSelected = "var(--colorNeutralForeground2LinkSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2Pressed = "var(--colorNeutralForeground2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground2Selected = "var(--colorNeutralForeground2Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3 = "var(--colorNeutralForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3BrandHover = "var(--colorNeutralForeground3BrandHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3BrandPressed = "var(--colorNeutralForeground3BrandPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3BrandSelected = "var(--colorNeutralForeground3BrandSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3Hover = "var(--colorNeutralForeground3Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3Pressed = "var(--colorNeutralForeground3Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground3Selected = "var(--colorNeutralForeground3Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForeground4 = "var(--colorNeutralForeground4)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundDisabled = "var(--colorNeutralForegroundDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInverted = "var(--colorNeutralForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInverted2 = "var(--colorNeutralForegroundInverted2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedDisabled = "var(--colorNeutralForegroundInvertedDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedHover = "var(--colorNeutralForegroundInvertedHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedLink = "var(--colorNeutralForegroundInvertedLink)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedLinkHover = "var(--colorNeutralForegroundInvertedLinkHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedLinkPressed = "var(--colorNeutralForegroundInvertedLinkPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedLinkSelected = "var(--colorNeutralForegroundInvertedLinkSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedPressed = "var(--colorNeutralForegroundInvertedPressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundInvertedSelected = "var(--colorNeutralForegroundInvertedSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundOnBrand = "var(--colorNeutralForegroundOnBrand)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralForegroundStaticInverted = "var(--colorNeutralForegroundStaticInverted)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowAmbient = "var(--colorNeutralShadowAmbient)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowAmbientDarker = "var(--colorNeutralShadowAmbientDarker)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowAmbientLighter = "var(--colorNeutralShadowAmbientLighter)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowKey = "var(--colorNeutralShadowKey)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowKeyDarker = "var(--colorNeutralShadowKeyDarker)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralShadowKeyLighter = "var(--colorNeutralShadowKeyLighter)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStencil1 = "var(--colorNeutralStencil1)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStencil1Alpha = "var(--colorNeutralStencil1Alpha)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStencil2 = "var(--colorNeutralStencil2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStencil2Alpha = "var(--colorNeutralStencil2Alpha)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke1 = "var(--colorNeutralStroke1)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke1Hover = "var(--colorNeutralStroke1Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke1Pressed = "var(--colorNeutralStroke1Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke1Selected = "var(--colorNeutralStroke1Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke2 = "var(--colorNeutralStroke2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStroke3 = "var(--colorNeutralStroke3)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAccessible = "var(--colorNeutralStrokeAccessible)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAccessibleHover = "var(--colorNeutralStrokeAccessibleHover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAccessiblePressed = "var(--colorNeutralStrokeAccessiblePressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAccessibleSelected = "var(--colorNeutralStrokeAccessibleSelected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAlpha = "var(--colorNeutralStrokeAlpha)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeAlpha2 = "var(--colorNeutralStrokeAlpha2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeDisabled = "var(--colorNeutralStrokeDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeInvertedDisabled = "var(--colorNeutralStrokeInvertedDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeOnBrand = "var(--colorNeutralStrokeOnBrand)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeOnBrand2 = "var(--colorNeutralStrokeOnBrand2)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeOnBrand2Hover = "var(--colorNeutralStrokeOnBrand2Hover)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeOnBrand2Pressed = "var(--colorNeutralStrokeOnBrand2Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeOnBrand2Selected = "var(--colorNeutralStrokeOnBrand2Selected)";
 
-// @public (undocumented)
+// @public
 export const colorNeutralStrokeSubtle = "var(--colorNeutralStrokeSubtle)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteAnchorBackground2 = "var(--colorPaletteAnchorBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteAnchorBorderActive = "var(--colorPaletteAnchorBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteAnchorForeground2 = "var(--colorPaletteAnchorForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBeigeBackground2 = "var(--colorPaletteBeigeBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBeigeBorderActive = "var(--colorPaletteBeigeBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBeigeForeground2 = "var(--colorPaletteBeigeForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBackground1 = "var(--colorPaletteBerryBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBackground2 = "var(--colorPaletteBerryBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBackground3 = "var(--colorPaletteBerryBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBorder1 = "var(--colorPaletteBerryBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBorder2 = "var(--colorPaletteBerryBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryBorderActive = "var(--colorPaletteBerryBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryForeground1 = "var(--colorPaletteBerryForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryForeground2 = "var(--colorPaletteBerryForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBerryForeground3 = "var(--colorPaletteBerryForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBlueBackground2 = "var(--colorPaletteBlueBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBlueBorderActive = "var(--colorPaletteBlueBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBlueForeground2 = "var(--colorPaletteBlueForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrassBackground2 = "var(--colorPaletteBrassBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrassBorderActive = "var(--colorPaletteBrassBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrassForeground2 = "var(--colorPaletteBrassForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrownBackground2 = "var(--colorPaletteBrownBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrownBorderActive = "var(--colorPaletteBrownBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteBrownForeground2 = "var(--colorPaletteBrownForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCornflowerBackground2 = "var(--colorPaletteCornflowerBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCornflowerBorderActive = "var(--colorPaletteCornflowerBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCornflowerForeground2 = "var(--colorPaletteCornflowerForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCranberryBackground2 = "var(--colorPaletteCranberryBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCranberryBorderActive = "var(--colorPaletteCranberryBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteCranberryForeground2 = "var(--colorPaletteCranberryForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkGreenBackground2 = "var(--colorPaletteDarkGreenBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkGreenBorderActive = "var(--colorPaletteDarkGreenBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkGreenForeground2 = "var(--colorPaletteDarkGreenForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBackground1 = "var(--colorPaletteDarkOrangeBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBackground2 = "var(--colorPaletteDarkOrangeBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBackground3 = "var(--colorPaletteDarkOrangeBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBorder1 = "var(--colorPaletteDarkOrangeBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBorder2 = "var(--colorPaletteDarkOrangeBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeBorderActive = "var(--colorPaletteDarkOrangeBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeForeground1 = "var(--colorPaletteDarkOrangeForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeForeground2 = "var(--colorPaletteDarkOrangeForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkOrangeForeground3 = "var(--colorPaletteDarkOrangeForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkRedBackground2 = "var(--colorPaletteDarkRedBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkRedBorderActive = "var(--colorPaletteDarkRedBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteDarkRedForeground2 = "var(--colorPaletteDarkRedForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteForestBackground2 = "var(--colorPaletteForestBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteForestBorderActive = "var(--colorPaletteForestBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteForestForeground2 = "var(--colorPaletteForestForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGoldBackground2 = "var(--colorPaletteGoldBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGoldBorderActive = "var(--colorPaletteGoldBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGoldForeground2 = "var(--colorPaletteGoldForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGrapeBackground2 = "var(--colorPaletteGrapeBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGrapeBorderActive = "var(--colorPaletteGrapeBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGrapeForeground2 = "var(--colorPaletteGrapeForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBackground1 = "var(--colorPaletteGreenBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBackground2 = "var(--colorPaletteGreenBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBackground3 = "var(--colorPaletteGreenBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBorder1 = "var(--colorPaletteGreenBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBorder2 = "var(--colorPaletteGreenBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenBorderActive = "var(--colorPaletteGreenBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenForeground1 = "var(--colorPaletteGreenForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenForeground2 = "var(--colorPaletteGreenForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenForeground3 = "var(--colorPaletteGreenForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteGreenForegroundInverted = "var(--colorPaletteGreenForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLavenderBackground2 = "var(--colorPaletteLavenderBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLavenderBorderActive = "var(--colorPaletteLavenderBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLavenderForeground2 = "var(--colorPaletteLavenderForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBackground1 = "var(--colorPaletteLightGreenBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBackground2 = "var(--colorPaletteLightGreenBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBackground3 = "var(--colorPaletteLightGreenBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBorder1 = "var(--colorPaletteLightGreenBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBorder2 = "var(--colorPaletteLightGreenBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenBorderActive = "var(--colorPaletteLightGreenBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenForeground1 = "var(--colorPaletteLightGreenForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenForeground2 = "var(--colorPaletteLightGreenForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightGreenForeground3 = "var(--colorPaletteLightGreenForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightTealBackground2 = "var(--colorPaletteLightTealBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightTealBorderActive = "var(--colorPaletteLightTealBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLightTealForeground2 = "var(--colorPaletteLightTealForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLilacBackground2 = "var(--colorPaletteLilacBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLilacBorderActive = "var(--colorPaletteLilacBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteLilacForeground2 = "var(--colorPaletteLilacForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMagentaBackground2 = "var(--colorPaletteMagentaBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMagentaBorderActive = "var(--colorPaletteMagentaBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMagentaForeground2 = "var(--colorPaletteMagentaForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBackground1 = "var(--colorPaletteMarigoldBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBackground2 = "var(--colorPaletteMarigoldBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBackground3 = "var(--colorPaletteMarigoldBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBorder1 = "var(--colorPaletteMarigoldBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBorder2 = "var(--colorPaletteMarigoldBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldBorderActive = "var(--colorPaletteMarigoldBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldForeground1 = "var(--colorPaletteMarigoldForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldForeground2 = "var(--colorPaletteMarigoldForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMarigoldForeground3 = "var(--colorPaletteMarigoldForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMinkBackground2 = "var(--colorPaletteMinkBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMinkBorderActive = "var(--colorPaletteMinkBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteMinkForeground2 = "var(--colorPaletteMinkForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteNavyBackground2 = "var(--colorPaletteNavyBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteNavyBorderActive = "var(--colorPaletteNavyBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteNavyForeground2 = "var(--colorPaletteNavyForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePeachBackground2 = "var(--colorPalettePeachBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePeachBorderActive = "var(--colorPalettePeachBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePeachForeground2 = "var(--colorPalettePeachForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePinkBackground2 = "var(--colorPalettePinkBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePinkBorderActive = "var(--colorPalettePinkBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePinkForeground2 = "var(--colorPalettePinkForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlatinumBackground2 = "var(--colorPalettePlatinumBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlatinumBorderActive = "var(--colorPalettePlatinumBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlatinumForeground2 = "var(--colorPalettePlatinumForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlumBackground2 = "var(--colorPalettePlumBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlumBorderActive = "var(--colorPalettePlumBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePlumForeground2 = "var(--colorPalettePlumForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePumpkinBackground2 = "var(--colorPalettePumpkinBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePumpkinBorderActive = "var(--colorPalettePumpkinBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePumpkinForeground2 = "var(--colorPalettePumpkinForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePurpleBackground2 = "var(--colorPalettePurpleBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePurpleBorderActive = "var(--colorPalettePurpleBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPalettePurpleForeground2 = "var(--colorPalettePurpleForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBackground1 = "var(--colorPaletteRedBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBackground2 = "var(--colorPaletteRedBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBackground3 = "var(--colorPaletteRedBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBorder1 = "var(--colorPaletteRedBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBorder2 = "var(--colorPaletteRedBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedBorderActive = "var(--colorPaletteRedBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedForeground1 = "var(--colorPaletteRedForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedForeground2 = "var(--colorPaletteRedForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedForeground3 = "var(--colorPaletteRedForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRedForegroundInverted = "var(--colorPaletteRedForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRoyalBlueBackground2 = "var(--colorPaletteRoyalBlueBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRoyalBlueBorderActive = "var(--colorPaletteRoyalBlueBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteRoyalBlueForeground2 = "var(--colorPaletteRoyalBlueForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSeafoamBackground2 = "var(--colorPaletteSeafoamBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSeafoamBorderActive = "var(--colorPaletteSeafoamBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSeafoamForeground2 = "var(--colorPaletteSeafoamForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSteelBackground2 = "var(--colorPaletteSteelBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSteelBorderActive = "var(--colorPaletteSteelBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteSteelForeground2 = "var(--colorPaletteSteelForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteTealBackground2 = "var(--colorPaletteTealBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteTealBorderActive = "var(--colorPaletteTealBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteTealForeground2 = "var(--colorPaletteTealForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBackground1 = "var(--colorPaletteYellowBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBackground2 = "var(--colorPaletteYellowBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBackground3 = "var(--colorPaletteYellowBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBorder1 = "var(--colorPaletteYellowBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBorder2 = "var(--colorPaletteYellowBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowBorderActive = "var(--colorPaletteYellowBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowForeground1 = "var(--colorPaletteYellowForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowForeground2 = "var(--colorPaletteYellowForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowForeground3 = "var(--colorPaletteYellowForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorPaletteYellowForegroundInverted = "var(--colorPaletteYellowForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorScrollbarOverlay = "var(--colorScrollbarOverlay)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBackground1 = "var(--colorStatusDangerBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBackground2 = "var(--colorStatusDangerBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBackground3 = "var(--colorStatusDangerBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBackground3Hover = "var(--colorStatusDangerBackground3Hover)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBackground3Pressed = "var(--colorStatusDangerBackground3Pressed)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBorder1 = "var(--colorStatusDangerBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBorder2 = "var(--colorStatusDangerBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerBorderActive = "var(--colorStatusDangerBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerForeground1 = "var(--colorStatusDangerForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerForeground2 = "var(--colorStatusDangerForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerForeground3 = "var(--colorStatusDangerForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusDangerForegroundInverted = "var(--colorStatusDangerForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBackground1 = "var(--colorStatusSuccessBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBackground2 = "var(--colorStatusSuccessBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBackground3 = "var(--colorStatusSuccessBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBorder1 = "var(--colorStatusSuccessBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBorder2 = "var(--colorStatusSuccessBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessBorderActive = "var(--colorStatusSuccessBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessForeground1 = "var(--colorStatusSuccessForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessForeground2 = "var(--colorStatusSuccessForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessForeground3 = "var(--colorStatusSuccessForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusSuccessForegroundInverted = "var(--colorStatusSuccessForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBackground1 = "var(--colorStatusWarningBackground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBackground2 = "var(--colorStatusWarningBackground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBackground3 = "var(--colorStatusWarningBackground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBorder1 = "var(--colorStatusWarningBorder1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBorder2 = "var(--colorStatusWarningBorder2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningBorderActive = "var(--colorStatusWarningBorderActive)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningForeground1 = "var(--colorStatusWarningForeground1)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningForeground2 = "var(--colorStatusWarningForeground2)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningForeground3 = "var(--colorStatusWarningForeground3)";
 
-// @public (undocumented)
+// @public
 export const colorStatusWarningForegroundInverted = "var(--colorStatusWarningForegroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorStrokeFocus1 = "var(--colorStrokeFocus1)";
 
-// @public (undocumented)
+// @public
 export const colorStrokeFocus2 = "var(--colorStrokeFocus2)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackground = "var(--colorSubtleBackground)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundHover = "var(--colorSubtleBackgroundHover)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundInverted = "var(--colorSubtleBackgroundInverted)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundInvertedHover = "var(--colorSubtleBackgroundInvertedHover)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundInvertedPressed = "var(--colorSubtleBackgroundInvertedPressed)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundInvertedSelected = "var(--colorSubtleBackgroundInvertedSelected)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundLightAlphaHover = "var(--colorSubtleBackgroundLightAlphaHover)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundLightAlphaPressed = "var(--colorSubtleBackgroundLightAlphaPressed)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundLightAlphaSelected = "var(--colorSubtleBackgroundLightAlphaSelected)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundPressed = "var(--colorSubtleBackgroundPressed)";
 
-// @public (undocumented)
+// @public
 export const colorSubtleBackgroundSelected = "var(--colorSubtleBackgroundSelected)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentBackground = "var(--colorTransparentBackground)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentBackgroundHover = "var(--colorTransparentBackgroundHover)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentBackgroundPressed = "var(--colorTransparentBackgroundPressed)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentBackgroundSelected = "var(--colorTransparentBackgroundSelected)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentStroke = "var(--colorTransparentStroke)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentStrokeDisabled = "var(--colorTransparentStrokeDisabled)";
 
-// @public (undocumented)
+// @public
 export const colorTransparentStrokeInteractive = "var(--colorTransparentStrokeInteractive)";
 
 // @public
@@ -1670,7 +1888,6 @@ export const CompoundButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -1700,30 +1917,40 @@ export const CompoundButtonSize: {
 // @public
 export type CompoundButtonSize = ValuesOf<typeof CompoundButtonSize>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const CompoundButtonStyles: ElementStyles;
 
 // @public
 export const CompoundButtonTemplate: ElementViewTemplate<CompoundButton>;
 
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "CounterBadge" because one of its declarations is marked as @internal
 //
 // @public
 export class CounterBadge extends FASTElement {
     appearance?: CounterBadgeAppearance;
+    appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined): void;
     color?: CounterBadgeColor;
+    colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined): void;
     count: number;
     // (undocumented)
     protected countChanged(): void;
     dot: boolean;
+    dotChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     overflowCount: number;
     // (undocumented)
     protected overflowCountChanged(): void;
     // @internal
     setCount(): string | void;
     shape?: CounterBadgeShape;
+    shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined): void;
     showZero: boolean;
     size?: CounterBadgeSize;
+    sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined): void;
 }
 
 // @internal
@@ -1785,31 +2012,31 @@ export const CounterBadgeStyles: ElementStyles;
 // @public
 export const CounterBadgeTemplate: ElementViewTemplate<CounterBadge>;
 
-// @public (undocumented)
+// @public
 export const curveAccelerateMax = "var(--curveAccelerateMax)";
 
-// @public (undocumented)
+// @public
 export const curveAccelerateMid = "var(--curveAccelerateMid)";
 
-// @public (undocumented)
+// @public
 export const curveAccelerateMin = "var(--curveAccelerateMin)";
 
-// @public (undocumented)
+// @public
 export const curveDecelerateMax = "var(--curveDecelerateMax)";
 
-// @public (undocumented)
+// @public
 export const curveDecelerateMid = "var(--curveDecelerateMid)";
 
-// @public (undocumented)
+// @public
 export const curveDecelerateMin = "var(--curveDecelerateMin)";
 
-// @public (undocumented)
+// @public
 export const curveEasyEase = "var(--curveEasyEase)";
 
-// @public (undocumented)
+// @public
 export const curveEasyEaseMax = "var(--curveEasyEaseMax)";
 
-// @public (undocumented)
+// @public
 export const curveLinear = "var(--curveLinear)";
 
 // @public
@@ -1819,37 +2046,31 @@ export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaSt
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
-    connectedCallback(): void;
-    defaultTitleAction?: Button;
+    clickHandler(event: Event): boolean;
     dialog: HTMLDialogElement;
-    disconnectedCallback(): void;
-    dismiss(): void;
-    handleClick(event: Event): boolean;
-    handleKeydown: (e: KeyboardEvent) => boolean | void;
-    hide(dismissed?: boolean): void;
-    modalType: DialogModalType;
-    modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void;
-    noTitleAction: boolean;
-    onOpenChangeEvent: (dismissed?: boolean) => void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
-    setComponent(): void;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
     show(): void;
-    titleAction: HTMLElement[];
+    type: DialogType;
 }
 
 // @public
-export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
+export class DialogBody extends FASTElement {
+    noTitleAction: boolean;
+}
 
 // @public
-export const DialogModalType: {
-    readonly modal: "modal";
-    readonly nonModal: "non-modal";
-    readonly alert: "alert";
-};
+export const DialogBodyDefinition: FASTElementDefinition<typeof DialogBody>;
 
-// @public (undocumented)
-export type DialogModalType = ValuesOf<typeof DialogModalType>;
+// @public
+export const DialogBodyStyles: ElementStyles;
+
+// @public
+export const DialogBodyTemplate: ElementViewTemplate;
+
+// @public
+export const DialogDefinition: FASTElementDefinition<typeof Dialog>;
 
 // @public
 export const DialogStyles: ElementStyles;
@@ -1857,18 +2078,34 @@ export const DialogStyles: ElementStyles;
 // @public
 export const DialogTemplate: ElementViewTemplate<Dialog>;
 
+// Warning: (ae-missing-release-tag) "DialogType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DialogType: {
+    readonly modal: "modal";
+    readonly nonModal: "non-modal";
+    readonly alert: "alert";
+};
+
+// @public (undocumented)
+export type DialogType = ValuesOf<typeof DialogType>;
+
 // Warning: (ae-forgotten-export) The symbol "CSSDisplayPropertyValue" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function display(displayValue: CSSDisplayPropertyValue): string;
 
 // @public
-export class Divider extends FASTElement {
+export class Divider extends BaseDivider {
+    // (undocumented)
     alignContent?: DividerAlignContent;
+    alignContentChanged(prev: DividerAlignContent | undefined, next: DividerAlignContent | undefined): void;
+    // (undocumented)
     appearance?: DividerAppearance;
+    appearanceChanged(prev: DividerAppearance | undefined, next: DividerAppearance | undefined): void;
+    // (undocumented)
     inset?: boolean;
-    orientation: DividerOrientation;
-    role: DividerRole;
+    insetChanged(prev: boolean, next: boolean): void;
 }
 
 // @public
@@ -1922,30 +2159,147 @@ export const DividerStyles: ElementStyles;
 // @public
 export const DividerTemplate: ElementViewTemplate<Divider>;
 
+// Warning: (ae-missing-release-tag) "Drawer" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class Drawer extends FASTElement {
+    ariaDescribedby?: string;
+    ariaLabelledby?: string;
+    // (undocumented)
+    clickHandler(event: Event): boolean;
+    dialog: HTMLDialogElement;
+    emitBeforeToggle: () => void;
+    emitToggle: () => void;
+    hide(): void;
+    position: DrawerPosition;
+    show(): void;
+    // (undocumented)
+    size: DrawerSize;
+    type: DrawerType;
+}
+
+// Warning: (ae-missing-release-tag) "DrawerBody" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export class DrawerBody extends FASTElement {
+}
+
 // @public (undocumented)
+export const DrawerBodyDefinition: FASTElementDefinition<typeof DrawerBody>;
+
+// @public
+export const DrawerBodyStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerBodyTemplate: ElementViewTemplate<DrawerBody>;
+
+// @public (undocumented)
+export const DrawerDefinition: FASTElementDefinition<typeof Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerPosition: {
+    readonly start: "start";
+    readonly end: "end";
+};
+
+// @public
+export type DrawerPosition = ValuesOf<typeof DrawerPosition>;
+
+// Warning: (ae-missing-release-tag) "DrawerSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+    readonly full: "full";
+};
+
+// @public
+export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+// @public
+export const DrawerStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DrawerTemplate: ElementViewTemplate<Drawer>;
+
+// Warning: (ae-missing-release-tag) "DrawerType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const DrawerType: {
+    readonly nonModal: "non-modal";
+    readonly modal: "modal";
+    readonly inline: "inline";
+};
+
+// @public
+export type DrawerType = ValuesOf<typeof DrawerType>;
+
+// @public
 export const durationFast = "var(--durationFast)";
 
-// @public (undocumented)
+// @public
 export const durationFaster = "var(--durationFaster)";
 
-// @public (undocumented)
+// @public
 export const durationGentle = "var(--durationGentle)";
 
-// @public (undocumented)
+// @public
 export const durationNormal = "var(--durationNormal)";
 
-// @public (undocumented)
+// @public
 export const durationSlow = "var(--durationSlow)";
 
-// @public (undocumented)
+// @public
 export const durationSlower = "var(--durationSlower)";
 
-// @public (undocumented)
+// @public
 export const durationUltraFast = "var(--durationUltraFast)";
 
-// @public (undocumented)
+// @public
 export const durationUltraSlow = "var(--durationUltraSlow)";
 
+// @public
+export type EndOptions<TSource = any, TParent = any> = {
+    end?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function endSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: EndOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
+export class Field extends BaseField {
+    labelPosition: FieldLabelPosition;
+}
+
+// @public
+export const FieldDefinition: FASTElementDefinition<typeof Field>;
+
+// @public
+export const FieldLabelPosition: {
+    readonly above: "above";
+    readonly after: "after";
+    readonly before: "before";
+};
+
+// @public (undocumented)
+export type FieldLabelPosition = ValuesOf<typeof FieldLabelPosition>;
+
+// @public
+export const FieldStyles: ElementStyles;
+
+// @public
+export const FieldTemplate: ElementViewTemplate;
+
+// Warning: (ae-missing-release-tag) "FluentDesignSystem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const FluentDesignSystem: Readonly<{
     prefix: "fluent";
@@ -1953,55 +2307,55 @@ export const FluentDesignSystem: Readonly<{
     registry: CustomElementRegistry;
 }>;
 
-// @public (undocumented)
+// @public
 export const fontFamilyBase = "var(--fontFamilyBase)";
 
-// @public (undocumented)
+// @public
 export const fontFamilyMonospace = "var(--fontFamilyMonospace)";
 
-// @public (undocumented)
+// @public
 export const fontFamilyNumeric = "var(--fontFamilyNumeric)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase100 = "var(--fontSizeBase100)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase200 = "var(--fontSizeBase200)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase300 = "var(--fontSizeBase300)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase400 = "var(--fontSizeBase400)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase500 = "var(--fontSizeBase500)";
 
-// @public (undocumented)
+// @public
 export const fontSizeBase600 = "var(--fontSizeBase600)";
 
-// @public (undocumented)
+// @public
 export const fontSizeHero1000 = "var(--fontSizeHero1000)";
 
-// @public (undocumented)
+// @public
 export const fontSizeHero700 = "var(--fontSizeHero700)";
 
-// @public (undocumented)
+// @public
 export const fontSizeHero800 = "var(--fontSizeHero800)";
 
-// @public (undocumented)
+// @public
 export const fontSizeHero900 = "var(--fontSizeHero900)";
 
-// @public (undocumented)
+// @public
 export const fontWeightBold = "var(--fontWeightBold)";
 
-// @public (undocumented)
+// @public
 export const fontWeightMedium = "var(--fontWeightMedium)";
 
-// @public (undocumented)
+// @public
 export const fontWeightRegular = "var(--fontWeightRegular)";
 
-// @public (undocumented)
+// @public
 export const fontWeightSemibold = "var(--fontWeightSemibold)";
 
 // @public
@@ -2013,10 +2367,17 @@ export const getDirection: (rootNode: HTMLElement) => Direction;
 // @public
 class Image_2 extends FASTElement {
     block?: boolean;
+    blockChanged(prev: boolean, next: boolean): void;
     bordered?: boolean;
+    borderedChanged(prev: boolean, next: boolean): void;
+    // @internal
+    elementInternals: ElementInternals;
     fit?: ImageFit;
+    fitChanged(prev: ImageFit | undefined, next: ImageFit | undefined): void;
     shadow?: boolean;
+    shadowChanged(prev: boolean, next: boolean): void;
     shape?: ImageShape;
+    shapeChanged(prev: ImageShape | undefined, next: ImageShape | undefined): void;
 }
 export { Image_2 as Image }
 
@@ -2035,6 +2396,8 @@ export const ImageFit: {
 // @public
 export type ImageFit = ValuesOf<typeof ImageFit>;
 
+// Warning: (ae-missing-release-tag) "ImageShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const ImageShape: {
     readonly circular: "circular";
@@ -2054,14 +2417,21 @@ export const ImageTemplate: ElementViewTemplate<Image_2>;
 // @public
 export class Label extends FASTElement {
     disabled: boolean;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     required: boolean;
     size?: LabelSize;
+    sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined): void;
     weight?: LabelWeight;
+    weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined): void;
 }
 
 // @public
 export const LabelDefinition: FASTElementDefinition<typeof Label>;
 
+// Warning: (ae-missing-release-tag) "LabelSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const LabelSize: {
     readonly small: "small";
@@ -2075,9 +2445,13 @@ export type LabelSize = ValuesOf<typeof LabelSize>;
 // @public
 export const LabelStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const LabelTemplate: ElementViewTemplate<Label>;
 
+// Warning: (ae-missing-release-tag) "LabelWeight" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const LabelWeight: {
     readonly regular: "regular";
@@ -2090,35 +2464,68 @@ export type LabelWeight = ValuesOf<typeof LabelWeight>;
 // @public
 export const lightModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
-// @public (undocumented)
+// @public
 export const lineHeightBase100 = "var(--lineHeightBase100)";
 
-// @public (undocumented)
+// @public
 export const lineHeightBase200 = "var(--lineHeightBase200)";
 
-// @public (undocumented)
+// @public
 export const lineHeightBase300 = "var(--lineHeightBase300)";
 
-// @public (undocumented)
+// @public
 export const lineHeightBase400 = "var(--lineHeightBase400)";
 
-// @public (undocumented)
+// @public
 export const lineHeightBase500 = "var(--lineHeightBase500)";
 
-// @public (undocumented)
+// @public
 export const lineHeightBase600 = "var(--lineHeightBase600)";
 
-// @public (undocumented)
+// @public
 export const lineHeightHero1000 = "var(--lineHeightHero1000)";
 
-// @public (undocumented)
+// @public
 export const lineHeightHero700 = "var(--lineHeightHero700)";
 
-// @public (undocumented)
+// @public
 export const lineHeightHero800 = "var(--lineHeightHero800)";
 
-// @public (undocumented)
+// @public
 export const lineHeightHero900 = "var(--lineHeightHero900)";
+
+// @public
+export class Link extends BaseAnchor {
+    appearance?: LinkAppearance | undefined;
+    appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined): void;
+    inline: boolean;
+    inlineChanged(prev: boolean, next: boolean): void;
+}
+
+// @public
+export const LinkAppearance: {
+    readonly subtle: "subtle";
+};
+
+// @public
+export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
+
+// @public (undocumented)
+export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// @public
+export const LinkTarget: {
+    readonly _self: "_self";
+    readonly _blank: "_blank";
+    readonly _parent: "_parent";
+    readonly _top: "_top";
+};
+
+// @public
+export type LinkTarget = ValuesOf<typeof AnchorTarget>;
+
+// @public
+export const LinkTemplate: ElementViewTemplate<Link>;
 
 // @public
 export abstract class MatchMediaBehavior implements HostBehavior {
@@ -2145,18 +2552,14 @@ export type MediaQueryListListener = (this: MediaQueryList, ev?: MediaQueryListE
 
 // @public
 export class Menu extends FASTElement {
-    cleanup?: () => void;
-    closeMenu: () => void;
+    closeMenu: (event?: Event) => void;
     closeOnScroll?: boolean;
     closeOnScrollChanged(oldValue: boolean, newValue: boolean): void;
     connectedCallback(): void;
     disconnectedCallback(): void;
     focusMenuList(): void;
     focusTrigger(): void;
-    handleMenuKeydown(e: KeyboardEvent): boolean | void;
-    handleTriggerKeydown: (e: KeyboardEvent) => boolean | void;
-    open: boolean;
-    openChanged(oldValue: boolean, newValue: boolean): void;
+    menuKeydownHandler(e: KeyboardEvent): boolean | void;
     openMenu: (e?: Event) => void;
     openOnContext?: boolean;
     openOnContextChanged(oldValue: boolean, newValue: boolean): void;
@@ -2164,14 +2567,12 @@ export class Menu extends FASTElement {
     openOnHoverChanged(oldValue: boolean, newValue: boolean): void;
     persistOnItemClick?: boolean;
     persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void;
-    // @internal
-    positioningContainer?: HTMLElement;
     setComponent(): void;
-    protected setPositioning(): void;
-    protected setPositioningTask: () => void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
+    toggleHandler: (e: Event | ToggleEvent) => void;
     toggleMenu: () => void;
+    triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
 
 // @public
@@ -2183,7 +2584,6 @@ export const MenuButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -2219,20 +2619,19 @@ export const MenuButtonTemplate: ElementViewTemplate<MenuButton>;
 // @public
 export const MenuDefinition: FASTElementDefinition<typeof Menu>;
 
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "MenuItem" because one of its declarations is marked as @internal
 //
 // @public
 export class MenuItem extends FASTElement {
     checked: boolean;
+    protected checkedChanged(prev: boolean, next: boolean): void;
     // (undocumented)
-    protected checkedChanged(oldValue: boolean, newValue: boolean): void;
-    cleanup: () => void;
+    connectedCallback(): void;
     disabled: boolean;
-    // @internal (undocumented)
-    disconnectedCallback(): void;
-    expanded: boolean;
-    // (undocumented)
-    protected expandedChanged(prev: boolean | undefined, next: boolean): void;
+    disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
     // @internal (undocumented)
     handleMenuItemClick: (e: MouseEvent) => boolean;
     // @internal (undocumented)
@@ -2241,10 +2640,11 @@ export class MenuItem extends FASTElement {
     handleMouseOut: (e: MouseEvent) => boolean;
     // @internal (undocumented)
     handleMouseOver: (e: MouseEvent) => boolean;
-    // @internal (undocumented)
-    get hasSubmenu(): boolean;
     hidden: boolean;
     role: MenuItemRole;
+    roleChanged(prev: MenuItemRole | undefined, next: MenuItemRole | undefined): void;
+    // @internal
+    setSubmenuPosition: () => void;
     // @internal
     slottedSubmenu: HTMLElement[];
     // @internal
@@ -2252,16 +2652,15 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    submenuContainer: HTMLDivElement;
-    // @internal (undocumented)
-    submenuLoaded: () => void;
-    updateSubmenu(): void;
+    toggleHandler: (e: ToggleEvent | Event) => void;
 }
 
 // @internal
 export interface MenuItem extends StartEnd {
 }
 
+// Warning: (ae-missing-release-tag) "MenuItemColumnCount" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export type MenuItemColumnCount = 0 | 1 | 2;
 
@@ -2270,9 +2669,8 @@ export const MenuItemDefinition: FASTElementDefinition<typeof MenuItem>;
 
 // @public
 export type MenuItemOptions = StartEndOptions<MenuItem> & {
-    checkboxIndicator?: StaticallyComposableHTML<MenuItem>;
-    expandCollapseGlyph?: StaticallyComposableHTML<MenuItem>;
-    radioIndicator?: StaticallyComposableHTML<MenuItem>;
+    indicator?: StaticallyComposableHTML<MenuItem>;
+    submenuGlyph?: StaticallyComposableHTML<MenuItem>;
 };
 
 // @public
@@ -2288,18 +2686,21 @@ export type MenuItemRole = ValuesOf<typeof MenuItemRole>;
 // @public
 export const MenuItemStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const MenuItemTemplate: ElementViewTemplate<MenuItem>;
 
 // @public
 export class MenuList extends FASTElement {
-    collapseExpandedItem(): void;
+    constructor();
     // @internal (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     focus(): void;
-    // (undocumented)
     handleChange(source: any, propertyName: string): void;
     // @internal
     handleFocusOut: (e: FocusEvent) => void;
@@ -2324,22 +2725,25 @@ export const MenuListDefinition: FASTElementDefinition<typeof MenuList>;
 // @public
 export const MenuListStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const MenuListTemplate: ElementViewTemplate<MenuList>;
 
 // @public
 export const MenuStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseProgress" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class ProgressBar extends BaseProgress {
+export class ProgressBar extends BaseProgressBar {
     shape?: ProgressBarShape;
+    shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
-    validationState: ProgressBarValidationState | null;
+    thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
 
 // @public
@@ -2357,6 +2761,8 @@ export type ProgressBarShape = ValuesOf<typeof ProgressBarShape>;
 // @public
 export const ProgressBarStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
 
@@ -2380,27 +2786,20 @@ export const ProgressBarValidationState: {
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
 
 // @public
-export type ProgressOptions = {
-    indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
-    indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
-};
-
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedRadio" needs to be exported by the entry point index.d.ts
-//
-// @public
-export class Radio extends FormAssociatedRadio implements RadioControl {
+export class Radio extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
+    // (undocumented)
     connectedCallback(): void;
-    // @internal (undocumented)
-    defaultCheckedChanged(): void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @beta
-    keypressHandler(e: KeyboardEvent): boolean | void;
-    name: string;
+    // @internal @override
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal @override
+    protected requiredChanged(): void;
+    // @internal @override
+    setFormValue(): void;
+    // @internal @override
+    setValidity(): void;
+    // @override
+    toggleChecked(force?: boolean): void;
 }
 
 // @public (undocumented)
@@ -2411,34 +2810,62 @@ export const RadioDefinition: FASTElementDefinition<typeof Radio>;
 
 // @public
 export class RadioGroup extends FASTElement {
-    // (undocumented)
-    childItems: HTMLElement[];
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void | boolean;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal (undocumented)
-    focusOutHandler: (e: FocusEvent) => boolean | void;
-    // @internal (undocumented)
-    handleDisabledClick: (e: MouseEvent) => void | boolean;
+    constructor();
+    changeHandler(e: Event): boolean | void;
     // @internal
-    keydownHandler: (e: KeyboardEvent) => boolean | void;
+    protected checkedIndex: number;
+    // @internal
+    protected checkedIndexChanged(prev: number | undefined, next: number): void;
+    // @internal
+    checkRadio(index?: number): void;
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    disabled: boolean;
+    // @internal
+    protected disabledChanged(prev?: boolean, next?: boolean): void;
+    // (undocumented)
+    disabledRadioHandler(e: CustomEvent): void;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get enabledRadios(): Radio[];
+    // @internal
+    focus(): void;
+    // @internal
+    focusinHandler(e: FocusEvent): boolean | void;
+    // @internal
+    focusoutHandler(e: FocusEvent): boolean | void;
+    static formAssociated: boolean;
+    // (undocumented)
+    formResetCallback(): void;
+    initialValue?: string;
+    initialValueChanged(prev: string | undefined, next: string | undefined): void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
     name: string;
+    // @internal
+    protected nameChanged(prev: string | undefined, next: string | undefined): void;
+    orientation?: RadioGroupOrientation;
+    // @internal
+    orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void;
+    radios: Radio[];
+    radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void;
+    reportValidity(): boolean;
+    required: boolean;
     // (undocumented)
-    protected nameChanged(): void;
-    orientation: RadioGroupOrientation;
-    readOnly: boolean;
-    // @internal (undocumented)
-    slottedRadioButtons: HTMLElement[];
-    // (undocumented)
-    protected slottedRadioButtonsChanged(oldValue: unknown, newValue: HTMLElement[]): void;
-    stacked: boolean;
-    value: string;
-    // (undocumented)
-    protected valueChanged(): void;
+    requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    // @internal
+    slotchangeHandler(e: Event): void;
+    // @internal
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string | null;
+    set value(next: string | null);
 }
 
 // @public
@@ -2459,6 +2886,8 @@ export type RadioGroupOrientation = ValuesOf<typeof RadioGroupOrientation>;
 // @public
 export const RadioGroupStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const RadioGroupTemplate: ElementViewTemplate<RadioGroup>;
 
@@ -2470,8 +2899,50 @@ export type RadioOptions = {
 // @public
 export const RadioStyles: ElementStyles;
 
-// @public (undocumented)
+// @public
 export const RadioTemplate: ElementViewTemplate<Radio>;
+
+// @public
+export class RatingDisplay extends BaseRatingDisplay {
+    color?: RatingDisplayColor;
+    colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
+    compact: boolean;
+    // @override
+    protected getMaxIcons(): number;
+    // @override
+    protected getSelectedValue(): number;
+    size?: RatingDisplaySize;
+    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
+}
+
+// @public
+export const RatingDisplayColor: {
+    readonly neutral: "neutral";
+    readonly brand: "brand";
+    readonly marigold: "marigold";
+};
+
+// @public
+export type RatingDisplayColor = ValuesOf<typeof RatingDisplayColor>;
+
+// @public
+export const RatingDisplayDefinition: FASTElementDefinition<typeof RatingDisplay>;
+
+// @public
+export const RatingDisplaySize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type RatingDisplaySize = ValuesOf<typeof RatingDisplaySize>;
+
+// @public
+export const RatingDisplayStyles: ElementStyles;
+
+// @public
+export const RatingDisplayTemplate: ElementViewTemplate<RatingDisplay>;
 
 // Warning: (ae-internal-missing-underscore) The name "roleForMenuItem" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -2480,90 +2951,111 @@ export const roleForMenuItem: {
     [value in keyof typeof MenuItemRole]: (typeof MenuItemRole)[value];
 };
 
-// @public
+// Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
 export const setTheme: (theme: Theme) => void;
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
 export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
 
-// @public (undocumented)
+// @public
 export const shadow16 = "var(--shadow16)";
 
-// @public (undocumented)
+// @public
 export const shadow16Brand = "var(--shadow16Brand)";
 
-// @public (undocumented)
+// @public
 export const shadow2 = "var(--shadow2)";
 
-// @public (undocumented)
+// @public
 export const shadow28 = "var(--shadow28)";
 
-// @public (undocumented)
+// @public
 export const shadow28Brand = "var(--shadow28Brand)";
 
-// @public (undocumented)
+// @public
 export const shadow2Brand = "var(--shadow2Brand)";
 
-// @public (undocumented)
+// @public
 export const shadow4 = "var(--shadow4)";
 
-// @public (undocumented)
+// @public
 export const shadow4Brand = "var(--shadow4Brand)";
 
-// @public (undocumented)
+// @public
 export const shadow64 = "var(--shadow64)";
 
-// @public (undocumented)
+// @public
 export const shadow64Brand = "var(--shadow64Brand)";
 
-// @public (undocumented)
+// @public
 export const shadow8 = "var(--shadow8)";
 
-// @public (undocumented)
+// @public
 export const shadow8Brand = "var(--shadow8Brand)";
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSlider" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class Slider extends FormAssociatedSlider implements SliderConfiguration {
+export class Slider extends FASTElement implements SliderConfiguration {
+    constructor();
     // @internal
     calculateNewValue(rawValue: number): number;
+    checkValidity(): boolean;
     // @internal (undocumented)
     connectedCallback(): void;
     decrement(): void;
     // @internal (undocumented)
     direction: Direction;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static formAssociated: boolean;
+    // @internal
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
     // (undocumented)
-    handleChange(source: any, propertyName: string): void;
+    handleChange(_: any, propertyName: string): void;
     // (undocumented)
-    handleMouseDown: (e: MouseEvent | null) => void;
-    handleThumbMouseDown: (event: MouseEvent | null) => void;
+    handlePointerDown: (event: PointerEvent | null) => void;
+    handleThumbPointerDown: (event: PointerEvent | null) => void;
     increment(): void;
-    // @internal (undocumented)
     initialValue: string;
+    // @internal
+    protected initialValueChanged(_: string, next: string): void;
     // @internal (undocumented)
     isDragging: boolean;
     // (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    max: number;
+    keypressHandler: (event: KeyboardEvent) => void;
+    get labels(): ReadonlyArray<Node>;
+    max: string;
     // (undocumented)
     protected maxChanged(): void;
-    min: number;
+    min: string;
     // (undocumented)
     protected minChanged(): void;
     mode: SliderMode;
-    orientation: Orientation;
+    orientation?: Orientation;
     // (undocumented)
-    protected orientationChanged(): void;
+    protected orientationChanged(prev: string | undefined, next: string | undefined): void;
     // @internal (undocumented)
     position: string;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
     size?: SliderSize;
-    step: number | undefined;
+    // (undocumented)
+    protected sizeChanged(prev: string, next: string): void;
+    step: string;
     // (undocumented)
     protected stepChanged(): void;
     // @internal (undocumented)
@@ -2582,11 +3074,16 @@ export class Slider extends FormAssociatedSlider implements SliderConfiguration 
     trackMinWidth: number;
     // @internal (undocumented)
     trackWidth: number;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
     get valueAsNumber(): number;
     set valueAsNumber(next: number);
-    // @internal (undocumented)
-    valueChanged(previous: string, next: string): void;
-    valueTextFormatter: (value: string) => string | null;
+    valueTextFormatter: (value: string) => string;
+    // (undocumented)
+    protected valueTextFormatterChanged(): void;
+    get willValidate(): boolean;
 }
 
 // @public (undocumented)
@@ -2596,9 +3093,9 @@ export interface SliderConfiguration {
     // (undocumented)
     disabled?: boolean;
     // (undocumented)
-    max: number;
+    max?: string;
     // (undocumented)
-    min: number;
+    min?: string;
     // (undocumented)
     orientation?: SliderOrientation;
 }
@@ -2640,82 +3137,93 @@ export type SliderSize = ValuesOf<typeof SliderSize>;
 // @public
 export const SliderStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const SliderTemplate: ElementViewTemplate<Slider>;
 
-// @public (undocumented)
+// @public
+export type SlottableInput = HTMLElement & ElementInternals & {
+    elementInternals?: ElementInternals;
+    required: boolean;
+    disabled: boolean;
+    readOnly: boolean;
+    checked?: boolean;
+    value?: string;
+};
+
+// @public
 export const spacingHorizontalL = "var(--spacingHorizontalL)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalM = "var(--spacingHorizontalM)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalMNudge = "var(--spacingHorizontalMNudge)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalNone = "var(--spacingHorizontalNone)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalS = "var(--spacingHorizontalS)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalSNudge = "var(--spacingHorizontalSNudge)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalXL = "var(--spacingHorizontalXL)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalXS = "var(--spacingHorizontalXS)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalXXL = "var(--spacingHorizontalXXL)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalXXS = "var(--spacingHorizontalXXS)";
 
-// @public (undocumented)
+// @public
 export const spacingHorizontalXXXL = "var(--spacingHorizontalXXXL)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalL = "var(--spacingVerticalL)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalM = "var(--spacingVerticalM)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalMNudge = "var(--spacingVerticalMNudge)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalNone = "var(--spacingVerticalNone)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalS = "var(--spacingVerticalS)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalSNudge = "var(--spacingVerticalSNudge)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalXL = "var(--spacingVerticalXL)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalXS = "var(--spacingVerticalXS)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalXXL = "var(--spacingVerticalXXL)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalXXS = "var(--spacingVerticalXXS)";
 
-// @public (undocumented)
+// @public
 export const spacingVerticalXXXL = "var(--spacingVerticalXXXL)";
 
 // @public
-export class Spinner extends FASTElement {
-    constructor();
+export class Spinner extends BaseSpinner {
     appearance?: SpinnerAppearance;
-    // @internal
-    protected elementInternals: ElementInternals;
+    appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined): void;
     size?: SpinnerSize;
+    sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined): void;
 }
 
 // @public
@@ -2744,22 +3252,45 @@ export const SpinnerSize: {
 // @public
 export type SpinnerSize = ValuesOf<typeof SpinnerSize>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const SpinnerStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const SpinnerTemplate: ViewTemplate<Spinner, any>;
 
-// @public (undocumented)
+// @public
+export class StartEnd {
+    // (undocumented)
+    end: HTMLSlotElement;
+    // (undocumented)
+    start: HTMLSlotElement;
+}
+
+// @public
+export type StartEndOptions<TSource = any, TParent = any> = StartOptions<TSource, TParent> & EndOptions<TSource, TParent>;
+
+// @public
+export type StartOptions<TSource = any, TParent = any> = {
+    start?: StaticallyComposableHTML<TSource, TParent>;
+};
+
+// @public
+export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
+
+// @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
 
-// @public (undocumented)
+// @public
 export const strokeWidthThicker = "var(--strokeWidthThicker)";
 
-// @public (undocumented)
+// @public
 export const strokeWidthThickest = "var(--strokeWidthThickest)";
 
-// @public (undocumented)
+// @public
 export const strokeWidthThin = "var(--strokeWidthThin)";
 
 // @public
@@ -2767,23 +3298,11 @@ const styles: ElementStyles;
 export { styles as ButtonStyles }
 export { styles as MenuButtonStyles }
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedSwitch" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Switch" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export class Switch extends FormAssociatedSwitch {
+export class Switch extends BaseCheckbox {
     constructor();
-    // @internal (undocumented)
-    clickHandler: (e: MouseEvent) => void;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    initialValue: string;
-    // @internal (undocumented)
-    keypressHandler: (e: KeyboardEvent) => void;
-    labelPosition: SwitchLabelPosition | undefined;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
 }
 
 // @public
@@ -2799,17 +3318,26 @@ export const SwitchLabelPosition: {
 // @public
 export type SwitchLabelPosition = ValuesOf<typeof SwitchLabelPosition>;
 
+// Warning: (ae-missing-release-tag) "SwitchOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export type SwitchOptions = {
     switch?: StaticallyComposableHTML<Switch>;
 };
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const SwitchStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const SwitchTemplate: ElementViewTemplate<Switch>;
 
+// Warning: (ae-missing-release-tag) "Tab" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Tab" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export class Tab extends FASTElement {
     // (undocumented)
@@ -2821,26 +3349,90 @@ export class Tab extends FASTElement {
 export interface Tab extends StartEnd {
 }
 
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabDefinition: FASTElementDefinition<typeof Tab>;
 
 // @public
+export class Tablist extends BaseTablist {
+    activeidChanged(oldValue: string, newValue: string): void;
+    appearance?: TablistAppearance;
+    // @internal (undocumented)
+    protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void;
+    size?: TablistSize;
+    // @internal (undocumented)
+    protected sizeChanged(prev: TablistSize, next: TablistSize): void;
+    tabsChanged(): void;
+}
+
+// @public
+export const TablistAppearance: {
+    readonly subtle: "subtle";
+    readonly transparent: "transparent";
+};
+
+// @public
+export type TablistAppearance = ValuesOf<typeof TablistAppearance>;
+
+// @public (undocumented)
+export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
+
+// @public
+export const TablistOrientation: {
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
+    readonly vertical: "vertical";
+};
+
+// @public
+export type TablistOrientation = ValuesOf<typeof TablistOrientation>;
+
+// @public
+export const TablistSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TablistSize = ValuesOf<typeof TablistSize>;
+
+// @public (undocumented)
+export const TablistStyles: ElementStyles;
+
+// @public (undocumented)
+export const TablistTemplate: ViewTemplate<Tablist, any>;
+
+// @public
 export type TabOptions = StartEndOptions<Tab>;
 
+// Warning: (ae-missing-release-tag) "TabPanel" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export class TabPanel extends FASTElement {
 }
 
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabPanelDefinition: FASTElementDefinition<typeof TabPanel>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabPanelStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabPanelTemplate: ElementViewTemplate<TabPanel, any>;
 
 // Warning: (ae-forgotten-export) The symbol "BaseTabs" needs to be exported by the entry point index.d.ts
+// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "Tabs" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
 export class Tabs extends BaseTabs {
@@ -2857,6 +3449,9 @@ export class Tabs extends BaseTabs {
 export interface Tabs extends StartEnd {
 }
 
+// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TabsAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabsAppearance: {
     readonly subtle: "subtle";
@@ -2866,6 +3461,8 @@ export const TabsAppearance: {
 // @public (undocumented)
 export type TabsAppearance = ValuesOf<typeof TabsAppearance>;
 
+// Warning: (ae-missing-release-tag) "definition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabsDefinition: FASTElementDefinition<typeof Tabs>;
 
@@ -2881,6 +3478,9 @@ export const TabsOrientation: {
 // @public
 export type TabsOrientation = ValuesOf<typeof TabsOrientation>;
 
+// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TabsSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabsSize: {
     readonly small: "small";
@@ -2891,30 +3491,50 @@ export const TabsSize: {
 // @public (undocumented)
 export type TabsSize = ValuesOf<typeof TabsSize>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabsStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabsTemplate: ElementViewTemplate<Tabs, any>;
 
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabStyles: ElementStyles;
 
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const TabTemplate: ElementViewTemplate<Tab, any>;
 
 // @public
 class Text_2 extends FASTElement {
     align?: TextAlign;
+    alignChanged(prev: TextAlign | undefined, next: TextAlign | undefined): void;
     block: boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // @internal
+    elementInternals: ElementInternals;
     font?: TextFont;
+    fontChanged(prev: TextFont | undefined, next: TextFont | undefined): void;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
     italic: boolean;
     nowrap: boolean;
     size?: TextSize;
+    sizeChanged(prev: TextSize | undefined, next: TextSize | undefined): void;
     strikethrough: boolean;
     truncate: boolean;
     underline: boolean;
     weight?: TextWeight;
+    weightChanged(prev: TextWeight | undefined, next: TextWeight | undefined): void;
 }
 export { Text_2 as Text }
 
@@ -2942,63 +3562,23 @@ export const TextFont: {
 // @public
 export type TextFont = ValuesOf<typeof TextFont>;
 
-// Warning: (ae-forgotten-export) The symbol "FormAssociatedTextField" needs to be exported by the entry point index.d.ts
+// Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
+// Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "TextInput" because one of its declarations is marked as @internal
 //
-// @public (undocumented)
-export class TextInput extends FormAssociatedTextField {
+// @public
+export class TextInput extends BaseTextInput {
     appearance?: TextInputAppearance;
-    autofocus: boolean;
-    // (undocumented)
-    protected autofocusChanged(): void;
-    // @internal (undocumented)
-    connectedCallback(): void;
-    // @internal
-    control: HTMLInputElement;
+    appearanceChanged(prev: TextInputAppearance | undefined, next: TextInputAppearance | undefined): void;
     controlSize?: TextInputControlSize;
-    // @internal (undocumented)
-    defaultSlottedNodes: Node[];
-    // @internal
-    handleChange(): void;
-    // @internal
-    handleTextInput(): void;
-    list: string;
-    // (undocumented)
-    protected listChanged(): void;
-    maxlength: number;
-    // (undocumented)
-    protected maxlengthChanged(): void;
-    minlength: number;
-    // (undocumented)
-    protected minlengthChanged(): void;
-    pattern: string;
-    // (undocumented)
-    protected patternChanged(): void;
-    placeholder: string;
-    // (undocumented)
-    protected placeholderChanged(): void;
-    readOnly: boolean;
-    // (undocumented)
-    protected readOnlyChanged(): void;
-    select(): void;
-    size: number;
-    // (undocumented)
-    protected sizeChanged(): void;
-    spellcheck: boolean;
-    // (undocumented)
-    protected spellcheckChanged(): void;
-    type: TextInputType;
-    // Warning: (ae-unresolved-inheritdoc-reference) The @inheritDoc reference could not be resolved: The package "@fluentui/web-components" does not have an export "FormAssociated"
-    //
-    // (undocumented)
-    validate(): void;
+    controlSizeChanged(prev: TextInputControlSize | undefined, next: TextInputControlSize | undefined): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DelegatesARIATextbox" needs to be exported by the entry point index.d.ts
+// @internal (undocumented)
+export interface TextInput extends StartEnd {
+}
+
+// Warning: (ae-missing-release-tag) "TextInputAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
-// @public (undocumented)
-export interface TextInput extends StartEnd, DelegatesARIATextbox {
-}
-
 // @public
 export const TextInputAppearance: {
     readonly outline: "outline";
@@ -3007,9 +3587,11 @@ export const TextInputAppearance: {
     readonly filledDarker: "filled-darker";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
 
+// Warning: (ae-missing-release-tag) "TextInputControlSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const TextInputControlSize: {
     readonly small: "small";
@@ -3017,13 +3599,13 @@ export const TextInputControlSize: {
     readonly large: "large";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
 
 // @public
 export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
 
-// @public (undocumented)
+// @public
 export type TextInputOptions = StartEndOptions<TextInput>;
 
 // @public
@@ -3034,6 +3616,8 @@ export const TextInputStyles: ElementStyles;
 // @internal (undocumented)
 export const TextInputTemplate: ElementViewTemplate<TextInput>;
 
+// Warning: (ae-missing-release-tag) "TextInputType" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public
 export const TextInputType: {
     readonly email: "email";
@@ -3043,7 +3627,7 @@ export const TextInputType: {
     readonly url: "url";
 };
 
-// @public
+// @public (undocumented)
 export type TextInputType = ValuesOf<typeof TextInputType>;
 
 // @public
@@ -3082,6 +3666,11 @@ export const TextWeight: {
 // @public
 export type TextWeight = ValuesOf<typeof TextWeight>;
 
+// Warning: (ae-internal-missing-underscore) The name "Theme" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export type Theme = Record<string, string | number>;
+
 // @public
 export class ToggleButton extends Button {
     // (undocumented)
@@ -3101,7 +3690,6 @@ export const ToggleButtonAppearance: {
     readonly primary: "primary";
     readonly outline: "outline";
     readonly subtle: "subtle";
-    readonly secondary: "secondary";
     readonly transparent: "transparent";
 };
 
@@ -3137,56 +3725,108 @@ export const ToggleButtonStyles: ElementStyles;
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
 
+// Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyBody1StrongerStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyBody1StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyBody1StrongStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyBody1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyBody1Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyBody2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyBody2Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyCaption1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyCaption1StrongerStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyCaption1StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyCaption1StrongStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyCaption1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyCaption1Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyCaption2StrongStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyCaption2StrongStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyCaption2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyCaption2Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyDisplayStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyDisplayStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyLargeTitleStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyLargeTitleStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographySubtitle1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographySubtitle1Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographySubtitle2StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographySubtitle2StrongerStyles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographySubtitle2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographySubtitle2Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyTitle1Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyTitle1Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyTitle2Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyTitle2Styles: CSSDirective;
 
+// Warning: (ae-missing-release-tag) "typographyTitle3Styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
 // @public (undocumented)
 export const typographyTitle3Styles: CSSDirective;
+
+// @public
+export const ValidationFlags: {
+    readonly badInput: "bad-input";
+    readonly customError: "custom-error";
+    readonly patternMismatch: "pattern-mismatch";
+    readonly rangeOverflow: "range-overflow";
+    readonly rangeUnderflow: "range-underflow";
+    readonly stepMismatch: "step-mismatch";
+    readonly tooLong: "too-long";
+    readonly tooShort: "too-short";
+    readonly typeMismatch: "type-mismatch";
+    readonly valueMissing: "value-missing";
+    readonly valid: "valid";
+};
+
+// @public (undocumented)
+export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
 
 // Warnings were encountered during analysis:
 //

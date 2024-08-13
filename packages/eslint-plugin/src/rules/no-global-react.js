@@ -1,5 +1,5 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../utils/createRule');
 
 module.exports = createRule({
@@ -8,8 +8,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Prevent accidental references to the global React namespace',
-      category: 'Best Practices',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       missingImport: 'You must explicitly import React to reference it',

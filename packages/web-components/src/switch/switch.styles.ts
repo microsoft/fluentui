@@ -1,12 +1,11 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
+import { checkedState } from '../styles/states/index.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,
   colorCompoundBrandBackgroundHover,
   colorCompoundBrandBackgroundPressed,
   colorNeutralBackgroundDisabled,
-  colorNeutralForeground1,
   colorNeutralForeground3,
   colorNeutralForeground3Hover,
   colorNeutralForeground3Pressed,
@@ -23,94 +22,58 @@ import {
   colorTransparentStroke,
   curveEasyEase,
   durationNormal,
-  fontFamilyBase,
-  fontSizeBase300,
-  fontWeightRegular,
-  lineHeightBase300,
   shadow4,
-  spacingHorizontalS,
-  spacingHorizontalXS,
   spacingHorizontalXXS,
-  spacingVerticalS,
-  spacingVerticalXS,
   strokeWidthThick,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
 
 export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    box-sizing: border-box;
     align-items: center;
-    flex-direction: row-reverse;
+    flex-direction: row;
     outline: none;
     user-select: none;
     contain: content;
-  }
-  :host([label-position='before']) {
-    flex-direction: row;
-  }
-  :host([label-position='above']) {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  :host([disabled]) .label,
-  :host([readonly]) .label,
-  :host([readonly]) .switch,
-  :host([disabled]) .switch {
-    cursor: not-allowed;
-  }
-  .label {
-    position: relative;
-    color: ${colorNeutralForeground1};
-    line-height: ${lineHeightBase300};
-    font-size: ${fontSizeBase300};
-    font-weight: ${fontWeightRegular};
-    font-family: ${fontFamilyBase};
-    padding: ${spacingVerticalXS} ${spacingHorizontalXS};
-    cursor: pointer;
-  }
-  .label__hidden {
-    display: none;
-  }
-  .switch {
-    display: flex;
-    align-items: center;
     padding: 0 ${spacingHorizontalXXS};
-    box-sizing: border-box;
     width: 40px;
     height: 20px;
     background-color: ${colorTransparentBackground};
     border: 1px solid ${colorNeutralStrokeAccessible};
     border-radius: ${borderRadiusCircular};
-    outline: none;
     cursor: pointer;
-    margin: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  :host(:hover) .switch {
+
+  :host(:hover) {
     background: none;
     border-color: ${colorNeutralStrokeAccessibleHover};
   }
-  :host(:active) .switch {
+  :host(:active) {
     border-color: ${colorNeutralStrokeAccessiblePressed};
   }
-  :host([disabled]) .switch,
-  :host([readonly]) .switch {
+  :host(:disabled),
+  :host([readonly]) {
     border: 1px solid ${colorNeutralStrokeDisabled};
     background-color: none;
     pointer: default;
   }
-  :host([aria-checked='true']) .switch {
+  :host(${checkedState}) {
     background: ${colorCompoundBrandBackground};
+    border-color: ${colorCompoundBrandBackground};
   }
-  :host([aria-checked='true']:hover) .switch {
+  :host(${checkedState}:hover) {
     background: ${colorCompoundBrandBackgroundHover};
     border-color: ${colorCompoundBrandBackgroundHover};
   }
-  :host([aria-checked='true']:active) .switch {
+  :host(${checkedState}:active) {
     background: ${colorCompoundBrandBackgroundPressed};
     border-color: ${colorCompoundBrandBackgroundPressed};
   }
-  :host([aria-checked='true'][disabled]) .switch {
+  :host(${checkedState}:disabled) {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorNeutralStrokeDisabled};
   }
@@ -124,14 +87,14 @@ export const styles = css`
     transition-timing-function: ${curveEasyEase};
     transition-property: margin-inline-start;
   }
-  :host([aria-checked='true']) .checked-indicator {
+  :host(${checkedState}) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
     margin-inline-start: calc(100% - 14px);
   }
-  :host([aria-checked='true']:hover) .checked-indicator {
+  :host(${checkedState}:hover) .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
   }
-  :host([aria-checked='true']:active) .checked-indicator {
+  :host(${checkedState}:active) .checked-indicator {
     background: ${colorNeutralForegroundInvertedPressed};
   }
   :host(:hover) .checked-indicator {
@@ -140,27 +103,31 @@ export const styles = css`
   :host(:active) .checked-indicator {
     background-color: ${colorNeutralForeground3Pressed};
   }
-  :host([disabled]) .checked-indicator,
+  :host(:disabled) .checked-indicator,
   :host([readonly]) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
-  :host([aria-checked='true'][disabled]) .checked-indicator {
+  :host(${checkedState}:disabled) .checked-indicator {
     background: ${colorNeutralForegroundDisabled};
   }
 
   :host(:focus-visible) {
+    outline: none;
+  }
+
+  :host(:not([slot='input']):focus-visible) {
     border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
-    .switch {
+    :host {
       border-color: InactiveBorder;
     }
-    :host([aria-checked='true']) .switch,
-    :host([aria-checked='true']:active) .switch,
-    :host([aria-checked='true']:hover) .switch {
+    :host(${checkedState}),
+    :host(${checkedState}:active),
+    :host(${checkedState}:hover) {
       background: Highlight;
       border-color: Highlight;
     }
@@ -169,9 +136,9 @@ export const styles = css`
     :host(:active) .checked-indicator {
       background-color: ActiveCaption;
     }
-    :host([aria-checked='true']) .checked-indicator,
-    :host([aria-checked='true']:hover) .checked-indicator,
-    :host([aria-checked='true']:active) .checked-indicator {
+    :host(${checkedState}) .checked-indicator,
+    :host(${checkedState}:hover) .checked-indicator,
+    :host(${checkedState}:active) .checked-indicator {
       background-color: ButtonFace;
     }
   `),

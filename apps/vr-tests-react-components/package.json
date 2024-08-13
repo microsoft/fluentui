@@ -4,15 +4,14 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "build-storybook --no-manager-cache -o dist/storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "start": "start-storybook",
+    "start": "storybook dev",
     "test": "just-scripts test",
-    "type-check": "tsc",
-    "vr:build": "yarn build",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "type-check": "tsc -p . --noEmit --baseUrl .",
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -34,7 +33,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",

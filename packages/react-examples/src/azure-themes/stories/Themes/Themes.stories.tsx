@@ -40,6 +40,10 @@ import { DetailsListCustomColumnsExample } from '../components/DetailsListCustom
 import { ChoiceGroupImageExample } from '../components/choiceGroupWithImagesandIcons.stories';
 import { DetailsListCustomGroupHeadersExample } from '../components/detailsListGroupedHeader.stories';
 
+export default {
+  title: 'Components/Themes',
+};
+
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">

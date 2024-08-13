@@ -20,7 +20,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PopperJs from '@popperjs/core';
+import type { VirtualElement as PopperJsVirtualElement } from '@popperjs/core';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -190,7 +190,7 @@ export const Popup: React.FC<PopupProps> &
   const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
   const triggerFocusableRef = React.useRef<HTMLElement>();
-  const rightClickReferenceObject = React.useRef<PopperJs.VirtualElement | null>();
+  const rightClickReferenceObject = React.useRef<PopperJsVirtualElement | null>();
 
   useOnIFrameFocus(open, context.target, (e: Event) => {
     const iframeInsidePopup = elementContains(popupContentRef.current, e.target as HTMLElement);

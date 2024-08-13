@@ -146,6 +146,13 @@ export interface IComboBoxProps
   allowFreeInput?: boolean;
 
   /**
+   * When true this allows the parent element to navigate using left and right arrow keys.
+   *
+   * @defaultvalue false
+   */
+  allowParentArrowNavigation?: boolean;
+
+  /**
    * Whether the ComboBox auto completes. As the user is entering text, potential matches will be
    * suggested from the list of options. If the ComboBox is expanded, this will also scroll to the
    * suggested option and give it a selected style.

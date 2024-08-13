@@ -1,17 +1,17 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
   HeaderMdx,
   Primary,
-  PRIMARY_STORY,
   Stories,
 } from '@storybook/addon-docs';
-import { makeStyles, shorthands } from '@griffel/react';
-import { tokens, Link, Text } from '@fluentui/react-components';
+import type { SBEnumType } from '@storybook/csf';
+import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
+import { InfoFilled } from '@fluentui/react-icons';
 import { DIR_ID, THEME_ID, themes } from '@fluentui/react-storybook-addon';
 import { DirSwitch } from './DirSwitch.stories';
 import { ThemePicker } from './ThemePicker.stories';
@@ -45,7 +45,27 @@ const useStyles = makeStyles({
     display: 'flex',
   },
   description: {
+    display: 'grid',
+    gridTemplateColumns: '1fr min-content',
+  },
+  nativeProps: {
     display: 'flex',
+    gap: tokens.spacingHorizontalM,
+
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: tokens.borderRadiusMedium,
+    padding: tokens.spacingHorizontalM,
+    margin: `0 ${tokens.spacingHorizontalM}`,
+  },
+  nativePropsIcon: {
+    alignSelf: 'center',
+    color: tokens.colorBrandForeground1,
+    fontSize: '24px',
+  },
+  nativePropsMessage: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: tokens.spacingVerticalXS,
   },
 });
 
@@ -95,14 +115,30 @@ const VideoPreviews: React.FC<{
   );
 };
 
+const getNativeElementsList = (elements: SBEnumType['value']): JSX.Element => {
+  const elementsArr = elements.map((el, idx) => [
+    <code key={idx}>{`<${el}>`}</code>,
+    idx !== elements.length - 1 ? ', ' : ' ',
+  ]);
+
+  return (
+    <>
+      {elementsArr}
+      {elementsArr.length > 1 ? 'elements' : 'element'}
+    </>
+  );
+};
+
 export const FluentDocsPage = () => {
   const context = React.useContext(DocsContext);
-
-  const dir = context.parameters?.dir ?? context.globals?.[DIR_ID] ?? 'ltr';
-  const selectedTheme = themes.find(theme => theme.id === context.globals![THEME_ID]);
   const stories = context.componentStories();
   const primaryStory = stories[0];
-  const videos = context.parameters?.videos ?? null;
+  const primaryStoryContext = context.getStoryContext(primaryStory);
+
+  const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
+  const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
+
+  const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
   // DEBUG
   // console.log('FluentDocsPage', context);
@@ -117,9 +153,8 @@ export const FluentDocsPage = () => {
   // );
 
   return (
-    <div>
+    <div className="sb-unstyled">
       <Title />
-
       <div className={styles.wrapper}>
         <div className={styles.container}>
           <div className={styles.globalTogglesContainer}>
@@ -136,7 +171,22 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
+          <ArgTypes of={primaryStory.component} />
+          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+            <div className={styles.nativeProps}>
+              <InfoFilled className={styles.nativePropsIcon} />
+              <div className={styles.nativePropsMessage}>
+                <b>
+                  Native props are supported <span role="presentation">🙌</span>
+                </b>
+                <span>
+                  All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)},
+                  including all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props
+                  on this component.
+                </span>
+              </div>
+            </div>
+          )}
           <Stories />
         </div>
         <div className={styles.toc}>

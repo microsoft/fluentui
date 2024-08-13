@@ -4,15 +4,17 @@ import { styles } from './text-input.styles.js';
 import { template } from './text-input.template.js';
 
 /**
- * The Fluent TextInput Element.
- *
+ * The Fluent TextInput Element definition.
  *
  * @public
  * @remarks
- * HTML Element: \<fluent-text-input\>
+ * HTML Element: `<fluent-text-input>`
  */
 export const definition = TextInput.compose({
   name: `${FluentDesignSystem.prefix}-text-input`,
   template,
   styles,
+  shadowOptions: {
+    delegatesFocus: true,
+  },
 });

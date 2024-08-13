@@ -104,14 +104,35 @@ test.describe('Button', () => {
     await expect(element).not.toBeFocused();
   });
 
-  test('should have transparent border when the `disabled` attribute is present', async ({ page }) => {
+  test('should apply transparency correctly when the `disabled` attribute is present', async ({ page }) => {
     const element = page.locator('fluent-button');
-
+    const transparent = 'rgba(0, 0, 0, 0)';
     await page.setContent(/* html */ `
-      <fluent-button appearance='primary' disabled>Button</fluent-button>
+      <fluent-button disabled>Button</fluent-button>
     `);
 
-    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'primary'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'secondary'));
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'outline'));
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'subtle'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'transparent'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
   });
 
   test('should be focusable when the `disabled-focusable` attribute is present', async ({ page }) => {
@@ -126,14 +147,35 @@ test.describe('Button', () => {
     await expect(element).toBeFocused();
   });
 
-  test('should have transparent border when the `disabled-focusable` attribute is present', async ({ page }) => {
+  test('should apply transparency correctly when the `disabled-focusable` attribute is present', async ({ page }) => {
     const element = page.locator('fluent-button');
-
+    const transparent = 'rgba(0, 0, 0, 0)';
     await page.setContent(/* html */ `
-      <fluent-button appearance='primary' disabled-focusable>Button</fluent-button>
+      <fluent-button disabled-focusable>Button</fluent-button>
     `);
 
-    await expect(element).toHaveCSS('border-color', 'rgb(0, 0, 0)');
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'primary'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'secondary'));
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).not.toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'outline'));
+    await expect(element).not.toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'subtle'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
+
+    await element.evaluate(node => node.setAttribute('appearance', 'transparent'));
+    await expect(element).toHaveCSS('border-color', transparent);
+    await expect(element).toHaveCSS('background-color', transparent);
   });
 
   test('should NOT be clickable when the `disabled` attribute is present', async ({ page }) => {
@@ -180,6 +222,24 @@ test.describe('Button', () => {
     const ReceivedNoKeyDownEvent2 = await elementHandle;
 
     expect(ReceivedNoKeyDownEvent2).toBeTruthy();
+  });
+
+  test('should NOT receive focus when the `tabindex` is manually set to -1', async ({ page }) => {
+    const element = page.locator('fluent-button', { hasText: 'Button' });
+    const focusable = page.locator('fluent-button', { hasText: 'Focusable' });
+
+    await page.setContent(/* html */ `
+      <fluent-button>Focusable</fluent-button>
+      <fluent-button tabindex="-1">Button</fluent-button>
+    `);
+
+    await focusable.focus();
+
+    await expect(focusable).toBeFocused();
+
+    await focusable.press('Tab');
+
+    await expect(element).not.toBeFocused();
   });
 
   test('should focus the element when the `autofocus` attribute is present', async ({ page }) => {

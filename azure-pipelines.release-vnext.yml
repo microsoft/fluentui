@@ -69,29 +69,27 @@ extends:
                   filePath: yarn-ci.sh
                 displayName: yarn
 
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
               - script: |
-                  yarn run:published test
-                displayName: yarn test
+                  yarn nx run-many -t build -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail --production
+                displayName: build
 
               - script: |
-                  yarn run:published lint
-                displayName: yarn lint
+                  yarn nx run-many -t test -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
+                displayName: test
 
               - script: |
-                  yarn run:published build --production
-                displayName: yarn build
+                  yarn nx run-many -t lint -p tag:vNext --exclude 'tag:tools,apps/**' --nxBail
+                displayName: lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-vNext.config.js
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-vNext.config.js --message 'release: applying package updates - react-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
 
               - script: |
-                  node -r ./scripts/ts-node/register scripts/executors/tag-react-components.ts --token $(npmToken)
+                  node -r ./scripts/ts-node/src/register scripts/executors/src/tag-react-components.ts --token $(npmToken)
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
 
@@ -102,7 +100,7 @@ extends:
 
               # TODO update release notes script for v9
               # - script: |
-              #     node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
+              #     node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
               #   displayName: 'Update github release notes'
 
               # This would usually be run automatically (via a pipeline decorator from an extension), but the

@@ -1,15 +1,19 @@
 {
-  "name": "@fluentui/docs",
+  "name": "docs",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
   "tags": ["react-northstar"],
   "targets": {
-    "build": {
+    "bundle": {
       "dependsOn": [
         {
-          "projects": ["@fluentui/react-northstar"],
+          "projects": ["react-northstar"],
           "target": "build:info"
+        },
+        {
+          "projects": ["react-portal-compat-context"],
+          "target": "build"
         }
       ]
     }

@@ -15,38 +15,46 @@ import {
   lineHeightBase400,
   spacingHorizontalXS,
 } from '../theme/design-tokens.js';
+import { largeState, smallState } from '../styles/states/index.js';
 
 /** Label styles
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
 
   :host {
+    color: ${colorNeutralForeground1};
+    cursor: pointer;
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
-    line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
-    color: ${colorNeutralForeground1};
+    line-height: ${lineHeightBase300};
+    user-select: none;
   }
+
   .asterisk {
     color: ${colorPaletteRedForeground1};
-    margin-left: ${spacingHorizontalXS};
+    margin-inline-start: ${spacingHorizontalXS};
   }
-  :host([size='small']) {
+
+  :host(${smallState}) {
     font-size: ${fontSizeBase200};
     line-height: ${lineHeightBase200};
   }
-  :host([size='large']) {
+
+  :host(${largeState}) {
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
+  }
+
+  :host(${largeState}),
+  :host(:is([state--semibold], :state(semibold))) {
     font-weight: ${fontWeightSemibold};
   }
-  :host([weight='semibold']) {
-    font-weight: ${fontWeightSemibold};
-  }
-  :host([disabled]),
-  :host([disabled]) .asterisk {
+
+  :host(:is([state--disabled], :state(disabled))),
+  :host(:is([state--disabled], :state(disabled))) .asterisk {
     color: ${colorNeutralForegroundDisabled};
   }
 `;

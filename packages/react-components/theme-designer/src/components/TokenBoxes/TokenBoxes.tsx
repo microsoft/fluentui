@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { tokens, useId, Button, Caption1, Input } from '@fluentui/react-components';
 import { Theme } from '@fluentui/react-theme';
 import { SearchRegular } from '@fluentui/react-icons';
@@ -14,7 +14,6 @@ export interface TokenBoxProps {
   themeColor: string;
 }
 
-/* eslint-disable deprecation/deprecation */
 const useStyles = makeStyles({
   root: {
     display: 'grid',
@@ -29,11 +28,11 @@ const useStyles = makeStyles({
   boxes: {
     display: 'flex',
     flexDirection: 'column',
-    ...shorthands.borderRadius('0.5em'),
-    ...shorthands.border('2px solid'),
+    borderRadius: '0.5em',
+    border: '2px solid',
     boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 1.5px 5px 0 rgba(0, 0, 0, 0.19)',
     paddingBottom: '10px',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   colors: {
     height: '100px',
@@ -42,7 +41,6 @@ const useStyles = makeStyles({
     paddingLeft: tokens.spacingVerticalS,
   },
 });
-/* eslint-enable deprecation/deprecation */
 
 export const TokenBox: React.FC<TokenBoxProps> = props => {
   const styles = useStyles();

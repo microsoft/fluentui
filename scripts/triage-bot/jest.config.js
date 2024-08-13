@@ -7,13 +7,7 @@ module.exports = {
   displayName: 'scripts-triage-bot',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
-        isolatedModules: true,
-      },
-    ],
+    '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   coverageDirectory: './coverage',
   testEnvironment: 'node',

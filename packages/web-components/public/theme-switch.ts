@@ -1,5 +1,5 @@
 import { teamsDarkTheme, teamsLightTheme, webDarkTheme, webLightTheme } from '@fluentui/tokens';
-import { setTheme } from '@fluentui/web-components';
+import { setTheme } from '../src/theme/set-theme.js';
 
 const themes = {
   'web-light': webLightTheme,

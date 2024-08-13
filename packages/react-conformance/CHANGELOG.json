@@ -2,6 +2,44 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Mon, 15 Jul 2024 17:25:26 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.1",
+      "version": "0.19.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "4edb54ea6e32b7ee68a9e3a8444378711a9d66f9",
+            "comment": "fix: revert incorectly set npm versions in all packages"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "674cdee6cfb1cb34e6ba1b24f665d0b8751a5dea",
+            "comment": "chore: remove npmScope from project name"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Jul 2024 15:14:34 GMT",
+      "tag": "@fluentui/react-conformance_v0.19.0",
+      "version": "0.19.0",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8393f616f80fe1dd8694e8bdf92ddba8021dd321",
+            "comment": "add nx-project-tag"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 20 Feb 2024 14:22:19 GMT",
       "tag": "@fluentui/react-conformance_v0.19.0",
       "version": "0.19.0",

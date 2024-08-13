@@ -5,12 +5,12 @@ import { Button, mergeClasses, Tooltip } from '@fluentui/react-components';
 import { V0IconComponent, V9IconComponent } from './types';
 import { useComparisonTileStyles } from './ComparisonTile.styles';
 
-interface IComparisonTileProps {
+interface ComparisonTileProps {
   V0Icon: V0IconComponent;
   V9Icon?: V9IconComponent;
 }
 
-export const ComparisonTile: React.FC<IComparisonTileProps> = ({ V0Icon, V9Icon }) => {
+export const ComparisonTile: React.FC<ComparisonTileProps> = ({ V0Icon, V9Icon }) => {
   const noV9Icon = !V9Icon;
 
   const tooltipWarningContent = <ul>{noV9Icon && <li>No equivalent icon available</li>}</ul>;

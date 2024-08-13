@@ -12,9 +12,9 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "lint": "just-scripts lint",
-    "storybook": "start-storybook",
+    "storybook": "storybook dev",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "test-ssr": "test-ssr \"./src/stories/**/*.stories.tsx\""
   },
   "dependencies": {

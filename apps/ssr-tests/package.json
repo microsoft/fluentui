@@ -4,22 +4,20 @@
   "description": "Server-side rendering tests for @fluentui/react.",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "type-check": "tsc -p . --noEmit --baseUrl .",
     "bundle": "just-scripts bundle",
-    "test": "just-scripts test",
-    "code-style": "node -v",
-    "clean": "",
+    "test-ssr": "just-scripts test",
     "just": "just-scripts"
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/react": "*",
-    "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "7.0.2",
-    "@fluentui/public-docsite-resources": "*",
     "mocha": "7.2.0",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "@fluentui/react": "*",
+    "@fluentui/public-docsite-resources": "*"
   },
   "dependencies": {
     "tslib": "^2.1.0"

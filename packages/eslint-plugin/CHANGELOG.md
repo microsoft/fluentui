@@ -1,8 +1,53 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Mon, 20 May 2024 07:29:19 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2024 07:33:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.19.0)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.2..@fluentui/eslint-plugin_v1.19.0)
+
+### Minor changes
+
+- feat: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+
+## [1.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.2)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.1..@fluentui/eslint-plugin_v1.18.2)
+
+### Patches
+
+- chore: migrate to typescript-eslint v5 and refactor experimental-tools to tools api usage ([PR #31517](https://github.com/microsoft/fluentui/pull/31517) by martinhochel@microsoft.com)
+
+## [1.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.1)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.0..@fluentui/eslint-plugin_v1.18.1)
+
+### Patches
+
+- chore: re-enable deprecation/deprecation for files with styles ([PR #31459](https://github.com/microsoft/fluentui/pull/31459) by olfedias@microsoft.com)
+
+## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
+
+Fri, 24 May 2024 07:28:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.9..@fluentui/eslint-plugin_v1.18.0)
+
+### Minor changes
+
+- feat: disallow direct access to globals ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.8..@fluentui/eslint-plugin_v1.17.9)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31447](https://github.com/microsoft/fluentui/pull/31447) by olfedias@microsoft.com)
 
 ## [1.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.8)
 

@@ -2,6 +2,10 @@ import * as React from 'react';
 import { ActivityItem, IActivityItemProps, Link, mergeStyleSets } from '@fluentui/react';
 import { TestImages } from '@fluentui/example-data';
 
+export default {
+  title: 'Components/ActivityItemPersona',
+};
+
 const classNames = mergeStyleSets({
   exampleRoot: {
     marginTop: '20px',

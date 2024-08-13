@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use click() instead of press() in button keydownHandler",
-  "packageName": "@fluentui/web-components",
-  "email": "863023+radium-v@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
