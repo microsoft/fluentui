@@ -263,3 +263,51 @@ export const expandedState = css.partial`:is([state--expanded], :state(expanded)
  * @public
  */
 export const blockState = css.partial`:is([state--block], :state(block))`;
+
+/**
+ * Selector for the `resize` state. This indicates the element is resizable.
+ * @public
+ */
+export const resizeState = css.partial`:is([state--resize], :state(resize))`;
+
+/**
+ * Selector for the `resize-horizontal` state.
+ * @public
+ */
+export const resizeHorizontalState = css.partial`:is([state--resize-horizontal], :state(resize-horizontal))`;
+
+/**
+ * Selector for the `resize-vertical` state.
+ * @public
+ */
+export const resizeVerticalState = css.partial`:is([state--resize-vertical], :state(resize-vertical))`;
+
+/**
+ * Selector for the `resize-both` state.
+ * @public
+ */
+export const resizeBothState = css.partial`:is([state--resize-both], :state(resize-both))`;
+
+/**
+ * Selector for the `auto-resize` state.
+ * @public
+ */
+export const autoResizeState = css.partial`:is([state--auto-resize], :state(auto-resize))`;
+
+/**
+ * Selector for the `display-shadow` state.
+ * @public
+ */
+export const displayShadowState = css.partial`:is([state--display-shadow], :state(display-shadow))`;
+
+/*
+ * Selector for the `user-invalid` state.
+ * @public
+ */
+export const userInvalidState = css.partial`:is([state--user-invalid], :state(user-invalid))`;
+
+/**
+ * Selector for the `user-valid` state.
+ * @public
+ */
+export const userValidState = css.partial`:is([state--user-valid], :state(user-valid))`;
