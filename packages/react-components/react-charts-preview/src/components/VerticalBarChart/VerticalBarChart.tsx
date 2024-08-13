@@ -809,8 +809,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       <Legends
         legends={actions}
         enabledWrapLines={props.enabledLegendsWrapLines}
-        overflowProps={props.legendsOverflowProps}
-        focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
       />
@@ -945,10 +943,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
     }),
-    gapSpace: 15,
     color: color,
     legend: calloutLegend,
-    XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),

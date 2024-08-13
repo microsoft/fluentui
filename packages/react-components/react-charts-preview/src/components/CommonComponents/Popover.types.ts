@@ -1,16 +1,16 @@
 import { IChartDataPoint, IYValueHover } from '../../index';
 
 export interface IPopoverComponentProps {
+  id: string;
   clickPosition: { x: number; y: number };
   isPopoverOpen: boolean;
   xCalloutValue?: string;
   legend?: string;
   yCalloutValue?: string;
-  YValue?: string | number;
+  YValue?: string | number | Date;
   color: string;
   culture: string;
   isCalloutForStack: boolean;
-  dataPointCalloutProps?: IChartDataPoint;
   customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;

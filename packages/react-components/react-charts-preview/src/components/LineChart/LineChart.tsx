@@ -330,8 +330,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         <Legends
           legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
           enabledWrapLines={props.enabledLegendsWrapLines}
-          overflowProps={props.legendsOverflowProps}
-          focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
           overflowText={props.legendsOverflowText}
           {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
           {...props.legendProps}

@@ -1,4 +1,4 @@
-import { IChartProps } from './index';
+import { IChartDataPoint, IChartProps } from './index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
@@ -95,6 +95,11 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
    * prop to check if benchmark data is provided
    */
   showTriangle?: boolean;
+
+  /**
+   * prop to render the custom callout
+   */
+  onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element;
 }
 
 /**

@@ -10,6 +10,7 @@ import { IAccessibilityProps, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
 import { useFocusableGroup } from '../../../../react-components/src/index';
 import PopoverComponent from '../CommonComponents/Popover';
+import { useId } from '@fluentui/react-utilities';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -25,7 +26,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     let _uniqText: string;
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
-    let _calloutId: string;
+    let _calloutId: string = useId('callout');
     let _calloutAnchorPoint: IChartDataPoint | null;
     let _emptyChartId: string | null;
 
@@ -137,8 +138,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         <Legends
           legends={legendDataItems}
           centerLegends
-          overflowProps={props.legendsOverflowProps}
-          focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
           overflowText={props.legendsOverflowText}
           {...props.legendProps}
         />
@@ -308,6 +307,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
           </div>
         </div>
         <PopoverComponent
+          id={_calloutId}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
           culture={props.culture}
@@ -316,7 +316,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
           legend={legend!}
           YValue={value!}
           color={color}
-          dataPointCalloutProps={dataPointCalloutProps}
           isCalloutForStack={false}
           customizedCallout={
             props.onRenderCalloutPerDataPoint ? props.onRenderCalloutPerDataPoint(dataPointCalloutProps!) : undefined

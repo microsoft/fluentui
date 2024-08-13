@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITooltipHost, ITooltipProps, Tooltip, TooltipDelay } from '@fluentui/react/lib/Tooltip';
-import { Async, KeyCodes, getId, portalContainsElement } from '../Utilities';
+import { Async, KeyCodes, getId, portalContainsElement } from '@fluentui/react/lib/Utilities';
 
 interface ISVGTooltipTextProps {
   /**
