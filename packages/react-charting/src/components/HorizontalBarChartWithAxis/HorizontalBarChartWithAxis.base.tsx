@@ -493,11 +493,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         this._points[pointIndex].color = startColor;
       }
 
+      const gradientId = getId('HBCWA_Gradient_ID');
+
       return (
         <React.Fragment key={point.y}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.y}`} >
+              <linearGradient id={gradientId} >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -527,7 +529,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
         </React.Fragment>
       );
@@ -607,11 +609,13 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         this._points[pointIndex].color = startColor;
       }
 
+      const gradientId = getId('HBCWA_Gradient_ID');
+
       return (
         <React.Fragment key={point.x}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.x}`} >
+              <linearGradient id={gradientId} >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -641,7 +645,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
             onBlur={this._onBarLeave}
             data-is-focusable={true}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.x})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
         </React.Fragment>
       );

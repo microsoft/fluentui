@@ -407,11 +407,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         );
       }
 
+      const gradientId = getId('HBC_Gradient_ID');
+
       return (
         <React.Fragment key={index}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${dataPointIndex}`} >
+              <linearGradient id={gradientId} >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -428,7 +430,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             data-is-focusable={point.legend !== '' ? true : false}
             width={value + '%'}
             height={this._barHeight}
-            fill={this.props.enableGradient? `url(#gradient_${index}_${dataPointIndex})` : startColor}
+            fill={this.props.enableGradient? `url(#${gradientId})` : startColor}
             onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
             role="img"

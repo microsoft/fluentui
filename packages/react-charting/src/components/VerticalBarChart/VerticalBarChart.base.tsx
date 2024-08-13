@@ -726,11 +726,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
+      const gradientId = getId('VBC_Gradient_ID');
+
       return (
         <g key={point.x as string}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.y}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -754,7 +756,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -819,6 +821,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
+      const gradientId = getId('VBC_Gradient_ID');
+
       return (
         <g
           key={point.x instanceof Date ? point.x.getTime() : point.x}
@@ -826,7 +830,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${point.y}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -849,7 +853,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             data-is-focusable={!this.props.hideTooltip}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
@@ -919,17 +923,13 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
+      const gradientId = getId('VBC_Gradient_ID');
+
       return (
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>
           {this.props.enableGradient && (
             <defs>
-              <linearGradient
-                id={`gradient_${index}_${point.y}_${endColor}`}
-                x1="0%"
-                y1="100%"
-                x2="0%"
-                y2="0%"
-               >
+              <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -953,7 +953,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onMouseLeave={this._onBarLeave}
             onFocus={this._onBarFocus.bind(this, point, index, startColor)}
             onBlur={this._onBarLeave}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${point.y}_${endColor})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
             rx={this.props.roundCorners ? 3 : 0}
           />
           {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}

@@ -32,8 +32,14 @@ export const DataVizGradientPalette = {
 /**
  * Key: Color code.
  * Value:
- * Index 0 - Default gradient for light theme,
+ * 
+ * Index 0 - Default gradient for light theme
+ *      ├── Index 0 - start color of gradient
+ *      └── Index 1 - end color of gradient
+ *
  * Index 1 - gradient for dark theme
+ *      ├── Index 0 - start color of gradient
+ *      └── Index 1 - end color of gradient
  */
 type GradientPalette = { [key: string]: [string, string][] };
 

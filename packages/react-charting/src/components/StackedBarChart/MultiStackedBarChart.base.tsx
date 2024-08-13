@@ -283,6 +283,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         hideLabels: this.props.hideLabels,
       });
 
+      const gradientId = getId('MSBC_Gradient_ID');
+
       return (
         <g
           key={index}
@@ -302,7 +304,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${pointData}`} >
+              <linearGradient id={gradientId} >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -320,7 +322,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             width={value + '%'}
             height={barHeight}
             rx={this.props.roundCorners ? 3 : 0}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
         </g>
       );

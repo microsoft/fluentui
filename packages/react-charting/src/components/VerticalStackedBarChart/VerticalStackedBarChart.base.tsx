@@ -894,19 +894,15 @@ export class VerticalStackedBarChartBase extends React.Component<
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
 
+        const gradientId = getId('VSBC_Gradient_ID');
+
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
             <React.Fragment key={index + indexNumber + `${shouldFocusWholeStack}`}>
               {this.props.enableGradient && (
                 <defs>
-                  <linearGradient
-                    id={`gradient_${index}_${indexNumber}_${endColor}`}
-                    x1="0%"
-                    y1="100%"
-                    x2="0%"
-                    y2="0%"
-                  >
+                  <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                     <stop offset="0" stopColor={startColor} />
                     <stop offset="100%" stopColor={endColor} />
                   </linearGradient>
@@ -923,7 +919,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                   h ${-this._barWidth}
                   z
                 `}
-                fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${endColor})` : startColor}
+                fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
                 rx={this.props.roundCorners ? 3 : 0}
                 ref={e => (ref.refElement = e)}
                 transform={`translate(${xScaleBandwidthTranslate}, 0)`}
@@ -939,7 +935,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           <React.Fragment key={index + indexNumber}>
             {this.props.enableGradient && (
               <defs>
-                <linearGradient id={`gradient_${index}_${indexNumber}_${endColor}`} x1="0%" y1="100%" x2="0%" y2="0%" >
+                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                   <stop offset="0" stopColor={startColor} />
                   <stop offset="100%" stopColor={endColor} />
                 </linearGradient>
@@ -951,7 +947,7 @@ export class VerticalStackedBarChartBase extends React.Component<
               y={yPoint}
               width={this._barWidth}
               height={barHeight}
-              fill={this.props.enableGradient ? `url(#gradient_${index}_${indexNumber}_${endColor})` : startColor}
+              fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
               rx={this.props.roundCorners ? 3 : 0}
               ref={e => (ref.refElement = e)}
               {...rectFocusProps}

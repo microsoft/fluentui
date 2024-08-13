@@ -332,6 +332,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         href: this.props.href!,
       });
 
+      const gradientId = getId('SBC_Gradient_ID');
+
       return (
         <g
           key={index}
@@ -352,7 +354,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         >
           {this.props.enableGradient && (
             <defs>
-              <linearGradient id={`gradient_${index}_${pointData}`} >
+              <linearGradient id={gradientId} >
                 <stop offset="0" stopColor={startColor} />
                 <stop offset="100%" stopColor={endColor} />
               </linearGradient>
@@ -370,7 +372,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             width={value + '%'}
             height={barHeight}
             rx={this.props.roundCorners ? 3 : 0}
-            fill={this.props.enableGradient ? `url(#gradient_${index}_${pointData})` : startColor}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
           />
         </g>
       );

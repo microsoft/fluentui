@@ -402,16 +402,15 @@ export class GroupedVerticalBarChartBase extends React.Component<
         pointData.color = startColor;
       }
 
+      const gradientId = getId('GVBC_Gradient_ID');
+
       // Not rendering data with 0.
       pointData.data &&
         singleGroup.push(
           <React.Fragment key={`${singleSet.indexNum}-${index}`}>
             {this.props.enableGradient && (
               <defs>
-                <linearGradient
-                  id={`gradient_${index}_${singleSet.indexNum}_${endColor}`}
-                  x1="0%" y1="100%" x2="0%" y2="0%"
-                >
+                <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%" >
                   <stop offset="0" stopColor={startColor} />
                   <stop offset="100%" stopColor={endColor} />
                 </linearGradient>
@@ -431,7 +430,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
                 this._refCallback(e!, pointData.legend, refIndexNumber);
               }}
               fill={this.props.enableGradient
-                ? `url(#gradient_${index}_${singleSet.indexNum}_${endColor})`
+                ? `url(#${gradientId})`
                 : startColor
               }
               rx={this.props.roundCorners ? 3 : 0}
