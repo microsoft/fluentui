@@ -1,4 +1,4 @@
-# @fluentui/react-swatch-picker-preview Spec
+# @fluentui/react-swatch-picker Spec
 
 ## Background
 
@@ -158,7 +158,7 @@ For grid layout use `SwatchPickerRow` component.
 To simplify usage of grid layout use `renderUtils`.
 
 ```ts
-import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker-preview';
+import { renderSwatchPickerGrid } from '@fluentui/react-swatch-picker';
 ```
 
 ```tsx
