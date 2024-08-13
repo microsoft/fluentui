@@ -15,7 +15,7 @@
 /* Add left side background color splash */
 /* colors become distracting in mobile layout so scoped to where sidebar is visible */
 @media (min-width: 600px) {
-  #root > div:before {
+  #storybook-root > div:before {
     content: '';
     position: absolute;
     top: -200px;
@@ -28,7 +28,7 @@
   }
 
   /* Add right side background color splash */
-  #root > div:after {
+  #storybook-root > div:after {
     content: '';
     position: absolute;
     top: -200px;

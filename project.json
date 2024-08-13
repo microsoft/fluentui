@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/fluentui-repo",
+  "name": "fluentui-repo",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "targets": {
     "prepare-local-registry": {

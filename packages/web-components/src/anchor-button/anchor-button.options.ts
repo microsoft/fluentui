@@ -58,3 +58,26 @@ export const AnchorTarget = {
  * @public
  */
 export type AnchorTarget = ValuesOf<typeof AnchorTarget>;
+
+/**
+ * Reflected anchor attributes.
+ *
+ * @public
+ */
+export const AnchorAttributes = {
+  download: 'download',
+  href: 'href',
+  hreflang: 'hreflang',
+  ping: 'ping',
+  referrerpolicy: 'referrerpolicy',
+  rel: 'rel',
+  target: 'target',
+  type: 'type',
+} as const;
+
+/**
+ * Type for anchor attributes.
+ *
+ * @public
+ */
+export type AnchorAttributes = ValuesOf<typeof AnchorAttributes>;

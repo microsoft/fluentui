@@ -4,13 +4,13 @@
   "version": "9.0.0-rc.0",
   "private": true,
   "scripts": {
-    "bundle": "just-scripts bundle",
+    "bundle": "just-scripts perf-test:bundle",
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "type-check": "just-scripts type-check",
-    "test:perf": "just-scripts perf-test"
+    "test-perf": "just-scripts perf-test"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/state",
+  "name": "state",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "tags": ["react-northstar"]
 }

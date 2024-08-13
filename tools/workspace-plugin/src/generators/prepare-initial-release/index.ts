@@ -17,7 +17,7 @@ import {
 } from '@nrwl/devkit';
 import * as tsquery from '@phenomnomnominal/tsquery';
 
-import { getProjectConfig, getProjectNameWithoutScope, workspacePaths } from '../../utils';
+import { getProjectConfig, workspacePaths } from '../../utils';
 
 import { PackageJson, TsConfig } from '../../types';
 
@@ -61,6 +61,7 @@ function normalizeOptions(tree: Tree, options: ReleasePackageGeneratorSchema) {
     ...options,
     ...project,
     ...names(options.project),
+    npmPackageName: `@${project.workspaceConfig.npmScope}/${project.projectConfig.name}`,
   };
 }
 
@@ -75,18 +76,18 @@ function initialRelease(tree: Tree, options: NormalizedSchema) {
     return json;
   });
 
-  const docsiteProjectName = '@' + options.workspaceConfig.npmScope + '/public-docsite-v9';
+  const docsiteProjectName = 'public-docsite-v9';
   const docsite = getProjectConfig(tree, { packageName: docsiteProjectName });
 
   updateJson<PackageJson>(tree, docsite.paths.packageJson, json => {
     json.dependencies = json.dependencies ?? {};
-    json.dependencies[options.project] = '*';
+    json.dependencies[options.npmPackageName] = '*';
     return json;
   });
 
   return (_tree: Tree) => {
     const changeTypes = { preview: 'minor', compat: 'patch' } as const;
-    generateChangefileTask(tree, options.project, {
+    generateChangefileTask(tree, options.npmPackageName, {
       changeType: changeTypes[phase],
       message: `feat: release ${options.phase} package`,
     });
@@ -94,29 +95,33 @@ function initialRelease(tree: Tree, options: NormalizedSchema) {
 }
 
 async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitProject: boolean }) {
-  const suitePackageName = '@' + options.workspaceConfig.npmScope + '/react-components';
-  const currentPackageName = options.projectConfig.name as string;
+  const suiteProjectName = 'react-components';
+  const suiteNpmProjectName = `@${options.workspaceConfig.npmScope}/${suiteProjectName}`;
+  const currentPackage = {
+    name: options.projectConfig.name as string,
+    npmName: options.npmPackageName,
+  };
 
   const newPackage = {
-    name: currentPackageName.replace('-preview', ''),
-    normalizedName: options.normalizedPkgName.replace('-preview', ''),
+    name: currentPackage.name.replace('-preview', ''),
+    npmName: currentPackage.npmName.replace('-preview', ''),
     version: '9.0.0-alpha.0',
     root: options.projectConfig.root.replace('-preview', ''),
     sourceRoot: options.projectConfig.sourceRoot?.replace('-preview', '') as string,
   };
 
   const contentNameUpdater = (content: string) => {
-    const regexp = new RegExp(options.normalizedPkgName, 'g');
-    return content.replace(regexp, newPackage.normalizedName);
+    const regexp = new RegExp(options.project, 'g');
+    return content.replace(regexp, newPackage.name);
   };
   const contentNameToSuiteUpdater = (content: string) => {
-    const regexp = new RegExp(options.normalizedPkgName, 'g');
+    const regexp = new RegExp(options.project, 'g');
     return content.replace(regexp, 'react-components');
   };
 
   updateJson<PackageJson>(tree, options.paths.packageJson, json => {
     delete json.private;
-    json.name = newPackage.name;
+    json.name = newPackage.npmName;
     json.version = newPackage.version;
     return json;
   });
@@ -141,8 +146,8 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   const mdFilePath = {
     readme: joinPathFragments(options.projectConfig.root, 'README.md'),
-    api: joinPathFragments(options.projectConfig.root, 'etc', options.normalizedPkgName + '.api.md'),
-    apiNew: joinPathFragments(options.projectConfig.root, 'etc', newPackage.normalizedName + '.api.md'),
+    api: joinPathFragments(options.projectConfig.root, 'etc', options.project + '.api.md'),
+    apiNew: joinPathFragments(options.projectConfig.root, 'etc', newPackage.name + '.api.md'),
   };
 
   updateFileContent(tree, {
@@ -162,8 +167,8 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   updateJson<TsConfig>(tree, options.paths.rootTsconfig, json => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
 
-    delete json.compilerOptions.paths[currentPackageName];
-    json.compilerOptions.paths[newPackage.name] = [joinPathFragments(newPackage.sourceRoot, 'index.ts')];
+    delete json.compilerOptions.paths[currentPackage.npmName];
+    json.compilerOptions.paths[newPackage.npmName] = [joinPathFragments(newPackage.sourceRoot, 'index.ts')];
 
     return json;
   });
@@ -174,11 +179,11 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   // add to suite (react-components)
   const reactComponentsProject = getProjectConfig(tree, {
-    packageName: suitePackageName,
+    packageName: suiteProjectName,
   });
   updateJson<PackageJson>(tree, reactComponentsProject.paths.packageJson, json => {
     json.dependencies = json.dependencies ?? {};
-    json.dependencies[newPackage.name] = newPackage.version;
+    json.dependencies[newPackage.npmName] = newPackage.version;
     return json;
   });
 
@@ -187,13 +192,13 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     updater: content => {
       const currentBarrelFilePath = joinPathFragments(options.projectConfig.sourceRoot as string, 'index.ts');
       const currentBarrelFile = tree.read(currentBarrelFilePath, 'utf-8') as string;
-      return content + '\n' + createExportsInSuite(currentBarrelFile, newPackage.name);
+      return content + '\n' + createExportsInSuite(currentBarrelFile, newPackage.npmName);
     },
   });
 
   const knownProjectsToBeUpdated = {
-    docsite: '@' + options.workspaceConfig.npmScope + '/public-docsite-v9',
-    vrTests: '@' + options.workspaceConfig.npmScope + '/vr-tests-react-components',
+    docsite: 'public-docsite-v9',
+    vrTests: 'vr-tests-react-components',
   };
 
   // update other projects that might still contain dependency to old -preview package
@@ -208,7 +213,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   });
   updateJson<PackageJson>(tree, reactComponentsDocsiteProject.paths.packageJson, json => {
     json.dependencies = json.dependencies ?? {};
-    delete json.dependencies[currentPackageName];
+    delete json.dependencies[currentPackage.npmName];
     return json;
   });
   visitNotIgnoredFiles(tree, joinPathFragments(reactComponentsDocsiteProject.projectConfig.root, 'src'), filePath => {
@@ -221,11 +226,11 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   });
   updateJson<PackageJson>(tree, reactComponentsVrTestsProject.paths.packageJson, json => {
     json.dependencies = json.dependencies ?? {};
-    delete json.dependencies[currentPackageName];
+    delete json.dependencies[currentPackage.npmName];
     // when going from preview to stable, package version changes to `9.0.0-alpha` in order to beachball properly bump to `9.0.0` stable.
     // thus dependency on the package within workspace packages cannot use `*` but `>=9.0.0-alpha`
     // on CI (release,pr) this is being checked normalized via [normalize-package-dependencies generator](tools/workspace-plugin/src/generators/normalize-package-dependencies/index.ts)
-    json.dependencies[newPackage.name] = '>=9.0.0-alpha';
+    json.dependencies[newPackage.npmName] = '>=9.0.0-alpha';
     return json;
   });
   visitNotIgnoredFiles(
@@ -245,8 +250,8 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     });
     updateJson<PackageJson>(tree, joinPathFragments(projectConfig.projectConfig.root, 'package.json'), json => {
       json.dependencies = json.dependencies ?? {};
-      delete json.dependencies[currentPackageName];
-      json.dependencies[suitePackageName] = '*';
+      delete json.dependencies[currentPackage.npmName];
+      json.dependencies[suiteNpmProjectName] = '*';
       return json;
     });
   });
@@ -261,19 +266,22 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   return (_tree: Tree) => {
     installPackagesTask(tree, true);
-    generateChangefileTask(tree, newPackage.name, { message: 'feat: release stable', changeType: 'minor' });
-    generateChangefileTask(tree, suitePackageName, {
-      message: `feat: add ${newPackage.name} to suite`,
+    generateChangefileTask(tree, newPackage.npmName, { message: 'feat: release stable', changeType: 'minor' });
+    generateChangefileTask(tree, suiteNpmProjectName, {
+      message: `feat: add ${newPackage.npmName} to suite`,
       changeType: 'minor',
     });
-    generateApiMarkdownTask(tree, suitePackageName);
+    generateApiMarkdownTask(tree, suiteProjectName);
   };
 }
 
 function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
   const storiesProjectRoot = joinPathFragments(options.projectConfig.root, '../stories');
-  const currentStoriesPackageName = options.projectConfig.name + '-stories';
-  const currentStoriesNormalizedPackageName = getProjectNameWithoutScope(currentStoriesPackageName);
+  const currentStoriesPackage = {
+    name: options.projectConfig.name + '-stories',
+    npmName: options.npmPackageName + '-stories',
+  };
+
   const storiesProjectPaths = {
     root: storiesProjectRoot,
     sourceRoot: joinPathFragments(storiesProjectRoot, 'src'),
@@ -282,19 +290,19 @@ function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
     readme: joinPathFragments(storiesProjectRoot, 'README.md'),
   };
   const newStoriesProject = {
-    name: currentStoriesPackageName.replace('-preview', ''),
-    normalizedName: currentStoriesNormalizedPackageName.replace('-preview', ''),
+    name: currentStoriesPackage.name.replace('-preview', ''),
+    npmName: currentStoriesPackage.npmName.replace('-preview', ''),
     root: storiesProjectPaths.root.replace('-preview', ''),
     sourceRoot: storiesProjectPaths.sourceRoot.replace('-preview', ''),
   };
 
   const contentNameUpdaterStories = (content: string) => {
-    const regexp = new RegExp(currentStoriesNormalizedPackageName, 'g');
-    return content.replace(regexp, newStoriesProject.normalizedName);
+    const regexp = new RegExp(currentStoriesPackage.name, 'g');
+    return content.replace(regexp, newStoriesProject.name);
   };
 
   updateJson<PackageJson>(tree, storiesProjectPaths.packageJson, json => {
-    json.name = newStoriesProject.name;
+    json.name = newStoriesProject.npmName;
 
     return json;
   });
@@ -315,8 +323,10 @@ function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
   updateJson<TsConfig>(tree, options.paths.rootTsconfig, json => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
 
-    delete json.compilerOptions.paths[currentStoriesPackageName];
-    json.compilerOptions.paths[newStoriesProject.name] = [joinPathFragments(newStoriesProject.sourceRoot, 'index.ts')];
+    delete json.compilerOptions.paths[currentStoriesPackage.npmName];
+    json.compilerOptions.paths[newStoriesProject.npmName] = [
+      joinPathFragments(newStoriesProject.sourceRoot, 'index.ts'),
+    ];
 
     return json;
   });
@@ -375,7 +385,7 @@ function generateChangefileTask(
 }
 
 function generateApiMarkdownTask(tree: Tree, projectName: string) {
-  const cmd = `yarn lage generate-api --to ${projectName}`;
+  const cmd = `yarn nx run ${projectName}:generate-api`;
   return execSync(cmd, { cwd: workspaceRoot, stdio: 'inherit' });
 }
 

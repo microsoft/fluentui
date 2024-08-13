@@ -1,18 +1,76 @@
 // @ts-check
-// @ts-ignore
-const util = require('@typescript-eslint/eslint-plugin/dist/util');
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
+const { requiresQuoting } = require('@typescript-eslint/type-utils');
 const createRule = require('../utils/createRule');
+
+const MemberNameType = {
+  Private: 1,
+  Quoted: 2,
+  Normal: 3,
+  Expression: 4,
+};
+
+/**
+ * @typedef {import('@typescript-eslint/utils').TSESTree.MethodDefinition} MethodDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.PropertyDefinition} PropertyDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.Property} Property
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractMethodDefinition} TSAbstractMethodDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSAbstractPropertyDefinition} TSAbstractPropertyDefinition
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSMethodSignature} TSMethodSignature
+ * @typedef {import('@typescript-eslint/utils').TSESTree.TSPropertySignature} TSProperySignature
+ * @typedef {import('@typescript-eslint/utils').TSESLint.SourceCode}  SourceCode
+ */
 
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ClassProperty} ClassProperty
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.MethodDefinition} MethodDefinition
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Node} Node
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.TSParameterProperty} ParameterProperty
+ * @typedef {import("@typescript-eslint/utils").TSESTree.PropertyDefinition} ClassProperty
+ * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
+ * @typedef {import("@typescript-eslint/utils").TSESTree.Node} Node
+ * @typedef {import("@typescript-eslint/utils").TSESTree.TSParameterProperty} ParameterProperty
  */
+
+/**
+ * Gets a string name representation of the name of the given MethodDefinition
+ * or PropertyDefinition node, with handling for computed property names.
+ * @param {MethodDefinition | PropertyDefinition | Property | TSAbstractMethodDefinition | TSAbstractPropertyDefinition | TSMethodSignature | TSProperySignature} member The node to get the name of.
+ * @param {SourceCode} sourceCode The source code object.
+ * @returns {{ type: number; name: string }} The name of the member.
+ */
+
+function getNameFromMember(member, sourceCode) {
+  if (member.key.type === 'Identifier') {
+    return {
+      type: MemberNameType.Normal,
+      name: member.key.name,
+    };
+  }
+  if (member.key.type === 'PrivateIdentifier') {
+    return {
+      type: MemberNameType.Private,
+      name: `#${member.key.name}`,
+    };
+  }
+  if (member.key.type === 'Literal') {
+    const name = `${member.key.value}`;
+    if (requiresQuoting(name)) {
+      return {
+        type: MemberNameType.Quoted,
+        name: `"${name}"`,
+      };
+    }
+    return {
+      type: MemberNameType.Normal,
+      name,
+    };
+  }
+
+  return {
+    type: MemberNameType.Expression,
+    name: sourceCode.text.slice(...member.key.range),
+  };
+}
 
 /** */
 module.exports = createRule({
@@ -21,9 +79,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid visibility modifiers on class properties and methods.',
-      category: 'Best Practices',
-      // Only used by v0. Omitting visibility modifiers is generally not recommended.
-      recommended: false,
     },
     messages: {
       modifierPresent: 'Visibility modifier present on {{type}} {{name}}',
@@ -38,7 +93,7 @@ module.exports = createRule({
      * Generates the report for rule violations
      * @param {string} nodeType
      * @param {Node} node
-     * @param {string} nodeName
+     * @param  {{ type: number; name: string } | string} nodeName
      */
     function reportIssue(nodeType, node, nodeName) {
       context.report({
@@ -68,7 +123,7 @@ module.exports = createRule({
       }
 
       if (isTypeScriptFile(context.getFilename())) {
-        const methodName = util.getNameFromMember(methodDefinition, sourceCode);
+        const methodName = getNameFromMember(methodDefinition, sourceCode);
 
         if (methodDefinition.accessibility) {
           reportIssue(nodeType, methodDefinition, methodName);
@@ -84,7 +139,7 @@ module.exports = createRule({
       const nodeType = 'class property';
 
       if (isTypeScriptFile(context.getFilename())) {
-        const propertyName = util.getNameFromMember(classProperty, sourceCode);
+        const propertyName = getNameFromMember(classProperty, sourceCode);
 
         if (classProperty.accessibility) {
           reportIssue(nodeType, classProperty, propertyName);

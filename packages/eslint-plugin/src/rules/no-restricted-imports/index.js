@@ -1,10 +1,10 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportClause} ImportClause
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportDeclaration} ImportDeclaration
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ImportClause} ImportClause
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ImportDeclaration} ImportDeclaration
  *
  * Lookup for insertion point for new imports when moving a restricted import to a preferred import.
  * @typedef {{[preferredPkgName: string] : ImportDeclaration}} FixMap
@@ -25,8 +25,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Restricts imports of certain packages',
-      category: 'Best Practices',
-      recommended: false,
     },
     messages: {
       restrictedImport: 'Import from {{ packageName }} detected which is not allowed.',
@@ -40,15 +38,18 @@ module.exports = createRule({
             type: 'array',
             minItems: 1,
             items: {
-              forbidden: {
-                type: 'array',
-                minItems: 1,
-                items: {
+              type: 'object',
+              properties: {
+                forbidden: {
+                  type: 'array',
+                  minItems: 1,
+                  items: {
+                    type: 'string',
+                  },
+                },
+                preferred: {
                   type: 'string',
                 },
-              },
-              preferred: {
-                type: 'string',
               },
             },
           },
@@ -56,9 +57,8 @@ module.exports = createRule({
       },
     ],
   },
-  defaultOptions: [],
+  defaultOptions: /** @type {Options[]} */ ([]),
   create: context => {
-    /** @type {Options[]} */
     const options = context.options;
 
     if (!options.length) {
@@ -107,7 +107,7 @@ module.exports = createRule({
 
     return {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      ImportDeclaration: (/** @type {ImportDeclaration} */ imprt) => {
+      ImportDeclaration: imprt => {
         if (!imprt.source || (imprt.source && imprt.source.type !== AST_NODE_TYPES.Literal)) {
           return;
         }

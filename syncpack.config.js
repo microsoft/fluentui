@@ -29,6 +29,7 @@ const config = {
     {
       packages: ['@fluentui/fluentui-repo'],
       dependencies: [
+        '@floating-ui/dom',
         '@babel/core',
         '@babel/preset-typescript',
         '@babel/generator',
@@ -37,7 +38,7 @@ const config = {
         '@swc/helpers',
         '@types/react-test-renderer',
         '@typescript-eslint/eslint-plugin',
-        '@typescript-eslint/experimental-utils',
+        '@typescript-eslint/utils',
         '@typescript-eslint/parser',
         '@microsoft/load-themed-styles',
         'chalk',
@@ -69,6 +70,7 @@ const config = {
         'webpack',
         'webpack-bundle-analyzer',
         'yargs',
+        'dedent',
       ],
     },
     {

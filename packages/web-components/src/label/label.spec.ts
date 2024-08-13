@@ -12,21 +12,13 @@ test.describe('Label', () => {
     page = await browser.newPage();
 
     element = page.locator('fluent-label');
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-label--label'));
   });
 
   test.afterAll(async () => {
     await page.close();
-  });
-
-  test('should set default attribute values', async () => {
-    await expect(element).toHaveAttribute('size', 'medium');
-    await expect(element).toHaveJSProperty('size', 'medium');
-
-    await expect(element).toHaveAttribute('weight', 'regular');
-    await expect(element).toHaveJSProperty('weight', 'regular');
   });
 
   test('should reflect size attribute', async () => {
@@ -36,6 +28,7 @@ test.describe('Label', () => {
 
     await expect(element).toHaveAttribute('size', 'small');
     await expect(element).toHaveJSProperty('size', 'small');
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(true);
 
     await element.evaluate((node: Label) => {
       node.size = 'medium';
@@ -43,12 +36,16 @@ test.describe('Label', () => {
 
     await expect(element).toHaveAttribute('size', 'medium');
     await expect(element).toHaveJSProperty('size', 'medium');
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(false);
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(true);
 
     await element.evaluate((node: Label) => {
       node.size = 'large';
     });
     await expect(element).toHaveAttribute('size', 'large');
     await expect(element).toHaveJSProperty('size', 'large');
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(false);
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('large'))).toBe(true);
   });
 
   test('should reflect weight attribute', async () => {
@@ -57,12 +54,15 @@ test.describe('Label', () => {
     });
     await expect(element).toHaveAttribute('weight', 'regular');
     await expect(element).toHaveJSProperty('weight', 'regular');
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(true);
 
     await element.evaluate((node: Label) => {
       node.weight = 'semibold';
     });
     await expect(element).toHaveAttribute('weight', 'semibold');
     await expect(element).toHaveJSProperty('weight', 'semibold');
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(false);
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('semibold'))).toBe(true);
   });
 
   test('should reflect disabled attribute', async () => {
@@ -74,6 +74,7 @@ test.describe('Label', () => {
 
     await expect(element).toHaveAttribute('disabled', '');
     await expect(element).toHaveJSProperty('disabled', true);
+    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('disabled'))).toBe(true);
   });
 
   test('should reflect required attribute and show asterisk', async () => {
@@ -101,43 +102,5 @@ test.describe('Label', () => {
     await expect(element).not.toHaveAttribute('required', '');
     await expect(element).toHaveJSProperty('required', false);
     await expect(asterisk).toBeHidden();
-  });
-
-  test('should reflect changes in size, weight, disabled, and required attributes', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-label size="medium" weight="regular">Label</fluent-label>
-            `;
-    });
-    await expect(element).toHaveAttribute('size', 'medium');
-    await expect(element).toHaveJSProperty('size', 'medium');
-
-    await expect(element).toHaveAttribute('weight', 'regular');
-    await expect(element).toHaveJSProperty('weight', 'regular');
-
-    await expect(element).not.toHaveAttribute('disabled', '');
-    await expect(element).toHaveJSProperty('disabled', false);
-
-    await expect(element).not.toHaveAttribute('required', '');
-    await expect(element).toHaveJSProperty('required', false);
-
-    await element.evaluate((node: Label) => {
-      node.size = 'large';
-      node.weight = 'semibold';
-      node.disabled = true;
-      node.required = true;
-    });
-
-    await expect(element).toHaveAttribute('size', 'large');
-    await expect(element).toHaveJSProperty('size', 'large');
-
-    await expect(element).toHaveAttribute('weight', 'semibold');
-    await expect(element).toHaveJSProperty('weight', 'semibold');
-
-    await expect(element).toHaveAttribute('disabled', '');
-    await expect(element).toHaveJSProperty('disabled', true);
-
-    await expect(element).toHaveAttribute('required', '');
-    await expect(element).toHaveJSProperty('required', true);
   });
 });

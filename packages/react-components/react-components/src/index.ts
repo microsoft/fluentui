@@ -118,6 +118,7 @@ export {
   // eslint-disable-next-line deprecation/deprecation
   resolveShorthand,
   SSRProvider,
+  useAnimationFrame,
   useId,
   useIsomorphicLayoutEffect,
   useEventCallback,
@@ -126,6 +127,7 @@ export {
   useMergedRefs,
   useScrollbarWidth,
   useSelection,
+  useTimeout,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -869,6 +871,7 @@ export type {
   DialogOpenChangeEvent,
   DialogSlots,
   DialogState,
+  DialogModalType,
   DialogTriggerProps,
   DialogTriggerChildProps,
   DialogTriggerState,
@@ -1865,3 +1868,20 @@ export type {
   EmptySwatchSlots,
   EmptySwatchState,
 } from '@fluentui/react-swatch-picker';
+
+export {
+  motionTokens,
+  createMotionComponent,
+  createPresenceComponent,
+  createPresenceComponentVariant,
+  PresenceGroup,
+} from '@fluentui/react-motion';
+export type {
+  AtomMotion,
+  AtomMotionFn,
+  MotionComponentProps,
+  MotionImperativeRef,
+  PresenceMotion,
+  PresenceMotionFn,
+  PresenceComponentProps,
+} from '@fluentui/react-motion';

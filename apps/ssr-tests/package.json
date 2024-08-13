@@ -5,11 +5,8 @@
   "private": true,
   "scripts": {
     "type-check": "tsc -p . --noEmit --baseUrl .",
-    "build": "just-scripts build",
     "bundle": "just-scripts bundle",
-    "test": "just-scripts test",
-    "code-style": "node -v",
-    "clean": "",
+    "test-ssr": "just-scripts test",
     "just": "just-scripts"
   },
   "license": "MIT",

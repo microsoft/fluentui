@@ -3,7 +3,6 @@ import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Divider as FluentDivider } from './divider.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
-import './define.js';
 
 type DividerStoryArgs = Args & FluentDivider;
 type DividerStoryMeta = Meta<DividerStoryArgs>;
@@ -52,7 +51,6 @@ export default {
     content: 'Section One',
     alignContent: undefined,
     appearance: undefined,
-    role: DividerRole.separator,
     inset: false,
     orientation: undefined,
   },

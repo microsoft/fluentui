@@ -15,7 +15,7 @@ test.describe('Accordion item', () => {
 
     element = page.locator('fluent-accordion-item');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     heading = page.locator(`[role="heading"]`);
 
@@ -191,23 +191,23 @@ test.describe('Accordion item', () => {
     await expect(element).toHaveJSProperty('block', false);
   });
 
-  test('should set the expand-icon-position attribute to the provided value', async () => {
+  test('should set the marker-position attribute to the provided value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
         <fluent-accordion>
-            <fluent-accordion-item expand-icon-position="end"></fluent-accordion-item>
+            <fluent-accordion-item marker-position="end"></fluent-accordion-item>
         </fluent-accordion>
       `;
     });
 
-    await expect(element).toHaveAttribute('expand-icon-position', 'end');
-    await expect(element).toHaveJSProperty('expandIconPosition', 'end');
+    await expect(element).toHaveAttribute('marker-position', 'end');
+    await expect(element).toHaveJSProperty('markerPosition', 'end');
 
     await element.evaluate<void, AccordionItem>(node => {
-      node.expandIconPosition = 'start';
+      node.markerPosition = 'start';
     });
 
-    await expect(element).toHaveAttribute('expand-icon-position', 'start');
-    await expect(element).toHaveJSProperty('expandIconPosition', 'start');
+    await expect(element).toHaveAttribute('marker-position', 'start');
+    await expect(element).toHaveJSProperty('markerPosition', 'start');
   });
 });

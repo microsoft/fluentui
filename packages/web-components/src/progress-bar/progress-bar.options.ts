@@ -46,12 +46,3 @@ export const ProgressBarValidationState = {
  * @public
  */
 export type ProgressBarValidationState = ValuesOf<typeof ProgressBarValidationState>;
-
-/**
- * Progress configuration options
- * @public
- */
-export type ProgressOptions = {
-  indeterminateIndicator1?: StaticallyComposableHTML<ProgressBar>;
-  indeterminateIndicator2?: StaticallyComposableHTML<ProgressBar>;
-};

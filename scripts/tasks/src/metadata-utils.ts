@@ -48,9 +48,12 @@ export function getRawMetadata(projectRoot: string) {
   function hasBabel() {
     return fs.existsSync(path.join(projectRoot, '.babelrc.json'));
   }
+  function hasWebpack() {
+    return fs.existsSync(path.join(projectRoot, 'webpack.config.js'));
+  }
   function hasSass() {
     return glob.sync(path.join(projectRoot, 'src/**/*.scss')).length > 0;
   }
 
-  return { ...metadata, isConverged, shipsAMD, hasJest, hasBabel, hasSass };
+  return { ...metadata, isConverged, shipsAMD, hasJest, hasBabel, hasSass, hasWebpack };
 }

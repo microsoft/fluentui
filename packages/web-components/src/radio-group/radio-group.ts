@@ -1,426 +1,572 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import {
-  ArrowKeys,
-  Direction,
-  keyArrowDown,
-  keyArrowLeft,
-  keyArrowRight,
-  keyArrowUp,
-  keyEnter,
-} from '@microsoft/fast-web-utilities';
+import { attr, FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
+import { findLastIndex } from '@microsoft/fast-web-utilities';
 import { Radio } from '../radio/radio.js';
-import { getDirection } from '../utils/index.js';
+import { getDirection } from '../utils/direction.js';
+import { getRootActiveElement } from '../utils/root-active-element.js';
 import { RadioGroupOrientation } from './radio-group.options.js';
 
 /**
- * The base class used for constructing a fluent-radio-group custom element
+ * A Radio Group Custom HTML Element.
+ * Implements the {@link https://w3c.github.io/aria/#radiogroup | ARIA `radiogroup` role}.
+ *
  * @public
+ *
+ * @slot - The default slot for the radio group
  */
 export class RadioGroup extends FASTElement {
   /**
-   * sets radio layout styles
+   * The index of the checked radio, scoped to the enabled radios.
    *
-   * @public
-   * @remarks
-   * HTML Attribute: stacked
+   * @internal
    */
-  @attr({ mode: 'boolean' })
-  public stacked: boolean = false;
+  @observable
+  protected checkedIndex!: number;
 
   /**
-   * When true, the child radios will be immutable by user interaction. See {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/readonly | readonly HTML attribute} for more information.
-   * @public
-   * @remarks
-   * HTML Attribute: readonly
+   * Sets the checked state of the nearest enabled radio when the `checkedIndex` changes.
+   *
+   * @param prev - the previous index
+   * @param next - the current index
+   * @internal
    */
-  @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readOnly!: boolean;
+  protected checkedIndexChanged(prev: number | undefined, next: number): void {
+    if (!this.enabledRadios) {
+      return;
+    }
+
+    this.checkRadio(next);
+  }
+
+  /**
+   * Indicates that the value has been changed by the user.
+   */
+  private dirtyState: boolean = false;
 
   /**
    * Disables the radio group and child radios.
    *
    * @public
    * @remarks
-   * HTML Attribute: disabled
+   * HTML Attribute: `disabled`
    */
   @attr({ attribute: 'disabled', mode: 'boolean' })
-  public disabled!: boolean;
+  public disabled: boolean = false;
 
   /**
-   * The name of the radio group. Setting this value will set the name value
-   * for all child radio elements.
+   * Sets the `disabled` attribute on all child radios when the `disabled` property changes.
+   *
+   * @param prev - the previous disabled value
+   * @param next - the current disabled value
+   * @internal
+   */
+  protected disabledChanged(prev?: boolean, next?: boolean): void {
+    if (this.$fastController.isConnected) {
+      this.checkedIndex = -1;
+      this.radios?.forEach(radio => {
+        radio.disabled = radio.disabledAttribute || this.disabled;
+      });
+      this.restrictFocus();
+    }
+  }
+
+  /**
+   * The value of the checked radio.
    *
    * @public
    * @remarks
-   * HTML Attribute: name
+   * HTML Attribute: `value`
+   */
+  @attr({ attribute: 'value', mode: 'fromView' })
+  public initialValue?: string;
+
+  /**
+   * Sets the matching radio to checked when the value changes. If no radio matches the value, no radio will be checked.
+   *
+   * @param prev - the previous value
+   * @param next - the current value
+   */
+  public initialValueChanged(prev: string | undefined, next: string | undefined): void {
+    this.value = next ?? '';
+  }
+
+  /**
+   * The name of the radio group.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `name`
    */
   @attr
   public name!: string;
-  protected nameChanged(): void {
-    if (this.slottedRadioButtons) {
-      this.slottedRadioButtons.forEach((radio: HTMLElement) => {
-        radio.setAttribute('name', this.name);
+
+  /**
+   * Sets the `name` attribute on all child radios when the `name` property changes.
+   *
+   * @internal
+   */
+  protected nameChanged(prev: string | undefined, next: string | undefined): void {
+    if (this.isConnected && next) {
+      this.radios?.forEach(radio => {
+        radio.name = this.name;
       });
     }
   }
 
   /**
-   * The value of the checked radio
+   * The orientation of the group.
    *
    * @public
    * @remarks
-   * HTML Attribute: value
+   * HTML Attribute: `orientation`
    */
   @attr
-  public value!: string;
-  protected valueChanged(): void {
-    if (this.slottedRadioButtons) {
-      this.slottedRadioButtons.forEach((radio: HTMLElement) => {
-        if (radio instanceof Radio) {
-          if (radio.value === this.value) {
-            radio.checked = true;
-            this.selectedRadio = radio;
-          }
-        }
-      });
-    }
-    this.$emit('change');
+  public orientation?: RadioGroupOrientation;
+
+  /**
+   * Sets the ariaOrientation attribute when the orientation changes.
+   *
+   * @param prev - the previous orientation
+   * @param next - the current orientation
+   * @internal
+   */
+  public orientationChanged(prev: RadioGroupOrientation | undefined, next: RadioGroupOrientation | undefined): void {
+    this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
   }
 
   /**
-   * The orientation of the group
+   * The collection of all child radios.
+   *
+   * @public
+   */
+  @observable
+  public radios!: Radio[];
+
+  /**
+   * Updates the enabled radios collection when properties on the child radios change.
+   *
+   * @param prev - the previous radios
+   * @param next - the current radios
+   */
+  public radiosChanged(prev: Radio[] | undefined, next: Radio[] | undefined): void {
+    const setSize = next?.length;
+    if (!setSize) {
+      return;
+    }
+
+    if (!this.name && next.every(x => x.name === next[0].name)) {
+      this.name = next[0].name;
+    }
+
+    const checkedIndex = findLastIndex(this.enabledRadios, x => x.initialChecked);
+
+    next.forEach((radio, index) => {
+      radio.ariaPosInSet = `${index + 1}`;
+      radio.ariaSetSize = `${setSize}`;
+
+      if (this.initialValue && !this.dirtyState) {
+        radio.checked = radio.value === this.initialValue;
+      } else {
+        radio.checked = index === checkedIndex;
+      }
+
+      radio.name = this.name ?? radio.name;
+      radio.disabled = this.disabled || radio.disabledAttribute;
+    });
+
+    if (!this.dirtyState && this.initialValue) {
+      this.value = this.initialValue;
+    }
+
+    if (!this.value) {
+      // TODO: Switch to standard `Array.findLastIndex` when TypeScript 5 is available
+      this.checkedIndex = checkedIndex;
+    }
+
+    // prettier-ignore
+    const radioIds = next.map(radio => radio.id).join(' ').trim();
+    if (radioIds) {
+      this.setAttribute('aria-owns', radioIds);
+    }
+
+    Updates.enqueue(() => {
+      this.restrictFocus();
+    });
+  }
+
+  /**
+   * Indicates whether the radio group is required.
    *
    * @public
    * @remarks
-   * HTML Attribute: orientation
+   * HTML Attribute: `required`
    */
-  @attr
-  public orientation: RadioGroupOrientation = RadioGroupOrientation.horizontal;
-
-  @observable
-  public childItems!: HTMLElement[];
+  @attr({ mode: 'boolean' })
+  public required!: boolean;
 
   /**
-   * @internal
+   *
+   * @param prev - the previous required value
+   * @param next - the current required value
    */
-  @observable
-  public slottedRadioButtons!: HTMLElement[];
-  protected slottedRadioButtonsChanged(oldValue: unknown, newValue: HTMLElement[]): void {
-    if (this.slottedRadioButtons && this.slottedRadioButtons.length > 0) {
-      this.setupRadioButtons();
-    }
-  }
-
-  private selectedRadio!: Radio | null;
-  private focusedRadio!: Radio | null;
-  private direction!: Direction;
-
-  private get parentToolbar(): HTMLElement | null {
-    return this.closest('[role="toolbar"]');
-  }
-
-  private get isInsideToolbar(): boolean {
-    return (this.parentToolbar ?? false) as boolean;
-  }
-
-  private get isInsideFoundationToolbar(): boolean {
-    return !!this.parentToolbar?.hasOwnProperty('$fastController');
+  public requiredChanged(prev: boolean, next: boolean): void {
+    this.elementInternals.ariaRequired = next ? 'true' : null;
+    this.setValidity();
   }
 
   /**
-   * @internal
-   */
-  public connectedCallback(): void {
-    super.connectedCallback();
-    this.direction = getDirection(this);
-
-    this.setupRadioButtons();
-  }
-
-  public disconnectedCallback(): void {
-    this.slottedRadioButtons.forEach((radio: HTMLElement) => {
-      if (radio instanceof Radio) {
-        radio.removeEventListener('change', this.radioChangeHandler);
-      }
-    });
-  }
-
-  private setupRadioButtons(): void {
-    const checkedRadios: HTMLElement[] = this.slottedRadioButtons.filter((radio: HTMLElement) => {
-      return radio.hasAttribute('checked');
-    });
-    const numberOfCheckedRadios: number = checkedRadios ? checkedRadios.length : 0;
-    if (numberOfCheckedRadios > 1) {
-      const lastCheckedRadio: Radio = checkedRadios[numberOfCheckedRadios - 1] as Radio;
-      lastCheckedRadio.checked = true;
-    }
-    let foundMatchingVal: boolean = false;
-
-    this.slottedRadioButtons.forEach((radio: HTMLElement) => {
-      if (radio instanceof Radio) {
-        if (this.name !== undefined) {
-          radio.setAttribute('name', this.name);
-        }
-
-        if (this.value && this.value === radio.value) {
-          this.selectedRadio = radio;
-          this.focusedRadio = radio;
-          radio.checked = true;
-          radio.setAttribute('tabindex', '0');
-          foundMatchingVal = true;
-        } else {
-          if (!this.isInsideFoundationToolbar) {
-            radio.setAttribute('tabindex', '-1');
-          }
-          radio.checked = false;
-        }
-
-        radio.addEventListener('change', this.radioChangeHandler);
-      }
-    });
-
-    if (this.value === undefined && this.slottedRadioButtons.length > 0) {
-      const checkedRadios: HTMLElement[] = this.slottedRadioButtons.filter((radio: HTMLElement) => {
-        return radio.hasAttribute('checked');
-      });
-      const numberOfCheckedRadios: number = checkedRadios !== null ? checkedRadios.length : 0;
-      if (numberOfCheckedRadios > 0 && !foundMatchingVal) {
-        const lastCheckedRadio: Radio = checkedRadios[numberOfCheckedRadios - 1] as Radio;
-        lastCheckedRadio.checked = true;
-        this.focusedRadio = lastCheckedRadio;
-        lastCheckedRadio.setAttribute('tabindex', '0');
-      } else {
-        this.slottedRadioButtons[0].setAttribute('tabindex', '0');
-        this.focusedRadio = this.slottedRadioButtons[0] as Radio;
-      }
-    }
-  }
-
-  private radioChangeHandler = (e: Event): boolean | void => {
-    const changedRadio: Radio = e.target as Radio;
-
-    if (changedRadio.checked) {
-      this.slottedRadioButtons.forEach((radio: HTMLElement) => {
-        if (radio instanceof Radio && radio !== changedRadio) {
-          radio.checked = false;
-          if (!this.isInsideFoundationToolbar) {
-            radio.setAttribute('tabindex', '-1');
-          }
-        }
-      });
-      this.selectedRadio = changedRadio;
-      this.value = changedRadio.value;
-      changedRadio.setAttribute('tabindex', '0');
-      this.focusedRadio = changedRadio;
-    }
-    e.stopPropagation();
-  };
-
-  private moveToRadioByIndex = (group: HTMLElement[], index: number) => {
-    const radio: Radio = group[index] as Radio;
-    if (!this.isInsideToolbar) {
-      radio.setAttribute('tabindex', '0');
-      radio.checked = true;
-      this.selectedRadio = radio;
-    }
-    this.focusedRadio = radio;
-    radio.focus();
-  };
-
-  private moveRightOffGroup = () => {
-    (this.nextElementSibling as Radio)?.focus();
-  };
-
-  private moveLeftOffGroup = () => {
-    (this.previousElementSibling as Radio)?.focus();
-  };
-
-  /**
-   * @internal
-   */
-  public focusOutHandler = (e: FocusEvent): boolean | void => {
-    const group: HTMLElement[] = this.slottedRadioButtons;
-    const radio: Radio | null = e.target as Radio;
-    const index: number = radio !== null ? group.indexOf(radio) : 0;
-    const focusedIndex: number = this.focusedRadio ? group.indexOf(this.focusedRadio) : -1;
-
-    if (
-      (focusedIndex === 0 && index === focusedIndex) ||
-      (focusedIndex === group.length - 1 && focusedIndex === index)
-    ) {
-      if (!this.selectedRadio) {
-        this.focusedRadio = group[0] as Radio;
-        this.focusedRadio.setAttribute('tabindex', '0');
-        group.forEach((nextRadio: HTMLElement) => {
-          if (radio instanceof Radio && nextRadio !== this.focusedRadio) {
-            nextRadio.setAttribute('tabindex', '-1');
-          }
-        });
-      } else {
-        this.focusedRadio = this.selectedRadio;
-
-        if (!this.isInsideFoundationToolbar) {
-          this.selectedRadio.setAttribute('tabindex', '0');
-          group.forEach((nextRadio: HTMLElement) => {
-            if (nextRadio !== this.selectedRadio) {
-              nextRadio.setAttribute('tabindex', '-1');
-            }
-          });
-        }
-      }
-    }
-    return true;
-  };
-
-  /**
-   * @internal
-   */
-  public handleDisabledClick = (e: MouseEvent): void | boolean => {
-    // prevent focus events on items from the click handler when disabled
-    if (this.disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    return true;
-  };
-
-  /**
-   * @internal
-   */
-  public clickHandler = (e: MouseEvent): void | boolean => {
-    if (this.disabled) {
-      return;
-    }
-
-    e.preventDefault();
-    const radio: Radio | null = e.target as Radio;
-
-    if (radio && radio instanceof Radio) {
-      radio.checked = true;
-      radio.setAttribute('tabindex', '0');
-      this.selectedRadio = radio;
-      this.focusedRadio = radio;
-    }
-  };
-
-  private shouldMoveOffGroupToTheRight = (index: number, group: HTMLElement[], key: string): boolean => {
-    return index === group.length && this.isInsideToolbar && key === keyArrowRight;
-  };
-
-  private shouldMoveOffGroupToTheLeft = (group: HTMLElement[], key: string): boolean => {
-    const index = this.focusedRadio ? group.indexOf(this.focusedRadio) - 1 : 0;
-    return index < 0 && this.isInsideToolbar && key === keyArrowLeft;
-  };
-
-  private checkFocusedRadio = (): void => {
-    if (this.focusedRadio !== null && !this.focusedRadio.checked) {
-      this.focusedRadio.checked = true;
-      this.focusedRadio.setAttribute('tabindex', '0');
-      this.focusedRadio.focus();
-      this.selectedRadio = this.focusedRadio;
-    }
-  };
-
-  private moveRight = (e: KeyboardEvent): void => {
-    const group: HTMLElement[] = this.slottedRadioButtons;
-    let index: number = 0;
-
-    index = this.focusedRadio ? group.indexOf(this.focusedRadio) + 1 : 1;
-    if (this.shouldMoveOffGroupToTheRight(index, group, e.key)) {
-      this.moveRightOffGroup();
-      return;
-    } else if (index === group.length) {
-      index = 0;
-    }
-    /* looping to get to next radio that is not disabled */
-    /* matching native radio/radiogroup which does not select an item if there is only 1 in the group */
-    while (index < group.length && group.length > 1) {
-      if (!(group[index] as Radio).disabled) {
-        this.moveToRadioByIndex(group, index);
-        break;
-      } else if (this.focusedRadio && index === group.indexOf(this.focusedRadio)) {
-        break;
-      } else if (index + 1 >= group.length) {
-        if (this.isInsideToolbar) {
-          break;
-        } else {
-          index = 0;
-        }
-      } else {
-        index += 1;
-      }
-    }
-  };
-
-  private moveLeft = (e: KeyboardEvent): void => {
-    const group: HTMLElement[] = this.slottedRadioButtons;
-    let index: number = 0;
-
-    index = this.focusedRadio ? group.indexOf(this.focusedRadio) - 1 : 0;
-    index = index < 0 ? group.length - 1 : index;
-
-    if (this.shouldMoveOffGroupToTheLeft(group, e.key)) {
-      this.moveLeftOffGroup();
-      return;
-    }
-    /* looping to get to next radio that is not disabled */
-    while (index >= 0 && group.length > 1) {
-      if (!(group[index] as Radio).disabled) {
-        this.moveToRadioByIndex(group, index);
-        break;
-      } else if (this.focusedRadio && index === group.indexOf(this.focusedRadio)) {
-        break;
-      } else if (index - 1 < 0) {
-        index = group.length - 1;
-      } else {
-        index -= 1;
-      }
-    }
-  };
-
-  /**
-   * keyboard handling per https://w3c.github.io/aria-practices/#for-radio-groups-not-contained-in-a-toolbar
-   * navigation is different when there is an ancestor with role='toolbar'
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
-  public keydownHandler = (e: KeyboardEvent): boolean | void => {
-    const key = e.key;
+  public elementInternals: ElementInternals = this.attachInternals();
 
-    if (key in ArrowKeys && (this.isInsideFoundationToolbar || this.disabled)) {
+  /**
+   * A collection of child radios that are not disabled.
+   *
+   * @internal
+   */
+  public get enabledRadios(): Radio[] {
+    if (this.disabled) {
+      return [];
+    }
+
+    return this.radios?.filter(x => !x.disabled) ?? [];
+  }
+
+  /**
+   * The form-associated flag.
+   * @see {@link https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-face-example | Form-associated custom elements}
+   *
+   * @public
+   */
+  public static formAssociated = true;
+
+  /**
+   * The fallback validation message, taken from a native checkbox `<input>` element.
+   *
+   * @internal
+   */
+  private _validationFallbackMessage!: string;
+
+  /**
+   * The validation message. Uses the browser's default validation message for native checkboxes if not otherwise
+   * specified (e.g., via `setCustomValidity`).
+   *
+   * @internal
+   */
+  public get validationMessage(): string {
+    if (this.elementInternals.validationMessage) {
+      return this.elementInternals.validationMessage;
+    }
+
+    if (this.enabledRadios?.[0]?.validationMessage) {
+      return this.enabledRadios[0].validationMessage;
+    }
+
+    if (!this._validationFallbackMessage) {
+      const validationMessageFallbackControl = document.createElement('input');
+      validationMessageFallbackControl.type = 'radio';
+      validationMessageFallbackControl.required = true;
+      validationMessageFallbackControl.checked = false;
+
+      this._validationFallbackMessage = validationMessageFallbackControl.validationMessage;
+    }
+
+    return this._validationFallbackMessage;
+  }
+
+  /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
+  }
+
+  /**
+   * The current value of the checked radio.
+   *
+   * @public
+   */
+  public get value(): string | null {
+    Observable.notify(this, 'value');
+    return this.enabledRadios.find(x => x.checked)?.value ?? null;
+  }
+
+  public set value(next: string | null) {
+    const index = this.enabledRadios.findIndex(x => x.value === next);
+    this.checkedIndex = index;
+
+    if (this.$fastController.isConnected) {
+      this.setFormValue(next);
+      this.setValidity();
+    }
+
+    Observable.track(this, 'value');
+  }
+
+  /**
+   * Sets the checked state of all radios when any radio emits a `change` event.
+   *
+   * @param e - the change event
+   */
+  public changeHandler(e: Event): boolean | void {
+    if (this === e.target) {
       return true;
     }
 
-    switch (key) {
-      case keyEnter: {
-        this.checkFocusedRadio();
+    this.dirtyState = true;
+    const radioIndex = this.enabledRadios.indexOf(e.target as Radio);
+    this.checkRadio(radioIndex);
+    return true;
+  }
+
+  /**
+   * Checks the radio at the specified index.
+   *
+   * @param index - the index of the radio to check
+   * @internal
+   */
+  public checkRadio(index: number = this.checkedIndex): void {
+    let checkedIndex = this.checkedIndex;
+
+    this.enabledRadios.forEach((item, i) => {
+      const shouldCheck = i === index;
+      item.checked = shouldCheck;
+      if (shouldCheck) {
+        checkedIndex = i;
+      }
+    });
+
+    this.checkedIndex = checkedIndex;
+    this.setFormValue(this.value);
+    this.setValidity();
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Handles click events for the radio group.
+   *
+   * @param e - the click event
+   * @internal
+   */
+  public clickHandler(e: MouseEvent): boolean | void {
+    if (this === e.target) {
+      this.enabledRadios[Math.max(0, this.checkedIndex)]?.focus();
+    }
+
+    return true;
+  }
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'radiogroup';
+    this.elementInternals.ariaOrientation = this.orientation ?? RadioGroupOrientation.horizontal;
+  }
+
+  /**
+   * Focuses the checked radio or the first enabled radio.
+   *
+   * @internal
+   */
+  public focus() {
+    this.enabledRadios[Math.max(0, this.checkedIndex)]?.focus();
+  }
+
+  /**
+   * Enables tabbing through the radio group when the group receives focus.
+   *
+   * @param e - the focus event
+   * @internal
+   */
+  public focusinHandler(e: FocusEvent): boolean | void {
+    if (!this.disabled) {
+      this.enabledRadios.forEach(radio => {
+        radio.tabIndex = 0;
+      });
+    }
+
+    return true;
+  }
+
+  /**
+   * Sets the tabindex of the radios based on the checked state when the radio group loses focus.
+   *
+   * @param e - the focusout event
+   * @internal
+   */
+  public focusoutHandler(e: FocusEvent): boolean | void {
+    if (this.radios?.includes(e.relatedTarget as Radio) && this.radios?.some(x => x.checked)) {
+      this.restrictFocus();
+    }
+
+    return true;
+  }
+
+  formResetCallback(): void {
+    this.dirtyState = false;
+    this.checkedIndex = -1;
+    this.setFormValue(this.value);
+    this.setValidity();
+  }
+
+  private getEnabledIndexInBounds(index: number, upperBound = this.enabledRadios.length): number {
+    if (upperBound === 0) {
+      return -1;
+    }
+
+    return (index + upperBound) % upperBound;
+  }
+
+  /**
+   * Handles keydown events for the radio group.
+   *
+   * @param e - the keyboard event
+   * @internal
+   */
+  public keydownHandler(e: KeyboardEvent): boolean | void {
+    const isRtl = getDirection(this) === 'rtl';
+    const checkedIndex = this.enabledRadios.findIndex(x => x === getRootActiveElement(this)) ?? this.checkedIndex;
+    let increment = 0;
+
+    switch (e.key) {
+      case 'ArrowLeft': {
+        increment = isRtl ? 1 : -1;
         break;
       }
 
-      case keyArrowRight:
-      case keyArrowDown: {
-        if (this.direction === Direction.ltr) {
-          this.moveRight(e);
-        } else {
-          this.moveLeft(e);
-        }
+      case 'ArrowUp': {
+        increment = -1;
         break;
       }
 
-      case keyArrowLeft:
-      case keyArrowUp: {
-        if (this.direction === Direction.ltr) {
-          this.moveLeft(e);
-        } else {
-          this.moveRight(e);
-        }
+      case 'ArrowRight': {
+        increment = isRtl ? -1 : 1;
         break;
       }
 
-      default: {
-        return true;
+      case 'ArrowDown': {
+        increment = 1;
+        break;
+      }
+
+      case 'Tab': {
+        this.restrictFocus();
+        break;
+      }
+
+      case ' ': {
+        this.checkRadio();
+        break;
       }
     }
-  };
+
+    if (!increment) {
+      return true;
+    }
+
+    const nextIndex = checkedIndex + increment;
+    this.checkedIndex = this.getEnabledIndexInBounds(nextIndex);
+    this.enabledRadios[this.checkedIndex]?.focus();
+  }
+
+  /**
+   *
+   * @param e - the disabled event
+   */
+  disabledRadioHandler(e: CustomEvent): void {
+    if (e.detail === true && (e.target as Radio).checked) {
+      this.checkedIndex = -1;
+    }
+  }
+
+  /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
+   * Resets the `tabIndex` for all child radios when the radio group loses focus.
+   *
+   * @internal
+   */
+  private restrictFocus() {
+    let activeIndex = Math.max(this.checkedIndex, 0);
+    const focusedRadioIndex = this.enabledRadios.indexOf(getRootActiveElement(this) as Radio);
+
+    if (focusedRadioIndex !== -1) {
+      activeIndex = focusedRadioIndex;
+    }
+
+    activeIndex = this.getEnabledIndexInBounds(activeIndex);
+
+    this.enabledRadios.forEach((item, index) => {
+      item.tabIndex = index === activeIndex ? 0 : -1;
+    });
+  }
+
+  /**
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/setFormValue | `ElementInternals.setFormValue()`} method.
+   *
+   * @internal
+   */
+  public setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void {
+    this.elementInternals.setFormValue(value, value ?? state);
+  }
+
+  /**
+   * Sets the validity of the element.
+   *
+   * @param flags - Validity flags to set.
+   * @param message - Optional message to supply. If not provided, the element's `validationMessage` will be used.
+   * @param anchor - Optional anchor to use for the validation message.
+   *
+   * @internal
+   */
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
+    if (this.$fastController.isConnected) {
+      if (this.disabled || !this.required) {
+        this.elementInternals.setValidity({});
+        return;
+      }
+
+      this.elementInternals.setValidity(
+        { valueMissing: this.required && !this.value, ...flags },
+        message ?? this.validationMessage,
+        anchor ?? this.enabledRadios[0],
+      );
+    }
+  }
+
+  /**
+   * Updates the collection of child radios when the slot changes.
+   *
+   * @param e - the slot change event
+   * @internal
+   */
+  public slotchangeHandler(e: Event): void {
+    Updates.enqueue(() => {
+      this.radios = [...this.querySelectorAll('*')].filter(x => x instanceof Radio) as Radio[];
+    });
+  }
 }

@@ -27,6 +27,13 @@ import {
   tooltipOfXAxislabels,
   getNextColor,
   getColorFromToken,
+  findNumericMinMaxOfY,
+  createNumericYAxis,
+  IDomainNRange,
+  domainRangeOfNumericForAreaChart,
+  domainRangeOfDateForAreaLineVerticalBarChart,
+  createStringYAxis,
+  formatDate,
 } from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
@@ -75,6 +82,10 @@ export interface IAreaChartState extends IBasestate {
 }
 
 export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartState> {
+  public static defaultProps: Partial<IAreaChartProps> = {
+    useUTC: true,
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _calloutPoints: any;
   private _createSet: (data: ILineChartPoints[]) => {
@@ -187,12 +198,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           chartType={ChartTypes.AreaChart}
           calloutProps={calloutProps}
           legendBars={legends}
+          createYAxis={createNumericYAxis}
           isCalloutForStack
           xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
           tickParams={tickParams}
           maxOfYVal={stackedInfo.maxOfYVal}
           getGraphData={this._getGraphData}
+          getDomainNRangeValues={this._getDomainNRangeValues}
+          createStringYAxis={createStringYAxis}
           getmargins={this._getMargins}
+          getMinMaxOfYAxis={findNumericMinMaxOfY}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
           enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
@@ -232,6 +247,35 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: ILineChartPoints[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForAreaChart(points, margins, width, isRTL);
+    } else if (xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = domainRangeOfDateForAreaLineVerticalBarChart(
+        points,
+        margins,
+        width,
+        isRTL,
+        tickValues! as Date[],
+        chartType,
+        barWidth,
+      );
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
@@ -281,7 +325,8 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
 
     const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![0].data[index as number];
-    const formattedDate = pointToHighlight instanceof Date ? pointToHighlight.toLocaleString() : pointToHighlight;
+    const formattedDate =
+      pointToHighlight instanceof Date ? formatDate(pointToHighlight, this.props.useUTC) : pointToHighlight;
     const modifiedXVal = pointToHighlight instanceof Date ? pointToHighlight.getTime() : pointToHighlight;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = find(this._calloutPoints, (element: { x: string | number }) => {
@@ -876,7 +921,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
   private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
     const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
-    const formattedDate = x instanceof Date ? x.toLocaleString() : x;
+    const formattedDate = x instanceof Date ? formatDate(x, this.props.useUTC) : x;
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const found: any = this._calloutPoints.find((e: { x: string | number }) => e.x === modifiedXVal);
@@ -909,7 +954,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
     const point = line.data[pointIndex];
-    const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+    const formattedDate = point.x instanceof Date ? formatDate(point.x, this.props.useUTC) : point.x;
     const xValue = point.xAxisCalloutData || formattedDate;
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;

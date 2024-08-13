@@ -22,12 +22,15 @@ import { tsquery } from '@phenomnomnominal/tsquery';
 
 import tsConfigBaseAllGenerator from '../tsconfig-base-all/index';
 import { TsConfig } from '../../types';
-import { workspacePaths } from '../../utils';
+import { getNpmScope, workspacePaths } from '../../utils';
 import { SplitLibraryInTwoGeneratorSchema } from './schema';
 
 export { isSplitProject, assertStoriesProject } from './shared';
 
+type CLIOutput = typeof output;
+
 interface Options extends SplitLibraryInTwoGeneratorSchema {
+  npmScope: string;
   projectConfig: ReturnType<typeof readProjectConfiguration>;
   projectOffsetFromRoot: { old: string; updated: string };
   oldContent: {
@@ -44,7 +47,7 @@ const noop = () => {
   return;
 };
 
-function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
+function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema): CLIOutput {
   if (options.logs) {
     return output;
   }
@@ -54,7 +57,7 @@ function createOutputLogger(options: SplitLibraryInTwoGeneratorSchema) {
     note: noop,
     warn: noop,
     error: noop,
-  } as unknown as typeof output;
+  } as unknown as CLIOutput;
 }
 
 export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibraryInTwoGeneratorSchema) {
@@ -70,7 +73,7 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
   if (options.all) {
     const projects = getProjects(tree);
     const projectsToSplit = Array.from(projects).filter(([_, project]) =>
-      assertProject(tree, project, { warn: noop } as unknown as typeof output),
+      assertProject(tree, project, { warn: noop } as unknown as CLIOutput),
     );
 
     cliOutput.log({
@@ -107,19 +110,20 @@ export async function splitLibraryInTwoGenerator(tree: Tree, options: SplitLibra
 function splitLibraryInTwoInternal(
   tree: Tree,
   options: { projectName: string; project?: ProjectConfiguration },
-  logger: typeof output,
+  logger: CLIOutput,
 ) {
   const { projectName, project } = options;
   const projectConfig = project ?? readProjectConfiguration(tree, options.projectName);
 
   logger.log({ title: `Splitting library in two: ${projectConfig.name}`, color: 'magenta' });
 
-  if (!assertProject(tree, projectConfig, output)) {
+  if (!assertProject(tree, projectConfig, logger)) {
     return;
   }
 
   const packageJSON = readJson(tree, joinPathFragments(projectConfig.root, 'package.json'));
   const normalizedOptions = {
+    npmScope: getNpmScope(tree),
     projectName,
     projectConfig,
     projectOffsetFromRoot: {
@@ -143,7 +147,7 @@ function splitLibraryInTwoInternal(
 
 export default splitLibraryInTwoGenerator;
 
-function cleanup(tree: Tree, options: Options, logger: typeof output) {
+function cleanup(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'Cleaning up build assets...' });
   const oldProjectRoot = options.projectConfig.root;
   tree.delete(joinPathFragments(oldProjectRoot, 'dist'));
@@ -155,7 +159,7 @@ function cleanup(tree: Tree, options: Options, logger: typeof output) {
   tree.delete(joinPathFragments(oldProjectRoot, 'node_modules'));
 }
 
-function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
+function makeSrcLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'creating library/ project' });
 
   const oldProjectRoot = options.projectConfig.root;
@@ -163,11 +167,11 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
   const newProjectSourceRoot = joinPathFragments(newProjectRoot, 'src');
 
   visitNotIgnoredFiles(tree, oldProjectRoot, file => {
-    if (file.includes('/stories/') || file.includes('/.storybook/')) {
+    if (file.includes(path.normalize('/stories/')) || file.includes(path.normalize('/.storybook/'))) {
       return;
     }
 
-    const newFileName = `${newProjectRoot}/${path.relative(oldProjectRoot, file)}`;
+    const newFileName = joinPathFragments(newProjectRoot, path.relative(oldProjectRoot, file));
 
     tree.rename(file, newFileName);
   });
@@ -258,14 +262,16 @@ function makeSrcLibrary(tree: Tree, options: Options, logger: typeof output) {
 
   updateJson(tree, filePaths.rootTsConfig, (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[options.projectConfig.name!] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${options.projectConfig.name}`] = [
+      `${newProjectSourceRoot}/index.ts`,
+    ];
     return json;
   });
 
   updateCodeowners(tree, options);
 }
 
-function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output) {
+function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
   logger.log({ title: 'creating stories/ project' });
   const oldProjectRoot = options.projectConfig.root;
   const newProjectRoot = joinPathFragments(oldProjectRoot, 'stories');
@@ -295,7 +301,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
 
   const templates = {
     readme: stripIndents`
-      # ${newProjectName}
+      # @${options.npmScope}/${newProjectName}
 
       Storybook stories for ${options.projectConfig.root}
 
@@ -314,12 +320,12 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
       no public API available
     `,
     packageJson: {
-      name: newProjectName,
+      name: `@${options.npmScope}/${newProjectName}`,
       version: '0.0.0',
       private: true,
       scripts: {
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'storybook dev',
         'type-check': 'just-scripts type-check',
         lint: 'eslint src/',
         format: 'just-scripts prettier',
@@ -328,11 +334,11 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
       devDependencies: {
         ...storiesWorkspaceDeps,
         // always added
-        '@fluentui/react-storybook-addon': '*',
-        '@fluentui/react-storybook-addon-export-to-sandbox': '*',
-        '@fluentui/scripts-storybook': '*',
-        '@fluentui/eslint-plugin': '*',
-        '@fluentui/scripts-tasks': '*',
+        [`@${options.npmScope}/react-storybook-addon`]: '*',
+        [`@${options.npmScope}/react-storybook-addon-export-to-sandbox`]: '*',
+        [`@${options.npmScope}/scripts-storybook`]: '*',
+        [`@${options.npmScope}/eslint-plugin`]: '*',
+        [`@${options.npmScope}/scripts-tasks`]: '*',
       },
     },
     justConfig: stripIndents`
@@ -416,12 +422,12 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: typeof output)
 
   updateJson(tree, '/tsconfig.base.json', (json: TsConfig) => {
     json.compilerOptions.paths = json.compilerOptions.paths ?? {};
-    json.compilerOptions.paths[newProjectName] = [`${newProjectSourceRoot}/index.ts`];
+    json.compilerOptions.paths[`@${options.npmScope}/${newProjectName}`] = [`${newProjectSourceRoot}/index.ts`];
     return json;
   });
 }
 
-function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: typeof output) {
+function assertProject(tree: Tree, projectConfig: ProjectConfiguration, logger: Pick<CLIOutput, 'warn'>) {
   const tags = projectConfig.tags ?? [];
 
   if (projectConfig.projectType !== 'library') {
@@ -515,9 +521,12 @@ function getImportsFromSourceFiles(tree: Tree, root: string, filter: (file: stri
 
 function getWorkspaceDependencies(tree: Tree, imports: string[]) {
   const allProjects = getProjects(tree);
+  const npmScope = getNpmScope(tree);
+  const npmPackagePrefix = `@${npmScope}/`;
   const dependencies: Record<string, string> = {};
   imports.forEach(importPath => {
-    if (allProjects.has(importPath)) {
+    const projectName = importPath.replace(npmPackagePrefix, '');
+    if (importPath.startsWith(npmPackagePrefix) && allProjects.has(projectName)) {
       dependencies[importPath] = '*';
     }
   });
@@ -528,7 +537,7 @@ function getWorkspaceDependencies(tree: Tree, imports: string[]) {
 function getMissingDevDependenciesFromCypressAndJestFiles(
   tree: Tree,
   options: { sourceRoot: string; projectName: string; dependencies: Record<string, string> },
-  logger: typeof output,
+  logger: CLIOutput,
 ) {
   const { projectName, sourceRoot, dependencies } = options;
 

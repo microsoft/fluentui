@@ -1,0 +1,12 @@
+{
+  "extends": ["plugin:@fluentui/eslint-plugin/react"],
+  "root": true,
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "packageDir": [".", "../../../../"]
+      }
+    ]
+  }
+}

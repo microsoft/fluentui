@@ -1,22 +1,21 @@
 import { useId } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from './useTabsterAttributes';
-import { getModalizer, getRestorer, Types as TabsterTypes } from 'tabster';
+import { getModalizer, getRestorer, Types as TabsterTypes, RestorerTypes } from 'tabster';
 import { useTabster } from './useTabster';
 
 export interface UseModalAttributesOptions {
   /**
    * Traps focus inside the elements the attributes are applied.
-   * Prefer this to `legacyTrapFocus`
    * it forbids users to tab out of the focus trap into the actual browser.
    */
   trapFocus?: boolean;
 
   /**
    * Traps focus inside the elements the attributes are applied.
-   * This prop enables legacy behavior to match previous versions of Fluent and is not
-   * recommended for general use.
-   * Enabling `legacyTrapFocus` prevents users from tabbing out of the focus trap and into
-   * the actual browser. Prefer using `trapFocus` instead of this prop.
+   * This prop enables traditional force-focus behavior to match previous versions of Fluent.
+   * Without this, users can tab out of the focus trap and into the browser chrome.
+   * This matches the behavior of the native <dialog> element and inert.
+   * We recommend setting this to true based on user feedback and consistency.
    */
   legacyTrapFocus?: boolean;
 
@@ -51,7 +50,7 @@ export const useModalAttributes = (
 
   const id = useId('modal-', options.id);
   const modalAttributes = useTabsterAttributes({
-    restorer: { type: TabsterTypes.RestorerTypes.Source },
+    restorer: { type: RestorerTypes.Source },
     ...(trapFocus && {
       modalizer: {
         id,
@@ -63,7 +62,7 @@ export const useModalAttributes = (
   });
 
   const triggerAttributes = useTabsterAttributes({
-    restorer: { type: TabsterTypes.RestorerTypes.Target },
+    restorer: { type: RestorerTypes.Target },
   });
 
   return { modalAttributes, triggerAttributes };

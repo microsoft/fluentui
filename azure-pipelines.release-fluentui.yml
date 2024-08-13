@@ -88,7 +88,7 @@ extends:
                 displayName: build,test,lint northstar packages
                 inputs:
                   script: |
-                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel $(getconf _NPROCESSORS_ONLN) --nxBail --verbose
+                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --nxBail
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
@@ -161,7 +161,7 @@ extends:
               - task: AzureCLI@2
                 displayName: Upload to Azure
                 inputs:
-                  azureSubscription: 'Azure - fluentsite storage'
+                  azureSubscription: 'Azure - fluentsite storage - NEW'
                   scriptType: 'bash'
                   scriptLocation: 'inlineScript'
                   inlineScript: |

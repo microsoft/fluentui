@@ -5,9 +5,6 @@ import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from 
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';
 
-import '../text/define.js';
-import './define.js';
-
 const Person20Regular = html<StoryArgs<FluentTextInput>>`
   <svg
     fill="currentColor"
@@ -41,7 +38,7 @@ const storyTemplate = html<StoryArgs<FluentTextInput>>`
       name="${x => x.name}"
       pattern="${x => x.pattern}"
       placeholder="${x => x.placeholder}"
-      ?readonly="${x => x.readonly}"
+      ?readonly="${x => x.readOnly}"
       ?required="${x => x.required}"
       size="${x => x.size}"
       spellcheck="${x => x.spellcheck}"
@@ -123,6 +120,11 @@ export default {
       description: 'Sets the placeholder text',
       control: 'text',
     },
+    readOnly: {
+      description: 'Sets the readonly state',
+      control: 'boolean',
+    },
+    storyContent: { table: { disable: true } },
     type: {
       description: 'Sets the input type',
       table: {
@@ -246,7 +248,7 @@ export const Disabled: Story<FluentTextInput> = renderComponent(html<StoryArgs<F
 `);
 
 export const Required: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
-  <form id="form" action="#">
+  <form id="required-form" action="#">
     <fluent-text-input name="required-input" required>
       <span slot="end">${Person20Regular}</span>
       <fluent-label>Required Input</fluent-label>
@@ -255,8 +257,26 @@ export const Required: Story<FluentTextInput> = renderComponent(html<StoryArgs<F
   </form>
 `);
 
+export const ReadOnly: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <form id="readonly-form" action="#">
+    <fluent-text-input readonly>
+      <span slot="end">${Person20Regular}</span>
+      <fluent-label>Readonly Input</fluent-label>
+    </fluent-text-input>
+    <button type="submit">Submit</button>
+  </form>
+`);
+
 export const WithoutLabel: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <fluent-text-input>
     <span slot="end">${Person20Regular}</span>
+  </fluent-text-input>
+`);
+
+export const slottedEndButton: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <fluent-text-input>
+    <fluent-button slot="start" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-button slot="end" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-label>Input with slotted end button</fluent-label>
   </fluent-text-input>
 `);

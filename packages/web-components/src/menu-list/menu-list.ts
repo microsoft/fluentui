@@ -1,6 +1,8 @@
 import { FASTElement, Observable, observable, Updates } from '@microsoft/fast-element';
 import { isHTMLElement, keyArrowDown, keyArrowUp, keyEnd, keyHome } from '@microsoft/fast-web-utilities';
-import { MenuItem, MenuItemColumnCount, MenuItemRole } from '../menu-item/index.js';
+import type { MenuItemColumnCount } from '../menu-item/menu-item.js';
+import { MenuItem } from '../menu-item/menu-item.js';
+import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 /**
  * A Menu Custom HTML Element.
@@ -11,6 +13,13 @@ import { MenuItem, MenuItemColumnCount, MenuItemRole } from '../menu-item/index.
  * @public
  */
 export class MenuList extends FASTElement {
+  /**
+   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
+   *
+   * @internal
+   */
+  public elementInternals: ElementInternals = this.attachInternals();
+
   /**
    * @internal
    */
@@ -27,8 +36,6 @@ export class MenuList extends FASTElement {
 
   protected menuItems: Element[] | undefined;
 
-  private expandedItem: MenuItem | null = null;
-
   /**
    * The index of the focusable element in the items array
    * defaults to -1
@@ -36,6 +43,12 @@ export class MenuList extends FASTElement {
   private focusIndex: number = -1;
 
   private static focusableElementRoles = MenuItemRole;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'menu';
+  }
 
   /**
    * @internal
@@ -48,7 +61,7 @@ export class MenuList extends FASTElement {
       this.setItems();
     });
 
-    this.addEventListener('change', this.changeHandler);
+    this.addEventListener('change', this.changedMenuItemHandler);
   }
 
   /**
@@ -58,7 +71,7 @@ export class MenuList extends FASTElement {
     super.disconnectedCallback();
     this.removeItemListeners();
     this.menuItems = undefined;
-    this.removeEventListener('change', this.changeHandler);
+    this.removeEventListener('change', this.changedMenuItemHandler);
   }
 
   /**
@@ -79,18 +92,6 @@ export class MenuList extends FASTElement {
    */
   public focus(): void {
     this.setFocus(0, 1);
-  }
-
-  /**
-   * Collapses any expanded menu items.
-   *
-   * @public
-   */
-  public collapseExpandedItem(): void {
-    if (this.expandedItem !== null) {
-      this.expandedItem.expanded = false;
-      this.expandedItem = null;
-    }
   }
 
   /**
@@ -117,7 +118,6 @@ export class MenuList extends FASTElement {
         // set focus on first item
         this.setFocus(0, 1);
         return;
-
       default:
         // if we are not handling the event, do not prevent default
         return true;
@@ -130,7 +130,6 @@ export class MenuList extends FASTElement {
    */
   public handleFocusOut = (e: FocusEvent) => {
     if (!this.contains(e.relatedTarget as Element) && this.menuItems !== undefined) {
-      this.collapseExpandedItem();
       // find our first focusable element
       const focusIndex: number = this.menuItems.findIndex(this.isFocusableElement);
       // set the current focus index's tabindex to -1
@@ -152,40 +151,9 @@ export class MenuList extends FASTElement {
     }
   };
 
-  private handleExpandedChanged = (e: Event): void => {
-    if (
-      e.defaultPrevented ||
-      e.target === null ||
-      this.menuItems === undefined ||
-      this.menuItems.indexOf(e.target as Element) < 0
-    ) {
-      return;
-    }
-
-    e.preventDefault();
-    const changedItem: MenuItem = e.target as any as MenuItem;
-
-    // closing an expanded item without opening another
-    if (this.expandedItem !== null && changedItem === this.expandedItem && changedItem.expanded === false) {
-      this.expandedItem = null;
-      return;
-    }
-
-    if (changedItem.expanded) {
-      if (this.expandedItem !== null && this.expandedItem !== changedItem) {
-        this.expandedItem.expanded = false;
-      }
-      this.menuItems[this.focusIndex].setAttribute('tabindex', '-1');
-      this.expandedItem = changedItem;
-      this.focusIndex = this.menuItems.indexOf(changedItem);
-      changedItem.setAttribute('tabindex', '0');
-    }
-  };
-
   private removeItemListeners(items: HTMLElement[] = this.items): void {
     items.forEach(item => {
       item.removeEventListener('focus', this.handleItemFocus);
-      item.removeEventListener('expanded-changed', this.handleExpandedChanged);
       Observable.getNotifier(item).unsubscribe(this, 'hidden');
     });
   }
@@ -221,7 +189,6 @@ export class MenuList extends FASTElement {
 
     menuItems.forEach((item: HTMLElement, index: number) => {
       item.setAttribute('tabindex', index === 0 ? '0' : '-1');
-      item.addEventListener('expanded-change', this.handleExpandedChanged);
       item.addEventListener('focus', this.handleItemFocus);
     });
 
@@ -231,20 +198,22 @@ export class MenuList extends FASTElement {
      * used to set the indent of the element's start slot content.
      */
     const filteredMenuListItems = this.menuItems?.filter(this.isMenuItemElement);
+    const indent: MenuItemColumnCount = filteredMenuListItems?.reduce<MenuItemColumnCount>((accum, current) => {
+      const elementValue = MenuList.elementIndent(current as HTMLElement);
 
-    filteredMenuListItems?.forEach((item: HTMLElement, index: number) => {
-      const indent: MenuItemColumnCount = filteredMenuListItems?.reduce<MenuItemColumnCount>((accum, current) => {
-        const elementValue = MenuList.elementIndent(current as HTMLElement);
+      return Math.max(accum, elementValue as number) as MenuItemColumnCount;
+    }, 0);
 
-        return Math.max(accum, elementValue as number) as MenuItemColumnCount;
-      }, 0);
-
+    filteredMenuListItems?.forEach((item: HTMLElement) => {
       if (item instanceof MenuItem) {
         item.setAttribute('data-indent', `${indent}`);
       }
     });
   }
 
+  /**
+   * Method for Observable changes to the hidden attribute of child elements
+   */
   public handleChange(source: any, propertyName: string) {
     if (propertyName === 'hidden') {
       this.setItems();
@@ -252,9 +221,9 @@ export class MenuList extends FASTElement {
   }
 
   /**
-   * handle change from child element
+   * Handle change from child MenuItem element and set radio group behavior
    */
-  private changeHandler = (e: Event): void => {
+  private changedMenuItemHandler = (e: Event): void => {
     if (this.menuItems === undefined) {
       return;
     }

@@ -741,4 +741,17 @@ runTest('Timezone related test cases', () => {
       },
     );
   });
+
+  runTest('Should return proper min and max for y axis', () => {
+    const instance = new HeatMapChartBase({
+      data: HeatMapDataNumaricPoints,
+      domainValuesForColorScale,
+      rangeValuesForColorScale,
+    });
+    expect(instance).toBeDefined();
+    const result = instance._getMinMaxOfYAxis();
+    expect(result).toBeDefined();
+    expect(result.startValue).toEqual(0);
+    expect(result.endValue).toEqual(0);
+  });
 });

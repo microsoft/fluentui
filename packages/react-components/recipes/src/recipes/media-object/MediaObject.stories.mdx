@@ -25,7 +25,7 @@ This recipe focuses on other uses of this patterns and will show you how to crea
 > **\*\*Note:\*\*** This recipe is meant to provide a way to use custom media. If you want to use
 > `Avatar` or `PresenceBadge` as media, please refer to our <LinkTo kind="components-persona--default">Persona component</LinkTo>.
 
-## **Steps**
+## Steps
 
 There are two ways to build a Media Object, you can use a grid layout or a flex layout. We will cover both in this
 recipe. There are upsides and downsides to both, but the main difference is that grid layout uses less DOM than the
@@ -199,7 +199,7 @@ const MediaObject: React.FC<{ text?: string }> = ({ children, text }) => {
 };
 ```
 
-## **Variants**
+## Variants
 
 There are a few common variants that you might want to use when building a Media Object. These are some of them:
 
@@ -220,7 +220,7 @@ There are also vertical alignment variations, these include start and center as 
   <TextAlignmentVariations />
 </TemplateExample>
 
-## **Best practices**
+## Best practices
 
 - The higher up the text line, the more important it is. You should not apply higher weights to the lines underneath.
 - When using `grid-template-columns` make sure the DOM makes sense and not differ from how the grid is placing them. Do

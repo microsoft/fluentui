@@ -1,4 +1,4 @@
-import { mergeClasses } from '@griffel/react';
+import { mergeClasses } from '@fluentui/react-components';
 import * as React from 'react';
 
 import { ColorInfo } from './types';

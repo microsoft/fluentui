@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: re-enable deprecation/deprecation for files with styles",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

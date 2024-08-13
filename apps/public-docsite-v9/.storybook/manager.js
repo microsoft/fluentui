@@ -1,16 +1,18 @@
-import { addons } from '@storybook/addons';
+import { addons } from '@storybook/manager-api';
 import fluentStorybookTheme from './theme';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { STORY_CHANGED, STORY_ERRORED, STORY_MISSING } from '@storybook/core-events';
 
 addons.setConfig({
+  enableShortcuts: false,
   theme: fluentStorybookTheme,
   showPanel: false,
+  showToolbar: false,
 });
 
 addons.register('application-insights', api => {
   if (process.env.NODE_ENV === 'production') {
-    const { STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY } = process.env;
+    const STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY = process.env.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY;
 
     if (STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY) {
       const appInsights = new ApplicationInsights({

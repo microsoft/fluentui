@@ -68,14 +68,12 @@ extends:
                   filePath: yarn-ci.sh
                 displayName: yarn
 
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
               - script: |
-                  yarn lage format:check lint test build --to @fluentui/web-components
-                displayName: Build, [test], Lint
+                  yarn nx run-many -t format:check lint test build -p web-components --nxBail
+                displayName: Build, Test, Lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-web-components.config.js
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-web-components.config.js --message 'release: applying package updates - web-components'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)

@@ -5,8 +5,13 @@
   "type": "commonjs",
   "generators": "./generators.json",
   "scripts": {
-    "test": "nx run @fluentui/workspace-plugin:test",
-    "type-check": "nx run @fluentui/workspace-plugin:type-check",
-    "lint": "eslint --ext .ts,.js,.json ."
-  }
+    "test": "jest --passWithNoTests",
+    "type-check": "node  ./scripts/type-check.mjs",
+    "lint": "eslint --ext .ts,.js,.json .",
+    "check-graph": "node ./scripts/check-dep-graph.js"
+  },
+  "dependencies": {
+    "@nx/devkit": "~19.3.2"
+  },
+  "devDependencies": {}
 }

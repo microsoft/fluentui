@@ -13,7 +13,7 @@ test.describe('Spinner', () => {
 
     element = page.locator('fluent-spinner');
 
-    root = page.locator('#root');
+    root = page.locator('#storybook-root');
 
     await page.goto(fixtureURL('components-spinner--spinner'));
   });
@@ -37,6 +37,21 @@ test.describe('Spinner', () => {
     });
 
     await expect(element).toHaveJSProperty('appearance', 'inverted');
+  });
+
+  test('should add a custom state matching the `appearance` attribute when provided', async () => {
+    await element.evaluate((node: Spinner) => {
+      node.appearance = 'primary';
+    });
+
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('primary'))).toBe(true);
+
+    await element.evaluate((node: Spinner) => {
+      node.appearance = 'inverted';
+    });
+
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('primary'))).toBe(false);
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('inverted'))).toBe(true);
   });
 
   test('should set and retrieve the `size` property correctly to tiny', async () => {
@@ -85,5 +100,27 @@ test.describe('Spinner', () => {
     });
 
     await expect(element).toHaveJSProperty('size', 'huge');
+  });
+
+  test('should add a custom state matching the `size` attribute when provided', async () => {
+    await element.evaluate((node: Spinner) => {
+      node.size = 'tiny';
+    });
+
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('tiny'))).toBe(true);
+
+    await element.evaluate((node: Spinner) => {
+      node.size = 'small';
+    });
+
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('tiny'))).toBe(false);
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('small'))).toBe(true);
+
+    await element.evaluate((node: Spinner) => {
+      node.size = 'huge';
+    });
+
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('small'))).toBe(false);
+    expect(await element.evaluate((node: Spinner) => node.elementInternals.states.has('huge'))).toBe(true);
   });
 });

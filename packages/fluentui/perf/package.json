@@ -9,7 +9,7 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-northstar": "*",
     "lodash": "^4.17.15",
-    "minimatch": "^3.0.4"
+    "minimatch": "^3.1.2"
   },
   "devDependencies": {
     "@fluentui/scripts-babel": "*",
@@ -20,8 +20,8 @@
     "access": "public"
   },
   "scripts": {
-    "perf:test": "cross-env PERF=true gulp perf --times=100",
-    "perf:test:debug": "cross-env PERF=true gulp perf:debug --debug",
+    "test-perf": "cross-env PERF=true gulp perf --times=100",
+    "test-perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "type-check": "tsc -p . --noEmit --baseUrl ."
