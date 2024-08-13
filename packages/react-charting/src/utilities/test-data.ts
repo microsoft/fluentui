@@ -130,7 +130,21 @@ export const pointsDC: IChartDataPoint[] = [
   { legend: 'third', data: 45000, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
 ];
 
+export const pointsDCElevateMinimumsExample: IChartDataPoint[] = [
+  { legend: 'first', data: 39000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
+  { legend: 'second', data: 20, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 20, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
+  { legend: 'fourth', data: 20, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
+  { legend: 'fifth', data: 20, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
+  { legend: 'sixth', data: 20, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
+];
+
 export const chartPointsDC: IChartProps = {
+  chartTitle: 'Donut chart example',
+  chartData: pointsDC,
+};
+
+export const chartPointsDCElevateMinimums: IChartProps = {
   chartTitle: 'Donut chart example',
   chartData: pointsDC,
 };

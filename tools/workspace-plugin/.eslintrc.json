@@ -1,7 +1,6 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/node"],
   "root": true,
-  "ignorePatterns": ["!**/*"],
   "rules": {
     "import/no-extraneous-dependencies": "off",
     "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_", "argsIgnorePattern": "^_" }]
@@ -10,7 +9,9 @@
     {
       "files": "*.json",
       "parser": "jsonc-eslint-parser",
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/naming-convention": "off"
+      }
     },
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -18,7 +19,11 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "rules": {}
+      "rules": {
+        "@typescript-eslint/await-thenable": "error",
+        "@typescript-eslint/no-misused-promises": "error",
+        "@typescript-eslint/no-floating-promises": "error"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

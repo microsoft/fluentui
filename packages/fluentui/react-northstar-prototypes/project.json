@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-northstar-prototypes",
+  "name": "react-northstar-prototypes",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

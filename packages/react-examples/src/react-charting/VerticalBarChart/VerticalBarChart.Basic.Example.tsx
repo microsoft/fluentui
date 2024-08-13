@@ -4,12 +4,15 @@ import {
   IVerticalBarChartProps,
   IVerticalBarChartDataPoint,
   ILineChartLineOptions,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Label } from '@fluentui/react';
 
 interface IVerticalChartState {
   width: number;
@@ -110,7 +113,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 40000,
         y: 13000,
         legend: 'Bananas',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '5%',
       },
@@ -118,7 +121,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 52000,
         y: 43000,
         legend: 'Giraffes',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '18%',
         lineData: {
@@ -142,7 +145,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 80000,
         y: 20000,
         legend: 'Elephants',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color11),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '8%',
         lineData: {
@@ -154,7 +157,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         x: 92000,
         y: 45000,
         legend: 'Monkeys',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color6),
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '19%',
         lineData: {
@@ -170,11 +173,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <>
-        <p>
-          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-          So instead of a numeric value, the callout will show the date that is passed in the{' '}
-          <code>xAxisCalloutData</code> property.
-        </p>
+        <Label>
+          In this example the xAxisCalloutData property overrides the x value that is shown on the callout. So instead
+          of a numeric value, the callout will show the date that is passed in the xAxisCalloutData property.
+        </Label>
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"

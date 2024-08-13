@@ -62,16 +62,16 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   }
 
   if (hasSchemaFlag(validatedSchema, 'all')) {
-    runBatchMigration(tree, userLog);
+    await runBatchMigration(tree, userLog);
   }
 
   if (hasSchemaFlag(validatedSchema, 'name')) {
     const projectNames = validatedSchema.name.split(',').filter(Boolean);
 
     if (projectNames.length > 1) {
-      runBatchMigration(tree, userLog, projectNames);
+      await runBatchMigration(tree, userLog, projectNames);
     } else {
-      runMigrationOnProject(tree, validatedSchema, userLog);
+      await runMigrationOnProject(tree, validatedSchema, userLog);
     }
   }
 
@@ -91,20 +91,20 @@ export default async function (tree: Tree, schema: MigrateConvergedPkgGeneratorS
   };
 }
 
-function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]) {
+async function runBatchMigration(tree: Tree, userLog: UserLog, projectNames?: string[]) {
   const projects = getProjects(tree, projectNames);
 
-  projects.forEach((projectConfig, projectName) => {
+  for (const [projectName, projectConfig] of projects) {
     if (!isPackageConverged(tree, projectConfig)) {
       userLog.push({ type: 'error', message: `${projectName} is not converged package. Skipping migration...` });
-      return;
+      continue;
     }
 
-    runMigrationOnProject(tree, { name: projectName }, userLog);
-  });
+    await runMigrationOnProject(tree, { name: projectName }, userLog);
+  }
 }
 
-function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: UserLog) {
+async function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: UserLog) {
   const options = normalizeOptions(tree, schema);
 
   if (options.owner) {
@@ -137,7 +137,7 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
   // setup storybook
   setupStorybook(tree, options);
 
-  setupCypress(tree, options);
+  await setupCypress(tree, options);
 
   setupBabel(tree, options);
 
@@ -361,7 +361,7 @@ const templates = {
       extends: './tsconfig.json',
       compilerOptions: {
         isolatedModules: false,
-        types: ['node', 'cypress', 'cypress-storybook/cypress', 'cypress-real-events'],
+        types: ['node', 'cypress', 'cypress-real-events'],
         lib: ['ES2019', 'dom'],
       },
       include: ['**/*.cy.ts', '**/*.cy.tsx'],
@@ -818,7 +818,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
     updateJson(tree, options.paths.storybook.tsconfig, (json: TsConfig) => {
       json.compilerOptions.types = json.compilerOptions.types || [];
 
-      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []), 'storybook__addons');
+      json.compilerOptions.types.push(...(libTsConfig.compilerOptions.types || []));
       json.compilerOptions.types = uniqueArray(json.compilerOptions.types);
 
       return json;
@@ -850,7 +850,7 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
 
     updateJson(tree, options.paths.packageJson, (json: PackageJson) => {
       const scripts = {
-        storybook: `start-storybook`,
+        storybook: `storybook dev`,
         start: 'yarn storybook',
       };
       json.scripts = json.scripts ?? {};

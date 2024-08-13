@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { HeatMapChart, IHeatMapChartDataPoint, IHeatMapChartProps } from '@fluentui/react-charting';
+import {
+  HeatMapChart,
+  IHeatMapChartDataPoint,
+  IHeatMapChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
+import { Label } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const yPoint: string[] = ['CHN', 'IND', 'USA', 'IDN', 'PAK'];
@@ -112,7 +119,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
           onChange={this._onHeightChange}
           aria-valuetext={`ChangeHeightSlider${this.state.height}`}
         />
-        <p>Heat map showing population growth over decades</p>
+        <Label>Heat map showing population growth over decades</Label>
         <div style={rootStyle}>
           <HeatMapChart
             chartTitle="Heat map chart custom accessibility example"
@@ -122,7 +129,10 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
             width={this.state.width}
             height={this.state.height}
             domainValuesForColorScale={[0, 1500]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            rangeValuesForColorScale={[
+              getColorFromToken(DataVizPalette.color6),
+              getColorFromToken(DataVizPalette.color10),
+            ]}
             enableReflow={true}
           />
         </div>

@@ -8,6 +8,7 @@ import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
 import { tokenizeWithParentheses } from './tokenizeWithParentheses';
+import { ShadowConfig } from './shadowConfig';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -72,9 +73,15 @@ function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
     }, selectorWithGlobals);
 }
 
+function isSelector(potentialSelector: string): boolean {
+  return potentialSelector.indexOf(':global(') >= 0 || potentialSelector.indexOf(':') === 0;
+}
+
 function expandSelector(newSelector: string, currentSelector: string): string {
   if (newSelector.indexOf(':global(') >= 0) {
     return newSelector.replace(globalSelectorRegExp, '$1');
+  } else if (newSelector.indexOf(':host(') === 0) {
+    return newSelector;
   } else if (newSelector.indexOf(':') === 0) {
     return currentSelector + newSelector;
   } else if (newSelector.indexOf('&') < 0) {
@@ -84,24 +91,34 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
-function extractSelector(currentSelector: string, rules: IRuleSet = { __order: [] }, selector: string, value: IStyle) {
+function extractSelector(
+  currentSelector: string,
+  rules: IRuleSet = { __order: [] },
+  selector: string,
+  value: IStyle,
+  stylesheet: Stylesheet,
+) {
   if (selector.indexOf('@') === 0) {
     selector = selector + '{' + currentSelector;
-    extractRules([value], rules, selector);
+    extractRules([value], rules, selector, stylesheet);
   } else if (selector.indexOf(',') > -1) {
     expandCommaSeparatedGlobals(selector)
       .split(',')
       .map((s: string) => s.trim())
       .forEach((separatedSelector: string) =>
-        extractRules([value], rules, expandSelector(separatedSelector, currentSelector)),
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), stylesheet),
       );
   } else {
-    extractRules([value], rules, expandSelector(selector, currentSelector));
+    extractRules([value], rules, expandSelector(selector, currentSelector), stylesheet);
   }
 }
 
-function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
-  const stylesheet = Stylesheet.getInstance();
+function extractRules(
+  args: IStyle[],
+  rules: IRuleSet = { __order: [] },
+  currentSelector: string = '&',
+  stylesheet: Stylesheet,
+): IRuleSet {
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
@@ -116,29 +133,28 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules, currentSelector);
+        extractRules(expandedRules, rules, currentSelector, stylesheet);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
-      extractRules(arg, rules, currentSelector);
+      extractRules(arg, rules, currentSelector, stylesheet);
     } else {
       for (const prop in arg as any) {
         if ((arg as any).hasOwnProperty(prop)) {
           const propValue = (arg as any)[prop];
-
           if (prop === 'selectors') {
             // every child is a selector.
             const selectors: { [key: string]: IStyle } = (arg as any).selectors;
 
             for (const newSelector in selectors) {
               if (selectors.hasOwnProperty(newSelector)) {
-                extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], stylesheet);
               }
             }
-          } else if (typeof propValue === 'object') {
+          } else if (typeof propValue === 'object' || isSelector(prop)) {
             // prop is a selector.
-            if (propValue !== null) {
-              extractSelector(currentSelector, rules, prop, propValue);
+            if (propValue !== null && propValue !== undefined) {
+              extractSelector(currentSelector, rules, prop, propValue, stylesheet);
             }
           } else {
             if (propValue !== undefined) {
@@ -244,11 +260,11 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
-  const rules: IRuleSet = extractRules(args);
+  const stylesheet = options.stylesheet ?? Stylesheet.getInstance(options.shadowConfig);
+  const rules: IRuleSet = extractRules(args, undefined, undefined, stylesheet);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance();
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -277,8 +293,13 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
  * @param specificityMultiplier Number of times classname selector is repeated in the css rule.
  * This is to increase css specificity in case it's needed. Default to 1.
  */
-export function applyRegistration(registration: IRegistration, specificityMultiplier: number = 1): void {
-  const stylesheet = Stylesheet.getInstance();
+export function applyRegistration(
+  registration: IRegistration,
+  specificityMultiplier: number = 1,
+  shadowConfig?: ShadowConfig,
+  sheet?: Stylesheet,
+): void {
+  const stylesheet = sheet ?? Stylesheet.getInstance(shadowConfig);
   const { className, key, args, rulesToInsert } = registration;
 
   if (rulesToInsert) {
@@ -301,7 +322,7 @@ export function applyRegistration(registration: IRegistration, specificityMultip
 export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
   const registration = styleToRegistration(options, ...args);
   if (registration) {
-    applyRegistration(registration, options.specificityMultiplier);
+    applyRegistration(registration, options.specificityMultiplier, options.shadowConfig, options.stylesheet);
 
     return registration.className;
   }

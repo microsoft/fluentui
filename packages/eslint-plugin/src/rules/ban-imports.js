@@ -1,15 +1,15 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../utils/createRule');
 
 // Nasty syntax required for type imports until https://github.com/microsoft/TypeScript/issues/22160 is implemented.
 // For some reason just importing TSESTree and accessing properties off that doesn't work.
 /**
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ExportSpecifier} ExportSpecifier
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.Identifier} Identifier
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportDeclaration} ImportDeclaration
- * @typedef {import("@typescript-eslint/typescript-estree").TSESTree.ImportSpecifier} ImportSpecifier
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ExportNamedDeclaration} ExportNamedDeclaration
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ExportSpecifier} ExportSpecifier
+ * @typedef {import("@typescript-eslint/utils").TSESTree.Identifier} Identifier
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ImportDeclaration} ImportDeclaration
+ * @typedef {import("@typescript-eslint/utils").TSESTree.ImportSpecifier} ImportSpecifier
  *
  * @typedef {{
  *   path?: string;
@@ -31,8 +31,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Ban importing (or re-exporting) certain identifiers from certain paths or modules.',
-      category: 'Best Practices',
-      recommended: false,
     },
     messages: {
       pathNotAllowed: "{{verb}} from '{{path}}' is not allowed{{message}}",

@@ -4,15 +4,14 @@
   "private": true,
   "description": "Visual regression tests for @fluentui/react-components",
   "scripts": {
-    "build": "build-storybook --no-manager-cache -o dist/storybook",
+    "build-storybook": "storybook build -o dist/storybook",
     "clean": "just-scripts clean",
     "format": "prettier . -w --ignore-path ../../.prettierignore",
     "lint": "just-scripts lint",
-    "start": "start-storybook",
+    "start": "storybook dev",
     "test": "just-scripts test",
-    "type-check": "tsc",
-    "vr:build": "yarn build",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "type-check": "tsc -p . --noEmit --baseUrl .",
+    "test-vr": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -34,7 +33,7 @@
     "@fluentui/react-divider": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-icons": "^2.0.224",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-image": "*",
     "@fluentui/react-infolabel": "*",
     "@fluentui/react-input": "*",
@@ -49,7 +48,6 @@
     "@fluentui/react-progress": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-radio": "*",
-    "@fluentui/react-search-preview": "*",
     "@fluentui/react-select": "*",
     "@fluentui/react-shared-contexts": "*",
     "@fluentui/react-skeleton": "*",
@@ -58,6 +56,7 @@
     "@fluentui/react-spinbutton": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",
+    "@fluentui/react-swatch-picker": "*",
     "@fluentui/react-switch": "*",
     "@fluentui/react-table": "*",
     "@fluentui/react-tabs": "*",
@@ -71,11 +70,14 @@
     "@fluentui/react-toolbar": "*",
     "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
-    "@griffel/react": "^1.5.14",
+    "@griffel/react": "^1.5.22",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0",
     "@fluentui/react-breadcrumb": "*",
-    "@fluentui/react-rating": "*"
+    "@fluentui/react-rating": "*",
+    "@fluentui/react-search": "*",
+    "@fluentui/react-teaching-popover": "*",
+    "@fluentui/react-tag-picker": "*"
   }
 }

@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
+export default {
+  title: 'Components/ChoiceGroup',
+};
+
 const options: IChoiceGroupOption[] = [
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },

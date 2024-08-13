@@ -1,8 +1,90 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 10 Jan 2024 07:28:48 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Jun 2024 07:33:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.19.0)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.2..@fluentui/eslint-plugin_v1.19.0)
+
+### Minor changes
+
+- feat: add eslint react-compiler ([PR #31457](https://github.com/microsoft/fluentui/pull/31457) by seanmonahan@microsoft.com)
+
+## [1.18.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.2)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.1..@fluentui/eslint-plugin_v1.18.2)
+
+### Patches
+
+- chore: migrate to typescript-eslint v5 and refactor experimental-tools to tools api usage ([PR #31517](https://github.com/microsoft/fluentui/pull/31517) by martinhochel@microsoft.com)
+
+## [1.18.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.1)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.18.0..@fluentui/eslint-plugin_v1.18.1)
+
+### Patches
+
+- chore: re-enable deprecation/deprecation for files with styles ([PR #31459](https://github.com/microsoft/fluentui/pull/31459) by olfedias@microsoft.com)
+
+## [1.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.18.0)
+
+Fri, 24 May 2024 07:28:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.9..@fluentui/eslint-plugin_v1.18.0)
+
+### Minor changes
+
+- feat: disallow direct access to globals ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+## [1.17.9](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.9)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.8..@fluentui/eslint-plugin_v1.17.9)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31447](https://github.com/microsoft/fluentui/pull/31447) by olfedias@microsoft.com)
+
+## [1.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.8)
+
+Mon, 20 May 2024 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.7..@fluentui/eslint-plugin_v1.17.8)
+
+### Patches
+
+- chore: bump @griffel/eslint-plugin ([PR #31258](https://github.com/microsoft/fluentui/pull/31258) by olfedias@microsoft.com)
+
+## [1.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.7)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.6..@fluentui/eslint-plugin_v1.17.7)
+
+### Patches
+
+- fix: dont apply import/no-extraneous-dependencies rule on stories ([PR #31087](https://github.com/microsoft/fluentui/pull/31087) by martinhochel@microsoft.com)
+
+## [1.17.6](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.6)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.5..@fluentui/eslint-plugin_v1.17.6)
+
+### Patches
+
+- fix(eslint-plugin): ignore bundle-size package directory ([PR #31018](https://github.com/microsoft/fluentui/pull/31018) by martinhochel@microsoft.com)
+- feat(eslint-plugin): add triple-slash-reference rule to  ban TS '///' within source code ([PR #30993](https://github.com/microsoft/fluentui/pull/30993) by martinhochel@microsoft.com)
+
+## [1.17.5](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.5)
+
+Wed, 03 Apr 2024 07:29:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.4..@fluentui/eslint-plugin_v1.17.5)
+
+### Patches
+
+- chore(eslint-plugin): migrate to eslint-plugin-jsdoc to latest in order to support Node 20 ([PR #30644](https://github.com/microsoft/fluentui/pull/30644) by marata@microsoft.com)
 
 ## [1.17.4](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.4)
 

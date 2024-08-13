@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames, dropdownSearchInputSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DropdownExampleDisabled from '../../examples/components/Dropdown/State/DropdownExampleDisabled.shorthand';
@@ -25,7 +25,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 const DropdownExampleDisabledTeams = getThemeStoryVariant(DropdownExampleDisabled, 'teamsV2');
 

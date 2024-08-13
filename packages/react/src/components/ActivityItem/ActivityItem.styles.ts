@@ -207,6 +207,12 @@ export const getStyles = memoizeFunction(
       },
     };
 
+    const { __shadowConfig__, ...restStyles } = customStyles || {};
+
+    if (__shadowConfig__) {
+      return concatStyleSets(__shadowConfig__, ActivityItemStyles, restStyles);
+    }
+
     return concatStyleSets(ActivityItemStyles, customStyles);
   },
 );

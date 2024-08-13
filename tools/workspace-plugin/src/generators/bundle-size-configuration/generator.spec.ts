@@ -14,7 +14,7 @@ import { BundleSizeConfigurationGeneratorSchema } from './schema';
 
 describe('bundle-size-configuration generator', () => {
   let tree: Tree;
-  const options: BundleSizeConfigurationGeneratorSchema = { name: '@proj/react-continental' };
+  const options: BundleSizeConfigurationGeneratorSchema = { project: 'react-continental' };
 
   beforeEach(async () => {
     tree = createTreeWithEmptyWorkspace();
@@ -24,7 +24,7 @@ describe('bundle-size-configuration generator', () => {
 
   it('should add setup bundle size', async () => {
     await bundleSizeConfigurationGenerator(tree, options);
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     const packageJson = readJson(tree, joinPathFragments(config.root, 'package.json'));
 
@@ -38,19 +38,19 @@ describe('bundle-size-configuration generator', () => {
       console.log(p);
 
       export default {
-        name: '@proj/react-continental - package',
+        name: 'react-continental - package',
       };
       "
     `);
   });
 
   it(`should not add index.fixture.js if there are already existing fixtures`, async () => {
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     tree.write(
       joinPathFragments(config.root, 'bundle-size/Foo.fixture.js'),
       stripIndents`
-    import {Foo} from '${options.name}'
+    import {Foo} from '${options.project}'
 
     export default {
       name: 'Foo',
@@ -66,19 +66,21 @@ describe('bundle-size-configuration generator', () => {
   it(`should add monosize config within project if overrideBaseConfig was specified`, async () => {
     await bundleSizeConfigurationGenerator(tree, { ...options, overrideBaseConfig: true });
 
-    const config = readProjectConfiguration(tree, options.name);
+    const config = readProjectConfiguration(tree, options.project);
 
     expect(tree.read(joinPathFragments(config.root, 'monosize.config.mjs'), 'utf-8')).toMatchInlineSnapshot(`
       "// @ts-check
+
+      import webpackBundler from 'monosize-bundler-webpack';
 
       import baseConfig from '../../../monosize.config.mjs';
 
       /** @type {import('monosize').MonoSizeConfig} */
       const monosizeConfig = {
         ...baseConfig,
-        webpack: (config) => {
+        bundler: webpackBundler((config) => {
           return config;
-        },
+        }),
       };
 
       export default monosizeConfig;
@@ -88,11 +90,12 @@ describe('bundle-size-configuration generator', () => {
 });
 
 function createLibrary(tree: Tree, name: string) {
-  const projectName = '@proj/' + name;
+  const projectName = name;
+  const npmProjectName = '@proj/' + projectName;
   const root = `packages/react-components/${name}`;
   addProjectConfiguration(tree, projectName, { root, tags: ['vNext'] });
   writeJson(tree, joinPathFragments(root, 'package.json'), {
-    name: projectName,
+    name: npmProjectName,
     version: '9.0.0',
     scripts: {},
   });

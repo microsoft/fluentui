@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/example-data",
-  "version": "8.4.15",
+  "version": "8.4.25",
   "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,7 +12,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
     "test": "just-scripts test",
     "clean": "just-scripts clean",

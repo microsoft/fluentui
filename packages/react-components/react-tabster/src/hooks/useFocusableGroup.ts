@@ -1,4 +1,4 @@
-import { Types, getGroupper } from 'tabster';
+import { Types, getGroupper, GroupperTabbabilities } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
@@ -40,11 +40,11 @@ const getTabbability = (
 ): Types.GroupperTabbability | undefined => {
   switch (tabBehavior) {
     case 'unlimited':
-      return Types.GroupperTabbabilities.Unlimited;
+      return GroupperTabbabilities.Unlimited;
     case 'limited':
-      return Types.GroupperTabbabilities.Limited;
+      return GroupperTabbabilities.Limited;
     case 'limited-trap-focus':
-      return Types.GroupperTabbabilities.LimitedTrapFocus;
+      return GroupperTabbabilities.LimitedTrapFocus;
     default:
       return undefined;
   }

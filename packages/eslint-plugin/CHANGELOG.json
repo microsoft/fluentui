@@ -2,6 +2,147 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Mon, 24 Jun 2024 07:33:22 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.19.0",
+      "version": "1.19.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9f98d7d373bfdd91a2bfac3c4a81ddc313c7e94c",
+            "comment": "feat: add eslint react-compiler"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 06 Jun 2024 07:26:46 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.2",
+      "version": "1.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "48ff23e70fe47f8f91dcbaceb0cb7f3621bca339",
+            "comment": "chore: migrate to typescript-eslint v5 and refactor experimental-tools to tools api usage"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 May 2024 07:28:20 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.1",
+      "version": "1.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "3be221900e3c3898dc34570c5f4d14a224bc2d01",
+            "comment": "chore: re-enable deprecation/deprecation for files with styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 May 2024 07:28:16 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.18.0",
+      "version": "1.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "a9defa95f62960e1584dd9d6d07db57d1fdeec4b",
+            "comment": "feat: disallow direct access to globals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 May 2024 07:28:51 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.9",
+      "version": "1.17.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5e68a1a2c9513435bcd2a8caa42ac0a64d90f505",
+            "comment": "chore: bump @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 May 2024 07:29:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.8",
+      "version": "1.17.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "973489fd37077876f099ad93e8a840fe59a882ec",
+            "comment": "chore: bump @griffel/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Apr 2024 07:27:48 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.7",
+      "version": "1.17.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "ff79ac88545c9cbc7966f75f61a9d506f3ebb963",
+            "comment": "fix: dont apply import/no-extraneous-dependencies rule on stories"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Apr 2024 07:29:11 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.6",
+      "version": "1.17.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "4cf3b0387e900bf49cdd84b906f34fb76456d2fa",
+            "comment": "fix(eslint-plugin): ignore bundle-size package directory"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "43033b4839709be888b86c0ad48b517ce1988b1c",
+            "comment": "feat(eslint-plugin): add triple-slash-reference rule to  ban TS '///' within source code"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Apr 2024 07:29:30 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.5",
+      "version": "1.17.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "5c661f1050c6345035d2b6e1a7f549973fd23654",
+            "comment": "chore(eslint-plugin): migrate to eslint-plugin-jsdoc to latest in order to support Node 20"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Feb 2024 07:37:49 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.4",
       "version": "1.17.4",

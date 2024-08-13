@@ -193,7 +193,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg
             className={this._classNames.chart}
-            aria-label={`This is a gauge chart with ${this._segments.length} section represented.`}
+            role="region"
+            aria-label={this._getChartTitle()}
             onMouseLeave={this._handleMouseOut}
           >
             <g transform={`translate(${width / 2}, ${height - (this._margins.bottom + this._legendsHeight)})`}>
@@ -203,6 +204,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                   y={-(this._outerRadius + TITLE_OFFSET)}
                   textAnchor="middle"
                   className={this._classNames.chartTitle}
+                  aria-hidden={true}
                 >
                   {this.props.chartTitle}
                 </text>
@@ -254,6 +256,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     onBlur={this._handleBlur}
                     onMouseEnter={e => this._handleMouseOver(e, segment.legend)}
                     onMouseMove={e => this._handleMouseOver(e, segment.legend)}
+                    data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
                   />
                 );
               })}
@@ -274,15 +277,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     y: 0,
                     textAnchor: 'middle',
                     className: this._classNames.chartValue,
-                    role: 'img',
-                    'aria-label':
-                      'Current value: ' +
-                      getChartValueLabel(
-                        this.props.chartValue,
-                        this._minValue,
-                        this._maxValue,
-                        this.props.chartValueFormat,
-                      ),
+                    'aria-hidden': 'true',
                   }}
                   maxWidth={this._innerRadius * 2 - 24}
                   wrapContent={this._wrapContent}
@@ -297,8 +292,6 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                     textAnchor: 'middle',
                     dominantBaseline: 'hanging',
                     className: this._classNames.sublabel,
-                    role: 'img',
-                    'aria-label': this.props.sublabel,
                   }}
                   maxWidth={this._innerRadius * 2}
                   wrapContent={this._wrapContent}
@@ -437,6 +430,11 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           onBlur={this._handleBlur}
           onMouseEnter={e => this._handleMouseOver(e, 'Needle')}
           onMouseMove={e => this._handleMouseOver(e, 'Needle')}
+          role="img"
+          aria-label={
+            'Current value: ' +
+            getChartValueLabel(this.props.chartValue, this._minValue, this._maxValue, this.props.chartValueFormat)
+          }
         />
       </g>
     );
@@ -712,4 +710,9 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       );
     }
   }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle } = this.props;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Gauge chart with ${this._segments.length} segments. `;
+  };
 }

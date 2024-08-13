@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bug: Fix accessibility labels and roles",
-  "packageName": "@fluentui/react-teaching-popover-preview",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

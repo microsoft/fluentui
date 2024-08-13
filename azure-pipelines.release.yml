@@ -102,25 +102,27 @@ extends:
                 displayName: Generate version files
 
               - script: |
-                  yarn run:published build --production
-                displayName: yarn build
-
-              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-              # https://github.com/microsoft/fluentui/issues/21686
-              - script: |
-                  yarn run:published test --only
-                displayName: yarn [test]
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: build
 
               - script: |
-                  yarn run:published lint --only
-                displayName: yarn lint
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: test
 
               - script: |
-                  yarn run:published bundle --only --production
-                displayName: yarn bundle
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: lint
 
               - script: |
-                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-v8.config.js
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: bundle
+
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: verify packaged assets
+
+              - script: |
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                   git reset --hard origin/master
                 env:
                   GITHUB_PAT: $(githubPAT)
@@ -155,7 +157,7 @@ extends:
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
-                  node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
+                  node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self

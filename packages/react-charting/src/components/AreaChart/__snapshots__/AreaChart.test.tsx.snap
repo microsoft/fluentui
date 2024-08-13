@@ -18,7 +18,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
       }
   id="chart_6"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_7"
@@ -39,8 +38,9 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="AreaChart"
+      aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -139,9 +139,11 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           opacity={1}
         />
         <g
+          aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
           d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
+          role="region"
         >
           <circle
             aria-label="20. metaData1, 50."
@@ -300,6 +302,20 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -466,7 +482,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
-                      opacity: 0.8;
+                      opacity: 0.85;
                     }
                 data-is-focusable={false}
                 role="text"
@@ -573,7 +589,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
       }
   id="chart_6"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_7"
@@ -594,8 +609,9 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="AreaChart"
+      aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -694,9 +710,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           opacity={1}
         />
         <g
+          aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
           d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
+          role="region"
         >
           <circle
             aria-label="20. metaData1, 50."
@@ -855,6 +873,20 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1025,7 +1057,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
       }
   id="chart_6"
   onMouseLeave={[Function]}
-  role="presentation"
 >
   <div
     id="defaultTabbableElement_7"
@@ -1046,8 +1077,9 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
     onMouseDownCapture={[Function]}
   >
     <svg
-      aria-label="AreaChart"
+      aria-label="AreaChart. Area chart with 1 data series. The X axis displays values. The Y axis displays values. "
       height={310}
+      role="region"
       style={
         Object {
           "display": "block",
@@ -1146,9 +1178,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           opacity={1}
         />
         <g
+          aria-label="metaData1, series 1 of 1 with 2 data points."
           clipPath="url(#clip)"
           d="M40,115.625L-20,20L-20,275L40,275Z"
           key="0-dots-areaChart_0"
+          role="region"
         >
           <circle
             aria-label="20. metaData1, 50."
@@ -1307,6 +1341,20 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -1725,6 +1773,20 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2082,6 +2144,20 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -2443,6 +2519,20 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -2788,6 +2878,20 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -3128,6 +3232,20 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    outline-color: #605e5c;
+                  }
+                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                    border: 1px solid transparent;
+                    bottom: 1px;
+                    content: "";
+                    left: 1px;
+                    outline: 1px solid #605e5c;
+                    position: absolute;
+                    right: 1px;
+                    top: 1px;
+                    z-index: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                     outline-color: #605e5c;
                   }
               data-is-focusable={true}
@@ -3684,6 +3802,20 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4041,6 +4173,20 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}
@@ -4402,6 +4548,20 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                           outline-color: #605e5c;
                         }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
                     data-is-focusable={true}
                     onBlur={[Function]}
                     onClick={[Function]}
@@ -4759,6 +4919,20 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                           outline-color: #605e5c;
                         }
                     data-is-focusable={true}

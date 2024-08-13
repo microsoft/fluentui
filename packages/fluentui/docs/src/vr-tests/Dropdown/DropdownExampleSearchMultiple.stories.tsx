@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Keys, StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSearchInputSlotClassNames, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import DropdownExampleSearchMultiple from '../../examples/components/Dropdown/Types/DropdownExampleSearchMultiple.shorthand';
@@ -33,7 +33,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 const DropdownExampleSearchMultipleTeams = getThemeStoryVariant(DropdownExampleSearchMultiple, 'teamsV2');
 

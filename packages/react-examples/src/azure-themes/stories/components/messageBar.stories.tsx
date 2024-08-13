@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from '@fluentui/react';
 import { DefaultButton, MessageBarButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
+export default {
+  title: 'Components/MessageBar',
+};
+
 interface IExampleProps {
   resetChoice?: () => void;
 }

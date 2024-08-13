@@ -1,4 +1,3 @@
-import { shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { GriffelStyle } from '@griffel/react';
 
@@ -69,47 +68,52 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
   } = options;
 
   return {
+    boxSizing: 'border-box',
     position: 'absolute',
-    backgroundColor: 'inherit',
-    visibility: 'hidden',
     zIndex: -1,
 
     ...(arrowHeight && createArrowHeightStyles(arrowHeight)),
 
+    backgroundColor: 'inherit',
+    backgroundClip: 'content-box',
+
+    borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
+    transform: 'rotate(var(--fui-positioning-arrow-angle)) /* @noflip */',
+
+    height: 'var(--fui-positioning-arrow-height)',
+    width: 'var(--fui-positioning-arrow-height)',
+
     '::before': {
       content: '""',
-      visibility: 'visible',
-      position: 'absolute',
-      boxSizing: 'border-box',
-      width: 'inherit',
-      height: 'inherit',
+
+      display: 'block',
       backgroundColor: 'inherit',
-      ...shorthands.borderRight(
-        `${borderWidth} /* @noflip */`,
-        `${borderStyle} /* @noflip */`,
-        `${borderColor} /* @noflip */`,
-      ),
-      ...shorthands.borderBottom(borderWidth, borderStyle, borderColor),
-      borderBottomRightRadius: tokens.borderRadiusSmall,
-      transform: 'rotate(var(--fui-positioning-angle)) translate(0, 50%) rotate(45deg) /* @noflip */',
+      margin: `-${borderWidth}`,
+      width: '100%',
+      height: '100%',
+
+      border: `${borderWidth} ${borderStyle} ${borderColor}`,
+      borderBottomLeftRadius: `${tokens.borderRadiusSmall} /* @noflip */`,
+
+      clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
     },
 
     // Popper sets data-popper-placement on the root element, which is used to align the arrow
     ':global([data-popper-placement^="top"])': {
-      bottom: `-${borderWidth}`,
-      '--fui-positioning-angle': '0',
+      bottom: 'var(--fui-positioning-arrow-offset)',
+      '--fui-positioning-arrow-angle': '-45deg',
     },
     ':global([data-popper-placement^="right"])': {
-      left: `-${borderWidth} /* @noflip */`,
-      '--fui-positioning-angle': '90deg',
+      left: `var(--fui-positioning-arrow-offset) /* @noflip */`,
+      '--fui-positioning-arrow-angle': '45deg',
     },
     ':global([data-popper-placement^="bottom"])': {
-      top: `-${borderWidth}`,
-      '--fui-positioning-angle': '180deg',
+      top: 'var(--fui-positioning-arrow-offset)',
+      '--fui-positioning-arrow-angle': '135deg',
     },
     ':global([data-popper-placement^="left"])': {
-      right: `-${borderWidth} /* @noflip */`,
-      '--fui-positioning-angle': '270deg',
+      right: `var(--fui-positioning-arrow-offset) /* @noflip */`,
+      '--fui-positioning-arrow-angle': '225deg',
     },
   };
 }
@@ -121,9 +125,13 @@ export function createArrowStyles(options: CreateArrowStylesOptions): GriffelSty
  * Use this when you need to create classes for several different arrow sizes. If you only need a
  * constant arrow size, you can pass the `arrowHeight` param to createArrowStyles instead.
  */
-export function createArrowHeightStyles(arrowHeight: number) {
+export function createArrowHeightStyles(arrowHeight: number): GriffelStyle {
   // The arrow is a square rotated 45 degrees to have its bottom and right edges form a right triangle.
   // Multiply the triangle's height by sqrt(2) to get length of its edges.
-  const edgeLength = `${1.414 * arrowHeight}px`;
-  return { width: edgeLength, height: edgeLength };
+  const edgeLength = 1.414 * arrowHeight;
+
+  return {
+    '--fui-positioning-arrow-height': `${edgeLength}px`,
+    '--fui-positioning-arrow-offset': `${(edgeLength / 2) * -1}px`,
+  };
 }

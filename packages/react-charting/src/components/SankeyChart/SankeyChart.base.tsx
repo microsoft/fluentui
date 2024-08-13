@@ -1,4 +1,4 @@
-import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet, ITheme } from '@fluentui/react/lib/Styling';
 import {
@@ -88,6 +88,7 @@ const SELECTED_STREAM_OPACITY: number = 0.3;
 const NON_SELECTED_STREAM_BORDER_OPACITY: number = 0.5;
 const DEFAULT_TEXT_COLOR: string = '#323130';
 const NON_SELECTED_TEXT_COLOR: string = '#FFFFFF';
+const NODE_WIDTH = 124;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getSelectedNodes(selectedLinks: Set<SLink>): any[] {
@@ -364,7 +365,7 @@ export function preRenderLayout(
   const height = containerHeight - bottom! > 0 ? containerHeight - bottom! : 0;
 
   const sankey = d3Sankey()
-    .nodeWidth(124)
+    .nodeWidth(NODE_WIDTH)
     .extent([
       [left!, top!],
       [width - 1, height - 6],
@@ -488,54 +489,6 @@ function computeElipsisLength(tspan: TSpanForTextMeasuring): number {
   return measurement === undefined ? 0 : measurement;
 }
 
-function computeNodeAttributes(
-  nodes: SNode[],
-  nodeAriaLabel: (node: SNode, weight: number) => string,
-): ItemValues<RenderedNodeAttributes> {
-  const result: ItemValues<RenderedNodeAttributes> = {};
-  const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
-  const nameSpan = select('.nodeName')
-    .append('text')
-    .attr('class', 'tempText')
-    .attr('font-size', '10')
-    .append('tspan')
-    .text(null);
-  nodes.forEach((singleNode: SNode) => {
-    const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
-    let padding = 8;
-    let textLengthForNodeWeight = 0;
-
-    const nodeValue = singleNode.actualValue!;
-    // If the nodeWeight is in the same line as node description an extra padding
-    // of 6 px is required between node description and node weight.
-    if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
-      padding = padding + 6;
-      // The following `select` statement injects a `tempText` element into the DOM. This injection
-      // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
-      const measurement = measureText(weightSpan, nodeValue);
-      if (measurement !== undefined) {
-        textLengthForNodeWeight = measurement;
-        padding = padding + textLengthForNodeWeight;
-      }
-    }
-    // Since the total width of the node is 124 and we are giving margin of 8px from the left .
-    // So the actual value on which it will be truncated is 124-8=116.
-    const truncatedname: string = truncateText(nameSpan, singleNode.name, 116, padding);
-    const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
-    result[singleNode.nodeId] = {
-      reactId: getId('nodeBar'),
-      gElementId: getId('nodeGElement'),
-      name: truncatedname,
-      aria: nodeAriaLabel(singleNode, nodeValue),
-      trimmed: isTruncated,
-      height,
-      weightOffset: textLengthForNodeWeight,
-    };
-  });
-  selectAll('.tempText').remove();
-  return result;
-}
-
 function computeLinkAttributes(
   links: SLink[],
   linkFrom: (node: SNode) => string,
@@ -617,32 +570,15 @@ type AccessibilityRenderer = {
   linkAriaLabel: (link: SLink) => string;
 };
 
-function linkCalloutAttributes(
-  singleLink: SLink,
-  from: string,
-): IChartHoverCardProps & {
-  selectedLink: SLink;
-  isCalloutVisible: boolean;
-  color: string;
-  xCalloutValue: string;
-  yCalloutValue: string;
-  descriptionMessage: string;
-} {
-  return {
-    selectedLink: singleLink,
-    isCalloutVisible: true,
-    color: (singleLink.source as SNode).color!,
-    xCalloutValue: (singleLink.target as SNode).name,
-    yCalloutValue: singleLink.unnormalizedValue!.toString(),
-    descriptionMessage: from,
-  };
-}
-
 // NOTE: To start employing React.useMemo properly, we need to convert this code from a React.Component
 // to a function component. This will require a significant refactor of the code in this file.
 // https://stackoverflow.com/questions/60223362/fast-way-to-convert-react-class-component-to-functional-component
 // I am concerned that doing so would break this contract, making it difficult for consuming code.
 export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyChartState> {
+  public static defaultProps: Partial<ISankeyChartProps> = {
+    enableReflow: true,
+  };
+
   private chartContainer: HTMLDivElement;
   private _reqID: number;
   private readonly _calloutId: string;
@@ -652,6 +588,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
   private readonly _labelTooltipId: string;
   private readonly _margins: IMargins;
   private readonly _isRtl: boolean = getRTL();
+  private _numColumns: number = 0;
 
   private readonly _computeClassNamesProps: (
     theme: ITheme,
@@ -758,15 +695,20 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
       return {
         emptyAriaLabel: accessibility?.emptyAriaLabel || 'Graph has no data to display',
         linkAriaLabel: (link: SLink) =>
-          format(linkString, (link.source as SNode).name, (link.target as SNode).name, link.unnormalizedValue),
-        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, weight),
+          format(
+            linkString,
+            (link.source as SNode).name,
+            (link.target as SNode).name,
+            link.unnormalizedValue ? this._formatNumber(link.unnormalizedValue) : link.unnormalizedValue,
+          ),
+        nodeAriaLabel: (node: SNode, weight: number) => format(nodeString, node.name, this._formatNumber(weight)),
       };
     })(props.accessibility);
     // NOTE: Memoizing the `_createNodes` and `_createLinks` methods would break the hoverability of the chart
     // because the nodes are currently created differently based on the layout information. Hence why we do not
     // memoize these methods (but have stubs for memoizing as the `_fetchNodes` and `_fetchLinks` methods).
     this._nodeAttributes = memoizeFunction((nodes: SNode[], nodeAriaLabel: (node: SNode, weight: number) => string) =>
-      computeNodeAttributes(nodes, nodeAriaLabel),
+      this._computeNodeAttributes(nodes, nodeAriaLabel),
     );
     this._fetchNodes = (
       classNames: IProcessedStyleSet<ISankeyChartStyles>,
@@ -823,6 +765,46 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         borderColorsForNodes,
       );
 
+      // In FocusZone, the focus order is determined by the rendering order of the elements. We need to find
+      // a rendering order such that the focus moves through the nodes and links in a logical sequence.
+      // Rendering the nodes and links layer by layer in a vertical order seems to be the most effective solution
+      // with FocusZone. Although this focus order may not be entirely logical, it ensures that the focus moves
+      // sequentially and prevents links (especially skip layer links) from being rendered over the nodes.
+      const nodeLinkDomOrderArray: { layer: number; type: string; index: number }[] = [];
+      nodes.sort((a: SNode, b: SNode) => {
+        if (a.x0 !== b.x0) {
+          return a.x0! - b.x0!;
+        }
+        return a.y0! - b.y0!;
+      });
+      nodes.forEach((item: SNode, index) => {
+        nodeLinkDomOrderArray.push({ layer: item.layer!, type: 'node', index });
+      });
+      links.sort((a: SLink, b: SLink) => {
+        const asx0 = (a.source as SNode).x0;
+        const bsx0 = (b.source as SNode).x0;
+        if (asx0 !== bsx0) {
+          return asx0! - bsx0!;
+        }
+        return a.y0! - b.y0!;
+      });
+      links.forEach((item: SLink, index) => {
+        nodeLinkDomOrderArray.push({ layer: (item.source as SNode).layer!, type: 'link', index });
+      });
+      nodeLinkDomOrderArray.sort((a, b) => {
+        if (a.layer !== b.layer) {
+          return a.layer - b.layer;
+        }
+
+        if (a.type > b.type) {
+          return -1;
+        }
+        if (a.type < b.type) {
+          return 1;
+        }
+        return 0;
+      });
+
       // NOTE: I don't love this approach to caching the "select" result. Is it still valid from render-to-render?
       // although local testing seems to indicate so, I do not trust that React will always support that instance.
       // It might be better to perform this `fetch` within the `_showTooltip` and `_hideTooltip` methods.
@@ -856,16 +838,35 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
           ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
           onMouseLeave={this._onCloseCallout}
         >
-          <FocusZone
-            direction={FocusZoneDirection.bidirectional}
-            isCircularNavigation={true}
-            handleTabKey={FocusZoneTabbableElements.all}
-          >
+          {/*
+          - Horizontal navigation has been disabled because the nodes and links are rendered vertically,
+          causing the left/right arrow keys to move focus up or down to the previous or next sibling element.
+          - Bidirectional navigation has been disabled because it causes the up/down arrow keys to move the focus
+          in a non-sequential and erratic manner within a 2D grid.
+          */}
+          <FocusZone direction={FocusZoneDirection.vertical} className={classNames.chartWrapper}>
             <svg width={width} height={height} id={this._chartId}>
-              <g className={classNames.links} strokeOpacity={1}>
-                {linkData}
-              </g>
-              <g className={classNames.nodes}>{nodeData}</g>
+              {nodeLinkDomOrderArray.map(item => {
+                if (item.type === 'node') {
+                  return (
+                    <g key={nodes[item.index].nodeId} className={classNames.nodes}>
+                      {nodeData![item.index]}
+                    </g>
+                  );
+                } else {
+                  return (
+                    <g
+                      key={`${(links[item.index].source as SNode).nodeId}-${
+                        (links[item.index].target as SNode).nodeId
+                      }`}
+                      className={classNames.links}
+                      strokeOpacity={1}
+                    >
+                      {linkData![item.index]}
+                    </g>
+                  );
+                }
+              })}
               {calloutProps.isCalloutVisible && (
                 <Callout {...calloutProps}>
                   <ChartHoverCard
@@ -891,6 +892,75 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     );
   }
 
+  private _computeNodeAttributes(
+    nodes: SNode[],
+    nodeAriaLabel: (node: SNode, weight: number) => string,
+  ): ItemValues<RenderedNodeAttributes> {
+    const result: ItemValues<RenderedNodeAttributes> = {};
+    const weightSpan = select('.nodeName').append('text').attr('class', 'tempText').append('tspan').text(null);
+    const nameSpan = select('.nodeName')
+      .append('text')
+      .attr('class', 'tempText')
+      .attr('font-size', '10')
+      .append('tspan')
+      .text(null);
+    nodes.forEach((singleNode: SNode) => {
+      const height = Math.max(singleNode.y1! - singleNode.y0!, 0);
+      let padding = 8;
+      let textLengthForNodeWeight = 0;
+
+      const nodeValue = singleNode.actualValue!;
+      // If the nodeWeight is in the same line as node description an extra padding
+      // of 6 px is required between node description and node weight.
+      if (height < MIN_HEIGHT_FOR_DOUBLINE_TYPE) {
+        padding = padding + 6;
+        // The following `select` statement injects a `tempText` element into the DOM. This injection
+        // (and subsequent removal) is causing a layout recalculation. This is a performance issue.
+        const measurement = measureText(weightSpan, this._formatNumber(nodeValue));
+        if (measurement !== undefined) {
+          textLengthForNodeWeight = measurement;
+          padding = padding + textLengthForNodeWeight;
+        }
+      }
+      // Since the total width of the node is 124 and we are giving margin of 8px from the left .
+      // So the actual value on which it will be truncated is 124-8=116.
+      const truncatedname: string = truncateText(nameSpan, singleNode.name, NODE_WIDTH - 8, padding);
+      const isTruncated: boolean = truncatedname.slice(-3) === elipsis;
+      result[singleNode.nodeId] = {
+        reactId: getId('nodeBar'),
+        gElementId: getId('nodeGElement'),
+        name: truncatedname,
+        aria: nodeAriaLabel(singleNode, nodeValue),
+        trimmed: isTruncated,
+        height,
+        weightOffset: textLengthForNodeWeight,
+      };
+    });
+    selectAll('.tempText').remove();
+    return result;
+  }
+
+  private _linkCalloutAttributes(
+    singleLink: SLink,
+    from: string,
+  ): IChartHoverCardProps & {
+    selectedLink: SLink;
+    isCalloutVisible: boolean;
+    color: string;
+    xCalloutValue: string;
+    yCalloutValue: string;
+    descriptionMessage: string;
+  } {
+    return {
+      selectedLink: singleLink,
+      isCalloutVisible: true,
+      color: (singleLink.source as SNode).color!,
+      xCalloutValue: (singleLink.target as SNode).name,
+      yCalloutValue: this._formatNumber(singleLink.unnormalizedValue!),
+      descriptionMessage: from,
+    };
+  }
+
   private _normalizeSankeyData(
     data: ISankeyChartData,
     containerWidth: number,
@@ -911,6 +981,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     // bearing on the data before `sankey(transformed)` (which is basically nodes with ids and names along with links
     // with source index, target index, and value).
     const nodesInColumn = groupNodesByColumn(transformed);
+    this._numColumns = Object.keys(nodesInColumn).length;
     // Keep track of the original values of the links and their acccumulated values in the nodes
     // Setting these in external objects so they cannot be mutated by other code.
     // The IDs of nodes can be numbers or strings. But, the IDs of links are always the index into the "nodes" array.
@@ -1076,7 +1147,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
                   fill={textColor}
                   fontSize={14}
                 >
-                  {actualValue}
+                  {actualValue ? this._formatNumber(actualValue) : actualValue}
                 </text>
               </g>
             )}
@@ -1113,10 +1184,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         isCalloutVisible: singleNode.y1! - singleNode.y0! < MIN_HEIGHT_FOR_TYPE,
         color: singleNode.color,
         xCalloutValue: singleNode.name,
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        yCalloutValue: singleNode.actualValue! as any as string,
+        yCalloutValue: this._formatNumber(singleNode.actualValue!),
       });
     }
+  }
+
+  private _formatNumber(value: number): string {
+    return this.props.formatNumberOptions
+      ? value.toLocaleString(undefined, this.props.formatNumberOptions)
+      : value.toString();
   }
 
   private _onStreamHover(mouseEvent: React.MouseEvent<SVGElement>, singleLink: SLink, from: string) {
@@ -1129,7 +1205,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
         selectedNodes: new Set<number>(Array.from(selectedNodes).map(node => node.index!)),
         selectedLinks: new Set<number>(Array.from(selectedLinks).map(link => link.index!)),
         refSelected: mouseEvent,
-        ...linkCalloutAttributes(singleLink, from),
+        ...this._linkCalloutAttributes(singleLink, from),
       });
     }
   }
@@ -1153,7 +1229,7 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._onCloseCallout();
     this.setState({
       refSelected: element.currentTarget,
-      ...linkCalloutAttributes(singleLink, from),
+      ...this._linkCalloutAttributes(singleLink, from),
     });
   }
 
@@ -1243,7 +1319,11 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     this._reqID = requestAnimationFrame(() => {
       // NOTE: Calls to this method trigger a re-render.
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-      const currentContainerWidth = container && container.getBoundingClientRect().width;
+      const currentContainerWidth =
+        container &&
+        (this.props.enableReflow
+          ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+          : container.getBoundingClientRect().width);
       const currentContainerHeight = container && container.getBoundingClientRect().height;
       const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight;
       if (shouldResize) {
@@ -1276,4 +1356,15 @@ export class SankeyChartBase extends React.Component<ISankeyChartProps, ISankeyC
     const sankeyChartData = this.props.data?.SankeyChartData;
     return !(sankeyChartData && sankeyChartData.nodes.length > 0 && sankeyChartData.links.length > 0);
   }
+
+  private _calculateChartMinWidth = (): number => {
+    return (
+      this._margins.left! +
+      this._margins.right! +
+      // total width of all node columns
+      this._numColumns * NODE_WIDTH +
+      // minimum total width of all column gaps
+      (this._numColumns - 1) * (NODE_WIDTH / 2)
+    );
+  };
 }

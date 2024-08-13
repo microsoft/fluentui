@@ -88,7 +88,7 @@ extends:
                 displayName: build,test,lint northstar packages
                 inputs:
                   script: |
-                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --parallel $(getconf _NPROCESSORS_ONLN) --nxBail --verbose
+                    yarn nx run-many --targets=build,test,lint,type-check,test-ssr,verify-packaging --projects='packages/fluentui/*' --nxBail
 
               - task: CmdLine@2
                 displayName: '[NPM] Publish to NPM'
@@ -158,15 +158,20 @@ extends:
                     echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion)
                     NODE_ENV=production yarn northstar:build:docs
 
-              - task: AzureUpload@2
+              - task: AzureCLI@2
                 displayName: Upload to Azure
                 inputs:
-                  SourcePath: packages/fluentui/docs/dist
-                  azureSubscription: 'Azure - fluentsite storage'
-                  storage: fluentsite
-                  ContainerName: $web
-                  BlobPrefix: $(deployBasePath)
-                  Gzip: true
+                  azureSubscription: 'Azure - fluentsite storage - NEW'
+                  scriptType: 'bash'
+                  scriptLocation: 'inlineScript'
+                  inlineScript: |
+                    az storage blob upload-batch \
+                      --destination '$web' \
+                      --source packages/fluentui/docs/dist \
+                      --account-name fluentsite \
+                      --destination-path $(deployBasePath) \
+                      --auth-mode login \
+                      --overwrite
 
               - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
                 displayName: 📒 Generate Manifest Docsite

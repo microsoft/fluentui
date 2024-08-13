@@ -1,194 +1,194 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css } from '@microsoft/fast-element';
+import { smallState, verticalState } from '../styles/states/index.js';
+import { display, forcedColorsStylesheetBehavior } from '../utils/index.js';
 import {
-  disabledCursor,
-  display,
-  ElementDefinitionContext,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-  SliderOptions,
-} from '@microsoft/fast-foundation';
-import { heightNumber } from '../styles';
-import {
-  accentFillActive,
-  accentFillHover,
-  accentFillRest,
-  controlCornerRadius,
-  designUnit,
-  disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
-  neutralFillRest,
-  neutralFillStrongRest,
-  neutralStrokeControlActive,
-  neutralStrokeControlHover,
-  neutralStrokeControlRest,
-  neutralStrokeStrongRest,
-  strokeWidth,
-} from '../design-tokens';
+  borderRadiusCircular,
+  borderRadiusMedium,
+  borderRadiusSmall,
+  colorCompoundBrandBackground,
+  colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
+  colorNeutralBackground1,
+  colorNeutralBackgroundDisabled,
+  colorNeutralForegroundDisabled,
+  colorNeutralStroke1,
+  colorNeutralStrokeAccessible,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
+} from '../theme/design-tokens.js';
 
-export const sliderStyles: (context: ElementDefinitionContext, definition: SliderOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: SliderOptions,
-) =>
-  css`
-    ${display('inline-grid')} :host {
-      --thumb-size: calc((${heightNumber} / 2) + ${designUnit} + (${strokeWidth} * 2));
-      --thumb-translate: calc(var(--thumb-size) * -0.5 + var(--track-width) / 2);
-      --track-overhang: calc((${designUnit} / 2) * -1);
-      --track-width: ${designUnit};
-      align-items: center;
-      width: 100%;
-      user-select: none;
-      box-sizing: border-box;
-      border-radius: calc(${controlCornerRadius} * 1px);
-      outline: none;
-      cursor: pointer;
-    }
-    :host(.horizontal) .positioning-region {
-      position: relative;
-      margin: 0 8px;
-      display: grid;
-      grid-template-rows: calc(var(--thumb-size) * 1px) 1fr;
-    }
-    :host(.vertical) .positioning-region {
-      position: relative;
-      margin: 0 8px;
-      display: grid;
-      height: 100%;
-      grid-template-columns: calc(var(--thumb-size) * 1px) 1fr;
-    }
-    :host(:${focusVisible}) .thumb-cursor {
-      box-shadow: 0 0 0 2px ${fillColor}, 0 0 0 4px ${focusStrokeOuter};
-    }
-    .thumb-container {
-      position: absolute;
-      height: calc(var(--thumb-size) * 1px);
-      width: calc(var(--thumb-size) * 1px);
-      transition: all 0.2s ease;
-    }
-    .thumb-cursor {
-      display: flex;
-      position: relative;
-      border: none;
-      width: calc(var(--thumb-size) * 1px);
-      height: calc(var(--thumb-size) * 1px);
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
-        border-box ${neutralStrokeControlRest};
-      border: calc(${strokeWidth} * 1px) solid transparent;
-      border-radius: 50%;
-      box-sizing: border-box;
-    }
-    .thumb-cursor::after {
-      content: '';
-      display: block;
-      border-radius: 50%;
-      width: 100%;
-      margin: 4px;
-      background: ${accentFillRest};
-    }
-    :host(:not(.disabled)) .thumb-cursor:hover::after {
-      background: ${accentFillHover};
-      margin: 3px;
-    }
-    :host(:not(.disabled)) .thumb-cursor:active::after {
-      background: ${accentFillActive};
-      margin: 5px;
-    }
-    :host(:not(.disabled)) .thumb-cursor:hover {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
-        border-box ${neutralStrokeControlHover};
-    }
-    :host(:not(.disabled)) .thumb-cursor:active {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
-        border-box ${neutralStrokeControlActive};
-    }
-    .track-start {
-      background: ${accentFillRest};
-      position: absolute;
-      height: 100%;
-      left: 0;
-      border-radius: calc(${controlCornerRadius} * 1px);
-    }
-    :host(.horizontal) .thumb-container {
-      transform: translateX(calc(var(--thumb-size) * 0.5px)) translateY(calc(var(--thumb-translate) * 1px));
-    }
-    :host(.vertical) .thumb-container {
-      transform: translateX(calc(var(--thumb-translate) * 1px)) translateY(calc(var(--thumb-size) * 0.5px));
-    }
-    :host(.horizontal) {
-      min-width: calc(var(--thumb-size) * 1px);
-    }
-    :host(.horizontal) .track {
-      right: calc(var(--track-overhang) * 1px);
-      left: calc(var(--track-overhang) * 1px);
-      align-self: start;
-      height: calc(var(--track-width) * 1px);
-    }
-    :host(.vertical) .track {
-      top: calc(var(--track-overhang) * 1px);
-      bottom: calc(var(--track-overhang) * 1px);
-      width: calc(var(--track-width) * 1px);
-      height: 100%;
-    }
+/** Text styles
+ * @public
+ */
+export const styles = css`
+  ${display('inline-grid')}
+
+  :host {
+    --thumb-size: 20px;
+    --track-margin-inline: calc(var(--thumb-size) / 2);
+    --track-size: 4px;
+    --track-overhang: calc(var(--track-size) / -2);
+    --slider-direction: 90deg;
+    --border-radius: ${borderRadiusMedium};
+    --step-marker-inset: var(--track-overhang) -1px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    outline: none;
+    user-select: none;
+    touch-action: none;
+    min-width: 120px;
+    min-height: 32px;
+    grid-template-rows: 1fr var(--thumb-size) 1fr;
+    grid-template-columns: var(--track-margin-inline) 1fr var(--track-margin-inline);
+  }
+
+  :host(:not(:disabled)) {
+    cursor: pointer;
+  }
+
+  :host(:dir(rtl)) {
+    --slider-direction: -90deg;
+  }
+
+  :host(${smallState}) {
+    --thumb-size: 16px;
+    --track-overhang: -1px;
+    --track-size: 2px;
+    --border-radius: ${borderRadiusSmall};
+  }
+
+  :host(${verticalState}) {
+    --slider-direction: 0deg;
+    --step-marker-inset: -1px var(--track-overhang);
+    min-height: 120px;
+    grid-template-rows: var(--track-margin-inline) 1fr var(--track-margin-inline);
+    grid-template-columns: 1fr var(--thumb-size) 1fr;
+    width: unset;
+    min-width: 32px;
+    justify-items: center;
+  }
+
+  :host(:not([slot='input']):focus-visible) {
+    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
+  }
+
+  .track {
+    position: relative;
+    background-color: ${colorNeutralStrokeAccessible};
+    border-radius: var(--border-radius);
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    width: 100%;
+    height: var(--track-size);
+    forced-color-adjust: none;
+  }
+
+  :host(${verticalState}) .track {
+    top: var(--track-overhang);
+    bottom: var(--track-overhang);
+    width: var(--track-size);
+    height: 100%;
+  }
+
+  .track::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border-radius: inherit;
+    inset-inline-start: 0;
+    width: var(--slider-progress);
+  }
+
+  :host(${verticalState}) .track::before {
+    width: 100%;
+    bottom: 0;
+    height: var(--slider-progress);
+  }
+
+  :host([step]) .track::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    inset: var(--step-marker-inset);
+    background-image: repeating-linear-gradient(
+      var(--slider-direction),
+      #0000 0%,
+      #0000 calc(var(--step-rate) - 1px),
+      ${colorNeutralBackground1} calc(var(--step-rate) - 1px),
+      ${colorNeutralBackground1} var(--step-rate)
+    );
+  }
+
+  .thumb-container {
+    position: absolute;
+    grid-row: 2 / 2;
+    grid-column: 2 / 2;
+    transform: translateX(-50%);
+    left: var(--slider-thumb);
+  }
+
+  :host(${verticalState}) .thumb-container {
+    transform: translateY(50%);
+    left: unset;
+    bottom: var(--slider-thumb);
+  }
+
+  :host(:not(:active)) :is(.thumb-container, .track::before) {
+    transition: all 0.2s ease;
+  }
+
+  .thumb {
+    width: var(--thumb-size);
+    height: var(--thumb-size);
+    border-radius: ${borderRadiusCircular};
+    box-shadow: 0 0 0 calc(var(--thumb-size) * 0.2) ${colorNeutralBackground1} inset;
+    border: calc(var(--thumb-size) * 0.05) solid ${colorNeutralStroke1};
+    box-sizing: border-box;
+  }
+
+  .thumb,
+  .track::before {
+    background-color: ${colorCompoundBrandBackground};
+  }
+
+  :host(:hover) .thumb,
+  :host(:hover) .track::before {
+    background-color: ${colorCompoundBrandBackgroundHover};
+  }
+
+  :host(:active) .thumb,
+  :host(:active) .track::before {
+    background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host(:disabled) .track {
+    background-color: ${colorNeutralBackgroundDisabled};
+  }
+
+  :host(:disabled) .thumb,
+  :host(:disabled) .track::before {
+    background-color: ${colorNeutralForegroundDisabled};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .track:hover,
+    .track:active,
     .track {
-      background: ${neutralFillStrongRest};
-      border: 1px solid ${neutralStrokeStrongRest};
-      border-radius: 2px;
-      box-sizing: border-box;
-      position: absolute;
+      background: WindowText;
     }
-    :host(.vertical) {
-      height: 100%;
-      min-height: calc(${designUnit} * 60px);
-      min-width: calc(${designUnit} * 20px);
+    .thumb:hover,
+    .thumb:active,
+    .thumb {
+      background: ButtonText;
     }
-    :host(.vertical) .track-start {
-      height: auto;
-      width: 100%;
-      top: 0;
+
+    :host(:hover) .track::before,
+    :host(:active) .track::before,
+    .track::before {
+      background: Highlight;
     }
-    :host(.disabled),
-    :host(.readonly) {
-      cursor: ${disabledCursor};
-    }
-    :host(.disabled) {
-      opacity: ${disabledOpacity};
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .thumb-cursor {
-          forced-color-adjust: none;
-          border-color: ${SystemColors.FieldText};
-          background: ${SystemColors.FieldText};
-        }
-        :host(:not(.disabled)) .thumb-cursor:hover,
-        :host(:not(.disabled)) .thumb-cursor:active {
-          background: ${SystemColors.Highlight};
-        }
-        .track {
-          forced-color-adjust: none;
-          background: ${SystemColors.FieldText};
-        }
-        .thumb-cursor::after,
-        :host(:not(.disabled)) .thumb-cursor:hover::after,
-        :host(:not(.disabled)) .thumb-cursor:active::after {
-          background: ${SystemColors.Field};
-        }
-        :host(:${focusVisible}) .thumb-cursor {
-          background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px ${SystemColors.Field}, 0 0 0 3px ${SystemColors.FieldText};
-        }
-        :host(.disabled) {
-          opacity: 1;
-        }
-        :host(.disabled) .track,
-        :host(.disabled) .thumb-cursor {
-          forced-color-adjust: none;
-          background: ${SystemColors.GrayText};
-        }
-      `,
-    ),
-  );
+  `),
+);

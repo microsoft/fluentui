@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/scripts-package-manager",
+  "name": "scripts-package-manager",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "scripts/package-manager",
+  "sourceRoot": "scripts/package-manager/src",
   "projectType": "library",
   "tags": ["tools"]
 }
