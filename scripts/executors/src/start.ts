@@ -287,13 +287,12 @@ function createTargetDescription(
   if (targetName === 'e2e') {
     const scriptContent = nxTargetConfiguration.metadata?.scriptContent;
     const runnerType = getRunnerType(scriptContent);
-    const descriptionSuffix = runnerType ? ` (using ${runnerType})` : null;
 
-    if (descriptionSuffix) {
-      return description + descriptionSuffix;
+    if (!runnerType) {
+      return scriptContent;
     }
 
-    return scriptContent;
+    return description + ` (using ${runnerType})`;
   }
 
   return description ?? nxTargetConfiguration.metadata?.scriptContent;
