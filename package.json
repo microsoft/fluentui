@@ -26,6 +26,7 @@
     "publish:beachball": "beachball publish -b origin/master --access public -y",
     "start": "node -r ./scripts/ts-node/src/register ./scripts/executors/src/start",
     "//": "↓↓↓ DEPRECATED ↓↓↓ - WILL BE REMOVED IN THE FUTURE",
+    "prebuildto": "echo '⚠️ NOTE ⚠️:\nThis command is deprecated and will be removed.\nUse nx run <project>:<target> instead'",
     "buildto": "nx build --nxBail",
     "clean": "nx run-many -t clean --verbose",
     "scrub": "node ./scripts/executors/src/scrub.js"
