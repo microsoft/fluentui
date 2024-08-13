@@ -4,6 +4,10 @@ import type { Meta } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Theme } from './set-theme.js';
 import { setTheme } from './set-theme.js';
+import {
+  colorNeutralBackground2,
+  colorNeutralForeground2,
+} from './design-tokens.js';
 
 const themes: Map<string, Theme | null> = new Map([
   ['web-light', webLightTheme],
@@ -25,7 +29,9 @@ function updateTheme(evt: Event, type = 'global') {
         setTheme(themes.get(value)!, document.querySelector('.local') as HTMLElement);
         break;
       case 'shadow':
-        setTheme(themes.get(value)!, document.querySelector('.shadow') as HTMLElement);
+        document.querySelectorAll('.shadow').forEach(el => {
+          setTheme(themes.get(value)!, el as HTMLElement);
+        });
         break;
     }
   }
@@ -134,10 +140,11 @@ export const SetTheme = renderComponent(html`
       margin-block: 2rem;
     }
 
-    .local {
-      background: var(--colorNeutralBackground2);
+    .local,
+    .shadow-container {
+      background: ${colorNeutralBackground2};
       border: 1px solid #ccc;
-      color: var(--colorNeutralForeground2);
+      color: ${colorNeutralForeground2};
       padding: 1rem;
       margin-trim: block;
 
@@ -150,8 +157,8 @@ export const SetTheme = renderComponent(html`
       }
 
       .shadow {
-        background: var(--colorNeutralBackground2);
-        color: var(--colorNeutralForeground2);
+        background: ${colorNeutralBackground2};
+        color: ${colorNeutralForeground2};
       }
     }
 
@@ -183,19 +190,32 @@ export const SetTheme = renderComponent(html`
   </div>
 
   <div class="global">
-    <p>These elements follow the global theme</p>
+    <p style="color: ${colorNeutralForeground2}">These elements follow the global theme</p>
     ${ComponentCloudTemplate}
   </div>
 
   <div class="local">
-    <p>These elements follow the container element’s theme</p>
+    <p style="color: ${colorNeutralForeground2}">These elements follow the container element’s theme</p>
     ${ComponentCloudTemplate}
 
-    <fluent-divider></fluent-divider>
-
-    <p>This element (which has shadow root) follows its own theme when set</p>
-    <fluent-text-input class="shadow">
-      <fluent-label>Text input</fluent-label>
-    </fluent-text-input>
+    <div class="shadow-container">
+      <p style="color: ${colorNeutralForeground2}">These elements (which have shadow roots) follow their own themes when set</p>
+      <p>
+        <fluent-text-input class="shadow">
+          <fluent-label>Text input</fluent-label>
+        </fluent-text-input>
+      </p>
+      <p>
+        <fluent-menu class="shadow">
+          <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
+          <fluent-menu-list>
+            <fluent-menu-item>Menu item 1</fluent-menu-item>
+            <fluent-menu-item>Menu item 2</fluent-menu-item>
+            <fluent-menu-item>Menu item 3</fluent-menu-item>
+            <fluent-menu-item>Menu item 4</fluent-menu-item>
+          </fluent-menu-list>
+        </fluent-menu>
+      </p>
+    </div>
   </div>
 `);
