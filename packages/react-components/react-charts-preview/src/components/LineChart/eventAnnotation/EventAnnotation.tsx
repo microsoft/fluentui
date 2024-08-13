@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ScaleTime } from 'd3-scale';
-import { findIndex } from '@fluentui/react/lib/Utilities';
+import { findIndex } from '../../../utilities/index';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
 import { ITheme } from '@fluentui/react/lib/Styling';
@@ -99,6 +99,7 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
 
     let idx = findIndex(
       lineDefs,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );
