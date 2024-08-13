@@ -293,7 +293,7 @@ function createTargetDescription(
       return description + descriptionSuffix;
     }
 
-    return nxTargetConfiguration.metadata?.scriptContent;
+    return scriptContent;
   }
 
   return description ?? nxTargetConfiguration.metadata?.scriptContent;
