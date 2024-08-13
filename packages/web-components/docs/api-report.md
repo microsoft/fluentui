@@ -118,7 +118,6 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
@@ -449,6 +448,30 @@ export class BaseAccordionItem extends FASTElement {
     expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
+}
+
+// @public
+export class BaseAnchor extends FASTElement {
+    constructor();
+    // @internal
+    clickHandler(e: PointerEvent): boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    download?: string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    href?: string;
+    hreflang?: string;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    ping?: string;
+    referrerpolicy?: string;
+    rel: string;
+    target?: AnchorTarget;
+    type?: string;
 }
 
 // @public
