@@ -226,7 +226,7 @@ For color manipulation and conversion `tinycolor` library will be used.
 | min          | `number`                 | 0            | The min value of the Slider.           |
 | onChange     | `function`               | undefined    | Callback called when color is selected |
 | orient       | `horizontal`, `vertical` | `horizontal` | Orientation of a slider                |
-| overlayColor | `string`                 | undefuned    | Overlay color                          |
+| overlayColor | `string`                 | undefined    | Overlay color                          |
 | shape        | `square`, `rounded`      | `square`     | Sets shape                             |
 | step         | `number`                 | 1            | Step for the slider                    |
 | value        | `string`                 |              | value of the slider                    |
