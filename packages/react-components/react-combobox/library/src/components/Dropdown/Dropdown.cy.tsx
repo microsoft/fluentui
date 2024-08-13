@@ -7,13 +7,13 @@ import { teamsLightTheme } from '@fluentui/react-theme';
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import type { DropdownProps } from '@fluentui/react-combobox';
 
-import { triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
+import { clearButtonSelector, triggerSelector, listboxSelector, triggerId } from '../../testing/selectors';
 
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
 };
 
-describe('Dropdown controlling open/close state', () => {
+describe('Dropdown - controlling open/close state', () => {
   const ControlledOpenCloseStateDropdown = (props: Partial<DropdownProps>) => {
     const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
@@ -55,5 +55,37 @@ describe('Dropdown controlling open/close state', () => {
 
     cy.get('body').click({ force: true });
     cy.get(listboxSelector).should('not.exist');
+  });
+});
+
+describe('Dropdown - clearable', () => {
+  const DropdownComponent = (props: Partial<DropdownProps>) => {
+    const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
+
+    return (
+      <Dropdown placeholder="Select an animal" {...props}>
+        {options.map(option => (
+          <Option key={option}>{option}</Option>
+        ))}
+      </Dropdown>
+    );
+  };
+
+  it('clear button should be hidden and not focusable by default', () => {
+    mount(<DropdownComponent />);
+
+    const clearButton = cy.get(clearButtonSelector);
+
+    clearButton.should('not.be.visible');
+    clearButton.should('have.attr', 'tabIndex', '-1');
+  });
+
+  it('clear button should be visible and focusable when the "clearable" props is set', () => {
+    mount(<DropdownComponent clearable selectedOptions={['Cat']} />);
+
+    const clearButton = cy.get(clearButtonSelector);
+
+    clearButton.should('be.visible');
+    clearButton.should('have.attr', 'tabIndex', '0');
   });
 });
