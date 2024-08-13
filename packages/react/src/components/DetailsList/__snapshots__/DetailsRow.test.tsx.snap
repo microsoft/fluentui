@@ -269,6 +269,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -311,6 +312,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1206,6 +1208,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1248,6 +1251,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2144,6 +2148,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               ms-Check-circle
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2186,6 +2191,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               ms-Check-check
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2710,6 +2716,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2752,6 +2759,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3647,6 +3655,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3689,6 +3698,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;

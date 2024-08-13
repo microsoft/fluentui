@@ -221,6 +221,7 @@ exports[`ActivityItem renders compact with an icon correctly 1`] = `
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="Message"
     >
@@ -947,6 +948,7 @@ exports[`ActivityItem renders with an icon correctly 1`] = `
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="Message"
     >
