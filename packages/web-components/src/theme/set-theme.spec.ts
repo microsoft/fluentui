@@ -22,21 +22,121 @@ declare global {
 test.describe('setTheme()', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('theme-settheme--set-theme'));
-    await page.setContent(`<div></div>`);
   });
 
-  test('should set tokens with the correct custom property values', async ({ page }) => {
+  test('should set and uset global tokens', async ({ page }) => {
+    const html = page.locator('html');
+    const body = page.locator('body');
+    const div = page.locator('div');
+
+    await page.setContent(`<div></div>`);
+
     await page.evaluate(theme => {
       window.setTheme(theme);
     }, theme1);
-    const body = page.locator('body');
 
+    await expect(html).toHaveCSS('--foo', 'foo1');
+    await expect(html).toHaveCSS('--bar', 'bar1');
     await expect(body).toHaveCSS('--foo', 'foo1');
+    await expect(body).toHaveCSS('--bar', 'bar1');
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
 
     await page.evaluate(theme => {
       window.setTheme(theme);
     }, theme2);
 
+    await expect(html).toHaveCSS('--foo', 'foo2');
+    await expect(html).toHaveCSS('--bar', 'bar2');
     await expect(body).toHaveCSS('--foo', 'foo2');
+    await expect(body).toHaveCSS('--bar', 'bar2');
+    await expect(div).toHaveCSS('--foo', 'foo2');
+    await expect(div).toHaveCSS('--bar', 'bar2');
+
+    await page.evaluate(() => {
+      window.setTheme(null);
+    });
+
+    // Revert the values back to the registered initial values.
+    await expect(html).toHaveCSS('--foo', 'foo1');
+    await expect(html).toHaveCSS('--bar', 'bar1');
+    await expect(body).toHaveCSS('--foo', 'foo1');
+    await expect(body).toHaveCSS('--bar', 'bar1');
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
+  });
+
+  test('should set and unset tokens in a light DOM subtree', async ({ page }) => {
+    const div = page.locator('div');
+    const span = page.locator('span');
+
+    await page.setContent(`<div><span></span></div>`);
+
+    await page.evaluate(theme => {
+      window.setTheme(theme);
+    }, theme1);
+
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
+    await expect(span).toHaveCSS('--foo', 'foo1');
+    await expect(span).toHaveCSS('--bar', 'bar1');
+
+    await div.evaluate((node: HTMLDivElement, theme) => {
+      window.setTheme(theme, node);
+    }, theme2);
+
+    await expect(div).toHaveCSS('--foo', 'foo2');
+    await expect(div).toHaveCSS('--bar', 'bar2');
+    await expect(span).toHaveCSS('--foo', 'foo2');
+    await expect(span).toHaveCSS('--bar', 'bar2');
+
+    await div.evaluate((node: HTMLDivElement) => {
+      window.setTheme(null, node);
+    });
+
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
+    await expect(span).toHaveCSS('--foo', 'foo1');
+    await expect(span).toHaveCSS('--bar', 'bar1');
+  });
+
+  test('should set and unset tokens in a shadow DOM tree', async ({ page }) => {
+    const div = page.locator('div');
+    const span = page.locator('span');
+
+    await page.setContent(`
+      <div>
+        <template shadowrootmode="open">
+          <span></span>
+        </template>
+      </div>
+    `);
+
+    await page.evaluate(theme => {
+      window.setTheme(theme);
+    }, theme1);
+
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
+    await expect(span).toHaveCSS('--foo', 'foo1');
+    await expect(span).toHaveCSS('--bar', 'bar1');
+
+    await div.evaluate((node: HTMLDivElement, theme) => {
+      window.setTheme(theme, node);
+    }, theme2);
+
+    await expect(div).toHaveCSS('--foo', 'foo2');
+    await expect(div).toHaveCSS('--bar', 'bar2');
+    await expect(span).toHaveCSS('--foo', 'foo2');
+    await expect(span).toHaveCSS('--bar', 'bar2');
+
+    await div.evaluate((node: HTMLDivElement) => {
+      window.setTheme(null, node);
+    });
+
+    await expect(div).toHaveCSS('--foo', 'foo1');
+    await expect(div).toHaveCSS('--bar', 'bar1');
+    await expect(span).toHaveCSS('--foo', 'foo1');
+    await expect(span).toHaveCSS('--bar', 'bar1');
   });
 });
