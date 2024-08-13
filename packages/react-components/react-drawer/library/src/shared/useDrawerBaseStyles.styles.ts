@@ -78,7 +78,7 @@ export const useDrawerBottomBaseStyles = makeStyles({
     [drawerCSSVars.drawerSizeVar]: '940px',
   },
   full: {
-    [drawerCSSVars.drawerSizeVar]: '100vh',
+    [drawerCSSVars.drawerSizeVar]: '100%',
   },
 });
 
