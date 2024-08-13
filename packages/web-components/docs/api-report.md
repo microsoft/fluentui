@@ -616,6 +616,85 @@ export class BaseTablist extends FASTElement {
 }
 
 // @public
+export class BaseTextArea extends FASTElement {
+    constructor();
+    autocomplete?: TextAreaAutocomplete;
+    autoResize: boolean;
+    // (undocumented)
+    protected autoResizeChanged(): void;
+    // @internal (undocumented)
+    autoSizerEl?: HTMLDivElement;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal
+    controlEl: HTMLTextAreaElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // (undocumented)
+    protected defaultSlottedNodesChanged(): void;
+    get defaultValue(): string;
+    set defaultValue(next: string);
+    dirName?: string;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // @internal (undocumented)
+    handleControlChange(): void;
+    // @internal (undocumented)
+    handleControlInput(): void;
+    // @internal (undocumented)
+    handleControlSelect(): void;
+    initialForm?: string;
+    // @internal
+    labelEl: HTMLLabelElement;
+    get labels(): NodeList;
+    // @internal
+    labelSlottedNodes: Label[];
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    maxLength?: number;
+    minLength?: number;
+    name: string;
+    placeholder?: string;
+    readOnly: boolean;
+    // (undocumented)
+    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    protected requiredChanged(): void;
+    resize: TextAreaResize;
+    // (undocumented)
+    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    select(): void;
+    setCustomValidity(message: string | null): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    spellcheck: boolean;
+    get textLength(): number;
+    get type(): 'textarea';
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(next: string);
+    get willValidate(): boolean;
+}
+
+// @public
 export class BaseTextInput extends FASTElement {
     autocomplete?: string;
     autofocus: boolean;
@@ -3539,6 +3618,89 @@ export const TextAlign: {
 
 // @public
 export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TextArea extends BaseTextArea {
+    appearance: TextAreaAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    size?: TextAreaSize;
+    // (undocumented)
+    protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
+}
+
+// Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAppearance: {
+    readonly outline: "outline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public (undocumented)
+export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAutocomplete: {
+    readonly on: "on";
+    readonly off: "off";
+};
+
+// @public (undocumented)
+export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
+
+// @public
+export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaResize: {
+    readonly none: "none";
+    readonly both: "both";
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public (undocumented)
+export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+// Warning: (ae-missing-release-tag) "TextAreaSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TextAreaSize = ValuesOf<typeof TextAreaSize>;
+
+// @public
+export const TextAreaStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextAreaTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;

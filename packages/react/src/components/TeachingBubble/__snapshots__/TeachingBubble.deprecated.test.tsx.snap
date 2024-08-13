@@ -611,6 +611,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
