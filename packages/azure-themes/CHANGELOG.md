@@ -1,8 +1,45 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Tue, 23 Jul 2024 07:32:50 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.91](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.91)
+
+Thu, 08 Aug 2024 07:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.90..@fluentui/azure-themes_v8.6.91)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.120.3 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [8.6.90](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.90)
+
+Thu, 01 Aug 2024 21:38:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.89..@fluentui/azure-themes_v8.6.90)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.2 ([PR #32198](https://github.com/microsoft/fluentui/pull/32198) by beachball)
+
+## [8.6.89](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.89)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.88..@fluentui/azure-themes_v8.6.89)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.1 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+
+## [8.6.88](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.88)
+
+Wed, 31 Jul 2024 07:33:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.87..@fluentui/azure-themes_v8.6.88)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.0 ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by beachball)
 
 ## [8.6.87](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.87)
 

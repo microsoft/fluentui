@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { DecoratorFn, Meta } from '@storybook/react';
+import type { Decorator, Meta } from '@storybook/react';
 import { Spinner, spinnerClassNames } from '@fluentui/react-spinner';
 import { tokens } from '@fluentui/react-theme';
 import { Steps } from 'storywright';
@@ -17,7 +17,7 @@ const usePauseWrapperClass = makeResetStyles({
   },
 });
 
-const TestWrapperDecoratorPauseAnimation: DecoratorFn = story => (
+const TestWrapperDecoratorPauseAnimation: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className={mergeClasses('testWrapper', usePauseWrapperClass())}>{story()}</div>
   </div>

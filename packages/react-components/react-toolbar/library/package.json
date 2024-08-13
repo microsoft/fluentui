@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.1.90",
+  "version": "9.2.1",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,7 +41,7 @@
     "@fluentui/react-utilities": "^9.18.13",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/react-context-selector": "^9.1.65",
-    "@fluentui/react-radio": "^9.2.27",
+    "@fluentui/react-radio": "^9.2.28",
     "@fluentui/react-shared-contexts": "^9.20.0",
     "@fluentui/react-tabster": "^9.22.3",
     "@griffel/react": "^1.5.22",

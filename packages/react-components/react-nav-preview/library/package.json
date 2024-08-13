@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-nav-preview",
-  "version": "0.5.3",
+  "version": "0.7.1",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "@fluentui/react-button": "^9.3.87",
     "@fluentui/react-context-selector": "^9.1.65",
     "@fluentui/react-divider": "^9.2.73",
-    "@fluentui/react-drawer": "^9.5.6",
+    "@fluentui/react-drawer": "^9.5.9",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/react-shared-contexts": "^9.20.0",

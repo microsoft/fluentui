@@ -325,7 +325,7 @@ function makeStoriesLibrary(tree: Tree, options: Options, logger: CLIOutput) {
       private: true,
       scripts: {
         start: 'yarn storybook',
-        storybook: 'start-storybook',
+        storybook: 'storybook dev',
         'type-check': 'just-scripts type-check',
         lint: 'eslint src/',
         format: 'just-scripts prettier',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Button } from '@fluentui/react-northstar';
 import StoryWrightSteps from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
@@ -10,7 +10,7 @@ export default {
   component: Button,
   title: 'Button',
   decorators: [story => <StoryWright steps={StoryWrightSteps}>{story()}</StoryWright>],
-} as ComponentMeta<typeof Button>;
+} as Meta<typeof Button>;
 
 const ButtonGroupCircularExampleShorthandTeams = getThemeStoryVariant(ButtonGroupCircularExampleShorthand, 'teamsV2');
 

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-card",
   "entries": [
     {
+      "date": "Tue, 06 Aug 2024 21:40:43 GMT",
+      "tag": "@fluentui/react-card_v9.0.89",
+      "version": "9.0.89",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "edd363739604b199194b5ab8f99b503641044906",
+            "comment": "fix: Card does not override specified focusMode based on event listeners"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2024 18:47:32 GMT",
+      "tag": "@fluentui/react-card_v9.0.88",
+      "version": "9.0.88",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "f2f9fd6d42fc495685d42461fca95060cfed7b4c",
+            "comment": "fix: improve hover for HC mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-card_v9.0.87",
       "version": "9.0.87",

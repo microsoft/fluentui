@@ -1,8 +1,27 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Tue, 09 Jul 2024 07:36:29 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.59](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.59)
+
+Thu, 08 Aug 2024 07:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.58..@fluentui/scheme-utilities_v8.3.59)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/theme to v2.6.58 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [8.3.58](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.58)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.57..@fluentui/scheme-utilities_v8.3.58)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.57 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
 
 ## [8.3.57](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.57)
 
