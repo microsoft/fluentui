@@ -4,10 +4,7 @@ import type { Meta } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Theme } from './set-theme.js';
 import { setTheme } from './set-theme.js';
-import {
-  colorNeutralBackground2,
-  colorNeutralForeground2,
-} from './design-tokens.js';
+import { colorNeutralBackground2, colorNeutralForeground2 } from './design-tokens.js';
 
 const themes: Map<string, Theme | null> = new Map([
   ['web-light', webLightTheme],
@@ -199,7 +196,9 @@ export const SetTheme = renderComponent(html`
     ${ComponentCloudTemplate}
 
     <div class="shadow-container">
-      <p style="color: ${colorNeutralForeground2}">These elements (which have shadow roots) follow their own themes when set</p>
+      <p style="color: ${colorNeutralForeground2}">
+        These elements (which have shadow roots) follow their own themes when set
+      </p>
       <p>
         <fluent-text-input class="shadow">
           <fluent-label>Text input</fluent-label>
