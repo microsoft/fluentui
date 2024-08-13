@@ -63,6 +63,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -89,6 +90,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -115,6 +117,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -752,6 +755,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -778,6 +782,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -804,6 +809,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1350,6 +1356,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1376,6 +1383,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1402,6 +1410,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1868,6 +1877,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1910,6 +1920,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1952,6 +1963,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -2434,6 +2446,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -2476,6 +2489,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -2518,6 +2532,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3000,6 +3015,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3026,6 +3042,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3052,6 +3069,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3518,6 +3536,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#637cef"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3544,6 +3563,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#e3008c"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -3570,6 +3590,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#2aa0a4"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4036,6 +4057,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4062,6 +4084,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4088,6 +4111,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4554,6 +4578,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4580,6 +4605,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4606,6 +4632,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4689,6 +4716,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4715,6 +4743,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -4741,6 +4770,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -5207,6 +5237,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
+              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -5233,6 +5264,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
+              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
@@ -5259,6 +5291,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
+              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}

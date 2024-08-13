@@ -42,7 +42,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -290,6 +290,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
               width="16"
               x="0"
@@ -307,6 +308,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -358,6 +360,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -375,6 +378,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -426,6 +430,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -443,6 +448,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -519,7 +525,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -776,7 +782,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1024,6 +1030,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
               width="16"
               x="0"
@@ -1041,6 +1048,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1092,6 +1100,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -1109,6 +1118,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1160,6 +1170,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -1177,6 +1188,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1253,7 +1265,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -1510,7 +1522,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -1758,6 +1770,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
               width="16"
               x="0"
@@ -1775,6 +1788,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1826,6 +1840,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -1843,6 +1858,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1894,6 +1910,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -1911,6 +1928,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -1987,7 +2005,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2244,7 +2262,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -2492,6 +2510,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
               width="16"
               x="0"
@@ -2509,6 +2528,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -2560,6 +2580,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -2577,6 +2598,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -2628,6 +2650,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -2645,6 +2668,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -2721,7 +2745,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -2978,7 +3002,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone5"
+      data-focuszone-id="FocusZone11"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -3226,6 +3250,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="0"
               width="16"
               x="0"
@@ -3243,6 +3268,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="208.56"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -3294,6 +3320,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="156.42000000000002"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -3311,6 +3338,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="14.219999999999999"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -3362,6 +3390,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="66.36"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="0"
@@ -3379,6 +3408,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               height="237"
               opacity=""
               role="img"
+              rx="0"
               tabindex="-1"
               width="16"
               x="17.77777777777778"
@@ -3455,7 +3485,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone6"
+                data-focuszone-id="FocusZone12"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -3712,7 +3742,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3801,7 +3831,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3809,6 +3838,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={92.06521739130434}
@@ -3823,7 +3853,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3831,6 +3860,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={238.9673913043478}
@@ -3845,7 +3875,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3853,6 +3882,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={180.76086956521738}
@@ -3872,7 +3902,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3880,6 +3909,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={236.19565217391303}
@@ -3894,7 +3924,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3902,6 +3931,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={25.543478260869563}
@@ -3916,7 +3946,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3924,6 +3953,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={183.5326086956522}
@@ -3972,7 +4002,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4529,7 +4559,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4618,7 +4648,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4626,6 +4655,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={92.06521739130434}
@@ -4640,7 +4670,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4648,6 +4677,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={238.9673913043478}
@@ -4662,7 +4692,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4670,6 +4699,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={180.76086956521738}
@@ -4689,7 +4719,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4697,6 +4726,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={236.19565217391303}
@@ -4711,7 +4741,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4719,6 +4748,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={25.543478260869563}
@@ -4733,7 +4763,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4741,6 +4770,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={183.5326086956522}
@@ -4789,7 +4819,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone6"
+              data-focuszone-id="FocusZone12"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5894,7 +5924,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -5983,7 +6013,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={182.93478260869566}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -5991,6 +6020,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={92.06521739130434}
@@ -6005,7 +6035,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={36.03260869565217}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6013,6 +6042,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={238.9673913043478}
@@ -6027,7 +6057,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={94.23913043478261}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6035,6 +6064,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={180.76086956521738}
@@ -6054,7 +6084,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#0078d4"
             height={38.80434782608696}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6062,6 +6091,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={236.19565217391303}
@@ -6076,7 +6106,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00188f"
             height={249.45652173913044}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6084,6 +6113,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={25.543478260869563}
@@ -6098,7 +6128,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             data-is-focusable={true}
             fill="#00bcf2"
             height={91.46739130434783}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6106,6 +6135,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={183.5326086956522}
@@ -6143,7 +6173,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone12"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -6514,7 +6544,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone11"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -6603,7 +6633,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={211.6304347826087}
-            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6611,6 +6640,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={103.36956521739131}
@@ -6625,7 +6655,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={41.68478260869565}
-            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6633,6 +6662,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={273.3152173913044}
@@ -6647,7 +6677,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={109.02173913043478}
-            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6655,6 +6684,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={205.97826086956522}
@@ -6674,7 +6704,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#0078d4"
             height={44.89130434782609}
-            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6682,6 +6711,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={0}
             y={270.1086956521739}
@@ -6696,7 +6726,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00188f"
             height={288.5869565217391}
-            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6704,6 +6733,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={10}
             y={26.413043478260875}
@@ -6718,7 +6748,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             data-is-focusable={true}
             fill="#00bcf2"
             height={105.81521739130434}
-            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -6726,6 +6755,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             onMouseOver={[Function]}
             opacity=""
             role="img"
+            rx={0}
             width={9}
             x={20}
             y={209.18478260869566}
@@ -9329,7 +9359,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone14"
         data-tabster="{\\"uncontrolled\\": {}}"
       >
         <svg
@@ -9577,6 +9607,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="156.42000000000002"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="0"
                 width="16"
                 x="0"
@@ -9594,6 +9625,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="208.56"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
                 width="16"
                 x="17.77777777777778"
@@ -9645,6 +9677,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="156.42000000000002"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
                 width="16"
                 x="0"
@@ -9662,6 +9695,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="14.219999999999999"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
                 width="16"
                 x="17.77777777777778"
@@ -9713,6 +9747,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="66.36"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
                 width="16"
                 x="0"
@@ -9730,6 +9765,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 height="237"
                 opacity=""
                 role="img"
+                rx="0"
                 tabindex="-1"
                 width="16"
                 x="17.77777777777778"
@@ -9806,7 +9842,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone9"
+                  data-focuszone-id="FocusZone15"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >

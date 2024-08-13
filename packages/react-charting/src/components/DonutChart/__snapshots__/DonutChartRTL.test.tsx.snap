@@ -62,6 +62,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     }
                 d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                 data-is-focusable="true"
+                fill="#E5E5E5"
                 id="_Pie_1first20000"
                 opacity="1"
                 role="img"
@@ -84,6 +85,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     }
                 d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                 data-is-focusable="true"
+                fill="#0078D4"
                 id="_Pie_1second39000"
                 opacity="1"
                 role="img"
@@ -106,6 +108,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     }
                 d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                 data-is-focusable="true"
+                fill="#DADADA"
                 id="_Pie_1third45000"
                 opacity="1"
                 role="img"
@@ -711,6 +714,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       }
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
+                  fill="#E5E5E5"
                   id="_Pie_4first20000"
                   opacity="1"
                   role="img"
@@ -733,6 +737,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       }
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
+                  fill="#0078D4"
                   id="_Pie_4second39000"
                   opacity="1"
                   role="img"
@@ -755,6 +760,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       }
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
+                  fill="#DADADA"
                   id="_Pie_4third45000"
                   opacity="1"
                   role="img"

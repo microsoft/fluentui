@@ -22,7 +22,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -67,7 +67,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -118,7 +118,7 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -163,8 +163,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar7"
+              id="_SBC_bar10"
               key="0"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -195,8 +196,9 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar8"
+              id="_SBC_bar12"
               key="1"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -402,7 +404,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -447,7 +449,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -498,7 +500,7 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -543,8 +545,9 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar7"
+              id="_SBC_bar10"
               key="0"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -575,8 +578,9 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar8"
+              id="_SBC_bar12"
               key="1"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -690,7 +694,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -735,7 +739,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -786,7 +790,7 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -830,7 +834,8 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -860,7 +865,8 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -898,7 +904,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -943,7 +949,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -994,7 +1000,7 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1038,7 +1044,8 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1068,7 +1075,8 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1106,7 +1114,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1151,7 +1159,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -1192,7 +1200,7 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1236,7 +1244,8 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1266,7 +1275,8 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1304,7 +1314,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1349,7 +1359,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -1400,7 +1410,7 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1444,7 +1454,8 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1474,7 +1485,8 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1512,7 +1524,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1557,7 +1569,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -1582,7 +1594,7 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1626,7 +1638,8 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1656,7 +1669,8 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1694,7 +1708,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1739,7 +1753,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -1790,7 +1804,7 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1834,7 +1848,8 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -1864,7 +1879,8 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -1902,7 +1918,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone6"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1947,7 +1963,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         </span>
         <div
           hidden={true}
-          id="tooltip5"
+          id="tooltip7"
           style={
             Object {
               "border": 0,
@@ -1972,7 +1988,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone6"
+    data-focuszone-id="FocusZone8"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2016,7 +2032,8 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#5c005c"
               height={12}
-              id="_SBC_bar2"
+              id="_SBC_bar3"
+              rx={0}
               width="63.49206349206349%"
               x="0%"
               y={0}
@@ -2046,7 +2063,8 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
             <rect
               fill="#e81123"
               height={12}
-              id="_SBC_bar3"
+              id="_SBC_bar5"
+              rx={0}
               width="36.507936507936506%"
               x="63.49206349206349%"
               y={0}
@@ -2107,7 +2125,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone7"
+              data-focuszone-id="FocusZone9"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

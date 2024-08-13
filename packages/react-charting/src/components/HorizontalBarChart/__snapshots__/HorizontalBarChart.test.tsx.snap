@@ -27,7 +27,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -72,7 +72,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip7"
               style={
                 Object {
                   "border": 0,
@@ -113,7 +113,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -149,9 +149,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
-              y={0}
             />
             <rect
               aria-label="13457/15000."
@@ -165,9 +165,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
-              y={0}
             />
           </g>
         </svg>
@@ -190,7 +190,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone9"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -235,7 +235,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip10"
               style={
                 Object {
                   "border": 0,
@@ -276,7 +276,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -312,9 +312,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
-              y={0}
             />
             <rect
               aria-label="14200/15000."
@@ -328,9 +328,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
-              y={0}
             />
           </g>
         </svg>
@@ -538,7 +538,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -583,7 +583,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip7"
               style={
                 Object {
                   "border": 0,
@@ -624,7 +624,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone8"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -660,9 +660,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
-              y={0}
             />
             <rect
               aria-label="13457/15000."
@@ -676,9 +676,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
-              y={0}
             />
           </g>
         </svg>
@@ -701,7 +701,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone9"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -746,7 +746,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip10"
               style={
                 Object {
                   "border": 0,
@@ -787,7 +787,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone11"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -823,9 +823,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
-              y={0}
             />
             <rect
               aria-label="14200/15000."
@@ -839,9 +839,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
-              y={0}
             />
           </g>
         </svg>
@@ -960,7 +960,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1005,7 +1005,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1033,7 +1033,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1067,9 +1067,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
-              y={0}
             />
             <text />
           </g>
@@ -1091,7 +1091,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1136,7 +1136,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip8"
               style={
                 Object {
                   "border": 0,
@@ -1164,7 +1164,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone9"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1198,9 +1198,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
-              y={0}
             />
             <text />
           </g>
@@ -1239,7 +1239,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone2"
+        data-focuszone-id="FocusZone4"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1284,7 +1284,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip3"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1312,7 +1312,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone6"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1346,9 +1346,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
-              y={0}
             />
             <text
               aria-hidden={true}
@@ -1388,7 +1388,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone7"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1433,7 +1433,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip6"
+              id="tooltip8"
               style={
                 Object {
                   "border": 0,
@@ -1461,7 +1461,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone9"
         data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1495,9 +1495,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
-              y={0}
             />
             <text
               aria-hidden={true}

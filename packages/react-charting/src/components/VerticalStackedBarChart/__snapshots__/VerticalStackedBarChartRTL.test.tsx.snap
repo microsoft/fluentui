@@ -281,6 +281,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="4.74"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -295,6 +296,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="3"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -336,6 +338,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="71.1"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -350,6 +353,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="7.109999999999999"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -364,6 +368,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00bcf2"
                 height="94.79999999999998"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -405,6 +410,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="23.700000000000003"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -419,6 +425,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="142.20000000000002"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -433,6 +440,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00bcf2"
                 height="71.10000000000001"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -1264,6 +1272,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="4.74"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -1278,6 +1287,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="3"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -1319,6 +1329,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="71.1"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -1333,6 +1344,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="7.109999999999999"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -1347,6 +1359,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00bcf2"
                 height="94.79999999999998"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -1388,6 +1401,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#0078d4"
                 height="23.700000000000003"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -1402,6 +1416,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00188f"
                 height="142.20000000000002"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -1416,6 +1431,7 @@ exports[`Vertical stacked bar chart - Screen resolution Should remain unchanged 
                     }
                 fill="#00bcf2"
                 height="71.10000000000001"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -2247,6 +2263,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#0078d4"
                 height="4.74"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -2261,6 +2278,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#00188f"
                 height="3"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="279"
@@ -2302,6 +2320,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#0078d4"
                 height="71.1"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -2316,6 +2335,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#00188f"
                 height="7.109999999999999"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -2330,6 +2350,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#00bcf2"
                 height="94.79999999999998"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="327"
@@ -2371,6 +2392,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#0078d4"
                 height="23.700000000000003"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -2385,6 +2407,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#00188f"
                 height="142.20000000000002"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -2399,6 +2422,7 @@ exports[`Vertical stacked bar chart - Subcomponent Line Should render the vertic
                     }
                 fill="#00bcf2"
                 height="71.10000000000001"
+                rx="0"
                 transform="translate(0, 0)"
                 width="16"
                 x="375"
@@ -3278,6 +3302,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   fill="#0078d4"
                   height="182.30769230769232"
                   role="img"
+                  rx="0"
                   tabindex="0"
                   transform="translate(-8, 0)"
                   width="16"
@@ -3296,6 +3321,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   fill="#00188f"
                   height="22.78846153846154"
                   role="img"
+                  rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
@@ -3337,6 +3363,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   fill="#0078d4"
                   height="136.73076923076923"
                   role="img"
+                  rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
@@ -3355,6 +3382,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   fill="#00188f"
                   height="91.15384615384615"
                   role="img"
+                  rx="0"
                   tabindex="-1"
                   transform="translate(-8, 0)"
                   width="16"
@@ -10052,6 +10080,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="#0078d4"
                 height="182.30769230769232"
                 role="img"
+                rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10070,6 +10099,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="#00188f"
                 height="22.78846153846154"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10111,6 +10141,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="#0078d4"
                 height="136.73076923076923"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10129,6 +10160,7 @@ exports[`Vertical stacked bar chart rendering Should render the vertical stacked
                 fill="#00188f"
                 height="91.15384615384615"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10737,6 +10769,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="#0078d4"
                 height="182.30769230769232"
                 role="img"
+                rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10755,6 +10788,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="#00188f"
                 height="22.78846153846154"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10796,6 +10830,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="#0078d4"
                 height="136.73076923076923"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -10814,6 +10849,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                 fill="#00188f"
                 height="91.15384615384615"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -11411,6 +11447,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="#0078d4"
                 height="182.30769230769232"
                 role="img"
+                rx="0"
                 tabindex="0"
                 transform="translate(-8, 0)"
                 width="16"
@@ -11429,6 +11466,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="#00188f"
                 height="22.78846153846154"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -11470,6 +11508,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="#0078d4"
                 height="136.73076923076923"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -11488,6 +11527,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                 fill="#00188f"
                 height="91.15384615384615"
                 role="img"
+                rx="0"
                 tabindex="-1"
                 transform="translate(-8, 0)"
                 width="16"
@@ -12086,6 +12126,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="182.30769230769232"
+                rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -12100,6 +12141,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="22.78846153846154"
+                rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="56"
@@ -12141,6 +12183,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#0078d4"
                 height="136.73076923076923"
+                rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"
@@ -12155,6 +12198,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     }
                 fill="#00188f"
                 height="91.15384615384615"
+                rx="0"
                 transform="translate(-8, 0)"
                 width="16"
                 x="614"

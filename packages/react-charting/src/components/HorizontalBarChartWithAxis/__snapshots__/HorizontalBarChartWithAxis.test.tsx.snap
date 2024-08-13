@@ -31,7 +31,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -122,6 +122,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          rx={0}
           width={-30}
           x={40}
           y={4}
@@ -178,7 +179,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -653,7 +654,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -744,6 +745,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          rx={0}
           width={-30}
           x={40}
           y={4}
@@ -788,7 +790,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -874,6 +876,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          rx={0}
           transform="translate(0,-5.125)"
           width={-12}
           x={40}
@@ -931,7 +934,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1398,7 +1401,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1484,6 +1487,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
+          rx={0}
           transform="translate(0,-5.125)"
           width={-12}
           x={40}
@@ -1541,7 +1545,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
