@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { Toggle } from '@fluentui/react/lib/Toggle';
@@ -128,7 +127,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
               y: 298,
             },
           ],
-          color: DefaultPalette.blue,
+          color: DataVizPalette.color8,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -165,7 +164,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
               y: 292,
             },
           ],
-          color: DefaultPalette.green,
+          color: DataVizPalette.color10,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -233,6 +232,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           }}
           height={this.state.height}
           width={this.state.width}
+          enablePerfOptimization={true}
         />
       </div>
     );

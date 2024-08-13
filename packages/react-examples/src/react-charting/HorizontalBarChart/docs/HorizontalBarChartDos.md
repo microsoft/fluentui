@@ -1,0 +1,2 @@
+- Use horizontal bar chart if the length of labels is longer.
+- Numerical units on labels are represented through abbreviations.

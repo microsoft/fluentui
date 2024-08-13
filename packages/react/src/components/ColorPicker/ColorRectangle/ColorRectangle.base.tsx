@@ -5,6 +5,8 @@ import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
 import { updateSV } from '../../../utilities/color/updateSV';
 import { clamp } from '../../../utilities/color/clamp';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getWindowEx } from '../../../utilities/dom';
 import type {
   IColorRectangleProps,
   IColorRectangleStyleProps,
@@ -26,6 +28,7 @@ export class ColorRectangleBase
   extends React.Component<IColorRectangleProps, IColorRectangleState>
   implements IColorRectangle
 {
+  public static contextType = WindowContext;
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
@@ -183,9 +186,10 @@ export class ColorRectangleBase
   }
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
+    const win = getWindowEx(this.context)!; // Can only be called on the client
     this._disposables.push(
-      on(window, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
-      on(window, 'mouseup', this._disposeListeners, true),
+      on(win, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
+      on(win, 'mouseup', this._disposeListeners, true),
     );
 
     this._onMouseMove(ev);

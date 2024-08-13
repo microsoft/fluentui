@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "type-check": "tsc -p tsconfig.react-compat-check.json",
+    "type-check": "just-scripts type-check",
     "lint": "eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "format": "prettier -w . --ignore-path ../.prettierignore",
@@ -19,7 +19,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.25.1",
+    "@fluentui/react-components": "*",
+    "@testing-library/dom": "^10.1.0",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
     "react": "18.2.0",

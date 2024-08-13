@@ -4,6 +4,10 @@ import { TagPicker, IBasePicker, ITag } from '@fluentui/react/lib/Pickers';
 import { Checkbox, ICheckboxStyles } from '@fluentui/react/lib/Checkbox';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 
+export default {
+  title: 'Components/TagPicker',
+};
+
 const rootClass = mergeStyles({
   maxWidth: 500,
 });

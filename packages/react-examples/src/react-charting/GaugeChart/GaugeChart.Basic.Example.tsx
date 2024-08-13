@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart } from '@fluentui/react-charting';
+import { DataVizPalette, GaugeChart, GaugeChartVariant } from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
 
 interface IGCBasicExampleState {
@@ -82,6 +82,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           ]}
           chartValue={this.state.chartValue}
           hideMinMax={this.state.hideMinMax}
+          variant={GaugeChartVariant.MultipleSegments}
         />
       </>
     );

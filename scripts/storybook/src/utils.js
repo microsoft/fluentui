@@ -1,9 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const { fullSourcePlugin: babelPlugin } = require('@fluentui/babel-preset-storybook-full-source');
-const { isConvergedPackage, getAllPackageInfo } = require('@fluentui/scripts-monorepo');
-const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration } = require('@nrwl/devkit');
+const { getAllPackageInfo } = require('@fluentui/scripts-monorepo');
+const { stripIndents, offsetFromRoot, workspaceRoot, readProjectConfiguration, getProjects } = require('@nx/devkit');
 const { FsTree } = require('nx/src/generators/tree');
 const semver = require('semver');
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
@@ -24,17 +23,35 @@ const loadWorkspaceAddonDefaultOptions = { workspaceRoot };
  *  }
  * ```
  *
+ * @template {Record<string,any>} AddonConfiguration
  * @param {string} addonName - package name of custom workspace addon
  * @param {Object} options
  * @param {string=} options.workspaceRoot
+ * @param {string=} options.npmScope
  * @param {string} options.tsConfigPath - absolute path to tsConfig that contains path aliases
+ * @param {AddonConfiguration=} options.options - addon preset configuration
  */
 function loadWorkspaceAddon(addonName, options) {
   /* eslint-disable no-shadow */
-  const { workspaceRoot, tsConfigPath } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+  const {
+    workspaceRoot,
+    npmScope,
+    tsConfigPath,
+    options: addonConfig,
+  } = { ...loadWorkspaceAddonDefaultOptions, ...options };
+
+  const inMemoryTsTranspilationTemplate = stripIndents`
+      function registerInMemoryTsTranspilation(){
+        const { registerTsProject } = require('@nx/js/src/internal');
+        const { joinPathFragments } = require('@nx/devkit');
+        registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
+      }
+
+      registerInMemoryTsTranspilation();
+    `;
 
   function getPaths() {
-    const addonMetadata = getProjectMetadata(addonName, workspaceRoot);
+    const addonMetadata = getProjectMetadata(normalizeProjectName(addonName, npmScope), workspaceRoot);
     const packageRootPath = path.join(workspaceRoot, addonMetadata.root);
     const packageSourceRootPath = path.join(workspaceRoot, addonMetadata.sourceRoot ?? '');
     const packageJsonPath = path.join(packageRootPath, 'package.json');
@@ -92,8 +109,10 @@ function loadWorkspaceAddon(addonName, options) {
   const posixTsConfigPath = tsConfigPath.split(path.sep).join(path.posix.sep);
 
   const presetRelativePathToDistApiRegex = new RegExp(`\\./${packageDistPath}`, 'g');
+  const presetConfigRegex = /const\s+([a-z]+)\s+=\s+require\('([a-z/.]+)\/preset'\)/i;
   const presetApiRegex = /module\.exports\s+=\s+({).+}/;
   const presetApiPathRegex = /(\/manager|\/preview)/g;
+
   let modifiedPresetContent = presetContent
     .replace(presetRelativePathToDistApiRegex, relativePathToSource)
     .replace(presetApiPathRegex, '$1.ts')
@@ -102,7 +121,6 @@ function loadWorkspaceAddon(addonName, options) {
     });
 
   modifiedPresetContent = stripIndents`
-    // @ts-ignore
     const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
     function managerWebpack(config, options) {
@@ -113,87 +131,83 @@ function loadWorkspaceAddon(addonName, options) {
     ${modifiedPresetContent}
   `;
 
+  if (presetConfigRegex.test(presetContent)) {
+    modifiedPresetContent = stripIndents`
+      ${inMemoryTsTranspilationTemplate}
+
+      ${modifiedPresetContent}
+    `;
+  }
+
+  modifiedPresetContent = stripIndents`
+  // @ts-nocheck
+
+  ${modifiedPresetContent}
+  `;
+
   if (!fs.existsSync(packageTempPath)) {
     fs.mkdirSync(packageTempPath, { recursive: true });
   }
 
   fs.writeFileSync(presetMockedSourcePath, modifiedPresetContent, { encoding: 'utf-8' });
 
+  if (addonConfig) {
+    return { name: presetMockedSourcePath, options: addonConfig };
+  }
+
   return presetMockedSourcePath;
   /* eslint-enable no-shadow */
 }
 
 /**
- * @private
  * @param {ReturnType<typeof getAllPackageInfo>} allPackageInfo
- * @returns {import("webpack").RuleSetRule}
+ * @returns {Record<string, {replace: string}>};
  */
-function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
-  const config = getCodesandboxBabelOptions();
-
-  return {
-    /**
-     * why the usage of 'post' ? - we need to run this loader after all storybook webpack rules/loaders have been executed.
-     * while we can use Array.prototype.unshift to "override" the indexes this approach is more declarative without additional hacks.
-     */
-    enforce: 'post',
-    test: /\.stories\.tsx$/,
-    include: /stories/,
-    exclude: /node_modules/,
-    use: {
-      loader: 'babel-loader',
-      options: _processBabelLoaderOptions({
-        plugins: [[babelPlugin, config]],
-      }),
-    },
-  };
-
+function getImportMappingsForExportToSandboxAddon(allPackageInfo = getAllPackageInfo()) {
   /**
-   * @returns {import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions}
+   * packages that are part of v9 but are not meant for platform:web
    */
-  function getCodesandboxBabelOptions() {
-    /**
-     * packages that are part of v9 but are not meant for platform:web
-     */
-    const excludePackages = [
-      '@fluentui/babel-preset-storybook-full-source',
-      '@fluentui/react-storybook-addon',
-      '@fluentui/react-storybook-addon-codesandbox',
-      '@fluentui/react-conformance-griffel',
-    ];
+  const excludePackages = [
+    '@fluentui/babel-preset-storybook-full-source',
+    '@fluentui/react-storybook-addon',
+    '@fluentui/react-storybook-addon-export-to-sandbox',
+    '@fluentui/react-conformance-griffel',
+  ];
 
-    // TODO: https://github.com/microsoft/fluentui/issues/26691
-    const packagesOutsideReactComponentsSuite = [
-      '@fluentui/react-data-grid-react-window',
-      '@fluentui/react-datepicker-compat',
-      '@fluentui/react-migration-v8-v9',
-      '@fluentui/react-migration-v0-v9',
-    ];
+  const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
+    if (excludePackages.includes(cur.packageJson.name)) {
+      return acc;
+    }
 
-    const importMappings = Object.values(allPackageInfo).reduce((acc, cur) => {
-      if (excludePackages.includes(cur.packageJson.name)) {
-        return acc;
-      }
+    if (isPackagePartOfReactComponentsSuite(cur.packageJson.name)) {
+      // TODO: once all pre-release packages (deprecated approach) will be released as stable this logic will be removed
+      const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
 
-      if (packagesOutsideReactComponentsSuite.includes(cur.packageJson.name)) {
-        acc[cur.packageJson.name] = { replace: cur.packageJson.name };
-        return acc;
-      }
-
-      if (isConvergedPackage({ packagePathOrJson: cur.packageJson, projectType: 'library' })) {
-        const isPrerelease = semver.prerelease(cur.packageJson.version) !== null;
-
-        acc[cur.packageJson.name] = isPrerelease
-          ? { replace: '@fluentui/react-components/unstable' }
-          : { replace: '@fluentui/react-components' };
-
-        return acc;
-      }
+      acc[cur.packageJson.name] = isPrerelease
+        ? { replace: '@fluentui/react-components/unstable' }
+        : { replace: '@fluentui/react-components' };
 
       return acc;
-    }, /** @type import('@fluentui/babel-preset-storybook-full-source').BabelPluginOptions*/ ({}));
+    }
 
-    return importMappings;
+    return acc;
+  }, /** @type {Record<string, {replace: string}>} */ ({}));
+
+  return importMappings;
+
+  /**
+   *
+   * @param {string} projectName
+   */
+  function isPackagePartOfReactComponentsSuite(projectName) {
+    const suiteProject = allPackageInfo['@fluentui/react-components'];
+
+    if (suiteProject) {
+      const suiteDependencies = suiteProject.packageJson.dependencies ?? {};
+      return Boolean(suiteDependencies[projectName]);
+    }
+
+    return false;
   }
 }
 
@@ -202,35 +216,92 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
  *
  * This helper is useful for creating aggregated storybooks which will generate multiple stories across packages.
  *
- * @param {{packageName:string,callerPath:string}} options
+ * @param {{packageName:string,callerPath:string,excludeStoriesInsertionFromPackages?:string[]}} options
  * @returns
  */
 function getPackageStoriesGlob(options) {
-  const projectMetadata = getProjectMetadata(options.packageName);
+  const projects = getAllProjects();
+
+  const excludeStoriesInsertionFromPackages = (options.excludeStoriesInsertionFromPackages ?? []).map(packageName =>
+    normalizeProjectName(packageName),
+  );
+  const projectMetadata = /** @type {NonNullable<ReturnType<typeof getMetadata>>} */ (
+    getMetadata(normalizeProjectName(options.packageName), projects)
+  );
 
   /** @type {{name:string;version:string;dependencies?:Record<string,string>}} */
   const packageJson = JSON.parse(
     fs.readFileSync(path.resolve(workspaceRoot, projectMetadata.root, 'package.json'), 'utf-8'),
   );
 
-  packageJson.dependencies = packageJson.dependencies ?? {};
-  const dependencies = Object.assign(packageJson.dependencies, {
-    [options.packageName]: '*',
-  });
+  const dependencies = { ...(packageJson.dependencies ?? {}) };
   const rootOffset = offsetFromRoot(options.callerPath.replace(workspaceRoot, ''));
+  const packages = Object.keys(dependencies);
 
-  return Object.keys(dependencies)
-    .filter(pkgName => pkgName.startsWith('@fluentui/'))
-    .map(pkgName => {
-      const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
-      const pkgMetadata = getProjectMetadata(pkgName);
+  const result = packages.reduce((acc, pkgName) => {
+    const projectName = normalizeProjectName(pkgName);
 
-      if (fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'))) {
-        return `${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`;
+    if (!pkgName.startsWith('@fluentui/') || excludeStoriesInsertionFromPackages.includes(projectName)) {
+      return acc;
+    }
+
+    const pkgMetadata = getMetadata(projectName, projects, { throwIfNotFound: false });
+
+    if (!pkgMetadata) {
+      return acc;
+    }
+
+    const storiesGlob = '**/@(index.stories.@(ts|tsx)|*.stories.mdx)';
+
+    // if defined package(project) has stories sibling project, that means we need to look for stories in sibling project as the original project doesn't have stories anymore
+    // @see https://github.com/microsoft/fluentui/issues/30516
+    const pkgMetadataStories = projects.get(`${projectName}-stories`);
+    if (pkgMetadataStories) {
+      acc.push(`${rootOffset}${pkgMetadataStories.root}/src/${storiesGlob}`);
+      return acc;
+    }
+
+    const hasStoriesFolder = fs.existsSync(path.resolve(workspaceRoot, pkgMetadata.root, 'stories'));
+
+    if (hasStoriesFolder) {
+      acc.push(`${rootOffset}${pkgMetadata.root}/stories/${storiesGlob}`);
+      return acc;
+    }
+
+    acc.push(`${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`);
+
+    return acc;
+  }, /** @type {string[]}*/ ([]));
+
+  return result;
+
+  // ========================================
+  // Helpers
+  // ========================================
+
+  function getAllProjects() {
+    const tree = new FsTree(workspaceRoot, false);
+    return getProjects(tree);
+  }
+
+  function getMetadata(
+    /** @type {string}*/ packageName,
+    /** @type {ReturnType<typeof getAllProjects>}*/ allProjects,
+    /** @type {Partial<{throwIfNotFound:boolean}>}*/ _options,
+  ) {
+    const { throwIfNotFound = true } = { ..._options };
+    const metadata = allProjects.get(packageName);
+
+    if (!metadata) {
+      if (throwIfNotFound) {
+        throw new Error(`Project "${packageName}" not found in workspace`);
       }
 
-      return `${rootOffset}${pkgMetadata.root}/src/${storiesGlob}`;
-    });
+      return null;
+    }
+
+    return metadata;
+  }
 }
 
 /**
@@ -285,10 +356,9 @@ function registerRules(options) {
  * Why is this needed:
  *  - `options.babelrc` is ignored by `babel-loader` thus we need to use `customize` api to exclude specific babel presets/plugins
  *
- * @private
  * @param {BabelLoaderOptions} loaderConfig
  */
-function _processBabelLoaderOptions(loaderConfig) {
+function processBabelLoaderOptions(loaderConfig) {
   const customLoaderPath = path.join(__dirname, './loaders/custom-loader.js');
   const customOptions = { customize: customLoaderPath };
   Object.assign(loaderConfig, customOptions);
@@ -309,7 +379,7 @@ function _processBabelLoaderOptions(loaderConfig) {
  *
  * **Note:**
  * - this function mutates `rules` argument which is a reference to `modules.rules` webpack config property
- * - to print used babel-loader config run: `yarn start-storybook --no-manager-cache --debug-webpack` and look for
+ * - to print used babel-loader config run: `yarn start-storybook --debug-webpack` and look for
  * webpack rule set containing both:
  *  - `test: /\.(mjs|tsx?|jsx?)$/`
  *  - `node_modules/babel-loader/lib/index.js` as `loader` within module.rules
@@ -324,7 +394,7 @@ function overrideDefaultBabelLoader(options) {
 
   const loader = getBabelLoader(/** @type {import('webpack').RuleSetRule[]}*/ (config.module.rules));
 
-  _processBabelLoaderOptions(loader.options);
+  processBabelLoaderOptions(loader.options);
 
   function getBabelLoader(/** @type {import('webpack').RuleSetRule[]} */ rules) {
     // eslint-disable-next-line no-shadow
@@ -362,9 +432,14 @@ function getProjectMetadata(projectName, root = workspaceRoot) {
   return readProjectConfiguration(tree, projectName);
 }
 
+function normalizeProjectName(/** @type {string} */ value, npmScope = 'fluentui') {
+  return value.replace(`@${npmScope}/`, '');
+}
+
 exports.getPackageStoriesGlob = getPackageStoriesGlob;
 exports.loadWorkspaceAddon = loadWorkspaceAddon;
 exports.registerTsPaths = registerTsPaths;
 exports.registerRules = registerRules;
 exports.overrideDefaultBabelLoader = overrideDefaultBabelLoader;
-exports._createCodesandboxRule = _createCodesandboxRule;
+exports.processBabelLoaderOptions = processBabelLoaderOptions;
+exports.getImportMappingsForExportToSandboxAddon = getImportMappingsForExportToSandboxAddon;

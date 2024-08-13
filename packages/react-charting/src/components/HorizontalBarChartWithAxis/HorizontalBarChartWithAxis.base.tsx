@@ -1,28 +1,29 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
-import { select as d3Select, event as d3Event } from 'd3-selection';
+import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+import { ILegend } from '../../components/Legends/Legends.types';
+import { Legends } from '../../components/Legends/Legends';
 import {
   IAccessibilityProps,
-  CartesianChart,
-  ChartHoverCard,
   IBasestate,
-  IMargins,
-  ILegend,
+  IHorizontalBarChartWithAxisDataPoint,
   IRefArrayData,
+  IMargins,
+} from '../../types/IDataPoint';
+import { IChildProps, IYValueHover } from '../CommonComponents/CartesianChart.types';
+import { CartesianChart } from '../CommonComponents/CartesianChart';
+import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
   IHorizontalBarChartWithAxisStyles,
-  IHorizontalBarChartWithAxisDataPoint,
-  Legends,
-  IChildProps,
-  IYValueHover,
-} from '../../index';
+} from './HorizontalBarChartWithAxis.types';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import {
+  ChartHoverCard,
   ChartTypes,
   IAxisData,
   getAccessibleDataObject,
@@ -32,6 +33,11 @@ import {
   StringAxis,
   getTypeOfAxis,
   getNextColor,
+  findHBCWANumericMinMaxOfY,
+  createYAxisForHorizontalBarChartWithAxis,
+  IDomainNRange,
+  domainRangeOfNumericForHorizontalBarChartWithAxis,
+  createStringYAxisForHorizontalBarChartWithAxis,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>();
@@ -136,6 +142,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     return (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={this._points}
         chartType={ChartTypes.HorizontalBarChartWithAxis}
         xAxisType={this._xAxisType}
@@ -144,6 +151,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         calloutProps={calloutProps}
         tickParams={tickParams}
         legendBars={legendBars}
+        createYAxis={createYAxisForHorizontalBarChartWithAxis}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        createStringYAxis={createStringYAxisForHorizontalBarChartWithAxis}
+        getMinMaxOfYAxis={findHBCWANumericMinMaxOfY}
         barwidth={this._barHeight}
         focusZoneDirection={FocusZoneDirection.vertical}
         customizedCallout={this._getCustomizedCallout()}
@@ -163,6 +174,26 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       />
     );
   }
+
+  private _getDomainNRangeValues = (
+    points: IHorizontalBarChartWithAxisDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis) {
+      domainNRangeValue = domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, width, isRTL, shiftX);
+    } else {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    }
+    return domainNRangeValue;
+  };
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
@@ -396,6 +427,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }
@@ -424,7 +456,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
@@ -446,7 +478,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
           x={this._isRtl ? xBarScale(point.x) : this.margins.left!}
           className={this._classNames.opacityChangeOnHover}
           y={yBarScale(point.y) - this._barHeight / 2}
-          data-is-focusable={true}
+          data-is-focusable={shouldHighlight}
           width={
             this._isRtl
               ? containerWidth - this.margins.right! - Math.max(xBarScale(point.x), 0)
@@ -489,13 +521,14 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     for (let i = 0; i < tickObjectLength; i++) {
       const d1 = tickObject[i];
       d3Select(d1)
-        .on('mouseover', d => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .on('mouseover', (event: any, d) => {
           if (!this.state.tooltipElement) {
             div.style('opacity', 0.9);
             div
               .html(originalDataArray[i])
-              .style('left', d3Event.pageX + 'px')
-              .style('top', d3Event.pageY - 28 + 'px');
+              .style('left', event.pageX + 'px')
+              .style('top', event.pageY - 28 + 'px');
           }
         })
         .on('mouseout', d => {
@@ -643,11 +676,12 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
         hoverAction: () => {
+          this._handleChartMouseLeave();
           this._onLegendHover(point.legend!);
         },
         onMouseOutAction: (isLegendSelected?: boolean) => {
@@ -680,5 +714,10 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
     const xValue = point.xAxisCalloutData || point.x;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ` + `${yValue}.`;
+  };
+
+  private _getChartTitle = (): string => {
+    const { chartTitle, data } = this.props;
+    return (chartTitle ? `${chartTitle}. ` : '') + `Horizontal bar chart with ${data?.length || 0} bars. `;
   };
 }

@@ -4,14 +4,17 @@
 
 ```ts
 
-import { Args } from '@storybook/api';
-import { OptionsParameter } from '@storybook/addons';
-import { Parameters as Parameters_2 } from '@storybook/addons';
-import { StoryContext } from '@storybook/addons';
-import type { Theme } from '@fluentui/react-theme';
+import { Args } from '@storybook/react';
+import { Parameters as Parameters_2 } from '@storybook/react';
+import { StoryContext } from '@storybook/react';
+
+// @public (undocumented)
+export const DIR_ID: "storybook_fluentui-react-addon_dir";
 
 // @public
 export interface FluentGlobals extends Args {
+    // (undocumented)
+    [DIR_ID]?: 'ltr' | 'rtl';
     // (undocumented)
     [STRICT_MODE_ID]?: boolean;
     // (undocumented)
@@ -26,6 +29,10 @@ export interface FluentParameters extends Parameters_2 {
     fluentTheme?: ThemeIds;
     // (undocumented)
     mode?: 'default' | 'vr-test';
+    // (undocumented)
+    reactStorybookAddon?: {
+        disabledDecorators: ['AriaLive' | 'FluentProvider' | 'ReactStrictMode'];
+    };
 }
 
 // @public (undocumented)
@@ -41,14 +48,13 @@ export function parameters(options?: FluentParameters): {
     dir: string;
     fluentTheme: string;
     mode: string;
-    fileName?: string | undefined;
-    options?: OptionsParameter | undefined;
-    layout?: "centered" | "fullscreen" | "padded" | "none" | undefined;
-    docsOnly?: boolean | undefined;
+    reactStorybookAddon?: {
+        disabledDecorators: ["AriaLive" | "FluentProvider" | "ReactStrictMode"];
+    } | undefined;
 };
 
 // @public (undocumented)
-export const THEME_ID: "storybook/fluentui-react-addon/theme";
+export const THEME_ID: "storybook_fluentui-react-addon_theme";
 
 // @public (undocumented)
 export type ThemeIds = (typeof themes)[number]['id'];
@@ -57,23 +63,18 @@ export type ThemeIds = (typeof themes)[number]['id'];
 export const themes: readonly [{
     readonly id: "web-light";
     readonly label: "Web Light";
-    readonly theme: Theme;
 }, {
     readonly id: "web-dark";
     readonly label: "Web Dark";
-    readonly theme: Theme;
 }, {
     readonly id: "teams-light";
     readonly label: "Teams Light";
-    readonly theme: Theme;
 }, {
     readonly id: "teams-dark";
     readonly label: "Teams Dark";
-    readonly theme: Theme;
 }, {
     readonly id: "teams-high-contrast";
     readonly label: "Teams High Contrast";
-    readonly theme: Theme;
 }];
 
 // (No @packageDocumentation comment for this package)

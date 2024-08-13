@@ -22,6 +22,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
   tabIndex={-1}
 >
   <div
+    data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
@@ -213,6 +214,25 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline-color: #ffffff;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
                 &:active > span {
                   left: 0px;
                   position: relative;
@@ -236,13 +256,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border-color: Highlight;
                   color: Window;
                 }
-                &:focus {
-                  background-color: #deecf9;
-                  border: 1px solid #000000;
-                  color: #005a9e;
-                  outline-offset: -2px;
-                  outline: 1px solid #ffffff;
-                }
                 &:active {
                   background-color: #ffffff;
                   border-color: #ffffff;
@@ -262,6 +275,13 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                &:focus {
+                  background-color: #deecf9;
+                  border: 1px solid #000000;
+                  color: #005a9e;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -365,6 +385,24 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   right: -2px;
                   top: -2px;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid transparent;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid transparent;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  bottom: -2px;
+                  left: -2px;
+                  outline-color: ButtonText;
+                  right: -2px;
+                  top: -2px;
+                }
                 &:active > span {
                   left: 0px;
                   position: relative;
@@ -379,12 +417,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border-color: Highlight;
                   color: Highlight;
                 }
-                &:focus {
-                  background-color: #005a9e;
-                  border: 1px solid #000000;
-                  outline-offset: -2px;
-                  outline: 1px solid #ffffff;
-                }
                 &:active {
                   background-color: #0078d4;
                   border-color: #ffffff;
@@ -397,6 +429,12 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                }
+                &:focus {
+                  background-color: #005a9e;
+                  border: 1px solid #000000;
+                  outline-offset: -2px;
+                  outline: 1px solid #ffffff;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -505,6 +543,24 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               right: -2px;
               top: -2px;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid transparent;
+              bottom: 2px;
+              content: "";
+              left: 2px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 2px;
+              top: 2px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
             &:active > span {
               left: 0px;
               position: relative;
@@ -519,13 +575,13 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               border-color: Highlight;
               color: Highlight;
             }
-            &:focus {
-              border: 1px solid #edebe9;
-            }
             &:active {
               background-color: #edebe9;
               background: #005a9e;
               color: #ffffff;
+            }
+            &:focus {
+              border: 1px solid #edebe9;
             }
         data-is-focusable={true}
         onClick={[Function]}

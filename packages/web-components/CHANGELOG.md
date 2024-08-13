@@ -1,8 +1,868 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 04:07:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.55)
+
+Thu, 08 Aug 2024 04:07:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.54..@fluentui/web-components_v3.0.0-beta.55)
+
+### Changes
+
+- [chore]: [rating-display] move size, color and generate icons out of base class ([PR #32239](https://github.com/microsoft/fluentui/pull/32239) by jes@microsoft.com)
+
+## [3.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.54)
+
+Tue, 06 Aug 2024 04:07:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.53..@fluentui/web-components_v3.0.0-beta.54)
+
+### Changes
+
+- Add Tablist component ([PR #32098](https://github.com/microsoft/fluentui/pull/32098) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.53)
+
+Mon, 05 Aug 2024 04:08:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.52..@fluentui/web-components_v3.0.0-beta.53)
+
+### Changes
+
+- fix(web-components): detach design tokens from existing themes ([PR #32130](https://github.com/microsoft/fluentui/pull/32130) by machi@microsoft.com)
+
+## [3.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.52)
+
+Fri, 02 Aug 2024 04:07:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.51..@fluentui/web-components_v3.0.0-beta.52)
+
+### Changes
+
+- Export patterns. ([PR #32182](https://github.com/microsoft/fluentui/pull/32182) by mlijanto@microsoft.com)
+- feat: abstracts layout api from field class ([PR #32203](https://github.com/microsoft/fluentui/pull/32203) by jes@microsoft.com)
+
+## [3.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.51)
+
+Mon, 29 Jul 2024 04:07:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.50..@fluentui/web-components_v3.0.0-beta.51)
+
+### Changes
+
+- chore: move size and generate initials out of base class ([PR #32123](https://github.com/microsoft/fluentui/pull/32123) by jes@microsoft.com)
+- fix: reference accordion item base class in accordion ([PR #32117](https://github.com/microsoft/fluentui/pull/32117) by jes@microsoft.com)
+
+## [3.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.50)
+
+Fri, 26 Jul 2024 04:08:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.49..@fluentui/web-components_v3.0.0-beta.50)
+
+### Changes
+
+- [chore]: create base class for accordion item and remove style and layout specific api ([PR #32102](https://github.com/microsoft/fluentui/pull/32102) by jes@microsoft.com)
+
+## [3.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.49)
+
+Thu, 25 Jul 2024 04:08:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.48..@fluentui/web-components_v3.0.0-beta.49)
+
+### Changes
+
+- chore: create avatar base class to abstract style specfic api ([PR #32083](https://github.com/microsoft/fluentui/pull/32083) by jes@microsoft.com)
+- chore: create base class for textinput and remove style and layout specific api ([PR #32080](https://github.com/microsoft/fluentui/pull/32080) by jes@microsoft.com)
+
+## [3.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.48)
+
+Wed, 24 Jul 2024 04:07:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.47..@fluentui/web-components_v3.0.0-beta.48)
+
+### Changes
+
+- chore: create base class for progress bar and remove style and layout specfic api ([PR #32066](https://github.com/microsoft/fluentui/pull/32066) by jes@microsoft.com)
+- feat(web-components): relax setTheme() argument type to allow custom tokens ([PR #32087](https://github.com/microsoft/fluentui/pull/32087) by machi@microsoft.com)
+- chore: create base class for spinner and remove style and layout specfic api ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by jes@microsoft.com)
+
+## [3.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.47)
+
+Tue, 23 Jul 2024 04:07:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.46..@fluentui/web-components_v3.0.0-beta.47)
+
+### Changes
+
+- fix: move spinner animation off of main thread ([PR #32056](https://github.com/microsoft/fluentui/pull/32056) by rupertdavid@microsoft.com)
+- chore: create divider base class to abstract style specfic api ([PR #32065](https://github.com/microsoft/fluentui/pull/32065) by jes@microsoft.com)
+
+## [3.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.46)
+
+Fri, 19 Jul 2024 04:08:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.45..@fluentui/web-components_v3.0.0-beta.46)
+
+### Changes
+
+- chore: [button] move style related api out of base class ([PR #32049](https://github.com/microsoft/fluentui/pull/32049) by jes@microsoft.com)
+
+## [3.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.45)
+
+Thu, 18 Jul 2024 04:06:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.44..@fluentui/web-components_v3.0.0-beta.45)
+
+### Changes
+
+- fix: removed padding from field host element ([PR #32002](https://github.com/microsoft/fluentui/pull/32002) by jes@microsoft.com)
+
+## [3.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.44)
+
+Wed, 17 Jul 2024 04:07:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.43..@fluentui/web-components_v3.0.0-beta.44)
+
+### Changes
+
+- chore: cleanup drawer storybook ([PR #31991](https://github.com/microsoft/fluentui/pull/31991) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.43)
+
+Tue, 16 Jul 2024 04:08:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.42..@fluentui/web-components_v3.0.0-beta.43)
+
+### Changes
+
+- fix: scope menu fallback positioning to non-anchor browsers only ([PR #32000](https://github.com/microsoft/fluentui/pull/32000) by rupertdavid@microsoft.com)
+- fix: expose tabindex as an overriden attribute with a default value of 0' ([PR #32007](https://github.com/microsoft/fluentui/pull/32007) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: support tabindex values from implementors on buttons ([PR #32003](https://github.com/microsoft/fluentui/pull/32003) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.42)
+
+Thu, 11 Jul 2024 04:07:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.41..@fluentui/web-components_v3.0.0-beta.42)
+
+### Changes
+
+- feat: update slider to use ElementInternals for form association ([PR #31933](https://github.com/microsoft/fluentui/pull/31933) by machi@microsoft.com)
+
+## [3.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.41)
+
+Tue, 09 Jul 2024 04:07:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.40..@fluentui/web-components_v3.0.0-beta.41)
+
+### Changes
+
+- convert menu list and menu item to use element internals ([PR #31932](https://github.com/microsoft/fluentui/pull/31932) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: export drawer and drawer body from root package and package exports ([PR #31931](https://github.com/microsoft/fluentui/pull/31931) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.40)
+
+Thu, 04 Jul 2024 04:08:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.39..@fluentui/web-components_v3.0.0-beta.40)
+
+### Changes
+
+- feat: update radio and radio-group to use ElementInternals for form association ([PR #31783](https://github.com/microsoft/fluentui/pull/31783) by 863023+radium-v@users.noreply.github.com)
+- fix for setTheme in Firefox ([PR #31911](https://github.com/microsoft/fluentui/pull/31911) by rupertdavid@microsoft.com)
+- refactor(web-components): cleanup accordion and convert to element internals for states ([PR #31866](https://github.com/microsoft/fluentui/pull/31866) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.39)
+
+Wed, 03 Jul 2024 04:08:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.38..@fluentui/web-components_v3.0.0-beta.39)
+
+### Changes
+
+- fix(web-components): fix popover positioning in firefox, add docs ([PR #31895](https://github.com/microsoft/fluentui/pull/31895) by rupertdavid@microsoft.com)
+- expose field in webcomponents to package exports ([PR #31904](https://github.com/microsoft/fluentui/pull/31904) by mmansour@microsoft.com)
+- fix text-input focus handling when focusable slotted start and end elements are present ([PR #31903](https://github.com/microsoft/fluentui/pull/31903) by 863023+radium-v@users.noreply.github.com)
+- fix(web-components): fix menu enterkey interaction  ([PR #31894](https://github.com/microsoft/fluentui/pull/31894) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.38)
+
+Mon, 01 Jul 2024 04:08:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.37..@fluentui/web-components_v3.0.0-beta.38)
+
+### Changes
+
+- Make utils a package export since it replaces fluentui/foundation ([PR #31865](https://github.com/microsoft/fluentui/pull/31865) by mmansour@microsoft.com)
+
+## [3.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.37)
+
+Fri, 28 Jun 2024 04:07:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.36..@fluentui/web-components_v3.0.0-beta.37)
+
+### Changes
+
+- refactor setTheme() to use adoptedStyleSheets ([PR #31713](https://github.com/microsoft/fluentui/pull/31713) by machi@microsoft.com)
+- Add rating-display component ([PR #31625](https://github.com/microsoft/fluentui/pull/31625) by email not defined)
+- Adds MessageBar component to Fluent Web Components ([PR #31708](https://github.com/microsoft/fluentui/pull/31708) by ryan@ryanmerrill.net)
+- chore: use tokens directly in css for badge partial ([PR #31847](https://github.com/microsoft/fluentui/pull/31847) by mmansour@microsoft.com)
+- fix: ensure menu keydown logic allows shift+tab to navigate as expected ([PR #31849](https://github.com/microsoft/fluentui/pull/31849) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.36)
+
+Wed, 26 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.35..@fluentui/web-components_v3.0.0-beta.36)
+
+### Changes
+
+- feat(drawer): add drawer web component ([PR #31521](https://github.com/microsoft/fluentui/pull/31521) by email not defined)
+
+## [3.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.35)
+
+Tue, 25 Jun 2024 04:06:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.34..@fluentui/web-components_v3.0.0-beta.35)
+
+### Changes
+
+- updates the Text component to use Element Internals custom states for presentational attributes ([PR #31770](https://github.com/microsoft/fluentui/pull/31770) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.34)
+
+Mon, 24 Jun 2024 04:06:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.33..@fluentui/web-components_v3.0.0-beta.34)
+
+### Changes
+
+- Refactor Menu, MenuList, and MenuItem components ([PR #31674](https://github.com/microsoft/fluentui/pull/31674) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.33)
+
+Fri, 21 Jun 2024 04:06:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.32..@fluentui/web-components_v3.0.0-beta.33)
+
+### Changes
+
+- feat: make fast-element a peer dependencies of the web-components package ([PR #31772](https://github.com/microsoft/fluentui/pull/31772) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.32)
+
+Wed, 19 Jun 2024 04:07:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.31..@fluentui/web-components_v3.0.0-beta.32)
+
+### Changes
+
+- feat: update progress bar to use element internals custom states for visual states ([PR #31739](https://github.com/microsoft/fluentui/pull/31739) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update divider to use custom states ([PR #31735](https://github.com/microsoft/fluentui/pull/31735) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update link to use Element Internals custom states for presentational attributes ([PR #31752](https://github.com/microsoft/fluentui/pull/31752) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update checkbox to use Element Internals custom states for presentational attributes ([PR #31756](https://github.com/microsoft/fluentui/pull/31756) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update text input to use Element Internals custom states for presentational attributes ([PR #31753](https://github.com/microsoft/fluentui/pull/31753) by 13071055+chrisdholt@users.noreply.github.com)
+- update image to use element internals custom states for visual states ([PR #31737](https://github.com/microsoft/fluentui/pull/31737) by 13071055+chrisdholt@users.noreply.github.com)
+- feat: update spinner to use Element Internals for presentational styling ([PR #31741](https://github.com/microsoft/fluentui/pull/31741) by 13071055+chrisdholt@users.noreply.github.com)
+- update label to use element internals custom states for styling ([PR #31738](https://github.com/microsoft/fluentui/pull/31738) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.31)
+
+Tue, 18 Jun 2024 04:05:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.30..@fluentui/web-components_v3.0.0-beta.31)
+
+### Changes
+
+- feat: update button and anchor button to leverage custom states for variants ([PR #31718](https://github.com/microsoft/fluentui/pull/31718) by 13071055+chrisdholt@users.noreply.github.com)
+- update badge to use element internals custom states ([PR #31733](https://github.com/microsoft/fluentui/pull/31733) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.30)
+
+Fri, 14 Jun 2024 04:06:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.29..@fluentui/web-components_v3.0.0-beta.30)
+
+### Changes
+
+- update avatar to use ElementInternals for role and states for color ([PR #31693](https://github.com/microsoft/fluentui/pull/31693) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.29)
+
+Thu, 13 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.28..@fluentui/web-components_v3.0.0-beta.29)
+
+### Changes
+
+- refactor setTheme() to reduce code duplication ([PR #31679](https://github.com/microsoft/fluentui/pull/31679) by machi@microsoft.com)
+- add link as a new web component ([PR #31676](https://github.com/microsoft/fluentui/pull/31676) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.28)
+
+Wed, 12 Jun 2024 04:06:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.27..@fluentui/web-components_v3.0.0-beta.28)
+
+### Changes
+
+- refactor anchor-button to use ElementInternals, remove disabled and disabledFocusable ([PR #31653](https://github.com/microsoft/fluentui/pull/31653) by 13071055+chrisdholt@users.noreply.github.com)
+- refactor progress bar to use ElementInternals ([PR #31652](https://github.com/microsoft/fluentui/pull/31652) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.27)
+
+Tue, 11 Jun 2024 04:06:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.26..@fluentui/web-components_v3.0.0-beta.27)
+
+### Changes
+
+- feat: update divider to leverage ElementInternals ([PR #31627](https://github.com/microsoft/fluentui/pull/31627) by 13071055+chrisdholt@users.noreply.github.com)
+- fix: show default title action in dialog-body for modal dialogs ([PR #31648](https://github.com/microsoft/fluentui/pull/31648) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.26)
+
+Mon, 10 Jun 2024 04:07:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.25..@fluentui/web-components_v3.0.0-beta.26)
+
+### Changes
+
+- feat: refactor Switch to use ElementInternals by extending BaseCheckbox ([PR #31613](https://github.com/microsoft/fluentui/pull/31613) by 13071055+chrisdholt@users.noreply.github.com)
+- fixes the border-color for switch when in the checked state on rest ([PR #31628](https://github.com/microsoft/fluentui/pull/31628) by 13071055+chrisdholt@users.noreply.github.com)
+- add try-catch block to ensure that registered properties can be updated dynamically ([PR #31629](https://github.com/microsoft/fluentui/pull/31629) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.25)
+
+Fri, 07 Jun 2024 04:06:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.24..@fluentui/web-components_v3.0.0-beta.25)
+
+### Changes
+
+- Use ElementInternals for Checkbox component ([PR #31468](https://github.com/microsoft/fluentui/pull/31468) by 863023+radium-v@users.noreply.github.com)
+- Move dialog border styles to forcedColors mode ([PR #31609](https://github.com/microsoft/fluentui/pull/31609) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.24)
+
+Thu, 06 Jun 2024 04:06:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.23..@fluentui/web-components_v3.0.0-beta.24)
+
+### Changes
+
+- add @floating-ui/dom as a dependency ([PR #31590](https://github.com/microsoft/fluentui/pull/31590) by zacky.ma@microsoft.com)
+- fix disabled button styles ([PR #31585](https://github.com/microsoft/fluentui/pull/31585) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.23)
+
+Wed, 05 Jun 2024 04:06:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.22..@fluentui/web-components_v3.0.0-beta.23)
+
+### Changes
+
+- chore: migrate to package.json#files for npm publish scope" ([PR #31519](https://github.com/microsoft/fluentui/pull/31519) by martinhochel@microsoft.com)
+- Refactor fluent-dialog and add fluent-dialog-body ([PR #31512](https://github.com/microsoft/fluentui/pull/31512) by rupertdavid@microsoft.com)
+- fix(web-components): remove tabindex from slider thumb causing duplicate focus regions ([PR #31402](https://github.com/microsoft/fluentui/pull/31402) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.22)
+
+Mon, 03 Jun 2024 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.21..@fluentui/web-components_v3.0.0-beta.22)
+
+### Changes
+
+- chore: Export component definitions from rollup bundle ([PR #31403](https://github.com/microsoft/fluentui/pull/31403) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.21)
+
+Fri, 24 May 2024 04:06:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.20..@fluentui/web-components_v3.0.0-beta.21)
+
+### Changes
+
+- Use ElementInternals for the TextInput component ([PR #31201](https://github.com/microsoft/fluentui/pull/31201) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.20)
+
+Wed, 22 May 2024 04:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.19..@fluentui/web-components_v3.0.0-beta.20)
+
+### Changes
+
+- chore(web-components): update README.md and add initial developer quick start pages ([PR #31416](https://github.com/microsoft/fluentui/pull/31416) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.19)
+
+Tue, 21 May 2024 04:06:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.18..@fluentui/web-components_v3.0.0-beta.19)
+
+### Changes
+
+- Use click() instead of press() in button keydownHandler ([PR #31428](https://github.com/microsoft/fluentui/pull/31428) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.18)
+
+Mon, 20 May 2024 04:07:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.17..@fluentui/web-components_v3.0.0-beta.18)
+
+### Changes
+
+- adds high contrast styles to badge web component ([PR #31234](https://github.com/microsoft/fluentui/pull/31234) by ryanmerrill@microsoft.com)
+
+## [3.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.17)
+
+Fri, 17 May 2024 04:06:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.16..@fluentui/web-components_v3.0.0-beta.17)
+
+### Changes
+
+- fix(web-components): remove determinate from spinner implementation ([PR #31404](https://github.com/microsoft/fluentui/pull/31404) by 13071055+chrisdholt@users.noreply.github.com)
+- Fix compound disabled selector in fluent-button and fluent-anchor-button ([PR #31302](https://github.com/microsoft/fluentui/pull/31302) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.16)
+
+Thu, 16 May 2024 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.15..@fluentui/web-components_v3.0.0-beta.16)
+
+### Changes
+
+- Synchronize design token exports ([PR #31382](https://github.com/microsoft/fluentui/pull/31382) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.15)
+
+Wed, 01 May 2024 04:09:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.14..@fluentui/web-components_v3.0.0-beta.15)
+
+### Changes
+
+- fix(web-components): remove all barrell exports with exception of design tokens ([PR #31069](https://github.com/microsoft/fluentui/pull/31069) by =)
+
+## [3.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.14)
+
+Fri, 26 Apr 2024 04:07:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.13..@fluentui/web-components_v3.0.0-beta.14)
+
+### Changes
+
+- create CSS partials for named typography styles ([PR #31164](https://github.com/microsoft/fluentui/pull/31164) by 13071055+chrisdholt@users.noreply.github.com)
+
+## [3.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.13)
+
+Thu, 25 Apr 2024 04:09:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.12..@fluentui/web-components_v3.0.0-beta.13)
+
+### Changes
+
+- ensure buttons with long text maintain center alignment ([PR #31179](https://github.com/microsoft/fluentui/pull/31179) by =)
+
+## [3.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.12)
+
+Tue, 23 Apr 2024 04:09:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.11..@fluentui/web-components_v3.0.0-beta.12)
+
+### Changes
+
+- Use ElementInternals for Button components ([PR #30999](https://github.com/microsoft/fluentui/pull/30999) by 863023+radium-v@users.noreply.github.com)
+
+## [3.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.11)
+
+Mon, 15 Apr 2024 04:09:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.10..@fluentui/web-components_v3.0.0-beta.11)
+
+### Changes
+
+- fix(web-components): remove final dependencies on fast-foundation ([PR #31009](https://github.com/microsoft/fluentui/pull/31009) by =)
+
+## [3.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.10)
+
+Tue, 09 Apr 2024 04:08:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.9..@fluentui/web-components_v3.0.0-beta.10)
+
+### Changes
+
+- revert design token syntax change for DX ([PR #30819](https://github.com/microsoft/fluentui/pull/30819) by =)
+
+## [3.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.9)
+
+Mon, 08 Apr 2024 04:08:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.8..@fluentui/web-components_v3.0.0-beta.9)
+
+### Changes
+
+- chore: setup perf benchmarking in web components ([PR #30972](https://github.com/microsoft/fluentui/pull/30972) by =)
+- Bump @fluentui/tokens to v1.0.0-alpha.2 ([PR #30972](https://github.com/microsoft/fluentui/pull/30972) by beachball)
+
+## [3.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.8)
+
+Mon, 12 Feb 2024 04:08:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.7..@fluentui/web-components_v3.0.0-beta.8)
+
+### Changes
+
+- Removes dependancy on fast-foundation classes and templates ([PR #30090](https://github.com/microsoft/fluentui/pull/30090) by jes@microsoft.com)
+
+## [3.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.7)
+
+Fri, 09 Feb 2024 04:08:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.6..@fluentui/web-components_v3.0.0-beta.7)
+
+### Changes
+
+- feat: remove JS design token implementation in favor of platform css variables ([PR #30002](https://github.com/microsoft/fluentui/pull/30002) by chhol@microsoft.com)
+
+## [3.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.6)
+
+Thu, 26 Oct 2023 04:16:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.5..@fluentui/web-components_v3.0.0-beta.6)
+
+### Changes
+
+- feat(dialog): add dialog web component ([PR #28569](https://github.com/microsoft/fluentui/pull/28569) by brian.christopher.brady@gmail.com)
+
+## [3.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.5)
+
+Thu, 19 Oct 2023 04:18:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.4..@fluentui/web-components_v3.0.0-beta.5)
+
+### Changes
+
+- Updates package with Menu component sideEffect. ([PR #29581](https://github.com/microsoft/fluentui/pull/29581) by hale.rankin@microsoft.com)
+
+## [3.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.4)
+
+Fri, 13 Oct 2023 04:17:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.3..@fluentui/web-components_v3.0.0-beta.4)
+
+### Changes
+
+- fix: update switch to use margin instead of transform for the checked state to support RTL ([PR #29505](https://github.com/microsoft/fluentui/pull/29505) by chhol@microsoft.com)
+
+## [3.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.3)
+
+Thu, 28 Sep 2023 04:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.2..@fluentui/web-components_v3.0.0-beta.3)
+
+### Changes
+
+- feat(menu): adds menu web component ([PR #27906](https://github.com/microsoft/fluentui/pull/27906) by brian.christopher.brady@gmail.com)
+
+## [3.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.2)
+
+Mon, 28 Aug 2023 04:19:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.1..@fluentui/web-components_v3.0.0-beta.2)
+
+### Changes
+
+- Fixed pathing to types for package exports ([PR #28986](https://github.com/microsoft/fluentui/pull/28986) by mmansour@microsoft.com)
+
+## [3.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.1)
+
+Fri, 25 Aug 2023 04:19:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.31..@fluentui/web-components_v3.0.0-beta.1)
+
+### Changes
+
+- Bump version to beta ([PR #28976](https://github.com/microsoft/fluentui/pull/28976) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.31)
+
+Wed, 23 Aug 2023 04:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.30..@fluentui/web-components_v3.0.0-alpha.31)
+
+### Changes
+
+- feat(web-components): add explicit named exports for design tokens and package export path for theme utils ([PR #28952](https://github.com/microsoft/fluentui/pull/28952) by chhol@microsoft.com)
+
+## [3.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.30)
+
+Tue, 22 Aug 2023 04:17:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.29..@fluentui/web-components_v3.0.0-alpha.30)
+
+### Changes
+
+- feat(web-components): update core component files to use foundation export paths and update package exports to include extensions ([PR #28912](https://github.com/microsoft/fluentui/pull/28912) by chhol@microsoft.com)
+
+## [3.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.29)
+
+Tue, 15 Aug 2023 04:16:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.28..@fluentui/web-components_v3.0.0-alpha.29)
+
+### Changes
+
+- fix(web-components): update latest versions of fast packages and fix unallowed attributes issue for fluent-divider ([PR #28837](https://github.com/microsoft/fluentui/pull/28837) by chhol@microsoft.com)
+
+## [3.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.28)
+
+Wed, 09 Aug 2023 04:16:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.27..@fluentui/web-components_v3.0.0-alpha.28)
+
+### Changes
+
+- fix(web-components): enumerate side-effects for package export paths ([PR #28748](https://github.com/microsoft/fluentui/pull/28748) by chhol@microsoft.com)
+
+## [3.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.27)
+
+Tue, 08 Aug 2023 04:18:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.26..@fluentui/web-components_v3.0.0-alpha.27)
+
+### Changes
+
+- (accessibility): high contrast fixes ([PR #28717](https://github.com/microsoft/fluentui/pull/28717) by brian.christopher.brady@gmail.com)
+- Fixes low contrast in dark mode for web component badge ([PR #28766](https://github.com/microsoft/fluentui/pull/28766) by ryan@ryanmerrill.net)
+
+## [3.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.26)
+
+Mon, 07 Aug 2023 04:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.25..@fluentui/web-components_v3.0.0-alpha.26)
+
+### Changes
+
+- feat: Add support for scoped theming ([PR #28441](https://github.com/microsoft/fluentui/pull/28441) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.25)
+
+Wed, 19 Jul 2023 04:18:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.24..@fluentui/web-components_v3.0.0-alpha.25)
+
+### Changes
+
+- fix(web-components): check if component is connected before calling setAttribute in attribute changed callback ([PR #28500](https://github.com/microsoft/fluentui/pull/28500) by chhol@microsoft.com)
+- feat(checkbox): Add checkbox web component ([PR #27450](https://github.com/microsoft/fluentui/pull/27450) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.24)
+
+Mon, 12 Jun 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.23..@fluentui/web-components_v3.0.0-alpha.24)
+
+### Changes
+
+- export fluent design system from web-components package ([PR #27905](https://github.com/microsoft/fluentui/pull/27905) by chhol@microsoft.com)
+
+## [3.0.0-alpha.23](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.23)
+
+Thu, 08 Jun 2023 04:18:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.22..@fluentui/web-components_v3.0.0-alpha.23)
+
+### Changes
+
+- feat(text-input): add TextInput as a new web component ([PR #27348](https://github.com/microsoft/fluentui/pull/27348) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.22](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.22)
+
+Wed, 24 May 2023 04:19:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.21..@fluentui/web-components_v3.0.0-alpha.22)
+
+### Changes
+
+- feat(menu-item): export MenuItemRole constants ([PR #27941](https://github.com/microsoft/fluentui/pull/27941) by harankin@microsoft.com)
+
+## [3.0.0-alpha.21](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.21)
+
+Mon, 15 May 2023 04:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.20..@fluentui/web-components_v3.0.0-alpha.21)
+
+### Changes
+
+- Fixes exports in Switch ([PR #27821](https://github.com/microsoft/fluentui/pull/27821) by ryan@ryanmerrill.net)
+
+## [3.0.0-alpha.20](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.20)
+
+Mon, 08 May 2023 04:19:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.19..@fluentui/web-components_v3.0.0-alpha.20)
+
+### Changes
+
+- feat(radio): add radio and radio-group web components ([PR #27113](https://github.com/microsoft/fluentui/pull/27113) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.19](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.19)
+
+Fri, 21 Apr 2023 04:19:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.18..@fluentui/web-components_v3.0.0-alpha.19)
+
+### Changes
+
+- feat(menu-list): Add menu-list and menu-item web components ([PR #26765](https://github.com/microsoft/fluentui/pull/26765) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.18)
+
+Thu, 20 Apr 2023 04:20:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.17..@fluentui/web-components_v3.0.0-alpha.18)
+
+### Changes
+
+- Image component style updates ([PR #27567](https://github.com/microsoft/fluentui/pull/27567) by harankin@microsoft.com)
+
+## [3.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.17)
+
+Wed, 12 Apr 2023 04:19:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.16..@fluentui/web-components_v3.0.0-alpha.17)
+
+### Changes
+
+- feat(toggle-button): add toggle button web component ([PR #27405](https://github.com/microsoft/fluentui/pull/27405) by chhol@microsoft.com)
+- feat(compound-button): add compound button as new web component ([PR #27407](https://github.com/microsoft/fluentui/pull/27407) by chhol@microsoft.com)
+- feat(anchor-button): add anchor button to web components ([PR #27395](https://github.com/microsoft/fluentui/pull/27395) by chhol@microsoft.com)
+
+## [3.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.16)
+
+Tue, 11 Apr 2023 04:24:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.15..@fluentui/web-components_v3.0.0-alpha.16)
+
+### Changes
+
+- Adding Tabs, Tab and Tab-Panel ([PR #27505](https://github.com/microsoft/fluentui/pull/27505) by mibaraka@microsoft.com)
+
+## [3.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.15)
+
+Fri, 07 Apr 2023 04:17:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.14..@fluentui/web-components_v3.0.0-alpha.15)
+
+### Changes
+
+- feat(label): adds label as a new web component ([PR #27344](https://github.com/microsoft/fluentui/pull/27344) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.14](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.14)
+
+Thu, 06 Apr 2023 04:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.13..@fluentui/web-components_v3.0.0-alpha.14)
+
+### Changes
+
+- Adding TabList, Tab, and TabPanel web components ([PR #27167](https://github.com/microsoft/fluentui/pull/27167) by mibaraka@microsoft.com)
+- feat(menu-button): add menu button as new component ([PR #27396](https://github.com/microsoft/fluentui/pull/27396) by chhol@microsoft.com)
+
+## [3.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.13)
+
+Fri, 31 Mar 2023 04:19:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.12..@fluentui/web-components_v3.0.0-alpha.13)
+
+### Changes
+
+- update fast-element and fast-foundation dependencies ([PR #27392](https://github.com/microsoft/fluentui/pull/27392) by chhol@microsoft.com)
+- feat(button): add button web component ([PR #27278](https://github.com/microsoft/fluentui/pull/27278) by chhol@microsoft.com)
+
+## [3.0.0-alpha.12](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.12)
+
+Tue, 28 Mar 2023 04:20:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.11..@fluentui/web-components_v3.0.0-alpha.12)
+
+### Changes
+
+- Adds Slider as a web component ([PR #27165](https://github.com/microsoft/fluentui/pull/27165) by ryan@ryanmerrill.net)
+
+## [3.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.11)
+
+Tue, 14 Mar 2023 04:21:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.10..@fluentui/web-components_v3.0.0-alpha.11)
+
+### Changes
+
+- update FAST dependencies to latest package versions ([PR #27187](https://github.com/microsoft/fluentui/pull/27187) by chhol@microsoft.com)
+- Adds css containment to implemented web components ([PR #27190](https://github.com/microsoft/fluentui/pull/27190) by chhol@microsoft.com)
+
+## [3.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.10)
+
+Thu, 09 Mar 2023 04:19:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.9..@fluentui/web-components_v3.0.0-alpha.10)
+
+### Changes
+
+- fix: [text] block breaks the style attribute ([PR #27129](https://github.com/microsoft/fluentui/pull/27129) by jes@microsoft.com)
+
+## [3.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.9)
+
+Wed, 01 Mar 2023 04:20:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.8..@fluentui/web-components_v3.0.0-alpha.9)
+
+### Changes
+
+- Redo of PR of Slider spec after merge error ([PR #26981](https://github.com/microsoft/fluentui/pull/26981) by ryan@ryanmerrill.net)
+
+## [3.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.8)
+
+Tue, 28 Feb 2023 04:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.7..@fluentui/web-components_v3.0.0-alpha.8)
+
+### Changes
+
+- updates wc3 accordion and accordion item docs ([PR #26938](https://github.com/microsoft/fluentui/pull/26938) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.7)
+
+Mon, 27 Feb 2023 04:27:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.6..@fluentui/web-components_v3.0.0-alpha.7)
+
+### Changes
+
+- feat(avatar): add Avatar web component ([PR #26729](https://github.com/microsoft/fluentui/pull/26729) by chhol@microsoft.com)
+- feat(divider): Add divider web component ([PR #26901](https://github.com/microsoft/fluentui/pull/26901) by harankin@microsoft.com)
+- feat(image): Add image web component ([PR #26936](https://github.com/microsoft/fluentui/pull/26936) by harankin@microsoft.com)
+
+## [3.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.6)
+
+Fri, 24 Feb 2023 04:20:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.5..@fluentui/web-components_v3.0.0-alpha.6)
+
+### Changes
+
+- feat(switch): Add switch web component ([PR #26517](https://github.com/microsoft/fluentui/pull/26517) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.5)
+
+Wed, 22 Feb 2023 04:22:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.4..@fluentui/web-components_v3.0.0-alpha.5)
+
+### Changes
+
+- feat(accordion): Add accordion web component ([PR #26547](https://github.com/microsoft/fluentui/pull/26547) by brianbrady@microsoft.com)
+
+## [3.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.4)
+
+Thu, 16 Feb 2023 16:51:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.3..@fluentui/web-components_v3.0.0-alpha.4)
+
+### Changes
+
+- fix(web-components): dont ship non production assets to npm registry ([PR #26854](https://github.com/microsoft/fluentui/pull/26854) by martinhochel@microsoft.com)
+
+## [3.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.3)
+
+Wed, 15 Feb 2023 04:24:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.2..@fluentui/web-components_v3.0.0-alpha.3)
+
+### Changes
+
+- Adds Spinner as a web component ([PR #26392](https://github.com/microsoft/fluentui/pull/26392) by ryan@ryanmerrill.net)
+- update fast element and foundation versions ([PR #26844](https://github.com/microsoft/fluentui/pull/26844) by chhol@microsoft.com)
+
+## [3.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.2)
+
+Wed, 25 Jan 2023 17:42:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.1..@fluentui/web-components_v3.0.0-alpha.2)
+
+### Changes
+
+- feat: export theme ([PR #26500](https://github.com/microsoft/fluentui/pull/26500) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.1)
+
+Wed, 25 Jan 2023 14:49:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.8..@fluentui/web-components_v3.0.0-alpha.1)
+
+### Changes
+
+- add progressbar as new component ([PR #26329](https://github.com/microsoft/fluentui/pull/26329) by ryan@ryanmerrill.net)
+- Add initial theme ([PR #25660](https://github.com/microsoft/fluentui/pull/25660) by miroslav.stastny@microsoft.com)
+- add badge and counter badge as new components ([PR #26357](https://github.com/microsoft/fluentui/pull/26357) by chhol@microsoft.com)
+- add text as a new component ([PR #26090](https://github.com/microsoft/fluentui/pull/26090) by chhol@microsoft.com)
+
+## [2.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.6.1)
+
+Wed, 10 Apr 2024 07:28:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.6.0..@fluentui/web-components_v2.6.1)
+
+### Patches
+
+- fix(web-components): fix toolbar stealing focus when document has moved focus to another element ([PR #30997](https://github.com/microsoft/fluentui/pull/30997) by =)
+
+## [2.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.6.0)
+
+Wed, 27 Mar 2024 07:26:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.17..@fluentui/web-components_v2.6.0)
+
+### Minor changes
+
+- export design token with rollup bundle ([PR #30784](https://github.com/microsoft/fluentui/pull/30784) by =)
+
+## [2.5.17](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.17)
+
+Fri, 01 Mar 2024 07:26:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.16..@fluentui/web-components_v2.5.17)
+
+### Patches
+
+- updates fast-foundation to fix a memory leak within form associated disconnected callback ([PR #29806](https://github.com/microsoft/fluentui/pull/29806) by chhol@microsoft.com)
+
+## [2.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.16)
+
+Thu, 20 Jul 2023 07:35:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.15..@fluentui/web-components_v2.5.16)
+
+### Patches
+
+- fix(web-components): ensures that text area size responds to rows and cols attributes ([PR #28135](https://github.com/microsoft/fluentui/pull/28135) by vnbaaij@outlook.com)
 
 ## [2.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.15)
 

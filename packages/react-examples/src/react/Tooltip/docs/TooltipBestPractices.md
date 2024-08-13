@@ -16,3 +16,7 @@ For a truncated label or a label that’s likely to truncate in some langua
 - Provide the untruncated label in the tooltip.
 - Don't provide a tooltip if the untruncated info is provided elsewhere on the page or flow.
 - Optional: On another line, provide a clarifying description, but only if needed.
+
+### Accessibility
+
+- Don't add tooltips to unfocusable or disabled controls. People using the keyboard or screen readers can't consistently access or read tooltips associated with elements that can't receive focus or are disabled. Consider having the information statically available on the page or through a "help"-style toggle button.

@@ -43,6 +43,20 @@ function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newSta
 export const useControllableState = <State>(
   options: UseControllableStateOptions<State>,
 ): [State, React.Dispatch<React.SetStateAction<State>>] => {
+  'use no memo';
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (options.state !== undefined && options.defaultState !== undefined) {
+      // eslint-disable-next-line no-console
+      console.error(/** #__DE-INDENT__ */ `
+      @fluentui/react-utilities [useControllableState]:
+      A component must be either controlled or uncontrolled (specify either the state or the defaultState, but not both).
+      Decide between using a controlled or uncontrolled component and remove one of this props.
+      More info: https://reactjs.org/link/controlled-components
+      ${new Error().stack}
+    `);
+    }
+  }
   const [internalState, setInternalState] = React.useState<State>(() => {
     if (options.defaultState === undefined) {
       return options.initialState;
@@ -78,6 +92,8 @@ function isInitializer<State>(value: State | (() => State)): value is () => Stat
  * @returns - whether the value is controlled
  */
 const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is V => {
+  'use no memo';
+
   const [isControlled] = React.useState<boolean>(() => controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {
@@ -94,16 +110,13 @@ const useIsControlled = <V>(controlledValue: V | undefined): controlledValue is 
         const undefinedWarning = isControlled ? 'defined to an undefined' : 'undefined to a defined';
 
         // eslint-disable-next-line no-console
-        console.error(
-          [
-            // Default react error
-            'A component is changing ' + controlWarning + '. This is likely caused by the value',
-            'changing from ' + undefinedWarning + ' value, which should not happen.',
-            'Decide between using a controlled or uncontrolled input element for the lifetime of the component.',
-            'More info: https://reactjs.org/link/controlled-components',
-            error.stack,
-          ].join(' '),
-        );
+        console.error(/** #__DE-INDENT__ */ `
+          @fluentui/react-utilities [useControllableState]:
+          A component is changing ${controlWarning}. This is likely caused by the value changing from ${undefinedWarning} value, which should not happen.
+          Decide between using a controlled or uncontrolled input element for the lifetime of the component.
+          More info: https://reactjs.org/link/controlled-components
+          ${error.stack}
+        `);
       }
     }, [isControlled, controlledValue]);
   }

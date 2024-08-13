@@ -9,6 +9,10 @@ import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import { getStyles } from './VerticalStackedBarChart.styles';
 
 // Create a VerticalStackedBarChart variant which uses these default styles and this styled subcomponent.
+/**
+ * VerticalStackedBarchart component
+ * {@docCategory VerticalStackedBarChart}
+ */
 export const VerticalStackedBarChart: React.FunctionComponent<IVerticalStackedBarChartProps> = styled<
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartStyleProps,

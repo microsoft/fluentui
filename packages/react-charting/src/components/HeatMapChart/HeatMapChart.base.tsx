@@ -1,11 +1,5 @@
-import {
-  IAccessibilityProps,
-  CartesianChart,
-  IChildProps,
-  IModifiedCartesianChartProps,
-  IHeatMapChartData,
-  IHeatMapChartDataPoint,
-} from '../../index';
+import { CartesianChart, IChildProps, IModifiedCartesianChartProps } from '../../components/CommonComponents/index';
+import { IAccessibilityProps, IHeatMapChartData, IHeatMapChartDataPoint } from '../../types/IDataPoint';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
 import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
@@ -14,17 +8,22 @@ import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import * as React from 'react';
 import { IHeatMapChartProps, IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 import { ILegend, Legends } from '../Legends/index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
   ChartTypes,
-  convertToLocaleString,
+  createNumericYAxis,
   getAccessibleDataObject,
   XAxisTypes,
   YAxisType,
   getTypeOfAxis,
+  IMargins,
+  IDomainNRange,
+  domainRangeOfXStringAxis,
+  createStringYAxis,
 } from '../../utilities/utilities';
 import { Target } from '@fluentui/react';
 import { format as d3Format } from 'd3-format';
-import * as d3TimeFormat from 'd3-time-format';
+import { timeFormat as d3TimeFormat } from 'd3-time-format';
 
 type DataSet = {
   dataSet: RectanglesGraphData;
@@ -86,11 +85,6 @@ export interface IHeatMapChartState {
    * Accessibility data for callout
    */
   callOutAccessibilityData?: IAccessibilityProps;
-
-  /**
-   * Check for empty chart accessibility
-   */
-  emptyChart?: boolean;
 }
 const getClassNames = classNamesFunction<IHeatMapChartStyleProps, IHeatMapChartStyles>();
 export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatMapChartState> {
@@ -119,11 +113,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    const { x, y } = this._getXandY();
-    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -151,18 +143,14 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       ratio: null,
       descriptionMessage: '',
       calloutId: '',
-      emptyChart: false,
     };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_HeatMap_empty');
   }
 
   public render(): React.ReactNode {
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
       this.props;
     this._colorScale = this._getColorScale();
@@ -199,18 +187,23 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
+        chartTitle={this._getChartTitle()}
         points={data}
         chartType={ChartTypes.HeatMapChart}
         xAxisType={XAxisTypes.StringAxis}
         yAxisType={YAxisType.StringAxis}
         calloutProps={calloutProps}
+        createYAxis={createNumericYAxis}
         chartHoverProps={chartHoverProps}
         styles={this._classNames.subComponentStyles!.cartesianStyles}
         datasetForXAxisDomain={this._stringXAxisDataPoints}
         stringDatasetForYAxisDomain={this._stringYAxisDataPoints}
+        createStringYAxis={createStringYAxis}
+        getDomainNRangeValues={this._getDomainNRangeValues}
+        getMinMaxOfYAxis={this._getMinMaxOfYAxis}
         xAxisTickCount={this._stringXAxisDataPoints.length}
         xAxistickSize={0}
         xAxisPadding={0.02}
@@ -230,13 +223,37 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     ) : (
       <div
-        id={getId('_HeatMap_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
       />
     );
   }
+
+  private _getMinMaxOfYAxis = () => {
+    return { startValue: 0, endValue: 0 };
+  };
+
+  private _getDomainNRangeValues = (
+    points: IHeatMapChartDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => {
+    let domainNRangeValue: IDomainNRange;
+    if (xAxisType === XAxisTypes.NumericAxis || xAxisType === XAxisTypes.DateAxis) {
+      domainNRangeValue = { dStartValue: 0, dEndValue: 0, rStartValue: 0, rEndValue: 0 };
+    } else {
+      domainNRangeValue = domainRangeOfXStringAxis(margins, width, isRTL);
+    }
+    return domainNRangeValue;
+  };
 
   private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
     let x: string | Date | number = '';
@@ -266,7 +283,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       /** Show the callout if highlighted rectangle is focused and Hide it if unhighlighted rectangle is focused */
       isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
       calloutYValue: `${data.rectText}`,
-      calloutTextColor: this._colorScale(data.value),
+      calloutTextColor: Number.isNaN(data.value)
+        ? this.props.theme!.semanticColors.bodyText
+        : this._colorScale(data.value),
       calloutLegend: data.legend,
       ratio: data.ratio || null,
       descriptionMessage: data.descriptionMessage || '',
@@ -284,7 +303,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         /** Show the callout if highlighted rectangle is hovered and Hide it if unhighlighted rectangle is hovered */
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         calloutYValue: `${data.rectText}`,
-        calloutTextColor: this._colorScale(data.value),
+        calloutTextColor: Number.isNaN(data.value)
+          ? this.props.theme!.semanticColors.bodyText
+          : this._colorScale(data.value),
         calloutLegend: data.legend,
         ratio: data.ratio || null,
         descriptionMessage: data.descriptionMessage || '',
@@ -317,45 +338,81 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
      * yAxisDataPoint is noting but the DataPoint
      * which will be rendered on the y-axis
      */
-    yAxisDataPoints.forEach((yAxisDataPoint: string, index1: number) => {
-      /**
-       * dataPointObject is an object where it contains information on single
-       * data point such as x, y , value, rectText property of the rectangle
-       */
-      this._dataSet[yAxisDataPoint].forEach((dataPointObject: FlattenData, index2: number) => {
-        const id = `${index1}${index2}`;
-        const rectElement: JSX.Element = (
-          <g
-            key={id}
-            role="img"
-            aria-label={this._getAriaLabel(dataPointObject)}
-            data-is-focusable={true}
-            fillOpacity={this._getOpacity(dataPointObject.legend)}
-            transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
-            ref={(gElement: SVGGElement) => {
-              this._rectRefCallback(gElement, id, dataPointObject);
-            }}
-            onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
-            onBlur={this._onRectBlurOrMouseOut}
-            onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
-            onMouseOut={this._onRectBlurOrMouseOut}
-          >
-            <rect
-              fill={this._colorScale(dataPointObject.value)}
-              width={this._xAxisScale.bandwidth()}
-              height={this._yAxisScale.bandwidth()}
-              onClick={dataPointObject.onClick}
-            />
-            <text
-              dominantBaseline={'middle'}
-              textAnchor={'middle'}
-              className={this._classNames.text}
-              transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+    yAxisDataPoints.forEach((yAxisDataPoint: string) => {
+      let index = 0;
+      this._stringXAxisDataPoints.forEach((xAxisDataPoint: string) => {
+        let rectElement: JSX.Element;
+        const id = `x${xAxisDataPoint}y${yAxisDataPoint}`;
+        if (this._dataSet[yAxisDataPoint][index]?.x === xAxisDataPoint) {
+          /**
+           * dataPointObject is an object where it contains information on single
+           * data point such as x, y , value, rectText property of the rectangle
+           */
+          const dataPointObject = this._dataSet[yAxisDataPoint][index];
+          rectElement = (
+            <g
+              key={id}
+              role="img"
+              aria-label={this._getAriaLabel(dataPointObject)}
+              data-is-focusable={this._legendHighlighted(dataPointObject.legend) || this._noLegendHighlighted()}
+              fillOpacity={this._getOpacity(dataPointObject.legend)}
+              transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
+              ref={(gElement: SVGGElement) => {
+                this._rectRefCallback(gElement, id, dataPointObject);
+              }}
+              onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
+              onBlur={this._onRectBlurOrMouseOut}
+              onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
+              onMouseOut={this._onRectBlurOrMouseOut}
             >
-              {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
-            </text>
-          </g>
-        );
+              <rect
+                fill={this._colorScale(dataPointObject.value)}
+                width={this._xAxisScale.bandwidth()}
+                height={this._yAxisScale.bandwidth()}
+                onClick={dataPointObject.onClick}
+              />
+              <text
+                dominantBaseline={'middle'}
+                textAnchor={'middle'}
+                className={this._classNames.text}
+                transform={`translate(${this._xAxisScale.bandwidth() / 2}, ${this._yAxisScale.bandwidth() / 2})`}
+              >
+                {convertToLocaleString(dataPointObject.rectText, this.props.culture)}
+              </text>
+            </g>
+          );
+          index++;
+        } else {
+          const dataPointObject: FlattenData = {
+            x: xAxisDataPoint,
+            y: yAxisDataPoint,
+            value: NaN,
+            rectText: 'No data available',
+            legend: '',
+          };
+          rectElement = (
+            <g
+              key={id}
+              role="img"
+              aria-label={this._getAriaLabel(dataPointObject)}
+              data-is-focusable={this._noLegendHighlighted()}
+              transform={`translate(${this._xAxisScale(dataPointObject.x)}, ${this._yAxisScale(dataPointObject.y)})`}
+              ref={(gElement: SVGGElement) => {
+                this._rectRefCallback(gElement, id, dataPointObject);
+              }}
+              onFocus={this._onRectFocus.bind(this, id, dataPointObject)}
+              onBlur={this._onRectBlurOrMouseOut}
+              onMouseOver={this._onRectMouseOver.bind(this, id, dataPointObject)}
+              onMouseOut={this._onRectBlurOrMouseOut}
+            >
+              <rect
+                fill={this.props.theme!.semanticColors.bodyBackground}
+                width={this._xAxisScale.bandwidth()}
+                height={this._yAxisScale.bandwidth()}
+              />
+            </g>
+          );
+        }
         rectangles.push(rectElement);
       });
     });
@@ -367,28 +424,28 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
    * and un-highlight the rest of them
    * @param legendTitle
    */
-  private _onLegendHover = (legendTitle: string): void => {
+  private _onLegendHover(legendTitle: string): void {
     this.setState({
       activeLegend: legendTitle,
     });
-  };
+  }
 
   /**
    * when the mouse is out from the legend , we need
    * to show the graph in initial mode.
    */
-  private _onLegendLeave = (): void => {
+  private _onLegendLeave(): void {
     this.setState({
       activeLegend: '',
     });
-  };
+  }
   /**
    * @param legendTitle
    * when the legend is clicked we need to highlight
    * all the rectangles which fall under that category
    * and un highlight the rest of them
    */
-  private _onLegendClick = (legendTitle: string): void => {
+  private _onLegendClick(legendTitle: string): void {
     /**
      * check if the legend is already selceted,
      * if yes, un-select the legend, else
@@ -403,7 +460,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
         selectedLegend: legendTitle,
       });
     }
-  };
+  }
   private _createLegendBars = (): JSX.Element => {
     const { data, legendProps } = this.props;
     const legends: ILegend[] = [];
@@ -651,7 +708,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _getStringFormattedDate = (point: string, formatString?: string): string => {
     const date = new Date();
     date.setTime(+point);
-    return d3TimeFormat.timeFormat(formatString || '%b/%d')(date);
+    return d3TimeFormat(formatString || '%b/%d')(date);
   };
 
   private _getStringFormattedNumber = (point: string, formatString?: string): string => {
@@ -704,5 +761,15 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       point.callOutAccessibilityData?.ariaLabel ||
       `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
     );
+  };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
+
+  private _getChartTitle = (): string => {
+    const { chartTitle } = this.props;
+    const numDataPoints = this.props.data.reduce((acc, curr) => acc + curr.data.length, 0);
+    return (chartTitle ? `${chartTitle}. ` : '') + `Heat map chart with ${numDataPoints} data points. `;
   };
 }

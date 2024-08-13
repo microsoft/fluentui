@@ -132,7 +132,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
       }
     : {
         role: 'gridcell',
-        selected: selected,
+        selected,
       };
 
   return (

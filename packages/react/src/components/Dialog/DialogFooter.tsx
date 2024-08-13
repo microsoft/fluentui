@@ -9,3 +9,5 @@ export const DialogFooter: React.FunctionComponent<IDialogFooterProps> = styled<
   IDialogFooterStyleProps,
   IDialogFooterStyles
 >(DialogFooterBase, getStyles, undefined, { scope: 'DialogFooter' });
+
+DialogFooter.displayName = 'DialogFooter';

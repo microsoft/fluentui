@@ -7,7 +7,6 @@ import {
   prepareTempDirs,
   log,
   shEcho,
-  workspaceRoot,
   generateFiles,
 } from '@fluentui/scripts-projects-test';
 
@@ -36,7 +35,7 @@ export async function rollup() {
 
   logger('STEP 2. Add Fluent UI dependency to test project');
 
-  const packedPackages = await packProjectPackages(logger, workspaceRoot, ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);

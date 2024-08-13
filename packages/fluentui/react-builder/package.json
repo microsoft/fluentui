@@ -1,18 +1,18 @@
 {
   "name": "@fluentui/react-builder",
   "description": "A drag and drop UI builder.",
-  "version": "0.66.4",
+  "version": "0.66.5",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/accessibility": "^0.66.4",
-    "@fluentui/code-sandbox": "^0.66.4",
-    "@fluentui/docs-components": "^0.66.4",
-    "@fluentui/react-component-event-listener": "^0.66.4",
-    "@fluentui/react-component-ref": "^0.66.4",
-    "@fluentui/react-icons-northstar": "^0.66.4",
-    "@fluentui/react-northstar": "^0.66.4",
-    "axe-core": "4.4.3",
+    "@fluentui/accessibility": "^0.66.5",
+    "@fluentui/code-sandbox": "^0.66.5",
+    "@fluentui/docs-components": "^0.66.5",
+    "@fluentui/react-component-event-listener": "^0.66.5",
+    "@fluentui/react-component-ref": "^0.66.5",
+    "@fluentui/react-icons-northstar": "^0.66.5",
+    "@fluentui/react-northstar": "^0.66.5",
+    "axe-core": "4.7.2",
     "immer": "^9.0.12",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
@@ -26,8 +26,7 @@
     "@fluentui/scripts-babel": "*",
     "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-jest": "*",
-    "@types/react-frame-component": "^4.1.1",
-    "lerna-alias": "^3.0.3-0"
+    "@types/react-frame-component": "^4.1.1"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3",

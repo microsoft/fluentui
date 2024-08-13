@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as path from 'path';
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 import { perfTestEnv } from '@fluentui/scripts-tasks';
 
 import { config } from './perf-test.config';

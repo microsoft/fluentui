@@ -1,4 +1,4 @@
-import { Types, getGroupper } from 'tabster';
+import { Types, getGroupper, GroupperTabbabilities } from 'tabster';
 import { useTabsterAttributes } from './useTabsterAttributes';
 import { useTabster } from './useTabster';
 
@@ -7,6 +7,11 @@ export interface UseFocusableGroupOptions {
    * Behavior for the Tab key.
    */
   tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
+
+  /**
+   * Tabster can ignore default handling of keydown events
+   */
+  ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
 }
 
 /**
@@ -24,6 +29,9 @@ export const useFocusableGroup = (options?: UseFocusableGroupOptions): Types.Tab
     groupper: {
       tabbability: getTabbability(options?.tabBehavior),
     },
+    focusable: {
+      ignoreKeydown: options?.ignoreDefaultKeydown,
+    },
   });
 };
 
@@ -32,11 +40,11 @@ const getTabbability = (
 ): Types.GroupperTabbability | undefined => {
   switch (tabBehavior) {
     case 'unlimited':
-      return Types.GroupperTabbabilities.Unlimited;
+      return GroupperTabbabilities.Unlimited;
     case 'limited':
-      return Types.GroupperTabbabilities.Limited;
+      return GroupperTabbabilities.Limited;
     case 'limited-trap-focus':
-      return Types.GroupperTabbabilities.LimitedTrapFocus;
+      return GroupperTabbabilities.LimitedTrapFocus;
     default:
       return undefined;
   }

@@ -9,10 +9,11 @@ import { DATA_PORTAL_ATTRIBUTE } from './setPortalAttribute';
  * @param parent - Optional parent perspective. Search for containing portal stops at parent
  * (or root if parent is undefined or invalid.)
  */
-export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
+export function portalContainsElement(target: HTMLElement, parent?: HTMLElement, doc?: Document): boolean {
   const elementMatch = findElementRecursive(
     target,
     (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE),
+    doc,
   );
   return elementMatch !== null && elementMatch.hasAttribute(DATA_PORTAL_ATTRIBUTE);
 }

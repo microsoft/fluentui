@@ -4,6 +4,10 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
+/**
+ * Gauge Chart segment interface.
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartSegment {
   /**
    * Legend text for a segment
@@ -26,11 +30,26 @@ export interface IGaugeChartSegment {
   accessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory GaugeChart}
+ */
 export enum GaugeValueFormat {
   Percentage = 'percentage',
   Fraction = 'fraction',
 }
 
+/**
+ * {@docCategory GaugeChart}
+ */
+export enum GaugeChartVariant {
+  SingleSegment = 'single-segment',
+  MultipleSegments = 'multiple-segments',
+}
+
+/**
+ * Gauge Chart properties
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartProps {
   /**
    * Width of the chart
@@ -83,7 +102,7 @@ export interface IGaugeChartProps {
    * Format of the chart value
    * @defaultvalue GaugeValueFormat.Percentage
    */
-  chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+  chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
 
   /**
    * Decides whether to show/hide legends
@@ -126,8 +145,18 @@ export interface IGaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Specifies the variant of GaugeChart to be rendered
+   * @defaultvalue GaugeChartVariant.MultipleSegments
+   */
+  variant?: GaugeChartVariant;
 }
 
+/**
+ * Gauge Chart style properties
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyleProps {
   /**
    * Theme (provided through customization)
@@ -165,6 +194,10 @@ export interface IGaugeChartStyleProps {
   toDrawShape?: boolean;
 }
 
+/**
+ * Gauge Chart styles
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyles {
   /**
    * Styles for the root element

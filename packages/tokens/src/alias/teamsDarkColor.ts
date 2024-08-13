@@ -119,10 +119,17 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandBackground2: brand[20], // #002848 Global.Color.Brand.20
   colorBrandBackground2Hover: brand[40], // #004578 Global.Color.Brand.40
   colorBrandBackground2Pressed: brand[10], // #001526 Global.Color.Brand.10
+  colorBrandBackground3Static: brand[60], // #005a9e Global.Color.Brand.60
+  colorBrandBackground4Static: brand[40], // #004578 Global.Color.Brand.40
   colorBrandBackgroundInverted: white, // #ffffff Global.Color.White
   colorBrandBackgroundInvertedHover: brand[160], // #eff6fc Global.Color.Brand.160
   colorBrandBackgroundInvertedPressed: brand[140], // #c7e0f4 Global.Color.Brand.140
   colorBrandBackgroundInvertedSelected: brand[150], // #deecf9 Global.Color.Brand.150
+  colorNeutralCardBackground: grey[20], // #333333 Global.Color.Grey.20
+  colorNeutralCardBackgroundHover: grey[24], // #3d3d3d Global.Color.Grey.24
+  colorNeutralCardBackgroundPressed: grey[18], // #2e2e2e Global.Color.Grey.18
+  colorNeutralCardBackgroundSelected: grey[22], // #383838 Global.Color.Grey.22
+  colorNeutralCardBackgroundDisabled: grey[8], // #141414 Global.Color.Grey.8
   colorNeutralStrokeAccessible: grey[68], // #adadad Global.Color.Grey.68
   colorNeutralStrokeAccessibleHover: grey[74], // #bdbdbd Global.Color.Grey.74
   colorNeutralStrokeAccessiblePressed: grey[70], // #b3b3b3 Global.Color.Grey.70
@@ -143,6 +150,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandStroke2: brand[50], // #004c87 Global.Color.Brand.50
   colorBrandStroke2Hover: brand[50], // #004c87 Global.Color.Brand.50
   colorBrandStroke2Pressed: brand[30], // #043862 Global.Color.Brand.30
+  colorBrandStroke2Contrast: brand[50], // #004c87 Global.Color.Brand.50
   colorCompoundBrandStroke: brand[90], // #1890f1 Global.Color.Brand.90
   colorCompoundBrandStrokeHover: brand[100], // #2899f5 Global.Color.Brand.100
   colorCompoundBrandStrokePressed: brand[80], // #0078d4 Global.Color.Brand.80
@@ -152,6 +160,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorTransparentStrokeInteractive: 'transparent', // transparent undefined
   colorTransparentStrokeDisabled: 'transparent', // transparent undefined
   colorNeutralStrokeAlpha: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
+  colorNeutralStrokeAlpha2: whiteAlpha[20], // rgba(255, 255, 255, 0.2) Global.Color.WhiteAlpha.20
   colorStrokeFocus1: black, // #000000 Global.Color.Black
   colorStrokeFocus2: white, // #ffffff Global.Color.White
   colorNeutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

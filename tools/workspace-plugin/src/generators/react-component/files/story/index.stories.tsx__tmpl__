@@ -1,0 +1,18 @@
+import { <%= componentName %> } from '<%= npmPackageName %>';
+
+import descriptionMd from './<%= componentName %>Description.md';
+import bestPracticesMd from './<%= componentName %>BestPractices.md';
+
+export { Default } from './<%= componentName %>Default.stories';
+
+export default {
+  title: '<%= storiesTitle %>',
+  component: <%= componentName %>,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      }
+    }
+  }
+};

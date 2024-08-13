@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { ILegend, Legends } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 export class LegendOverflowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',
-        color: DefaultPalette.red,
+        color: getColorFromToken(DataVizPalette.color5),
         action: () => {
           console.log('Legend1 clicked');
         },
@@ -18,7 +17,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 2',
-        color: DefaultPalette.green,
+        color: getColorFromToken(DataVizPalette.color6),
         action: () => {
           console.log('Legend2 clicked');
         },
@@ -29,7 +28,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 3',
-        color: DefaultPalette.yellow,
+        color: getColorFromToken(DataVizPalette.color7),
         action: () => {
           console.log('Legend3 clicked');
         },
@@ -40,7 +39,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 4',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color8),
         action: () => {
           console.log('Legend4 clicked');
         },
@@ -51,7 +50,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 5',
-        color: DefaultPalette.purpleLight,
+        color: getColorFromToken(DataVizPalette.color9),
         action: () => {
           console.log('Legend5 clicked');
         },
@@ -62,7 +61,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 6',
-        color: DefaultPalette.orange,
+        color: getColorFromToken(DataVizPalette.color10),
         action: () => {
           console.log('Legend6 clicked');
         },
@@ -73,7 +72,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 7',
-        color: DefaultPalette.magenta,
+        color: getColorFromToken(DataVizPalette.color11),
         action: () => {
           console.log('Legend7 clicked');
         },
@@ -84,7 +83,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 8',
-        color: DefaultPalette.themeDark,
+        color: getColorFromToken(DataVizPalette.color12),
         action: () => {
           console.log('Legend8 clicked');
         },
@@ -95,7 +94,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 9',
-        color: DefaultPalette.redDark,
+        color: getColorFromToken(DataVizPalette.color13),
         action: () => {
           console.log('Legend9 clicked');
         },
@@ -106,7 +105,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 10',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color14),
         action: () => {
           console.log('Legend10 clicked');
         },
@@ -117,7 +116,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 11',
-        color: DefaultPalette.blackTranslucent40,
+        color: getColorFromToken(DataVizPalette.color15),
         action: () => {
           console.log('Legend11 clicked');
         },
@@ -128,7 +127,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 12',
-        color: DefaultPalette.greenDark,
+        color: getColorFromToken(DataVizPalette.color16),
         action: () => {
           console.log('Legend12 clicked');
         },
@@ -139,7 +138,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 13',
-        color: DefaultPalette.yellowLight,
+        color: getColorFromToken(DataVizPalette.color17),
         action: () => {
           console.log('Legend13 clicked');
         },
@@ -150,7 +149,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 14',
-        color: DefaultPalette.magentaLight,
+        color: getColorFromToken(DataVizPalette.color18),
         action: () => {
           console.log('Legend14 clicked');
         },
@@ -161,7 +160,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 15',
-        color: DefaultPalette.purpleDark,
+        color: getColorFromToken(DataVizPalette.color19),
         action: () => {
           console.log('Legend15 clicked');
         },
@@ -172,7 +171,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 16',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color20),
         action: () => {
           console.log('Legend16 clicked');
         },
@@ -183,7 +182,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 17',
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color21),
         action: () => {
           console.log('Legend17 clicked');
         },

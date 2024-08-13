@@ -23,7 +23,7 @@
         "useSpread": true
       }
     },
-    "target": "es2019"
+    "target": "es5"
   },
   "minify": false,
   "sourceMaps": true

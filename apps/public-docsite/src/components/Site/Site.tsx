@@ -11,6 +11,7 @@ import {
   trackEvent,
   trackPageView,
   IWithPlatformProps,
+  TopBanner,
   TopNav,
   ScrollBars,
   INavPage,
@@ -29,6 +30,7 @@ import { AppThemesContext, extractAnchorLink } from '@fluentui/react-docsite-com
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
+import { cdnUrl } from '../../utilities/cdn';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -159,6 +161,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const SiteContent = () => (
       <div key="site" className={styles.siteRoot}>
         {this._renderTopNav()}
+        {this._renderTopBanner()}
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
@@ -328,6 +331,10 @@ export class Site<TPlatforms extends string = string> extends React.Component<
         />
       );
     }
+  };
+
+  private _renderTopBanner = (): JSX.Element | undefined => {
+    return <TopBanner cdnUrl={cdnUrl} />;
   };
 
   private _renderPlatformPicker = (): JSX.Element | null => {

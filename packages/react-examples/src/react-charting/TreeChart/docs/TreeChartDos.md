@@ -1,0 +1,1 @@
+- Tree diagrams are meant to flex to your use case. There are some restrictions to ensure the structure supports legibility. Utilize the components to build your tree while staying within these guidelines.

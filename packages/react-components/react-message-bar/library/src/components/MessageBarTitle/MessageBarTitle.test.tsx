@@ -1,0 +1,18 @@
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import { isConformant } from '../../testing/isConformant';
+import { MessageBarTitle } from './MessageBarTitle';
+
+describe('MessageBarTitle', () => {
+  isConformant({
+    Component: MessageBarTitle,
+    displayName: 'MessageBarTitle',
+  });
+
+  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+
+  it('renders a default state', () => {
+    const result = render(<MessageBarTitle>Default MessageBarTitle</MessageBarTitle>);
+    expect(result.container).toMatchSnapshot();
+  });
+});

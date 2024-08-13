@@ -30,7 +30,13 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
   });
 
   return renderFolderCoverWithLayout(folderCover, {
-    children: <img src={`//via.placeholder.com/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />,
+    children: (
+      <img
+        src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+        height={Math.round(imageSize.height)}
+        width={Math.round(imageSize.width)}
+      />
+    ),
   });
 };
 

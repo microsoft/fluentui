@@ -6,6 +6,10 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
 
+/**
+ * Multi Stacked Bar Chart properties
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartProps {
   /**
    * An array of chart data points for the multistacked bar chart
@@ -117,6 +121,10 @@ export interface IMultiStackedBarChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Multi Stacked Bar Chart style properties
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -164,6 +172,10 @@ export interface IMultiStackedBarChartStyleProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Multi Stacked Bar Chart styles
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartStyles {
   /**
    * Styling for the root container
@@ -236,6 +248,9 @@ export interface IMultiStackedBarChartStyles {
   chartWrapper: IStyle;
 }
 
+/**
+ * {@docCategory MultiStackedBarChart}
+ */
 export enum MultiStackedBarChartVariant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',

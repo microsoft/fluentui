@@ -50,6 +50,8 @@ import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { ISelectableDroppableTextProps } from '../../SelectableOption';
 import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { IFocusTrapZoneProps } from '../FocusTrapZone/FocusTrapZone.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
 const COMPONENT_NAME = 'Dropdown';
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
@@ -186,6 +188,8 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   public static defaultProps = {
     options: [] as IDropdownOption[],
   };
+
+  public static contextType = WindowContext;
 
   private _host = React.createRef<HTMLDivElement>();
   private _focusZone = React.createRef<FocusZone>();
@@ -937,14 +941,15 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * for updating focus are not interacting during scroll
    */
   private _onScroll = (): void => {
+    const win = getWindowEx(this.context)!; // can only be called on the client
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      clearTimeout(this._scrollIdleTimeoutId);
+      win.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = window.setTimeout(() => {
+    this._scrollIdleTimeoutId = win.setTimeout(() => {
       this._isScrollIdle = true;
     }, this._scrollIdleDelay);
   };
@@ -959,10 +964,11 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
+    const doc = getDocumentEx(this.context)!; // can only be called on the client
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
 
-    if (!this._isScrollIdle || document.activeElement === targetElement) {
+    if (!this._isScrollIdle || doc.activeElement === targetElement) {
       return;
     }
 

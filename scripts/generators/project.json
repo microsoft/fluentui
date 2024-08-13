@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/scripts-generators",
+  "name": "scripts-generators",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "scripts/generators",
+  "sourceRoot": "scripts/generators/src",
   "projectType": "library",
   "tags": ["tools"]
 }

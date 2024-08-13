@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PopoverTrigger renders a default state 1`] = `
+<button
+  aria-expanded="false"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  Popover trigger
+</button>
+`;

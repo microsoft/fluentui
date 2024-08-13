@@ -1,5 +1,5 @@
-import { preset, task } from '@fluentui/scripts-tasks';
+import { preset, task, series } from '@fluentui/scripts-tasks';
 
 preset();
 
-task('build', 'build:react-components').cached?.();
+task('build', series('build:react-components', 'copy')).cached?.();

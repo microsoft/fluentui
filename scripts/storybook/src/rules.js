@@ -1,5 +1,3 @@
-const { _createCodesandboxRule } = require('./utils');
-
 /**
  * @type {import("webpack").RuleSetRule}
  */
@@ -92,13 +90,7 @@ const griffelRule = {
   ],
 };
 
-/**
- * @type {import("webpack").RuleSetRule}
- */
-const codesandboxRule = _createCodesandboxRule();
-
 exports.tsRule = tsRule;
 exports.scssRule = scssRule;
 exports.cssRule = cssRule;
 exports.griffelRule = griffelRule;
-exports.codesandboxRule = codesandboxRule;

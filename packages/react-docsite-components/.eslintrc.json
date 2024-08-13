@@ -2,6 +2,7 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
   "root": true,
   "rules": {
-    "deprecation/deprecation": "off"
+    "deprecation/deprecation": "off",
+    "no-restricted-globals": "off"
   }
 }

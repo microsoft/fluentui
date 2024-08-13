@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { DecoratorFunction } from '@storybook/addons';
-import { ExtendedStoryFnReturnType } from './types';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import type { Decorator } from '@storybook/react';
 
-export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecorator: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -11,7 +9,7 @@ export const TestWrapperDecorator: DecoratorFunction<ExtendedStoryFnReturnType> 
   </div>
 );
 
-export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecoratorTall: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -19,7 +17,7 @@ export const TestWrapperDecoratorTall: DecoratorFunction<ExtendedStoryFnReturnTy
   </div>
 );
 
-export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecoratorTallFixedWidth: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -27,7 +25,7 @@ export const TestWrapperDecoratorTallFixedWidth: DecoratorFunction<ExtendedStory
   </div>
 );
 
-export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecoratorFixedWidth: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -35,63 +33,10 @@ export const TestWrapperDecoratorFixedWidth: DecoratorFunction<ExtendedStoryFnRe
   </div>
 );
 
-export const TestWrapperDecoratorFullWidth: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+export const TestWrapperDecoratorFullWidth: Decorator = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}
     </div>
   </div>
 );
-
-const useNoAnimationStyles = makeStyles({
-  root: {
-    animationDuration: '0s !important',
-    transitionDuration: '0s !important',
-    '& *': {
-      animationDuration: '0s !important',
-      transitionDuration: '0s !important',
-    },
-  },
-  paused: {
-    animationPlayState: 'paused !important',
-    animationDelay: '-1s !important',
-    '& *': {
-      animationPlayState: 'paused !important',
-      animationDelay: '-1s !important',
-    },
-  },
-});
-export const TestWrapperDecoratorNoAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const noAnimationStyles = useNoAnimationStyles();
-  const className = mergeClasses(noAnimationStyles.root, 'testWrapper');
-  return (
-    <div style={{ display: 'flex' }}>
-      <div
-        className={className}
-        style={{
-          padding: '10px',
-          overflow: 'hidden',
-        }}
-      >
-        {story()}
-      </div>
-    </div>
-  );
-};
-export const TestWrapperDecoratorPauseAnimation: DecoratorFunction<ExtendedStoryFnReturnType> = story => {
-  const noAnimationStyles = useNoAnimationStyles();
-  const className = mergeClasses(noAnimationStyles.paused, 'testWrapper');
-  return (
-    <div style={{ display: 'grid' }}>
-      <div
-        className={className}
-        style={{
-          padding: '10px',
-          overflow: 'hidden',
-        }}
-      >
-        {story()}
-      </div>
-    </div>
-  );
-};

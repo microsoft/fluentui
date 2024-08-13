@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { IIconProps } from '../../Icon';
 import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
-import type { IStyle, ITheme } from '../../Styling';
+import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IButtonStyles, IButtonProps } from '../../Button';
 import type { IRefObject, IRenderFunction } from '../../Utilities';
 import type { IComboBoxClassNames } from './ComboBox.classNames';
@@ -146,6 +146,13 @@ export interface IComboBoxProps
   allowFreeInput?: boolean;
 
   /**
+   * When true this allows the parent element to navigate using left and right arrow keys.
+   *
+   * @defaultvalue false
+   */
+  allowParentArrowNavigation?: boolean;
+
+  /**
    * Whether the ComboBox auto completes. As the user is entering text, potential matches will be
    * suggested from the list of options. If the ComboBox is expanded, this will also scroll to the
    * suggested option and give it a selected style.
@@ -284,6 +291,12 @@ export interface IComboBoxProps
    * Custom render function for the label text.
    */
   onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+
+  /**
+   * Whether matching the ComboBox options when writing in the ComboBox input should be case-sensitive or not.
+   * @defaultvalue false
+   */
+  caseSensitive?: boolean;
 }
 
 /**
@@ -304,7 +317,7 @@ export interface IOnRenderComboBoxLabelProps {
 /**
  * {@docCategory ComboBox}
  */
-export interface IComboBoxStyles {
+export interface IComboBoxStyles extends IShadowDomStyle {
   /**
    * Style for the container which has the ComboBox and the label.
    * (In most other components this would be called `root`.)

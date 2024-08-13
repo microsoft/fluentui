@@ -1,4 +1,5 @@
 import { IStyleOptions } from './IStyleOptions';
+import { DEFAULT_SHADOW_CONFIG } from './shadowConfig';
 
 /**
  * Sets the current RTL value.
@@ -15,8 +16,11 @@ export function setRTL(isRTL: boolean): void {
 export function getRTL(): boolean {
   if (_rtl === undefined) {
     _rtl =
+      // eslint-disable-next-line no-restricted-globals
       typeof document !== 'undefined' &&
+      // eslint-disable-next-line no-restricted-globals
       !!document.documentElement &&
+      // eslint-disable-next-line no-restricted-globals
       document.documentElement.getAttribute('dir') === 'rtl';
   }
   return _rtl;
@@ -31,5 +35,6 @@ _rtl = getRTL();
 export function getStyleOptions(): IStyleOptions {
   return {
     rtl: getRTL(),
+    shadowConfig: DEFAULT_SHADOW_CONFIG,
   };
 }

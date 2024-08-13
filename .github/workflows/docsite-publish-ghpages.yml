@@ -20,7 +20,7 @@ jobs:
         name: Checkout [master]
 
       - name: Verify react-compoenents has changed
-        uses: tj-actions/changed-files@v34
+        uses: tj-actions/changed-files@v41
         id: verify-react-components-changed
         with:
           files: |
@@ -37,20 +37,16 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.18.1
+          node-version: 20.x
           cache: 'yarn'
 
       - name: Install packages
         run: yarn install --frozen-lockfile
 
-      - name: Build dependencies
-        uses: ./.github/actions/build-to
-        with:
-          workspaces: '@fluentui/public-docsite-v9'
-          backfill-cache-provider-options: ${{ secrets.BACKFILL_CACHE_PROVIDER_OPTIONS }}
-
       - name: Build storybook
-        run: yarn workspace @fluentui/public-docsite-v9 build-storybook
+        run: yarn nx run public-docsite-v9:build-storybook --nxBail
+        env:
+          STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY: ${{ secrets.STORYBOOK_APPINSIGHTS_INSTRUMENTATION_KEY }}
 
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v1

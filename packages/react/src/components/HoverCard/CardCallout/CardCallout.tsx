@@ -28,15 +28,15 @@ export const CardCallout = (props: ICardCalloutProps) => {
 
   const mergedCalloutProps: ICalloutProps = {
     ...getNativeProps(props, divProperties),
-    className: className,
+    className,
     target: targetElement,
     isBeakVisible: false,
-    directionalHint: directionalHint,
-    directionalHintFixed: directionalHintFixed,
-    finalHeight: finalHeight,
+    directionalHint,
+    directionalHintFixed,
+    finalHeight,
     minPagePadding: 24,
     onDismiss: onLeave,
-    gapSpace: gapSpace,
+    gapSpace,
     ...calloutProps,
   };
 

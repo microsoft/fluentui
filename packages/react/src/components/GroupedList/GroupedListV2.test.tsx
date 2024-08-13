@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { SelectionMode, Selection } from '../../Selection';
 import { GroupedListV2_unstable as GroupedListV2 } from './GroupedListV2';
@@ -410,5 +411,70 @@ describe('GroupedListV2', () => {
     expect(wrapper.find(DetailsRow)).toHaveLength(3);
 
     wrapper.unmount();
+  });
+
+  it('scrolls to the correct index when calling `scrollToIndex`', () => {
+    const _selection = new Selection();
+    const _items: Array<{ key: string }> = [{ key: '1' }, { key: '2' }, { key: '3' }, { key: '4' }, { key: '5' }];
+    const _groups: Array<IGroup> = [
+      {
+        count: 3,
+        hasMoreData: true,
+        isCollapsed: false,
+        key: 'group0',
+        name: 'group 0',
+        startIndex: 2,
+        level: 0,
+        children: [],
+      },
+    ];
+
+    const ref = React.createRef<IGroupedList>();
+    const measureItem = jest.fn();
+
+    function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+      return (
+        <DetailsRow
+          columns={Object.keys(item)
+            .slice(0, 2)
+            .map((value): IColumn => {
+              return {
+                key: value,
+                name: value,
+                fieldName: value,
+                minWidth: 300,
+              };
+            })}
+          groupNestingDepth={nestingDepth}
+          item={item}
+          itemIndex={itemIndex}
+          selection={_selection}
+          selectionMode={SelectionMode.multiple}
+        />
+      );
+    }
+
+    act(() => {
+      const wrapper = mount(
+        <div data-is-scrollable style={{ overflow: 'scroll' }}>
+          <GroupedListV2
+            componentRef={ref}
+            items={_items}
+            groups={_groups}
+            onRenderCell={_onRenderCell}
+            selection={_selection}
+          />
+        </div>,
+      );
+
+      expect(typeof ref.current?.scrollToIndex).toBe('function');
+
+      ref.current?.scrollToIndex(4, measureItem);
+
+      expect(measureItem).toHaveBeenCalled();
+      expect(measureItem).toHaveBeenLastCalledWith(4);
+
+      wrapper.unmount();
+    });
   });
 });

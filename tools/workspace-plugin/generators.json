@@ -1,0 +1,99 @@
+{
+  "generators": {
+    "cypress-component-configuration": {
+      "implementation": "./src/generators/cypress-component-configuration/index.ts",
+      "schema": "./src/generators/cypress-component-configuration/schema.json",
+      "description": "Set up Cypress component test for a project."
+    },
+    "dependency-mismatch": {
+      "implementation": "./src/generators/dependency-mismatch/index.ts",
+      "schema": "./src/generators/dependency-mismatch/schema.json",
+      "description": "Generator dependency-mismatch"
+    },
+    "epic-generator": {
+      "implementation": "./src/generators/epic-generator/index.ts",
+      "schema": "./src/generators/epic-generator/schema.json",
+      "description": "Generator epic-generator"
+    },
+    "migrate-converged-pkg": {
+      "implementation": "./src/generators/migrate-converged-pkg/index.ts",
+      "schema": "./src/generators/migrate-converged-pkg/schema.json",
+      "description": "Generator migrate-converged-pkg"
+    },
+    "migrate-fixed-versions": {
+      "implementation": "./src/generators/migrate-fixed-versions/index.ts",
+      "schema": "./src/generators/migrate-fixed-versions/schema.json",
+      "description": "Generator migrate-fixed-versions"
+    },
+    "migrate-v8-pkg": {
+      "implementation": "./src/generators/migrate-v8-pkg/index.ts",
+      "schema": "./src/generators/migrate-v8-pkg/schema.json",
+      "description": "Generator migrate-v8-pkg"
+    },
+    "move-packages": {
+      "implementation": "./src/generators/move-packages/index.ts",
+      "schema": "./src/generators/move-packages/schema.json",
+      "description": "Generator move-packages"
+    },
+    "normalize-package-dependencies": {
+      "implementation": "./src/generators/normalize-package-dependencies/index.ts",
+      "schema": "./src/generators/normalize-package-dependencies/schema.json",
+      "description": "Generator normalize-package-dependencies"
+    },
+    "prepare-initial-release": {
+      "implementation": "./src/generators/prepare-initial-release/index.ts",
+      "schema": "./src/generators/prepare-initial-release/schema.json",
+      "description": "Generator prepare-initial-release"
+    },
+    "rc-caret": {
+      "implementation": "./src/generators/rc-caret/index.ts",
+      "schema": "./src/generators/rc-caret/schema.json",
+      "description": "Generator rc-caret"
+    },
+    "react-component": {
+      "implementation": "./src/generators/react-component/index.ts",
+      "schema": "./src/generators/react-component/schema.json",
+      "description": "Create React Component within v9 package"
+    },
+    "react-library": {
+      "implementation": "./src/generators/react-library/index.ts",
+      "schema": "./src/generators/react-library/schema.json",
+      "description": "Generator react-library"
+    },
+    "recipe-generator": {
+      "implementation": "./src/generators/recipe-generator/index.ts",
+      "schema": "./src/generators/recipe-generator/schema.json",
+      "description": "Generator recipe-generator"
+    },
+    "tsconfig-base-all": {
+      "implementation": "./src/generators/tsconfig-base-all/index.ts",
+      "schema": "./src/generators/tsconfig-base-all/schema.json",
+      "description": "Create tsconfig.json with merged 'compilerOptions.paths' from v0,v8,v9 tsconfigs"
+    },
+    "version-bump": {
+      "implementation": "./src/generators/version-bump/index.ts",
+      "schema": "./src/generators/version-bump/schema.json",
+      "description": "Generator version-bump"
+    },
+    "workspace-generator": {
+      "implementation": "./src/generators/workspace-generator/index.ts",
+      "schema": "./src/generators/workspace-generator/schema.json",
+      "description": "Generator workspace-generator"
+    },
+    "eslint-rule": {
+      "factory": "./src/generators/eslint-rule/generator",
+      "schema": "./src/generators/eslint-rule/schema.json",
+      "description": "eslint-rule generator"
+    },
+    "bundle-size-configuration": {
+      "factory": "./src/generators/bundle-size-configuration/generator",
+      "schema": "./src/generators/bundle-size-configuration/schema.json",
+      "description": "bundle-size-configuration generator"
+    },
+    "split-library-in-two": {
+      "factory": "./src/generators/split-library-in-two/generator",
+      "schema": "./src/generators/split-library-in-two/schema.json",
+      "description": "split-library-in-two generator"
+    }
+  }
+}

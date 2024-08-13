@@ -17,7 +17,7 @@ export interface CreateComponentConfig<P> {
   render: (config: RenderResultConfig<P>, props: P) => React.ReactNode;
 }
 
-export type CreateComponentReturnType<P> = React.FunctionComponent<P> & {
+export type CreateComponentReturnType<P extends {}> = React.FunctionComponent<P> & {
   deprecated_className: string;
   create: ShorthandFactory<P>;
 };

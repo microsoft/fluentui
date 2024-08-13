@@ -20,7 +20,7 @@ export async function visitPage(browser: Browser, url: string) {
     if (message.type() === 'error') {
       const messageContent = message.text();
 
-      // Ignoring 'aria-description' warning from react 17 as it's a valid prop
+      // Ignoring 'aria-description' warning from React 17 as it's a valid prop
       // https://github.com/facebook/react/issues/21035
       if (containsAriaDescriptionWarning(messageContent) && React.version.startsWith('17')) {
         return;

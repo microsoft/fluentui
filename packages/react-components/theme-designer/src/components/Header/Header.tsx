@@ -8,7 +8,6 @@ import {
   webDarkTheme,
   Button,
 } from '@fluentui/react-components';
-import { shorthands } from '@griffel/react';
 
 const MFSTLogo = () => {
   return (
@@ -37,7 +36,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'start',
     paddingLeft: tokens.spacingHorizontalL,
-    ...shorthands.gap(tokens.spacingHorizontalS),
+    gap: tokens.spacingHorizontalS,
   },
   text: {
     width: '300px',

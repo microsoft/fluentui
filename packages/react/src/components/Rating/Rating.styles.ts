@@ -17,7 +17,7 @@ const GlobalClassNames = {
 
 function _getColorWithHighContrast(color: string, highContrastColor: string) {
   return {
-    color: color,
+    color,
     selectors: {
       [HighContrastSelector]: {
         color: highContrastColor,

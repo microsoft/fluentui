@@ -1,0 +1,3933 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calloutData should return an array of data points grouped by their date-based x coordinates 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "xAxisCalloutData": undefined,
+        "y": 10,
+        "yAxisCalloutData": undefined,
+      },
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "xAxisCalloutData": undefined,
+        "y": 30,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609459200000,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "xAxisCalloutData": undefined,
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609545600000,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "xAxisCalloutData": undefined,
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609632000000,
+  },
+]
+`;
+
+exports[`calloutData should return an array of data points grouped by their numeric x coordinates 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "xAxisCalloutData": undefined,
+        "y": 10,
+        "yAxisCalloutData": undefined,
+      },
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "xAxisCalloutData": undefined,
+        "y": 30,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 10,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "xAxisCalloutData": undefined,
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 20,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "xAxisCalloutData": undefined,
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 30,
+  },
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
+Array [
+  Array [
+    0,
+    "July",
+  ],
+  Array [
+    8.516483516483516,
+    "August",
+  ],
+  Array [
+    17.032967032967033,
+    "September",
+  ],
+  Array [
+    25.274725274725274,
+    "October",
+  ],
+  Array [
+    33.791208791208796,
+    "November",
+  ],
+  Array [
+    42.032967032967036,
+    "December",
+  ],
+  Array [
+    50.54945054945055,
+    "2022",
+  ],
+  Array [
+    59.065934065934066,
+    "February",
+  ],
+  Array [
+    66.75824175824175,
+    "March",
+  ],
+  Array [
+    75.27472527472527,
+    "April",
+  ],
+  Array [
+    83.51648351648352,
+    "May",
+  ],
+  Array [
+    92.03296703296702,
+    "June",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when culture and options are provided 1`] = `
+Array [
+  Array [
+    0,
+    "الخميس، ١ يوليو ٢٠٢١",
+  ],
+  Array [
+    25.274725274725274,
+    "الجمعة، ١ أكتوبر ٢٠٢١",
+  ],
+  Array [
+    50.54945054945055,
+    "السبت، ١ يناير ٢٠٢٢",
+  ],
+  Array [
+    75.27472527472527,
+    "الجمعة، ١ أبريل ٢٠٢٢",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when customDateTimeFormatter is provided 1`] = `
+Array [
+  Array [
+    0,
+    "7/2021",
+  ],
+  Array [
+    25.274725274725274,
+    "10/2021",
+  ],
+  Array [
+    50.54945054945055,
+    "1/2022",
+  ],
+  Array [
+    75.27472527472527,
+    "4/2022",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when timeFormatLocale is provided 1`] = `
+Array [
+  Array [
+    0,
+    "Luglio",
+  ],
+  Array [
+    25.274725274725274,
+    "Ottobre",
+  ],
+  Array [
+    50.54945054945055,
+    "2022",
+  ],
+  Array [
+    75.27472527472527,
+    "Aprile",
+  ],
+]
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      July
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      October
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      April
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      July
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      October
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      April
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly when tickParams is provided 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Thu, 01 Jul 2021
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Fri, 01 Oct 2021
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Sat, 01 Jan 2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Fri, 01 Apr 2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Thu, 30 Jun 2022
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should create rounded x-axis labels when showRoundOffXTickValues is true 1`] = `
+Array [
+  Array [
+    5.000000000000004,
+    "0.25",
+  ],
+  Array [
+    30,
+    "0.3",
+  ],
+  Array [
+    54.99999999999999,
+    "0.35",
+  ],
+  Array [
+    80.00000000000001,
+    "0.4",
+  ],
+]
+`;
+
+exports[`createNumericXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
+Array [
+  Array [
+    0,
+    "0",
+  ],
+  Array [
+    50,
+    "50",
+  ],
+  Array [
+    100,
+    "100",
+  ],
+]
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly for horizontal bar chart with axis 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="10"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringXAxis should create the x-axis labels correctly for specific inner and outer padding values 1`] = `
+Array [
+  Array [
+    10.526315789473685,
+    "X-axis label 1",
+  ],
+  Array [
+    42.10526315789474,
+    "X-axis label 2",
+  ],
+  Array [
+    73.6842105263158,
+    "X-axis label 3",
+  ],
+]
+`;
+
+exports[`createStringXAxis should create the x-axis labels correctly for specific padding values 1`] = `
+Array [
+  Array [
+    14.285714285714285,
+    "X-axis label 1",
+  ],
+  Array [
+    42.85714285714286,
+    "X-axis label 2",
+  ],
+  Array [
+    71.42857142857143,
+    "X-axis label 3",
+  ],
+]
+`;
+
+exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="15"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly for specific padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78.57142857142857)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.00000000000001)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,21.428571428571427)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly with a custom tick format 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      Y-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxis should render y-axis labels correctly with specific tick padding value 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M0.5,100.5V0.5"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,83.33333333333334)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,16.666666666666668)"
+  >
+    <line
+      stroke="currentColor"
+      x2="0"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M6,92.5H0.5V8.5H6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with a custom tick format 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      Y-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      Y-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      Y-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with specific tick padding value 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate
+  and showXAxisLablesTooltip is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate
+  and showXAxisLablesTooltip is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds the maximum allowed line width 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M6,100.5H0.5V0.5H6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,80.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,60.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,40.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,20.499999999999996)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="18"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with a custom tick format 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,80.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,60.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,40.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,20.499999999999996)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      ₹100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with a specific number of ticks 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with specific min and max tick values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,80.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,60.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      4
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,40.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      6
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,20.499999999999996)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      8
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      10
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForHorizontalBarChartWithAxis should render y-axis labels correctly with specific tick padding value 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,80.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,60.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,40.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,20.499999999999996)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-11"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly for charts with event annotations 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V20.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,80.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,60.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,40.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,20.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly for secondary scale 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M6,100.5H0.5V0.5H6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly for secondary scale when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="start"
+>
+  <path
+    class="domain"
+    d="M6,100.5H0.5V0.5H6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly with a custom tick format 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      $0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      $25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      $50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      $75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      $100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly with a specific number of ticks 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,67.16666666666667)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      34
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,33.833333333333336)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      68
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly with specific min and max tick values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      3
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      6
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      9
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-12"
+    >
+      12
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisForOtherCharts should render y-axis labels correctly with specific tick padding value 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,100.5H0.5V0.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,100.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,75.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      25
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      50
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,25.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      75
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,0.5)"
+  >
+    <line
+      stroke="currentColor"
+      x2="100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.32em"
+      fill="currentColor"
+      x="-5"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisLabels should offset y-axis labels when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisLabels should retain full y-axis labels when truncateLabel is false 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate
+  and truncateLabel is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="currentColor"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="currentColor"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`domainRageOfVerticalNumeric should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRageOfVerticalNumeric should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis 1`] = `
+Object {
+  "dEndValue": 2021-01-03T00:00:00.000Z,
+  "dStartValue": 2021-01-02T00:00:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 2021-01-02T00:00:00.000Z,
+  "dStartValue": 2021-01-03T00:00:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when tickValues are provided 1`] = `
+Object {
+  "dEndValue": 2021-01-04T00:00:00.000Z,
+  "dStartValue": 2021-01-01T00:00:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForAreaChart should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForAreaChart should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 6,
+}
+`;
+
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 30,
+  "rEndValue": 89,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfVSBCNumeric should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfVSBCNumeric should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfXStringAxis should return domain and range values correctly for string x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfXStringAxis should return domain and range values correctly for string x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 5,
+  "rStartValue": 90,
+}
+`;
+
+exports[`findHBCWANumericMinMaxOfY should return empty minimum and maximum values for non numeric y-axis 1`] = `
+Object {
+  "endValue": 0,
+  "startValue": 0,
+}
+`;
+
+exports[`findHBCWANumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findNumericMinMaxOfY should return minimum and maximum values for line chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVSBCNumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVerticalNumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVerticalNumericMinMaxOfY should return minimum and maximum values for numeric y-axis when line data is also provided 1`] = `
+Object {
+  "endValue": 50,
+  "startValue": 10,
+}
+`;
+
+exports[`getUnique should return an array of data points with unique values
+determined by the provided comparison key 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 1",
+        "y": 10,
+      },
+      Object {
+        "legend": "Line 2",
+        "y": 30,
+      },
+    ],
+    "x": 10,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 1",
+        "y": 20,
+      },
+    ],
+    "x": 20,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 2",
+        "y": 20,
+      },
+    ],
+    "x": 30,
+  },
+]
+`;
+
+exports[`prepareDatapoints should return an array of uniformly distributed data points 1`] = `
+Array [
+  0,
+  34,
+  68,
+  102,
+]
+`;
+
+exports[`prepareDatapoints should return fractional data points when interval is less than 1 1`] = `
+Array [
+  0,
+  0.6666666666666666,
+  1.3333333333333333,
+  2,
+]
+`;
+
+exports[`prepareDatapoints should return integer data points when dataset only consists of integers 1`] = `
+Array [
+  0,
+  1,
+  2,
+]
+`;
+
+exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwise 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="currentColor"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,7.5)rotate(-45)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,7.5)rotate(-45)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,7.5)rotate(-45)"
+  >
+    <line
+      stroke="currentColor"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="currentColor"
+      y="16"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`tooltipOfXAxislabels should render a tooltip for x-axis labels 1`] = `
+<body>
+  <div
+    class="tooltip-1"
+    id="VBCTooltipId_1"
+    style="opacity: 0;"
+  />
+</body>
+`;
+
+exports[`wrapContent should truncate text content when it exceeds the maxWidth 1`] = `
+<text
+  id="tooltip-host1"
+>
+  Lorem ipsu...
+</text>
+`;
+
+exports[`wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWidth 1`] = `
+<text
+  class="insideDonutString-1"
+>
+  <tspan
+    dy="0em"
+    id="WordBreakId-0-0"
+    x="0"
+  >
+    Lorem 
+  </tspan>
+  <tspan
+    dy="1.1em"
+    id="WordBreakId-0-1"
+    x="0"
+  >
+    ipsum 
+  </tspan>
+  <tspan
+    dy="2.2em"
+    id="WordBreakId-0-2"
+    x="0"
+  >
+    dolor sit 
+  </tspan>
+  <tspan
+    dy="3.3000000000000003em"
+    id="WordBreakId-0-3"
+    x="0"
+  >
+    amet
+  </tspan>
+</text>
+`;

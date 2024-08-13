@@ -1,13 +1,8 @@
 // @ts-check
-const { AST_NODE_TYPES } = require('@typescript-eslint/experimental-utils');
+const { AST_NODE_TYPES } = require('@typescript-eslint/utils');
 const createRule = require('../../utils/createRule');
 
 /**
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").ImportDeclaration} ImportDeclaration
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").CallExpression} CallExpression
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").Expression} Expression
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").Identifier} Identifier
- * @typedef {import("@typescript-eslint/types/dist/ts-estree").LeftHandSideExpression} LeftHandSideExpression
  *
  * @typedef {{
  *   imports: string[]
@@ -21,8 +16,6 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Restricts usage of default values on React context creation',
-      category: 'Best Practices',
-      recommended: false,
     },
     messages: {
       invalidDefaultValue: 'Invalid default value for context declaration, default value should be undefined',
@@ -40,9 +33,8 @@ module.exports = createRule({
       },
     ],
   },
-  defaultOptions: [],
+  defaultOptions: /** @type {Options[]} */ ([]),
   create: context => {
-    /** @type {Options[]} */
     const options = context.options;
     const { imports } = options[0];
     /** @type {string[]} */
@@ -51,7 +43,7 @@ module.exports = createRule({
     const createContextParentIdentifiers = [];
 
     /**
-     * @param {LeftHandSideExpression} callee
+     * @param {import("@typescript-eslint/utils").TSESTree.LeftHandSideExpression} callee
      */
     function isCalleeCreateContext(callee) {
       if (
@@ -70,9 +62,6 @@ module.exports = createRule({
     }
 
     return {
-      /**
-       * @param {ImportDeclaration} importDeclaration
-       */
       // eslint-disable-next-line @typescript-eslint/naming-convention
       ImportDeclaration(importDeclaration) {
         if (typeof importDeclaration.source.value !== 'string' || !imports.includes(importDeclaration.source.value)) {
@@ -93,9 +82,6 @@ module.exports = createRule({
           }
         }
       },
-      /**
-       * @param {CallExpression} callExpression
-       */
       // eslint-disable-next-line @typescript-eslint/naming-convention
       CallExpression(callExpression) {
         const firstArgument = callExpression.arguments[0];
@@ -111,8 +97,8 @@ module.exports = createRule({
 });
 
 /**
- * @param {Expression} expression
- * @returns {expression is Identifier}
+ * @param {import("@typescript-eslint/utils").TSESTree.CallExpressionArgument} expression
+ * @returns {expression is import("@typescript-eslint/utils").TSESTree.Identifier}
  */
 function isArgumentNotUndefined(expression) {
   return expression.type !== AST_NODE_TYPES.Identifier || expression.name !== 'undefined';

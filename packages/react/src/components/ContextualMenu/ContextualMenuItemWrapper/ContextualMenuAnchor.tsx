@@ -1,11 +1,20 @@
 import * as React from 'react';
-import { anchorProperties, getNativeProps, memoizeFunction, getId, mergeAriaAttributeValues } from '../../../Utilities';
+import {
+  anchorProperties,
+  getNativeProps,
+  memoizeFunction,
+  getId,
+  mergeAriaAttributeValues,
+  IComponentAs,
+  composeComponentAs,
+} from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import type { IKeytipDataProps } from '../../../KeytipData';
 import type { IKeytipProps } from '../../../Keytip';
+import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
 export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _anchor = React.createRef<HTMLAnchorElement>();
@@ -27,13 +36,22 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
       expandedMenuItemKey,
       onItemClick,
       openSubMenu,
       dismissSubMenu,
       dismissMenu,
     } = this.props;
+
+    let ChildrenRenderer: IComponentAs<IContextualMenuItemProps> = ContextualMenuItem;
+
+    if (this.props.item.contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(this.props.item.contextualMenuItemAs, ChildrenRenderer);
+    }
+
+    if (this.props.contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(this.props.contextualMenuItemAs, ChildrenRenderer);
+    }
 
     let anchorRel = item.rel;
     if (item.target && item.target.toLowerCase() === '_blank') {

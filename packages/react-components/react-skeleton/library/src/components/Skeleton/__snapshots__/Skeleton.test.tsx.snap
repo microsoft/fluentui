@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Skeleton renders a default state 1`] = `
+<div>
+  <div
+    aria-busy="true"
+    class="fui-Skeleton"
+    role="progressbar"
+  >
+    Default Skeleton
+  </div>
+</div>
+`;

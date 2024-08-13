@@ -54,16 +54,13 @@ export function useIsSSR(): boolean {
   if (process.env.NODE_ENV !== 'production') {
     if (!isInSSRContext && !canUseDOM()) {
       // eslint-disable-next-line no-console
-      console.error(
-        [
-          '@fluentui/react-components: ',
-          'When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are ' +
-            'generated between the client and server.',
-          '\n',
-          '\n',
-          'Check documentation at https://aka.ms/fluentui-ssr',
-        ].join(''),
-      );
+      console.error(/** #__DE-INDENT__ */ `
+        @fluentui/react-components [${useIsSSR.name}]:
+        When server rendering, you must wrap your application in an <SSRProvider> to ensure consistent ids are generated between the client and server.
+
+
+        Check documentation at https://aka.ms/fluentui-ssr.
+      `);
     }
   }
 

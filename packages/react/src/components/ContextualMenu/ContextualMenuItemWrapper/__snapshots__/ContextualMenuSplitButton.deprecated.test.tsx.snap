@@ -19,6 +19,7 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
   <button
     className="splitPrimary"
     data-is-focusable={false}
+    id="id__0"
   >
     <div
       className="linkContent"
@@ -49,7 +50,8 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
     />
   </span>
   <button
-    aria-hidden={true}
+    aria-haspopup={true}
+    aria-labelledby="id__0"
     className="splitMenu"
     data-is-focusable={false}
     disabled={false}

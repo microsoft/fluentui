@@ -203,7 +203,7 @@ function managerEntries(entry = []) {
 
 ```diff
 + const { registerTsPaths } = require('@fluentui/scripts-storybook');
-+ const { registerTsProject } = require('nx/src/utils/register');
++ const { registerTsProject } = require('@nx/js/src/internal');
 
 + registerTsProject('/Users/martinhochel/Projects/msft/fluentui/tsconfig.base.json') (A)
 

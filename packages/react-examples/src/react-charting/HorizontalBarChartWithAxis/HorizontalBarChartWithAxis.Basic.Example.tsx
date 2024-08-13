@@ -3,8 +3,9 @@ import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisDataPoint,
+  getColorFromToken,
+  DataVizPalette,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -63,7 +64,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 10000,
         y: 5000,
         legend: 'Oranges',
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color1),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '10%',
       },
@@ -71,7 +72,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 20000,
         y: 50000,
         legend: 'Dogs',
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color2),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '20%',
       },
@@ -79,7 +80,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 25000,
         y: 30000,
         legend: 'Apples',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color3),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '37%',
       },
@@ -88,7 +89,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 40000,
         y: 13000,
         legend: 'Bananas',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color4),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '88%',
       },
@@ -141,6 +142,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
                 defaultRender: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            enableReflow={true}
           />
         </div>
       </>

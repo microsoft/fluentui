@@ -1,8 +1,11 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-export const getStyles = (props: IArcProps): IArcStyles => {
+import { DefaultPalette, ITheme } from '@fluentui/react/lib/Styling';
+export const getStyles = (props: IArcProps, theme: ITheme | undefined): IArcStyles => {
   const { color } = props;
   return {
-    root: { fill: color, stroke: DefaultPalette.white, strokeWidth: 2 },
+    arcRoot: { fill: color },
+    arcRootFocussed: { fill: color, stroke: theme?.palette.black || DefaultPalette.black, strokeWidth: 2 },
+    arc: { outline: 'none' },
+    arcText: { fill: theme?.palette.black || DefaultPalette.black, outline: 'none' },
   };
 };

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
-import { Dropdown } from 'src/components/Dropdown/Dropdown';
+import { Dropdown, DropdownProps } from 'src/components/Dropdown/Dropdown';
 import { dropdownSelectedItemSlotClassNames } from 'src/components/Dropdown/DropdownSelectedItem';
 import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
@@ -26,7 +26,7 @@ describe('Dropdown', () => {
     requiredProps: { open: true },
   });
 
-  implementsPopperProps(Dropdown, {
+  implementsPopperProps<DropdownProps>(Dropdown, {
     requiredProps: { open: true },
   });
 

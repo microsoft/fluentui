@@ -47,10 +47,18 @@ function runPrettier(files, config = {}) {
 
   const prettierSupportedFiles = fileIsGlob
     ? files
-    : files.filter(file => {
+    : files.reduce((acc, file) => {
         const ext = path.extname(file).replace('.', '');
-        return prettierSupportedFileExtensions.includes(ext);
-      });
+
+        if (prettierSupportedFileExtensions.includes(ext)) {
+          // WHY IGNORE IS NEEDED?: prettier removes one of the '\' within replaceValue
+          // prettier-ignore
+          const escapedFileName = `"${file.replace(/\$/g, '\\\$')}"`;
+
+          acc.push(escapedFileName);
+        }
+        return acc;
+      }, /** @type {string[]} */ ([]));
 
   if (!prettierSupportedFiles.length) {
     console.log('prettier: No supported files found');

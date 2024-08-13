@@ -34,15 +34,15 @@ You can check complete example at [CodeSandbox](https://codesandbox.io/s/fluentu
 
 ### Media Queries Sorting
 
-Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide deterministic behavior, styles applied by Griffel [are sorted]((https://griffel.js.org/react/guides/atomic-css#lvfha-order-of-pseudo-classes), the same applies to media queries. Fluent UI does not provide an opinionated default to sort media queries as the order may vary depending on the specific needs of the application.
+Fluent UI React v9 uses Griffel as CSS-in-JS to apply styles. To provide deterministic behavior, styles applied by Griffel [are sorted](https://griffel.js.org/react/guides/atomic-css#lvfha-order-of-pseudo-classes), the same applies to media queries. Fluent UI does not provide an opinionated default to sort media queries as the order may vary depending on the specific needs of the application.
 
 To configure the sorting behavior, please pass `compareMediaQueries` function with the same signature as sort functions in e.g. `Array.prototype.sort`.
 
 ```js
-import { createDOMRenderer } from '@griffel/react';
+import { createDOMRenderer } from '@fluentui/react-components';
 
 const mediaQueryOrder = [
-  'only screen and (min-width: 1366px)',
+  'only screen and (min-width: 1024px)',
   'only screen and (min-width: 1366px)',
   'only screen and (min-width: 1920px)',
 ];
@@ -52,7 +52,7 @@ function sortMediaQueries(a, b) {
 }
 
 const renderer = createDOMRenderer(document, {
-  compareMediaQueries,
+  compareMediaQueries: sortMediaQueries,
 });
 ```
 
@@ -69,7 +69,7 @@ const renderer = createDOMRenderer(document, {
 For mobile-first methodology, consider using [`sort-css-media-queries`](https://github.com/dutchenkoOleg/sort-css-media-queries):
 
 ```js
-import { createDOMRenderer } from '@griffel/react';
+import { createDOMRenderer } from '@fluentui/react-components';
 import sortCSSmq from 'sort-css-media-queries';
 
 const renderer = createDOMRenderer(document, {
@@ -113,6 +113,23 @@ function MyComponent(props) {
 ### IdPrefixProvider
 
 Having multiple applications using `FluentProvider` on a single web page can cause interop problems when they come from different bundles, more details in [microsoft/fluentui#26496](https://github.com/microsoft/fluentui/pull/26496).
+
+### React 18
+
+It's possible to handle id prefixing natively with React 18 using the [`createRoot`](https://react.dev/reference/react-dom/client/createRoot#parameters) API by configuring `identifierPrefix` on it:
+
+```jsx
+import * as React from 'react';
+import { createRoot } from 'react-dom';
+
+const root = createRoot(document.getElementById('root'), {
+  identifierPrefix: 'APP1-',
+});
+
+root.render(<App />);
+```
+
+### React 16 & 17
 
 Adding the `IdPrefixProvider` component around the `FluentProvider` will resolve the issue of losing styling on components and IDs collisions in an application.
 

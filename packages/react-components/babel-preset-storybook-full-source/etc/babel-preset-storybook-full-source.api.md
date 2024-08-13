@@ -10,7 +10,8 @@ import * as Babel from '@babel/core';
 export type BabelPluginOptions = Record<string, DependencyEntry>;
 
 // @public
-export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj;
+function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOptions): Babel.PluginObj;
+export default fullSourcePlugin;
 
 // (No @packageDocumentation comment for this package)
 

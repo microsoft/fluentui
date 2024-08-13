@@ -5,7 +5,14 @@ import type { IIconProps } from '../../Icon';
 import type { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IButtonStyles } from '../../Button';
-import type { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type {
+  IRefObject,
+  IBaseProps,
+  IRectangle,
+  IRenderFunction,
+  IStyleFunctionOrObject,
+  IComponentAs,
+} from '../../Utilities';
 import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 import type { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
@@ -18,6 +25,7 @@ import type {
 import type { IKeytipProps } from '../../Keytip';
 import type { Target } from '@fluentui/react-hooks';
 import type { IPopupRestoreFocusParams } from '../../Popup';
+import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper/ContextualMenuItemWrapper.types';
 
 export { DirectionalHint } from '../../common/DirectionalHint';
 
@@ -250,9 +258,7 @@ export interface IContextualMenuProps
    * Custom component to use for rendering individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?:
-    | React.ComponentClass<IContextualMenuItemProps>
-    | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -266,7 +272,7 @@ export interface IContextualMenuProps
    * Custom component to use for rendering the focus zone (the root).
    * @defaultValue FocusZone
    */
-  focusZoneAs?: React.ComponentClass<IFocusZoneProps> | React.FunctionComponent<IFocusZoneProps>;
+  focusZoneAs?: IComponentAs<IFocusZoneProps>;
 
   /**
    * If true, renders the ContextualMenu in a hidden state.
@@ -515,6 +521,16 @@ export interface IContextualMenuItem {
    * item click dismisses the menu. (Will be undefined if rendering a command bar item.)
    */
   onRender?: (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode;
+
+  /**
+   * An override for the child content of the contextual menu item.
+   */
+  contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
+
+  /**
+   * An override for the entire component used to render the contextal menu item.
+   */
+  contextualMenuItemWrapperAs?: IComponentAs<IContextualMenuItemWrapperProps>;
 
   /**
    * Method to customize sub-components rendering of this menu item.

@@ -38,36 +38,39 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
 
   const keyborg = createKeyborg(targetWindow);
 
+  function registerElementIfNavigating(el: EventTarget | HTMLElement | null) {
+    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(el)) {
+      state.current = el;
+      el.setAttribute(FOCUS_VISIBLE_ATTR, '');
+    }
+  }
+
+  function disposeCurrentElement() {
+    if (state.current) {
+      state.current.removeAttribute(FOCUS_VISIBLE_ATTR);
+      state.current = undefined;
+    }
+  }
+
   // When navigation mode changes remove the focus-visible selector
   keyborg.subscribe(isNavigatingWithKeyboard => {
-    if (!isNavigatingWithKeyboard && state.current) {
-      removeFocusVisibleClass(state.current);
-      state.current = undefined;
+    if (!isNavigatingWithKeyboard) {
+      disposeCurrentElement();
     }
   });
 
   // Keyborg's focusin event is delegated so it's only registered once on the window
   // and contains metadata about the focus event
   const keyborgListener = (e: KeyborgFocusInEvent) => {
-    if (state.current) {
-      removeFocusVisibleClass(state.current);
-      state.current = undefined;
-    }
-
-    if (keyborg.isNavigatingWithKeyboard() && isHTMLElement(e.target) && e.target) {
-      // Griffel can't create chained global styles so use the parent element for now
-      state.current = e.target;
-      applyFocusVisibleClass(state.current);
-    }
+    disposeCurrentElement();
+    const target = e.composedPath()[0];
+    registerElementIfNavigating(target);
   };
 
   // Make sure that when focus leaves the scope, the focus visible class is removed
   const blurListener = (e: FocusEvent) => {
     if (!e.relatedTarget || (isHTMLElement(e.relatedTarget) && !scope.contains(e.relatedTarget))) {
-      if (state.current) {
-        removeFocusVisibleClass(state.current);
-        state.current = undefined;
-      }
+      disposeCurrentElement();
     }
   };
 
@@ -75,21 +78,20 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
+  if (scope.contains(targetWindow.document.activeElement)) {
+    registerElementIfNavigating(targetWindow.document.activeElement);
+  }
+
   // Return disposer
   return () => {
+    disposeCurrentElement();
+
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
     scope.removeEventListener('focusout', blurListener);
     delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
+
     disposeKeyborg(keyborg);
   };
-}
-
-function applyFocusVisibleClass(el: HTMLElement) {
-  el.setAttribute(FOCUS_VISIBLE_ATTR, '');
-}
-
-function removeFocusVisibleClass(el: HTMLElement) {
-  el.removeAttribute(FOCUS_VISIBLE_ATTR);
 }
 
 function alreadyInScope(el: HTMLElement | null | undefined): boolean {

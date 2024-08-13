@@ -47,7 +47,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
       result.links.push({
         headerText: linkText,
         ...pivotItemProps,
-        itemKey: itemKey,
+        itemKey,
       });
       result.keyToIndexMapping[itemKey] = index;
       result.keyToTabIdMapping[itemKey] = getTabId(props, pivotId, itemKey, index);
@@ -298,6 +298,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
               ariaLabel={overflowAriaLabel}
+              role="tab"
             />
           )}
         </FocusZone>

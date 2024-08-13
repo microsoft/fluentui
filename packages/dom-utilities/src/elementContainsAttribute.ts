@@ -6,8 +6,12 @@ import { findElementRecursive } from './findElementRecursive';
  * @param attribute - the attribute to search for
  * @returns the value of the first instance found
  */
-export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null {
-  const elementMatch = findElementRecursive(element, (testElement: HTMLElement) => testElement.hasAttribute(attribute));
+export function elementContainsAttribute(element: HTMLElement, attribute: string, doc?: Document): string | null {
+  const elementMatch = findElementRecursive(
+    element,
+    (testElement: HTMLElement) => testElement.hasAttribute(attribute),
+    doc,
+  );
 
   return elementMatch && elementMatch.getAttribute(attribute);
 }

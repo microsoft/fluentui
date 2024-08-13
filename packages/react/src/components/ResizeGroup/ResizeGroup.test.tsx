@@ -276,7 +276,7 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData,
+        renderedData,
       };
 
       const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, reducedWidth);
@@ -284,7 +284,7 @@ describe('ResizeGroup', () => {
       // Important to note that we do not start scaling from the initial data,
       // we continue from the last rendered data.
       expect(result).toEqual({
-        renderedData: renderedData,
+        renderedData,
         dataToMeasure: renderedData,
         measureContainer: false,
         resizeDirection: 'shrink',
@@ -305,7 +305,7 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData,
+        renderedData,
       };
 
       const result = getNextResizeGroupState(
@@ -316,7 +316,7 @@ describe('ResizeGroup', () => {
       );
 
       expect(result).toEqual({
-        renderedData: renderedData,
+        renderedData,
         dataToMeasure: resizeGroupProps.data,
         resizeDirection: 'shrink',
         measureContainer: false,
@@ -423,7 +423,7 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData,
+        renderedData,
       };
 
       const result = getNextResizeGroupState(
@@ -434,7 +434,7 @@ describe('ResizeGroup', () => {
       );
 
       expect(result).toEqual({
-        renderedData: renderedData,
+        renderedData,
         dataToMeasure: { index: 4 },
         resizeDirection: 'grow',
         measureContainer: false,
@@ -539,7 +539,7 @@ describe('ResizeGroup', () => {
 
     // Pass in a state that reflects some rendered data
     const currentState: IResizeGroupState = {
-      renderedData: renderedData,
+      renderedData,
       dataToMeasure: { index: 8 },
       resizeDirection: 'grow',
     };
@@ -551,7 +551,7 @@ describe('ResizeGroup', () => {
     // Important to note that we do not start scaling from the initial data,
     // we continue from the last rendered data.
     expect(result).toEqual({
-      renderedData: renderedData,
+      renderedData,
       dataToMeasure: { index: 7 },
       measureContainer: false,
       resizeDirection: 'shrink',

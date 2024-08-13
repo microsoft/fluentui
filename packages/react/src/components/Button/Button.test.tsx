@@ -592,6 +592,41 @@ describe('Button', () => {
       expect(getAllByRole('button')[0].getAttribute('aria-expanded')).toEqual('true');
     });
 
+    it('Touch Start on primary button of toggle SplitButton fires click event', () => {
+      const clickSpy = jest.fn();
+      const { getAllByRole } = render(
+        <DefaultButton
+          text="Create account"
+          split={true}
+          toggle
+          checked={false}
+          onClick={clickSpy}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' },
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
+          }}
+        />,
+      );
+      const primaryButton = getAllByRole('button')[1];
+
+      // in a normal scenario, when we do a touchstart we would also cause a
+      // click event to fire. This doesn't happen in the simulator so we're
+      // manually adding this in.
+      fireEvent.touchStart(primaryButton);
+      userEvent.click(primaryButton);
+      expect(clickSpy).toHaveBeenCalled();
+    });
+
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
       const { getAllByRole } = render(
         <DefaultButton

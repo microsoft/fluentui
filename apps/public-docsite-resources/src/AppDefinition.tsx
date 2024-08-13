@@ -517,6 +517,119 @@ export const AppDefinition: IAppDefinition = {
       ],
     },
     {
+      name: 'Charting',
+      links: [
+        {
+          component: require<any>('./components/pages/Charting/LegendsPage').LegendsPage,
+          key: 'Legends',
+          name: 'Legends',
+          url: '#/examples/ChartLegends',
+        },
+        {
+          component: require<any>('./components/pages/Charting/LineChartPage').LineChartPage,
+          key: 'LineChart',
+          name: 'LineChart',
+          url: '#/examples/LineChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/AreaChartPage').AreaChartPage,
+          key: 'AreaChart',
+          name: 'AreaChart',
+          url: '#/examples/AreaChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/DonutChartPage').AreaChartPage,
+          key: 'DonutChart',
+          name: 'DonutChart',
+          url: '#/examples/DonutChart',
+        },
+        {
+          name: 'VerticalBarChart',
+          key: 'VerticalBarChart',
+          url: '#/examples/VerticalBarChart',
+          links: [
+            {
+              component: require<any>('./components/pages/Charting/VerticalStackedBarChartPage')
+                .VerticalStackedBarChartPage,
+              key: 'VerticalBarChart - Stacked',
+              name: 'VerticalBarChart - Stacked',
+              url: '#/examples/VerticalBarChart/Stacked',
+            },
+            {
+              component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
+                .GroupedVerticalBarChartPage,
+              key: 'VerticalBarChart - Grouped',
+              name: 'VerticalBarChart - Grouped',
+              url: '#/examples/VerticalBarChart/Grouped',
+            },
+          ],
+        },
+        {
+          component: require<any>('./components/pages/Charting/GaugeChartPage').GaugeChartPage,
+          key: 'GaugeChart',
+          name: 'GaugeChart',
+          url: '#/examples/GaugeChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/HeatMapChartPage').HeatMapChartPage,
+          key: 'HeatMapChart',
+          name: 'HeatMapChart',
+          url: '#/examples/HeatMapChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/HorizontalBarChartPage').HorizontalBarChartPage,
+          key: 'HorizontalBarChart',
+          name: 'HorizontalBarChart',
+          url: '#/examples/HorizontalBarChart',
+          links: [
+            {
+              component: require<any>('./components/pages/Charting/HorizontalBarChartWithAxisPage')
+                .HorizontalBarChartWithAxisPage,
+              key: 'HorizontalBarChart - WithAxis',
+              name: 'HorizontalBarChart - WithAxis',
+              url: '#/examples/HorizontalBarChart/WithAxis',
+            },
+            {
+              component: require<any>('./components/pages/Charting/MultiStackedBarChartPage').MultiStackedBarChartPage,
+              key: 'HorizontalBarChart - MultiStacked',
+              name: 'HorizontalBarChart - MultiStacked',
+              url: '#/examples/HorizontalBarChart/MultiStacked',
+            },
+            {
+              component: require<any>('./components/pages/Charting/StackedBarChartPage').StackedBarChartPage,
+              key: 'HorizontalBarChart - Stacked',
+              name: 'HorizontalBarChart - Stacked',
+              url: '#/examples/HorizontalBarChart/Stacked',
+            },
+          ],
+        },
+        {
+          component: require<any>('./components/pages/Charting/PieChartPage').PieChartPage,
+          key: 'PieChart',
+          name: 'PieChart',
+          url: '#/examples/PieChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/SankeyChartPage').SankeyChartPage,
+          key: 'SankeyChart',
+          name: 'SankeyChart',
+          url: '#/examples/SankeyChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/SparklineChartPage').SparklineChartPage,
+          key: 'SparklineChart',
+          name: 'SparklineChart',
+          url: '#/examples/SparklineChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/TreeChartPage').TreeChartPage,
+          key: 'TreeChart',
+          name: 'TreeChart',
+          url: '#/examples/TreeChart',
+        },
+      ],
+    },
+    {
       name: 'Utilities',
       links: [
         {

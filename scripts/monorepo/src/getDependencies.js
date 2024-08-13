@@ -1,58 +1,184 @@
-const path = require('path');
+const fs = require('node:fs');
 
-const { Project } = require('@lerna/project');
+const { createProjectGraphAsync, joinPathFragments, workspaceRoot } = require('@nx/devkit');
 
-const { PackageGraph } = require('@lerna/package-graph');
+/**
+* @typedef {{
+    name: string,
+    isTopLevel: boolean,
+    dependencyType: 'dependencies' | 'devDependencies' | 'optionalDependencies' | null,
+  }} Dependency
+ */
 
-const findGitRoot = require('./findGitRoot');
+/** @typedef {import('./types').PackageJson & {absoluteRootPath:string}} PackageJsonInfoData */
+
+/**
+ * @type {Record<string,PackageJsonInfoData>}
+ */
+const packageJsonInfo = {};
 
 /**
  *
- * @param {string[]} rootPackages
- * @param {Map<any,any>} projectGraph
- * @param {string[]} packageList
- * @returns
+ * @param {string} project
+ * @param {import('@nx/devkit').ProjectGraph} projectGraph
  */
-function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
-  rootPackages.forEach(packageName => {
-    packageList.push(packageName);
+function getProjectPackageJsonInfo(project, projectGraph) {
+  const normalizedProjectName = getNormalizedName(project);
 
-    flattenPackageGraph([...projectGraph.get(packageName).localDependencies.keys()], projectGraph, packageList);
-  });
+  const cachedInfo = packageJsonInfo[normalizedProjectName];
+  if (cachedInfo) {
+    return cachedInfo;
+  }
 
-  return packageList.sort().filter((v, i, a) => a.indexOf(v) === i);
+  const metadata = projectGraph.nodes[normalizedProjectName];
+
+  const absoluteRootPath = joinPathFragments(workspaceRoot, metadata.data.root);
+  const pkgJsonContent = fs.readFileSync(joinPathFragments(workspaceRoot, metadata.data.root, 'package.json'), 'utf-8');
+
+  /** @type {PackageJsonInfoData} */
+  const pkgJson = JSON.parse(pkgJsonContent);
+  pkgJson.absoluteRootPath = absoluteRootPath;
+
+  // store in cache
+  packageJsonInfo[normalizedProjectName] = pkgJson;
+
+  return pkgJson;
 }
 
 /**
- * Returns all the dependencies of a given package name
- * @param {string} packageName including `@fluentui/` prefix
- * @param {Object} options
- * @param {boolean} [options.dev] include dev dependencies
- * @param {boolean} [options.production] include production dependencies
+ * Returns local dependencies of provided project. Local means dependency from within workspace
+ * @param {string} project
+ * @param {import('@nx/devkit').ProjectGraph} projectGraph
  */
-async function getDependencies(packageName, options = { production: true }) {
-  const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
-  const projectPackages = await lernaProject.getPackages();
-
-  const allDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages));
-  const productionDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages, 'dependencies'));
-
-  const devDependencies = allDepsGraph.filter(dep => !productionDepsGraph.includes(dep));
+function getLocalDeps(project, projectGraph) {
+  const deps = projectGraph.dependencies[project];
+  const pkgJson = getProjectPackageJsonInfo(project, projectGraph);
 
   /**
-   * @type {string[]}
+   * @type {Array<{target:string;dependencyType:ReturnType<typeof getDepType>}>}
    */
-  let res = [];
-
-  if (options.dev) {
-    res = res.concat(devDependencies);
+  const localDeps = [];
+  for (const dep of deps) {
+    if (!dep.target.startsWith('npm:')) {
+      const dependencyType = getDepType(dep.target, pkgJson);
+      localDeps.push({ target: dep.target, dependencyType });
+    }
   }
 
-  if (options.production) {
-    res = res.concat(productionDepsGraph);
+  if (localDeps.length > 0) {
+    return localDeps;
   }
 
-  return res;
+  return null;
+}
+/**
+ *
+ * @param {string} pkgName
+ * @param {import('./types').PackageJson} json
+ * @returns
+ */
+function getDepType(pkgName, json) {
+  // need to check against real npmPackageName (including scope) - NOTE: once we move to dynamic project graph creation with nx this will no longer work - redo/simplify implementation
+  const npmPackageName = `@fluentui/${pkgName}`;
+  if (json.dependencies?.[npmPackageName]) {
+    return 'dependencies';
+  }
+  if (json.devDependencies?.[npmPackageName]) {
+    return 'devDependencies';
+  }
+  if (json.optionalDependencies?.[npmPackageName]) {
+    return 'optionalDependencies';
+  }
+  return null;
 }
 
-module.exports = getDependencies;
+/**
+ *
+ * @param {string} project
+ * @param {import('@nx/devkit').ProjectGraph} projectGraph
+ * @param {*} options
+ * @param {Dependency[]} _acc
+ * @param {boolean} _areTopLevelDeps
+ * @returns {Dependency[]}
+ */
+function collectDependencies(
+  project,
+  projectGraph,
+  options = {
+    shallow: true,
+    dependenciesOnly: false,
+  },
+  _acc = [],
+  _areTopLevelDeps = true,
+) {
+  const localDeps = getLocalDeps(project, projectGraph);
+
+  if (!localDeps) {
+    return _acc;
+  }
+
+  /** @type {Dependency[]} */
+  const collectedDeps = [];
+
+  localDeps.forEach(dependency => {
+    const isDependencyAlreadyCollected = _acc.some(dep => dep.name === dependency.target);
+
+    if (isDependencyAlreadyCollected) {
+      return;
+    }
+
+    if (options.dependenciesOnly && dependency.dependencyType && dependency.dependencyType !== 'dependencies') {
+      return;
+    }
+
+    collectedDeps.push({
+      name: dependency.target,
+      dependencyType: dependency.dependencyType,
+      isTopLevel: _areTopLevelDeps,
+    });
+  });
+
+  // update main dep stack with actual collected deps
+  _acc.push(...collectedDeps);
+
+  if (!options.shallow) {
+    for (const collectedDep of collectedDeps) {
+      collectDependencies(collectedDep.name, projectGraph, options, _acc, false);
+    }
+  }
+
+  return _acc;
+}
+
+function getNormalizedName(/** @type {string} */ value) {
+  return value.replace('@fluentui/', '');
+}
+
+/**
+ * Returns dependencies metadata build from dependency graph for provided package
+ * @param {string} packageName - workspace project name. you don't have to use `@fluentui/` scope prefix
+ */
+async function getDependencies(packageName) {
+  const normalizedPackageName = getNormalizedName(packageName);
+  const projectGraph = await createProjectGraphAsync();
+
+  const allDepsGraph = collectDependencies(normalizedPackageName, projectGraph, {
+    shallow: false,
+    dependenciesOnly: false,
+  });
+  const depsGraph = collectDependencies(normalizedPackageName, projectGraph, {
+    shallow: false,
+    dependenciesOnly: true,
+  });
+  const devDepsGraph = allDepsGraph.filter(anyDep => !depsGraph.find(prodDep => prodDep.name === anyDep.name));
+
+  return {
+    dependencies: depsGraph,
+    devDependencies: devDepsGraph,
+    all: allDepsGraph,
+    projectGraph,
+    getProjectPackageJsonInfo,
+  };
+}
+
+exports.getDependencies = getDependencies;

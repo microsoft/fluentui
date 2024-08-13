@@ -39,7 +39,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       selectors: {
         [HighContrastSelector]: {
           content: `linear-gradient(to right, ${props.colorOnSelectedState}, ${props.colorOnSelectedState})`,
-          opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
+          opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.6' : '',
         },
       },
       width: '12px',
@@ -66,7 +66,12 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderTop: '10.4px solid',
       borderTopColor: props.colorOnSelectedState,
       marginRight: '8px',
-      opacity: props.colorOnSelectedState === palette.white ? '0.6' : props.opacity ? props.opacity : '',
+      opacity:
+        props.colorOnSelectedState === theme!.semanticColors.buttonBackground
+          ? '0.6'
+          : props.opacity
+          ? props.opacity
+          : '',
       selectors: {
         [HighContrastSelector]: {
           border: '0px',
@@ -81,12 +86,12 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       ...fonts.small,
       lineHeight: '16px',
       color: theme?.semanticColors.bodyText,
-      opacity: props.colorOnSelectedState === palette.white ? '0.67' : '',
+      opacity: props.colorOnSelectedState === theme!.semanticColors.buttonBackground ? '0.67' : '',
     },
     hoverChange: {
       width: '12px',
       height: '12px',
-      backgroundColor: 'white',
+      backgroundColor: theme!.semanticColors.buttonBackground,
       marginRight: '8px',
       border: '1px solid',
       borderColor: props.borderColor ? props.borderColor : palette.black,

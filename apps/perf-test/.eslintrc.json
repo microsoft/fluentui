@@ -2,6 +2,7 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
   "rules": {
-    "no-console": "off"
+    "no-console": "off",
+    "no-restricted-globals": "off"
   }
 }

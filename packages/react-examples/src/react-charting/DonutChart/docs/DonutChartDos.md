@@ -1,0 +1,2 @@
+- For scenarios with lots of categories, consider changing the type of graph to a stacked horizontal bar chart.
+- We recommend donut charts over pie charts as they are more readable.

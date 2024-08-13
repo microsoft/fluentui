@@ -101,8 +101,8 @@ export async function getExportFromFile(distDir: string, filename: string): Prom
 
     filename,
 
-    presets: ['@babel/preset-react', '@babel/preset-typescript'],
-    plugins: [babelPlugin],
+    presets: ['@babel/preset-typescript'],
+    plugins: ['@babel/plugin-syntax-jsx', babelPlugin],
   });
 
   return storyImport;

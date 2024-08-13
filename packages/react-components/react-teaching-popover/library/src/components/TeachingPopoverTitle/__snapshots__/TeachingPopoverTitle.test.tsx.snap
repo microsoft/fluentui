@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverTitle renders a default state 1`] = `
+<div>
+  <h2
+    class="fui-TeachingPopoverTitle"
+  >
+    Default TeachingPopoverTitle
+  </h2>
+</div>
+`;

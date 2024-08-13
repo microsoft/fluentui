@@ -1,0 +1,3272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone6"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div
+        class=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+            }
+      >
+        <div
+          class=
+              ms-TooltipHost
+              {
+                color: #323130;
+                display: block;
+                margin-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          role="none"
+        >
+          <span
+            data-is-focusable="false"
+            role="text"
+            tabindex="-1"
+          >
+            Stacked Bar chart example
+          </span>
+          <div
+            hidden=""
+            id="tooltip7"
+            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+          >
+            Stacked Bar chart example
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone8"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div>
+        <svg
+          aria-label="Stacked Bar chart example"
+          class=
+
+              {
+                display: block;
+                height: 12px;
+                margin-bottom: 10px;
+                overflow: visible;
+                width: 100%;
+              }
+          focusable="false"
+        >
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar2"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar3"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar4"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar5"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
+          </g>
+          <span
+            class="ms-layer"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class=
+
+          {
+            margin-bottom: 0px;
+            margin-left: 4px;
+            margin-right: 0px;
+            margin-top: 4px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone9"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="first"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        first
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #107c10;
+                              border-color: #107c10;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #107c10, #107c10);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e81123;
+                              border-color: #e81123;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e81123, #e81123);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        third
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="fourth"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #d83b01;
+                              border-color: #d83b01;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #d83b01, #d83b01);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        fourth
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone6"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div
+        class=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+            }
+      >
+        <div
+          class=
+              ms-TooltipHost
+              {
+                color: #323130;
+                display: block;
+                margin-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          role="none"
+        >
+          <span
+            data-is-focusable="false"
+            role="text"
+            tabindex="-1"
+          >
+            Stacked Bar chart example
+          </span>
+          <div
+            hidden=""
+            id="tooltip7"
+            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+          >
+            Stacked Bar chart example
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone8"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div>
+        <svg
+          aria-label="Stacked Bar chart example"
+          class=
+
+              {
+                display: block;
+                height: 12px;
+                margin-bottom: 10px;
+                overflow: visible;
+                width: 100%;
+              }
+          focusable="false"
+        >
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar2"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar3"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar4"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar5"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
+          </g>
+          <span
+            class="ms-layer"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class=
+
+          {
+            margin-bottom: 0px;
+            margin-left: 4px;
+            margin-right: 0px;
+            margin-top: 4px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone9"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="first"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        first
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #107c10;
+                              border-color: #107c10;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #107c10, #107c10);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e81123;
+                              border-color: #e81123;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e81123, #e81123);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        third
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="fourth"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #d83b01;
+                              border-color: #d83b01;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #d83b01, #d83b01);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        fourth
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Stacked Bar Chart - Theme Should reflect theme change 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: #1b1a19;
+          color: #f3f2f1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
+  >
+    <div
+      class=
+          ms-StackedBarChart
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            width: 100%;
+          }
+    >
+      <div
+        class=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
+      >
+        <div
+          class=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            class=
+                ms-TooltipHost
+                {
+                  color: #f3f2f1;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            role="none"
+          >
+            <span
+              data-is-focusable="false"
+              role="text"
+              tabindex="-1"
+            >
+              Stacked Bar chart example
+            </span>
+            <div
+              hidden=""
+              id="tooltip10"
+              style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+            >
+              Stacked Bar chart example
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone11"
+        data-tabster="{\\"uncontrolled\\": {}}"
+      >
+        <div>
+          <svg
+            aria-label="Stacked Bar chart example"
+            class=
+
+                {
+                  display: block;
+                  height: 12px;
+                  margin-bottom: 10px;
+                  overflow: visible;
+                  width: 100%;
+                }
+            focusable="false"
+          >
+            <g>
+              <g
+                aria-label="2020/04/30, 40%."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="0"
+              >
+                <rect
+                  fill="#0078d4"
+                  height="12"
+                  id="_SBC_bar5"
+                  width="37.22084367245658%"
+                  x="0%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="second, 100."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#107c10"
+                  height="12"
+                  id="_SBC_bar6"
+                  width="12.40694789081886%"
+                  x="37.22084367245658%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="third, -200."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#e81123"
+                  height="12"
+                  id="_SBC_bar7"
+                  width="0.7444168734491317%"
+                  x="49.62779156327544%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="fourth, 400."
+                class=
+
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#d83b01"
+                  height="12"
+                  id="_SBC_bar8"
+                  width="49.62779156327544%"
+                  x="50.37220843672457%"
+                  y="0"
+                />
+              </g>
+            </g>
+            <span
+              class="ms-layer"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class=
+
+            {
+              margin-bottom: 0px;
+              margin-left: 4px;
+              margin-right: 0px;
+              margin-top: 4px;
+            }
+      >
+        <div
+          class=
+
+              {
+                align-items: center;
+                margin-bottom: 0;
+                margin-left: -8px;
+                margin-right: 0;
+                margin-top: -8px;
+                white-space: nowrap;
+                width: 100%;
+              }
+        >
+          <div>
+            <div
+              style="position: relative;"
+            >
+              <div
+                data-automation-id="visibleContent"
+                style="position: fixed; visibility: hidden;"
+              >
+                <div
+                  aria-label="Legends"
+                  aria-multiselectable="false"
+                  class=
+                      ms-FocusZone
+                      &:focus {
+                        outline: none;
+                      }
+                  data-focuszone-id="FocusZone12"
+                  data-tabster="{\\"uncontrolled\\": {}}"
+                  role="listbox"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet
+                        {
+                          display: flex;
+                          flex-wrap: wrap;
+                          justify-content: unset;
+                          position: relative;
+                        }
+                    role="group"
+                  >
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="first"
+                        aria-posinset="1"
+                        aria-selected="false"
+                        aria-setsize="4"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="0"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #0078d4;
+                                border-color: #0078d4;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #0078d4, #0078d4);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          first
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="second"
+                        aria-posinset="2"
+                        aria-selected="false"
+                        aria-setsize="4"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="-1"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #107c10;
+                                border-color: #107c10;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #107c10, #107c10);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          second
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="third"
+                        aria-posinset="3"
+                        aria-selected="false"
+                        aria-setsize="4"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="-1"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #e81123;
+                                border-color: #e81123;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #e81123, #e81123);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          third
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="fourth"
+                        aria-posinset="4"
+                        aria-selected="false"
+                        aria-setsize="4"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="-1"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #d83b01;
+                                border-color: #d83b01;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #d83b01, #d83b01);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          fourth
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Stacked bar chart rendering Should render the stacked bar chart with empty data 1`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone7"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div
+        class=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+            }
+      >
+        <div
+          class=
+              ms-TooltipHost
+              {
+                color: #323130;
+                display: block;
+                margin-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          role="none"
+        >
+          <span
+            data-is-focusable="false"
+            role="text"
+            tabindex="-1"
+          >
+            Stacked Bar chart example
+          </span>
+          <div
+            hidden=""
+            id="tooltip8"
+            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+          >
+            Stacked Bar chart example
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone9"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div>
+        <svg
+          aria-label="Stacked Bar chart example"
+          class=
+
+              {
+                display: block;
+                height: 12px;
+                margin-bottom: 10px;
+                overflow: visible;
+                width: 100%;
+              }
+          focusable="false"
+        >
+          <g>
+            <g
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+            >
+              <rect
+                fill="#edebe9"
+                height="12"
+                id="_SBC_empty_bar_6"
+                width="100%"
+                x="0%"
+                y="0"
+              />
+            </g>
+          </g>
+          <span
+            class="ms-layer"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class=
+
+          {
+            margin-bottom: 0px;
+            margin-left: 4px;
+            margin-right: 0px;
+            margin-top: 4px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone10"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="first"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        first
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #107c10;
+                              border-color: #107c10;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #107c10, #107c10);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e81123;
+                              border-color: #e81123;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e81123, #e81123);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        third
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="forth"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #d83b01;
+                              border-color: #d83b01;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #d83b01, #d83b01);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        forth
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Stacked bar chart rendering Should render the stacked bar chart with non-empty data 1`] = `
+<div>
+  <div
+    class=
+        ms-StackedBarChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 100%;
+        }
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone6"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div
+        class=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+            }
+      >
+        <div
+          class=
+              ms-TooltipHost
+              {
+                color: #323130;
+                display: block;
+                margin-bottom: 5px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+          role="none"
+        >
+          <span
+            data-is-focusable="false"
+            role="text"
+            tabindex="-1"
+          >
+            Stacked Bar chart example
+          </span>
+          <div
+            hidden=""
+            id="tooltip7"
+            style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
+          >
+            Stacked Bar chart example
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+      data-focuszone-id="FocusZone8"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <div>
+        <svg
+          aria-label="Stacked Bar chart example"
+          class=
+
+              {
+                display: block;
+                height: 12px;
+                margin-bottom: 10px;
+                overflow: visible;
+                width: 100%;
+              }
+          focusable="false"
+        >
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar2"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar3"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar4"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar5"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
+          </g>
+          <span
+            class="ms-layer"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class=
+
+          {
+            margin-bottom: 0px;
+            margin-left: 4px;
+            margin-right: 0px;
+            margin-top: 4px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone9"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="first"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        first
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #107c10;
+                              border-color: #107c10;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #107c10, #107c10);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #e81123;
+                              border-color: #e81123;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #e81123, #e81123);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        third
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="fourth"
+                      aria-posinset="4"
+                      aria-selected="false"
+                      aria-setsize="4"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #d83b01;
+                              border-color: #d83b01;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #d83b01, #d83b01);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        fourth
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

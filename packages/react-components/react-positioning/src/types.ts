@@ -49,6 +49,7 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type AutoSize = 'height' | 'height-always' | 'width' | 'width-always' | 'always' | boolean;
+export type NormalizedAutoSize = { applyMaxWidth: boolean; applyMaxHeight: boolean };
 
 export type Boundary = HTMLElement | Array<HTMLElement> | 'clippingParents' | 'scrollParent' | 'window';
 
@@ -63,7 +64,7 @@ export type PositioningImperativeRef = {
    * Sets the target and updates positioning imperatively.
    * Useful for avoiding double renders with the target option.
    */
-  setTarget: (target: TargetElement) => void;
+  setTarget: (target: TargetElement | null) => void;
 };
 
 export type PositioningVirtualElement = {
@@ -136,11 +137,11 @@ export interface PositioningOptions {
   arrowPadding?: number;
 
   /**
-   * Applies max-height and max-width on the positioned element to fit it within the available space in viewport.
-   * true enables this for both width and height when overflow happens.
-   * 'always' applies `max-height`/`max-width` regardless of overflow.
-   * 'height' applies `max-height` when overflow happens, and 'width' for `max-width`
-   * `height-always` applies `max-height` regardless of overflow, and 'width-always' for always applying `max-width`
+   * Applies styles on the positioned element to fit it within the available space in viewport.
+   * - true: set styles for max height/width.
+   * - 'height': set styles for max height.
+   * - 'width'': set styles for max width.
+   * Note that options 'always'/'height-always'/'width-always' are now obsolete, and equivalent to true/'height'/'width'.
    */
   autoSize?: AutoSize;
 
@@ -178,6 +179,24 @@ export interface PositioningOptions {
    * If false, does not position anything
    */
   enabled?: boolean;
+
+  /**
+   * When set, the positioned element matches the chosen dimension(s) of the target element
+   */
+  matchTargetSize?: 'width';
+
+  /**
+   * Called when a position update has finished. Multiple position updates can happen in a single render,
+   * since positioning happens outside of the React lifecycle.
+   *
+   * It's also possible to listen to the custom DOM event `fui-positioningend`
+   */
+  onPositioningEnd?: () => void;
+
+  /**
+   * Disables the resize observer that updates position on target or dimension change
+   */
+  disableUpdateOnResize?: boolean;
 }
 
 /**
@@ -190,6 +209,7 @@ export interface PositioningProps
     | 'arrowPadding'
     | 'autoSize'
     | 'coverTarget'
+    | 'fallbackPositions'
     | 'flipBoundary'
     | 'offset'
     | 'overflowBoundary'
@@ -198,6 +218,9 @@ export interface PositioningProps
     | 'position'
     | 'strategy'
     | 'useTransform'
+    | 'matchTargetSize'
+    | 'onPositioningEnd'
+    | 'disableUpdateOnResize'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

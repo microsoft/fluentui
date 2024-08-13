@@ -1,8 +1,250 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 28 Jun 2023 07:37:30 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.15)
+
+Thu, 08 Aug 2024 07:24:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.14..@fluentui/utilities_v8.15.15)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.13 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [8.15.14](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.14)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.13..@fluentui/utilities_v8.15.14)
+
+### Patches
+
+- Bump @fluentui/react-window-provider to v2.2.28 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
+
+## [8.15.13](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.13)
+
+Tue, 09 Jul 2024 07:36:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.12..@fluentui/utilities_v8.15.13)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+
+## [8.15.12](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.12)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.11..@fluentui/utilities_v8.15.12)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.12 ([commit](https://github.com/microsoft/fluentui/commit/182a7b22c763910938a717db5f64456ede1bc504) by beachball)
+
+## [8.15.11](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.11)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.10..@fluentui/utilities_v8.15.11)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.7 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/merge-styles to v8.6.11 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.27 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+
+## [8.15.10](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.10)
+
+Fri, 14 Jun 2024 15:25:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.9..@fluentui/utilities_v8.15.10)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.10 ([PR #31716](https://github.com/microsoft/fluentui/pull/31716) by beachball)
+
+## [8.15.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.9)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.8..@fluentui/utilities_v8.15.9)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.6 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/merge-styles to v8.6.9 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/set-version to v8.2.22 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.26 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+
+## [8.15.8](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.8)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.7..@fluentui/utilities_v8.15.8)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.5 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+- Bump @fluentui/merge-styles to v8.6.8 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+- Bump @fluentui/set-version to v8.2.21 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.25 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+
+## [8.15.7](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.7)
+
+Fri, 24 May 2024 07:28:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.6..@fluentui/utilities_v8.15.7)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.4 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+- Bump @fluentui/merge-styles to v8.6.7 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+- Bump @fluentui/set-version to v8.2.20 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.24 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+
+## [8.15.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.6)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.5..@fluentui/utilities_v8.15.6)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.3 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+- Bump @fluentui/merge-styles to v8.6.6 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+- Bump @fluentui/set-version to v8.2.19 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.23 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [8.15.5](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.5)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.4..@fluentui/utilities_v8.15.5)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.2 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/merge-styles to v8.6.5 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.22 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+
+## [8.15.4](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.4)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.3..@fluentui/utilities_v8.15.4)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.3.1 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/merge-styles to v8.6.4 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.21 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+
+## [8.15.3](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.3)
+
+Mon, 22 Apr 2024 07:28:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.2..@fluentui/utilities_v8.15.3)
+
+### Patches
+
+- feat: add support for shadow dom and constructable stylesheets ([PR #30689](https://github.com/microsoft/fluentui/pull/30689) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.3.0 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+- Bump @fluentui/merge-styles to v8.6.3 ([PR #31126](https://github.com/microsoft/fluentui/pull/31126) by beachball)
+
+## [8.15.2](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.2)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.1..@fluentui/utilities_v8.15.2)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/merge-styles to v8.6.2 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [8.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.1)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.15.0..@fluentui/utilities_v8.15.1)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/merge-styles to v8.6.1 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [8.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.15.0)
+
+Fri, 22 Mar 2024 07:28:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.14.0..@fluentui/utilities_v8.15.0)
+
+### Minor changes
+
+- fix: Build errors in TypeScript 5.3 ([PR #30814](https://github.com/microsoft/fluentui/pull/30814) by behowell@microsoft.com)
+
+## [8.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.14.0)
+
+Wed, 13 Mar 2024 07:30:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.24..@fluentui/utilities_v8.14.0)
+
+### Minor changes
+
+- fix: Update IStyleSet type to fix error when using TypeScript 5.3+ ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by behowell@microsoft.com)
+- Bump @fluentui/merge-styles to v8.6.0 ([PR #30753](https://github.com/microsoft/fluentui/pull/30753) by beachball)
+
+## [8.13.24](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.24)
+
+Fri, 19 Jan 2024 07:29:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.23..@fluentui/utilities_v8.13.24)
+
+### Patches
+
+- fix(Utilities): Account for column reversed scrollable elements in allowScrollOnElement. ([PR #30175](https://github.com/microsoft/fluentui/pull/30175) by estebanmu@microsoft.com)
+
+## [8.13.23](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.23)
+
+Wed, 10 Jan 2024 07:28:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.22..@fluentui/utilities_v8.13.23)
+
+### Patches
+
+- chore: disallow document and window access ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/dom-utilities to v2.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/merge-styles to v8.5.15 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [8.13.22](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.22)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.21..@fluentui/utilities_v8.13.22)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/merge-styles to v8.5.14 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [8.13.21](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.21)
+
+Thu, 09 Nov 2023 07:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.20..@fluentui/utilities_v8.13.21)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore ([PR #29743](https://github.com/microsoft/fluentui/pull/29743) by martinhochel@microsoft.com)
+
+## [8.13.20](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.20)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.19..@fluentui/utilities_v8.13.20)
+
+### Patches
+
+- Bump @fluentui/dom-utilities to v2.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.13.19](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.19)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.13.18..@fluentui/utilities_v8.13.19)
+
+### Patches
+
+- fix: focusAsync still works even if past animationFrame fails to run ([PR #29322](https://github.com/microsoft/fluentui/pull/29322) by sarah.higley@microsoft.com)
 
 ## [8.13.18](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.13.18)
 

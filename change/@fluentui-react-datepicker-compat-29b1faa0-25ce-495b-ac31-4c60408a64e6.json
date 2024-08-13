@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "breaking: Remove componentRef and IDatePicker since it's no longer necessary, fix ref forwarding to the input, change ref type for useDatePicker to use HTMLInputElement instead of HTMLElement, and fix focus movement when closing/opening popup.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

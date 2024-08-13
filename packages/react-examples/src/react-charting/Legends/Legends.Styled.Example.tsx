@@ -1,77 +1,77 @@
 import * as React from 'react';
-import { ILegend, Legends } from '@fluentui/react-charting';
-import { DefaultPalette, FontWeights } from '@fluentui/react/lib/Styling';
+import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export class LegendStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',
-        color: DefaultPalette.red,
+        color: getColorFromToken(DataVizPalette.color1),
       },
       {
         title: 'Legend 2',
-        color: DefaultPalette.green,
+        color: getColorFromToken(DataVizPalette.color2),
       },
       {
         title: 'Legend 3',
-        color: DefaultPalette.yellow,
+        color: getColorFromToken(DataVizPalette.color3),
       },
       {
         title: 'Legend 4',
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color4),
       },
       {
         title: 'Legend 5',
-        color: DefaultPalette.purpleLight,
+        color: getColorFromToken(DataVizPalette.color5),
       },
       {
         title: 'Legend 6',
-        color: DefaultPalette.orange,
+        color: getColorFromToken(DataVizPalette.color6),
       },
       {
         title: 'Legend 7',
-        color: DefaultPalette.magenta,
+        color: getColorFromToken(DataVizPalette.color7),
       },
       {
         title: 'Legend 8',
-        color: DefaultPalette.themeDark,
+        color: getColorFromToken(DataVizPalette.color8),
       },
       {
         title: 'Legend 9',
-        color: DefaultPalette.redDark,
+        color: getColorFromToken(DataVizPalette.color9),
       },
       {
         title: 'Legend 10',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color10),
       },
       {
         title: 'Legend 11',
-        color: DefaultPalette.blackTranslucent40,
+        color: getColorFromToken(DataVizPalette.color11),
       },
       {
         title: 'Legend 12',
-        color: DefaultPalette.greenDark,
+        color: getColorFromToken(DataVizPalette.color12),
       },
       {
         title: 'Legend 13',
-        color: DefaultPalette.yellowLight,
+        color: getColorFromToken(DataVizPalette.color13),
       },
       {
         title: 'Legend 14',
-        color: DefaultPalette.magentaLight,
+        color: getColorFromToken(DataVizPalette.color14),
       },
       {
         title: 'Legend 15',
-        color: DefaultPalette.purpleDark,
+        color: getColorFromToken(DataVizPalette.color15),
       },
       {
         title: 'Legend 16',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color16),
       },
       {
         title: 'Legend 17',
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color17),
       },
     ];
 
@@ -83,9 +83,9 @@ export class LegendStyledExample extends React.Component<{}, {}> {
         canSelectMultipleLegends={false}
         overflowProps={{
           styles: {
-            item: { border: `1px dotted ${DefaultPalette.green}` },
+            item: { border: `1px dotted ${getColorFromToken(DataVizPalette.color5)}` },
             root: {},
-            overflowButton: { backgroundColor: DefaultPalette.neutralLight },
+            overflowButton: {},
           },
         }}
         styles={{

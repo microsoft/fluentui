@@ -12,10 +12,6 @@ function addSourceMappingUrl(code: string, loc: string): string {
   return code + '\n//# sourceMappingURL=' + path.basename(loc);
 }
 
-export function hasBabel() {
-  return fs.existsSync(path.join(process.cwd(), '.babelrc.json'));
-}
-
 export async function babel() {
   const files = glob.sync('lib/**/*.styles.js');
 

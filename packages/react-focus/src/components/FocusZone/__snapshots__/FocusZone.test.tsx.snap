@@ -10,6 +10,7 @@ exports[`FocusZone renders FocusZone correctly with aria-describedby and aria-la
         outline: none;
       }
   data-focuszone-id="FocusZone0"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -24,6 +25,7 @@ exports[`FocusZone renders FocusZone correctly with no props 1`] = `
         outline: none;
       }
   data-focuszone-id="FocusZone0"
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}

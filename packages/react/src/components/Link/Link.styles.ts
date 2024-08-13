@@ -1,5 +1,6 @@
 import { getGlobalClassNames, HighContrastSelector } from '@fluentui/style-utilities';
 import type { ILinkStyleProps, ILinkStyles } from './Link.types';
+import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
 export const GlobalClassNames = {
   root: 'ms-Link',
@@ -29,7 +30,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         textDecoration: isUnderlined ? 'underline' : 'none',
 
         selectors: {
-          '.ms-Fabric--isFocusVisible &:focus': {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             // Can't use getFocusStyle because it doesn't support wrapping links
             // https://github.com/microsoft/fluentui/issues/4883#issuecomment-406743543
             // Using box-shadow and outline allows the focus rect to wrap links that span multiple lines

@@ -1,5 +1,6 @@
 {
-  "name": "@fluentui/ts-minbar-test-react",
+  "name": "ts-minbar-test-react",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application"
+  "projectType": "application",
+  "tags": ["v8"]
 }

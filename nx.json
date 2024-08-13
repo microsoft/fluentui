@@ -1,40 +1,96 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "fluentui",
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "test", "lint", "package", "prepare"],
-        "parallel": 1,
-        "useDaemonProcess": false
-      }
-    }
-  },
   "workspaceLayout": {
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "affected": {
-    "defaultBase": "master"
-  },
   "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": true
+    "@nx/js": {
+      "analyzeSourceFiles": false
     }
   },
   "targetDefaults": {
-    "build": {
+    "bundle-size": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
+    "bundle": {
+      "cache": true,
       "dependsOn": ["^build"]
     },
-    "package": {
-      "dependsOn": ["^package"]
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
+      "cache": true
+    },
+    "build-storybook": {
+      "dependsOn": [],
+      "inputs": ["default", "{workspaceRoot}/.storybook/**", "{projectRoot}/.storybook/**"],
+      "cache": true
+    },
+    "generate-api": {
+      "dependsOn": ["^generate-api"],
+      "cache": true
+    },
+    "type-check": {
+      "dependsOn": ["^build"],
+      "cache": true
     },
     "prepare": {
-      "dependsOn": ["^prepare"]
+      "dependsOn": ["^prepare"],
+      "cache": true
     },
     "test": {
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true
+    },
+    "test-integration": {
+      "dependsOn": ["build", "^build"],
+      "cache": true
+    },
+    "test-ssr": {
+      "cache": true
+    },
+    "test-vr": {
+      "dependsOn": ["build-storybook"],
+      "cache": true
+    },
+    "test-perf": {
+      "dependsOn": [],
+      "cache": true
+    },
+    "e2e": {
+      "dependsOn": [],
+      "cache": true,
+      "inputs": ["default", "{projectRoot}/cypress.config.ts", "!{projectRoot}/**/?(*.)+cy.[jt]s?(x)?"]
+    },
+    "lint": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.eslintrc.json",
+        "{workspaceRoot}/.eslintignore",
+        "{workspaceRoot}/eslint.config.js"
+      ]
+    },
+    "verify-packaging": {
+      "dependsOn": ["build"],
+      "cache": true
+    },
+    "@nx/jest:jest": {
+      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "namedInputs": {
@@ -44,7 +100,21 @@
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s"
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s"
     ]
-  }
+  },
+  "release": {
+    "projectsRelationship": "independent",
+    "groups": {
+      "northstar": {
+        "releaseTagPattern": "@fluentui/react-northstar_v{version}",
+        "projectsRelationship": "fixed",
+        "projects": ["packages/fluentui/*"]
+      }
+    }
+  },
+  "parallel": 3,
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

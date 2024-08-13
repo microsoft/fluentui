@@ -1,0 +1,204 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Dropdown"
+  >
+    <button
+      aria-expanded="false"
+      class="fui-Dropdown__button"
+      role="combobox"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="fui-Dropdown__expandIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </button>
+    <button
+      aria-label="Clear selection"
+      class="fui-Dropdown__clearButton"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Dropdown renders an open listbox 1`] = `
+<div>
+  <div
+    class="fui-Dropdown"
+  >
+    <button
+      aria-activedescendant="fluent-option2"
+      aria-controls="fluent-listbox1"
+      aria-expanded="true"
+      class="fui-Dropdown__button"
+      role="combobox"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="fui-Dropdown__expandIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+    </button>
+    <button
+      aria-label="Clear selection"
+      class="fui-Dropdown__clearButton"
+      tabindex="0"
+      type="button"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
+          fill="currentColor"
+        />
+      </svg>
+    </button>
+    <div
+      class="fui-Listbox fui-Dropdown__listbox"
+      id="fluent-listbox1"
+      role="listbox"
+      style="position: fixed; left: 0px; top: 0px; margin: 0px;"
+    >
+      <div
+        aria-selected="false"
+        class="fui-Option"
+        data-activedescendant=""
+        id="fluent-option2"
+        role="option"
+      >
+        <span
+          aria-hidden="true"
+          class="fui-Option__checkIcon"
+        >
+          <svg
+            aria-hidden="true"
+            class=""
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Red
+      </div>
+      <div
+        aria-selected="false"
+        class="fui-Option"
+        id="fluent-option3"
+        role="option"
+      >
+        <span
+          aria-hidden="true"
+          class="fui-Option__checkIcon"
+        >
+          <svg
+            aria-hidden="true"
+            class=""
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Green
+      </div>
+      <div
+        aria-selected="false"
+        class="fui-Option"
+        id="fluent-option4"
+        role="option"
+      >
+        <span
+          aria-hidden="true"
+          class="fui-Option__checkIcon"
+        >
+          <svg
+            aria-hidden="true"
+            class=""
+            fill="currentColor"
+            height="1em"
+            viewBox="0 0 20 20"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+              fill="currentColor"
+            />
+          </svg>
+        </span>
+        Blue
+      </div>
+    </div>
+  </div>
+</div>
+`;

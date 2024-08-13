@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: exported useOnMenuMouseEnter from react-menu",
-  "packageName": "@fluentui/react-menu",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

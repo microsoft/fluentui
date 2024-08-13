@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
+import {
+  DonutChart,
+  IDonutChartProps,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}> {
   constructor(props: IDonutChartProps) {
@@ -8,8 +15,13 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: '#DADADA', xAxisCalloutData: '2020/04/30' },
-      { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
+      { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
+      {
+        legend: 'second',
+        data: 39000,
+        color: getColorFromToken(DataVizPalette.color2),
+        xAxisCalloutData: '2020/04/20',
+      },
     ];
 
     const data: IChartProps = {

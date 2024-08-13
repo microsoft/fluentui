@@ -639,9 +639,15 @@ export class TextFieldBase
 
   private _adjustInputHeight(): void {
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
+      const scrollTop = this.props.scrollContainerRef?.current?.scrollTop;
       const textField = this._textElement.current;
       textField.style.height = '';
       textField.style.height = textField.scrollHeight + 'px';
+
+      if (scrollTop) {
+        // Safe to assert not null, otherwise we wouldn't have a scrollTop;
+        this.props.scrollContainerRef!.current!.scrollTop = scrollTop;
+      }
     }
   }
 }

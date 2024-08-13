@@ -1,0 +1,1 @@
+- Don’t add min and mix if you’re already representing the part to whole ratio within the gauge because it’s redundant.

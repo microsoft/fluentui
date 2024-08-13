@@ -7,23 +7,23 @@ const jju = require('jju');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { FsTree } = require('nx/src/generators/tree');
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { readProjectConfiguration } = require('@nrwl/devkit');
+const { readProjectConfiguration } = require('@nx/devkit');
 
 /**
  *  @typedef {{root: string, name: string}} Options
  *  @typedef {{name: string, version: string, dependencies: {[key: string]: string}}} PackageJson
- *  @typedef {import("@nrwl/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
+ *  @typedef {import("@nx/devkit").WorkspaceJsonConfiguration} WorkspaceJsonConfiguration
  */
 
 // FIXME: this is not ok (to depend on nx packages within this plugin - redo)
 /**
  * Gets project metadata from monorepo source of truth which is `project.json` per project
  * @param {Options} options
- * @returns {import('@nrwl/devkit').ProjectConfiguration}
+ * @returns {import('@nx/devkit').ProjectConfiguration}
  */
 function getProjectMetadata(options) {
   /**
-   * @type {import('@nrwl/devkit').Tree}
+   * @type {import('@nx/devkit').Tree}
    */
   const tree = new FsTree(options.root, false);
 
@@ -31,7 +31,7 @@ function getProjectMetadata(options) {
 }
 
 const testFiles = [
-  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
@@ -39,6 +39,7 @@ const testFiles = [
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
+const storyFiles = ['**/*.stories.tsx', '**/*.stories.ts'];
 
 const configFiles = [
   './just.config.ts',
@@ -84,7 +85,7 @@ module.exports = {
    *   - may need to reconsider for converged components depending on website approach
    *   - the stories suffix is also used for storywright stories in `vr-tests`
    */
-  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, '**/*.stories.tsx'],
+  devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles, ...storyFiles],
 
   /**
    * Whether linting is running in context of lint-staged (which should disable rules requiring
@@ -126,6 +127,21 @@ module.exports = {
         selector: 'interface',
         format: ['PascalCase'],
         ...(config.prefixInterface ? { prefix: ['I'] } : { custom: { regex: '^I[A-Z]', match: false } }),
+      },
+      // Ignore properties that require quotes - https://typescript-eslint.io/rules/naming-convention/#ignore-properties-that-require-quotes
+      {
+        selector: [
+          'classProperty',
+          'objectLiteralProperty',
+          'typeProperty',
+          'classMethod',
+          'objectLiteralMethod',
+          'typeMethod',
+          'accessor',
+          'enumMember',
+        ],
+        format: null,
+        modifiers: ['requiresQuotes'],
       },
       {
         selector: 'default',
@@ -267,7 +283,7 @@ module.exports = {
    * @returns {Set<string>} Returns a set of v9 packages that are currently unstable.
    */
   getV9UnstablePackages: (/** @type {string} */ root) => {
-    const v9ProjectMetaData = getProjectMetadata({ root, name: '@fluentui/react-components' });
+    const v9ProjectMetaData = getProjectMetadata({ root, name: 'react-components' });
     const v9PackagePath = path.join(root, v9ProjectMetaData.sourceRoot ?? '', 'unstable', 'index.ts');
     const unstableV9Packages = new Set();
     fs.readFileSync(v9PackagePath)

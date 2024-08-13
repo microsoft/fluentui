@@ -1,0 +1,28 @@
+import * as React from 'react';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import type { <%= componentName %>Props, <%= componentName %>State } from './<%= componentName %>.types';
+
+/**
+ * Create the state required to render <%= componentName %>.
+ *
+ * The returned state can be modified with hooks such as use<%= componentName %>Styles_unstable,
+ * before being passed to render<%= componentName %>_unstable.
+ *
+ * @param props - props from this instance of <%= componentName %>
+ * @param ref - reference to root HTMLDivElement of <%= componentName %>
+ */
+export const use<%= componentName %>_unstable = (props: <%= componentName %>Props, ref: React.Ref<HTMLDivElement>): <%= componentName %>State => {
+  return {
+    // TODO add appropriate props/defaults
+    components: {
+      // TODO add each slot's element type or component
+      root: 'div',
+    },
+    // TODO add appropriate slots, for example:
+    // mySlot: resolveShorthand(props.mySlot),
+    root: slot.always(getIntrinsicElementProps('div', {
+      ref,
+      ...props,
+    }), {elementType: 'div'}),
+  };
+};

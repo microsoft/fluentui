@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: Deprecates package in favour of @fluentui-contrib/react-data-grid-react-window",
-  "packageName": "@fluentui/react-data-grid-react-window",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

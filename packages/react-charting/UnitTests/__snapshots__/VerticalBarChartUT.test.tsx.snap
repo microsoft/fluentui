@@ -1,0 +1,787 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vertical bar chart with numeric x-axis data Should render the vertical bar chart with numeric x-axis data - RTL 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_3"
+  >
+    <div
+      id="defaultTabbableElement_4"
+    />
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone5"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        aria-label="Vertical bar chart with 3 bars. The X axis displays values. The Y axis displays values. "
+        focusable="false"
+        height="292"
+        role="region"
+        style="display: block;"
+        width="650"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="xAxisGElementchart_3"
+          text-anchor="middle"
+          transform="translate(0, 257)"
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(163.80769230769232,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(271.11538461538464,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(378.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(485.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(593.0384615384615,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
+            </text>
+          </g>
+        </g>
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          id="yAxisGElementchart_3"
+          text-anchor="end"
+          transform="translate(40, 0)"
+        >
+          <path
+            class="domain"
+            d="M-6,257.5H0.5V20.5H-6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,257.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,198.25)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              13k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,139)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              25k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,79.75)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              38k
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,20.5)"
+          >
+            <line
+              stroke="currentColor"
+              x2="590"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.32em"
+              fill="currentColor"
+              x="-10"
+            >
+              50k
+            </text>
+          </g>
+        </g>
+        <g>
+          <g>
+            <rect
+              aria-label="2020/04/30. First, 10%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="47.400000000000006"
+              id="_VBC_bar_7"
+              role="img"
+              tabindex="0"
+              width="16"
+              x="48"
+              y="209.6"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="56"
+              y="203.6"
+            >
+              10.0k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Second, 20%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#002050"
+              height="237"
+              id="_VBC_bar_8"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="262.61538461538464"
+              y="20"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="270.61538461538464"
+              y="14"
+            >
+              50.0k
+            </text>
+          </g>
+          <g>
+            <rect
+              aria-label="2020/04/30. Third, 37%."
+              class=
+
+                  {
+                    opacity: ;
+                  }
+              data-is-focusable="true"
+              fill="#00188f"
+              height="142.2"
+              id="_VBC_bar_9"
+              role="img"
+              tabindex="-1"
+              width="16"
+              x="584.5384615384615"
+              y="114.80000000000001"
+            />
+            <text
+              aria-hidden="true"
+              class=
+
+                  {
+                    fill: #323130;
+                    font-size: 12px;
+                    font-weight: 600;
+                  }
+              text-anchor="middle"
+              x="592.5384615384615"
+              y="108.80000000000001"
+            >
+              30.0k
+            </text>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style=""
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone6"
+                data-tabster="{\\"uncontrolled\\": {}}"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="First"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        First
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Second"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #002050;
+                              border-color: #002050;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #002050, #002050);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Second
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="Third"
+                      aria-posinset="3"
+                      aria-selected="false"
+                      aria-setsize="3"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00188f;
+                              border-color: #00188f;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00188f, #00188f);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        Third
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

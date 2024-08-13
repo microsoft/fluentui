@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuTrigger renders a default state 1`] = `
+<button
+  aria-haspopup="menu"
+  data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+  id="id"
+  onClick={[Function]}
+  onContextMenu={[Function]}
+  onKeyDown={[Function]}
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+  onMouseMove={[Function]}
+>
+  Menu trigger
+</button>
+`;

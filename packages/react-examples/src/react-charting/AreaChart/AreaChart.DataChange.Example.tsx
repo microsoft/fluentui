@@ -51,7 +51,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +97,12 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
+          <div style={{ marginBottom: '13px' }}>
+            Note: Y values in callout display individual values. Y value plotted on chart are cumulative for the
+            datapoint.
+          </div>
           <DefaultButton text="Change Ydata" onClick={this._changeData} />
           <DefaultButton text="Change Xdata" onClick={this._changeXData} />
         </div>

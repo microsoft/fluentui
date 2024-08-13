@@ -2,6 +2,7 @@
   "extends": ["plugin:@fluentui/eslint-plugin/react"],
   "root": true,
   "rules": {
-    "@griffel/styles-file": "off"
+    "@griffel/styles-file": "off",
+    "no-restricted-globals": "off"
   }
 }

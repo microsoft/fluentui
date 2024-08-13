@@ -11,6 +11,7 @@
 .gitignore
 .vscode
 coverage
+bundle-size/
 dist/storybook
 dist/*.stats.html
 dist/*.stats.json

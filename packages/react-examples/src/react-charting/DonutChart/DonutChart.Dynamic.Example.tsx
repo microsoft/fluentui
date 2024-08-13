@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { DonutChart, IDonutChartProps, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  DonutChart,
+  IDonutChartProps,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -9,34 +15,44 @@ export interface IExampleState {
   hideLabels: boolean;
   showLabelsInPercent: boolean;
   innerRadius: number;
+  statusKey: number;
+  statusMessage: string;
 }
+
+/** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
+const screenReaderOnlyStyle: React.CSSProperties = {
+  position: 'absolute',
+  width: '1px',
+  height: '1px',
+  padding: 0,
+  margin: '-1px',
+  overflow: 'hidden',
+  clip: 'rect(0,0,0,0)',
+  border: 0,
+};
 
 export class DonutChartDynamicExample extends React.Component<IDonutChartProps, IExampleState> {
   private _colors = [
-    [
-      DefaultPalette.blueLight,
-      DefaultPalette.blue,
-      DefaultPalette.tealLight,
-      DefaultPalette.teal,
-      DefaultPalette.greenLight,
-    ],
-    [DefaultPalette.purpleLight, DefaultPalette.purple, DefaultPalette.magentaLight, DefaultPalette.magenta],
-    [DefaultPalette.yellowLight, DefaultPalette.yellow, DefaultPalette.orangeLighter, DefaultPalette.orangeLight],
-    [DefaultPalette.neutralTertiary, DefaultPalette.neutralSecondary, DefaultPalette.neutralPrimary],
+    [DataVizPalette.color3, DataVizPalette.color4, DataVizPalette.color5, DataVizPalette.color6, DataVizPalette.color7],
+    [DataVizPalette.color8, DataVizPalette.color9, DataVizPalette.color10, DataVizPalette.color11],
+    [DataVizPalette.color12, DataVizPalette.color13, DataVizPalette.color14, DataVizPalette.color15],
+    [DataVizPalette.color16, DataVizPalette.color17, DataVizPalette.color18],
   ];
 
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
       dynamicData: [
-        { legend: 'first', data: 40, color: '#0099BC' },
-        { legend: 'second', data: 20, color: '#77004D' },
-        { legend: 'third', data: 30, color: '#4f67ed' },
-        { legend: 'fourth', data: 10, color: '#ae8c00' },
+        { legend: 'first', data: 40, color: getColorFromToken(DataVizPalette.color1) },
+        { legend: 'second', data: 20, color: getColorFromToken(DataVizPalette.color2) },
+        { legend: 'third', data: 30, color: getColorFromToken(DataVizPalette.color3) },
+        { legend: 'fourth', data: 10, color: getColorFromToken(DataVizPalette.color4) },
       ],
       hideLabels: false,
       showLabelsInPercent: false,
       innerRadius: 35,
+      statusKey: 0,
+      statusMessage: '',
     };
 
     this._changeData = this._changeData.bind(this);
@@ -72,30 +88,40 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
+        <div aria-live="polite" aria-atomic="true">
+          {/* Change the key so that React treats it as an update even if the message is same */}
+          <p key={this.state.statusKey} style={screenReaderOnlyStyle}>
+            {this.state.statusMessage}
+          </p>
+        </div>
       </div>
     );
   }
 
   private _changeData(): void {
-    this.setState({
+    this.setState(prevState => ({
       dynamicData: [
-        { legend: 'first', data: this._randomY(), color: DefaultPalette.blueLight },
-        { legend: 'second', data: this._randomY(), color: DefaultPalette.purpleLight },
-        { legend: 'third', data: this._randomY(), color: DefaultPalette.yellowLight },
-        { legend: 'fourth', data: this._randomY(), color: DefaultPalette.neutralSecondary },
+        { legend: 'first', data: this._randomY(), color: getColorFromToken(DataVizPalette.color1) },
+        { legend: 'second', data: this._randomY(), color: getColorFromToken(DataVizPalette.color2) },
+        { legend: 'third', data: this._randomY(), color: getColorFromToken(DataVizPalette.color3) },
+        { legend: 'fourth', data: this._randomY(), color: getColorFromToken(DataVizPalette.color4) },
       ],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Donut chart data changed',
+    }));
   }
 
   private _changeColors(): void {
-    this.setState({
+    this.setState(prevState => ({
       dynamicData: [
         { legend: 'first', data: 40, color: this._randomColor(0) },
         { legend: 'second', data: 20, color: this._randomColor(1) },
         { legend: 'third', data: 30, color: this._randomColor(2) },
         { legend: 'fourth', data: 10, color: this._randomColor(3) },
       ],
-    });
+      statusKey: prevState.statusKey + 1,
+      statusMessage: 'Donut chart colors changed',
+    }));
   }
 
   private _randomY(max = 300): number {
@@ -103,7 +129,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   }
 
   private _randomColor(index: number): string {
-    return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
+    return getColorFromToken(this._colors[index][Math.floor(Math.random() * this._colors[index].length)]);
   }
 
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {

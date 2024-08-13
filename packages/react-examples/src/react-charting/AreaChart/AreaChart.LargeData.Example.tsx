@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AreaChart } from '@fluentui/react-charting';
-import * as d3 from 'd3-format';
+import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
 
 interface IACLargeDataExampleState {
   width: number;
@@ -17,7 +16,7 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -161,14 +160,17 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
       {
         legend: 'legend1',
         data: chart1Points,
+        color: DataVizPalette.color11,
       },
       {
         legend: 'legend2',
         data: chart2Points,
+        color: DataVizPalette.color12,
       },
       {
         legend: 'legend3',
         data: chart3Points,
+        color: DataVizPalette.color13,
       },
     ];
 
@@ -206,11 +208,11 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
             width={this.state.width}
             data={chartData}
             legendsOverflowText={'Overflow Items'}
-            yAxisTickFormat={d3.format('$,')}
             legendProps={{
               allowFocusOnLegends: true,
             }}
             optimizeLargeData
+            enableReflow={true}
           />
         </div>
       </>

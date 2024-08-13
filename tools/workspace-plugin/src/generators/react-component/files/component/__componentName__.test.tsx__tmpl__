@@ -1,0 +1,18 @@
+import * as React from 'react';
+import { render } from '@testing-library/react';
+import { isConformant } from '../../testing/isConformant';
+import { <%= componentName %> } from './<%= componentName %>';
+
+describe('<%= componentName %>', () => {
+  isConformant({
+    Component: <%= componentName %>,
+    displayName: '<%= componentName %>',
+  });
+
+  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
+
+  it('renders a default state', () => {
+    const result = render(<<%= componentName %>>Default <%= componentName %></<%= componentName %>>);
+    expect(result.container).toMatchSnapshot();
+  });
+});

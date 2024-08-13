@@ -1,4 +1,4 @@
-import { IStyle } from '@fluentui/react/lib/Styling';
+import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IDataPoint } from '../PieChart.types';
 
 export interface IPieProps {
@@ -40,6 +40,8 @@ export interface IPieProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  theme?: ITheme;
 }
 
 export interface IPieStyles {

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-datepicker-compat): Add focus styles to CalendarPicker's go to today button.",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

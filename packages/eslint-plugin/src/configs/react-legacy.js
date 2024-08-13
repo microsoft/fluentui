@@ -1,6 +1,7 @@
 // @ts-check
-
+const configHelpers = require('../utils/configHelpers');
 const path = require('path');
+const { reactLegacy: restrictedGlobals } = require('./restricted-globals');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -9,6 +10,16 @@ module.exports = {
   rules: {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
+    'no-restricted-globals': restrictedGlobals,
   },
-  overrides: [],
+  overrides: [
+    {
+      // Test overrides
+      files: [...configHelpers.testFiles, '**/*.stories.tsx'],
+      rules: {
+        'no-restricted-globals': 'off',
+        'react/jsx-no-bind': 'off',
+      },
+    },
+  ],
 };

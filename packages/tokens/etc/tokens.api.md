@@ -244,10 +244,17 @@ export type ColorTokens = {
     colorBrandBackground2: string;
     colorBrandBackground2Hover: string;
     colorBrandBackground2Pressed: string;
+    colorBrandBackground3Static: string;
+    colorBrandBackground4Static: string;
     colorBrandBackgroundInverted: string;
     colorBrandBackgroundInvertedHover: string;
     colorBrandBackgroundInvertedPressed: string;
     colorBrandBackgroundInvertedSelected: string;
+    colorNeutralCardBackground: string;
+    colorNeutralCardBackgroundHover: string;
+    colorNeutralCardBackgroundPressed: string;
+    colorNeutralCardBackgroundSelected: string;
+    colorNeutralCardBackgroundDisabled: string;
     colorNeutralStrokeAccessible: string;
     colorNeutralStrokeAccessibleHover: string;
     colorNeutralStrokeAccessiblePressed: string;
@@ -268,6 +275,7 @@ export type ColorTokens = {
     colorBrandStroke2: string;
     colorBrandStroke2Hover: string;
     colorBrandStroke2Pressed: string;
+    colorBrandStroke2Contrast: string;
     colorCompoundBrandStroke: string;
     colorCompoundBrandStrokeHover: string;
     colorCompoundBrandStrokePressed: string;
@@ -277,6 +285,7 @@ export type ColorTokens = {
     colorTransparentStrokeInteractive: string;
     colorTransparentStrokeDisabled: string;
     colorNeutralStrokeAlpha: string;
+    colorNeutralStrokeAlpha2: string;
     colorStrokeFocus1: string;
     colorStrokeFocus2: string;
     colorNeutralShadowAmbient: string;
@@ -320,6 +329,7 @@ export type DurationTokens = {
     durationFaster: string;
     durationFast: string;
     durationNormal: string;
+    durationGentle: string;
     durationSlow: string;
     durationSlower: string;
     durationUltraSlow: string;
@@ -439,7 +449,7 @@ export const teamsHighContrastTheme: Theme;
 export const teamsLightTheme: Theme;
 
 // @public (undocumented)
-export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorTokens;
+export type Theme = FontSizeTokens & LineHeightTokens & BorderRadiusTokens & StrokeWidthTokens & HorizontalSpacingTokens & VerticalSpacingTokens & DurationTokens & CurveTokens & ShadowTokens & ShadowBrandTokens & FontFamilyTokens & FontWeightTokens & ColorPaletteTokens & ColorStatusTokens & ColorTokens;
 
 // @public
 export function themeToTokensObject<TTheme extends Theme>(theme: TTheme): Record<keyof TTheme, string>;

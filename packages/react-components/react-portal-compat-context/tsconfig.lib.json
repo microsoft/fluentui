@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
-    "lib": ["ES2019", "dom"],
+    "lib": ["ES5", "ES2015.Iterable", "dom"],
     "declaration": true,
     "declarationDir": "../../../dist/out-tsc/types",
     "outDir": "../../../dist/out-tsc",

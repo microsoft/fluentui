@@ -1,11 +1,20 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, memoizeFunction, getId, mergeAriaAttributeValues } from '../../../Utilities';
+import {
+  buttonProperties,
+  getNativeProps,
+  memoizeFunction,
+  getId,
+  mergeAriaAttributeValues,
+  IComponentAs,
+  composeComponentAs,
+} from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import type { IKeytipDataProps } from '../../../KeytipData';
 import type { IKeytipProps } from '../../../Keytip';
+import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
@@ -27,7 +36,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       totalItemCount,
       hasCheckmarks,
       hasIcons,
-      contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
+      contextualMenuItemAs,
       expandedMenuItemKey,
       onItemMouseDown,
       onItemClick,
@@ -35,6 +44,16 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       dismissSubMenu,
       dismissMenu,
     } = this.props;
+
+    let ChildrenRenderer: IComponentAs<IContextualMenuItemProps> = ContextualMenuItem;
+
+    if (item.contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(item.contextualMenuItemAs, ChildrenRenderer);
+    }
+
+    if (contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(contextualMenuItemAs, ChildrenRenderer);
+    }
 
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;

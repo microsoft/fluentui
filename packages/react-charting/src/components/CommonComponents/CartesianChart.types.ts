@@ -5,10 +5,26 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps, FocusZoneDirection } from '@fluentui/react-focus';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { ILegendsProps } from '../Legends/index';
-import { IAccessibilityProps, IMargins } from '../../types/index';
-import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
-import * as d3TimeFormat from 'd3-time-format';
+import {
+  IAccessibilityProps,
+  IDataPoint,
+  IGroupedVerticalBarChartData,
+  IHeatMapChartDataPoint,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IMargins,
+  IVerticalBarChartDataPoint,
+  IVerticalStackedBarDataPoint,
+} from '../../types/index';
+import { IChartHoverCardProps } from '../../utilities/index';
+import { TimeLocaleDefinition } from 'd3-time-format';
+import { ChartTypes, IAxisData, IDomainNRange, IYAxisParams, XAxisTypes, YAxisType } from '../../utilities/utilities';
+import { ScaleBand, ScaleLinear } from 'd3-scale';
 
+/**
+ * Cartesian Chart style properties
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -61,6 +77,10 @@ export interface ICartesianChartStyleProps {
   toDrawShape?: boolean;
 }
 
+/**
+ * Cartesian Chart styles
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartStyles {
   /**
    *  Style for the root element.
@@ -133,6 +153,11 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
+   * styles for tooltip
+   */
+  axisTitle?: IStyle;
+
+  /**
    * Style for the chart Title.
    */
   chartTitle?: IStyle;
@@ -153,6 +178,10 @@ export interface ICartesianChartStyles {
   chartWrapper?: IStyle;
 }
 
+/**
+ * Cartesian Chart properties
+ * {@docCategory CartesianChart}
+ */
 export interface ICartesianChartProps {
   /**
    * Below height used for resizing of the chart
@@ -353,7 +382,7 @@ export interface ICartesianChartProps {
   /**
    * The prop used to define a custom locale for the date time format.
    */
-  timeFormatLocale?: d3TimeFormat.TimeLocaleDefinition;
+  timeFormatLocale?: TimeLocaleDefinition;
 
   /**
    * The prop used to define a custom datetime formatter for date axis.
@@ -380,6 +409,36 @@ export interface ICartesianChartProps {
    * @default True for LineChart but False for other charts
    */
   enableReflow?: boolean;
+
+  /**
+   * Prop to set the x axis title
+   * @default undefined
+   * Minimum bottom margin required for x axis title is 55px
+   */
+
+  xAxisTitle?: string;
+
+  /**
+   * Prop to set the y axis title
+   * @default undefined
+   * Minimum left margin required for y axis title is 60px and for RTL is 40px
+   * Minimum right margin required for y axis title is 40px and for RTL is 60px
+   */
+  yAxisTitle?: string;
+
+  /**
+   * Prop to set the secondary y axis title
+   * @default undefined
+   * If RTL is enabled, minimum left and right margins required for secondary y axis title is 60px
+   */
+  secondaryYAxistitle?: string;
+
+  /**
+   * Whether to use UTC time for axis scale, ticks, and the time display in callouts.
+   * When set to `true`, time is displayed equally, regardless of the user's timezone settings.
+   * @default true
+   */
+  useUTC?: boolean;
 }
 
 export interface IYValueHover {
@@ -437,7 +496,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element;
+  legendBars: JSX.Element | null;
 
   /**
    * Callout props
@@ -501,7 +560,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * To enable callout for individualbar or complete stack. Using for only Vertical stacked bar chart.
    * @default false
-   * @type {boolean}
+   * @type \{boolean \}
    */
   isCalloutForStack?: boolean;
 
@@ -568,4 +627,60 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * @default false
+   * Used to control the first render cycle Performance optimization code.
+   */
+  enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Get the min and max values of the y-axis
+   */
+  getMinMaxOfYAxis: (
+    points: ILineChartPoints[] | IHorizontalBarChartWithAxisDataPoint[] | IVerticalBarChartDataPoint[] | IDataPoint[],
+    yAxisType: YAxisType | undefined,
+  ) => { startValue: number; endValue: number };
+
+  /**
+   * Create the y-axis
+   */
+  createYAxis: (
+    yAxisParams: IYAxisParams,
+    isRtl: boolean,
+    axisData: IAxisData,
+    isIntegralDataset: boolean,
+    useSecondaryYScale?: boolean,
+  ) => ScaleLinear<number, number, never>;
+
+  /**
+   * Get the domain and range values
+   */
+  getDomainNRangeValues: (
+    points:
+      | ILineChartPoints[]
+      | IVerticalBarChartDataPoint[]
+      | IVerticalStackedBarDataPoint[]
+      | IHorizontalBarChartWithAxisDataPoint[]
+      | IGroupedVerticalBarChartData[]
+      | IHeatMapChartDataPoint[],
+    margins: IMargins,
+    width: number,
+    chartType: ChartTypes,
+    isRTL: boolean,
+    xAxisType: XAxisTypes,
+    barWidth: number,
+    tickValues: Date[] | number[] | undefined,
+    shiftX: number,
+  ) => IDomainNRange;
+
+  /**
+   * Create the string y-axis
+   */
+  createStringYAxis: (
+    yAxisParams: IYAxisParams,
+    dataPoints: string[],
+    isRtl: boolean,
+    barWidth: number | undefined,
+  ) => ScaleBand<string>;
 }

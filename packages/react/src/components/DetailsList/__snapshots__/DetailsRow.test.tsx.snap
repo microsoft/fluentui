@@ -79,6 +79,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -127,6 +128,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -144,6 +156,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -179,6 +194,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -375,6 +401,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -390,6 +427,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -440,9 +479,21 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -507,6 +558,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -522,6 +584,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -572,9 +636,21 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -639,6 +715,17 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -654,6 +741,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -704,9 +793,21 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -756,6 +857,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -914,6 +1016,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone14"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -962,6 +1065,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -979,6 +1093,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -1014,6 +1131,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -1210,6 +1338,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -1225,6 +1364,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1275,9 +1416,21 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header13-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1342,6 +1495,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -1357,6 +1521,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1407,9 +1573,21 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header13-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1474,6 +1652,17 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -1489,6 +1678,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1539,9 +1730,21 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header13-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1591,6 +1794,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone15"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1721,6 +1925,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         top: 1px;
         z-index: 1;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+        border: 1px solid #605e5c;
+        bottom: 1px;
+        content: "";
+        left: 1px;
+        outline: 1px solid #ffffff;
+        position: absolute;
+        right: 1px;
+        top: 1px;
+        z-index: 1;
+      }
       .ms-List-cell:first-child &:before {
         display: none;
       }
@@ -1740,6 +1955,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
         opacity: 1;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+        opacity: 1;
+      }
       & .ms-GroupSpacer {
         flex-grow: 0;
         flex-shrink: 0;
@@ -1750,6 +1968,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   data-item-index={0}
   data-selection-index={0}
   data-selection-touch-invoke={true}
+  data-tabster="{\\"uncontrolled\\": {}}"
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
@@ -1780,6 +1999,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #605e5c;
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          outline: 1px solid #ffffff;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
           border: 1px solid #605e5c;
           bottom: 0px;
           content: "";
@@ -1841,6 +2071,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -2029,6 +2270,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             top: 0px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #605e5c;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
           & > button {
             max-width: 100%;
           }
@@ -2084,6 +2336,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             top: 0px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #605e5c;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
           & > button {
             max-width: 100%;
           }
@@ -2129,6 +2392,17 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #605e5c;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #ffffff;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #605e5c;
             bottom: 0px;
             content: "";
@@ -2246,6 +2520,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone6"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2294,6 +2569,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -2311,6 +2597,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -2346,6 +2635,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2542,6 +2842,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2557,6 +2868,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2607,9 +2920,21 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header5-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2674,6 +2999,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2689,6 +3025,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2739,9 +3077,21 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header5-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2806,6 +3156,17 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2821,6 +3182,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2871,9 +3234,21 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header5-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2923,6 +3298,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone7"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3081,6 +3457,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone10"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -3129,6 +3506,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -3146,6 +3534,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -3181,6 +3572,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3377,6 +3779,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3392,6 +3805,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3442,9 +3857,21 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3509,6 +3936,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3524,6 +3962,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3574,9 +4014,21 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3641,6 +4093,17 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3656,6 +4119,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3706,9 +4171,21 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3758,6 +4235,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone11"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

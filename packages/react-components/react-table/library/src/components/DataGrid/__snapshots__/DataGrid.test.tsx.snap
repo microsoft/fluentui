@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DataGrid renders a default state 1`] = `
+<div>
+  <div
+    class="fui-DataGrid fui-Table"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":3,\\"memorizeCurrent\\":true}}"
+    role="grid"
+  >
+    <div
+      class="fui-DataGridHeader fui-TableHeader"
+      role="rowgroup"
+    >
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          third
+        </div>
+      </div>
+    </div>
+    <div
+      class="fui-DataGridBody fui-TableBody"
+      role="rowgroup"
+    >
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          third
+        </div>
+      </div>
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          third
+        </div>
+      </div>
+      <div
+        class="fui-DataGridRow fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          first
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          second
+        </div>
+        <div
+          class="fui-DataGridCell fui-TableCell"
+          role="gridcell"
+          tabindex="0"
+        >
+          third
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

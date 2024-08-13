@@ -4,11 +4,13 @@ import { classNamesFunction, divProperties, elementContains, getNativeProps, foc
 import { OverflowButton } from './OverflowButton';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps, IOverflowSet } from './OverflowSet.types';
+import { useDocumentEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
 
 const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject<HTMLDivElement>) => {
+  const doc = useDocumentEx();
   React.useImperativeHandle(
     props.componentRef,
     (): IOverflowSet => ({
@@ -26,12 +28,12 @@ const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject
         }
         if (divContainer.current && elementContains(divContainer.current, childElement)) {
           childElement.focus();
-          focusSucceeded = document.activeElement === childElement;
+          focusSucceeded = doc?.activeElement === childElement;
         }
         return focusSucceeded;
       },
     }),
-    [divContainer],
+    [divContainer, doc],
   );
 };
 

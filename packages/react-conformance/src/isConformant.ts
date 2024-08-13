@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import { IsConformantOptions } from './types';
+import { BaseConformanceTest, ConformanceTest, DefaultTestObject, IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 import { createTsProgram } from './utils/createTsProgram';
@@ -17,6 +17,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
     tsConfig,
     // eslint-disable-next-line deprecation/deprecation
     tsconfigDir,
+    disableTypeTests,
   } = mergedOptions;
 
   const mergedTsConfig = {
@@ -29,6 +30,11 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       throw new Error(`Path ${componentPath} does not exist`);
     }
 
+    if (disableTypeTests) {
+      runNonTypeTests(mergedOptions);
+      return;
+    }
+
     const tsProgram = createTsProgram(componentPath, mergedTsConfig);
 
     const components = getComponentDoc(componentPath, tsProgram);
@@ -39,7 +45,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
 
       for (const test of Object.keys(defaultTests)) {
         if (!disabledTests.includes(test)) {
-          defaultTests[test](componentInfo, mergedOptions, tsProgram);
+          defaultTests[test as keyof DefaultTestObject](mergedOptions, componentInfo, tsProgram);
         }
       }
 
@@ -47,7 +53,7 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
         describe('extraTests', () => {
           for (const test of Object.keys(extraTests)) {
             if (!disabledTests.includes(test)) {
-              extraTests[test](componentInfo, mergedOptions, tsProgram);
+              extraTests[test](mergedOptions, componentInfo, tsProgram);
             }
           }
         });
@@ -62,4 +68,41 @@ export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptio
       );
     }
   });
+}
+
+/**
+ * Run default and extra tests that don't require TypeScript information
+ * @param mergedOptions
+ */
+function runNonTypeTests(mergedOptions: IsConformantOptions) {
+  const { disabledTests = [], extraTests } = mergedOptions;
+
+  for (const test of Object.keys(defaultTests)) {
+    if (!disabledTests.includes(test)) {
+      const func = defaultTests[test as keyof DefaultTestObject];
+      if (isNonTypeTest(func)) {
+        func(mergedOptions);
+      }
+    }
+  }
+
+  if (extraTests) {
+    describe('extraTests', () => {
+      for (const test of Object.keys(extraTests)) {
+        if (!disabledTests.includes(test)) {
+          const func = extraTests[test];
+          if (isNonTypeTest(func)) {
+            func(mergedOptions);
+          }
+        }
+      }
+    });
+  }
+}
+
+/**
+ * Verifies that a test function has only one parameter. If so, this test does not require TS info.
+ */
+function isNonTypeTest<TProps = {}>(func: ConformanceTest<TProps>): func is BaseConformanceTest<TProps> {
+  return func.length === 1;
 }

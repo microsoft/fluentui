@@ -195,9 +195,10 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _updateViewport = (withForceUpdate?: boolean) => {
       const { viewport } = this.state;
       const viewportElement = this._root.current;
+      const win = getWindow(viewportElement);
       const scrollElement = findScrollableParent(viewportElement) as HTMLElement;
-      const scrollRect = getRect(scrollElement);
-      const clientRect = getRect(viewportElement);
+      const scrollRect = getRect(scrollElement, win);
+      const clientRect = getRect(viewportElement, win);
       const updateComponent = () => {
         if (withForceUpdate && this._composedComponentInstance) {
           this._composedComponentInstance.forceUpdate();

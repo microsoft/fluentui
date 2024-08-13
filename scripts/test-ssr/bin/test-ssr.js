@@ -1,4 +1,10 @@
 #!/usr/bin/env node
 
-require('@fluentui/scripts-ts-node/register');
-require('../src/cli.ts');
+// @ts-check
+
+const { joinPathFragments } = require('@nx/devkit');
+const { registerTsProject } = require('@nx/js/src/internal');
+
+registerTsProject(joinPathFragments(__dirname, '..', 'tsconfig.lib.json'));
+
+require('../src/cli');

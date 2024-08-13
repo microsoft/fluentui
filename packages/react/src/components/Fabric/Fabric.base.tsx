@@ -39,7 +39,7 @@ export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRe
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      applyTheme: applyTheme,
+      applyTheme,
       className,
     });
 

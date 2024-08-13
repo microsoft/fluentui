@@ -1,6 +1,7 @@
+import { SankeyLink, SankeyNode } from 'd3-sankey';
 import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-import * as d3Sankey from 'd3-sankey';
+
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -29,6 +30,9 @@ export interface IRefArrayData {
   refElement?: SVGGElement;
 }
 
+/**
+ * {@docCategory IChartProps}
+ */
 export interface IMargins {
   /**
    * left margin for the chart.
@@ -48,6 +52,9 @@ export interface IMargins {
   bottom?: number;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -68,6 +75,22 @@ export interface IDataPoint {
   onClick?: VoidFunction;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
+export interface IVerticalStackedBarDataPoint extends Omit<IDataPoint, 'x'> {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale.
+   */
+  x: number | string | Date;
+}
+
+/**
+ * {@docCategory IChartData}
+ */
 export interface IHorizontalDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -82,6 +105,9 @@ export interface IHorizontalDataPoint {
   y: number;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IChartDataPoint {
   /**
    * Legend text for the datapoint in the chart
@@ -131,13 +157,16 @@ export interface IChartDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IVerticalBarChartDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
    * If x is a number, then each y-coordinate is plotted at its x-coordinate.
    * If x is a string, then the data is evenly spaced along the x-axis.
    */
-  x: number | string;
+  x: number | string | Date;
 
   /**
    * Dependent value of the data point, rendered along the y-axis.
@@ -182,6 +211,9 @@ export interface IVerticalBarChartDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IHorizontalBarChartWithAxisDataPoint {
   /**
    * Dependent value of the data point, rendered along the x-axis.
@@ -228,6 +260,9 @@ export interface IHorizontalBarChartWithAxisDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineDataInVerticalBarChart {
   y: IVerticalBarChartDataPoint['y'];
   yAxisCalloutData?: string | undefined;
@@ -243,6 +278,9 @@ export interface ILineDataInVerticalBarChart {
   useSecondaryYScale?: boolean;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineChartDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -287,6 +325,9 @@ export interface ILineChartDataPoint {
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineChartGap {
   /**
    * Starting index of the gap.
@@ -299,6 +340,9 @@ export interface ILineChartGap {
   endIndex: number;
 }
 
+/**
+ * {@docCategory IChartProps}
+ */
 export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
@@ -337,6 +381,9 @@ export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   lineBorderColor?: string;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineChartPoints {
   /**
    * Legend text for the datapoint in the chart
@@ -390,6 +437,9 @@ export interface ILineChartPoints {
   onLineClick?: () => void;
 }
 
+/**
+ * {@docCategory IChartProps}
+ */
 export interface IChartProps {
   /**
    * chart title for the chart
@@ -431,13 +481,22 @@ export interface IChartProps {
   pointLineOptions?: SVGProps<SVGLineElement>;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ISankeyChartData {
   nodes: SNode[];
   links: SLink[];
 }
 
 interface ISNodeExtra {
+  /**
+   * A unique identifier for this node.
+   */
   nodeId: number | string;
+  /**
+   * The display name for this node in the UX.
+   */
   name: string;
   color?: string;
   borderColor?: string;
@@ -446,15 +505,27 @@ interface ISNodeExtra {
 }
 
 interface ISLinkExtra {
+  /**
+   * The index within `ISankeyChartData.nodes` of the source node.
+   */
   source: number;
+  /**
+   * The index within `ISankeyChartData.nodes` of the target node.
+   */
   target: number;
+  /**
+   * The weight of this link between the two nodes.
+   */
   value: number;
   unnormalizedValue?: number;
 }
 
-export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
-export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
+export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
 
+/**
+ * {@docCategory IChartProps}
+ */
 export interface IAccessibilityProps {
   /**
    * Accessibility aria-label
@@ -472,6 +543,9 @@ export interface IAccessibilityProps {
   ariaDescribedBy?: string;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IVSChartDataPoint {
   /**
    * data the datapoint in the chart
@@ -506,6 +580,9 @@ export interface IVSChartDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartProps}
+ */
 export interface IVerticalStackedChartProps {
   /**
    * data for the points in the chart
@@ -515,7 +592,7 @@ export interface IVerticalStackedChartProps {
   /**
    * Data for x axis label for multistacked Vertical bar chart
    */
-  xAxisPoint: number | string;
+  xAxisPoint: number | string | Date;
 
   /**
    * Callout data for x axis
@@ -532,6 +609,9 @@ export interface IVerticalStackedChartProps {
   stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ILineDataInVerticalStackedBarChart {
   y: number;
   color: string;
@@ -548,6 +628,9 @@ export interface ILineDataInVerticalStackedBarChart {
   useSecondaryYScale?: boolean;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IGVBarChartSeriesPoint {
   /**
    * Text for // need to check use of this
@@ -592,6 +675,9 @@ export interface IGVBarChartSeriesPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IGroupedVerticalBarChartData {
   /**
    * Data for X axis label
@@ -633,6 +719,9 @@ export interface IGVForBarChart {
   [key: string]: IGVBarChartSeriesPoint;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IHeatMapChartDataPoint {
   x: string | Date | number;
   y: string | Date | number;
@@ -660,6 +749,9 @@ export interface IHeatMapChartDataPoint {
   callOutAccessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface IHeatMapChartData {
   /**
    * name of the legend
@@ -672,6 +764,9 @@ export interface IHeatMapChartData {
   value: number;
 }
 
+/**
+ * {@docCategory IChartData}
+ */
 export interface ICustomizedCalloutDataPoint {
   legend: string;
   y: number;
@@ -683,6 +778,7 @@ export interface ICustomizedCalloutDataPoint {
 /**
  * Used for custom callout data interface. As Area chart callout data will be prepared from given props.data,
  * Those required data passing to onRenderCalloutPerDataPoint and onRenderCalloutPerStack.
+ * {@docCategory IChartData}
  */
 export interface ICustomizedCalloutData {
   x: number | string | Date;

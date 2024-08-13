@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles } from '@griffel/react';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import {
   Accordion,
@@ -10,14 +10,13 @@ import {
   Button,
   Input,
   Slider,
-  Switch,
   tokens,
   useId,
   Caption1Stronger,
   Field,
 } from '@fluentui/react-components';
 import { defaultThemePlaceholderName } from '../../Context/ThemeDesignerContext';
-import { AccessibilityPanel } from './AccessibilityPanel';
+// import { AccessibilityPanel } from './AccessibilityPanel';
 import { useDebounce } from '../../utils/useDebounce';
 
 const useStyles = makeStyles({
@@ -44,15 +43,15 @@ const useStyles = makeStyles({
     columnGap: tokens.spacingVerticalL,
   },
   colorPicker: {
-    ...shorthands.border('1px', 'solid', tokens.colorNeutralStroke1),
-    ...shorthands.borderRadius('25px'),
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    borderRadius: '25px',
     height: '30px',
     width: '30px',
-    ...shorthands.overflow('hidden'),
+    overflow: 'hidden',
   },
   color: {
-    ...shorthands.padding('0px'),
-    ...shorthands.border('0px'),
+    padding: '0px',
+    border: 'none',
     opacity: '0',
   },
   slider: {
@@ -70,7 +69,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     // Use 2px gap below the label (per the design system)
-    ...shorthands.gap('2px'),
+    gap: '2px',
     // Prevent the example from taking the full width of the page (optional)
     maxWidth: '400px',
   },
@@ -89,13 +88,15 @@ export const Form: React.FC = () => {
 
   const {
     dispatch,
-    state: { isDark, themeName, darkThemeOverrides, lightThemeOverrides, brand, keyColorHex },
+    state: { themeName, keyColorHex },
+    // - unused values from a11y panel.
+    // isDark, darkThemeOverrides, lightThemeOverrides, brand,
   } = useThemeDesigner();
   const themeNameInputId = useId('themeNameInputId');
 
-  const handleIsDarkChange = () => {
-    dispatch({ type: 'isDark', payload: !isDark });
-  };
+  // const handleIsDarkChange = () => {
+  //   dispatch({ type: 'isDark', payload: !isDark });
+  // };
 
   const [keyColor, setKeyColor] = React.useState<string>(keyColorHex);
   const [hueTorsion, setHueTorsion] = React.useState<number>(0);
@@ -221,6 +222,9 @@ export const Form: React.FC = () => {
             </div>
           </AccordionPanel>
         </AccordionItem>
+        {/*
+        The accessibility check is not adequate for the theme designer.
+        Removing it for now because we don't want people proceeding with a false sense of security.
         <AccordionItem value="2">
           <AccordionHeader>
             <Caption1Stronger>Step 2 - Accessibility checks</Caption1Stronger>
@@ -233,10 +237,10 @@ export const Form: React.FC = () => {
               lightThemeOverrides={lightThemeOverrides}
             />
           </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value="3">
+        </AccordionItem> */}
+        <AccordionItem value="2">
           <AccordionHeader>
-            <Caption1Stronger>Step 3 - Export</Caption1Stronger>
+            <Caption1Stronger>Step 2 - Export</Caption1Stronger>
           </AccordionHeader>
           <AccordionPanel className={styles.accordionContainer}>
             <div className={styles.labelName}>

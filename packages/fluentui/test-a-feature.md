@@ -280,10 +280,10 @@ Finding the right number of `iterations` is a balancing act between having a fas
 Run test and watch:
 
 ```
-yarn perf:test
+yarn northstar:perf
 ```
 
-After running `perf:test`, results can be viewed in the `packages/fluentui/perf-test-northstar/dist` folder with the main entry file being `packages/fluentui/perf-test-northstar/dist/perfCounts.html`.
+After running `northstar:perf`, results can be viewed in the `packages/fluentui/perf-test-northstar/dist` folder with the main entry file being `packages/fluentui/perf-test-northstar/dist/perfCounts.html`.
 
 There are more detailed commands as well (these must be run from `packages/fluentui/perf-test-northstar` directory):
 

@@ -52,10 +52,22 @@ exports[`Rating renders correctly 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         {
           height: 32px;
         }
     data-focuszone-id="FocusZone2"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -85,6 +97,17 @@ exports[`Rating renders correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -253,6 +276,17 @@ exports[`Rating renders correctly 1`] = `
             top: 1px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
           &:disabled {
             cursor: default;
           }
@@ -400,6 +434,17 @@ exports[`Rating renders correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -567,6 +612,17 @@ exports[`Rating renders correctly 1`] = `
             top: 1px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
           &:disabled {
             cursor: default;
           }
@@ -714,6 +770,17 @@ exports[`Rating renders correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -902,10 +969,22 @@ exports[`Rating renders correctly with half star 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         {
           height: 32px;
         }
     data-focuszone-id="FocusZone5"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -935,6 +1014,17 @@ exports[`Rating renders correctly with half star 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -1102,6 +1192,17 @@ exports[`Rating renders correctly with half star 1`] = `
             top: 1px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
           &:disabled {
             cursor: default;
           }
@@ -1249,6 +1350,17 @@ exports[`Rating renders correctly with half star 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";
@@ -1417,6 +1529,17 @@ exports[`Rating renders correctly with half star 1`] = `
             top: 1px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
           &:disabled {
             cursor: default;
           }
@@ -1564,6 +1687,17 @@ exports[`Rating renders correctly with half star 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 1px;
+            content: "";
+            left: 1px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: 1px;
+            top: 1px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: 1px;
             content: "";

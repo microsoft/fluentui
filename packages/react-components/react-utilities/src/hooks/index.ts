@@ -1,3 +1,4 @@
+export * from './useAnimationFrame';
 export * from './useControllableState';
 export * from './useEventCallback';
 export * from './useFirstMount';

@@ -5,11 +5,16 @@ import { ISparklineProps, Sparkline } from './index';
 import { IChartProps } from '../../index';
 import { mount, ReactWrapper } from 'enzyme';
 import { ISparklineState, SparklineBase } from './Sparkline.base';
+import { resetIds } from '@fluentui/react';
 
 // Wrapper of the SparklineChart to be tested.
 let wrapper: ReactWrapper<ISparklineProps, ISparklineState, SparklineBase> | undefined;
 
-const sparkline1Points: IChartProps = {
+function sharedBeforeEach() {
+  resetIds();
+}
+
+export const sparkline1Points: IChartProps = {
   chartTitle: '10.21',
   lineChartData: [
     {
@@ -89,7 +94,7 @@ const sparkline2Points: IChartProps = {
   ],
 };
 
-const emptySparklinePoints: IChartProps = {
+export const emptySparklinePoints: IChartProps = {
   chartTitle: 'Empty sparkline chart',
   lineChartData: [
     {
@@ -101,6 +106,8 @@ const emptySparklinePoints: IChartProps = {
 };
 
 describe('Sparkline snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders Sparkline correctly', () => {
     const component = renderer.create(<Sparkline data={sparkline1Points} showLegend={true} />);
     const tree = component.toJSON();
@@ -115,6 +122,8 @@ describe('Sparkline snapShot testing', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<Sparkline data={sparkline1Points} />);
     const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');

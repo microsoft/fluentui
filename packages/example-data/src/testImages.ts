@@ -1,4 +1,4 @@
-const baseProductionCdnUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/';
+const baseProductionCdnUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/';
 
 /** @internal */
 export const TestImages = {

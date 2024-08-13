@@ -1,25 +1,53 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { css } from '@microsoft/fast-element';
+import { checkedState, disabledState } from '../styles/states/index.js';
+import {
+  colorNeutralForeground1,
+  colorNeutralForeground2,
+  colorNeutralForeground3,
+  colorNeutralForegroundDisabled,
+  spacingVerticalL,
+} from '../theme/design-tokens.js';
+import { display } from '../utils/index.js';
 
-export const radioGroupStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
-  ${display('flex')} :host {
-    align-items: flex-start;
+/** RadioGroup styles
+ * @public
+ */
+export const styles = css`
+  ${display('flex')}
+
+  :host {
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    gap: ${spacingVerticalL};
+  }
+
+  :host(${disabledState}),
+  :host([orientation='vertical']) {
     flex-direction: column;
+    justify-content: flex-start;
   }
 
-  .positioning-region {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  :host([orientation='vertical']) .positioning-region {
-    flex-direction: column;
-  }
-
-  :host([orientation='horizontal']) .positioning-region {
+  :host([orientation='horizontal']) {
     flex-direction: row;
+  }
+
+  ::slotted(*) {
+    color: ${colorNeutralForeground3};
+  }
+
+  ::slotted(:hover) {
+    color: ${colorNeutralForeground2};
+  }
+
+  ::slotted(:active) {
+    color: ${colorNeutralForeground1};
+  }
+
+  ::slotted(${disabledState}) {
+    color: ${colorNeutralForegroundDisabled};
+  }
+
+  ::slotted(${checkedState}) {
+    color: ${colorNeutralForeground1};
   }
 `;

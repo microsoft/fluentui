@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AreaChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 
@@ -19,7 +18,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
   }
 
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div className="containerDiv">{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,31 +34,31 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
         x: 20,
         y: 9,
         xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 20' },
-        callOutAccessibilityData: { ariaLabel: 'Line series 1 of 5 Point 1 First 9' },
+        callOutAccessibilityData: { ariaLabel: 'Point 1 of 5 in First series. X value 20 Y value $9' },
       },
       {
         x: 40,
         y: 20,
         xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 40' },
-        callOutAccessibilityData: { ariaLabel: 'Line series 2 of 5 Point 1 First 20' },
+        callOutAccessibilityData: { ariaLabel: 'Point 2 of 5 in First series. X value 40 Y value $20' },
       },
       {
         x: 55,
         y: 27,
         xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 55' },
-        callOutAccessibilityData: { ariaLabel: 'Line series 3 of 5 Point 1 First 27' },
+        callOutAccessibilityData: { ariaLabel: 'Point 3 of 5 in First series. X value 55 Y value $27' },
       },
       {
         x: 60,
         y: 37,
         xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 60' },
-        callOutAccessibilityData: { ariaLabel: 'Line series 4 of 5 Point 1 First 37' },
+        callOutAccessibilityData: { ariaLabel: 'Point 4 of 5 in First series. X value 60 Y value $37' },
       },
       {
         x: 65,
         y: 51,
         xAxisCalloutAccessibilityData: { ariaLabel: 'x-Axis 65' },
-        callOutAccessibilityData: { ariaLabel: 'Line series 5 of 5 Point 1 First 51' },
+        callOutAccessibilityData: { ariaLabel: 'Point 5 of 5 in First series. X value 65 Y value $51' },
       },
     ];
 
@@ -67,27 +66,37 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         x: 20,
         y: 21,
-        callOutAccessibilityData: { ariaLabel: 'Point 2 Second 21' },
+        callOutAccessibilityData: {
+          ariaLabel: 'First of 5 points in Second series. X coordinate is 20 and Y coordinate is $21',
+        },
       },
       {
         x: 40,
         y: 25,
-        callOutAccessibilityData: { ariaLabel: 'Point 2 Second 25' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Second of 5 points in Second series. X coordinate is 40 and Y coordinate is $25',
+        },
       },
       {
         x: 55,
         y: 23,
-        callOutAccessibilityData: { ariaLabel: 'Point 2 Second 23' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Third of 5 points in Second series. X coordinate is 55 and Y coordinate is $23',
+        },
       },
       {
         x: 60,
         y: 7,
-        callOutAccessibilityData: { ariaLabel: 'Point 2 Second 7' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Fourth of 5 points in Second series. X coordinate is 60 and Y coordinate is $7',
+        },
       },
       {
         x: 65,
         y: 55,
-        callOutAccessibilityData: { ariaLabel: 'Point 2 Second 55' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Fifth of 5 points in Second series. X coordinate is 65 and Y coordinate is $55',
+        },
       },
     ];
 
@@ -95,27 +104,37 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         x: 20,
         y: 30,
-        callOutAccessibilityData: { ariaLabel: 'Point 3 Third 30' },
+        callOutAccessibilityData: {
+          ariaLabel: 'First of 5 points in Third series. X coordinate is 20 and Y coordinate is $30',
+        },
       },
       {
         x: 40,
         y: 35,
-        callOutAccessibilityData: { ariaLabel: 'Point 3 Third 35' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Second of 5 points in Third series. X coordinate is 40 and Y coordinate is $35',
+        },
       },
       {
         x: 55,
         y: 33,
-        callOutAccessibilityData: { ariaLabel: 'Point 3 Third 33' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Third of 5 points in Third series. X coordinate is 55 and Y coordinate is $33',
+        },
       },
       {
         x: 60,
         y: 40,
-        callOutAccessibilityData: { ariaLabel: 'Point 3 Third 40' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Fourth of 5 points in Third series. X coordinate is 60 and Y coordinate is $40',
+        },
       },
       {
         x: 65,
         y: 10,
-        callOutAccessibilityData: { ariaLabel: 'Point 3 Third 10' },
+        callOutAccessibilityData: {
+          ariaLabel: 'Fifth of 5 points in Third series. X coordinate is 65 and Y coordinate is $10',
+        },
       },
     ];
 
@@ -123,17 +142,17 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         legend: 'First',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: DataVizPalette.color8,
       },
       {
         legend: 'Second',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: DataVizPalette.color9,
       },
       {
         legend: 'Third',
         data: chart3Points,
-        color: DefaultPalette.blueDark,
+        color: DataVizPalette.color10,
       },
     ];
 
@@ -176,6 +195,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>

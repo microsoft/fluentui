@@ -1,6 +1,6 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { isIE11 } from '@fluentui/react';
+import { FontSizes, FontWeights, HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { NeutralColors, isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
 
@@ -22,6 +22,17 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
     chartWrapper: {
       overflow: 'auto',
     },
+    axisTitle: [
+      theme.fonts.xSmall,
+      {
+        textAlign: 'center',
+        fontWeight: FontWeights.semibold,
+        fontStyle: 'normal',
+        lineHeight: FontSizes.medium,
+        color: NeutralColors.gray160,
+        fill: theme.semanticColors.bodyText,
+      },
+    ],
     xAxis: {
       selectors: {
         text: [
@@ -117,7 +128,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
       {
         ...fonts.small,
         lineHeight: '16px',
-        opacity: '0.8',
+        opacity: '0.85',
         color: theme.semanticColors.bodySubtext,
       },
     ],

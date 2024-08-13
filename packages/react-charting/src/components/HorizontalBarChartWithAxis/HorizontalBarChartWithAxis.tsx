@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled } from '../../Utilities';
+import { styled } from '@fluentui/react/lib/Utilities';
 import {
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,
@@ -9,6 +9,10 @@ import { HorizontalBarChartWithAxisBase } from './HorizontalBarChartWithAxis.bas
 import { getStyles } from './HorizontalBarChartWithAxis.styles';
 
 // Create a HorizontalBarChartWithAxis variant which uses these default styles and this styled subcomponent.
+/**
+ * HorizontalBarchartWithAxis component.
+ * {@docCategory HorizontalBarChartWithAxis}
+ */
 export const HorizontalBarChartWithAxis: React.FunctionComponent<IHorizontalBarChartWithAxisProps> = styled<
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisStyleProps,

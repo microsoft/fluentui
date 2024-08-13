@@ -26,6 +26,7 @@ import type { IPositionedData } from '../../Positioning';
 import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import type { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import type { IBeakProps } from './Beak/Beak.types';
+import { useDocumentEx, useWindowEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -253,6 +254,8 @@ function useProximityHandlers(
 
   /** The target element the mouse would be in proximity to */
   const targetElementRect = React.useRef<DOMRect>();
+  const win = useWindowEx();
+  const doc = useDocumentEx();
 
   React.useEffect(() => {
     const setTargetElementRect = (): void => {
@@ -277,7 +280,7 @@ function useProximityHandlers(
         // When the window resizes we want to async get the bounding client rectangle.
         // Every time the event is triggered we want to setTimeout and then clear any previous
         // instances of setTimeout.
-        events.on(window, 'resize', (): void => {
+        events.on(win, 'resize', (): void => {
           timeoutIds.forEach((value: number): void => {
             clearTimeout(value);
           });
@@ -286,7 +289,7 @@ function useProximityHandlers(
           timeoutIds.push(
             setTimeout((): void => {
               setTargetElementRect();
-              setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
+              setBounds(getBounds(props.isPositionForced, props.positioningContainerProps, win));
             }, 100),
           );
         });
@@ -294,7 +297,7 @@ function useProximityHandlers(
 
       // Every time the document's mouse move is triggered, we want to check if inside of an element
       // and set the state with the result.
-      events.on(document, 'mousemove', (e: MouseEvent) => {
+      events.on(doc, 'mousemove', (e: MouseEvent) => {
         const mouseY = e.clientY;
         const mouseX = e.clientX;
         setTargetElementRect();
@@ -412,6 +415,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 >((propsWithoutDefaults, forwardedRef) => {
   const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
+  const win = useWindowEx();
   const entityInnerHostElementRef = React.useRef<HTMLDivElement | null>(null);
   const translateAnimationContainer = React.useRef<HTMLDivElement | null>(null);
 
@@ -420,7 +424,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
   const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
   const [bounds, setBounds] = React.useState<IRectangle | undefined>(
-    getBounds(props.isPositionForced, props.positioningContainerProps),
+    getBounds(props.isPositionForced, props.positioningContainerProps, win),
   );
   const alertText = useAriaAlert(props);
   const entityHost = useAutoFocus(props);
@@ -431,8 +435,8 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   useDeprecationWarning(props);
 
   React.useEffect(() => {
-    setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
-  }, [props.isPositionForced, props.positioningContainerProps]);
+    setBounds(getBounds(props.isPositionForced, props.positioningContainerProps, win));
+  }, [props.isPositionForced, props.positioningContainerProps, win]);
 
   const {
     beaconColorOne,
@@ -477,6 +481,10 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 
   const finalHeight: number | undefined = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
 
+  const onClickCallout = React.useCallback(() => {
+    openCoachmark();
+  }, [openCoachmark]);
+
   return (
     <PositioningContainer
       target={target}
@@ -506,6 +514,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
                 role="dialog"
                 aria-labelledby={ariaLabelledBy}
                 aria-describedby={ariaDescribedBy}
+                onClick={onClickCallout}
               >
                 {isCollapsed && [
                   ariaLabelledBy && (
@@ -539,6 +548,7 @@ CoachmarkBase.displayName = COMPONENT_NAME;
 function getBounds(
   isPositionForced?: boolean,
   positioningContainerProps?: IPositioningContainerProps,
+  win?: Window,
 ): IRectangle | undefined {
   if (isPositionForced) {
     // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
@@ -552,8 +562,8 @@ function getBounds(
         left: 0,
         top: -Infinity,
         bottom: Infinity,
-        right: window.innerWidth,
-        width: window.innerWidth,
+        right: win?.innerWidth ?? 0,
+        width: win?.innerWidth ?? 0,
         height: Infinity,
       };
     } else {
