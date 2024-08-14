@@ -97,8 +97,8 @@ const ComponentCloudTemplate = html`
   <p></p>
 `;
 
-const ThemeOptionsTemplate = (selected: string = '', hasUnset = false) => html`
-  ${when(hasUnset, html`<option value="unset">unset</option>`)}
+const ThemeOptionsTemplate = (selected: string = '') => html`
+  <option value="unset">unset</option>
   ${repeat(
     Array.from(themes.keys()),
     html`
@@ -174,14 +174,14 @@ export const SetTheme = renderComponent(html`
     <label>
       Local theme (element without shadow root)
       <select @change="${(_, c) => updateTheme(c.event, 'local')}">
-        ${ThemeOptionsTemplate('', true)}
+        ${ThemeOptionsTemplate()}
       </select>
     </label>
 
     <label>
       Local theme (element with shadow root)
       <select @change="${(_, c) => updateTheme(c.event, 'shadow')}">
-        ${ThemeOptionsTemplate('', true)}
+        ${ThemeOptionsTemplate()}
       </select>
     </label>
   </div>
