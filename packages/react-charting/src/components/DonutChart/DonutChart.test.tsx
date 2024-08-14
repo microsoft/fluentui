@@ -136,6 +136,22 @@ describe('DonutChart snapShot testing', () => {
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
+  it('Should render gradients on arcs', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<DonutChart data={chartPointsDCElevateMinimums} enableGradient={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('Should render rounded corners on arcs', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<DonutChart data={chartPointsDCElevateMinimums} roundCorners={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('DonutChart - basic props', () => {

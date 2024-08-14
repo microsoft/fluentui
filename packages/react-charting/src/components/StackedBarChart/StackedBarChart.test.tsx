@@ -36,12 +36,12 @@ const points: IChartDataPoint[] = [
 const chartTitle = 'Stacked bar chart 2nd example';
 
 export const chartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: points,
 };
 
 export const emptyChartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: [],
 };
 
@@ -86,6 +86,18 @@ describe('StackedBarChart snapShot testing', () => {
 
   it('renders enabledLegendsWrapLines correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} enabledLegendsWrapLines={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  
+  it('renders enableGradient correctly', () => {
+    const component = renderer.create(<StackedBarChart data={chartPoints} enableGradient={true} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders roundCorners correctly', () => {
+    const component = renderer.create(<StackedBarChart data={chartPoints} roundCorners={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -121,6 +121,24 @@ describe('VerticalStackedBarChart snapShot testing', () => {
 
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should render gradients on bars', () => {
+    let component: any;
+    renderer.act(() => {
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} enableGradient={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render rounded corners on bars', () => {
+    let component: any;
+    renderer.act(() => {
+      component = renderer.create(<VerticalStackedBarChart data={chartPointsVSBC} roundCorners={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('VerticalStackedBarChart - basic props', () => {

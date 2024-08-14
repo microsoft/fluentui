@@ -882,6 +882,244 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
 </div>
 `;
 
+exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone6"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+          }
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              color: #323130;
+              display: block;
+              margin-bottom: 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
+      >
+        <span
+          data-is-focusable={false}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip7"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
+      </div>
+      <div
+        data-is-focusable={false}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone8"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
+              overflow: visible;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <defs>
+              <linearGradient
+                id="SBC_Gradient_ID2"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#637CEF"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              fill="url(#SBC_Gradient_ID2)"
+              height={12}
+              id="_SBC_bar3"
+              rx={0}
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <defs>
+              <linearGradient
+                id="SBC_Gradient_ID4"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#9373C0"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              fill="url(#SBC_Gradient_ID4)"
+              height={12}
+              id="_SBC_bar5"
+              rx={0}
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <span
+          className="ms-layer"
+        />
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
 <div
   className=
@@ -2356,6 +2594,216 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`StackedBarChart snapShot testing renders roundCorners correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone6"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            justify-content: space-between;
+          }
+    >
+      <div
+        className=
+            ms-TooltipHost
+            {
+              color: #323130;
+              display: block;
+              margin-bottom: 5px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+        onBlurCapture={[Function]}
+        onFocusCapture={[Function]}
+        onKeyDown={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        role="none"
+      >
+        <span
+          data-is-focusable={false}
+          role="text"
+        >
+          Stacked bar chart 2nd example
+        </span>
+        <div
+          hidden={true}
+          id="tooltip7"
+          style={
+            Object {
+              "border": 0,
+              "height": 1,
+              "margin": -1,
+              "overflow": "hidden",
+              "padding": 0,
+              "position": "absolute",
+              "whiteSpace": "nowrap",
+              "width": 1,
+            }
+          }
+        >
+          Stacked bar chart 2nd example
+        </div>
+      </div>
+      <div
+        data-is-focusable={false}
+        role="text"
+      >
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+                font-weight: 600;
+              }
+        >
+          40
+        </span>
+        <span
+          className=
+
+              {
+                color: #323130;
+                font-size: 14px;
+              }
+        >
+           / 63
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone8"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Stacked bar chart 2nd example"
+        className=
+
+            {
+              display: block;
+              height: 12px;
+              margin-bottom: 10px;
+              overflow: visible;
+              width: 100%;
+            }
+      >
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar3"
+              rx={3}
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
+
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar5"
+              rx={3}
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
+        </g>
+        <span
+          className="ms-layer"
+        />
+      </svg>
     </div>
   </div>
 </div>

@@ -107,6 +107,24 @@ describe('VerticalBarChart snapShot testing', () => {
     const tree = component!.toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('Should render gradients on bars', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} enableGradient={false} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render rounded corners on bars', () => {
+    let component: any;
+    rendererAct(() => {
+      component = renderer.create(<VerticalBarChart data={chartPointsVBC} roundCorners={true} />);
+    });
+    const tree = component!.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });
 
 describe('VerticalBarChart - basic props', () => {
