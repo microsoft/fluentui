@@ -267,13 +267,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                         <clipPath id={clipId}>
                           <path d={arc.d} />
                         </clipPath>
-                        <foreignObject
-                          x="-50%"
-                          y="-100%"
-                          width="100%"
-                          height="100%"
-                          clipPath={`url(#${clipId})`}
-                        >
+                        <foreignObject x="-50%" y="-100%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
                           <div
                             style={{
                               width: '100%',

@@ -48,7 +48,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const cornerRadius = this.props.roundCorners ? 3 : 0;
 
     const clipId = getId('clip') + `${this.props.color}_${this.props.nextColor}`;
-    
+
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
@@ -82,13 +82,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
             <clipPath id={clipId}>
               <path d={arc.cornerRadius(cornerRadius)(this.props.data)} />
             </clipPath>
-            <foreignObject
-              x="-50%"
-              y="-50%"
-              width="100%"
-              height="100%"
-              clipPath={`url(#${clipId})`}
-            >
+            <foreignObject x="-50%" y="-50%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
               <div
                 style={{
                   width: '100%',
