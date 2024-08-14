@@ -330,8 +330,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         <Legends
           legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
           enabledWrapLines={props.enabledLegendsWrapLines}
-          overflowProps={props.legendsOverflowProps}
-          focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
           overflowText={props.legendsOverflowText}
           {...(isLegendMultiSelectEnabled && { onLegendHoverCardLeave: _onHoverCardHide })}
           {...props.legendProps}
@@ -1263,7 +1261,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       legendBars = _createLegendsMemoized(_points!);
     }
     const calloutProps = {
-      id: `toolTip${_uniqueCallOutID}`,
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
       descriptionMessage:

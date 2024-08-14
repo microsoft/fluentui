@@ -13,8 +13,6 @@ export const legendClassNames: SlotClassNames<ILegendsStyles> = {
   triangle: 'fui-legend__triangle',
   text: 'fui-legend__text',
   hoverChange: 'fui-legend__hoverChange',
-  overflowIndicationTextStyle: 'fui-legend__overflowIndicationTextStyle',
-  hoverCardRoot: 'fui-legend__hoverCardRoot',
   resizableArea: 'fui-legend__resizableArea',
 };
 
@@ -73,16 +71,6 @@ const useStyles = makeStyles({
     marginRight: '8px',
     ...shorthands.border('1px solid'),
   },
-  // TO DO Add props when these styles are used in the component
-  overflowIndicationTextStyle: {
-    cursor: 'pointer',
-    lineHeight: '16px',
-    ...shorthands.padding('8px'),
-  },
-  // TO DO Add props when these styles are used in the component
-  hoverCardRoot: {
-    ...shorthands.padding('8px'),
-  },
   resizableArea: {
     position: 'relative',
     textAlign: 'center',
@@ -111,12 +99,6 @@ export const useLegendStyles_unstable = (props: ILegendsProps): ILegendsStyles =
     triangle: mergeClasses(legendClassNames.triangle, baseStyles.triangle, props.styles?.triangle),
     text: mergeClasses(legendClassNames.text, baseStyles.text, props.styles?.text),
     hoverChange: mergeClasses(legendClassNames.hoverChange, baseStyles.hoverChange, props.styles?.hoverChange),
-    overflowIndicationTextStyle: mergeClasses(
-      legendClassNames.overflowIndicationTextStyle,
-      baseStyles.overflowIndicationTextStyle,
-      props.styles?.overflowIndicationTextStyle,
-    ),
-    hoverCardRoot: mergeClasses(legendClassNames.hoverCardRoot, baseStyles.hoverCardRoot, props.styles?.hoverCardRoot),
     resizableArea: mergeClasses(legendClassNames.resizableArea, baseStyles.resizableArea, props.styles?.resizableArea),
   };
 };
