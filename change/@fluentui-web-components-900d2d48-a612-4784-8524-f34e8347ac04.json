@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(web-components): add fluent-textarea component",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
