@@ -107,8 +107,8 @@ test.describe('setTheme()', () => {
     // Using Declarative Shadow DOM with `page.setContent()` doesn’t work in Firefox.
     await page.setContent('<div></div>');
     await div.evaluate((node: HTMLDivElement) => {
-     node.attachShadow({ mode: 'open' });
-     node.shadowRoot!.innerHTML = '<span></span>';
+      node.attachShadow({ mode: 'open' });
+      node.shadowRoot!.innerHTML = '<span></span>';
     });
 
     await page.evaluate(theme => {
