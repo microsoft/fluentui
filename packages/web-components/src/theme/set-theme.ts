@@ -76,22 +76,18 @@ function getThemeStyleText(theme: Theme): string {
     const tokenDeclarations: string[] = [];
 
     for (const [tokenName, tokenValue] of Object.entries(theme)) {
-      if (typeof tokenValue !== 'string' && Number.isNaN(tokenValue)) {
-        throw new Error(`"${tokenName}" must be a string or a number.`);
-      }
-
       const name = `--${tokenName}`;
-      const initialValue = tokenValue.toString();
+
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
           CSS.registerProperty({
             name,
-            initialValue,
+            initialValue: '',
             inherits: true,
           });
         } catch {}
       }
-      tokenDeclarations.push(`${name}:${initialValue};`);
+      tokenDeclarations.push(`${name}:${tokenValue.toString()};`);
     }
 
     themeStyleTextMap.set(theme, tokenDeclarations.join(''));
@@ -211,14 +207,12 @@ function setThemePropertiesOnElement(theme: Theme | null, element: HTMLElement) 
  * selected by an `@scope` rule, the styles defined in the `:scope` selector
  * persist.
  * @see https://bugs.webkit.org/show_bug.cgi?id=276454
+ *
+ * UA sniff regular expression is based on
+ * {@link https://developer.mozilla.org/en-US/docs/Web/HTTP/Browser_detection_using_the_user_agent#rendering_engine | the MDN documentation}.
  */
-declare global {
-  interface Window {
-    MSStream: any;
-  }
-}
 const { userAgent: UA } = navigator;
-const isWebkit = /\b(iPad|iPhone|iPod)\b/.test(UA) && /WebKit/.test(UA) && !/Edge/.test(UA) && !window.MSStream;
+const isWebkit = /\bAppleWebKit\/[\d+\.]+\b/.test(UA);
 function forceRepaint(element: HTMLElement) {
   if (!isWebkit) {
     return;

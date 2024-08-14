@@ -58,12 +58,12 @@ test.describe('setTheme()', () => {
     });
 
     // Revert the values back to the registered initial values.
-    await expect(html).toHaveCSS('--foo', 'foo1');
-    await expect(html).toHaveCSS('--bar', 'bar1');
-    await expect(body).toHaveCSS('--foo', 'foo1');
-    await expect(body).toHaveCSS('--bar', 'bar1');
-    await expect(div).toHaveCSS('--foo', 'foo1');
-    await expect(div).toHaveCSS('--bar', 'bar1');
+    await expect(html).toHaveCSS('--foo', '');
+    await expect(html).toHaveCSS('--bar', '');
+    await expect(body).toHaveCSS('--foo', '');
+    await expect(body).toHaveCSS('--bar', '');
+    await expect(div).toHaveCSS('--foo', '');
+    await expect(div).toHaveCSS('--bar', '');
   });
 
   test('should set and unset tokens in a light DOM subtree', async ({ page }) => {
@@ -104,13 +104,12 @@ test.describe('setTheme()', () => {
     const div = page.locator('div');
     const span = page.locator('span');
 
-    await page.setContent(`
-      <div>
-        <template shadowrootmode="open">
-          <span></span>
-        </template>
-      </div>
-    `);
+    // Using Declarative Shadow DOM with `page.setContent()` doesn’t work in Firefox.
+    await page.setContent('<div></div>');
+    await div.evaluate((node: HTMLDivElement) => {
+     node.attachShadow({ mode: 'open' });
+     node.shadowRoot!.innerHTML = '<span></span>';
+    });
 
     await page.evaluate(theme => {
       window.setTheme(theme);
