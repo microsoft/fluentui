@@ -155,13 +155,8 @@ export class HorizontalBarChartBasicExample extends React.Component<
             offText="Chart mode absolute"
             onChange={this._onChangeChartMode}
           />
-          <Toggle
-            label="Enable Gradient"
-            onText="Gradient enabled"
-            offText="Gradient disabled"
-            onChange={this._onToggleGradient}
-          />
-          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
 
         <div style={{ maxWidth: 600 }}>

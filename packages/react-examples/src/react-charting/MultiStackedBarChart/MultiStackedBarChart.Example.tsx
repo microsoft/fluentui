@@ -168,13 +168,13 @@ export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
       <div style={{ display: 'flex' }}>
         <Toggle
           label="Enable Gradient"
-          onText="Gradient enabled"
-          offText="Gradient disabled"
+          onText="ON"
+          offText="OFF"
           // eslint-disable-next-line react/jsx-no-bind
           onChange={(ev: any, checked: boolean) => setEnableGradient(checked)}
         />
         <Toggle
-          label="Rounded corners"
+          label="Rounded Corners"
           onText="ON"
           offText="OFF"
           // eslint-disable-next-line react/jsx-no-bind

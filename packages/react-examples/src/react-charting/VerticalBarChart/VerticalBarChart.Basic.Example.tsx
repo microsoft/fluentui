@@ -231,13 +231,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           styles={{ root: { marginTop: '10px' } }}
         />
         <div style={{ display: 'flex' }}>
-          <Toggle
-            label="Enable Gradient"
-            onText="Gradient enabled"
-            offText="Gradient disabled"
-            onChange={this._onToggleGradient}
-          />
-          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>

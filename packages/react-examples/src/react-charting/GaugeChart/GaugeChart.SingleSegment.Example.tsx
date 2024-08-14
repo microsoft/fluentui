@@ -77,14 +77,14 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
         </Stack>
         <div style={{ display: 'flex' }}>
           <Toggle
-            label="Enable gradient"
-            onText="Gradient enabled"
-            offText="Gradient disabled"
+            label="Enable Gradient"
+            onText="ON"
+            offText="OFF"
             checked={this.state.enableGradient}
             onChange={this._onToggleGradient}
           />
           <Toggle
-            label="Rounded corners"
+            label="Rounded Corners"
             onText="ON"
             offText="OFF"
             checked={this.state.roundedCorners}

@@ -81,16 +81,12 @@ describe('HorizontalBarChart snapShot testing', () => {
   });
 
   it('Should render gradients on bars', () => {
-    const component = renderer.create(
-      <HorizontalBarChart data={chartPoints} enableGradient={true} />,
-    );
+    const component = renderer.create(<HorizontalBarChart data={chartPoints} enableGradient={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   it('Should render rounded corners on bars', () => {
-    const component = renderer.create(
-      <HorizontalBarChart data={chartPoints} roundCorners={true} />,
-    );
+    const component = renderer.create(<HorizontalBarChart data={chartPoints} roundCorners={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

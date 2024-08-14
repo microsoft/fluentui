@@ -89,7 +89,7 @@ describe('StackedBarChart snapShot testing', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
-  
+
   it('renders enableGradient correctly', () => {
     const component = renderer.create(<StackedBarChart data={chartPoints} enableGradient={true} />);
     const tree = component.toJSON();

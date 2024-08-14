@@ -57,16 +57,16 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
         <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable Gradient"
-            onText="On"
-            offText="Off"
+            onText="ON"
+            offText="OF"
             onChange={this._onToggleGradient}
             checked={this.state.enableGradient}
           />
           &nbsp;&nbsp;
           <Toggle
-            label="Round Corners"
-            onText="On"
-            offText="Off"
+            label="Rounded Corners"
+            onText="ON"
+            offText="OFF"
             onChange={this._onToggleRoundCorners}
             checked={this.state.roundCorners}
           />

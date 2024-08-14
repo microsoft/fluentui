@@ -176,13 +176,8 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
               label="Pick one"
             />
-            <Toggle
-              label="Enable Gradient"
-              onText="Gradient enabled"
-              offText="Gradient disabled"
-              onChange={this._onToggleGradient}
-            />
-            <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
           </div>
         </div>
         <div style={rootStyle}>

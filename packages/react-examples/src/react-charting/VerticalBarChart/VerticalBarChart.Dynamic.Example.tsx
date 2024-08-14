@@ -216,14 +216,9 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             label="X-Axis type:"
           />
           &nbsp;&nbsp;
-          <Toggle
-            label="Enable Gradient"
-            onText="Gradient enabled"
-            offText="Gradient disabled"
-            onChange={this._onToggleGradient}
-          />
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
           &nbsp;&nbsp;
-          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </div>
 
         <div style={{ width: `${this.state.width}px`, height: '350px' }}>
