@@ -53,7 +53,7 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
 
     return (
       <>
-        <div style={{display: "flex"}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable Gradient"
             onText="On"
@@ -105,5 +105,4 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ roundCorners: checked });
   };
-
 }

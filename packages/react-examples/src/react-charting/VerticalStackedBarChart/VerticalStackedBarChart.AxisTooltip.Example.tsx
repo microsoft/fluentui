@@ -80,13 +80,13 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
     this.setState({ height: Number(e.target.value) });
   };
 
-  private _onToggleGradient = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
-  private _onToggleRoundedCorners = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
@@ -225,12 +225,7 @@ export class VerticalStackedBarChartTooltipExample extends React.Component<{}, I
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundedCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </Stack>
 
         <div style={rootStyle}>

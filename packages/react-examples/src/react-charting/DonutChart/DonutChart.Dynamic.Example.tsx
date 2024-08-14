@@ -48,20 +48,14 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       getGradientFromToken(DataVizGradientPalette.gradient3),
       getGradientFromToken(DataVizGradientPalette.gradient9),
     ],
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient2),
-      getGradientFromToken(DataVizGradientPalette.gradient4),
-    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
     [
       getGradientFromToken(DataVizGradientPalette.gradient5),
       getGradientFromToken(DataVizGradientPalette.gradient6),
       getGradientFromToken(DataVizGradientPalette.gradient10),
     ],
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient7),
-      getGradientFromToken(DataVizGradientPalette.gradient8),
-    ],
-  ]
+    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
+  ];
 
   constructor(props: IDonutChartProps) {
     super(props);
@@ -104,7 +98,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           checked={this.state.showLabelsInPercent}
           onChange={this._onShowPercentCheckChange}
         />
-        <div style={{display: "flex"}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable Gradient"
             onText="On"
@@ -187,7 +181,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     return getColorFromToken(this._colors[index][Math.floor(Math.random() * this._colors[index].length)]);
   }
 
-  private _randomGradient(index: number): string[] {
+  private _randomGradient(index: number): [string, string] {
     return this._gradientColors[index][Math.floor(Math.random() * this._gradientColors[index].length)];
   }
 

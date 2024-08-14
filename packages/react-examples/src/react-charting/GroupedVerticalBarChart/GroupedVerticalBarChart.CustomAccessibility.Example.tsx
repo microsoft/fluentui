@@ -46,11 +46,11 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
 
   private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
   private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const data: IGroupedVerticalBarChartData[] = [
@@ -216,12 +216,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             offText="Gradient disabled"
             onChange={this._onEnableGradientChange}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onRoundCornersChange}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
         </div>
 
         <div style={rootStyle}>

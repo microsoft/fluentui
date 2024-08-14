@@ -55,12 +55,7 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
           offText="Gradient disabled"
           onChange={this._onToggleGradient}
         />
-        <Toggle
-          label="Rounded corners"
-          onText="ON"
-          offText="OFF"
-          onChange={this._onToggleRoundCorners}
-        />
+        <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
 
         <br />
         <StackedBarChart

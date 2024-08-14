@@ -88,11 +88,11 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
   private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
   private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
@@ -309,12 +309,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             offText="Gradient disabled"
             onChange={this._onEnableGradientChange}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onRoundCornersChange}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
         </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>

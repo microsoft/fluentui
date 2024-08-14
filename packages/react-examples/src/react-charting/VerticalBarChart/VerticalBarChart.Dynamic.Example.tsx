@@ -223,12 +223,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
             onChange={this._onToggleGradient}
           />
           &nbsp;&nbsp;
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundedCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </div>
 
         <div style={{ width: `${this.state.width}px`, height: '350px' }}>
@@ -350,11 +345,11 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     return data;
   };
 
-  private _onToggleGradient = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
-  private _onToggleRoundedCorners = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 }

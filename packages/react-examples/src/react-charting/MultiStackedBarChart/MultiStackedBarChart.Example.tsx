@@ -8,7 +8,6 @@ import {
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
-
 export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
   const [enableGradient, setEnableGradient] = React.useState(false);
   const [roundCorners, setRoundCorners] = React.useState(false);
@@ -166,23 +165,23 @@ export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
 
   return (
     <>
-    <div style={{ display: 'flex' }}>
-          <Toggle
-            label="Enable Gradient"
-            onText="Gradient enabled"
-            offText="Gradient disabled"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(ev: any, checked: boolean) => setEnableGradient(checked)}
-          />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(ev: any, checked: boolean) => setRoundCorners(checked)}
-          />
-        </div>
-        <br />
+      <div style={{ display: 'flex' }}>
+        <Toggle
+          label="Enable Gradient"
+          onText="Gradient enabled"
+          offText="Gradient disabled"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={(ev: any, checked: boolean) => setEnableGradient(checked)}
+        />
+        <Toggle
+          label="Rounded corners"
+          onText="ON"
+          offText="OFF"
+          // eslint-disable-next-line react/jsx-no-bind
+          onChange={(ev: any, checked: boolean) => setRoundCorners(checked)}
+        />
+      </div>
+      <br />
       <MultiStackedBarChart
         data={data}
         hideDenominator={hideDenominator}

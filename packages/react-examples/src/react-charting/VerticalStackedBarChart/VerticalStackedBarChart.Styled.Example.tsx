@@ -46,13 +46,13 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
     return <div>{this._basicExample()}</div>;
   }
 
-  private _onToggleGradient = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
-  private _onToggleRoundedCorners = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
@@ -168,7 +168,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
             aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
-          <div style={{display: "flex"}}>
+          <div style={{ display: 'flex' }}>
             <ChoiceGroup
               options={options}
               defaultSelectedKey="MultiCallout"
@@ -182,12 +182,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               offText="Gradient disabled"
               onChange={this._onToggleGradient}
             />
-            <Toggle
-              label="Rounded corners"
-              onText="ON"
-              offText="OFF"
-              onChange={this._onToggleRoundedCorners}
-            />
+            <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
           </div>
         </div>
         <div style={rootStyle}>

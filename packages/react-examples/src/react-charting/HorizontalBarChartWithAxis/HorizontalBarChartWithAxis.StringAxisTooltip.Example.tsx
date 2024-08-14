@@ -38,12 +38,12 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
   }
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ enableGradient: checked});
+    this.setState({ enableGradient: checked });
   };
 
   private _onToggleRoundedCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ roundCorners: checked});
-  }
+    this.setState({ roundCorners: checked });
+  };
 
   private _basicStringAxisExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -86,12 +86,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded Corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundedCorners}
-          />
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </div>
 
         <div style={rootStyle}>

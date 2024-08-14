@@ -10,7 +10,6 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
@@ -65,12 +64,12 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
   };
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ enableGradient: checked});
+    this.setState({ enableGradient: checked });
   };
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ roundCorners: checked});
-  }
+    this.setState({ roundCorners: checked });
+  };
 
   private _basicExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
@@ -151,12 +150,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           offText="Gradient disabled"
           onChange={this._onToggleGradient}
         />
-        <Toggle
-          label="Rounded corners"
-          onText="ON"
-          offText="OFF"
-          onChange={this._onToggleRoundCorners}
-        />
+        <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         <br />
 
         <div style={rootStyle}>

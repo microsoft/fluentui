@@ -49,7 +49,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
 
     return (
       <>
-        <div style={{display: 'flex'}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable Gradient"
             onText="On"
@@ -86,9 +86,9 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, ID
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 }

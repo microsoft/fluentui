@@ -78,7 +78,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           styles={{ root: { marginTop: '20px' } }}
         />
 
-        <div style={{display: "flex"}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable gradient"
             onText="Gradient enabled"
@@ -99,17 +99,20 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: 33,
+            {
+              size: 33,
               color: DataVizPalette.success,
               gradient: getGradientFromToken(DataVizGradientPalette.success),
               legend: 'Low Risk',
             },
-            { size: 34,
+            {
+              size: 34,
               color: DataVizPalette.warning,
               gradient: getGradientFromToken(DataVizGradientPalette.warning),
               legend: 'Medium Risk',
             },
-            { size: 33,
+            {
+              size: 33,
               color: DataVizPalette.error,
               gradient: getGradientFromToken(DataVizGradientPalette.error),
               legend: 'High Risk',

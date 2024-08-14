@@ -8,7 +8,6 @@ import {
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DataVizGradientPalette, getGradientFromToken, getNextGradient } from '@fluentui/react-charting/lib/utilities/gradients';
 interface IGroupedBarChartState {
   width: number;
   height: number;
@@ -55,11 +54,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
 
   private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
   private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const data = [
@@ -238,12 +237,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             offText="Gradient disabled"
             onChange={this._onEnableGradientChange}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onRoundCornersChange}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
         </div>
         <div style={rootStyle}>
           <GroupedVerticalBarChart

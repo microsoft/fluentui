@@ -15,7 +15,6 @@ interface IStackedBarState {
 }
 
 export class StackedBarChartMultipleExample extends React.Component<{}, IStackedBarState> {
-
   constructor(props = {}) {
     super(props);
     this.state = {
@@ -38,7 +37,7 @@ export class StackedBarChartMultipleExample extends React.Component<{}, IStacked
     const chartTitle = 'Stacked bar chart 2nd example';
 
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle,
       chartData: points,
     };
 
@@ -51,12 +50,7 @@ export class StackedBarChartMultipleExample extends React.Component<{}, IStacked
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
         <br />
         <StackedBarChart

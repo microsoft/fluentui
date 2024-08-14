@@ -76,11 +76,11 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ enableGradient: checked });
-  }
+  };
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ roundCorners: checked });
-  }
+  };
 
   private _basicExample(): JSX.Element {
     const points: IVerticalBarChartDataPoint[] = [
@@ -237,12 +237,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>

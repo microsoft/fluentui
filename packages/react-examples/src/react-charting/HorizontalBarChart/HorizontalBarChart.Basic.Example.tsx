@@ -37,11 +37,11 @@ export class HorizontalBarChartBasicExample extends React.Component<
   };
 
   private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ enableGradient: checked});
+    this.setState({ enableGradient: checked });
   };
 
   private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.setState({ roundCorners: checked});
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample() {
@@ -148,7 +148,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
 
     return (
       <>
-        <div style={{display: 'flex'}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Show labels as percentage"
             onText="Chart mode percentage"
@@ -161,12 +161,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
 
         <div style={{ maxWidth: 600 }}>

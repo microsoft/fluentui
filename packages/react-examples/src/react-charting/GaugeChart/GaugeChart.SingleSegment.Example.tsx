@@ -69,7 +69,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
             <span>{this.state.chartValue}</span>
           </StackItem>
         </Stack>
-        <div style={{display: "flex"}}>
+        <div style={{ display: 'flex' }}>
           <Toggle
             label="Enable gradient"
             onText="Gradient enabled"
@@ -86,7 +86,6 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
           />
         </div>
 
-
         <GaugeChart
           width={this.state.width}
           height={this.state.height}
@@ -96,7 +95,7 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
               size: 100 - this.state.chartValue,
               color: DataVizPalette.disabled,
               gradient: getGradientFromToken(DataVizGradientPalette.disabled),
-              legend: 'Available'
+              legend: 'Available',
             },
           ]}
           chartValue={this.state.chartValue}

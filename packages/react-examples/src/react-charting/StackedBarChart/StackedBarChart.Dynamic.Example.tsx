@@ -76,20 +76,14 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
       getGradientFromToken(DataVizGradientPalette.gradient3),
       getGradientFromToken(DataVizGradientPalette.gradient9),
     ],
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient2),
-      getGradientFromToken(DataVizGradientPalette.gradient4),
-    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
     [
       getGradientFromToken(DataVizGradientPalette.gradient5),
       getGradientFromToken(DataVizGradientPalette.gradient6),
       getGradientFromToken(DataVizGradientPalette.gradient10),
     ],
-    [
-      getGradientFromToken(DataVizGradientPalette.gradient7),
-      getGradientFromToken(DataVizGradientPalette.gradient8),
-    ],
-  ]
+    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
+  ];
 
   constructor(props: IStackedBarChartProps) {
     super(props);
@@ -123,12 +117,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
             offText="Gradient disabled"
             onChange={this._onToggleGradient}
           />
-          <Toggle
-            label="Rounded corners"
-            onText="ON"
-            offText="OFF"
-            onChange={this._onToggleRoundCorners}
-          />
+          <Toggle label="Rounded corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
         <br />
 
@@ -221,7 +210,7 @@ export class StackedBarChartDynamicExample extends React.Component<{}, IExampleS
     return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
   }
 
-  private _randomGradient(index: number): string[] {
+  private _randomGradient(index: number): [string, string] {
     return this._gradientColors[index][Math.floor(Math.random() * this._gradientColors[index].length)];
   }
 
