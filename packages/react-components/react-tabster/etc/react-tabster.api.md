@@ -1486,7 +1486,7 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
 // @internal
-export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
+export const useMergedTabsterAttributes_unstable: (...attributes: Partial<Types.TabsterDOMAttribute>[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
