@@ -48,13 +48,6 @@ const useRootStyles = makeStyles({
     },
   },
 
-  // small size menubutton width override
-  small: {
-    [`& .${splitButtonClassNames.menuButton}`]: {
-      minWidth: 0,
-    },
-  },
-
   // Appearance variations
   outline: {
     /* No styles */
@@ -184,12 +177,11 @@ export const useSplitButtonStyles_unstable = (state: SplitButtonState): SplitBut
   const rootStyles = useRootStyles();
   const focusStyles = useFocusStyles();
 
-  const { appearance, disabled, disabledFocusable, size } = state;
+  const { appearance, disabled, disabledFocusable } = state;
 
   state.root.className = mergeClasses(
     splitButtonClassNames.root,
     rootStyles.base,
-    size === 'small' && rootStyles.small,
     appearance && rootStyles[appearance],
     (disabled || disabledFocusable) && rootStyles.disabled,
     (disabled || disabledFocusable) && rootStyles.disabledHighContrast,
