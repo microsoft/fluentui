@@ -79,7 +79,7 @@ import {
 
 export const Default = () => {
   const [selectedColor, setSelectedColor] = React.useState('rgba(0, 255, 170, 1)');
-  const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
+  const handleChange: ColorPickerProps['onChange'] = (_, data) => {
     setSelectedColor(data.selectedColorHex);
   };
 
