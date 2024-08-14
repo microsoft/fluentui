@@ -291,7 +291,7 @@ For color manipulation and conversion `tinycolor` library will be used.
 <div class="fui-ColorSlider" role="group">
   <input id="slider" type="range" value="100" aria-valuetext="100, red" max="360">
   <div class="fui-ColorSlider__rail" ></div>
-  <div class="fui-ColorSlider__thumb" role="presentation"></div>
+  <div class="fui-ColorSlider__thumb"></div>
 </div>
 ```
 
