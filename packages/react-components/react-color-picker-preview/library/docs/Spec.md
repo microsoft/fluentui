@@ -58,18 +58,18 @@ const ColorPickerBasicExample: React.FunctionComponent = () => {
 
 ### Components
 
-| Purpose                                                                  | Fabric (V8)    | V9          | Matching? |
-| ------------------------------------------------------------------------ | -------------- | ----------- | --------- |
-| Component responsible for color editing using ColorArea and ColorSliders | ColorPicker    | ColorPicker | ⚠️        |
-| ColorArea allows user to pick a color using two channels                 | ColorRectangle | ColorArea   | ⚠️        |
-| ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ⚠️        |
-| AlphaSlider allows user to pick a color using alpha channel              |                | AlphaSlider | ❌        |
+| Purpose                                                                  | Fabric (V8)    | Spectrum    | V9                 | Matching? |
+| ------------------------------------------------------------------------ | -------------- | ----------- | ------------------ | --------- |
+| Component responsible for color editing using ColorArea and ColorSliders | ColorPicker    | ColorPicker | ColorPickerPalette | ⚠️        |
+| ColorArea allows user to pick a color using two channels                 | ColorRectangle | ColorArea   | ColorArea          | ⚠️        |
+| ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ColorSlider        | ⚠️        |
+| AlphaSlider allows user to pick a color using alpha channel              |                |             | AlphaSlider        | ❌        |
 
 ## Sample Code of proposed API below
 
 ```jsx
 import {
-  ColorPicker,
+  ColorPickerPalette,
   ColorArea,
   ColorSliderProps,
   AlphaSlider,
@@ -85,11 +85,11 @@ export const Default = () => {
 
   return (
     <>
-      <ColorPicker color={selectedColor} onChange={handleChange}>
+      <ColorPickerPalette color={selectedColor} onChange={handleChange}>
         <ColorArea />
         <AlphaSlider />
         <HueSlider />
-      </ColorPicker>
+      </ColorPickerPalette>
       <div style={{ backgroundColor: `${selectedColor}` }} />
     </>
   );
@@ -146,7 +146,7 @@ Color has `string` type because all the color manipulations will be done inside 
 Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
 
 ```tsx
-import { ColorPickerLayout } from '@fluentui/react-color-picker-preview';
+import { ColorPicker } from '@fluentui/react-color-picker-preview';
 
 export const Default = () => {
   const COLOR = 'rgba(0, 255, 170, 1)';
@@ -157,7 +157,7 @@ export const Default = () => {
 
   return (
     <>
-      <ColorPickerLayout
+      <ColorPicker
         color={selectedColor}
         onChange={handleChange}
         showAlphaSlider={true}
@@ -170,7 +170,7 @@ export const Default = () => {
 };
 ```
 
-![ColorPickerLayout](./assets/color-picker-layout.jpg)
+![ColorPickerPalette](./assets/color-picker-layout.jpg)
 
 Validation of color fields will be in `utils`. Validation should not allow entering incorrect values to the input fields.
 
@@ -243,21 +243,21 @@ For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/
 
 ### Components
 
-| Component   | Purpose                                      |
-| ----------- | -------------------------------------------- |
-| ColorPicker | Renders ColorPicker                          |
-| ColorArea   | Renders two-dimensional gradient background. |
-| ColorSlider | Renders individual color channel             |
-| AlphaSlider | Renders slider with alpha channel            |
+| Component          | Purpose                                      |
+| ------------------ | -------------------------------------------- |
+| ColorPickerPalette | Renders ColorPicker                          |
+| ColorArea          | Renders two-dimensional gradient background. |
+| ColorSlider        | Renders individual color channel             |
+| AlphaSlider        | Renders slider with alpha channel            |
 
-#### ColorPicker component
+#### ColorPickerPalette component
 
-![ColorPicker Anatomy](./assets/color-picker-anatomy.jpg)
+![ColorPickerPalette Anatomy](./assets/color-picker-anatomy.jpg)
 
 #### DOM
 
 ```HTML
-<div role="group" class="fui-ColorPicker" arial-label="ColorPicker">
+<div role="group" class="fui-ColorPickerPalette" arial-label="ColorPicker">
   <!-- Content rendered here -->
 </div>
 ```
