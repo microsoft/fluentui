@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: simplifies useMergedTabsterAttributes internals",
+  "packageName": "@fluentui/react-tabster",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

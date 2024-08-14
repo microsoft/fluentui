@@ -14,41 +14,38 @@ export const useMergedTabsterAttributes_unstable = (
 ): Types.TabsterDOMAttribute => {
   'use no memo';
 
-  const stringAttributes = attributes.map(attribute => attribute[TABSTER_ATTRIBUTE_NAME]).filter(Boolean) as string[];
-
-  return React.useMemo(() => {
-    let attribute = stringAttributes[0];
-    attributes.shift();
-
-    for (const attr of stringAttributes) {
-      attribute = mergeAttributes(attribute, attr);
+  const stringAttributes = attributes.reduce<string[]>((acc, curr) => {
+    if (curr[TABSTER_ATTRIBUTE_NAME]) {
+      acc.push(curr[TABSTER_ATTRIBUTE_NAME]);
     }
+    return acc;
+  }, []);
 
-    return { [TABSTER_ATTRIBUTE_NAME]: attribute };
+  return React.useMemo(
+    () => ({
+      [TABSTER_ATTRIBUTE_NAME]: stringAttributes.length > 0 ? stringAttributes.reduce(mergeJSONStrings) : undefined,
+    }),
+    // disable exhaustive-deps because we want to memoize the result of the reduction
+    // this is safe because the collection of attributes is not expected to change at runtime
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, stringAttributes);
+    stringAttributes,
+  );
 };
 
-function mergeAttributes(a: string, b?: string): string {
-  if (!b) {
-    return a;
-  }
+/**
+ * Merges two JSON strings into one.
+ */
+const mergeJSONStrings = (a: string, b: string): string =>
+  JSON.stringify(Object.assign(safelyParseJSON(a), safelyParseJSON(b)));
 
-  let aParsed = {};
-  let bParsed = {};
-  if (a) {
-    try {
-      aParsed = JSON.parse(a);
-      // eslint-disable-next-line no-empty
-    } catch {}
+/**
+ * Tries to parse a JSON string and returns an object.
+ * If the JSON string is invalid, an empty object is returned.
+ */
+const safelyParseJSON = (json: string): object => {
+  try {
+    return JSON.parse(json);
+  } catch {
+    return {};
   }
-
-  if (b) {
-    try {
-      bParsed = JSON.parse(b);
-      // eslint-disable-next-line no-empty
-    } catch {}
-  }
-
-  return JSON.stringify({ ...aParsed, ...bParsed });
-}
+};
