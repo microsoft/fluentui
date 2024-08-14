@@ -15,12 +15,12 @@
   },
   "dependencies": {
     "@griffel/eslint-plugin": "^1.6.3",
-    "@rnx-kit/eslint-plugin": "^0.5.3",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/utils": "^6.21.0",
-    "@typescript-eslint/rule-tester": "6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "@typescript-eslint/type-utils": "^6.21.0",
+    "@rnx-kit/eslint-plugin": "^0.7.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/utils": "^7.18.0",
+    "@typescript-eslint/rule-tester": "7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/type-utils": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "eslint": "^8.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.7.5"
   },
   "files": [
     "src"

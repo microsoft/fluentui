@@ -50,7 +50,7 @@ module.exports = createRule({
      * @param {string} exportName
      */
     function checkContextType(node, exportName) {
-      const currentFileName = context.getFilename();
+      const currentFileName = context.filename;
       if (exclude.some(pattern => minimatch(currentFileName, pattern))) {
         return;
       }
@@ -102,7 +102,7 @@ module.exports = createRule({
               messageId: options.messageId,
               data: {
                 exportName,
-                filename: context.getFilename(),
+                filename: context.filename,
               },
             });
           }

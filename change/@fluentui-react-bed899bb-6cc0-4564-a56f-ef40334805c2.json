@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ScrollablePane/Sticky: Allow remounting for react 18 strict mode",
-  "packageName": "@fluentui/react",
-  "email": "420834+andyrooger@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

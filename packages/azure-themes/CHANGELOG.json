@@ -2,6 +2,27 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 14 Aug 2024 07:21:41 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.92",
+      "version": "8.6.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "a07b680c20e41dbc5f61d2f7d6816b7f5b906cce",
+            "comment": "disabledfocus button fix and detailslist indetermineate UI feature"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.120.4",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:17 GMT",
       "tag": "@fluentui/azure-themes_v8.6.91",
       "version": "8.6.91",
