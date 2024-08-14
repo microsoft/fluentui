@@ -4,6 +4,7 @@
   "private": true,
   "type": "commonjs",
   "generators": "./generators.json",
+  "executors": "./executors.json",
   "scripts": {
     "test": "jest --passWithNoTests",
     "type-check": "node  ./scripts/type-check.mjs",
