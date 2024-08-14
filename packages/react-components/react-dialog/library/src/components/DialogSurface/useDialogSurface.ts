@@ -1,4 +1,5 @@
 import { Escape } from '@fluentui/keyboard-keys';
+import { presenceMotionSlot, type PresenceMotionSlotProps } from '@fluentui/react-motion';
 import {
   useEventCallback,
   useMergedRefs,
@@ -11,6 +12,8 @@ import * as React from 'react';
 
 import { useDialogContext_unstable } from '../../contexts';
 import { useDisableBodyScroll } from '../../utils/useDisableBodyScroll';
+import { DialogBackdropMotion } from '../DialogBackdropMotion';
+import { useMotionForwardedRef } from '../MotionRefForwarder';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 
 /**
@@ -26,6 +29,8 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
+  const contextRef = useMotionForwardedRef();
+
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
@@ -89,7 +94,15 @@ export const useDialogSurface_unstable = (
   }, [enableBodyScroll, isNestedDialog, disableBodyScroll, modalType]);
 
   return {
-    components: { backdrop: 'div', root: 'div' },
+    components: {
+      backdrop: 'div',
+      root: 'div',
+      // TODO: remove once React v18 slot API is modified
+      // This is a problem at the moment due to UnknownSlotProps assumption
+      // that `children` property is `ReactNode`, which in this case is not valid
+      // as PresenceComponentProps['children'] is `ReactElement`
+      backdropMotion: DialogBackdropMotion as React.FC<PresenceMotionSlotProps>,
+    },
     open,
     backdrop,
     isNestedDialog,
@@ -106,10 +119,17 @@ export const useDialogSurface_unstable = (
         // FIXME:
         // `DialogSurfaceElement` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
         // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: useMergedRefs(ref, dialogRef) as React.Ref<HTMLDivElement>,
+        ref: useMergedRefs(ref, contextRef, dialogRef) as React.Ref<HTMLDivElement>,
       }),
       { elementType: 'div' },
     ),
+    backdropMotion: presenceMotionSlot(props.backdropMotion, {
+      elementType: DialogBackdropMotion,
+      defaultProps: {
+        appear: true,
+        visible: open,
+      },
+    }),
 
     // Deprecated properties
     transitionStatus: undefined,

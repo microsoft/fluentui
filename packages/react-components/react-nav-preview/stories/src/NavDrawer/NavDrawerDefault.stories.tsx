@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
+  AppItem,
   Hamburger,
   NavCategory,
   NavCategoryItem,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
@@ -13,7 +15,7 @@ import {
   NavSubItemGroup,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -42,6 +44,7 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  PersonCircle32Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -94,14 +97,23 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
+  const renderHamburgerWithToolTip = () => {
+    return (
+      <Tooltip content="Navigation" relationship="label">
+        <Hamburger onClick={() => setIsOpen(!isOpen)} />
+      </Tooltip>
+    );
+  };
+
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" open={isOpen} type={type}>
-        <NavDrawerHeader>
-          <Hamburger onClick={() => setIsOpen(false)} />
-        </NavDrawerHeader>
+        <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
+
         <NavDrawerBody>
-          <NavSectionHeader>Home</NavSectionHeader>
+          <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
+            Contoso HR
+          </AppItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -117,7 +129,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
             Performance Reviews
           </NavItem>
-
           <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
@@ -167,8 +178,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-
-          <NavSectionHeader>Analytics</NavSectionHeader>
+          <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
@@ -178,7 +188,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
-        {!isOpen && <Hamburger onClick={() => setIsOpen(true)} />}
+        {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
           <Label id={typeLableId}>Type</Label>
           <RadioGroup
@@ -192,7 +202,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <Label id={linkLabelId}>Links</Label>
           <Switch
             checked={enabledLinks}
-            onChange={(_, data) => setEnabledLinks(data.checked as boolean)}
+            onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />

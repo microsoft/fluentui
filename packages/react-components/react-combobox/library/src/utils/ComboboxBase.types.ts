@@ -37,6 +37,13 @@ export type ComboboxBaseProps = SelectionProps &
     defaultValue?: string;
 
     /**
+     * Disable auto-focusing on the first item when mounting.
+     *
+     * @default false
+     */
+    disableAutoFocus?: boolean;
+
+    /**
      * Render the combobox's popup inline in the DOM.
      * This has accessibility benefits, particularly for touch screen readers.
      */
@@ -60,7 +67,9 @@ export type ComboboxBaseProps = SelectionProps &
     placeholder?: string;
 
     /**
-     * Configure the positioning of the combobox dropdown
+     * Configure the positioning of the combobox dropdown.
+     * Please refer to the [positioning documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)
+     * for more details.
      *
      * @defaultvalue below
      */

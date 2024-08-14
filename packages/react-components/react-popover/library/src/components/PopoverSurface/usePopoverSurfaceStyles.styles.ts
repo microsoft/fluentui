@@ -22,11 +22,15 @@ const useStyles = makeStyles({
   root: {
     color: tokens.colorNeutralForeground1,
     backgroundColor: tokens.colorNeutralBackground1,
-    boxShadow: tokens.shadow16,
     borderRadius: tokens.borderRadiusMedium,
     border: `1px solid ${tokens.colorTransparentStroke}`,
     ...typographyStyles.body1,
     ...createSlideStyles(10),
+
+    // TODO need to add versions of tokens.alias.shadow.shadow16, etc. that work with filter
+    filter:
+      `drop-shadow(0 0 2px ${tokens.colorNeutralShadowAmbient}) ` +
+      `drop-shadow(0 8px 16px ${tokens.colorNeutralShadowKey})`,
   },
 
   inline: {
@@ -60,6 +64,8 @@ const useStyles = makeStyles({
  * Apply styling to the PopoverSurface slots based on the state
  */
 export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): PopoverSurfaceState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,

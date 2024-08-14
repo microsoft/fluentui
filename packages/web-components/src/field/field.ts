@@ -1,4 +1,5 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { uniqueId } from '@microsoft/fast-web-utilities';
 import { toggleState } from '../utils/element-internals.js';
 import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.js';
 
@@ -7,16 +8,27 @@ import { LabelPosition, SlottableInput, ValidationFlags } from './field.options.
  *
  * @public
  */
-export class Field extends FASTElement {
+export class BaseField extends FASTElement {
   /**
-   * The position of the label relative to the input.
+   * The slotted label elements.
    *
-   * @public
-   * @remarks
-   * HTML Attribute: `label-position`
+   * @internal
    */
-  @attr({ attribute: 'label-position' })
-  public labelPosition: LabelPosition = LabelPosition.above;
+  @observable
+  public labelSlot: Node[] = [];
+
+  /**
+   * Updates attributes on the slotted label elements.
+   *
+   * @param prev - the previous list of slotted label elements
+   * @param next - the current list of slotted label elements
+   */
+  protected labelSlotChanged(prev: Node[], next: Node[]) {
+    if (next && this.input) {
+      this.setLabelProperties();
+      this.setStates();
+    }
+  }
 
   /**
    * The slotted message elements. Filtered to only include elements with a `flag` attribute.
@@ -34,6 +46,8 @@ export class Field extends FASTElement {
    * @internal
    */
   public messageSlotChanged(prev: Element[], next: Element[]) {
+    toggleState(this.elementInternals, 'has-message', !!next.length);
+
     if (!next.length) {
       this.removeEventListener('invalid', this.invalidHandler, { capture: true });
       return;
@@ -60,9 +74,8 @@ export class Field extends FASTElement {
    * @internal
    */
   public slottedInputsChanged(prev: SlottableInput[] | undefined, next: SlottableInput[] | undefined) {
-    this.input = next?.[0] as SlottableInput;
-
-    if (this.input) {
+    if (next?.length) {
+      this.input = next?.[0] as SlottableInput;
       this.setStates();
     }
   }
@@ -79,7 +92,21 @@ export class Field extends FASTElement {
    *
    * @public
    */
+  @observable
   public input!: SlottableInput;
+
+  /**
+   * Updates the field's states and label properties when the assigned input changes.
+   *
+   * @param prev - the previous input
+   * @param next - the current input
+   */
+  public inputChanged(prev: SlottableInput | undefined, next: SlottableInput | undefined) {
+    if (next) {
+      this.setStates();
+      this.setLabelProperties();
+    }
+  }
 
   /**
    * Calls the `setStates` method when a `change` event is emitted from the slotted input.
@@ -87,23 +114,30 @@ export class Field extends FASTElement {
    * @param e - the event object
    * @internal
    */
-  public changeHandler(e: Event): void {
+  public changeHandler(e: Event): boolean | void {
     this.setStates();
+    this.setValidationStates();
+
+    return true;
   }
 
   /**
    * Redirects `click` events to the slotted input.
    *
+   * @param e - the event object
    * @internal
    */
   public clickHandler(e: MouseEvent): boolean | void {
-    if (this.isSameNode(e.target as Node | null)) {
-      this.input.focus();
+    if (this === e.target) {
       this.input.click();
-      return;
     }
 
     return true;
+  }
+
+  constructor() {
+    super();
+    this.elementInternals.role = 'presentation';
   }
 
   /**
@@ -113,7 +147,7 @@ export class Field extends FASTElement {
    * @internal
    */
   public focusinHandler(e: FocusEvent): boolean | void {
-    if ((e.target as HTMLElement).matches(':focus-visible')) {
+    if (this.matches(':focus-within:has(> :focus-visible)')) {
       toggleState(this.elementInternals, 'focus-visible', true);
     }
 
@@ -142,7 +176,27 @@ export class Field extends FASTElement {
       e.preventDefault();
     }
 
-    this.setStates();
+    this.setValidationStates();
+  }
+
+  /**
+   * Sets ARIA and form-related attributes on slotted label elements.
+   *
+   * @internal
+   */
+  private setLabelProperties() {
+    if (this.$fastController.isConnected) {
+      this.input.id = this.input.id || uniqueId('input');
+
+      this.labelSlot?.forEach(label => {
+        if (label instanceof HTMLLabelElement) {
+          label.htmlFor = label.htmlFor || this.input.id;
+          label.id = label.id || `${this.input.id}--label`;
+          label.setAttribute('aria-hidden', 'true');
+          this.input.setAttribute('aria-labelledby', label.id);
+        }
+      });
+    }
   }
 
   /**
@@ -155,14 +209,35 @@ export class Field extends FASTElement {
       toggleState(this.elementInternals, 'disabled', !!this.input.disabled);
       toggleState(this.elementInternals, 'readonly', !!this.input.readOnly);
       toggleState(this.elementInternals, 'required', !!this.input.required);
-
-      if (!this.input.validity) {
-        return;
-      }
-
-      for (const [flag, value] of Object.entries(ValidationFlags)) {
-        toggleState(this.elementInternals, value, !!this.input.validity[flag as keyof ValidityState]);
-      }
+      toggleState(this.elementInternals, 'checked', !!this.input.checked);
     }
   }
+
+  public setValidationStates() {
+    if (!this.input.validity) {
+      return;
+    }
+
+    for (const [flag, value] of Object.entries(ValidationFlags)) {
+      toggleState(this.elementInternals, value, this.input.validity[flag as keyof ValidityState]);
+    }
+  }
+}
+
+/**
+ * A Field Custom HTML Element.
+ * Based on BaseField and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Field extends BaseField {
+  /**
+   * The position of the label relative to the input.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `label-position`
+   */
+  @attr({ attribute: 'label-position' })
+  public labelPosition: LabelPosition = LabelPosition.above;
 }

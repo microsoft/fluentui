@@ -4,8 +4,6 @@ import { renderComponent } from '../helpers.stories.js';
 import type { Button as FluentButton } from './button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
 
-import './define.js';
-
 const storyTemplate = html<StoryArgs<FluentButton>>`
   <fluent-button
     appearance="${x => x.appearance}"

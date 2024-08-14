@@ -213,6 +213,7 @@ exports[`TagItem accepts title override 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -342,6 +343,7 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           ms-Icon
           {
             display: inline-block;
+            text-decoration: inherit;
           }
           {
             -moz-osx-font-smoothing: grayscale;
@@ -488,6 +490,7 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -739,6 +742,7 @@ exports[`TagItem renders correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;

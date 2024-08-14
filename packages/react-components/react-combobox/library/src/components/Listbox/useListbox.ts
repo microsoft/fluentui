@@ -38,7 +38,9 @@ const UNSAFE_noLongerUsed = {
  * @param ref - reference to root HTMLElement of Listbox
  */
 export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElement>): ListboxState => {
-  const { multiselect } = props;
+  'use no memo';
+
+  const { multiselect, disableAutoFocus = false } = props;
   const optionCollection = useOptionCollection();
 
   const {
@@ -154,23 +156,28 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       };
 
   React.useEffect(() => {
-    if (!hasParentActiveDescendantContext) {
-      // disable focus-visible attributes until focus is received
-      activeDescendantController.hideFocusVisibleAttributes();
+    // if the listbox has a parent context, that parent context should handle the activedescendant
+    if (hasParentActiveDescendantContext) {
+      return;
     }
 
-    // if it is single-select and there is a selected option, start at the selected option
-    if (!multiselect && optionContextValues.selectedOptions.length > 0) {
-      const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
+    // disable focus-visible attributes until focus is received
+    activeDescendantController.hideFocusVisibleAttributes();
 
-      if (selectedOption?.id) {
-        activeDescendantController.focus(selectedOption.id);
+    if (!disableAutoFocus) {
+      // if it is single-select and there is a selected option, start at the selected option
+      if (!multiselect && optionContextValues.selectedOptions.length > 0) {
+        const selectedOption = getOptionsMatchingValue(v => v === optionContextValues.selectedOptions[0]).pop();
+
+        if (selectedOption?.id) {
+          activeDescendantController.focus(selectedOption.id);
+        }
       }
-    }
 
-    // otherwise start at the first option
-    else {
-      activeDescendantController.first();
+      // otherwise start at the first option
+      else {
+        activeDescendantController.first();
+      }
     }
 
     return () => {

@@ -79,6 +79,7 @@ const useStyles = makeStyles({
   selected: {},
 
   checkIcon: {
+    flexShrink: 0,
     fontSize: tokens.fontSizeBase400,
     // Shift icon(s) to the left to give text content extra spacing without needing an extra node
     // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
@@ -131,6 +132,8 @@ const useStyles = makeStyles({
  * Apply styling to the Option slots based on the state
  */
 export const useOptionStyles_unstable = (state: OptionState): OptionState => {
+  'use no memo';
+
   const { disabled, multiselect, selected } = state;
   const styles = useStyles();
   state.root.className = mergeClasses(

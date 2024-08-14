@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import {
   TagPicker,
   TagPickerControl,
@@ -12,16 +12,17 @@ import {
 } from '@fluentui/react-tag-picker';
 import { Tag } from '@fluentui/react-tags';
 import { Avatar } from '@fluentui/react-avatar';
-import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities/getStoryVariant';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, StoryWright } from 'storywright';
 import { ArrowDownFilled } from '@fluentui/react-icons';
 import { Button } from '@fluentui/react-button';
 
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
+
 export default {
   title: 'TagPicker',
-} as ComponentMeta<typeof TagPicker>;
+} satisfies Meta<typeof TagPicker>;
 
 const options = [
   'John Doe',
@@ -76,10 +77,12 @@ export const Default = (props: Pick<TagPickerProps, 'appearance' | 'size'>) => {
     </div>
   );
 };
-
 Default.storyName = 'default';
+
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
+
 export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
+
 export const DefaultRTL = getStoryVariant(Default, RTL);
 
 export const DefaultOpen = () => {
@@ -133,10 +136,12 @@ export const DefaultOpen = () => {
     </StoryWright>
   );
 };
-
 DefaultOpen.storyName = 'default open';
+
 export const DefaultOpenDarkMode = getStoryVariant(DefaultOpen, DARK_MODE);
+
 export const DefaultOpenHighContrast = getStoryVariant(DefaultOpen, HIGH_CONTRAST);
+
 export const DefaultOpenRTL = getStoryVariant(DefaultOpen, RTL);
 
 const useStyles = makeStyles({
@@ -174,10 +179,12 @@ export const Appearance = () => {
     </>
   );
 };
-
 Appearance.storyName = 'appearance';
+
 export const AppearanceDarkMode = getStoryVariant(Appearance, DARK_MODE);
+
 export const AppearanceHighContrast = getStoryVariant(Appearance, HIGH_CONTRAST);
+
 export const AppearanceRTL = getStoryVariant(Appearance, RTL);
 
 export const Size = () => (
@@ -197,8 +204,11 @@ export const Size = () => (
   </>
 );
 Size.storyName = 'size';
+
 export const SizeDarkMode = getStoryVariant(Size, DARK_MODE);
+
 export const SizeHighContrast = getStoryVariant(Size, HIGH_CONTRAST);
+
 export const SizeRTL = getStoryVariant(Size, RTL);
 
 export const Disabled = () => {
@@ -251,8 +261,11 @@ export const Disabled = () => {
   );
 };
 Disabled.storyName = 'disabled';
+
 export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
+
 export const DisabledHighContrast = getStoryVariant(Disabled, HIGH_CONTRAST);
+
 export const DisabledRTL = getStoryVariant(Disabled, RTL);
 
 export const ExpandIcon = () => {
@@ -366,8 +379,11 @@ export const Grouped = () => {
   );
 };
 Grouped.storyName = 'grouped';
+
 export const GroupedDarkMode = getStoryVariant(Grouped, DARK_MODE);
+
 export const GroupedHighContrast = getStoryVariant(Grouped, HIGH_CONTRAST);
+
 export const GroupedRTL = getStoryVariant(Grouped, RTL);
 
 export const SecondaryAction = () => {
@@ -422,6 +438,9 @@ export const SecondaryAction = () => {
   );
 };
 SecondaryAction.storyName = 'secondary action';
+
 export const SecondaryActionDarkMode = getStoryVariant(SecondaryAction, DARK_MODE);
+
 export const SecondaryActionHighContrast = getStoryVariant(SecondaryAction, HIGH_CONTRAST);
+
 export const SecondaryActionRTL = getStoryVariant(SecondaryAction, RTL);

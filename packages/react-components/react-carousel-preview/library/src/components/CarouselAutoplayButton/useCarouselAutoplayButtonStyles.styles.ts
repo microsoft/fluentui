@@ -1,11 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselAutoplayButtonSlots, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
+import { useToggleButtonStyles_unstable } from '@fluentui/react-button';
+import { tokens } from '@fluentui/react-theme';
 
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots> = {
   root: 'fui-CarouselAutoplayButton',
-  // TODO: add class names for all slots on CarouselAutoplayButtonSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselAutoplayButton__<slotName>`
+  icon: 'fui-CarouselAutoplayButton__icon',
 };
 
 /**
@@ -13,7 +14,14 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    ...shorthands.borderColor(tokens.colorTransparentStroke),
+    color: tokens.colorNeutralForeground2,
+    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    ':hover': {
+      cursor: 'pointer',
+    },
   },
 
   // TODO add additional classes for different states and/or slots
@@ -25,11 +33,16 @@ const useStyles = makeStyles({
 export const useCarouselAutoplayButtonStyles_unstable = (
   state: CarouselAutoplayButtonState,
 ): CarouselAutoplayButtonState => {
-  const styles = useStyles();
-  state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
+  'use no memo';
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  const styles = useStyles();
+
+  useToggleButtonStyles_unstable(state);
+
+  state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
+  if (state.icon) {
+    state.icon.className = mergeClasses(carouselAutoplayButtonClassNames.icon, state.icon.className);
+  }
 
   return state;
 };

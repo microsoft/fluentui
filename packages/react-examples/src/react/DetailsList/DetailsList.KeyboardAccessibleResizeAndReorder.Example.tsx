@@ -35,7 +35,7 @@ const controlWrapperClass = mergeStyles({
   flexWrap: 'wrap',
 });
 const textFieldStyles: Partial<ITextFieldStyles> = {
-  root: { margin: margin },
+  root: { margin },
   fieldGroup: { maxWidth: '100px' },
 };
 const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
@@ -62,7 +62,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     return {
       frozenColumnCountFromStart: parseInt(frozenColumnCountFromStart, 10),
       frozenColumnCountFromEnd: parseInt(frozenColumnCountFromEnd, 10),
-      handleColumnReorder: handleColumnReorder,
+      handleColumnReorder,
     };
   };
 
@@ -110,7 +110,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     if (columnToEdit.current && input.current && detailsList) {
       if (clickHandler.current === RESIZE) {
         const width = input.current;
-        detailsList.updateColumn(columnToEdit.current, { width: width });
+        detailsList.updateColumn(columnToEdit.current, { width });
       } else if (clickHandler.current === REORDER) {
         const targetIndex = selection.mode ? input.current + 1 : input.current;
         detailsList.updateColumn(columnToEdit.current, { newColumnIndex: targetIndex });
@@ -135,7 +135,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
     ];
 
     return {
-      items: items,
+      items,
       target: ev.currentTarget as HTMLElement,
       gapSpace: 10,
       isBeakVisible: true,
@@ -192,6 +192,46 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const detailsListRef = React.useRef<IDetailsList>(null);
   const input = React.useRef<number | null>(null);
   const focusZoneRef = React.useRef<IFocusZone>(null);
+
+  /** This callback provides support for keyboard shortcuts to resize & reorder columns */
+  const onColumnKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent, column: IColumn): void => {
+      const detailsList = detailsListRef.current;
+
+      if (ev.shiftKey) {
+        const indexOffset = 1 + selection.mode ? 1 : 0;
+        const columnIndex = columns.findIndex(x => x.key === column.key) + indexOffset;
+        switch (ev.key) {
+          case 'ArrowLeft':
+            if (columnIndex > 0) {
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset - 1 });
+            }
+            break;
+          case 'ArrowRight':
+            if (columnIndex < columns.length - 1) {
+              detailsList?.updateColumn(column, { newColumnIndex: columnIndex + indexOffset + 1 });
+            }
+            break;
+        }
+      }
+      if (ev.ctrlKey) {
+        ev.preventDefault();
+        switch (ev.key) {
+          case 'ArrowLeft':
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 0.9 : column.minWidth,
+            });
+            break;
+          case 'ArrowRight':
+            detailsList?.updateColumn(column, {
+              width: column?.currentWidth ? column?.currentWidth * 1.1 : column.minWidth,
+            });
+            break;
+        }
+      }
+    },
+    [columns, selection.mode],
+  );
 
   const insertBeforeItem = React.useCallback(
     (item: IExampleItem) => {
@@ -282,6 +322,11 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
 
   return (
     <div>
+      <p>
+        This example demonstrates how to implement reordering and resizing in a way that is both keyboard-accessible and
+        meets WCAG 2.2's{' '}
+        <a href="https://w3c.github.io/wcag/understanding/dragging-movements.html">Dragging Movements</a> requirement.
+      </p>
       <div className={controlWrapperClass}>
         <Toggle
           label="Enable column reorder"
@@ -312,7 +357,7 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
           focusZoneProps={{ componentRef: focusZoneRef }}
           setKey="items"
           items={sortedItems}
-          columns={columns}
+          columns={columns.map(x => ({ ...x, onColumnKeyDown }))}
           selection={selection}
           selectionPreservedOnEmptyClick={true}
           onItemInvoked={onItemInvoked}

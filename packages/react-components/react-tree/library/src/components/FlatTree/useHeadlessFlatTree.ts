@@ -17,6 +17,7 @@ import {
   TreeOpenChangeEvent,
   TreeProps,
 } from '../Tree/Tree.types';
+import { ImmutableMap } from '../../utils/ImmutableMap';
 
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = HeadlessTreeItem<Props>;
@@ -119,6 +120,8 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
   props: Props[],
   options: HeadlessFlatTreeOptions = {},
 ): HeadlessFlatTreeReturn<Props> {
+  'use no memo';
+
   const headlessTree = React.useMemo(() => createHeadlessTree(props), [props]);
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);
@@ -129,7 +132,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
     const nextOpenItems = createNextOpenItems(data, openItems);
     options.onOpenChange?.(event, {
       ...data,
-      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+      openItems: ImmutableSet.dangerouslyGetInternalSet(nextOpenItems),
     });
     setOpenItems(nextOpenItems);
   });
@@ -138,7 +141,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
     const nextCheckedItems = createNextFlatCheckedItems(data, checkedItems, headlessTree);
     options.onCheckedChange?.(event, {
       ...data,
-      checkedItems: nextCheckedItems.dangerouslyGetInternalMap_unstable(),
+      checkedItems: ImmutableMap.dangerouslyGetInternalMap(nextCheckedItems),
     });
     setCheckedItems(nextCheckedItems);
   });

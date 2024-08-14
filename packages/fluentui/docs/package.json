@@ -22,7 +22,7 @@
     "@fluentui/react-telemetry": "*",
     "@fluentui/styles": "*",
     "@hot-loader/react-dom": "17.0.2",
-    "@mdx-js/react": "^1.5.5",
+    "@mdx-js/react": "^2.3.0",
     "classnames": "^2.2.6",
     "color": "^3.1.0",
     "copy-to-clipboard": "^3.2.0",
@@ -66,16 +66,16 @@
     "access": "public"
   },
   "scripts": {
-    "build": "gulp build:docs",
-    "prebuild:storybook": "lage build:info --to @fluentui/react-northstar @fluentui/react-component-ref @fluentui/react-bindings",
-    "build:storybook": "build-storybook --no-manager-cache -o dist/storybook",
+    "bundle": "gulp build:docs",
+    "prepare-storybook": "nx run-many -t build:info -p react-northstar react-component-ref react-bindings --nxBail",
+    "prebuild-storybook": "yarn run prepare-storybook --verbose",
+    "build-storybook": "storybook build -o dist/storybook",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "start": "gulp docs",
     "start:profile": "cross-env NODE_ENV=production PERF=true gulp docs",
-    "prestart:storybook": "lage build:info --to @fluentui/react-northstar @fluentui/react-component-ref @fluentui/react-bindings",
-    "start:storybook": "start-storybook",
-    "vr:build": "yarn build:storybook",
-    "vr:test": "storywright  --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
+    "prestart:storybook": "yarn run prepare-storybook",
+    "start:storybook": "storybook dev",
+    "test-vr": "storywright --browsers chromium --url dist/storybook --destpath dist/screenshots --waitTimeScreenshot 500 --concurrency 4 --headless true"
   }
 }

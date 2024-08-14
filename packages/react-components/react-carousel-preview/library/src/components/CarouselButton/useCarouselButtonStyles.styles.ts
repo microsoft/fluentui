@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { CarouselButtonSlots, CarouselButtonState } from './CarouselButton.types';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   root: {
     marginTop: 'auto',
     marginBottom: 'auto',
-    ...shorthands.borderColor(tokens.colorTransparentStroke),
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
     ':hover': {
@@ -29,6 +28,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselButton slots based on the state
  */
 export const useCarouselButtonStyles_unstable = (state: CarouselButtonState): CarouselButtonState => {
+  'use no memo';
+
   const styles = useStyles();
 
   state = {

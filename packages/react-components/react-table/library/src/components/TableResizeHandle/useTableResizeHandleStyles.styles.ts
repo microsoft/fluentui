@@ -37,7 +37,7 @@ const useStyles = makeStyles({
       opacity: 1,
     },
 
-    ':after': {
+    '::after': {
       content: '" "',
       display: 'block',
       width: '1px',
@@ -54,6 +54,8 @@ const useStyles = makeStyles({
  * Apply styling to the TableResizeHandle slots based on the state
  */
 export const useTableResizeHandleStyles_unstable = (state: TableResizeHandleState): TableResizeHandleState => {
+  'use no memo';
+
   const styles = useStyles();
   state.root.className = mergeClasses(tableResizeHandleClassNames.root, styles.root, state.root.className);
   return state;

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Input } from '@fluentui/react-northstar';
 import InputExampleRtl from '../../examples/components/Input/Rtl/InputExample.rtl';
 import InputExampleDisabled from '../../examples/components/Input/State/InputExampleDisabled.shorthand';
@@ -11,7 +11,7 @@ import InputExampleInputSlot from '../../examples/components/Input/Variations/In
 import InputExampleTargeting from '../../examples/components/Input/Variations/InputExampleTargeting.shorthand';
 import InputExampleWrapperSlot from '../../examples/components/Input/Variations/InputExampleWrapperSlot.shorthand';
 
-export default { component: Input, title: 'Input' } as ComponentMeta<typeof Input>;
+export default { component: Input, title: 'Input' } as Meta<typeof Input>;
 
 export {
   InputExampleRtl,

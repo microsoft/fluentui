@@ -4,17 +4,14 @@
   "private": true,
   "description": "Fluent UI React v9 documentation",
   "scripts": {
-    "build": "just-scripts build",
-    "build-storybook": "build-storybook --no-manager-cache -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
-    "chromatic:branch": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook",
-    "chromatic": "npx chromatic@6.4.3 --project-token $CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes --build-script-name build-storybook --branch-name microsoft:master",
+    "build-storybook": "storybook build -o ./dist/storybook --docs && node ./.storybook/fix-title.js 'Fluent UI React v9' ../dist",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "type-check": "just-scripts type-check",
     "start": "yarn storybook:docs",
-    "storybook": "start-storybook --port 3000 --no-manager-cache",
+    "storybook": "storybook dev --port 3000",
     "storybook:docs": "yarn storybook --docs",
     "test": "jest --passWithNoTests"
   },
@@ -45,6 +42,9 @@
     "react-window": "^1.8.6",
     "tslib": "^2.1.0",
     "react-hook-form": "^5.7.2",
-    "@fluentui/react-nav-preview": "*"
+    "@fluentui/react-nav-preview": "*",
+    "@fluentui/react-motion-components-preview": "*",
+    "@fluentui/react-icons-compat": "*",
+    "@fluentui/react-carousel-preview": "*"
   }
 }

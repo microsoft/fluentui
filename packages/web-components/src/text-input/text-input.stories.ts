@@ -5,9 +5,6 @@ import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from 
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';
 
-import '../text/define.js';
-import './define.js';
-
 const Person20Regular = html<StoryArgs<FluentTextInput>>`
   <svg
     fill="currentColor"
@@ -273,5 +270,13 @@ export const ReadOnly: Story<FluentTextInput> = renderComponent(html<StoryArgs<F
 export const WithoutLabel: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
   <fluent-text-input>
     <span slot="end">${Person20Regular}</span>
+  </fluent-text-input>
+`);
+
+export const slottedEndButton: Story<FluentTextInput> = renderComponent(html<StoryArgs<FluentTextInput>>`
+  <fluent-text-input>
+    <fluent-button slot="start" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-button slot="end" size="small" appearance="subtle">Button</fluent-button>
+    <fluent-label>Input with slotted end button</fluent-label>
   </fluent-text-input>
 `);

@@ -1,10 +1,11 @@
 export {
   AccordionItem,
   accordionItemDefinition,
-  AccordionItemExpandIconPosition,
+  AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
+  BaseAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
@@ -26,6 +27,7 @@ export {
   AvatarSize,
   AvatarStyles,
   AvatarTemplate,
+  BaseAvatar,
 } from './avatar/index.js';
 export {
   Badge,
@@ -38,6 +40,7 @@ export {
   BadgeTemplate,
 } from './badge/index.js';
 export {
+  BaseButton,
   Button,
   ButtonAppearance,
   ButtonDefinition,
@@ -80,6 +83,7 @@ export {
 export { Dialog, DialogType, DialogDefinition, DialogTemplate, DialogStyles } from './dialog/index.js';
 export { DialogBody, DialogBodyDefinition, DialogBodyTemplate, DialogBodyStyles } from './dialog-body/index.js';
 export {
+  BaseDivider,
   Divider,
   DividerAlignContent,
   DividerAppearance,
@@ -90,6 +94,17 @@ export {
   DividerTemplate,
 } from './divider/index.js';
 export {
+  Drawer,
+  DrawerDefinition,
+  DrawerPosition,
+  DrawerSize,
+  DrawerType,
+  DrawerTemplate,
+  DrawerStyles,
+} from './drawer/index.js';
+export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
+export {
+  BaseField,
   Field,
   FieldLabelPosition,
   ValidationFlags,
@@ -102,6 +117,7 @@ export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
+  BaseAnchor,
   AnchorButton,
   AnchorButtonAppearance,
   AnchorButtonDefinition,
@@ -131,7 +147,10 @@ export {
 export type { MenuItemColumnCount, MenuItemOptions } from './menu-item/index.js';
 export { MenuList, MenuListDefinition, MenuListStyles, MenuListTemplate } from './menu-list/index.js';
 export { Menu, MenuDefinition, MenuStyles, MenuTemplate } from './menu/index.js';
+export { StartEnd, endSlotTemplate, startSlotTemplate } from './patterns/start-end.js';
+export type { StartOptions, EndOptions, StartEndOptions } from './patterns/start-end.js';
 export {
+  BaseProgressBar,
   ProgressBar,
   ProgressBarDefinition,
   ProgressBarShape,
@@ -150,6 +169,15 @@ export {
 export { Radio, RadioDefinition, RadioStyles, RadioTemplate } from './radio/index.js';
 export type { RadioControl, RadioOptions } from './radio/index.js';
 export {
+  BaseRatingDisplay,
+  RatingDisplay,
+  RatingDisplayColor,
+  RatingDisplayDefinition,
+  RatingDisplaySize,
+  RatingDisplayStyles,
+  RatingDisplayTemplate,
+} from './rating-display/index.js';
+export {
   Slider,
   SliderDefinition,
   SliderMode,
@@ -160,6 +188,7 @@ export {
 } from './slider/index.js';
 export type { SliderConfiguration, SliderOptions } from './slider/index.js';
 export {
+  BaseSpinner,
   Spinner,
   SpinnerAppearance,
   SpinnerDefinition,
@@ -200,8 +229,30 @@ export {
   TabsStyles,
   TabsTemplate,
 } from './tabs/index.js';
+export {
+  BaseTablist,
+  Tablist,
+  TablistAppearance,
+  TablistDefinition,
+  TablistOrientation,
+  TablistSize,
+  TablistStyles,
+  TablistTemplate,
+} from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
 export {
+  BaseTextArea,
+  TextArea,
+  TextAreaAppearance,
+  TextAreaAutocomplete,
+  TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
+  TextAreaStyles,
+  TextAreaTemplate,
+} from './textarea/index.js';
+export {
+  BaseTextInput,
   TextInput,
   TextInputAppearance,
   TextInputControlSize,
@@ -222,7 +273,7 @@ export {
   TextWeight,
 } from './text/index.js';
 export * from './theme/design-tokens.js';
-export { setTheme, setThemeFor } from './theme/index.js';
+export { setTheme, setThemeFor, type Theme } from './theme/index.js';
 export {
   ToggleButton,
   ToggleButtonAppearance,

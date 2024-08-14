@@ -42,6 +42,8 @@ function useFocusLogic() {
 }
 
 function usePopupVisibility(props: DatePickerProps) {
+  'use no memo';
+
   const [open, setOpen] = useControllableState({
     initialState: false,
     defaultState: props.defaultOpen,
@@ -101,6 +103,8 @@ const defaultParseDateFromString = (dateStr: string) => {
  * @param ref - reference to root Input slot
  */
 export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HTMLInputElement>): DatePickerState => {
+  'use no memo';
+
   const {
     allowTextInput = false,
     allFocusable = false,
@@ -360,7 +364,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
-      'aria-owns': open ? popupSurfaceId : undefined,
       ref: triggerWrapperRef,
     },
     elementType: 'span',
@@ -415,7 +418,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   root.onFocus = useEventCallback(mergeCallbacks(root.onFocus, onInputFocus));
   root.onClick = useEventCallback(mergeCallbacks(root.onClick, onInputClick));
 
-  const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
+  const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: true });
   const popupSurface = open
     ? slot.optional(props.popupSurface, {
         renderByDefault: true,

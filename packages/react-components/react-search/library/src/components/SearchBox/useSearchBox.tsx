@@ -46,13 +46,16 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
   // Tracks the focus of the component for the contentAfter and dismiss button
   const [focused, setFocused] = React.useState(false);
 
-  const onFocus = useEventCallback(() => {
+  const onFocus = React.useCallback(() => {
     setFocused(true);
-  });
+  }, [setFocused]);
 
-  const onBlur: React.FocusEventHandler<HTMLSpanElement> = useEventCallback(ev => {
-    setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
-  });
+  const onBlur: React.FocusEventHandler<HTMLSpanElement> = React.useCallback(
+    ev => {
+      setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
+    },
+    [setFocused],
+  );
 
   const rootProps = slot.resolveShorthand(root);
 
@@ -75,8 +78,8 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
         {
           ...rootProps,
           ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
-          onFocus: useEventCallback(mergeCallbacks(rootProps?.onFocus, onFocus)),
-          onBlur: useEventCallback(mergeCallbacks(rootProps?.onBlur, onBlur)),
+          onFocus: mergeCallbacks(rootProps?.onFocus, onFocus),
+          onBlur: mergeCallbacks(rootProps?.onBlur, onBlur),
         },
         {
           elementType: 'span',

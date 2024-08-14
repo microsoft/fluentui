@@ -10,6 +10,8 @@ import * as React from 'react';
 import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 
 export function useFlatTreeNavigation() {
+  'use no memo';
+
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
   const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
 

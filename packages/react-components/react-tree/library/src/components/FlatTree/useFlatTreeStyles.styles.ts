@@ -3,7 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
 
-export const flatTreeClassNames: SlotClassNames<FlatTreeSlots> = {
+export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>> = {
   root: 'fui-FlatTree',
 };
 
@@ -14,6 +14,8 @@ const useBaseStyles = makeResetStyles({
 });
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
+  'use no memo';
+
   const baseStyles = useBaseStyles();
   state.root.className = mergeClasses(flatTreeClassNames.root, baseStyles, state.root.className);
   return state;

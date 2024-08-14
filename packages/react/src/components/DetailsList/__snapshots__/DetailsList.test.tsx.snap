@@ -2117,6 +2117,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2159,6 +2160,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2341,6 +2343,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2553,6 +2556,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2765,6 +2769,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3199,6 +3204,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3241,6 +3247,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3423,6 +3430,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3579,6 +3587,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3735,6 +3744,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3891,6 +3901,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4047,6 +4058,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4426,6 +4438,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -4468,6 +4481,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -4650,6 +4664,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4862,6 +4877,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5074,6 +5090,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5509,6 +5526,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -5551,6 +5569,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -5733,6 +5752,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5945,6 +5965,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6157,6 +6178,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6591,6 +6613,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -6633,6 +6656,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -6815,6 +6839,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6974,6 +6999,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7133,6 +7159,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7292,6 +7319,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7451,6 +7479,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7721,6 +7750,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   ms-DetailsHeader-collapseButton
                   {
                     display: inline-block;
+                    text-decoration: inherit;
                   }
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -7903,6 +7933,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -8115,6 +8146,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -8327,6 +8359,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -8592,6 +8625,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     font-style: normal;
                                     font-weight: normal;
                                     speak: none;
+                                    text-decoration: inherit;
                                   }
                               data-icon-name="Tag"
                             >
@@ -8674,6 +8708,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
+                                      text-decoration: inherit;
                                       transform-origin: 50% 50%;
                                       transform: rotate(90deg);
                                       transition: transform .1s linear;
@@ -9536,6 +9571,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     font-style: normal;
                                     font-weight: normal;
                                     speak: none;
+                                    text-decoration: inherit;
                                   }
                               data-icon-name="Tag"
                             >
@@ -9618,6 +9654,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
+                                      text-decoration: inherit;
                                       transform-origin: 50% 50%;
                                       transform: rotate(90deg);
                                       transition: transform .1s linear;

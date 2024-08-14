@@ -257,6 +257,8 @@ const useSecondaryContentStyles = makeStyles({
 });
 
 export const useCompoundButtonStyles_unstable = (state: CompoundButtonState): CompoundButtonState => {
+  'use no memo';
+
   const rootStyles = useRootStyles();
   const rootIconOnlyStyles = useRootIconOnlyStyles();
   const iconStyles = useIconStyles();

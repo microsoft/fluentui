@@ -1,19 +1,12 @@
 {
   "migrations": [
     {
-      "cli": "nx",
-      "version": "17.3.0-beta.6",
-      "description": "Updates the nx wrapper.",
-      "implementation": "./src/migrations/update-17-3-0/update-nxw",
+      "version": "19.2.4-beta.0",
+      "description": "Set project name in nx.json explicitly",
+      "implementation": "./src/migrations/update-19-2-4/set-project-name",
+      "x-repair-skip": true,
       "package": "nx",
-      "name": "17.3.0-update-nx-wrapper"
-    },
-    {
-      "version": "17.2.9",
-      "description": "Move executor options to target defaults",
-      "implementation": "./src/migrations/update-17-2-9/move-options-to-target-defaults",
-      "package": "@nx/eslint",
-      "name": "move-options-to-target-defaults"
+      "name": "19-2-4-set-project-name"
     }
   ]
 }

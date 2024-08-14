@@ -12,8 +12,11 @@ import {
   NavSubItem,
   NavSubItemGroup,
   NavSize,
+  NavDivider,
+  AppItem,
+  AppItemStatic,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -42,6 +45,8 @@ import {
   PreviewLink20Filled,
   PreviewLink20Regular,
   bundleIcon,
+  PersonCircle32Regular,
+  PersonCircle24Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -84,16 +89,43 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
+  const linkLabelId = useId('link-label');
+  const appItemIconLabelId = useId('app-item-icon-label');
+  const appItemStaticLabelId = useId('app-item-static-label');
 
   const [size, setNavSize] = React.useState<NavSize>('small');
+  const [enabledLinks, setEnabledLinks] = React.useState(true);
+  const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
+  const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
+
+  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
+
+  const appItemIcon = isAppItemIconPresent ? (
+    size === 'small' ? (
+      <PersonCircle24Regular />
+    ) : (
+      <PersonCircle32Regular />
+    )
+  ) : undefined;
+
+  const appItem = isAppItemStatic ? (
+    <AppItemStatic icon={appItemIcon}>Contoso HR</AppItemStatic>
+  ) : (
+    <AppItem icon={appItemIcon} href={linkDestination}>
+      Contoso HR
+    </AppItem>
+  );
+
   return (
     <div className={styles.root}>
       <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
         <NavDrawerHeader>
-          <Hamburger />
+          <Tooltip content="Navigation" relationship="label">
+            <Hamburger />
+          </Tooltip>
         </NavDrawerHeader>
         <NavDrawerBody>
-          <NavSectionHeader>Home</NavSectionHeader>
+          {appItem}
           <NavItem href="https://www.bing.com" icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -144,7 +176,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavSectionHeader>Learning</NavSectionHeader>
+          <NavDivider />
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
           </NavItem>
@@ -159,8 +191,6 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-
-          <NavSectionHeader>Analytics</NavSectionHeader>
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
@@ -176,6 +206,27 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             <Radio value="medium" label="Medium" />
             <Radio value="small" label="Small" />
           </RadioGroup>
+          <Label id={linkLabelId}>Links</Label>
+          <Switch
+            checked={enabledLinks}
+            onChange={(_, data) => setEnabledLinks(!!data.checked)}
+            label={enabledLinks ? 'Enabled' : 'Disabled'}
+            aria-labelledby={linkLabelId}
+          />
+          <Label id={appItemStaticLabelId}>App Item</Label>
+          <Switch
+            checked={isAppItemStatic}
+            onChange={(_, data) => setIsAppItemStatic(!!data.checked)}
+            label={isAppItemStatic ? 'Static' : 'Href'}
+            aria-labelledby={appItemStaticLabelId}
+          />
+          <Label id={appItemIconLabelId}>App Item Icon</Label>
+          <Switch
+            checked={isAppItemIconPresent}
+            onChange={(_, data) => setIsAppItemIconPresent(!!data.checked)}
+            label={isAppItemIconPresent ? 'Present' : 'Absent'}
+            aria-labelledby={appItemIconLabelId}
+          />
         </div>
       </div>
     </div>

@@ -14,14 +14,14 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "build-storybook": "build-storybook -o ./dist/storybook",
+    "build-storybook": "storybook build -o ./dist/storybook",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
     "test": "jest --passWithNoTests",
-    "storybook": "start-storybook",
+    "storybook": "storybook dev",
     "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
@@ -32,15 +32,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.54.2",
-    "@fluentui/react-context-selector": "^9.1.62",
-    "@fluentui/react-icons": "^2.0.239",
+    "@fluentui/react-components": "^9.54.10",
+    "@fluentui/react-context-selector": "^9.1.65",
+    "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-utilities": "^9.18.10",
+    "@fluentui/react-utilities": "^9.18.13",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
-    "@types/dedent": "0.7.0",
+    "dedent": "^1.2.0",
     "codesandbox-import-utils": "2.2.3"
   },
   "peerDependencies": {

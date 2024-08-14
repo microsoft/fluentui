@@ -330,6 +330,7 @@ exports[`ComboBox Renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -666,6 +667,7 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1498,6 +1500,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1836,6 +1839,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                   font-weight: normal;
                                   opacity: 0;
                                   speak: none;
+                                  text-decoration: inherit;
                                 }
                                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                   -ms-high-contrast-adjust: none;
@@ -2063,6 +2067,7 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                                 font-weight: normal;
                                 opacity: 1;
                                 speak: none;
+                                text-decoration: inherit;
                               }
                               @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                                 -ms-high-contrast-adjust: none;
@@ -2436,6 +2441,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

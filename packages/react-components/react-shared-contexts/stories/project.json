@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-shared-contexts-stories",
+  "name": "react-shared-contexts-stories",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-shared-contexts/stories/src",

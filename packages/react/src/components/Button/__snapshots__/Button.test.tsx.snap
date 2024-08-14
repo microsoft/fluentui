@@ -264,6 +264,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -322,6 +323,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             ms-Button-menuIcon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -761,6 +763,7 @@ exports[`Button renders IconButton correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;

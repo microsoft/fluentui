@@ -13,44 +13,48 @@ export const carouselNavButtonClassNames: SlotClassNames<CarouselNavButtonSlots>
  */
 const useStyles = makeStyles({
   root: {
-    display: 'flex',
     cursor: 'pointer',
-    boxSizing: 'border-box',
-    height: '8px',
-    width: '8px',
-    backgroundColor: tokens.colorNeutralForeground1,
-    ':hover': {
-      cursor: 'pointer',
+    width: tokens.spacingHorizontalS,
+    height: tokens.spacingVerticalS,
+    padding: `${tokens.spacingVerticalS} ${tokens.spacingHorizontalXS}`,
+    boxSizing: 'content-box',
+    backgroundColor: tokens.colorTransparentBackground,
+    ...shorthands.borderWidth(0),
+    '::after': {
+      content: '""',
+      display: 'block',
+      boxSizing: 'border-box',
+      borderRadius: '50%',
+      border: 'none',
+      height: tokens.spacingVerticalS,
+      width: tokens.spacingHorizontalS,
+      backgroundColor: tokens.colorNeutralForeground1,
+      color: tokens.colorNeutralForeground1,
     },
   },
   rootUnselected: {
-    border: 'none',
-    borderRadius: '50%',
-    padding: '0px',
     outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      margin: `calc(-1 * ${tokens.strokeWidthThick})`,
       borderRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderColor('transparent'),
     }),
-    backgroundColor: `color-mix(in srgb, ${tokens.colorNeutralForeground1} 30%, transparent)`,
-    '@supports not (color: color-mix(in lch, white, black))': {
-      // This will also affect the focus border, but only in older unsupported browsers
+    '::after': {
       opacity: 0.3,
-      backgroundColor: tokens.colorNeutralForeground1,
     },
   },
   rootSelected: {
-    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     width: '16px',
-    border: 'none',
-    borderRadius: '4px',
-    padding: '0px',
+    outline: `${tokens.strokeWidthThin} solid transparent`, // For high contrast
     ...createCustomFocusIndicatorStyle({
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      border: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
+      margin: `calc(-1 * ${tokens.strokeWidthThick})`,
       borderRadius: tokens.borderRadiusMedium,
-      ...shorthands.borderColor('transparent'),
     }),
+    '::after': {
+      width: '16px',
+      borderRadius: '4px',
+    },
   },
 });
 
@@ -58,6 +62,8 @@ const useStyles = makeStyles({
  * Apply styling to the CarouselNavButton slots based on the state
  */
 export const useCarouselNavButtonStyles_unstable = (state: CarouselNavButtonState): CarouselNavButtonState => {
+  'use no memo';
+
   const styles = useStyles();
 
   const { selected } = state;

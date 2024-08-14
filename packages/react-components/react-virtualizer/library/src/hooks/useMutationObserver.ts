@@ -11,6 +11,8 @@ export const useMutationObserver = (
 ): {
   observer: MutableRefObject<MutationObserver | undefined>; // eslint-disable-line no-restricted-globals
 } => {
+  'use no memo';
+
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
   const observer = useRef<MutationObserver>();

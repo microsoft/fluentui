@@ -25,10 +25,14 @@ import { useFocusFinders } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLDivElement of TagPickerInput
  */
 export const useTagPickerInput_unstable = (
-  props: TagPickerInputProps,
+  propsArg: TagPickerInputProps,
   ref: React.Ref<HTMLInputElement>,
 ): TagPickerInputState => {
-  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+  const props = useFieldControlProps_unstable(propsArg, {
+    supportsLabelFor: true,
+    supportsRequired: true,
+    supportsSize: true,
+  });
   const { controller: activeDescendantController } = useActiveDescendantContext();
   const size = useTagPickerContext_unstable(ctx => ctx.size);
   const contextDisabled = useTagPickerContext_unstable(ctx => ctx.disabled);
@@ -41,7 +45,7 @@ export const useTagPickerInput_unstable = (
   const setHasFocus = useTagPickerContext_unstable(ctx => ctx.setHasFocus);
   const clearSelection = useTagPickerContext_unstable(ctx => ctx.clearSelection);
   const open = useTagPickerContext_unstable(ctx => ctx.open);
-  const popoverId = useTagPickerContext_unstable(ctx => ctx.popoverId);
+  const popoverId = useTagPickerContext_unstable(ctx => (ctx.noPopover ? undefined : ctx.popoverId));
   const selectOption = useTagPickerContext_unstable(ctx => ctx.selectOption);
   const getOptionById = useTagPickerContext_unstable(ctx => ctx.getOptionById);
   const contextValue = useTagPickerContext_unstable(ctx => ctx.value);

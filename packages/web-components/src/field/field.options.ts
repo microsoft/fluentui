@@ -23,6 +23,8 @@ export type SlottableInput = HTMLElement &
     required: boolean;
     disabled: boolean;
     readOnly: boolean;
+    checked?: boolean;
+    value?: string;
   };
 
 /**

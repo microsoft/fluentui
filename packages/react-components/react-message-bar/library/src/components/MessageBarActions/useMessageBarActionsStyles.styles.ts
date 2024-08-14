@@ -41,6 +41,8 @@ const useMultilineStyles = makeStyles({
  * Apply styling to the MessageBarActions slots based on the state
  */
 export const useMessageBarActionsStyles_unstable = (state: MessageBarActionsState): MessageBarActionsState => {
+  'use no memo';
+
   const rootBaseStyles = useRootBaseStyles();
   const containerActionBaseStyles = useContainerActionBaseStyles();
   const multilineStyles = useMultilineStyles();

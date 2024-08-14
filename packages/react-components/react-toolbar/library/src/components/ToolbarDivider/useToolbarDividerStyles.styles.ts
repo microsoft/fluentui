@@ -18,6 +18,8 @@ const useBaseStyles = makeStyles({
  * Apply styling to the ToolbarDivider slots based on the state
  */
 export const useToolbarDividerStyles_unstable = (state: ToolbarDividerState): ToolbarDividerState => {
+  'use no memo';
+
   useDividerStyles_unstable(state);
   const { vertical } = state;
   const toolbarDividerStyles = useBaseStyles();

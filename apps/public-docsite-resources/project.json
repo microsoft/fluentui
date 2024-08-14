@@ -1,6 +1,7 @@
 {
-  "name": "@fluentui/public-docsite-resources",
+  "name": "public-docsite-resources",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "application",
-  "implicitDependencies": []
+  "projectType": "library",
+  "implicitDependencies": [],
+  "tags": ["v8"]
 }

@@ -28,14 +28,14 @@ const useStyles = makeResetStyles({
 
 const useDrawerHeaderStyles = makeStyles({
   separator: {
-    ':after': {
+    '::after': {
       ...drawerSeparatorStyles,
       bottom: 0,
     },
   },
 
   separatorVisible: {
-    ':after': {
+    '::after': {
       opacity: 1,
     },
   },
@@ -45,6 +45,8 @@ const useDrawerHeaderStyles = makeStyles({
  * Apply styling to the DrawerHeader slots based on the state
  */
 export const useDrawerHeaderStyles_unstable = (state: DrawerHeaderState): DrawerHeaderState => {
+  'use no memo';
+
   const styles = useStyles();
   const rootStyles = useDrawerHeaderStyles();
 

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Fri, 14 Jun 2024 15:25:27 GMT and should not be manually modified.
+This log was last generated on Thu, 08 Aug 2024 07:24:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.13](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.13)
+
+Thu, 08 Aug 2024 07:24:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.12..@fluentui/merge-styles_v8.6.13)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+
+## [8.6.12](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.12)
+
+Tue, 25 Jun 2024 07:32:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.11..@fluentui/merge-styles_v8.6.12)
+
+### Patches
+
+- fix: Correctly processing selectors when value is a class name and they are not wrapped in 'selectors' wrapper. ([PR #31798](https://github.com/microsoft/fluentui/pull/31798) by Humberto.Morimoto@microsoft.com)
+
+## [8.6.11](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.11)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.6.10..@fluentui/merge-styles_v8.6.11)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
 
 ## [8.6.10](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.6.10)
 

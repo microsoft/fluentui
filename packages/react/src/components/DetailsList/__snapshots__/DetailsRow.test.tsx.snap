@@ -269,6 +269,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -311,6 +312,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -493,6 +495,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -649,6 +652,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -805,6 +809,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1203,6 +1208,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1245,6 +1251,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -1427,6 +1434,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header13-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1583,6 +1591,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header13-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -1739,6 +1748,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 id="header13-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2138,6 +2148,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               ms-Check-circle
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2180,6 +2191,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
               ms-Check-check
               {
                 display: inline-block;
+                text-decoration: inherit;
               }
               {
                 -moz-osx-font-smoothing: grayscale;
@@ -2704,6 +2716,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2746,6 +2759,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2928,6 +2942,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header5-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3084,6 +3099,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header5-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3240,6 +3256,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 id="header5-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3638,6 +3655,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3680,6 +3698,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3862,6 +3881,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header9-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4018,6 +4038,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header9-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4174,6 +4195,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 id="header9-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=

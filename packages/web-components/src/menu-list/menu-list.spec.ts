@@ -1,136 +1,122 @@
 import { expect, test } from '@playwright/test';
-import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import type { MenuList } from './menu-list.js';
+import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 test.describe('Menu', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-  let menuItems: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-
-    element = page.locator('fluent-menu-list');
-
-    root = page.locator('#root');
-
-    menuItems = element.locator('fluent-menu-item');
-
+  test.beforeEach(async ({ page }) => {
     await page.goto(fixtureURL('components-menulist--menu-list'));
+
+    await page.waitForFunction(() => customElements.whenDefined('fluent-menu-list'));
   });
 
-  test.afterAll(async () => {
-    await page.close();
+  test('should have a role of `menu`', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    await expect(element).toHaveJSProperty('elementInternals.role', 'menu');
   });
 
-  test('should have a role of `menu`', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should set `tabindex` of the first focusable menu item to 0', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
 
-    await expect(element).toHaveAttribute('role', 'menu');
-  });
-
-  test('should set `tabindex` of the first focusable menu item to 0', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await expect(menuItems.first()).toHaveAttribute('tabindex', '0');
   });
 
-  test('should NOT set any `tabindex` on non-menu-item elements', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                    <div>Not a menu item</div>
-                </fluent-menu-list>
-            `;
-    });
+  test('should NOT set any `tabindex` on non-menu-item elements', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
 
-    const divider = element.locator('div');
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+        <div class="divider">Not a menu item</div>
+      </fluent-menu-list>
+    `);
+
+    const divider = element.locator('div.divider');
 
     expect(await divider.getAttribute('tabindex')).toBeNull();
   });
 
-  test('should focus on first menu item when focus is called', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should focus on first menu item when focus is called', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await element.waitFor({ state: 'attached' });
 
     await expect(menuItems.first()).toHaveAttribute('tabindex', '0');
 
-    await root.evaluate(node => {
-      document.querySelector<MenuList>('fluent-menu-list')?.focus();
+    await element.evaluate(node => {
+      node.focus();
     });
 
-    expect(
-      await menuItems.first().evaluate(node => {
-        return node.isSameNode(document.activeElement);
-      }),
-    ).toBeTruthy();
+    await expect(menuItems.first()).toBeFocused();
   });
 
-  test('should not throw when focus is called with no items', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list></fluent-menu-list>
-            `;
+  test('should not throw when focus is called with no items', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list></fluent-menu-list>
+    `);
+
+    await element.evaluate(node => {
+      node.focus();
     });
 
-    await root.evaluate(node => {
-      document.querySelector<MenuList>('fluent-menu-list')?.focus();
-    });
-
-    expect(await page.evaluate(() => document.activeElement?.id)).toBe('');
+    await expect(element).not.toBeFocused();
   });
 
-  test('should not throw when focus is called before initialization is complete', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = '';
+  test('should not throw when focus is called before initialization is complete', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
 
+    await page.setContent('');
+
+    await page.evaluate(() => {
       const menu = document.createElement('fluent-menu-list');
 
       menu.focus();
 
-      node.append(menu);
+      document.body.append(menu);
     });
 
-    expect(await page.evaluate(() => document.activeElement?.id)).toBe('');
+    await expect(element).not.toBeFocused();
   });
 
-  test('should focus disabled items', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item disabled>Menu item</fluent-menu-item>
-                    <fluent-menu-item>Menu item</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should focus disabled items', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item disabled>Menu item</fluent-menu-item>
+        <fluent-menu-item>Menu item</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     const firstMenuItem = menuItems.first();
 
-    await expect(firstMenuItem).toBeDisabled();
+    await expect(firstMenuItem).toHaveAttribute('disabled');
+    await expect(firstMenuItem).toHaveJSProperty('elementInternals.ariaDisabled', 'true');
 
     await expect(firstMenuItem).toHaveAttribute('tabindex', '0');
 
@@ -139,34 +125,30 @@ test.describe('Menu', () => {
     await expect(firstMenuItem).toBeFocused();
   });
 
-  ['menuitem', 'menuitemcheckbox', 'menuitemradio'].forEach(role => {
-    test(`should accept elements as focusable child with "${role}" role`, async () => {
-      await root.evaluate(
-        (node, { role }) => {
-          node.innerHTML = /* html */ `
-                    <fluent-menu-list>
-                        <div role="${role}">Menu item</div>
-                    </fluent-menu-list>
-                `;
-        },
-        { role },
-      );
+  for (const role in MenuItemRole) {
+    test(`should accept elements as focusable child with "${role}" role`, async ({ page }) => {
+      await page.setContent(/* html */ `
+        <fluent-menu-list>
+          <div role="${role}">Menu item</div>
+        </fluent-menu-list>
+      `);
 
-      await expect(page.locator(`fluent-menu-list [role="${role}"]`).first()).toHaveAttribute('tabindex', '0');
+      await expect(page.getByRole(role as MenuItemRole).first()).toHaveAttribute('tabindex', '0');
     });
-  });
+  }
 
-  test('should not navigate to hidden items when changed after connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item 1</fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should not navigate to hidden items when changed after connection', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await expect.soft(menuItems).toHaveCount(4);
 
@@ -175,8 +157,6 @@ test.describe('Menu', () => {
     await element.evaluate(node => {
       node.focus();
     });
-
-    await (await element.elementHandle())?.waitForElementState('stable');
 
     await expect(menuItems.nth(0)).toBeFocused();
 
@@ -204,8 +184,6 @@ test.describe('Menu', () => {
       node.removeAttribute('hidden');
     });
 
-    await (await element.elementHandle())?.waitForElementState('stable');
-
     await element.press('ArrowDown');
 
     await expect(menuItems.nth(1)).toBeFocused();
@@ -215,124 +193,140 @@ test.describe('Menu', () => {
     await expect(menuItems.nth(2)).toBeFocused();
   });
 
-  test('should treat all checkbox menu items as individually selectable items', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemcheckbox">Menu item 1</fluent-menu-item>
-                    <fluent-menu-item role="menuitemcheckbox">Menu item 2</fluent-menu-item>
-                    <fluent-menu-item role="menuitemcheckbox">Menu item 3</fluent-menu-item>
-                    <fluent-menu-item role="menuitemcheckbox">Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should treat all checkbox menu items as individually selectable items', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemcheckbox">Menu item 1</fluent-menu-item>
+        <fluent-menu-item role="menuitemcheckbox">Menu item 2</fluent-menu-item>
+        <fluent-menu-item role="menuitemcheckbox">Menu item 3</fluent-menu-item>
+        <fluent-menu-item role="menuitemcheckbox">Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     const menuItemsCount = await menuItems.count();
 
     for (let i = 0; i < menuItemsCount; i++) {
       const item = menuItems.nth(i);
 
-      await expect(item).toHaveAttribute('aria-checked', 'false');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
       await item.click();
 
-      await expect(item).toHaveAttribute('aria-checked', 'true');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
       await item.click();
 
-      await expect(item).toHaveAttribute('aria-checked', 'false');
+      await expect(item).toHaveJSProperty('elementInternals.ariaChecked', 'false');
     }
   });
 
-  test(`should treat all radio menu items as a radiogroup and limit selection to one item within the group`, async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
-                    <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
-                    <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test(`should treat all radio menu items as a radiogroup and limit selection to one item within the group`, async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await menuItems.first().click();
 
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'true');
 
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-
-    await menuItems.nth(1).click();
-
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'false');
-
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-
-    await menuItems.nth(2).click();
-
-    await expect(menuItems.first()).toHaveAttribute('aria-checked', 'false');
-
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
-
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'true');
-  });
-
-  test('should use elements with `[role="separator"]` to divide radio menu items into different radio groups', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
-                    <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
-                    <fluent-divider role="separator"></fluent-divider>
-                    <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
-                    <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-
-    await menuItems.nth(0).click();
-
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(1).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
     await menuItems.nth(2).click();
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'false');
+    await expect(menuItems.first()).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await menuItems.nth(3).click();
+    await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
 
-    await expect(menuItems.nth(0)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(1)).toHaveAttribute('aria-checked', 'true');
-    await expect(menuItems.nth(2)).toHaveAttribute('aria-checked', 'false');
-    await expect(menuItems.nth(3)).toHaveAttribute('aria-checked', 'true');
+    await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
   });
 
-  test('should navigate the menu on arrow up/down keys', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item 1</fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
+  test('should use elements with `[role="separator"]` to divide radio menu items into different radio groups', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio">Menu item 1</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 2</fluent-menu-item>
+        <fluent-divider role="separator"></fluent-divider>
+        <fluent-menu-item role="menuitemradio">Menu item 3</fluent-menu-item>
+        <fluent-menu-item role="menuitemradio">Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    await test.step('should select the first item in the first group', async () => {
+      await menuItems.nth(0).click();
+
+      await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+      await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
     });
+
+    await test.step('should select the second item in the first group', async () => {
+      await menuItems.nth(1).click();
+
+      await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+      await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    });
+
+    await test.step('should select the first item in the second group', async () => {
+      await menuItems.nth(2).click();
+
+      await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+      await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+      await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+    });
+
+    await test.step('should select the second item in the second group', async () => {
+      await menuItems.nth(3).click();
+
+      await expect(menuItems.nth(0)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(1)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+      await expect(menuItems.nth(2)).toHaveJSProperty('elementInternals.ariaChecked', 'false');
+      await expect(menuItems.nth(3)).toHaveJSProperty('elementInternals.ariaChecked', 'true');
+    });
+  });
+
+  test('should navigate the menu on arrow up/down keys', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await element.waitFor({ state: 'attached' });
 
@@ -357,21 +351,24 @@ test.describe('Menu', () => {
     await expect(menuItems.nth(3)).toBeFocused();
   });
 
-  test('should navigate to submenu, close it with escape key, and return focus to the first menu item', async () => {
-    test.slow();
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item 1
-                        <fluent-menu-list slot="submenu">
-                            <fluent-menu-item>Menu item 1.1</fluent-menu-item>
-                            <fluent-menu-item>Menu item 1.2</fluent-menu-item>
-                            <fluent-menu-item>Menu item 1.3</fluent-menu-item>
-                        </fluent-menu-list>
-                    </fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
+  test('should navigate to submenu, close it with escape key, and return focus to the first menu item', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item
+          >Menu item 1
+          <fluent-menu-list slot="submenu">
+            <fluent-menu-item>Menu item 1.1</fluent-menu-item>
+            <fluent-menu-item>Menu item 1.2</fluent-menu-item>
+            <fluent-menu-item>Menu item 1.3</fluent-menu-item>
+          </fluent-menu-list>
+        </fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await element.first().evaluate(node => {
       node.focus();
@@ -379,169 +376,149 @@ test.describe('Menu', () => {
 
     await element.first().press('ArrowRight');
 
-    await (await element.first().elementHandle())?.waitForElementState('stable');
-
     await expect(menuItems.nth(1)).toBeFocused();
 
     await element.first().press('Escape');
 
-    await (await element.first().elementHandle())?.waitForElementState('stable');
-
     await expect(menuItems.first()).toBeFocused();
   });
 
-  test('should not navigate to hidden items when set before connection', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu item 1</fluent-menu-item>
-                    <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
+  test('should not navigate to hidden items when set before connection', async ({ page }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
 
-      // reset the focus to the window to help with flakiness
-      window.focus();
-    });
-
-    await (await element.elementHandle())?.waitForElementState('stable');
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu item 1</fluent-menu-item>
+        <fluent-menu-item hidden="hidden">Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
 
     await element.evaluate(node => {
       node.focus();
     });
 
-    await expect(menuItems.nth(0)).toBeFocused({ timeout: 500 });
+    await expect(menuItems.nth(0)).toBeFocused();
 
-    await element.evaluate(node => {
-      node.dispatchEvent(
-        new KeyboardEvent('keydown', {
-          key: 'ArrowDown',
-        }),
-      );
-    });
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.evaluate(node => {
-      node.dispatchEvent(
-        new KeyboardEvent('keydown', {
-          key: 'ArrowDown',
-        }),
-      );
-    });
+    await element.press('ArrowDown');
 
     await expect(menuItems.nth(3)).toBeFocused();
 
-    await element.evaluate(node => {
-      node.dispatchEvent(
-        new KeyboardEvent('keydown', {
-          key: 'ArrowUp',
-        }),
-      );
-    });
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(2)).toBeFocused();
 
-    await element.evaluate(node => {
-      node.dispatchEvent(
-        new KeyboardEvent('keydown', {
-          key: 'ArrowUp',
-        }),
-      );
-    });
+    await element.press('ArrowUp');
 
     await expect(menuItems.nth(0)).toBeFocused();
   });
 
-  test('should set the data-indent attribute to 0 correctly on all MenuItem elements when role of menuitem and not content in start slot', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item>Menu Item 1</fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-    await expect(menuItems.nth(0)).toHaveAttribute('data-indent', '0');
-    await expect(menuItems.nth(1)).toHaveAttribute('data-indent', '0');
-    await expect(menuItems.nth(2)).toHaveAttribute('data-indent', '0');
-    await expect(menuItems.nth(3)).toHaveAttribute('data-indent', '0');
+  test('should set the data-indent attribute to 0 correctly on all MenuItem elements when role of menuitem and not content in start slot', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item>Menu Item 1</fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '0');
+    }
   });
 
-  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemcheckbox', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemcheckbox"></fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-    await expect(menuItems.nth(0)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(1)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(2)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(3)).toHaveAttribute('data-indent', '1');
+  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemcheckbox', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemcheckbox"></fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '1');
+    }
   });
 
-  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemradio', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemradio"></fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-    await expect(menuItems.nth(0)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(1)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(2)).toHaveAttribute('data-indent', '1');
-    await expect(menuItems.nth(3)).toHaveAttribute('data-indent', '1');
+  test('should set the data-indent attribute to 1 correctly on all MenuItem elements when a menuitem in the menu as a role of menuitemradio', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio"></fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '1');
+    }
   });
 
-  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemcheckbox and content in the start slot', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemcheckbox">
-                         Item 1
-                        <span slot="start" class="start">Icon</span>
-                    </fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-    await expect(menuItems.nth(0)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(1)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(2)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(3)).toHaveAttribute('data-indent', '2');
+  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemcheckbox and content in the start slot', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemcheckbox">
+          Item 1
+          <span slot="start" class="start">Icon</span>
+        </fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '2');
+    }
   });
 
-  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemradio and content in the start slot', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-menu-list>
-                    <fluent-menu-item role="menuitemradio">
-                         Item 1
-                        <span slot="start" class="start">Icon</span>
-                    </fluent-menu-item>
-                    <fluent-menu-item>Menu item 2</fluent-menu-item>
-                    <fluent-menu-item>Menu item 3</fluent-menu-item>
-                    <fluent-menu-item>Menu item 4</fluent-menu-item>
-                </fluent-menu-list>
-            `;
-    });
-    await expect(menuItems.nth(0)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(1)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(2)).toHaveAttribute('data-indent', '2');
-    await expect(menuItems.nth(3)).toHaveAttribute('data-indent', '2');
+  test('should set the data-indent attribute to 2 correctly on all MenuItem elements when a menuitem in the menu has a role of menuitemradio and content in the start slot', async ({
+    page,
+  }) => {
+    const element = page.locator('fluent-menu-list');
+    const menuItems = element.locator('fluent-menu-item');
+
+    await page.setContent(/* html */ `
+      <fluent-menu-list>
+        <fluent-menu-item role="menuitemradio"> Item 1 <span slot="start" class="start">Icon</span> </fluent-menu-item>
+        <fluent-menu-item>Menu item 2</fluent-menu-item>
+        <fluent-menu-item>Menu item 3</fluent-menu-item>
+        <fluent-menu-item>Menu item 4</fluent-menu-item>
+      </fluent-menu-list>
+    `);
+
+    for (const item of await menuItems.all()) {
+      await expect(item).toHaveAttribute('data-indent', '2');
+    }
   });
 });

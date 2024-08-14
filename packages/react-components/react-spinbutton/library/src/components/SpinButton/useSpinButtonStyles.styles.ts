@@ -27,6 +27,7 @@ const useRootClassName = makeResetStyles({
   rowGap: 0,
   position: 'relative',
   isolation: 'isolate',
+  verticalAlign: 'middle',
 
   backgroundColor: tokens.colorNeutralBackground1,
   minHeight: fieldHeights.medium,
@@ -474,6 +475,8 @@ const useButtonDisabledStyles = makeStyles({
  * Apply styling to the SpinButton slots based on the state
  */
 export const useSpinButtonStyles_unstable = (state: SpinButtonState): SpinButtonState => {
+  'use no memo';
+
   const { appearance, atBound, spinState, size } = state;
   const disabled = state.input.disabled;
   const invalid = `${state.input['aria-invalid']}` === 'true';

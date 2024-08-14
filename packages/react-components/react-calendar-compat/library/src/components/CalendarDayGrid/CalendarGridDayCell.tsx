@@ -22,6 +22,8 @@ export interface CalendarGridDayCellProps extends CalendarGridRowProps {
  * @internal
  */
 export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellProps> = props => {
+  'use no memo';
+
   const {
     navigatedDate,
     dateTimeFormatter,
@@ -225,7 +227,6 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         day.setRef(element);
         isNavigatedDate && (navigatedDayRef.current = element);
       }}
-      aria-hidden={ariaHidden}
       aria-disabled={!ariaHidden && !day.isInBounds}
       onClick={day.isInBounds && !ariaHidden ? day.onSelected : undefined}
       onMouseOver={!ariaHidden ? onMouseOverDay : undefined}
@@ -240,7 +241,6 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
     >
       <button
         key={day.key + 'button'}
-        aria-hidden={ariaHidden}
         className={mergeClasses(classNames.dayButton, day.isToday && classNames.dayIsToday)}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
@@ -248,7 +248,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         type="button"
         tabIndex={-1}
       >
-        <span className={day.isToday ? mergeClasses(classNames.dayTodayMarker) : undefined} aria-hidden="true">
+        <span className={day.isToday ? mergeClasses(classNames.dayTodayMarker) : undefined}>
           {dateTimeFormatter.formatDay(day.originalDate)}
         </span>
         {day.isMarked && <div aria-hidden="true" className={classNames.dayMarker} />}
