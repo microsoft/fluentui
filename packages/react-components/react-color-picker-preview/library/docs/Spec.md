@@ -65,7 +65,7 @@ const ColorPickerBasicExample: React.FunctionComponent = () => {
 | ColorSlider allows user to pick a color using individual channel         | ColorSlider    | ColorSlider | ⚠️        |
 | AlphaSlider allows user to pick a color using alpha channel              |                | AlphaSlider | ❌        |
 
-## Sample Code
+## Sample Code of proposed API below
 
 ```jsx
 import {
@@ -139,6 +139,10 @@ For custom sizes users might want to customize it via CSS.
 | step       | `number`            | 1         | Step for arrow navigation              |
 | customStep | `number`            | 3         | Fast navigation                        |
 
+Color has `string` type because all the color manipulations will be done inside of the ColorPicker component. It'll transform any color to HSL or RGB format.
+
+`onChange` event returns data which contains a new color and values of color channels.
+
 Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
 
 ```tsx
@@ -170,7 +174,7 @@ export const Default = () => {
 
 Validation of color fields will be in `utils`. Validation should not allow entering incorrect values to the input fields.
 
-For color manipulation and conversion `tinycolor` library will be used.
+For color manipulation and conversion [tinycolor](https://www.npmjs.com/package/@ctrl/tinycolor) library will be used.
 
 | Slots | Values | Default | Description                 |
 | ----- | ------ | ------- | --------------------------- |
@@ -265,10 +269,10 @@ For color manipulation and conversion `tinycolor` library will be used.
 #### DOM
 
 ```HTML
-<div role="group" class="fui-ColorArea" aria-label="Saturation and brightness" aria-valuetext="Saturation 54 brightness 35">
-  <input id="sliderX" type="range" class="fui-ColorArea__inputX" value="96" role="slider">
-  <input id="sliderY" type="range" class="fui-ColorArea__inputY" value="0" role="slider">
-  <div class="fui-ColorArea__thumb" role="presentation"></div>
+<div role="group" class="fui-ColorArea" aria-label="Gradient area">
+  <input id="sliderX" type="range" class="fui-ColorArea__inputX" value="96" aria-label="saturation">
+  <input id="sliderY" type="range" class="fui-ColorArea__inputY" value="0" aria-label="brightness">
+  <div class="fui-ColorArea__thumb"></div>
 </div>
 ```
 
@@ -286,7 +290,7 @@ For color manipulation and conversion `tinycolor` library will be used.
 
 ```HTML
 <div class="fui-ColorSlider" role="group">
-  <input id="slider" type="range" value="100" aria-valuetext="100, red" max="360">
+  <input id="slider" type="range" value="100" aria-label="red" max="360">
   <div class="fui-ColorSlider__rail" ></div>
   <div class="fui-ColorSlider__thumb"></div>
 </div>
@@ -300,9 +304,9 @@ For color manipulation and conversion `tinycolor` library will be used.
 
 ```HTML
 <div class="fui-AlphaSlider" role="group">
-  <input id="slider" type="range" role="slider" value="100" aria-valuetext="100, red">
+  <input id="slider" type="range"  value="100" aria-label="red">
   <div class="fui-AlphaSlider__rail" ></div>
-  <div class="fui-AlphaSlider__thumb" role="presentation"></div>
+  <div class="fui-AlphaSlider__thumb"></div>
 </div>
 ```
 
@@ -426,9 +430,8 @@ In a `horizontal` orientation top/right arrows move to the right, bottom/left ar
 
 On navigation and color select the screen reader should read the following:
 
-1. `aria-labelledby` of the root component, e.g. "ColorPicker"
-2. `aria-roledescription` of the input slider, e.g. "2D slider"
-3. `aria-valuetext` with the color description.
+1. `aria-labelledby` of the root component, e.g. "ColorPicker, 2D slider"
+2. `aria-label` of the input element with the color description.
 
 **Example**: "ColorPicker, 2D slider, Red 10, Green 132, Blue 228, Azure Radiance"
 
@@ -439,18 +442,12 @@ Use `tab` key to navigate between ColorArea and Color sliders. Use arrows keys t
 **Root element of ColorSlider and ColorArea:**
 
 - role `group`
-- `aria-labelby`
+- `aria-labelledby`
 
 For vertical Slider `aria-orientation="vertical"`
 
-**ColorThumb:**
-
-- role `presentation`
-
 **ColorArea X/Y inputs and Color/AlphaSlider:**
 
-- role `slider`
-- `aria-roledescription`
-- `aria-valuetext`
+- `aria-label`
 
 ![ColorPicker Accessibility](./assets/color-picker-a11y.jpg)
