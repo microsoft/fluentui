@@ -78,8 +78,7 @@ import {
 } from '@fluentui/react-color-picker-preview';
 
 export const Default = () => {
-  const COLOR = 'rgba(0, 255, 170, 1)';
-  const [selectedColor, setSelectedColor] = React.useState(COLOR);
+  const [selectedColor, setSelectedColor] = React.useState('rgba(0, 255, 170, 1)');
   const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
     setSelectedColor(data.selectedColorHex);
   };
