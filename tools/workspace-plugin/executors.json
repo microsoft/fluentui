@@ -9,6 +9,11 @@
       "implementation": "./src/executors/type-check/executor",
       "schema": "./src/executors/type-check/schema.json",
       "description": "type-check executor"
+    },
+    "generate-api": {
+      "implementation": "./src/executors/generate-api/executor",
+      "schema": "./src/executors/generate-api/schema.json",
+      "description": "generate-api executor"
     }
   }
 }
