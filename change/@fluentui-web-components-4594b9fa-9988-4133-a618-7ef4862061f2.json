@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove web types package and configuration",
+  "packageName": "@fluentui/web-components",
+  "email": "863023+radium-v@users.noreply.github.com",
+  "dependentChangeType": "none"
+}
