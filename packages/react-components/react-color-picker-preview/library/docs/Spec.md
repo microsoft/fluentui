@@ -98,7 +98,7 @@ export const Default = () => {
 
 ## Variants
 
-### Slider variants
+### Layouts
 
 - horizontal (default)
 - vertical
