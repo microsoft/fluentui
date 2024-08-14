@@ -152,6 +152,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               rx={0}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="13457/15000."
@@ -168,6 +169,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
+              y={0}
             />
           </g>
         </svg>
@@ -315,6 +317,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               rx={0}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="14200/15000."
@@ -331,6 +334,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
+              y={0}
             />
           </g>
         </svg>
@@ -663,6 +667,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               rx={0}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="13457/15000."
@@ -679,6 +684,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
+              y={0}
             />
           </g>
         </svg>
@@ -826,6 +832,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               rx={0}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="14200/15000."
@@ -842,6 +849,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
+              y={0}
             />
           </g>
         </svg>
@@ -1070,6 +1078,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               rx={0}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <text />
           </g>
@@ -1201,6 +1210,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               rx={0}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <text />
           </g>
@@ -1349,6 +1359,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               rx={0}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <text
               aria-hidden={true}
@@ -1498,6 +1509,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               rx={0}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <text
               aria-hidden={true}
@@ -1691,6 +1703,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
               rx={0}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <defs>
               <linearGradient
@@ -1720,6 +1733,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
               rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
+              y={0}
             />
           </g>
         </svg>
@@ -1877,6 +1891,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
               rx={0}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <defs>
               <linearGradient
@@ -1906,6 +1921,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
               rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
+              y={0}
             />
           </g>
         </svg>
@@ -2066,6 +2082,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
               rx={3}
               width="10.286666666666665%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="13457/15000."
@@ -2081,6 +2098,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
               rx={3}
               width="89.71333333333334%"
               x="10.286666666666665%"
+              y={0}
             />
           </g>
         </svg>
@@ -2224,6 +2242,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
               rx={3}
               width="5.333333333333334%"
               x="0%"
+              y={0}
             />
             <rect
               aria-label="14200/15000."
@@ -2239,6 +2258,7 @@ exports[`HorizontalBarChart snapShot testing Should render rounded corners on ba
               rx={3}
               width="94.66666666666667%"
               x="5.333333333333334%"
+              y={0}
             />
           </g>
         </svg>

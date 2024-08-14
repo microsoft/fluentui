@@ -349,7 +349,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -950,7 +950,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1474,7 +1474,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2043,7 +2043,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2612,7 +2612,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3026,14 +3026,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip_#4760D5_#637CEF"
+              id="clip4#4760D5_#637CEF"
             >
               <path
                 d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip_#4760D5_#637CEF)"
+              clipPath="url(#clip4#4760D5_#637CEF)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3082,14 +3082,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip_#795AA6_#9373C0"
+              id="clip5#795AA6_#9373C0"
             >
               <path
                 d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip_#795AA6_#9373C0)"
+              clipPath="url(#clip5#795AA6_#9373C0)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3138,14 +3138,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip_#159195_#2AA0A4"
+              id="clip6#159195_#2AA0A4"
             >
               <path
                 d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip_#159195_#2AA0A4)"
+              clipPath="url(#clip6#159195_#2AA0A4)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3220,7 +3220,7 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3741,7 +3741,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4262,7 +4262,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4783,7 +4783,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5304,7 +5304,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5963,7 +5963,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -6501,7 +6501,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

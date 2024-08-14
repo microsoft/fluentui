@@ -125,6 +125,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="13457/15000."
@@ -139,6 +140,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
+                y="0"
               />
             </g>
           </svg>
@@ -259,6 +261,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="14200/15000."
@@ -273,6 +276,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -393,6 +397,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="6112/15000."
@@ -407,6 +412,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -545,6 +551,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="13457/15000."
@@ -559,6 +566,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
+                y="0"
               />
             </g>
           </svg>
@@ -679,6 +687,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="14200/15000."
@@ -693,6 +702,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -813,6 +823,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="6112/15000."
@@ -827,6 +838,7 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
                 tabindex="-1"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -978,6 +990,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="0"
                   width="10.286666666666665%"
                   x="0%"
+                  y="0"
                 />
                 <rect
                   aria-label="13457/15000."
@@ -992,6 +1005,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="-1"
                   width="89.71333333333334%"
                   x="10.286666666666665%"
+                  y="0"
                 />
               </g>
             </svg>
@@ -1112,6 +1126,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="0"
                   width="5.333333333333334%"
                   x="0%"
+                  y="0"
                 />
                 <rect
                   aria-label="14200/15000."
@@ -1126,6 +1141,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="-1"
                   width="94.66666666666667%"
                   x="5.333333333333334%"
+                  y="0"
                 />
               </g>
             </svg>
@@ -1246,6 +1262,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="0"
                   width="59.25333333333334%"
                   x="0%"
+                  y="0"
                 />
                 <rect
                   aria-label="6112/15000."
@@ -1260,6 +1277,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
                   tabindex="-1"
                   width="40.74666666666666%"
                   x="59.25333333333334%"
+                  y="0"
                 />
               </g>
             </svg>
@@ -1411,6 +1429,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="13457/15000."
@@ -1425,6 +1444,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="-1"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
+                y="0"
               />
             </g>
           </svg>
@@ -1545,6 +1565,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="14200/15000."
@@ -1559,6 +1580,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="-1"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -1679,6 +1701,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="6112/15000."
@@ -1693,6 +1716,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
                 tabindex="-1"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -1831,6 +1855,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="0"
                 width="10.286666666666665%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="13457/15000."
@@ -1845,6 +1870,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="-1"
                 width="89.71333333333334%"
                 x="10.286666666666665%"
+                y="0"
               />
             </g>
           </svg>
@@ -1965,6 +1991,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="0"
                 width="5.333333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="14200/15000."
@@ -1979,6 +2006,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="-1"
                 width="94.66666666666667%"
                 x="5.333333333333334%"
+                y="0"
               />
             </g>
           </svg>
@@ -2099,6 +2127,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="0"
                 width="59.25333333333334%"
                 x="0%"
+                y="0"
               />
               <rect
                 aria-label="6112/15000."
@@ -2113,6 +2142,7 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
                 tabindex="-1"
                 width="40.74666666666666%"
                 x="59.25333333333334%"
+                y="0"
               />
             </g>
           </svg>

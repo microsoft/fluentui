@@ -313,7 +313,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone4"
+                data-focuszone-id="FocusZone7"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -811,7 +811,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone7"
+                  data-focuszone-id="FocusZone10"
                   data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
