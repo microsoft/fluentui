@@ -141,11 +141,9 @@ For custom sizes users might want to customize it via CSS.
 
 Input fields with color values will be in `renderUtils`. It will contain default ColorPicker which has all colors represented and a preview swatch. This functionality is similar to V8.
 
-```ts
-import { ColorPickerLayout } from '@fluentui/react-color-picker-preview';
-```
-
 ```tsx
+import { ColorPickerLayout } from '@fluentui/react-color-picker-preview';
+
 export const Default = () => {
   const COLOR = 'rgba(0, 255, 170, 1)';
   const [selectedColor, setSelectedColor] = React.useState(COLOR);
