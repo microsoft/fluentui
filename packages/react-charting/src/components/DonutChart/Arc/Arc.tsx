@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
@@ -47,6 +47,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
     const cornerRadius = this.props.roundCorners ? 3 : 0;
 
+    const clipId = getId('clip') + `${this.props.color}_${this.props.nextColor}`;
+    
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (
@@ -77,7 +79,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
         {this.props.enableGradient && (
           <>
-            <clipPath id={`clip_${this.props.color}_${this.props.nextColor}`}>
+            <clipPath id={clipId}>
               <path d={arc.cornerRadius(cornerRadius)(this.props.data)} />
             </clipPath>
             <foreignObject
@@ -85,7 +87,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
               y="-50%"
               width="100%"
               height="100%"
-              clipPath={`url(#clip_${this.props.color}_${this.props.nextColor})`}
+              clipPath={`url(#${clipId})`}
             >
               <div
                 style={{

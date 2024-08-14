@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
   IGaugeChartSegment,
@@ -237,6 +237,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
               {arcs.map((arc, index) => {
                 const segment = this._segments[arc.segmentIndex];
 
+                const clipId = getId('clip') + `${index}_${arc.segmentIndex}`;
+
                 return (
                   <React.Fragment key={index}>
                     <path
@@ -262,7 +264,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
                     {this.props.enableGradient && (
                       <>
-                        <clipPath id={`clip_${index}_${arc.segmentIndex}`}>
+                        <clipPath id={clipId}>
                           <path d={arc.d} />
                         </clipPath>
                         <foreignObject
@@ -270,7 +272,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                           y="-100%"
                           width="100%"
                           height="100%"
-                          clipPath={`url(#clip_${index}_${arc.segmentIndex})`}
+                          clipPath={`url(#${clipId})`}
                         >
                           <div
                             style={{
