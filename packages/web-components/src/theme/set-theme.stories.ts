@@ -146,11 +146,11 @@ export const SetTheme = renderComponent(html`
       margin-trim: block;
 
       & > :first-child {
-        margin-block-start: 0;
+        margin-block-start: 0 !important;
       }
 
       & > :last-child {
-        margin-block-end: 0;
+        margin-block-end: 0 !important;
       }
 
       .shadow {
@@ -163,6 +163,7 @@ export const SetTheme = renderComponent(html`
       vertical-align: middle;
     }
   </style>
+
   <div class="toolbar">
     <label>
       Global theme
