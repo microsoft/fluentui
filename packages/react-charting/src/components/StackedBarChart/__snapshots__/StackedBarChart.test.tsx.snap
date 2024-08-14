@@ -1043,7 +1043,7 @@ exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] =
           >
             <defs>
               <linearGradient
-                id="SBC_Gradient_ID2"
+                id="SBC_Gradient2_0"
               >
                 <stop
                   offset="0"
@@ -1056,7 +1056,7 @@ exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] =
               </linearGradient>
             </defs>
             <rect
-              fill="url(#SBC_Gradient_ID2)"
+              fill="url(#SBC_Gradient2_0)"
               height={12}
               id="_SBC_bar3"
               rx={0}
@@ -1088,7 +1088,7 @@ exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] =
           >
             <defs>
               <linearGradient
-                id="SBC_Gradient_ID4"
+                id="SBC_Gradient4_1"
               >
                 <stop
                   offset="0"
@@ -1101,7 +1101,7 @@ exports[`StackedBarChart snapShot testing renders enableGradient correctly 1`] =
               </linearGradient>
             </defs>
             <rect
-              fill="url(#SBC_Gradient_ID4)"
+              fill="url(#SBC_Gradient4_1)"
               height={12}
               id="_SBC_bar5"
               rx={0}

@@ -108,7 +108,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
       <g>
         <defs>
           <linearGradient
-            id="HBCWA_Gradient_ID4"
+            id="HBCWA_Gradient4_0_20000"
           >
             <stop
               offset="0"
@@ -129,7 +129,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing Should render gradients on 
                 opacity: ;
               }
           data-is-focusable={true}
-          fill="url(#HBCWA_Gradient_ID4)"
+          fill="url(#HBCWA_Gradient4_0_20000)"
           height={32}
           onBlur={[Function]}
           onFocus={[Function]}

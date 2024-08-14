@@ -726,7 +726,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
-      const gradientId = getId('VBC_Gradient_ID');
+      const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
         <g key={point.x as string}>
@@ -821,7 +821,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
-      const gradientId = getId('VBC_Gradient_ID');
+      const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
         <g
@@ -923,7 +923,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         this._points[index].color = startColor;
       }
 
-      const gradientId = getId('VBC_Gradient_ID');
+      const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
         <g key={point.x instanceof Date ? point.x.getTime() : point.x}>

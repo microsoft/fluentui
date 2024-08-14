@@ -332,7 +332,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         href: this.props.href!,
       });
 
-      const gradientId = getId('SBC_Gradient_ID');
+      const gradientId = getId('SBC_Gradient') + `_${index}`;
 
       return (
         <g

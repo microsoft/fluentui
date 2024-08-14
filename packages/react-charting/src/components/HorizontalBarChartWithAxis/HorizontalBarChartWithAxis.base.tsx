@@ -496,7 +496,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         this._points[pointIndex].color = startColor;
       }
 
-      const gradientId = getId('HBCWA_Gradient_ID');
+      const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
 
       return (
         <React.Fragment key={point.y}>
@@ -612,7 +612,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
         this._points[pointIndex].color = startColor;
       }
 
-      const gradientId = getId('HBCWA_Gradient_ID');
+      const gradientId = getId('HBCWA_Gradient') + `_${index}_${point.x}`;
 
       return (
         <React.Fragment key={point.x}>

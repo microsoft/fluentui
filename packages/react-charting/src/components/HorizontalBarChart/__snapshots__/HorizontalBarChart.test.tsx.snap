@@ -1675,7 +1675,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
           >
             <defs>
               <linearGradient
-                id="HBC_Gradient_ID2"
+                id="HBC_Gradient2_0_0"
               >
                 <stop
                   offset="0"
@@ -1693,7 +1693,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
 
 
               data-is-focusable={true}
-              fill="url(#HBC_Gradient_ID2)"
+              fill="url(#HBC_Gradient2_0_0)"
               height={12}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1707,7 +1707,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
             />
             <defs>
               <linearGradient
-                id="HBC_Gradient_ID3"
+                id="HBC_Gradient3_0_1"
               >
                 <stop
                   offset="0"
@@ -1725,7 +1725,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
 
 
               data-is-focusable={false}
-              fill="url(#HBC_Gradient_ID3)"
+              fill="url(#HBC_Gradient3_0_1)"
               height={12}
               onBlur={[Function]}
               onMouseLeave={[Function]}
@@ -1863,7 +1863,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
           >
             <defs>
               <linearGradient
-                id="HBC_Gradient_ID4"
+                id="HBC_Gradient4_1_0"
               >
                 <stop
                   offset="0"
@@ -1881,7 +1881,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
 
 
               data-is-focusable={true}
-              fill="url(#HBC_Gradient_ID4)"
+              fill="url(#HBC_Gradient4_1_0)"
               height={12}
               onBlur={[Function]}
               onFocus={[Function]}
@@ -1895,7 +1895,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
             />
             <defs>
               <linearGradient
-                id="HBC_Gradient_ID5"
+                id="HBC_Gradient5_1_1"
               >
                 <stop
                   offset="0"
@@ -1913,7 +1913,7 @@ exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`]
 
 
               data-is-focusable={false}
-              fill="url(#HBC_Gradient_ID5)"
+              fill="url(#HBC_Gradient5_1_1)"
               height={12}
               onBlur={[Function]}
               onMouseLeave={[Function]}

@@ -895,7 +895,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
 
-        const gradientId = getId('VSBC_Gradient_ID');
+        const gradientId = getId('VSBC_Gradient') + `_${indexNumber}_${index}`;
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {

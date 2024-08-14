@@ -412,7 +412,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         );
       }
 
-      const gradientId = getId('HBC_Gradient_ID');
+      const gradientId = getId('HBC_Gradient') + `_${dataPointIndex}_${index}`;
 
       return (
         <React.Fragment key={index}>

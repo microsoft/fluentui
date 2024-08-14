@@ -402,7 +402,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         pointData.color = startColor;
       }
 
-      const gradientId = getId('GVBC_Gradient_ID');
+      const gradientId = getId('GVBC_Gradient') + `_${singleSet.indexNum}_${index}`;
 
       // Not rendering data with 0.
       pointData.data &&

@@ -288,7 +288,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         hideLabels: this.props.hideLabels,
       });
 
-      const gradientId = getId('MSBC_Gradient_ID');
+      const gradientId = getId('MSBC_Gradient') + `_${barNo}_${index}`;
 
       return (
         <g
