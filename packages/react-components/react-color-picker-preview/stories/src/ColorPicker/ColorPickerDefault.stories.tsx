@@ -51,7 +51,8 @@ export const Default = () => {
     <div className={styles.example}>
       <ColorPicker color={selectedColor} onChange={handleChange}>
         <AlphaSlider />
-        <HueSlider max={360} value={hueValue} />
+        {/* <HueSlider max={360} value={hueValue} /> */}
+        <ColorSlider value={hueValue} max={360} channel="hue" />
       </ColorPicker>
       <div className={styles.previewColor} style={{ backgroundColor: `${selectedColor}` }} />
     </div>

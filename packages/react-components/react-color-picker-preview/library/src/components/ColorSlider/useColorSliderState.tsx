@@ -32,7 +32,7 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   const valuePercent = getPercent(clampedValue, min, max);
 
   const inputOnChange = state.input.onChange;
-  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.onChange);
+  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
   const propsOnChange = props.onChange || ctxOnChange;
 
   const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {

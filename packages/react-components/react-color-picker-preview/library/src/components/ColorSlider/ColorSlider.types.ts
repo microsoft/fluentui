@@ -50,6 +50,7 @@ export type ColorSliderProps = Omit<
    */
   vertical?: boolean;
   channel?: 'hue' | 'saturation' | 'lightness' | 'alpha';
+  customChannel?: string;
   color?: string;
 };
 

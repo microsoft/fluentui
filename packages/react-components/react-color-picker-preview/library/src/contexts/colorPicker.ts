@@ -12,14 +12,18 @@ export type ColorPickerContextValue = Pick<ColorPickerProps, 'color'> & {
    * Callback used by Sliders to request a change on it's selected value
    * Should be used to get value of color channel
    */
-  requestChange: (event: React.ChangeEvent<HTMLInputElement>, data: { hue?: number; alpha?: number }) => void;
+  requestChange: (
+    event: React.ChangeEvent<HTMLInputElement>,
+    data: { hue?: number; alpha?: number; channel?: string },
+  ) => void;
   overlayColor?: string;
   hueValue?: number;
   alphaValue?: number;
+  channelValue?: string;
 };
 
 export const useColorPickerContextValues = (state: ColorPickerState): ColorPickerContextValues => {
-  const { color, requestChange, overlayColor, hueValue, alphaValue } = state;
+  const { color, requestChange, overlayColor, hueValue, alphaValue, channelValue } = state;
 
   // This context is created with "@fluentui/react-context-selector", these is no sense to memoize it
   const colorPicker: ColorPickerContextValue = {
@@ -28,6 +32,7 @@ export const useColorPickerContextValues = (state: ColorPickerState): ColorPicke
     overlayColor,
     hueValue,
     alphaValue,
+    channelValue,
   };
 
   return { colorPicker };
@@ -41,6 +46,7 @@ export const colorPickerContextDefaultValue: ColorPickerContextValue = {
   overlayColor: undefined,
   hueValue: undefined,
   alphaValue: undefined,
+  channelValue: undefined,
 };
 
 export type ColorPickerContextValues = {
