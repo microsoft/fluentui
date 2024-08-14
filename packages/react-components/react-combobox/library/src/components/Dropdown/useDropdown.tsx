@@ -75,7 +75,8 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     state: baseState,
     defaultProps: {
       type: 'button',
-      tabIndex: 0,
+      // tabster navigation breaks if the button is disabled and tabIndex is 0
+      tabIndex: triggerNativeProps.disabled ? -1 : 0,
       children: baseState.value || props.placeholder,
       'aria-controls': open ? listbox?.id : undefined,
       ...triggerNativeProps,

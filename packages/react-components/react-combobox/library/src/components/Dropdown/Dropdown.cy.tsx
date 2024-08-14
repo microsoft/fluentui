@@ -3,6 +3,7 @@ import { mount as mountBase } from '@cypress/react';
 
 import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
+import { useTabsterAttributes } from '@fluentui/react-tabster';
 
 import { Dropdown, Option } from '@fluentui/react-combobox';
 import type { DropdownProps } from '@fluentui/react-combobox';
@@ -59,6 +60,11 @@ describe('Dropdown - controlling open/close state', () => {
 });
 
 describe('Dropdown - tab navigation', () => {
+  const TabsterRoot = (props: React.PropsWithChildren<{}>) => {
+    const tabsterAttrs = useTabsterAttributes({ root: {} });
+    return <div {...tabsterAttrs}>{props.children}</div>;
+  };
+
   const DropdownComponent = (props: Partial<DropdownProps>) => {
     const options = ['Cat', 'Dog', 'Ferret', 'Fish', 'Hamster', 'Snake'];
 
@@ -73,11 +79,11 @@ describe('Dropdown - tab navigation', () => {
 
   it('can tab between multiple dropdowns', () => {
     mount(
-      <div>
+      <TabsterRoot>
         <DropdownComponent id="first" />
         <DropdownComponent id="second" />
         <DropdownComponent id="third" />
-      </div>,
+      </TabsterRoot>,
     );
 
     // Focus the first dropdown
@@ -96,13 +102,13 @@ describe('Dropdown - tab navigation', () => {
     cy.focused().should('have.id', 'second');
   });
 
-  it.skip('can tab between multiple dropdowns (clearable)', () => {
+  it('can tab between multiple dropdowns (clearable)', () => {
     mount(
-      <div>
+      <TabsterRoot>
         <DropdownComponent id="first" clearable selectedOptions={['Cat']} />
         <DropdownComponent id="second" />
         <DropdownComponent id="third" />
-      </div>,
+      </TabsterRoot>,
     );
 
     // Focus the first dropdown
@@ -123,11 +129,12 @@ describe('Dropdown - tab navigation', () => {
 
   it('can tab between multiple dropdowns (skip disabled)', () => {
     mount(
-      <div>
+      <TabsterRoot>
         <DropdownComponent id="first" />
         <DropdownComponent id="second" disabled />
         <DropdownComponent id="third" />
-      </div>,
+        <DropdownComponent id="fourth" />
+      </TabsterRoot>,
     );
 
     // Focus the first dropdown
