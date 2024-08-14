@@ -11,7 +11,7 @@
 ### Don't
 
 - Avoid using rounded corners in a grid layout for the SwatchPicker, as it may cause the [Hermann grid illusion](https://en.wikipedia.org/wiki/Grid_illusion).
-- When using `extra small` or smaller swatches spacing should be not less than 4px.
+- When using `extra small` or smaller swatches spacing should be not less than 4px to ensure they pass the [WCAG target size requirement](https://w3c.github.io/wcag/understanding/target-size-minimum.html).
 - Avoid showing more than 4 disabled swatches.
 
 ### Accessibility
