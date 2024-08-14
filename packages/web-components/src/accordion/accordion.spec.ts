@@ -1,6 +1,6 @@
 import type { Locator } from '@playwright/test';
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 
 test.describe('Accordion', () => {
   test.beforeEach(async ({ page }) => {

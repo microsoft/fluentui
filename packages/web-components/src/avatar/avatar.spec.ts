@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Avatar } from './avatar.js';
 import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
@@ -139,7 +139,7 @@ test.describe('Avatar Component', () => {
   test('default color should be neutral', async ({ page }) => {
     const element = page.locator('fluent-avatar');
 
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('neutral'))).toBe(true);
+    await expect(element).toHaveCustomState('neutral');
   });
 
   test('should add a custom state of `brand` when `brand is provided as the color', async ({ page }) => {
@@ -149,7 +149,7 @@ test.describe('Avatar Component', () => {
       <fluent-avatar color-id="pumpkin" name="John Doe" color="brand"></fluent-avatar>
     `);
 
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('brand'))).toBe(true);
+    await expect(element).toHaveCustomState('brand');
   });
 
   test('should prioritize color derivation from colorId over name when set to "colorful"', async ({ page }) => {
@@ -159,7 +159,7 @@ test.describe('Avatar Component', () => {
       <fluent-avatar color-id="pumpkin" name="Steve Smith" color="colorful"></fluent-avatar>
     `);
 
-    expect(await element.evaluate((node: Avatar) => node.elementInternals.states.has('pumpkin'))).toBe(true);
+    await expect(element).toHaveCustomState('pumpkin');
   });
 
   test(`should set the color attribute on the internal control`, async ({ page }) => {

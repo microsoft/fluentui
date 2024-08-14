@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import { TextInput } from '../index.js';
 import type { Field } from './field.js';
 
@@ -20,7 +20,7 @@ test.describe('Field', () => {
     `);
 
     await test.step('should set the `disabled` state when the input is disabled', async () => {
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('disabled'))).toBe(true);
+      await expect(element).toHaveCustomState('disabled');
     });
 
     await test.step('should remove the `disabled` state when the input is enabled', async () => {
@@ -28,7 +28,7 @@ test.describe('Field', () => {
         node.querySelector('input')?.removeAttribute('disabled');
       });
 
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('disabled'))).toBe(false);
+      await expect(element).not.toHaveCustomState('disabled');
     });
   });
 
@@ -42,7 +42,7 @@ test.describe('Field', () => {
     `);
 
     await test.step('should set the `required` state when the input is required', async () => {
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('required'))).toBe(true);
+      await expect(element).toHaveCustomState('required');
     });
 
     await test.step('should remove the `required` state when the input is not required', async () => {
@@ -50,7 +50,7 @@ test.describe('Field', () => {
         node.querySelector('input')?.removeAttribute('required');
       });
 
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('required'))).toBe(false);
+      await expect(element).not.toHaveCustomState('required');
     });
   });
 
@@ -64,7 +64,7 @@ test.describe('Field', () => {
     `);
 
     await test.step('should set the `readonly` state when the input is readonly', async () => {
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('readonly'))).toBe(true);
+      await expect(element).toHaveCustomState('readonly');
     });
 
     await test.step('should remove the `readonly` state when the input is not readonly', async () => {
@@ -72,7 +72,7 @@ test.describe('Field', () => {
         node.querySelector('input')?.removeAttribute('readonly');
       });
 
-      expect(await element.evaluate((node: Field) => node.elementInternals.states.has('readonly'))).toBe(false);
+      await expect(element).not.toHaveCustomState('readonly');
     });
   });
 
@@ -94,7 +94,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('value-missing'))).toBe(false);
+    await expect(element).not.toHaveCustomState('value-missing');
 
     await expect(message).toBeHidden();
 
@@ -102,7 +102,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('value-missing'))).toBe(true);
+    await expect(element).toHaveCustomState('value-missing');
 
     await expect(message).toBeVisible();
   });
@@ -125,7 +125,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('pattern-mismatch'))).toBe(false);
+    await expect(element).not.toHaveCustomState('pattern-mismatch');
 
     await expect(message).toBeHidden();
 
@@ -133,7 +133,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('pattern-mismatch'))).toBe(true);
+    await expect(element).toHaveCustomState('pattern-mismatch');
 
     await expect(message).toBeVisible();
   });
@@ -156,7 +156,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-short'))).toBe(false);
+    await expect(element).not.toHaveCustomState('too-short');
 
     await expect(message).toBeHidden();
 
@@ -164,7 +164,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-short'))).toBe(true);
+    await expect(element).toHaveCustomState('too-short');
 
     await expect(message).toBeVisible();
   });
@@ -187,7 +187,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-long'))).toBe(false);
+    await expect(element).not.toHaveCustomState('too-long');
 
     await expect(message).toBeHidden();
 
@@ -204,7 +204,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('too-long'))).toBe(true);
+    await expect(element).toHaveCustomState('too-long');
 
     await expect(message).toBeVisible();
   });
@@ -227,7 +227,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-underflow'))).toBe(false);
+    await expect(element).not.toHaveCustomState('range-underflow');
 
     await expect(message).toBeHidden();
 
@@ -235,7 +235,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-underflow'))).toBe(true);
+    await expect(element).toHaveCustomState('range-underflow');
 
     await expect(message).toBeVisible();
   });
@@ -258,7 +258,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-overflow'))).toBe(false);
+    await expect(element).not.toHaveCustomState('range-overflow');
 
     await expect(message).toBeHidden();
 
@@ -266,7 +266,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('range-overflow'))).toBe(true);
+    await expect(element).toHaveCustomState('range-overflow');
 
     await expect(message).toBeVisible();
   });
@@ -289,7 +289,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('step-mismatch'))).toBe(false);
+    await expect(element).not.toHaveCustomState('step-mismatch');
 
     await expect(message).toBeHidden();
 
@@ -297,7 +297,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('step-mismatch'))).toBe(true);
+    await expect(element).toHaveCustomState('step-mismatch');
 
     await expect(message).toBeVisible();
   });
@@ -320,7 +320,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('type-mismatch'))).toBe(false);
+    await expect(element).not.toHaveCustomState('type-mismatch');
 
     await expect(message).toBeHidden();
 
@@ -328,7 +328,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('type-mismatch'))).toBe(true);
+    await expect(element).toHaveCustomState('type-mismatch');
 
     await expect(message).toBeVisible();
   });
@@ -356,7 +356,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('custom-error'))).toBe(true);
+    await expect(element).toHaveCustomState('custom-error');
 
     await expect(message).toBeVisible();
 
@@ -369,7 +369,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('custom-error'))).toBe(false);
+    await expect(element).not.toHaveCustomState('custom-error');
 
     await expect(message).toBeHidden();
   });
@@ -388,7 +388,7 @@ test.describe('Field', () => {
       </fluent-field>
     `);
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('bad-input'))).toBe(false);
+    await expect(element).not.toHaveCustomState('bad-input');
 
     await expect(message).toBeHidden();
 
@@ -397,7 +397,7 @@ test.describe('Field', () => {
       node.reportValidity();
     });
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('bad-input'))).toBe(true);
+    await expect(element).toHaveCustomState('bad-input');
 
     await expect(message).toBeVisible();
   });
@@ -420,7 +420,7 @@ test.describe('Field', () => {
 
     await input.dispatchEvent('change');
 
-    expect(await element.evaluate((node: Field) => node.elementInternals.states.has('valid'))).toBe(true);
+    await expect(element).toHaveCustomState('valid');
 
     await expect(message).toBeVisible();
   });

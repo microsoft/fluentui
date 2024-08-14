@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Spinner } from './spinner.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
@@ -22,12 +22,12 @@ test.describe('Spinner', () => {
 
       await test.step('should add a custom state matching the `appearance` attribute when provided', async () => {
         for (const appearance in SpinnerAppearance) {
-          const hasState = await element.evaluate(
-            (node, appearance) => node.matches(`:state(${appearance})`),
-            appearance,
-          );
-
-          expect(hasState).toEqual(appearance === thisAppearance);
+          // eslint-disable-next-line playwright/no-conditional-in-test
+          if (appearance === thisAppearance) {
+            await expect(element).toHaveCustomState(appearance);
+          } else {
+            await expect(element).not.toHaveCustomState(appearance);
+          }
         }
       });
     });
@@ -45,9 +45,12 @@ test.describe('Spinner', () => {
 
       await test.step('should add a custom state matching the `appearance` attribute when provided', async () => {
         for (const size in SpinnerSize) {
-          const hasState = await element.evaluate((node, size) => node.matches(`:state(${size})`), size);
-
-          expect(hasState).toEqual(size === thisSize);
+          // eslint-disable-next-line playwright/no-conditional-in-test
+          if (size === thisSize) {
+            await expect(element).toHaveCustomState(size);
+          } else {
+            await expect(element).not.toHaveCustomState(size);
+          }
         }
       });
     });
