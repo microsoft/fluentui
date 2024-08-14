@@ -1,8 +1,13 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart, GaugeChartVariant } from '@fluentui/react-charting';
+import {
+  DataVizPalette,
+  GaugeChart,
+  GaugeChartVariant,
+  getGradientFromToken,
+  DataVizGradientPalette,
+} from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/src/utilities/gradients';
 
 interface IGCBasicExampleState {
   width: number;

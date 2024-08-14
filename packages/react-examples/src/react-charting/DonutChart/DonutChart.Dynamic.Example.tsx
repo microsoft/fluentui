@@ -6,11 +6,12 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
 } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];

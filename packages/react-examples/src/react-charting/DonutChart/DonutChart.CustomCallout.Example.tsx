@@ -7,9 +7,10 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
 } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charting/lib/utilities/gradients';
 
 export interface IDonutChartState {
   enableGradient: boolean;
