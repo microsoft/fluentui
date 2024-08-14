@@ -2,6 +2,35 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 14 Aug 2024 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.56",
+      "version": "3.0.0-beta.56",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4aae6edaf04c16be98d5ee2121ea366a2a9ceb98",
+            "comment": "update tests to be async"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf96935c37fddfdc7274787e72ea6566bda01458",
+            "comment": "feat(web-components): add fluent-textarea component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbea17157bcc0a705ddca4264fec4d18d5fa13a6",
+            "comment": "export BaseAnchor class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 04:07:16 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.55",
       "version": "3.0.0-beta.55",

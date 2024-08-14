@@ -117,6 +117,7 @@ export { FluentDesignSystem } from './fluent-design-system.js';
 export { Image, ImageDefinition, ImageFit, ImageShape, ImageStyles, ImageTemplate } from './image/index.js';
 export { Label, LabelDefinition, LabelSize, LabelStyles, LabelTemplate, LabelWeight } from './label/index.js';
 export {
+  BaseAnchor,
   AnchorButton,
   AnchorButtonAppearance,
   AnchorButtonDefinition,
@@ -239,6 +240,17 @@ export {
   TablistTemplate,
 } from './tablist/index.js';
 export type { TabsOptions } from './tabs/index.js';
+export {
+  BaseTextArea,
+  TextArea,
+  TextAreaAppearance,
+  TextAreaAutocomplete,
+  TextAreaDefinition,
+  TextAreaResize,
+  TextAreaSize,
+  TextAreaStyles,
+  TextAreaTemplate,
+} from './textarea/index.js';
 export {
   BaseTextInput,
   TextInput,
