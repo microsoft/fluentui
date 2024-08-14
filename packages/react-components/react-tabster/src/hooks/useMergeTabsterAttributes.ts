@@ -9,9 +9,9 @@ import { Types, TABSTER_ATTRIBUTE_NAME } from 'tabster';
  * @param attributes - collection of tabster attributes from other react-tabster hooks
  * @returns single merged tabster attribute
  */
-export const useMergedTabsterAttributes_unstable: (
-  ...attributes: Types.TabsterDOMAttribute[]
-) => Types.TabsterDOMAttribute = (...attributes) => {
+export const useMergedTabsterAttributes_unstable = (
+  ...attributes: Partial<Types.TabsterDOMAttribute>[]
+): Types.TabsterDOMAttribute => {
   'use no memo';
 
   const stringAttributes = attributes.map(attribute => attribute[TABSTER_ATTRIBUTE_NAME]).filter(Boolean) as string[];
