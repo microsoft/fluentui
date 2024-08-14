@@ -28,7 +28,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   let _barHeight: number;
   //let _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
   let _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-  let _calloutId: string = useId('_callout');
   let _refArray: IRefArrayData[] = [];
   let _calloutAnchorPoint: IChartDataPoint | null;
   const _isRTL: boolean = isRtl();
@@ -380,7 +379,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
         );
       })}
       <PopoverComponent
-        id={_calloutId}
         xCalloutValue={xCalloutValue}
         yCalloutValue={yCalloutValue}
         culture={props.culture}

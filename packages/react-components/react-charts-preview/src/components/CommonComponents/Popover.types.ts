@@ -1,7 +1,6 @@
 import { IChartDataPoint, IYValueHover } from '../../index';
 
 export interface IPopoverComponentProps {
-  id: string;
   clickPosition: { x: number; y: number };
   isPopoverOpen: boolean;
   xCalloutValue?: string;

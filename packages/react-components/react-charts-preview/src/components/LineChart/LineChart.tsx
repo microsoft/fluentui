@@ -1261,7 +1261,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       legendBars = _createLegendsMemoized(_points!);
     }
     const calloutProps = {
-      id: `toolTip${_uniqueCallOutID}`,
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
       descriptionMessage:
