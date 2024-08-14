@@ -7,7 +7,6 @@ import { uniqueId } from '@microsoft/fast-web-utilities';
  */
 export type Theme = Record<string, string | number>;
 
-const SUPPORTS_REGISTER_PROPERTY = 'registerProperty' in CSS;
 const SUPPORTS_ADOPTED_STYLE_SHEETS = 'adoptedStyleSheets' in document;
 const SUPPORTS_CSS_SCOPE = 'CSSScopeRule' in window;
 
@@ -55,9 +54,6 @@ export function setTheme(theme: Theme | null, node: Document | HTMLElement = doc
 
   // Fallback to setting token custom properties on `<html>` element’s `style`
   // attribute.
-  //
-  // Checking the support of  `document.adoptedStyleSheets` first because it
-  // has broader support than `CSS.registerProperty()` and `@scope`.
   if (!SUPPORTS_ADOPTED_STYLE_SHEETS || (node instanceof HTMLElement && !node.shadowRoot && !SUPPORTS_CSS_SCOPE)) {
     const target: HTMLElement = node === document ? document.documentElement : (node as HTMLElement);
     setThemePropertiesOnElement(theme, target);
@@ -76,18 +72,7 @@ function getThemeStyleText(theme: Theme): string {
     const tokenDeclarations: string[] = [];
 
     for (const [tokenName, tokenValue] of Object.entries(theme)) {
-      const name = `--${tokenName}`;
-
-      if (SUPPORTS_REGISTER_PROPERTY) {
-        try {
-          CSS.registerProperty({
-            name,
-            initialValue: '',
-            inherits: true,
-          });
-        } catch {}
-      }
-      tokenDeclarations.push(`${name}:${tokenValue.toString()};`);
+      tokenDeclarations.push(`--${tokenName}:${tokenValue.toString()};`);
     }
 
     themeStyleTextMap.set(theme, tokenDeclarations.join(''));
