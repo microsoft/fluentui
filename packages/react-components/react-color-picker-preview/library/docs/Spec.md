@@ -429,7 +429,7 @@ In a `horizontal` orientation top/right arrows move to the right, bottom/left ar
 
 On navigation and color select the screen reader should read the following:
 
-1. `aria-labelby` of the root component, e.g. "ColorPicker"
+1. `aria-labelledby` of the root component, e.g. "ColorPicker"
 2. `aria-roledescription` of the input slider, e.g. "2D slider"
 3. `aria-valuetext` with the color description.
 
