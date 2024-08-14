@@ -22,16 +22,12 @@ const config: PlaywrightTestConfig = {
     {
       name: 'firefox',
       use: { ...devices['Desktop Firefox'] },
-      testMatch: [
-        /set-theme\.spec\.ts$/,
-      ],
+      testMatch: [/set-theme\.spec\.ts$/],
     },
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
-      testMatch: [
-        /set-theme\.spec\.ts$/,
-      ],
+      testMatch: [/set-theme\.spec\.ts$/],
     },
   ],
   webServer: {
