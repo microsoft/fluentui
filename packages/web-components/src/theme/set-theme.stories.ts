@@ -43,10 +43,29 @@ Flat object of theme tokens. Each object entry must follow these rules:
 
 Note that this argument is not limited to existing theme objects (from \`@fluentui/tokens\`),
 you can pass in an arbitrary theme object as long as each entry’s value is either a string or a number.
+
+Set to \`null\` to unset the theme.
 `;
 
 export default {
   title: 'Theme/SetTheme',
+  argTypes: {
+    theme: {
+      description: themeDescription,
+      control: false,
+    },
+    node: {
+      description: 'The node or element to set theme on. Defaults to `Document`',
+      control: false,
+    },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A utility funciton to sets the theme tokens as CSS Custom Properties.',
+      },
+    },
+  },
 } as Meta;
 
 const ComponentCloudTemplate = html`
