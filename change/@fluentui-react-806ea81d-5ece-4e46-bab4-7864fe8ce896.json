@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react/lib/icons): make icons inherit textDecoration from links",
-  "packageName": "@fluentui/react",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

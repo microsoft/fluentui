@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 14 Aug 2024 07:21:40 GMT",
+      "tag": "@fluentui/react_v8.120.4",
+      "version": "8.120.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "33a1671febc099aa3bf0c4a4f7f592ef9163c153",
+            "comment": "fix(react/lib/icons): make icons inherit textDecoration from links"
+          },
+          {
+            "author": "420834+andyrooger@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "392397bcbd08a8699e0a18828fdc552716a54d38",
+            "comment": "ScrollablePane/Sticky: Allow remounting for react 18 strict mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9fa4471db1d71a27fcd26c74254634593ed75fb8",
+            "comment": "fix: picker suggestion actions have focus outline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:15 GMT",
       "tag": "@fluentui/react_v8.120.3",
       "version": "8.120.3",
