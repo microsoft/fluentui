@@ -444,7 +444,7 @@ Use `tab` key to navigate between ColorArea and Color sliders. Use arrows keys t
 - role `group`
 - `aria-labelby`
 
-For Slider `aria-orientation`
+For vertical Slider `aria-orientation="vertical"`
 
 **ColorThumb:**
 
