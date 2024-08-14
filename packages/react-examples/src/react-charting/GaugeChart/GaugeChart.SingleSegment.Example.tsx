@@ -26,8 +26,8 @@ export class GaugeChartSingleSegmentExample extends React.Component<{}, IGCSingl
       width: 252,
       height: 173,
       chartValue: 50,
-      enableGradient: true,
-      roundedCorners: true,
+      enableGradient: false,
+      roundedCorners: false,
     };
   }
 

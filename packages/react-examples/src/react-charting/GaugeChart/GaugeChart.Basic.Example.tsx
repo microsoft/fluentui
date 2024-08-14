@@ -27,8 +27,8 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
       height: 128,
       chartValue: 50,
       hideMinMax: false,
-      enableGradient: true,
-      roundedCorners: true,
+      enableGradient: false,
+      roundedCorners: false,
     };
   }
 
