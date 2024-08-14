@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 08 Aug 2024 04:07:16 GMT and should not be manually modified.
+This log was last generated on Wed, 14 Aug 2024 04:07:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.56)
+
+Wed, 14 Aug 2024 04:07:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.55..@fluentui/web-components_v3.0.0-beta.56)
+
+### Changes
+
+- feat(web-components): add fluent-textarea component ([PR #32037](https://github.com/microsoft/fluentui/pull/32037) by machi@microsoft.com)
+- export BaseAnchor class ([PR #32295](https://github.com/microsoft/fluentui/pull/32295) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.55)
 
