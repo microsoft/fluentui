@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@griffel/eslint-plugin": "^1.6.3",
-    "@rnx-kit/eslint-plugin": "^0.5.3",
+    "@rnx-kit/eslint-plugin": "^0.7.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/utils": "^7.18.0",
     "@typescript-eslint/rule-tester": "7.18.0",
