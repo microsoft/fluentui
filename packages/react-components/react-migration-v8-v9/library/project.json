@@ -4,5 +4,15 @@
   "projectType": "library",
   "sourceRoot": "packages/react-components/react-migration-v8-v9/library/src",
   "tags": ["vNext", "v8", "platform:web"],
-  "implicitDependencies": []
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": ["react", "react-hooks", "fluent2-theme"]
+        }
+      ]
+    }
+  }
 }
