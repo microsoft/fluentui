@@ -7,7 +7,7 @@ By default, it lets people navigate through colors on a color spectrum; or speci
 
 ## Prior Art
 
-- [Convergence epic](https://github.com/microsoft/fluentui/issues/31778)
+[Convergence epic](https://github.com/microsoft/fluentui/issues/31778)
 
 ### Fabric (v8)
 
