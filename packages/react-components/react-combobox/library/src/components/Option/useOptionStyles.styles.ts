@@ -79,12 +79,7 @@ const useStyles = makeStyles({
   selected: {},
 
   checkIcon: {
-<<<<<<< HEAD
-    flexShrink: 0,
-    fontSize: `var(--ctrl-token-Option-1023, var(--semantic-token-Option-1024, ${tokens.fontSizeBase400}))`,
-=======
     fontSize: `var(--1023, var(--1024, ${tokens.fontSizeBase400}))`,
->>>>>>> e5ce9d17b5 (fix:react-nav-preview: High contrast issues (#31704))
     // Shift icon(s) to the left to give text content extra spacing without needing an extra node
     // This is done instead of gap since the extra space only exists between icon > content, not icon > icon
     marginLeft: `calc(${tokens.spacingHorizontalXXS} * -1)`,
