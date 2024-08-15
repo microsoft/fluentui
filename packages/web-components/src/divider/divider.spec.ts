@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import { Divider } from './divider.js';
 
 test.describe('Divider', () => {
@@ -77,15 +77,15 @@ test.describe('Divider', () => {
       node.orientation = 'vertical';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('vertical'))).toBe(true);
+    await expect(element).toHaveCustomState('vertical');
 
     await element.evaluate((node: Divider) => {
       node.orientation = 'horizontal';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('vertical'))).toBe(false);
+    await expect(element).not.toHaveCustomState('vertical');
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('horizontal'))).toBe(true);
+    await expect(element).toHaveCustomState('horizontal');
   });
 
   test('should initialize to the provided value attribute if set post-connection', async ({ page }) => {
@@ -150,23 +150,23 @@ test.describe('Divider', () => {
       node.appearance = 'strong';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('strong'))).toBe(true);
+    await expect(element).toHaveCustomState('strong');
 
     await element.evaluate((node: Divider) => {
       node.appearance = 'brand';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('strong'))).toBe(false);
+    await expect(element).not.toHaveCustomState('strong');
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('brand'))).toBe(true);
+    await expect(element).toHaveCustomState('brand');
 
     await element.evaluate((node: Divider) => {
       node.appearance = 'subtle';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('brand'))).toBe(false);
+    await expect(element).not.toHaveCustomState('brand');
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('subtle'))).toBe(true);
+    await expect(element).toHaveCustomState('subtle');
   });
 
   test('should add a custom state of `inset` when the value is true', async ({ page }) => {
@@ -176,13 +176,13 @@ test.describe('Divider', () => {
       node.inset = true;
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('inset'))).toBe(true);
+    await expect(element).toHaveCustomState('inset');
 
     await element.evaluate((node: Divider) => {
       node.inset = false;
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('inset'))).toBe(false);
+    await expect(element).not.toHaveCustomState('inset');
   });
 
   test('should add a custom state matching the `align-content` attribute value when provided', async ({ page }) => {
@@ -192,22 +192,22 @@ test.describe('Divider', () => {
       node.alignContent = 'start';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(true);
+    await expect(element).toHaveCustomState('align-start');
 
     await element.evaluate((node: Divider) => {
       node.alignContent = 'end';
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(false);
+    await expect(element).not.toHaveCustomState('align-start');
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-end'))).toBe(true);
+    await expect(element).toHaveCustomState('align-end');
 
     await element.evaluate((node: Divider) => {
       node.alignContent = undefined;
     });
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-start'))).toBe(false);
+    await expect(element).not.toHaveCustomState('align-start');
 
-    expect(await element.evaluate((node: Divider) => node.elementInternals.states.has('align-end'))).toBe(false);
+    await expect(element).not.toHaveCustomState('align-end');
   });
 });
