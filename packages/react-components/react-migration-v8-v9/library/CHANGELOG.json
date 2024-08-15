@@ -2,6 +2,29 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:12 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.27",
+      "version": "9.6.27",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.54.11",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2024 12:31:57 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.6.26",
       "version": "9.6.26",

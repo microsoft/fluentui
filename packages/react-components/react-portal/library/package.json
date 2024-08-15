@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal",
-  "version": "9.4.31",
+  "version": "9.4.32",
   "description": "A utility component that creates portals compatible with Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-shared-contexts": "^9.20.0",
-    "@fluentui/react-tabster": "^9.22.3",
+    "@fluentui/react-tabster": "^9.22.4",
     "@fluentui/react-utilities": "^9.18.13",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
