@@ -131,13 +131,12 @@ export const useTagPickerControl_unstable = (
   const { targetDocument } = useFluent();
   const win = targetDocument?.defaultView;
 
-  React.useEffect(() => {
-    if (!win || !triggerRef.current || !state.expandIcon) {return;}
-
-    // If aria-label or aria-labelledby changes, recalculate aria-label and aria-labelledby for the expandIcon
-    const getExpandLabel = (ariaLabel?: string | null, ariaLabelledBy?: string | null) => {
-      let expandAriaLabel = '';
-      let expandAriaLabelledBy = '';
+  // If aria-label or aria-labelledby changes, recalculate aria-label and aria-labelledby for the expandIcon
+  // The expandIcon's label is calculated based on the input's label
+  const getExpandLabel = React.useCallback(
+    (ariaLabel?: string | null, ariaLabelledBy?: string | null) => {
+      let expandAriaLabel = undefined;
+      let expandAriaLabelledBy = undefined;
 
       if (state.expandIcon) {
         const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
@@ -165,20 +164,27 @@ export const useTagPickerControl_unstable = (
       }
 
       return { expandAriaLabel, expandAriaLabelledBy };
-    };
+    },
+    [state.expandIcon, tagPickerId],
+  );
 
-    const setExpandLabel = () => {
-      const inputAriaLabel = triggerRef.current?.getAttribute('aria-label');
-      const inputAriaLabelledBy = triggerRef.current?.getAttribute('aria-labelledby');
+  const setExpandLabel = React.useCallback(() => {
+    const inputAriaLabel = triggerRef.current?.getAttribute('aria-label');
+    const inputAriaLabelledBy = triggerRef.current?.getAttribute('aria-labelledby');
 
-      const { expandAriaLabel, expandAriaLabelledBy } = getExpandLabel(inputAriaLabel, inputAriaLabelledBy);
+    const { expandAriaLabel, expandAriaLabelledBy } = getExpandLabel(inputAriaLabel, inputAriaLabelledBy);
 
-      if (expandAriaLabelledBy) {
-        expandIconRef.current?.setAttribute('aria-labelledby', expandAriaLabelledBy);
-      } else if (expandAriaLabel) {
-        expandIconRef.current?.setAttribute('aria-label', expandAriaLabel);
-      }
-    };
+    if (expandAriaLabelledBy) {
+      expandIconRef.current?.setAttribute('aria-labelledby', expandAriaLabelledBy);
+    } else if (expandAriaLabel) {
+      expandIconRef.current?.setAttribute('aria-label', expandAriaLabel);
+    }
+  }, [getExpandLabel, triggerRef]);
+
+  React.useEffect(() => {
+    if (!win || !triggerRef.current || !state.expandIcon) {
+      return;
+    }
 
     // On first render, calculate the default aria-label and aria-labelledby for the expandIcon
     setExpandLabel();
@@ -194,7 +200,7 @@ export const useTagPickerControl_unstable = (
     return () => {
       observer.disconnect();
     };
-  }, [state.expandIcon, tagPickerId, triggerRef, win]);
+  }, [getExpandLabel, setExpandLabel, state.expandIcon, tagPickerId, triggerRef, win]);
 
   return state;
 };
