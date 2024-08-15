@@ -138,4 +138,47 @@ test.describe('setTheme()', () => {
     await expect(span).toHaveCSS('--foo', 'foo1');
     await expect(span).toHaveCSS('--bar', 'bar1');
   });
+
+  test('should not inherit token values from light DOM subtree once tokens are set in the shadow DOM tree', async ({ page }) => {
+    const parent = page.locator('div.parent');
+    const host = page.locator('div.host');
+    const span = host.locator('span');
+
+    // Using Declarative Shadow DOM with `page.setContent()` doesn’t work in Firefox.
+    await page.setContent(`
+      <div class="parent">
+        <div class="host"></div>
+      </div>
+    `);
+    await host.evaluate((node: HTMLDivElement) => {
+      node.attachShadow({ mode: 'open' });
+      node.shadowRoot!.innerHTML = '<span></span>';
+    });
+
+    await parent.evaluate((node: HTMLDivElement, theme) => {
+      window.setTheme(theme, node);
+    }, theme1);
+
+    await host.evaluate((node: HTMLDivElement, theme) => {
+      window.setTheme(theme, node);
+    }, theme2);
+
+    await expect(parent).toHaveCSS('--foo', 'foo1');
+    await expect(parent).toHaveCSS('--bar', 'bar1');
+    await expect(host).toHaveCSS('--foo', 'foo2');
+    await expect(host).toHaveCSS('--bar', 'bar2');
+    await expect(span).toHaveCSS('--foo', 'foo2');
+    await expect(span).toHaveCSS('--bar', 'bar2');
+
+    await parent.evaluate((node: HTMLDivElement) => {
+      window.setTheme(null, node);
+    });
+
+    await expect(parent).toHaveCSS('--foo', '');
+    await expect(parent).toHaveCSS('--bar', '');
+    await expect(host).toHaveCSS('--foo', 'foo2');
+    await expect(host).toHaveCSS('--bar', 'bar2');
+    await expect(span).toHaveCSS('--foo', 'foo2');
+    await expect(span).toHaveCSS('--bar', 'bar2');
+  });
 });
