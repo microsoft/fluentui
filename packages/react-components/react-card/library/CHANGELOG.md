@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Tue, 06 Aug 2024 21:40:43 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.91)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.90..@fluentui/react-card_v9.0.91)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.0.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.90)
+
+Thu, 15 Aug 2024 08:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.89..@fluentui/react-card_v9.0.90)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.0.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.89)
 

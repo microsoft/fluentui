@@ -2,6 +2,35 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:35 GMT",
+      "tag": "@fluentui/style-utilities_v8.10.21",
+      "version": "8.10.21",
+      "comments": {
+        "patch": [
+          {
+            "author": "caperez@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "2725f4fc5e87b1c23e11fe7163a731774a6db0ec",
+            "comment": "Picking up new color/style for audio/video/ClipChamp filetype icons."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/style-utilities",
+            "comment": "Bump @fluentui/theme to v2.6.59",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/style-utilities",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:18 GMT",
       "tag": "@fluentui/style-utilities_v8.10.20",
       "version": "8.10.20",

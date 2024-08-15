@@ -1,12 +1,21 @@
 import * as React from 'react';
-import { DataVizPalette, GaugeChart, GaugeChartVariant } from '@fluentui/react-charting';
+import {
+  DataVizPalette,
+  GaugeChart,
+  GaugeChartVariant,
+  getGradientFromToken,
+  DataVizGradientPalette,
+} from '@fluentui/react-charting';
 import { Stack, StackItem, Checkbox } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IGCBasicExampleState {
   width: number;
   height: number;
   chartValue: number;
   hideMinMax: boolean;
+  enableGradient: boolean;
+  roundedCorners: boolean;
 }
 
 export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleState> {
@@ -18,6 +27,8 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
       height: 128,
       chartValue: 50,
       hideMinMax: false,
+      enableGradient: false,
+      roundedCorners: false,
     };
   }
 
@@ -72,17 +83,51 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
           styles={{ root: { marginTop: '20px' } }}
         />
 
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="ON"
+            offText="OFF"
+            checked={this.state.enableGradient}
+            onChange={this._onToggleGradient}
+          />
+          <Toggle
+            label="Rounded Corners"
+            onText="ON"
+            offText="OFF"
+            checked={this.state.roundedCorners}
+            onChange={this._onToggleRoundedCorners}
+          />
+        </div>
+
         <GaugeChart
           width={this.state.width}
           height={this.state.height}
           segments={[
-            { size: 33, color: DataVizPalette.success, legend: 'Low Risk' },
-            { size: 34, color: DataVizPalette.warning, legend: 'Medium Risk' },
-            { size: 33, color: DataVizPalette.error, legend: 'High Risk' },
+            {
+              size: 33,
+              color: DataVizPalette.success,
+              gradient: getGradientFromToken(DataVizGradientPalette.success),
+              legend: 'Low Risk',
+            },
+            {
+              size: 34,
+              color: DataVizPalette.warning,
+              gradient: getGradientFromToken(DataVizGradientPalette.warning),
+              legend: 'Medium Risk',
+            },
+            {
+              size: 33,
+              color: DataVizPalette.error,
+              gradient: getGradientFromToken(DataVizGradientPalette.error),
+              legend: 'High Risk',
+            },
           ]}
           chartValue={this.state.chartValue}
           hideMinMax={this.state.hideMinMax}
           variant={GaugeChartVariant.MultipleSegments}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundedCorners}
         />
       </>
     );
@@ -100,5 +145,13 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
 
   private _onHideMinMaxCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideMinMax: checked });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundedCorners: checked });
   };
 }

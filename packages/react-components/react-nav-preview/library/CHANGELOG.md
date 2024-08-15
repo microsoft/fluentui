@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Tue, 06 Aug 2024 21:40:45 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.3)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.2..@fluentui/react-nav-preview_v0.7.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.4 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-button to v9.3.89 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-drawer to v9.5.11 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.2)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.7.1..@fluentui/react-nav-preview_v0.7.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-button to v9.3.88 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-drawer to v9.5.10 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.7.1)
 

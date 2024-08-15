@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: change :after to ::after",
-  "packageName": "@fluentui/react-table",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}

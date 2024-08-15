@@ -2,6 +2,29 @@
   "name": "@fluentui/react-icon-provider",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:34 GMT",
+      "tag": "@fluentui/react-icon-provider_v1.3.71",
+      "version": "1.3.71",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-icon-provider",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-icon-provider",
+            "comment": "Bump @fluentui/style-utilities to v8.10.21",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:16 GMT",
       "tag": "@fluentui/react-icon-provider_v1.3.70",
       "version": "1.3.70",

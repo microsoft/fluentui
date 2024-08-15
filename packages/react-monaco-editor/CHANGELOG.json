@@ -2,6 +2,35 @@
   "name": "@fluentui/react-monaco-editor",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:34 GMT",
+      "tag": "@fluentui/react-monaco-editor_v1.7.231",
+      "version": "1.7.231",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-monaco-editor",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react to v8.120.5",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-monaco-editor",
+            "comment": "Bump @fluentui/react-charting to v5.21.32",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Aug 2024 07:21:41 GMT",
       "tag": "@fluentui/react-monaco-editor_v1.7.230",
       "version": "1.7.230",
