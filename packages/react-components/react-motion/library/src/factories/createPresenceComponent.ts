@@ -107,7 +107,11 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const handleRef = useMotionImperativeRef(imperativeRef);
       const elementRef = React.useRef<HTMLElement>();
       const ref = useMergedRefs(elementRef, child.ref);
-      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams }>({ appear, params });
+      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; disableMotions: boolean }>({
+        appear,
+        params,
+        disableMotions,
+      });
 
       const animateAtoms = useAnimateAtoms();
       const isFirstMount = useFirstMount();
@@ -132,7 +136,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       useIsomorphicLayoutEffect(() => {
         // Heads up!
         // We store the params in a ref to avoid re-rendering the component when the params change.
-        optionsRef.current = { appear, params };
+        optionsRef.current = { appear, params, disableMotions };
       });
 
       useIsomorphicLayoutEffect(
@@ -149,15 +153,15 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
           const skipAnimationOnFirstMount = !visible && isFirstMount;
-          const forceFinishMotion = disableMotions || skipAnimationOnFirstMount;
+          const skipAnimation = optionsRef.current.disableMotions || skipAnimationOnFirstMount;
 
-          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
-
-          if (!forceFinishMotion) {
+          if (!skipAnimation) {
             handleMotionStart(direction);
           }
 
-          if (forceFinishMotion) {
+          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+
+          if (skipAnimation) {
             // Heads up!
             // .finish() is used there to skip animation, but apply animation styles immediately
             handle.finish();
@@ -176,16 +180,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         },
         // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [
-          animateAtoms,
-          handleRef,
-          isReducedMotion,
-          handleMotionFinish,
-          handleMotionStart,
-          handleMotionCancel,
-          visible,
-          disableMotions,
-        ],
+        [animateAtoms, handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
       );
 
       if (mounted) {
