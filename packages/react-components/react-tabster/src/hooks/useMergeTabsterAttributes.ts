@@ -21,6 +21,13 @@ export const useMergedTabsterAttributes_unstable = (
     return acc;
   }, []);
 
+  if (process.env.NODE_ENV !== 'production') {
+    // ignoring rules of hooks because this is a condition based on the environment
+    // it's safe to ignore the rule
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useWarnIfUnstableAttributes(stringAttributes);
+  }
+
   return React.useMemo(
     () => ({
       [TABSTER_ATTRIBUTE_NAME]: stringAttributes.length > 0 ? stringAttributes.reduce(mergeJSONStrings) : undefined,
@@ -48,4 +55,38 @@ const safelyParseJSON = (json: string): object => {
   } catch {
     return {};
   }
+};
+
+/**
+ * Helper hook that ensures that the attributes passed to the hook are stable.
+ * This is necessary because the attributes are expected to not change at runtime.
+ *
+ * This hook will console.warn if the attributes change at runtime.
+ */
+const useWarnIfUnstableAttributes = (attributes: string[]) => {
+  'use no memo';
+
+  const initialAttributesRef = React.useRef(attributes);
+
+  let isStable = initialAttributesRef.current.length === attributes.length;
+  if (initialAttributesRef.current !== attributes && isStable) {
+    for (let i = 0; i < attributes.length; i++) {
+      if (initialAttributesRef.current[i] !== attributes[i]) {
+        isStable = false;
+        break;
+      }
+    }
+  }
+  React.useEffect(() => {
+    if (!isStable) {
+      const error = new Error();
+      // eslint-disable-next-line no-console
+      console.warn(/** #__DE-INDENT__ */ `
+        @fluentui/react-tabster [useMergedTabsterAttributes]:
+        The attributes passed to the hook changed at runtime.
+        This might lead to unexpected behavior, please ensure that the attributes are stable.
+        ${error.stack}
+      `);
+    }
+  }, [isStable]);
 };
