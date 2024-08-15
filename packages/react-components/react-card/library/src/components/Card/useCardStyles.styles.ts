@@ -42,7 +42,7 @@ const useCardResetStyles = makeResetStyles({
   display: 'flex',
   position: 'relative',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground1,
+  color: `var(--699, var(--700, ${tokens.colorNeutralForeground1})`,
 
   // Border setting using after pseudo element to allow CardPreview to render behind it.
   '::after': {
@@ -56,34 +56,7 @@ const useCardResetStyles = makeResetStyles({
 
     ...shorthands.borderStyle('solid'),
     ...shorthands.borderWidth(tokens.strokeWidthThin),
-    borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,\
-    padding: `var(${cardCSSVars.cardSizeVar})`,
-    gap: `var(${cardCSSVars.cardSizeVar})`,
-
-    display: 'flex',
-    position: 'relative',
-    boxSizing: 'border-box',
-    color: `var(--699, var(--700, ${tokens.colorNeutralForeground1}))`,
-
-    // Border setting using after pseudo element to allow CardPreview to render behind it.
-    '::after': {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      content: '""',
-      pointerEvents: 'none',
-
-      ...shorthands.borderStyle('solid'),
-      ...shorthands.borderWidth(tokens.strokeWidthThin),
-      borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
-    },
-
-    // Prevents CardHeader and CardFooter from shrinking.
-    [`> .${cardHeaderClassNames.root}, > .${cardFooterClassNames.root}`]: {
-      flexShrink: 0,
-    },
+    borderRadius: `var(${cardCSSVars.cardBorderRadiusVar})`,
   },
 
   // Prevents CardHeader and CardFooter from shrinking.
