@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
 import { createPresenceComponent } from './createPresenceComponent';
+import { MotionDisableProvider } from '../contexts/MotionDisableContext';
 
 describe('createPresenceComponent', () => {
   it('should call onMotionCancel', () => {
@@ -35,5 +36,32 @@ describe('createPresenceComponent', () => {
     mount(<TestComponent />);
 
     cy.get('#toggle').click().wait(100).click().get('#cancel').should('have.text', '1');
+  });
+
+  it('should disable motion with motion disable provider', () => {
+    const TestMotion = createPresenceComponent({
+      enter: { keyframes: [{ opacity: 0 }, { opacity: 0, offset: 0.9 }], duration: 60000 },
+      exit: { keyframes: [{ opacity: 1 }, { opacity: 0 }], duration: 60000 },
+    });
+
+    const TestComponent = () => {
+      const [visible, setVisible] = React.useState(true);
+
+      return (
+        <>
+          <button id="toggle" onClick={() => setVisible(!visible)}>
+            Toggle
+          </button>
+          <MotionDisableProvider value={true}>
+            <TestMotion appear visible={visible}>
+              <div>Hello World</div>
+            </TestMotion>
+          </MotionDisableProvider>
+        </>
+      );
+    };
+
+    mount(<TestComponent />);
+    cy.contains('Hello World', { timeout: 100 }).should('be.visible');
   });
 });

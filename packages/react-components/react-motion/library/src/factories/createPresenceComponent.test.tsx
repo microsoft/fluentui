@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
+import { MotionDisableProvider } from '../contexts/MotionDisableContext';
 
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
@@ -311,6 +312,27 @@ describe('createPresenceComponent', () => {
       expect(queryByText('ElementMock')).toBeTruthy();
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
       expect(onRender).toHaveBeenCalledTimes(1);
+    });
+
+    it('finishes motion when wrapped in disabled context', () => {
+      const TestPresence = createPresenceComponent(motion);
+      const onRender = jest.fn();
+      const { finishMock, ElementMock } = createElementMock();
+      const onMotionStart = jest.fn();
+      const onMotionFinish = jest.fn();
+
+      const { queryByText } = render(
+        <MotionDisableProvider value={true}>
+          <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+            <ElementMock onRender={onRender} />
+          </TestPresence>
+        </MotionDisableProvider>,
+      );
+
+      expect(queryByText('ElementMock')).toBeTruthy();
+      expect(finishMock).toHaveBeenCalledTimes(1);
+      expect(onMotionStart).toHaveBeenCalledTimes(0);
+      expect(onMotionFinish).toHaveBeenCalledTimes(0);
     });
   });
 

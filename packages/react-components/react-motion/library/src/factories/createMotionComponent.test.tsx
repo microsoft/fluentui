@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import type { AtomMotion } from '../types';
 import { createMotionComponent } from './createMotionComponent';
+import { MotionDisableContext, MotionDisableProvider } from '../contexts/MotionDisableContext';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -89,5 +90,29 @@ describe('createMotionComponent', () => {
 
     expect(onMotionStart).toHaveBeenCalledTimes(1);
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('finishes motion when wrapped in motion disable context', async () => {
+    const TestAtom = createMotionComponent(motion);
+    const onMotionStart = jest.fn();
+    const onMotionFinish = jest.fn();
+
+    const { finishMock, ElementMock } = createElementMock();
+
+    render(
+      <MotionDisableProvider value={true}>
+        <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
+          <ElementMock />
+        </TestAtom>
+      </MotionDisableProvider>,
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(onMotionStart).toHaveBeenCalledTimes(0);
+    expect(onMotionFinish).toHaveBeenCalledTimes(0);
+    expect(finishMock).toHaveBeenCalledTimes(1);
   });
 });

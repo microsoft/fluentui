@@ -62,6 +62,9 @@ export type MotionComponentProps = {
 };
 
 // @public (undocumented)
+export const MotionDisableProvider: React_2.Provider<boolean | undefined>;
+
+// @public (undocumented)
 export type MotionImperativeRef = {
     setPlaybackRate: (rate: number) => void;
     setPlayState: (state: 'running' | 'paused') => void;
@@ -152,6 +155,9 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: React_2.ReactElement;
     }>;
 };
+
+// @public (undocumented)
+export const useMotionDisableContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

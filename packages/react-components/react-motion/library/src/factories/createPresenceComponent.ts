@@ -8,6 +8,7 @@ import { useMountedState } from '../hooks/useMountedState';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceDirection } from '../types';
+import { useMotionDisableContext } from '../contexts/MotionDisableContext';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -84,6 +85,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
+      const disableMotions = useMotionDisableContext();
 
       const {
         appear,
@@ -146,17 +148,18 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
-          const forceFinishMotion = !visible && isFirstMount;
+          const skipAnimationOnFirstMount = !visible && isFirstMount;
+          const forceFinishMotion = disableMotions || skipAnimationOnFirstMount;
+
+          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
 
           if (!forceFinishMotion) {
             handleMotionStart(direction);
           }
 
-          const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
-
           if (forceFinishMotion) {
             // Heads up!
-            // .finish() is used there to skip animation on first mount, but apply animation styles immediately
+            // .finish() is used there to skip animation, but apply animation styles immediately
             handle.finish();
             return;
           }
@@ -173,7 +176,16 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
         },
         // Excluding `isFirstMount` from deps to prevent re-triggering the animation on subsequent renders
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        [animateAtoms, handleRef, isReducedMotion, handleMotionFinish, handleMotionStart, handleMotionCancel, visible],
+        [
+          animateAtoms,
+          handleRef,
+          isReducedMotion,
+          handleMotionFinish,
+          handleMotionStart,
+          handleMotionCancel,
+          visible,
+          disableMotions,
+        ],
       );
 
       if (mounted) {

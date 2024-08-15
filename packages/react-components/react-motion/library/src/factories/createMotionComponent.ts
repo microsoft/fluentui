@@ -6,6 +6,7 @@ import { useMotionImperativeRef } from '../hooks/useMotionImperativeRef';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { AtomMotion, AtomMotionFn, MotionParam, MotionImperativeRef } from '../types';
+import { useMotionDisableContext } from '../contexts/MotionDisableContext';
 
 export type MotionComponentProps = {
   children: React.ReactElement;
@@ -67,6 +68,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const paramsRef = React.useRef<MotionParams>(params);
+    const disableMotions = useMotionDisableContext();
 
     const animateAtoms = useAnimateAtoms();
     const isReducedMotion = useIsReducedMotion();
@@ -94,9 +96,17 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
       if (element) {
         const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
-        onMotionStart();
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+
+        if (!disableMotions) {
+          onMotionStart();
+        }
+
+        if (disableMotions) {
+          handle.finish();
+          return;
+        }
 
         handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
         handleRef.current = handle;
@@ -105,7 +115,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
+    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel, disableMotions]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
