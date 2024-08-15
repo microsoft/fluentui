@@ -2,6 +2,21 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:07 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.72",
+      "version": "9.0.0-beta.72",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.72",
       "version": "9.0.0-beta.72",

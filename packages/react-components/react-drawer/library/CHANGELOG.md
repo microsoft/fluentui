@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Tue, 06 Aug 2024 21:40:45 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.10)
+
+Thu, 15 Aug 2024 08:22:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.9..@fluentui/react-drawer_v9.5.10)
+
+### Patches
+
+- chore: change :after to ::after. ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- Bug fix for issue 31724 ([PR #32060](https://github.com/microsoft/fluentui/pull/32060) by lakshmimanasasai.t@gmail.com)
+- Bump @fluentui/react-dialog to v9.11.10 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.5.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.9)
 
