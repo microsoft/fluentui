@@ -4,7 +4,7 @@ import * as React from 'react';
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
-import { MotionDisableProvider } from '../contexts/MotionDisableContext';
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
@@ -68,7 +68,7 @@ describe('createPresenceComponent', () => {
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
     });
 
-    it('finishes motion when wrapped in disabled context', async () => {
+    it('finishes motion when wrapped in motion behaviour context with skip behaviour', async () => {
       const TestPresence = createPresenceComponent(motion);
       const onRender = jest.fn();
       const { finishMock, ElementMock } = createElementMock();
@@ -76,11 +76,11 @@ describe('createPresenceComponent', () => {
       const onMotionFinish = jest.fn();
 
       const { queryByText } = render(
-        <MotionDisableProvider value={true}>
+        <MotionBehaviourProvider value="skip">
           <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
             <ElementMock onRender={onRender} />
           </TestPresence>
-        </MotionDisableProvider>,
+        </MotionBehaviourProvider>,
       );
 
       await act(async () => {
@@ -338,7 +338,6 @@ describe('createPresenceComponent', () => {
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
       expect(onRender).toHaveBeenCalledTimes(1);
     });
-
   });
 
   describe('definitions', () => {

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
 import { createPresenceComponent } from './createPresenceComponent';
-import { MotionDisableProvider } from '../contexts/MotionDisableContext';
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 describe('createPresenceComponent', () => {
   it('should call onMotionCancel', () => {
@@ -52,11 +52,11 @@ describe('createPresenceComponent', () => {
           <button id="toggle" onClick={() => setVisible(!visible)}>
             Toggle
           </button>
-          <MotionDisableProvider value={true}>
+          <MotionBehaviourProvider value="skip">
             <TestMotion appear visible={visible}>
               <div>Hello World</div>
             </TestMotion>
-          </MotionDisableProvider>
+          </MotionBehaviourProvider>
         </>
       );
     };

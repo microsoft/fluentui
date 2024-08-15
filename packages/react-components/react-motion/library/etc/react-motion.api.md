@@ -62,7 +62,7 @@ export type MotionComponentProps = {
 };
 
 // @public (undocumented)
-export const MotionDisableProvider: React_2.Provider<boolean | undefined>;
+export const MotionBehaviourProvider: React_2.Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -157,7 +157,7 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
 };
 
 // @public (undocumented)
-export const useMotionDisableContext: () => boolean;
+export const useMotionBehaviourContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

@@ -8,7 +8,7 @@ import { useMountedState } from '../hooks/useMountedState';
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
 import { getChildElement } from '../utils/getChildElement';
 import type { MotionParam, PresenceMotion, MotionImperativeRef, PresenceMotionFn, PresenceDirection } from '../types';
-import { useMotionDisableContext } from '../contexts/MotionDisableContext';
+import { useMotionBehaviourContext } from '../contexts/MotionBehaviourContext';
 
 /**
  * @internal A private symbol to store the motion definition on the component for variants.
@@ -85,7 +85,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
       const itemContext = React.useContext(PresenceGroupChildContext);
       const merged = { ...itemContext, ...props };
-      const disableMotions = useMotionDisableContext();
+      const skipMotions = useMotionBehaviourContext() === 'skip';
 
       const {
         appear,
@@ -107,10 +107,10 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       const handleRef = useMotionImperativeRef(imperativeRef);
       const elementRef = React.useRef<HTMLElement>();
       const ref = useMergedRefs(elementRef, child.ref);
-      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; disableMotions: boolean }>({
+      const optionsRef = React.useRef<{ appear?: boolean; params: MotionParams; skipMotions: boolean }>({
         appear,
         params,
-        disableMotions,
+        skipMotions,
       });
 
       const animateAtoms = useAnimateAtoms();
@@ -136,7 +136,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
       useIsomorphicLayoutEffect(() => {
         // Heads up!
         // We store the params in a ref to avoid re-rendering the component when the params change.
-        optionsRef.current = { appear, params, disableMotions };
+        optionsRef.current = { appear, params, skipMotions };
       });
 
       useIsomorphicLayoutEffect(
@@ -153,7 +153,7 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
 
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
           const applyInitialStyles = !visible && isFirstMount;
-          const skipAnimation = optionsRef.current.disableMotions;
+          const skipAnimation = optionsRef.current.skipMotions;
 
           if (!applyInitialStyles) {
             handleMotionStart(direction);

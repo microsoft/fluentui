@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import type { AtomMotion } from '../types';
 import { createMotionComponent } from './createMotionComponent';
-import { MotionDisableProvider } from '../contexts/MotionDisableContext';
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -92,7 +92,7 @@ describe('createMotionComponent', () => {
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
   });
 
-  it('finishes motion when wrapped in motion disable context', async () => {
+  it('finishes motion when wrapped in motion context with skip behaviour', async () => {
     const TestAtom = createMotionComponent(motion);
     const onMotionStart = jest.fn();
     const onMotionFinish = jest.fn();
@@ -100,11 +100,11 @@ describe('createMotionComponent', () => {
     const { finishMock, ElementMock } = createElementMock();
 
     render(
-      <MotionDisableProvider value={true}>
+      <MotionBehaviourProvider value="skip">
         <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
           <ElementMock />
         </TestAtom>
-      </MotionDisableProvider>,
+      </MotionBehaviourProvider>,
     );
 
     await act(async () => {

@@ -21,4 +21,4 @@ export type {
   MotionImperativeRef,
 } from './types';
 
-export { MotionDisableProvider } from './contexts/MotionDisableContext';
+export { MotionBehaviourProvider } from './contexts/MotionBehaviourContext';
