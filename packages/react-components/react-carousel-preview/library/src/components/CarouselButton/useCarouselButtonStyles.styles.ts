@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     marginTop: 'auto',
     marginBottom: 'auto',
     color: `var(--767, var(--768, ${tokens.colorNeutralForeground2}))`,
-    backgroundColor: `var(--769, var(--770, ${tokens.colorNeutralBackgroundAlpha}))`,=
+    backgroundColor: `var(--769, var(--770, ${tokens.colorNeutralBackgroundAlpha}))`,
     ':hover': {
       cursor: 'pointer',
     },
