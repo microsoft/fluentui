@@ -3026,14 +3026,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip4#4760D5_#637CEF"
+              id="Arc_clip4#4760D5_#637CEF"
             >
               <path
                 d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip4#4760D5_#637CEF)"
+              clipPath="url(#Arc_clip4#4760D5_#637CEF)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3082,14 +3082,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip5#795AA6_#9373C0"
+              id="Arc_clip5#795AA6_#9373C0"
             >
               <path
                 d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip5#795AA6_#9373C0)"
+              clipPath="url(#Arc_clip5#795AA6_#9373C0)"
               height="100%"
               width="100%"
               x="-50%"
@@ -3138,14 +3138,14 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               role="img"
             />
             <clipPath
-              id="clip6#159195_#2AA0A4"
+              id="Arc_clip6#159195_#2AA0A4"
             >
               <path
                 d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               />
             </clipPath>
             <foreignObject
-              clipPath="url(#clip6#159195_#2AA0A4)"
+              clipPath="url(#Arc_clip6#159195_#2AA0A4)"
               height="100%"
               width="100%"
               x="-50%"
