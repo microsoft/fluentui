@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 08 Aug 2024 07:24:18 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.59](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.59)
+
+Thu, 15 Aug 2024 07:23:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.58..@fluentui/theme_v2.6.59)
+
+### Patches
+
+- Point fluentui/theme export maps to right path ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by 126254552+gauriGupta99@users.noreply.github.com)
 
 ## [2.6.58](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.58)
 
