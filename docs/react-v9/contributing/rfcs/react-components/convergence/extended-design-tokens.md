@@ -26,6 +26,8 @@ A proposal for cross-platform customization by extending existing Design Tokens.
 
 - [(Performance testing): on each component for Teams](https://github.com/microsoft/fluentui/pull/31692)
 
+- [(Performance testing): hashed tokens for bundle size](https://github.com/microsoft/fluentui/pull/32304)
+
 **🎨 Design WIP**
 
 - [Control and Semantics Tokens Figma File with components](https://www.figma.com/design/QvbzVbuxcLKGMTNCHpAsjt/Fluent-Semantic-Token-Library?m=auto&node-id=11392-41202&t=UupAnqOZkQ3PuSbj-1)
@@ -279,24 +281,24 @@ import { tokens } from '@fluentui/react-theme';
 
 export const buttonGroupTokens = {
 
-buttonBorderRadius: \`var(--buttonBorderRadius, ${tokens.borderRadiusMedium})\`,
+  buttonBorderRadius: `var(--buttonBorderRadius, ${tokens.borderRadiusMedium})`,
 
-buttonFontFamily: \`var(--buttonFontFamily,${tokens.fontFamilyBase})\`,
+  buttonFontFamily: `var(--buttonFontFamily,${tokens.fontFamilyBase})`,
 
-...
+  // ...
 
 }
 // Button control tokens, used by Default button
 
 export const buttonTokens = {
 
-// Default
+  // Default
 
-ctrlButtonBorderRadius: \`var(--ctrlButtonBorderRadius, ${buttonGroupTokens.buttonBorderRadius})\`,
+  ctrlButtonBorderRadius: `var(--ctrlButtonBorderRadius, ${buttonGroupTokens.buttonBorderRadius})`,
 
-ctrlButtonFontFamily: \`var(--ctrlButtonFontFamily,${buttonGroupTokens.buttonFontFamily})\`,
+  ctrlButtonFontFamily: `var(--ctrlButtonFontFamily,${buttonGroupTokens.buttonFontFamily})`,
 
-...
+  ...
 
 }
 
@@ -362,7 +364,7 @@ Given [previously observed performance issues](https://github.com/microsoft/flue
 
 Our hypothesis is that more granularly scoped tokens tied to fewer DOM nodes would not incur the same performance penalties, although of course this needs to be tested.
 
-var() fallback test
+### var() fallback test
 
 To test the effect of many var() fallbacks, we configured a test using [tensile-perf](https://github.com/microsoft/tensile-perf) to generate an extremely large DOM. We then defined a series of CSS classes with varying levels of fallbacks, often going 20 layers deep.
 
@@ -379,6 +381,10 @@ Other options considered
 | **Option A: Update existing components with var() fallbacks** | • Existing consumers automatically get the FST system without additional work beyond updating their packages<br>• Everyone stays in sync and should have equal capability improving interop and portability | • Once the changes are made, we are somewhat stuck with them (until the next major version)<br>• All consumers will pull these changes which means some increases in bundle size (gzipped impact seems minor based on our test PR so far).                                                                                                                                                                                                                                                               |
 | Option B: Custom style hooks                                  | • Fully opt in<br>• Removes component changes at the root and could allow us to ship separately from the core packages meaning breaking changes could be managed more easily in a separate package          | • performance regressions were noted in testing. This might be due to the fact that styles were generated and inserted in runtime. Additionally, it depends on React's context which re-renders components.<br>• Because it's opt in we wouldn't have uniform adoption<br><br>Opportunity: If we can fix the performance issues or understand them better this might be a really interesting option with lower risk. Can we investigate using these styles hooks but with Griffel outputting static CSS? |
 | Option C: Create component variants through recomposition     | • Could be shipped in separate packages<br>• avoids breaking changes                                                                                                                                        | • Could create confusion (which Button do consumers use? The base one or our SemanticTokenButton?)<br> There could be confusing ways in which semantic tokens could work in some places but not others if the right variants aren't used.                                                                                                                                                                                                                                                                |
+
+## Bundle Size
+
+On option to reduce bundle size is to hash the Control and Semantic tokens. In our tests we've shown a reduction in the GZipped file from [22 kB](https://github.com/microsoft/fluentui/pull/31692) to [18 kB](https://github.com/microsoft/fluentui/pull/32304)
 
 ## Open questions
 
