@@ -98,18 +98,15 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
         const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
 
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+        handleRef.current = handle;
+        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
 
-        if (!disableMotions) {
-          onMotionStart();
-        }
+        onMotionStart();
 
         if (disableMotions) {
           handle.finish();
-          return;
         }
 
-        handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
-        handleRef.current = handle;
 
         return () => {
           handle.cancel();

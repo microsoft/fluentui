@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import type { AtomMotion } from '../types';
 import { createMotionComponent } from './createMotionComponent';
-import { MotionDisableContext, MotionDisableProvider } from '../contexts/MotionDisableContext';
+import { MotionDisableProvider } from '../contexts/MotionDisableContext';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -111,8 +111,8 @@ describe('createMotionComponent', () => {
       await new Promise<void>(process.nextTick);
     });
 
-    expect(onMotionStart).toHaveBeenCalledTimes(0);
-    expect(onMotionFinish).toHaveBeenCalledTimes(0);
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
     expect(finishMock).toHaveBeenCalledTimes(1);
   });
 });

@@ -152,27 +152,30 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           const atoms = visible ? presenceMotion.enter : presenceMotion.exit;
 
           const direction: PresenceDirection = visible ? 'enter' : 'exit';
-          const skipAnimationOnFirstMount = !visible && isFirstMount;
-          const skipAnimation = optionsRef.current.disableMotions || skipAnimationOnFirstMount;
+          const applyInitialStyles = !visible && isFirstMount;
+          const skipAnimation = optionsRef.current.disableMotions;
 
-          if (!skipAnimation) {
+          if (!applyInitialStyles) {
             handleMotionStart(direction);
           }
 
           const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
-
-          if (skipAnimation) {
-            // Heads up!
-            // .finish() is used there to skip animation, but apply animation styles immediately
-            handle.finish();
-            return;
-          }
-
-          handleRef.current = handle;
           handle.setMotionEndCallbacks(
             () => handleMotionFinish(direction),
             () => handleMotionCancel(direction),
           );
+
+          if (skipAnimation || applyInitialStyles) {
+            handle.finish();
+
+            if (applyInitialStyles) {
+              // Heads up!
+              // .finish() is used in this case to skip animation and apply animation styles immediately
+              return;
+            }
+          }
+
+          handleRef.current = handle;
 
           return () => {
             handle.cancel();

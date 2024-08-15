@@ -67,6 +67,31 @@ describe('createPresenceComponent', () => {
 
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
     });
+
+    it('finishes motion when wrapped in disabled context', async () => {
+      const TestPresence = createPresenceComponent(motion);
+      const onRender = jest.fn();
+      const { finishMock, ElementMock } = createElementMock();
+      const onMotionStart = jest.fn();
+      const onMotionFinish = jest.fn();
+
+      const { queryByText } = render(
+        <MotionDisableProvider value={true}>
+          <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+            <ElementMock onRender={onRender} />
+          </TestPresence>
+        </MotionDisableProvider>,
+      );
+
+      await act(async () => {
+        await new Promise<void>(process.nextTick);
+      });
+
+      expect(queryByText('ElementMock')).toBeTruthy();
+      expect(finishMock).toHaveBeenCalledTimes(1);
+      expect(onMotionStart).toHaveBeenCalledTimes(1);
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('onMotionStart', () => {
@@ -314,26 +339,6 @@ describe('createPresenceComponent', () => {
       expect(onRender).toHaveBeenCalledTimes(1);
     });
 
-    it('finishes motion when wrapped in disabled context', () => {
-      const TestPresence = createPresenceComponent(motion);
-      const onRender = jest.fn();
-      const { finishMock, ElementMock } = createElementMock();
-      const onMotionStart = jest.fn();
-      const onMotionFinish = jest.fn();
-
-      const { queryByText } = render(
-        <MotionDisableProvider value={true}>
-          <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
-            <ElementMock onRender={onRender} />
-          </TestPresence>
-        </MotionDisableProvider>,
-      );
-
-      expect(queryByText('ElementMock')).toBeTruthy();
-      expect(finishMock).toHaveBeenCalledTimes(1);
-      expect(onMotionStart).toHaveBeenCalledTimes(0);
-      expect(onMotionFinish).toHaveBeenCalledTimes(0);
-    });
   });
 
   describe('definitions', () => {
