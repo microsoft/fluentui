@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Text } from './text.js';
 import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 
@@ -24,9 +24,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveJSProperty(attribute, true);
 
-      expect(
-        await element.evaluate((node: Text, attribute) => node.matches(`:state(${attribute})`), attribute),
-      ).toEqual(true);
+      await expect(element).toHaveCustomState(attribute);
 
       await element.evaluate((node: any, attribute) => {
         node[attribute] = false;
@@ -36,9 +34,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveJSProperty(attribute, false);
 
-      expect(
-        await element.evaluate((node: Text, attribute) => node.matches(`:state(${attribute})`), attribute),
-      ).toEqual(false);
+      await expect(element).not.toHaveCustomState(attribute);
     });
   }
 
@@ -54,9 +50,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveAttribute('size', value);
 
-      expect(
-        await element.evaluate((node: Text, value: string) => node.matches(`:state(size-${value})`), value),
-      ).toEqual(true);
+      await expect(element).toHaveCustomState(`size-${value}`);
     });
   }
 
@@ -72,9 +66,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveAttribute('weight', value);
 
-      expect(await element.evaluate((node: Text, value: string) => node.matches(`:state(${value})`), value)).toEqual(
-        true,
-      );
+      await expect(element).toHaveCustomState(value);
     });
   }
 
@@ -90,9 +82,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveAttribute('align', value);
 
-      expect(await element.evaluate((node: Text, value: string) => node.matches(`:state(${value})`), value)).toEqual(
-        true,
-      );
+      await expect(element).toHaveCustomState(value);
     });
   }
 
@@ -108,9 +98,7 @@ test.describe('Text Component', () => {
 
       await expect(element).toHaveAttribute('font', value);
 
-      expect(await element.evaluate((node: Text, value: string) => node.matches(`:state(${value})`), value)).toEqual(
-        true,
-      );
+      await expect(element).toHaveCustomState(value);
     });
   }
 });

@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import { MenuItemRole } from '../menu-item/menu-item.options.js';
 
 test.describe('Menu', () => {

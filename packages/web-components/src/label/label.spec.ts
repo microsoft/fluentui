@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Label } from './label.js';
 
 test.describe('Label', () => {
@@ -20,7 +20,7 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('size', 'small');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(true);
+    await expect(element).toHaveCustomState('small');
 
     await element.evaluate((node: Label) => {
       node.size = 'medium';
@@ -30,9 +30,9 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('size', 'medium');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('small'))).toBe(false);
+    await expect(element).not.toHaveCustomState('small');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(true);
+    await expect(element).toHaveCustomState('medium');
 
     await element.evaluate((node: Label) => {
       node.size = 'large';
@@ -42,9 +42,9 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('size', 'large');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('medium'))).toBe(false);
+    await expect(element).not.toHaveCustomState('medium');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('large'))).toBe(true);
+    await expect(element).toHaveCustomState('large');
   });
 
   test('should reflect weight attribute', async ({ page }) => {
@@ -58,7 +58,7 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('weight', 'regular');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(true);
+    await expect(element).toHaveCustomState('regular');
 
     await element.evaluate((node: Label) => {
       node.weight = 'semibold';
@@ -68,9 +68,9 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('weight', 'semibold');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('regular'))).toBe(false);
+    await expect(element).not.toHaveCustomState('regular');
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('semibold'))).toBe(true);
+    await expect(element).toHaveCustomState('semibold');
   });
 
   test('should reflect disabled attribute', async ({ page }) => {
@@ -84,7 +84,7 @@ test.describe('Label', () => {
 
     await expect(element).toHaveJSProperty('disabled', true);
 
-    expect(await element.evaluate((node: Label) => node.elementInternals.states.has('disabled'))).toBe(true);
+    await expect(element).toHaveCustomState('disabled');
   });
 
   test('should reflect required attribute and show asterisk', async ({ page }) => {

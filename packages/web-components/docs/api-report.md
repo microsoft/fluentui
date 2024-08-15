@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -2726,7 +2724,7 @@ export class Menu extends FASTElement {
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
-    toggleHandler: (e: Event | ToggleEvent) => void;
+    toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
@@ -2808,7 +2806,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    toggleHandler: (e: ToggleEvent | Event) => void;
+    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -2895,15 +2893,16 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends BaseProgressBar {
+class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
+export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
 
 // @public
 export const ProgressBarShape: {
@@ -2920,7 +2919,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
 
 // @public
 export const ProgressBarThickness: {

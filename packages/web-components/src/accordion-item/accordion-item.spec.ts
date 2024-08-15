@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { AccordionItem } from './accordion-item.js';
 
 test.describe('Accordion item', () => {
