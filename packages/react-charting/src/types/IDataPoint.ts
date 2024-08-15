@@ -135,6 +135,12 @@ export interface IChartDataPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * placeholder data point
    */
   placeHolder?: boolean;
@@ -182,6 +188,12 @@ export interface IVerticalBarChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -236,6 +248,12 @@ export interface IHorizontalBarChartWithAxisDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Callout data for x axis
@@ -563,6 +581,12 @@ export interface IVSChartDataPoint {
   color?: string;
 
   /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
+
+  /**
    * Callout data for x axis
    * This is an optional prop, If haven;t given legend will take
    */
@@ -646,6 +670,12 @@ export interface IGVBarChartSeriesPoint {
    * Color for the legend in the chart
    */
   color: string;
+
+  /**
+   * Gradient for the legend in the chart. If not provided, it will fallback on the default color palette.
+   * If provided, it will override the color prop. granted `enableGradient` is set to true for the chart.
+   */
+  gradient?: [string, string];
 
   /**
    * Legend text in the chart

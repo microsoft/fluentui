@@ -92,6 +92,18 @@ export interface IHorizontalBarChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
 }
 
 /**

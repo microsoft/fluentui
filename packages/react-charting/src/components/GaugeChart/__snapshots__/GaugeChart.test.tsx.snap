@@ -22,7 +22,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone0"
+      data-focuszone-id="FocusZone3"
       data-tabster="{\\"uncontrolled\\": {}}"
     >
       <svg
@@ -156,7 +156,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                     font-weight: 600;
                   }
               data-is-focusable="true"
-              id="tooltip-host1"
+              id="tooltip-host4"
               tabindex="-1"
               text-anchor="middle"
               x="0"
@@ -204,7 +204,7 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone2"
+                data-focuszone-id="FocusZone5"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
@@ -841,7 +841,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -874,7 +874,6 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -894,7 +893,6 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -914,7 +912,6 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -964,7 +961,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -1025,7 +1022,7 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1388,7 +1385,7 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1453,7 +1450,6 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1473,7 +1469,6 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1493,7 +1488,6 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1543,7 +1537,7 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -1582,7 +1576,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1647,7 +1641,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1667,7 +1660,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1687,7 +1679,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1737,7 +1728,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -1798,7 +1789,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2174,7 +2165,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone3"
+      data-focuszone-id="FocusZone6"
       data-tabster="{\\"uncontrolled\\": {}}"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -2239,7 +2230,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             data-is-focusable={true}
             fill="#54b054"
             fillOpacity={1}
-            key="0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2259,7 +2249,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             data-is-focusable={true}
             fill="#f87528"
             fillOpacity={1}
-            key="1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2279,7 +2268,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             data-is-focusable={true}
             fill="#dc626d"
             fillOpacity={1}
-            key="2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2329,7 +2317,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                     font-weight: 600;
                   }
               data-is-focusable={false}
-              id="tooltip-host4"
+              id="tooltip-host7"
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
               onKeyDown={[Function]}
@@ -2390,7 +2378,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone8"
                 data-tabster="{\\"uncontrolled\\": {}}"
                 onFocus={[Function]}
                 onKeyDown={[Function]}
@@ -2754,7 +2742,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2819,7 +2807,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2839,7 +2826,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2859,7 +2845,6 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2909,7 +2894,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -2970,7 +2955,7 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3333,7 +3318,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone2"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3398,7 +3383,6 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           data-is-focusable={true}
           fill="#3a96dd"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3418,7 +3402,6 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           data-is-focusable={true}
           fill="#e3008c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3468,7 +3451,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host3"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -3529,7 +3512,7 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3788,7 +3771,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone2"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -3853,7 +3836,6 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           data-is-focusable={true}
           fill="blue"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3873,7 +3855,6 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           data-is-focusable={true}
           fill="#edebe9"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3923,7 +3904,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host3"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -3984,7 +3965,7 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone4"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4242,7 +4223,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4321,7 +4302,6 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4341,7 +4321,6 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4361,7 +4340,6 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4411,7 +4389,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -4472,7 +4450,7 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4835,7 +4813,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -4900,7 +4878,6 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4920,7 +4897,6 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4940,7 +4916,6 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4990,7 +4965,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -5051,7 +5026,7 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone2"
+              data-focuszone-id="FocusZone5"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5414,7 +5389,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone3"
     data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -5479,7 +5454,6 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           data-is-focusable={true}
           fill="#107c10"
           fillOpacity={1}
-          key="0"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5499,7 +5473,6 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           data-is-focusable={true}
           fill="#f7630c"
           fillOpacity={1}
-          key="1"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5519,7 +5492,6 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           data-is-focusable={true}
           fill="#c50f1f"
           fillOpacity={1}
-          key="2"
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5569,7 +5541,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                   font-weight: 600;
                 }
             data-is-focusable={false}
-            id="tooltip-host1"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -5592,7 +5564,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
               }
           data-is-focusable={false}
           dominantBaseline="hanging"
-          id="tooltip-host2"
+          id="tooltip-host5"
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onKeyDown={[Function]}
@@ -5652,7 +5624,7 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone3"
+              data-focuszone-id="FocusZone6"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

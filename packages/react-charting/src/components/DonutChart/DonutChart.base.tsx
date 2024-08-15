@@ -7,7 +7,7 @@ import { FocusZone, FocusZoneDirection, FocusZoneTabbableElements } from '@fluen
 import { IAccessibilityProps, ChartHoverCard, ILegend, Legends } from '../../index';
 import { Pie } from './Pie/index';
 import { IChartDataPoint, IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './index';
-import { getAccessibleDataObject, getColorFromToken, getNextColor } from '../../utilities/index';
+import { getAccessibleDataObject, getColorFromToken, getNextColor, getNextGradient } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
@@ -111,6 +111,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       Math.min(this.state._width! - donutMarginHorizontal, this.state._height! - donutMarginVertical) / 2;
     const chartData = this._elevateToMinimums(points.filter((d: IChartDataPoint) => d.data! >= 0));
     const valueInsideDonut = this._valueInsideDonut(this.props.valueInsideDonut!, chartData!);
+
     return !this._isChartEmpty() ? (
       <div
         className={this._classNames.root}
@@ -130,6 +131,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 outerRadius={outerRadius}
                 innerRadius={this.props.innerRadius!}
                 data={chartData!}
+                enableGradient={this.props.enableGradient}
+                roundCorners={this.props.roundCorners}
                 onFocusCallback={this._focusCallback}
                 hoverOnCallback={this._hoverCallback}
                 hoverLeaveCallback={this._hoverLeave}
@@ -226,9 +229,13 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
     node.setAttribute('viewBox', viewbox);
   }
+
   private _createLegends(chartData: IChartDataPoint[]): JSX.Element {
     const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color!;
+      const color: string = this.props.enableGradient
+        ? point.gradient?.[0] || getNextGradient(index, 0, this.props.theme?.isInverted)[0]
+        : point.color!;
+
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
@@ -283,12 +290,19 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     if (this._calloutAnchorPoint !== data) {
       this._calloutAnchorPoint = data;
       this._currentHoverElement = e;
+      let color: string = data.color!;
+
+      if (this.props.enableGradient) {
+        const pointIndex = Math.max(this.props.data?.chartData?.findIndex(item => item.legend === data.legend) || 0, 0);
+        color = data.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+      }
+
       this.setState({
         /** Show the callout if highlighted arc is hovered and Hide it if unhighlighted arc is hovered */
         showHover: this.state.selectedLegend === '' || this.state.selectedLegend === data.legend,
         value: data.data!.toString(),
         legend: data.legend,
-        color: data.color!,
+        color,
         xCalloutValue: data.xAxisCalloutData!,
         yCalloutValue: data.yAxisCalloutData!,
         dataPointCalloutProps: data,

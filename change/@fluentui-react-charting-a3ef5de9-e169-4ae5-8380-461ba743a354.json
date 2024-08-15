@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add Viva dataviz gradient palette and rounded corners to charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "t-shawngrant@microsoft.com",
+  "dependentChangeType": "patch"
+}
