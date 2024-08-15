@@ -237,7 +237,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
               {arcs.map((arc, index) => {
                 const segment = this._segments[arc.segmentIndex];
 
-                const clipId = getId('clip') + `${index}_${arc.startAngle}_${arc.endAngle}`;
+                const clipId = getId('Arc_clip') + `${index}_${arc.startAngle}_${arc.endAngle}`;
 
                 return (
                   <React.Fragment key={index}>

@@ -47,7 +47,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const endAngle = (this.props.data?.endAngle ?? 0) - startAngle;
     const cornerRadius = this.props.roundCorners ? 3 : 0;
 
-    const clipId = getId('clip') + `${this.props.color}_${this.props.nextColor}`;
+    const clipId = getId('Arc_clip') + `${this.props.color}_${this.props.nextColor}`;
 
     return (
       <g ref={this.currentRef}>
