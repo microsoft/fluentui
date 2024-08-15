@@ -70,17 +70,15 @@ describe('createPresenceComponent', () => {
 
     it('finishes motion when wrapped in motion behaviour context with skip behaviour', async () => {
       const TestPresence = createPresenceComponent(motion);
-      const onRender = jest.fn();
       const { finishMock, ElementMock } = createElementMock();
       const onMotionStart = jest.fn();
       const onMotionFinish = jest.fn();
 
       const { queryByText } = render(
-        <MotionBehaviourProvider value="skip">
-          <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
-            <ElementMock onRender={onRender} />
-          </TestPresence>
-        </MotionBehaviourProvider>,
+        <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+          <ElementMock />
+        </TestPresence>,
+        { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
       );
 
       await act(async () => {

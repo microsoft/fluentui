@@ -53,6 +53,9 @@ export const durations: {
 };
 
 // @public (undocumented)
+export const MotionBehaviourProvider: React_2.Provider<MotionBehaviourType | undefined>;
+
+// @public (undocumented)
 export type MotionComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
@@ -60,9 +63,6 @@ export type MotionComponentProps = {
     onMotionCancel?: (ev: null) => void;
     onMotionStart?: (ev: null) => void;
 };
-
-// @public (undocumented)
-export const MotionBehaviourProvider: React_2.Provider<boolean | undefined>;
 
 // @public (undocumented)
 export type MotionImperativeRef = {
@@ -155,9 +155,6 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
         children: React_2.ReactElement;
     }>;
 };
-
-// @public (undocumented)
-export const useMotionBehaviourContext: () => boolean;
 
 // (No @packageDocumentation comment for this package)
 

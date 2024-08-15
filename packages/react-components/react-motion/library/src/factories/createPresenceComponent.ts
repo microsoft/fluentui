@@ -160,22 +160,23 @@ export function createPresenceComponent<MotionParams extends Record<string, Moti
           }
 
           const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
+
+          if (applyInitialStyles) {
+            // Heads up!
+            // .finish() is used in this case to skip animation and apply animation styles immediately
+            handle.finish();
+            return;
+          }
+
+          handleRef.current = handle;
           handle.setMotionEndCallbacks(
             () => handleMotionFinish(direction),
             () => handleMotionCancel(direction),
           );
 
-          if (skipAnimation || applyInitialStyles) {
+          if (skipAnimation) {
             handle.finish();
-
-            if (applyInitialStyles) {
-              // Heads up!
-              // .finish() is used in this case to skip animation and apply animation styles immediately
-              return;
-            }
           }
-
-          handleRef.current = handle;
 
           return () => {
             handle.cancel();

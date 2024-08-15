@@ -100,11 +100,10 @@ describe('createMotionComponent', () => {
     const { finishMock, ElementMock } = createElementMock();
 
     render(
-      <MotionBehaviourProvider value="skip">
-        <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
-          <ElementMock />
-        </TestAtom>
-      </MotionBehaviourProvider>,
+      <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
+        <ElementMock />
+      </TestAtom>,
+      { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
     );
 
     await act(async () => {

@@ -100,11 +100,11 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
       if (element) {
         const atoms = typeof value === 'function' ? value({ element, ...paramsRef.current }) : value;
 
+        onMotionStart();
         const handle = animateAtoms(element, atoms, { isReducedMotion: isReducedMotion() });
         handleRef.current = handle;
         handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
 
-        onMotionStart();
 
         if (optionsRef.current.skipMotions) {
           handle.finish();

@@ -5,6 +5,6 @@ import * as React from 'react';
  */
 export type MotionBehaviourType = 'skip' | 'default';
 
-export const MotionBehaviourContext = React.createContext<MotionBehaviourType | undefined>(undefined);
+const MotionBehaviourContext = React.createContext<MotionBehaviourType | undefined>(undefined);
 export const MotionBehaviourProvider = MotionBehaviourContext.Provider;
 export const useMotionBehaviourContext = () => React.useContext(MotionBehaviourContext) ?? 'default';
