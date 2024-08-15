@@ -11,7 +11,7 @@
     "check-graph": "node ./scripts/check-dep-graph.js"
   },
   "dependencies": {
-    "@nx/devkit": "~19.3.2"
+    "@nx/devkit": "~19.5.7"
   },
   "devDependencies": {}
 }
