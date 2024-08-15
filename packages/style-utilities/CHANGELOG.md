@@ -1,8 +1,18 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Thu, 08 Aug 2024 07:24:18 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.10.21](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.21)
+
+Thu, 15 Aug 2024 07:23:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.10.20..@fluentui/style-utilities_v8.10.21)
+
+### Patches
+
+- Picking up new color/style for audio/video/ClipChamp filetype icons. ([PR #32241](https://github.com/microsoft/fluentui/pull/32241) by caperez@microsoft.com)
+- Bump @fluentui/theme to v2.6.59 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
 
 ## [8.10.20](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.10.20)
 

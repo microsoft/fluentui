@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Point fluentui/theme export maps to right path",
-  "packageName": "@fluentui/theme",
-  "email": "126254552+gauriGupta99@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}

@@ -322,6 +322,12 @@ export const v9HoverClasses: () => GriffelStyle;
 // @public (undocumented)
 export const v9Icon: () => GriffelStyle;
 
+// @public (undocumented)
+export const Video: React_2.ForwardRefExoticComponent<VideoProps & React_2.RefAttributes<HTMLVideoElement>>;
+
+// @public (undocumented)
+export const videoClassName = "fui-Video";
+
 // (No @packageDocumentation comment for this package)
 
 ```
