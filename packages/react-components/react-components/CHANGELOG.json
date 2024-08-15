@@ -2,6 +2,262 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 13:49:46 GMT",
+      "tag": "@fluentui/react-components_v9.54.12",
+      "version": "9.54.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "469de81765cd621e234d76882bb276d234102151",
+            "comment": "chore: simplifies useMergedTabsterAttributes internals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 08:22:07 GMT",
+      "tag": "@fluentui/react-components_v9.54.11",
+      "version": "9.54.11",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/global-context",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "e084a5620f3bcd04c57cd874a8dd89f2b20bfb92",
+            "comment": "chore: change :after to ::after"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "8cdc1ca044b4c9b7e758c3d8a19688940da3e095",
+            "comment": "fix: check icon slot does not collapse"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "e084a5620f3bcd04c57cd874a8dd89f2b20bfb92",
+            "comment": "chore: change :after to ::after."
+          },
+          {
+            "author": "lakshmimanasasai.t@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "000671221177e908c23f10f9e5379b57c9875c0b",
+            "comment": "Bug fix for issue 31724"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "811fbca1c7b1fbbc0ec458c62a625591d00c3251",
+            "comment": "chore: ensures useMergedTabsterAttributes supports Partial attributes"
+          },
+          {
+            "author": "jukapsia@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10",
+            "comment": "v9 migration: Add Video shim component"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-swatch-picker",
+            "commit": "3f97bd9bb9dc12bf433d80398623f706c9f42092",
+            "comment": "(react-swatch-picker): fixed documentation"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "e084a5620f3bcd04c57cd874a8dd89f2b20bfb92",
+            "comment": "chore: change :after to ::after"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "811fbca1c7b1fbbc0ec458c62a625591d00c3251",
+            "comment": "chore: ensures useMergedTabsterAttributes supports Partial attributes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "cb6df91f534b11b772721bdc16d6d4a036394be3",
+            "comment": "feature: introduces noPopover property to TagPicker"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2024 12:31:56 GMT",
       "tag": "@fluentui/react-components_v9.54.10",
       "version": "9.54.10",

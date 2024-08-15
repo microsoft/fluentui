@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-list-preview
 
-This log was last generated on Tue, 30 Jul 2024 18:47:35 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.5)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.4..@fluentui/react-list-preview_v0.3.5)
+
+### Patches
+
+- Bump @fluentui/react-checkbox to v9.2.35 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.4)
+
+Thu, 15 Aug 2024 08:22:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.3..@fluentui/react-list-preview_v0.3.4)
+
+### Patches
+
+- chore: ensures useMergedTabsterAttributes supports Partial attributes ([PR #32300](https://github.com/microsoft/fluentui/pull/32300) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-checkbox to v9.2.34 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.3)
 

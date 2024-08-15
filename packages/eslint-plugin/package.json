@@ -14,17 +14,17 @@
     "test": "yarn jest --passWithNoTests"
   },
   "dependencies": {
-    "@griffel/eslint-plugin": "^1.6.3",
-    "@rnx-kit/eslint-plugin": "^0.5.3",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/utils": "^6.21.0",
-    "@typescript-eslint/rule-tester": "6.21.0",
-    "@typescript-eslint/parser": "^6.21.0",
-    "@typescript-eslint/type-utils": "^6.21.0",
+    "@griffel/eslint-plugin": "^1.6.4",
+    "@rnx-kit/eslint-plugin": "^0.7.2",
+    "@typescript-eslint/eslint-plugin": "^7.18.0",
+    "@typescript-eslint/utils": "^7.18.0",
+    "@typescript-eslint/rule-tester": "7.18.0",
+    "@typescript-eslint/parser": "^7.18.0",
+    "@typescript-eslint/type-utils": "^7.18.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-deprecation": "^2.0.0",
+    "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-jsdoc": "^48.7.0",
@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "eslint": "^8.0.0",
-    "typescript": "^4.2.4"
+    "typescript": "^4.7.5"
   },
   "files": [
     "src"

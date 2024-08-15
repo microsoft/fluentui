@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 08 Aug 2024 07:24:15 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:37 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.5)
+
+Thu, 15 Aug 2024 07:23:37 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.4..@fluentui/react_v8.120.5)
+
+### Patches
+
+- Bump @fluentui/foundation-legacy to v8.4.16 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.50 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/react-focus to v8.9.13 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/style-utilities to v8.10.21 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/theme to v2.6.59 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+
+## [8.120.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.4)
+
+Wed, 14 Aug 2024 07:21:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.3..@fluentui/react_v8.120.4)
+
+### Patches
+
+- fix(react/lib/icons): make icons inherit textDecoration from links ([PR #32264](https://github.com/microsoft/fluentui/pull/32264) by jiangemma@microsoft.com)
+- ScrollablePane/Sticky: Allow remounting for react 18 strict mode ([PR #28487](https://github.com/microsoft/fluentui/pull/28487) by 420834+andyrooger@users.noreply.github.com)
+- fix: picker suggestion actions have focus outline ([PR #32265](https://github.com/microsoft/fluentui/pull/32265) by sarah.higley@microsoft.com)
 
 ## [8.120.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.3)
 

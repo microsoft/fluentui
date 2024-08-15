@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.55",
+  "version": "3.0.0-beta.56",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -166,6 +166,10 @@
       "types": "./dist/dts/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
+    "./textarea.js": {
+      "types": "./dist/dts/textarea/define.d.ts",
+      "default": "./dist/esm/textarea/define.js"
+    },
     "./text-input.js": {
       "types": "./dist/dts/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
@@ -219,6 +223,7 @@
     "./dist/esm/tablist/define.js",
     "./dist/esm/tab-panel/define.js",
     "./dist/esm/text/define.js",
+    "./dist/esm/textarea/define.js",
     "./dist/esm/text-input/define.js",
     "./dist/esm/toggle-button/define.js",
     "./dist/web-components.js",

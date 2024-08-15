@@ -1,8 +1,27 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 08 Aug 2024 07:24:17 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.93](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.93)
+
+Thu, 15 Aug 2024 07:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.92..@fluentui/azure-themes_v8.6.93)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.5 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+
+## [8.6.92](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.92)
+
+Wed, 14 Aug 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.91..@fluentui/azure-themes_v8.6.92)
+
+### Patches
+
+- disabledfocus button fix and detailslist indetermineate UI feature ([PR #30420](https://github.com/microsoft/fluentui/pull/30420) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.120.4 ([commit](https://github.com/microsoft/fluentui/commit/740b0b4583fe0f5cd474d240a2c849c7b5e97c45) by beachball)
 
 ## [8.6.91](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.91)
 

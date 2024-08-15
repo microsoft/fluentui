@@ -2,6 +2,86 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:37 GMT",
+      "tag": "@fluentui/react_v8.120.5",
+      "version": "8.120.5",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4a0fc5273715ffad1985132c94c0193fe4d84afb",
+            "comment": "chore: use nx to run e2e:local from different project"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.16",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.50",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.9.13",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.10.21",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.59",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 07:21:40 GMT",
+      "tag": "@fluentui/react_v8.120.4",
+      "version": "8.120.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "33a1671febc099aa3bf0c4a4f7f592ef9163c153",
+            "comment": "fix(react/lib/icons): make icons inherit textDecoration from links"
+          },
+          {
+            "author": "420834+andyrooger@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "392397bcbd08a8699e0a18828fdc552716a54d38",
+            "comment": "ScrollablePane/Sticky: Allow remounting for react 18 strict mode"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "9fa4471db1d71a27fcd26c74254634593ed75fb8",
+            "comment": "fix: picker suggestion actions have focus outline"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:15 GMT",
       "tag": "@fluentui/react_v8.120.3",
       "version": "8.120.3",

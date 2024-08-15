@@ -2,6 +2,50 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:37 GMT",
+      "tag": "@fluentui/react-cards_v0.205.169",
+      "version": "0.205.169",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-cards",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.120.5",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/foundation-legacy to v8.4.16",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 07:21:41 GMT",
+      "tag": "@fluentui/react-cards_v0.205.168",
+      "version": "0.205.168",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-cards",
+            "comment": "Bump @fluentui/react to v8.120.4",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:15 GMT",
       "tag": "@fluentui/react-cards_v0.205.167",
       "version": "0.205.167",

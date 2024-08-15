@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 08 Aug 2024 07:24:16 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.166](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.166)
+
+Thu, 15 Aug 2024 07:23:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.165..@fluentui/react-experiments_v8.14.166)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.5 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/theme to v2.6.59 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/foundation-legacy to v8.4.16 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.50 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+- Bump @fluentui/style-utilities to v8.10.21 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+
+## [8.14.165](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.165)
+
+Wed, 14 Aug 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.164..@fluentui/react-experiments_v8.14.165)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.4 ([commit](https://github.com/microsoft/fluentui/commit/740b0b4583fe0f5cd474d240a2c849c7b5e97c45) by beachball)
 
 ## [8.14.164](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.164)
 

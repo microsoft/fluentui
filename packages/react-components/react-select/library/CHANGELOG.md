@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Tue, 30 Jul 2024 18:47:35 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.85)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.84..@fluentui/react-select_v9.1.85)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.74 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.1.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.84)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.83..@fluentui/react-select_v9.1.84)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.73 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.1.83](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.83)
 
