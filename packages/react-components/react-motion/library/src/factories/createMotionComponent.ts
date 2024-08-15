@@ -105,7 +105,6 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
         handleRef.current = handle;
         handle.setMotionEndCallbacks(onMotionFinish, onMotionCancel);
 
-
         if (optionsRef.current.skipMotions) {
           handle.finish();
         }
