@@ -2,6 +2,21 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:17 GMT",
+      "tag": "@fluentui/react-progress_v9.1.84",
+      "version": "9.1.84",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.1.73",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-progress_v9.1.83",
       "version": "9.1.83",

@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 07 Aug 2024 12:31:56 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.11)
+
+Thu, 15 Aug 2024 08:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.10..@fluentui/react-components_v9.54.11)
+
+### Minor changes
+
+- `@fluentui/react-tag-picker`
+  - feature: introduces noPopover property to TagPicker ([PR #32158](https://github.com/microsoft/fluentui/pull/32158) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - chore: change :after to ::after ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: check icon slot does not collapse ([PR #32243](https://github.com/microsoft/fluentui/pull/32243) by sarah.higley@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: change :after to ::after. ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+  - Bug fix for issue 31724 ([PR #32060](https://github.com/microsoft/fluentui/pull/32060) by lakshmimanasasai.t@gmail.com)
+- `@fluentui/react-list-preview`
+  - chore: ensures useMergedTabsterAttributes supports Partial attributes ([PR #32300](https://github.com/microsoft/fluentui/pull/32300) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - v9 migration: Add Video shim component ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by jukapsia@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - (react-swatch-picker): fixed documentation ([PR #32279](https://github.com/microsoft/fluentui/pull/32279) by vkozlova@microsoft.com)
+- `@fluentui/react-table`
+  - chore: change :after to ::after ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: ensures useMergedTabsterAttributes supports Partial attributes ([PR #32300](https://github.com/microsoft/fluentui/pull/32300) by bernardo.sunderhus@gmail.com)
 
 ## [9.54.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.10)
 

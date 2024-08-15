@@ -2,6 +2,39 @@
   "name": "@fluentui/react-carousel-preview",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:08 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "e084a5620f3bcd04c57cd874a8dd89f2b20bfb92",
+            "comment": "chore: change :after to ::after"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-aria to v9.13.3",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.88",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.22.4",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2024 22:33:01 GMT",
       "tag": "@fluentui/react-carousel-preview_v0.2.0",
       "version": "0.2.0",

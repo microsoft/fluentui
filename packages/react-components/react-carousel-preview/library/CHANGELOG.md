@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-carousel-preview
 
-This log was last generated on Mon, 05 Aug 2024 22:33:01 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.2.1)
+
+Thu, 15 Aug 2024 08:22:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel-preview_v0.2.0..@fluentui/react-carousel-preview_v0.2.1)
+
+### Patches
+
+- chore: change :after to ::after ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-button to v9.3.88 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.2.0)
 

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Wed, 07 Aug 2024 12:31:57 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.8)
+
+Thu, 15 Aug 2024 08:22:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.7..@fluentui/react-migration-v0-v9_v9.2.8)
+
+### Patches
+
+- v9 migration: Add Video shim component ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by jukapsia@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-components to v9.54.11 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.7)
 

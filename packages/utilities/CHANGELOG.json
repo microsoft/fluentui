@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:36 GMT",
+      "tag": "@fluentui/utilities_v8.15.15",
+      "version": "8.15.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:18 GMT",
       "tag": "@fluentui/utilities_v8.15.15",
       "version": "8.15.15",

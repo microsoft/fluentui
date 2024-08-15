@@ -2,6 +2,29 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:14 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.4",
+      "version": "9.22.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "811fbca1c7b1fbbc0ec458c62a625591d00c3251",
+            "comment": "chore: ensures useMergedTabsterAttributes supports Partial attributes"
+          }
+        ],
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:35 GMT",
       "tag": "@fluentui/react-tabster_v9.22.3",
       "version": "9.22.3",

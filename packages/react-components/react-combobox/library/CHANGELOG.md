@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Tue, 30 Jul 2024 18:47:32 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.4)
+
+Thu, 15 Aug 2024 08:22:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.13.3..@fluentui/react-combobox_v9.13.4)
+
+### Patches
+
+- fix: check icon slot does not collapse ([PR #32243](https://github.com/microsoft/fluentui/pull/32243) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-field to v9.1.73 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-portal to v9.4.32 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.13.3)
 

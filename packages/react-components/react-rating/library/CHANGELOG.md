@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-rating
 
-This log was last generated on Tue, 23 Jul 2024 20:13:14 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.16)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-rating_v9.0.15..@fluentui/react-rating_v9.0.16)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.0.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-rating_v9.0.15)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-spinbutton
 
-This log was last generated on Tue, 30 Jul 2024 18:47:35 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 08:22:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.85)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinbutton_v9.2.84..@fluentui/react-spinbutton_v9.2.85)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.73 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
 
 ## [9.2.84](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinbutton_v9.2.84)
 

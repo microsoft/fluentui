@@ -2,6 +2,21 @@
   "name": "@fluentui/react-skeleton",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:17 GMT",
+      "tag": "@fluentui/react-skeleton_v9.1.13",
+      "version": "9.1.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-skeleton",
+            "comment": "Bump @fluentui/react-field to v9.1.73",
+            "commit": "e458baf8c47a8786b8616e2a0fbf12b8602ccd10"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 05 Aug 2024 22:33:03 GMT",
       "tag": "@fluentui/react-skeleton_v9.1.12",
       "version": "9.1.12",
