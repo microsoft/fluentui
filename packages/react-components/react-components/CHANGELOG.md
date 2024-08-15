@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 15 Aug 2024 08:22:07 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.12)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.11..@fluentui/react-components_v9.54.12)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: simplifies useMergedTabsterAttributes internals ([PR #32303](https://github.com/microsoft/fluentui/pull/32303) by bernardo.sunderhus@gmail.com)
 
 ## [9.54.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.11)
 

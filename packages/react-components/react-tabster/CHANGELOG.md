@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 15 Aug 2024 08:22:14 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.22.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.5)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.22.4..@fluentui/react-tabster_v9.22.5)
+
+### Patches
+
+- chore: simplifies useMergedTabsterAttributes internals ([PR #32303](https://github.com/microsoft/fluentui/pull/32303) by bernardo.sunderhus@gmail.com)
 
 ## [9.22.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.22.4)
 

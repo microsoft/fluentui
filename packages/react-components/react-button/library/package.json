@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "9.3.88",
+  "version": "9.3.89",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,11 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",
-    "@fluentui/react-aria": "^9.13.3",
+    "@fluentui/react-aria": "^9.13.4",
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.42",
     "@fluentui/react-shared-contexts": "^9.20.0",
-    "@fluentui/react-tabster": "^9.22.4",
+    "@fluentui/react-tabster": "^9.22.5",
     "@fluentui/react-theme": "^9.1.19",
     "@fluentui/react-utilities": "^9.18.13",
     "@griffel/react": "^1.5.22",
