@@ -68,7 +68,10 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
     const handleRef = useMotionImperativeRef(imperativeRef);
     const elementRef = React.useRef<HTMLElement>();
     const paramsRef = React.useRef<MotionParams>(params);
-    const skipMotions = useMotionBehaviourContext() === "skip";
+    const skipMotions = useMotionBehaviourContext() === 'skip';
+    const optionsRef = React.useRef<{ skipMotions: boolean }>({
+      skipMotions,
+    });
 
     const animateAtoms = useAnimateAtoms();
     const isReducedMotion = useIsReducedMotion();
@@ -103,7 +106,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
 
         onMotionStart();
 
-        if (skipMotions) {
+        if (optionsRef.current.skipMotions) {
           handle.finish();
         }
 
@@ -111,7 +114,7 @@ export function createMotionComponent<MotionParams extends Record<string, Motion
           handle.cancel();
         };
       }
-    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel, skipMotions]);
+    }, [animateAtoms, handleRef, isReducedMotion, onMotionFinish, onMotionStart, onMotionCancel]);
 
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
