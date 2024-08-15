@@ -14,7 +14,7 @@
     "test": "yarn jest --passWithNoTests"
   },
   "dependencies": {
-    "@griffel/eslint-plugin": "^1.6.3",
+    "@griffel/eslint-plugin": "^1.6.4",
     "@rnx-kit/eslint-plugin": "^0.7.2",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/utils": "^7.18.0",
@@ -24,7 +24,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-deprecation": "^2.0.0",
+    "eslint-plugin-deprecation": "^3.0.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-jsdoc": "^48.7.0",

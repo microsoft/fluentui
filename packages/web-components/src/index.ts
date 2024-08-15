@@ -53,6 +53,7 @@ export {
 } from './button/index.js';
 export type { ButtonOptions } from './button/index.js';
 export {
+  BaseCheckbox,
   Checkbox,
   CheckboxDefinition,
   CheckboxShape,

@@ -2,6 +2,29 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:35 GMT",
+      "tag": "@fluentui/theme_v2.6.59",
+      "version": "2.6.59",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/theme",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "126254552+gauriGupta99@users.noreply.github.com",
+            "package": "@fluentui/theme",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49",
+            "comment": "Point fluentui/theme export maps to right path"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:18 GMT",
       "tag": "@fluentui/theme_v2.6.58",
       "version": "2.6.58",

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:39 GMT",
+      "tag": "@fluentui/react-hooks_v8.8.12",
+      "version": "8.8.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:16 GMT",
       "tag": "@fluentui/react-hooks_v8.8.12",
       "version": "8.8.12",
