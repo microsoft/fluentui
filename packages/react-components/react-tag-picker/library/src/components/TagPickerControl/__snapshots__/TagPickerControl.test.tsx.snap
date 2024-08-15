@@ -11,7 +11,6 @@ exports[`TagPickerControl renders a default state 1`] = `
     >
       <span
         aria-expanded="false"
-        aria-label="Open"
         class="fui-TagPickerControl__expandIcon"
         role="button"
       >
