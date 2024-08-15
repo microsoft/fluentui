@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/digest",
+  "name": "digest",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

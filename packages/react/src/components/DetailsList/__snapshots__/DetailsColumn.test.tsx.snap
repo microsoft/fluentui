@@ -79,6 +79,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -127,6 +128,17 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -144,6 +156,9 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -179,6 +194,17 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -243,6 +269,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -285,6 +312,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -374,6 +402,17 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -442,10 +481,22 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 data-is-focusable="true"
                 id="header1-1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
                 role="button"
               >
                 <span
@@ -468,6 +519,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       ms-Icon
                       {
                         display: inline-block;
+                        text-decoration: inherit;
                       }
                       {
                         -moz-osx-font-smoothing: grayscale;
@@ -551,6 +603,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}

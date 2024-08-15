@@ -1,4 +1,4 @@
-# <%= npmPackageName %>
+# @<%= npmScope %>/<%= projectName %>
 
 **<%= title %> components for [Fluent UI React](https://react.fluentui.dev/)**
 

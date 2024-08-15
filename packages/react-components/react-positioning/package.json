@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-positioning",
-  "version": "9.9.15",
+  "version": "9.15.7",
   "description": "A react wrapper around Popper.js for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -19,7 +19,7 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json",
+    "type-check": "just-scripts type-check",
     "generate-api": "just-scripts generate-api",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
@@ -30,15 +30,16 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.2.0",
-    "@fluentui/react-shared-contexts": "^9.9.1",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.13.5",
-    "@griffel/react": "^1.5.14",
+    "@floating-ui/devtools": "0.2.1",
+    "@fluentui/react-shared-contexts": "^9.20.0",
+    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-utilities": "^9.18.13",
+    "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
-    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.9.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0",
     "react-dom": ">=16.14.0 <19.0.0"
   },
@@ -55,5 +56,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

@@ -5,6 +5,10 @@ import { AreaChartBase } from '../AreaChart/AreaChart.base';
 import { getStyles } from './AreaChart.styles';
 
 // Create a AreaChart variant which uses these default styles and this styled subcomponent.
+/**
+ * Areachart component.
+ * {@docCategory AreaChart}
+ */
 export const AreaChart: React.FunctionComponent<IAreaChartProps> = styled<
   IAreaChartProps,
   IAreaChartStyleProps,

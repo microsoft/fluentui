@@ -2,13 +2,28 @@
   "name": "@fluentui/scripts-babel",
   "version": "0.0.1",
   "private": true,
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
+    "lint": "eslint --ext .ts,.js ./src",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {},
+  "exports": {
+    ".": {
+      "require": "./src/index.js",
+      "import": "./src/index.js"
+    },
+    "./register": {
+      "require": "./register.js",
+      "import": "./register.js"
+    },
+    "./preset-v9": {
+      "require": "./src/preset-v9.js",
+      "import": "./src/preset-v9.js"
+    }
+  }
 }

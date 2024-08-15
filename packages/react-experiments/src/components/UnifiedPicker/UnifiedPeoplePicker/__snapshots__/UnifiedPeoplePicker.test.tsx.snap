@@ -13,6 +13,7 @@ exports[`UnifiedPeoplePicker renders correctly with no items 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone0"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -165,6 +166,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    data-tabster="{\\"uncontrolled\\": {}}"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -331,6 +333,24 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       right: -2px;
                       top: -2px;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 2px;
+                      content: "";
+                      left: 2px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 2px;
+                      top: 2px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
                     &:active > span {
                       left: 0px;
                       position: relative;
@@ -385,6 +405,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         ms-Button-icon
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -840,6 +861,24 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       right: -2px;
                       top: -2px;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 2px;
+                      content: "";
+                      left: 2px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 2px;
+                      top: 2px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      bottom: -2px;
+                      left: -2px;
+                      outline-color: ButtonText;
+                      right: -2px;
+                      top: -2px;
+                    }
                     &:active > span {
                       left: 0px;
                       position: relative;
@@ -894,6 +933,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         ms-Button-icon
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;

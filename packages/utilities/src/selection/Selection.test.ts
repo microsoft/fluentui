@@ -150,7 +150,7 @@ describe('Selection', () => {
     }
     const items: ICustomItem[] = [{ id: 'a' }, { id: 'b' }];
     const selection = new Selection<ICustomItem>({
-      onSelectionChanged: onSelectionChanged,
+      onSelectionChanged,
       getKey: (item: ICustomItem) => item.id,
       items,
     });

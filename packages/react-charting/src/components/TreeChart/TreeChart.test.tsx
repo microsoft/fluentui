@@ -5,6 +5,10 @@ import { mount, ReactWrapper } from 'enzyme';
 import { ITreeChartDataPoint, ITreeProps, TreeChart } from './index';
 import { TreeChartBase } from './TreeChart.base';
 import { resetIds } from '@fluentui/react/lib/Utilities';
+import { act, render } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 const twoLayerChart: ITreeChartDataPoint = {
   name: 'Root Node',
@@ -126,6 +130,8 @@ function sharedAfterEach() {
 }
 
 describe('TreeChart snapshot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders treechart two layer correctly', () => {
     const component = renderer.create(<TreeChart treeData={twoLayerChart} />);
     const tree = component.toJSON();
@@ -165,6 +171,8 @@ describe('TreeChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(TreeChartBase.prototype, 'render');
     const props = {
@@ -192,5 +200,18 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, width: 800 });
     expect(renderMock).toHaveBeenCalledTimes(3);
     renderMock.mockRestore();
+  });
+});
+
+describe('Tree Chart - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<TreeChart treeData={threeLayerChart} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });

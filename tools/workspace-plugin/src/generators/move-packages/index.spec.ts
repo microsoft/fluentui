@@ -2,11 +2,9 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   stripIndents,
   addProjectConfiguration,
   serializeJson,
-  WorkspaceConfiguration,
   parseJson,
   getProjects,
   joinPathFragments,
@@ -19,6 +17,7 @@ import {
 import generator from './index';
 import { TsConfig } from '../../types';
 import { setupCodeowners } from '../../utils-testing';
+import { getProjectNameWithoutScope, getWorkspaceConfig } from '../../utils';
 
 type ReadProjectConfiguration = ReturnType<typeof readProjectConfiguration>;
 const noop = () => null;
@@ -168,7 +167,7 @@ describe('move-packages generator', () => {
       apiExtractorLocalPath = joinPathFragments(project.root, 'config/api-extractor.local.json');
 
       apiExtractorLocal = readJson(tree, apiExtractorLocalPath);
-      /* eslint-disable @fluentui/max-len */
+
       expect(apiExtractorLocal).toMatchInlineSnapshot(`
         Object {
           "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
@@ -176,7 +175,6 @@ describe('move-packages generator', () => {
           "mainEntryPointFilePath": "<projectFolder>/dist/packages/testFolder/<unscopedPackageName>/src/index.d.ts",
         }
       `);
-      /* eslint-enable @fluentui/max-len */
     });
     it('should update the package.json build:local script with the new relative path', async () => {
       let project = getProjects(tree).get(options.name as string) as ProjectConfiguration;
@@ -184,7 +182,6 @@ describe('move-packages generator', () => {
       let packageJson = readJson(tree, packageJsonPath);
 
       expect(packageJson.scripts['build:local']).toEqual(
-        // eslint-disable-next-line @fluentui/max-len
         'tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/test/src && yarn docs',
       );
 
@@ -195,7 +192,6 @@ describe('move-packages generator', () => {
       packageJson = readJson(tree, packageJsonPath);
 
       expect(packageJson.scripts['build:local']).toEqual(
-        // eslint-disable-next-line @fluentui/max-len
         `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../../scripts/typescript/normalize-import --output ./dist/packages/${options.destination}/src && yarn docs`,
       );
     });
@@ -273,7 +269,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -294,7 +290,7 @@ function setupDummyPackage(
 
   const normalizedOptions = { ...defaults, ...options };
   const pkgName = normalizedOptions.name;
-  const normalizedPkgName = getNormalizedPkgName({ pkgName, workspaceConfig });
+  const normalizedPkgName = getProjectNameWithoutScope(pkgName);
   const paths = {
     root: `packages/${normalizedPkgName}`,
   };
@@ -314,7 +310,6 @@ function setupDummyPackage(
         test: 'just-scripts test',
         'test:watch': 'just-scripts jest-watch',
         'update-snapshots': 'just-scripts jest -u',
-        // eslint-disable-next-line @fluentui/max-len
         'build:local': `tsc -p ./tsconfig.lib.json --module esnext --emitDeclarationOnly && node ../../scripts/typescript/normalize-import --output ./dist/packages/${normalizedPkgName}/src && yarn docs`,
       },
       dependencies: normalizedOptions.dependencies,
@@ -386,6 +381,6 @@ function setupDummyPackage(
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
-  return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
-}
+// function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
+//   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+// }

@@ -1,8 +1,62 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2024 15:26:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.13](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.13)
+
+Thu, 06 Jun 2024 15:26:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.12..@fluentui/priority-overflow_v9.1.13)
+
+### Patches
+
+- chore: disable eslint rule ([PR #30967](https://github.com/microsoft/fluentui/pull/30967) by seanmonahan@microsoft.com)
+
+## [9.1.12](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.12)
+
+Thu, 16 May 2024 09:25:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.11..@fluentui/priority-overflow_v9.1.12)
+
+### Patches
+
+- force update the overflow when item is removed ([PR #31340](https://github.com/microsoft/fluentui/pull/31340) by miroslav.stastny@microsoft.com)
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.11)
+
+Thu, 14 Dec 2023 09:58:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.10..@fluentui/priority-overflow_v9.1.11)
+
+### Patches
+
+- fix: updates should be synchronous in unit tests ([PR #30014](https://github.com/microsoft/fluentui/pull/30014) by lingfangao@hotmail.com)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.10)
+
+Mon, 20 Nov 2023 09:55:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.9..@fluentui/priority-overflow_v9.1.10)
+
+### Patches
+
+- fix: disconnect should dispose all state correctly ([PR #29375](https://github.com/microsoft/fluentui/pull/29375) by lingfan.gao@microsoft.com)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.9)
+
+Thu, 09 Nov 2023 17:29:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.8..@fluentui/priority-overflow_v9.1.9)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.8)
+
+Mon, 23 Oct 2023 09:51:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.7..@fluentui/priority-overflow_v9.1.8)
+
+### Patches
+
+- fix: Use container window's resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.7)
 

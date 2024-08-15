@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-perf-test-flamegrill",
+  "name": "scripts-perf-test-flamegrill",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/perf-test-flamegrill/src",
   "projectType": "library",

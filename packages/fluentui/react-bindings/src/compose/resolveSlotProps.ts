@@ -7,7 +7,7 @@ export const NullRender = () => null;
 /**
  * Helper utility which resolves the slots and slot props derived from user input.
  */
-export function resolveSlotProps<TProps, TState = TProps>(
+export function resolveSlotProps<TProps extends {}, TState extends {} = TProps>(
   result: MergePropsResult<TState>,
   options: ComposePreparedOptions<TProps, TState>,
 ): MergePropsResult<TState> {

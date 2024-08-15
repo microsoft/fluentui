@@ -60,14 +60,14 @@ export function apiExtractor(): TaskFunction {
   const { isUsingTsSolutionConfigs, packageJson, tsConfigs } = getTsPathAliasesConfig();
 
   if (configsToExecute.length === 0) {
-    return noop;
+    return task('api-extractor-noop', noop);
   }
 
   /**
    * overrides api-extractor default `true` to be `false` on local dev machine
    * Triggers if path aliases will be used or yarn workspaces (that needs to be build based on package dependency tree)
    */
-  const isLocalBuild = args.local ?? !(process.env.TF_BUILD || isCI);
+  const isLocalBuild = Boolean((args.local || process.env.__FORCE_API_MD_UPDATE__) ?? !(process.env.TF_BUILD || isCI));
 
   const tasks = configsToExecute.map(([configPath, configName]) => {
     const taskName = `api-extractor:${configName}`;
@@ -153,7 +153,9 @@ export function apiExtractor(): TaskFunction {
       ].join('');
       const logErr = formatMissingApiViolationMessage(messages.TS7016);
       const logFix = chalk.blueBright(
-        `${chalk.bold('🛠 FIX')}: run '${chalk.italic(`yarn lage generate-api --to ${packageJson.name}`)}'`,
+        `${chalk.bold('🛠 FIX')}: run '${chalk.italic(
+          `yarn nx run ${packageJson.name.replace('@fluentui/', '')}:generate-api`,
+        )}'`,
       );
 
       logger.error(errTitle, logErr, '\n', logFix, '\n');

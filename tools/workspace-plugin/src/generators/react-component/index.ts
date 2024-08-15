@@ -1,10 +1,11 @@
 import path from 'path';
-import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot } from '@nx/devkit';
+import { execSync } from 'child_process';
+import { Tree, formatFiles, names, generateFiles, joinPathFragments, workspaceRoot, offsetFromRoot } from '@nx/devkit';
 
 import { getProjectConfig, isPackageConverged } from '../../utils';
+import { assertStoriesProject, isSplitProject } from '../split-library-in-two/shared';
 
 import { ReactComponentGeneratorSchema } from './schema';
-import { execSync } from 'child_process';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -21,14 +22,18 @@ export default async function (tree: Tree, schema: ReactComponentGeneratorSchema
 
   return () => {
     const root = workspaceRoot;
-    const { npmPackageName, componentName } = options;
+    const { npmPackageName, project, componentName } = options;
 
-    execSync(`yarn lage generate-api --to ${npmPackageName}`, {
+    execSync(`yarn nx run ${project}:generate-api`, {
       cwd: root,
       stdio: 'inherit',
     });
 
-    execSync(`yarn workspace ${npmPackageName} test -t ${componentName}`, {
+    // This is used only for integration testing purposes on CI as jest disables snapshot updates by default
+    const forceSnapshotUpdate = Boolean(process.env.__FORCE_SNAPSHOT_UPDATE__);
+    const testCmd = `yarn workspace ${npmPackageName} test -t ${componentName}` + (forceSnapshotUpdate ? ' -u' : '');
+
+    execSync(testCmd, {
       cwd: root,
       stdio: 'inherit',
     });
@@ -50,14 +55,39 @@ function normalizeOptions(tree: Tree, options: ReactComponentGeneratorSchema) {
     ...nameCasings,
     directory: 'components',
     componentName: nameCasings.className,
-    npmPackageName: project.projectConfig.name as string,
+    npmPackageName: `@${project.workspaceConfig.npmScope}/${project.projectConfig.name}`,
+    isSplitProject: isSplitProject(tree, project.projectConfig),
   };
+}
+
+function createStoriesTitle(options: NormalizedSchema) {
+  const isCompat = options.projectConfig.tags?.includes('compat');
+  const isPreview = options.projectConfig.name?.endsWith('-preview');
+  const isStable = !isCompat && !isPreview;
+
+  let storiesTitlePrefix;
+  if (isStable) {
+    storiesTitlePrefix = '';
+  }
+  if (isPreview) {
+    storiesTitlePrefix = 'Preview ';
+  }
+  if (isCompat) {
+    storiesTitlePrefix = 'Compat ';
+  }
+
+  const storiesTitle = `${storiesTitlePrefix}Components/${options.componentName}`;
+
+  return storiesTitle;
 }
 
 function addFiles(tree: Tree, options: NormalizedSchema) {
   const sourceRoot = options.projectConfig.sourceRoot as string;
+
   const templateOptions = {
     ...options,
+    rootOffset: offsetFromRoot(joinPathFragments(sourceRoot, options.directory, options.componentName)),
+    storiesTitle: createStoriesTitle(options),
     tmpl: '',
   };
 
@@ -75,12 +105,17 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
   );
 
   // story
-  generateFiles(
-    tree,
-    path.join(__dirname, 'files', 'story'),
-    path.join(options.paths.stories, options.componentName),
-    templateOptions,
-  );
+  const storiesPath = options.isSplitProject
+    ? path.join(options.projectConfig.root, '../stories/src', options.componentName)
+    : path.join(options.paths.stories, options.componentName);
+  generateFiles(tree, path.join(__dirname, 'files', 'story'), storiesPath, templateOptions);
+
+  if (!options.isSplitProject) {
+    const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
+    if (tree.exists(storiesGitkeep)) {
+      tree.delete(storiesGitkeep);
+    }
+  }
 }
 
 function updateBarrel(tree: Tree, options: NormalizedSchema) {
@@ -101,5 +136,8 @@ function assertComponent(tree: Tree, options: NormalizedSchema) {
   if (tree.exists(componentDirPath)) {
     throw new Error(`The component "${options.componentName}" already exists`);
   }
+
+  assertStoriesProject(tree, { isSplitProject: options.isSplitProject, project: options.projectConfig });
+
   return;
 }

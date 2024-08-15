@@ -22,7 +22,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone217"
+      data-focuszone-id="FocusZone10"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -59,7 +60,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           </span>
           <div
             hidden=""
-            id="tooltip218"
+            id="tooltip11"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -73,7 +74,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone219"
+      data-focuszone-id="FocusZone12"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -110,7 +112,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#0078d4"
                 height="12"
-                id="_SBC_bar213"
+                id="_SBC_bar3"
+                rx="0"
                 width="37.22084367245658%"
                 x="0%"
                 y="0"
@@ -136,7 +139,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#107c10"
                 height="12"
-                id="_SBC_bar214"
+                id="_SBC_bar5"
+                rx="0"
                 width="12.40694789081886%"
                 x="37.22084367245658%"
                 y="0"
@@ -162,7 +166,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#e81123"
                 height="12"
-                id="_SBC_bar215"
+                id="_SBC_bar7"
+                rx="0"
                 width="0.7444168734491317%"
                 x="49.62779156327544%"
                 y="0"
@@ -188,7 +193,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               <rect
                 fill="#d83b01"
                 height="12"
-                id="_SBC_bar216"
+                id="_SBC_bar9"
+                rx="0"
                 width="49.62779156327544%"
                 x="50.37220843672457%"
                 y="0"
@@ -240,7 +246,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone220"
+                data-focuszone-id="FocusZone13"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -299,6 +306,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -387,6 +408,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -473,6 +508,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -557,6 +606,20 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -631,7 +694,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone227"
+      data-focuszone-id="FocusZone10"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -668,7 +732,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </span>
           <div
             hidden=""
-            id="tooltip228"
+            id="tooltip11"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -682,7 +746,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone229"
+      data-focuszone-id="FocusZone12"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -719,7 +784,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#0078d4"
                 height="12"
-                id="_SBC_bar223"
+                id="_SBC_bar3"
+                rx="0"
                 width="37.22084367245658%"
                 x="0%"
                 y="0"
@@ -745,7 +811,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#107c10"
                 height="12"
-                id="_SBC_bar224"
+                id="_SBC_bar5"
+                rx="0"
                 width="12.40694789081886%"
                 x="37.22084367245658%"
                 y="0"
@@ -771,7 +838,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#e81123"
                 height="12"
-                id="_SBC_bar225"
+                id="_SBC_bar7"
+                rx="0"
                 width="0.7444168734491317%"
                 x="49.62779156327544%"
                 y="0"
@@ -797,7 +865,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               <rect
                 fill="#d83b01"
                 height="12"
-                id="_SBC_bar226"
+                id="_SBC_bar9"
+                rx="0"
                 width="49.62779156327544%"
                 x="50.37220843672457%"
                 y="0"
@@ -849,7 +918,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone230"
+                data-focuszone-id="FocusZone13"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -908,6 +978,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -996,6 +1080,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -1080,6 +1178,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -1168,6 +1280,20 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -1218,7 +1344,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
 </div>
 `;
 
-exports[`Should reflect theme change 1`] = `
+exports[`Stacked Bar Chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
     class=
@@ -1253,7 +1379,8 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone240"
+        data-focuszone-id="FocusZone13"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <div
           class=
@@ -1290,7 +1417,7 @@ exports[`Should reflect theme change 1`] = `
             </span>
             <div
               hidden=""
-              id="tooltip241"
+              id="tooltip14"
               style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
             >
               Stacked Bar chart example
@@ -1304,7 +1431,8 @@ exports[`Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone242"
+        data-focuszone-id="FocusZone15"
+        data-tabster="{\\"uncontrolled\\": {}}"
       >
         <div>
           <svg
@@ -1341,7 +1469,8 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_SBC_bar236"
+                  id="_SBC_bar6"
+                  rx="0"
                   width="37.22084367245658%"
                   x="0%"
                   y="0"
@@ -1367,7 +1496,8 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_SBC_bar237"
+                  id="_SBC_bar8"
+                  rx="0"
                   width="12.40694789081886%"
                   x="37.22084367245658%"
                   y="0"
@@ -1393,7 +1523,8 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_SBC_bar238"
+                  id="_SBC_bar10"
+                  rx="0"
                   width="0.7444168734491317%"
                   x="49.62779156327544%"
                   y="0"
@@ -1419,7 +1550,8 @@ exports[`Should reflect theme change 1`] = `
                 <rect
                   fill="#d83b01"
                   height="12"
-                  id="_SBC_bar239"
+                  id="_SBC_bar12"
+                  rx="0"
                   width="49.62779156327544%"
                   x="50.37220843672457%"
                   y="0"
@@ -1471,7 +1603,8 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone243"
+                  data-focuszone-id="FocusZone16"
+                  data-tabster="{\\"uncontrolled\\": {}}"
                   role="listbox"
                 >
                   <div
@@ -1530,6 +1663,20 @@ exports[`Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -1618,6 +1765,20 @@ exports[`Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="-1"
@@ -1702,6 +1863,20 @@ exports[`Should reflect theme change 1`] = `
                               z-index: 1;
                             }
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                               outline-color: #a19f9d;
                             }
                         data-is-focusable="true"
@@ -1790,6 +1965,20 @@ exports[`Should reflect theme change 1`] = `
                             @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                               outline-color: #a19f9d;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              outline-color: #a19f9d;
+                            }
                         data-is-focusable="true"
                         role="option"
                         tabindex="-1"
@@ -1863,7 +2052,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone17"
+      data-focuszone-id="FocusZone11"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -1900,7 +2090,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
           </span>
           <div
             hidden=""
-            id="tooltip18"
+            id="tooltip12"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -1914,7 +2104,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone19"
+      data-focuszone-id="FocusZone13"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -1946,7 +2137,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
               <rect
                 fill="#edebe9"
                 height="12"
-                id="_SBC_empty_bar_16"
+                id="_SBC_empty_bar_10"
                 width="100%"
                 x="0%"
                 y="0"
@@ -1998,7 +2189,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone20"
+                data-focuszone-id="FocusZone14"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2057,6 +2249,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2145,6 +2351,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2229,6 +2449,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2317,6 +2551,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2389,7 +2637,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone6"
+      data-focuszone-id="FocusZone10"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div
         class=
@@ -2426,7 +2675,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
           </span>
           <div
             hidden=""
-            id="tooltip7"
+            id="tooltip11"
             style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
           >
             Stacked Bar chart example
@@ -2440,7 +2689,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
           &:focus {
             outline: none;
           }
-      data-focuszone-id="FocusZone8"
+      data-focuszone-id="FocusZone12"
+      data-tabster="{\\"uncontrolled\\": {}}"
     >
       <div>
         <svg
@@ -2477,7 +2727,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
               <rect
                 fill="#0078d4"
                 height="12"
-                id="_SBC_bar2"
+                id="_SBC_bar3"
+                rx="0"
                 width="37.22084367245658%"
                 x="0%"
                 y="0"
@@ -2503,7 +2754,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
               <rect
                 fill="#107c10"
                 height="12"
-                id="_SBC_bar3"
+                id="_SBC_bar5"
+                rx="0"
                 width="12.40694789081886%"
                 x="37.22084367245658%"
                 y="0"
@@ -2529,7 +2781,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
               <rect
                 fill="#e81123"
                 height="12"
-                id="_SBC_bar4"
+                id="_SBC_bar7"
+                rx="0"
                 width="0.7444168734491317%"
                 x="49.62779156327544%"
                 y="0"
@@ -2555,7 +2808,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
               <rect
                 fill="#d83b01"
                 height="12"
-                id="_SBC_bar5"
+                id="_SBC_bar9"
+                rx="0"
                 width="49.62779156327544%"
                 x="50.37220843672457%"
                 y="0"
@@ -2607,7 +2861,8 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone9"
+                data-focuszone-id="FocusZone13"
+                data-tabster="{\\"uncontrolled\\": {}}"
                 role="listbox"
               >
                 <div
@@ -2666,6 +2921,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"
@@ -2754,6 +3023,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2840,6 +3123,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                             outline-color: #605e5c;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            outline-color: #605e5c;
+                          }
                       data-is-focusable="true"
                       role="option"
                       tabindex="-1"
@@ -2924,6 +3221,20 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
                             z-index: 1;
                           }
                           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                             outline-color: #605e5c;
                           }
                       data-is-focusable="true"

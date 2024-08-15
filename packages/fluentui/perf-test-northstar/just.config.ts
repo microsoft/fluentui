@@ -1,6 +1,6 @@
 import path from 'path';
-import { execSync } from 'child_process';
-import { series, task, argv, taskPresets } from 'just-scripts';
+
+import { task, argv, taskPresets } from 'just-scripts';
 import { config } from './tasks/perf-test.config';
 
 taskPresets.lib();
@@ -12,7 +12,6 @@ taskPresets.lib();
 // - Existing perf story format diverges from CSF format, requiring special loader.
 function bundleStories() {
   return async function () {
-    buildDependencies();
     // delay require in case digest isn't built yet
     const { digestStories } = require('@fluentui/digest');
     await digestStories({
@@ -20,12 +19,6 @@ function bundleStories() {
       outputDir: path.join(__dirname, 'dist'),
     });
   };
-}
-
-function buildDependencies() {
-  const cmd = 'yarn workspace @fluentui/digest build';
-  console.log(`exec: ${cmd}`);
-  execSync(cmd, { stdio: 'inherit' });
 }
 
 // TODO: how should this be integrated with the default 'build' task?
@@ -41,7 +34,7 @@ task('perf-test:run', () => {
 });
 
 // TODO: if stories/scenarios are added in this package, make sure build catches type errors
-task('perf-test', series('perf-test:bundle', 'perf-test:run'));
+// task('perf-test', series('perf-test:bundle', 'perf-test:run'));
 
 // TODO: Uncomment once stories can be referred to in a dependency.
 // This command will not be reliable until perf stories are in a package that can be set as a dep.

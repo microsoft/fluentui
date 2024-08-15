@@ -4,6 +4,10 @@ import { IDataPoint } from '../../types/IDataPoint';
 export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
+/**
+ * Pie Chart properties
+ * {@docCategory PieChart}
+ */
 export interface IPieChartProps {
   /**
    * Data to render in the chart.
@@ -56,8 +60,17 @@ export interface IPieChartProps {
   culture?: string;
 }
 
+/**
+ * Pie Chart style properties
+ * {@docCategory PieChart}
+ */
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &
   Pick<IPieChartProps, 'className'>;
+
+/**
+ * Pie Chart styles
+ * {@docCategory PieChart}
+ */
 export interface IPieChartStyles {
   /**
    *  Style for the root element.

@@ -6,7 +6,7 @@ import {
   BreadcrumbProps,
   BreadcrumbItem,
   BreadcrumbDivider,
-} from '@fluentui/react-breadcrumb-preview';
+} from '@fluentui/react-breadcrumb';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
@@ -33,15 +33,5 @@ export const SampleBreadcrumbButtons = (props: BreadcrumbProps) => (
     <BreadcrumbItem>
       <BreadcrumbButton current>Item 3</BreadcrumbButton>
     </BreadcrumbItem>
-  </Breadcrumb>
-);
-
-export const SampleBreadcrumbItems = (props: BreadcrumbProps) => (
-  <Breadcrumb {...props} className="breadcrumb-sample">
-    <BreadcrumbItem>Item 1</BreadcrumbItem>
-    <BreadcrumbDivider />
-    <BreadcrumbItem icon={<CalendarMonth />}>Item 2</BreadcrumbItem>
-    <BreadcrumbDivider />
-    <BreadcrumbItem current>Item 3</BreadcrumbItem>
   </Breadcrumb>
 );

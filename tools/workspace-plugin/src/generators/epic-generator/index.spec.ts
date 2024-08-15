@@ -58,7 +58,7 @@ function setupTest(packages: Package[]) {
    * Only accepts teams as owners (discards owners with no '/')
    */
   packages
-    .filter(pckg => pckg.projectType == 'library')
+    .filter(pckg => pckg.projectType === 'library')
     .flatMap(pckg => (pckg.owners.length > 0 ? pckg.owners : ['unknown']))
     .reduce<string[]>((acc, owner) => {
       if (owner.includes('/') && !acc.includes(owner)) {
@@ -78,6 +78,13 @@ function setupTest(packages: Package[]) {
 }
 
 describe('epic-generator', () => {
+  beforeEach(() => {
+    jest.restoreAllMocks();
+
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    jest.spyOn(console, 'log').mockImplementation(() => {});
+  });
+
   describe('validation', () => {
     it('requires a non-empty title', () => {
       const tree = createTreeWithEmptyWorkspace();

@@ -57,7 +57,7 @@ const webpackConfig: webpack.Configuration = {
       path: require.resolve('path-browserify'),
     },
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: config.lernaAliases({ type: 'webpack' }),
+    alias: config.webpackAliases,
   },
   performance: {
     hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")

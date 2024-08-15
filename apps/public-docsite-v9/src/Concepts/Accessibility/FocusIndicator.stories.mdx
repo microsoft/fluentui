@@ -1,0 +1,100 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Accessibility/Focus indicator" />
+
+## Focus indicator
+
+Fluent UI components use [tabster](https://github.com/microsoft/tabster) for focus handling functionality, so that they can be easily integrated with application-level tabster functionality such as delooser and cross-iframe focusing.
+
+Fluent UI `@fluentui/react-tabster` package defines `useKeyboardNavAttribute`, `createCustomFocusIndicatorStyle` and `createFocusOutlineStyle` to integrate tabster keyboard navigation mechanism seemlesly within Fluent UI.
+
+### useKeyboardNavAttribute
+
+Instantiates [keyborg](https://github.com/microsoft/keyborg) and adds `data-keyboard-nav` attribute to a referenced element to ensure keyboard navigation awareness synced to keyborg logic without having to cause a re-render on react tree.
+
+```tsx
+function Root() {
+  const ref = useKeyboardNavAttribute();
+  return <div ref={ref}>{children}</div>;
+}
+```
+
+```html
+<!-- data-keyboard-nav is present when navigating with keyboard -->
+<div data-keyboard-nav="">
+  <!-- ... -->
+</div>
+<!-- data-keyboard-nav is not present when navigating with mouse -->
+<div>
+  <!-- ... -->
+</div>
+```
+
+### Styling focus indicators
+
+The default focus indicator used in Fluent UI is an outline. However, in some cases more specific focus indicators are necessary depending on the use case and component design. In order to accommodate these requirements, Fluent UI exports two different utilities to style focus indicators:
+
+1. `createFocusOutlineStyle`
+2. `createCustomFocusIndicatorStyle`
+
+Both of the helper functions are powered using the method described above.
+
+#### createFocusOutlineStyle
+
+The [AccordionHeader](?path=/docs/components-accordion--default) component uses `createFocusOutlineStyle` to style the default outline style when focus is detected
+
+<Canvas>
+  <Story id="components-accordion--default" />
+</Canvas>
+
+```tsx
+import { makeStyles } from '@fluentui/react-components';
+import { createFocusOutlineStyle } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  focusIndicator: createFocusOutlineStyle({
+    // selector to be used to decide focus presence: 'focus-within' | 'focus'
+    selector: 'focus-within',
+    // custom style to be applied with the outline style
+    style: {
+      outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' },
+    },
+  }),
+});
+
+function Component() {
+  const styles = useStyles();
+  return <div className={styles.focusIndicator} />;
+}
+```
+
+#### createCustomFocusIndicatorStyle
+
+> ⚠️ A bad focus indicator can have serious accessibility consequences and can render
+> your experience unusable by certain user. Please ensure before creating a custom focus
+> indicator that you have gotten the necessary feedback from designers and accessibility
+> experts.
+
+The [Link](?path=/docs/components-link--default) component uses `createCustomFocusIndicatorStyle` to add a double underlined focus indication style
+
+<Canvas>
+  <Story id="components-link--default" />
+</Canvas>
+
+```tsx
+import { makeStyles, createCustomFocusIndicatorStyle } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  focusIndicator: createCustomFocusIndicatorStyle({
+    borderBottomColor: 'transparent',
+    textDecorationColor: tokens.colorStrokeFocus2,
+    textDecorationLine: 'underline',
+    textDecorationStyle: 'double',
+  }),
+});
+
+function Link() {
+  const styles = useStyles();
+  return <a className={styles.focusIndicator} />;
+}
+```

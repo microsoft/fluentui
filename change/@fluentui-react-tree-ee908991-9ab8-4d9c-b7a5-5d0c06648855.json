@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: creates SubtreeContext",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -35,16 +35,16 @@ To contribute to packages in this folder, follow [these setup instructions](setu
 From repo root:
 
 ```sh
-yarn start                 # start doc site: choose `@fluentui/docs`
+yarn northstar:start                 # start doc site: choose `@fluentui/docs`
 
 yarn test                  # run all packages' tests once
 
 yarn build                 # build all packages
-yarn build:fluentui:docs   # build docs
+yarn northstar:build:docs   # build docs
 
 yarn lint                  # lint all packages
 
-yarn prettier              # run prettier on changed files
+yarn format              # run prettier on changed files
 ```
 
 From an individual under `packages/fluentui`, such as `packages/fluentui/react-northstar`:
@@ -110,7 +110,7 @@ In addition to basic focus handling, specific keyboard handlers can be added to 
 
 ## Packages
 
-We are using [Lerna][14] to manage our packages and [Yarn Workspaces][15] to link them.
+We are using [Yarn Workspaces][15] to link workspace packages.
 
 ### Add a new package
 
@@ -133,11 +133,8 @@ yarn syncpack format
 
 ### Add a new dependency
 
-Please always use [`lerna add`][16] to manage all dependencies including internal packages. The command below will add `@fluentui/react-proptypes` as a production dependency to the `@fluentui/react-northstar` package.
-
-```yarn
-lerna add @fluentui/react-proptypes packages/fluentui/react-northstar
-```
+- update `package.json#dependencies`
+- if you're adding workspace package make sure it uses the fixed group version
 
 ## Development Notes
 
@@ -187,7 +184,5 @@ I (@rymeskar) have been part of the FluentUI framework team for the past two mon
 [11]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Button/buttonStyles.ts
 [12]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/accessibility/src/behaviors/Menu/MenuItemBehavior.ts
 [13]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/components/Menu/MenuItem.tsx
-[14]: https://lerna.js.org
 [15]: https://yarnpkg.com/en/docs/workspaces
-[16]: https://github.com/lerna/lerna/tree/master/commands/add
 [17]: https://github.com/microsoft/fluentui/wiki/Contributing

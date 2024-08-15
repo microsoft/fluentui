@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { Meta } from '@storybook/react';
 import {
   FolderCover,
   IFolderCoverProps,
@@ -6,10 +7,9 @@ import {
   renderFolderCoverWithLayout,
   SharedSignal,
 } from '@fluentui/react-experiments';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
+import { Steps } from 'storywright';
 import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -42,72 +42,73 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
   });
 };
 
-storiesOf('FolderCover', module)
-  .addDecorator(story => <Fabric>{story()}</Fabric>)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Large Default Cover', () => (
-    <FolderCoverWithImage
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-      folderCoverSize="large"
-      metadata={20}
-      signal={<SharedSignal />}
-    />
-  ))
-  .addStory('Small Default Cover', () => (
-    <FolderCoverWithImage
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-      folderCoverSize="small"
-      metadata={15}
-    />
-  ))
-  .addStory('Large Media Cover', () => (
-    <FolderCoverWithImage
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-      folderCoverSize="large"
-      folderCoverType="media"
-      metadata={20}
-      signal={<SharedSignal />}
-    />
-  ))
-  .addStory('Small Media Cover', () => (
-    <FolderCoverWithImage
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-      folderCoverSize="small"
-      folderCoverType="media"
-      metadata={15}
-    />
-  ))
-  .addStory('Shared Cover', () => (
-    <FolderCoverWithImage
-      originalImageSize={{
-        width: 200,
-        height: 150,
-      }}
-      folderCoverSize="small"
-      folderCoverType="media"
-      metadata={15}
-      signal={<SharedSignal />}
-    />
-  ));
+export default {
+  title: 'FolderCover',
+
+  decorators: [
+    story => <Fabric>{story()}</Fabric>,
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+} satisfies Meta<typeof FolderCoverWithImage>;
+
+export const LargeDefaultCover = () => (
+  <FolderCoverWithImage
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+    folderCoverSize="large"
+    metadata={20}
+    signal={<SharedSignal />}
+  />
+);
+
+export const SmallDefaultCover = () => (
+  <FolderCoverWithImage
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+    folderCoverSize="small"
+    metadata={15}
+  />
+);
+
+export const LargeMediaCover = () => (
+  <FolderCoverWithImage
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+    folderCoverSize="large"
+    folderCoverType="media"
+    metadata={20}
+    signal={<SharedSignal />}
+  />
+);
+
+export const SmallMediaCover = () => (
+  <FolderCoverWithImage
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+    folderCoverSize="small"
+    folderCoverType="media"
+    metadata={15}
+  />
+);
+
+export const SharedCover = () => (
+  <FolderCoverWithImage
+    originalImageSize={{
+      width: 200,
+      height: 150,
+    }}
+    folderCoverSize="small"
+    folderCoverType="media"
+    metadata={15}
+    signal={<SharedSignal />}
+  />
+);

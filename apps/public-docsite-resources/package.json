@@ -18,6 +18,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "prebundle": "yarn build",
     "bundle": "just-scripts bundle",
     "lint": "eslint --ext .js,.ts,.tsx ./src",
     "just": "just-scripts",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "@fluentui/react": "*",
+    "@fluentui/react-charting": "*",
     "@fluentui/react-examples": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/azure-themes": "*",

@@ -10,8 +10,6 @@ module.exports = createRule({
       // - it has options to detect and specially handle comments, strings, etc
       // - it checks the ignore regex without even a preliminary length check first
       description: 'Enforces a maximum line length, more cheaply than default ESLint version',
-      category: 'Best Practices',
-      recommended: false,
     },
     messages: {
       max: 'This line has a length of {{lineLength}}. Maximum allowed is {{max}}.',
@@ -41,7 +39,7 @@ module.exports = createRule({
 
     const ignoreRegexes = ignorePatterns.map(pat => new RegExp(pat));
 
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     return {
       Program: program => {

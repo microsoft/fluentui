@@ -1,8 +1,127 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Wed, 31 May 2023 07:38:40 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2024 07:24:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.28)
+
+Thu, 01 Aug 2024 07:24:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.27..@fluentui/react-window-provider_v2.2.28)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+
+## [2.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.27)
+
+Mon, 24 Jun 2024 07:33:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.26..@fluentui/react-window-provider_v2.2.27)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.23 ([commit](https://github.com/microsoft/fluentui/commit/444d2ef497b5be5b4252f4af86ded3d2db7a0850) by beachball)
+
+## [2.2.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.26)
+
+Thu, 06 Jun 2024 07:26:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.25..@fluentui/react-window-provider_v2.2.26)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.22 ([commit](https://github.com/microsoft/fluentui/commit/e5e806f46bd00bc7baffbfe7514a617600ba2d47) by beachball)
+
+## [2.2.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.25)
+
+Tue, 28 May 2024 07:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.24..@fluentui/react-window-provider_v2.2.25)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.21 ([PR #31324](https://github.com/microsoft/fluentui/pull/31324) by beachball)
+
+## [2.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.24)
+
+Fri, 24 May 2024 07:28:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.23..@fluentui/react-window-provider_v2.2.24)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.20 ([commit](https://github.com/microsoft/fluentui/commit/e5b614623b9aa1ae3f1f86f3e753b934943a4601) by beachball)
+
+## [2.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.23)
+
+Thu, 23 May 2024 07:28:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.22..@fluentui/react-window-provider_v2.2.23)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.19 ([commit](https://github.com/microsoft/fluentui/commit/10e6758b203de79c53ce31ba264e137f83f50ff4) by beachball)
+
+## [2.2.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.22)
+
+Mon, 20 May 2024 07:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.21..@fluentui/react-window-provider_v2.2.22)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.18 ([commit](https://github.com/microsoft/fluentui/commit/eadc00f974b3199e6c34d2e9d16015add154ec3b) by beachball)
+
+## [2.2.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.21)
+
+Wed, 24 Apr 2024 07:27:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.20..@fluentui/react-window-provider_v2.2.21)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.17 ([PR #31130](https://github.com/microsoft/fluentui/pull/31130) by beachball)
+
+## [2.2.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.20)
+
+Fri, 12 Apr 2024 07:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.19..@fluentui/react-window-provider_v2.2.20)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.16 ([PR #31022](https://github.com/microsoft/fluentui/pull/31022) by beachball)
+
+## [2.2.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.19)
+
+Wed, 03 Apr 2024 07:29:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.18..@fluentui/react-window-provider_v2.2.19)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.15 ([PR #30943](https://github.com/microsoft/fluentui/pull/30943) by beachball)
+
+## [2.2.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.18)
+
+Wed, 10 Jan 2024 07:28:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.17..@fluentui/react-window-provider_v2.2.18)
+
+### Patches
+
+- chore: clean up exports ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.14 ([PR #30063](https://github.com/microsoft/fluentui/pull/30063) by beachball)
+
+## [2.2.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.17)
+
+Thu, 14 Dec 2023 07:30:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.16..@fluentui/react-window-provider_v2.2.17)
+
+### Patches
+
+- chore: disallow `window` and `document` access ([PR #29962](https://github.com/microsoft/fluentui/pull/29962) by seanmonahan@microsoft.com)
+- Bump @fluentui/set-version to v8.2.13 ([PR #30061](https://github.com/microsoft/fluentui/pull/30061) by beachball)
+
+## [2.2.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.16)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.15..@fluentui/react-window-provider_v2.2.16)
+
+### Patches
+
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
 
 ## [2.2.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.15)
 

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagPickerOption renders a default state 1`] = `
+<div>
+  <div
+    aria-selected="false"
+    class="fui-TagPickerOption fui-Option"
+    id="fluent-option8"
+    role="option"
+  >
+    Default TagPickerOption
+  </div>
+</div>
+`;

@@ -8,6 +8,7 @@ import { hideInitialsWhenImageIsLoaded } from './propHelpers';
 import PersonaCoinSize10 from './PersonaCoinSize10/PersonaCoinSize10';
 import { PersonaCoinInitials } from './PersonaCoinInitials/PersonaCoinInitials';
 import type { IPersonaCoinComponent, IPersonaCoinProps, IPersonaCoinSlots } from './PersonaCoin.types';
+import { PersonaSize } from '@fluentui/react';
 
 export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;
@@ -43,7 +44,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
         imageShouldStartVisible={props.imageShouldStartVisible}
         imageAlt={props.imageAlt}
       />
-      <Slots.presence coinSize={coinSize} size={coinSize} />
+      <Slots.presence coinSize={coinSize} size={coinSize as PersonaSize} />
     </Slots.root>
   );
 };

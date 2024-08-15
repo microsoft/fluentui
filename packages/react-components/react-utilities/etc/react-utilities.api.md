@@ -38,6 +38,24 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 
 // @public
+export type DistributiveOmit<T, K extends keyof any> = T extends unknown ? Omit<T, K> : T;
+
+// @internal
+export function elementContains(parent: Node | null, child: Node | null): boolean;
+
+// @public
+export type EventData<Type extends string, TEvent> = {
+    type: undefined;
+    event: React_2.SyntheticEvent | Event;
+} | {
+    type: Type;
+    event: TEvent;
+};
+
+// @public
+export type EventHandler<TData extends EventData<string, unknown>> = (ev: React_2.SyntheticEvent | Event, data: TData) => void;
+
+// @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
 // @internal
@@ -46,7 +64,7 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
@@ -55,7 +73,13 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 };
 
 // @public
+export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => DistributiveOmit<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
+
+// @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @internal
+export function getParent(child: Node | null, options?: GetParentOptions): Node | null;
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
@@ -73,13 +97,13 @@ export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttribut
 // @internal
 export const getRTLSafeKey: (key: string, dir: 'ltr' | 'rtl') => string;
 
-// @public
+// @public @deprecated
 export function getSlots<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
 };
 
-// @internal
+// @internal @deprecated
 export function getSlotsNext<R extends SlotPropsRecord>(state: ComponentState<R>): {
     slots: Slots<R>;
     slotProps: ObjectSlotProps<R>;
@@ -92,6 +116,9 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 
 // @public
 export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
+// @public
+export type InferredElementRefType<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? Element : never : never;
 
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
@@ -162,24 +189,24 @@ export interface PriorityQueue<T> {
 export type ReactTouchOrMouseEvent = React_2.MouseEvent | React_2.TouchEvent;
 
 // @public
-export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
+export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T | null) => void);
 
 // @public
 export function resetIdsForTests(): void;
 
-// @public
+// @public @deprecated
 export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
 
 // @public
 function resolveShorthand_2<Props extends UnknownSlotProps | null | undefined>(value: Props | SlotShorthandValue): Props;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
     <P extends Props>(value: P | SlotShorthandValue | undefined, options: ResolveShorthandOptions<P, true>): P;
     <P extends Props>(value: P | SlotShorthandValue | null | undefined, options?: ResolveShorthandOptions<P, boolean>): P | undefined;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ResolveShorthandOptions<Props, Required extends boolean = false> = Required extends true ? {
     required: true;
     defaultProps?: Props;
@@ -219,6 +246,9 @@ export interface SelectionMethods {
 type SelectionMode_2 = 'single' | 'multiselect';
 export { SelectionMode_2 as SelectionMode }
 
+// @internal
+export function setVirtualParent(child: Node, parent?: Node): void;
+
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
     as?: Type;
@@ -250,7 +280,7 @@ export type SlotClassNames<Slots> = {
 };
 
 // @public
-export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
+export type SlotComponentType<Props> = Props & {
     (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
     [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
     [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
@@ -268,7 +298,7 @@ export type SlotPropsRecord = Record<string, UnknownSlotProps | SlotShorthandVal
 // @public (undocumented)
 export type SlotRenderFunction<Props> = (Component: React_2.ElementType<Props>, props: Omit<Props, 'as'>) => React_2.ReactNode;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type Slots<S extends SlotPropsRecord> = {
     [K in keyof S]: ExtractSlotProps<S[K]> extends AsIntrinsicElement<infer As> ? As : ExtractSlotProps<S[K]> extends React_2.ComponentType<infer P> ? React_2.ElementType<NonNullable<P>> : React_2.ElementType<ExtractSlotProps<S[K]>>;
 };
@@ -288,6 +318,9 @@ export type TouchOrMouseEvent = NativeTouchOrMouseEvent | ReactTouchOrMouseEvent
 export type TriggerProps<TriggerChildProps = unknown> = {
     children?: React_2.ReactElement | ((props: TriggerChildProps) => React_2.ReactElement | null) | null;
 };
+
+// @public
+export type UnionToIntersection<U> = (U extends unknown ? (x: U) => U : never) extends (x: infer I) => U ? I : never;
 
 // @public
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {

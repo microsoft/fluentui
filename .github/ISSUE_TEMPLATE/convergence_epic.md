@@ -12,41 +12,40 @@ completed as part of creating a v9 component. More info can be found here: https
 
 ## Preparation
 
-- [ ] [Open UI Research](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#open-ui-research)
+- [ ] [Open UI Research](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#open-ui-research)
   - [link to https://open-ui.org/]
-- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#find-open-issues-on-github)
+- [ ] [Open GitHub issues related to component](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#find-open-issues-on-github)
   - [link to each issue]
-- [ ] [Create react-\* package and component from template](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-package)
+- [ ] [Create react-\* package and component from template](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#component-package)
   - [link to package: https://github.com/microsoft/fluentui/tree/master/packages/react-components/react-(your-component)]
-- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#draft-implementation)
+- [ ] (Optional) [Draft implementation](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#draft-and-prototype-implementation)
   - [link to draft implementation, if applicable]
-- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#component-spec) and [reviewed](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#spec-review)
+- [ ] [Component Spec authored](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#component-spec) and [reviewed](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#spec-review)
 
 ## Implementation
 
-- [ ] [Component implementation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#implementation)
+- [ ] [Component implementation](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#implementation)
 - [ ] Initial conformance and unit tests (validate basic functionality)
-- [ ] [Initial documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#documentation)
-  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
+- [ ] [Initial documentation](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#documentation)
+  - [ ] [Storybook stories](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#storybook-stories)
   - [ ] README.md covering basic usage
   - [ ] MIGRATION.md guide (include v8 and v0)
-- [ ] [Component released as preview](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#preview-release)
+- [ ] [Component released as preview](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#preview-release)
 
 ## Validation
 
-- [ ] [Add tests](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#tests)
+- [ ] [Add tests](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#tests)
   - [ ] Unit and conformance tests
   - [ ] VR tests
   - [ ] Bundle size fixtures
-  - [ ] Performance test scenario
   - [ ] Accessibility behavior tests
-  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/wiki/Manual-Accessibility-Review-Checklist): [link to issue]
-- [ ] [Validate with partners](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#validation)
-- [ ] [Run a bug bash with other FUI crews](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#bug-bash)
-- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
+  - [ ] Create an issue and run [manual accessibility tests](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/accessibility-review-checklist.md): [link to issue]
+- [ ] [Validate with partners](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#validation)
+- [ ] [Run a bug bash with other FUI crews](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#bug-bash)
+- [ ] [Finalize documentation](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#finalize-documentation)
   - [ ] Review and add any missing storybook stories
   - [ ] Finalize migration guide
-- [ ] [Component released as stable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#stable-release)
+- [ ] [Component released as stable](https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/component-implementation-guide.md#stable-release)
   - [ ] Run the `prepare-initial-release` script to remove the `-preview` suffix from the package name
   - [ ] Deprecate the `-preview` package in NPM
   - [ ] Export the component from `@fluentui/react-components`

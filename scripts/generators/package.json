@@ -6,12 +6,13 @@
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js --ignore-pattern plop-templates-* .",
+    "lint": "eslint --ext .ts,.js --ignore-pattern plop-templates-* ./src",
     "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
   "dependencies": {
     "@fluentui/scripts-monorepo": "*",
     "@fluentui/scripts-projects-test": "*"
-  }
+  },
+  "devDependencies": {}
 }

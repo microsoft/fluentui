@@ -13,7 +13,7 @@ type onPropChangeArgs = {
 export type ComponentPropertiesPanelProps = {
   componentAccessibilityErrors: AccessibilityError[];
   mode: DesignerMode;
-  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
+  onPropUpdate: (args: { jsonTreeElement: JSONTreeElement }) => void;
   onPropChange: (args: onPropChangeArgs) => void;
   onPropDelete: (args: { jsonTreeElement: JSONTreeElement; name: string }) => void;
   selectedComponentInfo: ComponentInfo;

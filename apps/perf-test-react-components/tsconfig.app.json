@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "outDir": "lib",
+    "jsx": "react",
+    "lib": ["ES2019", "DOM"],
+    "types": ["webpack-env"]
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

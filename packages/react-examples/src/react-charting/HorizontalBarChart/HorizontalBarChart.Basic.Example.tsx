@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { ChartDataMode, HorizontalBarChart, IChartProps, IHorizontalBarChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  ChartDataMode,
+  HorizontalBarChart,
+  IChartProps,
+  IHorizontalBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartState {
   chartMode: ChartDataMode;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class HorizontalBarChartBasicExample extends React.Component<
@@ -15,6 +23,8 @@ export class HorizontalBarChartBasicExample extends React.Component<
     super(props);
     this.state = {
       chartMode: 'default',
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -24,6 +34,14 @@ export class HorizontalBarChartBasicExample extends React.Component<
 
   private _onChangeChartMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ chartMode: checked ? ('percentage' as ChartDataMode) : ('default' as ChartDataMode) });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample() {
@@ -36,7 +54,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'one',
             horizontalBarChartdata: { x: 1543, y: 15000 },
-            color: DefaultPalette.tealDark,
+            color: getColorFromToken(DataVizPalette.color1),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '10%',
           },
@@ -48,7 +66,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'two',
             horizontalBarChartdata: { x: 800, y: 15000 },
-            color: DefaultPalette.purple,
+            color: getColorFromToken(DataVizPalette.color2),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '5%',
           },
@@ -60,7 +78,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'three',
             horizontalBarChartdata: { x: 8888, y: 15000 },
-            color: DefaultPalette.redDark,
+            color: getColorFromToken(DataVizPalette.color3),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '59%',
           },
@@ -72,9 +90,9 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'four',
             horizontalBarChartdata: { x: 15888, y: 15000 },
-            color: DefaultPalette.themeDarkAlt,
+            color: getColorFromToken(DataVizPalette.color4),
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '105%',
+            yAxisCalloutData: '106%',
           },
         ],
       },
@@ -84,7 +102,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'five',
             horizontalBarChartdata: { x: 11444, y: 15000 },
-            color: DefaultPalette.themePrimary,
+            color: getColorFromToken(DataVizPalette.color5),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '76%',
           },
@@ -96,7 +114,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'six',
             horizontalBarChartdata: { x: 14000, y: 15000 },
-            color: DefaultPalette.greenDark,
+            color: getColorFromToken(DataVizPalette.color6),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '93%',
           },
@@ -108,9 +126,9 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'seven',
             horizontalBarChartdata: { x: 9855, y: 15000 },
-            color: DefaultPalette.accent,
+            color: getColorFromToken(DataVizPalette.color7),
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '65%',
+            yAxisCalloutData: '66%',
           },
         ],
       },
@@ -120,27 +138,35 @@ export class HorizontalBarChartBasicExample extends React.Component<
           {
             legend: 'eight',
             horizontalBarChartdata: { x: 4250, y: 15000 },
-            color: DefaultPalette.blueLight,
+            color: getColorFromToken(DataVizPalette.color8),
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '28%',
           },
         ],
       },
     ];
+
     return (
       <>
-        <Toggle
-          label="Show labels as percentage"
-          onText="Chart mode percentage"
-          offText="Chart mode absolute"
-          onChange={this._onChangeChartMode}
-        />
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Show labels as percentage"
+            onText="Chart mode percentage"
+            offText="Chart mode absolute"
+            onChange={this._onChangeChartMode}
+          />
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
+
         <div style={{ maxWidth: 600 }}>
           <HorizontalBarChart
             culture={window.navigator.language}
             data={data}
             hideRatio={hideRatio}
             chartDataMode={this.state.chartMode}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

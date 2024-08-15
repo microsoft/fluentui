@@ -1,9 +1,47 @@
-import { logger } from '@nx/devkit';
-import { printUserLogs } from './utils';
+import { logger, Tree } from '@nx/devkit';
+import { createTreeWithEmptyWorkspace } from 'nx/src/devkit-testing-exports';
+import { getWorkspaceConfig, getProjectNameWithoutScope, printUserLogs } from './utils';
 
 describe(`utils`, () => {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   const noop = () => {};
+
+  describe(`#getWorkspaceConfig`, () => {
+    let tree: Tree;
+    beforeEach(() => {
+      tree = createTreeWithEmptyWorkspace();
+    });
+    it(`should return nx config with some package.json metadata`, () => {
+      const actual = getWorkspaceConfig(tree);
+      expect(actual).toMatchInlineSnapshot(`
+        Object {
+          "affected": Object {
+            "defaultBase": "main",
+          },
+          "npmScope": "proj",
+          "targetDefaults": Object {
+            "build": Object {
+              "cache": true,
+            },
+            "lint": Object {
+              "cache": true,
+            },
+          },
+        }
+      `);
+    });
+  });
+
+  describe(`#getProjectNameWithoutScope`, () => {
+    it(`should return project name without scope`, () => {
+      let actual = getProjectNameWithoutScope('@proj/one-foo');
+
+      expect(actual).toEqual('one-foo');
+
+      actual = getProjectNameWithoutScope('two-foo');
+      expect(actual).toEqual('two-foo');
+    });
+  });
 
   describe(`#printUserLogs`, () => {
     beforeEach(() => {

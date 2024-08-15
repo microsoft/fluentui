@@ -10,7 +10,7 @@ import type { ISettingsMap } from './warn';
  * @param deprecationMap - The map of deprecations, where key is the prop name and the value is
  * either null or a replacement prop name.
  */
-export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void {
+export function warnDeprecations<P extends {}>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void {
   if (process.env.NODE_ENV !== 'production') {
     for (const propName in deprecationMap) {
       if (props && propName in props) {

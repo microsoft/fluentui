@@ -6,6 +6,10 @@ import { IChartProps, IChartDataPoint } from './index';
 
 export interface IDonutChart {}
 
+/**
+ * Donut Chart properties.
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -53,10 +57,30 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * @default true
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to enable the gradient in the chart
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
+/**
+ * Donut Chart style properties
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Donut Chart styles
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyles {
   /**
    *  Style for the root element.

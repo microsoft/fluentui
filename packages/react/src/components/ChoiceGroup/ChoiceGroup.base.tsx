@@ -20,6 +20,7 @@ import type {
   IChoiceGroup,
 } from './ChoiceGroup.types';
 import type { IChoiceGroupOptionProps } from './ChoiceGroupOption/ChoiceGroupOption.types';
+import { useDocumentEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<IChoiceGroupStyleProps, IChoiceGroupStyles>();
 
@@ -36,9 +37,10 @@ const focusSelectedOption = (
   keyChecked: IChoiceGroupProps['selectedKey'],
   id: string,
   focusProviders?: React.RefObject<HTMLElement>[],
+  doc?: Document,
 ) => {
   const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
-  const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
+  const elementToFocus = optionToFocus && doc?.getElementById(getOptionId(optionToFocus, id));
 
   if (elementToFocus) {
     elementToFocus.focus();
@@ -57,6 +59,7 @@ const useComponentRef = (
   componentRef?: IRefObject<IChoiceGroup>,
   focusProviders?: React.RefObject<HTMLElement>[],
 ) => {
+  const doc = useDocumentEx();
   React.useImperativeHandle(
     componentRef,
     () => ({
@@ -64,10 +67,10 @@ const useComponentRef = (
         return findOption(options, keyChecked);
       },
       focus() {
-        focusSelectedOption(options, keyChecked, id, focusProviders);
+        focusSelectedOption(options, keyChecked, id, focusProviders, doc);
       },
     }),
-    [options, keyChecked, id, focusProviders],
+    [options, keyChecked, id, focusProviders, doc],
   );
 };
 

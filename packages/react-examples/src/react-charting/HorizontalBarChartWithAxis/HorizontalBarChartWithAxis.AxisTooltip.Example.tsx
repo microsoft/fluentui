@@ -3,8 +3,9 @@ import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisDataPoint,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IHorizontalBarChartWithAxisState {
   selectedOption: string;
@@ -26,22 +27,22 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
       {
         x: 1000,
         y: 1000,
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color5),
       },
       {
         x: 2000,
         y: 5000,
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color6),
       },
       {
         x: 3000,
         y: 3000,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color7),
       },
       {
         x: 4000,
         y: 2000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color8),
       },
     ];
 

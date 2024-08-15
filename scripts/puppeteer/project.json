@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/scripts-puppeteer",
+  "name": "scripts-puppeteer",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "scripts/puppeteer/src",
   "projectType": "library",

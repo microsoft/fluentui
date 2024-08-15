@@ -83,8 +83,10 @@ export {
   elementContains,
   elementContainsAttribute,
   findElementRecursive,
+  getActiveElement,
   getChildren,
   getDocument,
+  getEventTarget,
   getFirstVisibleElementFromSelector,
   getParent,
   getRect,
@@ -235,3 +237,30 @@ import './version';
 
 // eslint-disable-next-line deprecation/deprecation
 export type { IStyleFunctionOrObject, Omit } from '@fluentui/merge-styles';
+
+export {
+  MergeStylesRootProvider,
+  MergeStylesShadowRootContext,
+  MergeStylesShadowRootProvider,
+  useAdoptedStylesheet,
+  useAdoptedStylesheetEx,
+  useHasMergeStylesShadowRootContext,
+  useMergeStylesHooks,
+  useMergeStylesRootStylesheets,
+  useMergeStylesShadowRootContext,
+  useShadowConfig,
+  useStyled,
+} from './shadowDom';
+
+export type {
+  AdoptedStylesheetHook,
+  AdoptedStylesheetExHook,
+  HasMergeStylesShadowRootContextHook,
+  MergeStylesRootContextValue,
+  MergeStylesRootProviderProps,
+  MergeStylesShadowRootContextValue,
+  MergeStylesShadowRootProviderProps,
+  MergeStylesContextConsumerProps,
+  ShadowConfigHook,
+  UseStyledHook,
+} from './shadowDom';

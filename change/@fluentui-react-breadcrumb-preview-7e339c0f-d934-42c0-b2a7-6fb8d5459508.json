@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

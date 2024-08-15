@@ -1,4 +1,4 @@
-import { IRawStyle } from './IRawStyle';
+import type { IRawStyle } from './IRawStyle';
 
 /**
  * {@docCategory IStyleBase}

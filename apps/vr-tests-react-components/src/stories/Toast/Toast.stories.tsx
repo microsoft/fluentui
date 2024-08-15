@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import {
   Toast,
   ToastTitle,
@@ -22,7 +22,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Toast>;
+} satisfies Meta<typeof Toast>;
 
 const toastIntents = ['success', 'warning', 'info', 'error'] as const;
 
@@ -241,3 +241,53 @@ export const TitleOnlyInverted = () => {
 
 export const TitleOnlyInvertedDarkMode = getStoryVariant(TitleOnlyInverted, DARK_MODE);
 export const TitleOnlyInvertedHighContrastMode = getStoryVariant(TitleOnlyInverted, HIGH_CONTRAST);
+
+export const ToastTitleWordBreak = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    dispatchToast(
+      <Toast ref={toastRef}>
+        <ToastTitle action={<Link>Action</Link>}>
+          This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        </ToastTitle>
+      </Toast>,
+      {
+        onStatusChange,
+        timeout: -1,
+      },
+    );
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};
+
+export const ToastBodyWordBreak = () => {
+  const { dispatchToast } = useToastController();
+  const { toastRef, onStatusChange } = useToastScreenshotData();
+  const dispatchToasts = () => {
+    dispatchToast(
+      <Toast ref={toastRef}>
+        <ToastBody>This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</ToastBody>
+      </Toast>,
+      {
+        onStatusChange,
+        timeout: -1,
+      },
+    );
+  };
+  return (
+    <>
+      <button id="dispatch" onClick={dispatchToasts}>
+        Dispatch toasts
+      </button>
+      <Toaster />
+    </>
+  );
+};

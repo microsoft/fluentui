@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List renders a default state 1`] = `
+<div>
+  <ul
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":0,\\"memorizeCurrent\\":true}}"
+  >
+    Default List
+  </ul>
+</div>
+`;

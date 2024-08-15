@@ -4,6 +4,10 @@ import { IModifiedCartesianChartProps, ICartesianChartStyleProps, ICartesianChar
 import { CartesianChartBase } from './CartesianChart.base';
 import { getStyles } from './CartesianChart.styles';
 
+/**
+ * Cartesian Chart component
+ * {@docCategory CartesianChart}
+ */
 export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProps> = styled<
   IModifiedCartesianChartProps,
   ICartesianChartStyleProps,

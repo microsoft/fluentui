@@ -56,13 +56,13 @@ export const PivotStyles = (props: IPivotStyleProps): Partial<IPivotStyles> => {
       !rootIsTabs && {
         selectors: {
           ':hover': {
-            backgroundColor: extendedSemanticColors.bodyBackground,
+            backgroundColor: extendedSemanticColors.buttonBackgroundCheckedHovered,
             border: StyleConstants.borderNone,
-            color: semanticColors.bodyText,
+            color: semanticColors.buttonTextHovered,
             transition: 'background-color .2s ease-out',
           },
           ':active': {
-            backgroundColor: semanticColors.bodyBackground,
+            backgroundColor: semanticColors.buttonBackgroundChecked,
             border: StyleConstants.borderNone,
             color: semanticColors.bodyText,
           },

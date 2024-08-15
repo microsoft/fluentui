@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { createFontStyles } from '@fluentui/react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
@@ -32,39 +31,43 @@ function getStyle(lang: string) {
   return createFontStyles(lang).medium as React.CSSProperties;
 }
 
-storiesOf('Fonts', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story =>
-    // prettier-ignore
-    <StoryWright
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>,
-  )
-  .addStory('Weights', () => (
-    <div style={getStyle('en')}>
-      {Weights.map(weight => (
-        <p key={weight} style={{ fontWeight: weight }}>
-          Weight {weight}: Testing fontweight
-        </p>
-      ))}
-    </div>
-  ))
-  .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
-  .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)
-  .addStory('Chinese (Traditional)', () => <RepresentativeText style={getStyle('zh-Hant')} />)
-  .addStory('Cyrillic', () => <RepresentativeText style={getStyle('bg')} />)
-  .addStory('East European', () => <RepresentativeText style={getStyle('cs')} />)
-  .addStory('Greek', () => <RepresentativeText style={getStyle('el')} />)
-  .addStory('Hebrew', () => <RepresentativeText style={getStyle('he')} />)
-  .addStory('Hindi', () => <RepresentativeText style={getStyle('hi')} />)
-  .addStory('Japanese', () => <RepresentativeText style={getStyle('ja')} />)
-  .addStory('Korean', () => <RepresentativeText style={getStyle('ko')} />)
-  .addStory('Thai', () => <RepresentativeText style={getStyle('th')} />)
-  .addStory('Vietnamese', () => <RepresentativeText style={getStyle('vi')} />)
-  .addStory('West European', () => <RepresentativeText style={getStyle('en')} />)
-  .addStory('Armenian', () => <RepresentativeText style={getStyle('hy')} />)
-  .addStory('Georgian', () => <RepresentativeText style={getStyle('ka')} />);
+export default {
+  title: 'Fonts',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()),
+  ],
+};
+
+export const _Weights = () => (
+  <div style={getStyle('en')}>
+    {Weights.map(weight => (
+      <p key={weight} style={{ fontWeight: weight }}>
+        Weight {weight}: Testing fontweight
+      </p>
+    ))}
+  </div>
+);
+
+export const Arabic = () => <RepresentativeText style={getStyle('ar')} />;
+export const ChineseSimplified = () => <RepresentativeText style={getStyle('zh-Hans')} />;
+
+ChineseSimplified.storyName = 'Chinese (Simplified)';
+
+export const ChineseTraditional = () => <RepresentativeText style={getStyle('zh-Hant')} />;
+
+ChineseTraditional.storyName = 'Chinese (Traditional)';
+
+export const Cyrillic = () => <RepresentativeText style={getStyle('bg')} />;
+export const EastEuropean = () => <RepresentativeText style={getStyle('cs')} />;
+export const Greek = () => <RepresentativeText style={getStyle('el')} />;
+export const Hebrew = () => <RepresentativeText style={getStyle('he')} />;
+export const Hindi = () => <RepresentativeText style={getStyle('hi')} />;
+export const Japanese = () => <RepresentativeText style={getStyle('ja')} />;
+export const Korean = () => <RepresentativeText style={getStyle('ko')} />;
+export const Thai = () => <RepresentativeText style={getStyle('th')} />;
+export const Vietnamese = () => <RepresentativeText style={getStyle('vi')} />;
+export const WestEuropean = () => <RepresentativeText style={getStyle('en')} />;
+export const Armenian = () => <RepresentativeText style={getStyle('hy')} />;
+export const Georgian = () => <RepresentativeText style={getStyle('ka')} />;

@@ -14,8 +14,8 @@ import {
 import { tokens } from '@fluentui/react-theme';
 import { Button } from '@fluentui/react-button';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-menu';
-import { ComponentMeta } from '@storybook/react';
-import { DARK_MODE, HIGH_CONTRAST, RTL, getStoryVariant } from '../utilities/getStoryVariant';
+import type { Meta } from '@storybook/react';
+import { DARK_MODE, getStoryVariant, HIGH_CONTRAST, RTL } from '../utilities';
 import { Steps, StoryWright } from 'storywright';
 import {
   CaretDownRegular,
@@ -33,7 +33,7 @@ import { Avatar } from '@fluentui/react-avatar';
 
 export default {
   title: 'Tree',
-} as ComponentMeta<typeof Tree>;
+} satisfies Meta<typeof Tree>;
 
 export const Default = () => (
   <Tree aria-label="Tree">
@@ -69,10 +69,12 @@ export const Default = () => (
     </TreeItem>
   </Tree>
 );
-
 Default.storyName = 'default';
+
 export const DefaultDarkMode = getStoryVariant(Default, DARK_MODE);
+
 export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
+
 export const DefaultRTL = getStoryVariant(Default, RTL);
 
 export const DefaultOpenTree = () => {
@@ -116,10 +118,12 @@ export const DefaultOpenTree = () => {
     </Tree>
   );
 };
-
 DefaultOpenTree.storyName = 'default open tree';
+
 export const DefaultOpenTreeDarkMode = getStoryVariant(DefaultOpenTree, DARK_MODE);
+
 export const DefaultOpenTreeHighContrast = getStoryVariant(DefaultOpenTree, HIGH_CONTRAST);
+
 export const DefaultOpenTreeRTL = getStoryVariant(DefaultOpenTree, RTL);
 
 export const Appearance = () => {
@@ -158,10 +162,12 @@ export const Appearance = () => {
     </StoryWright>
   );
 };
-
 Appearance.storyName = 'appearance';
+
 export const AppearanceDarkMode = getStoryVariant(Appearance, DARK_MODE);
+
 export const AppearanceHighContrast = getStoryVariant(Appearance, HIGH_CONTRAST);
+
 export const AppearanceRTL = getStoryVariant(Appearance, RTL);
 
 export const Size = () => {
@@ -203,10 +209,12 @@ export const Size = () => {
     </>
   );
 };
-
 Size.storyName = 'size';
+
 export const SizeDarkMode = getStoryVariant(Size, DARK_MODE);
+
 export const SizeHighContrast = getStoryVariant(Size, HIGH_CONTRAST);
+
 export const SizeRTL = getStoryVariant(Size, RTL);
 
 export const ExpandIcon = () => {
@@ -250,10 +258,12 @@ export const ExpandIcon = () => {
     </Tree>
   );
 };
-
 ExpandIcon.storyName = 'expand icon';
+
 export const ExpandIconDarkMode = getStoryVariant(ExpandIcon, DARK_MODE);
+
 export const ExpandIconHighContrast = getStoryVariant(ExpandIcon, HIGH_CONTRAST);
+
 export const ExpandIconRTL = getStoryVariant(ExpandIcon, RTL);
 
 const ActionsExample = () => {
@@ -309,10 +319,12 @@ export const Actions = () => (
     </TreeItem>
   </Tree>
 );
-
 Actions.storyName = 'actions';
+
 export const ActionsDarkMode = getStoryVariant(Actions, DARK_MODE);
+
 export const ActionsHighContrast = getStoryVariant(Actions, HIGH_CONTRAST);
+
 export const ActionsRTL = getStoryVariant(Actions, RTL);
 
 export const Layout = () => (
@@ -384,10 +396,12 @@ export const Layout = () => (
     </TreeItem>
   </Tree>
 );
-
 Layout.storyName = 'layout';
+
 export const LayoutDarkMode = getStoryVariant(Layout, DARK_MODE);
+
 export const LayoutHighContrast = getStoryVariant(Layout, HIGH_CONTRAST);
+
 export const LayoutRTL = getStoryVariant(Layout, RTL);
 
 const useBadgeStyles = makeStyles({
@@ -473,10 +487,12 @@ export const Persona = () => {
     </Tree>
   );
 };
-
 Persona.storyName = 'persona';
+
 export const PersonaDarkMode = getStoryVariant(Persona, DARK_MODE);
+
 export const PersonaHighContrast = getStoryVariant(Persona, HIGH_CONTRAST);
+
 export const PersonaRTL = getStoryVariant(Persona, RTL);
 
 const defaultItems: HeadlessFlatTreeItemProps[] = [
@@ -508,10 +524,12 @@ export const Flat = () => {
     </FlatTree>
   );
 };
-
 Flat.storyName = 'flat';
+
 export const FlatDarkMode = getStoryVariant(Flat, DARK_MODE);
+
 export const FlatHighContrast = getStoryVariant(Flat, HIGH_CONTRAST);
+
 export const FlatRTL = getStoryVariant(Flat, RTL);
 
 export const FlatTreeSingleSelection = () => {
@@ -534,10 +552,12 @@ export const FlatTreeSingleSelection = () => {
     </StoryWright>
   );
 };
-
 FlatTreeSingleSelection.storyName = 'flat tree single selection';
+
 export const FlatTreeSingleSelectionDarkMode = getStoryVariant(FlatTreeSingleSelection, DARK_MODE);
+
 export const FlatTreeSingleSelectionHighContrast = getStoryVariant(FlatTreeSingleSelection, HIGH_CONTRAST);
+
 export const FlatTreeSingleSelectionRTL = getStoryVariant(FlatTreeSingleSelection, RTL);
 
 export const FlatTreeMultiSelection = () => {
@@ -560,8 +580,10 @@ export const FlatTreeMultiSelection = () => {
     </StoryWright>
   );
 };
-
 FlatTreeMultiSelection.storyName = 'flat tree multi selection';
+
 export const FlatTreeMultiSelectionDarkMode = getStoryVariant(FlatTreeMultiSelection, DARK_MODE);
+
 export const FlatTreeMultiSelectionHighContrast = getStoryVariant(FlatTreeMultiSelection, HIGH_CONTRAST);
+
 export const FlatTreeMultiSelectionRTL = getStoryVariant(FlatTreeSingleSelection, RTL);

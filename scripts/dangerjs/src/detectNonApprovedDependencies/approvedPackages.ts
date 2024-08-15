@@ -85,6 +85,7 @@ export default [
   '@popperjs/core@2.4.0',
   '@popperjs/core@2.4.2',
   '@popperjs/core@2.4.3',
+  '@popperjs/core@2.11.8',
   'prop-types@15.6.2',
   'prop-types@15.7.2',
   'raf-schd@4.0.2',

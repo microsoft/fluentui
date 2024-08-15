@@ -1,0 +1,25 @@
+import { Carousel } from '@fluentui/react-carousel-preview';
+
+import descriptionMd from './CarouselDescription.md';
+import bestPracticesMd from './CarouselBestPractices.md';
+
+export { Default } from './CarouselDefault.stories';
+export { Circular } from './CarouselCircular.stories';
+export { MultipleCards } from './CarouselMultipleCards.stories';
+export { FreeLayout } from './CarouselFreeLayout.stories';
+export { Controlled } from './CarouselControlled.stories';
+export { Autoplay } from './CarouselAutoplay.stories';
+
+export { AutoplayControlled } from './CarouselAutoplayControlled.stories';
+
+export default {
+  title: 'Preview Components/Carousel',
+  component: Carousel,
+  parameters: {
+    docs: {
+      description: {
+        component: [descriptionMd, bestPracticesMd].join('\n'),
+      },
+    },
+  },
+};

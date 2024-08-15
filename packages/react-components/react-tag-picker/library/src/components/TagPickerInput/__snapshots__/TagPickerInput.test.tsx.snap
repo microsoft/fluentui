@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagPickerInput renders a default state 1`] = `
+<div>
+  <input
+    aria-expanded="false"
+    class="fui-TagPickerInput"
+    role="combobox"
+    type="text"
+    value=""
+  />
+</div>
+`;

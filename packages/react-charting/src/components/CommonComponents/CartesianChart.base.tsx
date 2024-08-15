@@ -11,18 +11,14 @@ import {
   IYValueHover,
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
+import { convertToLocaleString } from '../../utilities/locale-util';
 import {
-  convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
   IAxisData,
   getAccessibleDataObject,
-  getDomainNRangeValues,
   createDateXAxis,
-  createYAxis,
-  createStringYAxis,
   IMargins,
-  getMinMaxOfYAxis,
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
@@ -77,6 +73,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
+  private idForDefaultTabbableElement: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
@@ -85,6 +82,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
+  private isIntegralDataset: boolean = true;
 
   constructor(props: IModifiedCartesianChartProps) {
     super(props);
@@ -99,6 +97,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
+    this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -157,6 +156,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         startFromX: 0,
       });
     }
+    this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+      return point.y % 1 !== 0;
+    });
   }
 
   public componentWillUnmount(): void {
@@ -207,6 +209,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         startFromX: 0,
       });
     }
+    if (prevProps.points !== this.props.points) {
+      this.isIntegralDataset = !this.props.points.some((point: { y: number }) => {
+        return point.y % 1 !== 0;
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -246,7 +253,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     ) {
       this._isFirstRender = false;
       const XAxisParams = {
-        domainNRangeValues: getDomainNRangeValues(
+        domainNRangeValues: this.props.getDomainNRangeValues(
           points,
           this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
           this.state.containerWidth,
@@ -281,7 +288,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         yMaxValue: this.props.yMaxValue || 0,
         tickPadding: 10,
         maxOfYVal: this.props.maxOfYVal,
-        yMinMaxValues: getMinMaxOfYAxis(points, chartType, this.props.yAxisType),
+        yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
         // please note these padding default values must be consistent in here
         // and the parent chart(HBWA/Vertical etc..) for more details refer example
         // http://using-d3js.com/04_07_ordinal_scales.html
@@ -308,6 +315,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             dateLocalizeOptions,
             timeFormatLocale,
             customDateTimeFormatter,
+            this.props.useUTC,
           ));
           break;
         case XAxisTypes.StringAxis:
@@ -356,13 +364,11 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       let yScaleSecondary: any;
       const axisData: IAxisData = { yAxisDomainValues: [] };
       if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-        yScale = createStringYAxis(
+        yScale = this.props.createStringYAxis(
           YAxisParams,
           this.props.stringDatasetForYAxisDomain!,
           this._isRtl,
-          this.props.chartType,
           this.props.barwidth,
-          culture,
         );
       } else {
         if (this.props?.secondaryYScaleOptions) {
@@ -377,20 +383,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
             tickPadding: 10,
             maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-            yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+            yMinMaxValues: this.props.getMinMaxOfYAxis(points, this.props.yAxisType),
             yAxisPadding: this.props.yAxisPadding,
           };
 
-          yScaleSecondary = createYAxis(
-            YAxisParamsSecondary,
-            this._isRtl,
-            axisData,
-            chartType,
-            this.props.barwidth!,
-            true,
-          );
+          yScaleSecondary = this.props.createYAxis(YAxisParamsSecondary, this._isRtl, axisData, this.isIntegralDataset);
         }
-        yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
+        yScale = this.props.createYAxis(YAxisParams, this._isRtl, axisData, this.isIntegralDataset);
       }
 
       /*
@@ -405,7 +404,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           yScale,
           this.props.noOfCharsToTruncate || 4,
           this.props.showYAxisLablesTooltip || false,
-          this.state.startFromX,
           this._isRtl,
         );
 
@@ -455,19 +453,46 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.margins.top! -
       this.state._removalValueForTextTuncate! -
       this.titleMargin;
+    /**
+     * We have use the {@link defaultTabbableElement } to fix
+     * the Focus not landing on chart while tabbing, instead  goes to legend.
+     * This issue is observed in Area, line chart after performance optimization done in the PR {@link https://github.com/microsoft/fluentui/pull/27721 }
+     * This issue is observed in Bar charts after the changes done by FocusZone team in the PR: {@link https://github.com/microsoft/fluentui/pull/24175 }
+     * The issue in Bar Charts(VB and VSB) is due to a {@link FocusZone } update where previously an event listener was
+     * attached on keydown to the window, so that whenever the tab key is pressed all outer FocusZone's
+     * tab-indexes are updated (an outer FocusZone is a FocusZone that is not within another one).
+     * But now after the above PR : they are attaching the
+     * listeners to the FocusZone elements instead of the window. So in the first render cycle in Bar charts
+     * bars are not created as in the first render cycle the size of the chart container is not known( or is 0)
+     * which creates bars of height 0 so instead we do not create any bars  and instead return empty fragments.
+     *
+     * We have tried 2 Approaches to fix the issue:
+     * 1. Using the {@link elementRef} property of FocusZone where we dispatch event for tab keydown
+     *    after the second render cycle which triggers an update of the tab index in FocusZone.
+     *    But this is a hacky solution and not a proper fix and also elementRef is deprecated.
+     * 2. Using the default tabbable element to fix the issue.
+     */
+
     return (
       <div
         id={this.idForGraph}
         className={this._classNames.root}
-        role={'presentation'}
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
-        <FocusZone direction={focusDirection} className={this._classNames.chartWrapper} {...svgFocusZoneProps}>
+        {!this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
+        <FocusZone
+          direction={focusDirection}
+          className={this._classNames.chartWrapper}
+          defaultTabbableElement={`#${this.idForDefaultTabbableElement}`}
+          {...svgFocusZoneProps}
+        >
+          {this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
-            aria-label={this.props.chartTitle}
+            role="region"
+            aria-label={this._getChartDescription()}
             style={{ display: 'block' }}
             {...svgProps}
           >
@@ -490,6 +515,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   y: svgDimensions.height - this.titleMargin,
                   className: this._classNames.axisTitle!,
                   textAnchor: 'middle',
+                  'aria-hidden': true,
                 }}
                 maxWidth={xAxisTitleMaximumAllowedWidth}
                 wrapContent={wrapContent}
@@ -537,6 +563,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                       },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                       className: this._classNames.axisTitle!,
+                      'aria-hidden': true,
                     }}
                     maxWidth={yAxisTitleMaximumAllowedHeight}
                     wrapContent={wrapContent}
@@ -559,6 +586,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
                   className: this._classNames.axisTitle!,
+                  'aria-hidden': true,
                 }}
                 maxWidth={yAxisTitleMaximumAllowedHeight}
                 wrapContent={wrapContent}
@@ -726,7 +754,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
                 {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
                 )}
               </div>
@@ -866,5 +894,33 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     return minChartWidth;
+  };
+
+  private _getChartDescription = (): string => {
+    return (
+      (this.props.chartTitle || 'Chart. ') +
+      this._getAxisTitle('X', this.props.xAxisTitle, this.props.xAxisType) +
+      this._getAxisTitle('Y', this.props.yAxisTitle, this.props.yAxisType || YAxisType.NumericAxis) +
+      (this.props.secondaryYScaleOptions
+        ? this._getAxisTitle('secondary Y', this.props.secondaryYAxistitle, YAxisType.NumericAxis)
+        : '')
+    );
+  };
+
+  private _getAxisTitle = (
+    axisLabel: string,
+    axisTitle: string | undefined,
+    axisType: XAxisTypes | YAxisType,
+  ): string => {
+    return (
+      `The ${axisLabel} axis displays ` +
+      (axisTitle ||
+        (axisType === XAxisTypes.StringAxis || axisType === YAxisType.StringAxis
+          ? 'categories'
+          : axisType === XAxisTypes.DateAxis || axisType === YAxisType.DateAxis
+          ? 'time'
+          : 'values')) +
+      '. '
+    );
   };
 }

@@ -10,6 +10,10 @@ export interface ISplitButtonClassNames {
   divider?: string;
 }
 
+export const SplitButtonGlobalClassNames = {
+  msSplitButtonDivider: 'ms-SplitButton-divider',
+};
+
 export const getSplitButtonClassNames = memoizeFunction(
   (
     styles: IButtonStyles,
@@ -27,9 +31,7 @@ export const getSplitButtonClassNames = memoizeFunction(
         primaryDisabled &&
           !disabled && [
             {
-              selectors: {
-                ':focus': styles.splitButtonMenuFocused,
-              },
+              ':focus': styles.splitButtonMenuFocused,
             },
           ],
       ),
@@ -40,18 +42,14 @@ export const getSplitButtonClassNames = memoizeFunction(
           checked && [
             styles.splitButtonContainerChecked,
             {
-              selectors: {
-                ':hover': styles.splitButtonContainerCheckedHovered,
-              },
+              ':hover': styles.splitButtonContainerCheckedHovered,
             },
           ],
         !disabled &&
           !checked && [
             {
-              selectors: {
-                ':hover': styles.splitButtonContainerHovered,
-                ':focus': styles.splitButtonContainerFocused,
-              },
+              ':hover': styles.splitButtonContainerHovered,
+              ':focus': styles.splitButtonContainerFocused,
             },
           ],
         disabled && styles.splitButtonContainerDisabled,
@@ -66,6 +64,7 @@ export const getSplitButtonClassNames = memoizeFunction(
       flexContainer: mergeStyles(styles.splitButtonFlexContainer),
 
       divider: mergeStyles(
+        SplitButtonGlobalClassNames.msSplitButtonDivider,
         styles.splitButtonDivider,
         (primaryDisabled || disabled) && styles.splitButtonDividerDisabled,
       ),

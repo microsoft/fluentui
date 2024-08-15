@@ -1,5 +1,6 @@
 import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
-import { Tree, addProjectConfiguration, readNxJson, readJson, writeJson } from '@nx/devkit';
+import { Tree, addProjectConfiguration, readJson, writeJson } from '@nx/devkit';
+import { getWorkspaceConfig } from '../../utils';
 
 import generator from './index';
 import { PackageJson } from '../../types';
@@ -10,12 +11,11 @@ describe('dependency-mismatch generator', () => {
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
-    workspaceNpmScope = readNxJson(tree)?.npmScope as string;
+    workspaceNpmScope = getWorkspaceConfig(tree).npmScope;
   });
 
   it(`should ignore dependencies that use  * and >=9.0.0-alpha version range`, async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'public-docsite-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'public-docsite-v9', {
       version: '9.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/react-one`]: '*',
@@ -25,15 +25,13 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-one',
+    setupDummyPackage(tree, 'react-one', {
       version: '0.2.33',
       dependencies: {},
       devDependencies: {},
       peerDependencies: {},
     });
-    setupDummyPackage(tree, {
-      name: 'react-two',
+    setupDummyPackage(tree, 'react-two', {
       version: '0.1.12',
       dependencies: {},
       devDependencies: {},
@@ -50,8 +48,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should fix dependency mismatch', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'public-docsite-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'public-docsite-v9', {
       version: '9.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
@@ -60,8 +57,7 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-theme',
+    setupDummyPackage(tree, 'react-theme', {
       version: '9.0.1',
       dependencies: {},
       devDependencies: {},
@@ -78,8 +74,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should fix dev dependencies', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'public-docsite-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'public-docsite-v9', {
       version: '9.0.0',
       devDependencies: {
         [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
@@ -88,8 +83,7 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-theme',
+    setupDummyPackage(tree, 'react-theme', {
       version: '9.0.1',
       dependencies: {},
       devDependencies: {},
@@ -106,8 +100,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should fix peer dependencies', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'public-docsite-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'public-docsite-v9', {
       version: '9.0.0',
       peerDependencies: {
         [`@${workspaceNpmScope}/react-theme`]: '^9.0.0',
@@ -116,8 +109,7 @@ describe('dependency-mismatch generator', () => {
       devDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-theme',
+    setupDummyPackage(tree, 'react-theme', {
       version: '9.0.1',
       dependencies: {},
       devDependencies: {},
@@ -134,8 +126,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should not add carets to prerelease dependencies that do not already have it specified', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'public-docsite-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'public-docsite-v9', {
       version: '9.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/react-select`]: '^9.0.0-beta.1',
@@ -145,15 +136,13 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-select',
+    setupDummyPackage(tree, 'react-select', {
       version: '9.0.0-beta.2',
       dependencies: {},
       devDependencies: {},
       peerDependencies: {},
     });
-    setupDummyPackage(tree, {
-      name: 'react-spinbutton',
+    setupDummyPackage(tree, 'react-spinbutton', {
       version: '9.0.0-beta.2',
       dependencies: {},
       devDependencies: {},
@@ -171,8 +160,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should run on v8 packages', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'react',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'react', {
       version: '8.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/react-portal-compat-context`]: '^9.0.0',
@@ -181,8 +169,7 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react-portal-compat-context',
+    setupDummyPackage(tree, 'react-portal-compat-context', {
       version: '9.0.1',
       dependencies: {},
       devDependencies: {},
@@ -201,8 +188,8 @@ describe('dependency-mismatch generator', () => {
   it('should run on v0(northstar) packages changing only v9 deps', async () => {
     const { readPackageJson: readTargetPackageJson } = setupDummyPackage(
       tree,
+      'react-northstar',
       {
-        name: 'react-northstar',
         version: '0.66.0',
         dependencies: {
           [`@${workspaceNpmScope}/dom-utilities`]: '^1.1.1',
@@ -214,8 +201,7 @@ describe('dependency-mismatch generator', () => {
       ['react-northstar'],
     );
 
-    setupDummyPackage(tree, {
-      name: 'dom-utilities',
+    setupDummyPackage(tree, 'dom-utilities', {
       version: '2.1.2',
       dependencies: {},
       devDependencies: {},
@@ -223,8 +209,8 @@ describe('dependency-mismatch generator', () => {
     });
     setupDummyPackage(
       tree,
+      'react-portal-compat-context',
       {
-        name: 'react-portal-compat-context',
         version: '9.0.1',
         dependencies: {},
         devDependencies: {},
@@ -245,8 +231,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should run on v9 packages updating v0 or v8 deps', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'react-migration-v8-v0-v9',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'react-migration-v8-v0-v9', {
       version: '9.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/react`]: '^8.0.0',
@@ -256,15 +241,13 @@ describe('dependency-mismatch generator', () => {
       peerDependencies: {},
     });
 
-    setupDummyPackage(tree, {
-      name: 'react',
+    setupDummyPackage(tree, 'react', {
       version: '8.1.0',
       dependencies: {},
       devDependencies: {},
       peerDependencies: {},
     });
-    setupDummyPackage(tree, {
-      name: 'react-northstar',
+    setupDummyPackage(tree, 'react-northstar', {
       version: '0.79.0',
       dependencies: {},
       devDependencies: {},
@@ -282,8 +265,7 @@ describe('dependency-mismatch generator', () => {
   });
 
   it('should ignore 3rd party packages/dependencies', async () => {
-    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, {
-      name: 'react',
+    const { readPackageJson: readTargetPackageJson } = setupDummyPackage(tree, 'react', {
       version: '8.0.0',
       dependencies: {
         [`@${workspaceNpmScope}/tslib`]: '^2.1.1',
@@ -305,8 +287,8 @@ describe('dependency-mismatch generator', () => {
 
 function setupDummyPackage(
   tree: Tree,
+  projectName: string,
   packageJson: {
-    name: string;
     version: string;
     devDependencies: Record<string, string>;
     dependencies: Record<string, string>;
@@ -314,25 +296,23 @@ function setupDummyPackage(
   },
   tags: string[] = [],
 ) {
-  const workspaceConfig = readNxJson(tree);
+  const workspaceConfig = getWorkspaceConfig(tree);
 
-  const normalizedPkgName = `@${workspaceConfig?.npmScope}/${packageJson.name}`;
-  const paths = {
-    root: `packages/${packageJson.name}`,
-  };
+  const npmPackageName = `@${workspaceConfig.npmScope}/${projectName}`;
+  const rootPath = `packages/${projectName}`;
 
   const templates = {
     packageJson: {
       ...packageJson,
-      name: normalizedPkgName,
+      name: npmPackageName,
     },
   };
 
-  const packageJsonPath = `${paths.root}/package.json`;
+  const packageJsonPath = `${rootPath}/package.json`;
   writeJson(tree, packageJsonPath, templates.packageJson);
 
-  addProjectConfiguration(tree, normalizedPkgName, {
-    root: paths.root,
+  addProjectConfiguration(tree, projectName, {
+    root: rootPath,
     projectType: 'library',
     targets: {},
     tags: ['platform:web', ...tags],

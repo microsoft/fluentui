@@ -1,6 +1,6 @@
 import * as React from 'react';
-import * as shape from 'd3-shape';
-import * as scale from 'd3-scale';
+import { pie as d3Pie } from 'd3-shape';
+import { ScaleOrdinal, scaleOrdinal } from 'd3-scale';
 import { IPieProps } from './Pie.types';
 import { LabeledArc } from '../Arc/Arc';
 import { IArcData } from '../Arc/Arc.types';
@@ -9,14 +9,13 @@ import { getColorFromToken, getNextColor } from '../../../utilities/colors';
 
 export class Pie extends React.Component<IPieProps, {}> {
   public static defaultProps: Partial<IPieProps> = {
-    pie: shape
-      .pie()
+    pie: d3Pie()
       .padAngle(0.01)
       .sort(null)
       /* eslint-disable @typescript-eslint/no-explicit-any */
       .value((d: any) => d.y),
   };
-  private colors: scale.ScaleOrdinal<string | number, any>;
+  private colors: ScaleOrdinal<string | number, any>;
 
   constructor(props: IPieProps) {
     super(props);
@@ -48,7 +47,7 @@ export class Pie extends React.Component<IPieProps, {}> {
     }
     const { colors = defaultColors } = this.props;
 
-    this.colors = scale.scaleOrdinal().range(colors.map(color => getColorFromToken(color)));
+    this.colors = scaleOrdinal().range(colors.map(color => getColorFromToken(color)));
 
     const piechart = pie(data);
     const translate = `translate(${width / 2}, ${height / 2})`;

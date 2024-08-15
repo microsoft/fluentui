@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-icons-compat",
+  "entries": [
+    {
+      "date": "Tue, 30 Jul 2024 18:47:33 GMT",
+      "tag": "@fluentui/react-icons-compat_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-compat",
+            "commit": "5cd1fede4340fbc8637694897fe94ecb785daf11",
+            "comment": "feat: Release react-icons-compat to stable"
+          }
+        ]
+      }
+    }
+  ]
+}

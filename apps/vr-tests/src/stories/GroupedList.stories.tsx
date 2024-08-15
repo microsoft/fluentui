@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { GroupedList } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
@@ -85,31 +84,31 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
   return <div>{item.name}</div>;
 };
 
-storiesOf('GroupedList', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'GroupedList',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-GroupHeader-expand')
         .snapshot('hover', { cropTo: '.testWrapper' })
         .click('.ms-GroupHeader-expand')
         .hover('.ms-GroupHeader-expand')
         .snapshot('click', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Root',
-    () => (
-      <GroupedList
-        groups={groups}
-        items={items}
-        onRenderCell={onRenderCell}
-        styles={{ root: { color: '#333333' } }}
-      />
+        .end(),
     ),
-    { includeRtl: true },
-  );
+  ],
+};
+
+export const Root = () => (
+  <GroupedList
+    groups={groups}
+    items={items}
+    onRenderCell={onRenderCell}
+    styles={{ root: { color: '#333333' } }}
+  />
+);
+
+export const RootRTL = getStoryVariant(Root, RTL);

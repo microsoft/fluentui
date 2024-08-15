@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagPickerButton renders a default state 1`] = `
+<div>
+  <button
+    aria-expanded="false"
+    class="fui-TagPickerButton"
+    role="combobox"
+    tabindex="0"
+    type="button"
+  >
+    Default PickerButton
+  </button>
+</div>
+`;

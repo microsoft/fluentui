@@ -5,20 +5,20 @@ import path from 'path';
 import generator from './index';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 
-const recipesRoot = 'apps/recipes-react-components/src/recipes';
+const recipesRoot = 'packages/react-components/recipes/src/recipes';
 const recipeName = 'Hello World';
 const recipePackageName = 'hello-world';
 
 const setup = (tree: Tree) => {
-  const generateApp = () => {
-    const paths = { root: 'apps/recipes-react-components' };
+  const generateProject = () => {
+    const paths = { root: 'packages/react-components/recipes' };
     writeJson(tree, path.join(paths.root, 'package.json'), {
-      name: '@proj/recipes-react-components',
+      name: '@proj/recipes',
       private: true,
     });
     tree.write(path.join(paths.root, 'src/recipes/.gitkeep'), '');
 
-    addProjectConfiguration(tree, '@proj/recipes-react-components', {
+    addProjectConfiguration(tree, 'recipes', {
       root: paths.root,
       sourceRoot: path.join(paths.root, 'src'),
       projectType: 'application',
@@ -26,7 +26,7 @@ const setup = (tree: Tree) => {
     });
   };
 
-  generateApp();
+  generateProject();
   return tree;
 };
 

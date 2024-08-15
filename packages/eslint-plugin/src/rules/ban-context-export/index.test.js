@@ -1,9 +1,9 @@
 // @ts-check
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { RuleTester } = require('@typescript-eslint/rule-tester');
 const path = require('path');
 const rule = require('./index');
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: path.resolve(__dirname, './fixtures/ban-context-export/tsconfig.json'),

@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-component-ref",
+  "name": "react-component-ref",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "implicitDependencies": [],

@@ -1,4 +1,4 @@
-import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration, joinPathFragments } from '@nx/devkit';
+import { Tree, formatFiles, generateFiles, joinPathFragments } from '@nx/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 import { getProjectConfig } from '../../utils';
 
@@ -13,9 +13,8 @@ export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchem
 }
 
 function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
   const recipesProject = getProjectConfig(tree, {
-    packageName: `@${workspaceConfig.npmScope}/recipes-react-components`,
+    packageName: 'recipes',
   });
 
   const recipesRoot = joinPathFragments(recipesProject.paths.sourceRoot, 'recipes');

@@ -16,6 +16,10 @@ variables:
   # Prevents failures on CI when "caniuse-lite" becomes outdated
   BROWSERSLIST_IGNORE_OLD_DATA: true
 
+  NX_PARALLEL: 8
+  NX_PREFER_TS_NODE: true
+  NX_VERBOSE_LOGGING: true
+
   # Also accessed as process.env.DEPLOYHOST
   deployHost: 'fluentuipr.z22.web.core.windows.net'
 
@@ -23,7 +27,7 @@ variables:
   deployUrl: 'https://$(deployHost)/$(deployBasePath)'
 
   # This service principal ("subscription" is a misleading name) only has access to the fluentuipr storage account
-  azureSubscription: Azure PR deploy
+  azureSubscription: Azure PR deploy - NEW
   azureStorage: fluentuipr
 
   ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/heads/')) }}:

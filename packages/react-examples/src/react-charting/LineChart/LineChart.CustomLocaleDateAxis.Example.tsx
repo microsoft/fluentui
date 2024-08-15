@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import * as d3 from 'd3-fetch';
 
 interface ILineChartBasicState {
   width: number;
@@ -41,9 +39,8 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
   };
 
   private _getCustomLocale = () => {
-    d3.json('https://unpkg.com/d3-time-format@2/locale/it-IT.json').then(locale =>
-      this.setState({ customLocale: locale }),
-    );
+    const locale = require('d3-time-format/locale/it-IT.json');
+    this.setState({ customLocale: locale });
   };
 
   private _basicExample(): JSX.Element {
@@ -99,7 +96,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
               onDataPointClick: () => alert('click on 218000'),
             },
           ],
-          color: DefaultPalette.blue,
+          color: DataVizPalette.color1,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -137,20 +134,10 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
               y: 298000,
             },
           ],
-          color: DefaultPalette.green,
+          color: DataVizPalette.color2,
           lineOptions: {
             lineBorderWidth: '4',
           },
-        },
-        {
-          legend: 'single point',
-          data: [
-            {
-              x: new Date('2020-07-05T00:00:00.000Z'),
-              y: 282000,
-            },
-          ],
-          color: DefaultPalette.yellow,
         },
       ],
     };

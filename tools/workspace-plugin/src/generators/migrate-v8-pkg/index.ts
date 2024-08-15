@@ -10,6 +10,7 @@ import {
   ProjectConfiguration,
   stripIndents,
   updateProjectConfiguration,
+  writeJson,
 } from '@nx/devkit';
 
 import { printStats } from '../print-stats';
@@ -28,12 +29,16 @@ interface AssertedSchema extends MigrateV8PkgGeneratorSchema {
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const noop = () => {};
 
+interface ExtendedProjectConfiguration extends ProjectConfiguration {
+  metadata: ReturnType<typeof getProjectMetadata> & ProjectConfiguration['metadata'];
+}
+
 export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) {
   const userLog: UserLog = [];
   const validatedSchema = await validateSchema(tree, schema);
 
   if (hasSchemaFlag(validatedSchema, 'stats')) {
-    const allProjects = new Map(
+    const allProjects = new Map<string, ExtendedProjectConfiguration>(
       Array.from(getProjects(tree).entries()).map(([projectName, project]) => {
         const metadata = getProjectMetadata(tree, project);
         const extendedProject = { ...project, metadata };
@@ -41,7 +46,7 @@ export default async function (tree: Tree, schema: MigrateV8PkgGeneratorSchema) 
       }),
     );
 
-    printStats(tree, {
+    printStats<ExtendedProjectConfiguration>(tree, {
       title: 'V8 DX',
       projects: allProjects,
       shouldProcessPackage: isV8Package,
@@ -198,16 +203,27 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema) {
 
   // updates start
 
-  setupNpmIgnoreConfig(tree, options);
+  updatePackageJson(tree, options);
   updateNxProject(tree, options);
 
   return tree;
 }
 
-function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
+function updatePackageJson(tree: Tree, options: NormalizedSchema) {
+  let packageJson = readJson(tree, options.paths.packageJson);
 
-  return tree;
+  packageJson = setupNpmPublishFiles(packageJson);
+
+  writeJson(tree, options.paths.packageJson, packageJson);
+
+  function setupNpmPublishFiles(json: PackageJson) {
+    json.files = json.files ?? [];
+    json.files = ['lib', 'lib-commonjs', 'lib-amd', 'dist'];
+
+    tree.delete(options.paths.npmConfig);
+
+    return json;
+  }
 }
 
 function updateNxProject(tree: Tree, options: NormalizedSchema) {
@@ -221,49 +237,7 @@ function updateNxProject(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-const templates = {
-  npmIgnoreConfig: stripIndents`
-*.api.json
-*.config.js
-*.log
-*.nuspec
-*.test.*
-*.yml
-.editorconfig
-.eslintrc*
-.eslintcache
-.gitattributes
-.gitignore
-.vscode
-coverage
-dist/storybook
-dist/*.stats.html
-dist/*.stats.json
-dist/demo
-fabric-test*
-gulpfile.js
-images
-index.html
-jsconfig.json
-node_modules
-results
-src/**/*
-!src/**/*.types.ts
-temp
-tsconfig.json
-tsd.json
-tslint.json
-typings
-visualtests
-project.json
-
-# exclude gitignore patterns explicitly
-!lib
-!lib-commonjs
-!lib-amd
-!dist
-`,
-};
+const _templates = {};
 
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));

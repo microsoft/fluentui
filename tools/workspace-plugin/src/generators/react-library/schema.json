@@ -23,11 +23,11 @@
         "message": "Which team will own this library",
         "type": "list",
         "items": [
-          "@microsoft/cxe-coastal",
           "@microsoft/cxe-red",
           "@microsoft/cxe-prg",
           "@microsoft/fluentui-react-build",
-          "@microsoft/teams-prg"
+          "@microsoft/teams-prg",
+          "@microsoft/xc-uxe"
         ]
       }
     },

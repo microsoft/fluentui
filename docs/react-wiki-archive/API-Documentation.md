@@ -1,0 +1,136 @@
+# Documenting Fluent UI
+
+This content only applies to [documentation site](https://developer.microsoft.com/en-us/fluentui) for `@fluentui/react` version 7/8 (formerly `office-ui-fabric-react`) and Fluent UI Android/iOS/etc. (`@fluentui/react-northstar` and `@fluentui/web-components` currently have separate documentation sites.)
+
+- [Documenting components](#documenting-components)
+- [Writing Markdown documentation for the website](#writing-markdown-documentation-for-the-website)
+
+## API documentation
+
+`@fluentui/react` 7/8 uses [API Extractor](API-Extractor) and the custom [`@fluentui/api-docs` package](https://github.com/microsoft/fluentui/tree/master/packages/api-docs) (formerly `@uifabric/api-docs`) to generate documentation which shows up in the [Controls section](https://developer.microsoft.com/en-us/fluentui#/controls/web) of our website as well as in the legacy demo app at [aka.ms/fluentdemo](http://aka.ms/fluentdemo).
+
+Note that all the API documentation features described below will only work on doc comments `/** like this */` (multiline is fine).
+
+### Top-level doc comments
+
+For types or components which should be included on the website, be sure to include a `{@docCategory PageName}` tag in the top-level doc comment for each type which should be documented.
+
+If the type is related to a specific component, `PageName` should be the name of the component. Otherwise, you can use either the name of the type or a general category that it falls under, such as `MergeStyles`. If the `PageName` doesn't match any of the known component page names, it will be put under the References section in the website sidebar.
+
+For example, if you wanted `ISliderProps` to show up on the 'Slider' page, it would look like the following ([see it live here](https://developer.microsoft.com/en-us/fabric#/controls/web/slider#ISliderProps)):
+
+```tsx
+/**
+ * {@docCategory Slider}
+ */
+export interface ISliderProps {
+```
+
+This should work automatically for `@fluentui/react` and the packages it consumes. If the API is in a newer package, you should check [this file](https://github.com/microsoft/fluentui/blob/master/packages/api-docs/config/api-docs.js) to verify that the package is included (and add it if not).
+
+Note that top-level doc comments will be rendered as markdown on the website. If it's an especially long/detailed comment which includes headings, **headings must start at level 4** to appropriately nest within the website.
+
+### Limitations
+
+Documenting the following API types on the website is **supported**:
+
+- Interfaces
+- Type aliases
+- Classes
+- Enums
+
+These API types are **not supported** currently:
+
+- Functions (including function components)
+- Constants
+
+### Prop comments
+
+Individual props in interfaces and types have limited support for markdown rendering, due to performance concerns. Currently just inline code blocks (backticks) are supported.
+
+API Extractor has a particular format required for certain types of doc comments and will fail at build time if this format is not followed. There are also a few suggested best practices.
+
+<table>
+<tr>
+<th></th>
+<th>Good</th>
+<th>Bad</th>
+</tr>
+<tr>
+<td><code>@param</code> tags must include a dash and not contain type information</td>
+<!-- KEEP EXAMPLES SHORT - otherwise it makes the page scroll horizontally -->
+<!-- good -->
+<td><pre lang="ts">
+/**
+ * @param myParam - Description here
+ */
+</pre></td>
+<!-- bad -->
+<td><pre lang="ts">
+/**
+ * @param myParam Description here
+ * @param {number} myParam Description here
+ */
+</pre></tr>
+<tr>
+<td>Special characters which have meaning in TSDoc (e.g. <code>@ > { }</code> etc.) must be escaped with backslashes or backticks</td>
+<!-- KEEP EXAMPLES SHORT - otherwise it makes the page scroll horizontally -->
+<!-- good -->
+<td><pre lang="ts">
+/**
+ * Comment about `>` and `{`.
+ * As of version \>= 1.0.0.
+ */
+</pre></td>
+<!-- bad -->
+<td><pre lang="ts">
+/**
+ * Comment about '>' and '{'.
+ * As of version >= 1.0.0.
+ */
+</pre></td>
+</tr>
+<tr>
+<td><code>@deprecated</code> tags must include a deprecation message</td>
+<!-- KEEP EXAMPLES SHORT - otherwise it makes the page scroll horizontally -->
+<!-- good -->
+<td><pre lang="ts">
+/**
+ * @deprecated Use `foo` instead.
+ */
+</pre></td>
+<!-- bad -->
+<td><pre lang="ts">
+/**
+ * Deprecated. Use `foo` instead.
+ * @deprecated
+ */
+</pre></td>
+</tr>
+<tr>
+<td>Default values should be indicated by <code>@defaultvalue</code> tags (<code>@default</code> and <code>@defaultValue</code> also work)</td>
+<!-- KEEP EXAMPLES SHORT - otherwise it makes the page scroll horizontally -->
+<!-- good -->
+<td><pre lang="ts">
+/**
+ * @defaultvalue 'hello world'
+ */
+</pre></td>
+<!-- bad -->
+<td><pre lang="ts">
+/**
+ * Default is 'hello world'
+ */
+</pre></td>
+</tr>
+</table>
+
+### More details about the `@fluentui/api-docs` package
+
+The `@fluentui/api-docs` (previously `@uifabric/api-docs`) package takes the api.json files generated by [API Extractor](API-Extractor) and splits them up into individual page.json files to populate both component pages and (new) references pages. These page.json files live in `@fluentui/api-docs`.
+
+Generally, this tool is used on `@fluentui/react` and its dependencies (`@fluentui/react-northstar` uses a different approach). You can see or update the full list of included packages in [this file](https://github.com/microsoft/fluentui/blob/master/packages/api-docs/config/api-docs.js).
+
+## Writing Markdown documentation for the website
+
+See the [Markdown documentation](Markdown-documentation) page for tips on authoring markdown files such as component overviews/best practices and other website content.

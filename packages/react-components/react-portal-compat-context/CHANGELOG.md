@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Tue, 26 Sep 2023 17:49:09 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Jul 2024 17:25:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.12)
+
+Mon, 15 Jul 2024 17:25:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.11..@fluentui/react-portal-compat-context_v9.0.12)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.11)
+
+Wed, 03 Jan 2024 09:26:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.10..@fluentui/react-portal-compat-context_v9.0.11)
+
+### Patches
+
+- fix: re-introduce ecma transpilation to ES5 to make it work with v8  in ES5 only browsers ([PR #30053](https://github.com/microsoft/fluentui/pull/30053) by wfwf1997@gmail.com)
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.10)
+
+Thu, 09 Nov 2023 17:29:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.9..@fluentui/react-portal-compat-context_v9.0.10)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
 
 ## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.9)
 

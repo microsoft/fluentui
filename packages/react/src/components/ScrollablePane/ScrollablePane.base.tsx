@@ -17,6 +17,8 @@ import type {
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
 } from './ScrollablePane.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getWindowEx } from '../../utilities/dom';
 
 export interface IScrollablePaneState {
   stickyTopHeight: number;
@@ -31,6 +33,8 @@ export class ScrollablePaneBase
   extends React.Component<IScrollablePaneProps, IScrollablePaneState>
   implements IScrollablePane
 {
+  public static contextType = WindowContext;
+
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -48,8 +52,6 @@ export class ScrollablePaneBase
     this._stickies = new Set<Sticky>();
 
     initializeComponentRef(this);
-    this._async = new Async(this);
-    this._events = new EventGroup(this);
 
     this.state = {
       stickyTopHeight: 0,
@@ -57,8 +59,6 @@ export class ScrollablePaneBase
       scrollbarWidth: 0,
       scrollbarHeight: 0,
     };
-
-    this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
   public get root(): HTMLDivElement | null {
@@ -78,9 +78,13 @@ export class ScrollablePaneBase
   }
 
   public componentDidMount() {
+    const win = getWindowEx(this.context);
     const { initialScrollPosition } = this.props;
+    this._async = new Async(this);
+    this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
+    this._events = new EventGroup(this);
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
-    this._events.on(window, 'resize', this._onWindowResize);
+    this._events.on(win, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
       this.contentContainer.scrollTop = initialScrollPosition;
     }
@@ -92,7 +96,7 @@ export class ScrollablePaneBase
     });
     this.notifySubscribers();
 
-    if ('MutationObserver' in window) {
+    if (win && 'MutationObserver' in win) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
@@ -354,6 +358,7 @@ export class ScrollablePaneBase
         notifySubscribers: this.notifySubscribers,
         syncScrollSticky: this.syncScrollSticky,
       },
+      window: getWindowEx(this.context),
     };
   };
 

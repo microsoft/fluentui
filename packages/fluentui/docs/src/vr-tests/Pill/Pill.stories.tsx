@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Pill } from '@fluentui/react-northstar';
 import PillExampleDisabled from '../../examples/components/Pill/State/PillExampleDisabled';
 import PillExample from '../../examples/components/Pill/Types/PillExample';
@@ -11,7 +11,7 @@ import PillRectangularExample from '../../examples/components/Pill/Variations/Pi
 import PillSelectableExample from '../../examples/components/Pill/Variations/PillExampleSelectable';
 import PillSizesExample from '../../examples/components/Pill/Variations/PillExampleSizes';
 
-export default { component: Pill, title: 'Pill' } as ComponentMeta<typeof Pill>;
+export default { component: Pill, title: 'Pill' } as Meta<typeof Pill>;
 
 export {
   PillExampleDisabled,

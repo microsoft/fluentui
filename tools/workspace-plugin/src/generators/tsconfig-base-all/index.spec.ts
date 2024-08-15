@@ -5,10 +5,16 @@ import generator from './index';
 import { TsconfigBaseAllGeneratorSchema } from './schema';
 
 describe('tsconfig-base-all generator', () => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const noop = () => {};
   let tree: Tree;
   const options: TsconfigBaseAllGeneratorSchema = {};
 
   beforeEach(() => {
+    jest.restoreAllMocks();
+
+    jest.spyOn(console, 'log').mockImplementation(noop);
+
     tree = createTreeWithEmptyWorkspace();
     writeJson(tree, '/tsconfig.base.v0.json', {
       compilerOptions: {
@@ -44,7 +50,6 @@ describe('tsconfig-base-all generator', () => {
       Object {
         "compilerOptions": Object {
           "baseUrl": ".",
-          "forceConsistentCasingInFileNames": true,
           "isolatedModules": true,
           "moduleResolution": "node",
           "paths": Object {

@@ -1,7 +1,11 @@
 {
-  "name": "@fluentui/perf-test-northstar",
+  "name": "perf-test-northstar",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "implicitDependencies": [],
-  "tags": ["react-northstar"]
+  "tags": ["react-northstar"],
+  "targets": {
+    "test-perf": { "dependsOn": ["bundle"] },
+    "bundle": { "dependsOn": ["prebundle"] }
+  }
 }

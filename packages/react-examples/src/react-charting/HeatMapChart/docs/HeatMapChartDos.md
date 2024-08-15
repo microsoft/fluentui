@@ -1,0 +1,1 @@
+- Use sequential or divergent color palettes.

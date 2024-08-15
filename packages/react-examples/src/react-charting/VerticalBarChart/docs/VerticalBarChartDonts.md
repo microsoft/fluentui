@@ -1,0 +1,1 @@
+- Don't use very long labels in vertical bar chart. Long labels use unnecessary space and make the chart skewed. For long labels use horizontal bar chart with axis.

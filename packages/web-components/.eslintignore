@@ -6,5 +6,3 @@ dist
 coverage
 # don't lint storybook
 .storybook
-# don't lint tests
-*.spec.*

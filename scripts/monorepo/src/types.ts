@@ -17,6 +17,12 @@ export interface PackageInfo {
   packagePath: string;
   /** package.json contents */
   packageJson: PackageJson;
+  projectConfig: import('@nx/devkit').ProjectConfiguration;
 }
 
-export type AllPackageInfo = { [packageName: string]: PackageInfo };
+/**
+ * packageName - valid npm package name including scope. Example: `@fluentui/foo-bar`
+ */
+export type AllPackageInfo = {
+  [packageName: string]: PackageInfo;
+};

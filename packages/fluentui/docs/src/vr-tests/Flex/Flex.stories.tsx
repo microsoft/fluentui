@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Flex } from '@fluentui/react-northstar';
 import FlexExampleMediaCard from '../../examples/components/Flex/Rtl/FlexExample.rtl';
 import FlexExampleColumns from '../../examples/components/Flex/Types/FlexExampleColumns.shorthand';
@@ -7,7 +7,7 @@ import FlexExampleItemsAlignment from '../../examples/components/Flex/Types/Flex
 import FlexExampleMixedAlignment from '../../examples/components/Flex/Types/FlexExampleMixedAlignment.shorthand';
 import FlexExampleNavMenu from '../../examples/components/Flex/Types/FlexExampleNavMenu.shorthand';
 
-export default { component: Flex, title: 'Flex' } as ComponentMeta<typeof Flex>;
+export default { component: Flex, title: 'Flex' } as Meta<typeof Flex>;
 
 export {
   FlexExampleMediaCard,

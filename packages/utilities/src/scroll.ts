@@ -24,12 +24,15 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
  * while preventing the user from scrolling the body
  */
 export const allowScrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
-  if (!element) {
+  const window = getWindow(element);
+
+  if (!element || !window) {
     return;
   }
 
   let _previousClientY = 0;
   let _element: Element | null = null;
+  let computedStyles: CSSStyleDeclaration | undefined = window.getComputedStyle(element);
 
   // remember the clientY for future calls of _preventOverscrolling
   const _saveClientY = (event: TouchEvent): void => {
@@ -57,19 +60,26 @@ export const allowScrollOnElement = (element: HTMLElement | null, events: EventG
     const clientY = event.targetTouches[0].clientY - _previousClientY;
 
     const scrollableParent = findScrollableParent(event.target as HTMLElement) as HTMLElement;
-    if (scrollableParent) {
+    if (scrollableParent && _element !== scrollableParent) {
       _element = scrollableParent;
+      computedStyles = window.getComputedStyle(_element);
     }
+
+    const scrollTop = _element.scrollTop;
+    const isColumnReverse = computedStyles?.flexDirection === 'column-reverse';
 
     // if the element is scrolled to the top,
     // prevent the user from scrolling up
-    if (_element.scrollTop === 0 && clientY > 0) {
+    if (scrollTop === 0 && (isColumnReverse ? clientY < 0 : clientY > 0)) {
       event.preventDefault();
     }
 
     // if the element is scrolled to the bottom,
     // prevent the user from scrolling down
-    if (_element.scrollHeight - Math.ceil(_element.scrollTop) <= _element.clientHeight && clientY < 0) {
+    if (
+      _element.scrollHeight - Math.abs(Math.ceil(scrollTop)) <= _element.clientHeight &&
+      (isColumnReverse ? clientY > 0 : clientY < 0)
+    ) {
       event.preventDefault();
     }
   };
@@ -136,20 +146,21 @@ export function enableBodyScroll(): void {
  *
  * @public
  */
-export function getScrollbarWidth(): number {
+export function getScrollbarWidth(doc?: Document): number {
   if (_scrollbarWidth === undefined) {
-    let scrollDiv: HTMLElement = document.createElement('div');
+    const theDoc = doc ?? getDocument()!;
+    let scrollDiv: HTMLElement = theDoc.createElement('div');
     scrollDiv.style.setProperty('width', '100px');
     scrollDiv.style.setProperty('height', '100px');
     scrollDiv.style.setProperty('overflow', 'scroll');
     scrollDiv.style.setProperty('position', 'absolute');
     scrollDiv.style.setProperty('top', '-9999px');
-    document.body.appendChild(scrollDiv);
+    theDoc.body.appendChild(scrollDiv);
     // Get the scrollbar width
     _scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
     // Delete the DIV
-    document.body.removeChild(scrollDiv);
+    theDoc.body.removeChild(scrollDiv);
   }
 
   return _scrollbarWidth;
