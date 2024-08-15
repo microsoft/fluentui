@@ -729,7 +729,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       const gradientId = getId('VBC_Gradient') + `_${index}_${startColor}`;
 
       return (
-        <g key={`${index}_${point.y}`}>
+        <g key={point.x as string}>
           {this.props.enableGradient && (
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="100%" x2="0%" y2="0%">
