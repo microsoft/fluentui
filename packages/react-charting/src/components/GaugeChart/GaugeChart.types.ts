@@ -211,14 +211,14 @@ export interface IGaugeChartStyleProps {
   toDrawShape?: boolean;
 
   /**
-   * Boolean flag which determines if gradient is enabled
+   * solid color for the arc (when enableGradient is false)
    */
-  enableGradient?: boolean;
+  solidFill?: string;
 
   /**
-   * solid color or gradient for the arcs
+   * gradient for the arc (when enableGradient is true)
    */
-  fill?: string;
+  gradientFill?: string;
 
   /**
    * opacity of the arc

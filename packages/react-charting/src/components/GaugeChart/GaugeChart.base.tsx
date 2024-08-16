@@ -241,14 +241,12 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
                 const arcClassNames = getClassNames(this.props.styles!, {
                   theme: this.props.theme!,
-                  enableGradient: this.props.enableGradient,
-                  fill: this.props.enableGradient
-                    ? `conic-gradient(
+                  solidFill: this.props.enableGradient ? 'transparent' : segment.color!,
+                  gradientFill: `conic-gradient(
                       from ${arc.startAngle}rad at 50% 100%,
-                      ${segment.gradient![0]},
-                      ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
-                    )`
-                    : segment.color,
+                      ${segment.gradient?.[0]},
+                      ${segment.gradient?.[1]} ${arc.endAngle - arc.startAngle}rad
+                    )`,
                   opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
                 });
 

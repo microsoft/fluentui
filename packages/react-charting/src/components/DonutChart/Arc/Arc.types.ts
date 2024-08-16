@@ -158,14 +158,14 @@ export interface IArcStyleProps {
   href: string;
 
   /**
-   * solid color or gradient for the arc
+   * solid color for the arc (when enableGradient is false)
    */
-  fill: string;
+  solidFill: string;
 
   /**
-   * wether gradients are enabled for the arc
+   * gradient for the arc (when enableGradient is true)
    */
-  enableGradient: boolean;
+  gradientFill: string;
 
   /**
    * wether gradients are enabled for the arc

@@ -10,8 +10,8 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     className,
     lineColor,
     toDrawShape,
-    enableGradient,
-    fill,
+    solidFill,
+    gradientFill,
     opacity,
   } = props;
 
@@ -63,14 +63,14 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     segment: {
       outline: 'none',
       stroke: theme.semanticColors.focusBorder,
-      fill: enableGradient ? 'transparent' : fill,
+      fill: solidFill,
       fillOpacity: opacity,
     },
 
     gradientSegment: {
       width: '100%',
       height: '100%',
-      background: fill,
+      background: gradientFill,
       opacity,
     },
 

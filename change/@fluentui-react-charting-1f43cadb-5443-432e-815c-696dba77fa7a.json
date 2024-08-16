@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "move gradient styling to css",
   "packageName": "@fluentui/react-charting",
   "email": "shawngrant333@gmail.com",

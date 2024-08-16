@@ -561,10 +561,10 @@ export interface IGaugeChartStyleProps {
     chartValueSize?: number;
     chartWidth?: number;
     className?: string;
-    enableGradient?: boolean;
-    fill?: string;
+    gradientFill?: string;
     lineColor?: string;
     opacity?: number;
+    solidFill?: string;
     theme: ITheme;
     toDrawShape?: boolean;
 }

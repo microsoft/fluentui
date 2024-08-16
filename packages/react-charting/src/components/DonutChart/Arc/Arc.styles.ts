@@ -2,10 +2,10 @@ import { IArcStyleProps, IArcStyles } from './Arc.types';
 import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
 export const getStyles = (props: IArcStyleProps): IArcStyles => {
-  const { fill, href, theme, enableGradient, opacity } = props;
+  const { solidFill, gradientFill, href, theme, opacity } = props;
   return {
     root: {
-      fill: enableGradient ? 'transparent' : fill,
+      fill: solidFill,
       cursor: href ? 'pointer' : 'default',
       stroke: theme.semanticColors.bodyBackground,
       outline: 'transparent',
@@ -19,7 +19,7 @@ export const getStyles = (props: IArcStyleProps): IArcStyles => {
     gradientArc: {
       width: '100%',
       height: '100%',
-      background: fill,
+      background: gradientFill,
       opacity,
     },
     focusRing: {
