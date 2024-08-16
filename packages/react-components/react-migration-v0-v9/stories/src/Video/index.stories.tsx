@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Video } from '@fluentui/react-migration-v0-v9';
 
 import descriptionMd from './VideoDescription.md';
