@@ -29,7 +29,7 @@ export const useInteractionTag_unstable = (
 
   const {
     appearance = contextAppearance ?? 'filled',
-    disabled = contextDisabled ?? false,
+    disabled = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
@@ -37,7 +37,7 @@ export const useInteractionTag_unstable = (
 
   return {
     appearance,
-    disabled,
+    disabled: contextDisabled ? true : disabled,
     handleTagDismiss,
     interactionTagPrimaryId,
     shape,
