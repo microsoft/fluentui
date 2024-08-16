@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2024 07:21:16 GMT",
+      "tag": "@fluentui/react-charting_v5.22.0",
+      "version": "5.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "t-shawngrant@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2eac1694be564ec172b58f1ca2805e352d79e15e",
+            "comment": "Add Viva dataviz gradient palette and rounded corners to charts"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 07:23:37 GMT",
       "tag": "@fluentui/react-charting_v5.21.32",
       "version": "5.21.32",
