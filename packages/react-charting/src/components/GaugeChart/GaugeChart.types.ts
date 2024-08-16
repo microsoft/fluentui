@@ -209,6 +209,21 @@ export interface IGaugeChartStyleProps {
    * Boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * Boolean flag which determines if gradient is enabled
+   */
+  enableGradient?: boolean;
+
+  /**
+   * solid color or gradient for the arcs
+   */
+  fill?: string;
+
+  /**
+   * opacity of the arc
+   */
+  opacity?: number;
 }
 
 /**
@@ -255,6 +270,11 @@ export interface IGaugeChartStyles {
    * Styles for the segments
    */
   segment?: IStyle;
+
+  /**
+   * Styles for gradient segments
+   */
+  gradientSegment?: IStyle;
 
   /**
    * Styles for the legends container

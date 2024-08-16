@@ -239,14 +239,25 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
 
                 const clipId = getId('Arc_clip') + `${index}_${arc.startAngle}_${arc.endAngle}`;
 
+                const arcClassNames = getClassNames(this.props.styles!, {
+                  theme: this.props.theme!,
+                  enableGradient: this.props.enableGradient,
+                  fill: this.props.enableGradient
+                    ? `conic-gradient(
+                      from ${arc.startAngle}rad at 50% 100%,
+                      ${segment.gradient![0]},
+                      ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
+                    )`
+                    : segment.color,
+                  opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
+                });
+
                 return (
                   <React.Fragment key={index}>
                     <path
                       d={arc.d}
-                      fill={this.props.enableGradient ? 'transparent' : segment.color}
-                      fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
                       strokeWidth={this.state.focusedElement === segment.legend ? ARC_PADDING : 0}
-                      className={this._classNames.segment}
+                      className={arcClassNames.segment}
                       {...getAccessibleDataObject(
                         {
                           ariaLabel: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant, true),
@@ -268,20 +279,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
                           <path d={arc.d} />
                         </clipPath>
                         <foreignObject x="-50%" y="-100%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
-                          <div
-                            style={{
-                              width: '100%',
-                              height: '100%',
-                              background: this.props.enableGradient
-                                ? `conic-gradient(
-                                  from ${arc.startAngle}rad at 50% 100%,
-                                  ${segment.gradient![0]},
-                                  ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
-                                )`
-                                : segment.color,
-                              opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
-                            }}
-                          />
+                          <div className={arcClassNames.gradientSegment} />
                         </foreignObject>
                       </>
                     )}

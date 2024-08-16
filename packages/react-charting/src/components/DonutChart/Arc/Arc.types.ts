@@ -146,11 +146,43 @@ export interface IArcData {
   value: number;
 }
 
+export interface IArcStyleProps {
+  /**
+   * Theme
+   */
+  theme: ITheme;
+
+  /**
+   * internal prop for href
+   */
+  href: string;
+
+  /**
+   * solid color or gradient for the arc
+   */
+  fill: string;
+
+  /**
+   * wether gradients are enabled for the arc
+   */
+  enableGradient: boolean;
+
+  /**
+   * wether gradients are enabled for the arc
+   */
+  opacity: number;
+}
+
 export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the gradient arc
+   */
+  gradientArc: IStyle;
 
   /**
    * styles for the focus

@@ -77,13 +77,13 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #107c10;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#107c10"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="0"
@@ -93,13 +93,13 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #f7630c;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#f7630c"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="-1"
@@ -109,13 +109,13 @@ exports[`GaugeChart interaction and accessibility tests should show a callout wh
             class=
 
                 {
+                  fill-opacity: 1;
+                  fill: #c50f1f;
                   outline: none;
                   stroke: #605e5c;
                 }
             d="M0,0Z"
             data-is-focusable="true"
-            fill="#c50f1f"
-            fill-opacity="1"
             role="img"
             stroke-width="0"
             tabindex="-1"
@@ -867,13 +867,13 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -886,13 +886,13 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -905,13 +905,13 @@ exports[`GaugeChart snapshot tests should not render min and max values of the g
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1443,13 +1443,13 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1462,13 +1462,13 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1481,13 +1481,13 @@ exports[`GaugeChart snapshot tests should not render the legends when the hideLe
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1634,13 +1634,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1653,13 +1653,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -1672,13 +1672,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2223,13 +2223,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #54b054;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#54b054"
-            fillOpacity={1}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2242,13 +2242,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #f87528;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#f87528"
-            fillOpacity={1}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2261,13 +2261,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly in dark th
             className=
 
                 {
+                  fill-opacity: 1;
+                  fill: #dc626d;
                   outline: none;
                   stroke: #a19f9d;
                 }
             d="M0,0Z"
             data-is-focusable={true}
-            fill="#dc626d"
-            fillOpacity={1}
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseEnter={[Function]}
@@ -2800,13 +2800,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2819,13 +2819,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -2838,13 +2838,13 @@ exports[`GaugeChart snapshot tests should render GaugeChart correctly when the l
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3376,13 +3376,13 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           className=
 
               {
+                fill-opacity: 1;
+                fill: #3a96dd;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#3a96dd"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3395,13 +3395,13 @@ exports[`GaugeChart snapshot tests should render a color from DataVizPalette for
           className=
 
               {
+                fill-opacity: 1;
+                fill: #e3008c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#e3008c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3829,13 +3829,13 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           className=
 
               {
+                fill-opacity: 1;
+                fill: blue;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="blue"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -3848,13 +3848,13 @@ exports[`GaugeChart snapshot tests should render a placeholder segment when the 
           className=
 
               {
+                fill-opacity: 1;
+                fill: #edebe9;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#edebe9"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4295,13 +4295,13 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4314,13 +4314,13 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4333,13 +4333,13 @@ exports[`GaugeChart snapshot tests should render the chart title correctly 1`] =
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4871,13 +4871,13 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4890,13 +4890,13 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -4909,13 +4909,13 @@ exports[`GaugeChart snapshot tests should render the chart value in fraction for
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5447,13 +5447,13 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #107c10;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#107c10"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5466,13 +5466,13 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #f7630c;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#f7630c"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
@@ -5485,13 +5485,13 @@ exports[`GaugeChart snapshot tests should render the sublabel correctly 1`] = `
           className=
 
               {
+                fill-opacity: 1;
+                fill: #c50f1f;
                 outline: none;
                 stroke: #605e5c;
               }
           d="M0,0Z"
           data-is-focusable={true}
-          fill="#c50f1f"
-          fillOpacity={1}
           onBlur={[Function]}
           onFocus={[Function]}
           onMouseEnter={[Function]}
