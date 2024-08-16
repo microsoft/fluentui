@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.5.3)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.5.2..@fluentui/react-accordion_v9.5.3)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.5.0 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.1.2 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
 
 ## [9.5.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.5.2)
 
