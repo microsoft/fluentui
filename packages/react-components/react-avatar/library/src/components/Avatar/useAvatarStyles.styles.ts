@@ -1,3 +1,4 @@
+import { avatarTokens } from './Avatar.tokens';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
@@ -24,7 +25,7 @@ const useRootClassName = makeResetStyles({
   flexShrink: 0,
   position: 'relative',
   verticalAlign: 'middle',
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: avatarTokens.ctrlAvatarCornerRadius,
   fontFamily: tokens.fontFamilyBase,
   fontWeight: tokens.fontWeightSemibold,
   fontSize: tokens.fontSizeBase300,
@@ -249,12 +250,12 @@ export const useSizeStyles = makeStyles({
 
 const useColorStyles = makeStyles({
   neutral: {
-    color: tokens.colorNeutralForeground3,
-    backgroundColor: tokens.colorNeutralBackground6,
+    color: avatarTokens.ctrlAvatarNeutralForegroundRest,
+    backgroundColor: avatarTokens.ctrlAvatarNeutralBackgroundRest,
   },
   brand: {
-    color: tokens.colorNeutralForegroundStaticInverted,
-    backgroundColor: tokens.colorBrandBackgroundStatic,
+    color: avatarTokens.ctrlAvatarBrandForegroundRest,
+    backgroundColor: avatarTokens.ctrlAvatarBrandBackgroundRest,
   },
   'dark-red': {
     color: tokens.colorPaletteDarkRedForeground2,
@@ -380,10 +381,10 @@ const useColorStyles = makeStyles({
 
 const useRingColorStyles = makeStyles({
   neutral: {
-    '::before': { color: tokens.colorBrandStroke1 },
+    '::before': { color: avatarTokens.ctrlActiveRingRest },
   },
   brand: {
-    '::before': { color: tokens.colorBrandStroke1 },
+    '::before': { color: avatarTokens.ctrlActiveRingRest },
   },
   'dark-red': {
     '::before': { color: tokens.colorPaletteDarkRedBorderActive },
