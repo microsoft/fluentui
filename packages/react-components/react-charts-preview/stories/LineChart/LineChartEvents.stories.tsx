@@ -4,7 +4,8 @@ import { DataVizPalette } from '../../src/utilities/colors';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
 import { Switch } from '@fluentui/react-components';
-import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Checkbox } from "@fluentui/react-components";
+import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
 import { ColorPicker, IColor } from '@fluentui/react';
 
 const calloutItemStyle = mergeStyles({
@@ -32,8 +33,9 @@ export const LCEvents = (props: ILineChartProps) => {
     },
     [allowMultipleShapes],
   );
-  const _onToggleCustomEventAnnotationColor = (ev: React.FormEvent<HTMLElement>, checked: boolean) => {
-    setCustomEventAnnotationColor(checked ? '#111111' : undefined);
+
+  const _onToggleCustomEventAnnotationColor = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
+    setCustomEventAnnotationColor(checked.checked ? '#111111' : undefined);
   };
 
   const _onChangeCustomEventAnnotationColor = (ev: React.SyntheticEvent<HTMLElement, Event>, color: IColor) => {
@@ -148,7 +150,7 @@ export const LCEvents = (props: ILineChartProps) => {
         aria-valuetext={`ChangeHeightslider${height}`}
       />
        <Switch
-        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
+        label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />

@@ -42,7 +42,7 @@ export const VCDateAxis = () => {
     <>
       <div style={rootStyle}>
         <VerticalBarChart
-          chartTitle="Vertical bar chart rotated labels example "
+          chartTitle="Vertical bar chart Date axis example "
           culture={window.navigator.language}
           data={points}
           height={350}
@@ -52,6 +52,7 @@ export const VCDateAxis = () => {
           hideLegend={true}
           //rotateXAxisLables={true}
           enableReflow={true}
+          useUTC={false}
         />
       </div>
     </>

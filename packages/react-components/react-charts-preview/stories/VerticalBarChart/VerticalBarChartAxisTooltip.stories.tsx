@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Checkbox } from "@fluentui/react-components";
+import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
 
 const options: IChoiceGroupOption[] = [
   { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
@@ -10,9 +12,9 @@ const options: IChoiceGroupOption[] = [
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
-  const [barWidthEnabled, setBarWidthEnabled] = React.useState<boolean>(true);
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<boolean>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<boolean>(false);
+  const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps["checked"]>(true);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
   const [barWidth, setBarWidth] = React.useState<number>(16);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(100);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
@@ -20,23 +22,23 @@ export const VCAxisTooltip = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
-  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setBarWidthEnabled(checked);
+  const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setBarWidthEnabled(checked.checked);
   };
-  const _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+  const _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     setBarWidth(Number(newValue));
   };
   const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
     setMaxBarWidth(Number(newValue));
   };
-  const _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisInnerPaddingEnabled(checked);
+  const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisInnerPaddingEnabled(checked.checked);
   };
   const _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisInnerPadding(Number(e.target.value));
   };
-  const _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisOuterPaddingEnabled(checked);
+  const _onOuterPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisOuterPaddingEnabled(checked.checked);
   };
   const _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisOuterPadding(Number(e.target.value));

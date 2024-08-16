@@ -2,12 +2,15 @@ import * as React from 'react';
 import { ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
 import { Switch } from '@fluentui/react-components';
+import { Checkbox } from "@fluentui/react-components";
+import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
 
 export const LCBasic = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
+  const [useUTC, setUseUTC] = React.useState<CheckboxProps["checked"]>(true);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -15,6 +18,10 @@ export const LCBasic = (props: ILineChartProps) => {
 
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
+  };
+
+  const _onCheckChange = (ev: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setUseUTC(checked.checked);
   };
 
   const _onShapeChange = React.useCallback(
@@ -166,51 +173,43 @@ export const LCBasic = (props: ILineChartProps) => {
       />
       <br />
       <Switch
-        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
+        label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
       <Switch
-        label={showAxisTitles ? 'Hide axis titles' : 'Show axis titles'}
+        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
       />
-      {showAxisTitles && (
-        <div style={rootStyle}>
-          <LineChart
-            culture={window.navigator.language}
-            data={data}
-            legendsOverflowText={'Overflow Items'}
-            yMinValue={200}
-            yMaxValue={301}
-            height={height}
-            width={width}
-            xAxisTickCount={10}
-            allowMultipleShapesForPoints={allowMultipleShapes}
-            enablePerfOptimization={true}
-            enableReflow={true}
-            yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
-            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
-          />
-        </div>
-      )}
-      {!showAxisTitles && (
-        <div style={rootStyle}>
-          <LineChart
-            culture={window.navigator.language}
-            data={data}
-            legendsOverflowText={'Overflow Items'}
-            yMinValue={200}
-            yMaxValue={301}
-            height={height}
-            width={width}
-            xAxisTickCount={10}
-            enableReflow={true}
-            allowMultipleShapesForPoints={allowMultipleShapes}
-            enablePerfOptimization={true}
-          />
-        </div>
-      )}
+      <div style = {{ marginTop: '10px' }}>
+      <Checkbox
+        label="Use UTC time"
+        checked={useUTC}
+        onChange={_onCheckChange}
+      />
+      </div>
+
+      <div style={rootStyle}>
+        <LineChart
+          // Force rerender when any of the following states change
+          key={`${showAxisTitles}`}
+          culture={window.navigator.language}
+          data={data}
+          legendsOverflowText={'Overflow Items'}
+          yMinValue={200}
+          yMaxValue={301}
+          height={height}
+          width={width}
+          xAxisTickCount={10}
+          allowMultipleShapesForPoints={allowMultipleShapes}
+          enablePerfOptimization={true}
+          enableReflow={true}
+          yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
+          xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+          useUTC={useUTC}
+        />
+      </div>
     </>
   );
 };

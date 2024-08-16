@@ -35,6 +35,7 @@ import {
   getNextColor,
   getColorFromToken,
   isRtl,
+  formatDate,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -970,7 +971,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
-      const formattedDate = xPointToHighlight instanceof Date ? xPointToHighlight.toLocaleString() : xPointToHighlight;
+      const formattedDate = xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
@@ -1024,7 +1025,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       xAxisCalloutAccessibilityData?: IAccessibilityProps,
     ) {
       _uniqueCallOutID = circleId;
-      const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
@@ -1059,7 +1060,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       mouseEvent: React.MouseEvent<SVGElement>,
     ) {
       mouseEvent?.persist();
-      const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
@@ -1229,7 +1230,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = _points[lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;

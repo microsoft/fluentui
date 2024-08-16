@@ -183,7 +183,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           <circle
             key={index}
             id={`${_vbcPointId}-${index}`}
-            cx={isStringAxis ? xBarScale(item.x) + 0.5 * xBarScale.bandwidth() : xScale(item.x)}
+            cx={isStringAxis ? xScale(item.x) + 0.5 * xScale.bandwidth() : xScale(item.x)}
             cy={item.useSecondaryYScale && yScaleSecondary ? yScaleSecondary(item.y) : yScale(item.y)}
             onMouseOver={
               _legendHighlighted(lineLegendText!)

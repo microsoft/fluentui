@@ -256,6 +256,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           dateLocalizeOptions,
           timeFormatLocale,
           customDateTimeFormatter,
+          props.useUTC,
         ));
         break;
       case XAxisTypes.StringAxis:
