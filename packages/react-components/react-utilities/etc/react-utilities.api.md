@@ -22,7 +22,7 @@ export function canUseDOM(): boolean;
 export const clamp: (value: number, min: number, max: number) => number;
 
 // @public
-export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
+export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof Slots = 'root'> = Omit<Slots, Primary & 'root'> & PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 // @public
 export type ComponentState<Slots extends SlotPropsRecord> = {
