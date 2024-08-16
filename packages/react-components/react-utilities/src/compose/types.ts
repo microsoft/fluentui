@@ -184,7 +184,7 @@ export type ComponentProps<Slots extends SlotPropsRecord, Primary extends keyof 
   //   special and always gets className and style props, per RFC https://github.com/microsoft/fluentui/pull/18983
   Omit<Slots, Primary & 'root'> &
     // Include all of the props of the primary slot inline in the component's props
-    PropsWithoutRef<WithoutSlotRenderFunction<ExtractSlotProps<Slots[Primary]>>>;
+    PropsWithoutRef<ExtractSlotProps<Slots[Primary]>>;
 
 /**
  * Defines the State object of a component given its slots.
