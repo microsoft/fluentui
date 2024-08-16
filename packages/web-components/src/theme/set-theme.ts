@@ -47,6 +47,7 @@ export const setTheme = (theme: Theme) => {
       const initialValue = tokenValue.toString();
       if (SUPPORTS_REGISTER_PROPERTY) {
         try {
+          // @ts-expect-error - Baseline 2024
           CSS.registerProperty({
             name,
             initialValue,

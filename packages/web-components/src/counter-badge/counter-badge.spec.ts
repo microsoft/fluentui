@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { CounterBadge } from './counter-badge.js';
 import {
   CounterBadgeAppearance,
@@ -188,7 +188,7 @@ test.describe('CounterBadge component', () => {
 
       await expect(element).toHaveJSProperty('shape', shape);
 
-      expect(await element.evaluate((node, shape) => node.matches(`:state(${shape})`), shape)).toEqual(true);
+      await expect(element).toHaveCustomState(shape);
     });
   }
 
@@ -206,7 +206,7 @@ test.describe('CounterBadge component', () => {
 
       await expect(element).toHaveJSProperty('color', color);
 
-      expect(await element.evaluate((node, color) => node.matches(`:state(${color})`), color)).toEqual(true);
+      await expect(element).toHaveCustomState(color);
     });
   }
 
@@ -222,7 +222,7 @@ test.describe('CounterBadge component', () => {
 
       await expect(element).toHaveJSProperty('size', size);
 
-      expect(await element.evaluate((node, size) => node.matches(`:state(${size})`), size)).toEqual(true);
+      await expect(element).toHaveCustomState(size);
     });
   }
 
@@ -244,9 +244,7 @@ test.describe('CounterBadge component', () => {
 
       await expect(element).toHaveJSProperty('appearance', appearance);
 
-      expect(await element.evaluate((node, appearance) => node.matches(`:state(${appearance})`), appearance)).toEqual(
-        true,
-      );
+      await expect(element).toHaveCustomState(appearance);
     });
   }
 });
