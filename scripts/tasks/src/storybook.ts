@@ -1,9 +1,9 @@
+import { argv } from 'just-scripts';
 import * as fs from 'fs';
 import * as path from 'path';
-
 import { findGitRoot } from '@fluentui/scripts-monorepo';
+
 import { build as storybook } from '@storybook/core-server';
-import { argv } from 'just-scripts';
 
 // Option types are documented here but not included in package for some reason
 // https://github.com/storybookjs/storybook/blob/master/lib/core/docs/standalone.md
