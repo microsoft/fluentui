@@ -2,7 +2,7 @@ import { Attachment } from '@fluentui/react-migration-v0-v9';
 
 import descriptionMd from './AttachmentDescription.md';
 
-export { DefaultAttachment } from './Default.stories';
+export { Default as DefaultAttachment } from './Default.stories';
 export { Action } from './Action.stories';
 export { Actionable } from './Actionable.stories';
 export { Header } from './Header.stories';

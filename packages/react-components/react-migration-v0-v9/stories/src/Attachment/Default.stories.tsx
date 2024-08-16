@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Attachment, AttachmentHeader, AttachmentBody } from '@fluentui/react-migration-v0-v9';
 
-export const DefaultAttachment = () => {
+export const Default = () => {
   return (
     <Attachment>
       <AttachmentBody>
