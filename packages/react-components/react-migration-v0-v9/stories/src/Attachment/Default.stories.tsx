@@ -11,4 +11,4 @@ export const Default = () => {
   );
 };
 
-DefaultAttachment.storyName = 'Default';
+Default.storyName = 'Default';

@@ -7,10 +7,7 @@ import {
   AttachmentAction,
   AttachmentBody,
 } from '@fluentui/react-migration-v0-v9';
-import {
-  MoreHorizontalRegular as MoreHorizontal,
-  TableRegular as Table,
-} from '@fluentui/react-icons';
+import { MoreHorizontalRegular as MoreHorizontal, TableRegular as Table } from '@fluentui/react-icons';
 
 export const Actionable = () => {
   const handleClick = (message: string) => (e: React.MouseEvent) => {

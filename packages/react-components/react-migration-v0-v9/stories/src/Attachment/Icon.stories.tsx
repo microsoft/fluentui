@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  Attachment,
-  AttachmentIcon,
-  AttachmentHeader,
-  AttachmentBody,
-} from '@fluentui/react-migration-v0-v9';
+import { Attachment, AttachmentIcon, AttachmentHeader, AttachmentBody } from '@fluentui/react-migration-v0-v9';
 import {
   BriefcaseRegular as Briefcase,
   BookRegular as Book,
