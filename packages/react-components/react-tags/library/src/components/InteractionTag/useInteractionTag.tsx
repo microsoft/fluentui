@@ -52,6 +52,7 @@ export const useInteractionTag_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        disabled: contextDisabled ? true : disabled,
         id,
       }),
       { elementType: 'div' },

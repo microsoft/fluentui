@@ -85,6 +85,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
         ref,
         role: tagGroupRole === 'listbox' ? 'option' : undefined,
         ...props,
+        disabled: contextDisabled ? true : disabled,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
