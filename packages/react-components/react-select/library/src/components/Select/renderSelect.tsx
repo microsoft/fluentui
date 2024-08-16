@@ -12,7 +12,7 @@ export const renderSelect_unstable = (state: SelectState) => {
   return (
     <state.root>
       <state.select>{state.select.children}</state.select>
-      <state.icon />
+      {state.icon && <state.icon />}
     </state.root>
   );
 };

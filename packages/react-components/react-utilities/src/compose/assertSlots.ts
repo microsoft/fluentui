@@ -4,7 +4,7 @@ import { isSlot } from './isSlot';
 import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
 import * as slot from './slot';
 
-export type SlotComponents<Slots extends SlotPropsRecord> = {
+type SlotComponents<Slots extends SlotPropsRecord> = {
   [K in keyof Slots]: SlotComponentType<ExtractSlotProps<Slots[K]>> | (null extends Slots[K] ? undefined : never);
 };
 

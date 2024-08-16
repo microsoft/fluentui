@@ -140,7 +140,7 @@ export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavImageButtonSlots = {
     root: NonNullable<Slot<ARIAButtonSlotProps>>;
-    image: Slot<'img'>;
+    image: NonNullable<Slot<'img'>>;
 };
 
 // @public

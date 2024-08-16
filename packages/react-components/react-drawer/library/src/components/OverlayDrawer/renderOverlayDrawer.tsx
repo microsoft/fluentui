@@ -13,9 +13,15 @@ export const renderOverlayDrawer_unstable = (state: OverlayDrawerState, contextV
 
   return (
     <DrawerProvider value={contextValue}>
-      <state.dialog>
-        <state.root />
-      </state.dialog>
+      {
+        // TODO: state.dialog is non nullable, but assertSlots asserts it as nullable
+        // FIXME: this should be resolved by properly splitting props and state slots declaration
+        state.dialog && (
+          <state.dialog>
+            <state.root />
+          </state.dialog>
+        )
+      }
     </DrawerProvider>
   );
 };

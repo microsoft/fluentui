@@ -18,15 +18,18 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
     <DialogProvider value={contextValues.dialog}>
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         {state.trigger}
-        {state.content && (
-          <state.surfaceMotion>
-            <MotionRefForwarder>
-              {/* Casting here as content should be equivalent to <DialogSurface/> */}
-              {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
-              {state.content as React.ReactElement}
-            </MotionRefForwarder>
-          </state.surfaceMotion>
-        )}
+        {state.content &&
+          // TODO: state.surfaceMotion is non nullable, but assertSlots asserts it as nullable
+          // FIXME: this should be resolved by properly splitting props and state slots declaration
+          state.surfaceMotion && (
+            <state.surfaceMotion>
+              <MotionRefForwarder>
+                {/* Casting here as content should be equivalent to <DialogSurface/> */}
+                {/* FIXME: content should not be ReactNode it should be ReactElement instead. */}
+                {state.content as React.ReactElement}
+              </MotionRefForwarder>
+            </state.surfaceMotion>
+          )}
       </DialogSurfaceProvider>
     </DialogProvider>
   );
