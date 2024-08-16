@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.13)
+
+Fri, 16 Aug 2024 10:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.12..@fluentui/react-components_v9.54.13)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: Add context to configure motion behaviour ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-migration-v0-v9`
+  - Export VideoProps, split storybooks ([PR #32318](https://github.com/microsoft/fluentui/pull/32318) by jurokapsiar@gmail.com)
 
 ## [9.54.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.12)
 

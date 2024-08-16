@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 15 Aug 2024 07:23:37 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 07:21:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.22.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.0)
+
+Fri, 16 Aug 2024 07:21:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.21.32..@fluentui/react-charting_v5.22.0)
+
+### Minor changes
+
+- Add Viva dataviz gradient palette and rounded corners to charts ([PR #32008](https://github.com/microsoft/fluentui/pull/32008) by t-shawngrant@microsoft.com)
 
 ## [5.21.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.21.32)
 

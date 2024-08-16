@@ -2,6 +2,21 @@
   "name": "@fluentui/react-motion",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2024 10:24:17 GMT",
+      "tag": "@fluentui/react-motion_v9.5.0",
+      "version": "9.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-motion",
+            "commit": "ba889a0c1eee2f28f6268d98b9d6768fb1125dc1",
+            "comment": "feat: Add context to configure motion behaviour"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 08:22:12 GMT",
       "tag": "@fluentui/react-motion_v9.4.0",
       "version": "9.4.0",

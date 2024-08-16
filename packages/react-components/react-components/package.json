@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.54.12",
+  "version": "9.54.13",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-accordion": "^9.5.2",
+    "@fluentui/react-accordion": "^9.5.3",
     "@fluentui/react-alert": "9.0.0-beta.124",
     "@fluentui/react-avatar": "^9.6.37",
     "@fluentui/react-badge": "^9.2.41",
@@ -38,9 +38,9 @@
     "@fluentui/react-card": "^9.0.91",
     "@fluentui/react-checkbox": "^9.2.35",
     "@fluentui/react-combobox": "^9.13.5",
-    "@fluentui/react-dialog": "^9.11.11",
+    "@fluentui/react-dialog": "^9.11.12",
     "@fluentui/react-divider": "^9.2.73",
-    "@fluentui/react-drawer": "^9.5.11",
+    "@fluentui/react-drawer": "^9.5.12",
     "@fluentui/react-field": "^9.1.74",
     "@fluentui/react-image": "^9.1.71",
     "@fluentui/react-infobutton": "9.0.0-beta.102",
@@ -71,13 +71,13 @@
     "@fluentui/react-tags": "^9.3.16",
     "@fluentui/react-textarea": "^9.3.86",
     "@fluentui/react-theme": "^9.1.19",
-    "@fluentui/react-toast": "^9.3.53",
+    "@fluentui/react-toast": "^9.3.54",
     "@fluentui/react-toolbar": "^9.2.3",
     "@fluentui/react-tooltip": "^9.4.37",
     "@fluentui/react-utilities": "^9.18.13",
     "@fluentui/react-text": "^9.4.23",
     "@fluentui/react-virtualizer": "9.0.0-alpha.82",
-    "@fluentui/react-tree": "^9.7.10",
+    "@fluentui/react-tree": "^9.7.11",
     "@griffel/react": "^1.5.22",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-message-bar": "^9.2.9",
@@ -87,7 +87,7 @@
     "@fluentui/react-search": "^9.0.16",
     "@fluentui/react-teaching-popover": "^9.1.15",
     "@fluentui/react-tag-picker": "^9.3.1",
-    "@fluentui/react-motion": "^9.4.0"
+    "@fluentui/react-motion": "^9.5.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",

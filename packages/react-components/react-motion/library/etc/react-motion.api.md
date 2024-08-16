@@ -53,6 +53,9 @@ export const durations: {
 };
 
 // @public (undocumented)
+export const MotionBehaviourProvider: React_2.Provider<MotionBehaviourType | undefined>;
+
+// @public (undocumented)
 export type MotionComponentProps = {
     children: React_2.ReactElement;
     imperativeRef?: React_2.Ref<MotionImperativeRef | undefined>;
