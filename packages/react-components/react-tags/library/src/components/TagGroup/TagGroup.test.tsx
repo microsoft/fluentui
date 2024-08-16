@@ -4,7 +4,6 @@ import { TagGroup } from './TagGroup';
 import { isConformant } from '../../testing/isConformant';
 import { render, fireEvent } from '@testing-library/react';
 import { Tag } from '../Tag/index';
-import { InteractionTag } from '../InteractionTag/index';
 
 describe('TagGroup', () => {
   isConformant({
