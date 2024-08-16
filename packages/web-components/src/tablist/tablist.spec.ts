@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Tab } from '../tab/tab.js';
 import type { Tablist } from './tablist.js';
 import { TablistAppearance, TablistSize } from './tablist.options.js';
@@ -240,9 +240,7 @@ test.describe('Tablist', () => {
 
       await expect(element).toHaveJSProperty('appearance', appearance);
 
-      expect(await element.evaluate((node, appearance) => node.matches(`:state(${appearance})`), appearance)).toEqual(
-        true,
-      );
+      await expect(element).toHaveCustomState(appearance);
     });
   }
 
@@ -260,7 +258,7 @@ test.describe('Tablist', () => {
 
       await expect(element).toHaveJSProperty('size', size);
 
-      expect(await element.evaluate((node, size) => node.matches(`:state(${size})`), size)).toEqual(true);
+      await expect(element).toHaveCustomState(size);
     });
   }
 

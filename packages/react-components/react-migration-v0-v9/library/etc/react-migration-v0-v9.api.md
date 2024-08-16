@@ -328,6 +328,16 @@ export const Video: React_2.ForwardRefExoticComponent<VideoProps & React_2.RefAt
 // @public (undocumented)
 export const videoClassName = "fui-Video";
 
+// @public
+export interface VideoProps extends React_2.VideoHTMLAttributes<HTMLVideoElement> {
+    autoPlay?: boolean;
+    controls?: boolean;
+    loop?: boolean;
+    muted?: boolean;
+    poster?: string;
+    src: string;
+}
+
 // (No @packageDocumentation comment for this package)
 
 ```

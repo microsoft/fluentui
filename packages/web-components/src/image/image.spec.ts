@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Image } from './image.js';
 
 test.describe('Image', () => {
@@ -34,13 +34,13 @@ test.describe('Image', () => {
       node.block = true;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('block'))).toBe(true);
+    await expect(element).toHaveCustomState('block');
 
     await element.evaluate((node: Image) => {
       node.block = false;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('block'))).toBe(false);
+    await expect(element).not.toHaveCustomState('block');
   });
 
   test('should initialize to the `bordered` attribute', async ({ page }) => {
@@ -68,13 +68,13 @@ test.describe('Image', () => {
       node.bordered = true;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('bordered'))).toBe(true);
+    await expect(element).toHaveCustomState('bordered');
 
     await element.evaluate((node: Image) => {
       node.bordered = false;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('bordered'))).toBe(false);
+    await expect(element).not.toHaveCustomState('bordered');
   });
 
   test('should initialize to the `shadow` attribute', async ({ page }) => {
@@ -102,13 +102,13 @@ test.describe('Image', () => {
       node.shadow = true;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('shadow'))).toBe(true);
+    await expect(element).toHaveCustomState('shadow');
 
     await element.evaluate((node: Image) => {
       node.shadow = false;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('shadow'))).toBe(false);
+    await expect(element).not.toHaveCustomState('shadow');
   });
 
   test('should initialize to the `fit` attribute', async ({ page }) => {
@@ -154,23 +154,23 @@ test.describe('Image', () => {
       node.fit = 'contain';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-contain'))).toBe(true);
+    await expect(element).toHaveCustomState('fit-contain');
 
     await element.evaluate((node: Image) => {
       node.fit = 'none';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-contain'))).toBe(false);
+    await expect(element).not.toHaveCustomState('fit-contain');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-none'))).toBe(true);
+    await expect(element).toHaveCustomState('fit-none');
 
     await element.evaluate((node: Image) => {
       node.fit = 'cover';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-none'))).toBe(false);
+    await expect(element).not.toHaveCustomState('fit-none');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('fit-cover'))).toBe(true);
+    await expect(element).toHaveCustomState('fit-cover');
   });
 
   test('should initialize to the `shape` attribute', async ({ page }) => {
@@ -204,32 +204,32 @@ test.describe('Image', () => {
       node.shape = 'circular';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(true);
+    await expect(element).toHaveCustomState('circular');
 
     await element.evaluate((node: Image) => {
       node.shape = 'rounded';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(false);
+    await expect(element).not.toHaveCustomState('circular');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(true);
+    await expect(element).toHaveCustomState('rounded');
 
     await element.evaluate((node: Image) => {
       node.shape = 'square';
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(false);
+    await expect(element).not.toHaveCustomState('rounded');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('square'))).toBe(true);
+    await expect(element).toHaveCustomState('square');
 
     await element.evaluate((node: Image) => {
       node.shape = undefined;
     });
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('rounded'))).toBe(false);
+    await expect(element).not.toHaveCustomState('rounded');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('square'))).toBe(false);
+    await expect(element).not.toHaveCustomState('square');
 
-    expect(await element.evaluate((node: Image) => node.elementInternals.states.has('circular'))).toBe(false);
+    await expect(element).not.toHaveCustomState('circular');
   });
 });

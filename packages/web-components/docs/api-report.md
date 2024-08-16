@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -118,7 +116,6 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
@@ -449,6 +446,30 @@ export class BaseAccordionItem extends FASTElement {
     expandedChanged(prev: boolean, next: boolean): void;
     headinglevel: 1 | 2 | 3 | 4 | 5 | 6;
     id: string;
+}
+
+// @public
+export class BaseAnchor extends FASTElement {
+    constructor();
+    // @internal
+    clickHandler(e: PointerEvent): boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    download?: string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    href?: string;
+    hreflang?: string;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    ping?: string;
+    referrerpolicy?: string;
+    rel: string;
+    target?: AnchorTarget;
+    type?: string;
 }
 
 // @public
@@ -2646,7 +2667,7 @@ export class Menu extends FASTElement {
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
-    toggleHandler: (e: Event | ToggleEvent) => void;
+    toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
@@ -2728,7 +2749,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    toggleHandler: (e: ToggleEvent | Event) => void;
+    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -2815,15 +2836,16 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends BaseProgressBar {
+class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
+export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
 
 // @public
 export const ProgressBarShape: {
@@ -2840,7 +2862,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
 
 // @public
 export const ProgressBarThickness: {

@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 16 Aug 2024 04:08:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.57",
+      "version": "3.0.0-beta.57",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8492a7ebd12270b49dd3083671a859ada31b395b",
+            "comment": "remove web types package and configuration"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3d0b2597d3b41868bf15d2c14b15fe6873b0b5c2",
+            "comment": "export BaseCheckbox class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 14 Aug 2024 04:07:35 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.56",
       "version": "3.0.0-beta.56",
