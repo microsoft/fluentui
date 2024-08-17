@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint, ILineChartLineOptions} from '../../src/VerticalBarChart';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-import { Checkbox } from "@fluentui/react-components";
-import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
+import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
+import { Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Checkbox } from '@fluentui/react-components';
+import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 import { Switch } from '@fluentui/react-components';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 
@@ -15,18 +21,13 @@ export const VCBasic = () => {
   const [hideLabels, setHideLabels] = React.useState<CheckboxProps["checked"]>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
-  const options: IChoiceGroupOption[] = [
-    { key: 'basicExample', text: 'Basic Example' },
-    { key: 'calloutExample', text: 'Custom Callout Example' },
-  ];
-
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
   };
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
+  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData): void => {
     if (isCalloutselected) {
       setIsCalloutSelected(false);
     } else {
@@ -38,7 +39,7 @@ export const VCBasic = () => {
   };
   const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setHideLabels(checked.checked);
-  }
+  };
   const _onToggleAxisTitlesCheckChange = React.useCallback(
     ev => {
       setShowAxisTitles(ev.currentTarget.checked);
@@ -169,20 +170,21 @@ export const VCBasic = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={_onChange} label="Pick one" />
-      <div style = {{marginTop: '10px'}}>
-      <Checkbox
-        label="use single color(This will have only one color)"
-        checked={useSingleColor}
-        onChange={_onCheckChange}
-      />
+      <Field label="Pick one">
+        <RadioGroup defaultValue="basicExample" onChange={_onChange}>
+          <Radio value="Basic Example" label="Basic Example" />
+          <Radio value="Custom Callout Example" label="Custom Callout Example" />
+        </RadioGroup>
+      </Field>
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={useSingleColor}
+          onChange={_onCheckChange}
+        />
       </div>
-      <div style = {{marginTop: '10px'}}>
-      <Checkbox
-        label="Hide labels"
-        checked={hideLabels}
-        onChange={_onHideLabelsCheckChange}
-      />
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
       </div>
       <Switch
         label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}

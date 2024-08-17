@@ -1,14 +1,10 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
-import { Checkbox } from "@fluentui/react-components";
-import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
-
-const options: IChoiceGroupOption[] = [
-  { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
-  { key: 'showTooltip', text: 'Show Tooltip at X axis ticks' },
-];
+import { Stack, TextField } from '@fluentui/react';
+import { Checkbox } from '@fluentui/react-components';
+import { Field, Radio, RadioGroup } from '@fluentui/react-components';
+import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
@@ -76,15 +72,15 @@ export const VCAxisTooltip = () => {
     <>
       <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-height" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
         </Stack>
         <Stack horizontal verticalAlign="center">
@@ -103,9 +99,7 @@ export const VCAxisTooltip = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
-            maxBarWidth:&nbsp;
-          </Label>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>maxBarWidth:</label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}
@@ -151,13 +145,12 @@ export const VCAxisTooltip = () => {
         </Stack>
       </Stack>
       <div>
-        <ChoiceGroup
-          options={options}
-          defaultSelectedKey="showTooltip"
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={(_ev, option) => option && setSelectedCallout(option.key)}
-          label="Pick one"
-        />
+        <Field label="Pick one">
+          <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>
+            <Radio value="WrapTickValues" label="Wrap X Axis Ticks" />
+            <Radio value="showTooltip" label="Show Tooltip at X Axis Ticks" />
+          </RadioGroup>
+        </Field>
       </div>
       <div style={rootStyle}>
         <VerticalBarChart

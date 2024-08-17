@@ -177,11 +177,13 @@ export const LCBasic = (props: ILineChartProps) => {
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
+      <div style = {{ marginTop: '10px'}}>
       <Switch
         label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
       />
+      </div>
       <div style = {{ marginTop: '10px' }}>
       <Checkbox
         label="Use UTC time"
