@@ -49,8 +49,11 @@ export class StackedBarChartBasicExample extends React.Component<{}, IStackedBar
           onChange={this._onHideTooltipChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
-        <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
-        <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        <div style={{display: "flex"}}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
 
         <br />
         <StackedBarChart

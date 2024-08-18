@@ -214,6 +214,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
           />
 
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
         </Stack>
 
