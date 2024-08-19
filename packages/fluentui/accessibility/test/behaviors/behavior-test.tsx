@@ -107,6 +107,8 @@ import {
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
 
+// @{link 'file://./../../../docs/src/behaviorMenu.json'}
+// nx-ignore-next-line
 const behaviorMenuItems = require('../../../docs/src/behaviorMenu');
 
 const testHelper = new TestHelper();
