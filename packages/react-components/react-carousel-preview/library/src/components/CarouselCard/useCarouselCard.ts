@@ -81,7 +81,7 @@ export const useCarouselCard_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
         role: 'tabpanel',
-        id: props.id ?? cardId,
+        id: cardId,
         ...props,
         onFocusCapture: _onFocus,
         ...focusAttrProps,

@@ -41,44 +41,38 @@ export const CardFocus = () => {
   return (
     <Carousel aria-roledescription="carousel">
       <CarouselSlider aria-label="carousel slider">
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 1 of 7">
           <TestComponent accentColor="#B99095">
             <Button>Card 1</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 2 of 7">
           <TestComponent accentColor="#FCB5AC">
-            {' '}
             <Button>Card 2</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 3 of 7">
           <TestComponent accentColor="#B5E5CF">
-            {' '}
             <Button>Card 3</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 4 of 7">
           <TestComponent accentColor="#3D5B59">
-            {' '}
             <Button>Card 4</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 5 of 7">
           <TestComponent accentColor="#F9EAC2">
-            {' '}
             <Button>Card 5</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 6 of 7">
           <TestComponent accentColor="#FEE7E6">
-            {' '}
             <Button>Card 6</Button>
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} tabIndex={0}>
+        <CarouselCard className={classes.card} tabIndex={0} aria-label="Carousel card 7 of 7">
           <TestComponent accentColor="#FFD898">
-            {' '}
             <Button>Card 7</Button>
           </TestComponent>
         </CarouselCard>
@@ -90,7 +84,11 @@ export const CardFocus = () => {
           justifyContent: 'center',
         }}
       >
-        <CarouselAutoplayButton />
+        <CarouselAutoplayButton
+          autoplayAriaLabel={(autoplay: boolean) => {
+            return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
+          }}
+        />
         <CarouselButton navType="prev" aria-label="previous carousel page" />
         <CarouselNav aria-roledescription="carousel page navigation">{() => <CarouselNavButton />}</CarouselNav>
         <CarouselButton navType="next" aria-label="next carousel page" />

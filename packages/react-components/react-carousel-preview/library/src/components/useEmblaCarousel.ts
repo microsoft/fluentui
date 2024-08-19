@@ -6,7 +6,6 @@ import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.sty
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
 import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
-import type { AutoplayOptionsType } from 'embla-carousel-autoplay';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
@@ -40,12 +39,6 @@ export function useEmblaCarousel(
     startIndex: activeIndex,
   });
 
-  // Accessible friendly autoplay interactions
-  const emblaAutoplayDefaultOptions: AutoplayOptionsType = {
-    stopOnInteraction: false,
-    stopOnMouseEnter: true,
-    stopOnFocusIn: true,
-  };
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   const autoplayRef = React.useRef<boolean>(false);
@@ -126,8 +119,10 @@ export function useEmblaCarousel(
             },
             [
               Autoplay({
-                ...emblaAutoplayDefaultOptions,
                 playOnInit: autoplayRef.current,
+                stopOnInteraction: !autoplayRef.current,
+                stopOnMouseEnter: true,
+                stopOnFocusIn: true,
               }),
             ],
           );
@@ -188,7 +183,14 @@ export function useEmblaCarousel(
         ...emblaOptions.current,
         ...DEFAULT_EMBLA_OPTIONS,
       },
-      [Autoplay({ ...emblaAutoplayDefaultOptions, playOnInit: autoplayRef.current })],
+      [
+        Autoplay({
+          playOnInit: autoplayRef.current,
+          stopOnInteraction: !autoplayRef.current,
+          stopOnMouseEnter: true,
+          stopOnFocusIn: true,
+        }),
+      ],
     );
   }, [align, direction, loop, slidesToScroll]);
 

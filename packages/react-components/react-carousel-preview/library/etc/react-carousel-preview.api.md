@@ -33,9 +33,8 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
-    defaultAutoplay?: boolean;
-    autoplay?: boolean;
     onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+    autoplayAriaLabel?: AutoplayAriaLabelFunction;
 };
 
 // @public (undocumented)
@@ -44,7 +43,7 @@ export type CarouselAutoplayButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'autoplay'>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;

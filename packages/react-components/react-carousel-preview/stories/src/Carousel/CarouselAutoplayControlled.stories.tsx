@@ -78,7 +78,7 @@ export const AutoplayControlled = () => {
         >
           <CarouselButton navType="prev" />
           <CarouselAutoplayButton
-            autoplay={enableAutoplay}
+            checked={enableAutoplay}
             onClick={() => {
               setEnableAutoplay(!enableAutoplay);
             }}

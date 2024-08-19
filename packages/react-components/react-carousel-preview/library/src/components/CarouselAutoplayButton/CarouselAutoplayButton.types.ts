@@ -14,31 +14,25 @@ export type CarouselAutoplayChangeData = EventData<'click', React.MouseEvent<HTM
   autoplay: boolean;
 };
 
+export type AutoplayAriaLabelFunction = (autoplay: boolean) => string;
+
 /**
  * CarouselAutoplayButton Props
  */
 export type CarouselAutoplayButtonProps = ToggleButtonProps &
   ComponentProps<CarouselAutoplayButtonSlots> & {
     /**
-     * Controls whether autoplay will initialized as true or false
-     * Default: true
-     */
-    defaultAutoplay?: boolean;
-
-    /**
-     * User controlled autoplay state
-     */
-    autoplay?: boolean;
-
-    /**
      * Callback that informs the user when internal autoplay value has changed
      */
     onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+
+    /**
+     * Override aria label property to provide state
+     */
+    autoplayAriaLabel?: AutoplayAriaLabelFunction;
   };
 
 /**
  * State used in rendering CarouselAutoplayButton
  */
-export type CarouselAutoplayButtonState = ToggleButtonState &
-  ComponentState<CarouselAutoplayButtonSlots> &
-  Pick<CarouselAutoplayButtonProps, 'autoplay'>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots>;

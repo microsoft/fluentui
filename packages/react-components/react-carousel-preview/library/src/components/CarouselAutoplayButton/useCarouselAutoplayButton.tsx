@@ -21,10 +21,10 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const { onAutoplayChange } = props;
+  const { onAutoplayChange, checked, defaultChecked } = props;
   const [autoplay, setAutoplay] = useControllableState({
-    state: props.autoplay,
-    defaultState: props.defaultAutoplay,
+    state: checked,
+    defaultState: defaultChecked,
     initialState: false,
   });
 
@@ -47,7 +47,6 @@ export const useCarouselAutoplayButton_unstable = (
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
 
   return {
-    autoplay,
     // We lean on react-button class to handle styling and icon enhancements
     ...useToggleButton_unstable(
       {
@@ -58,8 +57,10 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
+        'aria-label': props.autoplayAriaLabel?.(autoplay),
         ...props,
         checked: autoplay,
+        defaultChecked,
         onClick: handleButtonClick,
       },
       ref as React.Ref<HTMLButtonElement>,
