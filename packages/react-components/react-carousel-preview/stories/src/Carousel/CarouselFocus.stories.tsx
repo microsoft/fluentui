@@ -1,6 +1,7 @@
 import { Button, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAutoplayButton,
   CarouselButton,
   CarouselCard,
   CarouselNav,
@@ -89,6 +90,7 @@ export const CardFocus = () => {
           justifyContent: 'center',
         }}
       >
+        <CarouselAutoplayButton />
         <CarouselButton navType="prev" aria-label="previous carousel page" />
         <CarouselNav aria-roledescription="carousel page navigation">{() => <CarouselNavButton />}</CarouselNav>
         <CarouselButton navType="next" aria-label="next carousel page" />
