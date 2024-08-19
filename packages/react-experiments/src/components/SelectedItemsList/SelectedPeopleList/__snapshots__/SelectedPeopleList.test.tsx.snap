@@ -177,7 +177,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -515,7 +514,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -723,7 +721,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1061,7 +1058,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1274,7 +1270,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1612,7 +1607,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1820,7 +1814,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2158,7 +2151,6 @@ Array [
                 ms-Button-icon
                 {
                   display: inline-block;
-                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
