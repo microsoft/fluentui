@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-motion
 
-This log was last generated on Tue, 23 Jul 2024 20:13:12 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.5.0)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion_v9.4.0..@fluentui/react-motion_v9.5.0)
+
+### Minor changes
+
+- feat: Add context to configure motion behaviour ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by lingfangao@hotmail.com)
 
 ## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion_v9.4.0)
 

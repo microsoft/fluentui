@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { MessageBar } from './message-bar.js';
 
 test.describe('Message Bar', () => {
@@ -22,31 +22,31 @@ test.describe('Message Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('intent', 'success');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('success'))).toBe(true);
+    await expect(element).toHaveCustomState('success');
 
     await element.evaluate((node: MessageBar) => {
       node.intent = 'warning';
     });
 
     await expect(element).toHaveJSProperty('intent', 'warning');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('success'))).toBe(false);
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('warning'))).toBe(true);
+    await expect(element).not.toHaveCustomState('success');
+    await expect(element).toHaveCustomState('warning');
 
     await element.evaluate((node: MessageBar) => {
       node.intent = 'error';
     });
 
     await expect(element).toHaveJSProperty('intent', 'error');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('warning'))).toBe(false);
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('error'))).toBe(true);
+    await expect(element).not.toHaveCustomState('warning');
+    await expect(element).toHaveCustomState('error');
 
     await element.evaluate((node: MessageBar) => {
       node.intent = 'info';
     });
 
     await expect(element).toHaveJSProperty('intent', 'info');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('error'))).toBe(false);
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('info'))).toBe(true);
+    await expect(element).not.toHaveCustomState('error');
+    await expect(element).toHaveCustomState('info');
   });
 
   test('should set and retrieve the `shape` property correctly', async ({ page }) => {
@@ -57,15 +57,15 @@ test.describe('Message Bar', () => {
     });
 
     await expect(element).toHaveJSProperty('shape', 'square');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('square'))).toBe(true);
+    await expect(element).toHaveCustomState('square');
 
     await element.evaluate((node: MessageBar) => {
       node.shape = 'rounded';
     });
 
     await expect(element).toHaveJSProperty('shape', 'rounded');
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('square'))).toBe(false);
-    expect(await element.evaluate((node: MessageBar) => node.elementInternals.states.has('rounded'))).toBe(true);
+    await expect(element).not.toHaveCustomState('square');
+    await expect(element).toHaveCustomState('rounded');
   });
 
   test('should set and retrieve the `layout` property correctly', async ({ page }) => {

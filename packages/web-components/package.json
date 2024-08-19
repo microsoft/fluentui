@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.56",
+  "version": "3.0.0-beta.57",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -252,7 +252,6 @@
   "devDependencies": {
     "@microsoft/fast-element": "2.0.0-beta.26",
     "@tensile-perf/web-components": "~0.2.0",
-    "@types/web": "^0.0.142",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
     "chromedriver": "^125.0.0"

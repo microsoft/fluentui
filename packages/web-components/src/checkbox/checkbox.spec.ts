@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Checkbox } from './checkbox.js';
 
 test.describe('Checkbox', () => {
@@ -50,21 +50,21 @@ test.describe('Checkbox', () => {
       node.shape = 'circular';
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(true);
+    await expect(element).toHaveCustomState('circular');
 
     await element.evaluate((node: Checkbox) => {
       node.shape = 'square';
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(false);
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('square'))).toBe(true);
+    await expect(element).not.toHaveCustomState('circular');
+    await expect(element).toHaveCustomState('square');
 
     await element.evaluate((node: Checkbox) => {
       node.shape = undefined;
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('circular'))).toBe(false);
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('square'))).toBe(false);
+    await expect(element).not.toHaveCustomState('circular');
+    await expect(element).not.toHaveCustomState('square');
   });
 
   test('should set and retrieve the `size` property correctly', async ({ page }) => {
@@ -110,21 +110,21 @@ test.describe('Checkbox', () => {
       node.size = 'medium';
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(true);
+    await expect(element).toHaveCustomState('medium');
 
     await element.evaluate((node: Checkbox) => {
       node.size = 'large';
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(false);
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('large'))).toBe(true);
+    await expect(element).not.toHaveCustomState('medium');
+    await expect(element).toHaveCustomState('large');
 
     await element.evaluate((node: Checkbox) => {
       node.size = undefined;
     });
 
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('medium'))).toBe(false);
-    expect(await element.evaluate((node: Checkbox) => node.elementInternals.states.has('large'))).toBe(false);
+    await expect(element).not.toHaveCustomState('medium');
+    await expect(element).not.toHaveCustomState('large');
   });
 
   test('should have a role of `checkbox`', async ({ page }) => {

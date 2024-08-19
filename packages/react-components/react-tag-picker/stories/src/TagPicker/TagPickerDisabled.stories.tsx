@@ -35,7 +35,6 @@ export const Disabled = () => {
           <TagPickerGroup aria-label="Select Employees">
             {selectedOptions.map(option => (
               <Tag
-                disabled
                 key={option}
                 shape="rounded"
                 media={<Avatar aria-hidden name={option} color="colorful" />}

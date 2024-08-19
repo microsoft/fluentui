@@ -37,7 +37,7 @@ export const useInteractionTag_unstable = (
 
   return {
     appearance,
-    disabled,
+    disabled: contextDisabled ? true : disabled,
     handleTagDismiss,
     interactionTagPrimaryId,
     shape,
@@ -52,6 +52,7 @@ export const useInteractionTag_unstable = (
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        disabled: contextDisabled ? true : disabled,
         id,
       }),
       { elementType: 'div' },
