@@ -32,7 +32,7 @@ export const Disabled = () => {
     <Field label="Select Employees" style={{ maxWidth: 400 }}>
       <TagPicker disabled onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup aria-label="Select Employees">
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}
