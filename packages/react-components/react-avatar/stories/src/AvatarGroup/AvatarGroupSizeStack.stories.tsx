@@ -62,7 +62,10 @@ export const SizeStack = () => {
 SizeStack.parameters = {
   docs: {
     description: {
-      story: 'An AvatarGroup with `stack` layout supports a range of sizes from 16 to 128. The default is 32.',
+      story:
+        'An AvatarGroup with `stack` layout supports a range of sizes from 16 to 128. The default is 32. \n\n' +
+        'WARNING: do not make multiple avatars in a stack interactive unless the size is at least 28. ' +
+        'Smaller sizes with overlapping click targets will fail to meet the WCAG target size requirement.',
     },
   },
 };
