@@ -30,6 +30,7 @@ module.exports = {
     '@fluentui/no-context-default-value': [
       'error',
       {
+        // nx-ignore-next-line
         imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
       },
     ],
