@@ -63,15 +63,15 @@ export const useCarouselNavButton_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
-      let controlList = data.groupIndexList[index];
-      let _controlledSlideIds = controlList
-        .map((index: number) => {
-          return data.slideNodes[index].id;
+      const controlList = data.groupIndexList[index];
+      const _controlledSlideIds = controlList
+        .map((slideIndex: number) => {
+          return data.slideNodes[slideIndex].id;
         })
         .join(' ');
       setControlledSlides(_controlledSlideIds);
     });
-  }, [subscribeForValues]);
+  }, [subscribeForValues, index]);
 
   // Override onClick
   _carouselButton.onClick = handleClick;
