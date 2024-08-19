@@ -50,7 +50,8 @@ export const useHueSlider_unstable = (props: HueSliderProps, ref: React.Ref<HTML
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
 
-  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
+  // state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
+  state.thumb.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLDivElement>());
 
   useHueSliderState_unstable(state, props);
 

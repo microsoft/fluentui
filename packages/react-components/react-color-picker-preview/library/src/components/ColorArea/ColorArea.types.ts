@@ -1,6 +1,13 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
+export type ColorAreaOnChangeEventHandler = EventHandler<ColorAreaOnChangeData>;
+
+export type ColorAreaOnChangeData = EventData<'click', React.MouseEvent<HTMLInputElement>> & {
+  x: number;
+  y: number;
+};
+
 export type ColorAreaSlots = {
   root: NonNullable<Slot<'div'>>;
   thumb: NonNullable<Slot<'div'>>;
@@ -11,7 +18,10 @@ export type ColorAreaSlots = {
 /**
  * ColorArea Props
  */
-export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
+export type ColorAreaProps = Omit<
+  ComponentProps<Partial<ColorAreaSlots>, 'inputX'>,
+  'defaultValue' | 'onChange' | 'size' | 'value'
+> & {
   x?: number;
   y?: number;
   /**
@@ -30,11 +40,6 @@ export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {
   onChange?: EventHandler<ColorAreaOnChangeData>;
 
   color?: string;
-};
-
-export type ColorAreaOnChangeData = EventData<'click', React.MouseEvent<HTMLInputElement>> & {
-  x: number;
-  y: number;
 };
 
 /**

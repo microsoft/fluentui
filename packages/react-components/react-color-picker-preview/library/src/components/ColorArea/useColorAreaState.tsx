@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { clamp, useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorAreaCSSVars } from './useColorAreaStyles.styles';
 import type { ColorAreaState, ColorAreaProps } from './ColorArea.types';
 import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
@@ -10,26 +9,62 @@ const { mainColorVar, thumbColorVar, sliderStepsPercentVar, sliderProgressXVar, 
 export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAreaProps) => {
   'use no memo';
 
-  const { min = 0, max = 100, color = 'red', onClick = () => {} } = props;
+  const { min = 0, max = 100, onClick = () => {}, x, y } = props;
   const step = 1;
+  const ctxColor = useColorPickerContextValue_unstable(ctx => ctx.color);
+  const ctxX = useColorPickerContextValue_unstable(ctx => ctx.xValue);
+  const ctxY = useColorPickerContextValue_unstable(ctx => ctx.yValue);
   const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
-  // const [currentValue, setCurrentValue] = useControllableState({
-  //   state: props.value,
-  //   initialState: 0,
-  // });
-  // const clampedValue = clamp(currentValue, min, max);
+  const color = props.color ?? ctxColor;
 
-  // TODO - use controllable state
-  const [x, setX] = React.useState(96);
-  const [y, setY] = React.useState(0);
+  const [currentXValue, setCurrentXValue] = useControllableState({
+    state: x || ctxX,
+    initialState: 0,
+  });
+  const [currentYValue, setCurrentYValue] = useControllableState({
+    state: y || ctxY,
+    initialState: 0,
+  });
+
+  const clampedXValue = clamp(currentXValue, min, max);
+  const clampedYValue = clamp(currentYValue, min, max);
+  // const valueXPercent = getPercent(clampedXValue, min, max);
+  // const valueYPercent = getPercent(clampedYValue, min, max);
+
+  function keyboardEvent(ev: React.KeyboardEvent<HTMLInputElement>) {
+    if (ev.key === 'ArrowRight') {
+      const newXValue = currentXValue + 1;
+      setCurrentXValue(clamp(newXValue, min, max));
+    } else if (ev.key === 'ArrowLeft') {
+      const newXValue = currentXValue - 1;
+      setCurrentXValue(clamp(newXValue, min, max));
+    } else if (ev.key === 'ArrowUp') {
+      const newYValue = currentYValue + 1;
+      setCurrentYValue(clamp(newYValue, min, max));
+    } else if (ev.key === 'ArrowDown') {
+      const newYValue = currentYValue - 1;
+      setCurrentYValue(clamp(newYValue, min, max));
+    }
+  }
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = useEventCallback(ev => keyboardEvent(ev));
+
+  const requestOnChange = useEventCallback(
+    mergeCallbacks(onKeyDown, (event: React.KeyboardEventHandler<HTMLInputElement>) =>
+      ctxOnChange(event, {
+        x: Number(state.inputX.value),
+        y: Number(state.inputY.value),
+      }),
+    ),
+  );
 
   const _onClick: React.MouseEvent<HTMLDivElement> = useEventCallback(ev => {
     const rect = ev.target.getBoundingClientRect();
     const newX = Math.round(((ev.clientX - rect.left) / rect.width) * 100);
     const newY = Math.round(((ev.clientY - rect.top) / rect.height) * 100);
 
-    setX(newX);
-    setY(newY);
+    setCurrentXValue(newX);
+    setCurrentYValue(newY);
   });
 
   function getValue(ev: React.MouseEvent<HTMLDivElement>) {
@@ -52,24 +87,10 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
     ),
   );
 
-  // const inputOnChange = state.root.onChange;
-  // const propsOnChange = props.onChange;
-
-  // const onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
-  //   const newValue = Number(ev.target.value);
-  //   setCurrentValue(clamp(newValue, min, max));
-
-  //   if (inputOnChange && inputOnChange !== propsOnChange) {
-  //     inputOnChange(ev);
-  //   } else if (propsOnChange) {
-  //     propsOnChange(ev, { x: newValue });
-  //   }
-  // });
-
   const rootVariables = {
     [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
-    [sliderProgressXVar]: `${x}%`,
-    [sliderProgressYVar]: `${y}%`,
+    [sliderProgressXVar]: `${currentXValue}%`,
+    [sliderProgressYVar]: `${currentYValue}%`,
     [thumbColorVar]: `hsl(${color}, 100%, 50%)`,
     [mainColorVar]: color,
   };
@@ -81,9 +102,10 @@ export const useColorAreaState_unstable = (state: ColorAreaState, props: ColorAr
   };
 
   // Input Props
-  state.inputX.value = x;
-  state.inputY.value = y;
-  // state.inputX.onChange = onChange;
+  state.inputX.value = clampedXValue;
+  state.inputY.value = clampedYValue;
+  state.inputX.onChange = requestOnChange;
+  state.inputX.onKeyDown = onKeyDown;
   state.root.onClick = requestOnClick;
 
   return state;

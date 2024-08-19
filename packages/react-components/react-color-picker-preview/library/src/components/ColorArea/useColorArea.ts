@@ -11,9 +11,15 @@ import { useColorAreaState_unstable } from './useColorAreaState';
 import { ColorAreaProps, ColorAreaState } from './ColorArea.types';
 import { useFocusWithin } from '@fluentui/react-tabster';
 
-export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
+export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLInputElement>): ColorAreaState => {
   // Merge props from surrounding <Field>, if any
   props = useFieldControlProps_unstable(props, { supportsLabelFor: true });
+
+  const nativeProps = getPartitionedNativeProps({
+    props,
+    primarySlotTagName: 'input',
+    excludedPropNames: ['onChange'],
+  });
 
   const { root, inputX, inputY, thumb, color = 'red' } = props;
 
@@ -28,23 +34,23 @@ export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTML
       inputY: 'input',
       thumb: 'div',
     },
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        role: 'group',
-      }),
-      { elementType: 'div' },
-    ),
+    root: slot.always(root, {
+      defaultProps: nativeProps.root,
+      elementType: 'div',
+    }),
     inputX: slot.always(inputX, {
       defaultProps: {
+        'aria-orientation': 'horizontal',
         id: useId(`sliderX-${props.id}`),
-        ref: inputXRef,
+        ref,
+        ...nativeProps.primary,
         type: 'range',
       },
       elementType: 'input',
     }),
     inputY: slot.always(inputY, {
       defaultProps: {
+        'aria-orientation': 'vertical',
         ref: inputYRef,
         id: useId(`sliderY-${props.id}`),
         type: 'range',

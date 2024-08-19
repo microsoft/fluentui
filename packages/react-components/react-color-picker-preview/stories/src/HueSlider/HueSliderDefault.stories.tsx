@@ -29,6 +29,7 @@ export const Default = (props: Partial<HueSliderProps>) => {
     <div className={styles.example}>
       <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
       <HueSlider value={sliderValue} max={360} onChange={onSliderChange} id={id} {...props} />
+      <HueSlider value={sliderValue} max={360} onChange={onSliderChange} id={id} {...props} vertical />
       <div className={styles.previewColor} style={{ backgroundColor: `hsl(${sliderValue}, 100%, 50%)` }} />
       <Button onClick={resetSlider}>Reset</Button>
     </div>

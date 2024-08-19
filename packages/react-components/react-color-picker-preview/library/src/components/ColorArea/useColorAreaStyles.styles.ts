@@ -121,7 +121,7 @@ const useThumbStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     cursor: 'pointer',
-    opacity: 0,
+    // opacity: 0,
     gridRowStart: '1',
     gridRowEnd: '-1',
     gridColumnStart: '1',

@@ -31,6 +31,7 @@ export const Default = (props: Partial<AlphaSliderProps>) => {
     <div className={styles.example}>
       <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
       <AlphaSlider overlayColor={COLOR} value={sliderValue} onChange={onSliderChange} id={id} {...props} />
+      <AlphaSlider overlayColor={COLOR} value={sliderValue} onChange={onSliderChange} id={id} {...props} vertical />
       <div
         className={styles.previewColor}
         style={{ backgroundColor: `hsla(${HUE}, 100%, 45%, ${sliderValue / 100})` }}

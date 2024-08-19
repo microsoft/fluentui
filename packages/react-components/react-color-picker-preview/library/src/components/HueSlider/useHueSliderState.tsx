@@ -56,7 +56,7 @@ export const useHueSliderState_unstable = (state: HueSliderState, props: HueSlid
   );
 
   const rootVariables = {
-    [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '90deg' : '270deg',
+    [sliderDirectionVar]: state.vertical ? '0deg' : dir === 'ltr' ? '270deg' : '90deg',
     [sliderStepsPercentVar]: step && step > 0 ? `${(step * 100) / (max - min)}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
     [thumbColorVar]: `hsl(${clampedValue}, 100%, 50%)`,

@@ -21,6 +21,8 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
 
   const [alphaValue, setAlphaValue] = React.useState(alpha);
   const [hueValue, setHueValue] = React.useState(hue);
+  const [areaX, setAreaX] = React.useState(0);
+  const [areaY, setAreaY] = React.useState(0);
 
   const requestChange: ColorPickerState['requestChange'] = useEventCallback((event, data) => {
     onChange?.(event, {
@@ -31,6 +33,8 @@ export const useColorPicker_unstable = (props: ColorPickerProps, ref: React.Ref<
     });
     setAlphaValue(data.alpha);
     setHueValue(data.hue);
+    setAreaX(data.x);
+    setAreaY(data.y);
   });
 
   return {

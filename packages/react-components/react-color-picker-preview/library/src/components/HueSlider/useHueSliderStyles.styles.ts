@@ -27,7 +27,7 @@ const { sliderDirectionVar, sliderStepsPercentVar, sliderProgressVar, thumbColor
 
 const hueStyle = {
   background: `linear-gradient(${[
-    'to left',
+    `var(${sliderDirectionVar})`,
     'red 0',
     '#f09 10%',
     '#cd00ff 20%',
@@ -95,7 +95,6 @@ const useRailStyles = makeStyles({
   },
 
   horizontal: {
-    // width: '100%',
     width: '300px',
     height: `var(${railSizeVar})`,
     '::before': {
@@ -146,6 +145,12 @@ const useThumbStyles = makeStyles({
       border: `calc(var(${thumbSizeVar}) * .05) solid #959595`, //${tokens.colorNeutralStroke1}`,
     },
   },
+  focusIndicator: createFocusOutlineStyle({
+    style: {
+      outlineWidth: tokens.strokeWidthThick,
+      // ...shorthands.borderWidth(tokens.strokeWidthThick),
+    },
+  }),
   focusIndicatorHorizontal: createFocusOutlineStyle({
     // selector: 'focus-within',
     style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
@@ -183,6 +188,21 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '-1',
     padding: '0',
     margin: '0',
+    [`&:focus-visible ~ .${hueSliderClassNames.thumb}`]: {
+      ...createFocusOutlineStyle({
+        // selector: 'focus-within',
+        style: {
+          outlineColor: 'red',
+          outlineRadius: '50%',
+          outlineWidth: tokens.strokeWidthThick,
+          outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' },
+        },
+      }),
+      // borderColor: tokens.colorNeutralStrokeAccessible,
+      // '@media (forced-colors: active)': {
+      //   borderColor: 'ButtonBorder',
+      // },
+    },
   },
   disabled: {
     cursor: 'default',
@@ -227,6 +247,7 @@ export const useHueSliderStyles_unstable = (state: HueSliderState): HueSliderSta
   state.thumb.className = mergeClasses(
     hueSliderClassNames.thumb,
     thumbStyles.thumb,
+    thumbStyles.focusIndicator,
     isVertical ? thumbStyles.vertical : thumbStyles.horizontal,
     isVertical ? thumbStyles.focusIndicatorVertical : thumbStyles.focusIndicatorHorizontal,
     state.thumb.className,

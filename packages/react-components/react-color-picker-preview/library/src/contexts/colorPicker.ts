@@ -14,11 +14,13 @@ export type ColorPickerContextValue = Pick<ColorPickerProps, 'color'> & {
    */
   requestChange: (
     event: React.ChangeEvent<HTMLInputElement>,
-    data: { hue?: number; alpha?: number; channel?: string },
+    data: { hue?: number; alpha?: number; channel?: string; x?: number; y?: number },
   ) => void;
   overlayColor?: string;
   hueValue?: number;
   alphaValue?: number;
+  xValue?: number;
+  yValue?: number;
   channelValue?: string;
 };
 
