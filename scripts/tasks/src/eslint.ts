@@ -4,7 +4,7 @@ import * as path from 'path';
 import { eslintConstants } from '@fluentui/scripts-monorepo';
 import { eslintTask } from 'just-scripts';
 
-const files = [path.join(process.cwd(), eslintConstants.directory)];
+const files = [path.join(process.cwd(), eslintConstants.directory), path.join(process.cwd(), 'package.json')];
 const storiesPath = path.join(process.cwd(), 'stories');
 
 if (hasProjectStories(storiesPath)) {
