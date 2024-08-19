@@ -250,7 +250,7 @@
     "test:dev": "playwright test"
   },
   "devDependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.26",
+    "@microsoft/fast-element": "2.0.0",
     "@tensile-perf/web-components": "~0.2.0",
     "@storybook/html": "7.6.20",
     "@storybook/html-webpack5": "7.6.20",
@@ -263,7 +263,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.26"
+    "@microsoft/fast-element": "^2.0.0-beta.26 || ^2.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [
