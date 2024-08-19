@@ -10,3 +10,5 @@ packages/fluentui/README.md
 packages/fluentui/.browserslistrc
 
 **/dist/**
+**/fixtures/**
+**/bundle-size/**
