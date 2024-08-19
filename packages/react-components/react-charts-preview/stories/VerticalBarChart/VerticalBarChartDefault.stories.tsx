@@ -6,19 +6,25 @@ import {
   ILineChartLineOptions,
 } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
-import { Field, Radio, RadioGroup } from '@fluentui/react-components';
-import { Checkbox } from '@fluentui/react-components';
-import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
-import { Switch } from '@fluentui/react-components';
+import {
+  Switch,
+  Checkbox,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+} from '@fluentui/react-components';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 
 export const VCBasic = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
-  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps["checked"]>(false);
-  const [hideLabels, setHideLabels] = React.useState<CheckboxProps["checked"]>(false);
+  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(false);
+  const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked']>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {

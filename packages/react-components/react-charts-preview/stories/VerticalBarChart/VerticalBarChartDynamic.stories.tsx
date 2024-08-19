@@ -3,10 +3,16 @@ import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } 
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Stack, TextField } from '@fluentui/react';
-import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
-import { Field, Radio, RadioGroup } from '@fluentui/react-components';
-import { Checkbox } from '@fluentui/react-components';
-import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import {
+  Checkbox,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+} from '@fluentui/react-components';
 
 export const VCDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -122,15 +128,15 @@ export const VCDynamic = () => {
   const [colors, setColors] = React.useState<string[]>(_colors[0]);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
   const [barWidth, setBarWidth] = React.useState<number | 'auto' | undefined>(undefined);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(24);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
   const [xAxisOuterPadding, setXAxisOuterPadding] = React.useState<number>(0);
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
-  const [enableReflow, setEnableReflow] = React.useState<CheckboxProps["checked"]>(false);
+  const [enableReflow, setEnableReflow] = React.useState<CheckboxProps['checked']>(false);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
 
   _changeData = _changeData.bind(this);
@@ -211,7 +217,9 @@ export const VCDynamic = () => {
           <Checkbox label="enableReflow" checked={enableReflow} onChange={_onEnableReflowCheckChange} />
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>Data Size:&nbsp;</label>
+          <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
+            Data Size:&nbsp;
+          </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
         </Stack>
       </Stack>

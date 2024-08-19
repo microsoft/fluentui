@@ -2,9 +2,7 @@ import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Stack, TextField } from '@fluentui/react';
-import { Checkbox } from '@fluentui/react-components';
-import { Field, Radio, RadioGroup } from '@fluentui/react-components';
-import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');

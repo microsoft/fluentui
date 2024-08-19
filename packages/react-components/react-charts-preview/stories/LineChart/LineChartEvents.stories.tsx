@@ -3,9 +3,7 @@ import {  ILineChartProps, LineChart, IChartProps} from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
-import { Switch } from '@fluentui/react-components';
-import { Checkbox } from "@fluentui/react-components";
-import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
+import { Switch, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 import { ColorPicker, IColor } from '@fluentui/react';
 
 const calloutItemStyle = mergeStyles({

@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
-import { Switch } from '@fluentui/react-components';
-import { Checkbox } from "@fluentui/react-components";
-import type { CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
+import { Switch, Checkbox } from '@fluentui/react-components';
+import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const LCBasic = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(true);
-  const [useUTC, setUseUTC] = React.useState<CheckboxProps["checked"]>(true);
+  const [useUTC, setUseUTC] = React.useState<CheckboxProps['checked']>(true);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -177,41 +176,56 @@ export const LCBasic = (props: ILineChartProps) => {
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
-      <div style = {{ marginTop: '10px'}}>
-      <Switch
-        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
-        checked={showAxisTitles}
-        onChange={_onToggleAxisTitlesCheckChange}
-      />
-      </div>
-      <div style = {{ marginTop: '10px' }}>
-      <Checkbox
-        label="Use UTC time"
-        checked={useUTC}
-        onChange={_onCheckChange}
-      />
-      </div>
-
-      <div style={rootStyle}>
-        <LineChart
-          // Force rerender when any of the following states change
-          key={`${showAxisTitles}`}
-          culture={window.navigator.language}
-          data={data}
-          legendsOverflowText={'Overflow Items'}
-          yMinValue={200}
-          yMaxValue={301}
-          height={height}
-          width={width}
-          xAxisTickCount={10}
-          allowMultipleShapesForPoints={allowMultipleShapes}
-          enablePerfOptimization={true}
-          enableReflow={true}
-          yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
-          xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
-          useUTC={useUTC}
+      <div style={{ marginTop: '10px' }}>
+        <Switch
+          label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
+          checked={showAxisTitles}
+          onChange={_onToggleAxisTitlesCheckChange}
         />
       </div>
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox label="Use UTC time" checked={useUTC} onChange={_onCheckChange} />
+      </div>
+      {showAxisTitles && (
+        <div style={rootStyle}>
+          <LineChart
+            culture={window.navigator.language}
+            data={data}
+            legendsOverflowText={'Overflow Items'}
+            yMinValue={200}
+            yMaxValue={301}
+            height={height}
+            width={width}
+            xAxisTickCount={10}
+            allowMultipleShapesForPoints={allowMultipleShapes}
+            enablePerfOptimization={true}
+            enableReflow={true}
+            yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
+            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+            useUTC={useUTC}
+          />
+        </div>
+      )}
+      {!showAxisTitles && (
+        <div style={rootStyle}>
+          <LineChart
+            culture={window.navigator.language}
+            data={data}
+            legendsOverflowText={'Overflow Items'}
+            yMinValue={200}
+            yMaxValue={301}
+            height={height}
+            width={width}
+            xAxisTickCount={10}
+            allowMultipleShapesForPoints={allowMultipleShapes}
+            enablePerfOptimization={true}
+            enableReflow={true}
+            yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
+            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+            useUTC={useUTC}
+          />
+        </div>
+      )}
     </>
   );
 };
