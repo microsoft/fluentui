@@ -71,12 +71,15 @@ export function useEmblaCarousel(
     };
     const handleReinit = () => {
       const nodes = emblaApi.current?.slideNodes() ?? [];
-      const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
+      const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
+      const slideNodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
       const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
 
       const data: CarouselUpdateData = {
         navItemsCount,
         activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+        groupIndexList,
+        slideNodes,
       };
 
       for (const listener of listeners.current) {

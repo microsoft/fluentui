@@ -57,4 +57,6 @@ export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventD
 export interface CarouselUpdateData {
   activeIndex: number;
   navItemsCount: number;
+  groupIndexList: number[][];
+  slideNodes: HTMLElement[];
 }

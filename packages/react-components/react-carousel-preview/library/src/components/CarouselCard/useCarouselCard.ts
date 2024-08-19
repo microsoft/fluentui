@@ -4,6 +4,7 @@ import {
   mergeCallbacks,
   slot,
   useMergedRefs,
+  useId,
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -12,6 +13,7 @@ import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types'
 import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import { useFocusableGroup } from '@fluentui/react-tabster';
+import { carouselCardClassNames } from './useCarouselCardStyles.styles';
 
 /**
  * Create the state required to render CarouselCard.
@@ -34,6 +36,9 @@ export const useCarouselCard_unstable = (
   const focusAttr = useFocusableGroup({ tabBehavior: 'limited' });
   const isFocusable = tabIndex !== undefined && tabIndex >= 0;
   const focusAttrProps = isFocusable ? focusAttr : {};
+
+  // We attach a unique card id if user does not provide
+  const cardId = useId(carouselCardClassNames.root);
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -75,6 +80,8 @@ export const useCarouselCard_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
+        // role: 'tabpanel',
+        id: cardId,
         role: isFocusable ? 'tab' : 'tabpanel',
         ...props,
         onFocusCapture: _onFocus,

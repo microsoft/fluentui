@@ -1,6 +1,12 @@
 import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  isHTMLElement,
+  slot,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
@@ -23,8 +29,10 @@ export const useCarouselNavButton_unstable = (
   const { onClick, as = 'button' } = props;
 
   const index = useCarouselNavContext();
+  const [controlledSlides, setControlledSlides] = React.useState('');
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -47,10 +55,23 @@ export const useCarouselNavButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
+        'aria-controls': controlledSlides,
         ...defaultTabProps,
       },
     },
   );
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues(data => {
+      let controlList = data.groupIndexList[index];
+      let _controlledSlideIds = controlList
+        .map((index: number) => {
+          return data.slideNodes[index].id;
+        })
+        .join(' ');
+      setControlledSlides(_controlledSlideIds);
+    });
+  }, [subscribeForValues]);
 
   // Override onClick
   _carouselButton.onClick = handleClick;
