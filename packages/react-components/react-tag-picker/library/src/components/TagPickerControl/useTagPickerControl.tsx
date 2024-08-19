@@ -133,6 +133,7 @@ export const useTagPickerControl_unstable = (
 
   // If aria-label or aria-labelledby changes, recalculate aria-label and aria-labelledby for the expandIcon
   // The expandIcon's label is calculated based on the input's label
+  // TODO: investigate ways to enforce client to provide a label rather than need to calculate it
   const getExpandLabel = React.useCallback(
     (ariaLabel?: string | null, ariaLabelledBy?: string | null) => {
       let expandAriaLabel = undefined;
