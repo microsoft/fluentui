@@ -80,9 +80,8 @@ export const useCarouselCard_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
-        // role: 'tabpanel',
-        id: cardId,
-        role: isFocusable ? 'tab' : 'tabpanel',
+        role: 'tabpanel',
+        id: props.id ?? cardId,
         ...props,
         onFocusCapture: _onFocus,
         ...focusAttrProps,

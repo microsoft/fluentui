@@ -25,7 +25,7 @@ export const useCarouselAutoplayButton_unstable = (
   const [autoplay, setAutoplay] = useControllableState({
     state: props.autoplay,
     defaultState: props.defaultAutoplay,
-    initialState: true,
+    initialState: false,
   });
 
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
