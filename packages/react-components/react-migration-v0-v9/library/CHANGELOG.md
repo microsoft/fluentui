@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.10)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.2.9..@fluentui/react-migration-v0-v9_v9.2.10)
+
+### Patches
+
+- Export VideoProps, split storybooks ([PR #32318](https://github.com/microsoft/fluentui/pull/32318) by jurokapsiar@gmail.com)
+- Bump @fluentui/react-components to v9.54.13 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
 
 ## [9.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.2.9)
 
