@@ -5,9 +5,7 @@
   "type": "commonjs",
   "generators": "./generators.json",
   "scripts": {
-    "test": "jest --passWithNoTests",
     "type-check": "node  ./scripts/type-check.mjs",
-    "lint": "eslint --ext .ts,.js,.json .",
     "check-graph": "node ./scripts/check-dep-graph.js"
   },
   "dependencies": {
