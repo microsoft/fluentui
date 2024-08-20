@@ -63,7 +63,6 @@ export const Default = () => (
       }}
     >
       <CarouselButton navType="prev" />
-      <CarouselNav appearance="brand">{() => <CarouselNavButton />}</CarouselNav>
       <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
       <CarouselButton navType="next" />
     </div>

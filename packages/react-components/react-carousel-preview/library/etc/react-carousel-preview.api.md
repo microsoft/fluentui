@@ -122,7 +122,7 @@ export type CarouselNavButtonSlots = {
 // @public
 export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
     selected?: boolean;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots>;
@@ -150,7 +150,7 @@ export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
     children: NavButtonRenderFunction;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export type CarouselNavSlots = {
@@ -161,6 +161,7 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
     totalSlides: number;
     renderNavButton: NavButtonRenderFunction;
+    appearance?: 'brand';
 };
 
 // @public
