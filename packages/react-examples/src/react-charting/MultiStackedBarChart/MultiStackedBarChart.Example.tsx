@@ -173,6 +173,7 @@ export const MultiStackedBarChartBasicExample: React.FunctionComponent = () => {
           // eslint-disable-next-line react/jsx-no-bind
           onChange={(ev: any, checked: boolean) => setEnableGradient(checked)}
         />
+        &nbsp;&nbsp;
         <Toggle
           label="Rounded Corners"
           onText="ON"
