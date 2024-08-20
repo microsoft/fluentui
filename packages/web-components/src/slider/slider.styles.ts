@@ -57,6 +57,7 @@ export const styles = css`
 
   :host(:disabled) {
     --rail-color: ${colorNeutralForegroundDisabled};
+    --track-color: ${colorNeutralForegroundDisabled};
   }
 
   :host(:not(:disabled)) {
@@ -189,10 +190,6 @@ export const styles = css`
   .thumb,
   .track::before {
     background-color: var(--rail-color);
-  }
-
-  :host(:disabled) .track {
-    background-color: var(--track-color);
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
