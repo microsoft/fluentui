@@ -1,6 +1,6 @@
 import { IPieProps, IPieStyles } from './Pie.types';
 import { tokens } from '@fluentui/react-theme';
-import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
+import { HighContrastSelectorBlack } from '../../../utilities/index';
 
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';

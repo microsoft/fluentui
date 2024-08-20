@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { ICartesianChartProps, ICartesianChartStyles } from './CartesianChart.types';
-import { HighContrastSelectorBlack, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
 import { NeutralColors, isIE11 } from '@fluentui/react';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens } from '@fluentui/react-theme';
@@ -33,7 +33,6 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   calloutInfoContainer: 'fui-cart__calloutInfoContainer',
   tooltip: 'fui-cart__tooltip',
   chartTitle: 'fui-cart__chartTitle',
-
 };
 
 /**

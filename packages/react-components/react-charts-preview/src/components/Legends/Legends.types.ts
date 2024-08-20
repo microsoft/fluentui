@@ -1,17 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IHoverCardStyleProps, IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
-import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { CustomPoints, Points } from '../../utilities/utilities';
-
-/**
- * @public
- * {@docCategory Legends}
- */
-export interface ILegendSubComponentStyles {
-  hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
-}
 
 /**
  * @public
@@ -53,16 +41,6 @@ export interface ILegendsStyles {
    * Style for the legend text
    */
   hoverChange?: string;
-
-  /**
-   * Style for the text that indicates the no.of legends that are in hovercard due to lack of space
-   */
-  overflowIndicationTextStyle?: string;
-
-  /**
-   * Style for the overflow container
-   */
-  hoverCardRoot?: string;
 
   /**
    * Style for the area that is resizable
@@ -174,14 +152,9 @@ export interface ILegendsProps {
   enabledWrapLines?: boolean;
 
   /**
-   * props for the overflow set component
+   * style for the overflow component
    */
-  overflowProps?: Partial<IOverflowSetProps>;
-
-  /**
-   * focus zone props in hover card
-   */
-  focusZonePropsInHoverCard?: IFocusZoneProps;
+  overflowStyles?: React.CSSProperties;
 
   /**
    * text for overflow legends string
@@ -199,13 +172,6 @@ export interface ILegendsProps {
    * @default false
    */
   canSelectMultipleLegends?: boolean;
-
-  /**
-   * Defines the function that is executed upon hiding of hover card
-   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to true
-   * and empty the selected state legends
-   */
-  onLegendHoverCardLeave?: VoidFunction;
 
   /**
    * Callback issued when the selected option changes.

@@ -9,11 +9,11 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find, ChartHoverCard } from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
-import { Popover, PopoverSurface, useFocusableGroup } from '@fluentui/react-components';
-import { PositioningVirtualElement } from '../../../../react-positioning/src/types';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import PopoverComponent from '../CommonComponents/Popover';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -28,14 +28,12 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   let _barHeight: number;
   //let _classNames: IProcessedStyleSet<IHorizontalBarChartStyles>;
   let _uniqLineText: string = '_HorizontalLine_' + Math.random().toString(36).substring(7);
-  let _calloutId: string;
   let _refArray: IRefArrayData[] = [];
   let _calloutAnchorPoint: IChartDataPoint | null;
   const _isRTL: boolean = isRtl();
   let barChartSvgRef: React.RefObject<SVGSVGElement> = React.createRef<SVGSVGElement>();
   const _emptyChartId: string = useId('_HBC_empty');
 
-  const [isCalloutVisible, setIsCalloutVisible] = React.useState<boolean>(false);
   const [refSelected, setRefSelected] = React.useState<SVGGElement | null | undefined>(null);
   const [color, setColor] = React.useState<string>('');
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
@@ -58,14 +56,13 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     hoverVal: string | number | Date,
     point: IChartDataPoint,
   ): void {
-    if ((!isCalloutVisible || legend !== point.legend!) && _calloutAnchorPoint !== point) {
+    if ((!isPopoverOpen || legend !== point.legend!) && _calloutAnchorPoint !== point) {
       const currentHoveredElement = find(
         _refArray,
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
-      setIsCalloutVisible(true);
       setHoverValue(hoverVal);
       setLineColor(point.color!);
       setLegend(point.legend!);
@@ -84,13 +81,12 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
 
   const _handleChartMouseLeave = () => {
     _calloutAnchorPoint = null;
-    if (isCalloutVisible) {
-      setIsCalloutVisible(false);
+    if (isPopoverOpen) {
+      setPopoverOpen(false);
       setHoverValue('');
       setRefSelected(null);
       setLineColor('');
       setLegend('');
-      setPopoverOpen(false);
     }
   };
 
@@ -276,10 +272,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     return bars;
   }
 
-  const _closeCallout = () => {
-    setIsCalloutVisible(false);
-  };
-
   const _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue =
@@ -304,20 +296,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       setPopoverOpen(true);
     }
   }
-
-  const virtualElement: PositioningVirtualElement = {
-    getBoundingClientRect: () => ({
-      top: clickPosition.y,
-      left: clickPosition.x,
-      right: clickPosition.x,
-      bottom: clickPosition.y,
-      x: clickPosition.x,
-      y: clickPosition.y,
-      width: 0,
-      height: 0,
-    }),
-    contextElement: refSelected,
-  };
 
   React.useEffect(() => {
     const svgWidth = barChartSvgRef?.current?.getBoundingClientRect().width || 0;
@@ -400,16 +378,20 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           </div>
         );
       })}
-      <Popover positioning={{ target: virtualElement }} open={isPopoverOpen} openOnHover>
-        <PopoverSurface tabIndex={-1}>
-          <ChartHoverCard
-            Legend={xCalloutValue ? xCalloutValue : legend!}
-            YValue={yCalloutValue ? yCalloutValue : hoverValue!}
-            color={lineColor}
-            culture={props.culture}
-          />
-        </PopoverSurface>
-      </Popover>
+      <PopoverComponent
+        xCalloutValue={xCalloutValue}
+        yCalloutValue={yCalloutValue}
+        culture={props.culture}
+        clickPosition={clickPosition}
+        isPopoverOpen={isPopoverOpen}
+        legend={legend!}
+        YValue={hoverValue!}
+        color={lineColor}
+        isCalloutForStack={false}
+        customizedCallout={
+          props.onRenderCalloutPerHorizontalBar ? props.onRenderCalloutPerHorizontalBar(barCalloutProps!) : undefined
+        }
+      />
     </div>
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
