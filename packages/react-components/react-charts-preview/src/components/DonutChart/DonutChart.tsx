@@ -11,7 +11,6 @@ import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '../../../../react-components/src/index';
 import PopoverComponent from '../CommonComponents/Popover';
-import { useId } from '@fluentui/react-utilities';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
 

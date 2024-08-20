@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Callout, FocusZone, FocusZoneDirection, List } from '@fluentui/react';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
 import { Textbox } from './Textbox';
-import { ITheme } from '@fluentui/react/lib/Styling';
 import { getColorFromToken } from '../../../utilities/colors';
+import { tokens } from '@fluentui/react-theme';
 
 export interface ILineDef extends IEventAnnotation {
   x: number;
@@ -23,7 +22,6 @@ interface ILabelLinkProps {
   textLineHeight: number;
   textFontSize: string;
   textColor: string | undefined;
-  theme: ITheme | undefined;
   mergedLabel: (count: number) => string;
 }
 
@@ -38,8 +36,8 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   if (showCard) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
-      callout = (
-        <Callout
+      callout = {
+        /* <Callout
           target={gRef.current}
           // eslint-disable-next-line react/jsx-no-bind
           onDismiss={onDismiss}
@@ -53,15 +51,15 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
               onRenderCell={onRenderCell}
             />
           </FocusZone>
-        </Callout>
-      );
+        </Callout> */
+      };
     }
   }
 
   let text: string;
   const fill: string | undefined = props.textColor
-    ? getColorFromToken(props.textColor, props.theme?.isInverted)
-    : props.theme?.semanticColors.messageText;
+    ? getColorFromToken(props.textColor, false)
+    : tokens.colorNeutralForeground1;
 
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
