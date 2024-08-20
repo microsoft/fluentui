@@ -529,6 +529,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         defaultTabbableElement={`#${idForDefaultTabbableElement}`}
         {...svgFocusZoneProps}
       > */}
+      <div className={classes.chartWrapper}>
       {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <svg
         width={svgDimensions.width}
@@ -615,6 +616,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           />
         )}
       </svg>
+      </div>
       {/*       </FocusZone> */}
 
       {!props.hideLegend && (
