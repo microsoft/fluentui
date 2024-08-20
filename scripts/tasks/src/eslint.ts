@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import { eslintConstants } from '@fluentui/scripts-monorepo';
+import { stripJsonComments } from '@nx/devkit';
 import { eslintTask } from 'just-scripts';
 
 const projectRoot = process.cwd();
@@ -32,7 +33,7 @@ function usesJsoncEslintParser(root: string) {
     return false;
   }
 
-  const eslintConfig = JSON.parse(fs.readFileSync(eslintConfigPath, 'utf8'));
+  const eslintConfig = JSON.parse(stripJsonComments(fs.readFileSync(eslintConfigPath, 'utf8')));
   const overrides: Array<{ files: string[]; parser?: string; rules: Record<string, unknown> }> =
     eslintConfig?.overrides ?? [];
 
