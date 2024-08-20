@@ -232,6 +232,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         />
         <div style={{ display: 'flex' }}>
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
         </div>
         {this.state.showAxisTitles && (

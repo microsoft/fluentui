@@ -80,8 +80,11 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
-          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
-          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          <div style={{ display: 'flex' }}>
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            &nbsp;&nbsp;
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          </div>
         </div>
 
         <div style={rootStyle}>

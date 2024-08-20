@@ -4,6 +4,91 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const ColorArea: ForwardRefComponent<ColorAreaProps>;
+
+// @public (undocumented)
+export const colorAreaClassNames: SlotClassNames<ColorAreaSlots>;
+
+// @public
+export type ColorAreaProps = ComponentProps<ColorAreaSlots> & {};
+
+// @public (undocumented)
+export type ColorAreaSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ColorAreaState = ComponentState<ColorAreaSlots>;
+
+// @public
+export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
+
+// @public (undocumented)
+export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
+
+// @public
+export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {};
+
+// @public (undocumented)
+export type ColorPickerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ColorPickerState = ComponentState<ColorPickerSlots>;
+
+// @public
+export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
+
+// @public (undocumented)
+export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
+
+// @public
+export type ColorSliderProps = ComponentProps<ColorSliderSlots> & {};
+
+// @public (undocumented)
+export type ColorSliderSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type ColorSliderState = ComponentState<ColorSliderSlots>;
+
+// @public
+export const renderColorArea_unstable: (state: ColorAreaState) => JSX.Element;
+
+// @public
+export const renderColorPicker_unstable: (state: ColorPickerState) => JSX.Element;
+
+// @public
+export const renderColorSlider_unstable: (state: ColorSliderState) => JSX.Element;
+
+// @public
+export const useColorArea_unstable: (props: ColorAreaProps, ref: React_2.Ref<HTMLDivElement>) => ColorAreaState;
+
+// @public
+export const useColorAreaStyles_unstable: (state: ColorAreaState) => ColorAreaState;
+
+// @public
+export const useColorPicker_unstable: (props: ColorPickerProps, ref: React_2.Ref<HTMLDivElement>) => ColorPickerState;
+
+// @public
+export const useColorPickerStyles_unstable: (state: ColorPickerState) => ColorPickerState;
+
+// @public
+export const useColorSlider_unstable: (props: ColorSliderProps, ref: React_2.Ref<HTMLDivElement>) => ColorSliderState;
+
+// @public
+export const useColorSliderStyles_unstable: (state: ColorSliderState) => ColorSliderState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
