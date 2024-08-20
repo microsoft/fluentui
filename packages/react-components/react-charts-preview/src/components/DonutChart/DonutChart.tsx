@@ -8,6 +8,7 @@ import { convertToLocaleString } from '../../utilities/locale-util';
 import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { IAccessibilityProps, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
+import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '../../../../react-components/src/index';
 import PopoverComponent from '../CommonComponents/Popover';
 import { useId } from '@fluentui/react-utilities';
@@ -23,7 +24,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
   (props, forwardedRef) => {
     let colors: ScaleOrdinal<string, {}>;
     let _rootElem: HTMLElement | null;
-    let _uniqText: string;
+    const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
     let _currentHoverElement: any;
     let _calloutId: string = useId('callout');
@@ -74,7 +75,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     // }, [props.width, props.height, _width, _height]);
 
     function _closeCallout() {
-      setShowHover(false);
+      setPopoverOpen(false);
     }
 
     function _elevateToMinimums(data: IChartDataPoint[]) {
@@ -147,7 +148,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
 
     function _focusCallback(data: IChartDataPoint, id: string, element: SVGPathElement): void {
       _currentHoverElement = element;
-      setShowHover(selectedLegend === '' || selectedLegend === data.legend);
+      setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
       setColor(data.color!);
@@ -162,7 +163,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       if (_calloutAnchorPoint !== data) {
         _calloutAnchorPoint = data;
         _currentHoverElement = e;
-        setShowHover(selectedLegend === '' || selectedLegend === data.legend);
+        setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setValue(data.data!.toString());
         setLegend(data.legend);
         setColor(data.color!);
@@ -183,18 +184,15 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
 
     function _handleChartMouseLeave() {
       _calloutAnchorPoint = null;
-      setShowHover(false);
-      if (isPopoverOpen) {
-        setPopoverOpen(false);
-      }
+      setPopoverOpen(false);
     }
 
     function _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
       const highlightedLegend = _getHighlightedLegend();
-      if (valueInsideDonut !== undefined && (highlightedLegend !== '' || showHover)) {
+      if (valueInsideDonut !== undefined && (highlightedLegend !== '' || isPopoverOpen)) {
         let legendValue = valueInsideDonut;
         data!.map((point: IChartDataPoint, index: number) => {
-          if (point.legend === highlightedLegend || (showHover && point.legend === legend)) {
+          if (point.legend === highlightedLegend || (isPopoverOpen && point.legend === legend)) {
             legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
           }
           return;
@@ -241,7 +239,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
             } else {
               defaultColor = getColorFromToken(item.color);
             }
-            console.log('color = ', defaultColor);
             return { ...item, defaultColor };
           })
         : [];
@@ -298,7 +295,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
                 activeArc={_getHighlightedLegend()}
                 focusedArcId={focusedArcId || ''}
                 href={props.href!}
-                calloutId={_calloutId}
                 valueInsideDonut={_toLocaleString(valueInsideDonut)}
                 showLabelsInPercent={props.showLabelsInPercent}
                 hideLabels={props.hideLabels}
