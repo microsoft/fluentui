@@ -3,7 +3,7 @@ import {  ILineChartProps, LineChart, IChartProps} from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
-import { Switch, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Label, Switch, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 import { ColorPicker, IColor } from '@fluentui/react';
 
 const calloutItemStyle = mergeStyles({
@@ -16,6 +16,7 @@ export const LCEvents = (props: ILineChartProps) => {
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
   const [customEventAnnotationColor, setCustomEventAnnotationColor] = React.useState<string | undefined>(undefined);
+  const inputRef = React.useRef<HTMLInputElement>(null);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -31,14 +32,6 @@ export const LCEvents = (props: ILineChartProps) => {
     },
     [allowMultipleShapes],
   );
-
-  const _onToggleCustomEventAnnotationColor = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
-    setCustomEventAnnotationColor(checked.checked ? '#111111' : undefined);
-  };
-
-  const _onChangeCustomEventAnnotationColor = (ev: React.SyntheticEvent<HTMLElement, Event>, color: IColor) => {
-    setCustomEventAnnotationColor(color.str);
-  };
 
   const data: IChartProps = {
     chartTitle: 'Line Chart',
@@ -152,14 +145,17 @@ export const LCEvents = (props: ILineChartProps) => {
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
-      <Checkbox
-        label="Use Custom Color for Event Annotation"
-        checked={customEventAnnotationColor !== undefined}
-        onChange={_onToggleCustomEventAnnotationColor}
+      <div style={{marginTop: '10px'}}>
+      <Label htmlFor="color-select">Use Custom Color for Event Annotation</Label>
+      <input
+        ref={inputRef}
+        color = {customEventAnnotationColor}
+        style={{marginLeft: '10px'}}
+        type="color"
+        id="color-select"
+        name="color-select"
       />
-      {customEventAnnotationColor && (
-        <ColorPicker onChange={_onChangeCustomEventAnnotationColor} color={customEventAnnotationColor} />
-      )}
+      </div>
       <div style={rootStyle}>
         <LineChart
           data={data}
