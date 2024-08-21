@@ -71,16 +71,15 @@ export function useEmblaCarousel(
       setActiveIndex(newIndex);
     };
     const handleReinit = () => {
-      const nodes = emblaApi.current?.slideNodes() ?? [];
+      const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
       const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
-      const slideNodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
       const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
 
       const data: CarouselUpdateData = {
         navItemsCount,
         activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
         groupIndexList,
-        slideNodes,
+        slideNodes: nodes,
       };
 
       for (const listener of listeners.current) {
@@ -139,18 +138,15 @@ export function useEmblaCarousel(
     () => ({
       scrollToRef: (element: HTMLElement, jump?: boolean) => {
         const cardElements = emblaApi.current?.slideNodes();
-        const index = cardElements?.indexOf(element) ?? 0;
         const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
-        let foundIndex = index;
-        if (groupIndexList) {
-          groupIndexList.forEach((group, _index) => {
-            if (group.includes(index)) {
-              foundIndex = _index;
-            }
-          });
-        }
-        emblaApi.current?.scrollTo(foundIndex, jump);
-        return foundIndex;
+        const cardIndex = cardElements?.indexOf(element) ?? 0;
+        const groupIndex = groupIndexList.findIndex(group => {
+          return group.includes(cardIndex);
+        });
+        const indexFocus = groupIndex ?? cardIndex;
+        emblaApi.current?.scrollTo(indexFocus, jump);
+
+        return indexFocus;
       },
       scrollToIndex: (index: number, jump?: boolean) => {
         emblaApi.current?.scrollTo(index, jump);

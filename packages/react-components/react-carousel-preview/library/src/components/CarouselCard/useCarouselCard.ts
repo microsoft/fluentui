@@ -38,7 +38,7 @@ export const useCarouselCard_unstable = (
   const focusAttrProps = isFocusable ? focusAttr : {};
 
   // We attach a unique card id if user does not provide
-  const cardId = useId(carouselCardClassNames.root);
+  const id = useId(carouselCardClassNames.root, props.id);
 
   React.useEffect(() => {
     const element = elementRef.current;
@@ -81,8 +81,8 @@ export const useCarouselCard_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
         role: 'tabpanel',
-        id: cardId,
         ...props,
+        id,
         onFocusCapture: _onFocus,
         ...focusAttrProps,
       }),

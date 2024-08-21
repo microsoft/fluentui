@@ -79,8 +79,8 @@ export const AutoplayControlled = () => {
           <CarouselButton navType="prev" />
           <CarouselAutoplayButton
             checked={enableAutoplay}
-            onClick={() => {
-              setEnableAutoplay(!enableAutoplay);
+            onCheckedChange={(_, data) => {
+              setEnableAutoplay(data.autoplay);
             }}
           />
           <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>

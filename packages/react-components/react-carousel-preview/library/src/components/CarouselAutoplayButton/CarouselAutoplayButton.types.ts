@@ -24,7 +24,7 @@ export type CarouselAutoplayButtonProps = ToggleButtonProps &
     /**
      * Callback that informs the user when internal autoplay value has changed
      */
-    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
 
     /**
      * Override aria label property to provide state

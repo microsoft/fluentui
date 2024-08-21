@@ -21,7 +21,7 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const { onAutoplayChange, checked, defaultChecked } = props;
+  const { onCheckedChange, checked, defaultChecked } = props;
   const [autoplay, setAutoplay] = useControllableState({
     state: checked,
     defaultState: defaultChecked,
@@ -41,7 +41,7 @@ export const useCarouselAutoplayButton_unstable = (
     }
     const newValue = !autoplay;
     setAutoplay(newValue);
-    onAutoplayChange?.(event, { event, type: 'click', autoplay: newValue });
+    onCheckedChange?.(event, { event, type: 'click', autoplay: newValue });
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
@@ -60,7 +60,6 @@ export const useCarouselAutoplayButton_unstable = (
         'aria-label': props.autoplayAriaLabel?.(autoplay),
         ...props,
         checked: autoplay,
-        defaultChecked,
         onClick: handleButtonClick,
       },
       ref as React.Ref<HTMLButtonElement>,
