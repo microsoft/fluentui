@@ -170,11 +170,13 @@ export const LCBasic = (props: ILineChartProps) => {
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
+      <div style = {{ marginTop: '10px'}}>
       <Switch
         label={showAxisTitles ? 'Hide axis titles' : 'Show axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
       />
+      </div>
       {showAxisTitles && (
         <div style={rootStyle}>
           <LineChart

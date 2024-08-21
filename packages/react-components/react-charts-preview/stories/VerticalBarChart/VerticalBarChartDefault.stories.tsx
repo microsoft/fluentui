@@ -6,7 +6,8 @@ import {
   ILineChartLineOptions,
 } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
+import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
+import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Switch } from '@fluentui/react-components';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
@@ -19,11 +20,6 @@ export const VCBasic = () => {
   const [hideLabels, setHideLabels] = React.useState<boolean>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
 
-  const options: IChoiceGroupOption[] = [
-    { key: 'basicExample', text: 'Basic Example' },
-    { key: 'calloutExample', text: 'Custom Callout Example' },
-  ];
-
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
   };
@@ -31,7 +27,7 @@ export const VCBasic = () => {
     setHeight(parseInt(e.target.value, 10));
   };
 
-  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
+  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData): void => {
     if (isCalloutselected) {
       setIsCalloutSelected(false);
     } else {
@@ -174,7 +170,12 @@ export const VCBasic = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={_onChange} label="Pick one" />
+      <Field label="Pick one">
+        <RadioGroup defaultValue="basicExample" onChange={_onChange}>
+          <Radio value="Basic Example" label="Basic Example" />
+          <Radio value="Custom Callout Example" label="Custom Callout Example" />
+        </RadioGroup>
+      </Field>
       <Checkbox
         label="use single color(This will have only one color)"
         checked={useSingleColor}

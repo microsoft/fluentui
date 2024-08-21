@@ -2,7 +2,9 @@ import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Checkbox, Stack, TextField } from '@fluentui/react';
+import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
+import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
 export const VCDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -17,12 +19,6 @@ export const VCDynamic = () => {
     border: 0,
   };
 
-  const xAxisTypeOptions: IChoiceGroupOption[] = [
-    { key: 'number', text: 'Number' },
-    { key: 'date', text: 'Date' },
-    { key: 'string', text: 'String' },
-  ];
-
   const _colors = [
     [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
     [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
@@ -31,7 +27,7 @@ export const VCDynamic = () => {
   ];
   let _colorIndex = 0;
   let _prevBarWidth = 16;
-  const initialXAxisType = xAxisTypeOptions[0].key;
+  const initialXAxisType = 'number';
   const initialDataSize = 5;
 
   let _changeData = (): void => {
@@ -82,9 +78,9 @@ export const VCDynamic = () => {
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Number(e.target.value));
   };
-  const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-    setXAxisType(option.key);
-    setDynamicData(_getData(dataSize, option.key));
+  const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData) => {
+    setXAxisType(option.value);
+    setDynamicData(_getData(dataSize, option.value));
   };
   const _onEnableReflowCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     setEnableReflow(checked);
@@ -142,9 +138,9 @@ export const VCDynamic = () => {
     <>
       <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
         </Stack>
         <Stack horizontal verticalAlign="center">
@@ -161,9 +157,9 @@ export const VCDynamic = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:&nbsp;
-          </Label>
+          </label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}
@@ -213,19 +209,20 @@ export const VCDynamic = () => {
           <Checkbox label="enableReflow" checked={enableReflow} onChange={_onEnableReflowCheckChange} />
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
         </Stack>
       </Stack>
       <div style={{ marginTop: '20px' }}>
-        <ChoiceGroup
-          options={xAxisTypeOptions}
-          selectedKey={xAxisType}
-          onChange={_onAxisTypeChange}
-          label="X-Axis type:"
-        />
+        <Field label="X-Axis type:">
+          <RadioGroup onChange={_onAxisTypeChange}>
+            <Radio value="number" label="Number" />
+            <Radio value="date" label="Date" />
+            <Radio value="string" label="String" />
+          </RadioGroup>
+        </Field>
       </div>
       <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart
