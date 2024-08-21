@@ -22,17 +22,34 @@ describe('TagPicker', () => {
     ],
   });
 
-  it('sets expand label', () => {
+  it('does not change expand label if label exists', () => {
     const { getByRole } = render(
       <TagPicker>
-        <TagPickerControl>
-          <TagPickerInput aria-label="Select Employees" aria-labelledby="Select Employees" />
+        <TagPickerControl
+          expandIcon={{ 'aria-label': 'Expand Icon aria-label', 'aria-labelledby': 'Expand Icon aria-labelledby' }}
+        >
+          <TagPickerInput aria-labelledby="Selected Employees" />
         </TagPickerControl>
         <TagPickerList />
       </TagPicker>,
     );
 
     const expandButton = getByRole('button');
-    expect(expandButton.getAttribute('aria-labelledby')).toContain('Select Employees');
+    expect(expandButton.getAttribute('aria-labelledby')).toContain('Expand Icon aria-label');
+    expect(expandButton.getAttribute('aria-labelledby')).toContain('Expand Icon aria-labelledby');
+  });
+
+  it('sets expand label if not labelled', () => {
+    const { getByRole } = render(
+      <TagPicker>
+        <TagPickerControl>
+          <TagPickerInput aria-labelledby="Selected Employees" />
+        </TagPickerControl>
+        <TagPickerList />
+      </TagPicker>,
+    );
+
+    const expandButton = getByRole('button');
+    expect(expandButton.getAttribute('aria-labelledby')).toContain('Selected Employees');
   });
 });
