@@ -23,7 +23,7 @@ import { convertPixelToPercent } from './slider-utilities.js';
  * @slot thumb - The slot for a custom thumb element.
  * @csspart thumb-container - The container element of the thumb.
  * @csspart track-container - The container element of the track.
- * @fire change - Fires a custom 'change' event when the value changes.
+ * @fires change - Fires a custom 'change' event when the value changes.
  *
  * @public
  */

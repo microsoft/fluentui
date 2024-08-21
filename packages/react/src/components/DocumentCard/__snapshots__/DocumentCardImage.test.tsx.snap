@@ -81,6 +81,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
             font-weight: normal;
             height: 42px;
             speak: none;
+            text-decoration: inherit;
             width: 42px;
           }
       data-icon-name="OneNoteLogo"
@@ -169,6 +170,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
             font-weight: normal;
             height: 120px;
             speak: none;
+            text-decoration: inherit;
             width: 120px;
           }
       data-icon-name="OneNoteLogo"
@@ -213,6 +215,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
             display: inline-block;
             font-size: 42px;
             height: 42px;
+            text-decoration: inherit;
             width: 42px;
           }
     />
@@ -261,6 +264,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
             font-weight: normal;
             height: 120px;
             speak: none;
+            text-decoration: inherit;
             width: 120px;
           }
       data-icon-name="OneNoteLogo"

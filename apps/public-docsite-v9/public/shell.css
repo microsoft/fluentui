@@ -70,8 +70,3 @@
   top: 0 !important;
   height: 100% !important;
 }
-
-/* Remove 'Published on Chromatic' banner */
-#back-to-chromatic {
-  display: none !important;
-}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { arc as d3Arc } from 'd3-shape';
-import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import {
   IGaugeChartProps,
   IGaugeChartSegment,
@@ -17,6 +17,7 @@ import {
   getAccessibleDataObject,
   getColorFromToken,
   getNextColor,
+  getNextGradient,
   pointTypes,
 } from '../../utilities/index';
 import { ILegend, LegendShape, Legends, Shape } from '../Legends/index';
@@ -236,28 +237,55 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
               {arcs.map((arc, index) => {
                 const segment = this._segments[arc.segmentIndex];
 
+                const clipId = getId('Arc_clip') + `${index}_${arc.startAngle}_${arc.endAngle}`;
+
                 return (
-                  <path
-                    key={index}
-                    d={arc.d}
-                    fill={segment.color}
-                    fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
-                    strokeWidth={this.state.focusedElement === segment.legend ? ARC_PADDING : 0}
-                    className={this._classNames.segment}
-                    {...getAccessibleDataObject(
-                      {
-                        ariaLabel: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant, true),
-                        ...segment.accessibilityData,
-                      },
-                      'img',
-                      true,
+                  <React.Fragment key={index}>
+                    <path
+                      d={arc.d}
+                      fill={this.props.enableGradient ? 'transparent' : segment.color}
+                      fillOpacity={this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1}
+                      strokeWidth={this.state.focusedElement === segment.legend ? ARC_PADDING : 0}
+                      className={this._classNames.segment}
+                      {...getAccessibleDataObject(
+                        {
+                          ariaLabel: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant, true),
+                          ...segment.accessibilityData,
+                        },
+                        'img',
+                        true,
+                      )}
+                      onFocus={e => this._handleFocus(e, segment.legend)}
+                      onBlur={this._handleBlur}
+                      onMouseEnter={e => this._handleMouseOver(e, segment.legend)}
+                      onMouseMove={e => this._handleMouseOver(e, segment.legend)}
+                      data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
+                    />
+
+                    {this.props.enableGradient && (
+                      <>
+                        <clipPath id={clipId}>
+                          <path d={arc.d} />
+                        </clipPath>
+                        <foreignObject x="-50%" y="-100%" width="100%" height="100%" clipPath={`url(#${clipId})`}>
+                          <div
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              background: this.props.enableGradient
+                                ? `conic-gradient(
+                                  from ${arc.startAngle}rad at 50% 100%,
+                                  ${segment.gradient![0]},
+                                  ${segment.gradient![1]} ${arc.endAngle - arc.startAngle}rad
+                                )`
+                                : segment.color,
+                              opacity: this._legendHighlighted(segment.legend) || this._noLegendHighlighted() ? 1 : 0.1,
+                            }}
+                          />
+                        </foreignObject>
+                      </>
                     )}
-                    onFocus={e => this._handleFocus(e, segment.legend)}
-                    onBlur={this._handleBlur}
-                    onMouseEnter={e => this._handleMouseOver(e, segment.legend)}
-                    onMouseMove={e => this._handleMouseOver(e, segment.legend)}
-                    data-is-focusable={this._legendHighlighted(segment.legend) || this._noLegendHighlighted()}
-                  />
+                  </React.Fragment>
                 );
               })}
               {this._renderNeedle()}
@@ -360,6 +388,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
           typeof segment.color !== 'undefined'
             ? getColorFromToken(segment.color, theme!.isInverted)
             : getNextColor(index, 0, theme!.isInverted),
+        gradient: segment.gradient ?? getNextGradient(index, 0, theme!.isInverted),
         accessibilityData: segment.accessibilityData,
         start: total - size,
         end: total,
@@ -377,6 +406,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
     }
 
     const arcGenerator = d3Arc()
+      .cornerRadius(this.props.roundCorners ? 3 : 0)
       .padAngle(ARC_PADDING / this._outerRadius)
       .padRadius(this._outerRadius);
     const rtlSafeSegments = this._isRTL ? Array.from(segments).reverse() : segments;
@@ -393,6 +423,8 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       return {
         d,
         segmentIndex: this._isRTL ? segments.length - 1 - index : index,
+        startAngle: prevAngle - (segment.size / (total - minValue)) * Math.PI,
+        endAngle,
       };
     });
 
@@ -445,10 +477,14 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       return null;
     }
 
-    const legends: ILegend[] = this._segments.map(segment => {
+    const legends: ILegend[] = this._segments.map((segment, index) => {
+      const color: string = this.props.enableGradient
+        ? segment.gradient?.[0] || getNextGradient(index, 0, this.props.theme!.isInverted)[0]
+        : segment.color || getNextColor(index, 0, this.props.theme!.isInverted);
+
       return {
         title: segment.legend,
-        color: segment.color!,
+        color,
         action: () => {
           if (this.state.selectedLegend === segment.legend) {
             this.setState({ selectedLegend: '' });
@@ -525,7 +561,7 @@ export class GaugeChartBase extends React.Component<IGaugeChartProps, IGaugeChar
       const yValue: IYValue = {
         legend: segment.legend,
         y: getSegmentLabel(segment, this._minValue, this._maxValue, this.props.variant),
-        color: segment.color,
+        color: this.props.enableGradient ? segment.gradient?.[0] : segment.color,
       };
       return yValue;
     });

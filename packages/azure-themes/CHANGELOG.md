@@ -1,8 +1,46 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 01 Aug 2024 21:38:31 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2024 07:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.94](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.94)
+
+Wed, 21 Aug 2024 07:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.93..@fluentui/azure-themes_v8.6.94)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.6 ([commit](https://github.com/microsoft/fluentui/commit/104fbc1f50ba51e29023a5f7a76e8de26e972ffa) by beachball)
+
+## [8.6.93](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.93)
+
+Thu, 15 Aug 2024 07:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.92..@fluentui/azure-themes_v8.6.93)
+
+### Patches
+
+- Bump @fluentui/react to v8.120.5 ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by beachball)
+
+## [8.6.92](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.92)
+
+Wed, 14 Aug 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.91..@fluentui/azure-themes_v8.6.92)
+
+### Patches
+
+- disabledfocus button fix and detailslist indetermineate UI feature ([PR #30420](https://github.com/microsoft/fluentui/pull/30420) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.120.4 ([commit](https://github.com/microsoft/fluentui/commit/740b0b4583fe0f5cd474d240a2c849c7b5e97c45) by beachball)
+
+## [8.6.91](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.91)
+
+Thu, 08 Aug 2024 07:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.90..@fluentui/azure-themes_v8.6.91)
+
+### Patches
+
+- fix: ship bundled and umd code to registry ([PR #32212](https://github.com/microsoft/fluentui/pull/32212) by martinhochel@microsoft.com)
+- Bump @fluentui/react to v8.120.3 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
 
 ## [8.6.90](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.90)
 

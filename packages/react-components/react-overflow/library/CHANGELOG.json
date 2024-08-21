@@ -2,6 +2,21 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 08:22:12 GMT",
+      "tag": "@fluentui/react-overflow_v9.1.27",
+      "version": "9.1.27",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-overflow_v9.1.25",
       "version": "9.1.25",

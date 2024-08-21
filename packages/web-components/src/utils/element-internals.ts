@@ -23,13 +23,12 @@ export function toggleState(elementInternals: ElementInternals, state: string, f
     elementInternals.shadowRoot!.host.toggleAttribute(`state--${state}`, force);
     return;
   }
-
-  force = force ?? !elementInternals.states.has(state);
-
-  if (force) {
+  // @ts-expect-error - Baseline 2024
+  if (force ?? !elementInternals.states.has(state)) {
+    // @ts-expect-error - Baseline 2024
     elementInternals.states.add(state);
     return;
   }
-
+  // @ts-expect-error - Baseline 2024
   elementInternals.states.delete(state);
 }

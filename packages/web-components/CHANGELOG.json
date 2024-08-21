@@ -2,6 +2,111 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2024 04:07:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.59",
+      "version": "3.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f1015092b1d1fe1aa9a421a2725af3c82dc392d",
+            "comment": "feat: update fast-element to latest stable version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2024 04:06:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.58",
+      "version": "3.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "07f70bdc0c1d0718ff35b3aef8f7ac87635520e3",
+            "comment": "feat: enabling setting theme on an individual element and unsetting themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2024 04:08:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.57",
+      "version": "3.0.0-beta.57",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8492a7ebd12270b49dd3083671a859ada31b395b",
+            "comment": "remove web types package and configuration"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3d0b2597d3b41868bf15d2c14b15fe6873b0b5c2",
+            "comment": "export BaseCheckbox class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.56",
+      "version": "3.0.0-beta.56",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4aae6edaf04c16be98d5ee2121ea366a2a9ceb98",
+            "comment": "update tests to be async"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf96935c37fddfdc7274787e72ea6566bda01458",
+            "comment": "feat(web-components): add fluent-textarea component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbea17157bcc0a705ddca4264fec4d18d5fa13a6",
+            "comment": "export BaseAnchor class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2024 04:07:16 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.55",
+      "version": "3.0.0-beta.55",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c971f0fec783527bebbafbcd687034e3f0aa4ca3",
+            "comment": "[chore]: [rating-display] move size, color and generate icons out of base class"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 07 Aug 2024 04:08:14 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.54",
       "version": "3.0.0-beta.54",

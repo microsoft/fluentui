@@ -1,6 +1,10 @@
-For easy migration, we have created a List v0 Shim component, which is a new implementation of List, which respects new paradigms introduced in v9 but keeps the API and experience as close to [List v0](https://fluentsite.z22.web.core.windows.net/components/list) as possible.
+To unlock the migration to V9, we have created the List v0 Shim component, which is a stepping stone implementation of List, that respects new paradigms introduced in v9 but keeps the API and experience as close to [List v0](https://fluentsite.z22.web.core.windows.net/components/list) as possible.
 
-This will help you migrate from v0 to the new v9 with ease.
+## Important, please read
+
+> **⚠️ At this point the proper V9 implementation of the [List Component](https://react.fluentui.dev/?path=/docs/preview-components-list--default) is available in preview and should be used instead of this shim.**
+
+> If you have used the Migration Shim List in the past and are here just for the docs reference, feel free to continue reading.
 
 ## Composition, also known as "Children API"
 

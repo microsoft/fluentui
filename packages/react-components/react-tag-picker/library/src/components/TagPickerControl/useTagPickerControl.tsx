@@ -39,6 +39,7 @@ export const useTagPickerControl_unstable = (
   const appearance = useTagPickerContext_unstable(ctx => ctx.appearance);
   const disabled = useTagPickerContext_unstable(ctx => ctx.disabled);
   const invalid = useFieldContext_unstable()?.validationState === 'error';
+  const noPopover = useTagPickerContext_unstable(ctx => ctx.noPopover ?? false);
 
   const innerRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLSpanElement>(null);
@@ -53,7 +54,7 @@ export const useTagPickerControl_unstable = (
   }
 
   const expandIcon = slot.optional(props.expandIcon, {
-    renderByDefault: true,
+    renderByDefault: !noPopover,
     defaultProps: {
       'aria-expanded': open,
       children: <ChevronDownRegular />,
@@ -107,7 +108,7 @@ export const useTagPickerControl_unstable = (
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, targetRef, innerRef),
-        'aria-owns': open ? popoverId : undefined,
+        'aria-owns': open && !noPopover ? popoverId : undefined,
         ...props,
         onMouseDown: handleMouseDown,
       }),

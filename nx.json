@@ -41,12 +41,12 @@
       "cache": true
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
       "cache": true
     },
     "test-integration": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build", "^build"],
       "cache": true
     },
     "test-ssr": {

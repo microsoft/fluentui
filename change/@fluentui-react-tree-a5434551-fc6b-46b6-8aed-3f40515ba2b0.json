@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove unnecessary aria-hidden attributes that were causing accessibility issues",
+  "packageName": "@fluentui/react-tree",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

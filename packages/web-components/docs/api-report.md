@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="web" />
-
 import { CaptureType } from '@microsoft/fast-element';
 import { CSSDirective } from '@microsoft/fast-element';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -118,7 +116,6 @@ export const accordionStyles: ElementStyles;
 export const accordionTemplate: ElementViewTemplate<Accordion>;
 
 // Warning: (ae-different-release-tags) This symbol has another declaration with a different release tag
-// Warning: (ae-forgotten-export) The symbol "BaseAnchor" needs to be exported by the entry point index.d.ts
 // Warning: (ae-internal-mixed-release-tag) Mixed release tags are not allowed for "AnchorButton" because one of its declarations is marked as @internal
 //
 // @public
@@ -452,6 +449,30 @@ export class BaseAccordionItem extends FASTElement {
 }
 
 // @public
+export class BaseAnchor extends FASTElement {
+    constructor();
+    // @internal
+    clickHandler(e: PointerEvent): boolean;
+    // (undocumented)
+    connectedCallback(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
+    download?: string;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    handleChange(source: any, propertyName: string): void;
+    href?: string;
+    hreflang?: string;
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    ping?: string;
+    referrerpolicy?: string;
+    rel: string;
+    target?: AnchorTarget;
+    type?: string;
+}
+
+// @public
 export class BaseAvatar extends FASTElement {
     constructor();
     active?: AvatarActive | undefined;
@@ -496,6 +517,62 @@ export class BaseButton extends FASTElement {
     // @internal
     typeChanged(previous: ButtonType, next: ButtonType): void;
     value?: string;
+}
+
+// @public
+export class BaseCheckbox extends FASTElement {
+    autofocus: boolean;
+    get checked(): boolean;
+    set checked(next: boolean);
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialChecked?: boolean;
+    // @internal
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(prev: string, next: string): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    keyupHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
+    name: string;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    protected requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    protected setAriaChecked(value?: boolean): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    toggleChecked(force?: boolean): void;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
 }
 
 // @public
@@ -569,6 +646,22 @@ export class BaseProgressBar extends FASTElement {
 }
 
 // @public
+export class BaseRatingDisplay extends FASTElement {
+    constructor();
+    count?: number;
+    // @internal
+    elementInternals: ElementInternals;
+    // @internal
+    get formattedCount(): string;
+    // @internal
+    generateIcons(): string;
+    protected getMaxIcons(): number;
+    protected getSelectedValue(): number;
+    max?: number;
+    value?: number;
+}
+
+// @public
 export class BaseSpinner extends FASTElement {
     constructor();
     // @internal
@@ -597,6 +690,85 @@ export class BaseTablist extends FASTElement {
     tabs: HTMLElement[];
     // @internal (undocumented)
     protected tabsChanged(): void;
+}
+
+// @public
+export class BaseTextArea extends FASTElement {
+    constructor();
+    autocomplete?: TextAreaAutocomplete;
+    autoResize: boolean;
+    // (undocumented)
+    protected autoResizeChanged(): void;
+    // @internal (undocumented)
+    autoSizerEl?: HTMLDivElement;
+    checkValidity(): boolean;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal
+    controlEl: HTMLTextAreaElement;
+    // @internal
+    defaultSlottedNodes: Node[];
+    // (undocumented)
+    protected defaultSlottedNodesChanged(): void;
+    get defaultValue(): string;
+    set defaultValue(next: string);
+    dirName?: string;
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+    // @internal
+    formResetCallback(): void;
+    // @internal (undocumented)
+    handleControlChange(): void;
+    // @internal (undocumented)
+    handleControlInput(): void;
+    // @internal (undocumented)
+    handleControlSelect(): void;
+    initialForm?: string;
+    // @internal
+    labelEl: HTMLLabelElement;
+    get labels(): NodeList;
+    // @internal
+    labelSlottedNodes: Label[];
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    maxLength?: number;
+    minLength?: number;
+    name: string;
+    placeholder?: string;
+    readOnly: boolean;
+    // (undocumented)
+    protected readOnlyChanged(): void;
+    reportValidity(): boolean;
+    required: boolean;
+    // (undocumented)
+    protected requiredChanged(): void;
+    resize: TextAreaResize;
+    // (undocumented)
+    protected resizeChanged(prev: TextAreaResize | undefined, next: TextAreaResize | undefined): void;
+    select(): void;
+    setCustomValidity(message: string | null): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    spellcheck: boolean;
+    get textLength(): number;
+    get type(): 'textarea';
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(next: string);
+    get willValidate(): boolean;
 }
 
 // @public
@@ -767,8 +939,6 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-//
 // @public
 export class Checkbox extends BaseCheckbox {
     constructor();
@@ -2554,7 +2724,7 @@ export class Menu extends FASTElement {
     setComponent(): void;
     slottedMenuList: MenuList[];
     slottedTriggers: HTMLElement[];
-    toggleHandler: (e: Event | ToggleEvent) => void;
+    toggleHandler: (e: Event) => void;
     toggleMenu: () => void;
     triggerKeydownHandler: (e: KeyboardEvent) => boolean | void;
 }
@@ -2636,7 +2806,7 @@ export class MenuItem extends FASTElement {
     // @internal (undocumented)
     submenu: HTMLElement | undefined;
     // @internal
-    toggleHandler: (e: ToggleEvent | Event) => void;
+    toggleHandler: (e: Event) => void;
 }
 
 // @internal
@@ -2723,15 +2893,16 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
-export class ProgressBar extends BaseProgressBar {
+class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined): void;
     thickness?: ProgressBarThickness;
     thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined): void;
 }
+export { ProgressBar_2 as ProgressBar }
 
 // @public
-export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar>;
+export const ProgressBarDefinition: FASTElementDefinition<typeof ProgressBar_2>;
 
 // @public
 export const ProgressBarShape: {
@@ -2748,7 +2919,7 @@ export const ProgressBarStyles: ElementStyles;
 // Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export const ProgressBarTemplate: ElementViewTemplate<ProgressBar>;
+export const ProgressBarTemplate: ElementViewTemplate<ProgressBar_2>;
 
 // @public
 export const ProgressBarThickness: {
@@ -2887,22 +3058,16 @@ export const RadioStyles: ElementStyles;
 export const RadioTemplate: ElementViewTemplate<Radio>;
 
 // @public
-export class RatingDisplay extends FASTElement {
-    constructor();
+export class RatingDisplay extends BaseRatingDisplay {
     color?: RatingDisplayColor;
     colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void;
     compact: boolean;
-    count?: number;
-    // @internal
-    elementInternals: ElementInternals;
-    // @internal
-    get formattedCount(): string;
-    // @internal
-    generateIcons(): string;
-    max?: number;
+    // @override
+    protected getMaxIcons(): number;
+    // @override
+    protected getSelectedValue(): number;
     size?: RatingDisplaySize;
     sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
-    value?: number;
 }
 
 // @public
@@ -2944,12 +3109,12 @@ export const roleForMenuItem: {
 // Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export const setTheme: (theme: Theme) => void;
+export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
-export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
+// @internal @deprecated (undocumented)
+export function setThemeFor(element: HTMLElement, theme: Theme | null): void;
 
 // @public
 export const shadow16 = "var(--shadow16)";
@@ -3538,6 +3703,89 @@ export const TextAlign: {
 
 // @public
 export type TextAlign = ValuesOf<typeof TextAlign>;
+
+// Warning: (ae-missing-release-tag) "TextArea" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export class TextArea extends BaseTextArea {
+    appearance: TextAreaAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: TextAreaAppearance | undefined, next: TextAreaAppearance | undefined): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    // @internal (undocumented)
+    handleChange(_: any, propertyName: string): void;
+    // (undocumented)
+    protected labelSlottedNodesChanged(): void;
+    size?: TextAreaSize;
+    // (undocumented)
+    protected sizeChanged(prev: TextAreaSize | undefined, next: TextAreaSize | undefined): void;
+}
+
+// Warning: (ae-missing-release-tag) "TextAreaAppearance" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAppearance: {
+    readonly outline: "outline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public (undocumented)
+export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaAutocomplete: {
+    readonly on: "on";
+    readonly off: "off";
+};
+
+// @public (undocumented)
+export type TextAreaAutocomplete = ValuesOf<typeof TextAreaAutocomplete>;
+
+// @public
+export const TextAreaDefinition: FASTElementDefinition<typeof TextArea>;
+
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+// Warning: (ae-missing-release-tag) "TextAreaResize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaResize: {
+    readonly none: "none";
+    readonly both: "both";
+    readonly horizontal: "horizontal";
+    readonly vertical: "vertical";
+};
+
+// @public (undocumented)
+export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
+
+// Warning: (ae-missing-release-tag) "TextAreaSize" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const TextAreaSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type TextAreaSize = ValuesOf<typeof TextAreaSize>;
+
+// @public
+export const TextAreaStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextAreaTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextAreaTemplate: ElementViewTemplate<TextArea>;
 
 // @public
 export const TextDefinition: FASTElementDefinition<typeof Text_2>;

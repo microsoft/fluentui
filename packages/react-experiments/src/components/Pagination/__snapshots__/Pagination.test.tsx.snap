@@ -139,6 +139,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -318,6 +319,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -392,7 +394,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -517,7 +518,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -642,7 +642,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -767,7 +766,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -892,7 +890,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
             min-height: 32px;
             min-width: 32px;
             outline: transparent;
@@ -1124,6 +1121,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1302,6 +1300,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -1483,6 +1482,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -1630,6 +1630,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -2021,6 +2022,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -2168,6 +2170,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -2313,6 +2316,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;

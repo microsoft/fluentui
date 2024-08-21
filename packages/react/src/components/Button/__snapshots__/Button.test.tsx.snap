@@ -264,6 +264,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -322,6 +323,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             ms-Button-menuIcon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -537,7 +539,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 32px;
+          min-height: 32px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -761,6 +763,7 @@ exports[`Button renders IconButton correctly 1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;
@@ -811,7 +814,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 32px;
+          min-height: 32px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;

@@ -287,6 +287,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -444,6 +445,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -769,6 +771,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -926,6 +929,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

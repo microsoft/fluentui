@@ -1,6 +1,6 @@
 import { spinalCase } from '@microsoft/fast-web-utilities';
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 
 const proxyAttributes = {
   href: 'href',

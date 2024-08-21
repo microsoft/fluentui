@@ -54,13 +54,28 @@ export function fullSourcePlugin(babel: typeof Babel, options: BabelPluginOption
     name: PLUGIN_NAME,
     visitor: {
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      VariableDeclarator(path) {
+      ExportNamedDeclaration(path) {
+        const declaration = path.node.declaration;
+
+        // Check if it's a function declaration
         if (
-          t.isArrowFunctionExpression(path.node.init) &&
-          t.isIdentifier(path.node.id) &&
-          isComponentLikeName(path.node.id.name)
+          t.isFunctionDeclaration(declaration) &&
+          t.isIdentifier(declaration.id) &&
+          isComponentLikeName(declaration.id.name)
         ) {
-          storyName = path.node.id.name;
+          storyName = declaration.id.name;
+          return;
+        }
+
+        // Check if it's a variable declaration
+        if (
+          t.isVariableDeclaration(declaration) &&
+          declaration.declarations.length === 1 &&
+          t.isIdentifier(declaration.declarations[0].id) &&
+          isComponentLikeName(declaration.declarations[0].id.name)
+        ) {
+          storyName = declaration.declarations[0].id.name;
+          return;
         }
       },
       // eslint-disable-next-line @typescript-eslint/naming-convention
