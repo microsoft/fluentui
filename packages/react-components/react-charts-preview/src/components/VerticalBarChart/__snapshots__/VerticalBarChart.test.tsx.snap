@@ -16,40 +16,31 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -84,8 +75,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -116,8 +107,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -148,8 +139,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -181,40 +172,31 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -249,8 +231,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -281,8 +263,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -313,8 +295,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -346,40 +328,31 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -414,8 +387,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -446,8 +419,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -478,8 +451,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -511,40 +484,31 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
 </div>
 `;
 
@@ -558,40 +522,31 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -626,8 +581,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -658,8 +613,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -690,8 +645,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -723,91 +678,82 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, NaN)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, NaN)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
       <g>
-        <g>
-          <rect
-            aria-label="2020/04/30. First, 10%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={NaN}
-            id="_VBC_bar_33-0"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={48}
-            y={NaN}
-          />
-        </g>
-        <g>
-          <rect
-            aria-label="2020/04/30. Second, 20%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#002050"
-            height={NaN}
-            id="_VBC_bar_33-1"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={18.384615384615387}
-            y={NaN}
-          />
-        </g>
-        <g>
-          <rect
-            aria-label="2020/04/30. Third, 37%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#00188f"
-            height={NaN}
-            id="_VBC_bar_33-2"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={-26.03846153846154}
-            y={NaN}
-          />
-        </g>
+        <rect
+          aria-label="2020/04/30. First, 10%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="aqua"
+          height={NaN}
+          id="_VBC_bar_28-0"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={48}
+          y={NaN}
+        />
       </g>
-    </svg>
-  </div>
+      <g>
+        <rect
+          aria-label="2020/04/30. Second, 20%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="blue"
+          height={NaN}
+          id="_VBC_bar_28-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={18.384615384615387}
+          y={NaN}
+        />
+      </g>
+      <g>
+        <rect
+          aria-label="2020/04/30. Third, 37%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="navy"
+          height={NaN}
+          id="_VBC_bar_28-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={-26.03846153846154}
+          y={NaN}
+        />
+      </g>
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -842,8 +788,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -874,8 +820,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -906,8 +852,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -939,91 +885,82 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, NaN)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, NaN)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
       <g>
-        <g>
-          <rect
-            aria-label="2020/04/30. First, 10%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#0078d4"
-            height={NaN}
-            id="_VBC_bar_40-0"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={48}
-            y={NaN}
-          />
-        </g>
-        <g>
-          <rect
-            aria-label="2020/04/30. Second, 20%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#002050"
-            height={NaN}
-            id="_VBC_bar_40-1"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={18.384615384615387}
-            y={NaN}
-          />
-        </g>
-        <g>
-          <rect
-            aria-label="2020/04/30. Third, 37%."
-            className="fui-vbc__opacityChangeOnHover"
-            data-is-focusable={true}
-            fill="#00188f"
-            height={NaN}
-            id="_VBC_bar_40-2"
-            onBlur={[Function]}
-            onFocus={[Function]}
-            onMouseLeave={[Function]}
-            onMouseOver={[Function]}
-            role="img"
-            width={1}
-            x={-26.03846153846154}
-            y={NaN}
-          />
-        </g>
+        <rect
+          aria-label="2020/04/30. First, 10%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="aqua"
+          height={NaN}
+          id="_VBC_bar_34-0"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={48}
+          y={NaN}
+        />
       </g>
-    </svg>
-  </div>
+      <g>
+        <rect
+          aria-label="2020/04/30. Second, 20%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="blue"
+          height={NaN}
+          id="_VBC_bar_34-1"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={18.384615384615387}
+          y={NaN}
+        />
+      </g>
+      <g>
+        <rect
+          aria-label="2020/04/30. Third, 37%."
+          className="fui-vbc__opacityChangeOnHover"
+          data-is-focusable={true}
+          fill="navy"
+          height={NaN}
+          id="_VBC_bar_34-2"
+          onBlur={[Function]}
+          onFocus={[Function]}
+          onMouseLeave={[Function]}
+          onMouseOver={[Function]}
+          role="img"
+          width={1}
+          x={-26.03846153846154}
+          y={NaN}
+        />
+      </g>
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -1058,8 +995,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -1090,8 +1027,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -1122,8 +1059,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -1155,40 +1092,31 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
   <div
     id="defaultTabbableElement_"
   />
-  <div
-    className="ms-FocusZone css-109 fui-cart__chartWrapper"
-    data-focuszone-id="FocusZone0"
-    data-tabster="{\\"uncontrolled\\": {}}"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
+  <svg
+    height={0}
+    style={
+      Object {
+        "display": "block",
       }
-      width={0}
-    >
-      <g
-        className="fui-cart__xAxis"
-        id="xAxisGElementchart_"
-        transform="translate(0, -35)"
-      />
-      <g
-        className="fui-cart__yAxis"
-        id="yAxisGElementchart_"
-        transform="translate(40, 0)"
-      />
-      <g>
-         
-         
-         
-      </g>
-    </svg>
-  </div>
+    }
+    width={0}
+  >
+    <g
+      className="fui-cart__xAxis"
+      id="xAxisGElementchart_"
+      transform="translate(0, -35)"
+    />
+    <g
+      className="fui-cart__yAxis"
+      id="yAxisGElementchart_"
+      transform="translate(40, 0)"
+    />
+    <g>
+       
+       
+       
+    </g>
+  </svg>
   <div
     className="fui-cart__legendContainer"
   >
@@ -1223,8 +1151,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#0078d4",
-              "--rect-borderColor": "#0078d4",
+              "--rect-backgroundColor": "aqua",
+              "--rect-borderColor": "aqua",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -1255,8 +1183,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#002050",
-              "--rect-borderColor": "#002050",
+              "--rect-backgroundColor": "blue",
+              "--rect-borderColor": "blue",
               "--rect-content": "",
               "--rect-height": "12px",
             }
@@ -1287,8 +1215,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           role="option"
           style={
             Object {
-              "--rect-backgroundColor": "#00188f",
-              "--rect-borderColor": "#00188f",
+              "--rect-backgroundColor": "navy",
+              "--rect-borderColor": "navy",
               "--rect-content": "",
               "--rect-height": "12px",
             }

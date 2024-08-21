@@ -10,203 +10,311 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              13k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              38k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50k
-            </text>
-          </g>
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_144-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
         </g>
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="47.400000000000006"
-              id="_VBC_bar_161-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="209.6"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="56"
-              y="203.6"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#002050"
-              height="237"
-              id="_VBC_bar_161-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="262.61538461538464"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="270.61538461538464"
-              y="14"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="142.2"
-              id="_VBC_bar_161-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="584.5384615384615"
-              y="114.80000000000001"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="592.5384615384615"
-              y="108.80000000000001"
-            >
-              30.0k
-            </text>
-          </g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_144-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_144-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -230,7 +338,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
@@ -251,7 +359,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
@@ -272,7 +380,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
@@ -301,22 +409,536 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
+      >
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_150-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_150-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
+        </g>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_150-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
+    <div
+      class="fui-cart__legendContainer"
+    >
+      <div
+        aria-label="Legends"
+        aria-multiselectable="false"
+        class="fui-legend__root"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        role="listbox"
+        style="justify-content: unset; flex-wrap: wrap;"
+      >
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+        >
+          <button
+            aria-label="First"
+            aria-posinset="1"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              First
+            </div>
+          </button>
+          <button
+            aria-label="Second"
+            aria-posinset="2"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Second
+            </div>
+          </button>
+          <button
+            aria-label="Third"
+            aria-posinset="3"
+            aria-selected="false"
+            aria-setsize="3"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              Third
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Theme Change Should reflect theme change 1`] = `
+<div>
+  <div
+    class="body-109"
+  >
+    <div
+      class="fui-cart__root"
+      id="chart_"
+      role="presentation"
+    >
+      <div
+        id="defaultTabbableElement_"
+      />
       <svg
-        focusable="false"
         height="292"
         style="display: block;"
         width="650"
       >
         <g
           class="fui-cart__xAxis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
           id="xAxisGElementchart_"
+          text-anchor="middle"
           transform="translate(0, 257)"
-        />
+        >
+          <path
+            class="domain"
+            d="M56.5,6V0.5H614.5V6"
+            stroke="currentColor"
+          />
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(56.5,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              0
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(163.80769230769232,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              5,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(271.11538461538464,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              10,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(378.4230769230769,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              15,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(485.7307692307692,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              20,000
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(593.0384615384615,0)"
+          >
+            <line
+              stroke="currentColor"
+              y2="6"
+            />
+            <text
+              aria-hidden="true"
+              dy="0.71em"
+              fill="currentColor"
+              y="16"
+            >
+              25,000
+            </text>
+          </g>
+        </g>
         <g
           class="fui-cart__yAxis"
           fill="none"
@@ -428,11 +1050,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-label="2020/04/30. First, 10%."
               class="fui-vbc__opacityChangeOnHover"
               data-is-focusable="true"
-              fill="#0078d4"
+              fill="aqua"
               height="47.400000000000006"
-              id="_VBC_bar_168-0"
+              id="_VBC_bar_156-0"
               role="img"
-              tabindex="0"
               width="16"
               x="48"
               y="209.6"
@@ -452,11 +1073,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-label="2020/04/30. Second, 20%."
               class="fui-vbc__opacityChangeOnHover"
               data-is-focusable="true"
-              fill="#002050"
+              fill="blue"
               height="237"
-              id="_VBC_bar_168-1"
+              id="_VBC_bar_156-1"
               role="img"
-              tabindex="-1"
               width="16"
               x="262.61538461538464"
               y="20"
@@ -476,11 +1096,10 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               aria-label="2020/04/30. Third, 37%."
               class="fui-vbc__opacityChangeOnHover"
               data-is-focusable="true"
-              fill="#00188f"
+              fill="navy"
               height="142.2"
-              id="_VBC_bar_168-2"
+              id="_VBC_bar_156-2"
               role="img"
-              tabindex="-1"
               width="16"
               x="584.5384615384615"
               y="114.80000000000001"
@@ -497,301 +1116,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           </g>
         </g>
       </svg>
-    </div>
-    <div
-      class="fui-cart__legendContainer"
-    >
-      <div
-        aria-label="Legends"
-        aria-multiselectable="false"
-        class="fui-legend__root"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-        role="listbox"
-        style="justify-content: unset; flex-wrap: wrap;"
-      >
-        <div
-          class="fui-Overflow fui-legend__resizableArea"
-        >
-          <button
-            aria-label="First"
-            aria-posinset="1"
-            aria-selected="false"
-            aria-setsize="3"
-            class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              First
-            </div>
-          </button>
-          <button
-            aria-label="Second"
-            aria-posinset="2"
-            aria-selected="false"
-            aria-setsize="3"
-            class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Second
-            </div>
-          </button>
-          <button
-            aria-label="Third"
-            aria-posinset="3"
-            aria-selected="false"
-            aria-setsize="3"
-            class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
-            data-overflow-item=""
-            role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
-            type="button"
-          >
-            <div
-              class="fui-legend__rect"
-            />
-            <div
-              class="fui-legend__text"
-            >
-              Third
-            </div>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Theme Change Should reflect theme change 1`] = `
-<div>
-  <div
-    class="body-110"
-  >
-    <div
-      class="fui-cart__root"
-      id="chart_"
-      role="presentation"
-    >
-      <div
-        id="defaultTabbableElement_"
-      />
-      <div
-        class="ms-FocusZone css-109 fui-cart__chartWrapper"
-        data-focuszone-id="FocusZone3"
-        data-tabster="{\\"uncontrolled\\": {}}"
-      >
-        <svg
-          focusable="false"
-          height="292"
-          style="display: block;"
-          width="650"
-        >
-          <g
-            class="fui-cart__xAxis"
-            id="xAxisGElementchart_"
-            transform="translate(0, 257)"
-          />
-          <g
-            class="fui-cart__yAxis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            id="yAxisGElementchart_"
-            text-anchor="end"
-            transform="translate(40, 0)"
-          >
-            <path
-              class="domain"
-              d="M-6,257.5H0.5V20.5H-6"
-              stroke="currentColor"
-            />
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,257.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                0
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,198.25)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                13k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,139)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                25k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,79.75)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                38k
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,20.5)"
-            >
-              <line
-                stroke="currentColor"
-                x2="590"
-              />
-              <text
-                aria-hidden="true"
-                dy="0.32em"
-                fill="currentColor"
-                x="-10"
-              >
-                50k
-              </text>
-            </g>
-          </g>
-          <g>
-            <g>
-              <rect
-                aria-label="2020/04/30. First, 10%."
-                class="fui-vbc__opacityChangeOnHover"
-                data-is-focusable="true"
-                fill="#0078d4"
-                height="47.400000000000006"
-                id="_VBC_bar_175-0"
-                role="img"
-                tabindex="0"
-                width="16"
-                x="48"
-                y="209.6"
-              />
-              <text
-                aria-hidden="true"
-                class="fui-vbc__barLabel"
-                text-anchor="middle"
-                x="56"
-                y="203.6"
-              >
-                10.0k
-              </text>
-            </g>
-            <g>
-              <rect
-                aria-label="2020/04/30. Second, 20%."
-                class="fui-vbc__opacityChangeOnHover"
-                data-is-focusable="true"
-                fill="#002050"
-                height="237"
-                id="_VBC_bar_175-1"
-                role="img"
-                tabindex="-1"
-                width="16"
-                x="262.61538461538464"
-                y="20"
-              />
-              <text
-                aria-hidden="true"
-                class="fui-vbc__barLabel"
-                text-anchor="middle"
-                x="270.61538461538464"
-                y="14"
-              >
-                50.0k
-              </text>
-            </g>
-            <g>
-              <rect
-                aria-label="2020/04/30. Third, 37%."
-                class="fui-vbc__opacityChangeOnHover"
-                data-is-focusable="true"
-                fill="#00188f"
-                height="142.2"
-                id="_VBC_bar_175-2"
-                role="img"
-                tabindex="-1"
-                width="16"
-                x="584.5384615384615"
-                y="114.80000000000001"
-              />
-              <text
-                aria-hidden="true"
-                class="fui-vbc__barLabel"
-                text-anchor="middle"
-                x="592.5384615384615"
-                y="108.80000000000001"
-              >
-                30.0k
-              </text>
-            </g>
-          </g>
-        </svg>
-      </div>
       <div
         class="fui-cart__legendContainer"
       >
@@ -815,7 +1139,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               data-is-focusable="true"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+              style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
               type="button"
             >
               <div
@@ -836,7 +1160,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               data-is-focusable="true"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+              style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
               type="button"
             >
               <div
@@ -857,7 +1181,7 @@ exports[`Theme Change Should reflect theme change 1`] = `
               data-is-focusable="true"
               data-overflow-item=""
               role="option"
-              style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+              style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
               type="button"
             >
               <div
@@ -881,7 +1205,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_VBC_empty179"
+    id="_VBC_empty159"
     role="alert"
     style="opacity: 0;"
   />
@@ -898,203 +1222,311 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              13k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              38k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50k
-            </text>
-          </g>
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_162-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
         </g>
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="47.400000000000006"
-              id="_VBC_bar_182-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="209.6"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="56"
-              y="203.6"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#002050"
-              height="237"
-              id="_VBC_bar_182-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="262.61538461538464"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="270.61538461538464"
-              y="14"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="142.2"
-              id="_VBC_bar_182-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="584.5384615384615"
-              y="114.80000000000001"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="592.5384615384615"
-              y="108.80000000000001"
-            >
-              30.0k
-            </text>
-          </g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_162-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_162-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -1118,7 +1550,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
@@ -1139,7 +1571,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
@@ -1160,7 +1592,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
@@ -9496,203 +9928,311 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              13k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              38k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50k
-            </text>
-          </g>
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_5-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
         </g>
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="47.400000000000006"
-              id="_VBC_bar_6-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="209.6"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="56"
-              y="203.6"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#002050"
-              height="237"
-              id="_VBC_bar_6-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="262.61538461538464"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="270.61538461538464"
-              y="14"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="142.2"
-              id="_VBC_bar_6-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="584.5384615384615"
-              y="114.80000000000001"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="592.5384615384615"
-              y="108.80000000000001"
-            >
-              30.0k
-            </text>
-          </g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_5-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_5-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -9716,7 +10256,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
@@ -9737,7 +10277,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
@@ -9758,7 +10298,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
@@ -9787,231 +10327,302 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M255.5,6V0.5H415.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(263,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              880
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              1.8k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              2.6k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
-          >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              3.5k
-            </text>
-          </g>
+            This is a medium long label. 
+          </text>
         </g>
-        <g>
-          <g
-            transform="translate(0, 0)"
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(311,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <rect
-              aria-label="This is a medium long label. . 3500."
-              data-is-focusable="true"
-              fill="#627CEF"
-              height="237"
-              id="_VBC_bar_13-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="255"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="263"
-              y="14"
-            >
-              3.5k
-            </text>
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="This is a long label This is a long label. 2500."
-              data-is-focusable="true"
-              fill="#C19C00"
-              height="169.28571428571428"
-              id="_VBC_bar_13-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="303"
-              y="87.71428571428572"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="311"
-              y="81.71428571428572"
-            >
-              2.5k
-            </text>
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="This label is as long as the previous one. 1900."
-              data-is-focusable="true"
-              fill="#E650AF"
-              height="128.65714285714284"
-              id="_VBC_bar_13-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="351"
-              y="128.34285714285716"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="359"
-              y="122.34285714285716"
-            >
-              1.9k
-            </text>
-          </g>
-          <g
-            transform="translate(0, 0)"
-          >
-            <rect
-              aria-label="A short label. 2800."
-              data-is-focusable="true"
-              fill="#0E7878"
-              height="189.60000000000002"
-              id="_VBC_bar_13-3"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="399"
-              y="67.39999999999998"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="407"
-              y="61.39999999999998"
-            >
-              2.8k
-            </text>
-          </g>
+            This is a long label This is a long label
+          </text>
         </g>
-      </svg>
-    </div>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(359,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            This label is as long as the previous one
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(407,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            A short label
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            880
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            1.8k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            2.6k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            3.5k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g
+          transform="translate(0, 0)"
+        >
+          <rect
+            aria-label="This is a medium long label. . 3500."
+            data-is-focusable="true"
+            fill="#627CEF"
+            height="237"
+            id="_VBC_bar_11-0"
+            role="img"
+            width="16"
+            x="255"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="263"
+            y="14"
+          >
+            3.5k
+          </text>
+        </g>
+        <g
+          transform="translate(0, 0)"
+        >
+          <rect
+            aria-label="This is a long label This is a long label. 2500."
+            data-is-focusable="true"
+            fill="#C19C00"
+            height="169.28571428571428"
+            id="_VBC_bar_11-1"
+            role="img"
+            width="16"
+            x="303"
+            y="87.71428571428572"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="311"
+            y="81.71428571428572"
+          >
+            2.5k
+          </text>
+        </g>
+        <g
+          transform="translate(0, 0)"
+        >
+          <rect
+            aria-label="This label is as long as the previous one. 1900."
+            data-is-focusable="true"
+            fill="#E650AF"
+            height="128.65714285714284"
+            id="_VBC_bar_11-2"
+            role="img"
+            width="16"
+            x="351"
+            y="128.34285714285716"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="359"
+            y="122.34285714285716"
+          >
+            1.9k
+          </text>
+        </g>
+        <g
+          transform="translate(0, 0)"
+        >
+          <rect
+            aria-label="A short label. 2800."
+            data-is-focusable="true"
+            fill="#0E7878"
+            height="189.60000000000002"
+            id="_VBC_bar_11-3"
+            role="img"
+            width="16"
+            x="399"
+            y="67.39999999999998"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="407"
+            y="61.39999999999998"
+          >
+            2.8k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -10119,203 +10730,311 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              13k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              38k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50k
-            </text>
-          </g>
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_168-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
         </g>
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="47.400000000000006"
-              id="_VBC_bar_189-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="209.6"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="56"
-              y="203.6"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#002050"
-              height="237"
-              id="_VBC_bar_189-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="262.61538461538464"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="270.61538461538464"
-              y="14"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="142.2"
-              id="_VBC_bar_189-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="584.5384615384615"
-              y="114.80000000000001"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="592.5384615384615"
-              y="108.80000000000001"
-            >
-              30.0k
-            </text>
-          </g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_168-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_168-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -10339,7 +11058,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
@@ -10360,7 +11079,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
@@ -10381,7 +11100,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
@@ -10410,203 +11129,311 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
     <div
       id="defaultTabbableElement_"
     />
-    <div
-      class="ms-FocusZone css-109 fui-cart__chartWrapper"
-      data-focuszone-id="FocusZone0"
-      data-tabster="{\\"uncontrolled\\": {}}"
+    <svg
+      height="292"
+      style="display: block;"
+      width="650"
     >
-      <svg
-        focusable="false"
-        height="292"
-        style="display: block;"
-        width="650"
+      <g
+        class="fui-cart__xAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="xAxisGElementchart_"
+        text-anchor="middle"
+        transform="translate(0, 257)"
       >
-        <g
-          class="fui-cart__xAxis"
-          id="xAxisGElementchart_"
-          transform="translate(0, 257)"
+        <path
+          class="domain"
+          d="M56.5,6V0.5H614.5V6"
+          stroke="currentColor"
         />
         <g
-          class="fui-cart__yAxis"
-          fill="none"
-          font-family="sans-serif"
-          font-size="10"
-          id="yAxisGElementchart_"
-          text-anchor="end"
-          transform="translate(40, 0)"
+          class="tick"
+          opacity="1"
+          transform="translate(56.5,0)"
         >
-          <path
-            class="domain"
-            d="M-6,257.5H0.5V20.5H-6"
+          <line
             stroke="currentColor"
+            y2="6"
           />
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,257.5)"
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              0
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,198.25)"
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(163.80769230769232,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              13k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,139)"
+            5,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(271.11538461538464,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              25k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,79.75)"
+            10,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(378.4230769230769,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              38k
-            </text>
-          </g>
-          <g
-            class="tick"
-            opacity="1"
-            transform="translate(0,20.5)"
+            15,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(485.7307692307692,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
           >
-            <line
-              stroke="currentColor"
-              x2="590"
-            />
-            <text
-              aria-hidden="true"
-              dy="0.32em"
-              fill="currentColor"
-              x="-10"
-            >
-              50k
-            </text>
-          </g>
+            20,000
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(593.0384615384615,0)"
+        >
+          <line
+            stroke="currentColor"
+            y2="6"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.71em"
+            fill="currentColor"
+            y="16"
+          >
+            25,000
+          </text>
+        </g>
+      </g>
+      <g
+        class="fui-cart__yAxis"
+        fill="none"
+        font-family="sans-serif"
+        font-size="10"
+        id="yAxisGElementchart_"
+        text-anchor="end"
+        transform="translate(40, 0)"
+      >
+        <path
+          class="domain"
+          d="M-6,257.5H0.5V20.5H-6"
+          stroke="currentColor"
+        />
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,257.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            0
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,198.25)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            13k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,139)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            25k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,79.75)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            38k
+          </text>
+        </g>
+        <g
+          class="tick"
+          opacity="1"
+          transform="translate(0,20.5)"
+        >
+          <line
+            stroke="currentColor"
+            x2="590"
+          />
+          <text
+            aria-hidden="true"
+            dy="0.32em"
+            fill="currentColor"
+            x="-10"
+          >
+            50k
+          </text>
+        </g>
+      </g>
+      <g>
+        <g>
+          <rect
+            aria-label="2020/04/30. First, 10%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="aqua"
+            height="47.400000000000006"
+            id="_VBC_bar_176-0"
+            role="img"
+            width="16"
+            x="48"
+            y="209.6"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="56"
+            y="203.6"
+          >
+            10.0k
+          </text>
         </g>
         <g>
-          <g>
-            <rect
-              aria-label="2020/04/30. First, 10%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#0078d4"
-              height="47.400000000000006"
-              id="_VBC_bar_196-0"
-              role="img"
-              tabindex="0"
-              width="16"
-              x="48"
-              y="209.6"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="56"
-              y="203.6"
-            >
-              10.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Second, 20%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#002050"
-              height="237"
-              id="_VBC_bar_196-1"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="262.61538461538464"
-              y="20"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="270.61538461538464"
-              y="14"
-            >
-              50.0k
-            </text>
-          </g>
-          <g>
-            <rect
-              aria-label="2020/04/30. Third, 37%."
-              class="fui-vbc__opacityChangeOnHover"
-              data-is-focusable="true"
-              fill="#00188f"
-              height="142.2"
-              id="_VBC_bar_196-2"
-              role="img"
-              tabindex="-1"
-              width="16"
-              x="584.5384615384615"
-              y="114.80000000000001"
-            />
-            <text
-              aria-hidden="true"
-              class="fui-vbc__barLabel"
-              text-anchor="middle"
-              x="592.5384615384615"
-              y="108.80000000000001"
-            >
-              30.0k
-            </text>
-          </g>
+          <rect
+            aria-label="2020/04/30. Second, 20%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="blue"
+            height="237"
+            id="_VBC_bar_176-1"
+            role="img"
+            width="16"
+            x="262.61538461538464"
+            y="20"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="270.61538461538464"
+            y="14"
+          >
+            50.0k
+          </text>
         </g>
-      </svg>
-    </div>
+        <g>
+          <rect
+            aria-label="2020/04/30. Third, 37%."
+            class="fui-vbc__opacityChangeOnHover"
+            data-is-focusable="true"
+            fill="navy"
+            height="142.2"
+            id="_VBC_bar_176-2"
+            role="img"
+            width="16"
+            x="584.5384615384615"
+            y="114.80000000000001"
+          />
+          <text
+            aria-hidden="true"
+            class="fui-vbc__barLabel"
+            text-anchor="middle"
+            x="592.5384615384615"
+            y="108.80000000000001"
+          >
+            30.0k
+          </text>
+        </g>
+      </g>
+    </svg>
     <div
       class="fui-cart__legendContainer"
     >
@@ -10630,7 +11457,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #0078d4; --rect-borderColor: #0078d4;"
+            style="--rect-height: 12px; --rect-backgroundColor: aqua; --rect-borderColor: aqua;"
             type="button"
           >
             <div
@@ -10651,7 +11478,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #002050; --rect-borderColor: #002050;"
+            style="--rect-height: 12px; --rect-backgroundColor: blue; --rect-borderColor: blue;"
             type="button"
           >
             <div
@@ -10672,7 +11499,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable="true"
             data-overflow-item=""
             role="option"
-            style="--rect-height: 12px; --rect-backgroundColor: #00188f; --rect-borderColor: #00188f;"
+            style="--rect-height: 12px; --rect-backgroundColor: navy; --rect-borderColor: navy;"
             type="button"
           >
             <div
