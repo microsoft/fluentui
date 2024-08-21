@@ -7,6 +7,7 @@ import type { Theme } from '../types';
 import { durations } from '../global/durations';
 import { curves } from '../global/curves';
 import { horizontalSpacings, verticalSpacings } from '../global/spacings';
+import { zIndexVarsWithDefaults } from '../global/zIndexes';
 
 export const createHighContrastTheme = (): Theme => {
   const colorTokens = generateColorTokens();
@@ -26,6 +27,8 @@ export const createHighContrastTheme = (): Theme => {
     ...colorTokens,
     ...colorPaletteTokens,
     ...colorStatusTokens,
+
+    ...zIndexVarsWithDefaults,
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
     ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),

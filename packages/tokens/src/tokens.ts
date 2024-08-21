@@ -1,4 +1,5 @@
 import type { Theme } from './types';
+import { zIndexVarsWithDefaults } from './global/zIndexes';
 
 export const tokens: Record<keyof Theme, string> = {
   // Color tokens
@@ -539,4 +540,8 @@ export const tokens: Record<keyof Theme, string> = {
   curveEasyEaseMax: 'var(--curveEasyEaseMax)',
   curveEasyEase: 'var(--curveEasyEase)',
   curveLinear: 'var(--curveLinear)',
+
+  // ZIndexes
+  // This is a special case where the tokens contain default values
+  ...zIndexVarsWithDefaults,
 };
