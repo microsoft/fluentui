@@ -6,7 +6,7 @@ import bestPracticesMd from './createCSSRuleFromThemeBestPractices.md';
 export { Default } from './createCSSRuleFromThemeDefault.stories';
 export { Switching } from './createCSSRuleFromThemeSwitching.stories';
 
-const meta: Meta = {
+export default {
   title: 'Utilities/Theme/createCSSRuleFromTheme',
   parameters: {
     docs: {
@@ -15,6 +15,4 @@ const meta: Meta = {
       },
     },
   },
-};
-
-export default meta;
+} as Meta;
