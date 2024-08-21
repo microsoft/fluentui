@@ -136,7 +136,7 @@ export function useEmblaCarousel(
 
   const carouselApi = React.useMemo(
     () => ({
-      scrollToRef: (element: HTMLElement, jump?: boolean) => {
+      scrollToElement: (element: HTMLElement, jump?: boolean) => {
         const cardElements = emblaApi.current?.slideNodes();
         const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
         const cardIndex = cardElements?.indexOf(element) ?? 0;

@@ -16,7 +16,7 @@ export type CarouselIndexChangeData = EventData<
 export type CarouselContextValue = {
   activeIndex: number;
   circular: boolean;
-  selectPageByFocus: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => void;
+  selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => void;
   selectPageByDirection: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     direction: 'next' | 'prev',

@@ -30,8 +30,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     activeIndex: props.activeIndex,
   });
 
-  const selectPageByFocus: CarouselContextValue['selectPageByFocus'] = useEventCallback((event, element, jump) => {
-    const foundIndex = carouselApi.scrollToRef(element, jump);
+  const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
+    const foundIndex = carouselApi.scrollToElement(element, jump);
 
     onActiveIndexChange?.(event, { event, type: 'focus', index: foundIndex });
   });
@@ -63,7 +63,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     activeIndex,
     circular,
-    selectPageByFocus,
+    selectPageByElement,
     selectPageByDirection,
     selectPageByIndex,
     subscribeForValues,

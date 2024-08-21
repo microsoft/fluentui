@@ -6,6 +6,7 @@ import {
   slot,
   useEventCallback,
   useIsomorphicLayoutEffect,
+  useMergedRefs,
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
@@ -29,7 +30,6 @@ export const useCarouselNavButton_unstable = (
   const { onClick, as = 'button' } = props;
 
   const index = useCarouselNavContext();
-  const [controlledSlides, setControlledSlides] = React.useState('');
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
@@ -46,16 +46,17 @@ export const useCarouselNavButton_unstable = (
     focusable: { isDefault: selected },
   });
 
+  const buttonRef = React.useRef<HTMLElement>();
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement>,
+        ref: useMergedRefs(ref, buttonRef),
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        'aria-controls': controlledSlides,
+        // 'aria-controls': controlledSlides,
         ...defaultTabProps,
       },
     },
@@ -69,9 +70,12 @@ export const useCarouselNavButton_unstable = (
           return data.slideNodes[slideIndex].id;
         })
         .join(' ');
-      setControlledSlides(_controlledSlideIds);
+      // setControlledSlides(_controlledSlideIds);
+      if (buttonRef.current) {
+        buttonRef.current.setAttribute('aria-controls', _controlledSlideIds);
+      }
     });
-  }, [subscribeForValues, index]);
+  }, [index, subscribeForValues]);
 
   // Override onClick
   _carouselButton.onClick = handleClick;

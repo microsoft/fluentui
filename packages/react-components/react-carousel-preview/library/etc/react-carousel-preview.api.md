@@ -71,7 +71,9 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+};
 
 // @public (undocumented)
 export type CarouselCardSlots = {

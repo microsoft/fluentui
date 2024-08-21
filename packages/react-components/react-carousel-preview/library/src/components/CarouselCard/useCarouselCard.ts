@@ -15,6 +15,13 @@ import { useCarouselContext_unstable as useCarouselContext } from '../CarouselCo
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { carouselCardClassNames } from './useCarouselCardStyles.styles';
 
+const focusMap = {
+  off: undefined,
+  'no-tab': 'limited-trap-focus',
+  'tab-exit': 'limited',
+  'tab-only': 'unlimited',
+} as const;
+
 /**
  * Create the state required to render CarouselCard.
  *
@@ -29,13 +36,15 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  const { tabIndex } = props;
+  const { focusMode = 'off' } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
-  const selectPageByFocus = useCarouselContext(ctx => ctx.selectPageByFocus);
+  const selectPageByElement = useCarouselContext(ctx => ctx.selectPageByElement);
 
-  const focusAttr = useFocusableGroup({ tabBehavior: 'limited' });
-  const isFocusable = tabIndex !== undefined && tabIndex >= 0;
-  const focusAttrProps = isFocusable ? focusAttr : {};
+  const focusAttr = useFocusableGroup({
+    tabBehavior: focusMap[focusMode],
+  });
+  const isFocusable = focusMode !== 'off';
+  const focusAttrProps = isFocusable ? { ...focusAttr, tabIndex: 0 } : {};
 
   // We attach a unique card id if user does not provide
   const id = useId(carouselCardClassNames.root, props.id);
@@ -65,13 +74,13 @@ export const useCarouselCard_unstable = (
   const onFocus = React.useCallback(
     (e: React.FocusEvent) => {
       if (isHTMLElement(e.currentTarget)) {
-        selectPageByFocus(e, e.currentTarget, true);
+        selectPageByElement(e, e.currentTarget, true);
       }
     },
-    [selectPageByFocus],
+    [selectPageByElement],
   );
 
-  const _onFocus = mergeCallbacks(props.onFocus, onFocus);
+  const onFocusCapture = mergeCallbacks(props.onFocus, onFocus);
 
   const state: CarouselCardState = {
     components: {
@@ -83,7 +92,7 @@ export const useCarouselCard_unstable = (
         role: 'tabpanel',
         ...props,
         id,
-        onFocusCapture: _onFocus,
+        onFocusCapture,
         ...focusAttrProps,
       }),
       { elementType: 'div' },
