@@ -43,7 +43,10 @@
     "test": {
       "dependsOn": [],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "cache": true
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      }
     },
     "test-integration": {
       "dependsOn": ["build", "^build"],
@@ -73,7 +76,10 @@
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
-      ]
+      ],
+      "options": {
+        "command": "eslint src"
+      }
     },
     "verify-packaging": {
       "dependsOn": ["build"],
@@ -123,14 +129,14 @@
       "options": {
         "targetName": "test"
       },
-      "include": ["tools/**/*"]
+      "include": ["tools/**/*", "scripts/**/*"]
     },
     {
       "plugin": "@nx/eslint/plugin",
       "options": {
         "targetName": "lint"
       },
-      "include": ["tools/**/*"]
+      "include": ["tools/**/*", "scripts/**/*"]
     }
   ]
 }
