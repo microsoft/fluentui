@@ -448,6 +448,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           role="spinbutton"
           aria-labelledby={label && labelId}
           aria-valuetext={ariaValueText ?? (valueIsNumber ? undefined : value)}
+          aria-valuenow={ariaValueNow}
           aria-valuemin={min}
           aria-valuemax={max}
           aria-describedby={ariaDescribedBy}
