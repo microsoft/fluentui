@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 15 Aug 2024 07:23:37 GMT and should not be manually modified.
+This log was last generated on Wed, 21 Aug 2024 07:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.6)
+
+Wed, 21 Aug 2024 07:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.5..@fluentui/react_v8.120.6)
+
+### Patches
+
+- fix: Using minHeight instead of height in DefaultButton so that it can wrap and grow with its contents. ([PR #29346](https://github.com/microsoft/fluentui/pull/29346) by Humberto.Morimoto@microsoft.com)
 
 ## [8.120.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.5)
 

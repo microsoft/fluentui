@@ -2,6 +2,36 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2024 04:07:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.59",
+      "version": "3.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f1015092b1d1fe1aa9a421a2725af3c82dc392d",
+            "comment": "feat: update fast-element to latest stable version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2024 04:06:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.58",
+      "version": "3.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "07f70bdc0c1d0718ff35b3aef8f7ac87635520e3",
+            "comment": "feat: enabling setting theme on an individual element and unsetting themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2024 04:08:15 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.57",
       "version": "3.0.0-beta.57",
