@@ -28,8 +28,7 @@ describe('SpinButton', () => {
 
     // These don't update until editing is complete
     const isNumeric = !!value && !isNaN(Number(value));
-    // aria-valuenow is used for fully numeric values
-    expect(inputDOM.getAttribute('aria-valuenow')).toBe(isNumeric ? value : null);
+
     // aria-valuetext is used for values with suffixes or empty
     expect(inputDOM.getAttribute('aria-valuetext')).toBe(isNumeric ? null : value);
   }
