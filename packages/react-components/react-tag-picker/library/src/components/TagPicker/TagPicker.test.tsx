@@ -2,6 +2,9 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { TagPicker } from './TagPicker';
+import { TagPickerControl } from '../TagPickerControl/TagPickerControl';
+import { TagPickerInput } from '../TagPickerInput/TagPickerInput';
+import { TagPickerList } from '../TagPickerList/TagPickerList';
 
 describe('TagPicker', () => {
   isConformant({
@@ -19,13 +22,17 @@ describe('TagPicker', () => {
     ],
   });
 
-  it('renders a default state', () => {
-    const result = render(
+  it('sets expand label', () => {
+    const { getByRole } = render(
       <TagPicker>
-        <>Default Picker</>
-        <>Default Picker</>
+        <TagPickerControl>
+          <TagPickerInput aria-label="Select Employees" aria-labelledby="Select Employees" />
+        </TagPickerControl>
+        <TagPickerList />
       </TagPicker>,
     );
-    expect(result.container).toMatchSnapshot();
+
+    const expandButton = getByRole('button');
+    expect(expandButton.getAttribute('aria-labelledby')).toContain('Select Employees');
   });
 });
