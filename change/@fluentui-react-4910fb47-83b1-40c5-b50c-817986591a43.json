@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove aria-valuenow from native input element",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
