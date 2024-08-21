@@ -190,26 +190,26 @@
   text-decoration: underline;
 }
 
-/* Styles for Github-flawored Markdown tables */
-#storybook-docs table:not(.docblock-argstable) {
+/* Styles for Github-flavored Markdown tables */
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) {
   margin: 16px 0px;
   font-size: 14px;
   line-height: 24px;
   padding: 0;
   border-collapse: collapse;
 }
-#storybook-docs table:not(.docblock-argstable) tr {
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) tr {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#storybook-docs table:not(.docblock-argstable) th {
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) th {
   font-weight: bold;
   color: rgb(51, 51, 51);
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 13px;
 }
 
-#storybook-docs table:not(.docblock-argstable) td {
+#storybook-docs table:not(.docblock-argstable, .sbdocs-preview table) td {
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 6px 13px;
 }
