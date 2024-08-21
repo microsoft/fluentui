@@ -10,9 +10,11 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
   const triggerRef = useTagPickerContext_unstable(ctx => ctx.triggerRef);
   const expandIconRef = React.useRef<HTMLSpanElement>(null);
 
-  const expandIcon = React.useMemo(() => {
-    return { ...state.expandIcon };
-  }, [state.expandIcon]);
+  const expandIcon = { ...state.expandIcon };
+
+  const hasExpandIcon = !!expandIcon;
+  const expandIconId = expandIcon.id;
+  const { 'aria-label': expandIconAriaLabel, 'aria-labelledby': expandIconAriaLabelledby } = expandIcon;
 
   const expandIconMergeRef = useMergedRefs(expandIcon?.ref, expandIconRef);
   if (expandIcon) {
@@ -27,8 +29,8 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
       let expandAriaLabel = undefined;
       let expandAriaLabelledBy = undefined;
 
-      if (expandIcon) {
-        const hasExpandLabel = expandIcon['aria-label'] || expandIcon['aria-labelledby'];
+      if (hasExpandIcon) {
+        const hasExpandLabel = expandIconAriaLabel || expandIconAriaLabelledby;
         // If there is no explicit aria-label, calculate default accName attribute for expandIcon button,
         // using the following steps:
         // 1. If there is an aria-label, it is "Open [aria-label]"
@@ -38,11 +40,10 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
         const defaultOpenString = 'Open'; // this is english-only since it is the fallback
         if (!hasExpandLabel) {
           if (ariaLabelledBy) {
-            const chevronId = expandIcon.id ?? `${tagPickerId}-chevron`;
+            const chevronId = expandIconId ?? `${tagPickerId}-chevron`;
             const chevronLabelledBy = `${chevronId} ${ariaLabelledBy}`;
 
             expandAriaLabel = defaultOpenString;
-            expandIcon.id = chevronId;
             expandAriaLabelledBy = chevronLabelledBy;
           } else if (ariaLabel) {
             expandAriaLabel = `${defaultOpenString} ${ariaLabel}`;
@@ -54,7 +55,7 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
 
       return { expandAriaLabel, expandAriaLabelledBy };
     },
-    [expandIcon, tagPickerId],
+    [expandIconAriaLabel, expandIconAriaLabelledby, expandIconId, hasExpandIcon, tagPickerId],
   );
 
   const setExpandLabel = React.useCallback(() => {
@@ -71,7 +72,7 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
   }, [getExpandLabel, triggerRef]);
 
   React.useEffect(() => {
-    if (!targetDocument?.defaultView || !triggerRef.current || !expandIcon) {
+    if (!targetDocument?.defaultView || !triggerRef.current || !hasExpandIcon) {
       return;
     }
 
@@ -80,7 +81,7 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
     // On first render, calculate the default aria-label and aria-labelledby for the expandIcon
     setExpandLabel();
 
-    const hasExpandLabel = expandIcon['aria-label'] || expandIcon['aria-labelledby'];
+    const hasExpandLabel = expandIconAriaLabel || expandIconAriaLabelledby;
     if (!hasExpandLabel) {
       const observer = new win.MutationObserver(setExpandLabel);
       observer.observe(triggerRef.current, {
@@ -90,7 +91,19 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
 
       return () => observer.disconnect();
     }
-  }, [getExpandLabel, setExpandLabel, expandIcon, tagPickerId, triggerRef, targetDocument]);
+  }, [
+    getExpandLabel,
+    setExpandLabel,
+    expandIconAriaLabel,
+    expandIconAriaLabelledby,
+    hasExpandIcon,
+    tagPickerId,
+    triggerRef,
+    targetDocument,
+  ]);
 
-  return expandIcon;
+  if (state.expandIcon) {
+    return expandIcon;
+  }
+  return state.expandIcon;
 }
