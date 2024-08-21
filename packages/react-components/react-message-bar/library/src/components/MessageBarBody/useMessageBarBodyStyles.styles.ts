@@ -10,7 +10,7 @@ export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots> = {
 const useRootBaseStyles = makeResetStyles({
   ...typographyStyles.body1,
   gridArea: 'body',
-  paddingRight: tokens.spacingHorizontalM,
+  paddingRight: `var(--1447, var(--1448, ${tokens.spacingHorizontalM}))`,
 });
 
 /**

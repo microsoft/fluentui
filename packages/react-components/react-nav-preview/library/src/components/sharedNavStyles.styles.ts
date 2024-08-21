@@ -124,16 +124,7 @@ export const useIconStyles = makeStyles({
     [`& .${iconFilledClassName}`]: {
       ...navItemTokens.animationTokens,
       display: 'inline',
-      animationName: {
-        '0%': {
-          display: 'none',
-          color: 'transparent',
-        },
-        '100%': {
-          display: 'inline',
-          color: tokens.colorNeutralForeground2BrandSelected,
-        },
-      },
+      color: tokens.colorCompoundBrandForeground1,
     },
     [`& .${iconRegularClassName}`]: {
       ...navItemTokens.animationTokens,

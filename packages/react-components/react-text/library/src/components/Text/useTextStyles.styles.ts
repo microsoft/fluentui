@@ -12,10 +12,10 @@ export const textClassNames: SlotClassNames<TextSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
+    fontFamily: `var(--2655, var(--2656, ${tokens.fontFamilyBase}))`,
+    fontSize: `var(--2657, var(--2658, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--2659, var(--2660, ${tokens.lineHeightBase300}))`,
+    fontWeight: `var(--2661, var(--2662, ${tokens.fontWeightRegular}))`,
     textAlign: 'start',
     display: 'inline',
     whiteSpace: 'normal',
@@ -45,55 +45,55 @@ const useStyles = makeStyles({
     textDecorationLine: 'line-through underline',
   },
   base100: {
-    fontSize: tokens.fontSizeBase100,
-    lineHeight: tokens.lineHeightBase100,
+    fontSize: `var(--2663, var(--2664, ${tokens.fontSizeBase100}))`,
+    lineHeight: `var(--2665, var(--2666, ${tokens.lineHeightBase100}))`,
   },
   base200: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: `var(--2667, var(--2668, ${tokens.fontSizeBase200}))`,
+    lineHeight: `var(--2669, var(--2670, ${tokens.lineHeightBase200}))`,
   },
   base400: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: `var(--2671, var(--2672, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--2673, var(--2674, ${tokens.lineHeightBase400}))`,
   },
   base500: {
-    fontSize: tokens.fontSizeBase500,
-    lineHeight: tokens.lineHeightBase500,
+    fontSize: `var(--2675, var(--2676, ${tokens.fontSizeBase500}))`,
+    lineHeight: `var(--2677, var(--2678, ${tokens.lineHeightBase500}))`,
   },
   base600: {
-    fontSize: tokens.fontSizeBase600,
-    lineHeight: tokens.lineHeightBase600,
+    fontSize: `var(--2679, var(--2680, ${tokens.fontSizeBase600}))`,
+    lineHeight: `var(--2681, var(--2682, ${tokens.lineHeightBase600}))`,
   },
   hero700: {
-    fontSize: tokens.fontSizeHero700,
-    lineHeight: tokens.lineHeightHero700,
+    fontSize: `var(--2683, var(--2684, ${tokens.fontSizeHero700}))`,
+    lineHeight: `var(--2685, var(--2686, ${tokens.lineHeightHero700}))`,
   },
   hero800: {
-    fontSize: tokens.fontSizeHero800,
-    lineHeight: tokens.lineHeightHero800,
+    fontSize: `var(--2687, var(--2688, ${tokens.fontSizeHero800}))`,
+    lineHeight: `var(--2689, var(--2690, ${tokens.lineHeightHero800}))`,
   },
   hero900: {
-    fontSize: tokens.fontSizeHero900,
-    lineHeight: tokens.lineHeightHero900,
+    fontSize: `var(--2691, var(--2692, ${tokens.fontSizeHero900}))`,
+    lineHeight: `var(--2693, var(--2694, ${tokens.lineHeightHero900}))`,
   },
   hero1000: {
-    fontSize: tokens.fontSizeHero1000,
-    lineHeight: tokens.lineHeightHero1000,
+    fontSize: `var(--2695, var(--2696, ${tokens.fontSizeHero1000}))`,
+    lineHeight: `var(--2697, var(--2698, ${tokens.lineHeightHero1000}))`,
   },
   monospace: {
-    fontFamily: tokens.fontFamilyMonospace,
+    fontFamily: `var(--2699, var(--2700, ${tokens.fontFamilyMonospace}))`,
   },
   numeric: {
-    fontFamily: tokens.fontFamilyNumeric,
+    fontFamily: `var(--2701, var(--2702, ${tokens.fontFamilyNumeric}))`,
   },
   weightMedium: {
-    fontWeight: tokens.fontWeightMedium,
+    fontWeight: `var(--2703, var(--2704, ${tokens.fontWeightMedium}))`,
   },
   weightSemibold: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--2705, var(--2706, ${tokens.fontWeightSemibold}))`,
   },
   weightBold: {
-    fontWeight: tokens.fontWeightBold,
+    fontWeight: `var(--2707, var(--2708, ${tokens.fontWeightBold}))`,
   },
   alignCenter: {
     textAlign: 'center',

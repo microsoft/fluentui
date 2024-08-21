@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    columnGap: tokens.spacingHorizontalS,
+    columnGap: `var(--1097, var(--1098, ${tokens.spacingHorizontalS}))`,
   },
 
   action: {

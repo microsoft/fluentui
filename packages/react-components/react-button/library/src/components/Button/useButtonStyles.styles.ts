@@ -35,42 +35,42 @@ const useRootBaseClassName = makeResetStyles({
   margin: 0,
   overflow: 'hidden',
 
-  backgroundColor: tokens.colorNeutralBackground1,
-  color: tokens.colorNeutralForeground1,
+  backgroundColor: `var(--1, var(--2, ${tokens.colorNeutralBackground1}))`,
+  color: `var(--3, var(--4, ${tokens.colorNeutralForeground1}))`,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
 
-  fontFamily: tokens.fontFamilyBase,
+  fontFamily: `var(--5, var(--6, ${tokens.fontFamilyBase}))`,
   outlineStyle: 'none',
 
   ':hover': {
-    backgroundColor: tokens.colorNeutralBackground1Hover,
-    borderColor: tokens.colorNeutralStroke1Hover,
-    color: tokens.colorNeutralForeground1Hover,
+    backgroundColor: `var(--7, var(--8, ${tokens.colorNeutralBackground1Hover}))`,
+    borderColor: `var(--9, var(--10, ${tokens.colorNeutralStroke1Hover}))`,
+    color: `var(--11, var(--12, ${tokens.colorNeutralForeground1Hover}))`,
 
     cursor: 'pointer',
   },
 
   ':hover:active': {
-    backgroundColor: tokens.colorNeutralBackground1Pressed,
-    borderColor: tokens.colorNeutralStroke1Pressed,
-    color: tokens.colorNeutralForeground1Pressed,
+    backgroundColor: `var(--13, var(--14, ${tokens.colorNeutralBackground1Pressed}))`,
+    borderColor: `var(--15, var(--16, ${tokens.colorNeutralStroke1Pressed}))`,
+    color: `var(--17, var(--18, ${tokens.colorNeutralForeground1Pressed}))`,
 
     outlineStyle: 'none',
   },
 
   padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
   minWidth: '96px',
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--19, var(--20, ${tokens.borderRadiusMedium}))`,
 
-  fontSize: tokens.fontSizeBase300,
-  fontWeight: tokens.fontWeightSemibold,
-  lineHeight: tokens.lineHeightBase300,
+  fontSize: `var(--21, var(--22, ${tokens.fontSizeBase300}))`,
+  fontWeight: `var(--23, var(--24, ${tokens.fontWeightSemibold}))`,
+  lineHeight: `var(--25, var(--26, ${tokens.lineHeightBase300}))`,
 
   // Transition styles
 
-  transitionDuration: tokens.durationFaster,
+  transitionDuration: `var(--27, var(--28, ${tokens.durationFaster}))`,
   transitionProperty: 'background, border, color',
-  transitionTimingFunction: tokens.curveEasyEase,
+  transitionTimingFunction: `var(--29, var(--30, ${tokens.curveEasyEase}))`,
 
   '@media screen and (prefers-reduced-motion: reduce)': {
     transitionDuration: '0.01ms',
@@ -101,8 +101,8 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorStrokeFocus2,
-    borderRadius: tokens.borderRadiusMedium,
+    borderColor: `var(--31, var(--32, ${tokens.colorStrokeFocus2}))`,
+    borderRadius: `var(--33, var(--34, ${tokens.borderRadiusMedium}))`,
     borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
     boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
@@ -130,37 +130,37 @@ const useIconBaseClassName = makeResetStyles({
   height: '20px',
   width: '20px',
 
-  [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+  [iconSpacingVar]: `var(--35, var(--36, ${tokens.spacingHorizontalSNudge}))`,
 });
 
 const useRootStyles = makeStyles({
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--37, var(--38, ${tokens.colorTransparentBackground}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--39, var(--40, ${tokens.colorTransparentBackgroundHover}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--41, var(--42, ${tokens.colorTransparentBackgroundPressed}))`,
     },
   },
   primary: {
-    backgroundColor: tokens.colorBrandBackground,
+    backgroundColor: `var(--43, var(--44, ${tokens.colorBrandBackground}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForegroundOnBrand,
+    color: `var(--45, var(--46, ${tokens.colorNeutralForegroundOnBrand}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorBrandBackgroundHover,
+      backgroundColor: `var(--47, var(--48, ${tokens.colorBrandBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--49, var(--50, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundPressed,
+      backgroundColor: `var(--51, var(--52, ${tokens.colorBrandBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForegroundOnBrand,
+      color: `var(--53, var(--54, ${tokens.colorNeutralForegroundOnBrand}))`,
     },
 
     '@media (forced-colors: active)': {
@@ -186,14 +186,14 @@ const useRootStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorSubtleBackground,
+    backgroundColor: `var(--55, var(--56, ${tokens.colorSubtleBackground}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
+    color: `var(--57, var(--58, ${tokens.colorNeutralForeground2}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--59, var(--60, ${tokens.colorSubtleBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Hover,
+      color: `var(--61, var(--62, ${tokens.colorNeutralForeground2Hover}))`,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -201,14 +201,14 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandHover,
+        color: `var(--63, var(--64, ${tokens.colorNeutralForeground2BrandHover}))`,
       },
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--65, var(--66, ${tokens.colorSubtleBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2Pressed,
+      color: `var(--67, var(--68, ${tokens.colorNeutralForeground2Pressed}))`,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -216,7 +216,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForeground2BrandPressed,
+        color: `var(--69, var(--70, ${tokens.colorNeutralForeground2BrandPressed}))`,
       },
     },
 
@@ -238,14 +238,14 @@ const useRootStyles = makeStyles({
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--71, var(--72, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
-    color: tokens.colorNeutralForeground2,
+    color: `var(--73, var(--74, ${tokens.colorNeutralForeground2}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--75, var(--76, ${tokens.colorTransparentBackgroundHover}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandHover,
+      color: `var(--77, var(--78, ${tokens.colorNeutralForeground2BrandHover}))`,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -255,9 +255,9 @@ const useRootStyles = makeStyles({
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--79, var(--80, ${tokens.colorTransparentBackgroundPressed}))`,
       ...shorthands.borderColor('transparent'),
-      color: tokens.colorNeutralForeground2BrandPressed,
+      color: `var(--81, var(--82, ${tokens.colorNeutralForeground2BrandPressed}))`,
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
       },
@@ -268,32 +268,34 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: `var(--83, var(--84, ${tokens.colorTransparentBackground}))`,
         color: 'Highlight',
       },
       ':hover:active': {
-        backgroundColor: tokens.colorTransparentBackground,
+        backgroundColor: `var(--85, var(--86, ${tokens.colorTransparentBackground}))`,
         color: 'Highlight',
       },
     },
   },
 
   // Shape variations
-  circular: { borderRadius: tokens.borderRadiusCircular },
+  circular: {
+    borderRadius: `var(--87, var(--88, ${tokens.borderRadiusCircular}))`,
+  },
   rounded: {
     /* The borderRadius rounded styles are handled in the size variations */
   },
-  square: { borderRadius: tokens.borderRadiusNone },
+  square: { borderRadius: `var(--89, var(--90, ${tokens.borderRadiusNone}))` },
 
   // Size variations
   small: {
     minWidth: '64px',
     padding: `${buttonSpacingSmall} ${tokens.spacingHorizontalS}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--91, var(--92, ${tokens.borderRadiusMedium}))`,
 
-    fontSize: tokens.fontSizeBase200,
-    fontWeight: tokens.fontWeightRegular,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: `var(--93, var(--94, ${tokens.fontSizeBase200}))`,
+    fontWeight: `var(--95, var(--96, ${tokens.fontWeightRegular}))`,
+    lineHeight: `var(--97, var(--98, ${tokens.lineHeightBase200}))`,
   },
   smallWithIcon: {
     paddingBottom: buttonSpacingSmallWithIcon,
@@ -305,11 +307,11 @@ const useRootStyles = makeStyles({
   large: {
     minWidth: '96px',
     padding: `${buttonSpacingLarge} ${tokens.spacingHorizontalL}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--99, var(--100, ${tokens.borderRadiusMedium}))`,
 
-    fontSize: tokens.fontSizeBase400,
-    fontWeight: tokens.fontWeightSemibold,
-    lineHeight: tokens.lineHeightBase400,
+    fontSize: `var(--101, var(--102, ${tokens.fontSizeBase400}))`,
+    fontWeight: `var(--103, var(--104, ${tokens.fontWeightSemibold}))`,
+    lineHeight: `var(--105, var(--106, ${tokens.lineHeightBase400}))`,
   },
   largeWithIcon: {
     paddingBottom: buttonSpacingLargeWithIcon,
@@ -320,19 +322,19 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   // Base styles
   base: {
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
+    backgroundColor: `var(--107, var(--108, ${tokens.colorNeutralBackgroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--109, var(--110, ${tokens.colorNeutralForegroundDisabled}))`,
 
     cursor: 'not-allowed',
     [`& .${buttonClassNames.icon}`]: {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--111, var(--112, ${tokens.colorNeutralForegroundDisabled}))`,
     },
 
     ':hover': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--113, var(--114, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--115, var(--116, ${tokens.colorNeutralForegroundDisabled}))`,
 
       cursor: 'not-allowed',
 
@@ -343,14 +345,14 @@ const useRootDisabledStyles = makeStyles({
         display: 'inline',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--117, var(--118, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorNeutralBackgroundDisabled,
+      backgroundColor: `var(--119, var(--120, ${tokens.colorNeutralBackgroundDisabled}))`,
       ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--121, var(--122, ${tokens.colorNeutralForegroundDisabled}))`,
 
       cursor: 'not-allowed',
 
@@ -361,7 +363,7 @@ const useRootDisabledStyles = makeStyles({
         display: 'inline',
       },
       [`& .${buttonClassNames.icon}`]: {
-        color: tokens.colorNeutralForegroundDisabled,
+        color: `var(--123, var(--124, ${tokens.colorNeutralForegroundDisabled}))`,
       },
     },
   },
@@ -393,14 +395,14 @@ const useRootDisabledStyles = makeStyles({
 
   // Appearance variations
   outline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--125, var(--126, ${tokens.colorTransparentBackground}))`,
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--127, var(--128, ${tokens.colorTransparentBackground}))`,
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--129, var(--130, ${tokens.colorTransparentBackground}))`,
     },
   },
   primary: {
@@ -418,30 +420,30 @@ const useRootDisabledStyles = makeStyles({
     /* The secondary styles are exactly the same as the base styles. */
   },
   subtle: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--131, var(--132, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--133, var(--134, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--135, var(--136, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--137, var(--138, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor('transparent'),
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--139, var(--140, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
 
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackground,
+      backgroundColor: `var(--141, var(--142, ${tokens.colorTransparentBackground}))`,
       ...shorthands.borderColor('transparent'),
     },
   },
@@ -449,11 +451,15 @@ const useRootDisabledStyles = makeStyles({
 
 const useRootFocusStyles = makeStyles({
   // Shape variations
-  circular: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusCircular }),
+  circular: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--143, var(--144, ${tokens.borderRadiusCircular}))`,
+  }),
   rounded: {
     /* The rounded styles are exactly the same as the base styles. */
   },
-  square: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusNone }),
+  square: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--145, var(--146, ${tokens.borderRadiusNone}))`,
+  }),
 
   // Primary styles
   primary: {
@@ -478,11 +484,15 @@ const useRootFocusStyles = makeStyles({
   },
 
   // Size variations
-  small: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusSmall }),
+  small: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--147, var(--148, ${tokens.borderRadiusSmall}))`,
+  }),
   medium: {
     /* defined in base styles */
   },
-  large: createCustomFocusIndicatorStyle({ borderRadius: tokens.borderRadiusLarge }),
+  large: createCustomFocusIndicatorStyle({
+    borderRadius: `var(--149, var(--150, ${tokens.borderRadiusLarge}))`,
+  }),
 });
 
 const useRootIconOnlyStyles = makeStyles({
@@ -514,7 +524,7 @@ const useIconStyles = makeStyles({
     height: '20px',
     width: '20px',
 
-    [iconSpacingVar]: tokens.spacingHorizontalXS,
+    [iconSpacingVar]: `var(--151, var(--152, ${tokens.spacingHorizontalXS}))`,
   },
   medium: {
     /* defined in base styles */
@@ -524,7 +534,7 @@ const useIconStyles = makeStyles({
     height: '24px',
     width: '24px',
 
-    [iconSpacingVar]: tokens.spacingHorizontalSNudge,
+    [iconSpacingVar]: `var(--153, var(--154, ${tokens.spacingHorizontalSNudge}))`,
   },
 
   // Icon position variations

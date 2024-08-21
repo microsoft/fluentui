@@ -23,9 +23,9 @@ const useRootClassName = makeResetStyles({
   width: '20px',
   minWidth: 'max-content',
   padding: `0 calc(${tokens.spacingHorizontalXS} + ${textPadding})`,
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--341, var(--342, ${tokens.borderRadiusCircular}))`,
   // Use a transparent stroke (rather than no border) so the border is visible in high contrast
-  borderColor: tokens.colorTransparentStroke,
+  borderColor: `var(--343, var(--344, ${tokens.colorTransparentStroke}))`,
 
   '::after': {
     content: '""',
@@ -36,7 +36,7 @@ const useRootClassName = makeResetStyles({
     right: 0,
     borderStyle: 'solid',
     borderColor: 'inherit',
-    borderWidth: tokens.strokeWidthThin,
+    borderWidth: `var(--345, var(--346, ${tokens.strokeWidthThin}))`,
     borderRadius: 'inherit',
   },
 });
@@ -85,9 +85,13 @@ const useRootStyles = makeStyles({
 
   // shape
 
-  square: { borderRadius: tokens.borderRadiusNone },
-  rounded: { borderRadius: tokens.borderRadiusMedium },
-  roundedSmallToTiny: { borderRadius: tokens.borderRadiusSmall },
+  square: { borderRadius: `var(--347, var(--348, ${tokens.borderRadiusNone}))` },
+  rounded: {
+    borderRadius: `var(--349, var(--350, ${tokens.borderRadiusMedium}))`,
+  },
+  roundedSmallToTiny: {
+    borderRadius: `var(--351, var(--352, ${tokens.borderRadiusSmall}))`,
+  },
   circular: {
     // Set by useRootClassName
   },
@@ -107,36 +111,36 @@ const useRootStyles = makeStyles({
     // Set by useRootClassName
   },
   'filled-brand': {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--353, var(--354, ${tokens.colorBrandBackground}))`,
+    color: `var(--355, var(--356, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--357, var(--358, ${tokens.colorPaletteRedBackground3}))`,
+    color: `var(--359, var(--360, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-important': {
-    backgroundColor: tokens.colorNeutralForeground1,
-    color: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--361, var(--362, ${tokens.colorNeutralForeground1}))`,
+    color: `var(--363, var(--364, ${tokens.colorNeutralBackground1}))`,
   },
   'filled-informative': {
-    backgroundColor: tokens.colorNeutralBackground5,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--365, var(--366, ${tokens.colorNeutralBackground5}))`,
+    color: `var(--367, var(--368, ${tokens.colorNeutralForeground3}))`,
   },
   'filled-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--369, var(--370, ${tokens.colorPaletteDarkOrangeBackground3}))`,
+    color: `var(--371, var(--372, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground1,
+    backgroundColor: `var(--373, var(--374, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--375, var(--376, ${tokens.colorNeutralForeground1}))`,
   },
   'filled-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground3,
-    color: tokens.colorNeutralForegroundOnBrand,
+    backgroundColor: `var(--377, var(--378, ${tokens.colorPaletteGreenBackground3}))`,
+    color: `var(--379, var(--380, ${tokens.colorNeutralForegroundOnBrand}))`,
   },
   'filled-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground3,
-    color: tokens.colorNeutralForeground1Static,
+    backgroundColor: `var(--381, var(--382, ${tokens.colorPaletteYellowBackground3}))`,
+    color: `var(--383, var(--384, ${tokens.colorNeutralForeground1Static}))`,
   },
 
   // appearance: ghost
@@ -145,28 +149,28 @@ const useRootStyles = makeStyles({
     // No shared colors between ghost appearances
   },
   'ghost-brand': {
-    color: tokens.colorBrandForeground1,
+    color: `var(--385, var(--386, ${tokens.colorBrandForeground1}))`,
   },
   'ghost-danger': {
-    color: tokens.colorPaletteRedForeground3,
+    color: `var(--387, var(--388, ${tokens.colorPaletteRedForeground3}))`,
   },
   'ghost-important': {
-    color: tokens.colorNeutralForeground1,
+    color: `var(--389, var(--390, ${tokens.colorNeutralForeground1}))`,
   },
   'ghost-informative': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--391, var(--392, ${tokens.colorNeutralForeground3}))`,
   },
   'ghost-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: `var(--393, var(--394, ${tokens.colorPaletteDarkOrangeForeground3}))`,
   },
   'ghost-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--395, var(--396, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
   'ghost-success': {
-    color: tokens.colorPaletteGreenForeground3,
+    color: `var(--397, var(--398, ${tokens.colorPaletteGreenForeground3}))`,
   },
   'ghost-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: `var(--399, var(--400, ${tokens.colorPaletteYellowForeground2}))`,
   },
 
   // appearance: outline
@@ -175,32 +179,32 @@ const useRootStyles = makeStyles({
     ...shorthands.borderColor('currentColor'),
   },
   'outline-brand': {
-    color: tokens.colorBrandForeground1,
+    color: `var(--401, var(--402, ${tokens.colorBrandForeground1}))`,
   },
   'outline-danger': {
-    color: tokens.colorPaletteRedForeground3,
+    color: `var(--403, var(--404, ${tokens.colorPaletteRedForeground3}))`,
     ...shorthands.borderColor(tokens.colorPaletteRedBorder2),
   },
   'outline-important': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--405, var(--406, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeAccessible),
   },
   'outline-informative': {
-    color: tokens.colorNeutralForeground3,
+    color: `var(--407, var(--408, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'outline-severe': {
-    color: tokens.colorPaletteDarkOrangeForeground3,
+    color: `var(--409, var(--410, ${tokens.colorPaletteDarkOrangeForeground3}))`,
   },
   'outline-subtle': {
-    color: tokens.colorNeutralForegroundStaticInverted,
+    color: `var(--411, var(--412, ${tokens.colorNeutralForegroundStaticInverted}))`,
   },
   'outline-success': {
-    color: tokens.colorPaletteGreenForeground3,
+    color: `var(--413, var(--414, ${tokens.colorPaletteGreenForeground3}))`,
     ...shorthands.borderColor(tokens.colorPaletteGreenBorder2),
   },
   'outline-warning': {
-    color: tokens.colorPaletteYellowForeground2,
+    color: `var(--415, var(--416, ${tokens.colorPaletteYellowForeground2}))`,
   },
 
   // appearance: tint
@@ -209,43 +213,43 @@ const useRootStyles = makeStyles({
     // No shared colors between tint appearances
   },
   'tint-brand': {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    backgroundColor: `var(--417, var(--418, ${tokens.colorBrandBackground2}))`,
+    color: `var(--419, var(--420, ${tokens.colorBrandForeground2}))`,
     ...shorthands.borderColor(tokens.colorBrandStroke2),
   },
   'tint-danger': {
-    backgroundColor: tokens.colorPaletteRedBackground1,
-    color: tokens.colorPaletteRedForeground1,
+    backgroundColor: `var(--421, var(--422, ${tokens.colorPaletteRedBackground1}))`,
+    color: `var(--423, var(--424, ${tokens.colorPaletteRedForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteRedBorder1),
   },
   'tint-important': {
-    backgroundColor: tokens.colorNeutralForeground3,
-    color: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--425, var(--426, ${tokens.colorNeutralForeground3}))`,
+    color: `var(--427, var(--428, ${tokens.colorNeutralBackground1}))`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
   },
   'tint-informative': {
-    backgroundColor: tokens.colorNeutralBackground4,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--429, var(--430, ${tokens.colorNeutralBackground4}))`,
+    color: `var(--431, var(--432, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'tint-severe': {
-    backgroundColor: tokens.colorPaletteDarkOrangeBackground1,
-    color: tokens.colorPaletteDarkOrangeForeground1,
+    backgroundColor: `var(--433, var(--434, ${tokens.colorPaletteDarkOrangeBackground1}))`,
+    color: `var(--435, var(--436, ${tokens.colorPaletteDarkOrangeForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteDarkOrangeBorder1),
   },
   'tint-subtle': {
-    backgroundColor: tokens.colorNeutralBackground1,
-    color: tokens.colorNeutralForeground3,
+    backgroundColor: `var(--437, var(--438, ${tokens.colorNeutralBackground1}))`,
+    color: `var(--439, var(--440, ${tokens.colorNeutralForeground3}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke2),
   },
   'tint-success': {
-    backgroundColor: tokens.colorPaletteGreenBackground1,
-    color: tokens.colorPaletteGreenForeground1,
+    backgroundColor: `var(--441, var(--442, ${tokens.colorPaletteGreenBackground1}))`,
+    color: `var(--443, var(--444, ${tokens.colorPaletteGreenForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteGreenBorder1),
   },
   'tint-warning': {
-    backgroundColor: tokens.colorPaletteYellowBackground1,
-    color: tokens.colorPaletteYellowForeground1,
+    backgroundColor: `var(--445, var(--446, ${tokens.colorPaletteYellowBackground1}))`,
+    color: `var(--447, var(--448, ${tokens.colorPaletteYellowForeground1}))`,
     ...shorthands.borderColor(tokens.colorPaletteYellowBorder1),
   },
 });

@@ -21,11 +21,11 @@ export const tagPickerControlAsideWidthToken = '--fui-TagPickerControl-aside-wid
  */
 const useStyles = makeStyles({
   root: {
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--2213, var(--2214, ${tokens.borderRadiusMedium}))`,
     paddingRight: `calc(${tokens.spacingHorizontalM} + var(${tagPickerControlAsideWidthToken}, 0px))`,
-    paddingLeft: tokens.spacingHorizontalM,
+    paddingLeft: `var(--2215, var(--2216, ${tokens.spacingHorizontalM}))`,
     alignItems: 'center',
-    columnGap: tokens.spacingHorizontalXXS,
+    columnGap: `var(--2217, var(--2218, ${tokens.spacingHorizontalXXS}))`,
     boxSizing: 'border-box',
     display: 'flex',
     minWidth: '250px',
@@ -48,14 +48,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--2219, var(--2220, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--2221, var(--2222, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--2223, var(--2224, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--2225, var(--2226, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -65,8 +65,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--2227, var(--2228, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--2229, var(--2230, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -74,13 +74,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--2231, var(--2232, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--2233, var(--2234, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -102,33 +102,33 @@ const useStyles = makeStyles({
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--2235, var(--2236, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--2237, var(--2238, ${tokens.colorNeutralStrokeAccessible}))`,
   },
 
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--2239, var(--2240, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--2241, var(--2242, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--2243, var(--2244, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--2245, var(--2246, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--2247, var(--2248, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
@@ -138,13 +138,13 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--2249, var(--2250, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--2251, var(--2252, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -158,7 +158,7 @@ const useAsideStyles = makeStyles({
     alignItems: 'center',
     position: 'absolute',
     top: '0',
-    right: tokens.spacingHorizontalM,
+    right: `var(--2253, var(--2254, ${tokens.spacingHorizontalM}))`,
     gridTemplateColumns: 'repeat(2, auto)',
     gridTemplateRows: 'minmax(32px, auto) 1fr',
     height: '100%',
@@ -185,10 +185,10 @@ export const iconSizes = {
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--2255, var(--2256, ${tokens.colorNeutralStrokeAccessible}))`,
     cursor: 'pointer',
     display: 'block',
-    fontSize: tokens.fontSizeBase500,
+    fontSize: `var(--2257, var(--2258, ${tokens.fontSizeBase500}))`,
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
     '& svg': {
@@ -198,18 +198,18 @@ const useIconStyles = makeStyles({
   // icon size variants
   medium: {
     fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--2259, var(--2260, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--2261, var(--2262, ${tokens.spacingHorizontalXXS}))`,
   },
   'extra-large': {
     fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    marginLeft: `var(--2263, var(--2264, ${tokens.spacingHorizontalSNudge}))`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--2265, var(--2266, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 });

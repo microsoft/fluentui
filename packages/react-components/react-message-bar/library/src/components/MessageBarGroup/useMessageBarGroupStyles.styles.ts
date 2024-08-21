@@ -13,7 +13,7 @@ export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots> = {
 const useStyles = makeStyles({
   base: {
     animationFillMode: 'forwards',
-    animationDuration: tokens.durationNormal,
+    animationDuration: `var(--1449, var(--1450, ${tokens.durationNormal}))`,
   },
 
   enter: {

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Prototype add semantic and control design tokens",
+  "packageName": "@fluentui/react-field",
+  "email": "edwardwang.94@gmail.com",
+  "dependentChangeType": "patch"
+}

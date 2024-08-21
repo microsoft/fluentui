@@ -17,7 +17,7 @@ const useStyles = makeResetStyles({
   width: '100%',
   maxWidth: '100%',
   padding: `${tokens.spacingVerticalXXL} ${tokens.spacingHorizontalXXL} ${tokens.spacingVerticalS}`,
-  gap: tokens.spacingHorizontalS,
+  gap: `var(--1095, var(--1096, ${tokens.spacingHorizontalS}))`,
   alignSelf: 'stretch',
   display: 'flex',
   flexDirection: 'column',

@@ -11,7 +11,7 @@ export const teachingPopoverSurfaceClassNames: SlotClassNames<TeachingPopoverSur
 const useStyles = makeStyles({
   root: {
     padding: `${tokens.spacingVerticalL} ${tokens.spacingVerticalL}`,
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: `var(--2627, var(--2628, ${tokens.borderRadiusXLarge}))`,
     width: '288px',
     boxSizing: 'content-box',
   },

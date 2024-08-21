@@ -50,18 +50,18 @@ const useRootStyles = makeStyles({
   },
   primary: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeOnBrand,
+      borderRightColor: `var(--93, var(--94, ${tokens.colorNeutralStrokeOnBrand}))`,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: `var(--95, var(--96, ${tokens.colorNeutralStrokeOnBrand}))`,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeOnBrand,
+        borderRightColor: `var(--97, var(--98, ${tokens.colorNeutralStrokeOnBrand}))`,
       },
     },
 
@@ -88,35 +88,35 @@ const useRootStyles = makeStyles({
   },
   subtle: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: `var(--99, var(--100, ${tokens.colorNeutralStroke1}))`,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: `var(--101, var(--102, ${tokens.colorNeutralStroke1Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: `var(--103, var(--104, ${tokens.colorNeutralStroke1Pressed}))`,
       },
     },
   },
   transparent: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStroke1,
+      borderRightColor: `var(--105, var(--106, ${tokens.colorNeutralStroke1}))`,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Hover,
+        borderRightColor: `var(--107, var(--108, ${tokens.colorNeutralStroke1Hover}))`,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStroke1Pressed,
+        borderRightColor: `var(--109, var(--110, ${tokens.colorNeutralStroke1Pressed}))`,
       },
     },
   },
@@ -129,18 +129,18 @@ const useRootStyles = makeStyles({
   // Disabled styles
   disabled: {
     [`& .${splitButtonClassNames.primaryActionButton}`]: {
-      borderRightColor: tokens.colorNeutralStrokeDisabled,
+      borderRightColor: `var(--111, var(--112, ${tokens.colorNeutralStrokeDisabled}))`,
     },
 
     ':hover': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: `var(--113, var(--114, ${tokens.colorNeutralStrokeDisabled}))`,
       },
     },
 
     ':hover:active': {
       [`& .${splitButtonClassNames.primaryActionButton}`]: {
-        borderRightColor: tokens.colorNeutralStrokeDisabled,
+        borderRightColor: `var(--115, var(--116, ${tokens.colorNeutralStrokeDisabled}))`,
       },
     },
   },

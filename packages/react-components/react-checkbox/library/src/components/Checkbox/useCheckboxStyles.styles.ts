@@ -27,62 +27,62 @@ const useRootBaseClassName = makeResetStyles({
   display: 'inline-flex',
   cursor: 'pointer',
   verticalAlign: 'middle',
-  color: tokens.colorNeutralForeground3,
+  color: `var(--791, var(--792, ${tokens.colorNeutralForeground3}))`,
   ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
 });
 
 const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
-      color: tokens.colorNeutralForeground2,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
+      color: `var(--793, var(--794, ${tokens.colorNeutralForeground2}))`,
+      [vars.indicatorBorderColor]: `var(--795, var(--796, ${tokens.colorNeutralStrokeAccessibleHover}))`,
     },
 
     ':active': {
-      color: tokens.colorNeutralForeground1,
-      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
+      color: `var(--797, var(--798, ${tokens.colorNeutralForeground1}))`,
+      [vars.indicatorBorderColor]: `var(--799, var(--800, ${tokens.colorNeutralStrokeAccessiblePressed}))`,
     },
   },
 
   checked: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
+    color: `var(--801, var(--802, ${tokens.colorNeutralForeground1}))`,
+    [vars.indicatorBackgroundColor]: `var(--803, var(--804, ${tokens.colorCompoundBrandBackground}))`,
+    [vars.indicatorColor]: `var(--805, var(--806, ${tokens.colorNeutralForegroundInverted}))`,
+    [vars.indicatorBorderColor]: `var(--807, var(--808, ${tokens.colorCompoundBrandBackground}))`,
 
     ':hover': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
+      [vars.indicatorBackgroundColor]: `var(--809, var(--810, ${tokens.colorCompoundBrandBackgroundHover}))`,
+      [vars.indicatorBorderColor]: `var(--811, var(--812, ${tokens.colorCompoundBrandBackgroundHover}))`,
     },
 
     ':active': {
-      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
+      [vars.indicatorBackgroundColor]: `var(--813, var(--814, ${tokens.colorCompoundBrandBackgroundPressed}))`,
+      [vars.indicatorBorderColor]: `var(--815, var(--816, ${tokens.colorCompoundBrandBackgroundPressed}))`,
     },
   },
 
   mixed: {
-    color: tokens.colorNeutralForeground1,
-    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
-    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
+    color: `var(--817, var(--818, ${tokens.colorNeutralForeground1}))`,
+    [vars.indicatorBorderColor]: `var(--819, var(--820, ${tokens.colorCompoundBrandStroke}))`,
+    [vars.indicatorColor]: `var(--821, var(--822, ${tokens.colorCompoundBrandForeground1}))`,
 
     ':hover': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
+      [vars.indicatorBorderColor]: `var(--823, var(--824, ${tokens.colorCompoundBrandStrokeHover}))`,
+      [vars.indicatorColor]: `var(--825, var(--826, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
 
     ':active': {
-      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
-      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
+      [vars.indicatorBorderColor]: `var(--827, var(--828, ${tokens.colorCompoundBrandStrokePressed}))`,
+      [vars.indicatorColor]: `var(--829, var(--830, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
   },
 
   disabled: {
     cursor: 'default',
 
-    color: tokens.colorNeutralForegroundDisabled,
-    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
-    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
+    color: `var(--831, var(--832, ${tokens.colorNeutralForegroundDisabled}))`,
+    [vars.indicatorBorderColor]: `var(--833, var(--834, ${tokens.colorNeutralStrokeDisabled}))`,
+    [vars.indicatorColor]: `var(--835, var(--836, ${tokens.colorNeutralForegroundDisabled}))`,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
@@ -131,8 +131,8 @@ const useIndicatorBaseClassName = makeResetStyles({
   backgroundColor: `var(${vars.indicatorBackgroundColor})`,
   borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
   borderStyle: 'solid',
-  borderWidth: tokens.strokeWidthThin,
-  borderRadius: tokens.borderRadiusSmall,
+  borderWidth: `var(--837, var(--838, ${tokens.strokeWidthThin}))`,
+  borderRadius: `var(--839, var(--840, ${tokens.borderRadiusSmall}))`,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',
   pointerEvents: 'none',
@@ -149,7 +149,9 @@ const useIndicatorStyles = makeStyles({
     width: indicatorSizeLarge,
   },
 
-  circular: { borderRadius: tokens.borderRadiusCircular },
+  circular: {
+    borderRadius: `var(--841, var(--842, ${tokens.borderRadiusCircular}))`,
+  },
 });
 
 // Can't use makeResetStyles here because Label is a component that may itself use makeResetStyles.
@@ -162,10 +164,10 @@ const useLabelStyles = makeStyles({
   },
 
   before: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--843, var(--844, ${tokens.spacingHorizontalXS}))`,
   },
   after: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--845, var(--846, ${tokens.spacingHorizontalXS}))`,
   },
 
   // Use a (negative) margin to account for the difference between the indicator's height and the label's line height.

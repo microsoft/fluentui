@@ -9,16 +9,16 @@ export const tagPickerInputClassNames: SlotClassNames<TagPickerInputSlots> = {
 };
 
 const useBaseStyle = makeResetStyles({
-  backgroundColor: tokens.colorTransparentBackground,
-  color: tokens.colorNeutralForeground1,
-  fontFamily: tokens.fontFamilyBase,
+  backgroundColor: `var(--2273, var(--2274, ${tokens.colorTransparentBackground}))`,
+  color: `var(--2275, var(--2276, ${tokens.colorNeutralForeground1}))`,
+  fontFamily: `var(--2277, var(--2278, ${tokens.fontFamilyBase}))`,
   boxSizing: 'border-box',
 
   '&:focus': {
     outlineStyle: 'none',
   },
   '&::placeholder': {
-    color: tokens.colorNeutralForeground4,
+    color: `var(--2279, var(--2280, ${tokens.colorNeutralForeground4}))`,
     opacity: 1,
   },
   '&::after': {
@@ -53,11 +53,11 @@ const useStyles = makeStyles({
     padding: `${tokens.spacingVerticalM} 0 ${tokens.spacingVerticalM} 0`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--2281, var(--2282, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--2283, var(--2284, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--2285, var(--2286, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });

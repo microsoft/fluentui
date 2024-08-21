@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     padding: '0px',
     margin: `0 ${tokens.spacingHorizontalXS}`,
     ...shorthands.borderColor(tokens.colorTransparentStroke),
-    borderRadius: tokens.borderRadiusSmall,
+    borderRadius: `var(--789, var(--790, ${tokens.borderRadiusSmall}))`,
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
     ':hover': {

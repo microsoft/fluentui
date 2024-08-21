@@ -12,7 +12,7 @@ export const toastTitleClassNames: SlotClassNames<ToastTitleSlots> = {
 const useRootBaseClassName = makeResetStyles({
   display: 'flex',
   gridColumnEnd: 3,
-  color: tokens.colorNeutralForeground1,
+  color: `var(--2803, var(--2804, ${tokens.colorNeutralForeground1}))`,
   wordBreak: 'break-word',
 });
 
@@ -22,7 +22,7 @@ const useMediaBaseClassName = makeResetStyles({
   gridColumnEnd: 2,
   paddingRight: '8px',
   fontSize: '16px',
-  color: tokens.colorNeutralForeground1,
+  color: `var(--2805, var(--2806, ${tokens.colorNeutralForeground1}))`,
 });
 
 const useActionBaseClassName = makeResetStyles({
@@ -30,50 +30,50 @@ const useActionBaseClassName = makeResetStyles({
   alignItems: 'start',
   paddingLeft: '12px',
   gridColumnEnd: -1,
-  color: tokens.colorBrandForeground1,
+  color: `var(--2807, var(--2808, ${tokens.colorBrandForeground1}))`,
 });
 
 const useInvertedStyles = makeStyles({
   root: {
-    color: tokens.colorNeutralForegroundInverted2,
+    color: `var(--2809, var(--2810, ${tokens.colorNeutralForegroundInverted2}))`,
   },
 
   action: {
-    color: tokens.colorBrandForegroundInverted,
+    color: `var(--2811, var(--2812, ${tokens.colorBrandForegroundInverted}))`,
   },
 
   media: {
-    color: tokens.colorNeutralForegroundInverted,
+    color: `var(--2813, var(--2814, ${tokens.colorNeutralForegroundInverted}))`,
   },
 });
 
 const useIntentIconStyles = makeStyles({
   success: {
-    color: tokens.colorStatusSuccessForeground1,
+    color: `var(--2815, var(--2816, ${tokens.colorStatusSuccessForeground1}))`,
   },
   error: {
-    color: tokens.colorStatusDangerForeground1,
+    color: `var(--2817, var(--2818, ${tokens.colorStatusDangerForeground1}))`,
   },
   warning: {
-    color: tokens.colorStatusWarningForeground1,
+    color: `var(--2819, var(--2820, ${tokens.colorStatusWarningForeground1}))`,
   },
   info: {
-    color: tokens.colorNeutralForeground2,
+    color: `var(--2821, var(--2822, ${tokens.colorNeutralForeground2}))`,
   },
 });
 
 const useIntentIconStylesInverted = makeStyles({
   success: {
-    color: tokens.colorStatusSuccessForegroundInverted,
+    color: `var(--2823, var(--2824, ${tokens.colorStatusSuccessForegroundInverted}))`,
   },
   error: {
-    color: tokens.colorStatusDangerForegroundInverted,
+    color: `var(--2825, var(--2826, ${tokens.colorStatusDangerForegroundInverted}))`,
   },
   warning: {
-    color: tokens.colorStatusWarningForegroundInverted,
+    color: `var(--2827, var(--2828, ${tokens.colorStatusWarningForegroundInverted}))`,
   },
   info: {
-    color: tokens.colorNeutralForegroundInverted2,
+    color: `var(--2829, var(--2830, ${tokens.colorNeutralForegroundInverted2}))`,
   },
 });
 

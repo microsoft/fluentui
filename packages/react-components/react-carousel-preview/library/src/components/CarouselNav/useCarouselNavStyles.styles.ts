@@ -19,12 +19,12 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
-      borderRadius: tokens.borderRadiusMedium,
+      borderRadius: `var(--773, var(--774, ${tokens.borderRadiusMedium}))`,
       ...shorthands.borderColor('transparent'),
     }),
-    borderRadius: tokens.borderRadiusXLarge,
+    borderRadius: `var(--775, var(--776, ${tokens.borderRadiusXLarge}))`,
     margin: `auto ${tokens.spacingHorizontalS}`,
-    backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    backgroundColor: `var(--779, var(--780, ${tokens.colorNeutralBackgroundAlpha}))`,
   },
 });
 

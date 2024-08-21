@@ -46,9 +46,9 @@ const baseStyles: GriffelResetStyle = {
 const useRootRoundedBaseClassName = makeResetStyles({
   ...baseStyles,
 
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--2443, var(--2444, ${tokens.borderRadiusMedium}))`,
   ...createCustomFocusIndicatorStyle({
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--2445, var(--2446, ${tokens.borderRadiusMedium}))`,
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
   }),
 
@@ -66,8 +66,8 @@ const useRootRoundedBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderTopLeftRadius: tokens.borderRadiusMedium,
-      borderTopRightRadius: tokens.borderRadiusMedium,
+      borderTopLeftRadius: `var(--2447, var(--2448, ${tokens.borderRadiusMedium}))`,
+      borderTopRightRadius: `var(--2449, var(--2450, ${tokens.borderRadiusMedium}))`,
     },
   },
 });
@@ -75,9 +75,9 @@ const useRootRoundedBaseClassName = makeResetStyles({
 const useRootCircularBaseClassName = makeResetStyles({
   ...baseStyles,
 
-  borderRadius: tokens.borderRadiusCircular,
+  borderRadius: `var(--2451, var(--2452, ${tokens.borderRadiusCircular}))`,
   ...createCustomFocusIndicatorStyle({
-    borderRadius: tokens.borderRadiusCircular,
+    borderRadius: `var(--2453, var(--2454, ${tokens.borderRadiusCircular}))`,
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
   }),
 
@@ -97,24 +97,24 @@ const useRootCircularBaseClassName = makeResetStyles({
       left: '-1px',
       right: '-1px',
       bottom: '-1px',
-      borderRadius: tokens.borderRadiusCircular,
+      borderRadius: `var(--2455, var(--2456, ${tokens.borderRadiusCircular}))`,
     },
   },
 });
 
 const useRootStyles = makeStyles({
   filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2457, var(--2458, ${tokens.colorNeutralBackground3}))`,
+    color: `var(--2459, var(--2460, ${tokens.colorNeutralForeground2}))`,
   },
   outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2461, var(--2462, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2463, var(--2464, ${tokens.colorNeutralForeground2}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
   },
   brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    backgroundColor: `var(--2465, var(--2466, ${tokens.colorBrandBackground2}))`,
+    color: `var(--2467, var(--2468, ${tokens.colorBrandForeground2}))`,
   },
 
   medium: {
@@ -131,20 +131,20 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   filled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2469, var(--2470, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2471, var(--2472, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
   outline: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2473, var(--2474, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2475, var(--2476, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
   },
   brand: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2477, var(--2478, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2479, var(--2480, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
   },
 });
@@ -185,19 +185,19 @@ export const useIconStyles = makeStyles({
   },
   medium: {
     paddingLeft: tagSpacingMedium,
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--2481, var(--2482, ${tokens.spacingHorizontalXS}))`,
     width: mediumIconSize,
     fontSize: mediumIconSize,
   },
   small: {
     paddingLeft: tagSpacingSmall,
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingRight: `var(--2483, var(--2484, ${tokens.spacingHorizontalXXS}))`,
     width: smallIconSize,
     fontSize: smallIconSize,
   },
   'extra-small': {
     paddingLeft: tagSpacingExtraSmall,
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingRight: `var(--2485, var(--2486, ${tokens.spacingHorizontalXXS}))`,
     width: extraSmallIconSize,
     fontSize: extraSmallIconSize,
   },
@@ -211,13 +211,13 @@ export const useMediaStyles = makeStyles({
     paddingLeft: '1px',
   },
   medium: {
-    paddingRight: tokens.spacingHorizontalS,
+    paddingRight: `var(--2487, var(--2488, ${tokens.spacingHorizontalS}))`,
   },
   small: {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--2489, var(--2490, ${tokens.spacingHorizontalSNudge}))`,
   },
   'extra-small': {
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--2491, var(--2492, ${tokens.spacingHorizontalSNudge}))`,
   },
 });
 
@@ -238,17 +238,17 @@ const useDismissIconStyles = makeStyles({
     },
   },
   medium: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--2493, var(--2494, ${tokens.spacingHorizontalXS}))`,
     paddingRight: tagSpacingMedium,
     fontSize: mediumIconSize,
   },
   small: {
-    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingLeft: `var(--2495, var(--2496, ${tokens.spacingHorizontalXXS}))`,
     paddingRight: tagSpacingSmall,
     fontSize: smallIconSize,
   },
   'extra-small': {
-    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingLeft: `var(--2497, var(--2498, ${tokens.spacingHorizontalXXS}))`,
     paddingRight: tagSpacingExtraSmall,
     fontSize: extraSmallIconSize,
   },
@@ -256,28 +256,28 @@ const useDismissIconStyles = makeStyles({
   filled: {
     ':hover': {
       cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
+      color: `var(--2499, var(--2500, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      color: `var(--2501, var(--2502, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
   },
   outline: {
     ':hover': {
       cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
+      color: `var(--2503, var(--2504, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      color: `var(--2505, var(--2506, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
   },
   brand: {
     ':hover': {
       cursor: 'pointer',
-      color: tokens.colorCompoundBrandForeground1Hover,
+      color: `var(--2507, var(--2508, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      color: `var(--2509, var(--2510, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
   },
 });
@@ -285,8 +285,8 @@ const useDismissIconStyles = makeStyles({
 export const usePrimaryTextStyles = makeStyles({
   base: {
     whiteSpace: 'nowrap',
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingLeft: `var(--2511, var(--2512, ${tokens.spacingHorizontalXXS}))`,
+    paddingRight: `var(--2513, var(--2514, ${tokens.spacingHorizontalXXS}))`,
   },
 
   medium: {
@@ -303,7 +303,7 @@ export const usePrimaryTextStyles = makeStyles({
     gridColumnStart: 'primary',
     gridRowStart: 'primary',
     gridRowEnd: 'secondary',
-    paddingBottom: tokens.spacingHorizontalXXS,
+    paddingBottom: `var(--2515, var(--2516, ${tokens.spacingHorizontalXXS}))`,
   },
   withSecondaryText: {
     gridArea: 'primary',
@@ -315,8 +315,8 @@ export const usePrimaryTextStyles = makeStyles({
 
 export const useSecondaryTextBaseClassName = makeResetStyles({
   gridArea: 'secondary',
-  paddingLeft: tokens.spacingHorizontalXXS,
-  paddingRight: tokens.spacingHorizontalXXS,
+  paddingLeft: `var(--2517, var(--2518, ${tokens.spacingHorizontalXXS}))`,
+  paddingRight: `var(--2519, var(--2520, ${tokens.spacingHorizontalXXS}))`,
   ...typographyStyles.caption2,
   whiteSpace: 'nowrap',
 });

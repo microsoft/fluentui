@@ -56,13 +56,13 @@ const useMonthPickerWrapperStyles = makeStyles({
 const useGoTodayButtonStyles = makeStyles({
   base: {
     alignSelf: 'flex-end',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--493, var(--494, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
     bottom: 0,
     boxSizing: 'content-box',
-    color: tokens.colorNeutralForeground1,
+    color: `var(--495, var(--496, ${tokens.colorNeutralForeground1}))`,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--497, var(--498, ${tokens.fontSizeBase200}))`,
     height: '30px',
     lineHeight: '30px',
     marginRight: '16px',
@@ -71,23 +71,23 @@ const useGoTodayButtonStyles = makeStyles({
     padding: '0 4px',
 
     '& div': {
-      fontSize: tokens.fontSizeBase200,
+      fontSize: `var(--499, var(--500, ${tokens.fontSizeBase200}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorTransparentBackground,
-      color: tokens.colorBrandForeground1,
+      backgroundColor: `var(--501, var(--502, ${tokens.colorTransparentBackground}))`,
+      color: `var(--503, var(--504, ${tokens.colorBrandForeground1}))`,
       cursor: 'pointer',
 
       '@media (forced-colors: active)': {
-        outline: tokens.strokeWidthThin,
-        borderRadius: tokens.borderRadiusSmall,
+        outline: `var(--505, var(--506, ${tokens.strokeWidthThin}))`,
+        borderRadius: `var(--507, var(--508, ${tokens.borderRadiusSmall}))`,
       },
     },
     '&:hover:active': {
-      color: tokens.colorBrandForeground2,
+      color: `var(--509, var(--510, ${tokens.colorBrandForeground2}))`,
     },
     '&:disabled': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--511, var(--512, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
   },
