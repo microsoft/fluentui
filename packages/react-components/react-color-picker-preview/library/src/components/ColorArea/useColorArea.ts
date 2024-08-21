@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
+import { useColorAreaState_unstable } from './useColorAreaState';
 
 /**
  * Create the state required to render ColorArea.
@@ -12,20 +13,52 @@ import type { ColorAreaProps, ColorAreaState } from './ColorArea.types';
  * @param ref - reference to root HTMLDivElement of ColorArea
  */
 export const useColorArea_unstable = (props: ColorAreaProps, ref: React.Ref<HTMLDivElement>): ColorAreaState => {
-  return {
-    // TODO add appropriate props/defaults
+  const inputXRef = React.useRef(null);
+  const inputYRef = React.useRef(null);
+  const divRef = React.useRef(null);
+
+  const {
+    // Slots
+    inputX,
+    inputY,
+    thumb,
+    ...rest
+  } = props;
+
+  const state: ColorAreaState = {
     components: {
-      // TODO add each slot's element type or component
+      inputX: 'input',
+      inputY: 'input',
       root: 'div',
+      thumb: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
-        ...props,
+        ref: divRef,
+        ...rest,
       }),
       { elementType: 'div' },
     ),
+    inputX: slot.always(inputX, {
+      defaultProps: {
+        id: useId('sliderX-', props.id),
+        type: 'range',
+        ref: inputXRef,
+      },
+      elementType: 'input',
+    }),
+    inputY: slot.always(inputY, {
+      defaultProps: {
+        id: useId('sliderY-', props.id),
+        type: 'range',
+        ref: inputYRef,
+      },
+      elementType: 'input',
+    }),
+    thumb: slot.always(thumb, { elementType: 'div' }),
   };
+
+  useColorAreaState_unstable(state, props);
+
+  return state;
 };
