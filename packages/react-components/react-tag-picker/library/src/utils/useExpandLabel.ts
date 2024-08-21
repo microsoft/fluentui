@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs } from '../../../../react-utilities/src/index';
+import { useMergedRefs } from '@fluentui/react-utilities';
 import { useTagPickerContext_unstable } from '../contexts/TagPickerContext';
 import { TagPickerControlState } from '../TagPickerControl';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
