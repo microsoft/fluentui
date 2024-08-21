@@ -83,15 +83,15 @@ extends:
                 displayName: 'Bump and commit nightly versions'
 
               - script: |
-                  yarn nx run react-components:build --nxBai
+                  yarn nx run react-components:build --nxBail
                 displayName: build
 
               - script: |
-                  yarn nx run react-components:lint --nxBai
+                  yarn nx run react-components:lint --nxBail
                 displayName: lint
 
               - script: |
-                  yarn nx run react-components:test --nxBai
+                  yarn nx run react-components:test --nxBail
                 displayName: test
 
               - script: |
