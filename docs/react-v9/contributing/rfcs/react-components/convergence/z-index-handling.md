@@ -76,34 +76,40 @@ Expose the z-index values as tokens. This would map the layers into token values
 The layers can be defined as follows:
 
 ```ts
-// packages/tokens/src/global/zIndexes.ts
-
-import { ZIndexLevels, ZIndexTokens } from '../types';
-
-// According to Fluent V2 guidelines
-const levels: ZIndexLevels = [
-  0, // Elevation 0
-  1, // Elevation 2
-  1000, // Elevation 4
-  2000, // Elevation 8
-  3000, // Elevation 16
-  4000, // Elevation 28
-  5000, // Elevation 64
-  6000, // High priority elements
-];
+// packages/tokens/src/types.ts
 
 /**
- * Global z-index values for elements
+ * Design tokens for z-index groups and levels
+ */
+export type ZIndexTokens = {
+  zIndexBackground: string;
+  zIndexContent: string;
+  zIndexOverlay: string;
+  zIndexPopup: string;
+  zIndexMessages: string;
+  zIndexFloating: string;
+  zIndexPriority: string;
+  zIndexDebug: string;
+};
+```
+
+```ts
+// packages/tokens/src/global/zIndexes.ts
+
+import type { ZIndexTokens } from '../types';
+
+/**
+ * ZIndex global defaults
  */
 export const zIndexes: ZIndexTokens = {
-  zIndexBackground: levels[0], // default
-  zIndexContent: levels[1], // content - header, footer, sidebar
-  zIndexOverlay: levels[2], // overlay elements - drawer, nav
-  zIndexPopup: levels[3], // popup layers - popups, modals, dialogs
-  zIndexMessages: levels[4], // communication elements - banners, messages, toasts, snackbar
-  zIndexFloating: levels[5], // floating elements - dropdowns, teaching
-  zIndexPriority: levels[6], // priority elements - tooltips
-  zIndexDebug: levels[7], // debug - error overlays, debug messages
+  zIndexBackground: '0', // Elevation 0
+  zIndexContent: '1', // Elevation 2
+  zIndexOverlay: '1000', // Elevation 4
+  zIndexPopup: '2000', // Elevation 8
+  zIndexMessages: '3000', // Elevation 16
+  zIndexFloating: '4000', // Elevation 28
+  zIndexPriority: '5000', // Elevation 64
+  zIndexDebug: '6000', // Used for debugging
 };
 ```
 
@@ -114,7 +120,7 @@ import { tokens } from '@fluentui/theme';
 
 const styles = {
   root: {
-    zIndex: tokens.zIndexOverlay /* var(--zIndexOverlay) */,
+    zIndex: tokens.zIndexOverlay /* var(--zIndexOverlay, 1000) */,
   },
 };
 ```
