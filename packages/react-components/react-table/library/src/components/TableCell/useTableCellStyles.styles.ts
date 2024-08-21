@@ -58,7 +58,10 @@ const useStyles = makeStyles({
     padding: `0px ${tokens.spacingHorizontalS}`,
 
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--1955, var(--1956, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus' },
     ),
   },

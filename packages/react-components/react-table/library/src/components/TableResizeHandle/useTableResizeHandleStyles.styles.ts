@@ -45,7 +45,7 @@ const useStyles = makeStyles({
       left: '50%',
       top: 0,
       bottom: 0,
-      backgroundColor: tokens.colorNeutralStroke1,
+      backgroundColor: `var(--1975, var(--1976, ${tokens.colorNeutralStroke1}))`,
     },
   },
 });

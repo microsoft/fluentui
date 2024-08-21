@@ -32,10 +32,13 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    fontWeight: tokens.fontWeightRegular,
+    fontWeight: `var(--1963, var(--1964, ${tokens.fontWeightRegular}))`,
     padding: `0px ${tokens.spacingHorizontalS}`,
     ...createCustomFocusIndicatorStyle(
-      { outline: `2px solid ${tokens.colorStrokeFocus2}`, borderRadius: tokens.borderRadiusMedium },
+      {
+        outline: `2px solid ${tokens.colorStrokeFocus2}`,
+        borderRadius: `var(--1965, var(--1966, ${tokens.borderRadiusMedium}))`,
+      },
       { selector: 'focus-within' },
     ),
     position: 'relative',
@@ -43,10 +46,10 @@ const useStyles = makeStyles({
 
   rootInteractive: {
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundHover,
+      backgroundColor: `var(--1967, var(--1968, ${tokens.colorSubtleBackgroundHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
+      backgroundColor: `var(--1969, var(--1970, ${tokens.colorSubtleBackgroundPressed}))`,
     },
   },
 
@@ -71,7 +74,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
     height: '100%',
     alignItems: 'center',
-    gap: tokens.spacingHorizontalXS,
+    gap: `var(--1971, var(--1972, ${tokens.spacingHorizontalXS}))`,
     minHeight: '32px',
     flex: '1 1 0px',
     outlineStyle: 'none',
@@ -84,7 +87,7 @@ const useStyles = makeStyles({
   sortIcon: {
     display: 'flex',
     alignItems: 'center',
-    paddingTop: tokens.spacingVerticalXXS,
+    paddingTop: `var(--1973, var(--1974, ${tokens.spacingVerticalXXS}))`,
   },
 
   resizeHandle: {},

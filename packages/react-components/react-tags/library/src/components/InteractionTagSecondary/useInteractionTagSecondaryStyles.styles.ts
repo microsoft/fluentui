@@ -33,23 +33,23 @@ const useRootBaseClassName = makeResetStyles({
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
   // divider:
-  borderLeftColor: tokens.colorNeutralStroke1,
-  borderTopLeftRadius: tokens.borderRadiusNone,
-  borderBottomLeftRadius: tokens.borderRadiusNone,
+  borderLeftColor: `var(--2375, var(--2376, ${tokens.colorNeutralStroke1}))`,
+  borderTopLeftRadius: `var(--2377, var(--2378, ${tokens.borderRadiusNone}))`,
+  borderBottomLeftRadius: `var(--2379, var(--2380, ${tokens.borderRadiusNone}))`,
 });
 
 const useRootStyles = makeStyles({
   filled: {
-    backgroundColor: tokens.colorNeutralBackground3,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2381, var(--2382, ${tokens.colorNeutralBackground3}))`,
+    color: `var(--2383, var(--2384, ${tokens.colorNeutralForeground2}))`,
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorNeutralBackground3Hover,
-      color: tokens.colorNeutralForeground2BrandHover,
+      backgroundColor: `var(--2385, var(--2386, ${tokens.colorNeutralBackground3Hover}))`,
+      color: `var(--2387, var(--2388, ${tokens.colorNeutralForeground2BrandHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorNeutralBackground3Pressed,
-      color: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: `var(--2389, var(--2390, ${tokens.colorNeutralBackground3Pressed}))`,
+      color: `var(--2391, var(--2392, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -61,17 +61,17 @@ const useRootStyles = makeStyles({
     },
   },
   outline: {
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--2393, var(--2394, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2395, var(--2396, ${tokens.colorNeutralForeground2}))`,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorSubtleBackgroundHover,
-      color: tokens.colorNeutralForeground2BrandHover,
+      backgroundColor: `var(--2397, var(--2398, ${tokens.colorSubtleBackgroundHover}))`,
+      color: `var(--2399, var(--2400, ${tokens.colorNeutralForeground2BrandHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundPressed,
-      color: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: `var(--2401, var(--2402, ${tokens.colorSubtleBackgroundPressed}))`,
+      color: `var(--2403, var(--2404, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -83,17 +83,17 @@ const useRootStyles = makeStyles({
     },
   },
   brand: {
-    backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
-    borderLeftColor: tokens.colorBrandStroke2, // divider
+    backgroundColor: `var(--2405, var(--2406, ${tokens.colorBrandBackground2}))`,
+    color: `var(--2407, var(--2408, ${tokens.colorBrandForeground2}))`,
+    borderLeftColor: `var(--2409, var(--2410, ${tokens.colorBrandStroke2}))`, // divider
     ':hover': {
       cursor: 'pointer',
-      backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorCompoundBrandForeground1Hover,
+      backgroundColor: `var(--2411, var(--2412, ${tokens.colorBrandBackground2Hover}))`,
+      color: `var(--2413, var(--2414, ${tokens.colorCompoundBrandForeground1Hover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorCompoundBrandForeground1Pressed,
+      backgroundColor: `var(--2415, var(--2416, ${tokens.colorBrandBackground2Pressed}))`,
+      color: `var(--2417, var(--2418, ${tokens.colorCompoundBrandForeground1Pressed}))`,
     },
     '@media (forced-colors: active)': {
       ':hover': {
@@ -106,12 +106,12 @@ const useRootStyles = makeStyles({
   },
 
   rounded: {
-    borderTopRightRadius: tokens.borderRadiusMedium,
-    borderBottomRightRadius: tokens.borderRadiusMedium,
+    borderTopRightRadius: `var(--2419, var(--2420, ${tokens.borderRadiusMedium}))`,
+    borderBottomRightRadius: `var(--2421, var(--2422, ${tokens.borderRadiusMedium}))`,
   },
   circular: {
-    borderTopRightRadius: tokens.borderRadiusCircular,
-    borderBottomRightRadius: tokens.borderRadiusCircular,
+    borderTopRightRadius: `var(--2423, var(--2424, ${tokens.borderRadiusCircular}))`,
+    borderBottomRightRadius: `var(--2425, var(--2426, ${tokens.borderRadiusCircular}))`,
   },
 
   medium: {
@@ -133,23 +133,23 @@ const useRootStyles = makeStyles({
 const useRootDisabledStyles = makeStyles({
   filled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2427, var(--2428, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2429, var(--2430, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-    borderLeftColor: tokens.colorNeutralStrokeDisabled, // divider
+    borderLeftColor: `var(--2431, var(--2432, ${tokens.colorNeutralStrokeDisabled}))`, // divider
   },
   outline: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorSubtleBackground,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2433, var(--2434, ${tokens.colorSubtleBackground}))`,
+    color: `var(--2435, var(--2436, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
   },
   brand: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorNeutralBackgroundDisabled,
-    color: tokens.colorNeutralForegroundDisabled,
+    backgroundColor: `var(--2437, var(--2438, ${tokens.colorNeutralBackgroundDisabled}))`,
+    color: `var(--2439, var(--2440, ${tokens.colorNeutralForegroundDisabled}))`,
     ...shorthands.borderColor(tokens.colorTransparentStrokeDisabled),
-    borderLeftColor: tokens.colorNeutralStrokeDisabled, // divider
+    borderLeftColor: `var(--2441, var(--2442, ${tokens.colorNeutralStrokeDisabled}))`, // divider
   },
 });
 

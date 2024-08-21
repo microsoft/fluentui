@@ -27,19 +27,19 @@ const useRootBaseStyles = makeResetStyles({
   alignItems: 'center',
   ...typographyStyles.body1,
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: `var(--2909, var(--2910, ${tokens.colorNeutralForeground2Pressed}))`,
+    backgroundColor: `var(--2911, var(--2912, ${tokens.colorSubtleBackgroundPressed}))`,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: `var(--2913, var(--2914, ${tokens.colorNeutralForeground3Pressed}))`,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: `var(--2915, var(--2916, ${tokens.colorNeutralForeground2Hover}))`,
+    backgroundColor: `var(--2917, var(--2918, ${tokens.colorSubtleBackgroundHover}))`,
     // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
     [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: `var(--2919, var(--2920, ${tokens.colorNeutralForeground3Hover}))`,
     },
   },
 });
@@ -106,7 +106,7 @@ const useAsideBaseStyles = makeResetStyles({
   zIndex: 0,
   gridArea: 'aside',
   padding: `0 ${tokens.spacingHorizontalM}`,
-  gap: tokens.spacingHorizontalXS,
+  gap: `var(--2921, var(--2922, ${tokens.spacingHorizontalXS}))`,
 });
 
 /**
@@ -118,7 +118,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: `var(--2923, var(--2924, ${tokens.colorNeutralForeground3}))`,
   gridArea: 'expandIcon',
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,

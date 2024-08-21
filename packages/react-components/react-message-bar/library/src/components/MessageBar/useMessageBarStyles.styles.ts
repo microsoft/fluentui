@@ -15,26 +15,26 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateColumns: 'auto 1fr auto auto',
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
-  paddingLeft: tokens.spacingHorizontalM,
+  paddingLeft: `var(--1403, var(--1404, ${tokens.spacingHorizontalM}))`,
   border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-  borderRadius: tokens.borderRadiusMedium,
+  borderRadius: `var(--1405, var(--1406, ${tokens.borderRadiusMedium}))`,
   alignItems: 'center',
   minHeight: '36px',
   boxSizing: 'border-box',
-  backgroundColor: tokens.colorNeutralBackground3,
+  backgroundColor: `var(--1407, var(--1408, ${tokens.colorNeutralBackground3}))`,
 });
 
 const useIconBaseStyles = makeResetStyles({
   gridArea: 'icon',
-  fontSize: tokens.fontSizeBase500,
-  marginRight: tokens.spacingHorizontalS,
-  color: tokens.colorNeutralForeground3,
+  fontSize: `var(--1409, var(--1410, ${tokens.fontSizeBase500}))`,
+  marginRight: `var(--1411, var(--1412, ${tokens.spacingHorizontalS}))`,
+  color: `var(--1413, var(--1414, ${tokens.colorNeutralForeground3}))`,
   display: 'flex',
   alignItems: 'center',
 });
 
 const useReflowSpacerBaseStyles = makeResetStyles({
-  marginBottom: tokens.spacingVerticalS,
+  marginBottom: `var(--1415, var(--1416, ${tokens.spacingVerticalS}))`,
   gridArea: 'secondaryActions',
 });
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
   rootMultiline: {
     whiteSpace: 'normal',
     alignItems: 'start',
-    paddingTop: tokens.spacingVerticalMNudge,
+    paddingTop: `var(--1417, var(--1418, ${tokens.spacingVerticalMNudge}))`,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
       "icon body actions"
@@ -52,8 +52,8 @@ const useStyles = makeStyles({
 
   secondaryActionsMultiline: {
     justifyContent: 'end',
-    marginTop: tokens.spacingVerticalMNudge,
-    marginBottom: tokens.spacingVerticalS,
+    marginTop: `var(--1419, var(--1420, ${tokens.spacingVerticalMNudge}))`,
+    marginBottom: `var(--1421, var(--1422, ${tokens.spacingVerticalS}))`,
     marginRight: '0px',
   },
 
@@ -67,13 +67,13 @@ const useIconIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    color: tokens.colorStatusDangerForeground1,
+    color: `var(--1423, var(--1424, ${tokens.colorStatusDangerForeground1}))`,
   },
   warning: {
-    color: tokens.colorStatusWarningForeground3,
+    color: `var(--1425, var(--1426, ${tokens.colorStatusWarningForeground3}))`,
   },
   success: {
-    color: tokens.colorStatusSuccessForeground1,
+    color: `var(--1427, var(--1428, ${tokens.colorStatusSuccessForeground1}))`,
   },
 });
 
@@ -82,15 +82,15 @@ const useRootIntentStyles = makeStyles({
     /** already in base reset styles */
   },
   error: {
-    backgroundColor: tokens.colorStatusDangerBackground1,
+    backgroundColor: `var(--1429, var(--1430, ${tokens.colorStatusDangerBackground1}))`,
     ...shorthands.borderColor(tokens.colorStatusDangerBorder1),
   },
   warning: {
-    backgroundColor: tokens.colorStatusWarningBackground1,
+    backgroundColor: `var(--1431, var(--1432, ${tokens.colorStatusWarningBackground1}))`,
     ...shorthands.borderColor(tokens.colorStatusWarningBorder1),
   },
   success: {
-    backgroundColor: tokens.colorStatusSuccessBackground1,
+    backgroundColor: `var(--1433, var(--1434, ${tokens.colorStatusSuccessBackground1}))`,
     ...shorthands.borderColor(tokens.colorStatusSuccessBorder1),
   },
 });

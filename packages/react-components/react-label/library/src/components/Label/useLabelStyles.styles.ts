@@ -13,40 +13,40 @@ export const labelClassNames: SlotClassNames<LabelSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    fontFamily: tokens.fontFamilyBase,
-    color: tokens.colorNeutralForeground1,
+    fontFamily: `var(--1239, var(--1240, ${tokens.fontFamilyBase}))`,
+    color: `var(--1241, var(--1242, ${tokens.colorNeutralForeground1}))`,
   },
 
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--1243, var(--1244, ${tokens.colorNeutralForegroundDisabled}))`,
     '@media (forced-colors: active)': {
       color: 'GrayText',
     },
   },
 
   required: {
-    color: tokens.colorPaletteRedForeground3,
-    paddingLeft: tokens.spacingHorizontalXS,
+    color: `var(--1245, var(--1246, ${tokens.colorPaletteRedForeground3}))`,
+    paddingLeft: `var(--1247, var(--1248, ${tokens.spacingHorizontalXS}))`,
   },
 
   small: {
-    fontSize: tokens.fontSizeBase200,
-    lineHeight: tokens.lineHeightBase200,
+    fontSize: `var(--1249, var(--1250, ${tokens.fontSizeBase200}))`,
+    lineHeight: `var(--1251, var(--1252, ${tokens.lineHeightBase200}))`,
   },
 
   medium: {
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
+    fontSize: `var(--1253, var(--1254, ${tokens.fontSizeBase300}))`,
+    lineHeight: `var(--1255, var(--1256, ${tokens.lineHeightBase300}))`,
   },
 
   large: {
-    fontSize: tokens.fontSizeBase400,
-    lineHeight: tokens.lineHeightBase400,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--1257, var(--1258, ${tokens.fontSizeBase400}))`,
+    lineHeight: `var(--1259, var(--1260, ${tokens.lineHeightBase400}))`,
+    fontWeight: `var(--1261, var(--1262, ${tokens.fontWeightSemibold}))`,
   },
 
   semibold: {
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: `var(--1263, var(--1264, ${tokens.fontWeightSemibold}))`,
   },
 });
 

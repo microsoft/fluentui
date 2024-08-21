@@ -55,14 +55,14 @@ const useHeaderContainerStyles = makeStyles({
 
 const useCurrentItemButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--623, var(--624, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--625, var(--626, ${tokens.borderRadiusMedium}))`,
     color: 'inherit',
     flexGrow: 1,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase300,
-    fontWeight: tokens.fontWeightSemibold,
+    fontSize: `var(--627, var(--628, ${tokens.fontSizeBase300}))`,
+    fontWeight: `var(--629, var(--630, ${tokens.fontWeightSemibold}))`,
     overflow: 'visible',
     padding: '0 4px 0 10px',
     textAlign: 'left',
@@ -76,14 +76,14 @@ const useCurrentItemButtonStyles = makeStyles({
   hasHeaderClickCallback: {
     // If this is updated, make sure to update headerIsClickable in useCalendarDayStyles as well
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--631, var(--632, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--633, var(--634, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--635, var(--636, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--637, var(--638, ${tokens.colorBrandForegroundOnLightPressed}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
@@ -99,13 +99,13 @@ const useNavigationButtonsContainerStyles = makeStyles({
 
 const useNavigationButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--639, var(--640, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground1,
+    borderRadius: `var(--641, var(--642, ${tokens.borderRadiusMedium}))`,
+    color: `var(--643, var(--644, ${tokens.colorNeutralForeground1}))`,
     display: 'block',
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--645, var(--646, ${tokens.fontSizeBase200}))`,
     height: '28px',
     lineHeight: '28px',
     minHeight: '28px',
@@ -117,15 +117,15 @@ const useNavigationButtonStyles = makeStyles({
     width: '28px',
 
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorBrandForegroundOnLightHover,
+      backgroundColor: `var(--647, var(--648, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--649, var(--650, ${tokens.colorBrandForegroundOnLightHover}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
     },
 
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
-      color: tokens.colorBrandForegroundOnLightPressed,
+      backgroundColor: `var(--651, var(--652, ${tokens.colorBrandBackgroundInvertedPressed}))`,
+      color: `var(--653, var(--654, ${tokens.colorBrandForegroundOnLightPressed}))`,
     },
   },
 });
@@ -164,12 +164,12 @@ const useButtonRowStyles = makeStyles({
 
 const useItemButtonStyles = makeStyles({
   base: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--655, var(--656, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground3,
+    borderRadius: `var(--657, var(--658, ${tokens.borderRadiusMedium}))`,
+    color: `var(--659, var(--660, ${tokens.colorNeutralForeground3}))`,
     fontFamily: 'inherit',
-    fontSize: tokens.fontSizeBase200,
+    fontSize: `var(--661, var(--662, ${tokens.fontSizeBase200}))`,
     height: '40px',
     lineHeight: '40px',
     minHeight: '40px',
@@ -186,11 +186,11 @@ const useItemButtonStyles = makeStyles({
       marginBottom: 0,
     },
     '& div': {
-      fontWeight: tokens.fontWeightRegular,
+      fontWeight: `var(--663, var(--664, ${tokens.fontWeightRegular}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedHover,
-      color: tokens.colorNeutralForeground1Static,
+      backgroundColor: `var(--665, var(--666, ${tokens.colorBrandBackgroundInvertedHover}))`,
+      color: `var(--667, var(--668, ${tokens.colorNeutralForeground1Static}))`,
       cursor: 'pointer',
       outline: `1px solid ${tokens.colorTransparentStroke}`,
 
@@ -202,7 +202,7 @@ const useItemButtonStyles = makeStyles({
       },
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      backgroundColor: `var(--669, var(--670, ${tokens.colorBrandBackgroundInvertedPressed}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Window',
@@ -215,9 +215,9 @@ const useItemButtonStyles = makeStyles({
 
 const useCurrentStyles = makeStyles({
   highlightCurrent: {
-    backgroundColor: tokens.colorBrandBackground,
-    color: tokens.colorNeutralForegroundOnBrand,
-    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: `var(--671, var(--672, ${tokens.colorBrandBackground}))`,
+    color: `var(--673, var(--674, ${tokens.colorNeutralForegroundOnBrand}))`,
+    fontWeight: `var(--675, var(--676, ${tokens.fontWeightSemibold}))`,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'WindowText',
@@ -225,8 +225,8 @@ const useCurrentStyles = makeStyles({
       forcedColorAdjust: 'none',
     },
     '&:hover, &:hover:active': {
-      backgroundColor: tokens.colorBrandBackground,
-      color: tokens.colorNeutralForegroundOnBrand,
+      backgroundColor: `var(--677, var(--678, ${tokens.colorBrandBackground}))`,
+      color: `var(--679, var(--680, ${tokens.colorNeutralForegroundOnBrand}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'WindowText',
@@ -239,9 +239,9 @@ const useCurrentStyles = makeStyles({
 
 const useSelectedStyles = makeStyles({
   highlightSelected: {
-    backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-    color: tokens.colorNeutralForeground1Static,
-    fontWeight: tokens.fontWeightSemibold,
+    backgroundColor: `var(--681, var(--682, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+    color: `var(--683, var(--684, ${tokens.colorNeutralForeground1Static}))`,
+    fontWeight: `var(--685, var(--686, ${tokens.fontWeightSemibold}))`,
 
     '@media (forced-colors: active)': {
       backgroundColor: 'Highlight',
@@ -249,11 +249,11 @@ const useSelectedStyles = makeStyles({
       forcedColorAdjust: 'none',
     },
     '& div': {
-      fontWeight: tokens.fontWeightSemibold,
+      fontWeight: `var(--687, var(--688, ${tokens.fontWeightSemibold}))`,
     },
     '&:hover': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedSelected,
-      color: tokens.colorNeutralForeground1Static,
+      backgroundColor: `var(--689, var(--690, ${tokens.colorBrandBackgroundInvertedSelected}))`,
+      color: `var(--691, var(--692, ${tokens.colorNeutralForeground1Static}))`,
 
       '@media (forced-colors: active)': {
         backgroundColor: 'Highlight',
@@ -262,7 +262,7 @@ const useSelectedStyles = makeStyles({
       },
     },
     '&:hover:active': {
-      backgroundColor: tokens.colorBrandBackgroundInvertedPressed,
+      backgroundColor: `var(--693, var(--694, ${tokens.colorBrandBackgroundInvertedPressed}))`,
     },
   },
 });
@@ -270,7 +270,7 @@ const useSelectedStyles = makeStyles({
 const useDisabledStyles = makeStyles({
   base: {
     '&, &:disabled, & button': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--695, var(--696, ${tokens.colorNeutralForegroundDisabled}))`,
       pointerEvents: 'none',
     },
     '@media (forced-colors: active)': {

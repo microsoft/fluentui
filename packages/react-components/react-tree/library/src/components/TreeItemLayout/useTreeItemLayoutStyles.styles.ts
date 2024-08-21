@@ -24,19 +24,19 @@ const useRootBaseStyles = makeResetStyles({
   boxSizing: 'border-box',
   gridArea: 'layout',
   ':active': {
-    color: tokens.colorNeutralForeground2Pressed,
-    backgroundColor: tokens.colorSubtleBackgroundPressed,
+    color: `var(--2869, var(--2870, ${tokens.colorNeutralForeground2Pressed}))`,
+    backgroundColor: `var(--2871, var(--2872, ${tokens.colorSubtleBackgroundPressed}))`,
     // TODO: stop using treeItemLayoutClassNames.expandIcon for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Pressed,
+      color: `var(--2873, var(--2874, ${tokens.colorNeutralForeground3Pressed}))`,
     },
   },
   ':hover': {
-    color: tokens.colorNeutralForeground2Hover,
-    backgroundColor: tokens.colorSubtleBackgroundHover,
+    color: `var(--2875, var(--2876, ${tokens.colorNeutralForeground2Hover}))`,
+    backgroundColor: `var(--2877, var(--2878, ${tokens.colorSubtleBackgroundHover}))`,
     // TODO: stop using treeItemLayoutClassNames.expandIcon  for styling
     [`& .${treeItemLayoutClassNames.expandIcon}`]: {
-      color: tokens.colorNeutralForeground3Hover,
+      color: `var(--2879, var(--2880, ${tokens.colorNeutralForeground3Hover}))`,
     },
   },
 });
@@ -62,19 +62,19 @@ const useRootStyles = makeStyles({
   subtle: {},
   'subtle-alpha': {
     ':hover': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaHover,
+      backgroundColor: `var(--2881, var(--2882, ${tokens.colorSubtleBackgroundLightAlphaHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorSubtleBackgroundLightAlphaPressed,
+      backgroundColor: `var(--2883, var(--2884, ${tokens.colorSubtleBackgroundLightAlphaPressed}))`,
     },
   },
   transparent: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--2885, var(--2886, ${tokens.colorTransparentBackground}))`,
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
+      backgroundColor: `var(--2887, var(--2888, ${tokens.colorTransparentBackgroundHover}))`,
     },
     ':active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
+      backgroundColor: `var(--2889, var(--2890, ${tokens.colorTransparentBackgroundPressed}))`,
     },
   },
 });
@@ -100,7 +100,7 @@ const useAsideBaseStyles = makeResetStyles({
   zIndex: 0,
   gridArea: 'aside',
   padding: `0 ${tokens.spacingHorizontalM}`,
-  gap: tokens.spacingHorizontalXS,
+  gap: `var(--2891, var(--2892, ${tokens.spacingHorizontalXS}))`,
 });
 
 /**
@@ -112,7 +112,7 @@ const useExpandIconBaseStyles = makeResetStyles({
   justifyContent: 'center',
   minWidth: '24px',
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3,
+  color: `var(--2893, var(--2894, ${tokens.colorNeutralForeground3}))`,
   flex: `0 0 auto`,
   padding: `${tokens.spacingVerticalXS} 0`,
 });
@@ -130,26 +130,26 @@ const useMainBaseStyles = makeResetStyles({
 const useIconBaseStyles = makeResetStyles({
   display: 'flex',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground2,
-  lineHeight: tokens.lineHeightBase500,
-  fontSize: tokens.fontSizeBase500,
+  color: `var(--2895, var(--2896, ${tokens.colorNeutralForeground2}))`,
+  lineHeight: `var(--2897, var(--2898, ${tokens.lineHeightBase500}))`,
+  fontSize: `var(--2899, var(--2900, ${tokens.fontSizeBase500}))`,
 });
 
 const useIconBeforeStyles = makeStyles({
   medium: {
-    paddingRight: tokens.spacingHorizontalXS,
+    paddingRight: `var(--2901, var(--2902, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
-    paddingRight: tokens.spacingHorizontalXXS,
+    paddingRight: `var(--2903, var(--2904, ${tokens.spacingHorizontalXXS}))`,
   },
 });
 
 const useIconAfterStyles = makeStyles({
   medium: {
-    paddingLeft: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--2905, var(--2906, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
-    paddingLeft: tokens.spacingHorizontalXXS,
+    paddingLeft: `var(--2907, var(--2908, ${tokens.spacingHorizontalXXS}))`,
   },
 });
 

@@ -20,26 +20,26 @@ const useRootStyles = makeStyles({
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalSNudge,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingLeft: `var(--1579, var(--1580, ${tokens.spacingHorizontalSNudge}))`,
+    paddingRight: `var(--1581, var(--1582, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalS,
-    paddingRight: tokens.spacingHorizontalS,
+    paddingLeft: `var(--1583, var(--1584, ${tokens.spacingHorizontalS}))`,
+    paddingRight: `var(--1585, var(--1586, ${tokens.spacingHorizontalS}))`,
   },
   large: {
     columnGap: 0,
     maxWidth: '468px',
 
-    paddingLeft: tokens.spacingHorizontalMNudge,
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingLeft: `var(--1587, var(--1588, ${tokens.spacingHorizontalMNudge}))`,
+    paddingRight: `var(--1589, var(--1590, ${tokens.spacingHorizontalMNudge}))`,
   },
 
   input: {
-    paddingLeft: tokens.spacingHorizontalSNudge,
+    paddingLeft: `var(--1591, var(--1592, ${tokens.spacingHorizontalSNudge}))`,
     paddingRight: 0,
 
     // removes the WebKit pseudoelement styling
@@ -70,8 +70,8 @@ const useInputStyles = makeStyles({
 
 const useContentAfterStyles = makeStyles({
   contentAfter: {
-    paddingLeft: tokens.spacingHorizontalM,
-    columnGap: tokens.spacingHorizontalXS,
+    paddingLeft: `var(--1593, var(--1594, ${tokens.spacingHorizontalM}))`,
+    columnGap: `var(--1595, var(--1596, ${tokens.spacingHorizontalXS}))`,
   },
   rest: {
     opacity: 0,
@@ -83,7 +83,7 @@ const useContentAfterStyles = makeStyles({
 
 const useDismissClassName = makeResetStyles({
   boxSizing: 'border-box',
-  color: tokens.colorNeutralForeground3, // "icon color" in design spec
+  color: `var(--1597, var(--1598, ${tokens.colorNeutralForeground3}))`, // "icon color" in design spec
   display: 'flex',
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
@@ -93,7 +93,7 @@ const useDismissClassName = makeResetStyles({
 
 const useDismissStyles = makeStyles({
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--1599, var(--1600, ${tokens.colorNeutralForegroundDisabled}))`,
   },
   // Ensure resizable icons show up with the proper font size
   small: {

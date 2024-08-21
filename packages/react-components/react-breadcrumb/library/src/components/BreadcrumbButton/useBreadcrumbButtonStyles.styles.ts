@@ -27,25 +27,25 @@ const useIconStyles = makeStyles({
     height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
     lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
     width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    marginRight: tokens.spacingHorizontalXS,
+    marginRight: `var(--473, var(--474, ${tokens.spacingHorizontalXS}))`,
   },
   small: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--475, var(--476, ${tokens.lineHeightBase200}))`,
   },
   medium: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--477, var(--478, ${tokens.lineHeightBase400}))`,
   },
   large: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
+    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: `var(--479, var(--480, ${tokens.lineHeightBase600}))`,
   },
 });
 
 const defaultButtonStyles = {
-  backgroundColor: tokens.colorTransparentBackground,
-  color: tokens.colorNeutralForeground2,
+  backgroundColor: `var(--481, var(--482, ${tokens.colorTransparentBackground}))`,
+  color: `var(--483, var(--484, ${tokens.colorNeutralForeground2}))`,
   cursor: 'auto',
 };
 
@@ -70,17 +70,17 @@ const useStyles = makeStyles({
   small: {
     height: '24px',
     ...typographyStyles.caption1,
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--485, var(--486, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     height: '32px',
     ...typographyStyles.body1,
-    padding: tokens.spacingHorizontalSNudge,
+    padding: `var(--487, var(--488, ${tokens.spacingHorizontalSNudge}))`,
   },
   large: {
     height: '40px',
     ...typographyStyles.body2,
-    padding: tokens.spacingHorizontalS,
+    padding: `var(--489, var(--490, ${tokens.spacingHorizontalS}))`,
   },
   current: {
     ':hover': {

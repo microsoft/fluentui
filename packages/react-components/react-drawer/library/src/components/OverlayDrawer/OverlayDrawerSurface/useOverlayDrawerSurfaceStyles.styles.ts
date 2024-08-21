@@ -13,7 +13,7 @@ const useBackdropResetStyles = makeResetStyles({
 
 const useBackdropStyles = makeStyles({
   nested: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--2933, var(--2934, ${tokens.colorTransparentBackground}))`,
   },
 });
 

@@ -25,9 +25,9 @@ const fieldHeights = {
 const useStyles = makeStyles({
   root: {
     alignItems: 'center',
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--847, var(--848, ${tokens.borderRadiusMedium}))`,
     boxSizing: 'border-box',
-    columnGap: tokens.spacingHorizontalXXS,
+    columnGap: `var(--849, var(--850, ${tokens.spacingHorizontalXXS}))`,
     display: 'inline-grid',
     gridTemplateColumns: '1fr auto',
     justifyContent: 'space-between',
@@ -51,14 +51,14 @@ const useStyles = makeStyles({
       bottom: '-1px',
       right: '-1px',
       height: `max(2px, ${tokens.borderRadiusMedium})`,
-      borderBottomLeftRadius: tokens.borderRadiusMedium,
-      borderBottomRightRadius: tokens.borderRadiusMedium,
+      borderBottomLeftRadius: `var(--851, var(--852, ${tokens.borderRadiusMedium}))`,
+      borderBottomRightRadius: `var(--853, var(--854, ${tokens.borderRadiusMedium}))`,
       borderBottom: `${tokens.strokeWidthThick} solid ${tokens.colorCompoundBrandStroke}`,
       clipPath: 'inset(calc(100% - 2px) 0 0 0)',
       transform: 'scaleX(0)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationUltraFast,
-      transitionDelay: tokens.curveAccelerateMid,
+      transitionDuration: `var(--855, var(--856, ${tokens.durationUltraFast}))`,
+      transitionDelay: `var(--857, var(--858, ${tokens.curveAccelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -68,8 +68,8 @@ const useStyles = makeStyles({
     ':focus-within::after': {
       transform: 'scaleX(1)',
       transitionProperty: 'transform',
-      transitionDuration: tokens.durationNormal,
-      transitionDelay: tokens.curveDecelerateMid,
+      transitionDuration: `var(--859, var(--860, ${tokens.durationNormal}))`,
+      transitionDelay: `var(--861, var(--862, ${tokens.curveDecelerateMid}))`,
 
       '@media screen and (prefers-reduced-motion: reduce)': {
         transitionDuration: '0.01ms',
@@ -77,13 +77,13 @@ const useStyles = makeStyles({
       },
     },
     ':focus-within:active::after': {
-      borderBottomColor: tokens.colorCompoundBrandStrokePressed,
+      borderBottomColor: `var(--863, var(--864, ${tokens.colorCompoundBrandStrokePressed}))`,
     },
   },
 
   listbox: {
     boxShadow: `${tokens.shadow16}`,
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--865, var(--866, ${tokens.borderRadiusMedium}))`,
     maxHeight: '80vh',
     boxSizing: 'border-box',
   },
@@ -101,47 +101,47 @@ const useStyles = makeStyles({
   // size variants
   small: {
     height: fieldHeights.small,
-    paddingRight: tokens.spacingHorizontalSNudge,
+    paddingRight: `var(--867, var(--868, ${tokens.spacingHorizontalSNudge}))`,
   },
   medium: {
     height: fieldHeights.medium,
-    paddingRight: tokens.spacingHorizontalMNudge,
+    paddingRight: `var(--869, var(--870, ${tokens.spacingHorizontalMNudge}))`,
   },
   large: {
-    columnGap: tokens.spacingHorizontalSNudge,
+    columnGap: `var(--871, var(--872, ${tokens.spacingHorizontalSNudge}))`,
     height: fieldHeights.large,
-    paddingRight: tokens.spacingHorizontalM,
+    paddingRight: `var(--873, var(--874, ${tokens.spacingHorizontalM}))`,
   },
 
   // appearance variants
   outline: {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--875, var(--876, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
-    borderBottomColor: tokens.colorNeutralStrokeAccessible,
+    borderBottomColor: `var(--877, var(--878, ${tokens.colorNeutralStrokeAccessible}))`,
   },
 
   outlineInteractive: {
     '&:hover': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Hover),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--879, var(--880, ${tokens.colorNeutralStrokeAccessible}))`,
     },
 
     '&:active': {
       ...shorthands.borderColor(tokens.colorNeutralStroke1Pressed),
-      borderBottomColor: tokens.colorNeutralStrokeAccessible,
+      borderBottomColor: `var(--881, var(--882, ${tokens.colorNeutralStrokeAccessible}))`,
     },
   },
   underline: {
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--883, var(--884, ${tokens.colorTransparentBackground}))`,
     borderBottom: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStrokeAccessible}`,
     borderRadius: '0',
   },
   'filled-lighter': {
-    backgroundColor: tokens.colorNeutralBackground1,
+    backgroundColor: `var(--885, var(--886, ${tokens.colorNeutralBackground1}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   'filled-darker': {
-    backgroundColor: tokens.colorNeutralBackground3,
+    backgroundColor: `var(--887, var(--888, ${tokens.colorNeutralBackground3}))`,
     border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
   },
   invalid: {
@@ -151,13 +151,13 @@ const useStyles = makeStyles({
   },
   invalidUnderline: {
     ':not(:focus-within),:hover:not(:focus-within)': {
-      borderBottomColor: tokens.colorPaletteRedBorder2,
+      borderBottomColor: `var(--889, var(--890, ${tokens.colorPaletteRedBorder2}))`,
     },
   },
 
   disabled: {
     cursor: 'not-allowed',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--891, var(--892, ${tokens.colorTransparentBackground}))`,
     ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
     '@media (forced-colors: active)': {
       ...shorthands.borderColor('GrayText'),
@@ -168,17 +168,17 @@ const useStyles = makeStyles({
 const useInputStyles = makeStyles({
   input: {
     alignSelf: 'stretch',
-    backgroundColor: tokens.colorTransparentBackground,
+    backgroundColor: `var(--893, var(--894, ${tokens.colorTransparentBackground}))`,
     border: 'none',
-    color: tokens.colorNeutralForeground1,
-    fontFamily: tokens.fontFamilyBase,
+    color: `var(--895, var(--896, ${tokens.colorNeutralForeground1}))`,
+    fontFamily: `var(--897, var(--898, ${tokens.fontFamilyBase}))`,
 
     '&:focus': {
       outlineStyle: 'none',
     },
 
     '&::placeholder': {
-      color: tokens.colorNeutralForeground4,
+      color: `var(--899, var(--900, ${tokens.colorNeutralForeground4}))`,
       opacity: 1,
     },
   },
@@ -197,11 +197,11 @@ const useInputStyles = makeStyles({
     padding: `0 0 0 ${`calc(${tokens.spacingHorizontalM} + ${tokens.spacingHorizontalSNudge})`}`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
-    backgroundColor: tokens.colorTransparentBackground,
+    color: `var(--901, var(--902, ${tokens.colorNeutralForegroundDisabled}))`,
+    backgroundColor: `var(--903, var(--904, ${tokens.colorTransparentBackground}))`,
     cursor: 'not-allowed',
     '::placeholder': {
-      color: tokens.colorNeutralForegroundDisabled,
+      color: `var(--905, var(--906, ${tokens.colorNeutralForegroundDisabled}))`,
     },
   },
 });
@@ -209,10 +209,10 @@ const useInputStyles = makeStyles({
 const useIconStyles = makeStyles({
   icon: {
     boxSizing: 'border-box',
-    color: tokens.colorNeutralStrokeAccessible,
+    color: `var(--907, var(--908, ${tokens.colorNeutralStrokeAccessible}))`,
     cursor: 'pointer',
     display: 'block',
-    fontSize: tokens.fontSizeBase500,
+    fontSize: `var(--909, var(--910, ${tokens.fontSizeBase500}))`,
 
     // the SVG must have display: block for accurate positioning
     // otherwise an extra inline space is inserted after the svg element
@@ -236,18 +236,18 @@ const useIconStyles = makeStyles({
   // icon size variants
   small: {
     fontSize: iconSizes.small,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--911, var(--912, ${tokens.spacingHorizontalXXS}))`,
   },
   medium: {
     fontSize: iconSizes.medium,
-    marginLeft: tokens.spacingHorizontalXXS,
+    marginLeft: `var(--913, var(--914, ${tokens.spacingHorizontalXXS}))`,
   },
   large: {
     fontSize: iconSizes.large,
-    marginLeft: tokens.spacingHorizontalSNudge,
+    marginLeft: `var(--915, var(--916, ${tokens.spacingHorizontalSNudge}))`,
   },
   disabled: {
-    color: tokens.colorNeutralForegroundDisabled,
+    color: `var(--917, var(--918, ${tokens.colorNeutralForegroundDisabled}))`,
     cursor: 'not-allowed',
   },
 });

@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     alignItems: 'unset',
     display: 'flex',
     flexDirection: 'column',
-    rowGap: tokens.spacingVerticalXXS,
+    rowGap: `var(--1451, var(--1452, ${tokens.spacingVerticalXXS}))`,
   },
 });
 

@@ -26,7 +26,9 @@ const useRootStyles = makeStyles({
     position: 'relative',
   },
   overflowItem: { padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}` },
-  nonOverflowItem: { borderRadius: tokens.borderRadiusCircular },
+  nonOverflowItem: {
+    borderRadius: `var(--299, var(--300, ${tokens.borderRadiusCircular}))`,
+  },
 });
 
 /**
@@ -44,8 +46,8 @@ const useAvatarStyles = makeStyles({
  */
 const useOverflowLabelStyles = makeStyles({
   base: {
-    marginLeft: tokens.spacingHorizontalS,
-    color: tokens.colorNeutralForeground1,
+    marginLeft: `var(--301, var(--302, ${tokens.spacingHorizontalS}))`,
+    color: `var(--303, var(--304, ${tokens.colorNeutralForeground1}))`,
     ...typographyStyles.body1,
   },
 });
@@ -73,11 +75,31 @@ const useStackStyles = makeStyles({
  * Styles for the spread layout
  */
 const useSpreadStyles = makeStyles({
-  s: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalS } },
-  mNudge: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalMNudge } },
-  m: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalM } },
-  l: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalL } },
-  xl: { '&:not(:first-child)': { marginLeft: tokens.spacingHorizontalXL } },
+  s: {
+    '&:not(:first-child)': {
+      marginLeft: `var(--305, var(--306, ${tokens.spacingHorizontalS}))`,
+    },
+  },
+  mNudge: {
+    '&:not(:first-child)': {
+      marginLeft: `var(--307, var(--308, ${tokens.spacingHorizontalMNudge}))`,
+    },
+  },
+  m: {
+    '&:not(:first-child)': {
+      marginLeft: `var(--309, var(--310, ${tokens.spacingHorizontalM}))`,
+    },
+  },
+  l: {
+    '&:not(:first-child)': {
+      marginLeft: `var(--311, var(--312, ${tokens.spacingHorizontalL}))`,
+    },
+  },
+  xl: {
+    '&:not(:first-child)': {
+      marginLeft: `var(--313, var(--314, ${tokens.spacingHorizontalXL}))`,
+    },
+  },
 });
 
 /**
@@ -150,9 +172,15 @@ const usePieStyles = makeStyles({
       left: '0',
     },
   },
-  thick: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThick },
-  thicker: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThicker },
-  thickest: { [avatarGroupItemDividerWidthVar]: tokens.strokeWidthThickest },
+  thick: {
+    [avatarGroupItemDividerWidthVar]: `var(--315, var(--316, ${tokens.strokeWidthThick}))`,
+  },
+  thicker: {
+    [avatarGroupItemDividerWidthVar]: `var(--317, var(--318, ${tokens.strokeWidthThicker}))`,
+  },
+  thickest: {
+    [avatarGroupItemDividerWidthVar]: `var(--319, var(--320, ${tokens.strokeWidthThickest}))`,
+  },
 });
 
 /**

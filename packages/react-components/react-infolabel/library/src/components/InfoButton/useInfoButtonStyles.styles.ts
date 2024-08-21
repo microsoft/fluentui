@@ -25,11 +25,11 @@ const useButtonStyles = makeStyles({
     verticalAlign: 'middle',
     position: 'relative',
 
-    backgroundColor: tokens.colorTransparentBackground,
-    color: tokens.colorNeutralForeground2,
+    backgroundColor: `var(--1143, var(--1144, ${tokens.colorTransparentBackground}))`,
+    color: `var(--1145, var(--1146, ${tokens.colorNeutralForeground2}))`,
 
     ...shorthands.borderStyle('none'),
-    borderRadius: tokens.borderRadiusMedium,
+    borderRadius: `var(--1147, var(--1148, ${tokens.borderRadiusMedium}))`,
     margin: '0',
     padding: `${tokens.spacingVerticalXS} ${tokens.spacingHorizontalXS}`,
 
@@ -41,8 +41,8 @@ const useButtonStyles = makeStyles({
     },
 
     ':hover': {
-      backgroundColor: tokens.colorTransparentBackgroundHover,
-      color: tokens.colorNeutralForeground2BrandHover,
+      backgroundColor: `var(--1149, var(--1150, ${tokens.colorTransparentBackgroundHover}))`,
+      color: `var(--1151, var(--1152, ${tokens.colorNeutralForeground2BrandHover}))`,
       cursor: 'pointer',
 
       [`& .${iconFilledClassName}`]: {
@@ -53,14 +53,14 @@ const useButtonStyles = makeStyles({
       },
     },
     ':hover:active': {
-      backgroundColor: tokens.colorTransparentBackgroundPressed,
-      color: tokens.colorNeutralForeground2BrandPressed,
+      backgroundColor: `var(--1153, var(--1154, ${tokens.colorTransparentBackgroundPressed}))`,
+      color: `var(--1155, var(--1156, ${tokens.colorNeutralForeground2BrandPressed}))`,
     },
   },
 
   selected: {
-    backgroundColor: tokens.colorTransparentBackgroundSelected,
-    color: tokens.colorNeutralForeground2BrandSelected,
+    backgroundColor: `var(--1157, var(--1158, ${tokens.colorTransparentBackgroundSelected}))`,
+    color: `var(--1159, var(--1160, ${tokens.colorNeutralForeground2BrandSelected}))`,
 
     [`& .${iconFilledClassName}`]: {
       display: 'inline-flex',
