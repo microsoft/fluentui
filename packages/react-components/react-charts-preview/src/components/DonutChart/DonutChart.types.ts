@@ -1,6 +1,6 @@
 import { ICartesianChartProps, ICartesianChartStyleProps } from '../CommonComponents/index';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IChartProps, IChartDataPoint } from './index';
+import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
 
 export interface IDonutChart {}
 
@@ -37,7 +37,7 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * props for the callout in the chart
    */
-  calloutProps: Partial<ICalloutProps>;
+  calloutProps: IPopoverComponentProps;
 
   /**
    * The prop used to define the culture to localized the numbers

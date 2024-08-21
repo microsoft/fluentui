@@ -1,12 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { ICartesianChartProps, ICartesianChartStyles } from './CartesianChart.types';
 import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities/index';
-import { NeutralColors, isIE11 } from '@fluentui/react';
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens } from '@fluentui/react-theme';
 import { isRtl } from '../../utilities/utilities';
-
-const isIE11Var: boolean = isIE11();
 
 /**
  * @internal
@@ -56,7 +53,7 @@ const useStyles = makeStyles({
     fontWeight: tokens.fontWeightSemibold,
     fontStyle: 'normal',
     lineHeight: tokens.fontSizeBase100,
-    color: NeutralColors.gray160,
+    color: '#323130', // ToDo - Find correct token for this color
     fill: tokens.colorNeutralForeground1,
   },
   xAxis: {
@@ -109,10 +106,9 @@ const useStyles = makeStyles({
       display: 'none',
     },
     '& g': {
-      ...(isRtl &&
-        !isIE11Var && {
-          textAnchor: 'end',
-        }),
+      ...(isRtl && {
+        textAnchor: 'end',
+      }),
     },
   },
   opacityChangeOnHover: {

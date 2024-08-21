@@ -62,7 +62,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
 
     _isLegendSelected = Object.keys(selectedLegends).length > 0;
     const dataToRender = _generateData();
-    const { overflowProps, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
+    const { overflowStyles, allowFocusOnLegends = true, canSelectMultipleLegends = false } = props;
     const classes = useLegendStyles_unstable(props);
     const itemIds = dataToRender.map((_item, index) => index.toString());
     const overflowHoverCardLegends: JSX.Element[] = [];
@@ -80,7 +80,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           'aria-label': 'Legends',
           'aria-multiselectable': canSelectMultipleLegends,
         })}
-        style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowProps?.styles }}
+        style={{ justifyContent: props.centerLegends ? 'center' : 'unset', flexWrap: 'wrap', ...overflowStyles }}
         className={classes.root}
       >
         <Overflow>

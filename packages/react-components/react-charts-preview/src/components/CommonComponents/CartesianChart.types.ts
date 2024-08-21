@@ -468,16 +468,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Callout props
    */
-  calloutProps: Partial<IPopoverComponentProps> & {
-    id: string;
-    YValueHover?: IYValueHover[];
-    hoverXValue?: string | number | null;
-    legend?: string;
-    color?: string;
-    YValue?: string | number;
-    XValue?: string;
-    descriptionMessage?: string;
-  };
+  calloutProps: IPopoverComponentProps;
 
   /**
    * Callback method used for to get margins to the chart.

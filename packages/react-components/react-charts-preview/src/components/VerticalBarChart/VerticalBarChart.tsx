@@ -60,7 +60,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _barWidth: number;
   let _colors: string[];
   const _refArray: IRefArrayData[] = [];
-  const _calloutId: string = useId('callout');
   let margins: IMargins;
   const _isRtl: boolean = isRtl();
   let _bars: JSX.Element[];
@@ -809,8 +808,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       <Legends
         legends={actions}
         enabledWrapLines={props.enabledLegendsWrapLines}
-        overflowProps={props.legendsOverflowProps}
-        focusZonePropsInHoverCard={props.focusZonePropsForLegendsInHoverCard}
         overflowText={props.legendsOverflowText}
         {...props.legendProps}
       />
@@ -940,15 +937,12 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   _yMax = Math.max(d3Max(_points, (point: IVerticalBarChartDataPoint) => point.y)!, props.yMaxValue || 0);
   const legendBars: JSX.Element = _getLegendData(_points);
   const calloutProps = {
-    id: `toolTip${_calloutId}`,
     ...(_isHavingLine && {
       YValueHover: YValueHover,
       hoverXValue: hoverXValue,
     }),
-    gapSpace: 15,
     color: color,
     legend: calloutLegend,
-    XValue: xCalloutValue,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),

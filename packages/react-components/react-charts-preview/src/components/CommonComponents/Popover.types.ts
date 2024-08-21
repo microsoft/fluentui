@@ -6,11 +6,10 @@ export interface IPopoverComponentProps {
   xCalloutValue?: string;
   legend?: string;
   yCalloutValue?: string;
-  YValue?: string | number;
-  color: string;
+  YValue?: string | number | Date;
+  color?: string;
   culture: string;
   isCalloutForStack: boolean;
-  dataPointCalloutProps?: IChartDataPoint;
   customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;

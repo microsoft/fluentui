@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint, ILineChartLineOptions} from '../../src/VerticalBarChart';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '../../src/VerticalBarChart';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
@@ -209,8 +214,16 @@ export const VCBasic = () => {
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
-            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
-            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+            yAxisTitle={
+              showAxisTitles
+                ? 'Different categories of animals and fruits and their corresponding count are shown here'
+                : undefined
+            }
+            xAxisTitle={
+              showAxisTitles
+                ? 'Values of each category are shown in the x-axis of the vertical bar chart whose values range from zero to 100,000. The x-axis is divided into 10 equal parts, each part representing 10,000.'
+                : undefined
+            }
           />
         </div>
       )}
@@ -235,8 +248,12 @@ export const VCBasic = () => {
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
-            yAxisTitle={showAxisTitles ? 'Different categories of animals and fruits' : undefined}
-            xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
+            yAxisTitle={
+              showAxisTitles
+                ? 'Different categories of animals and fruits and their corresponding count are shown here'
+                : undefined
+            }
+            xAxisTitle={showAxisTitles ? 'Values of each category are shown in the x-axis in this chart' : undefined}
           />
         </div>
       )}

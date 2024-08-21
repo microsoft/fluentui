@@ -189,7 +189,11 @@ export const LCBasic = (props: ILineChartProps) => {
             allowMultipleShapesForPoints={allowMultipleShapes}
             enablePerfOptimization={true}
             enableReflow={true}
-            yAxisTitle={showAxisTitles ? 'Different categories of mail flow' : undefined}
+            yAxisTitle={
+              showAxisTitles
+                ? 'Different categories of mail flow each of which are categorized into different categories'
+                : undefined
+            }
             xAxisTitle={showAxisTitles ? 'Values of each category' : undefined}
           />
         </div>
