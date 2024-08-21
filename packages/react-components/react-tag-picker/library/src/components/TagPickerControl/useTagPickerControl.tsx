@@ -15,7 +15,7 @@ import { ChevronDownRegular } from '@fluentui/react-icons';
 import { useResizeObserverRef } from '../../utils/useResizeObserverRef';
 import { tagPickerControlAsideWidthToken } from './useTagPickerControlStyles.styles';
 import { useFieldContext_unstable } from '@fluentui/react-field';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { useExpandLabel } from '../../utils/useExpandLabel';
 
 /**
  * Create the state required to render PickerControl.
@@ -128,80 +128,7 @@ export const useTagPickerControl_unstable = (
     invalid,
   };
 
-  const { targetDocument } = useFluent();
-  const win = targetDocument?.defaultView;
-
-  // If aria-label or aria-labelledby changes, recalculate aria-label and aria-labelledby for the expandIcon
-  // The expandIcon's label is calculated based on the input's label
-  // TODO: investigate ways to enforce client to provide a label rather than need to calculate it
-  const getExpandLabel = React.useCallback(
-    (ariaLabel?: string | null, ariaLabelledBy?: string | null) => {
-      let expandAriaLabel = undefined;
-      let expandAriaLabelledBy = undefined;
-
-      if (state.expandIcon) {
-        const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
-        // If there is no explicit aria-label, calculate default accName attribute for expandIcon button,
-        // using the following steps:
-        // 1. If there is an aria-label, it is "Open [aria-label]"
-        // 2. If there is an aria-labelledby, it is "Open [aria-labelledby target]" (using aria-labelledby + ids)
-        // 3. If there is no aria-label/ledby attr, it falls back to "Open"
-        // We can't fall back to a label/htmlFor name because of https://github.com/w3c/accname/issues/179
-        const defaultOpenString = 'Open'; // this is english-only since it is the fallback
-        if (!hasExpandLabel) {
-          if (ariaLabelledBy) {
-            const chevronId = state.expandIcon.id ?? `${tagPickerId}-chevron`;
-            const chevronLabelledBy = `${chevronId} ${ariaLabelledBy}`;
-
-            expandAriaLabel = defaultOpenString;
-            state.expandIcon.id = chevronId;
-            expandAriaLabelledBy = chevronLabelledBy;
-          } else if (ariaLabel) {
-            expandAriaLabel = `${defaultOpenString} ${ariaLabel}`;
-          } else {
-            expandAriaLabel = defaultOpenString;
-          }
-        }
-      }
-
-      return { expandAriaLabel, expandAriaLabelledBy };
-    },
-    [state.expandIcon, tagPickerId],
-  );
-
-  const setExpandLabel = React.useCallback(() => {
-    const inputAriaLabel = triggerRef.current?.getAttribute('aria-label');
-    const inputAriaLabelledBy = triggerRef.current?.getAttribute('aria-labelledby');
-
-    const { expandAriaLabel, expandAriaLabelledBy } = getExpandLabel(inputAriaLabel, inputAriaLabelledBy);
-
-    if (expandAriaLabelledBy) {
-      expandIconRef.current?.setAttribute('aria-labelledby', expandAriaLabelledBy);
-    } else if (expandAriaLabel) {
-      expandIconRef.current?.setAttribute('aria-label', expandAriaLabel);
-    }
-  }, [getExpandLabel, triggerRef]);
-
-  React.useEffect(() => {
-    if (!win || !triggerRef.current || !state.expandIcon) {
-      return;
-    }
-
-    // On first render, calculate the default aria-label and aria-labelledby for the expandIcon
-    setExpandLabel();
-
-    const observer = new win.MutationObserver(setExpandLabel);
-    const hasExpandLabel = state.expandIcon['aria-label'] || state.expandIcon['aria-labelledby'];
-    if (!hasExpandLabel) {
-      observer.observe(triggerRef.current, {
-        attributes: true,
-        attributeFilter: ['aria-label', 'aria-labelledby'],
-      });
-    }
-    return () => {
-      observer.disconnect();
-    };
-  }, [getExpandLabel, setExpandLabel, state.expandIcon, tagPickerId, triggerRef, win]);
+  state.expandIcon = useExpandLabel({ tagPickerId, state: state as Pick<TagPickerControlState, 'expandIcon'> });
 
   return state;
 };
