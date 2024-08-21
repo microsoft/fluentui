@@ -119,6 +119,23 @@ const styles = {
 };
 ```
 
+In case the partner wants to override the z-index values, they can do so by providing a theme with the new values:
+
+```ts
+// Fluent/partner code
+import { FluentProvider, Theme, webLightTheme } from '@fluentui/react-components';
+
+const customTheme: Theme = {
+  ...webLightTheme,
+  // 👇 customized values
+  zIndexOverlay: 100000,
+};
+
+function App() {
+  return <FluentProvider theme={customTheme} />;
+}
+```
+
 <!-- FIXME: Update section after alignment with designers -->
 
 _NOTE: The names above are not final and only serve as an example. As of the moment this RFC was introduced, there are ongoing discussions with the Design team to define all the layers. This RFC will be updated before the final approval to include the definitive names._
@@ -185,7 +202,7 @@ _NOTE: The names above are not final and only serve as an example. As of the mom
 #### Pros
 
 - 👍 Clear separation by group of UI elements
-- 👍 Easy to override, extend and update
+- 👍 Easy to override on Fluent side, extend and update
 
 #### Cons
 
