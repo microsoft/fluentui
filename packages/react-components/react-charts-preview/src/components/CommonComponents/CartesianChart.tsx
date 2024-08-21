@@ -33,12 +33,12 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
-  const chartContainer = React.useRef<HTMLDivElement>(null);
+  const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGElement | null>(null);
-  const yAxisElement = React.useRef<SVGElement | null>(null);
-  const yAxisElementSecondary = React.useRef<SVGElement | null>(null);
+  const xAxisElement = React.useRef<SVGElement>();
+  const yAxisElement = React.useRef<SVGElement>();
+  const yAxisElementSecondary = React.useRef<SVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
