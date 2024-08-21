@@ -71,7 +71,7 @@ export const useCarouselCard_unstable = (
     }
   }, [isFocusable]);
 
-  const onFocus = React.useCallback(
+  const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
       if (isHTMLElement(e.currentTarget)) {
         selectPageByElement(e, e.currentTarget, true);
@@ -80,7 +80,7 @@ export const useCarouselCard_unstable = (
     [selectPageByElement],
   );
 
-  const onFocusCapture = mergeCallbacks(props.onFocus, onFocus);
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
 
   const state: CarouselCardState = {
     components: {
