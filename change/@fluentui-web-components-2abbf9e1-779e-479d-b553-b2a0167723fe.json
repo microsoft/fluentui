@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: update fast-element to latest stable version",
-  "packageName": "@fluentui/web-components",
-  "email": "13071055+chrisdholt@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
