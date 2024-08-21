@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 21 Aug 2024 07:21:50 GMT",
+      "tag": "@fluentui/react_v8.120.6",
+      "version": "8.120.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "18c6a61df0ed0f20092b21d66d0b21411796fa00",
+            "comment": "fix: Using minHeight instead of height in DefaultButton so that it can wrap and grow with its contents."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 07:23:37 GMT",
       "tag": "@fluentui/react_v8.120.5",
       "version": "8.120.5",

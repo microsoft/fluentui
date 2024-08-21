@@ -176,7 +176,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
               label="Pick one"
             />
+            &nbsp;&nbsp;
             <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            &nbsp;&nbsp;
             <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
           </div>
         </div>
@@ -214,7 +216,6 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
             {...(this.state.selectedCallout === 'singleCallout' && {
               onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
                 return props ? (
