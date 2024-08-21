@@ -4,11 +4,6 @@
     "libsDir": "packages",
     "appsDir": "apps"
   },
-  "pluginsConfig": {
-    "@nx/js": {
-      "analyzeSourceFiles": false
-    }
-  },
   "targetDefaults": {
     "bundle-size": {
       "dependsOn": ["build"],
