@@ -7,7 +7,7 @@ export interface IPopoverComponentProps {
   legend?: string;
   yCalloutValue?: string;
   YValue?: string | number | Date;
-  color: string;
+  color?: string;
   culture: string;
   isCalloutForStack: boolean;
   customizedCallout?: JSX.Element;
