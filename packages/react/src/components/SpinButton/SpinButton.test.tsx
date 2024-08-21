@@ -125,7 +125,7 @@ describe('SpinButton', () => {
 
     it('renders correctly with user-provided values', () => {
       const component = create(
-        <SpinButton min={0} max={100} label="label" value="0" ariaValueNow={0} ariaValueText="0 pt" data-test="test" />,
+        <SpinButton min={0} max={100} label="label" value="0" ariaValueText="0 pt" data-test="test" />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
