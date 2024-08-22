@@ -2,9 +2,10 @@ import { RuleTester } from '@typescript-eslint/rule-tester';
 import { rule, RULE_NAME } from './no-missing-jsx-pragma';
 
 const ruleTester = new RuleTester({
-  parser: '@typescript-eslint/parser',
-  parserOptions: { ecmaFeatures: { jsx: true } },
+  languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
 });
+
+global.structuredClone = val => JSON.parse(JSON.stringify(val));
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [

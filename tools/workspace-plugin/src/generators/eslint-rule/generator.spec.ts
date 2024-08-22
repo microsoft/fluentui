@@ -54,6 +54,7 @@ describe('eslint-rule generator', () => {
           type: 'problem',
           docs: {
             description: \`\`,
+            recommended: 'recommended',
           },
           schema: [],
           messages: {},
