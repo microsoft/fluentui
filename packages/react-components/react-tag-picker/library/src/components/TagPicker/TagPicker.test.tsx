@@ -22,6 +22,16 @@ describe('TagPicker', () => {
     ],
   });
 
+  it('renders a default state', () => {
+    const result = render(
+      <TagPicker>
+        <>Default Picker</>
+        <>Default Picker</>
+      </TagPicker>,
+    );
+    expect(result.container).toMatchSnapshot();
+  });
+
   it('does not change expand label if label exists', () => {
     const { getByRole } = render(
       <TagPicker>
