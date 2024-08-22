@@ -50,7 +50,6 @@ export const useColorSlider_unstable = (
         ref,
         ...nativeProps.primary,
         type: 'range',
-        orient: vertical ? 'vertical' : undefined,
       },
       elementType: 'input',
     }),

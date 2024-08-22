@@ -11,15 +11,7 @@ export type ColorSliderSlots = {
   root: NonNullable<Slot<'div'>>;
   rail: NonNullable<Slot<'div'>>;
   thumb: NonNullable<Slot<'div'>>;
-  input: NonNullable<Slot<'input'>> & {
-    /**
-     * Orient is a non standard attribute that allows for vertical orientation in Firefox. It is set internally
-     * when `vertical` is set to true.
-     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/range#non_standard_attributes
-     * Webkit/Chromium support for vertical inputs is provided via -webkit-appearance css property
-     */
-    orient?: 'horizontal' | 'vertical';
-  };
+  input: NonNullable<Slot<'input'>>;
 };
 
 /**

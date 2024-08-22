@@ -68,9 +68,7 @@ export type ColorSliderSlots = {
     root: NonNullable<Slot<'div'>>;
     rail: NonNullable<Slot<'div'>>;
     thumb: NonNullable<Slot<'div'>>;
-    input: NonNullable<Slot<'input'>> & {
-        orient?: 'horizontal' | 'vertical';
-    };
+    input: NonNullable<Slot<'input'>>;
 };
 
 // @public
