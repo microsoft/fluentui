@@ -39,7 +39,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
 
   const {
     appearance = contextAppearance ?? 'filled',
-    disabled = contextDisabled ?? false,
+    disabled = false,
     dismissible = contextDismissible ?? false,
     shape = 'rounded',
     size = contextSize,
