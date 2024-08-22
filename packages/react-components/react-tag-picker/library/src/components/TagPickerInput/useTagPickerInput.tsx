@@ -85,6 +85,7 @@ export const useTagPickerInput_unstable = (
         if (
           (event.key === ArrowLeft || event.key === Backspace) &&
           event.currentTarget.selectionStart === 0 &&
+          event.currentTarget.selectionEnd === 0 &&
           tagPickerGroupRef.current
         ) {
           findLastFocusable(tagPickerGroupRef.current)?.focus();

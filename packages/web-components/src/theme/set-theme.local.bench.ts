@@ -7,19 +7,25 @@ const tests: Record<string, TestRenderFunction> = {
   mount: ({ onComplete }) => {
     const { startMeasure, endMeasure } = measurePerformance();
 
+    const el = document.createElement('div');
+    document.body.append(el);
+
     startMeasure();
 
     // Newly set themes
-    setTheme(webLightTheme);
-    setTheme(webDarkTheme);
-    setTheme(teamsDarkTheme);
-    setTheme(teamsLightTheme);
+    setTheme(webLightTheme, el);
+    setTheme(webDarkTheme, el);
+    setTheme(teamsDarkTheme, el);
+    setTheme(teamsLightTheme, el);
 
     // Cached themes
-    setTheme(webLightTheme);
-    setTheme(webDarkTheme);
-    setTheme(teamsDarkTheme);
-    setTheme(teamsLightTheme);
+    setTheme(webLightTheme, el);
+    setTheme(webDarkTheme, el);
+    setTheme(teamsDarkTheme, el);
+    setTheme(teamsLightTheme, el);
+
+    // Unset themes
+    setTheme(null, el);
 
     endMeasure();
 

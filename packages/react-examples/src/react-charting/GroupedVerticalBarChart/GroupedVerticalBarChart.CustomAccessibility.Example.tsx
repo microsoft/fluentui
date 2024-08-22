@@ -211,6 +211,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
         />
         <div style={{ display: 'flex' }}>
           <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+          &nbsp;&nbsp;
           <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
         </div>
 

@@ -520,6 +520,62 @@ export class BaseButton extends FASTElement {
 }
 
 // @public
+export class BaseCheckbox extends FASTElement {
+    autofocus: boolean;
+    get checked(): boolean;
+    set checked(next: boolean);
+    checkValidity(): boolean;
+    // @internal
+    clickHandler(e: MouseEvent): boolean | void;
+    // (undocumented)
+    connectedCallback(): void;
+    disabled?: boolean;
+    disabledAttribute?: boolean;
+    // @internal
+    protected disabledAttributeChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected disabledChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    elementInternals: ElementInternals;
+    get form(): HTMLFormElement | null;
+    static formAssociated: boolean;
+    formAttribute?: string;
+    // @internal
+    formResetCallback(): void;
+    initialChecked?: boolean;
+    // @internal
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    initialValue: string;
+    // @internal
+    protected initialValueChanged(prev: string, next: string): void;
+    // @internal
+    inputHandler(e: InputEvent): boolean | void;
+    // @internal
+    keydownHandler(e: KeyboardEvent): boolean | void;
+    // @internal
+    keyupHandler(e: KeyboardEvent): boolean | void;
+    get labels(): ReadonlyArray<HTMLLabelElement>;
+    name: string;
+    reportValidity(): boolean;
+    required: boolean;
+    // @internal
+    protected requiredChanged(prev: boolean, next: boolean): void;
+    // @internal
+    protected setAriaChecked(value?: boolean): void;
+    setCustomValidity(message: string): void;
+    // @internal
+    setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
+    // @internal
+    setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
+    toggleChecked(force?: boolean): void;
+    get validationMessage(): string;
+    get validity(): ValidityState;
+    get value(): string;
+    set value(value: string);
+    get willValidate(): boolean;
+}
+
+// @public
 export class BaseDivider extends FASTElement {
     // (undocumented)
     connectedCallback(): void;
@@ -883,8 +939,6 @@ export const ButtonType: {
 // @public
 export type ButtonType = ValuesOf<typeof ButtonType>;
 
-// Warning: (ae-forgotten-export) The symbol "BaseCheckbox" needs to be exported by the entry point index.d.ts
-//
 // @public
 export class Checkbox extends BaseCheckbox {
     constructor();
@@ -2234,7 +2288,10 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Divider roles
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -2971,7 +3028,10 @@ export const RadioGroupDefinition: FASTElementDefinition<typeof RadioGroup>;
 
 // @public
 export const RadioGroupOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * Radio Group orientation
+    * @public
+    */
     readonly vertical: "vertical";
 };
 
@@ -3049,12 +3109,12 @@ export const roleForMenuItem: {
 // Warning: (ae-internal-missing-underscore) The name "setTheme" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal
-export const setTheme: (theme: Theme) => void;
+export function setTheme(theme: Theme | null, node?: Document | HTMLElement): void;
 
 // Warning: (ae-internal-missing-underscore) The name "setThemeFor" should be prefixed with an underscore because the declaration is marked as @internal
 //
-// @internal (undocumented)
-export const setThemeFor: (element: HTMLElement, theme: Theme) => void;
+// @internal @deprecated (undocumented)
+export function setThemeFor(element: HTMLElement, theme: Theme | null): void;
 
 // @public
 export const shadow16 = "var(--shadow16)";
@@ -3475,7 +3535,10 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal";
+    readonly horizontal: "horizontal"; /**
+    * The appearance of the component
+    * @public
+    */
     readonly vertical: "vertical";
 };
 

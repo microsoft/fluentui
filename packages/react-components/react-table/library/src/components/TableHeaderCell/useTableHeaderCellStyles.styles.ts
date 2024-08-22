@@ -43,9 +43,11 @@ const useStyles = makeStyles({
 
   rootInteractive: {
     ':hover': {
+      color: tokens.colorNeutralForeground1Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
     },
     ':active': {
+      color: tokens.colorNeutralForeground1Pressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
     },
   },

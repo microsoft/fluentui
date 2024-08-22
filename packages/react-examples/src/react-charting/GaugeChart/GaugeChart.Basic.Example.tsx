@@ -91,6 +91,7 @@ export class GaugeChartBasicExample extends React.Component<{}, IGCBasicExampleS
             checked={this.state.enableGradient}
             onChange={this._onToggleGradient}
           />
+          &nbsp;&nbsp;
           <Toggle
             label="Rounded Corners"
             onText="ON"
