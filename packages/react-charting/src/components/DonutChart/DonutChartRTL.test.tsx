@@ -79,8 +79,8 @@ describe('Donut chart interactions', () => {
 
     // Assert
     const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
-    expect(getById(container, /Pie.*?third/i)[0]).toHaveAttribute('opacity', '0.1');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 0.1');
+    expect(getById(container, /Pie.*?third/i)[0]).toHaveStyle('opacity: 0.1');
   });
 
   test('Should select legend on single mouse click on legends', () => {
@@ -94,7 +94,7 @@ describe('Donut chart interactions', () => {
 
     // Assert
     const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
     expect(firstLegend).toHaveAttribute('tabIndex', '0');
@@ -111,7 +111,7 @@ describe('Donut chart interactions', () => {
     //single click on first legend
     fireEvent.click(legend!);
     const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
     expect(firstLegend).toHaveAttribute('tabIndex', '0');
@@ -131,12 +131,12 @@ describe('Donut chart interactions', () => {
     expect(legend).toBeDefined();
     fireEvent.mouseOver(legend!);
     const getById = queryAllByAttribute.bind(null, 'id');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 0.1');
     fireEvent.mouseOut(legend!);
 
     // Assert
-    expect(getById(container, /Pie.*?first/i)[0]).toHaveAttribute('opacity', '1');
-    expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '1');
+    expect(getById(container, /Pie.*?first/i)[0]).toHaveStyle('opacity: 1');
+    expect(getById(container, /Pie.*?second/i)[0]).toHaveStyle('opacity: 1');
   });
 
   test('Should display correct callout data on mouse move', () => {

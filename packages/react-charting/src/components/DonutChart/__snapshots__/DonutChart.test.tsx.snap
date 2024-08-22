@@ -55,6 +55,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -63,14 +64,12 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -82,6 +81,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -90,14 +90,12 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -109,6 +107,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -117,14 +116,12 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   }
               d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -747,6 +744,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -755,14 +753,12 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -774,6 +770,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -782,14 +779,12 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -801,6 +796,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -809,14 +805,12 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   }
               d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1348,6 +1342,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1356,14 +1351,12 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1375,6 +1368,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1383,14 +1377,12 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1402,6 +1394,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1410,14 +1403,12 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1869,6 +1860,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1877,14 +1869,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -1912,6 +1902,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1920,14 +1911,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -1955,6 +1944,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1963,14 +1953,12 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2438,6 +2426,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2446,14 +2435,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2481,6 +2468,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2489,14 +2477,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2524,6 +2510,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2532,14 +2519,12 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -3006,7 +2991,8 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
 
                   {
                     cursor: default;
-                    fill: #4760D5;
+                    fill: transparent;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3015,14 +3001,12 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="transparent"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <clipPath
@@ -3040,18 +3024,18 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               y="-50%"
             >
               <div
-                style={
-                  Object {
-                    "background": "conic-gradient(
-                      from 0rad,
-                      #4760D5,
-                      #637CEF 1.2167664052268437rad
-                    )",
-                    "height": "100%",
-                    "opacity": 1,
-                    "width": "100%",
-                  }
-                }
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 0rad,
+                              #4760D5,
+                              #637CEF 1.2167664052268437rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
               />
             </foreignObject>
           </g>
@@ -3062,7 +3046,8 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
 
                   {
                     cursor: default;
-                    fill: #795AA6;
+                    fill: transparent;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3071,14 +3056,12 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="transparent"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <clipPath
@@ -3096,18 +3079,18 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               y="-50%"
             >
               <div
-                style={
-                  Object {
-                    "background": "conic-gradient(
-                      from 1.2167664052268437rad,
-                      #795AA6,
-                      #9373C0 2.3536944901923453rad
-                    )",
-                    "height": "100%",
-                    "opacity": 1,
-                    "width": "100%",
-                  }
-                }
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 1.2167664052268437rad,
+                              #795AA6,
+                              #9373C0 2.3536944901923453rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
               />
             </foreignObject>
           </g>
@@ -3118,7 +3101,8 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
 
                   {
                     cursor: default;
-                    fill: #159195;
+                    fill: transparent;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3127,14 +3111,12 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="transparent"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <clipPath
@@ -3152,18 +3134,18 @@ exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
               y="-50%"
             >
               <div
-                style={
-                  Object {
-                    "background": "conic-gradient(
-                      from 3.5704608954191888rad,
-                      #159195,
-                      #2AA0A4 2.7127244117603975rad
-                    )",
-                    "height": "100%",
-                    "opacity": 1,
-                    "width": "100%",
-                  }
-                }
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 3.5704608954191888rad,
+                              #159195,
+                              #2AA0A4 2.7127244117603975rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
               />
             </foreignObject>
           </g>
@@ -3615,6 +3597,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3623,14 +3606,12 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   }
               d="M0.97,-96.949A3,3,0,0,1,4.092,-99.916A100,100,0,0,1,92.301,-38.477A3,3,0,0,1,90.6,-34.52L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3642,6 +3623,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3650,14 +3632,12 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   }
               d="M91.272,-32.701A3,3,0,0,1,95.138,-30.801A100,100,0,0,1,-37.828,92.569A3,3,0,0,1,-39.434,88.572L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3669,6 +3649,7 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3677,14 +3658,12 @@ exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] =
                   }
               d="M-41.197,87.766A3,3,0,0,1,-45.271,89.166A100,100,0,0,1,-4.092,-99.916A3,3,0,0,1,-0.97,-96.949L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4136,6 +4115,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4144,14 +4124,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4163,6 +4141,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4171,14 +4150,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4190,6 +4167,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4198,14 +4176,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   }
               d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4657,6 +4633,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #637cef;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4665,14 +4642,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#637cef"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4684,6 +4659,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #e3008c;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4692,14 +4668,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#e3008c"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4711,6 +4685,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #2aa0a4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4719,14 +4694,12 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#2aa0a4"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5178,6 +5151,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5186,14 +5160,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5205,6 +5177,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5213,14 +5186,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5232,6 +5203,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5240,14 +5212,12 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5699,6 +5669,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5707,14 +5678,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5726,6 +5695,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5734,14 +5704,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5753,6 +5721,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5761,14 +5730,12 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5837,6 +5804,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5845,14 +5813,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5864,6 +5830,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5872,14 +5839,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5891,6 +5856,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5899,14 +5865,12 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -6358,6 +6322,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -6366,14 +6331,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              fill="#E5E5E5"
               id="_Pie_1first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -6385,6 +6348,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -6393,14 +6357,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              fill="#0078D4"
               id="_Pie_1second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -6412,6 +6374,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -6420,14 +6383,12 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              fill="#DADADA"
               id="_Pie_1third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>

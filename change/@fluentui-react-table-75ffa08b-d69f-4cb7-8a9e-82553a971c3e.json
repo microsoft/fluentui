@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(TableHeaderCell): should use hover and pressed tokens",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

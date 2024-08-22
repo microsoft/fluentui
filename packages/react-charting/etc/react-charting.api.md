@@ -561,7 +561,10 @@ export interface IGaugeChartStyleProps {
     chartValueSize?: number;
     chartWidth?: number;
     className?: string;
+    gradientFill?: string;
     lineColor?: string;
+    opacity?: number;
+    solidFill?: string;
     theme: ITheme;
     toDrawShape?: boolean;
 }
@@ -579,6 +582,7 @@ export interface IGaugeChartStyles {
     chartTitle?: IStyle;
     chartValue?: IStyle;
     descriptionMessage?: IStyle;
+    gradientSegment?: IStyle;
     legendsContainer?: IStyle;
     limits?: IStyle;
     needle?: IStyle;
