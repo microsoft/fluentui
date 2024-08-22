@@ -22,7 +22,7 @@ export const useCarouselNavButton_unstable = (
 ): CarouselNavButtonState => {
   const { onClick, as = 'button' } = props;
 
-  const index = useCarouselNavContext();
+  const { index, appearance } = useCarouselNavContext();
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
 
@@ -56,6 +56,7 @@ export const useCarouselNavButton_unstable = (
 
   const state: CarouselNavButtonState = {
     selected,
+    appearance,
     components: {
       root: 'button',
     },
