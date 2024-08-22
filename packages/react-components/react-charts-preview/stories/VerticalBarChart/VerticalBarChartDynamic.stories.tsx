@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Stack, TextField } from '@fluentui/react';
 import {
@@ -28,10 +27,10 @@ export const VCDynamic = () => {
   };
 
   const _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
-    [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
-    [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark],
-    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
+    ['deepskyblue', 'dodgerblue', 'darkblue'],
+    ['lightsalmon', 'orange', 'darkorange'],
+    ['lightgreen', 'green', 'darkgreen'],
+    ['orchid', 'magenta', 'darkmagenta'],
   ];
   let _colorIndex = 0;
   let _prevBarWidth = 16;

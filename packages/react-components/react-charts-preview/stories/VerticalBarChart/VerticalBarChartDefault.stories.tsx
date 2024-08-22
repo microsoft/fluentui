@@ -5,7 +5,6 @@ import {
   IVerticalBarChartDataPoint,
   ILineChartLineOptions,
 } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import {
   Switch,
   Checkbox,
@@ -18,6 +17,7 @@ import {
   RadioGroupProps,
 } from '@fluentui/react-components';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const VCBasic = () => {
   const [width, setWidth] = React.useState<number>(650);
@@ -57,7 +57,7 @@ export const VCBasic = () => {
       x: 0,
       y: 10000,
       legend: 'Oranges',
-      color: DefaultPalette.accent,
+      color: 'dodgerblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '4%',
       lineData: {
@@ -69,7 +69,7 @@ export const VCBasic = () => {
       x: 10000,
       y: 50000,
       legend: 'Dogs',
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '21%',
       lineData: {
@@ -81,7 +81,7 @@ export const VCBasic = () => {
       x: 25000,
       y: 30000,
       legend: 'Apples',
-      color: DefaultPalette.blueMid,
+      color: 'darkblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -94,7 +94,7 @@ export const VCBasic = () => {
       x: 40000,
       y: 13000,
       legend: 'Bananas',
-      color: DefaultPalette.blueLight,
+      color: 'deepskyblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '5%',
     },
@@ -102,7 +102,7 @@ export const VCBasic = () => {
       x: 52000,
       y: 43000,
       legend: 'Giraffes',
-      color: DefaultPalette.blue,
+      color: 'dodgerblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '18%',
       lineData: {
@@ -114,7 +114,7 @@ export const VCBasic = () => {
       x: 68000,
       y: 30000,
       legend: 'Cats',
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -126,7 +126,7 @@ export const VCBasic = () => {
       x: 80000,
       y: 20000,
       legend: 'Elephants',
-      color: DefaultPalette.blue,
+      color: 'dodgerblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '8%',
       lineData: {
@@ -138,7 +138,7 @@ export const VCBasic = () => {
       x: 92000,
       y: 45000,
       legend: 'Monkeys',
-      color: DefaultPalette.blueLight,
+      color: 'deepskyblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '19%',
       lineData: {

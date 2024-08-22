@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint} from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox, CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
 
 export const VCCustomAccess = () => {
@@ -41,7 +40,7 @@ export const VCCustomAccess = () => {
     },
   ];
 
-  const customColors = [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark];
+  const customColors = ['yellowgreen'];
 
   return (
     <>

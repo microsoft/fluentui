@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Stack, TextField } from '@fluentui/react';
 import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
@@ -47,22 +46,22 @@ export const VCAxisTooltip = () => {
     {
       x: 'Simple Text',
       y: 1000,
-      color: DefaultPalette.accent,
+      color: 'dodgerblue',
     },
     {
       x: 'Showing all text here',
       y: 5000,
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
     },
     {
       x: 'Large data, showing all text by tooltip',
       y: 3000,
-      color: DefaultPalette.blueMid,
+      color: 'darkblue',
     },
     {
       x: 'Data',
       y: 2000,
-      color: DefaultPalette.blue,
+      color: 'deepskyblue',
     },
   ];
   const rootStyle = { width: `${width}px`, height: `${height}px` };
