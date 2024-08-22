@@ -128,7 +128,12 @@ export const useTagPickerControl_unstable = (
     invalid,
   };
 
-  state.expandIcon = useExpandLabel({ tagPickerId, state: state as Pick<TagPickerControlState, 'expandIcon'> });
+  const expandIconLabelRef = useExpandLabel({ tagPickerId, state: state as Pick<TagPickerControlState, 'expandIcon'> });
+
+  const expandIconLabelMergeRef = useMergedRefs(expandIcon?.ref, expandIconLabelRef);
+  if (state.expandIcon) {
+    state.expandIcon.ref = expandIconLabelMergeRef;
+  }
 
   return state;
 };
