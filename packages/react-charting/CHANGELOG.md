@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 21 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Thu, 22 Aug 2024 07:21:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.22.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.2)
+
+Thu, 22 Aug 2024 07:21:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.22.1..@fluentui/react-charting_v5.22.2)
+
+### Patches
+
+- move gradient styling to css ([PR #32324](https://github.com/microsoft/fluentui/pull/32324) by shawngrant333@gmail.com)
+- update DataVizGradientPalette.disabled color ([PR #32340](https://github.com/microsoft/fluentui/pull/32340) by shawngrant333@gmail.com)
 
 ## [5.22.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.1)
 

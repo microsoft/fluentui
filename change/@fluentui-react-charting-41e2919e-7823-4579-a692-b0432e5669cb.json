@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update DataVizGradientPalette.disabled color",
-  "packageName": "@fluentui/react-charting",
-  "email": "shawngrant333@gmail.com",
-  "dependentChangeType": "patch"
-}
