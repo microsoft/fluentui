@@ -20,8 +20,17 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
    * The function that will render nav items based on total slides and their index.
    */
   renderNavButton: NavButtonRenderFunction;
+
+  /**
+   * Enables an alternate brand style when set to 'brand'
+   */
+  appearance?: 'brand';
 };
 
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
   children: NavButtonRenderFunction;
-};
+} & Pick<CarouselNavState, 'appearance'>;
+
+export type CarouselNavContextValue = {
+  index: number;
+} & Pick<CarouselNavState, 'appearance'>;

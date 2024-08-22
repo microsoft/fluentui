@@ -10,6 +10,11 @@ import type { ColorSliderState, ColorSliderSlots } from './ColorSlider.types';
 export const renderColorSlider_unstable = (state: ColorSliderState) => {
   assertSlots<ColorSliderSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <state.input />
+      <state.rail />
+      <state.thumb />
+    </state.root>
+  );
 };

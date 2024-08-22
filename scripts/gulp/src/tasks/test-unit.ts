@@ -7,6 +7,7 @@ const argv = yargs
   .option('cache', {})
   .option('runInBand', {})
   .option('maxWorkers', {})
+  .option('updateSnapshot', { alias: 'u' })
   .option('detectLeaks', {})
   .option('coverage', {})
   .option('testNamePattern', { alias: 't' })
@@ -20,6 +21,7 @@ const jestConfigFromArgv: Partial<JestPluginConfig> = {
   detectLeaks: argv.detectLeaks as boolean,
   testNamePattern: argv.testNamePattern as string,
   testFilePattern: argv.testFilePattern as string,
+  updateSnapshot: Boolean(argv.updateSnapshot),
 };
 
 task(
