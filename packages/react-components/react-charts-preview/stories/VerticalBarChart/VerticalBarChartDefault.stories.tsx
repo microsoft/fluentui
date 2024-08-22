@@ -94,7 +94,7 @@ export const VCBasic = () => {
       x: 40000,
       y: 13000,
       legend: 'Bananas',
-      color: 'deepskyblue',
+      color: 'blue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '5%',
     },
@@ -102,7 +102,7 @@ export const VCBasic = () => {
       x: 52000,
       y: 43000,
       legend: 'Giraffes',
-      color: 'dodgerblue',
+      color: 'darkslateblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '18%',
       lineData: {
@@ -114,7 +114,7 @@ export const VCBasic = () => {
       x: 68000,
       y: 30000,
       legend: 'Cats',
-      color: 'midnightblue',
+      color: 'royalblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -126,7 +126,7 @@ export const VCBasic = () => {
       x: 80000,
       y: 20000,
       legend: 'Elephants',
-      color: 'dodgerblue',
+      color: 'slateblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '8%',
       lineData: {
@@ -138,7 +138,7 @@ export const VCBasic = () => {
       x: 92000,
       y: 45000,
       legend: 'Monkeys',
-      color: 'deepskyblue',
+      color: 'steelblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '19%',
       lineData: {

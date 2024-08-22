@@ -40,7 +40,7 @@ export const VCCustomAccess = () => {
     },
   ];
 
-  const customColors = ['yellowgreen'];
+  const customColors = ['lightgreen', 'green', 'darkgreen'];
 
   return (
     <>

@@ -29,7 +29,7 @@ export const VCStyled = () => {
     { x: 'Thirteen', y: 33 },
   ];
 
-  const customColors = ['yellowgreen']
+  const customColors = ['lightgreen', 'green', 'darkgreen'];
 
   return (
     <>
