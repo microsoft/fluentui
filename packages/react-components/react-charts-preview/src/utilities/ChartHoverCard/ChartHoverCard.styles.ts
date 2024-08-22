@@ -10,7 +10,7 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
         display: 'grid',
         overflow: 'hidden',
         padding: '11px 16px 10px 16px',
-        backgroundColor: theme.semanticColors.bodyBackground,
+        backgroundColor: tokens.colorNeutralBackground1,
         backgroundBlendMode: 'normal, luminosity',
       },
     ],
@@ -20,20 +20,20 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       justifyContent: 'space-between',
     },
     calloutContentX: [
-      theme.fonts.small,
+      tokens.fontSizeBase100,
       {
         lineHeight: '16px',
         opacity: '0.8',
-        color: theme.semanticColors.bodySubtext,
+        color: tokens.colorNeutralForeground2,
       },
     ],
     calloutBlockContainer: [
-      theme.fonts.xxLarge,
+      tokens.fontSizeHero700,
       {
         marginTop: XValue ? '13px' : 'unset',
         paddingLeft: '8px',
         lineHeight: '22px',
-        color: theme.semanticColors.bodyText,
+        color: tokens.colorNeutralForeground1,
         borderLeft: `4px solid ${color}`,
         selectors: {
           [HighContrastSelector]: {
@@ -43,10 +43,10 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       },
     ],
     calloutlegendText: [
-      theme.fonts.small,
+      tokens.fontSizeBase100,
       {
         lineHeight: '16px',
-        color: theme.semanticColors.bodyText,
+        color: tokens.colorNeutralForeground1,
         selectors: {
           [HighContrastSelectorBlack]: {
             color: 'rgb(255, 255, 255)',
@@ -55,9 +55,9 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       },
     ],
     calloutContentY: [
-      theme.fonts.xxLarge,
+      tokens.fontSizeHero700,
       {
-        color: color ? color : theme.semanticColors.bodyText,
+        color: color ? color : tokens.colorNeutralForeground1,
         fontWeight: 'bold',
         lineHeight: '36px',
         selectors: {
@@ -74,10 +74,10 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       },
     ],
     ratio: [
-      theme.fonts.small,
+      tokens.fontSizeBase100,
       {
         marginLeft: '6px',
-        color: theme.semanticColors.bodyText,
+        color: tokens.colorNeutralForeground1,
       },
     ],
     numerator: {
@@ -87,12 +87,12 @@ export const getChartHoverCardStyles = (props: IChartHoverCardStyleProps): IChar
       fontWeight: tokens.fontWeightSemibold,
     },
     descriptionMessage: [
-      theme.fonts.small,
+      tokens.fontSizeBase100,
       {
-        color: theme.semanticColors.bodyText,
+        color: tokens.colorNeutralForeground1,
         marginTop: '10px',
         paddingTop: '10px',
-        borderTop: `1px solid ${theme.semanticColors.menuDivider}`,
+        borderTop: `1px solid ${tokens.colorNeutralStroke2}`,
       },
     ],
   };
