@@ -1,6 +1,13 @@
 import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  isHTMLElement,
+  slot,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
@@ -25,6 +32,7 @@ export const useCarouselNavButton_unstable = (
   const { index, appearance } = useCarouselNavContext();
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -38,18 +46,34 @@ export const useCarouselNavButton_unstable = (
     focusable: { isDefault: selected },
   });
 
+  const buttonRef = React.useRef<HTMLElement>();
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement>,
+        ref: useMergedRefs(ref, buttonRef),
         role: 'tab',
         type: 'button',
+        'aria-selected': selected,
         ...defaultTabProps,
       },
     },
   );
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues(data => {
+      const controlList = data.groupIndexList[index];
+      const _controlledSlideIds = controlList
+        .map((slideIndex: number) => {
+          return data.slideNodes[slideIndex].id;
+        })
+        .join(' ');
+      if (buttonRef.current) {
+        buttonRef.current.setAttribute('aria-controls', _controlledSlideIds);
+      }
+    });
+  }, [index, subscribeForValues]);
 
   // Override onClick
   _carouselButton.onClick = handleClick;

@@ -67,7 +67,7 @@ export const Autoplay = () => {
           }}
         >
           <CarouselButton navType="prev" />
-          <CarouselAutoplayButton defaultAutoplay={true} />
+          <CarouselAutoplayButton />
           <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
           <CarouselButton navType="next" />
         </div>

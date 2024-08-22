@@ -44,7 +44,6 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
       getIntrinsicElementProps('div', {
         ref,
         role: 'tablist',
-        tabIndex: 0,
         ...props,
         ...focusableGroupAttr,
         children: null,

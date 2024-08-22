@@ -33,7 +33,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 };
 
 export const AutoplayControlled = () => {
-  const [enableAutoplay, setEnableAutoplay] = React.useState(true);
+  const [enableAutoplay, setEnableAutoplay] = React.useState(false);
 
   return (
     <div>
@@ -78,9 +78,9 @@ export const AutoplayControlled = () => {
         >
           <CarouselButton navType="prev" />
           <CarouselAutoplayButton
-            autoplay={enableAutoplay}
-            onClick={() => {
-              setEnableAutoplay(!enableAutoplay);
+            checked={enableAutoplay}
+            onCheckedChange={(_, data) => {
+              setEnableAutoplay(data.checked);
             }}
           />
           <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
