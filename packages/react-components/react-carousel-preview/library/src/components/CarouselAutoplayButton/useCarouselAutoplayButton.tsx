@@ -41,7 +41,7 @@ export const useCarouselAutoplayButton_unstable = (
     }
     const newValue = !autoplay;
     setAutoplay(newValue);
-    onCheckedChange?.(event, { event, type: 'click', autoplay: newValue });
+    onCheckedChange?.(event, { event, type: 'click', checked: newValue });
   };
 
   const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));

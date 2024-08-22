@@ -56,7 +56,6 @@ export const useCarouselNavButton_unstable = (
         role: 'tab',
         type: 'button',
         'aria-selected': selected,
-        // 'aria-controls': controlledSlides,
         ...defaultTabProps,
       },
     },
@@ -70,7 +69,6 @@ export const useCarouselNavButton_unstable = (
           return data.slideNodes[slideIndex].id;
         })
         .join(' ');
-      // setControlledSlides(_controlledSlideIds);
       if (buttonRef.current) {
         buttonRef.current.setAttribute('aria-controls', _controlledSlideIds);
       }

@@ -11,10 +11,10 @@ export type CarouselAutoplayChangeData = EventData<'click', React.MouseEvent<HTM
   /**
    * The updated autoplay value.
    */
-  autoplay: boolean;
+  checked: boolean;
 };
 
-export type AutoplayAriaLabelFunction = (autoplay: boolean) => string;
+export type CarouselAutoplayAriaLabelFunction = (autoplay: boolean) => string;
 
 /**
  * CarouselAutoplayButton Props
@@ -29,7 +29,7 @@ export type CarouselAutoplayButtonProps = ToggleButtonProps &
     /**
      * Override aria label property to provide state
      */
-    autoplayAriaLabel?: AutoplayAriaLabelFunction;
+    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
   };
 
 /**

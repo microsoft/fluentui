@@ -69,7 +69,6 @@ export const useCarouselNavImageButton_unstable = (
           return data.slideNodes[slideIndex].id;
         })
         .join(' ');
-      // setControlledSlides(_controlledSlideIds);
       if (buttonRef.current) {
         buttonRef.current.setAttribute('aria-controls', _controlledSlideIds);
       }
