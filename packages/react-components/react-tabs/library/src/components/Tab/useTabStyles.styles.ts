@@ -456,7 +456,15 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   return state;
 };
 
-/** Apply styling to the Tab indicator slot based on the state */
+/**
+ * Applies styles for the Tab indicator based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The `Tab` component's current state
+ * @returns The state object with updated button styles
+ */
 export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   'use no memo';
 
@@ -499,7 +507,16 @@ export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
   return state;
 };
 
-/** Apply styling to the Tab button slot based on the state */
+/**
+ * Applies styles to the Tab button slot based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The Tab component's current state
+ * @param slot - The button slot of the Tab component
+ * @returns The state object with updated button styles
+ */
 export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['root']): TabState => {
   'use no memo';
 
@@ -526,7 +543,15 @@ export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['roo
   return state;
 };
 
-/** Apply styling to the Tab content slot based on the state */
+/**
+ * Applies styles to the Tab content slot based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The Tab component's current state
+ * @returns The state object with updated content styles
+ */
 export const useTabContentStyles_unstable = (state: TabState): TabState => {
   'use no memo';
 
