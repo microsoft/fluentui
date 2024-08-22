@@ -1,0 +1,357 @@
+{
+  "@nx/devkit": {
+    "name": "@nx/devkit",
+    "generators": {},
+    "executors": {},
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/eslint": {
+    "name": "@nx/eslint",
+    "generators": {
+      "init": {
+        "factory": "./src/generators/init/init#initEsLint",
+        "schema": "./src/generators/init/schema.json",
+        "description": "Set up the ESLint plugin.",
+        "hidden": true
+      },
+      "workspace-rules-project": {
+        "factory": "./src/generators/workspace-rules-project/workspace-rules-project#lintWorkspaceRulesProjectGenerator",
+        "schema": "./src/generators/workspace-rules-project/schema.json",
+        "description": "Create the Workspace Lint Rules Project.",
+        "hidden": true
+      },
+      "workspace-rule": {
+        "factory": "./src/generators/workspace-rule/workspace-rule#lintWorkspaceRuleGenerator",
+        "schema": "./src/generators/workspace-rule/schema.json",
+        "description": "Create a new Workspace ESLint rule."
+      },
+      "convert-to-flat-config": {
+        "factory": "./src/generators/convert-to-flat-config/generator",
+        "schema": "./src/generators/convert-to-flat-config/schema.json",
+        "description": "Convert an Nx workspace's ESLint configs to use Flat Config."
+      },
+      "convert-to-inferred": {
+        "factory": "./src/generators/convert-to-inferred/convert-to-inferred",
+        "schema": "./src/generators/convert-to-inferred/schema.json",
+        "description": "Convert existing ESLint project(s) using `@nx/eslint:lint` executor to use `@nx/eslint/plugin`."
+      }
+    },
+    "executors": {
+      "lint": {
+        "implementation": "./src/executors/lint/lint.impl",
+        "schema": "./src/executors/lint/schema.json",
+        "hasher": "./src/executors/lint/hasher",
+        "description": "Run ESLint on a project."
+      }
+    },
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/eslint-plugin": {
+    "name": "@nx/eslint-plugin",
+    "generators": {},
+    "executors": {},
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/jest": {
+    "name": "@nx/jest",
+    "generators": {
+      "init": {
+        "factory": "./src/generators/init/init#jestInitGeneratorInternal",
+        "schema": "./src/generators/init/schema.json",
+        "description": "Initialize the `@nx/jest` plugin.",
+        "aliases": ["ng-add"],
+        "hidden": true
+      },
+      "configuration": {
+        "factory": "./src/generators/configuration/configuration#configurationGeneratorInternal",
+        "schema": "./src/generators/configuration/schema.json",
+        "description": "Add Jest configuration to a project.",
+        "hidden": true
+      },
+      "convert-to-inferred": {
+        "factory": "./src/generators/convert-to-inferred/convert-to-inferred",
+        "schema": "./src/generators/convert-to-inferred/schema.json",
+        "description": "Convert existing Jest project(s) using `@nx/jest:jest` executor to use `@nx/jest/plugin`."
+      }
+    },
+    "executors": {
+      "jest": {
+        "implementation": "./src/executors/jest/jest.impl",
+        "batchImplementation": "./src/executors/jest/jest.impl#batchJest",
+        "schema": "./src/executors/jest/schema.json",
+        "description": "Run Jest unit tests."
+      }
+    },
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/js": {
+    "name": "@nx/js",
+    "generators": {
+      "library": {
+        "factory": "./src/generators/library/library#libraryGeneratorInternal",
+        "schema": "./src/generators/library/schema.json",
+        "aliases": ["lib"],
+        "x-type": "library",
+        "description": "Create a library"
+      },
+      "init": {
+        "factory": "./src/generators/init/init#initGenerator",
+        "schema": "./src/generators/init/schema.json",
+        "aliases": ["lib"],
+        "x-type": "init",
+        "description": "Initialize a TS/JS workspace.",
+        "hidden": true
+      },
+      "convert-to-swc": {
+        "factory": "./src/generators/convert-to-swc/convert-to-swc#convertToSwcGenerator",
+        "schema": "./src/generators/convert-to-swc/schema.json",
+        "aliases": ["swc"],
+        "x-type": "library",
+        "description": "Convert a TypeScript library to compile with SWC."
+      },
+      "release-version": {
+        "factory": "./src/generators/release-version/release-version#releaseVersionGenerator",
+        "schema": "./src/generators/release-version/schema.json",
+        "description": "DO NOT INVOKE DIRECTLY WITH `nx generate`. Use `nx release version` instead.",
+        "hidden": true
+      },
+      "setup-verdaccio": {
+        "factory": "./src/generators/setup-verdaccio/generator#setupVerdaccio",
+        "schema": "./src/generators/setup-verdaccio/schema.json",
+        "alias": ["verdaccio"],
+        "description": "Setup Verdaccio for local package management."
+      },
+      "setup-build": {
+        "factory": "./src/generators/setup-build/generator",
+        "schema": "./src/generators/setup-build/schema.json",
+        "alias": ["build"],
+        "description": "setup-build generator"
+      },
+      "sync": {
+        "factory": "./src/generators/sync/sync#syncGenerator",
+        "schema": "./src/generators/sync/schema.json",
+        "description": "Synchronize TypeScript project references based on the project graph",
+        "hidden": true
+      }
+    },
+    "executors": {
+      "tsc": {
+        "implementation": "./src/executors/tsc/tsc.impl",
+        "batchImplementation": "./src/executors/tsc/tsc.batch-impl",
+        "schema": "./src/executors/tsc/schema.json",
+        "description": "Build a project using TypeScript."
+      },
+      "swc": {
+        "implementation": "./src/executors/swc/swc.impl",
+        "schema": "./src/executors/swc/schema.json",
+        "description": "Build a project using SWC."
+      },
+      "node": {
+        "implementation": "./src/executors/node/node.impl",
+        "schema": "./src/executors/node/schema.json",
+        "description": "Execute a Node application."
+      },
+      "release-publish": {
+        "implementation": "./src/executors/release-publish/release-publish.impl",
+        "schema": "./src/executors/release-publish/schema.json",
+        "description": "DO NOT INVOKE DIRECTLY WITH `nx run`. Use `nx release publish` instead.",
+        "hidden": true
+      },
+      "verdaccio": {
+        "implementation": "./src/executors/verdaccio/verdaccio.impl",
+        "schema": "./src/executors/verdaccio/schema.json",
+        "description": "Start local registry with verdaccio"
+      }
+    },
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/node": {
+    "name": "@nx/node",
+    "generators": {
+      "init": {
+        "factory": "./src/generators/init/init",
+        "schema": "./src/generators/init/schema.json",
+        "description": "Initialize the `@nx/node` plugin.",
+        "aliases": ["ng-add"],
+        "hidden": true
+      },
+      "application": {
+        "factory": "./src/generators/application/application#applicationGeneratorInternal",
+        "schema": "./src/generators/application/schema.json",
+        "aliases": ["app"],
+        "x-type": "application",
+        "description": "Create a node application."
+      },
+      "library": {
+        "factory": "./src/generators/library/library#libraryGeneratorInternal",
+        "schema": "./src/generators/library/schema.json",
+        "aliases": ["lib"],
+        "x-type": "library",
+        "description": "Create a node library."
+      },
+      "setup-docker": {
+        "factory": "./src/generators/setup-docker/setup-docker",
+        "schema": "./src/generators/setup-docker/schema.json",
+        "description": "Set up Docker configuration for a project.",
+        "hidden": false
+      }
+    },
+    "executors": {},
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/plugin": {
+    "name": "@nx/plugin",
+    "generators": {
+      "plugin": {
+        "factory": "./src/generators/plugin/plugin#pluginGeneratorInternal",
+        "schema": "./src/generators/plugin/schema.json",
+        "description": "Create a Nx Plugin."
+      },
+      "create-package": {
+        "factory": "./src/generators/create-package/create-package#createPackageGeneratorInternal",
+        "schema": "./src/generators/create-package/schema.json",
+        "description": "Create a package which can be used by npx to create a new workspace"
+      },
+      "e2e-project": {
+        "factory": "./src/generators/e2e-project/e2e#e2eProjectGeneratorInternal",
+        "schema": "./src/generators/e2e-project/schema.json",
+        "description": "Create a E2E application for a Nx Plugin."
+      },
+      "migration": {
+        "factory": "./src/generators/migration/migration#migrationGeneratorInternal",
+        "schema": "./src/generators/migration/schema.json",
+        "description": "Create a migration for an Nx Plugin."
+      },
+      "generator": {
+        "factory": "./src/generators/generator/generator#generatorGeneratorInternal",
+        "schema": "./src/generators/generator/schema.json",
+        "description": "Create a generator for an Nx Plugin."
+      },
+      "executor": {
+        "factory": "./src/generators/executor/executor#executorGeneratorInternal",
+        "schema": "./src/generators/executor/schema.json",
+        "description": "Create an executor for an Nx Plugin."
+      },
+      "plugin-lint-checks": {
+        "factory": "./src/generators/lint-checks/generator",
+        "schema": "./src/generators/lint-checks/schema.json",
+        "description": "Adds linting configuration to validate common json files for nx plugins."
+      },
+      "preset": {
+        "factory": "./src/generators/preset/generator",
+        "schema": "./src/generators/preset/schema.json",
+        "description": "Initializes a workspace with an nx-plugin inside of it. Use as: `create-nx-workspace --preset @nx/plugin`.",
+        "hidden": true,
+        "x-use-standalone-layout": true
+      }
+    },
+    "executors": {},
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "@nx/workspace": {
+    "name": "@nx/workspace",
+    "generators": {
+      "preset": {
+        "factory": "./src/generators/preset/preset#presetGenerator",
+        "schema": "./src/generators/preset/schema.json",
+        "description": "Create application in an empty workspace.",
+        "x-use-standalone-layout": true,
+        "hidden": true
+      },
+      "move": {
+        "factory": "./src/generators/move/move#moveGeneratorInternal",
+        "schema": "./src/generators/move/schema.json",
+        "aliases": ["mv"],
+        "description": "Move an application or library to another folder."
+      },
+      "remove": {
+        "factory": "./src/generators/remove/remove#removeGenerator",
+        "schema": "./src/generators/remove/schema.json",
+        "aliases": ["rm"],
+        "description": "Remove an application or library."
+      },
+      "convert-to-monorepo": {
+        "factory": "./src/generators/convert-to-monorepo/convert-to-monorepo",
+        "schema": "./src/generators/convert-to-monorepo/schema.json",
+        "description": "Convert a Nx project to a monorepo."
+      },
+      "new": {
+        "factory": "./src/generators/new/new#newGenerator",
+        "schema": "./src/generators/new/schema.json",
+        "description": "Create a workspace.",
+        "hidden": true
+      },
+      "run-commands": {
+        "factory": "./src/generators/run-commands/run-commands#runCommandsGenerator",
+        "schema": "./src/generators/run-commands/schema.json",
+        "aliases": ["run-command", "target"],
+        "description": "Generates a target to run any command in the terminal."
+      },
+      "fix-configuration": {
+        "factory": "./src/generators/convert-to-nx-project/convert-to-nx-project#convertToNxProjectGenerator",
+        "schema": "./src/generators/convert-to-nx-project/schema.json",
+        "aliases": ["convert-to-nx-project"],
+        "description": "Fixes projects configuration"
+      },
+      "npm-package": {
+        "factory": "./src/generators/npm-package/npm-package#npmPackageGeneratorInternal",
+        "schema": "./src/generators/npm-package/schema.json",
+        "description": "Create a minimal NPM package.",
+        "x-type": "library"
+      },
+      "ci-workflow": {
+        "factory": "./src/generators/ci-workflow/ci-workflow#ciWorkflowGenerator",
+        "schema": "./src/generators/ci-workflow/schema.json",
+        "description": "Generate a CI workflow."
+      }
+    },
+    "executors": {
+      "counter": {
+        "implementation": "./src/executors/counter/counter.impl",
+        "batchImplementation": "./src/executors/counter/counter.impl#batchCounter",
+        "schema": "./src/executors/counter/schema.json",
+        "description": "A dummy executor useful for E2E tests.",
+        "hidden": true
+      }
+    },
+    "projectGraphExtension": false,
+    "projectInference": false
+  },
+  "nx": {
+    "name": "nx",
+    "generators": {
+      "connect-to-nx-cloud": {
+        "factory": "./src/nx-cloud/generators/connect-to-nx-cloud/connect-to-nx-cloud",
+        "schema": "./src/nx-cloud/generators/connect-to-nx-cloud/schema.json",
+        "description": "Connect a workspace to Nx Cloud",
+        "x-hidden": true
+      }
+    },
+    "executors": {
+      "noop": {
+        "implementation": "./src/executors/noop/noop.impl",
+        "schema": "./src/executors/noop/schema.json",
+        "description": "An executor that does nothing"
+      },
+      "run-commands": {
+        "implementation": "./src/executors/run-commands/run-commands.impl",
+        "schema": "./src/executors/run-commands/schema.json",
+        "description": "Run any custom commands with Nx."
+      },
+      "run-script": {
+        "implementation": "./src/executors/run-script/run-script.impl",
+        "schema": "./src/executors/run-script/schema.json",
+        "description": "Run an NPM script using Nx."
+      }
+    },
+    "projectGraphExtension": false,
+    "projectInference": false
+  }
+}
