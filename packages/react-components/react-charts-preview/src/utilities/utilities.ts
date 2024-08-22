@@ -206,19 +206,19 @@ function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: string| b
   const timeYear = useUTC ? d3UtcYear : d3TimeYear;
 
   return (
-    d3TimeSecond(date) < date
+    timeSecond(date) < date
       ? formatMillisecond
-      : d3TimeMinute(date) < date
+      : timeMinute(date) < date
       ? formatSecond
-      : d3TimeHour(date) < date
+      : timeHour(date) < date
       ? formatMinute
-      : d3TimeDay(date) < date
+      : timeDay(date) < date
       ? formatHour
-      : d3TimeMonth(date) < date
-      ? d3TimeWeek(date) < date
+      : timeMonth(date) < date
+      ? timeWeek(date) < date
         ? formatDay
         : formatWeek
-      : d3TimeYear(date) < date
+      : timeYear(date) < date
       ? formatMonth
       : formatYear
   )(date);

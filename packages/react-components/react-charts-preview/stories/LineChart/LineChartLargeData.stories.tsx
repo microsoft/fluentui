@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ILineChartProps, LineChart, IChartProps, ILineChartDataPoint } from '../../src/LineChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { DataVizPalette } from '../../src/utilities/colors';
 import { Switch } from '@fluentui/react-components';
 
 export const LCLargeData = (props: ILineChartProps) => {
@@ -62,7 +62,7 @@ export const LCLargeData = (props: ILineChartProps) => {
       {
         legend: 'From_Legacy_to_O365',
         data: _getdata(),
-        color: DefaultPalette.blue,
+        color: DataVizPalette.color1,
         onLineClick: () => console.log('From_Legacy_to_O365'),
         hideNonActiveDots: true,
         lineOptions: {
@@ -72,7 +72,7 @@ export const LCLargeData = (props: ILineChartProps) => {
       {
         legend: 'All',
         data: _getdata2(),
-        color: DefaultPalette.green,
+        color: DataVizPalette.success,
         lineOptions: {
           lineBorderWidth: '4',
         },
@@ -85,7 +85,7 @@ export const LCLargeData = (props: ILineChartProps) => {
             y: 282000,
           },
         ],
-        color: DefaultPalette.yellow,
+        color: DataVizPalette.color10,
       },
     ],
   };

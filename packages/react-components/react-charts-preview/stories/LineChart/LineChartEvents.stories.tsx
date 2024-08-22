@@ -3,8 +3,7 @@ import {  ILineChartProps, LineChart, IChartProps} from '../../src/LineChart';
 import { DataVizPalette } from '../../src/utilities/colors';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
-import { Label, Switch, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
-import { ColorPicker, IColor } from '@fluentui/react';
+import { Label, Switch } from '@fluentui/react-components';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
