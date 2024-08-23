@@ -68,6 +68,11 @@ const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, v
 };
 
 /**
+ * Checks if a tab value is neither null nor undefined.
+ */
+const isDefined = (value: TabValue): boolean => value !== undefined && value !== null;
+
+/**
  * Adds additional styling to the active tab selection indicator to create a sliding animation.
  */
 export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabState => {
@@ -79,7 +84,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   const getRegisteredTabs = useTabListContext_unstable(ctx => ctx.getRegisteredTabs);
 
   React.useEffect(() => {
-    if (lastAnimatedFrom) {
+    if (isDefined(lastAnimatedFrom)) {
       setAnimationValues({ offset: 0, scale: 1 });
     }
   }, [lastAnimatedFrom]);
@@ -87,7 +92,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
 
-    if (previousSelectedValue && lastAnimatedFrom !== previousSelectedValue) {
+    if (isDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
       const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
       const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
@@ -104,7 +109,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
         setLastAnimatedFrom(previousSelectedValue);
       }
     }
-  } else if (lastAnimatedFrom) {
+  } else if (isDefined(lastAnimatedFrom)) {
     // need to clear the last animated from so that if this tab is selected again
     // from the same previous tab as last time, that animation still happens.
     setLastAnimatedFrom(undefined);

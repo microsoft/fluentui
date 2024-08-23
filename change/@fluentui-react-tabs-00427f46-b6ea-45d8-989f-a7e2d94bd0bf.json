@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Tab component skips animation for falsy values",
+  "packageName": "@fluentui/react-tabs",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}
