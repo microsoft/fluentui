@@ -58,8 +58,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   // We want to be methodical about updating the render with child reference array
   const forceUpdate = useReducer(() => ({}), {})[1];
 
-  const horizontal = axis === 'horizontal';
-
   const populateSizeArrays = () => {
     if (!getItemSize) {
       // Static sizes, never mind!
@@ -140,10 +138,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         return;
       }
 
-      /* IO initiates this function when needed (bookend entering view) */
-      let measurementPos = 0;
-      let bufferCount = bufferItems;
-
       // Grab latest entry that is intersecting
       const latestEntry =
         entries.length === 1
@@ -159,46 +153,36 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         return;
       }
 
-      if (latestEntry.target === afterElementRef.current) {
-        // We need to inverse the buffer count
-        bufferCount = virtualizerLength - bufferItems;
-        measurementPos = reversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-        if (!horizontal) {
-          if (reversed) {
-            // Scrolling 'up' and hit the after element below
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-          } else if (latestEntry.boundingClientRect.top < 0) {
-            // Scrolling 'down' and hit the after element above top: 0
-            measurementPos -= latestEntry.boundingClientRect.top;
+      const calculateOverBuffer = (latestEntry: IntersectionObserverEntry): number => {
+        let measurementPos = 0;
+        if (latestEntry.target === afterElementRef.current) {
+          measurementPos = reversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
+          const afterAmount =
+            axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
+          const reversedAfterAmount =
+            axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
+          if (!reversed && afterAmount < 0) {
+            measurementPos -= afterAmount;
+          } else if (reversed && reversedAfterAmount > 0) {
+            measurementPos -= reversedAfterAmount;
           }
-        } else {
-          if (reversed) {
-            // Scrolling 'left' and hit the after element
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-          } else if (latestEntry.boundingClientRect.left < 0) {
-            // Scrolling 'right' and hit the after element
-            measurementPos -= latestEntry.boundingClientRect.left;
-          }
-        }
-      } else if (latestEntry.target === beforeElementRef.current) {
-        measurementPos = reversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-        if (!horizontal) {
-          if (!reversed) {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.bottom);
-          } else if (latestEntry.boundingClientRect.top < 0) {
-            // Scrolling 'down' in reverse order and hit the before element above top: 0
-            measurementPos -= latestEntry.boundingClientRect.top;
-          }
-        } else {
-          if (!reversed) {
-            measurementPos -= Math.abs(latestEntry.boundingClientRect.right);
-          } else if (latestEntry.boundingClientRect.left < 0) {
-            // Scrolling 'left' and hit before element
-            measurementPos -= latestEntry.boundingClientRect.left;
+        } else if (latestEntry.target === beforeElementRef.current) {
+          measurementPos = reversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
+          const afterAmount =
+            axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
+          const reversedAfterAmount =
+            axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
+          if (!reversed && afterAmount > 0) {
+            measurementPos -= afterAmount;
+          } else if (reversed && reversedAfterAmount < 0) {
+            measurementPos -= reversedAfterAmount;
           }
         }
-      }
 
+        return measurementPos;
+      };
+      /* IO initiates this function when needed (bookend entering view) */
+      let measurementPos = calculateOverBuffer(latestEntry);
       if (reversed) {
         // We're reversed, up is down, left is right, invert the scroll measure.
         measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
@@ -206,12 +190,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       // For now lets use hardcoded size to assess current element to paginate on
       const startIndex = getIndexFromScrollPosition(measurementPos);
-      const bufferedIndex = Math.max(startIndex - bufferCount, 0);
+      const dirMod =
+        latestEntry.target === beforeElementRef.current ? bufferItems : virtualizerLength - 1 - bufferItems * 2;
 
       // Safety limits
       const maxIndex = Math.max(numItems - virtualizerLength, 0);
-      const newStartIndex = Math.min(Math.max(bufferedIndex, 0), maxIndex);
-
+      const newStartIndex = Math.min(Math.max(startIndex - dirMod, 0), maxIndex);
       if (actualIndex !== newStartIndex) {
         // We flush sync this and perform an immediate state update
         flushSync(() => {
@@ -445,7 +429,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renderChild, updateChildRows]);
+  }, [renderChild]);
 
   useEffect(() => {
     // Ensure we repopulate if getItemSize callback changes

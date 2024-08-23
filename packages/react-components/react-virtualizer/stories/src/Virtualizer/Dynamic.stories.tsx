@@ -4,7 +4,7 @@ import {
   useDynamicVirtualizerMeasure,
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
-import { makeStyles } from '@fluentui/react-components';
+import { makeStyles, useMergedRefs } from '@fluentui/react-components';
 import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
@@ -70,6 +70,8 @@ export const Dynamic = () => {
     currentIndex,
   });
 
+  const combineRefs = useMergedRefs(scrollRef);
+
   return (
     <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
@@ -80,6 +82,7 @@ export const Dynamic = () => {
           bufferItems={bufferItems}
           virtualizerLength={virtualizerLength}
           itemSize={100}
+          scrollViewRef={combineRefs}
         >
           {useCallback(
             (index: number) => {

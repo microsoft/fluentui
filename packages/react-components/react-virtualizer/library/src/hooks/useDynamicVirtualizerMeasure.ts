@@ -58,14 +58,13 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
        */
-      const bufferItems = Math.max(Math.floor(length / 4), 4);
+      const bufferItems = Math.max(Math.floor(length / 3), 1);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const bufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
-
-      const totalLength = length + bufferItems * 2 + 1;
+      const bufferSize = Math.max(defaultItemSize / 2.0, 1);
+      const totalLength = length + bufferItems * 2;
       setState({
         virtualizerLength: totalLength,
         virtualizerBufferSize: bufferSize,
@@ -99,8 +98,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
 
     const containerSize =
       direction === 'vertical'
-        ? container.current?.getBoundingClientRect().height * 1.5
-        : container.current?.getBoundingClientRect().width * 1.5;
+        ? container.current?.getBoundingClientRect().height
+        : container.current?.getBoundingClientRect().width;
 
     let couldBeSmaller = false;
     let recheckTotal = 0;

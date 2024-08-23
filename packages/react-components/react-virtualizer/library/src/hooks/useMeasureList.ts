@@ -58,8 +58,14 @@ export function useMeasureList<
   };
 
   React.useEffect(() => {
-    widthArray.current = new Array(totalLength).fill(defaultItemSize);
-    heightArray.current = new Array(totalLength).fill(defaultItemSize);
+    const newHeightLength = totalLength - heightArray.current.length;
+    const newWidthLength = totalLength - widthArray.current.length;
+    if (newWidthLength > 0) {
+      widthArray.current = widthArray.current.concat(new Array(newWidthLength).fill(defaultItemSize));
+    }
+    if (newHeightLength > 0) {
+      heightArray.current = heightArray.current.concat(new Array(newHeightLength).fill(defaultItemSize));
+    }
   }, [defaultItemSize, totalLength]);
 
   // Keep the reference of ResizeObserver as a ref, as it should live through renders
