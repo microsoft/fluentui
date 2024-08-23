@@ -60,11 +60,16 @@ export function useMeasureList<
   React.useEffect(() => {
     const newHeightLength = totalLength - heightArray.current.length;
     const newWidthLength = totalLength - widthArray.current.length;
+    // Ensure we grow or truncate arrays with prior properties
     if (newWidthLength > 0) {
       widthArray.current = widthArray.current.concat(new Array(newWidthLength).fill(defaultItemSize));
+    } else if (newWidthLength < 0) {
+      widthArray.current = widthArray.current.slice(0, totalLength);
     }
     if (newHeightLength > 0) {
       heightArray.current = heightArray.current.concat(new Array(newHeightLength).fill(defaultItemSize));
+    } else if (newHeightLength < 0) {
+      heightArray.current = heightArray.current.slice(0, totalLength);
     }
   }, [defaultItemSize, totalLength]);
 
