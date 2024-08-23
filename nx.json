@@ -34,7 +34,8 @@
     },
     "type-check": {
       "dependsOn": ["^build"],
-      "cache": true
+      "cache": true,
+      "executor": "@fluentui/workspace-plugin:type-check"
     },
     "prepare": {
       "dependsOn": ["^prepare"],
@@ -79,6 +80,23 @@
       ],
       "options": {
         "command": "eslint src"
+      }
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write {projectRoot}"
+      },
+      "metadata": {
+        "help": {
+          "command": "yarn prettier --help",
+          "options": {}
+        }
+      },
+      "configurations": {
+        "check": {
+          "command": "prettier --check {projectRoot}"
+        }
       }
     },
     "verify-packaging": {
