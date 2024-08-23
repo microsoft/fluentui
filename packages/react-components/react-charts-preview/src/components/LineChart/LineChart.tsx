@@ -142,7 +142,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let eventLabelHeight: number = 36;
     let lines: JSX.Element[];
     let _renderedColorFillBars: JSX.Element[];
-    let _colorFillBars: IColorFillBarsProps[] = [];
+    const _colorFillBars = React.useRef<IColorFillBarsProps[]>([]);
     let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
@@ -846,15 +846,15 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     function _createColorFillBars(containerHeight: number) {
       const colorFillBars: JSX.Element[] = [];
       if (isSelectedLegend) {
-        _colorFillBars = selectedColorBarLegend;
+        _colorFillBars.current = selectedColorBarLegend;
       } else {
-        _colorFillBars = props.colorFillBars!;
+        _colorFillBars.current = props.colorFillBars!;
       }
 
       const yMinMaxValues = getMinMaxOfYAxis(_points, ChartTypes.LineChart);
       const FILL_Y_PADDING = 3;
-      for (let i = 0; i < _colorFillBars.length; i++) {
-        const colorFillBar = _colorFillBars[i];
+      for (let i = 0; i < _colorFillBars.current.length; i++) {
+        const colorFillBar = _colorFillBars.current[i];
         const colorFillBarId = `${_colorFillBarId}-${i++}`;
         // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color);
