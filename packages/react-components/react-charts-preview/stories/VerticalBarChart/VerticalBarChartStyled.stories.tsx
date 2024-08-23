@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCStyled = () => {
-  const [isChecked, setIsChecked] = React.useState<boolean>(true);
-  const [useSingleColor, setUseSingleColor] = React.useState<boolean>(true);
+  const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
+  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(true);
 
-  const _onChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setIsChecked(checked);
+  const _onChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
+    setIsChecked(checked.checked);
   };
-  const _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setUseSingleColor(checked);
+  const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
+    setUseSingleColor(checked.checked);
   };
 
   const points: IVerticalBarChartDataPoint[] = [
@@ -30,17 +29,18 @@ export const VCStyled = () => {
     { x: 'Thirteen', y: 33 },
   ];
 
-  const customColors = [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark];
+  const customColors = ['lightgreen', 'green', 'darkgreen'];
 
   return (
     <>
       <Checkbox label="show  line(This will draw the line)" checked={isChecked} onChange={_onChange} />
-      <Checkbox
-        label="use single color(This will have only one color)"
-        checked={useSingleColor}
-        onChange={_onCheckChange}
-        styles={{ root: { marginTop: '20px' } }}
-      />
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={useSingleColor}
+          onChange={_onCheckChange}
+        />
+      </div>
       <div style={{ width: '800px', height: '400px' }}>
         <VerticalBarChart
           chartTitle="Vertical bar chart styled example "

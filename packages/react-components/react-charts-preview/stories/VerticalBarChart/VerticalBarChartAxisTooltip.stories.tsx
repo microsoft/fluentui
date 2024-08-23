@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { Checkbox, Stack, TextField } from '@fluentui/react';
-import { Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Stack, TextField } from '@fluentui/react';
+import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
-  const [barWidthEnabled, setBarWidthEnabled] = React.useState<boolean>(true);
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<boolean>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<boolean>(false);
+  const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps["checked"]>(true);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
   const [barWidth, setBarWidth] = React.useState<number>(16);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(100);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
@@ -16,23 +15,23 @@ export const VCAxisTooltip = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
-  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setBarWidthEnabled(checked);
+  const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setBarWidthEnabled(checked.checked);
   };
-  const _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+  const _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     setBarWidth(Number(newValue));
   };
   const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
     setMaxBarWidth(Number(newValue));
   };
-  const _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisInnerPaddingEnabled(checked);
+  const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisInnerPaddingEnabled(checked.checked);
   };
   const _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisInnerPadding(Number(e.target.value));
   };
-  const _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisOuterPaddingEnabled(checked);
+  const _onOuterPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisOuterPaddingEnabled(checked.checked);
   };
   const _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisOuterPadding(Number(e.target.value));
@@ -47,22 +46,22 @@ export const VCAxisTooltip = () => {
     {
       x: 'Simple Text',
       y: 1000,
-      color: DefaultPalette.accent,
+      color: 'dodgerblue',
     },
     {
       x: 'Showing all text here',
       y: 5000,
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
     },
     {
       x: 'Large data, showing all text by tooltip',
       y: 3000,
-      color: DefaultPalette.blueMid,
+      color: 'darkblue',
     },
     {
       x: 'Data',
       y: 2000,
-      color: DefaultPalette.blue,
+      color: 'deepskyblue',
     },
   ];
   const rootStyle = { width: `${width}px`, height: `${height}px` };
@@ -97,9 +96,7 @@ export const VCAxisTooltip = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
-            maxBarWidth:
-          </label>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>maxBarWidth:</label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}

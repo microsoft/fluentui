@@ -280,7 +280,7 @@ export const LCMultiple = (props: ILineChartProps) => {
         aria-valuetext={`ChangeHeightslider${height}`}
       />
        <Switch
-        label={allowMultipleShapes ? 'Disable multiple shapes for each line' : 'Enable multiple shapes for each line'}
+        label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
@@ -297,6 +297,7 @@ export const LCMultiple = (props: ILineChartProps) => {
           enableReflow={true}
           allowMultipleShapesForPoints={allowMultipleShapes}
           enablePerfOptimization={true}
+          useUTC={false}
         />
       </div>
     </>

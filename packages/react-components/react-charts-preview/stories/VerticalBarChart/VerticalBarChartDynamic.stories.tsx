@@ -1,10 +1,17 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { Checkbox, Stack, TextField } from '@fluentui/react';
-import type { RadioGroupOnChangeData, RadioGroupProps } from '@fluentui/react-components';
-import { Field, Radio, RadioGroup } from '@fluentui/react-components';
+import { Stack, TextField } from '@fluentui/react';
+import {
+  Checkbox,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+} from '@fluentui/react-components';
 
 export const VCDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -20,10 +27,10 @@ export const VCDynamic = () => {
   };
 
   const _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
-    [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
-    [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark],
-    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
+    ['deepskyblue', 'dodgerblue', 'darkblue'],
+    ['lightsalmon', 'orange', 'darkorange'],
+    ['lightgreen', 'green', 'darkgreen'],
+    ['orchid', 'magenta', 'darkmagenta'],
   ];
   let _colorIndex = 0;
   let _prevBarWidth = 16;
@@ -63,14 +70,14 @@ export const VCDynamic = () => {
   const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
     setMaxBarWidth(Number(newValue));
   };
-  const _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisInnerPaddingEnabled(checked);
+  const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisInnerPaddingEnabled(checked.checked);
   };
   const _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisInnerPadding(Number(e.target.value));
   };
-  const _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisOuterPaddingEnabled(checked);
+  const _onOuterPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisOuterPaddingEnabled(checked.checked);
   };
   const _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisOuterPadding(Number(e.target.value));
@@ -82,8 +89,8 @@ export const VCDynamic = () => {
     setXAxisType(option.value);
     setDynamicData(_getData(dataSize, option.value));
   };
-  const _onEnableReflowCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setEnableReflow(checked);
+  const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setEnableReflow(checked.checked);
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dataSize = Number(e.target.value);
@@ -120,15 +127,15 @@ export const VCDynamic = () => {
   const [colors, setColors] = React.useState<string[]>(_colors[0]);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<boolean>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<boolean>(false);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
   const [barWidth, setBarWidth] = React.useState<number | 'auto' | undefined>(undefined);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(24);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
   const [xAxisOuterPadding, setXAxisOuterPadding] = React.useState<number>(0);
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
-  const [enableReflow, setEnableReflow] = React.useState<boolean>(false);
+  const [enableReflow, setEnableReflow] = React.useState<CheckboxProps['checked']>(false);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
 
   _changeData = _changeData.bind(this);
