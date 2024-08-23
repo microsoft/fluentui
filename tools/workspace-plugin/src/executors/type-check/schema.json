@@ -2,8 +2,21 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "title": "TypeCheck executor",
-  "description": "",
+  "description": "Run type check TypeScript project files.",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "exclude": {
+      "description": "Exclude TsConfigs from type checking (e2e,spec).",
+      "type": "object",
+      "properties": {
+        "e2e": {
+          "type": "boolean"
+        },
+        "spec": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
   "required": []
 }
