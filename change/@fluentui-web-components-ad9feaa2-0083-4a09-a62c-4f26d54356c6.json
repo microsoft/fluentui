@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "resolve eslint errors after upgrade to typescript-eslint v8",
+  "packageName": "@fluentui/web-components",
+  "email": "vgenaev@gmail.com",
+  "dependentChangeType": "none"
+}
