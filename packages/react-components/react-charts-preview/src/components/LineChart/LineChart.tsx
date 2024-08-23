@@ -855,7 +855,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const FILL_Y_PADDING = 3;
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
-        const colorFillBarId = `${_colorFillBarId}-${i++}`;
+        const colorFillBarId = `${_colorFillBarId}-${i}`;
         // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color);
 
