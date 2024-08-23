@@ -10,9 +10,9 @@ import {
   Link,
   makeStyles,
   Subtitle1,
+  tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular, Open16Regular } from '@fluentui/react-icons';
-import { tokens } from '@fluentui/react-theme';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
