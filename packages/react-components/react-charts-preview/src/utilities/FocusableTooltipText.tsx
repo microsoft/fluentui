@@ -1,80 +1,67 @@
+/* eslint-disable no-restricted-globals */
 import * as React from 'react';
-import { hasOverflow, ITooltipHostProps, TooltipHost, TooltipOverflowMode } from '@fluentui/react';
+import { useCallback, useState, useEffect, useRef } from 'react';
+import { Tooltip } from '@fluentui/react-components';
+import { hasOverflow } from './overflow-utils';
 import { getAccessibleDataObject } from './index';
 import { IAccessibilityProps } from '../types/index';
-import { Async } from '../Utilities';
+import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
-  className?: ITooltipHostProps['hostClassName'];
-  content?: ITooltipHostProps['content'];
+  className?: string;
+  content?: string | JSX.Element | JSX.Element[];
   accessibilityData?: IAccessibilityProps;
 }
 
-interface IFocusableTooltipTextState {
-  textOverflow: boolean;
-}
+export const FocusableTooltipText: React.FunctionComponent<IFocusableTooltipTextProps> = React.forwardRef<
+  HTMLDivElement,
+  IFocusableTooltipTextProps
+>((props, forwardedRef) => {
+  const [textOverflow, setTextOverflow] = useState(false);
+  const tooltipChild = useRef<HTMLSpanElement>(null);
+  const async = useRef(new Async()).current;
+  const resizeObserver = useRef<ResizeObserver>();
 
-/**
- * Component to make the text focusable when the overflowed content is clipped
- * because of the CSS text-overflow property.
- */
-export class FocusableTooltipText extends React.Component<IFocusableTooltipTextProps, IFocusableTooltipTextState> {
-  private _tooltipChild = React.createRef<HTMLSpanElement>();
-  private _resizeObserver?: ResizeObserver;
-  private _async: Async;
-
-  constructor(props: IFocusableTooltipTextProps) {
-    super(props);
-
-    this.state = {
-      textOverflow: false,
-    };
-
-    this._async = new Async(this);
-  }
-
-  public render(): React.ReactNode {
-    const { className, content, accessibilityData } = this.props;
-
-    return (
-      <TooltipHost overflowMode={TooltipOverflowMode.Self} hostClassName={className} content={content}>
-        <span
-          {...getAccessibleDataObject(accessibilityData)}
-          ref={this._tooltipChild}
-          data-is-focusable={this.state.textOverflow}
-        >
-          {content}
-        </span>
-      </TooltipHost>
-    );
-  }
-
-  public componentDidMount(): void {
-    const overflowElement = this._getTargetElement();
-    if (window.ResizeObserver && overflowElement) {
-      this._resizeObserver = new ResizeObserver(this._async.debounce(this._checkTextOverflow, 500));
-      this._resizeObserver.observe(overflowElement);
-    }
-  }
-
-  public componentWillUnmount(): void {
-    this._resizeObserver?.disconnect();
-    this._async.dispose();
-  }
-
-  private _checkTextOverflow = (): void => {
-    const overflowElement = this._getTargetElement();
-    const textOverflow = !!overflowElement && hasOverflow(overflowElement);
-    if (textOverflow !== this.state.textOverflow) {
-      this.setState({ textOverflow });
-    }
-  };
-
-  private _getTargetElement = (): HTMLElement | undefined => {
-    if (!this._tooltipChild.current || !this._tooltipChild.current.parentElement) {
+  const getTargetElement = useCallback((): HTMLElement | undefined => {
+    if (!tooltipChild.current || !tooltipChild.current.parentElement) {
       return undefined;
     }
+    return tooltipChild.current.parentElement;
+  }, [tooltipChild]);
 
-    return this._tooltipChild.current.parentElement;
-  };
-}
+  const checkTextOverflow = useCallback(() => {
+    const overflowElement = getTargetElement();
+    const isTextOverflow = !!overflowElement && hasOverflow(overflowElement);
+    if (isTextOverflow !== textOverflow) {
+      setTextOverflow(isTextOverflow);
+    }
+  }, [getTargetElement, textOverflow, setTextOverflow]);
+
+  useEffect(() => {
+    checkTextOverflow();
+  }, [checkTextOverflow]);
+
+  useEffect(() => {
+    // setup part executed only when the component mounts/updates
+    const overflowElement = getTargetElement();
+    if (window.ResizeObserver && overflowElement) {
+      resizeObserver.current = new window.ResizeObserver(async.debounce(checkTextOverflow, 500));
+      resizeObserver.current.observe(overflowElement);
+    }
+    // cleanup part executed only when the component unmounts
+    return () => {
+      resizeObserver.current?.disconnect();
+      async.dispose();
+    };
+  }, [async, checkTextOverflow, getTargetElement]);
+
+  return (
+    <div className={props.className} tabIndex={0}>
+      <Tooltip content={props.content} relationship="label">
+        <span {...getAccessibleDataObject(props.accessibilityData)} ref={tooltipChild} data-is-focusable={textOverflow}>
+          {props.content}
+        </span>
+      </Tooltip>
+    </div>
+  );
+});

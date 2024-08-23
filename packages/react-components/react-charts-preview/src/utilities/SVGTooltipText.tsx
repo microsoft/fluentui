@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { usePortalMountNode } from '@fluentui/react-shared-contexts';
-import { Tooltip } from '@fluentui/react-tooltip';
-import { Async, KeyCodes, getId } from '@fluentui/utilities';
+import { Tooltip, usePortalMountNode } from '@fluentui/react-components';
+import { Async } from './async-utils';
+import { KeyCodes } from './KeyCodes';
+import { useId } from '@fluentui/react-utilities';
 
 interface ISVGTooltipTextProps {
   closeDelay?: number;
   content?: string;
   delay?: number;
-  tooltipProps?: any;
+  tooltipProps?: React.ComponentProps<typeof Tooltip>;
   textProps?: React.SVGAttributes<SVGTextElement>;
   maxWidth?: number;
   maxHeight?: number;
@@ -27,7 +28,7 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
   const async = useRef(new Async()).current;
   const dismissTimerId = useRef<number>();
   const openTimerId = useRef<number>();
-  const tooltipHostId = useRef(getId('tooltip-host')).current;
+  const tooltipHostId = useRef(useId('tooltip-host')).current;
   const ignoreNextFocusEvent = useRef(false);
   const portalMountNode = usePortalMountNode();
 
@@ -45,7 +46,7 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
     } else {
       setIsOverflowing(false);
     }
-  }, [props.content, props.wrapContent, tooltipHostId, props.maxWidth, props.maxHeight]);
+  }, [props, tooltipHostId]);
 
   useEffect(() => {
     wrapContentCallback();

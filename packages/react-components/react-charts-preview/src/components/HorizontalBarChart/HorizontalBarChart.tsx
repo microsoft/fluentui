@@ -14,6 +14,7 @@ import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
+import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 /**
  * HorizontalBarChart is the context wrapper and container for all HorizontalBarChart content/controls,
@@ -345,13 +346,12 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           <div key={index}>
             <div className={classes.items} {...focusAttributes}>
               <div className={classes.chartTitle}>
-                {points!.chartTitle && ( // ToDo - Update Focusable tooltip text to use v9 controls.
-                  <div
+                {points!.chartTitle && (
+                  <FocusableTooltipText
                     className={classes.chartTitleLeft}
-                    {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}
-                  >
-                    {points!.chartTitle}
-                  </div>
+                    content={points!.chartTitle}
+                    accessibilityData={points!.chartTitleAccessibilityData}
+                  />
                 )}
                 {chartDataText}
               </div>
