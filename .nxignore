@@ -11,5 +11,6 @@ packages/fluentui/.browserslistrc
 
 **/dist/**
 **/fixtures/**
+**/__fixtures__/**
 **/bundle-size/**
 scripts/*/just.config.ts
