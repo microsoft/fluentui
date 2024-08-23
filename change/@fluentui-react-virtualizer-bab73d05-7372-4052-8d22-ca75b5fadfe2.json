@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Export useMeasureList and type for consumption",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
