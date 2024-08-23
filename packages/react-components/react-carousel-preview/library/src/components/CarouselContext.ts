@@ -3,6 +3,9 @@ import type { CarouselContextValue } from './CarouselContext.types';
 
 export const carouselContextDefaultValue: CarouselContextValue = {
   activeIndex: 0,
+  selectPageByElement: () => {
+    /** noop */
+  },
   selectPageByDirection: () => {
     /** noop */
   },

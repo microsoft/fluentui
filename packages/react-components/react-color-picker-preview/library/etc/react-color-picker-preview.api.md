@@ -6,6 +6,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
+import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -52,15 +54,25 @@ export const ColorSlider: ForwardRefComponent<ColorSliderProps>;
 export const colorSliderClassNames: SlotClassNames<ColorSliderSlots>;
 
 // @public
-export type ColorSliderProps = ComponentProps<ColorSliderSlots> & {};
+export type ColorSliderProps = Omit<ComponentProps<Partial<ColorSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & {
+    defaultValue?: number;
+    max?: number;
+    min?: number;
+    onChange?: EventHandler<SliderOnChangeData>;
+    vertical?: boolean;
+    value?: number;
+};
 
 // @public (undocumented)
 export type ColorSliderSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'div'>>;
+    rail: NonNullable<Slot<'div'>>;
+    thumb: NonNullable<Slot<'div'>>;
+    input: NonNullable<Slot<'input'>>;
 };
 
 // @public
-export type ColorSliderState = ComponentState<ColorSliderSlots>;
+export type ColorSliderState = ComponentState<ColorSliderSlots> & Pick<ColorSliderProps, 'vertical'>;
 
 // @public
 export const renderColorArea_unstable: (state: ColorAreaState) => JSX.Element;
@@ -84,7 +96,7 @@ export const useColorPicker_unstable: (props: ColorPickerProps, ref: React_2.Ref
 export const useColorPickerStyles_unstable: (state: ColorPickerState) => ColorPickerState;
 
 // @public
-export const useColorSlider_unstable: (props: ColorSliderProps, ref: React_2.Ref<HTMLDivElement>) => ColorSliderState;
+export const useColorSlider_unstable: (props: ColorSliderProps, ref: React_2.Ref<HTMLInputElement>) => ColorSliderState;
 
 // @public
 export const useColorSliderStyles_unstable: (state: ColorSliderState) => ColorSliderState;

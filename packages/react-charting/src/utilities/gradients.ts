@@ -151,8 +151,8 @@ const semanticGradientPalette: GradientPalette = {
     ['#D33F4C', '#DC626D'], // [cranberry.tint20, cranberry.tint30],
   ],
   disabled: [
-    ['#E6E6E6', '#F0F0F0'],
-    ['#E6E6E6', '#F0F0F0'],
+    ['#E6E6E6', '#E6E6E6'],
+    ['#E6E6E6', '#E6E6E6'],
   ],
 };
 
