@@ -19,9 +19,15 @@ export {
   useStaticVirtualizerMeasure,
   useDynamicVirtualizerMeasure,
   useResizeObserverRef_unstable,
+  useMeasureList,
 } from './Hooks';
 
-export type { ResizeCallbackWithRef, VirtualizerMeasureDynamicProps, VirtualizerMeasureProps } from './Hooks';
+export type {
+  ResizeCallbackWithRef,
+  VirtualizerMeasureDynamicProps,
+  VirtualizerMeasureProps,
+  IndexedResizeCallbackElement,
+} from './Hooks';
 
 export type { ScrollToItemDynamicParams, ScrollToItemStaticParams, ScrollToInterface } from './Utilities';
 
