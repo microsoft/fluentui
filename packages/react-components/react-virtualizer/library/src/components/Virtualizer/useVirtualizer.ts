@@ -153,7 +153,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         return;
       }
 
-      const calculateOverBuffer = (latestEntry: IntersectionObserverEntry): number => {
+      const calculateOverBuffer = (): number => {
         let measurementPos = 0;
         if (latestEntry.target === afterElementRef.current) {
           measurementPos = reversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
@@ -182,7 +182,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         return measurementPos;
       };
       /* IO initiates this function when needed (bookend entering view) */
-      let measurementPos = calculateOverBuffer(latestEntry);
+      let measurementPos = calculateOverBuffer();
       if (reversed) {
         // We're reversed, up is down, left is right, invert the scroll measure.
         measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
