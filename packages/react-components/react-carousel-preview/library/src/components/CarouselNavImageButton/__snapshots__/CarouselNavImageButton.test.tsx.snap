@@ -3,6 +3,7 @@
 exports[`CarouselNavImageButton renders a default state 1`] = `
 <div>
   <button
+    aria-selected="true"
     class="fui-CarouselNavImageButton"
     data-tabster="{\\"focusable\\":{\\"isDefault\\":true}}"
     role="tab"
