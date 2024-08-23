@@ -16,6 +16,12 @@ import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public (undocumented)
+export interface IndexedResizeCallbackElement {
+    // (undocumented)
+    handleResize: () => void;
+}
+
+// @public (undocumented)
 export const renderVirtualizer_unstable: (state: VirtualizerState) => JSX.Element;
 
 // @public (undocumented)
@@ -78,6 +84,15 @@ export const useIntersectionObserver: (callback: IntersectionObserverCallback, o
     setObserverList: Dispatch<SetStateAction<Element[] | undefined>>;
     setObserverInit: (newInit: IntersectionObserverInit | undefined) => void;
     observer: MutableRefObject<IntersectionObserver | undefined>;
+};
+
+// @public
+export function useMeasureList<TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number): {
+    widthArray: React_2.MutableRefObject<any[]>;
+    heightArray: React_2.MutableRefObject<any[]>;
+    createIndexedRef: (index: number) => (el: TElement) => void;
+    refArray: React_2.MutableRefObject<(TElement | null | undefined)[]>;
+    sizeUpdateCount: number;
 };
 
 // @public
