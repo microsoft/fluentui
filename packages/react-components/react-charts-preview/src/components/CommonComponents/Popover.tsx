@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { mergeClasses, PositioningVirtualElement, useFocusableGroup } from '../../../../react-components/src/index';
+import {
+  mergeClasses,
+  PositioningVirtualElement,
+  useFocusableGroup,
+  useId,
+} from '../../../../react-components/src/index';
 import { ChartHoverCard, getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { IChartDataPoint } from '../DonutChart/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
@@ -31,7 +36,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   const focusAttributes = useFocusableGroup();
 
   return (
-    <div {...focusAttributes}>
+    <div id={useId('callout')} {...focusAttributes}>
       <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
         <PopoverSurface tabIndex={-1}>
           {/** Given custom callout, then it will render */}

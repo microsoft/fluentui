@@ -1,4 +1,5 @@
-import { IChartProps } from './index';
+import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
+import { IChartDataPoint, IChartProps } from './index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
@@ -59,7 +60,7 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
   /**
    * props for the callout in the chart
    */
-  calloutProps?: Partial<ICalloutProps>;
+  calloutProps?: IPopoverComponentProps;
 
   /**
    * Custom text to the chart (right side of the chart)
@@ -95,6 +96,11 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
    * prop to check if benchmark data is provided
    */
   showTriangle?: boolean;
+
+  /**
+   * prop to render the custom callout
+   */
+  onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element;
 }
 
 /**
