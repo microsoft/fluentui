@@ -33,12 +33,12 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   HTMLDivElement,
   IModifiedCartesianChartProps
 >((props, forwardedRef) => {
-  const chartContainer = React.useRef<HTMLDivElement>(null);
+  const chartContainer = React.useRef<HTMLDivElement>();
   let legendContainer: HTMLDivElement;
   const minLegendContainerHeight: number = 40;
-  const xAxisElement = React.useRef<SVGElement | null>(null);
-  const yAxisElement = React.useRef<SVGElement | null>(null);
-  const yAxisElementSecondary = React.useRef<SVGElement | null>(null);
+  const xAxisElement = React.useRef<SVGElement>();
+  const yAxisElement = React.useRef<SVGElement>();
+  const yAxisElementSecondary = React.useRef<SVGElement>();
   let margins: IMargins;
   const idForGraph: string = 'chart_';
   const idForDefaultTabbableElement: string = 'defaultTabbableElement_';
@@ -256,6 +256,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           dateLocalizeOptions,
           timeFormatLocale,
           customDateTimeFormatter,
+          props.useUTC,
         ));
         break;
       case XAxisTypes.StringAxis:
@@ -528,6 +529,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         defaultTabbableElement={`#${idForDefaultTabbableElement}`}
         {...svgFocusZoneProps}
       > */}
+      <div className={classes.chartWrapper}>
       {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <svg
         width={svgDimensions.width}
@@ -614,6 +616,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           />
         )}
       </svg>
+      </div>
       {/*       </FocusZone> */}
 
       {!props.hideLegend && (

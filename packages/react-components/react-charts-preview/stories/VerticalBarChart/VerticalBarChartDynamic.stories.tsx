@@ -1,8 +1,17 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { DefaultButton } from '@fluentui/react/lib/Button';
-import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
+import { Stack, TextField } from '@fluentui/react';
+import {
+  Checkbox,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+} from '@fluentui/react-components';
 
 export const VCDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -17,21 +26,15 @@ export const VCDynamic = () => {
     border: 0,
   };
 
-  const xAxisTypeOptions: IChoiceGroupOption[] = [
-    { key: 'number', text: 'Number' },
-    { key: 'date', text: 'Date' },
-    { key: 'string', text: 'String' },
-  ];
-
   const _colors = [
-    [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
-    [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
-    [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark],
-    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
+    ['deepskyblue', 'dodgerblue', 'darkblue'],
+    ['lightsalmon', 'orange', 'darkorange'],
+    ['lightgreen', 'green', 'darkgreen'],
+    ['orchid', 'magenta', 'darkmagenta'],
   ];
   let _colorIndex = 0;
   let _prevBarWidth = 16;
-  const initialXAxisType = xAxisTypeOptions[0].key;
+  const initialXAxisType = 'number';
   const initialDataSize = 5;
 
   let _changeData = (): void => {
@@ -67,14 +70,14 @@ export const VCDynamic = () => {
   const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
     setMaxBarWidth(Number(newValue));
   };
-  const _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisInnerPaddingEnabled(checked);
+  const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisInnerPaddingEnabled(checked.checked);
   };
   const _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisInnerPadding(Number(e.target.value));
   };
-  const _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisOuterPaddingEnabled(checked);
+  const _onOuterPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisOuterPaddingEnabled(checked.checked);
   };
   const _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisOuterPadding(Number(e.target.value));
@@ -82,12 +85,12 @@ export const VCDynamic = () => {
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Number(e.target.value));
   };
-  const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption) => {
-    setXAxisType(option.key);
-    setDynamicData(_getData(dataSize, option.key));
+  const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData) => {
+    setXAxisType(option.value);
+    setDynamicData(_getData(dataSize, option.value));
   };
-  const _onEnableReflowCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setEnableReflow(checked);
+  const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setEnableReflow(checked.checked);
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const dataSize = Number(e.target.value);
@@ -124,15 +127,15 @@ export const VCDynamic = () => {
   const [colors, setColors] = React.useState<string[]>(_colors[0]);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<boolean>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<boolean>(false);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
   const [barWidth, setBarWidth] = React.useState<number | 'auto' | undefined>(undefined);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(24);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
   const [xAxisOuterPadding, setXAxisOuterPadding] = React.useState<number>(0);
   const [width, setWidth] = React.useState<number>(650);
   const [xAxisType, setXAxisType] = React.useState<string>(initialXAxisType);
-  const [enableReflow, setEnableReflow] = React.useState<boolean>(false);
+  const [enableReflow, setEnableReflow] = React.useState<CheckboxProps['checked']>(false);
   const [dataSize, setDataSize] = React.useState<number>(initialDataSize);
 
   _changeData = _changeData.bind(this);
@@ -142,9 +145,9 @@ export const VCDynamic = () => {
     <>
       <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
         </Stack>
         <Stack horizontal verticalAlign="center">
@@ -161,9 +164,9 @@ export const VCDynamic = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:&nbsp;
-          </Label>
+          </label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}
@@ -213,19 +216,20 @@ export const VCDynamic = () => {
           <Checkbox label="enableReflow" checked={enableReflow} onChange={_onEnableReflowCheckChange} />
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
         </Stack>
       </Stack>
       <div style={{ marginTop: '20px' }}>
-        <ChoiceGroup
-          options={xAxisTypeOptions}
-          selectedKey={xAxisType}
-          onChange={_onAxisTypeChange}
-          label="X-Axis type:"
-        />
+        <Field label="X-Axis type:">
+          <RadioGroup onChange={_onAxisTypeChange}>
+            <Radio value="number" label="Number" />
+            <Radio value="date" label="Date" />
+            <Radio value="string" label="String" />
+          </RadioGroup>
+        </Field>
       </div>
       <div style={{ width: `${width}px`, height: '350px' }}>
         <VerticalBarChart

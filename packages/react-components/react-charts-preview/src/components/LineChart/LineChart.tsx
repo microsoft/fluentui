@@ -35,6 +35,7 @@ import {
   getNextColor,
   getColorFromToken,
   isRtl,
+  formatDate,
 } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -141,14 +142,14 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let eventLabelHeight: number = 36;
     let lines: JSX.Element[];
     let _renderedColorFillBars: JSX.Element[];
-    let _colorFillBars: IColorFillBarsProps[] = [];
+    const _colorFillBars = React.useRef<IColorFillBarsProps[]>([]);
     let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
     let _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element = memoizeFunction(
       (data: LineChartDataWithIndex[]) => _createLegends(data),
     );
-    let _firstRenderOptimization: boolean = true;
+    let _firstRenderOptimization: boolean = false;
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
@@ -843,16 +844,16 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     function _createColorFillBars(containerHeight: number) {
       const colorFillBars: JSX.Element[] = [];
       if (isSelectedLegend) {
-        _colorFillBars = selectedColorBarLegend;
+        _colorFillBars.current = selectedColorBarLegend;
       } else {
-        _colorFillBars = props.colorFillBars!;
+        _colorFillBars.current = props.colorFillBars!;
       }
 
       const yMinMaxValues = getMinMaxOfYAxis(_points, ChartTypes.LineChart);
       const FILL_Y_PADDING = 3;
-      for (let i = 0; i < _colorFillBars.length; i++) {
-        const colorFillBar = _colorFillBars[i];
-        const colorFillBarId = `${_colorFillBarId}-${i++}`;
+      for (let i = 0; i < _colorFillBars.current.length; i++) {
+        const colorFillBar = _colorFillBars.current[i];
+        const colorFillBarId = `${_colorFillBarId}-${i}`;
         // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color);
 
@@ -968,7 +969,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
-      const formattedDate = xPointToHighlight instanceof Date ? xPointToHighlight.toLocaleString() : xPointToHighlight;
+      const formattedDate = xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
@@ -1022,7 +1023,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       xAxisCalloutAccessibilityData?: IAccessibilityProps,
     ) {
       _uniqueCallOutID = circleId;
-      const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
@@ -1057,7 +1058,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       mouseEvent: React.MouseEvent<SVGElement>,
     ) {
       mouseEvent?.persist();
-      const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
+      const formattedData = x instanceof Date ? formatDate(x, props.useUTC) : x;
       const xVal = x instanceof Date ? x.getTime() : x;
       const found = find(_calloutPoints, (element: { x: string | number }) => element.x === xVal);
       // if no points need to be called out then don't show vertical line and callout card
@@ -1227,7 +1228,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     function _getAriaLabel(lineIndex: number, pointIndex: number): string {
       const line = _points[lineIndex];
       const point = line.data[pointIndex];
-      const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
+      const formattedDate = point.x instanceof Date ? formatDate(point.x, props.useUTC) : point.x;
       const xValue = point.xAxisCalloutData || formattedDate;
       const legend = line.legend;
       const yValue = point.yAxisCalloutData || point.y;

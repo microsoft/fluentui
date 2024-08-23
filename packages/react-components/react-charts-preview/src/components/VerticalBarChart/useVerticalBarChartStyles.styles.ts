@@ -56,7 +56,7 @@ const useStyles = makeStyles({
   barLabel: {
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightSemibold,
-    //fill: neutrals.neutralPrimary,
+    fill: tokens.colorNeutralForeground1,
   },
 });
 

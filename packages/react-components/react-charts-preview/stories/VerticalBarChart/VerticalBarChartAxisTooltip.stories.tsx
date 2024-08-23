@@ -1,18 +1,13 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { Checkbox, ChoiceGroup, IChoiceGroupOption, Label, Stack, TextField } from '@fluentui/react';
-
-const options: IChoiceGroupOption[] = [
-  { key: 'WrapTickValues', text: 'Wrap X Axis Ticks' },
-  { key: 'showTooltip', text: 'Show Tooltip at X axis ticks' },
-];
+import { Stack, TextField } from '@fluentui/react';
+import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
-  const [barWidthEnabled, setBarWidthEnabled] = React.useState<boolean>(true);
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<boolean>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<boolean>(false);
+  const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps["checked"]>(true);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
   const [barWidth, setBarWidth] = React.useState<number>(16);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(100);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
@@ -20,23 +15,23 @@ export const VCAxisTooltip = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
-  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setBarWidthEnabled(checked);
+  const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setBarWidthEnabled(checked.checked);
   };
-  const _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
+  const _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     setBarWidth(Number(newValue));
   };
   const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
     setMaxBarWidth(Number(newValue));
   };
-  const _onInnerPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisInnerPaddingEnabled(checked);
+  const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisInnerPaddingEnabled(checked.checked);
   };
   const _onInnerPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisInnerPadding(Number(e.target.value));
   };
-  const _onOuterPaddingCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
-    setXAxisOuterPaddingEnabled(checked);
+  const _onOuterPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+    setXAxisOuterPaddingEnabled(checked.checked);
   };
   const _onOuterPaddingChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setXAxisOuterPadding(Number(e.target.value));
@@ -51,22 +46,22 @@ export const VCAxisTooltip = () => {
     {
       x: 'Simple Text',
       y: 1000,
-      color: DefaultPalette.accent,
+      color: 'dodgerblue',
     },
     {
       x: 'Showing all text here',
       y: 5000,
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
     },
     {
       x: 'Large data, showing all text by tooltip',
       y: 3000,
-      color: DefaultPalette.blueMid,
+      color: 'darkblue',
     },
     {
       x: 'Data',
       y: 2000,
-      color: DefaultPalette.blue,
+      color: 'deepskyblue',
     },
   ];
   const rootStyle = { width: `${width}px`, height: `${height}px` };
@@ -74,15 +69,15 @@ export const VCAxisTooltip = () => {
     <>
       <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-width" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-height" style={{ fontWeight: 400 }}>
+          <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
-          </Label>
+          </label>
           <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
         </Stack>
         <Stack horizontal verticalAlign="center">
@@ -101,9 +96,7 @@ export const VCAxisTooltip = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <Label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
-            maxBarWidth:&nbsp;
-          </Label>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>maxBarWidth:</label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}
@@ -149,13 +142,12 @@ export const VCAxisTooltip = () => {
         </Stack>
       </Stack>
       <div>
-        <ChoiceGroup
-          options={options}
-          defaultSelectedKey="showTooltip"
-          // eslint-disable-next-line react/jsx-no-bind
-          onChange={(_ev, option) => option && setSelectedCallout(option.key)}
-          label="Pick one"
-        />
+        <Field label="Pick one">
+          <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>
+            <Radio value="WrapTickValues" label="Wrap X Axis Ticks" />
+            <Radio value="showTooltip" label="Show Tooltip at X Axis Ticks" />
+          </RadioGroup>
+        </Field>
       </div>
       <div style={rootStyle}>
         <VerticalBarChart

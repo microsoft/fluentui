@@ -5,24 +5,27 @@ import {
   IVerticalBarChartDataPoint,
   ILineChartLineOptions,
 } from '../../src/VerticalBarChart';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
-import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { Switch } from '@fluentui/react-components';
+import {
+  Switch,
+  Checkbox,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Field,
+  Radio,
+  RadioGroup,
+  RadioGroupOnChangeData,
+  RadioGroupProps,
+} from '@fluentui/react-components';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const VCBasic = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
   const [isCalloutselected, setIsCalloutSelected] = React.useState<boolean>(false);
-  const [useSingleColor, setUseSingleColor] = React.useState<boolean>(false);
-  const [hideLabels, setHideLabels] = React.useState<boolean>(false);
+  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(false);
+  const [hideLabels, setHideLabels] = React.useState<CheckboxProps['checked']>(false);
   const [showAxisTitles, setShowAxisTitles] = React.useState<boolean>(false);
-
-  const options: IChoiceGroupOption[] = [
-    { key: 'basicExample', text: 'Basic Example' },
-    { key: 'calloutExample', text: 'Custom Callout Example' },
-  ];
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -30,19 +33,18 @@ export const VCBasic = () => {
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(parseInt(e.target.value, 10));
   };
-
-  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void => {
+  const _onChange = (ev: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData): void => {
     if (isCalloutselected) {
       setIsCalloutSelected(false);
     } else {
       setIsCalloutSelected(true);
     }
   };
-  const _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setUseSingleColor(checked);
+  const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
+    setUseSingleColor(checked.checked);
   };
-  const _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    setHideLabels(checked);
+  const _onHideLabelsCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
+    setHideLabels(checked.checked);
   };
   const _onToggleAxisTitlesCheckChange = React.useCallback(
     ev => {
@@ -55,7 +57,7 @@ export const VCBasic = () => {
       x: 0,
       y: 10000,
       legend: 'Oranges',
-      color: DefaultPalette.accent,
+      color: 'dodgerblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '4%',
       lineData: {
@@ -67,7 +69,7 @@ export const VCBasic = () => {
       x: 10000,
       y: 50000,
       legend: 'Dogs',
-      color: DefaultPalette.blueDark,
+      color: 'midnightblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '21%',
       lineData: {
@@ -79,7 +81,7 @@ export const VCBasic = () => {
       x: 25000,
       y: 30000,
       legend: 'Apples',
-      color: DefaultPalette.blueMid,
+      color: 'darkblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -92,7 +94,7 @@ export const VCBasic = () => {
       x: 40000,
       y: 13000,
       legend: 'Bananas',
-      color: DefaultPalette.blueLight,
+      color: 'blue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '5%',
     },
@@ -100,7 +102,7 @@ export const VCBasic = () => {
       x: 52000,
       y: 43000,
       legend: 'Giraffes',
-      color: DefaultPalette.blue,
+      color: 'darkslateblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '18%',
       lineData: {
@@ -112,7 +114,7 @@ export const VCBasic = () => {
       x: 68000,
       y: 30000,
       legend: 'Cats',
-      color: DefaultPalette.blueDark,
+      color: 'royalblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '12%',
       lineData: {
@@ -124,7 +126,7 @@ export const VCBasic = () => {
       x: 80000,
       y: 20000,
       legend: 'Elephants',
-      color: DefaultPalette.blue,
+      color: 'slateblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '8%',
       lineData: {
@@ -136,7 +138,7 @@ export const VCBasic = () => {
       x: 92000,
       y: 45000,
       legend: 'Monkeys',
-      color: DefaultPalette.blueLight,
+      color: 'steelblue',
       xAxisCalloutData: '2020/04/30',
       yAxisCalloutData: '19%',
       lineData: {
@@ -174,21 +176,24 @@ export const VCBasic = () => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-      <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={_onChange} label="Pick one" />
-      <Checkbox
-        label="use single color(This will have only one color)"
-        checked={useSingleColor}
-        onChange={_onCheckChange}
-        styles={{ root: { marginTop: '20px' } }}
-      />
-      <Checkbox
-        label="Hide labels"
-        checked={hideLabels}
-        onChange={_onHideLabelsCheckChange}
-        styles={{ root: { marginTop: '10px' } }}
-      />
+      <Field label="Pick one">
+        <RadioGroup defaultValue="basicExample" onChange={_onChange}>
+          <Radio value="Basic Example" label="Basic Example" />
+          <Radio value="Custom Callout Example" label="Custom Callout Example" />
+        </RadioGroup>
+      </Field>
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={useSingleColor}
+          onChange={_onCheckChange}
+        />
+      </div>
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox label="Hide labels" checked={hideLabels} onChange={_onHideLabelsCheckChange} />
+      </div>
       <Switch
-        label={showAxisTitles ? 'Hide axis titles' : 'Show axis titles'}
+        label={showAxisTitles ? 'Show axis titles' : 'Hide axis titles'}
         checked={showAxisTitles}
         onChange={_onToggleAxisTitlesCheckChange}
         style={{ marginTop: '10px' }}

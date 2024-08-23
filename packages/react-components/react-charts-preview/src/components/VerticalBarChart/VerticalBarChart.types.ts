@@ -1,4 +1,4 @@
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { IRenderFunction } from '../../utilities/index';
 import {
   ICartesianChartProps,
   ICartesianChartStyleProps,
