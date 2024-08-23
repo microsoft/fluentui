@@ -37,6 +37,9 @@ import {
   isRtl,
   formatDate,
 } from '../../utilities/index';
+import * as d3Color from 'd3-color';
+import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
+import { Theme, BrandVariants, webLightTheme } from '@fluentui/react-components';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -124,6 +127,7 @@ type LineChartDataWithIndex = ILineChartPoints & { index: number };
  */
 export const LineChart: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
   (props, forwardedRef) => {
+    let parentV9Theme = React.useContext(V9ThemeContext) as Theme;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
@@ -177,6 +181,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
        */
+
       if (_points !== _injectIndexPropertyInLineChartData(props.data.lineChartData) || props.data !== _points) {
         pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
         calloutPointsRef.current = calloutData(pointsRef.current);
@@ -188,11 +193,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       return lineChartData
         ? lineChartData.map((item: ILineChartPoints, index: number) => {
             let color: string;
-            // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
-              color = getNextColor(index, 0);
+              color = getNextColor(index, 0, parentV9Theme);
             } else {
-              color = getColorFromToken(item.color);
+              color = getColorFromToken(item.color, parentV9Theme);
             }
             return {
               ...item,
@@ -301,8 +305,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const colorFillBarsLegendDataItems = props.colorFillBars
         ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
-            // isInverted property is applicable to v8 themes only
-            const color = getColorFromToken(colorFillBar.color);
+            const color = getColorFromToken(colorFillBar.color, parentV9Theme);
             const legend: ILegend = {
               title,
               color,
@@ -854,8 +857,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
         const colorFillBarId = `${_colorFillBarId}-${i}`;
-        // isInverted property is applicable to v8 themes only
-        const color = getColorFromToken(colorFillBar.color);
+        const color = getColorFromToken(colorFillBar.color, parentV9Theme);
 
         if (colorFillBar.applyPattern) {
           // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
@@ -969,7 +971,8 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
-      const formattedDate = xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
+      const formattedDate =
+        xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {

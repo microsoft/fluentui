@@ -1,3 +1,6 @@
+import { Theme, webLightTheme } from '@fluentui/react-components';
+import * as d3Color from 'd3-color';
+
 export const DataVizPalette = {
   color1: 'qualitative.1',
   color2: 'qualitative.2',
@@ -99,6 +102,7 @@ const QualitativePalette: Palette = {
   '40': ['#3a2f00', '#dac157'], // [gold.shade40, gold.tint30],
 };
 
+
 const SemanticPalette: Palette = {
   info: ['#015cda'],
   disabled: ['#dbdbdb', '#4d4d4d'], // [grey[86], grey[30]]
@@ -128,12 +132,21 @@ const getThemeSpecificColor = (colors: string[], isDarkTheme: boolean): string =
   return colors[0];
 };
 
-export const getNextColor = (index: number, offset: number = 0, isDarkTheme: boolean = false): string => {
+function getLuminosity(parentV9Theme?: Theme): boolean{
+  const v9Theme = parentV9Theme ? parentV9Theme : webLightTheme;
+  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
+  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
+  return (backgroundColor.l < foregroundColor.l);
+}
+
+export const getNextColor = (index: number, offset: number = 0, parentV9Theme?: Theme): string => {
+  const isDarkTheme: boolean = getLuminosity(parentV9Theme);
   const colors = QUALITATIVE_COLORS[(index + offset) % QUALITATIVE_COLORS.length];
   return getThemeSpecificColor(colors, isDarkTheme);
 };
 
-export const getColorFromToken = (token: string, isDarkTheme: boolean = false): string => {
+export const getColorFromToken = (token: string, parentV9Theme?: Theme): string => {
+  const isDarkTheme: boolean = getLuminosity(parentV9Theme);
   if (TOKENS.indexOf(token) >= 0) {
     const [paletteName, colorCode] = token.split('.');
     const colors = Colors[paletteName][colorCode];
