@@ -32,26 +32,18 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     const [valueTextWidth, setValueTextWidth] = React.useState<number>(80);
 
     const line = React.useMemo(() => {
-      return (
-        d3Line()
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          .x((d: any) => x(d.x))
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          .y((d: any) => y(d.y))
-          .curve(d3curveLinear)
-      );
+      return d3Line<ILineChartDataPoint>()
+        .x((d: ILineChartDataPoint) => x(d.x))
+        .y((d: ILineChartDataPoint) => y(d.y))
+        .curve(d3curveLinear);
     }, [x, y]);
 
     const area = React.useMemo(() => {
-      return (
-        d3Area()
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          .x((d: any) => x(d.x))
-          .y0(height)
-          /* eslint-disable @typescript-eslint/no-explicit-any */
-          .y1((d: any) => y(d.y))
-          .curve(d3curveLinear)
-      );
+      return d3Area<ILineChartDataPoint>()
+        .x((d: ILineChartDataPoint) => x(d.x))
+        .y0(height)
+        .y1((d: ILineChartDataPoint) => y(d.y))
+        .curve(d3curveLinear);
     }, [height, x, y]);
 
     React.useEffect(() => {

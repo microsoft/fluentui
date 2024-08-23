@@ -1,6 +1,11 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
-import { scaleLinear as d3ScaleLinear, scaleBand as d3ScaleBand, scaleUtc as d3ScaleUtc,  scaleTime as d3ScaleTime, } from 'd3-scale';
+import {
+  scaleLinear as d3ScaleLinear,
+  scaleBand as d3ScaleBand,
+  scaleUtc as d3ScaleUtc,
+  scaleTime as d3ScaleTime,
+} from 'd3-scale';
 import { select as d3Select, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import {
@@ -186,7 +191,7 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   return { xScale: xAxisScale, tickValues };
 }
 
-function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: string| boolean) {
+function multiFormat(date: Date, locale?: d3TimeLocaleObject, useUTC?: string | boolean) {
   const timeFormat = locale ? (useUTC ? locale.utcFormat : locale.format) : useUTC ? d3UtcFormat : d3TimeFormat;
   const formatMillisecond = timeFormat('.%L');
   const formatSecond = timeFormat(':%S');
@@ -237,7 +242,7 @@ export function createDateXAxis(
   options?: Intl.DateTimeFormatOptions,
   timeFormatLocale?: d3TimeLocaleDefinition,
   customDateTimeFormatter?: (dateTime: Date) => string,
-  useUTC?: string| boolean,
+  useUTC?: string | boolean,
 ) {
   const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = useUTC ? d3ScaleUtc() : d3ScaleTime();
@@ -1603,7 +1608,16 @@ export const HighContrastSelectorBlack =
   // eslint-disable-next-line @fluentui/max-len
   '@media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark)';
 
-export const formatDate = (date: Date, useUTC?: string| boolean) => {
+/**
+ * Render function interface for providing overrideable render callbacks.
+ *
+ * @public
+ */
+export interface IRenderFunction<P> {
+  (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
+}
+
+export const formatDate = (date: Date, useUTC?: string | boolean) => {
   const timeFormat = useUTC ? d3UtcFormat : d3TimeFormat;
   return timeFormat('%-e %b %Y, %H:%M')(date) + (useUTC ? ' GMT' : '');
 };

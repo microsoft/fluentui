@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IRenderFunction } from '../../utilities/index';
 import {
   IChartProps,
   ILineChartPoints,

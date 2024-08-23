@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Tooltip, usePortalMountNode } from '@fluentui/react-components';
+import { usePortalMountNode } from '@fluentui/react-shared-contexts';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { Async, KeyCodes, getId } from '@fluentui/utilities';
 
 interface ISVGTooltipTextProps {

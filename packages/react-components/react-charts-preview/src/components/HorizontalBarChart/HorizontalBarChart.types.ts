@@ -1,6 +1,5 @@
 import { IPopoverComponentProps } from '../CommonComponents/Popover.types';
 import { IChartDataPoint, IChartProps } from './index';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
  * Horizontal Bar Chart properties

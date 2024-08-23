@@ -4,13 +4,10 @@ import { Button } from '@fluentui/react-button';
 import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './Legends.styles';
-import {
-  getIntrinsicElementProps,
-  buttonProperties,
-  Overflow,
-  OverflowItem,
-  useFocusableGroup,
-} from '@fluentui/react-components';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
+import { buttonProperties } from '@fluentui/react-components';
+import { Overflow, OverflowItem } from '@fluentui/react-overflow';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
 
