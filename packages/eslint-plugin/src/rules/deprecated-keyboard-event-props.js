@@ -2,15 +2,20 @@
 const createRule = require('../utils/createRule');
 const { ESLintUtils } = require('@typescript-eslint/utils');
 
+/**
+ * @typedef { import('@typescript-eslint/utils').TSESLint.RuleMetaDataDocs} RuleMetaDataDocs
+ * @typedef { import('@typescript-eslint/utils').TSESLint.RuleRecommendation} RuleRecommendation
+ */
+
 module.exports = createRule({
   name: 'deprecated-keyboard-event-props',
   meta: {
     type: 'problem',
-    docs: {
+    docs: /** @type {RuleMetaDataDocs & { recommended: RuleRecommendation }} */ ({
       description: 'Forbid use of deprecated KeyboardEvent props "which" and "keyCode".',
       recommended: 'recommended',
       requiresTypeChecking: true,
-    },
+    }),
     messages: {
       deprecatedProp: 'KeyboardEvent prop "{{name}}" is deprecated (consider using @fluentui/keyboard-key instead)',
     },

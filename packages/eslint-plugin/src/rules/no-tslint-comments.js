@@ -1,14 +1,19 @@
 // @ts-check
 const createRule = require('../utils/createRule');
 
+/**
+ * @typedef { import('@typescript-eslint/utils').TSESLint.RuleMetaDataDocs} RuleMetaDataDocs
+ * @typedef { import('@typescript-eslint/utils').TSESLint.RuleRecommendation} RuleRecommendation
+ */
+
 module.exports = createRule({
   name: 'no-tslint-comments',
   meta: {
     type: 'problem',
-    docs: {
+    docs: /** @type {RuleMetaDataDocs & { recommended: RuleRecommendation }} */ ({
       description: 'Forbid tslint:disable/tslint:enable comments after ESLint migration.',
       recommended: 'recommended',
-    },
+    }),
     messages: {
       tslint: 'tslint:{{verb}} comments are unnecessary with ESLint',
     },
