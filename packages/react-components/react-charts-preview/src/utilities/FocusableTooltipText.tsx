@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import * as React from 'react';
 import { useCallback, useState, useEffect, useRef } from 'react';
-import { Tooltip } from '@fluentui/react-components';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { hasOverflow } from './overflow-utils';
 import { getAccessibleDataObject } from './index';
 import { IAccessibilityProps } from '../types/index';

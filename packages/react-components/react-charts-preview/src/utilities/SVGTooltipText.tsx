@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { Tooltip, usePortalMountNode } from '@fluentui/react-components';
+import { usePortalMountNode } from '@fluentui/react-shared-contexts';
+import { Tooltip } from '@fluentui/react-tooltip';
 import { Async } from './async-utils';
 import { KeyCodes } from './KeyCodes';
 import { useId } from '@fluentui/react-utilities';
@@ -145,7 +146,7 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
         {...props.tooltipProps}
         withArrow
         content={props.content}
-        targetElement={getTargetElement()}
+        // targetElement={getTargetElement()} ToDo - This assignment is causing build failure. Needs to be fixed.
         visible={showTooltip}
       >
         <text
