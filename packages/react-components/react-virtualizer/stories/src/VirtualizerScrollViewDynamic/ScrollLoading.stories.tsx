@@ -42,7 +42,7 @@ export const ScrollLoading = () => {
       numItems={childLength}
       itemSize={minHeight}
       getItemSize={getItemSizeCallback}
-      container={{ role: 'list', style: { maxHeight: '100vh' } }}
+      container={{ role: 'list', style: { maxHeight: '80vh' } }}
     >
       {(index: number, isScrolling = false) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

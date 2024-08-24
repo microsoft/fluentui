@@ -42,7 +42,7 @@ export const ScrollTo = () => {
       <VirtualizerScrollView
         numItems={childLength}
         itemSize={100}
-        container={{ role: 'list', style: { maxHeight: '100vh' } }}
+        container={{ role: 'list', style: { maxHeight: '80vh' } }}
         imperativeRef={scrollRef}
       >
         {(index: number) => {

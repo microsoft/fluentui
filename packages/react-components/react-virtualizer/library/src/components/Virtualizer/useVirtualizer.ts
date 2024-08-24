@@ -161,9 +161,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
           const reversedAfterAmount =
             axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
-          if (!reversed && afterAmount < 0) {
+          if (!reversed) {
             measurementPos -= afterAmount;
-          } else if (reversed && reversedAfterAmount > 0) {
+          } else if (reversed) {
             measurementPos -= reversedAfterAmount;
           }
         } else if (latestEntry.target === beforeElementRef.current) {
@@ -172,9 +172,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
           const reversedAfterAmount =
             axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
-          if (!reversed && afterAmount > 0) {
+          if (!reversed) {
             measurementPos -= afterAmount;
-          } else if (reversed && reversedAfterAmount < 0) {
+          } else if (reversed) {
             measurementPos -= reversedAfterAmount;
           }
         }
@@ -185,17 +185,21 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       let measurementPos = calculateOverBuffer();
       if (reversed) {
         // We're reversed, up is down, left is right, invert the scroll measure.
-        measurementPos = Math.max(calculateTotalSize() - Math.abs(measurementPos), 0);
+        measurementPos = Math.max(calculateTotalSize() - measurementPos, 0);
       }
 
+      const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
       // For now lets use hardcoded size to assess current element to paginate on
-      const startIndex = getIndexFromScrollPosition(measurementPos);
-      const dirMod =
-        latestEntry.target === beforeElementRef.current ? bufferItems : virtualizerLength - 1 - bufferItems * 2;
+      let startIndex = getIndexFromScrollPosition(measurementPos);
+
+      if (startIndex === actualIndex) {
+        startIndex += dirMod;
+      }
 
       // Safety limits
       const maxIndex = Math.max(numItems - virtualizerLength, 0);
-      const newStartIndex = Math.min(Math.max(startIndex - dirMod, 0), maxIndex);
+      const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
+
       if (actualIndex !== newStartIndex) {
         // We flush sync this and perform an immediate state update
         flushSync(() => {

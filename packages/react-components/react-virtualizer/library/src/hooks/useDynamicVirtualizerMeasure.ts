@@ -58,7 +58,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
        */
-      const bufferItems = Math.max(Math.floor(length / 3), 1);
+      const bufferItems = Math.max(Math.ceil(length / 3), 2);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
