@@ -155,38 +155,43 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       const calculateOverBuffer = (): number => {
         let measurementPos = 0;
-        if (latestEntry.target === afterElementRef.current) {
-          measurementPos = reversed ? calculateAfter() : calculateTotalSize() - calculateAfter();
-          const afterAmount =
-            axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
-          const reversedAfterAmount =
-            axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
-          if (!reversed) {
+        if (!reversed) {
+          if (latestEntry.target === afterElementRef.current) {
+            console.log('AFTER ELE');
+            measurementPos = calculateTotalSize() - calculateAfter();
+            const afterAmount =
+              axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
             measurementPos -= afterAmount;
-          } else if (reversed) {
-            measurementPos -= reversedAfterAmount;
-          }
-        } else if (latestEntry.target === beforeElementRef.current) {
-          measurementPos = reversed ? calculateTotalSize() - calculateBefore() : calculateBefore();
-          const afterAmount =
-            axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
-          const reversedAfterAmount =
-            axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
-          if (!reversed) {
+          } else if (latestEntry.target === beforeElementRef.current) {
+            console.log('BEFORE ELE');
+            measurementPos = calculateBefore();
+            const afterAmount =
+              axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
             measurementPos -= afterAmount;
-          } else if (reversed) {
-            measurementPos -= reversedAfterAmount;
           }
+        } else {
+          if (latestEntry.target === afterElementRef.current) {
+            console.log('REVERSED AFTER ELE');
+            measurementPos = calculateAfter();
+            // const reversedAfterAmount =
+            //   axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
+
+            // measurementPos += reversedAfterAmount;
+          } else if (latestEntry.target === beforeElementRef.current) {
+            console.log('REVERSED BEFORE ELE');
+            measurementPos = calculateTotalSize() - calculateBefore();
+            // const reversedAfterAmount =
+            //   axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
+
+            // measurementPos += reversedAfterAmount;
+          }
+          measurementPos = Math.max(calculateTotalSize() - measurementPos, 0);
         }
 
         return measurementPos;
       };
       /* IO initiates this function when needed (bookend entering view) */
       let measurementPos = calculateOverBuffer();
-      if (reversed) {
-        // We're reversed, up is down, left is right, invert the scroll measure.
-        measurementPos = Math.max(calculateTotalSize() - measurementPos, 0);
-      }
 
       const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
       // For now lets use hardcoded size to assess current element to paginate on

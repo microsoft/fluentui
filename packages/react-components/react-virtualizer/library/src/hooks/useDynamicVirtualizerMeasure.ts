@@ -63,7 +63,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const bufferSize = Math.max(defaultItemSize / 2.0, 1);
+      const bufferSize = Math.min(defaultItemSize / 2.0, 100);
       const totalLength = length + bufferItems * 2;
       setState({
         virtualizerLength: totalLength,
