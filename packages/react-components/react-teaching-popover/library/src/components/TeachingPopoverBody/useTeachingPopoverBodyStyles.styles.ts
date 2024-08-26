@@ -13,7 +13,7 @@ export const useMediaStyles = makeStyles({
   base: {
     gridArea: 'media',
     overflow: 'hidden',
-    width: `${popoverBodyDimension}px`,
+    width: 'auto',
     marginBottom: '12px',
     verticalAlign: 'middle',
     justifyContent: 'center',
@@ -32,7 +32,7 @@ export const useMediaStyles = makeStyles({
     },
   },
   tall: {
-    aspectRatio: popoverBodyDimension / popoverBodyDimension,
+    aspectRatio: 1,
     '@supports not (aspect-ratio)': {
       height: `${popoverBodyDimension}px`,
     },
