@@ -38,6 +38,12 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Recommended to set to '1' when using full page carousel cards.
    */
   groupSize?: number | 'auto';
+
+  /**
+   * Enables mouse/touch drag on carousel items.
+   * Defaults to: False
+   */
+  watchDrag?: boolean;
 };
 
 /**

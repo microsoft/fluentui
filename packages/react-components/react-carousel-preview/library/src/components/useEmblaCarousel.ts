@@ -19,12 +19,12 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll'> & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
   },
 ) {
-  const { align, direction, loop, slidesToScroll } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -37,6 +37,7 @@ export function useEmblaCarousel(
     loop,
     slidesToScroll,
     startIndex: activeIndex,
+    watchDrag,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -113,8 +114,8 @@ export function useEmblaCarousel(
           emblaApi.current = EmblaCarousel(
             newElement,
             {
-              ...emblaOptions.current,
               ...DEFAULT_EMBLA_OPTIONS,
+              ...emblaOptions.current,
             },
             [
               Autoplay({
@@ -173,11 +174,11 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll };
+    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag };
     emblaApi.current?.reInit(
       {
-        ...emblaOptions.current,
         ...DEFAULT_EMBLA_OPTIONS,
+        ...emblaOptions.current,
       },
       [
         Autoplay({
@@ -188,7 +189,7 @@ export function useEmblaCarousel(
         }),
       ],
     );
-  }, [align, direction, loop, slidesToScroll]);
+  }, [align, direction, loop, slidesToScroll, watchDrag]);
 
   return {
     activeIndex,
