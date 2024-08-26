@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { VirtualizerMeasureProps } from './hooks.types';
 import { useResizeObserverRef_unstable } from './useResizeObserverRef';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * React hook that measures virtualized space based on a static size to ensure optimized virtualization length.
@@ -23,6 +24,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
   });
 
   const containerSizeRef = React.useRef<number>(0);
+  const { targetDocument } = useFluent();
 
   const { virtualizerLength, _bufferItems, _bufferSize } = state;
 
@@ -38,17 +40,23 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
         return;
       }
 
-      const containerSize =
-        direction === 'vertical'
-          ? scrollRef?.current.getBoundingClientRect().height
-          : scrollRef?.current.getBoundingClientRect().width;
+      if (scrollRef.current !== targetDocument?.body) {
+        // We have a local scroll container
+        const containerSize =
+          direction === 'vertical'
+            ? scrollRef?.current.getBoundingClientRect().height
+            : scrollRef?.current.getBoundingClientRect().width;
 
-      containerSizeRef.current = containerSize;
-
+        containerSizeRef.current = containerSize;
+      } else if (targetDocument?.defaultView) {
+        // If our scroll ref is the document body, we should check window height
+        containerSizeRef.current =
+          direction === 'vertical' ? targetDocument?.defaultView?.innerHeight : targetDocument?.defaultView?.innerWidth;
+      }
       /*
        * Number of items required to cover viewport.
        */
-      const length = Math.ceil(containerSize / defaultItemSize + 1);
+      const length = Math.ceil(containerSizeRef.current / defaultItemSize + 1);
 
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
