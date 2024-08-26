@@ -24,7 +24,7 @@ export const ReversedHorizontal = () => {
 
   const itemWidth = 100;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemWidth,
     direction: 'horizontal',
   });
@@ -39,6 +39,7 @@ export const ReversedHorizontal = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={itemWidth}
+        containerSizeRef={containerSizeRef}
       >
         {index => {
           return (

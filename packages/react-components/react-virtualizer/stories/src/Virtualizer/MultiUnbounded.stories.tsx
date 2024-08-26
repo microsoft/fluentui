@@ -36,7 +36,7 @@ export const MultiUnbounded = () => {
   const childLength = 100;
   const repeatingVirtualizers = 5;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });
 
@@ -58,6 +58,7 @@ export const MultiUnbounded = () => {
         bufferSize={bufferSize}
         itemSize={100}
         key={`virtualizer-container-${index}`}
+        containerSizeRef={containerSizeRef}
       >
         {rowIndex => {
           return (

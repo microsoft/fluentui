@@ -10,7 +10,7 @@ import { useStaticVirtualizerPagination } from '../../hooks/useStaticPagination'
 
 export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewProps): VirtualizerScrollViewState {
   const { imperativeRef, itemSize, numItems, axis = 'vertical', reversed, enablePagination = false } = props;
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
   });
@@ -64,6 +64,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
     scrollViewRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
     imperativeVirtualizerRef,
+    containerSizeRef,
   });
 
   return {

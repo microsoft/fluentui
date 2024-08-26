@@ -36,7 +36,7 @@ const useStyles = makeStyles({
 export const DefaultUnbounded = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });
 
@@ -54,6 +54,7 @@ export const DefaultUnbounded = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={100}
+        containerSizeRef={containerSizeRef}
       >
         {(index, isScrolling) => {
           return (

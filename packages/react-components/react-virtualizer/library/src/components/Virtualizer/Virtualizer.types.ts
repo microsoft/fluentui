@@ -171,6 +171,11 @@ export type VirtualizerConfigProps = {
    * Imperative ref contains our scrollTo index functionality for user control.
    */
   imperativeVirtualizerRef?: RefObject<VirtualizerDataRef>;
+
+  /**
+   * A ref that provides the size of container (vertical - height, horizontal - width), set by a resize observer.
+   */
+  containerSizeRef: MutableRefObject<number>;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

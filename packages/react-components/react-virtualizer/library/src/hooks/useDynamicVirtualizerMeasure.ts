@@ -14,6 +14,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
+  containerSizeRef: React.MutableRefObject<number>;
 } => {
   const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
   const indexRef = useRef<number>(currentIndex);
@@ -25,6 +26,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     virtualizerBufferSize: 0,
   });
 
+  const containerSizeRef = React.useRef<number>(0);
   const { virtualizerLength, virtualizerBufferItems, virtualizerBufferSize } = state;
 
   const container = React.useRef<HTMLElement | null>(null);
@@ -43,6 +45,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
         direction === 'vertical'
           ? scrollRef.current.getBoundingClientRect().height
           : scrollRef.current.getBoundingClientRect().width;
+
+      containerSizeRef.current = containerSize;
 
       let indexSizer = 0;
       let length = 0;
@@ -130,5 +134,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     bufferItems: virtualizerBufferItems,
     bufferSize: virtualizerBufferSize,
     scrollRef,
+    containerSizeRef,
   };
 };

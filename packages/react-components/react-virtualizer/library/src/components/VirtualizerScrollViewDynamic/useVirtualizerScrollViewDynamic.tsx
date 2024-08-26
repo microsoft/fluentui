@@ -41,7 +41,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     [sizeTrackingArray, props.itemSize, sizeUpdateCount],
   );
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
     getItemSize: props.getItemSize ?? getChildSizeAuto,
@@ -117,6 +117,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     virtualizerContext: contextState,
     imperativeVirtualizerRef: _imperativeVirtualizerRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
+    containerSizeRef,
   });
 
   const measureObject = useMeasureList(

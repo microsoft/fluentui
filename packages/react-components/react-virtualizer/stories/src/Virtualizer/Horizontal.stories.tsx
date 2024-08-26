@@ -23,7 +23,7 @@ export const Horizontal = () => {
   const childLength = 1000;
   const itemWidth = 100;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemWidth,
     direction: 'horizontal',
   });
@@ -37,6 +37,7 @@ export const Horizontal = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={itemWidth}
+        containerSizeRef={containerSizeRef}
       >
         {index => {
           return (

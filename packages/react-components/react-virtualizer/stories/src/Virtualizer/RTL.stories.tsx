@@ -24,7 +24,7 @@ export const RTL = () => {
   const childLength = 1000;
 
   const itemWidth = 100;
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemWidth,
     direction: 'horizontal',
   });
@@ -39,6 +39,7 @@ export const RTL = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={100}
+        containerSizeRef={containerSizeRef}
       >
         {index => {
           return (

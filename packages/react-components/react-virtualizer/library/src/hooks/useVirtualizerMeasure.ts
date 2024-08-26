@@ -12,6 +12,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
+  containerSizeRef: React.MutableRefObject<number>;
 } => {
   const { defaultItemSize, direction = 'vertical' } = virtualizerProps;
 
@@ -20,6 +21,8 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
     bufferSize: 0,
     bufferItems: 0,
   });
+
+  const containerSizeRef = React.useRef<number>(0);
 
   const { virtualizerLength, bufferItems, bufferSize } = state;
 
@@ -40,6 +43,8 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
           ? scrollRef?.current.getBoundingClientRect().height
           : scrollRef?.current.getBoundingClientRect().width;
 
+      containerSizeRef.current = containerSize;
+
       /*
        * Number of items required to cover viewport.
        */
@@ -48,12 +53,14 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
        */
-      const newBufferItems = Math.max(Math.floor(length / 4), 2);
+      // const newBufferItems = Math.max(Math.floor(length / 4), 2);
+      const newBufferItems = 1;
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const newBufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
+      // const newBufferSize = Math.max(Math.floor((length / 8) * defaultItemSize), 1);
+      const newBufferSize = 5;
 
       const totalLength = length + newBufferItems * 2 + 1;
 
@@ -73,5 +80,6 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
     bufferItems,
     bufferSize,
     scrollRef,
+    containerSizeRef,
   };
 };

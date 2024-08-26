@@ -24,6 +24,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     virtualizerContext,
     onRenderedFlaggedIndex,
     imperativeVirtualizerRef,
+    containerSizeRef,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -31,13 +32,17 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // We use this ref as a constant source to access the virtualizer's state imperatively
   const actualIndexRef = useRef<number>(_virtualizerContext.contextIndex);
-  if (actualIndexRef.current !== _virtualizerContext.contextIndex) {
-    actualIndexRef.current = _virtualizerContext.contextIndex;
-  }
   const flaggedIndex = useRef<number | null>(null);
 
   const actualIndex = _virtualizerContext.contextIndex;
-  const setActualIndex = _virtualizerContext.setContextIndex;
+  // Just in case our ref gets out of date vs the context during a re-render
+  if (_virtualizerContext.contextIndex != actualIndexRef.current) {
+    actualIndexRef.current = _virtualizerContext.contextIndex;
+  }
+  const setActualIndex = (index: number) => {
+    _virtualizerContext.setContextIndex(index);
+    actualIndexRef.current = index;
+  };
 
   // Store ref to before padding element
   const beforeElementRef = useRef<Element | null>(null);
@@ -116,7 +121,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     updateChildRows(index);
     updateCurrentItemSizes(index);
 
-    // Set before 'setActualIndex' call
+    // Set before 'setActualIndex' call & re-render
     // If it changes before render, or injected via context, re-render will update ref.
     actualIndexRef.current = index;
 
@@ -158,16 +163,28 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         if (!reversed) {
           if (latestEntry.target === afterElementRef.current) {
             console.log('AFTER ELE');
+            // Get after buffers position
             measurementPos = calculateTotalSize() - calculateAfter();
-            const afterAmount =
-              axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
-            measurementPos -= afterAmount;
+            // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+            let overflowAmount =
+              axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+            // Add to original after position
+            measurementPos += overflowAmount;
+            // Ignore buffer size (IO offset)
+            measurementPos -= bufferSize;
+            // we hit the after buffer and detected the end of view, we need to find the start index.
+            measurementPos -= containerSizeRef.current;
           } else if (latestEntry.target === beforeElementRef.current) {
-            console.log('BEFORE ELE');
-            measurementPos = calculateBefore();
-            const afterAmount =
-              axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
-            measurementPos -= afterAmount;
+            // Get before buffers position
+            return scrollViewRef?.current?.scrollTop ?? 0;
+            // measurementPos = calculateBefore();
+            // // console.log('Before pos:', measurementPos);
+            // // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+            // const overflowAmount =
+            //   axis === 'vertical' ? latestEntry.boundingClientRect.height : latestEntry.boundingClientRect.width;
+            // measurementPos -= overflowAmount;
+            // // Ignore buffer size (actual endpoint)
+            // measurementPos += bufferSize;
           }
         } else {
           if (latestEntry.target === afterElementRef.current) {
@@ -190,16 +207,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         return measurementPos;
       };
-      /* IO initiates this function when needed (bookend entering view) */
+
+      // Get exact 'scrollTop' via IO
       let measurementPos = calculateOverBuffer();
 
-      const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
-      // For now lets use hardcoded size to assess current element to paginate on
-      let startIndex = getIndexFromScrollPosition(measurementPos);
-
-      if (startIndex === actualIndex) {
-        startIndex += dirMod;
-      }
+      // getIndexFromScrollPosition, then start one item earlier
+      let startIndex = getIndexFromScrollPosition(measurementPos) - 1;
 
       // Safety limits
       const maxIndex = Math.max(numItems - virtualizerLength, 0);
@@ -280,7 +293,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   }, [getItemSize, itemSize, numItems]);
 
   const calculateBefore = useCallback(() => {
-    const currentIndex = Math.min(actualIndex, numItems - 1);
+    const currentIndex = Math.min(actualIndexRef.current, numItems - 1);
 
     if (!getItemSize) {
       // The missing items from before virtualization starts height
@@ -293,14 +306,14 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[currentIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems]);
+  }, [getItemSize, itemSize, numItems]);
 
   const calculateAfter = useCallback(() => {
-    if (numItems === 0 || actualIndex + virtualizerLength >= numItems) {
+    if (numItems === 0 || actualIndexRef.current + virtualizerLength >= numItems) {
       return 0;
     }
 
-    const lastItemIndex = Math.min(actualIndex + virtualizerLength, numItems);
+    const lastItemIndex = Math.min(actualIndexRef.current + virtualizerLength, numItems);
     if (!getItemSize) {
       // The missing items from after virtualization ends height
       const remainingItems = numItems - lastItemIndex;
@@ -309,7 +322,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     // Time for custom size calcs
     return childProgressiveSizes.current[numItems - 1] - childProgressiveSizes.current[lastItemIndex - 1];
-  }, [actualIndex, getItemSize, itemSize, numItems, virtualizerLength]);
+  }, [getItemSize, itemSize, numItems, virtualizerLength]);
 
   const updateChildRows = useCallback(
     (newIndex: number) => {

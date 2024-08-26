@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useVirtualizer_unstable } from '../components/Virtualizer/useVirtualizer';
+import { useRef } from 'react';
 
 describe('useVirtualizer', () => {
   beforeEach(() => {
@@ -17,6 +18,7 @@ describe('useVirtualizer', () => {
     const virtualizerLength = 50;
     const actualLength = 250;
     const divArr = new Array(actualLength).fill('Test-Node');
+    const containerSizeRef = useRef<number>(300);
 
     const rowFunc = (index: number) => {
       return divArr[index];
@@ -27,6 +29,7 @@ describe('useVirtualizer', () => {
         virtualizerLength,
         itemSize: 100, // 100 pixels
         children: rowFunc,
+        containerSizeRef,
       }),
     );
 

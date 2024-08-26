@@ -23,7 +23,7 @@ export const Reversed = () => {
   const childLength = 1000;
   const itemSize = 100;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemSize,
   });
 
@@ -36,6 +36,7 @@ export const Reversed = () => {
         bufferItems={bufferItems}
         bufferSize={bufferSize}
         itemSize={itemSize}
+        containerSizeRef={containerSizeRef}
       >
         {index => {
           return (
