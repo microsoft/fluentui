@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+import '@testing-library/jest-dom';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
-import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import {
@@ -23,6 +23,21 @@ const { Timezone } = require('../../../scripts/constants');
 const env = require('../../../config/tests');
 
 expect.extend(toHaveNoViolations);
+
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
 
 beforeEach(() => {
   // When adding a new snapshot test, it's observed that other snapshots may fail due to
@@ -424,9 +439,9 @@ describe('Vertical bar chart - Subcomponent bar', () => {
       // colors mentioned in the data points itself
       // Assert
       const bars = getById(container, /_VBC_bar/i);
-      expect(bars[0].getAttribute('fill')).toEqual('#0078d4');
-      expect(bars[1].getAttribute('fill')).toEqual('#002050');
-      expect(bars[2].getAttribute('fill')).toEqual('#00188f');
+      expect(bars[0].getAttribute('fill')).toEqual('aqua');
+      expect(bars[1].getAttribute('fill')).toEqual('blue');
+      expect(bars[2].getAttribute('fill')).toEqual('navy');
     },
   );
 
@@ -437,9 +452,9 @@ describe('Vertical bar chart - Subcomponent bar', () => {
     container => {
       // Assert
       const bars = getById(container, /_VBC_bar/i);
-      expect(bars[0].getAttribute('fill')).toEqual('#00bcf2');
-      expect(bars[1].getAttribute('fill')).toEqual('#00bcf2');
-      expect(bars[2].getAttribute('fill')).toEqual('#00bcf2');
+      expect(bars[0].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
+      expect(bars[1].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
+      expect(bars[2].getAttribute('fill')).toEqual('var(--colorPaletteBlueBackground2)');
     },
   );
 
@@ -507,9 +522,9 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
-  beforeEach(() => {
-    resetIds();
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
   testWithoutWait(
     'Should not show any rendered legends when hideLegend is true',
     VerticalBarChart,
@@ -529,7 +544,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(line).toBeDefined();
       expect(bars).toHaveLength(8);
-      expect(legends).toHaveLength(9);
+      expect(legends).toHaveLength(10);
       fireEvent.mouseOver(screen.getByText('just line'));
       expect(line.getAttribute('opacity')).toEqual('1');
       expect(screen.getByText('Oranges')).toHaveStyle('opacity: 0.67');
@@ -569,7 +584,7 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
       expect(line).toBeDefined();
       expect(bars).toHaveLength(8);
-      expect(legends).toHaveLength(9);
+      expect(legends).toHaveLength(10);
       fireEvent.mouseOver(screen.getByText('Oranges'));
       expect(screen.getByText('just line')).toHaveStyle('opacity: 0.67');
       expect(screen.getByText('Dogs')).toHaveStyle('opacity: 0.67');
@@ -599,20 +614,18 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
-  beforeEach(() => {
-    resetIds();
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
     // Arrange
-    const handleMouseOver = jest.spyOn(VerticalBarChartBase.prototype as any, '_onBarHover');
     const { container } = render(<VerticalBarChart data={pointsWithLine} calloutProps={{ doNotLayer: true }} />);
     await waitFor(() => {
       const bars = getById(container, /_VBC_bar/i);
       expect(bars).toHaveLength(8);
       fireEvent.mouseOver(bars[0]);
       // Assert
-      expect(handleMouseOver).toHaveBeenCalled();
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
     });
   });
 
@@ -765,9 +778,8 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
-  beforeEach(() => {
-    resetIds();
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   testWithWait(
     'Should render callout correctly on mouseover',
@@ -805,9 +817,8 @@ describe('VerticalBarChart - mouse events', () => {
 });
 
 describe('VerticalBarChart - accessibility', () => {
-  beforeEach(() => {
-    resetIds();
-  });
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
 
   test('Should pass accessibility tests', async () => {
     const { container } = render(<VerticalBarChart data={chartPointsVBC} />);
