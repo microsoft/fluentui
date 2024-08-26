@@ -14,7 +14,7 @@ export function useExpandLabel(options: { tagPickerId: string; state: Pick<TagPi
     'aria-label': expandIconAriaLabel,
     'aria-labelledby': expandIconAriaLabelledby,
     id: expandIconId,
-  } = { ...state.expandIcon };
+  } = state.expandIcon || {};
 
   // If aria-label or aria-labelledby changes, recalculate aria-label and aria-labelledby for the expandIcon
   // The expandIcon's label is calculated based on the input's label
