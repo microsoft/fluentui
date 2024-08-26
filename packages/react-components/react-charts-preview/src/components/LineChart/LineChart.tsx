@@ -37,9 +37,8 @@ import {
   isRtl,
   formatDate,
 } from '../../utilities/index';
-import * as d3Color from 'd3-color';
 import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme, BrandVariants, webLightTheme } from '@fluentui/react-components';
+import { Theme } from '@fluentui/react-components';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -127,7 +126,7 @@ type LineChartDataWithIndex = ILineChartPoints & { index: number };
  */
 export const LineChart: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
   (props, forwardedRef) => {
-    let parentV9Theme = React.useContext(V9ThemeContext) as Theme;
+    const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
