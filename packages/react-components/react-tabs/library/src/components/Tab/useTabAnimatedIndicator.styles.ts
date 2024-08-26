@@ -67,10 +67,7 @@ const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, v
   return element ? calculateTabRect(element) : undefined;
 };
 
-/**
- * Checks if a tab value is neither null nor undefined.
- */
-const isDefined = (value: TabValue): boolean => value !== undefined && value !== null;
+const isDefined = (value: TabValue) => value !== undefined && value !== null;
 
 /**
  * Adds additional styling to the active tab selection indicator to create a sliding animation.
