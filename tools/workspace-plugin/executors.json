@@ -8,7 +8,7 @@
     "type-check": {
       "implementation": "./src/executors/type-check/executor",
       "schema": "./src/executors/type-check/schema.json",
-      "description": "type-check executor"
+      "description": "type-check executor - Type check project files via TypeScript"
     },
     "generate-api": {
       "implementation": "./src/executors/generate-api/executor",

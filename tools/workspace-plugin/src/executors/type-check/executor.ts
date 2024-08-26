@@ -33,7 +33,7 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
   const projectRootAbsolutePath = joinPathFragments(context.root, options.project.root);
   const baseTsConfig = readJsonFile(joinPathFragments(context.root, options.project.root, 'tsconfig.json'));
 
-  const tsConfigsRefs = getTsConfigs(baseTsConfig, projectRootAbsolutePath, options.exclude);
+  const tsConfigsRefs = getTsConfigs(baseTsConfig, projectRootAbsolutePath, options.excludeProject);
   const asyncQueue = [];
 
   for (const ref of tsConfigsRefs) {
@@ -56,7 +56,7 @@ async function runTypeCheck(options: NormalizedOptions, context: ExecutorContext
 
 function normalizeOptions(schema: TypeCheckExecutorSchema, context: ExecutorContext) {
   const defaults = {
-    exclude: { spec: false, e2e: false },
+    excludeProject: { spec: false, e2e: false },
   };
   const project = context.projectsConfigurations!.projects[context.projectName!];
 

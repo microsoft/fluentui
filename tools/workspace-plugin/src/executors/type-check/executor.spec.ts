@@ -90,7 +90,7 @@ describe('TypeCheck Executor', () => {
     });
     const promisifyCallMock = __asyncExecMock as jest.Mock;
 
-    const output = await executor({ ...options, exclude: { spec: true, e2e: false } }, mockContext);
+    const output = await executor({ ...options, excludeProject: { spec: true, e2e: false } }, mockContext);
 
     expect(promisifyCallMock.mock.calls.flat()).toEqual([
       'tsc -p /root/libs/my-lib/tsconfig.lib.json --pretty --noEmit --baseUrl .',
