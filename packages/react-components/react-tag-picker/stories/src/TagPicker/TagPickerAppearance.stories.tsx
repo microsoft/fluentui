@@ -34,7 +34,7 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
       ? tokens.colorNeutralForegroundInverted2
       : tokens.colorNeutralForeground1;
 
-  const label = <Label style={{ color: labelColor }}>Select Employees</Label>;
+  const label = <span style={{ color: labelColor }}>Select Employees</span>;
 
   return (
     <Field label={label} style={{ maxWidth: 400 }}>
