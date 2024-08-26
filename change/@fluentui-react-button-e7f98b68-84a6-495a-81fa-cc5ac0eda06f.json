@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: medium and large SplitButton menuButton is at least 24px wide",
+  "packageName": "@fluentui/react-button",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
