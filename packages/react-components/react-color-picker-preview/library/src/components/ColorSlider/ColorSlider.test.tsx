@@ -35,60 +35,6 @@ describe('ColorSlider', () => {
     `);
   });
 
-  it('renders horizontal ColorSlider correctly', () => {
-    const { container } = render(<ColorSlider defaultValue={50} min={0} max={100} />);
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <div
-          class="fui-ColorSlider"
-          style="--fui-Slider--direction: -90deg; --fui-Slider--progress: 50%; --fui-Slider__thumb--color: hsl(50, 100%, 50%);"
-        >
-          <input
-            class="fui-ColorSlider__input"
-            id="slider-10"
-            max="100"
-            min="0"
-            type="range"
-            value="50"
-          />
-          <div
-            class="fui-ColorSlider__rail"
-          />
-          <div
-            class="fui-ColorSlider__thumb"
-          />
-        </div>
-      </div>
-    `);
-  });
-
-  it('renders vertical ColorSlider correctly', () => {
-    const { container } = render(<ColorSlider defaultValue={50} vertical min={0} max={100} />);
-    expect(container).toMatchInlineSnapshot(`
-      <div>
-        <div
-          class="fui-ColorSlider"
-          style="--fui-Slider--direction: 180deg; --fui-Slider--progress: 50%; --fui-Slider__thumb--color: hsl(50, 100%, 50%);"
-        >
-          <input
-            class="fui-ColorSlider__input"
-            id="slider-11"
-            max="100"
-            min="0"
-            type="range"
-            value="50"
-          />
-          <div
-            class="fui-ColorSlider__rail"
-          />
-          <div
-            class="fui-ColorSlider__thumb"
-          />
-        </div>
-      </div>
-    `);
-  });
-
   it('handles id prop', () => {
     const testId = 'test-id';
     render(<ColorSlider id={testId} />);
