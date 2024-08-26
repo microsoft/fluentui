@@ -3,6 +3,16 @@ import { MutableRefObject, RefObject } from 'react';
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
   direction?: 'vertical' | 'horizontal';
+
+  /**
+   * Override recommended number of buffer items
+   */
+  bufferItems?: number;
+
+  /**
+   * Override recommended buffer size (px)
+   */
+  bufferSize?: number;
 };
 
 export type VirtualizerMeasureDynamicProps = {
@@ -11,6 +21,16 @@ export type VirtualizerMeasureDynamicProps = {
   numItems: number;
   getItemSize: (index: number) => number;
   direction?: 'vertical' | 'horizontal';
+
+  /**
+   * Override recommended number of buffer items
+   */
+  bufferItems?: number;
+
+  /**
+   * Override recommended buffer size (px)
+   */
+  bufferSize?: number;
 };
 
 export type VirtualizerStaticPaginationProps = {

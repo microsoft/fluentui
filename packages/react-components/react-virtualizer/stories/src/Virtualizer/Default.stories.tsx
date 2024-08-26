@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     width: '100%',
     height: '100%',
-    maxHeight: '750px',
+    maxHeight: '60vh',
   },
   child: {
     height: '25px',
@@ -24,6 +24,8 @@ export const Default = () => {
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 25,
+    bufferItems: 1,
+    bufferSize: 12,
   });
 
   const mergedRef = useMergedRefs(scrollRef);

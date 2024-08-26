@@ -16,7 +16,15 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   scrollRef: (instance: TElement | null) => void;
   containerSizeRef: React.MutableRefObject<number>;
 } => {
-  const { defaultItemSize, direction = 'vertical', numItems, getItemSize, currentIndex } = virtualizerProps;
+  const {
+    defaultItemSize,
+    direction = 'vertical',
+    numItems,
+    getItemSize,
+    currentIndex,
+    bufferItems,
+    bufferSize,
+  } = virtualizerProps;
   const indexRef = useRef<number>(currentIndex);
   indexRef.current = currentIndex;
 
@@ -62,20 +70,20 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
        */
-      const bufferItems = Math.max(Math.ceil(length / 3), 2);
+      const newBufferItems = bufferItems ?? Math.max(Math.ceil(length / 3), 2);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const bufferSize = Math.min(defaultItemSize / 2.0, 100);
-      const totalLength = length + bufferItems * 2;
+      const newBufferSize = bufferSize ?? Math.min(defaultItemSize / 2.0, 100);
+      const totalLength = length + newBufferItems * 2;
       setState({
         virtualizerLength: totalLength,
-        virtualizerBufferSize: bufferSize,
-        virtualizerBufferItems: bufferItems,
+        virtualizerBufferSize: newBufferSize,
+        virtualizerBufferItems: newBufferItems,
       });
     },
-    [defaultItemSize, direction, getItemSize, numItems],
+    [bufferItems, bufferSize, defaultItemSize, direction, getItemSize, numItems],
   );
 
   const resizeCallback = React.useCallback(

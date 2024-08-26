@@ -19,7 +19,15 @@ export function useVirtualizerScrollViewDynamic_unstable(
   'use no memo';
 
   const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
-  const { imperativeRef, axis = 'vertical', reversed, imperativeVirtualizerRef, enablePagination = false } = props;
+  const {
+    imperativeRef,
+    axis = 'vertical',
+    reversed,
+    imperativeVirtualizerRef,
+    enablePagination = false,
+    bufferItems: _bufferItems,
+    bufferSize: _bufferSize,
+  } = props;
 
   let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems).fill(props.itemSize));
 
@@ -47,6 +55,8 @@ export function useVirtualizerScrollViewDynamic_unstable(
     getItemSize: props.getItemSize ?? getChildSizeAuto,
     currentIndex: contextState?.contextIndex ?? 0,
     numItems: props.numItems,
+    bufferItems: _bufferItems,
+    bufferSize: _bufferSize,
   });
 
   const _imperativeVirtualizerRef = useMergedRefs(React.useRef<VirtualizerDataRef>(null), imperativeVirtualizerRef);

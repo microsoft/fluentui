@@ -160,62 +160,54 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
       const calculateOverBuffer = (): number => {
         let measurementPos = 0;
-        if (!reversed) {
-          if (latestEntry.target === afterElementRef.current) {
-            console.log('AFTER ELE');
-            // Get after buffers position
-            measurementPos = calculateTotalSize() - calculateAfter();
-            // Get exact intersection position based on overflow size (how far into IO did we scroll?)
-            let overflowAmount =
-              axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
-            // Add to original after position
-            measurementPos += overflowAmount;
-            // Ignore buffer size (IO offset)
-            measurementPos -= bufferSize;
-            // we hit the after buffer and detected the end of view, we need to find the start index.
-            measurementPos -= containerSizeRef.current;
-          } else if (latestEntry.target === beforeElementRef.current) {
-            // Get before buffers position
-            return scrollViewRef?.current?.scrollTop ?? 0;
-            // measurementPos = calculateBefore();
-            // // console.log('Before pos:', measurementPos);
-            // // Get exact intersection position based on overflow size (how far into IO did we scroll?)
-            // const overflowAmount =
-            //   axis === 'vertical' ? latestEntry.boundingClientRect.height : latestEntry.boundingClientRect.width;
-            // measurementPos -= overflowAmount;
-            // // Ignore buffer size (actual endpoint)
-            // measurementPos += bufferSize;
-          }
-        } else {
-          if (latestEntry.target === afterElementRef.current) {
-            console.log('REVERSED AFTER ELE');
-            measurementPos = calculateAfter();
-            // const reversedAfterAmount =
-            //   axis === 'vertical' ? latestEntry.boundingClientRect.bottom : latestEntry.boundingClientRect.right;
+        if (latestEntry.target === afterElementRef.current) {
+          // Get after buffers position
+          measurementPos = calculateTotalSize() - calculateAfter();
+          // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+          const overflowAmount =
+            axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+          // Add to original after position
+          measurementPos += overflowAmount;
+          // Ignore buffer size (IO offset)
+          measurementPos -= bufferSize;
+          // we hit the after buffer and detected the end of view, we need to find the start index.
+          measurementPos -= containerSizeRef.current;
 
-            // measurementPos += reversedAfterAmount;
-          } else if (latestEntry.target === beforeElementRef.current) {
-            console.log('REVERSED BEFORE ELE');
-            measurementPos = calculateTotalSize() - calculateBefore();
-            // const reversedAfterAmount =
-            //   axis === 'vertical' ? latestEntry.boundingClientRect.top : latestEntry.boundingClientRect.left;
+          console.log('AFTER - target:', latestEntry.target);
+          console.log('AFTER - Measure:', measurementPos);
+          console.log('AFTER - Scroll:', scrollViewRef?.current?.scrollTop);
+        } else if (latestEntry.target === beforeElementRef.current) {
+          // Get before buffers position
+          measurementPos = calculateBefore();
+          // // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+          const overflowAmount =
+            axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
+          // Add to original after position
+          measurementPos -= overflowAmount;
+          // Ignore buffer size (IO offset)
+          measurementPos += bufferSize;
 
-            // measurementPos += reversedAfterAmount;
-          }
-          measurementPos = Math.max(calculateTotalSize() - measurementPos, 0);
+          console.log('BEFORE - target:', latestEntry.target);
+          console.log('BEFORE - Measure:', measurementPos);
+          console.log('BEFORE - Scroll:', scrollViewRef?.current?.scrollTop);
         }
 
         return measurementPos;
       };
 
-      // Get exact 'scrollTop' via IO
-      let measurementPos = calculateOverBuffer();
+      // Get exact 'scrollTop' via IO values
+      const measurementPos = calculateOverBuffer();
 
-      // getIndexFromScrollPosition, then start one item earlier
-      let startIndex = getIndexFromScrollPosition(measurementPos) - 1;
+      /* dirMod: Set the index to before/after the current scroll top element (depending on direction) */
+      const maxIndex = Math.max(numItems - virtualizerLength, 0);
+      const halfBuffer = Math.ceil(bufferItems / 2);
+      const dirMod = latestEntry.target === afterElementRef.current ? 1 : -1;
+      let startIndex = getIndexFromScrollPosition(measurementPos) - halfBuffer;
+      if (startIndex > 0 && startIndex < maxIndex && startIndex === actualIndex) {
+        startIndex += dirMod;
+      }
 
       // Safety limits
-      const maxIndex = Math.max(numItems - virtualizerLength, 0);
       const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
 
       if (actualIndex !== newStartIndex) {

@@ -63,7 +63,7 @@ export const Dynamic = () => {
     [flag],
   );
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: 100,
     getItemSize: getSizeForIndex,
     numItems: childLength,
@@ -83,6 +83,7 @@ export const Dynamic = () => {
           virtualizerLength={virtualizerLength}
           itemSize={100}
           scrollViewRef={combineRefs}
+          containerSizeRef={containerSizeRef}
         >
           {useCallback(
             (index: number) => {
