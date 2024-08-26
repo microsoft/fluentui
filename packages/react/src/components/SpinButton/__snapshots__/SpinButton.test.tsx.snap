@@ -169,6 +169,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -180,6 +181,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -327,6 +329,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -338,6 +341,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -653,6 +657,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -664,6 +669,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
@@ -811,6 +817,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              align-items: center;
               background-color: transparent;
               border-radius: 2px;
               border: none;
@@ -822,6 +829,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              justify-content: center;
               outline: none;
               padding-bottom: 0px;
               padding-left: 0px;
