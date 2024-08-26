@@ -60,7 +60,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
        */
       const newBufferSize = bufferSize ?? Math.max(Math.floor((length / 8) * defaultItemSize), 1);
 
-      const totalLength = length + newBufferItems * 2 - 1;
+      const totalLength = length + newBufferItems * 2;
 
       setState({
         virtualizerLength: totalLength,

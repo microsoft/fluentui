@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
-import { makeStyles, useMergedRefs, Button } from '@fluentui/react-components';
+import { makeStyles, useMergedRefs } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -32,20 +32,6 @@ export const Default = () => {
 
   return (
     <div>
-      <Button
-        onClick={() => {
-          mergedRef.current?.scrollTo({ top: 1000 });
-        }}
-      >
-        {'Go to pos: 1000'}
-      </Button>
-      <Button
-        onClick={() => {
-          mergedRef.current?.scrollTo({ top: 8000 });
-        }}
-      >
-        {'Go to pos: 8000'}
-      </Button>
       <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={mergedRef}>
         <Virtualizer
           numItems={childLength}

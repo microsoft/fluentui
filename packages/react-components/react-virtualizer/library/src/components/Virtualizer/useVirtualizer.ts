@@ -159,6 +159,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       }
 
       const calculateOverBuffer = (): number => {
+        /**
+         * We avoid using the scroll ref scrollTop, it may be incorrect
+         * as virtualization may exist within a scroll view with other elements
+         * The benefit of using IO is that we can detect relative scrolls,
+         * so any items can be placed around the virtualizer in the scroll view
+         */
         let measurementPos = 0;
         if (latestEntry.target === afterElementRef.current) {
           // Get after buffers position

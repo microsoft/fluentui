@@ -121,8 +121,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
 
       const newLength = i - currentIndex;
 
-      const bufferItems = Math.max(Math.floor(newLength / 4), 2);
-      const totalNewLength = newLength + bufferItems * 2 + 4;
+      const totalNewLength = newLength + virtualizerBufferItems * 2;
       const compareLengths = totalNewLength < virtualizerLength;
 
       if (recheckTotal > containerSize && compareLengths) {
@@ -135,7 +134,15 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
     if (recheckTotal < containerSize || couldBeSmaller) {
       handleScrollResize(container);
     }
-  }, [getItemSize, currentIndex, direction, virtualizerLength, resizeCallback, handleScrollResize]);
+  }, [
+    getItemSize,
+    currentIndex,
+    direction,
+    virtualizerLength,
+    resizeCallback,
+    handleScrollResize,
+    virtualizerBufferItems,
+  ]);
 
   return {
     virtualizerLength,

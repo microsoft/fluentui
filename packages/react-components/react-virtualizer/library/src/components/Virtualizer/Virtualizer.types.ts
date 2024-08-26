@@ -118,7 +118,7 @@ export type VirtualizerConfigProps = {
   bufferItems?: number;
 
   /**
-   * Defaults to half of bufferItems size (in pixels).
+   * Defaults to half of bufferItems * itemSize size (in pixels).
    * The length (in pixels) before the end/start DOM index where the virtualizer recalculation will be triggered.
    * Increasing this reduces whitespace on ultra-fast scroll, as additional elements
    * are buffered to appear while virtualization recalculates.
@@ -131,7 +131,7 @@ export type VirtualizerConfigProps = {
   /**
    * Enables users to override the intersectionObserverRoot.
    */
-  scrollViewRef: React.MutableRefObject<HTMLElement | null>;
+  scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 
   /**
    * The scroll direction
