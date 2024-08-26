@@ -4,7 +4,6 @@ import {
   MoverMoveFocusEvent,
   GroupperMoveFocusActions,
   MoverKeys,
-  TabsterDOMAttribute,
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
@@ -176,7 +175,7 @@ export const useListItem_unstable = (
   });
 
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
-    focusableItems ? arrowNavigationAttributes : ({} as TabsterDOMAttribute),
+    focusableItems ? arrowNavigationAttributes : {},
     focusableGroupAttrs,
   );
 

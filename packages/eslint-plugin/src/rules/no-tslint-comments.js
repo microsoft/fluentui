@@ -17,7 +17,7 @@ module.exports = createRule({
   defaultOptions: [],
   create: context => {
     const tslintCommentRegex = /^\s*tslint ?: ?(disable|enable)/;
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     return {
       Program: () => {

@@ -294,6 +294,7 @@ exports[`TagPicker renders correctly 1`] = `
                     ms-Button-icon
                     {
                       display: inline-block;
+                      text-decoration: inherit;
                     }
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -720,6 +721,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     ms-Button-icon
                     {
                       display: inline-block;
+                      text-decoration: inherit;
                     }
                     {
                       -moz-osx-font-smoothing: grayscale;

@@ -33,9 +33,8 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
-    defaultAutoplay?: boolean;
-    autoplay?: boolean;
-    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
+    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
 };
 
 // @public (undocumented)
@@ -44,7 +43,7 @@ export type CarouselAutoplayButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'autoplay'>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
@@ -72,7 +71,9 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+};
 
 // @public (undocumented)
 export type CarouselCardSlots = {
@@ -122,7 +123,7 @@ export type CarouselNavButtonSlots = {
 // @public
 export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
     selected?: boolean;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots>;
@@ -150,7 +151,7 @@ export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
     children: NavButtonRenderFunction;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export type CarouselNavSlots = {
@@ -161,6 +162,7 @@ export type CarouselNavSlots = {
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
     totalSlides: number;
     renderNavButton: NavButtonRenderFunction;
+    appearance?: 'brand';
 };
 
 // @public
@@ -217,7 +219,7 @@ export const renderCarouselCard_unstable: (state: CarouselCardState) => JSX.Elem
 export const renderCarouselFooter_unstable: (state: CarouselFooterState) => JSX.Element;
 
 // @public
-export const renderCarouselNav_unstable: (state: CarouselNavState) => JSX.Element;
+export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSX.Element;
 
 // @public
 export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) => JSX.Element;

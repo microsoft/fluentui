@@ -2,6 +2,119 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 22 Aug 2024 07:21:49 GMT",
+      "tag": "@fluentui/react-charting_v5.22.2",
+      "version": "5.22.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "shawngrant333@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e06ecf6a96437a97adcc924083ee2d33b8229218",
+            "comment": "move gradient styling to css"
+          },
+          {
+            "author": "shawngrant333@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2e0b7479df26ed3c998411425e8e7dae524bb076",
+            "comment": "update DataVizGradientPalette.disabled color"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2024 07:21:50 GMT",
+      "tag": "@fluentui/react-charting_v5.22.1",
+      "version": "5.22.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.170",
+            "commit": "104fbc1f50ba51e29023a5f7a76e8de26e972ffa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.6",
+            "commit": "104fbc1f50ba51e29023a5f7a76e8de26e972ffa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2024 07:21:16 GMT",
+      "tag": "@fluentui/react-charting_v5.22.0",
+      "version": "5.22.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "t-shawngrant@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "2eac1694be564ec172b58f1ca2805e352d79e15e",
+            "comment": "Add Viva dataviz gradient palette and rounded corners to charts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 07:23:37 GMT",
+      "tag": "@fluentui/react-charting_v5.21.32",
+      "version": "5.21.32",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.9.13",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.169",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.5",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 07:21:41 GMT",
+      "tag": "@fluentui/react-charting_v5.21.31",
+      "version": "5.21.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.168",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.4",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 08 Aug 2024 07:24:15 GMT",
       "tag": "@fluentui/react-charting_v5.21.30",
       "version": "5.21.30",

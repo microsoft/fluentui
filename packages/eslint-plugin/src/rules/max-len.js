@@ -39,7 +39,7 @@ module.exports = createRule({
 
     const ignoreRegexes = ignorePatterns.map(pat => new RegExp(pat));
 
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     return {
       Program: program => {

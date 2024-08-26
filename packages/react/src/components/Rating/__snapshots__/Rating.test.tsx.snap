@@ -200,6 +200,7 @@ exports[`Rating renders correctly 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -224,6 +225,7 @@ exports[`Rating renders correctly 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -368,6 +370,7 @@ exports[`Rating renders correctly 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -392,6 +395,7 @@ exports[`Rating renders correctly 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -536,6 +540,7 @@ exports[`Rating renders correctly 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -560,6 +565,7 @@ exports[`Rating renders correctly 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -704,6 +710,7 @@ exports[`Rating renders correctly 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -728,6 +735,7 @@ exports[`Rating renders correctly 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -872,6 +880,7 @@ exports[`Rating renders correctly 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -896,6 +905,7 @@ exports[`Rating renders correctly 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -1116,6 +1126,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -1140,6 +1151,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -1284,6 +1296,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStarFill"
@@ -1308,6 +1321,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -1453,6 +1467,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -1477,6 +1492,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -1621,6 +1637,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -1645,6 +1662,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }
@@ -1789,6 +1807,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
+                text-decoration: inherit;
                 width: 100%;
               }
           data-icon-name="FavoriteStar"
@@ -1813,6 +1832,7 @@ exports[`Rating renders correctly with half star 1`] = `
                 position: absolute;
                 speak: none;
                 text-align: center;
+                text-decoration: inherit;
                 top: 0;
                 vertical-align: middle;
               }

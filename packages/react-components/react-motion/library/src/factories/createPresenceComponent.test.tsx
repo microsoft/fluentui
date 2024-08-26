@@ -4,6 +4,7 @@ import * as React from 'react';
 import type { PresenceMotion } from '../types';
 import { createPresenceComponent } from './createPresenceComponent';
 import { PresenceGroupChildContext } from '../contexts/PresenceGroupChildContext';
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 const enterKeyframes = [{ opacity: 0 }, { opacity: 1 }];
 const exitKeyframes = [{ opacity: 1 }, { opacity: 0 }];
@@ -65,6 +66,29 @@ describe('createPresenceComponent', () => {
       );
 
       expect(animateMock).toHaveBeenCalledWith(enterKeyframes, options);
+    });
+
+    it('finishes motion when wrapped in motion behaviour context with skip behaviour', async () => {
+      const TestPresence = createPresenceComponent(motion);
+      const { finishMock, ElementMock } = createElementMock();
+      const onMotionStart = jest.fn();
+      const onMotionFinish = jest.fn();
+
+      const { queryByText } = render(
+        <TestPresence visible appear onMotionStart={onMotionStart} onMotionFinish={onMotionFinish}>
+          <ElementMock />
+        </TestPresence>,
+        { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
+      );
+
+      await act(async () => {
+        await new Promise<void>(process.nextTick);
+      });
+
+      expect(queryByText('ElementMock')).toBeTruthy();
+      expect(finishMock).toHaveBeenCalledTimes(1);
+      expect(onMotionStart).toHaveBeenCalledTimes(1);
+      expect(onMotionFinish).toHaveBeenCalledTimes(1);
     });
   });
 
