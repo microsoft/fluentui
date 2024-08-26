@@ -173,13 +173,15 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           // we hit the after buffer and detected the end of view, we need to find the start index.
           measurementPos -= containerSizeRef.current;
 
-          console.log('AFTER - target:', latestEntry.target);
-          console.log('AFTER - Measure:', measurementPos);
-          console.log('AFTER - Scroll:', scrollViewRef?.current?.scrollTop);
+          // Calculate how far past the window bounds we are (this will be zero if IO is within window)
+          const hOverflow = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;
+          const wOverflow = latestEntry.boundingClientRect.left - latestEntry.intersectionRect.left;
+          const additionalOverflow = axis === 'vertical' ? hOverflow : wOverflow;
+          measurementPos -= additionalOverflow;
         } else if (latestEntry.target === beforeElementRef.current) {
           // Get before buffers position
           measurementPos = calculateBefore();
-          // // Get exact intersection position based on overflow size (how far into IO did we scroll?)
+          // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
           const overflowAmount =
             axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
           // Add to original after position
@@ -187,9 +189,11 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           // Ignore buffer size (IO offset)
           measurementPos += bufferSize;
 
-          console.log('BEFORE - target:', latestEntry.target);
-          console.log('BEFORE - Measure:', measurementPos);
-          console.log('BEFORE - Scroll:', scrollViewRef?.current?.scrollTop);
+          // Calculate how far past the window bounds we are (this will be zero if IO is within window)
+          const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
+          const wOverflow = latestEntry.boundingClientRect.right - latestEntry.intersectionRect.right;
+          const additionalOverflow = axis === 'vertical' ? hOverflow : wOverflow;
+          measurementPos -= additionalOverflow;
         }
 
         return measurementPos;

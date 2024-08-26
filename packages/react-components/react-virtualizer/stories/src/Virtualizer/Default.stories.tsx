@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
-import { makeStyles, useMergedRefs } from '@fluentui/react-components';
+import { makeStyles, useMergedRefs, Button } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -31,28 +31,44 @@ export const Default = () => {
   const mergedRef = useMergedRefs(scrollRef);
 
   return (
-    <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={mergedRef}>
-      <Virtualizer
-        numItems={childLength}
-        virtualizerLength={virtualizerLength}
-        bufferItems={bufferItems}
-        bufferSize={bufferSize}
-        itemSize={25}
-        containerSizeRef={containerSizeRef}
-        scrollViewRef={mergedRef}
-      >
-        {index => {
-          return (
-            <span
-              role={'listitem'}
-              aria-posinset={index}
-              aria-setsize={childLength}
-              key={`test-virtualizer-child-${index}`}
-              className={styles.child}
-            >{`Node-${index}`}</span>
-          );
+    <div>
+      <Button
+        onClick={() => {
+          mergedRef.current?.scrollTo({ top: 1000 });
         }}
-      </Virtualizer>
+      >
+        {'Go to pos: 1000'}
+      </Button>
+      <Button
+        onClick={() => {
+          mergedRef.current?.scrollTo({ top: 8000 });
+        }}
+      >
+        {'Go to pos: 8000'}
+      </Button>
+      <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={mergedRef}>
+        <Virtualizer
+          numItems={childLength}
+          virtualizerLength={virtualizerLength}
+          bufferItems={bufferItems}
+          bufferSize={bufferSize}
+          itemSize={25}
+          containerSizeRef={containerSizeRef}
+          scrollViewRef={mergedRef}
+        >
+          {index => {
+            return (
+              <span
+                role={'listitem'}
+                aria-posinset={index}
+                aria-setsize={childLength}
+                key={`test-virtualizer-child-${index}`}
+                className={styles.child}
+              >{`Node-${index}`}</span>
+            );
+          }}
+        </Virtualizer>
+      </div>
     </div>
   );
 };
