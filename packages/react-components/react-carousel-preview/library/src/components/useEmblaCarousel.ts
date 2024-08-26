@@ -11,7 +11,7 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
   inViewThreshold: 0.99,
   watchDrag: false,
-
+  skipSnaps: true,
   container: `.${carouselSliderClassNames.root}`,
   slides: `.${carouselCardClassNames.root}`,
 };

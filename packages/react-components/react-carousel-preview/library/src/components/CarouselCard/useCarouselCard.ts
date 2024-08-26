@@ -74,8 +74,7 @@ export const useCarouselCard_unstable = (
 
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
-      console.log('Event:', e);
-      if (isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
+      if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
         selectPageByElement(e, e.currentTarget, true);
       }
     },
