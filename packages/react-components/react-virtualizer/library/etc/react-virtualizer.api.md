@@ -77,6 +77,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.MutableRefObject<number>;
 };
 
 // @public
@@ -104,6 +105,7 @@ export const useStaticVirtualizerMeasure: <TElement extends HTMLElement>(virtual
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
+    containerSizeRef: React_2.MutableRefObject<number>;
 };
 
 // @public (undocumented)
@@ -160,12 +162,16 @@ export type VirtualizerMeasureDynamicProps = {
     numItems: number;
     getItemSize: (index: number) => number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)
 export type VirtualizerMeasureProps = {
     defaultItemSize: number;
     direction?: 'vertical' | 'horizontal';
+    bufferItems?: number;
+    bufferSize?: number;
 };
 
 // @public (undocumented)

@@ -6,7 +6,7 @@ import type {
 } from '../Virtualizer/Virtualizer.types';
 
 import type { VirtualizerScrollViewSlots } from '../VirtualizerScrollView/VirtualizerScrollView.types';
-import type { MutableRefObject, RefObject } from 'react';
+import type { RefObject } from 'react';
 import type { ScrollToInterface } from '../../Utilities';
 
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;

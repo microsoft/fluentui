@@ -3,7 +3,6 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
 import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useState } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
 

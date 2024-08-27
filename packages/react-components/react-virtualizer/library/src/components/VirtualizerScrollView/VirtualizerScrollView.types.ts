@@ -6,7 +6,7 @@ import type {
   VirtualizerChildRenderFunction,
 } from '../Virtualizer/Virtualizer.types';
 import type { ScrollToInterface } from '../../Utilities';
-import type { MutableRefObject, RefObject } from 'react';
+import type { RefObject } from 'react';
 
 export type VirtualizerScrollViewSlots = VirtualizerSlots & {
   /**
