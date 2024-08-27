@@ -7,6 +7,7 @@ import {
   useArrowNavigationGroup,
   useFocusableGroup,
   useMergedTabsterAttributes_unstable,
+  TabsterDOMAttribute,
 } from '@fluentui/react-tabster';
 import {
   elementContains,
@@ -175,7 +176,7 @@ export const useListItem_unstable = (
   });
 
   const tabsterAttributes = useMergedTabsterAttributes_unstable(
-    focusableItems ? arrowNavigationAttributes : {},
+    focusableItems ? arrowNavigationAttributes : ({} as TabsterDOMAttribute),
     focusableGroupAttrs,
   );
 
