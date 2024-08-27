@@ -1,1 +1,1 @@
-export interface CleanExecutorSchema {} // eslint-disable-line
+export interface CleanExecutorSchema {}

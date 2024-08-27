@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "title": "Clean executor",
-  "description": "",
+  "description": "Remove build artifacts.",
   "type": "object",
   "properties": {},
   "required": []
