@@ -29,11 +29,11 @@ export const AutoMeasure = () => {
   return (
     <VirtualizerScrollViewDynamic
       numItems={childLength}
-      // We can use itemSize to set average height
-      itemSize={(minHeight + maxHeightIncrease) / 2.0}
+      // We can use itemSize to set average height and reduce unknown whitespace
+      itemSize={minHeight + maxHeightIncrease / 2.0}
       container={{ role: 'list', style: { maxHeight: '80vh' } }}
       bufferItems={1}
-      bufferSize={25}
+      bufferSize={minHeight / 2.0}
     >
       {(index: number) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

@@ -4,7 +4,7 @@ import {
   useDynamicVirtualizerMeasure,
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
-import { makeStyles, useMergedRefs } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 import { useCallback, useRef } from 'react';
 
 const smallSize = 100;
