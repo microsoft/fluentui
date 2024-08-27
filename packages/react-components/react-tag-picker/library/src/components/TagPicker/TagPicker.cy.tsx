@@ -94,7 +94,7 @@ const TagPickerControlled = ({
               </Tag>
             ))}
           </TagPickerGroup>
-          <TagPickerInput data-testid="tag-picker-input" />
+          <TagPickerInput data-testid="tag-picker-input" aria-labelledby="Selected Employees" />
         </TagPickerControl>
         {noPopover ? undefined : (
           <TagPickerList data-testid="tag-picker-list">
@@ -338,6 +338,23 @@ describe('TagPicker', () => {
         cy.get(`[data-testid="tag--${options[options.length - 1]}"]`).should('not.be.focused');
         cy.get('[data-testid="tag-picker-input"]').should('have.value', '').should('be.focused');
       });
+    });
+  });
+  describe('Expand Icon', () => {
+    it('should update aria-label and aria-labelledby on input change', () => {
+      mount(<TagPickerControlled />);
+      cy.get(`.${tagPickerControlClassNames.expandIcon}`).should('exist');
+      cy.get('[data-testid="tag-picker-input"]').should('have.attr', 'aria-labelledby', 'Selected Employees');
+      cy.get(`.${tagPickerControlClassNames.expandIcon}`)
+        .should('have.attr', 'aria-labelledby')
+        .and('contain', 'Selected Employees');
+
+      cy.get('[data-testid="tag-picker-input"]')
+        .invoke('attr', 'aria-labelledby', 'New Labelled By')
+        .should('have.attr', 'aria-labelledby', 'New Labelled By');
+      cy.get(`.${tagPickerControlClassNames.expandIcon}`)
+        .should('have.attr', 'aria-labelledby')
+        .and('contain', 'New Labelled By');
     });
   });
   it('should not render popover when "noPopover"', () => {
