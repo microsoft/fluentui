@@ -225,5 +225,5 @@ export const Popover: Story<FluentButton> = renderComponent(html<StoryArgs<Fluen
   <fluent-button popovertarget="foo" popovertargetaction="show">Show Popover</fluent-button>
   <fluent-button popovertarget="foo" popovertargetaction="hide">Hide Popover</fluent-button>
   <fluent-button popovertarget="foo" popovertargetaction="toggle">Toggle Popover</fluent-button>
-  <div id="foo" popover open>This is a popover</div>
+  <div id="foo" popover>This is a popover</div>
 `);

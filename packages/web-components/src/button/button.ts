@@ -297,13 +297,16 @@ export class BaseButton extends FASTElement {
     if (this.popoverTargetElement && !!this.popoverTargetElement.hasAttribute('popover')) {
       switch (this.popovertargetaction) {
         case 'hide':
+          // @ts-expect-error - Baseline 2024
           this.popoverTargetElement?.hidePopover();
           break;
         case 'show':
+          // @ts-expect-error - Baseline 2024
           this.popoverTargetElement?.showPopover();
           break;
         case 'toggle':
         default:
+          // @ts-expect-error - Baseline 2024
           this.popoverTargetElement?.togglePopover(!this.popoverOpen);
           break;
       }
