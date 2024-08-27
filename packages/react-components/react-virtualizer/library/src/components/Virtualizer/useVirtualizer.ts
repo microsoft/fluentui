@@ -332,7 +332,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
            */
           let measurementPos = 0;
           if (latestEntry.target === afterElementRef.current) {
-            console.log('AFTER');
             // Get after buffers position - static
             measurementPos = calculateTotalSize() - calculateAfter();
 
@@ -354,9 +353,13 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             const widthOverflow = reversed ? wOverflowReversed : wOverflow;
             const heightOverflow = reversed ? hOverflowReversed : hOverflow;
             const additionalOverflow = axis === 'vertical' ? heightOverflow : widthOverflow;
-            measurementPos -= additionalOverflow;
+
+            if (reversed) {
+              measurementPos += additionalOverflow;
+            } else {
+              measurementPos -= additionalOverflow;
+            }
           } else if (latestEntry.target === beforeElementRef.current) {
-            console.log('BEFORE');
             // Get before buffers position
             measurementPos = calculateBefore();
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
@@ -375,7 +378,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             const widthOverflow = reversed ? wOverflowReversed : wOverflow;
             const heightOverflow = reversed ? hOverflowReversed : hOverflow;
             const additionalOverflow = axis === 'vertical' ? heightOverflow : widthOverflow;
-            measurementPos -= additionalOverflow;
+
+            if (reversed) {
+              measurementPos += additionalOverflow;
+            } else {
+              measurementPos -= additionalOverflow;
+            }
           }
 
           return measurementPos;
