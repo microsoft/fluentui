@@ -17,13 +17,13 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     getItemSize,
     bufferItems = Math.round(virtualizerLength / 4.0),
     bufferSize = Math.floor(bufferItems / 2.0) * itemSize,
-    scrollViewRef,
     axis = 'vertical',
     reversed = false,
     virtualizerContext,
     onRenderedFlaggedIndex,
     imperativeVirtualizerRef,
     containerSizeRef,
+    scrollViewRef,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -51,12 +51,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
   // Store ref to before padding element
   const afterElementRef = useRef<Element | null>(null);
-
-  // Store ref to before padding element
-  const beforeElementContainerRef = useRef<HTMLTableRowElement | null>(null);
-
-  // Store ref to before padding element
-  const afterElementContainerRef = useRef<HTMLTableRowElement | null>(null);
 
   // We need to store an array to track dynamic sizes, we can use this to incrementally update changes
   const childSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
@@ -331,7 +325,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
            */
           let measurementPos = 0;
           if (latestEntry.target === afterElementRef.current) {
-            // Get after buffers position - static
+            // Get after buffers position
             measurementPos = calculateTotalSize() - calculateAfter();
 
             // Get exact intersection position based on overflow size (how far into IO did we scroll?)
@@ -393,11 +387,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         const maxIndex = Math.max(numItems - (virtualizerLength - 1), 0);
 
-        let startIndex = getIndexFromScrollPosition(measurementPos);
-        if (latestEntry.target === afterElementRef.current) {
-          // Render one less than scroll position if after element to be sure we don't trigger the before buffer
-          startIndex--;
-        }
+        // const offset = latestEntry.target === beforeElementRef.current ? bufferItems : Math.max(bufferItems - 1, 1);
+        // const offset = Math.max(bufferItems - 1, 1);
+        let startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
 
         const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
         if (actualIndex === startIndex) {
@@ -428,6 +420,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         actualIndex,
         axis,
         batchUpdateNewIndex,
+        bufferItems,
         bufferSize,
         calculateAfter,
         calculateBefore,
@@ -525,7 +518,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [renderChild]);
+  }, [renderChild, isScrolling]);
 
   useEffect(() => {
     // Ensure we repopulate if getItemSize callback changes
@@ -585,14 +578,12 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     }),
     beforeContainer: slot.always(props.beforeContainer, {
       defaultProps: {
-        ref: beforeElementContainerRef,
         role: 'none',
       },
       elementType: 'div',
     }),
     afterContainer: slot.always(props.afterContainer, {
       defaultProps: {
-        ref: afterElementContainerRef,
         role: 'none',
       },
       elementType: 'div',

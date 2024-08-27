@@ -61,7 +61,6 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
     virtualizerLength,
     bufferItems,
     bufferSize,
-    scrollViewRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
     imperativeVirtualizerRef,
     containerSizeRef,

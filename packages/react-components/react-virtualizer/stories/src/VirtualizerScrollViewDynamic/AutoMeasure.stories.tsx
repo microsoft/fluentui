@@ -32,6 +32,8 @@ export const AutoMeasure = () => {
       // We can use itemSize to set average height
       itemSize={(minHeight + maxHeightIncrease) / 2.0}
       container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      bufferItems={1}
+      bufferSize={25}
     >
       {(index: number) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';

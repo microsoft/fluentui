@@ -109,16 +109,19 @@ export type VirtualizerConfigProps = {
   virtualizerLength: number;
 
   /**
-   * Defaults to 1/4th of virtualizerLength.
+   * Defaults to 1/4th (or 1/3rd for dynamic items) of virtualizerLength.
+   * RECOMMEND: Override this with a consistent value if using a dynamic virtualizer.
+   *
    * Controls the number of elements rendered before the current index entering the virtualized viewport.
    * Constraints:
    * - Large enough to cover bufferSize (prevents buffers intersecting into the viewport during rest state).
-   * - Small enough that the end buffer and end index (start index + virtualizerLength) is not within viewport at rest.
+   * - Small enough that the virtualizer only renders a few items outside of view.
    */
   bufferItems?: number;
 
   /**
    * Defaults to half of bufferItems * itemSize size (in pixels).
+   * RECOMMEND: Override this with a consistent minimum item size value if using a dynamic virtualizer.
    * The length (in pixels) before the end/start DOM index where the virtualizer recalculation will be triggered.
    * Increasing this reduces whitespace on ultra-fast scroll, as additional elements
    * are buffered to appear while virtualization recalculates.
@@ -130,6 +133,8 @@ export type VirtualizerConfigProps = {
 
   /**
    * Enables users to override the intersectionObserverRoot.
+   * RECOMMEND: DO NOT PASS THIS IN, as it can cause side effects
+   * when overlapping with other scroll views
    */
   scrollViewRef?: React.MutableRefObject<HTMLElement | null>;
 

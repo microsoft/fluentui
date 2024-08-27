@@ -123,7 +123,6 @@ export function useVirtualizerScrollViewDynamic_unstable(
     virtualizerLength,
     bufferItems,
     bufferSize,
-    scrollViewRef,
     virtualizerContext: contextState,
     imperativeVirtualizerRef: _imperativeVirtualizerRef,
     onRenderedFlaggedIndex: handleRenderedIndex,

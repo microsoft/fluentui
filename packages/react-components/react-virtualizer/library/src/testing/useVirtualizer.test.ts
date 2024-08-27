@@ -1,6 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useVirtualizer_unstable } from '../components/Virtualizer/useVirtualizer';
-import { useRef } from 'react';
 
 describe('useVirtualizer', () => {
   beforeEach(() => {
