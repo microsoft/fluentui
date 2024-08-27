@@ -74,6 +74,10 @@ export default {
 
 export const Button: Story<FluentButton> = renderComponent(storyTemplate).bind({});
 
+export const Autofocus: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+  <fluent-button autofocus>Autofocus</fluent-button>
+`);
+
 export const Appearance: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
   <fluent-button>Default</fluent-button>
   <fluent-button appearance="primary">Primary</fluent-button>

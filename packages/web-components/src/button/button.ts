@@ -258,9 +258,13 @@ export class BaseButton extends FASTElement {
     return true;
   }
 
-  connectedCallback(): void {
+  public connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
+
+    if (this.autofocus) {
+      this.focus();
+    }
   }
 
   constructor() {
