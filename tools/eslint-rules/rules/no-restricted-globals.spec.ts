@@ -4,7 +4,6 @@ import { AST_NODE_TYPES } from '@typescript-eslint/utils';
 import { rule, RULE_NAME } from './no-restricted-globals';
 
 const ruleTester = new RuleTester();
-global.structuredClone = val => JSON.parse(JSON.stringify(val));
 
 ruleTester.run(RULE_NAME, rule, {
   valid: [

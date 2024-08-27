@@ -5,8 +5,6 @@ const ruleTester = new RuleTester({
   languageOptions: { parserOptions: { ecmaFeatures: { jsx: true } } },
 });
 
-global.structuredClone = val => JSON.parse(JSON.stringify(val));
-
 ruleTester.run(RULE_NAME, rule, {
   valid: [
     // no slot api used case
