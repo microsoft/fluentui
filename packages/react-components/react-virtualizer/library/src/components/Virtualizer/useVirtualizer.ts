@@ -167,6 +167,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
          */
         let measurementPos = 0;
         if (latestEntry.target === afterElementRef.current) {
+          console.log('After');
           // Get after buffers position
           measurementPos = calculateTotalSize() - calculateAfter();
           // Get exact intersection position based on overflow size (how far into IO did we scroll?)
@@ -185,6 +186,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           const additionalOverflow = axis === 'vertical' ? hOverflow : wOverflow;
           measurementPos -= additionalOverflow;
         } else if (latestEntry.target === beforeElementRef.current) {
+          console.log('Before');
           // Get before buffers position
           measurementPos = calculateBefore();
           // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
@@ -193,7 +195,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           // Add to original after position
           measurementPos -= overflowAmount;
           // Ignore buffer size (IO offset)
-          measurementPos += bufferSize;
+          measurementPos -= bufferSize;
 
           // Calculate how far past the window bounds we are (this will be zero if IO is within window)
           const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
@@ -211,11 +213,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       /* dirMod: Set the index to before/after the current scroll top element (depending on direction) */
       const maxIndex = Math.max(numItems - virtualizerLength, 0);
       const halfBuffer = Math.ceil(bufferItems / 2);
-      const dirMod = latestEntry.target === afterElementRef.current ? 1 : -1;
-      let startIndex = getIndexFromScrollPosition(measurementPos) - halfBuffer;
-      if (startIndex > 0 && startIndex < maxIndex && startIndex === actualIndex) {
-        startIndex += dirMod;
-      }
+      const startIndex = getIndexFromScrollPosition(measurementPos) - halfBuffer;
 
       // Safety limits
       const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
