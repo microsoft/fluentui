@@ -33,9 +33,8 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
-    defaultAutoplay?: boolean;
-    autoplay?: boolean;
-    onAutoplayChange?: EventHandler<CarouselAutoplayChangeData>;
+    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
+    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
 };
 
 // @public (undocumented)
@@ -44,7 +43,7 @@ export type CarouselAutoplayButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots> & Pick<CarouselAutoplayButtonProps, 'autoplay'>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
@@ -72,7 +71,9 @@ export const CarouselCard: ForwardRefComponent<CarouselCardProps>;
 export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
-export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+};
 
 // @public (undocumented)
 export type CarouselCardSlots = {

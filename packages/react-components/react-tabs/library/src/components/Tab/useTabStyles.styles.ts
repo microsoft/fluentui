@@ -1,9 +1,8 @@
-import type { TabSlots, TabState } from './Tab.types';
-
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { SlotClassNames } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { TabSlots, TabState } from './Tab.types';
 import { useTabAnimatedIndicatorStyles_unstable } from './useTabAnimatedIndicator.styles';
 
 export const tabClassNames: SlotClassNames<TabSlots> = {
@@ -26,9 +25,18 @@ const iconClassNames = {
 /**
  * Styles for the root slot
  */
-/* eslint-disable @typescript-eslint/naming-convention */
 const useRootStyles = makeStyles({
-  base: {
+  root: {
+    alignItems: 'center',
+    display: 'grid',
+    flexShrink: 0,
+    gridAutoFlow: 'column',
+    gridTemplateColumns: 'auto',
+    gridTemplateRows: 'auto',
+    outlineStyle: 'none',
+    position: 'relative',
+  },
+  button: {
     alignItems: 'center',
     border: 'none',
     borderRadius: tokens.borderRadiusMedium,
@@ -164,7 +172,6 @@ const useRootStyles = makeStyles({
     },
   },
 });
-/* eslint-enable @typescript-eslint/naming-convention */
 
 /**
  * Focus styles for the root slot
@@ -409,7 +416,7 @@ const useContentStyles = makeStyles({
   base: {
     ...typographyStyles.body1,
     overflow: 'hidden',
-    // content padding is the same for medium & small, horiztonal & vertical
+    // content padding is the same for medium & small, horizontal & vertical
     padding: `${tokens.spacingVerticalNone} ${tokens.spacingHorizontalXXS}`,
   },
   selected: {
@@ -440,27 +447,36 @@ const useContentStyles = makeStyles({
 export const useTabStyles_unstable = (state: TabState): TabState => {
   'use no memo';
 
+  useTabIndicatorStyles_unstable(state);
+
+  useTabButtonStyles_unstable(state, state.root);
+
+  useTabContentStyles_unstable(state);
+
+  return state;
+};
+
+/**
+ * Applies styles for the Tab indicator based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The `Tab` component's current state
+ * @returns The state object with updated button styles
+ */
+export const useTabIndicatorStyles_unstable = (state: TabState): TabState => {
+  'use no memo';
+
   const rootStyles = useRootStyles();
-  const focusStyles = useFocusStyles();
   const pendingIndicatorStyles = usePendingIndicatorStyles();
   const activeIndicatorStyles = useActiveIndicatorStyles();
-  const iconStyles = useIconStyles();
-  const contentStyles = useContentStyles();
 
-  const { appearance, disabled, selected, size, vertical } = state;
+  const { disabled, selected, size, vertical } = state;
 
   state.root.className = mergeClasses(
     tabClassNames.root,
-    rootStyles.base,
-    vertical ? rootStyles.vertical : rootStyles.horizontal,
-    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
-    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
-    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
-    focusStyles.base,
-    !disabled && appearance === 'subtle' && rootStyles.subtle,
-    !disabled && appearance === 'transparent' && rootStyles.transparent,
-    !disabled && selected && rootStyles.selected,
-    disabled && rootStyles.disabled,
+    rootStyles.root,
 
     // pending indicator (before pseudo element)
     pendingIndicatorStyles.base,
@@ -485,6 +501,64 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
 
     state.root.className,
   );
+
+  useTabAnimatedIndicatorStyles_unstable(state);
+
+  return state;
+};
+
+/**
+ * Applies styles to the Tab button slot based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The Tab component's current state
+ * @param slot - The button slot of the Tab component
+ * @returns The state object with updated button styles
+ */
+export const useTabButtonStyles_unstable = (state: TabState, slot: TabState['root']): TabState => {
+  'use no memo';
+
+  const rootStyles = useRootStyles();
+  const focusStyles = useFocusStyles();
+
+  const { appearance, disabled, selected, size, vertical } = state;
+
+  slot.className = mergeClasses(
+    rootStyles.button,
+    vertical ? rootStyles.vertical : rootStyles.horizontal,
+    size === 'small' && (vertical ? rootStyles.smallVertical : rootStyles.smallHorizontal),
+    size === 'medium' && (vertical ? rootStyles.mediumVertical : rootStyles.mediumHorizontal),
+    size === 'large' && (vertical ? rootStyles.largeVertical : rootStyles.largeHorizontal),
+    focusStyles.base,
+    !disabled && appearance === 'subtle' && rootStyles.subtle,
+    !disabled && appearance === 'transparent' && rootStyles.transparent,
+    !disabled && selected && rootStyles.selected,
+    disabled && rootStyles.disabled,
+
+    slot.className,
+  );
+
+  return state;
+};
+
+/**
+ * Applies styles to the Tab content slot based on its current state.
+ *
+ * This hook is typically used internally by `useTabStyles_unstable`. You should
+ * only use it directly if you're creating a custom `Tab` component.
+ *
+ * @param state - The Tab component's current state
+ * @returns The state object with updated content styles
+ */
+export const useTabContentStyles_unstable = (state: TabState): TabState => {
+  'use no memo';
+
+  const iconStyles = useIconStyles();
+  const contentStyles = useContentStyles();
+
+  const { selected, size } = state;
 
   if (state.icon) {
     state.icon.className = mergeClasses(
@@ -520,8 +594,6 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
     state.icon ? contentStyles.iconBefore : contentStyles.noIconBefore,
     state.content.className,
   );
-
-  useTabAnimatedIndicatorStyles_unstable(state);
 
   return state;
 };
