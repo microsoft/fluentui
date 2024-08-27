@@ -70,8 +70,6 @@ export const Dynamic = () => {
     currentIndex,
   });
 
-  const combineRefs = useMergedRefs(scrollRef);
-
   return (
     <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
@@ -82,7 +80,6 @@ export const Dynamic = () => {
           bufferItems={bufferItems}
           virtualizerLength={virtualizerLength}
           itemSize={100}
-          scrollViewRef={combineRefs}
           containerSizeRef={containerSizeRef}
         >
           {useCallback(

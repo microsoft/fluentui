@@ -20,7 +20,6 @@ const useStyles = makeStyles({
   },
   child: {
     display: 'flex',
-    height: '100px',
     lineHeight: '100px',
     width: '100%',
   },
@@ -30,6 +29,7 @@ const useStyles = makeStyles({
     paddingBottom: '100px',
     fontSize: '36px',
     textAlign: 'center',
+    minHeight: '100px',
   },
 });
 

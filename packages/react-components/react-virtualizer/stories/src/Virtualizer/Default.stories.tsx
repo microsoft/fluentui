@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
-import { makeStyles, useMergedRefs } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -13,8 +13,9 @@ const useStyles = makeStyles({
   },
   child: {
     height: '25px',
-    lineHeight: '25px',
+    lineHeight: '100px',
     width: '100%',
+    minHeight: '100px',
   },
 });
 
@@ -23,24 +24,19 @@ export const Default = () => {
   const childLength = 1000;
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
-    defaultItemSize: 25,
-    bufferItems: 1,
-    bufferSize: 12,
+    defaultItemSize: 100,
   });
-
-  const mergedRef = useMergedRefs(scrollRef);
 
   return (
     <div>
-      <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={mergedRef}>
+      <div aria-label="Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
         <Virtualizer
           numItems={childLength}
           virtualizerLength={virtualizerLength}
           bufferItems={bufferItems}
           bufferSize={bufferSize}
-          itemSize={25}
+          itemSize={100}
           containerSizeRef={containerSizeRef}
-          scrollViewRef={mergedRef}
         >
           {index => {
             return (

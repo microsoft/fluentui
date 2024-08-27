@@ -61,12 +61,12 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
        */
-      const newBufferItems = bufferItems ?? Math.max(Math.floor(length / 4), 1);
+      const newBufferItems = bufferItems ?? Math.max(Math.ceil(length / 4), 1);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const newBufferSize = bufferSize ?? Math.max(Math.floor((length / 8) * defaultItemSize), 1);
+      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2.0, 5);
 
       const totalLength = length + newBufferItems * 2;
 
@@ -76,7 +76,7 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
         _bufferSize: newBufferSize,
       });
     },
-    [bufferItems, bufferSize, defaultItemSize, direction],
+    [bufferItems, bufferSize, defaultItemSize, direction, targetDocument?.body, targetDocument?.defaultView],
   );
 
   const scrollRef = useResizeObserverRef_unstable(resizeCallback);
