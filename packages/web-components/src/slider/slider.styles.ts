@@ -57,7 +57,7 @@ export const styles = css`
 
   :host(:disabled) {
     --rail-color: ${colorNeutralForegroundDisabled};
-    --track-color: ${colorNeutralForegroundDisabled};
+    --track-color: ${colorNeutralBackgroundDisabled};
   }
 
   :host(:not(:disabled)) {
