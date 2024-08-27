@@ -18,6 +18,13 @@ import { ButtonType } from './button.options.js';
  * @public
  */
 export class BaseButton extends FASTElement {
+  private popoverOpen?: boolean = false;
+
+  /**
+   * Holds an element reference for the popovertarget
+   */
+  private popoverTargetElement: HTMLElement | null | undefined;
+
   /**
    * Indicates the button should be focused when the page is loaded.
    * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#autofocus | `autofocus`} attribute
@@ -28,6 +35,28 @@ export class BaseButton extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public autofocus!: boolean;
+
+  /**
+   * The ID for the popover which is controlled by the element
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget | `popovertarget`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `popovertarget`
+   */
+  @attr
+  public popovertarget?: string;
+
+  /**
+   * Specifies the action to be performed on a popover element being controlled by the element
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertargetaction | `popovertargetaction`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `popovertargetaction`
+   */
+  @attr
+  public popovertargetaction?: 'hide' | 'show' | 'toggle';
 
   /**
    * Default slotted content.
@@ -67,6 +96,17 @@ export class BaseButton extends FASTElement {
    */
   @attr({ attribute: 'tabindex', mode: 'fromView', converter: nullableNumberConverter })
   public override tabIndex: number = 0;
+
+  /**
+   * Handles changes to the popovertarget attribute
+   *
+   * @param previous - the previous popovertarget value
+   * @param next - the current popovertarget value
+   * @internal
+   */
+  public popoverTargetChanged(previous: string | undefined, next: string | undefined): void {
+    this.setPopoverTargetElement(next);
+  }
 
   /**
    * Sets the element's internal disabled state when the element is focusable while disabled.
@@ -254,18 +294,52 @@ export class BaseButton extends FASTElement {
       return;
     }
 
+    if (this.popoverTargetElement) {
+      switch (this.popovertargetaction) {
+        case 'hide':
+          this.popoverTargetElement?.hidePopover();
+          break;
+        case 'show':
+          this.popoverTargetElement?.showPopover();
+          break;
+        case 'toggle':
+        default:
+          this.popoverTargetElement?.togglePopover(!this.popoverOpen);
+          break;
+      }
+    }
+
     this.press();
     return true;
   }
 
-  connectedCallback(): void {
+  public connectedCallback(): void {
     super.connectedCallback();
     this.elementInternals.ariaDisabled = `${!!this.disabledFocusable}`;
+
+    if (this.popovertarget) {
+      this.setPopoverTargetElement(this.popovertarget);
+    }
   }
 
   constructor() {
     super();
     this.elementInternals.role = 'button';
+  }
+
+  /**
+   * Sets up handling for the popover target element
+   * @param element - The element to reference
+   */
+  private setPopoverTargetElement(element: string | undefined) {
+    this.popoverTargetElement = element ? document.getElementById(element) : undefined;
+
+    this.popoverTargetElement?.addEventListener(
+      'toggle',
+      e =>
+        (this.popoverOpen =
+          (e as Event & { newState: 'open' | 'closed'; oldState: 'open' | 'closed' }).newState === 'open'),
+    );
   }
 
   /**

@@ -220,3 +220,10 @@ export const ResetAndSubmitButtonsInForm: Story<FluentButton> = renderComponent(
   <div id="something">Div Label</div>
   <output id="output"></output>
 `);
+
+export const Popover: Story<FluentButton> = renderComponent(html<StoryArgs<FluentButton>>`
+  <fluent-button popovertarget="foo" popovertargetaction="show">Show Popover</fluent-button>
+  <fluent-button popovertarget="foo" popovertargetaction="hide">Hide Popover</fluent-button>
+  <fluent-button popovertarget="foo" popovertargetaction="toggle">Toggle Popover</fluent-button>
+  <div id="foo" popover open>This is a popover</div>
+`);
