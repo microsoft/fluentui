@@ -44,6 +44,8 @@ export const Default = () => {
       itemSize={minHeight + maxHeightMod / 2.0}
       getItemSize={getItemSizeCallback}
       container={{ role: 'list', style: { maxHeight: '80vh' } }}
+      bufferItems={1}
+      bufferSize={minHeight / 2.0}
     >
       {(index: number) => {
         const backgroundColor = index % 2 ? '#FFFFFF' : '#ABABAB';
