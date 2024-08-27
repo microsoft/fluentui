@@ -60,13 +60,14 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
 
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
+       * Minimum: 1
        */
       const newBufferItems = bufferItems ?? Math.max(Math.ceil(length / 4), 1);
 
       /*
        * This is how far we deviate into the bufferItems to detect a redraw.
        */
-      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2.0, 5);
+      const newBufferSize = bufferSize ?? Math.max(defaultItemSize / 2.0, 1);
 
       const totalLength = length + newBufferItems * 2;
 

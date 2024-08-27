@@ -14,8 +14,8 @@ const useStyles = makeStyles({
 export const AutoMeasure = () => {
   const styles = useStyles();
   const childLength = 1000;
-  const minHeight = 300;
-  const maxHeightIncrease = 200;
+  const minHeight = 50;
+  const maxHeightIncrease = 500;
   // Array size ref stores a list of random num for div sizing and callbacks
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
 
@@ -29,8 +29,8 @@ export const AutoMeasure = () => {
   return (
     <VirtualizerScrollViewDynamic
       numItems={childLength}
-      // We can use itemSize to set an average height for minimal size change impact
-      itemSize={minHeight}
+      // We can use itemSize to set average height
+      itemSize={(minHeight + maxHeightIncrease) / 2.0}
       container={{ role: 'list', style: { maxHeight: '80vh' } }}
     >
       {(index: number) => {
