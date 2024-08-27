@@ -294,7 +294,7 @@ export class BaseButton extends FASTElement {
       return;
     }
 
-    if (this.popoverTargetElement) {
+    if (this.popoverTargetElement && !!this.popoverTargetElement.hasAttribute('popover')) {
       switch (this.popovertargetaction) {
         case 'hide':
           this.popoverTargetElement?.hidePopover();
