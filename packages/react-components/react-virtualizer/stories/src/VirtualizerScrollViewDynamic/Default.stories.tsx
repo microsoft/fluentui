@@ -15,6 +15,7 @@ export const Default = () => {
   const styles = useStyles();
   const childLength = 1000;
   const minHeight = 42;
+  const maxHeightMod = 150;
   // Array size ref stores a list of random num for div sizing and callbacks
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
   // totalSize flag drives our callback update
@@ -23,7 +24,7 @@ export const Default = () => {
   useEffect(() => {
     let _totalSize = 0;
     for (let i = 0; i < childLength; i++) {
-      arraySize.current[i] = Math.floor(Math.random() * 150 + minHeight);
+      arraySize.current[i] = Math.floor(Math.random() * maxHeightMod + minHeight);
       _totalSize += arraySize.current[i];
     }
     setTotalSize(_totalSize);
@@ -40,7 +41,7 @@ export const Default = () => {
   return (
     <VirtualizerScrollViewDynamic
       numItems={childLength}
-      itemSize={minHeight}
+      itemSize={minHeight + maxHeightMod / 2.0}
       getItemSize={getItemSizeCallback}
       container={{ role: 'list', style: { maxHeight: '80vh' } }}
     >
