@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Button } from "@fluentui/react-components";
 import { Stack, TextField } from '@fluentui/react';
 import { DataVizPalette, getColorFromToken } from '../../src/utilities/colors';
 import {
@@ -258,8 +258,8 @@ export const VCDynamic = () => {
         />
       </div>
       <div>
-        <DefaultButton text="Change data" onClick={_changeData} />
-        <DefaultButton text="Change colors" onClick={_changeColors} />
+        <Button onClick={_changeData}> Change Data </Button>
+        <Button onClick={_changeColors}> Change Color </Button>
         <div aria-live="polite" aria-atomic="true">
           {/* Change the key so that React treats it as an update even if the message is same */}
           <p key={statusKey} style={screenReaderOnlyStyle}>
