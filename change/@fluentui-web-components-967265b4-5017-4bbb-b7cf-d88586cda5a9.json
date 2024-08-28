@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: adjust slider sliding range",
-  "packageName": "@fluentui/web-components",
-  "email": "machi@microsoft.com",
-  "dependentChangeType": "patch"
-}
