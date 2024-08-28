@@ -76,9 +76,9 @@ export const Default = () => (
         justifyContent: 'center',
       }}
     >
-      <CarouselButton navType="prev" />
-      <CarouselNav>{() => <CarouselNavButton />}</CarouselNav>
-      <CarouselButton navType="next" />
+      <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+      <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+      <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
     </div>
   </Carousel>
 );

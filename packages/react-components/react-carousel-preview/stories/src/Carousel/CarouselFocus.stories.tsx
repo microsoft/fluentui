@@ -89,9 +89,9 @@ export const CardFocus = () => {
             return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
           }}
         />
-        <CarouselButton navType="prev" aria-label="previous carousel page" />
-        <CarouselNav aria-roledescription="carousel page navigation">{() => <CarouselNavButton />}</CarouselNav>
-        <CarouselButton navType="next" aria-label="next carousel page" />
+        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
       </div>
     </Carousel>
   );

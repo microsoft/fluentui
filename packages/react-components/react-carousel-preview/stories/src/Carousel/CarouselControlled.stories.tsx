@@ -68,7 +68,7 @@ export const Controlled = () => {
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
       >
-        <CarouselButton navType="prev" />
+        <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
 
         <div style={{ display: 'flex', overflow: 'hidden' }}>
           <CarouselSlider>
@@ -90,7 +90,7 @@ export const Controlled = () => {
           </CarouselSlider>
         </div>
 
-        <CarouselButton navType="next" />
+        <CarouselButton navType="next" aria-label="Next Carousel Page Button" />
       </Carousel>
 
       <div className={classes.footer}>
@@ -102,6 +102,7 @@ export const Controlled = () => {
               className={classes.control}
               disabled={index === activeIndex}
               onClick={() => setActiveIndex(index)}
+              aria-label={`Carousel Nav Button ${index} `}
             >
               {index}
             </Button>
