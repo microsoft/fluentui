@@ -409,7 +409,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
    * This method used to adjust height and width of the charts.
    */
   function _fitParentContainer(): void {
-    _reqID = requestAnimationFrame(() => {
+    //_reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (props.hideLegend) {
         // If there is no legend, need not to allocate some space from total chart space.
@@ -439,7 +439,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           setContainerHeight(currentContainerHeight - legendContainerHeight);
         }
       }
-    });
+    //});
   }
 
   function _onChartLeave(): void {

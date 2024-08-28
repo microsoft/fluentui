@@ -99,6 +99,7 @@ const QualitativePalette: Palette = {
   '40': ['#3a2f00', '#dac157'], // [gold.shade40, gold.tint30],
 };
 
+
 const SemanticPalette: Palette = {
   info: ['#015cda'],
   disabled: ['#dbdbdb', '#4d4d4d'], // [grey[86], grey[30]]

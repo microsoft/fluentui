@@ -232,7 +232,6 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
             let defaultColor: string;
-            // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
               defaultColor = getNextColor(index, 0);
             } else {

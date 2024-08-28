@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Button } from "@fluentui/react-components";
 import { Stack, TextField } from '@fluentui/react';
+import { DataVizPalette, getColorFromToken } from '../../src/utilities/colors';
 import {
   Checkbox,
   CheckboxOnChangeData,
@@ -27,12 +28,20 @@ export const VCDynamic = () => {
   };
 
   const _colors = [
-    ['deepskyblue', 'dodgerblue', 'darkblue'],
-    ['lightsalmon', 'orange', 'darkorange'],
-    ['lightgreen', 'green', 'darkgreen'],
-    ['orchid', 'magenta', 'darkmagenta'],
+    [getColorFromToken(DataVizPalette.color1),
+      getColorFromToken(DataVizPalette.color2),
+      getColorFromToken(DataVizPalette.color3)],
+    [getColorFromToken(DataVizPalette.color4),
+      getColorFromToken(DataVizPalette.color5),
+      getColorFromToken(DataVizPalette.color6)],
+    [getColorFromToken(DataVizPalette.color7),
+      getColorFromToken(DataVizPalette.color8),
+      getColorFromToken(DataVizPalette.color9),],
+    [getColorFromToken(DataVizPalette.color10),
+      getColorFromToken(DataVizPalette.color11),
+      getColorFromToken(DataVizPalette.color12),],
   ];
-  let _colorIndex = 0;
+  const _colorIndex = React.useRef<number>(0);
   let _prevBarWidth = 16;
   const initialXAxisType = 'number';
   const initialDataSize = 5;
@@ -44,8 +53,8 @@ export const VCDynamic = () => {
   };
 
   let _changeColors = (): void => {
-    _colorIndex = (_colorIndex + 1) % _colors.length;
-    setColors(_colors[_colorIndex]);
+    _colorIndex.current = (_colorIndex.current + 1) % _colors.length;
+    setColors(_colors[_colorIndex.current]);
     setStatusKey(statusKey + 1);
     setStatusMessage('Vertical bar chart colors changed');
   };
@@ -249,8 +258,8 @@ export const VCDynamic = () => {
         />
       </div>
       <div>
-        <DefaultButton text="Change data" onClick={_changeData} />
-        <DefaultButton text="Change colors" onClick={_changeColors} />
+        <Button onClick={_changeData}> Change Data </Button>
+        <Button onClick={_changeColors}> Change Color </Button>
         <div aria-live="polite" aria-atomic="true">
           {/* Change the key so that React treats it as an update even if the message is same */}
           <p key={statusKey} style={screenReaderOnlyStyle}>

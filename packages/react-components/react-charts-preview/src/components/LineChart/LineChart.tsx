@@ -149,7 +149,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element = memoizeFunction(
       (data: LineChartDataWithIndex[]) => _createLegends(data),
     );
-    let _firstRenderOptimization: boolean = false;
+    let _firstRenderOptimization = true;
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
@@ -177,6 +177,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
        */
+
       if (_points !== _injectIndexPropertyInLineChartData(props.data.lineChartData) || props.data !== _points) {
         pointsRef.current = _injectIndexPropertyInLineChartData(props.data.lineChartData);
         calloutPointsRef.current = calloutData(pointsRef.current);
@@ -188,7 +189,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       return lineChartData
         ? lineChartData.map((item: ILineChartPoints, index: number) => {
             let color: string;
-            // isInverted property is applicable to v8 themes only
             if (typeof item.color === 'undefined') {
               color = getNextColor(index, 0);
             } else {
@@ -301,7 +301,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const colorFillBarsLegendDataItems = props.colorFillBars
         ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
-            // isInverted property is applicable to v8 themes only
             const color = getColorFromToken(colorFillBar.color);
             const legend: ILegend = {
               title,
@@ -854,7 +853,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
         const colorFillBarId = `${_colorFillBarId}-${i}`;
-        // isInverted property is applicable to v8 themes only
         const color = getColorFromToken(colorFillBar.color);
 
         if (colorFillBar.applyPattern) {
@@ -969,7 +967,8 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       }
 
       const { xAxisCalloutData, xAxisCalloutAccessibilityData } = lineChartData![linenumber].data[index as number];
-      const formattedDate = xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
+      const formattedDate =
+        xPointToHighlight instanceof Date ? formatDate(xPointToHighlight, props.useUTC) : xPointToHighlight;
       const modifiedXVal = xPointToHighlight instanceof Date ? xPointToHighlight.getTime() : xPointToHighlight;
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const found: any = find(_calloutPoints, (element: { x: string | number }) => {
