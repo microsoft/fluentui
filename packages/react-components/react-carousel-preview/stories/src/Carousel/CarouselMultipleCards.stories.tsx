@@ -70,9 +70,11 @@ export const MultipleCards = () => {
           justifyContent: 'center',
         }}
       >
-        <CarouselButton navType="prev" />
-        <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
-        <CarouselButton navType="next" />
+        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        <CarouselNav>
+          {index => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} aria-label={`Carousel Nav Button ${index}`} />}
+        </CarouselNav>
+        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
       </div>
     </Carousel>
   );

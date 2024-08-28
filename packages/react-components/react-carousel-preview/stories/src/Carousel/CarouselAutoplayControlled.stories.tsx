@@ -76,15 +76,22 @@ export const AutoplayControlled = () => {
             justifyContent: 'center',
           }}
         >
-          <CarouselButton navType="prev" />
+          <CarouselButton navType="prev" aria-label={'Carousel Go Previous Button'} />
           <CarouselAutoplayButton
+            autoplayAriaLabel={(autoplay: boolean) => {
+              return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
+            }}
             checked={enableAutoplay}
             onCheckedChange={(_, data) => {
               setEnableAutoplay(data.checked);
             }}
           />
-          <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
-          <CarouselButton navType="next" />
+          <CarouselNav>
+            {index => (
+              <CarouselNavImageButton aria-label={`Carousel Nav Button ${index}`} image={{ src: SWAP_IMAGE }} />
+            )}
+          </CarouselNav>
+          <CarouselButton navType="next" aria-label={'Carousel Go Next Button'} />
         </div>
       </Carousel>
     </div>

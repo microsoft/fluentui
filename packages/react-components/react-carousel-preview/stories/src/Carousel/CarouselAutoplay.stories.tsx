@@ -66,10 +66,19 @@ export const Autoplay = () => {
             justifyContent: 'center',
           }}
         >
-          <CarouselButton navType="prev" />
-          <CarouselAutoplayButton />
-          <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
-          <CarouselButton navType="next" />
+          <CarouselButton navType="prev" aria-label="previous carousel page" />
+          <CarouselAutoplayButton
+            aria-label={'Carousel Autoplay Button'}
+            autoplayAriaLabel={(autoplay: boolean) => {
+              return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
+            }}
+          />
+          <CarouselNav>
+            {index => (
+              <CarouselNavImageButton aria-label={`Carousel Nav Button ${index}`} image={{ src: SWAP_IMAGE }} />
+            )}
+          </CarouselNav>
+          <CarouselButton navType="next" aria-label="next carousel page" />
         </div>
       </Carousel>
     </div>
