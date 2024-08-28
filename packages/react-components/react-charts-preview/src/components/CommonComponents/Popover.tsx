@@ -3,11 +3,11 @@ import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import {
   mergeClasses,
   PositioningVirtualElement,
+  tokens,
   useFocusableGroup,
   useId,
 } from '../../../../react-components/src/index';
-import { ChartHoverCard, getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
-import { IChartDataPoint } from '../DonutChart/index';
+import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';
 import { usePopoverStyles_unstable } from './Popover.styles';
@@ -34,7 +34,8 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
 
   const classes = usePopoverStyles_unstable(props);
   const focusAttributes = useFocusableGroup();
-
+  const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
+  const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
     <div id={useId('callout')} {...focusAttributes}>
       <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
@@ -45,12 +46,44 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           {!props.customizedCallout && props.isCalloutForStack && _multiValueCallout()}
           {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
           {!props.customizedCallout && !props.isCalloutForStack && (
-            <ChartHoverCard
-              Legend={props.xCalloutValue ? props.xCalloutValue : props.legend}
-              YValue={props.yCalloutValue ? props.yCalloutValue : props.YValue}
-              color={props.color}
-              culture={props.culture}
-            />
+            <div className={classes.calloutContentRoot}>
+              <div className={classes.calloutDateTimeContainer}>
+                <div className={classes.calloutContentX}>{props.XValue} </div>
+                {/*TO DO  if we add time for callout then will use this */}
+                {/* <div className={classNames.calloutContentX}>07:00am</div> */}
+              </div>
+              <div
+                style={
+                  props.ratio && {
+                    display: 'flex',
+                    alignItems: 'flex-end',
+                  }
+                }
+              >
+                <div className={classes.calloutBlockContainer}>
+                  <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
+                  <div
+                    className={classes.calloutContentY}
+                    style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                  >
+                    {convertToLocaleString(YValue, props.culture)}
+                  </div>
+                </div>
+                {!!props.ratio && (
+                  <div className={classes.ratio}>
+                    <>
+                      <span className={classes.numerator}>{convertToLocaleString(props.ratio[0], props.culture)}</span>/
+                      <span className={classes.denominator}>
+                        {convertToLocaleString(props.ratio[1], props.culture)}
+                      </span>
+                    </>
+                  </div>
+                )}
+              </div>
+              {!!props.descriptionMessage && (
+                <div className={classes.descriptionMessage}>{props.descriptionMessage}</div>
+              )}
+            </div>
           )}
         </PopoverSurface>
       </Popover>
@@ -87,13 +120,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                       ? {
                           display: 'inline-block',
                           ...(shouldDrawBorderBottom && {
-                            // borderBottom: `1px solid ${props.theme!.semanticColors.menuDivider}`,
+                            borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
                             paddingBottom: '10px',
                           }),
                         }
                       : {
                           ...(shouldDrawBorderBottom && {
-                            // borderBottom: `1px solid ${props.theme!.semanticColors.menuDivider}`,
+                            borderBottom: `1px solid ${tokens.colorNeutralStroke2}`,
                             paddingBottom: '10px',
                           }),
                         }
@@ -141,7 +174,11 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
               {xValue.legend!} ({yValue})
             </div>
           )}
-          <div id={`${index}_${xValue.y}`} className={classes.calloutBlockContainer}>
+          <div
+            id={`${index}_${xValue.y}`}
+            className={classes.calloutBlockContainer}
+            style={{ marginTop: props.XValue ? '13px' : 'unset', borderLeft: `4px solid ${props.color}` }}
+          >
             {toDrawShape && (
               <Shape
                 svgProps={{
@@ -158,10 +195,20 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
-              style={!toDrawShape ? { borderLeft: `4px solid ${xValue.color}` } : {}}
+              style={{
+                ...(!toDrawShape
+                  ? {
+                      borderLeft: `4px solid ${xValue.color}`,
+                      marginTop: props.XValue ? '13px' : 'unset',
+                    }
+                  : {}),
+              }}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
+              <div
+                className={classes.calloutContentY}
+                style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+              >
                 {convertToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
@@ -182,7 +229,13 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
             return (
               <div key={subcountName} className={classes.calloutBlockContainer}>
                 <div className={classes.calloutlegendText}> {convertToLocaleString(subcountName, culture)}</div>
-                <div className={classes.calloutContentY}>{convertToLocaleString(subcounts[subcountName], culture)}</div>
+                <div
+                  className={classes.calloutContentY}
+                  style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                >
+                  {convertToLocaleString(subcounts[subcountName], culture)}
+                  style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
+                </div>
               </div>
             );
           })}
