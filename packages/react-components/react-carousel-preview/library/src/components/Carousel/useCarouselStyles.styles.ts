@@ -12,6 +12,7 @@ export const carouselClassNames: SlotClassNames<CarouselSlots> = {
 const useStyles = makeStyles({
   root: {
     overflow: 'hidden',
+    overflowAnchor: 'none',
   },
 });
 

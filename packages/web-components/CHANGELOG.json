@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 28 Aug 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.60",
+      "version": "3.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfa731b32f26991c1ff4335d3e6e0472ffb7868a",
+            "comment": "feat: adjust slider sliding range"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2024 04:07:11 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.59",
       "version": "3.0.0-beta.59",

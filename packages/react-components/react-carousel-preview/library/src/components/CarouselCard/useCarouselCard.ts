@@ -38,6 +38,7 @@ export const useCarouselCard_unstable = (
 ): CarouselCardState => {
   const { focusMode = 'off' } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
+  const isMouseEvent = React.useRef<boolean>(false);
   const selectPageByElement = useCarouselContext(ctx => ctx.selectPageByElement);
 
   const focusAttr = useFocusableGroup({
@@ -73,15 +74,27 @@ export const useCarouselCard_unstable = (
 
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
-      if (isHTMLElement(e.currentTarget)) {
+      if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
         selectPageByElement(e, e.currentTarget, true);
       }
     },
     [selectPageByElement],
   );
 
-  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!e.defaultPrevented) {
+      isMouseEvent.current = true;
+    }
+  };
+  const handleMouseUp = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!e.defaultPrevented) {
+      isMouseEvent.current = false;
+    }
+  };
 
+  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
+  const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
   const state: CarouselCardState = {
     components: {
       root: 'div',
@@ -93,6 +106,8 @@ export const useCarouselCard_unstable = (
         ...props,
         id,
         onFocusCapture,
+        onMouseDown,
+        onMouseUp,
         ...focusAttrProps,
       }),
       { elementType: 'div' },

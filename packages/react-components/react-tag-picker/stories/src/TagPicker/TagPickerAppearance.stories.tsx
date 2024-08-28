@@ -28,11 +28,18 @@ const Example = ({ appearance }: Pick<TagPickerProps, 'appearance'>) => {
   };
   const tagPickerOptions = options.filter(option => !selectedOptions.includes(option));
 
+  const labelColor =
+    appearance === 'filled-lighter' || appearance === 'filled-darker'
+      ? tokens.colorNeutralForegroundInverted2
+      : tokens.colorNeutralForeground1;
+
+  const label = <span style={{ color: labelColor }}>Select Employees</span>;
+
   return (
-    <Field label="Select Employees" style={{ maxWidth: 400 }}>
+    <Field label={label} style={{ maxWidth: 400 }}>
       <TagPicker appearance={appearance} onOptionSelect={onOptionSelect} selectedOptions={selectedOptions}>
         <TagPickerControl>
-          <TagPickerGroup>
+          <TagPickerGroup aria-label="Selected Employees">
             {selectedOptions.map(option => (
               <Tag
                 key={option}

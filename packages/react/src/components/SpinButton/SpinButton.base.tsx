@@ -447,9 +447,8 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
           autoComplete="off"
           role="spinbutton"
           aria-labelledby={label && labelId}
-          // TODO: test what happens while editing
-          aria-valuenow={ariaValueNow ?? (valueIsNumber ? Number(value) : undefined)}
           aria-valuetext={ariaValueText ?? (valueIsNumber ? undefined : value)}
+          aria-valuenow={ariaValueNow}
           aria-valuemin={min}
           aria-valuemax={max}
           aria-describedby={ariaDescribedBy}
