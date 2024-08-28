@@ -6,13 +6,13 @@ import * as React from 'react';
 
 import { MotionRefForwarder } from '../MotionRefForwarder';
 import { DialogProvider, DialogSurfaceProvider } from '../../contexts';
-import type { DialogState, DialogContextValues, DialogSlots } from './Dialog.types';
+import type { DialogState, DialogContextValues, InternalDialogSlots } from './Dialog.types';
 
 /**
  * Render the final JSX of Dialog
  */
 export const renderDialog_unstable = (state: DialogState, contextValues: DialogContextValues) => {
-  assertSlots<DialogSlots>(state);
+  assertSlots<InternalDialogSlots>(state);
 
   return (
     <DialogProvider value={contextValues.dialog}>

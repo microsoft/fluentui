@@ -15,11 +15,14 @@ export const renderDialogSurface_unstable = (state: DialogSurfaceState, contextV
 
   return (
     <Portal mountNode={state.mountNode}>
-      {state.backdrop && (
-        <state.backdropMotion>
-          <state.backdrop />
-        </state.backdropMotion>
-      )}
+      {state.backdrop &&
+        // TODO: state.backdropMotion is non nullable, but assertSlots asserts it as nullable
+        // FIXME: this should be resolved by properly splitting props and state slots declaration
+        state.backdropMotion && (
+          <state.backdropMotion>
+            <state.backdrop />
+          </state.backdropMotion>
+        )}
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         <state.root />
       </DialogSurfaceProvider>

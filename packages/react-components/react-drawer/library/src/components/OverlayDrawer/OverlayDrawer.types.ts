@@ -26,7 +26,7 @@ export type OverlayDrawerInternalSlots = Pick<OverlayDrawerSlots, 'root'> & {
   /**
    * Slot for the dialog component that wraps the drawer.
    */
-  dialog: Slot<DialogProps>;
+  dialog: NonNullable<Slot<DialogProps>>;
 };
 
 /**
