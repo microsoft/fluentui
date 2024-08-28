@@ -1,1 +1,6 @@
-export interface CleanExecutorSchema {} // eslint-disable-line
+export interface CleanExecutorSchema {
+  /**
+   * Files/Directories to remove (provide relative paths to project root)
+   */
+  paths?: string[];
+}
