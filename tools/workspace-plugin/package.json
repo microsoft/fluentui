@@ -6,7 +6,6 @@
   "generators": "./generators.json",
   "executors": "./executors.json",
   "scripts": {
-    "type-check": "node  ./scripts/type-check.mjs",
     "check-graph": "node ./scripts/check-dep-graph.js"
   },
   "dependencies": {
