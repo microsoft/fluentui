@@ -1,4 +1,4 @@
-import { makeStyles, ToggleButton, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, ToggleButton, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -76,7 +76,9 @@ export const AutoplayControlled = () => {
             justifyContent: 'center',
           }}
         >
-          <CarouselButton navType="prev" aria-label={'Carousel Go Previous Button'} />
+          <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+            <CarouselButton navType="prev" aria-label={'Carousel Go Previous Button'} />
+          </Tooltip>
           <CarouselAutoplayButton
             autoplayAriaLabel={(autoplay: boolean) => {
               return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
@@ -91,7 +93,9 @@ export const AutoplayControlled = () => {
               <CarouselNavImageButton aria-label={`Carousel Nav Button ${index}`} image={{ src: SWAP_IMAGE }} />
             )}
           </CarouselNav>
-          <CarouselButton navType="next" aria-label={'Carousel Go Next Button'} />
+          <Tooltip content={'Go To Next Page'} relationship={'label'}>
+            <CarouselButton navType="next" aria-label={'Carousel Go Next Button'} />
+          </Tooltip>
         </div>
       </Carousel>
     </div>

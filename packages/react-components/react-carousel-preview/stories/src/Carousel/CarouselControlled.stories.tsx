@@ -1,4 +1,4 @@
-import { Button, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import { Carousel, CarouselButton, CarouselCard, CarouselSlider } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
@@ -68,7 +68,9 @@ export const Controlled = () => {
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
       >
-        <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
+        <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+          <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />
+        </Tooltip>
 
         <div style={{ display: 'flex', overflow: 'hidden' }}>
           <CarouselSlider>
@@ -90,7 +92,9 @@ export const Controlled = () => {
           </CarouselSlider>
         </div>
 
-        <CarouselButton navType="next" aria-label="Next Carousel Page Button" />
+        <Tooltip content={'Go To Next Page'} relationship={'label'}>
+          <CarouselButton navType="next" aria-label="Next Carousel Page Button" />
+        </Tooltip>
       </Carousel>
 
       <div className={classes.footer}>

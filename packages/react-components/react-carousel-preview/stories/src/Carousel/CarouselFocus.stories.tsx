@@ -1,4 +1,4 @@
-import { Button, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselAutoplayButton,
@@ -89,9 +89,13 @@ export const CardFocus = () => {
             return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
           }}
         />
-        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+          <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        </Tooltip>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+        <Tooltip content={'Go To Next Page'} relationship={'label'}>
+          <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+        </Tooltip>
       </div>
     </Carousel>
   );
