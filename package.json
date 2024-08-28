@@ -319,7 +319,7 @@
     "tslib": "2.6.3",
     "typescript": "5.0.4",
     "vinyl": "2.2.0",
-    "webpack": "5.93.0",
+    "webpack": "5.94.0",
     "webpack-bundle-analyzer": "4.10.1",
     "webpack-cli": "5.1.4",
     "webpack-dev-middleware": "7.1.0",
