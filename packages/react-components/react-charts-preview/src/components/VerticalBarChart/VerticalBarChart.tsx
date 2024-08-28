@@ -14,7 +14,6 @@ import { tokens } from '@fluentui/react-theme';
 import {
   IAccessibilityProps,
   CartesianChart,
-  ChartHoverCard,
   IMargins,
   ILegend,
   IRefArrayData,
@@ -268,14 +267,15 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
-        <ChartHoverCard
+        <></>
+        /*  <ChartHoverCard
           key={index}
           Legend={item.legend}
           {...(index === 0 && { XValue: `${hoverXValue || item.data}` })}
           color={item.color}
           YValue={item.data || item.y}
           culture={props.culture}
-        />
+        /> */
       );
     });
     return <>{content}</>;
@@ -284,13 +284,13 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   function _renderContentForOnlyBars(_props: IVerticalBarChartDataPoint): JSX.Element {
     return (
       <>
-        <ChartHoverCard
+        {/*  <ChartHoverCard
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           Legend={_props.legend}
           YValue={_props.yAxisCalloutData || _props.y}
           color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
           culture={props.culture}
-        />
+        /> */}
       </>
     );
   }

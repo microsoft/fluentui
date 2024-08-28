@@ -5,7 +5,7 @@ import { ILegend, ILegendsProps, LegendShape } from './Legends.types';
 import { Shape } from './shape';
 import { useLegendStyles_unstable } from './Legends.styles';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
-import { buttonProperties } from '@fluentui/react-components';
+/* import { buttonProperties } from '@fluentui/react-components'; */
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
@@ -97,7 +97,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       const { allowFocusOnLegends = true, shape } = props;
       const dataItems: ILegendItem[] = props.legends.map((legend: ILegend, index: number) => {
         return {
-          ...(allowFocusOnLegends && {
+          /* ...(allowFocusOnLegends && {
             nativeButtonProps: getIntrinsicElementProps(
               'div',
               {
@@ -108,7 +108,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
             ),
             'aria-setsize': props.legends.length,
             'aria-posinset': index + 1,
-          }),
+          }), */
           title: legend.title,
           action: legend.action!,
           hoverAction: legend.hoverAction!,

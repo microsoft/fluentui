@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps, IMargins } from '../../types/index';
-import { ChartTypes, IChartHoverCardProps, XAxisTypes, YAxisType } from '../../utilities/index';
+import { ChartTypes, XAxisTypes, YAxisType } from '../../utilities/index';
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { IPopoverComponentProps } from './Popover.types';
 /**
@@ -406,12 +406,12 @@ export interface ICartesianChartProps {
    */
   secondaryYAxistitle?: string;
 
-   /**
-     * Whether to use UTC time for axis scale, ticks, and the time display in callouts.
-     * When set to `true`, time is displayed equally, regardless of the user's timezone settings.
-     * @default true
-     */
-   useUTC?: string| boolean;
+  /**
+   * Whether to use UTC time for axis scale, ticks, and the time display in callouts.
+   * When set to `true`, time is displayed equally, regardless of the user's timezone settings.
+   * @default true
+   */
+  useUTC?: string | boolean;
 }
 
 export interface IYValueHover {
@@ -542,11 +542,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * prop to construct the y-axis
    */
   stringDatasetForYAxisDomain?: string[];
-
-  /**
-   * props to send into the chart hover card
-   */
-  chartHoverProps?: IChartHoverCardProps;
 
   /**
    * The prop used to define the culture to localize the numbers and date
