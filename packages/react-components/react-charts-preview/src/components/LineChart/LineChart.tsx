@@ -149,7 +149,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element = memoizeFunction(
       (data: LineChartDataWithIndex[]) => _createLegends(data),
     );
-    const _firstRenderOptimization =  React.useRef<boolean>(true);
+    let _firstRenderOptimization = true;
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
@@ -1295,7 +1295,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={_getCustomizedCallout()}
         onChartMouseLeave={_handleChartMouseLeave}
-        enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization.current}
+        enableFirstRenderOptimization={props.enablePerfOptimization && _firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
