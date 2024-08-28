@@ -4,6 +4,14 @@
   "title": "Clean executor",
   "description": "Remove build artifacts.",
   "type": "object",
-  "properties": {},
+  "properties": {
+    "paths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Files/Directories to remove (provide relative paths to project root)"
+    }
+  },
   "required": []
 }

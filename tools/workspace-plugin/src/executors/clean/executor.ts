@@ -1,5 +1,5 @@
-import { ExecutorContext, PromiseExecutor, logger } from '@nx/devkit';
-import { CleanExecutorSchema } from './schema';
+import { type ExecutorContext, type PromiseExecutor, logger } from '@nx/devkit';
+import { type CleanExecutorSchema } from './schema';
 import { join } from 'node:path';
 import { rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
@@ -17,18 +17,7 @@ interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 async function runClean(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
   const projectAbsoluteRootPath = join(context.root, options.project.root);
 
-  const directories = [
-    'temp',
-    'dist',
-    'dist-storybook',
-    'storybook-static',
-    'lib',
-    'lib-amd',
-    'lib-commonjs',
-    'coverage',
-  ];
-
-  const results = directories.map(dir => {
+  const results = options.paths.map(dir => {
     const dirPath = join(projectAbsoluteRootPath, dir);
     if (existsSync(dirPath)) {
       verboseLog(`removing "${dirPath}"`);
@@ -50,7 +39,9 @@ async function runClean(options: NormalizedOptions, context: ExecutorContext): P
 export default runExecutor;
 
 function normalizeOptions(schema: CleanExecutorSchema, context: ExecutorContext) {
-  const defaults = {};
+  const defaults = {
+    paths: ['temp', 'dist', 'dist-storybook', 'storybook-static', 'lib', 'lib-amd', 'lib-commonjs', 'coverage'],
+  };
   const project = context.projectsConfigurations!.projects[context.projectName!];
 
   return { ...defaults, ...schema, project };
