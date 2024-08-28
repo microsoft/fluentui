@@ -7,6 +7,7 @@ export interface IPopoverComponentProps {
   legend?: string;
   yCalloutValue?: string;
   YValue?: string | number | Date;
+  XValue?: string;
   color?: string;
   culture: string;
   isCalloutForStack: boolean;
@@ -15,6 +16,8 @@ export interface IPopoverComponentProps {
   hoverXValue?: string | number;
   YValueHover?: IYValueHover[];
   descriptionMessage?: string;
+  Legend?: string | number | Date;
+  ratio?: [number, number];
 }
 
 export interface IPopoverComponentStyles {
@@ -28,4 +31,7 @@ export interface IPopoverComponentStyles {
   calloutlegendText: string;
   calloutContentY: string;
   descriptionMessage: string;
+  ratio: string;
+  numerator: string;
+  denominator: string;
 }

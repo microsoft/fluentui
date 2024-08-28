@@ -18,6 +18,9 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
   calloutlegendText: 'fui-cart__calloutlegendText',
   calloutContentY: 'fui-cart__calloutContentY',
   descriptionMessage: 'fui-cart__descriptionMessage',
+  ratio: 'fui-cart__ratio',
+  numerator: 'fui-cart__numerator',
+  denominator: 'fui-cart__denominator',
 };
 
 /**
@@ -73,9 +76,9 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontSize: 'fontSizeBase400',
+    fontSize: tokens.fontSizeHero700,
     fontWeight: 'bold',
-    lineHeight: '22px',
+    lineHeight: '36px',
     selectors: {
       [HighContrastSelectorBlack]: {
         color: 'rgb(255, 255, 255)',
@@ -83,11 +86,22 @@ const useStyles = makeStyles({
     },
   },
   descriptionMessage: {
-    fontSize: 'fontSizeBase200',
+    fontSize: tokens.fontSizeBase200,
     color: tokens.colorNeutralForeground2,
     marginTop: '10px',
     paddingTop: '10px',
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
+  },
+  ratio: {
+    fontSize: tokens.fontSizeBase100,
+    marginLeft: '6px',
+    color: tokens.colorNeutralForeground1,
+  },
+  numerator: {
+    fontWeight: tokens.fontWeightBold,
+  },
+  denominator: {
+    fontWeight: tokens.fontWeightSemibold,
   },
 });
 /**
@@ -133,5 +147,8 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
       popoverClassNames.descriptionMessage,
       baseStyles.descriptionMessage /*props.styles?. descriptionMessage*/,
     ),
+    ratio: mergeClasses(popoverClassNames.ratio, baseStyles.ratio /*props.styles?.ratio*/),
+    numerator: mergeClasses(popoverClassNames.numerator, baseStyles.numerator /*props.styles?.numerator*/),
+    denominator: mergeClasses(popoverClassNames.denominator, baseStyles.denominator /*props.styles?.denominator*/),
   };
 };
