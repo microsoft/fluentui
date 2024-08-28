@@ -49,28 +49,28 @@ export class Menu extends FASTElement {
    * @public
    */
   @attr({ attribute: 'open-on-hover', mode: 'boolean' })
-  public openOnHover?: boolean = false;
+  public openOnHover?: boolean;
 
   /**
    * Determines if the menu should open on right click.
    * @public
    */
   @attr({ attribute: 'open-on-context', mode: 'boolean' })
-  public openOnContext?: boolean = false;
+  public openOnContext?: boolean;
 
   /**
    * Determines if the menu should close on scroll.
    * @public
    */
   @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
-  public closeOnScroll?: boolean = false;
+  public closeOnScroll?: boolean;
 
   /**
    * Determines if the menu open state should persis on click of menu item
    * @public
    */
   @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
-  public persistOnItemClick?: boolean = false;
+  public persistOnItemClick?: boolean;
 
   /**
    * Holds the slotted menu list.
