@@ -11,8 +11,6 @@ import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '../../../../react-components/src/index';
 import PopoverComponent from '../CommonComponents/Popover';
-import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme } from '@fluentui/react-components';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
 
@@ -23,7 +21,6 @@ const LEGEND_CONTAINER_HEIGHT = 40;
  */
 export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
   (props, forwardedRef) => {
-    let parentV9Theme = React.useContext(V9ThemeContext) as Theme;
     let colors: ScaleOrdinal<string, {}>;
     let _rootElem: HTMLElement | null;
     const _uniqText: string = useId('_Pie_');
@@ -236,9 +233,9 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         ? donutChartDataPoint.map((item, index) => {
             let defaultColor: string;
             if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0, parentV9Theme);
+              defaultColor = getNextColor(index, 0);
             } else {
-              defaultColor = getColorFromToken(item.color, parentV9Theme);
+              defaultColor = getColorFromToken(item.color);
             }
             return { ...item, defaultColor };
           })

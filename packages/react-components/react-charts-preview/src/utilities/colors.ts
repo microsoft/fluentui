@@ -1,6 +1,3 @@
-import { Theme, webLightTheme } from '@fluentui/react-components';
-import * as d3Color from 'd3-color';
-
 export const DataVizPalette = {
   color1: 'qualitative.1',
   color2: 'qualitative.2',
@@ -132,21 +129,12 @@ const getThemeSpecificColor = (colors: string[], isDarkTheme: boolean): string =
   return colors[0];
 };
 
-function getLuminosity(parentV9Theme?: Theme): boolean{
-  const v9Theme = parentV9Theme ? parentV9Theme : webLightTheme;
-  const backgroundColor = d3Color.hsl(v9Theme.colorNeutralBackground1);
-  const foregroundColor = d3Color.hsl(v9Theme.colorNeutralForeground1);
-  return (backgroundColor.l < foregroundColor.l);
-}
-
-export const getNextColor = (index: number, offset: number = 0, parentV9Theme?: Theme): string => {
-  const isDarkTheme: boolean = getLuminosity(parentV9Theme);
+export const getNextColor = (index: number, offset: number = 0, isDarkTheme: boolean = false): string => {
   const colors = QUALITATIVE_COLORS[(index + offset) % QUALITATIVE_COLORS.length];
   return getThemeSpecificColor(colors, isDarkTheme);
 };
 
-export const getColorFromToken = (token: string, parentV9Theme?: Theme): string => {
-  const isDarkTheme: boolean = getLuminosity(parentV9Theme);
+export const getColorFromToken = (token: string, isDarkTheme: boolean = false): string => {
   if (TOKENS.indexOf(token) >= 0) {
     const [paletteName, colorCode] = token.split('.');
     const colors = Colors[paletteName][colorCode];

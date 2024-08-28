@@ -37,8 +37,6 @@ import {
   isRtl,
   formatDate,
 } from '../../utilities/index';
-import { ThemeContext_unstable as V9ThemeContext } from '@fluentui/react-shared-contexts';
-import { Theme } from '@fluentui/react-components';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -126,7 +124,6 @@ type LineChartDataWithIndex = ILineChartPoints & { index: number };
  */
 export const LineChart: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
   (props, forwardedRef) => {
-    const parentV9Theme = React.useContext(V9ThemeContext) as Theme;
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let _calloutPoints: any[] = calloutData(_points) || [];
@@ -193,9 +190,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         ? lineChartData.map((item: ILineChartPoints, index: number) => {
             let color: string;
             if (typeof item.color === 'undefined') {
-              color = getNextColor(index, 0, parentV9Theme);
+              color = getNextColor(index, 0);
             } else {
-              color = getColorFromToken(item.color, parentV9Theme);
+              color = getColorFromToken(item.color);
             }
             return {
               ...item,
@@ -304,7 +301,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const colorFillBarsLegendDataItems = props.colorFillBars
         ? props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
             const title = colorFillBar.legend;
-            const color = getColorFromToken(colorFillBar.color, parentV9Theme);
+            const color = getColorFromToken(colorFillBar.color);
             const legend: ILegend = {
               title,
               color,
@@ -856,7 +853,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       for (let i = 0; i < _colorFillBars.current.length; i++) {
         const colorFillBar = _colorFillBars.current[i];
         const colorFillBarId = `${_colorFillBarId}-${i}`;
-        const color = getColorFromToken(colorFillBar.color, parentV9Theme);
+        const color = getColorFromToken(colorFillBar.color);
 
         if (colorFillBar.applyPattern) {
           // Using a pattern element because CSS was unable to render diagonal stripes for rect elements
