@@ -120,19 +120,9 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @remarks
    * HTML Attribute: `color`
    */
+  @toggleAttrState
   @attr
   public color?: RatingDisplayColor;
-
-  /**
-   * Handles changes to the color attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public colorChanged(prev: RatingDisplayColor | undefined, next: RatingDisplayColor | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
 
   /**
    * The size of the component.
@@ -142,19 +132,9 @@ export class RatingDisplay extends BaseRatingDisplay {
    * @remarks
    * HTML Attribute: `size`
    */
+  @toggleAttrState
   @attr
   public size?: RatingDisplaySize;
-
-  /**
-   * Handles changes to the size attribute.
-   *
-   * @param prev - The previous state
-   * @param next - The next state
-   */
-  public sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void {
-    if (prev) toggleState(this.elementInternals, prev, false);
-    if (next) toggleState(this.elementInternals, next, true);
-  }
 
   /**
    * Renders a single filled icon with a label next to it.

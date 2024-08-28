@@ -2249,7 +2249,6 @@ export const DividerAppearance: {
     readonly strong: "strong";
     readonly brand: "brand";
     readonly subtle: "subtle";
-    readonly default: "default";
 };
 
 // @public
@@ -2512,7 +2511,6 @@ export const ImageFit: {
     readonly center: "center";
     readonly contain: "contain";
     readonly cover: "cover";
-    readonly default: "default";
 };
 
 // @public
@@ -2629,6 +2627,11 @@ export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 
 // @public (undocumented)
 export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const LinkStyles: ElementStyles;
 
 // @public
 export const LinkTarget: {
@@ -2856,6 +2859,63 @@ export const MenuStyles: ElementStyles;
 export const MenuTemplate: ElementViewTemplate<Menu>;
 
 // @public
+export class MessageBar extends FASTElement {
+    constructor();
+    dismissMessageBar: () => void;
+    // @internal
+    elementInternals: ElementInternals;
+    intent?: MessageBarIntent;
+    layout?: MessageBarLayout;
+    shape?: MessageBarShape;
+}
+
+// @public
+export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+
+// Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarIntent: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+    readonly info: "info";
+};
+
+// @public (undocumented)
+export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+// Warning: (ae-missing-release-tag) "MessageBarLayout" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarLayout: {
+    readonly multiline: "multiline";
+    readonly singleline: "singleline";
+};
+
+// @public (undocumented)
+export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
+
+// Warning: (ae-missing-release-tag) "MessageBarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
+
+// @public
+export const MessageBarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
+
+// @public
 class ProgressBar_2 extends BaseProgressBar {
     shape?: ProgressBarShape;
     thickness?: ProgressBarThickness;
@@ -3027,7 +3087,6 @@ export class RatingDisplay extends BaseRatingDisplay {
     // @override
     protected getSelectedValue(): number;
     size?: RatingDisplaySize;
-    sizeChanged(prev: RatingDisplaySize | undefined, next: RatingDisplaySize | undefined): void;
 }
 
 // @public
