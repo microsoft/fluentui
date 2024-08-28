@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 21 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.7)
+
+Wed, 28 Aug 2024 07:21:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.6..@fluentui/react_v8.120.7)
+
+### Patches
+
+- fix: remove aria-valuenow from native input element ([PR #32360](https://github.com/microsoft/fluentui/pull/32360) by sarah.higley@microsoft.com)
 
 ## [8.120.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.6)
 
