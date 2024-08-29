@@ -43,10 +43,10 @@ const useStyles = makeStyles({
     width: '12px',
     height: 'var(--rect-height)',
     backgroundColor: 'var(--rect-backgroundColor)',
+    border: '1px solid',
     ...shorthands.borderColor('var(--rect-borderColor)'),
     content: 'var(--rect-content)',
     marginRight: '8px',
-    ...shorthands.border('1px solid'),
   },
   shape: {
     marginRight: '8px',
