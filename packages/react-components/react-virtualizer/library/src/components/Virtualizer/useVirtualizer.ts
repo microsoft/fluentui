@@ -385,10 +385,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         // Get exact relative 'scrollTop' via IO values
         const measurementPos = calculateOverBuffer();
 
-        const maxIndex = Math.max(numItems - (virtualizerLength - 1), 0);
+        const maxIndex = Math.max(numItems - virtualizerLength, 0);
 
-        // const offset = latestEntry.target === beforeElementRef.current ? bufferItems : Math.max(bufferItems - 1, 1);
-        // const offset = Math.max(bufferItems - 1, 1);
         let startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
 
         const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;

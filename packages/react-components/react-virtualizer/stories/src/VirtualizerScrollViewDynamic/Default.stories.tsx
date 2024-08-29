@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 export const Default = () => {
   const styles = useStyles();
-  const childLength = 1000;
+  const childLength = 10000;
   const minHeight = 42;
   const maxHeightMod = 150;
   // Array size ref stores a list of random num for div sizing and callbacks

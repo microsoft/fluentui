@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useStaticVirtualizerMeasure, Virtualizer } from '@fluentui/react-components/unstable';
-import { makeStyles, useMergedRefs } from '@fluentui/react-components';
+import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -29,10 +29,8 @@ export const ReversedHorizontal = () => {
     direction: 'horizontal',
   });
 
-  const mergedRef = useMergedRefs(scrollRef);
-
   return (
-    <div className={styles.container} role={'list'} ref={mergedRef}>
+    <div className={styles.container} role={'list'} ref={scrollRef}>
       <Virtualizer
         numItems={childLength}
         reversed
@@ -42,7 +40,6 @@ export const ReversedHorizontal = () => {
         bufferSize={bufferSize}
         itemSize={itemWidth}
         containerSizeRef={containerSizeRef}
-        scrollViewRef={mergedRef}
       >
         {index => {
           return (
