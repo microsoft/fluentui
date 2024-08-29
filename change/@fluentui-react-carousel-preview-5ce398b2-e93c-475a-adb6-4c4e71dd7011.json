@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add wheel support to react-carousel",
+  "packageName": "@fluentui/react-carousel-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
