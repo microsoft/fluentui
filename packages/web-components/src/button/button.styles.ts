@@ -58,6 +58,7 @@ import {
 } from '../theme/design-tokens.js';
 import {
   circularState,
+  disabledState,
   iconOnlyState,
   largeState,
   outlineState,
@@ -322,7 +323,19 @@ export const styles = css`
     }
 
     :host(:is(:hover, :focus-visible)) {
-      border-color: Highlight;
+      border-color: Highlight !important;
+    }
+
+    :host(${primaryState}:not(:is(:hover, :focus-visible))) {
+      background: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+
+    :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])) {
+      background: ButtonFace;
+      color: GrayText;
+      border-color: ButtonText;
     }
   `),
 );
