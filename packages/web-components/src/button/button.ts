@@ -325,6 +325,14 @@ export class BaseButton extends FASTElement {
     }
   }
 
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    if (this.popoverTargetElement) {
+      this.popoverTargetElement.removeEventListener('toggle', this.handlePopover);
+    }
+  }
+
   constructor() {
     super();
     this.elementInternals.role = 'button';
@@ -337,13 +345,12 @@ export class BaseButton extends FASTElement {
   private setPopoverTargetElement(element: string | undefined) {
     this.popoverTargetElement = element ? document.getElementById(element) : undefined;
 
-    this.popoverTargetElement?.addEventListener(
-      'toggle',
-      e =>
-        (this.popoverOpen =
-          (e as Event & { newState: 'open' | 'closed'; oldState: 'open' | 'closed' }).newState === 'open'),
-    );
+    this.popoverTargetElement?.addEventListener('toggle', this.handlePopover);
   }
+
+  private handlePopover = (e: Event) => {
+    this.popoverOpen = (e as Event & { newState: 'open' | 'closed'; oldState: 'open' | 'closed' }).newState === 'open';
+  };
 
   /**
    * This fallback creates a new slot, then creates a submit button to mirror the custom element's
