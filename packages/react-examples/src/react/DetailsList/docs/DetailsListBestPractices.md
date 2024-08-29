@@ -13,6 +13,8 @@
 
 In addition to creating column headers, DetailsList also allows the manual definition of row headers. In the example below, the Name column has been specified as a row header using `isRowHeader: true`. When creating a DetailsList where one column is clearly the primary label for the row, it's best to use `isRowHeader` on that column to create a better screen reader experience navigating the table. For selectable DetailsLists, specifying a row header also gives the checkboxes a better accessible label.
 
+If using `onItemInvoked` in DetailsList, be sure to add an element (such as buttons or links) that does the same thing, to allow voice control software to interact with each interactive row.
+
 ### Keyboard / Hotkeys
 
 DetailsList supports different selection modes with keyboard behavior differing based on the current selection mode.
