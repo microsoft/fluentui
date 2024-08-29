@@ -53,7 +53,7 @@ export function useVirtualizerScrollViewDynamic_unstable(
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
     getItemSize: props.getItemSize ?? getChildSizeAuto,
-    currentIndex: contextState?.contextIndex ?? 0,
+    virtualizerContext: contextState,
     numItems: props.numItems,
     bufferItems: _bufferItems,
     bufferSize: _bufferSize,

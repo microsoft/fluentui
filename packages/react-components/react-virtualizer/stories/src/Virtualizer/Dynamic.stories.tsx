@@ -34,6 +34,7 @@ const useStyles = makeStyles({
 
 export const Dynamic = () => {
   const [currentIndex, setCurrentIndex] = React.useState(-1);
+  const [currentPosition, setCurrentPosition] = React.useState(0);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
@@ -63,15 +64,22 @@ export const Dynamic = () => {
     [flag],
   );
 
+  const contextState = {
+    contextIndex: currentIndex,
+    setContextIndex: setCurrentIndex,
+    contextPosition: currentPosition,
+    setContextPosition: setCurrentPosition,
+  };
+
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: 100,
     getItemSize: getSizeForIndex,
     numItems: childLength,
-    currentIndex,
+    virtualizerContext: contextState,
   });
 
   return (
-    <VirtualizerContextProvider value={{ contextIndex: currentIndex, setContextIndex: setCurrentIndex }}>
+    <VirtualizerContextProvider value={contextState}>
       <div aria-label="Dynamic Virtualizer Example" className={styles.container} role={'list'} ref={scrollRef}>
         <Virtualizer
           getItemSize={getSizeForIndex}

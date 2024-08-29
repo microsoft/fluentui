@@ -12,11 +12,21 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
 
   const { targetDocument } = useFluent();
   const container = React.useRef<HTMLElement | null>(null);
+  const containerHeightRef = React.useRef<number>(0);
+  const containerWidthRef = React.useRef<number>(0);
   // the handler for resize observer
   // TODO: exclude types from this lint rule: https://github.com/microsoft/fluentui/issues/31286
   // eslint-disable-next-line no-restricted-globals
   const handleResize = debounce((entries: ResizeObserverEntry[], observer: ResizeObserver) => {
-    resizeCallback(entries, observer, container);
+    const containerHeight = container.current?.clientHeight;
+    const containerWidth = container.current?.clientWidth;
+    console.log('Resize observer - 1');
+    if (containerHeightRef.current !== containerHeight || containerWidth !== containerWidthRef.current) {
+      console.log('Resize observer - 2');
+      containerWidthRef.current = containerWidth ?? 0;
+      containerHeightRef.current = containerHeight ?? 0;
+      resizeCallback(entries, observer, container);
+    }
   });
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders

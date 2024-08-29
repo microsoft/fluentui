@@ -58,6 +58,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   /* We keep track of the progressive sizing/placement down the list,
   this helps us skip re-calculations unless children/size changes */
   const childProgressiveSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
+  if (virtualizerContext) {
+    virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
+  }
 
   // The internal tracking REF for child array (updates often).
   const childArray = useRef<ReactNode[]>(new Array(virtualizerLength));
@@ -77,6 +80,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     if (numItems !== childProgressiveSizes.current.length) {
       childProgressiveSizes.current = new Array<number>(numItems);
+      if (virtualizerContext) {
+        virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
+      }
     }
 
     for (let index = 0; index < numItems; index++) {
@@ -410,11 +416,13 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           actualIndex < newStartIndex &&
           actualIndex + virtualizerLength >= numItems &&
           newStartIndex + virtualizerLength >= numItems;
+        _virtualizerContext.setContextPosition(measurementPos);
         if (actualIndex !== newStartIndex && !endAlreadyReached) {
           batchUpdateNewIndex(newStartIndex);
         }
       },
       [
+        _virtualizerContext,
         actualIndex,
         axis,
         batchUpdateNewIndex,
@@ -504,7 +512,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   // Only fire on mount (no deps).
   useEffect(() => {
     if (actualIndex < 0) {
-      batchUpdateNewIndex(0);
+      batchUpdateNewIndex(0, 0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
