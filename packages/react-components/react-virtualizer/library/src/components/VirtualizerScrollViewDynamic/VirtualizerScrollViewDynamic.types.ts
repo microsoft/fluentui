@@ -7,12 +7,17 @@ import type {
 
 import type { VirtualizerScrollViewSlots } from '../VirtualizerScrollView/VirtualizerScrollView.types';
 import type { RefObject } from 'react';
-import type { ScrollToInterface } from '../../Utilities';
+import type { DynamicVirtualizerContextProps, ScrollToInterface } from '../../Utilities';
 
 export type VirtualizerScrollViewDynamicSlots = VirtualizerScrollViewSlots;
 
 export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> &
-  Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
+  Partial<
+    Omit<
+      VirtualizerConfigProps,
+      'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'virtualizerContext'
+    >
+  > & {
     /**
      * Set as the minimum item size.
      * Axis: 'vertical' = Height
@@ -43,6 +48,10 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
      * Imperative ref contains our scrollTo index functionality for user control.
      */
     enablePagination?: boolean;
+    /**
+     * Enables override of dynamic virtualizer context if required.
+     */
+    virtualizerContext: DynamicVirtualizerContextProps;
   };
 
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> &

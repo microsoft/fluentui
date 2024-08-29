@@ -514,7 +514,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   // Only fire on mount (no deps).
   useEffect(() => {
     if (actualIndex < 0) {
-      batchUpdateNewIndex(0, 0);
+      batchUpdateNewIndex(0);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

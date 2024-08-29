@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { VirtualizerContextProps } from './types';
+import type { DynamicVirtualizerContextProps, VirtualizerContextProps } from './types';
 import { useMemo, useState, useRef } from 'react';
 
 const VirtualizerContext = React.createContext<VirtualizerContextProps | undefined>(
@@ -14,7 +14,7 @@ export const useVirtualizerContext_unstable = () => {
 
 export const useVirtualizerContextState_unstable = (
   passedContext?: VirtualizerContextProps,
-): VirtualizerContextProps => {
+): DynamicVirtualizerContextProps => {
   const virtualizerContext = useVirtualizerContext_unstable();
   const [_contextIndex, _setContextIndex] = useState<number>(-1);
   const [_contextPosition, _setContextPosition] = useState<number>(0);
@@ -23,34 +23,17 @@ export const useVirtualizerContextState_unstable = (
   /* We respect any wrapped providers while also ensuring defaults or passed through
    * Order of usage -> Passed Prop -> Provider Context -> Internal State default
    */
-  const _context = useMemo(
-    () =>
-      passedContext ??
-      virtualizerContext ?? {
-        contextIndex: _contextIndex,
-        setContextIndex: _setContextIndex,
-        contextPosition: _contextPosition,
-        setContextPosition: _setContextPosition,
-        childProgressiveSizes,
-      },
+  const context = useMemo(
+    () => ({
+      contextIndex: passedContext?.contextIndex ?? virtualizerContext?.contextIndex ?? _contextIndex,
+      setContextIndex: passedContext?.setContextIndex ?? virtualizerContext?.setContextIndex ?? _setContextIndex,
+      contextPosition: passedContext?.contextPosition ?? virtualizerContext?.contextPosition ?? _contextPosition,
+      setContextPosition:
+        passedContext?.setContextPosition ?? virtualizerContext?.setContextPosition ?? _setContextPosition,
+      childProgressiveSizes,
+    }),
     [_contextIndex, _contextPosition, passedContext, virtualizerContext],
   );
-
-  const context = useMemo(() => {
-    return {
-      contextIndex: _context.contextIndex,
-      setContextIndex: _context.setContextIndex,
-      contextPosition: _context.contextPosition,
-      setContextPosition: _context.setContextPosition,
-      childProgressiveSizes,
-    };
-  }, [
-    _context.contextIndex,
-    _context.contextPosition,
-    _context.setContextIndex,
-    _context.setContextPosition,
-    childProgressiveSizes,
-  ]);
 
   return context;
 };
