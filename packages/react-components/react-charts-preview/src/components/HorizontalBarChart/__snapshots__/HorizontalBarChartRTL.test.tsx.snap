@@ -15,10 +15,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            one
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              one
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -72,10 +76,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            two
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              two
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -129,10 +137,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            three
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              three
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -176,6 +188,10 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </svg>
       </div>
     </div>
+    <div
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      id="callout70"
+    />
   </div>
 </div>
 `;
@@ -195,10 +211,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            one
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              one
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -252,10 +272,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            two
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              two
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -309,10 +333,14 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            three
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              three
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -356,6 +384,10 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
         </svg>
       </div>
     </div>
+    <div
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      id="callout75"
+    />
   </div>
 </div>
 `;
@@ -378,10 +410,14 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <div
               class="fui-hbc__chartTitleLeft"
-              data-is-focusable="true"
-              role="text"
+              tabindex="0"
             >
-              one
+              <span
+                data-is-focusable="false"
+                role="text"
+              >
+                one
+              </span>
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -435,10 +471,14 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <div
               class="fui-hbc__chartTitleLeft"
-              data-is-focusable="true"
-              role="text"
+              tabindex="0"
             >
-              two
+              <span
+                data-is-focusable="false"
+                role="text"
+              >
+                two
+              </span>
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -492,10 +532,14 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           >
             <div
               class="fui-hbc__chartTitleLeft"
-              data-is-focusable="true"
-              role="text"
+              tabindex="0"
             >
-              three
+              <span
+                data-is-focusable="false"
+                role="text"
+              >
+                three
+              </span>
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -539,6 +583,10 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
           </svg>
         </div>
       </div>
+      <div
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        id="callout80"
+      />
     </div>
   </div>
 </div>
@@ -548,7 +596,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty16"
+    id="_HBC_empty81"
     role="alert"
     style="opacity: 0;"
   />
@@ -571,10 +619,14 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            one
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              one
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -628,10 +680,14 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            two
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              two
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -685,10 +741,14 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            three
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              three
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -732,6 +792,10 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
         </svg>
       </div>
     </div>
+    <div
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      id="callout85"
+    />
   </div>
 </div>
 `;
@@ -751,10 +815,14 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            one
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              one
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -808,10 +876,14 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            two
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              two
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -865,10 +937,14 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         >
           <div
             class="fui-hbc__chartTitleLeft"
-            data-is-focusable="true"
-            role="text"
+            tabindex="0"
           >
-            three
+            <span
+              data-is-focusable="false"
+              role="text"
+            >
+              three
+            </span>
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -912,6 +988,10 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
         </svg>
       </div>
     </div>
+    <div
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      id="callout5"
+    />
   </div>
 </div>
 `;
