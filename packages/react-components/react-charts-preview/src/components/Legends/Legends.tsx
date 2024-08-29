@@ -236,8 +236,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           style={{
             '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
-            // removed theme?.semanticColors.buttonBorder from borderColor
-            '--rect-borderColor': legend.color,
+            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
             '--rect-content': legend.stripePattern
               ? // eslint-disable-next-line @fluentui/max-len
                 `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
@@ -245,7 +244,9 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           }} /* eslint-enable react/jsx-no-bind */
         >
           {shape}
-          <div className={classes.text}>{legend.title}</div>
+          <div className={classes.text} style={{ opacity: color === tokens.colorNeutralBackground1 ? '0.67' : '' }}>
+            {legend.title}
+          </div>
         </Button>
       );
     }
@@ -266,15 +267,14 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           shape={legend.shape as LegendShape}
           classNameForNonSvg={classes.rect}
           style={{
-            height: legend.isLineLegendInBarChart ? '4px' : '12px',
-            backgroundColor: legend.stripePattern ? '' : color,
-            borderColor: legend.color,
-            content: legend.stripePattern
+            '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
+            '--rect-backgroundColor': legend.stripePattern ? '' : color,
+            '--rect-borderColor': legend.color ? legend.color : tokens.colorNeutralStroke1,
+            '--rect-content': legend.stripePattern
               ? // eslint-disable-next-line @fluentui/max-len
                 `repeating-linear-gradient(135deg, transparent, transparent 3px, ${color} 1px, ${color} 4px)`
               : '',
-            opacity: legend.opacity,
-          }}
+          }} /* eslint-enable react/jsx-no-bind */
         />
       );
     }
@@ -284,7 +284,13 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
       // if one or more legends are selected
       if (_isLegendSelected) {
         // if the given legend (title) is one of the selected legends
-        legendColor = color;
+        if (selectedLegends[title]) {
+          legendColor = color;
+        }
+        // if the given legend is unselected
+        else {
+          legendColor = tokens.colorNeutralBackground1;
+        }
       }
       // if no legend is selected
       else {
@@ -293,11 +299,10 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
         if (activeLegend === title || activeLegend === '') {
           legendColor = color;
         }
-        // TO DO: this is removing the shape's color for all legends
-        // // if there is a hovered legend but the given legend is not the one
-        // else {
-        //   legendColor = tokens.colorNeutralBackground1;
-        // }
+        // if there is a hovered legend but the given legend is not the one
+        else {
+          legendColor = tokens.colorNeutralBackground1;
+        }
       }
       return legendColor;
     }
