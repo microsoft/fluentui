@@ -97,7 +97,6 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
             columns={columns}
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
-            onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
             dragDropEvents={this._dragDropEvents}
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
@@ -180,10 +179,6 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
       },
     };
   }
-
-  private _onItemInvoked = (item: IExampleItem): void => {
-    alert(`Item invoked: ${item.name}`);
-  };
 
   private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
     const key = column.key as keyof IExampleItem;
