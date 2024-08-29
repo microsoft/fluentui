@@ -21,9 +21,9 @@ export default runExecutor;
 
 interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 
-async function runGenerateApi(options: NormalizedOptions, _context: ExecutorContext): Promise<boolean> {
+async function runGenerateApi(options: NormalizedOptions, context: ExecutorContext): Promise<boolean> {
   if (generateTypeDeclarations(options)) {
-    return apiExtractor(options);
+    return apiExtractor(options, context);
   }
 
   return false;
@@ -91,7 +91,7 @@ function generateTypeDeclarations(options: NormalizedOptions) {
   }
 }
 
-function apiExtractor(options: NormalizedOptions) {
+function apiExtractor(options: NormalizedOptions, context: ExecutorContext) {
   const extractorConfigPath = options.config;
 
   // Load,parse,customize and prepare the api-extractor.json file for API Extractor API
@@ -109,7 +109,7 @@ function apiExtractor(options: NormalizedOptions) {
     localBuild: options.local,
 
     // Equivalent to the "--verbose" command-line parameter
-    showVerboseMessages: process.env.NX_VERBOSE_LOGGING === 'true',
+    showVerboseMessages: context.isVerbose,
     showDiagnostics: options.diagnostics,
   });
 
@@ -125,7 +125,7 @@ function apiExtractor(options: NormalizedOptions) {
   return false;
 
   function customizeExtractorConfig(apiExtractorConfig: IConfigFile) {
-    apiExtractorConfig.compiler = getTsPathAliasesApiExtractorConfig({
+    apiExtractorConfig.compiler = getTsConfigForApiExtractor({
       packageJson: parseJson(readFileSync(options.packageJsonPath, 'utf-8')),
       tsConfig: parseJson(readFileSync(options.tsConfigPathForCompilation, 'utf-8')),
     });
@@ -134,7 +134,7 @@ function apiExtractor(options: NormalizedOptions) {
   }
 }
 
-function getTsPathAliasesApiExtractorConfig(options: { tsConfig: TsConfig; packageJson: PackageJson }) {
+function getTsConfigForApiExtractor(options: { tsConfig: TsConfig; packageJson: PackageJson }) {
   const { packageJson, tsConfig } = options;
 
   /**
@@ -191,6 +191,7 @@ function getTsPathAliasesApiExtractorConfig(options: { tsConfig: TsConfig; packa
  *  - it doesn't affect our declaration types emit
  */
 function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
+  // TODO: make this configurable via schema api
   const packagesWithInvalidTypes: string[] = [];
   const dependencies = Object.keys({ ...options.pkgJson.dependencies, ...options.pkgJson.peerDependencies });
   const shouldEnable = dependencies.some(dependency => packagesWithInvalidTypes.includes(dependency));
