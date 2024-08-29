@@ -76,7 +76,7 @@ export const WithAction = () => {
   const styles = useStyles();
   const linkRef = React.useRef<HTMLAnchorElement>(null);
 
-  const onActionCardKeyDown = (ev: any) => {
+  const onActionCardKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.key === 'Enter') {
       onActionCardClick();
     }
@@ -90,7 +90,7 @@ export const WithAction = () => {
     linkRef.current?.click();
   };
 
-  const onLinkedCardKeyDown = (ev: any) => {
+  const onLinkedCardKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
     if (ev.key === 'Enter') {
       onLinkedCardClick();
     }
