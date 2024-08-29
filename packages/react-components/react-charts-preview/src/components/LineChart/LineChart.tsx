@@ -21,6 +21,9 @@ import {
   ILineChartDataPoint,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
+import {
+  useArrowNavigationGroup
+} from "@fluentui/react-components";
 import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
@@ -427,6 +430,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               cy={_yAxisScale(y1)}
               fill={activePoint === circleId ? tokens.colorNeutralBackground1 : lineColor}
               opacity={isLegendSelected ? 1 : 0.1}
+              tabIndex={_points[i].legend !== '' ? 0 : undefined}
               onMouseOver={(event: React.MouseEvent<SVGElement>) =>
                 _handleHover(
                   x1,
@@ -508,6 +512,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                   strokeWidth={Number.parseFloat(strokeWidth.toString()) + lineBorderWidth}
                   stroke={_points[i].lineOptions?.lineBorderColor || tokens.colorNeutralBackground1}
                   opacity={1}
+                  tabIndex={_points[i].legend !== '' ? 0 : undefined}
                 />,
               );
             }
@@ -527,6 +532,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 onMouseOut={_handleMouseOut}
                 {..._getClickHandler(_points[i].onLineClick)}
                 opacity={1}
+                tabIndex={_points[i].legend !== '' ? 0 : undefined}
               />,
             );
           } else {
@@ -541,6 +547,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 strokeWidth={strokeWidth}
                 strokeLinecap={_points[i].lineOptions?.strokeLinecap ?? 'round'}
                 opacity={0.1}
+                tabIndex={_points[i].legend !== '' ? 0 : undefined}
               />,
             );
           }
@@ -558,6 +565,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
               strokeWidth={DEFAULT_LINE_STROKE_SIZE}
               stroke={lineColor}
               visibility={isPointHighlighted ? 'visibility' : 'hidden'}
+              tabIndex={_points[i].legend !== '' ? 0 : undefined}
               onMouseMove={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOver={event => _onMouseOverLargeDataset.bind(i, verticaLineHeight, event)}
               onMouseOut={_handleMouseOut}
@@ -619,6 +627,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                 strokeWidth={strokeWidth}
                 role="img"
                 aria-label={_getAriaLabel(i, j - 1)}
+                tabIndex={_points[i].legend !== '' ? 0 : undefined}
               />,
             );
             if (j + 1 === _points[i].data.length) {
@@ -672,6 +681,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                     strokeWidth={strokeWidth}
                     role="img"
                     aria-label={_getAriaLabel(i, j)}
+                    tabIndex={_points[i].legend !== '' ? 0 : undefined}
                   />
                   {/* Dummy circle acting as magnetic latch for last callout point */}
                   <circle
@@ -708,6 +718,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
                     strokeWidth={0}
                     focusable={false}
                     onBlur={_handleMouseOut}
+                    tabIndex={_points[i].legend !== '' ? 0 : undefined}
                   />
                 </React.Fragment>,
               );
@@ -1280,8 +1291,9 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       tickValues,
       tickFormat,
     };
-
+    const arrowAttributes = useArrowNavigationGroup({ axis: "horizontal" });
     return !_isChartEmpty() ? (
+      <div {...arrowAttributes}>
       <CartesianChart
         {...props}
         chartTitle={props.data.chartTitle}
@@ -1338,6 +1350,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           );
         }}
       />
+      </div>
     ) : (
       <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
     );

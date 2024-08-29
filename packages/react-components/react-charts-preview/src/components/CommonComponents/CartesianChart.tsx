@@ -24,6 +24,10 @@ import {
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import {
+  useArrowNavigationGroup
+} from "@fluentui/react-components";
 
 /**
  * Cartesian Chart component
@@ -82,6 +86,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   }
 
   const classes = useCartesianChartStyles_unstable(props);
+  const focusAttributes = useFocusableGroup();
+  const arrowAttributes = useArrowNavigationGroup({ axis: "horizontal" });
   // ComponentdidMount and Componentwillunmount logic
   React.useEffect(() => {
     _fitParentContainer();
@@ -529,7 +535,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         defaultTabbableElement={`#${idForDefaultTabbableElement}`}
         {...svgFocusZoneProps}
       > */}
-      <div className={classes.chartWrapper}>
+      <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
       {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <svg
         width={svgDimensions.width}

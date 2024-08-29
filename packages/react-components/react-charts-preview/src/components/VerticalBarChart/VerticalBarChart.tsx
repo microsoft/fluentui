@@ -568,6 +568,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -640,6 +641,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             data-is-focusable={!props.hideTooltip}
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -711,6 +713,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
