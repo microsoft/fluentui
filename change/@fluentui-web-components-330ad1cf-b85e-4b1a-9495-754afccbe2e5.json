@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit",
-  "packageName": "@fluentui/web-components",
-  "email": "rupertdavid@microsoft.com",
-  "dependentChangeType": "patch"
-}

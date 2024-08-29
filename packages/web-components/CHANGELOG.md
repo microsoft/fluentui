@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 28 Aug 2024 04:06:49 GMT and should not be manually modified.
+This log was last generated on Thu, 29 Aug 2024 04:07:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.61)
+
+Thu, 29 Aug 2024 04:07:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.60..@fluentui/web-components_v3.0.0-beta.61)
+
+### Changes
+
+- chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit ([PR #32405](https://github.com/microsoft/fluentui/pull/32405) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.60)
 

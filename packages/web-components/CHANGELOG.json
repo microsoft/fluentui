@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 29 Aug 2024 04:07:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.61",
+      "version": "3.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e15398ac2b81b40f92171d4966e57c0734377355",
+            "comment": "chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2024 04:06:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.60",
       "version": "3.0.0-beta.60",
