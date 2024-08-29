@@ -83,7 +83,11 @@ export const DetailsListKeyboardAccessibleResizeAndReorderExample: React.Functio
   const onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
     const key = column.key as keyof IExampleItem;
     if (key === 'name') {
-      return <Link data-selection-invoke={true}>{item[key]}</Link>;
+      return (
+        <Link data-selection-invoke={true} underline>
+          {item[key]}
+        </Link>
+      );
     }
     return String(item[key]);
   };

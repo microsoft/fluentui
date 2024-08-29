@@ -54,7 +54,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     // Reset the items and columns to match the state.
     this.setState({
-      sortedItems: sortedItems,
+      sortedItems,
       columns: columns.map(col => {
         col.isSorted = col.key === column.key;
 
@@ -107,7 +107,11 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
       return <Image src={fieldContent} width={50} height={50} imageFit={ImageFit.cover} />;
 
     case 'name':
-      return <Link href="#">{fieldContent}</Link>;
+      return (
+        <Link href="#" underline>
+          {fieldContent}
+        </Link>
+      );
 
     case 'color':
       return (
