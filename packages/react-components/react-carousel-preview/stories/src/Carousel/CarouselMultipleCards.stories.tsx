@@ -1,4 +1,4 @@
-import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -70,11 +70,15 @@ export const MultipleCards = () => {
           justifyContent: 'center',
         }}
       >
-        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+          <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+        </Tooltip>
         <CarouselNav>
           {index => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} aria-label={`Carousel Nav Button ${index}`} />}
         </CarouselNav>
-        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+        <Tooltip content={'Go To Next Page'} relationship={'label'}>
+          <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+        </Tooltip>
       </div>
     </Carousel>
   );

@@ -1,4 +1,4 @@
-import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -66,7 +66,9 @@ export const Autoplay = () => {
             justifyContent: 'center',
           }}
         >
-          <CarouselButton navType="prev" aria-label="previous carousel page" />
+          <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+            <CarouselButton navType="prev" aria-label="previous carousel page" />
+          </Tooltip>
           <CarouselAutoplayButton
             aria-label={'Carousel Autoplay Button'}
             autoplayAriaLabel={(autoplay: boolean) => {
@@ -78,7 +80,9 @@ export const Autoplay = () => {
               <CarouselNavImageButton aria-label={`Carousel Nav Button ${index}`} image={{ src: SWAP_IMAGE }} />
             )}
           </CarouselNav>
-          <CarouselButton navType="next" aria-label="next carousel page" />
+          <Tooltip content={'Go To Next Page'} relationship={'label'}>
+            <CarouselButton navType="next" aria-label="next carousel page" />
+          </Tooltip>
         </div>
       </Carousel>
     </div>

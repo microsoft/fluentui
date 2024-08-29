@@ -1,4 +1,4 @@
-import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
@@ -62,11 +62,15 @@ export const Circular = () => (
         justifyContent: 'center',
       }}
     >
-      <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+      <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+      </Tooltip>
       <CarouselNav appearance="brand">
         {index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}
       </CarouselNav>
-      <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+      <Tooltip content={'Go To Next Page'} relationship={'label'}>
+        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+      </Tooltip>
     </div>
   </Carousel>
 );
