@@ -2,13 +2,13 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "title": "GenerateApi executor",
-  "description": "",
+  "description": "Generate api.md files for the project including rolluped d.ts (usually index.d.ts)",
   "type": "object",
   "properties": {
     "config": {
       "type": "string",
       "description": "Path to the api-extractor.json config file",
-      "default": "config/api-extractor.json"
+      "default": "{projectRoot}/config/api-extractor.json"
     },
     "local": {
       "type": "boolean",

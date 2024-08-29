@@ -31,16 +31,35 @@ async function runGenerateApi(options: NormalizedOptions, _context: ExecutorCont
 
 function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorContext) {
   const defaults = {
-    config: 'config/api-extractor.json',
+    config: '{projectRoot}/config/api-extractor.json',
     local: true,
     diagnostics: false,
   };
-  const resolveLocalFlag = Boolean((schema.local || process.env.__FORCE_API_MD_UPDATE__) ?? !isCI());
-  const project = context.projectsConfigurations!.projects[context.projectName!];
-  const projectAbsolutePath = join(context.root, project.root);
-  const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
+  const resolvedSchema = { ...defaults, ...schema };
 
-  return { ...defaults, ...schema, local: resolveLocalFlag, project, projectAbsolutePath, tsConfigPathForCompilation };
+  const project = context.projectsConfigurations!.projects[context.projectName!];
+  const resolveLocalFlag = Boolean((schema.local || process.env.__FORCE_API_MD_UPDATE__) ?? !isCI());
+  const projectAbsolutePath = join(context.root, project.root);
+  const resolveConfig = getApiExtractorConfigPath(resolvedSchema, projectAbsolutePath);
+  const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
+  const packageJsonPath = join(projectAbsolutePath, 'package.json');
+
+  if (tsConfigPathForCompilation.error) {
+    throw new Error(tsConfigPathForCompilation.error);
+  }
+  if (resolveConfig.error) {
+    throw new Error(resolveConfig.error);
+  }
+
+  return {
+    ...resolvedSchema,
+    local: resolveLocalFlag,
+    config: resolveConfig.result!,
+    project,
+    projectAbsolutePath,
+    tsConfigPathForCompilation: tsConfigPathForCompilation.result!,
+    packageJsonPath,
+  };
 
   function isCI() {
     return (
@@ -54,7 +73,8 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
 function generateTypeDeclarations(options: NormalizedOptions) {
   const cmd = [
     'tsc',
-    `-p ./${options.tsConfigPathForCompilation}`,
+    `-p ${options.tsConfigPathForCompilation}`,
+    '--pretty',
     '--emitDeclarationOnly',
     // turn off path aliases.
     '--baseUrl .',
@@ -72,11 +92,7 @@ function generateTypeDeclarations(options: NormalizedOptions) {
 }
 
 function apiExtractor(options: NormalizedOptions) {
-  const extractorConfigPath = join(options.projectAbsolutePath, options.config);
-
-  if (!existsSync(extractorConfigPath)) {
-    throw new Error(`api-extractor.json not found at "${extractorConfigPath}"`);
-  }
+  const extractorConfigPath = options.config;
 
   // Load,parse,customize and prepare the api-extractor.json file for API Extractor API
   const rawExtractorConfig = ExtractorConfig.loadFile(extractorConfigPath);
@@ -84,7 +100,7 @@ function apiExtractor(options: NormalizedOptions) {
   const extractorConfig = ExtractorConfig.prepare({
     configObject: rawExtractorConfig,
     configObjectFullPath: extractorConfigPath,
-    packageJsonFullPath: undefined,
+    packageJsonFullPath: options.packageJsonPath,
   });
 
   // Invoke API Extractor
@@ -110,7 +126,7 @@ function apiExtractor(options: NormalizedOptions) {
 
   function customizeExtractorConfig(apiExtractorConfig: IConfigFile) {
     apiExtractorConfig.compiler = getTsPathAliasesApiExtractorConfig({
-      packageJson: parseJson(readFileSync(join(options.projectAbsolutePath, 'package.json'), 'utf-8')),
+      packageJson: parseJson(readFileSync(options.packageJsonPath, 'utf-8')),
       tsConfig: parseJson(readFileSync(options.tsConfigPathForCompilation, 'utf-8')),
     });
 
@@ -175,35 +191,40 @@ function getTsPathAliasesApiExtractorConfig(options: { tsConfig: TsConfig; packa
  *  - it doesn't affect our declaration types emit
  */
 function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
-  const packagesWithInvalidTypes = [
-    /**
-     * TODO: check if this is still needed (we are at SB v7)
-     * @see @storybook/api/dist/ts3.9/lib/stories.d.ts:1:8 - `import React from 'react'`
-     */
-    '@storybook/api',
-  ];
+  const packagesWithInvalidTypes: string[] = [];
   const dependencies = Object.keys({ ...options.pkgJson.dependencies, ...options.pkgJson.peerDependencies });
   const shouldEnable = dependencies.some(dependency => packagesWithInvalidTypes.includes(dependency));
 
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
-function getTsConfigPathUsedForProduction(projectRoot: string) {
-  const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'];
+function getApiExtractorConfigPath(schema: Required<GenerateApiExecutorSchema>, projectRoot: string) {
+  const configPath = schema.config.replace('{projectRoot}', projectRoot);
 
+  if (!existsSync(configPath)) {
+    return { error: `Cannot find api-extractor.json at "${configPath}"`, result: null };
+  }
+
+  return { error: null, result: configPath };
+}
+
+function getTsConfigPathUsedForProduction(projectRoot: string) {
   const tsConfigPath = join(projectRoot, `./tsconfig.json`);
+  const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'].map(fileName =>
+    join(projectRoot, fileName),
+  );
 
   if (!existsSync(tsConfigPath)) {
-    throw new Error(`${tsConfigPath} doesn't exist`);
+    return { error: `${tsConfigPath} doesn't exist`, result: null };
   }
 
-  const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => existsSync(join(projectRoot, fileName)));
+  const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => existsSync(fileName));
 
   if (!tsConfigFileForCompilation) {
-    throw new Error(`no tsconfig from one of [${tsConfigFilesWithAliases}] found!`);
+    return { error: `no tsconfig from one of [${tsConfigFilesWithAliases}] found!`, result: null };
   }
 
-  return tsConfigFileForCompilation;
+  return { error: null, result: tsConfigFileForCompilation };
 }
 
 function verboseLog(message: string, kind: keyof typeof logger = 'info') {
