@@ -252,7 +252,7 @@
     "@jridgewell/trace-mapping" "^0.3.25"
     jsesc "^2.5.1"
 
-"@babel/generator@>=7", "@babel/generator@^7.10.3", "@babel/generator@^7.12.13", "@babel/generator@^7.23.0", "@babel/generator@^7.24.6", "@babel/generator@^7.25.0", "@babel/generator@^7.25.6", "@babel/generator@^7.4.4", "@babel/generator@^7.7.2":
+"@babel/generator@>=7", "@babel/generator@^7.10.3", "@babel/generator@^7.12.13", "@babel/generator@^7.23.0", "@babel/generator@^7.24.6", "@babel/generator@^7.25.6", "@babel/generator@^7.4.4", "@babel/generator@^7.7.2":
   version "7.25.6"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.25.6.tgz#0df1ad8cb32fe4d2b01d8bf437f153d19342a87c"
   integrity sha512-VPC82gr1seXOpkjAAKoLhP50vx4vGNlF4msF64dSFq1P8RfB+QAuJWGHPXXPc8QyfVWwwB/TNNU4+ayZmHNbZw==
@@ -466,7 +466,7 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.24.6.tgz#5e030f440c3c6c78d195528c3b688b101a365328"
   integrity sha512-eNZXdfU35nJC2h24RznROuOpO94h6x8sg9ju0tT9biNtLZ2vuP8SduLqqV+/8+cebSLV9SJEAN5Z3zQbJG/M+Q==
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.10.3", "@babel/parser@^7.13.16", "@babel/parser@^7.14.7", "@babel/parser@^7.20.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.0", "@babel/parser@^7.24.4", "@babel/parser@^7.24.6", "@babel/parser@^7.25.0", "@babel/parser@^7.25.3", "@babel/parser@^7.25.6", "@babel/parser@^7.4.5":
+"@babel/parser@^7.1.0", "@babel/parser@^7.10.3", "@babel/parser@^7.13.16", "@babel/parser@^7.14.7", "@babel/parser@^7.20.0", "@babel/parser@^7.20.7", "@babel/parser@^7.23.0", "@babel/parser@^7.24.4", "@babel/parser@^7.24.6", "@babel/parser@^7.25.0", "@babel/parser@^7.25.6", "@babel/parser@^7.4.5":
   version "7.25.6"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.25.6.tgz#85660c5ef388cbbf6e3d2a694ee97a38f18afe2f"
   integrity sha512-trGdfBdbD0l1ZPmcJ83eNxB9rbEax4ALFTF7fN386TMYbeCQbyme5cOEXQhbGXKebwGaB/J52w1mrklMcbgy6Q==
