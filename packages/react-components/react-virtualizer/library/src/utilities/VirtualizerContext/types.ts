@@ -5,7 +5,12 @@ import * as React from 'react';
 export type VirtualizerContextProps = {
   contextIndex: number;
   setContextIndex: (index: number) => void;
-  contextPosition: number;
-  setContextPosition: (index: number) => void;
-  childProgressiveSizes: React.MutableRefObject<number[]>;
+  /*
+   * These option props are used in dynamic virtualizer
+   */
+  contextPosition?: number;
+  setContextPosition?: (index: number) => void;
+  childProgressiveSizes?: React.MutableRefObject<number[]>;
 };
+
+export type DynamicVirtualizerContextProps = Required<VirtualizerContextProps>;

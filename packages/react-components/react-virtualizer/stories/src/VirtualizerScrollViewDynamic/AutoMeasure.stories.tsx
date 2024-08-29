@@ -5,9 +5,9 @@ import { useEffect } from 'react';
 
 const useStyles = makeStyles({
   child: {
-    lineHeight: '42px',
+    lineHeight: '25px',
     width: '100%',
-    minHeight: '42px',
+    minHeight: '25px',
   },
 });
 

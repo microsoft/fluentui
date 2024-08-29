@@ -1,5 +1,5 @@
 import { MutableRefObject, RefObject } from 'react';
-import { VirtualizerContextProps } from '../Utilities';
+import { DynamicVirtualizerContextProps } from '../Utilities';
 
 export type VirtualizerMeasureProps = {
   defaultItemSize: number;
@@ -18,7 +18,7 @@ export type VirtualizerMeasureProps = {
 
 export type VirtualizerMeasureDynamicProps = {
   defaultItemSize: number;
-  virtualizerContext: VirtualizerContextProps;
+  virtualizerContext: DynamicVirtualizerContextProps;
   numItems: number;
   getItemSize: (index: number) => number;
   direction?: 'vertical' | 'horizontal';

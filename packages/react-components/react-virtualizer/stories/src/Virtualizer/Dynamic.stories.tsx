@@ -4,6 +4,7 @@ import {
   useDynamicVirtualizerMeasure,
   VirtualizerContextProvider,
 } from '@fluentui/react-components/unstable';
+import type { DynamicVirtualizerContextProps } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 import { useCallback, useRef } from 'react';
 
@@ -35,6 +36,7 @@ const useStyles = makeStyles({
 export const Dynamic = () => {
   const [currentIndex, setCurrentIndex] = React.useState(-1);
   const [currentPosition, setCurrentPosition] = React.useState(0);
+  const childProgressiveSizes = React.useRef<number[]>([]);
   const [flag, toggleFlag] = React.useState(false);
   const styles = useStyles();
   const childLength = 1000;
@@ -64,11 +66,12 @@ export const Dynamic = () => {
     [flag],
   );
 
-  const contextState = {
+  const contextState: DynamicVirtualizerContextProps = {
     contextIndex: currentIndex,
     setContextIndex: setCurrentIndex,
     contextPosition: currentPosition,
     setContextPosition: setCurrentPosition,
+    childProgressiveSizes,
   };
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useDynamicVirtualizerMeasure({

@@ -38,7 +38,7 @@ export {
   scrollToItemDynamic,
 } from './Utilities';
 
-export type { VirtualizerContextProps } from './Utilities';
+export type { VirtualizerContextProps, DynamicVirtualizerContextProps } from './Utilities';
 
 export {
   VirtualizerScrollView,

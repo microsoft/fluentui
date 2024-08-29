@@ -331,6 +331,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
            */
           let measurementPos = 0;
           if (latestEntry.target === afterElementRef.current) {
+            console.log('AFTER');
             // Get after buffers position
             measurementPos = calculateTotalSize() - calculateAfter();
 
@@ -359,6 +360,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
               measurementPos -= additionalOverflow;
             }
           } else if (latestEntry.target === beforeElementRef.current) {
+            console.log('BEFORE');
             // Get before buffers position
             measurementPos = calculateBefore();
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)

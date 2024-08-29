@@ -46,7 +46,6 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
         // Error? ignore?
         return;
       }
-      console.log('Scroll ref!');
 
       if (scrollRef.current !== targetDocument?.body) {
         // We have a local scroll container
@@ -62,29 +61,15 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
 
       let indexSizer = 0;
       let i = 0;
-      let length = 1;
-
-      console.log('indexRef:', indexRef.current);
-      console.log('virtualizerContext.contextPosition:', virtualizerContext.contextPosition);
-      console.log('array positions:', virtualizerContext.childProgressiveSizes);
-      console.log('containerSizeRef.current:', containerSizeRef.current);
-
-      console.log('indexSizer <= containerSizeRef.current:', indexSizer <= containerSizeRef.current);
-      console.log(
-        'length + virtualizerContext.contextPosition < numItems:',
-        length + virtualizerContext.contextPosition < numItems,
-      );
+      let length = 0;
 
       const sizeToBeat = containerSizeRef.current + virtualizerBufferSize * 2;
-      console.log('numItems:', numItems);
-      while (indexSizer <= containerSizeRef.current && i + virtualizerContext.contextIndex < numItems) {
-        console.log('index sizer 1:', indexSizer);
+      while (indexSizer <= sizeToBeat && i + virtualizerContext.contextIndex < numItems) {
         const iItemSize = getItemSize(indexRef.current + i);
         if (
           !virtualizerContext.childProgressiveSizes?.current ||
           virtualizerContext.childProgressiveSizes?.current.length < numItems
         ) {
-          console.log('QUICK EXIT');
           return virtualizerLength - virtualizerBufferSize * 2;
         }
 
@@ -92,34 +77,21 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
         const currentItemPos = virtualizerContext.childProgressiveSizes?.current[indexRef.current + i] - iItemSize;
 
         let variance = 0;
-        console.log('CHECK INDEX:', indexRef.current + i);
-        console.log('currentScrollPos:', currentScrollPos);
-        console.log('item end pos:', currentItemPos + iItemSize);
-        console.log('CURRENT ITEM POS:', currentItemPos);
         if (currentScrollPos > currentItemPos + iItemSize) {
-          console.log('This item is FULLY hidden - 1: ', indexRef.current + i);
           // The item isn't in view, ignore for now.
           i++;
           continue;
         } else if (currentScrollPos > currentItemPos) {
-          console.log('This item is PARTIALLY hidden: ', indexRef.current + i);
           // The item is partially out of view, ignore the out of bounds
           variance = currentItemPos + iItemSize - currentScrollPos;
-          console.log('VARIANCE:', variance);
           indexSizer += variance;
         } else {
           indexSizer += iItemSize;
         }
         // Increment
-        console.log('iItemSize:', iItemSize);
-        console.log('variance:', variance);
         i++;
         length++;
       }
-
-      console.log('Check: ', i + virtualizerContext.contextPosition < numItems);
-      console.log('index sizer 2:', indexSizer);
-      console.log('Got new length:', length);
 
       /*
        * Number of items to append at each end, i.e. 'preload' each side before entering view.
@@ -149,6 +121,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       targetDocument?.defaultView,
       virtualizerBufferSize,
       virtualizerContext.childProgressiveSizes,
+      virtualizerContext.contextIndex,
       virtualizerContext.contextPosition,
       virtualizerLength,
     ],
@@ -172,8 +145,11 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   const scrollRef = useMergedRefs(container, useResizeObserverRef_unstable(resizeCallback));
 
   useIsomorphicLayoutEffect(() => {
-    handleScrollResize(container);
-  }, [virtualizerContext.contextIndex]);
+    if (virtualizerContext.contextIndex + virtualizerLength < numItems) {
+      // Avoid re-rendering/re-calculating when the end index has already been reached
+      handleScrollResize(container);
+    }
+  }, [handleScrollResize, numItems, virtualizerContext.contextIndex, virtualizerLength]);
 
   return {
     virtualizerLength,
