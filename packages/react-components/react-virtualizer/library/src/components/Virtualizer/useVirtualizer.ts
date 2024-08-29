@@ -334,7 +334,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Add to original after position
             measurementPos += overflowAmount;
             // Ignore buffer size (IO offset)
-            measurementPos -= bufferSize;
+            measurementPos += bufferSize;
             // we hit the after buffer and detected the end of view, we need to find the start index.
             measurementPos -= containerSizeRef.current;
 
@@ -358,10 +358,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
             const overflowAmount =
               axis === 'vertical' ? latestEntry.intersectionRect.height : latestEntry.intersectionRect.width;
-            // Add to original after position
+            // Minus from original before position
             measurementPos -= overflowAmount;
             // Ignore buffer size (IO offset)
-            measurementPos += bufferSize;
+            measurementPos -= bufferSize;
 
             // Calculate how far past the window bounds we are (this will be zero if IO is within window)
             const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;

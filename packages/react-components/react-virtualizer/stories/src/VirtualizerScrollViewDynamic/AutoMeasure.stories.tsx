@@ -13,7 +13,7 @@ const useStyles = makeStyles({
 
 export const AutoMeasure = () => {
   const styles = useStyles();
-  const childLength = 1000;
+  const childLength = 100;
   const minHeight = 50;
   const maxHeightIncrease = 500;
   // Array size ref stores a list of random num for div sizing and callbacks
