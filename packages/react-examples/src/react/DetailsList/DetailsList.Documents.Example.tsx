@@ -118,6 +118,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         data: 'string',
         onRender: (item: IDocument) => {
           return (
+            // eslint-disable-next-line react/jsx-no-bind
             <Link onClick={() => this._onItemInvoked(item)} underline>
               {item.name}
             </Link>
