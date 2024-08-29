@@ -118,7 +118,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         data: 'string',
         onRender: (item: IDocument) => {
           return (
-            <Link onClick={this._onItemInvoked} underline>
+            <Link onClick={() => this._onItemInvoked(item)} underline>
               {item.name}
             </Link>
           );
