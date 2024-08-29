@@ -1,5 +1,6 @@
 import { useControllableState } from '@fluentui/react-utilities';
 import EmblaCarousel, { type EmblaCarouselType, type EmblaOptionsType } from 'embla-carousel';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import * as React from 'react';
 
 import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.styles';
@@ -8,7 +9,7 @@ import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
-  containScroll: false,
+  containScroll: 'trimSnaps',
   inViewThreshold: 0.99,
   watchDrag: false,
   skipSnaps: true,
@@ -124,6 +125,7 @@ export function useEmblaCarousel(
                 stopOnMouseEnter: true,
                 stopOnFocusIn: true,
               }),
+              WheelGesturesPlugin(),
             ],
           );
 
@@ -187,6 +189,7 @@ export function useEmblaCarousel(
           stopOnMouseEnter: true,
           stopOnFocusIn: true,
         }),
+        WheelGesturesPlugin(),
       ],
     );
   }, [align, direction, loop, slidesToScroll, watchDrag]);

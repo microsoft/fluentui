@@ -43,7 +43,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Enables mouse/touch drag on carousel items.
    * Defaults to: False
    */
-  enableDrag?: boolean;
+  draggable?: boolean;
 };
 
 /**

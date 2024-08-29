@@ -13,13 +13,19 @@ const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images
 const useClasses = makeStyles({
   card: {
     margin: '0px 10px',
+    flex: '0 0 auto',
+    minWidth: '250px',
+    maxWidth: '100%',
   },
   test: {
-    ...typographyStyles.largeTitle,
+    ...typographyStyles.title2,
     alignContent: 'center',
     borderRadius: tokens.borderRadiusLarge,
-    height: '200px',
     textAlign: 'center',
+    flex: '0 0 auto',
+    padding: '50px',
+    minWidth: 0,
+    maxWidth: '100%',
   },
 });
 
@@ -38,27 +44,29 @@ export const FreeLayout = () => {
   const classes = useClasses();
 
   return (
-    <Carousel>
+    <Carousel draggable align="start">
       <CarouselSlider>
-        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
-          <TestComponent accentColor="#B99095">Card 1</TestComponent>
+        <CarouselCard className={classes.card}>
+          <TestComponent accentColor="#B99095">Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '45%' }}>
-          <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
+        <CarouselCard className={classes.card}>
+          <TestComponent accentColor="#FCB5AC">Card 2 Card 2 Card 2 Card 2 Card 2 Card 2 Card 2 </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '20%' }}>
-          <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
+        <CarouselCard className={classes.card}>
+          <TestComponent accentColor="#B5E5CF">Card 3 Card 3 Card 3 Card 3 </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '80%' }}>
-          <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
+        <CarouselCard className={classes.card}>
+          <TestComponent accentColor="#3D5B59">
+            Card 4 Card 4 Card 4 Card 4 Card 4 Card 4 Card 4 Card 4 Card 4
+          </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '75%' }}>
-          <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
+        <CarouselCard className={classes.card}>
+          <TestComponent accentColor="#F9EAC2">Card 5 Card 5</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} style={{ maxWidth: '30%' }}>
+        <CarouselCard className={classes.card}>
           <TestComponent accentColor="#FFD898">Card 7</TestComponent>
         </CarouselCard>
       </CarouselSlider>
