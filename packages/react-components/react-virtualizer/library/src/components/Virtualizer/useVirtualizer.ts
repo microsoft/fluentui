@@ -5,6 +5,7 @@ import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useSta
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
+import { flushSync } from 'react-dom';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   'use no memo';
@@ -58,7 +59,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   /* We keep track of the progressive sizing/placement down the list,
   this helps us skip re-calculations unless children/size changes */
   const childProgressiveSizes = useRef<number[]>(new Array<number>(getItemSize ? numItems : 0));
-  if (virtualizerContext) {
+  if (virtualizerContext?.childProgressiveSizes) {
     virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
   }
 
@@ -80,7 +81,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
     if (numItems !== childProgressiveSizes.current.length) {
       childProgressiveSizes.current = new Array<number>(numItems);
-      if (virtualizerContext) {
+      if (virtualizerContext?.childProgressiveSizes) {
         virtualizerContext.childProgressiveSizes.current = childProgressiveSizes.current;
       }
     }
@@ -398,7 +399,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         let startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
 
         const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
-        if (actualIndex === startIndex) {
+        if (getItemSize && actualIndex === startIndex) {
           /* We can't actually hit the same index twice, as IO only fires once per intersection
            * Usually this is caused by dynamically changing sizes causing us to recalc the same index
            * Instead, we buffer it -1:1 so that we can recalc the index with latest values
@@ -420,7 +421,9 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
           newStartIndex + virtualizerLength >= numItems;
         _virtualizerContext.setContextPosition(measurementPos);
         if (actualIndex !== newStartIndex && !endAlreadyReached) {
-          batchUpdateNewIndex(newStartIndex);
+          flushSync(() => {
+            batchUpdateNewIndex(newStartIndex);
+          });
         }
       },
       [
@@ -435,6 +438,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         calculateTotalSize,
         containerSizeRef,
         getIndexFromScrollPosition,
+        getItemSize,
         numItems,
         reversed,
         updateCurrentItemSizes,
@@ -523,7 +527,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
-      forceUpdate();
+      // forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);

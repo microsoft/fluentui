@@ -92,6 +92,7 @@ export const Dynamic = () => {
           virtualizerLength={virtualizerLength}
           itemSize={100}
           containerSizeRef={containerSizeRef}
+          virtualizerContext={contextState}
         >
           {useCallback(
             (index: number) => {
