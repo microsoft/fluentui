@@ -68,12 +68,6 @@ function normalizeOptions(schema: VerifyPackagingExecutorSchema, context: Execut
   return { ...defaults, ...schema, project, isProduction, filePatterns };
 }
 
-function verboseLog(message: string, kind: keyof typeof logger = 'info') {
-  if (process.env.NX_VERBOSE_LOGGING === 'true') {
-    logger[kind](message);
-  }
-}
-
 function npmPackOutput(options: NormalizedOptions, context: ExecutorContext) {
   const npmPackResult = spawnSync('npm', ['pack', '--dry-run'], { cwd: join(context.root, options.project.root) });
 
@@ -98,6 +92,7 @@ function assertions(
   const shipsUmd = tags.has('ships-umd');
   const platform = { web: tags.has('platform:web'), node: tags.has('platform:node') };
 
+  // shared assertions
   const issues = [
     assertEmpty(npmPackResult, alwaysPublishedFiles, `npm always shipped files`),
     assertNotEmpty(npmPackResult, nonProdAssets, `wont ship non production code related folders/files`),
@@ -107,46 +102,12 @@ function assertions(
     assertNotEmpty(npmPackResult, 'src/*', `wont ship source code from "/src"`),
   ];
 
-  // shared assertions
-  // if (micromatch(npmPackResult, alwaysPublishedFiles).length === 0) {
-  //   console.log(micromatch(npmPackResult, alwaysPublishedFiles));
-  //   return { message: `npm always shipped files` };
-  // }
-
-  // if (micromatch(npmPackResult, nonProdAssets).length) {
-  //   return { message: `wont ship non production code related folders/files` };
-  // }
-  // if (micromatch(npmPackResult, 'CHANGELOG.md').length === 0) {
-  //   return { message: 'ships changelog markdown file' };
-  // }
-  // if (micromatch(npmPackResult, 'dist/*.d.ts').length === 0) {
-  //   return { message: 'ships rolluped dts' };
-  // }
-  // if (micromatch(npmPackResult, 'lib-commonjs/**/*.(js|map)').length === 0) {
-  //   return { message: 'ships cjs' };
-  // }
-  // if (micromatch(npmPackResult, 'src/*').length) {
-  //   return { message: `wont ship source code from "/src"` };
-  // }
-
-  // assert.ok(micromatch(npmPackResult, 'dist/*.d.ts').length, 'ships rolluped dts');
-  // assert.ok(micromatch(npmPackResult, 'lib-commonjs/**/*.(js|map)').length, 'ships cjs');
-  // assert.equal(micromatch(npmPackResult, 'src/*').length, 0, `wont ship source code from "/src"`);
-
   if (!isV8package) {
     issues.push(assertNotEmpty(npmPackResult, rootConfigFiles, `wont ship configuration files`));
-    // if (micromatch(npmPackResult, rootConfigFiles).length) {
-    //   return { message: `wont ship configuration files` };
-    // }
-    // assert.equal(micromatch(npmPackResult, rootConfigFiles).length, 0, `wont ship configuration files`);
   }
 
   if (!platform.node) {
     issues.push(assertEmpty(npmPackResult, 'lib/**/*.(js|map)', 'ships esm'));
-    // if (micromatch(npmPackResult, 'lib/**/*.(js|map)').length === 0) {
-    //   return { message: 'ships esm' };
-    // }
-    // assert.ok(micromatch(npmPackResult, 'lib/**/*.(js|map)').length, 'ships esm');
   }
 
   if (isV9package) {
@@ -154,43 +115,19 @@ function assertions(
       assertNotEmpty(npmPackResult, 'config/*', `wont ship config folder`),
       assertNotEmpty(npmPackResult, 'etc/*', `wont ship etc folder"`),
     );
-    // if (micromatch(npmPackResult, 'config/*').length) {
-    //   return { message: `wont ship config folder` };
-    // }
-    // if (micromatch(npmPackResult, 'etc/*').length) {
-    //   return { message: `wont ship etc folder"` };
-    // }
-    // assert.equal(micromatch(npmPackResult, 'config/*').length, 0, `wont ship config folder`);
-    // assert.equal(micromatch(npmPackResult, 'etc/*').length, 0, `wont ship etc folder"`);
   }
 
   if (isV8package) {
     issues.push(assertEmpty(npmPackResult, '(lib|lib-commonjs)/**/*.d.ts', `ships dts`));
-    // if (micromatch(npmPackResult, '(lib|lib-commonjs)/**/*.d.ts').length === 0) {
-    //   return { message: `ships dts` };
-    // }
-    // assert.ok(micromatch(npmPackResult, '(lib|lib-commonjs)/**/*.d.ts').length, `ships dts`);
 
     if (options.isProduction && shipsBundle) {
       issues.push(
         assertEmpty(npmPackResult, 'dist/*.js', `ships bundle`),
         assertEmpty(npmPackResult, 'dist/*.min.js', `ships minified bundle`),
       );
-      // if (micromatch(npmPackResult, 'dist/*.js').length === 0) {
-      //   return { message: `ships bundle` };
-      // }
-      // if (micromatch(npmPackResult, 'dist/*.min.js').length === 0) {
-      //   return { message: `ships minified bundle` };
-      // }
-      // assert.ok(micromatch(npmPackResult, 'dist/*.js').length, `ships bundle`);
-      // assert.ok(micromatch(npmPackResult, 'dist/*.min.js').length, `ships minified bundle`);
     }
     if (options.isProduction && shipsUmd) {
       issues.push(assertEmpty(npmPackResult, 'dist/*.umd.js', `ships umd`));
-      // if (micromatch(npmPackResult, 'dist/*.umd.js').length === 0) {
-      //   return { message: `ships umd` };
-      // }
-      // assert.ok(micromatch(npmPackResult, 'dist/*.umd.js').length, `ships umd`);
     }
   }
 
@@ -198,10 +135,6 @@ function assertions(
   // we should enable this also on PR pipelines - need to verify time execution impact
   if (options.isProduction && shipsAMD) {
     issues.push(assertEmpty(npmPackResult, 'lib-amd/**/*.(js|map)', 'ships amd'));
-    // if (micromatch(npmPackResult, 'lib-amd/**/*.(js|map)').length === 0) {
-    //   return { message: 'ships amd' };
-    // }
-    // assert.ok(micromatch(npmPackResult, 'lib-amd/**/*.(js|map)').length, 'ships amd');
   }
 
   return issues.filter(Boolean) as Array<{ matches: string[]; message: string }>;
