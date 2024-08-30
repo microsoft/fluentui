@@ -209,7 +209,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           selectionZoneProps={{
             selection: this._selection,
             disableAutoSelectOnInputElements: true,
-            selectionMode: selectionMode,
+            selectionMode,
           }}
           ariaLabelForListHeader="Column headers. Click to sort."
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
@@ -266,7 +266,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     isLazyLoaded = !isLazyLoaded;
 
     this.setState({
-      isLazyLoaded: isLazyLoaded,
+      isLazyLoaded,
       items: isLazyLoaded
         ? this._allItems.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE))
         : this._allItems,
@@ -284,7 +284,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     canResizeColumns = !canResizeColumns;
 
     this.setState({
-      canResizeColumns: canResizeColumns,
+      canResizeColumns,
       columns: this._buildColumns(items, canResizeColumns, this._onColumnClick, sortedColumnKey, isSortedDescending),
     });
   };
@@ -514,7 +514,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       });
     }
     return {
-      items: items,
+      items,
       target: ev.currentTarget as HTMLElement,
       directionalHint: DirectionalHint.bottomLeftEdge,
       gapSpace: 10,
@@ -545,7 +545,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     if (index > -1) {
       this.setState({
-        contextualMenuProps: contextualMenuProps,
+        contextualMenuProps,
       });
     }
 
@@ -590,7 +590,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         undefined,
         this._onColumnContextMenu,
       ),
-      isSortedDescending: isSortedDescending,
+      isSortedDescending,
       sortedColumnKey: columnKey,
     });
   };
@@ -733,14 +733,14 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         column.minWidth = 200;
       } else if (column.key === 'name') {
         column.onRender = (item: IExampleItem) => (
-          <Link href="#" data-selection-invoke={true}>
+          <Link href="#" data-selection-invoke={true} underline>
             {item.name}
           </Link>
         );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item: IExampleItem) => (
-          <Link className={classNames.linkField} href="https://microsoft.com" target="_blank" rel="noopener">
+          <Link className={classNames.linkField} href="https://microsoft.com" target="_blank" rel="noopener" underline>
             {item.key}
           </Link>
         );

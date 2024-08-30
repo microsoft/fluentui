@@ -12,8 +12,8 @@ const useStyles = makeStyles({
   root: {
     padding: `${tokens.spacingVerticalL} ${tokens.spacingVerticalL}`,
     borderRadius: tokens.borderRadiusXLarge,
-    width: '288px',
-    boxSizing: 'content-box',
+    minWidth: '320px',
+    boxSizing: 'border-box',
   },
 });
 

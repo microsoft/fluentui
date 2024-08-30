@@ -1,8 +1,35 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 21 Aug 2024 04:07:11 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2024 04:07:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.62)
+
+Fri, 30 Aug 2024 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.61..@fluentui/web-components_v3.0.0-beta.62)
+
+### Changes
+
+- fix: add primary button state and improved button disabled state in forced-colors mode ([PR #32419](https://github.com/microsoft/fluentui/pull/32419) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.61)
+
+Thu, 29 Aug 2024 04:07:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.60..@fluentui/web-components_v3.0.0-beta.61)
+
+### Changes
+
+- chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit ([PR #32405](https://github.com/microsoft/fluentui/pull/32405) by rupertdavid@microsoft.com)
+
+## [3.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.60)
+
+Wed, 28 Aug 2024 04:06:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.59..@fluentui/web-components_v3.0.0-beta.60)
+
+### Changes
+
+- feat: adjust slider sliding range ([PR #32350](https://github.com/microsoft/fluentui/pull/32350) by machi@microsoft.com)
 
 ## [3.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.59)
 

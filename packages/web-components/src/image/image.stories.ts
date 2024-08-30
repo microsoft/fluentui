@@ -25,7 +25,7 @@ export default {
     block: false,
     bordered: false,
     shadow: false,
-    fit: ImageFit.default,
+    fit: undefined,
     shape: ImageShape.square,
   },
   argTypes: {
@@ -62,10 +62,10 @@ export default {
       description: 'Determines how the image will be scaled and positioned within its parent container.',
       table: {
         defaultValue: {
-          summary: 'default',
+          summary: 'undefined',
         },
       },
-      options: Object.values(ImageFit),
+      options: ['undefined', ...Object.values(ImageFit)],
       control: 'select',
     },
     role: {

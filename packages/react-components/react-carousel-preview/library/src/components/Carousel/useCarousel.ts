@@ -18,7 +18,7 @@ import { useEmblaCarousel } from '../useEmblaCarousel';
 export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDivElement>): CarouselState {
   'use no memo';
 
-  const { align = 'center', circular = false, onActiveIndexChange, groupSize = 'auto' } = props;
+  const { align = 'center', circular = false, onActiveIndexChange, groupSize = 'auto', enableDrag = false } = props;
 
   const { dir } = useFluent();
   const { activeIndex, carouselApi, containerRef, subscribeForValues, enableAutoplay } = useEmblaCarousel({
@@ -28,6 +28,13 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     slidesToScroll: groupSize,
     defaultActiveIndex: props.defaultActiveIndex,
     activeIndex: props.activeIndex,
+    watchDrag: enableDrag,
+  });
+
+  const selectPageByElement: CarouselContextValue['selectPageByElement'] = useEventCallback((event, element, jump) => {
+    const foundIndex = carouselApi.scrollToElement(element, jump);
+
+    onActiveIndexChange?.(event, { event, type: 'focus', index: foundIndex });
   });
 
   const selectPageByIndex: CarouselContextValue['selectPageByIndex'] = useEventCallback((event, index, jump) => {
@@ -57,10 +64,9 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     activeIndex,
     circular,
-
+    selectPageByElement,
     selectPageByDirection,
     selectPageByIndex,
-
     subscribeForValues,
     enableAutoplay,
   };

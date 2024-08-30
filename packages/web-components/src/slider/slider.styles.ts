@@ -28,9 +28,12 @@ export const styles = css`
     --track-margin-inline: calc(var(--thumb-size) / 2);
     --track-size: 4px;
     --track-overhang: calc(var(--track-size) / -2);
+    --rail-color: ${colorCompoundBrandBackground};
+    --track-color: ${colorNeutralStrokeAccessible};
     --slider-direction: 90deg;
     --border-radius: ${borderRadiusMedium};
     --step-marker-inset: var(--track-overhang) -1px;
+
     position: relative;
     align-items: center;
     justify-content: center;
@@ -42,6 +45,19 @@ export const styles = css`
     min-height: 32px;
     grid-template-rows: 1fr var(--thumb-size) 1fr;
     grid-template-columns: var(--track-margin-inline) 1fr var(--track-margin-inline);
+  }
+
+  :host(:hover) {
+    --rail-color: ${colorCompoundBrandBackgroundHover};
+  }
+
+  :host(:active) {
+    --rail-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host(:disabled) {
+    --rail-color: ${colorNeutralForegroundDisabled};
+    --track-color: ${colorNeutralBackgroundDisabled};
   }
 
   :host(:not(:disabled)) {
@@ -75,22 +91,44 @@ export const styles = css`
     outline: 1px solid ${colorStrokeFocus1};
   }
 
+  :host:after,
+  .track {
+    height: var(--track-size);
+    width: 100%;
+  }
+
+  :host:after {
+    background-image: linear-gradient(
+      var(--slider-direction),
+      var(--rail-color) 0%,
+      var(--rail-color) 50%,
+      var(--track-color) 50.1%,
+      var(--track-color) 100%
+    );
+    border-radius: var(--border-radius);
+    content: '';
+    grid-row: 1 / -1;
+    grid-column: 1 / -1;
+  }
+
   .track {
     position: relative;
-    background-color: ${colorNeutralStrokeAccessible};
-    border-radius: var(--border-radius);
+    background-color: var(--track-color);
     grid-row: 2 / 2;
     grid-column: 2 / 2;
-    width: 100%;
-    height: var(--track-size);
     forced-color-adjust: none;
+    overflow: hidden;
+  }
+
+  :host(${verticalState})::after,
+  :host(${verticalState}) .track {
+    height: 100%;
+    width: var(--track-size);
   }
 
   :host(${verticalState}) .track {
     top: var(--track-overhang);
     bottom: var(--track-overhang);
-    width: var(--track-size);
-    height: 100%;
   }
 
   .track::before {
@@ -151,26 +189,7 @@ export const styles = css`
 
   .thumb,
   .track::before {
-    background-color: ${colorCompoundBrandBackground};
-  }
-
-  :host(:hover) .thumb,
-  :host(:hover) .track::before {
-    background-color: ${colorCompoundBrandBackgroundHover};
-  }
-
-  :host(:active) .thumb,
-  :host(:active) .track::before {
-    background-color: ${colorCompoundBrandBackgroundPressed};
-  }
-
-  :host(:disabled) .track {
-    background-color: ${colorNeutralBackgroundDisabled};
-  }
-
-  :host(:disabled) .thumb,
-  :host(:disabled) .track::before {
-    background-color: ${colorNeutralForegroundDisabled};
+    background-color: var(--rail-color);
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

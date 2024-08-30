@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-tags): allow TagGroup to be disabled, remove role='img' from Tag dismiss",
+  "packageName": "@fluentui/react-tags",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

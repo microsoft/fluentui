@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 28 Aug 2024 07:21:50 GMT",
+      "tag": "@fluentui/react_v8.120.7",
+      "version": "8.120.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "4b0f902e88f0fa8ba980791cbf64dbcedb159a4b",
+            "comment": "fix: remove aria-valuenow from native input element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2024 07:21:50 GMT",
       "tag": "@fluentui/react_v8.120.6",
       "version": "8.120.6",

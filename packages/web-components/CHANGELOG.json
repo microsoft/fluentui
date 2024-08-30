@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.62",
+      "version": "3.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f53f9702d46ac50562ba861b7a70baca6a3dcb3",
+            "comment": "fix: add primary button state and improved button disabled state in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2024 04:07:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.61",
+      "version": "3.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e15398ac2b81b40f92171d4966e57c0734377355",
+            "comment": "chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Aug 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.60",
+      "version": "3.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfa731b32f26991c1ff4335d3e6e0472ffb7868a",
+            "comment": "feat: adjust slider sliding range"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Aug 2024 04:07:11 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.59",
       "version": "3.0.0-beta.59",

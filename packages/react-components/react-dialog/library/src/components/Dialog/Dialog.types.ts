@@ -9,6 +9,11 @@ export type DialogSlots = {
   surfaceMotion: Slot<PresenceMotionSlotProps>;
 };
 
+export type InternalDialogSlots = {
+  // motion slots cannot be nullable
+  surfaceMotion: NonNullable<Slot<PresenceMotionSlotProps>>;
+};
+
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 export type DialogOpenChangeData =
@@ -101,7 +106,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
   inertTrapFocus?: boolean;
 };
 
-export type DialogState = ComponentState<DialogSlots> &
+export type DialogState = ComponentState<InternalDialogSlots> &
   DialogContextValue & {
     content: React.ReactNode;
     trigger: React.ReactNode;

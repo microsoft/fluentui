@@ -49,10 +49,11 @@ export default {
   title: 'Components/Divider',
   args: {
     content: 'Section One',
-    alignContent: undefined,
+    alignContent: DividerAlignContent.center,
     appearance: undefined,
     inset: false,
-    orientation: undefined,
+    orientation: DividerOrientation.horizontal,
+    role: DividerRole.separator,
   },
   argTypes: {
     content: {
@@ -70,7 +71,7 @@ export default {
           summary: 'Fluent v9. Determines the alignment of the content within the divider.',
         },
         defaultValue: {
-          summary: 'undefined',
+          summary: DividerAlignContent.center,
         },
       },
       options: Object.values(DividerAlignContent),
@@ -88,7 +89,7 @@ export default {
           summary: 'undefined',
         },
       },
-      options: Object.values(DividerAppearance),
+      options: ['undefined', ...Object.values(DividerAppearance)],
       control: {
         type: 'select',
       },
@@ -100,7 +101,7 @@ export default {
           summary: 'Inherited from FASTDivider. Aria role for the divider.',
         },
         defaultValue: {
-          summary: 'separator',
+          summary: DividerRole.separator,
         },
       },
       options: Object.values(DividerRole),
@@ -129,7 +130,7 @@ export default {
             'Inherited from FASTDivider. Layout can be horizontal or vertical. Adds aria-orientation to component.',
         },
         defaultValue: {
-          summary: undefined,
+          summary: DividerOrientation.horizontal,
         },
       },
       options: Object.values(DividerOrientation),

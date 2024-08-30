@@ -317,12 +317,24 @@ export const styles = css`
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
     :host {
-      background: ButtonFace;
+      background-color: ButtonFace;
       color: ButtonText;
     }
 
     :host(:is(:hover, :focus-visible)) {
-      border-color: Highlight;
+      border-color: Highlight !important;
+    }
+
+    :host(${primaryState}:not(:is(:hover, :focus-visible))) {
+      background-color: Highlight;
+      color: HighlightText;
+      forced-color-adjust: none;
+    }
+
+    :host(:is(:disabled, [disabled-focusable], [appearance]:disabled, [appearance][disabled-focusable])) {
+      background-color: ButtonFace;
+      color: GrayText;
+      border-color: ButtonText;
     }
   `),
 );

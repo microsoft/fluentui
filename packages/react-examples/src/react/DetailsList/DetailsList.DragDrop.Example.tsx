@@ -25,7 +25,7 @@ const controlWrapperClass = mergeStyles({
   flexWrap: 'wrap',
 });
 const textFieldStyles: Partial<ITextFieldStyles> = {
-  root: { margin: margin },
+  root: { margin },
   fieldGroup: { maxWidth: '100px' },
 };
 const togglesStyles: Partial<IToggleStyles> = { root: { margin } };
@@ -53,7 +53,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     const items = createListItems(10, 0);
 
     this.state = {
-      items: items,
+      items,
       columns: buildColumns(items, true),
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
@@ -188,7 +188,11 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
   private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
     const key = column.key as keyof IExampleItem;
     if (key === 'name') {
-      return <Link data-selection-invoke={true}>{item[key]}</Link>;
+      return (
+        <Link data-selection-invoke={true} underline>
+          {item[key]}
+        </Link>
+      );
     }
 
     return String(item[key]);

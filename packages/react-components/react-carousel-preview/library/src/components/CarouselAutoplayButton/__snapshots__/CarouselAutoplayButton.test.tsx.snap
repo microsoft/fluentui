@@ -3,7 +3,7 @@
 exports[`CarouselAutoplayButton renders a default state 1`] = `
 <div>
   <button
-    aria-pressed="true"
+    aria-pressed="false"
     class="fui-CarouselAutoplayButton fui-Button fui-ToggleButton"
     type="button"
   >
@@ -20,7 +20,7 @@ exports[`CarouselAutoplayButton renders a default state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M9 7.5a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5Zm3 0a.5.5 0 0 0-1 0v5a.5.5 0 0 0 1 0v-5ZM10 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Zm-7 8a7 7 0 1 1 14 0 7 7 0 0 1-14 0Z"
+          d="M9.13 7.18A.75.75 0 0 0 8 7.83v4.34c0 .57.63.94 1.13.65l4.12-2.39a.5.5 0 0 0 0-.86L9.13 7.18ZM2 10a8 8 0 1 1 16 0 8 8 0 0 1-16 0Zm8-7a7 7 0 1 0 0 14 7 7 0 0 0 0-14Z"
           fill="currentColor"
         />
       </svg>

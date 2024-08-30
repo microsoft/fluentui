@@ -11,7 +11,7 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: false,
   inViewThreshold: 0.99,
   watchDrag: false,
-
+  skipSnaps: true,
   container: `.${carouselSliderClassNames.root}`,
   slides: `.${carouselCardClassNames.root}`,
 };
@@ -19,12 +19,12 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll'> & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
   },
 ) {
-  const { align, direction, loop, slidesToScroll } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -37,7 +37,9 @@ export function useEmblaCarousel(
     loop,
     slidesToScroll,
     startIndex: activeIndex,
+    watchDrag,
   });
+
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
   const autoplayRef = React.useRef<boolean>(false);
@@ -70,13 +72,15 @@ export function useEmblaCarousel(
       setActiveIndex(newIndex);
     };
     const handleReinit = () => {
-      const nodes = emblaApi.current?.slideNodes() ?? [];
-      const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
+      const nodes: HTMLElement[] = emblaApi.current?.slideNodes() ?? [];
+      const groupIndexList: number[][] = emblaApi.current?.internalEngine().slideRegistry ?? [];
       const navItemsCount = groupIndexList.length > 0 ? groupIndexList.length : nodes.length;
 
       const data: CarouselUpdateData = {
         navItemsCount,
         activeIndex: emblaApi.current?.selectedScrollSnap() ?? 0,
+        groupIndexList,
+        slideNodes: nodes,
       };
 
       for (const listener of listeners.current) {
@@ -86,7 +90,6 @@ export function useEmblaCarousel(
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
-
       cardElements?.forEach((cardElement, index) => {
         cardElement.dispatchEvent(
           new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
@@ -111,10 +114,17 @@ export function useEmblaCarousel(
           emblaApi.current = EmblaCarousel(
             newElement,
             {
-              ...emblaOptions.current,
               ...DEFAULT_EMBLA_OPTIONS,
+              ...emblaOptions.current,
             },
-            [Autoplay({ playOnInit: autoplayRef.current })],
+            [
+              Autoplay({
+                playOnInit: autoplayRef.current,
+                stopOnInteraction: !autoplayRef.current,
+                stopOnMouseEnter: true,
+                stopOnFocusIn: true,
+              }),
+            ],
           );
 
           emblaApi.current?.on('reInit', handleReinit);
@@ -127,6 +137,18 @@ export function useEmblaCarousel(
 
   const carouselApi = React.useMemo(
     () => ({
+      scrollToElement: (element: HTMLElement, jump?: boolean) => {
+        const cardElements = emblaApi.current?.slideNodes();
+        const groupIndexList = emblaApi.current?.internalEngine().slideRegistry ?? [];
+        const cardIndex = cardElements?.indexOf(element) ?? 0;
+        const groupIndex = groupIndexList.findIndex(group => {
+          return group.includes(cardIndex);
+        });
+        const indexFocus = groupIndex ?? cardIndex;
+        emblaApi.current?.scrollTo(indexFocus, jump);
+
+        return indexFocus;
+      },
       scrollToIndex: (index: number, jump?: boolean) => {
         emblaApi.current?.scrollTo(index, jump);
       },
@@ -152,15 +174,22 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll };
+    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag };
     emblaApi.current?.reInit(
       {
-        ...emblaOptions.current,
         ...DEFAULT_EMBLA_OPTIONS,
+        ...emblaOptions.current,
       },
-      [Autoplay({ playOnInit: autoplayRef.current })],
+      [
+        Autoplay({
+          playOnInit: autoplayRef.current,
+          stopOnInteraction: !autoplayRef.current,
+          stopOnMouseEnter: true,
+          stopOnFocusIn: true,
+        }),
+      ],
     );
-  }, [align, direction, loop, slidesToScroll]);
+  }, [align, direction, loop, slidesToScroll, watchDrag]);
 
   return {
     activeIndex,
