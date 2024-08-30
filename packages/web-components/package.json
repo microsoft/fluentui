@@ -122,6 +122,10 @@
       "types": "./dist/dts/message-bar/define.d.ts",
       "default": "./dist/esm/message-bar/define.js"
     },
+    "./option.js": {
+      "types": "./dist/dts/option/define.d.ts",
+      "default": "./dist/esm/option/define.js"
+    },
     "./progress-bar.js": {
       "types": "./dist/dts/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
@@ -211,6 +215,7 @@
     "./dist/esm/menu-list/define.js",
     "./dist/esm/menu-button/define.js",
     "./dist/esm/menu-item/define.js",
+    "./dist/esm/option/define.js",
     "./dist/esm/progress-bar/define.js",
     "./dist/esm/radio/define.js",
     "./dist/esm/radio-group/define.js",

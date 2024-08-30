@@ -630,6 +630,10 @@ export class BaseField extends FASTElement {
 }
 
 // @public
+export class BaseOption extends BaseCheckbox {
+}
+
+// @public
 export class BaseProgressBar extends FASTElement {
     constructor();
     // @internal
@@ -2960,6 +2964,27 @@ export const MessageBarStyles: ElementStyles;
 //
 // @public
 export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
+
+// @public
+class Option_2 extends BaseOption {
+}
+export { Option_2 as Option }
+
+// @public
+export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
+
+// Warning: (ae-missing-release-tag) "OptionOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type OptionOptions = Record<string, any>;
+
+// @public
+export const OptionStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const OptionTemplate: ElementViewTemplate<Option_2>;
 
 // @public
 class ProgressBar_2 extends BaseProgressBar {
