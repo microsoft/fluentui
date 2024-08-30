@@ -67,7 +67,8 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       while (indexSizer <= sizeToBeat && i + virtualizerContext.contextIndex < numItems) {
         const iItemSize = getItemSize(indexRef.current + i);
         if (virtualizerContext.childProgressiveSizes.current.length < numItems) {
-          /* We are in unknown territory, either an initial render or an update has occurred.
+          /* We are in unknown territory, either an initial render or an update
+            in virtualizer item length has occurred.
             We need to let the new items render first then we can accurately assess.*/
           return virtualizerLength - virtualizerBufferSize * 2;
         }
@@ -75,16 +76,16 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
         const currentScrollPos = virtualizerContext.contextPosition;
         const currentItemPos = virtualizerContext.childProgressiveSizes.current[indexRef.current + i] - iItemSize;
 
-        let variance = 0;
         if (currentScrollPos > currentItemPos + iItemSize) {
           // The item isn't in view, ignore for now.
           i++;
           continue;
         } else if (currentScrollPos > currentItemPos) {
-          // The item is partially out of view, ignore the out of bounds
-          variance = currentItemPos + iItemSize - currentScrollPos;
+          // The item is partially out of view, ignore the out of bounds portion
+          const variance = currentItemPos + iItemSize - currentScrollPos;
           indexSizer += variance;
         } else {
+          // Item is in view
           indexSizer += iItemSize;
         }
         // Increment
