@@ -595,6 +595,12 @@ export class BaseDivider extends FASTElement {
     roleChanged(previous: string | null, next: string | null): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "BaseListbox" needs to be exported by the entry point index.d.ts
+//
+// @public
+export class BaseDropdownList extends BaseListbox {
+}
+
 // @public
 export class BaseField extends FASTElement {
     constructor();
@@ -2404,6 +2410,26 @@ export const DrawerType: {
 
 // @public
 export type DrawerType = ValuesOf<typeof DrawerType>;
+
+// @public
+export class DropdownList extends BaseDropdownList {
+}
+
+// @public
+export const DropdownListDefinition: FASTElementDefinition<typeof DropdownList>;
+
+// Warning: (ae-missing-release-tag) "DropdownListOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type DropdownListOptions = Record<string, any>;
+
+// @public
+export const DropdownListStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DropdownListTemplate: ElementViewTemplate<DropdownList>;
 
 // @public
 export const durationFast = "var(--durationFast)";
