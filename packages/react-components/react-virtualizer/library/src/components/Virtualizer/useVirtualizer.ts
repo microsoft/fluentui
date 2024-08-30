@@ -66,9 +66,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   // The internal tracking REF for child array (updates often).
   const childArray = useRef<ReactNode[]>(new Array(virtualizerLength));
 
-  // We want to be methodical about updating the render with child reference array
-  const forceUpdate = useReducer(() => ({}), {})[1];
-
   const populateSizeArrays = () => {
     if (!getItemSize) {
       // Static sizes, never mind!
@@ -332,7 +329,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
            */
           let measurementPos = 0;
           if (latestEntry.target === afterElementRef.current) {
-            console.log('AFTER');
             // Get after buffers position
             measurementPos = calculateTotalSize() - calculateAfter();
 
@@ -361,7 +357,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
               measurementPos -= additionalOverflow;
             }
           } else if (latestEntry.target === beforeElementRef.current) {
-            console.log('BEFORE');
             // Get before buffers position
             measurementPos = calculateBefore();
             // Get exact intersection position based on overflow size (how far into window did we scroll IO?)
@@ -527,7 +522,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
-      // forceUpdate();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);
