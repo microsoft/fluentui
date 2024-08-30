@@ -529,6 +529,8 @@ export class BaseCheckbox extends FASTElement {
     clickHandler(e: MouseEvent): boolean | void;
     // (undocumented)
     connectedCallback(): void;
+    // @internal
+    protected dirtyState: boolean;
     disabled?: boolean;
     disabledAttribute?: boolean;
     // @internal
@@ -555,19 +557,23 @@ export class BaseCheckbox extends FASTElement {
     // @internal
     keyupHandler(e: KeyboardEvent): boolean | void;
     get labels(): ReadonlyArray<HTMLLabelElement>;
+    // Warning: (ae-forgotten-export) The symbol "CheckboxMode" needs to be exported by the entry point index.d.ts
+    //
+    // @internal
+    protected mode: CheckboxMode;
     name: string;
     reportValidity(): boolean;
     required: boolean;
     // @internal
     protected requiredChanged(prev: boolean, next: boolean): void;
     // @internal
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     setCustomValidity(message: string): void;
     // @internal
     setFormValue(value: File | string | FormData | null, state?: File | string | FormData | null): void;
     // @internal
     setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
     get validationMessage(): string;
     get validity(): ValidityState;
     get value(): string;
@@ -946,14 +952,14 @@ export class Checkbox extends BaseCheckbox {
     // @internal
     protected indeterminateChanged(prev: boolean | undefined, next: boolean | undefined): void;
     // @internal @override
-    protected setAriaChecked(value?: boolean): void;
+    protected setAriaProperties(value?: boolean): void;
     shape?: CheckboxShape;
     // @internal
     protected shapeChanged(prev: CheckboxShape | undefined, next: CheckboxShape | undefined): void;
     size?: CheckboxSize;
     // @internal
     protected sizeChanged(prev: CheckboxSize | undefined, next: CheckboxSize | undefined): void;
-    toggleChecked(force?: boolean): void;
+    toggle(force?: boolean): void;
 }
 
 // @public
@@ -2277,7 +2283,6 @@ export const DividerAppearance: {
     readonly strong: "strong";
     readonly brand: "brand";
     readonly subtle: "subtle";
-    readonly default: "default";
 };
 
 // @public
@@ -2544,7 +2549,6 @@ export const ImageFit: {
     readonly center: "center";
     readonly contain: "contain";
     readonly cover: "cover";
-    readonly default: "default";
 };
 
 // @public
@@ -2666,6 +2670,11 @@ export type LinkAppearance = ValuesOf<typeof LinkAppearance>;
 
 // @public (undocumented)
 export const LinkDefinition: FASTElementDefinition<typeof Link>;
+
+// Warning: (ae-missing-release-tag) "styles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const LinkStyles: ElementStyles;
 
 // @public
 export const LinkTarget: {
@@ -2891,6 +2900,66 @@ export const MenuStyles: ElementStyles;
 //
 // @public (undocumented)
 export const MenuTemplate: ElementViewTemplate<Menu>;
+
+// @public
+export class MessageBar extends FASTElement {
+    constructor();
+    dismissMessageBar: () => void;
+    // @internal
+    elementInternals: ElementInternals;
+    intent?: MessageBarIntent;
+    intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined): void;
+    layout?: MessageBarLayout;
+    layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined): void;
+    shape?: MessageBarShape;
+    shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined): void;
+}
+
+// @public
+export const MessageBarDefinition: FASTElementDefinition<typeof MessageBar>;
+
+// Warning: (ae-missing-release-tag) "MessageBarIntent" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarIntent: {
+    readonly success: "success";
+    readonly warning: "warning";
+    readonly error: "error";
+    readonly info: "info";
+};
+
+// @public (undocumented)
+export type MessageBarIntent = ValuesOf<typeof MessageBarIntent>;
+
+// Warning: (ae-missing-release-tag) "MessageBarLayout" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarLayout: {
+    readonly multiline: "multiline";
+    readonly singleline: "singleline";
+};
+
+// @public (undocumented)
+export type MessageBarLayout = ValuesOf<typeof MessageBarLayout>;
+
+// Warning: (ae-missing-release-tag) "MessageBarShape" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarShape: {
+    readonly rounded: "rounded";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type MessageBarShape = ValuesOf<typeof MessageBarShape>;
+
+// @public
+export const MessageBarStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public
+export const MessageBarTemplate: ElementViewTemplate<MessageBar>;
 
 // @public
 class ProgressBar_2 extends BaseProgressBar {

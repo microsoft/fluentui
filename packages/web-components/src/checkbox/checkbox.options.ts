@@ -34,3 +34,15 @@ export const CheckboxSize = {
 
 /** @public */
 export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
+
+/**
+ * Checkbox selection mode values
+ * @public
+ */
+export const CheckboxMode = {
+  checked: 'checked',
+  selected: 'selected',
+} as const;
+
+/** @public */
+export type CheckboxMode = ValuesOf<typeof CheckboxMode>;
