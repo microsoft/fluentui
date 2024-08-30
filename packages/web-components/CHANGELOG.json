@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.62",
+      "version": "3.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f53f9702d46ac50562ba861b7a70baca6a3dcb3",
+            "comment": "fix: add primary button state and improved button disabled state in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Aug 2024 04:07:09 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.61",
       "version": "3.0.0-beta.61",
