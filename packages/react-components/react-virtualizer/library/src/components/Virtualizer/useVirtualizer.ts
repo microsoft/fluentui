@@ -396,7 +396,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         const maxIndex = Math.max(numItems - virtualizerLength, 0);
 
-        let startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
+        const startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
 
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
@@ -420,7 +420,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
         calculateTotalSize,
         containerSizeRef,
         getIndexFromScrollPosition,
-        getItemSize,
         numItems,
         reversed,
         updateCurrentItemSizes,
