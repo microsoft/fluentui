@@ -204,7 +204,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           constrainMode={constrainMode}
           groupProps={groupProps}
           enterModalSelectionOnTouch={true}
-          onItemInvoked={this._onItemInvoked}
           onItemContextMenu={this._onItemContextMenu}
           selectionZoneProps={{
             selection: this._selection,
@@ -522,10 +521,6 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       onDismiss: this._onContextualMenuDismissed,
     };
   }
-
-  private _onItemInvoked = (item: IExampleItem, index: number): void => {
-    console.log('Item invoked', item, index);
-  };
 
   private _onItemContextMenu = (item: IExampleItem, index: number, ev: MouseEvent): boolean => {
     const contextualMenuProps: IContextualMenuProps = {
