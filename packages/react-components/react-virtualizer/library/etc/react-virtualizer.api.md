@@ -15,6 +15,9 @@ import type { SetStateAction } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public
+export type DynamicVirtualizerContextProps = Required<VirtualizerContextProps>;
+
 // @public (undocumented)
 export interface IndexedResizeCallbackElement {
     // (undocumented)
@@ -142,6 +145,9 @@ export const virtualizerClassNames: SlotClassNames<VirtualizerSlots>;
 export type VirtualizerContextProps = {
     contextIndex: number;
     setContextIndex: (index: number) => void;
+    contextPosition?: number;
+    setContextPosition?: (index: number) => void;
+    childProgressiveSizes?: React_2.MutableRefObject<number[]>;
 };
 
 // @public (undocumented)
@@ -158,7 +164,7 @@ export type VirtualizerDataRef = {
 // @public (undocumented)
 export type VirtualizerMeasureDynamicProps = {
     defaultItemSize: number;
-    currentIndex: number;
+    virtualizerContext: DynamicVirtualizerContextProps;
     numItems: number;
     getItemSize: (index: number) => number;
     direction?: 'vertical' | 'horizontal';
@@ -190,13 +196,14 @@ export const VirtualizerScrollViewDynamic: React_2.FC<VirtualizerScrollViewDynam
 export const virtualizerScrollViewDynamicClassNames: SlotClassNames<VirtualizerScrollViewDynamicSlots>;
 
 // @public (undocumented)
-export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex'>> & {
+export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<VirtualizerScrollViewDynamicSlots>> & Partial<Omit<VirtualizerConfigProps, 'itemSize' | 'numItems' | 'getItemSize' | 'children' | 'flagIndex' | 'virtualizerContext'>> & {
     itemSize: number;
     getItemSize?: (index: number) => number;
     numItems: number;
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
     enablePagination?: boolean;
+    virtualizerContext: DynamicVirtualizerContextProps;
 };
 
 // @public (undocumented)
