@@ -20,7 +20,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
   const itemHeight = 32; //This should match the height of each item in the listbox
   const numberOfItems = 10000;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: itemHeight,
     direction: 'vertical',
   });
@@ -43,6 +43,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
             bufferItems={bufferItems}
             bufferSize={bufferSize}
             itemSize={itemHeight}
+            containerSizeRef={containerSizeRef}
           >
             {index => {
               return (
