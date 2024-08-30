@@ -67,14 +67,14 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       while (indexSizer <= sizeToBeat && i + virtualizerContext.contextIndex < numItems) {
         const iItemSize = getItemSize(indexRef.current + i);
         if (
-          !virtualizerContext.childProgressiveSizes?.current ||
-          virtualizerContext.childProgressiveSizes?.current.length < numItems
+          !virtualizerContext.childProgressiveSizes.current ||
+          virtualizerContext.childProgressiveSizes.current.length < numItems
         ) {
           return virtualizerLength - virtualizerBufferSize * 2;
         }
 
         const currentScrollPos = virtualizerContext.contextPosition;
-        const currentItemPos = virtualizerContext.childProgressiveSizes?.current[indexRef.current + i] - iItemSize;
+        const currentItemPos = virtualizerContext.childProgressiveSizes.current[indexRef.current + i] - iItemSize;
 
         let variance = 0;
         if (currentScrollPos > currentItemPos + iItemSize) {
