@@ -105,6 +105,14 @@ export {
 } from './drawer/index.js';
 export { DrawerBody, DrawerBodyDefinition, DrawerBodyTemplate, DrawerBodyStyles } from './drawer-body/index.js';
 export {
+  DropdownDefinition,
+  BaseDropdown,
+  Dropdown,
+  DropdownStyles,
+  DropdownTemplate,
+} from './dropdown/index.js';
+export type { DropdownOptions } from './dropdown/index.js';
+export {
   DropdownListDefinition,
   BaseDropdownList,
   DropdownList,

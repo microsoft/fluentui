@@ -595,6 +595,19 @@ export class BaseDivider extends FASTElement {
     roleChanged(previous: string | null, next: string | null): void;
 }
 
+// @public
+export class BaseDropdown extends FASTElement {
+    constructor();
+    disabled: boolean;
+    // (undocumented)
+    protected disabledChanged(): void;
+    // @internal
+    elementInternals: ElementInternals;
+    static readonly formAssociated = true;
+    // @internal (undocumented)
+    formDisabledCallback(disabled: boolean): void;
+}
+
 // Warning: (ae-forgotten-export) The symbol "BaseListbox" needs to be exported by the entry point index.d.ts
 //
 // @public
@@ -637,6 +650,9 @@ export class BaseField extends FASTElement {
 
 // @public
 export class BaseOption extends BaseCheckbox {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
 }
 
 // @public
@@ -2412,6 +2428,13 @@ export const DrawerType: {
 export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
+export class Dropdown extends BaseDropdown {
+}
+
+// @public
+export const DropdownDefinition: FASTElementDefinition<typeof Dropdown>;
+
+// @public
 export class DropdownList extends BaseDropdownList {
 }
 
@@ -2430,6 +2453,19 @@ export const DropdownListStyles: ElementStyles;
 //
 // @public (undocumented)
 export const DropdownListTemplate: ElementViewTemplate<DropdownList>;
+
+// Warning: (ae-missing-release-tag) "DropdownOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export type DropdownOptions = Record<string, any>;
+
+// @public
+export const DropdownStyles: ElementStyles;
+
+// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
+//
+// @public (undocumented)
+export const DropdownTemplate: ElementViewTemplate<Dropdown>;
 
 // @public
 export const durationFast = "var(--durationFast)";

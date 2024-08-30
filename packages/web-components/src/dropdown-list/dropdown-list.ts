@@ -1,14 +1,14 @@
 import { BaseListbox } from './listbox.js';
 
 /**
- * Base class for an DropdownList custom element.
+ * Base class for a DropdownList custom element.
  *
  * @public
  */
 export class BaseDropdownList extends BaseListbox {}
 
 /**
- * An DropdownList custom element.
+ * A DropdownList custom element.
  *
  * @public
  */
