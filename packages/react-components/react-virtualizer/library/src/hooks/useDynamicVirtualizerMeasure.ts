@@ -66,10 +66,9 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
       const sizeToBeat = containerSizeRef.current + virtualizerBufferSize * 2;
       while (indexSizer <= sizeToBeat && i + virtualizerContext.contextIndex < numItems) {
         const iItemSize = getItemSize(indexRef.current + i);
-        if (
-          !virtualizerContext.childProgressiveSizes.current ||
-          virtualizerContext.childProgressiveSizes.current.length < numItems
-        ) {
+        if (virtualizerContext.childProgressiveSizes.current.length < numItems) {
+          /* We are in unknown territory, either an initial render or an update has occurred.
+            We need to let the new items render first then we can accurately assess.*/
           return virtualizerLength - virtualizerBufferSize * 2;
         }
 
