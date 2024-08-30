@@ -72,7 +72,7 @@ export const useSliderState_unstable = (state: SliderState, props: SliderProps) 
     [sliderStepsPercentVar]: stepsPercent ? `${stepsPercent}%` : '',
     [sliderProgressVar]: `${valuePercent}%`,
     [sliderProgressValueVar]: `${valuePercent / 100}`,
-    [sliderStepsGradientVar]: getStepsGradient(stepsPercent),
+    [sliderStepsGradientVar]: stepsPercent ? getStepsGradient(stepsPercent) : '',
   };
 
   // Root props
