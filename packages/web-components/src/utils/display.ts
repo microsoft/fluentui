@@ -32,7 +32,13 @@ export type CSSDisplayPropertyValue =
  * when it's a popover and not open.
  * @public
  */
-export const hidden = ':host([hidden]),:host([popover]:not(:popover-open)){display:none}';
+export const hidden = ':host([hidden]){display:none}';
+
+/**
+ * A CSS fragment to set `display: none;` when the host is a popover and not open.
+ * @public
+ */
+export const popover = ':host([popover]:not(:popover-open)){display:none}';
 
 /**
  * Applies a CSS display property.
@@ -41,5 +47,5 @@ export const hidden = ':host([hidden]),:host([popover]:not(:popover-open)){displ
  * @public
  */
 export function display(displayValue: CSSDisplayPropertyValue): string {
-  return `${hidden}:host{display:${displayValue}}`;
+  return `${hidden}${popover}:host{display:${displayValue}}`;
 }
