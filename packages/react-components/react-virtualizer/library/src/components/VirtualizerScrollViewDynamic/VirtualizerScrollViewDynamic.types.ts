@@ -51,7 +51,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     /**
      * Enables override of dynamic virtualizer context if required.
      */
-    virtualizerContext: DynamicVirtualizerContextProps;
+    virtualizerContext?: DynamicVirtualizerContextProps;
   };
 
 export type VirtualizerScrollViewDynamicState = ComponentState<VirtualizerScrollViewDynamicSlots> &

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VirtualizerScrollViewDynamic } from '@fluentui/react-components/unstable';
+import { VirtualizerScrollViewDynamic } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 import { useEffect } from 'react';
 

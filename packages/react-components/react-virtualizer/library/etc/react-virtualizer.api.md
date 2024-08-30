@@ -135,7 +135,7 @@ export const useVirtualizerStyles_unstable: (state: VirtualizerState) => Virtual
 // @public
 export const Virtualizer: FC<VirtualizerProps>;
 
-// @public (undocumented)
+// @public
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React_2.ReactNode;
 
 // @public (undocumented)
@@ -203,7 +203,7 @@ export type VirtualizerScrollViewDynamicProps = ComponentProps<Partial<Virtualiz
     children: VirtualizerChildRenderFunction;
     imperativeRef?: RefObject<ScrollToInterface>;
     enablePagination?: boolean;
-    virtualizerContext: DynamicVirtualizerContextProps;
+    virtualizerContext?: DynamicVirtualizerContextProps;
 };
 
 // @public (undocumented)

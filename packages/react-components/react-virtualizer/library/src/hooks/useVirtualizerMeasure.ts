@@ -42,12 +42,10 @@ export const useStaticVirtualizerMeasure = <TElement extends HTMLElement>(
 
       if (scrollRef.current !== targetDocument?.body) {
         // We have a local scroll container
-        const containerSize =
+        containerSizeRef.current =
           direction === 'vertical'
             ? scrollRef?.current.getBoundingClientRect().height
             : scrollRef?.current.getBoundingClientRect().width;
-
-        containerSizeRef.current = containerSize;
       } else if (targetDocument?.defaultView) {
         // If our scroll ref is the document body, we should check window height
         containerSizeRef.current =

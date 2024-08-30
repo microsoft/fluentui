@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
-import { useEffect, useRef, useCallback, useImperativeHandle, useState } from 'react';
+import { useEffect, useRef, useCallback, useImperativeHandle, useState, useReducer } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
@@ -25,6 +25,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     imperativeVirtualizerRef,
     containerSizeRef,
     scrollViewRef,
+    enableScrollLoad,
   } = props;
 
   /* The context is optional, it's useful for injecting additional index logic, or performing uniform state updates*/
@@ -98,6 +99,10 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
   const scrollCounter = useRef<number>(0);
 
   const initializeScrollingTimer = useCallback(() => {
+    if (!enableScrollLoad) {
+      // Disabled by default for reduction of render callbacks
+      return;
+    }
     /*
      * This can be considered the 'velocity' required to start 'isScrolling'
      * INIT_SCROLL_FLAG_REQ: Number of renders required to activate isScrolling
@@ -116,7 +121,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       setIsScrolling(false);
       scrollCounter.current = 0;
     }, INIT_SCROLL_FLAG_DELAY);
-  }, [clearScrollTimer, setScrollTimer]);
+  }, [clearScrollTimer, setScrollTimer, enableScrollLoad]);
 
   useEffect(() => {
     initializeScrollingTimer();
@@ -338,7 +343,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Add to original after position
             measurementPos += overflowAmount;
             // Ignore buffer size (IO offset)
-            measurementPos += bufferSize;
+            measurementPos -= bufferSize;
             // we hit the after buffer and detected the end of view, we need to find the start index.
             measurementPos -= containerSizeRef.current;
 
@@ -365,7 +370,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Minus from original before position
             measurementPos -= overflowAmount;
             // Ignore buffer size (IO offset)
-            measurementPos -= bufferSize;
+            measurementPos += bufferSize;
 
             // Calculate how far past the window bounds we are (this will be zero if IO is within window)
             const hOverflow = latestEntry.boundingClientRect.bottom - latestEntry.intersectionRect.bottom;
@@ -393,33 +398,15 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
 
         let startIndex = getIndexFromScrollPosition(measurementPos) - bufferItems;
 
-        const dirMod = latestEntry.target === beforeElementRef.current ? -1 : 1;
-        if (getItemSize && actualIndex === startIndex) {
-          /* We can't actually hit the same index twice, as IO only fires once per intersection
-           * Usually this is caused by dynamically changing sizes causing us to recalc the same index
-           * Instead, we buffer it -1:1 so that we can recalc the index with latest values
-           */
-          startIndex += dirMod;
-        }
-
         // Safety limits
         const newStartIndex = Math.min(Math.max(startIndex, 0), maxIndex);
 
-        /*
-         * Sometimes the dynamic virtualizer length changes on the final index,
-         * if this occurs we technically have a 'new' start index
-         * however, it is not needed as we already have a valid index + length to reach the end.
-         */
-        const endAlreadyReached =
-          actualIndex < newStartIndex &&
-          actualIndex + virtualizerLength >= numItems &&
-          newStartIndex + virtualizerLength >= numItems;
-        _virtualizerContext.setContextPosition(measurementPos);
-        if (actualIndex !== newStartIndex && !endAlreadyReached) {
-          flushSync(() => {
+        flushSync(() => {
+          _virtualizerContext.setContextPosition(measurementPos);
+          if (actualIndex !== newStartIndex) {
             batchUpdateNewIndex(newStartIndex);
-          });
-        }
+          }
+        });
       },
       [
         _virtualizerContext,
@@ -518,10 +505,19 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /*
+   * forceUpdate:
+   * We only want to trigger this when scrollLoading is enabled and set to false,
+   * it will force re-render all children elements
+   */
+  const forceUpdate = useReducer(() => ({}), {})[1];
   // If the user passes in an updated renderChild function - update current children
   useEffect(() => {
     if (actualIndex >= 0) {
       updateChildRows(actualIndex);
+      if (enableScrollLoad && !isScrolling) {
+        forceUpdate();
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [renderChild, isScrolling]);

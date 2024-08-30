@@ -53,6 +53,11 @@ export type VirtualizerConfigState = {
    */
   reversed?: boolean;
   /**
+   * Enables the isScrolling property in the child render function
+   * Default: false - to prevent nessecary render function calls
+   */
+  enableScrollLoad?: boolean;
+  /**
    * Pixel size of intersection observers and how much they 'cross over' into the bufferItems index.
    * Minimum 1px.
    */
@@ -69,8 +74,10 @@ export type VirtualizerConfigState = {
 
 export type VirtualizerState = ComponentState<VirtualizerSlots> & VirtualizerConfigState;
 
-// Virtualizer render function to procedurally generate children elements as rows or columns via index.
-// Q: Use generic typing and passing through object data or a simple index system?
+/**
+ * The main child render method of Virtualization
+ * isScrolling will only be enabled when enableScrollLoad is set to true.
+ */
 export type VirtualizerChildRenderFunction = (index: number, isScrolling: boolean) => React.ReactNode;
 
 export type VirtualizerDataRef = {
@@ -149,6 +156,12 @@ export type VirtualizerConfigProps = {
    * This value should be flipped in RTL implementation (TBD whether automate RTL).
    */
   reversed?: boolean;
+
+  /**
+   * Enables the isScrolling property in the child render function
+   * Default: false - to prevent nessecary render function calls
+   */
+  enableScrollLoad?: boolean;
 
   /**
    * Callback for acquiring size of individual items

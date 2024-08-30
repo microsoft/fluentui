@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -9,13 +9,13 @@ const useStyles = makeStyles({
     overflowY: 'auto',
     width: '100%',
     height: '100%',
-    maxHeight: '60vh',
+    maxHeight: '80vh',
   },
   child: {
     height: '25px',
-    lineHeight: '100px',
+    lineHeight: '25px',
     width: '100%',
-    minHeight: '100px',
+    minHeight: '25px',
   },
 });
 
@@ -24,7 +24,7 @@ export const Default = () => {
   const childLength = 1000;
 
   const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
-    defaultItemSize: 100,
+    defaultItemSize: 25,
   });
 
   return (
@@ -35,7 +35,7 @@ export const Default = () => {
           virtualizerLength={virtualizerLength}
           bufferItems={bufferItems}
           bufferSize={bufferSize}
-          itemSize={100}
+          itemSize={25}
           containerSizeRef={containerSizeRef}
         >
           {index => {

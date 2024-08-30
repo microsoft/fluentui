@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { makeStyles, useFluent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

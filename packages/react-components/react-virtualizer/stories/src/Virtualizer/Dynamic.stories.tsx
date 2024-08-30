@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  Virtualizer,
-  useDynamicVirtualizerMeasure,
-  VirtualizerContextProvider,
-} from '@fluentui/react-components/unstable';
-import type { DynamicVirtualizerContextProps } from '@fluentui/react-components/unstable';
+import { Virtualizer, useDynamicVirtualizerMeasure, VirtualizerContextProvider } from '@fluentui/react-virtualizer';
+import type { DynamicVirtualizerContextProps } from '@fluentui/react-virtualizer';
 import { makeStyles } from '@fluentui/react-components';
 import { useCallback, useRef } from 'react';
 
