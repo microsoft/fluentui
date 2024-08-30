@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: Export useMeasureList and type for consumption",
+  "comment": "BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook",
   "packageName": "@fluentui/react-virtualizer",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
