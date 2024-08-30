@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 29 Aug 2024 04:07:09 GMT and should not be manually modified.
+This log was last generated on Fri, 30 Aug 2024 04:07:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.62)
+
+Fri, 30 Aug 2024 04:07:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.61..@fluentui/web-components_v3.0.0-beta.62)
+
+### Changes
+
+- fix: add primary button state and improved button disabled state in forced-colors mode ([PR #32419](https://github.com/microsoft/fluentui/pull/32419) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.61)
 
