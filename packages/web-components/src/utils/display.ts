@@ -28,10 +28,11 @@ export type CSSDisplayPropertyValue =
   | 'table-row-group';
 
 /**
- * A CSS fragment to set `display: none;` when the host is hidden using the [hidden] attribute.
+ * A CSS fragment to set `display: none;` when the host is hidden using the [hidden] attribute, or
+ * when it's a popover and not open.
  * @public
  */
-export const hidden = `:host([hidden]){display:none}`;
+export const hidden = ':host([hidden]),:host([popover]:not(:popover-open)){display:none}';
 
 /**
  * Applies a CSS display property.
