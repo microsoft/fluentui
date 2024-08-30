@@ -173,7 +173,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
     groupSize?: number | 'auto';
-    draggable?: boolean;
+    enableDrag?: boolean;
 };
 
 // @public

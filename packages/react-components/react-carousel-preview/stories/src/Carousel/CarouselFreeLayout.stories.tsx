@@ -44,7 +44,7 @@ export const FreeLayout = () => {
   const classes = useClasses();
 
   return (
-    <Carousel draggable align="start">
+    <Carousel align="start">
       <CarouselSlider>
         <CarouselCard className={classes.card}>
           <TestComponent accentColor="#B99095">Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 Card 1 </TestComponent>
