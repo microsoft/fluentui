@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
-import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useState } from 'react';
+import { useEffect, useRef, useCallback, useImperativeHandle, useState } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { slot, useTimeout } from '@fluentui/react-utilities';
