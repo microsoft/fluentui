@@ -598,14 +598,24 @@ export class BaseDivider extends FASTElement {
 // @public
 export class BaseDropdown extends FASTElement {
     constructor();
+    // (undocumented)
+    connectedCallback(): void;
     disabled: boolean;
     // (undocumented)
     protected disabledChanged(): void;
+    // (undocumented)
+    disconnectedCallback(): void;
     // @internal
     elementInternals: ElementInternals;
     static readonly formAssociated = true;
-    // @internal (undocumented)
+    // (undocumented)
     formDisabledCallback(disabled: boolean): void;
+    // @internal (undocumented)
+    handleClick(): void;
+    list?: string;
+    // (undocumented)
+    protected listChanged(prev: string | undefined, next: string | undefined): void;
+    get listElement(): null | DropdownList;
 }
 
 // Warning: (ae-forgotten-export) The symbol "BaseListbox" needs to be exported by the entry point index.d.ts
@@ -651,8 +661,6 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseOption extends BaseCheckbox {
     constructor();
-    // @internal
-    elementInternals: ElementInternals;
 }
 
 // @public

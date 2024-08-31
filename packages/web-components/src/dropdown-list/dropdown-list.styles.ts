@@ -11,5 +11,7 @@ export const styles = css`
 
   :host {
     flex-direction: column;
+    margin: 0;
+    position: absolute;
   }
 `;

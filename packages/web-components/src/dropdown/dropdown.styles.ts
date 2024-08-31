@@ -8,4 +8,10 @@ import { display } from '../utils/display.js';
  */
 export const styles = css`
   ${display('inline-flex')}
+
+  :host {
+    border: 1px solid currentcolor;
+    cursor: pointer;
+    min-block-size: 1lh;
+  }
 `;
