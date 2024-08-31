@@ -1,6 +1,6 @@
-import { FASTElement } from "@microsoft/fast-element"; 
+import { FASTElement } from '@microsoft/fast-element';
 
-import type { Dropdown as DropdownElement} from '../dropdown/dropdown.js';
+import type { Dropdown as DropdownElement } from '../dropdown/dropdown.js';
 
 // TODO: Add ComboboxElement when it's created.
 type Combobox = null | DropdownElement;

@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities'; 
+import { uniqueId } from '@microsoft/fast-web-utilities';
 import { DropdownList } from '../dropdown-list/dropdown-list.js';
 
 /**

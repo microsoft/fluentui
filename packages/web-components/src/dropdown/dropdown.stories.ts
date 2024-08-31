@@ -14,6 +14,6 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
 
 export default {
   title: 'Components/Dropdown',
-}
+};
 
 export const Dropdown = renderComponent(storyTemplate).bind({});
