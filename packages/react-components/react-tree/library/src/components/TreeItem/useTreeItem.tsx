@@ -92,13 +92,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onClick?.(event);
-    if (event.isDefaultPrevented()) {
-      return;
-    }
-    if (itemType === 'leaf') {
-      return;
-    }
     const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
     if (isEventFromActions) {
       return;
@@ -112,6 +105,15 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+    if (!isEventFromExpandIcon) {
+      onClick?.(event);
+    }
+    if (event.isDefaultPrevented()) {
+      return;
+    }
+    if (itemType === 'leaf') {
+      return;
+    }
 
     ReactDOM.unstable_batchedUpdates(() => {
       const data = {
