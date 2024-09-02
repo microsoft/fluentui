@@ -22,3 +22,11 @@ export {
   useColorAreaStyles_unstable,
   useColorArea_unstable,
 } from './ColorArea';
+export type { AlphaSliderProps, AlphaSliderSlots, AlphaSliderState } from './AlphaSlider';
+export {
+  AlphaSlider,
+  alphaSliderClassNames,
+  renderAlphaSlider_unstable,
+  useAlphaSliderStyles_unstable,
+  useAlphaSlider_unstable,
+} from './AlphaSlider';
