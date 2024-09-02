@@ -3,7 +3,6 @@ import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import {
   mergeClasses,
   PositioningVirtualElement,
-  useFocusableGroup,
   useId,
 } from '../../../../react-components/src/index';
 import { ChartHoverCard, getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
@@ -33,12 +32,11 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   };
 
   const classes = usePopoverStyles_unstable(props);
-  const focusAttributes = useFocusableGroup();
 
   return (
-    <div id={useId('callout')} {...focusAttributes}>
+    <div id={useId('callout')}>
       <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           {/** Given custom callout, then it will render */}
           {props.customizedCallout && props.customizedCallout}
           {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
