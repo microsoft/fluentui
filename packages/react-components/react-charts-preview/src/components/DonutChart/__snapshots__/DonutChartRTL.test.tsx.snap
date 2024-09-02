@@ -58,108 +58,112 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       </div>
     </div>
     <div
+      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+      id="callout3"
+    />
+    <div
       class="fui-donut__legendContainer"
     >
       <div
+        aria-label="Legends"
+        aria-multiselectable="false"
         class="fui-legend__root"
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        role="listbox"
+        style="justify-content: center; flex-wrap: wrap;"
       >
-        <div>
-          <div
-            style="position: relative;"
+        <div
+          class="fui-Overflow fui-legend__resizableArea"
+        >
+          <button
+            aria-label="first"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            data-overflowing=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+            type="button"
           >
             <div
-              data-automation-id="visibleContent"
-              style="position: fixed; visibility: hidden;"
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
             >
-              <div
-                aria-label="Legends"
-                aria-multiselectable="false"
-                data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-                role="listbox"
-              >
-                <div
-                  class="ms-OverflowSet root-109"
-                  role="group"
-                >
-                  <div
-                    class="ms-OverflowSet-item item-110"
-                    role="none"
-                  >
-                    <button
-                      aria-label="first"
-                      aria-posinset="1"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="fui-Button fui-legend__legend"
-                      data-is-focusable="true"
-                      role="option"
-                      style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-                      type="button"
-                    >
-                      <div
-                        class="fui-legend__rect"
-                      />
-                      <div
-                        class="fui-legend__text"
-                      >
-                        first
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class="ms-OverflowSet-item item-110"
-                    role="none"
-                  >
-                    <button
-                      aria-label="second"
-                      aria-posinset="2"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="fui-Button fui-legend__legend"
-                      data-is-focusable="true"
-                      role="option"
-                      style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-                      type="button"
-                    >
-                      <div
-                        class="fui-legend__rect"
-                      />
-                      <div
-                        class="fui-legend__text"
-                      >
-                        second
-                      </div>
-                    </button>
-                  </div>
-                  <div
-                    class="ms-OverflowSet-item item-110"
-                    role="none"
-                  >
-                    <button
-                      aria-label="third"
-                      aria-posinset="3"
-                      aria-selected="false"
-                      aria-setsize="3"
-                      class="fui-Button fui-legend__legend"
-                      data-is-focusable="true"
-                      role="option"
-                      style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-                      type="button"
-                    >
-                      <div
-                        class="fui-legend__rect"
-                      />
-                      <div
-                        class="fui-legend__text"
-                      >
-                        third
-                      </div>
-                    </button>
-                  </div>
-                </div>
-              </div>
+              first
             </div>
-          </div>
+          </button>
+          <button
+            aria-label="second"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            data-overflowing=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              second
+            </div>
+          </button>
+          <button
+            aria-label="third"
+            aria-selected="false"
+            class="fui-Button fui-legend__legend"
+            data-is-focusable="true"
+            data-overflow-item=""
+            data-overflowing=""
+            role="option"
+            style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+            type="button"
+          >
+            <div
+              class="fui-legend__rect"
+            />
+            <div
+              class="fui-legend__text"
+            >
+              third
+            </div>
+          </button>
+          <button
+            aria-expanded="false"
+            aria-haspopup="menu"
+            class="fui-Button fui-MenuButton"
+            data-overflow-menu=""
+            data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+            id="menu5"
+            type="button"
+          >
+            +3 more
+            <span
+              class="fui-MenuButton__menuIcon"
+            >
+              <svg
+                aria-hidden="true"
+                class=""
+                fill="currentColor"
+                height="1em"
+                viewBox="0 0 20 20"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </div>
@@ -170,7 +174,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="body-124"
+    class="body-109"
   >
     <div
       class="fui-donut__root"
@@ -193,7 +197,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
-                  id="_Pie_14first20000"
+                  id="_Pie_50first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -205,7 +209,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
-                  id="_Pie_14second39000"
+                  id="_Pie_50second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -217,7 +221,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
-                  id="_Pie_14third45000"
+                  id="_Pie_50third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -228,108 +232,112 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         </div>
       </div>
       <div
+        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        id="callout52"
+      />
+      <div
         class="fui-donut__legendContainer"
       >
         <div
+          aria-label="Legends"
+          aria-multiselectable="false"
           class="fui-legend__root"
+          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          role="listbox"
+          style="justify-content: center; flex-wrap: wrap;"
         >
-          <div>
-            <div
-              style="position: relative;"
+          <div
+            class="fui-Overflow fui-legend__resizableArea"
+          >
+            <button
+              aria-label="first"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-is-focusable="true"
+              data-overflow-item=""
+              data-overflowing=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
+              type="button"
             >
               <div
-                data-automation-id="visibleContent"
-                style="position: fixed; visibility: hidden;"
+                class="fui-legend__rect"
+              />
+              <div
+                class="fui-legend__text"
               >
-                <div
-                  aria-label="Legends"
-                  aria-multiselectable="false"
-                  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-                  role="listbox"
-                >
-                  <div
-                    class="ms-OverflowSet root-109"
-                    role="group"
-                  >
-                    <div
-                      class="ms-OverflowSet-item item-110"
-                      role="none"
-                    >
-                      <button
-                        aria-label="first"
-                        aria-posinset="1"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class="fui-Button fui-legend__legend"
-                        data-is-focusable="true"
-                        role="option"
-                        style="--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;"
-                        type="button"
-                      >
-                        <div
-                          class="fui-legend__rect"
-                        />
-                        <div
-                          class="fui-legend__text"
-                        >
-                          first
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class="ms-OverflowSet-item item-110"
-                      role="none"
-                    >
-                      <button
-                        aria-label="second"
-                        aria-posinset="2"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class="fui-Button fui-legend__legend"
-                        data-is-focusable="true"
-                        role="option"
-                        style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
-                        type="button"
-                      >
-                        <div
-                          class="fui-legend__rect"
-                        />
-                        <div
-                          class="fui-legend__text"
-                        >
-                          second
-                        </div>
-                      </button>
-                    </div>
-                    <div
-                      class="ms-OverflowSet-item item-110"
-                      role="none"
-                    >
-                      <button
-                        aria-label="third"
-                        aria-posinset="3"
-                        aria-selected="false"
-                        aria-setsize="3"
-                        class="fui-Button fui-legend__legend"
-                        data-is-focusable="true"
-                        role="option"
-                        style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
-                        type="button"
-                      >
-                        <div
-                          class="fui-legend__rect"
-                        />
-                        <div
-                          class="fui-legend__text"
-                        >
-                          third
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                first
               </div>
-            </div>
+            </button>
+            <button
+              aria-label="second"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-is-focusable="true"
+              data-overflow-item=""
+              data-overflowing=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #0078D4; --rect-borderColor: #0078D4;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                second
+              </div>
+            </button>
+            <button
+              aria-label="third"
+              aria-selected="false"
+              class="fui-Button fui-legend__legend"
+              data-is-focusable="true"
+              data-overflow-item=""
+              data-overflowing=""
+              role="option"
+              style="--rect-height: 12px; --rect-backgroundColor: #DADADA; --rect-borderColor: #DADADA;"
+              type="button"
+            >
+              <div
+                class="fui-legend__rect"
+              />
+              <div
+                class="fui-legend__text"
+              >
+                third
+              </div>
+            </button>
+            <button
+              aria-expanded="false"
+              aria-haspopup="menu"
+              class="fui-Button fui-MenuButton"
+              data-overflow-menu=""
+              data-tabster="{\\"restorer\\":{\\"type\\":1}}"
+              id="menu54"
+              type="button"
+            >
+              +3 more
+              <span
+                class="fui-MenuButton__menuIcon"
+              >
+                <svg
+                  aria-hidden="true"
+                  class=""
+                  fill="currentColor"
+                  height="1em"
+                  viewBox="0 0 20 20"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            </button>
           </div>
         </div>
       </div>

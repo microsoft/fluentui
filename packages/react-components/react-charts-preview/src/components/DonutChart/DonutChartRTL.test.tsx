@@ -15,6 +15,21 @@ function sharedBeforeEach() {
   resetIds();
 }
 
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
+
 describe('Donut chart interactions', () => {
   beforeEach(() => {
     sharedBeforeEach();
@@ -97,7 +112,7 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
   });
 
   test('Should deselect legend on double mouse click on legends', () => {
@@ -114,7 +129,7 @@ describe('Donut chart interactions', () => {
     expect(getById(container, /Pie.*?second/i)[0]).toHaveAttribute('opacity', '0.1');
     const firstLegend = screen.queryByText('first')?.closest('button');
     expect(firstLegend).toHaveAttribute('aria-selected', 'true');
-    expect(firstLegend).toHaveAttribute('tabIndex', '0');
+    expect(firstLegend).toHaveAttribute('style', '--rect-height: 12px; --rect-backgroundColor: #E5E5E5; --rect-borderColor: #E5E5E5;');
     // double click on same first legend
     fireEvent.click(legend!);
 
