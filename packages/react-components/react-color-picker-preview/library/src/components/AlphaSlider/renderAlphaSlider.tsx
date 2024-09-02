@@ -10,6 +10,11 @@ import type { AlphaSliderState, AlphaSliderSlots } from './AlphaSlider.types';
 export const renderAlphaSlider_unstable = (state: AlphaSliderState) => {
   assertSlots<AlphaSliderSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      <state.input />
+      <state.rail />
+      <state.thumb />
+    </state.root>
+  );
 };

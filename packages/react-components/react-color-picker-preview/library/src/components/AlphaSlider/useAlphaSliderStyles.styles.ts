@@ -1,22 +1,53 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useColorSliderStyles_unstable } from '../ColorSlider/useColorSliderStyles.styles';
 import type { AlphaSliderSlots, AlphaSliderState } from './AlphaSlider.types';
+
+const TRANSPARENT_IMAGE_URL = 'https://fabricweb.azureedge.net/fabric-website/assets/images/transparent-pattern.png';
 
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots> = {
   root: 'fui-AlphaSlider',
-  // TODO: add class names for all slots on AlphaSliderSlots.
-  // Should be of the form `<slotName>: 'fui-AlphaSlider__<slotName>`
+  rail: 'fui-AlphaSlider__rail',
+  thumb: 'fui-AlphaSlider__thumb',
+  input: 'fui-AlphaSlider__input',
 };
+
+export const alphaSliderCSSVars = {
+  sliderDirectionVar: `--fui-AlphaSlider--direction`,
+  sliderProgressVar: `--fui-AlphaSlider--progress`,
+  sliderStepsPercentVar: `--fui-AlphaSlider--steps-percent`,
+  thumbColorVar: `--fui-AlphaSlider__thumb--color`,
+  railColorVar: `--fui-AlphaSlider__rail--color`,
+};
+
+const { sliderDirectionVar, railColorVar, sliderProgressVar, thumbColorVar } = alphaSliderCSSVars;
 
 /**
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    // TODO Add default styles for the root element
+  rail: {
+    border: `1px solid ${tokens.colorNeutralStroke1}`,
+    backgroundImage: `linear-gradient(var(${sliderDirectionVar}), transparent, var(${railColorVar})), url(${TRANSPARENT_IMAGE_URL})`,
   },
+});
 
-  // TODO add additional classes for different states and/or slots
+/**
+ * Styles for the thumb slot
+ */
+const useThumbStyles = makeStyles({
+  thumb: {
+    backgroundColor: `var(${thumbColorVar})`,
+  },
+  horizontal: {
+    transform: 'translateX(-50%)',
+    left: `var(${sliderProgressVar})`,
+  },
+  vertical: {
+    transform: 'translateY(50%)',
+    bottom: `var(${sliderProgressVar})`,
+  },
 });
 
 /**
@@ -26,10 +57,25 @@ export const useAlphaSliderStyles_unstable = (state: AlphaSliderState): AlphaSli
   'use no memo';
 
   const styles = useStyles();
-  state.root.className = mergeClasses(alphaSliderClassNames.root, styles.root, state.root.className);
+  const thumbStyles = useThumbStyles();
+  state.root.className = mergeClasses(alphaSliderClassNames.root, state.root.className);
+  state.input.className = mergeClasses(alphaSliderClassNames.input, state.input.className);
+  state.rail.className = mergeClasses(alphaSliderClassNames.rail, styles.rail, state.rail.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  state.thumb.className = mergeClasses(
+    alphaSliderClassNames.thumb,
+    thumbStyles.thumb,
+    state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    state.thumb.className,
+  );
 
+  state.thumb.className = mergeClasses(
+    alphaSliderClassNames.thumb,
+    thumbStyles.thumb,
+    state.vertical ? thumbStyles.vertical : thumbStyles.horizontal,
+    state.thumb.className,
+  );
+
+  useColorSliderStyles_unstable(state);
   return state;
 };

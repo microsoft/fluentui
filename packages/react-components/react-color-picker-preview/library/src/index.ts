@@ -1,4 +1,4 @@
-export type { ColorSliderProps, ColorSliderSlots, ColorSliderState } from './ColorSlider';
+export type { ColorSliderProps, ColorSliderSlots, ColorSliderState, SliderOnChangeEventHandler } from './ColorSlider';
 export {
   ColorSlider,
   colorSliderClassNames,

@@ -20,15 +20,15 @@ export const AlphaSlider: ForwardRefComponent<AlphaSliderProps>;
 export const alphaSliderClassNames: SlotClassNames<AlphaSliderSlots>;
 
 // @public
-export type AlphaSliderProps = ComponentProps<AlphaSliderSlots> & {};
-
-// @public (undocumented)
-export type AlphaSliderSlots = {
-    root: Slot<'div'>;
+export type AlphaSliderProps = Omit<ComponentProps<Partial<AlphaSliderSlots>, 'input'>, 'defaultValue' | 'onChange' | 'value'> & ColorSliderProps & {
+    overlayColor?: string;
 };
 
+// @public (undocumented)
+export type AlphaSliderSlots = ColorSliderSlots;
+
 // @public
-export type AlphaSliderState = ComponentState<AlphaSliderSlots>;
+export type AlphaSliderState = ComponentState<AlphaSliderSlots> & Pick<AlphaSliderProps, 'vertical'> & Omit<ColorSliderState, keyof ColorSliderSlots | 'components'>;
 
 // @public
 export const ColorArea: ForwardRefComponent<ColorAreaProps>;
@@ -103,8 +103,11 @@ export const renderColorPicker_unstable: (state: ColorPickerState) => JSX.Elemen
 // @public
 export const renderColorSlider_unstable: (state: ColorSliderState) => JSX.Element;
 
+// @public (undocumented)
+export type SliderOnChangeEventHandler = EventHandler<SliderOnChangeData>;
+
 // @public
-export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref<HTMLDivElement>) => AlphaSliderState;
+export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref<HTMLInputElement>) => AlphaSliderState;
 
 // @public
 export const useAlphaSliderStyles_unstable: (state: AlphaSliderState) => AlphaSliderState;

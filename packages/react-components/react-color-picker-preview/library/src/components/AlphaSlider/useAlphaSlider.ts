@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useColorSlider_unstable } from '../ColorSlider/useColorSlider';
 import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
+import { useAlphaSliderState_unstable } from './useAlphaSliderState';
 
 /**
  * Create the state required to render AlphaSlider.
@@ -9,23 +10,17 @@ import type { AlphaSliderProps, AlphaSliderState } from './AlphaSlider.types';
  * before being passed to renderAlphaSlider_unstable.
  *
  * @param props - props from this instance of AlphaSlider
- * @param ref - reference to root HTMLDivElement of AlphaSlider
+ * @param ref - reference to root HTMLInputElement of AlphaSlider
  */
-export const useAlphaSlider_unstable = (props: AlphaSliderProps, ref: React.Ref<HTMLDivElement>): AlphaSliderState => {
-  return {
-    // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: 'div',
-    },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
-    root: slot.always(
-      getIntrinsicElementProps('div', {
-        ref,
-        ...props,
-      }),
-      { elementType: 'div' },
-    ),
+export const useAlphaSlider_unstable = (
+  props: AlphaSliderProps,
+  ref: React.Ref<HTMLInputElement>,
+): AlphaSliderState => {
+  const state: AlphaSliderState = {
+    ...useColorSlider_unstable(props, ref),
   };
+
+  useAlphaSliderState_unstable(state, props);
+
+  return state;
 };

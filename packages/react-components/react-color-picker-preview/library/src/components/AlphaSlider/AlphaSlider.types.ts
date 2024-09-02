@@ -1,17 +1,25 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
+import type { ColorSliderSlots, ColorSliderProps, ColorSliderState } from '../ColorSlider/ColorSlider.types';
 
-export type AlphaSliderSlots = {
-  root: Slot<'div'>;
-};
+export type AlphaSliderSlots = ColorSliderSlots;
 
 /**
  * AlphaSlider Props
  */
-export type AlphaSliderProps = ComponentProps<AlphaSliderSlots> & {};
+export type AlphaSliderProps = Omit<
+  ComponentProps<Partial<AlphaSliderSlots>, 'input'>,
+  'defaultValue' | 'onChange' | 'value'
+> &
+  ColorSliderProps & {
+    /**
+     * The color to overlay on the alpha slider.
+     */
+    overlayColor?: string;
+  };
 
 /**
  * State used in rendering AlphaSlider
  */
-export type AlphaSliderState = ComponentState<AlphaSliderSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from AlphaSliderProps.
-// & Required<Pick<AlphaSliderProps, 'propName'>>
+export type AlphaSliderState = ComponentState<AlphaSliderSlots> &
+  Pick<AlphaSliderProps, 'vertical'> &
+  Omit<ColorSliderState, keyof ColorSliderSlots | 'components'>;
