@@ -971,7 +971,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       legendBars={legendBars}
       datasetForXAxisDomain={_xAxisLabels}
       barwidth={_barWidth}
-      //focusZoneDirection={FocusZoneDirection.horizontal}
       customizedCallout={_getCustomizedCallout()}
       getmargins={_getMargins}
       getGraphData={_getGraphData}

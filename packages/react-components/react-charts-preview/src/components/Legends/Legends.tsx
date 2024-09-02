@@ -10,6 +10,9 @@ import { Overflow, OverflowItem } from '@fluentui/react-overflow';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
+import {
+  useArrowNavigationGroup
+} from "@fluentui/react-components";
 
 // This is an internal interface used for rendering the legends with unique key
 interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -44,6 +47,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
     const [activeLegend, setActiveLegend] = React.useState('');
     const [selectedLegends, setSelectedLegends] = React.useState<LegendMap>({});
     const focusAttributes = useFocusableGroup();
+    const arrowAttributes = useArrowNavigationGroup({ axis: "horizontal",  memorizeCurrent: true});
 
     React.useEffect(() => {
       let defaultSelectedLegends = {};
@@ -71,7 +75,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
 
     return (
       <div
-        {...focusAttributes}
+        {...focusAttributes} {...arrowAttributes}
         {...(allowFocusOnLegends && {
           role: 'listbox',
           'aria-label': 'Legends',

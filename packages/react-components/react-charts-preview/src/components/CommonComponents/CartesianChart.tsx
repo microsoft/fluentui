@@ -398,15 +398,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     height: containerHeight,
   };
 
-  let focusDirection;
-  /*   if (props.focusZoneDirection === FocusZoneDirection.vertical) {
-    focusDirection = props.focusZoneDirection;
-  } else if (props.focusZoneDirection) {
-    focusDirection = props.focusZoneDirection;
-  } else {
-    focusDirection = FocusZoneDirection.horizontal;
-  } */
-
   const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - removalValueForTextTuncate! - titleMargin;
@@ -529,12 +520,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       onMouseLeave={_onChartLeave}
     >
       {!_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
-      {/*       <FocusZone
-        direction={focusDirection}
-        className={classes.chartWrapper}
-        defaultTabbableElement={`#${idForDefaultTabbableElement}`}
-        {...svgFocusZoneProps}
-      > */}
       <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
       {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
       <svg
@@ -623,7 +608,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         )}
       </svg>
       </div>
-      {/*       </FocusZone> */}
 
       {!props.hideLegend && (
         <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
