@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import {
   getIntrinsicElementProps,
   useId,
@@ -50,6 +49,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     onClick,
     onKeyDown,
     onChange,
+    onFocus,
     as = 'div',
     itemType = 'leaf',
     'aria-level': level = contextLevel,
@@ -91,49 +91,60 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
+  const handleFocus = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    onFocus?.(event);
+    if (
+      event.isDefaultPrevented() ||
+      // isEventFromActions
+      elementContains(actionsRef.current, event.target) ||
+      // isEventFromSubtree
+      elementContains(subtreeRef.current, event.target) ||
+      // isEventFromSelection
+      elementContains(selectionRef.current, event.target)
+    ) {
+      return;
+    }
+
+    requestTreeResponse({
+      event,
+      value,
+      itemType,
+      parentValue,
+      requestType: 'navigate',
+      type: treeDataTypes.Focus,
+      target: event.currentTarget,
+    });
+  });
+
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
-    if (event.isDefaultPrevented()) {
+    if (
+      event.isDefaultPrevented() ||
+      itemType === 'leaf' ||
+      // isEventFromActions
+      elementContains(actionsRef.current, event.target as Node) ||
+      // isEventFromSubtree
+      elementContains(subtreeRef.current, event.target as Node) ||
+      // isEventFromSelection
+      elementContains(selectionRef.current, event.target as Node)
+    ) {
       return;
     }
-    if (itemType === 'leaf') {
-      return;
-    }
-    const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
-    if (isEventFromActions) {
-      return;
-    }
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (isEventFromSubtree) {
-      return;
-    }
-    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
-    if (isEventFromSelection) {
-      return;
-    }
-    const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
 
-    ReactDOM.unstable_batchedUpdates(() => {
-      const data = {
-        event,
-        value,
-        open: getNextOpen(),
-        target: event.currentTarget,
-        type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
-      } as const;
-      props.onOpenChange?.(event, data);
-      requestTreeResponse({
-        ...data,
-        itemType,
-        requestType: 'open',
-      });
-      requestTreeResponse({
-        ...data,
-        itemType,
-        parentValue,
-        requestType: 'navigate',
-        type: treeDataTypes.Click,
-      });
+    const isEventFromExpandIcon = elementContains(expandIconRef.current, event.target as Node);
+
+    const data = {
+      event,
+      value,
+      open: getNextOpen(),
+      target: event.currentTarget,
+      type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
+    } as const;
+    props.onOpenChange?.(event, data);
+    requestTreeResponse({
+      ...data,
+      itemType,
+      requestType: 'open',
     });
   });
 
@@ -291,6 +302,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onChange: handleChange,
+        onFocus: handleFocus,
       } as const),
       { elementType: 'div' },
     ),
