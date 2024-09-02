@@ -1,12 +1,12 @@
-import { ExecutorContext, PromiseExecutor, logger, parseJson } from '@nx/devkit';
+import { type ExecutorContext, type PromiseExecutor, logger, parseJson } from '@nx/devkit';
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { execSync } from 'node:child_process';
 
 import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-extractor';
 
-import { GenerateApiExecutorSchema } from './schema';
-import { PackageJson, TsConfig } from '../../types';
+import type { GenerateApiExecutorSchema } from './schema';
+import type { PackageJson, TsConfig } from '../../types';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
   const options = normalizeOptions(schema, context);
@@ -15,6 +15,7 @@ const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, c
 
   return { success };
 };
+
 export default runExecutor;
 
 // ===========
@@ -38,7 +39,8 @@ function normalizeOptions(schema: GenerateApiExecutorSchema, context: ExecutorCo
   const resolvedSchema = { ...defaults, ...schema };
 
   const project = context.projectsConfigurations!.projects[context.projectName!];
-  const resolveLocalFlag = Boolean((schema.local || process.env.__FORCE_API_MD_UPDATE__) ?? !isCI());
+
+  const resolveLocalFlag = Boolean(process.env.__FORCE_API_MD_UPDATE__) || isCI() ? false : resolvedSchema.local;
   const projectAbsolutePath = join(context.root, project.root);
   const resolveConfig = getApiExtractorConfigPath(resolvedSchema, projectAbsolutePath);
   const tsConfigPathForCompilation = getTsConfigPathUsedForProduction(projectAbsolutePath);
@@ -155,19 +157,24 @@ function getTsConfigForApiExtractor(options: { tsConfig: TsConfig; packageJson: 
        * This option has no effect on type declarations '.d.ts' thus can be turned off. For more info see https://www.typescriptlang.org/tsconfig#non-module-files
        *
        * NOTE: Some v8 packages (font-icons-mdl2) use `preserveConstEnums: false` which clashes with isolateModules - TSC will error
+       * TODO: this will be used only on v9 packages so we can remove this once all v9 uses executor instead just-scripts
        */
       isolatedModules: false,
       /**
+       * TODO: make this configurable via schema api
        * needs to be explicitly set to `false` so errors propagate to api-extractor
        */
       skipLibCheck: false,
       /**
        * api-extractor introduced a "feature" which is actually a bug and makes using path aliases impossible
-       * - with this api extractor change user is forced to rely on yarn/npm "workspace" symlinks in order to determine that inner workspace package should not be bundled in type definition rollup/api.md
+       * - with this api extractor change, user is forced to rely on yarn/npm "workspace" symlinks in order to determine that inner workspace package should not be bundled in type definition rollup/api.md
        * - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
        *
        */
       paths: undefined,
+      /**
+       * Turn off path aliases.
+       */
       baseUrl: '.',
     },
   };
@@ -211,6 +218,7 @@ function getApiExtractorConfigPath(schema: Required<GenerateApiExecutorSchema>, 
 
 function getTsConfigPathUsedForProduction(projectRoot: string) {
   const tsConfigPath = join(projectRoot, `./tsconfig.json`);
+  // TODO: make this configurable via schema api
   const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'].map(fileName =>
     join(projectRoot, fileName),
   );
