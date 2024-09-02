@@ -1,0 +1,79 @@
+import { exec } from 'child_process';
+import { readFileSync, readdirSync } from 'fs';
+import { join } from 'path';
+
+import { logger } from 'just-scripts';
+import { argv } from 'yargs';
+
+/**
+ * Deprecates the specified packages.
+ *
+ * @param packagesToDeprecate - An array of package names to deprecate.
+ * @param npmToken - The npm token for authentication.
+ */
+function deprecatePackages(packagesToDeprecate: string[], npmToken: string) {
+  Promise.all(packagesToDeprecate.map(pkg => deprecatePackage(pkg, npmToken)))
+    .then(() => {
+      logger.info('Successfully deprecated "preview" packages');
+      process.exit(0);
+    })
+    .catch(e => {
+      logger.error('Failed to deprecate "preview" packages', e);
+      process.exit(1);
+    });
+}
+
+/**
+ * Deprecates a package by executing an `npm deprecate` command.
+ *
+ * @param name - The name of the package to deprecate.
+ * @param npmToken - The npm authentication token.
+ * @returns A promise that resolves when the deprecation is successful, or rejects with an error if it fails.
+ */
+function deprecatePackage(name: string, npmToken: string) {
+  return new Promise<void>((resolve, reject) => {
+    const command = `npm deprecate ${name} "Deprecated in favor of stable release" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
+
+    logger.info(command);
+
+    exec(command, error => {
+      if (error) {
+        reject(new Error(`failed to deprecate ${name}`));
+      }
+
+      resolve();
+    });
+  });
+}
+
+/**
+ * Retrieves the list of packages to deprecate based on change files in the `change` directory.
+ * A package is marked for deprecation if:
+ *   - The change file has a type of `minor`
+ *   - The change file has a message of `chore: release stable`
+ *
+ * @returns {string[]} An array of package names to deprecate.
+ */
+function getPackagesToDeprecate() {
+  const changeDir = join(__dirname, 'change');
+
+  const packagesToDeprecate = readdirSync(changeDir).reduce<string[]>((acc, file) => {
+    const filePath = join(changeDir, file);
+    const fileContent = readFileSync(filePath, 'utf-8');
+    const changeFile = JSON.parse(fileContent);
+
+    if (changeFile.type === 'minor' && changeFile.message === 'chore: release stable') {
+      acc.push(changeFile.packageName);
+    }
+
+    return acc;
+  }, []);
+
+  return packagesToDeprecate;
+}
+
+if (!argv.token || typeof argv.token !== 'string') {
+  throw new Error('Please pass an NPM token through the --token argument');
+}
+
+deprecatePackages(getPackagesToDeprecate(), argv.token);

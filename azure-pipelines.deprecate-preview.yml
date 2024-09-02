@@ -1,0 +1,41 @@
+pr: none
+
+trigger: none
+
+name: 'Deprecate Preview Package'
+
+parameters:
+  - name: packageSpec
+    type: string
+    default: ''
+  - name: message
+    type: string
+    default: 'Deprecated in favor of stable release'
+
+variables:
+  skipComponentGovernanceDetection: true
+
+pool: '1ES-Host-Ubuntu'
+
+jobs:
+  - job: Deprecate Preview Package
+    pool:
+      name: '1ES-Host-Ubuntu'
+      image: '1ES-PT-Ubuntu-20.04'
+      os: linux
+    workspace:
+      clean: all
+    steps:
+      - template: .devops/templates/tools.yml@self
+
+      - script: |
+          NPM_TOKEN=$(npmToken)
+
+          echo "registry=https://registry.npmjs.org/" > .npmrc
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
+
+          npm deprecate $(packageSpec) $(message)
+
+        displayName: 'Deprecate package'
+
+      - template: .devops/templates/cleanup.yml@self

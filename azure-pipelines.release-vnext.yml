@@ -93,6 +93,11 @@ extends:
                 displayName: Tag prelease packages with prerelease tag
                 continueOnError: true
 
+              - script: |
+                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-preview-packages/index.ts --token $(npmToken)
+                displayName: 'Deprecate preview packages'
+                continueOnError: true
+
               # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
               - script: |
                   yarn syncpack list-mismatches
