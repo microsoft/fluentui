@@ -274,7 +274,13 @@ export class BaseTextArea extends FASTElement {
       toggleState(this.elementInternals, `resize-${next}`, true);
     }
 
-    toggleState(this.elementInternals, `resize`, this.resize !== TextAreaResize.none);
+    toggleState(
+      this.elementInternals,
+      `resize`,
+      ([TextAreaResize.both, TextAreaResize.horizontal, TextAreaResize.vertical] as Partial<TextAreaResize[]>).includes(
+        this.resize,
+      ),
+    );
   }
 
   /**
