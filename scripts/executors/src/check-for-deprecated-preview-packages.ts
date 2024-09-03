@@ -1,27 +1,9 @@
-import { exec } from 'child_process';
+import { execSync } from 'child_process';
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 
 import { logger } from 'just-scripts';
 import yargs from 'yargs';
-
-/**
- * Deprecates the specified packages.
- *
- * @param packagesToDeprecate - An array of package names to deprecate.
- * @param npmToken - The npm token for authentication.
- */
-function deprecatePackages(packagesToDeprecate: string[], npmToken: string) {
-  Promise.all(packagesToDeprecate.map(pkg => deprecatePackage(pkg, npmToken)))
-    .then(() => {
-      logger.info('Successfully deprecated "preview" packages');
-      process.exit(0);
-    })
-    .catch(e => {
-      logger.error('Failed to deprecate "preview" packages', e);
-      process.exit(1);
-    });
-}
 
 /**
  * Deprecates a package by executing an `npm deprecate` command.
@@ -30,20 +12,16 @@ function deprecatePackages(packagesToDeprecate: string[], npmToken: string) {
  * @param npmToken - The npm authentication token.
  * @returns A promise that resolves when the deprecation is successful, or rejects with an error if it fails.
  */
-function deprecatePackage(name: string, npmToken: string) {
-  return new Promise<void>((resolve, reject) => {
-    const command = `npm deprecate ${name} "Deprecated in favor of stable release" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
+export function deprecatePackage(name: string, npmToken: string) {
+  const command = `npm deprecate ${name} "Deprecated in favor of stable release" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
 
-    logger.info(command);
+  logger.info(command);
 
-    exec(command, error => {
-      if (error) {
-        reject(new Error(`failed to deprecate ${name}`));
-      }
-
-      resolve();
-    });
-  });
+  try {
+    execSync(command, { stdio: 'inherit' });
+  } catch (e) {
+    logger.error(`Failed to deprecate "${name}" package`);
+  }
 }
 
 /**
@@ -54,7 +32,7 @@ function deprecatePackage(name: string, npmToken: string) {
  *
  * @returns {string[]} An array of package names to deprecate.
  */
-function getPackagesToDeprecate() {
+export function getPackagesToDeprecate() {
   const changeDir = join(__dirname, 'change');
 
   const packagesToDeprecate = readdirSync(changeDir).reduce<string[]>((acc, file) => {
@@ -75,7 +53,12 @@ function getPackagesToDeprecate() {
 function main() {
   const args = yargs.option('token', { type: 'string', description: 'NPM Token', demandOption: true }).argv;
 
-  deprecatePackages(getPackagesToDeprecate(), args.token);
+  const npmToken = args.token;
+  const packagesToDeprecate = getPackagesToDeprecate();
+
+  packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, npmToken));
 }
 
-main();
+if (require.main === module) {
+  main();
+}
