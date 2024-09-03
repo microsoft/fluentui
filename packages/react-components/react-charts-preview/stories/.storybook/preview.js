@@ -1,4 +1,4 @@
-import * as rootPreview from '../../../../.storybook/preview';
+import * as rootPreview from '../../../../../.storybook/preview';
 
 /** @type {typeof rootPreview.decorators} */
 export const decorators = [...rootPreview.decorators];

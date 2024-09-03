@@ -23,10 +23,9 @@
     "clean": "just-scripts clean",
     "generate-api": "just-scripts generate-api",
     "start": "yarn storybook",
-    "storybook": "start-storybook",
+    "storybook": "yarn --cwd ../stories storybook",
     "test": "jest --passWithNoTests",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
   "syncpack": {
     "dependencyTypes": []

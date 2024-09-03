@@ -5,7 +5,7 @@
  */
 module.exports = {
   displayName: 'react-charts-preview',
-  preset: '../../../jest.preset.js',
+  preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
       'ts-jest',

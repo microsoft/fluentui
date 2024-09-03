@@ -267,7 +267,8 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-charts-preview": ["packages/react-components/react-charts-preview/src/index.ts"]
+      "@fluentui/react-charts-preview": ["packages/react-components/react-charts-preview/library/src/index.ts"],
+      "@fluentui/react-charts-preview-stories": ["packages/react-components/react-charts-preview/stories/src/index.ts"]
     }
   }
 }
