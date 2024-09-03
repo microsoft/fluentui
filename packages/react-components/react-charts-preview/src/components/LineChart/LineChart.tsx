@@ -21,9 +21,6 @@ import {
   ILineChartDataPoint,
 } from '../../index';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import {
-  useArrowNavigationGroup
-} from "@fluentui/react-components";
 import { tokens } from '@fluentui/react-theme';
 import {
   calloutData,
@@ -1287,7 +1284,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       tickValues,
       tickFormat,
     };
-    const arrowAttributes = useArrowNavigationGroup({ axis: "horizontal" });
     return !_isChartEmpty() ? (
       <CartesianChart
         {...props}
