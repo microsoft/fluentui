@@ -294,6 +294,8 @@ export {
   ToggleButtonTemplate,
 } from './toggle-button/index.js';
 export type { ToggleButtonOptions } from './toggle-button/index.js';
+export { TreeItem } from './tree-item/index.js';
+export { TreeView } from './tree-view/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
