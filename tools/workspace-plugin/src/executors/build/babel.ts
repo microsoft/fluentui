@@ -44,7 +44,7 @@ export async function babel(
 
       babelrc: true,
       // to avoid leaking of global configs
-      babelrcRoots: [normalizedOptions.project.root],
+      babelrcRoots: [normalizedOptions.absoluteProjectRoot],
 
       caller: { name: '@fluentui/workspace-plugin:build' },
       filename: filePath,
@@ -56,9 +56,8 @@ export async function babel(
     if (resultCode === sourceCode) {
       logger.verbose(`babel: skipped ${filePath}`);
       continue;
-    } else {
-      logger.verbose(`babel: transformed ${filePath}`);
     }
+    logger.verbose(`babel: transformed ${filePath}`);
 
     const sourceMapFile = filePath + '.map';
 

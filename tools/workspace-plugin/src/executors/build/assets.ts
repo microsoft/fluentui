@@ -67,6 +67,7 @@ export async function copyAssets(files: FileInputOutput[]): Promise<boolean> {
   const copyAsyncQueue = files.map(file => {
     return cp(file.input, file.output, { recursive: true });
   });
+
   return Promise.all(copyAsyncQueue)
     .then(() => {
       return true;
