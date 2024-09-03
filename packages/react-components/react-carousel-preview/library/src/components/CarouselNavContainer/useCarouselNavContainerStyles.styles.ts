@@ -19,6 +19,11 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'center',
     width: '100%',
+    pointerEvents: 'none',
+
+    '> *': {
+      pointerEvents: 'all',
+    },
   },
   next: {},
   prev: {},
@@ -38,13 +43,13 @@ const useStyles = makeStyles({
     marginRight: 'auto',
   },
   nextOverlayWide: {
-    marginRight: tokens.spacingHorizontalS,
+    marginRight: tokens.spacingHorizontalM,
   },
   prevOverlayWide: {
-    marginLeft: tokens.spacingHorizontalS,
+    marginLeft: tokens.spacingHorizontalM,
   },
   autoplayOverlayWide: {
-    marginLeft: tokens.spacingHorizontalS,
+    marginLeft: tokens.spacingHorizontalM,
   },
   expanded: {
     width: '100%',
@@ -60,20 +65,20 @@ const useStyles = makeStyles({
   },
   nextOverlayExpanded: {
     position: 'absolute',
-    right: tokens.spacingHorizontalS,
+    right: tokens.spacingHorizontalM,
     top: '50%',
     transform: 'translateY(-50%)',
   },
   prevOverlayExpanded: {
     position: 'absolute',
-    left: tokens.spacingHorizontalS,
+    left: tokens.spacingHorizontalM,
     top: '50%',
     transform: 'translateY(-50%)',
   },
   autoplayExpanded: {
     position: 'absolute',
     bottom: `-${tokens.spacingHorizontalXS}`,
-    left: tokens.spacingHorizontalS,
+    left: tokens.spacingHorizontalM,
     marginBottom: tokens.spacingVerticalM,
   },
 });

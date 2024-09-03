@@ -14,9 +14,8 @@ export const renderCarouselNavContainer_unstable = (state: CarouselNavContainerS
   // TODO Add additional slots in the appropriate place
   return (
     <state.root>
-      {layout !== 'overlay-expanded' && state.autoplay && <state.autoplay />}
+      {state.autoplay && <state.autoplay />}
       {state.prev && <state.prev />}
-      {layout === 'overlay-expanded' && state.autoplay && <state.autoplay />}
       {state.root.children}
       {state.next && <state.next />}
     </state.root>

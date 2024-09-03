@@ -1,4 +1,4 @@
-import { Button, makeStyles, tokens, Dropdown, Option, typographyStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -69,7 +69,7 @@ export const Default = () => (
         </TestComponent>
       </CarouselCard>
     </CarouselSlider>
-    <CarouselNavContainer layout={'inline'} autoplay={''}>
+    <CarouselNavContainer layout={'inline'}>
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>
   </Carousel>
