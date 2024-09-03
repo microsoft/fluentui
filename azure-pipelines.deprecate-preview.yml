@@ -29,12 +29,7 @@ jobs:
       - template: .devops/templates/tools.yml@self
 
       - script: |
-          NPM_TOKEN=$(npmToken)
-
-          echo "registry=https://registry.npmjs.org/" > .npmrc
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
-
-          npm deprecate $(packageSpec) $(message)
+          npm deprecate $(packageSpec) "$(message)" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=$(npmToken)
 
         displayName: 'Deprecate package'
 
