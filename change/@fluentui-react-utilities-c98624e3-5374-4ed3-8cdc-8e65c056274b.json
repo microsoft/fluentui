@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: simplify SlotComponentType type",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

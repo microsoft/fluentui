@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Datepicker } from '@fluentui/react-northstar';
 import DatepickerHeaderExample from '../../examples/components/Datepicker/Slots/DatepickerHeaderExample.shorthand';
 import DatepickerExampleDisabled from '../../examples/components/Datepicker/States/DatepickerExampleDisabled.shorthand';
@@ -10,7 +10,7 @@ import DatepickerNoInputPlaceholderExample from '../../examples/components/Datep
 import DatepickerParseExample from '../../examples/components/Datepicker/Usage/DatepickerParseExample.shorthand';
 import DatepickerExampleStandaloneCalendarInput from '../../examples/components/Datepicker/Variations/DatepickerExampleStandaloneCalendarInput.shorthand';
 
-export default { component: Datepicker, title: 'Datepicker' } as ComponentMeta<typeof Datepicker>;
+export default { component: Datepicker, title: 'Datepicker' } as Meta<typeof Datepicker>;
 
 export {
   DatepickerHeaderExample,

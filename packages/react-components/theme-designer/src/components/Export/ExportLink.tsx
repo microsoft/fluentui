@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from '@fluentui/react-components';
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
-import * as dedent from 'dedent';
+import dedent from 'dedent';
 import { getBrandValues, objectToString } from '../../utils/toString';
 import { useThemeDesigner } from '../../Context/ThemeDesignerContext';
 const defaultFileToPreview = encodeURIComponent('/index.tsx');
@@ -41,8 +41,8 @@ export const ExportLink = () => {
     TabList,
     Title3,
     useId,
-    Dropdown, 
-    Option 
+    Dropdown,
+    Option
   } from "@fluentui/react-components";
   import type { Theme } from "@fluentui/react-components";
   import {

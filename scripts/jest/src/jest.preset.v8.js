@@ -4,7 +4,6 @@ const path = require('path');
 const { findRepoDeps } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
 
-const { isCI } = require('./environment');
 const { workersConfig } = require('./shared');
 
 const packageJsonPath = findConfig('package.json') ?? '';
@@ -84,7 +83,7 @@ const createConfig = (customConfig = {}) => {
     restoreMocks: true,
     clearMocks: true,
 
-    ...(isCI ? workersConfig : null),
+    ...workersConfig,
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
     // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future

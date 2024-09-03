@@ -9,7 +9,7 @@ export type CarouselNavImageButtonSlots = {
   /**
    * Required: The image within the button
    */
-  image: Slot<'img'>;
+  image: NonNullable<Slot<'img'>>;
 };
 
 /**

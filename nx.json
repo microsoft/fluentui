@@ -11,7 +11,7 @@
   },
   "targetDefaults": {
     "bundle-size": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "bundle": {
@@ -41,12 +41,15 @@
       "cache": true
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": [],
       "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
-      "cache": true
+      "cache": true,
+      "options": {
+        "passWithNoTests": true
+      }
     },
     "test-integration": {
-      "dependsOn": ["build"],
+      "dependsOn": ["build", "^build"],
       "cache": true
     },
     "test-ssr": {
@@ -57,7 +60,7 @@
       "cache": true
     },
     "test-perf": {
-      "dependsOn": ["bundle"],
+      "dependsOn": [],
       "cache": true
     },
     "e2e": {
@@ -73,10 +76,13 @@
         "{workspaceRoot}/.eslintrc.json",
         "{workspaceRoot}/.eslintignore",
         "{workspaceRoot}/eslint.config.js"
-      ]
+      ],
+      "options": {
+        "command": "eslint src"
+      }
     },
     "verify-packaging": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "cache": true
     },
     "@nx/jest:jest": {
@@ -116,5 +122,21 @@
   },
   "parallel": 3,
   "useInferencePlugins": false,
-  "defaultBase": "master"
+  "defaultBase": "master",
+  "plugins": [
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": {
+        "targetName": "test"
+      },
+      "include": ["tools/**/*", "scripts/**/*"]
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      },
+      "include": ["tools/**/*", "scripts/**/*"]
+    }
+  ]
 }

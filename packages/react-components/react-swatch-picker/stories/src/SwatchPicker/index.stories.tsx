@@ -1,4 +1,3 @@
-import { ComponentMeta } from '@storybook/react';
 import { SwatchPicker, ColorSwatch, ImageSwatch, SwatchPickerRow, EmptySwatch } from '@fluentui/react-components';
 
 import descriptionMd from './SwatchPickerDescription.md';
@@ -16,7 +15,11 @@ export { SwatchPickerMixedSwatches } from './SwatchPickerMixedSwatches.stories';
 export { SwatchPickerWithTooltip } from './SwatchPickerWithTooltip.stories';
 export { SwatchPickerPopup } from './SwatchPickerPopup.stories';
 
-const metadata: ComponentMeta<typeof SwatchPicker> = {
+// Typing with Meta<typeof SwatchPicker> generates a type error for the `subcomponents` property.
+// https://github.com/storybookjs/storybook/issues/27535
+//
+// TODO: bring back typing when the issue is resolved
+const metadata = {
   title: 'Components/SwatchPicker',
   component: SwatchPicker,
   subcomponents: {

@@ -2,6 +2,65 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 07:23:35 GMT",
+      "tag": "@fluentui/theme_v2.6.59",
+      "version": "2.6.59",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/theme",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "126254552+gauriGupta99@users.noreply.github.com",
+            "package": "@fluentui/theme",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49",
+            "comment": "Point fluentui/theme export maps to right path"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2024 07:24:18 GMT",
+      "tag": "@fluentui/theme_v2.6.58",
+      "version": "2.6.58",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/merge-styles to v8.6.13",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.15.15",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/theme_v2.6.57",
+      "version": "2.6.57",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/theme",
+            "comment": "Bump @fluentui/utilities to v8.15.14",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Jul 2024 07:33:31 GMT",
       "tag": "@fluentui/theme_v2.6.56",
       "version": "2.6.56",

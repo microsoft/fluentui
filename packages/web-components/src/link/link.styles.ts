@@ -26,10 +26,8 @@ export const styles = css`
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightRegular};
-    margin: 0;
-    padding: 0;
     overflow: inherit;
-    text-align: left;
+    text-align: start;
     text-decoration: none;
     text-decoration-thinkness: ${strokeWidthThin};
     text-overflow: inherit;

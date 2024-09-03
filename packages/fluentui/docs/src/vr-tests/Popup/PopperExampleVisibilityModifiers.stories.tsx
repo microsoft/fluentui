@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Popup } from '@fluentui/react-northstar';
 import PopperExampleVisibilityModifiers from '../../examples/components/Popup/Visual/PopperExampleVisibilityModifiers';
 
@@ -25,6 +25,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Popup>;
+} as Meta<typeof Popup>;
 
 export { PopperExampleVisibilityModifiers };

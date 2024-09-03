@@ -12,6 +12,7 @@ import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { Toggle } from '@fluentui/react/lib/Toggle';
+import { Label } from '@fluentui/react';
 
 interface IVerticalChartState {
   width: number;
@@ -20,6 +21,8 @@ interface IVerticalChartState {
   useSingleColor: boolean;
   hideLabels: boolean;
   showAxisTitles: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -37,6 +40,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       useSingleColor: false,
       hideLabels: false,
       showAxisTitles: true,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -67,6 +72,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.forceUpdate();
     this.setState({ showAxisTitles: checked });
+  };
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -172,11 +185,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
 
     return (
       <>
-        <p>
-          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
-          So instead of a numeric value, the callout will show the date that is passed in the{' '}
-          <code>xAxisCalloutData</code> property.
-        </p>
+        <Label>
+          In this example the xAxisCalloutData property overrides the x value that is shown on the callout. So instead
+          of a numeric value, the callout will show the date that is passed in the xAxisCalloutData property.
+        </Label>
         <label htmlFor="changeWidth">Change Width:</label>
         <input
           type="range"
@@ -218,6 +230,11 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
         {this.state.showAxisTitles && (
           <div style={rootStyle}>
             <VerticalBarChart
@@ -240,6 +257,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               enableReflow={true}
               yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
               xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}
@@ -263,6 +282,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               })}
               hideLabels={this.state.hideLabels}
               enableReflow={true}
+              enableGradient={this.state.enableGradient}
+              roundCorners={this.state.roundCorners}
             />
           </div>
         )}

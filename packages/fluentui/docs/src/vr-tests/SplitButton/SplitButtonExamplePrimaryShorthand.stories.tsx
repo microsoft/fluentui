@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { SplitButton, splitButtonToggleClassName } from '@fluentui/react-northstar';
 import SplitButtonExamplePrimaryShorthand from '../../examples/components/SplitButton/Types/SplitButtonExamplePrimary.shorthand';
 
@@ -18,6 +18,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof SplitButton>;
+} as Meta<typeof SplitButton>;
 
 export { SplitButtonExamplePrimaryShorthand };

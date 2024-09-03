@@ -1,8 +1,9 @@
-import * as React from 'react';
-import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
-import { useCarouselStore_unstable } from '../useCarouselStore';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
 
 /**
  * Create the state required to render CarouselNav.
@@ -14,6 +15,7 @@ import { useCarouselStore_unstable } from '../useCarouselStore';
  * @param ref - reference to root HTMLDivElement of CarouselNav
  */
 export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
+  const { appearance } = props;
   const focusableGroupAttr = useArrowNavigationGroup({
     circular: false,
     axis: 'horizontal',
@@ -22,10 +24,18 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const values = useCarouselStore_unstable(snapshot => snapshot.values);
+  const [totalSlides, setTotalSlides] = React.useState(0);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues(data => {
+      setTotalSlides(data.navItemsCount);
+    });
+  }, [subscribeForValues]);
 
   return {
-    values,
+    totalSlides,
+    appearance,
     renderNavButton: props.children,
     components: {
       root: 'div',
@@ -34,7 +44,6 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
       getIntrinsicElementProps('div', {
         ref,
         role: 'tablist',
-        tabIndex: 0,
         ...props,
         ...focusableGroupAttr,
         children: null,

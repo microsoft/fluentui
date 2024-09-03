@@ -269,6 +269,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -311,6 +312,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -494,6 +496,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                 id="header1-1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
                 role="button"
               >
                 <span
@@ -516,6 +519,7 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                       ms-Icon
                       {
                         display: inline-block;
+                        text-decoration: inherit;
                       }
                       {
                         -moz-osx-font-smoothing: grayscale;

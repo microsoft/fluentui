@@ -10,6 +10,10 @@ import {
 } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 
+export default {
+  title: 'Components/ComboBox',
+};
+
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },

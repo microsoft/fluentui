@@ -356,7 +356,7 @@ describe('prepare-initial-release generator', () => {
               content: stripIndents`
               import { One } from '@proj/react-one-preview';
 
-              const metadata: ComponentMeta<typeof One> = {
+              const metadata: Meta<typeof One> = {
                 title: 'Preview Components/One',
                 component: One,
               }
@@ -456,7 +456,7 @@ describe('prepare-initial-release generator', () => {
         expect(tree.read('packages/react-one/stories/index.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
           "import { One } from '@proj/react-components';
 
-          const metadata: ComponentMeta<typeof One> = {
+          const metadata: Meta<typeof One> = {
             title: 'Components/One',
             component: One,
           };
@@ -548,7 +548,7 @@ describe('prepare-initial-release generator', () => {
         `,
         );
 
-        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn lage generate-api --to react-components"`);
+        expect(execCalls[2].cmd).toMatchInlineSnapshot(`"yarn nx run react-components:generate-api"`);
         expect(execCalls[2].args).toMatchInlineSnapshot(
           { cwd: expect.any(String) },
           `
@@ -641,7 +641,7 @@ describe('prepare-initial-release generator', () => {
                 content: stripIndents`
               import { One } from '@proj/react-one-preview';
 
-              const metadata: ComponentMeta<typeof One> = {
+              const metadata: Meta<typeof One> = {
                 title: 'Preview Components/One',
                 component: One,
               }
@@ -771,7 +771,7 @@ describe('prepare-initial-release generator', () => {
         expect(tree.read('packages/react-one/stories/src/index.stories.tsx', 'utf-8')).toMatchInlineSnapshot(`
           "import { One } from '@proj/react-components';
 
-          const metadata: ComponentMeta<typeof One> = {
+          const metadata: Meta<typeof One> = {
             title: 'Components/One',
             component: One,
           };

@@ -153,7 +153,9 @@ export function apiExtractor(): TaskFunction {
       ].join('');
       const logErr = formatMissingApiViolationMessage(messages.TS7016);
       const logFix = chalk.blueBright(
-        `${chalk.bold('🛠 FIX')}: run '${chalk.italic(`yarn lage generate-api --to ${packageJson.name}`)}'`,
+        `${chalk.bold('🛠 FIX')}: run '${chalk.italic(
+          `yarn nx run ${packageJson.name.replace('@fluentui/', '')}:generate-api`,
+        )}'`,
       );
 
       logger.error(errTitle, logErr, '\n', logFix, '\n');

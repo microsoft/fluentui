@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Mon, 24 Jun 2024 07:33:22 GMT and should not be manually modified.
+This log was last generated on Thu, 01 Aug 2024 07:24:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.28)
+
+Thu, 01 Aug 2024 07:24:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.2.27..@fluentui/react-window-provider_v2.2.28)
+
+### Patches
+
+- fix: revert incorectly set npm versions in all packages ([PR #31937](https://github.com/microsoft/fluentui/pull/31937) by martinhochel@microsoft.com)
 
 ## [2.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.2.27)
 

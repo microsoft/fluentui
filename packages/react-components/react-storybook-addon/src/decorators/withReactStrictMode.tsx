@@ -2,8 +2,13 @@ import * as React from 'react';
 
 import { STRICT_MODE_ID } from '../constants';
 import { FluentStoryContext } from '../hooks';
+import { isDecoratorDisabled } from '../utils/isDecoratorDisabled';
 
 export const withReactStrictMode = (StoryFn: () => JSX.Element, context: FluentStoryContext) => {
+  if (isDecoratorDisabled(context, 'ReactStrictMode')) {
+    return StoryFn();
+  }
+
   const isActive = context.globals[STRICT_MODE_ID] ?? false;
 
   return <StrictModeWrapper strictMode={isActive}>{StoryFn()}</StrictModeWrapper>;

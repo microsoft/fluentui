@@ -7,12 +7,15 @@ import {
 } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 interface IGroupedBarChartState {
   width: number;
   height: number;
   barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
   hideLabels: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -24,6 +27,8 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       barwidth: 16,
       selectedCallout: 'singleCallout',
       hideLabels: false,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -45,6 +50,14 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
+  };
+
+  private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -217,6 +230,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+        </div>
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
@@ -228,6 +246,8 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
             enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

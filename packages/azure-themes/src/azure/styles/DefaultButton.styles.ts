@@ -23,7 +23,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           selectors: {
             ':hover': {
               outlineColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
-              borderColor: `${extendedSemanticColors.ButtonBorderDangerHovered} !important`,
+              borderColor: extendedSemanticColors.ButtonBorderDangerHovered,
               backgroundColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
               color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
             },
@@ -92,17 +92,11 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           },
         },
         '&.ms-Button--primary.is-disabled': {
-          border: `${StyleConstants.borderWidth} solid
-          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled}`,
         },
       },
     },
     rootFocused: {
-      selectors: {
-        '::after': {
-          outlineColor: `${extendedSemanticColors.ButtonBorderFocus} !important`,
-        },
-      },
       backgroundColor: semanticColors.buttonBackground,
       color: semanticColors.buttonText,
       fill: semanticColors.buttonTextHovered,
@@ -259,7 +253,6 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           height: StyleConstants.inputControlHeight,
           color: semanticColors.primaryButtonTextDisabled,
         },
-
         '.ms-Button--default + .ms-Button': {
           height: StyleConstants.inputControlHeight,
           border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled}`,
@@ -271,7 +264,6 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         '.ms-Button--primary + .ms-Button': {
           height: StyleConstants.inputControlHeight,
-          //border: '1px solid pink !important',  //"'none',
           color: semanticColors.primaryButtonTextDisabled,
           selectors: {
             '.ms-Button-menuIcon': {

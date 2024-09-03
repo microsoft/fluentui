@@ -3,7 +3,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { FlatTreeSlots, FlatTreeState } from './FlatTree.types';
 
-export const flatTreeClassNames: SlotClassNames<FlatTreeSlots> = {
+export const flatTreeClassNames: SlotClassNames<Omit<FlatTreeSlots, 'collapseMotion'>> = {
   root: 'fui-FlatTree',
 };
 

@@ -67,7 +67,9 @@ export type ComboboxBaseProps = SelectionProps &
     placeholder?: string;
 
     /**
-     * Configure the positioning of the combobox dropdown
+     * Configure the positioning of the combobox dropdown.
+     * Please refer to the [positioning documentation](https://react.fluentui.dev/?path=/docs/concepts-developer-positioning-components--default#anchor-to-target)
+     * for more details.
      *
      * @defaultvalue below
      */

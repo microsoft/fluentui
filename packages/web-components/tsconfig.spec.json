@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "ESNext",
     "outDir": "dist/esm",
-    "types": ["web", "node", "webpack-env"]
+    "types": ["node"]
   },
   "include": ["src/**/*.test.*", "src/**/*.spec.*"]
 }

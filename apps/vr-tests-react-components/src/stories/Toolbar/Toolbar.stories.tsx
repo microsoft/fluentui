@@ -51,6 +51,28 @@ export const Default = (props: Partial<ToolbarProps>) => (
   </Toolbar>
 );
 
+export const Transparent = (props: Partial<ToolbarProps>) => (
+  <Toolbar {...props}>
+    <ToolbarButton
+      id="bold-button"
+      aria-label="Text option - Bold"
+      appearance="transparent"
+      icon={<TextBold24Regular />}
+    />
+    <ToolbarButton aria-label="Text option - Italic" appearance="transparent" icon={<TextItalic24Regular />} />
+    <ToolbarButton aria-label="Text option - Underline" appearance="transparent" icon={<TextUnderline24Regular />} />
+    <ToolbarDivider />
+    <ToolbarToggleButton
+      id="snooze-toggle"
+      aria-label="Snooze Alert Option"
+      name="toggle"
+      value="toggle"
+      appearance="transparent"
+      icon={<AlertSnooze24Regular />}
+    />
+  </Toolbar>
+);
+
 export const Vertical = (props: Partial<ToolbarProps>) => (
   <Toolbar vertical>
     <ToolbarButton id="bold-button" aria-label="Text option - Bold" appearance="primary" icon={<TextBold24Regular />} />

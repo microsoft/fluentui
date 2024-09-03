@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adds custom style hook for MenuItemLink",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,185 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 15 Jul 2024 17:25:14 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.13)
+
+Fri, 16 Aug 2024 10:24:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.12..@fluentui/react-components_v9.54.13)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: Add context to configure motion behaviour ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-migration-v0-v9`
+  - Export VideoProps, split storybooks ([PR #32318](https://github.com/microsoft/fluentui/pull/32318) by jurokapsiar@gmail.com)
+
+## [9.54.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.12)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.11..@fluentui/react-components_v9.54.12)
+
+### Patches
+
+- `@fluentui/react-tabster`
+  - chore: simplifies useMergedTabsterAttributes internals ([PR #32303](https://github.com/microsoft/fluentui/pull/32303) by bernardo.sunderhus@gmail.com)
+
+## [9.54.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.11)
+
+Thu, 15 Aug 2024 08:22:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.10..@fluentui/react-components_v9.54.11)
+
+### Minor changes
+
+- `@fluentui/react-tag-picker`
+  - feature: introduces noPopover property to TagPicker ([PR #32158](https://github.com/microsoft/fluentui/pull/32158) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - chore: change :after to ::after ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: check icon slot does not collapse ([PR #32243](https://github.com/microsoft/fluentui/pull/32243) by sarah.higley@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: change :after to ::after. ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+  - Bug fix for issue 31724 ([PR #32060](https://github.com/microsoft/fluentui/pull/32060) by lakshmimanasasai.t@gmail.com)
+- `@fluentui/react-list-preview`
+  - chore: ensures useMergedTabsterAttributes supports Partial attributes ([PR #32300](https://github.com/microsoft/fluentui/pull/32300) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - v9 migration: Add Video shim component ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by jukapsia@microsoft.com)
+- `@fluentui/react-swatch-picker`
+  - (react-swatch-picker): fixed documentation ([PR #32279](https://github.com/microsoft/fluentui/pull/32279) by vkozlova@microsoft.com)
+- `@fluentui/react-table`
+  - chore: change :after to ::after ([PR #32236](https://github.com/microsoft/fluentui/pull/32236) by seanmonahan@microsoft.com)
+- `@fluentui/react-tabster`
+  - chore: ensures useMergedTabsterAttributes supports Partial attributes ([PR #32300](https://github.com/microsoft/fluentui/pull/32300) by bernardo.sunderhus@gmail.com)
+
+## [9.54.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.10)
+
+Wed, 07 Aug 2024 12:31:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.9..@fluentui/react-components_v9.54.10)
+
+### Patches
+
+- `@fluentui/react-toolbar`
+  - fix: hardcode size of `ToolbarButton` ([PR #32185](https://github.com/microsoft/fluentui/pull/32185) by olfedias@microsoft.com)
+
+## [9.54.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.9)
+
+Tue, 06 Aug 2024 21:40:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.8..@fluentui/react-components_v9.54.9)
+
+### Minor changes
+
+- `@fluentui/react-toolbar`
+  - feat: Add transparent as an option for the appearance prop in ToolbarButton ([PR #32205](https://github.com/microsoft/fluentui/pull/32205) by ololubek@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: Card does not override specified focusMode based on event listeners ([PR #32200](https://github.com/microsoft/fluentui/pull/32200) by sarah.higley@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: do not require ref forwarding ([PR #32095](https://github.com/microsoft/fluentui/pull/32095) by olfedias@microsoft.com)
+- `@fluentui/react-message-bar`
+  - Fix undefined reference in older browsers in useMessageBarReflow ([PR #32238](https://github.com/microsoft/fluentui/pull/32238) by miclo@microsoft.com)
+- `@fluentui/react-tabs`
+  - ignore ref for tab reserved space content slot ([PR #31775](https://github.com/microsoft/fluentui/pull/31775) by kirpadv@gmail.com)
+- `@fluentui/react-tree`
+  - chore: improve ImmutableSet and ImmutableMap internal implementation ([PR #32167](https://github.com/microsoft/fluentui/pull/32167) by bernardo.sunderhus@gmail.com)
+
+## [9.54.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.8)
+
+Mon, 05 Aug 2024 22:33:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.7..@fluentui/react-components_v9.54.8)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Implement carousel autoplay button and functionality ([PR #32154](https://github.com/microsoft/fluentui/pull/32154) by mifraser@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - feat: Builds out and styles AppItemStatic ([PR #32161](https://github.com/microsoft/fluentui/pull/32161) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - fix: Button styles on hover/active state ([PR #32155](https://github.com/microsoft/fluentui/pull/32155) by mifraser@microsoft.com)
+- `@fluentui/react-input`
+  - Added comments on deprecated appearances ([PR #32176](https://github.com/microsoft/fluentui/pull/32176) by gcox@microsoft.com)
+- `@fluentui/react-popover`
+  - fix(Popover): fix shadows on arrows ([PR #32138](https://github.com/microsoft/fluentui/pull/32138) by olfedias@microsoft.com)
+- `@fluentui/react-skeleton`
+  - update wave animation ([PR #32077](https://github.com/microsoft/fluentui/pull/32077) by kirpadv@gmail.com)
+- `@fluentui/react-table`
+  - bugfix: removes Partial from TableProps usage ([PR #32159](https://github.com/microsoft/fluentui/pull/32159) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - feat: add collapse motion to Tree ([PR #32163](https://github.com/microsoft/fluentui/pull/32163) by olkatruk@microsoft.com)
+
+## [9.54.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.7)
+
+Tue, 30 Jul 2024 18:47:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.6..@fluentui/react-components_v9.54.7)
+
+### Minor changes
+
+- `@fluentui/react-accordion`
+  - feat: add collapse motion to Accordion ([PR #32086](https://github.com/microsoft/fluentui/pull/32086) by olkatruk@microsoft.com)
+- `@fluentui/react-carousel-preview`
+  - feat: Release react-carousel-preview to public preview ([PR #32152](https://github.com/microsoft/fluentui/pull/32152) by mifraser@microsoft.com)
+- `@fluentui/react-icons-compat`
+  - feat: Release react-icons-compat to stable ([PR #32151](https://github.com/microsoft/fluentui/pull/32151) by ololubek@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - Adds AppItem and AppItemStatic, removes AppNode ([PR #32088](https://github.com/microsoft/fluentui/pull/32088) by matejera@microsoft.com)
+  - feat: Adds slots & styling for AppItem. ([PR #32103](https://github.com/microsoft/fluentui/pull/32103) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - fix: improve hover for HC mode ([PR #31953](https://github.com/microsoft/fluentui/pull/31953) by marcosvmmoura@gmail.com)
+- `@fluentui/react-combobox`
+  - fix: only call activedescendant focus when combobox/dropdown is opened ([PR #32156](https://github.com/microsoft/fluentui/pull/32156) by sarah.higley@microsoft.com)
+- `@fluentui/react-drawer`
+  - chore: migrate to stable motion APIs ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - chore: update types for navDrawerClassNames ([PR #31668](https://github.com/microsoft/fluentui/pull/31668) by olfedias@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: improve arrow styles implementation ([PR #32092](https://github.com/microsoft/fluentui/pull/32092) by olfedias@microsoft.com)
+- `@fluentui/react-search`
+  - fix: replace useEventCallback with useCallback for focus ([PR #32079](https://github.com/microsoft/fluentui/pull/32079) by vgenaev@gmail.com)
+  - fix: Expand hit target when there's no content after. ([PR #32114](https://github.com/microsoft/fluentui/pull/32114) by estebanmu@microsoft.com)
+
+## [9.54.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.6)
+
+Tue, 23 Jul 2024 20:13:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.5..@fluentui/react-components_v9.54.6)
+
+### Minor changes
+
+- `@fluentui/react-motion`
+  - feat: add presenceMotionSlot() API ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - feat: add motion slots (surfaceMotion to Dialog & backdropMotion to DialogSurface) ([PR #31132](https://github.com/microsoft/fluentui/pull/31132) by olfedias@microsoft.com)
+- `@fluentui/react-menu`
+  - chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-motion`
+  - fix: improve Web Animations API detection in tests ([PR #32029](https://github.com/microsoft/fluentui/pull/32029) by olfedias@microsoft.com)
+- `@fluentui/react-motion-components-preview`
+  - feat: add Fade motion component ([PR #32020](https://github.com/microsoft/fluentui/pull/32020) by olkatruk@microsoft.com)
+  - feat(motion): add Scale motion component ([PR #32021](https://github.com/microsoft/fluentui/pull/32021) by olkatruk@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: stops leaking HTMLElementConstructorName type ([PR #32072](https://github.com/microsoft/fluentui/pull/32072) by bernardo.sunderhus@gmail.com)
+  - chore: simplify SlotComponentType type ([PR #31984](https://github.com/microsoft/fluentui/pull/31984) by olfedias@microsoft.com)
 
 ## [9.54.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.5)
 

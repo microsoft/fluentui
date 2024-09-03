@@ -55,6 +55,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -69,7 +70,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -81,6 +81,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -95,7 +96,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -107,6 +107,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -121,7 +122,6 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -346,7 +346,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -744,6 +744,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -758,7 +759,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -770,6 +770,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -784,7 +785,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -796,6 +796,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -810,7 +811,6 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -944,7 +944,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1342,6 +1342,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1356,7 +1357,6 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1368,6 +1368,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1382,7 +1383,6 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1394,6 +1394,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1408,7 +1409,6 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -1465,7 +1465,7 @@ exports[`DonutChart snapShot testing Should elevate all smaller values to minimu
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1860,6 +1860,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1874,7 +1875,6 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -1902,6 +1902,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1916,7 +1917,6 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -1944,6 +1944,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -1958,7 +1959,6 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2031,7 +2031,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2426,6 +2426,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2440,7 +2441,6 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2468,6 +2468,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2482,7 +2483,6 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2510,6 +2510,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -2524,7 +2525,6 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
             <text
@@ -2597,7 +2597,1130 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
+              data-tabster="{\\"uncontrolled\\": {}}"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #E5E5E5;
+                            border-color: #E5E5E5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #0078D4;
+                            border-color: #0078D4;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #0078D4, #0078D4);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #DADADA;
+                            border-color: #DADADA;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #DADADA, #DADADA);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render gradients on arcs 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: transparent;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+            <clipPath
+              id="Arc_clip4#4760D5_#637CEF"
+            >
+              <path
+                d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              />
+            </clipPath>
+            <foreignObject
+              clipPath="url(#Arc_clip4#4760D5_#637CEF)"
+              height="100%"
+              width="100%"
+              x="-50%"
+              y="-50%"
+            >
+              <div
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 0rad,
+                              #4760D5,
+                              #637CEF 1.2167664052268437rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
+              />
+            </foreignObject>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: transparent;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+            <clipPath
+              id="Arc_clip5#795AA6_#9373C0"
+            >
+              <path
+                d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              />
+            </clipPath>
+            <foreignObject
+              clipPath="url(#Arc_clip5#795AA6_#9373C0)"
+              height="100%"
+              width="100%"
+              x="-50%"
+              y="-50%"
+            >
+              <div
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 1.2167664052268437rad,
+                              #795AA6,
+                              #9373C0 2.3536944901923453rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
+              />
+            </foreignObject>
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: transparent;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+            <clipPath
+              id="Arc_clip6#159195_#2AA0A4"
+            >
+              <path
+                d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              />
+            </clipPath>
+            <foreignObject
+              clipPath="url(#Arc_clip6#159195_#2AA0A4)"
+              height="100%"
+              width="100%"
+              x="-50%"
+              y="-50%"
+            >
+              <div
+                className=
+
+                    {
+                      background: conic-gradient(
+                              from 3.5704608954191888rad,
+                              #159195,
+                              #2AA0A4 2.7127244117603975rad
+                            );
+                      height: 100%;
+                      opacity: 1;
+                      width: 100%;
+                    }
+              />
+            </foreignObject>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone7"
+              data-tabster="{\\"uncontrolled\\": {}}"
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onMouseDownCapture={[Function]}
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet
+                    {
+                      display: flex;
+                      flex-wrap: wrap;
+                      justify-content: center;
+                      position: relative;
+                    }
+                role="group"
+              >
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #4760D5;
+                            border-color: #4760D5;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #4760D5, #4760D5);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #795AA6;
+                            border-color: #795AA6;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #795AA6, #795AA6);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className=
+                      ms-OverflowSet-item
+                      {
+                        display: inherit;
+                        flex-shrink: 0;
+                      }
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className=
+
+                        {
+                          align-items: center;
+                          background: none;
+                          border: none;
+                          cursor: pointer;
+                          display: flex;
+                          outline: transparent;
+                          padding-bottom: 8px;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 8px;
+                          position: relative;
+                          text-transform: capitalize;
+                        }
+                        &::-moz-focus-inner {
+                          border: 0;
+                        }
+                        .ms-Fabric--isFocusVisible &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          border: 1px solid transparent;
+                          bottom: 1px;
+                          content: "";
+                          left: 1px;
+                          outline: 1px solid #605e5c;
+                          position: absolute;
+                          right: 1px;
+                          top: 1px;
+                          z-index: 1;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                          outline-color: #605e5c;
+                        }
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                  >
+                    <div
+                      className=
+
+                          {
+                            background-color: #159195;
+                            border-color: #159195;
+                            border: 1px solid;
+                            content: ;
+                            height: 12px;
+                            margin-right: 8px;
+                            width: 12px;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                            content: linear-gradient(to right, #159195, #159195);
+                            opacity: ;
+                          }
+                    />
+                    <div
+                      className=
+
+                          {
+                            -moz-osx-font-smoothing: grayscale;
+                            -webkit-font-smoothing: antialiased;
+                            color: #323130;
+                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                            font-size: 12px;
+                            font-weight: 400;
+                            line-height: 16px;
+                            opacity: ;
+                          }
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render rounded corners on arcs 1`] = `
+<div
+  className=
+      ms-DonutChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone3"
+    data-tabster="{\\"uncontrolled\\": {}}"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className=
+
+            {
+              alignment-adjust: center;
+              box-sizing: content-box;
+              display: block;
+              height: 200px;
+              overflow: visible;
+              width: 200px;
+            }
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #E5E5E5;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M0.97,-96.949A3,3,0,0,1,4.092,-99.916A100,100,0,0,1,92.301,-38.477A3,3,0,0,1,90.6,-34.52L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #0078D4;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M91.272,-32.701A3,3,0,0,1,95.138,-30.801A100,100,0,0,1,-37.828,92.569A3,3,0,0,1,-39.434,88.572L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className=
+
+                  {
+                    cursor: default;
+                    fill: #DADADA;
+                    opacity: 1;
+                    outline: transparent;
+                    stroke: #ffffff;
+                  }
+                  &::-moz-focus-inner {
+                    border: 0;
+                  }
+              d="M-41.197,87.766A3,3,0,0,1,-45.271,89.166A100,100,0,0,1,-4.092,-99.916A3,3,0,0,1,-0.97,-96.949L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+  <div
+    className=
+
+        {
+          padding-top: 16px;
+          width: 200px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -2992,6 +4115,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3006,7 +4130,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3018,6 +4141,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3032,7 +4156,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3044,6 +4167,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3058,7 +4182,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3115,7 +4238,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -3510,6 +4633,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #637cef;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3524,7 +4648,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3536,6 +4659,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #e3008c;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3550,7 +4674,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3562,6 +4685,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   {
                     cursor: default;
                     fill: #2aa0a4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -3576,7 +4700,6 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -3633,7 +4756,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly without color 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4028,6 +5151,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4042,7 +5166,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4054,6 +5177,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4068,7 +5192,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4080,6 +5203,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4094,7 +5218,6 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4151,7 +5274,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -4546,6 +5669,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4560,7 +5684,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4572,6 +5695,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4586,7 +5710,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4598,6 +5721,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4612,7 +5736,6 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4681,6 +5804,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4695,7 +5819,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4707,6 +5830,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4721,7 +5845,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4733,6 +5856,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -4747,7 +5871,6 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -4804,7 +5927,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -5199,6 +6322,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #E5E5E5;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5213,7 +6337,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5225,6 +6348,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #0078D4;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5239,7 +6363,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5251,6 +6374,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   {
                     cursor: default;
                     fill: #DADADA;
+                    opacity: 1;
                     outline: transparent;
                     stroke: #ffffff;
                   }
@@ -5265,7 +6389,6 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               onMouseLeave={[Function]}
               onMouseMove={[Function]}
               onMouseOver={[Function]}
-              opacity={1}
               role="img"
             />
           </g>
@@ -5339,7 +6462,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone7"
               data-tabster="{\\"uncontrolled\\": {}}"
               onFocus={[Function]}
               onKeyDown={[Function]}

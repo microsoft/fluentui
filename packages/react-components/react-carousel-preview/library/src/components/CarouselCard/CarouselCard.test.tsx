@@ -7,15 +7,12 @@ describe('CarouselCard', () => {
   isConformant({
     Component: CarouselCard,
     displayName: 'CarouselCard',
-    requiredProps: {
-      value: 'test-0',
-    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<CarouselCard value="test-0">Default CarouselCard</CarouselCard>);
+    const result = render(<CarouselCard>Default CarouselCard</CarouselCard>);
     expect(result.container).toMatchSnapshot();
   });
 });

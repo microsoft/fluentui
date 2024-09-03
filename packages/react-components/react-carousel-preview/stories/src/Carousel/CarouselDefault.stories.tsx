@@ -1,15 +1,14 @@
-import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselButton,
   CarouselCard,
   CarouselNav,
-  CarouselNavImageButton,
+  CarouselNavButton,
   CarouselSlider,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
-const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 const useClasses = makeStyles({
   test: {
     ...typographyStyles.largeTitle,
@@ -20,7 +19,7 @@ const useClasses = makeStyles({
   },
 });
 
-const TestComponent: React.FC<{ accentColor: string; children: string }> = props => {
+const TestComponent: React.FC<{ accentColor: string; children: React.ReactNode }> = props => {
   const { accentColor, children } = props;
   const classes = useClasses();
 
@@ -32,28 +31,42 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 };
 
 export const Default = () => (
-  <Carousel defaultValue="card-1">
+  <Carousel groupSize={1}>
     <CarouselSlider>
-      <CarouselCard value="card-1">
-        <TestComponent accentColor="#B99095">Card 1</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#B99095">
+          <Button>Card 1</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-2">
-        <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#FCB5AC">
+          <Button>Card 2</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-3">
-        <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#B5E5CF">
+          <Button>Card 3</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-4">
-        <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#3D5B59">
+          <Button>Card 4</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-5">
-        <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#F9EAC2">
+          <Button>Card 5</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-6">
-        <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#FEE7E6">
+          <Button>Card 7</Button>
+        </TestComponent>
       </CarouselCard>
-      <CarouselCard value="card-7">
-        <TestComponent accentColor="#FFD898">Card 7</TestComponent>
+      <CarouselCard>
+        <TestComponent accentColor="#FFD898">
+          <Button>Card 8</Button>
+        </TestComponent>
       </CarouselCard>
     </CarouselSlider>
     <div
@@ -63,9 +76,13 @@ export const Default = () => (
         justifyContent: 'center',
       }}
     >
-      <CarouselButton navType="prev" />
-      <CarouselNav>{() => <CarouselNavImageButton image={{ src: SWAP_IMAGE }} />}</CarouselNav>
-      <CarouselButton navType="next" />
+      <Tooltip content={'Go To Previous Page'} relationship={'label'}>
+        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
+      </Tooltip>
+      <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+      <Tooltip content={'Go To Next Page'} relationship={'label'}>
+        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
+      </Tooltip>
     </div>
   </Carousel>
 );

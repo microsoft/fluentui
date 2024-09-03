@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Improve animation for active tab indicator on tabs with falsy values",
+  "packageName": "@fluentui/react-tabs",
+  "email": "kirpadv@gmail.com",
+  "dependentChangeType": "patch"
+}

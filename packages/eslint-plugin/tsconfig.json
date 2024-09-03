@@ -4,7 +4,7 @@
     "allowJs": true,
     "checkJs": true,
     "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,

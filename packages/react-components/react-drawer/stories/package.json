@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "yarn storybook",
-    "storybook": "start-storybook",
+    "storybook": "storybook dev",
     "type-check": "just-scripts type-check",
     "lint": "eslint src/",
     "format": "just-scripts prettier",
@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-motion-preview": "*",
     "@fluentui/react-drawer": "*",
     "@fluentui/react-storybook-addon": "*",
     "@fluentui/react-storybook-addon-export-to-sandbox": "*",

@@ -97,7 +97,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
       aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow={0}
       autoComplete="off"
       className=
           ms-spinButton-input
@@ -287,6 +286,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -444,6 +444,7 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -578,7 +579,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
       aria-labelledby="Label1"
       aria-valuemax={100}
       aria-valuemin={0}
-      aria-valuenow={0}
       aria-valuetext="0 pt"
       autoComplete="off"
       className=
@@ -769,6 +769,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -926,6 +927,7 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                 ms-Button-icon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;

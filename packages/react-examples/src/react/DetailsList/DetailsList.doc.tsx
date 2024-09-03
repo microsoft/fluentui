@@ -212,7 +212,7 @@ export const DetailsListCustomFooterPageProps: IDocPageProps = generateProps({
 });
 
 export const DetailsListKeyboardAccessibleResizeAndReorderProps: IDocPageProps = generateProps({
-  title: 'Keyboard-accessible column reordering and resizing',
+  title: 'Accessible column reordering and resizing',
   code: DetailsListKeyboardAccessibleResizeAndReorderExampleCode,
   view: <DetailsListKeyboardAccessibleResizeAndReorderExample />,
 });

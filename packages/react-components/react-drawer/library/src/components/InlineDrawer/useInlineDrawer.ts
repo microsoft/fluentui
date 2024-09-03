@@ -1,9 +1,17 @@
+import { presenceMotionSlot } from '@fluentui/react-motion';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
 
-import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types';
+import { type DrawerMotionParams, InlineDrawerMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
+import type { InlineDrawerProps, InlineDrawerState, SurfaceMotionSlotProps } from './InlineDrawer.types';
+
+const STATIC_MOTION = {
+  active: true,
+  canRender: true,
+  ref: React.createRef<HTMLDivElement>(),
+  type: 'idle' as const,
+};
 
 /**
  * Create the state required to render InlineDrawer.
@@ -16,26 +24,42 @@ import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
  */
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
   const { size, position, open } = useDrawerDefaultProps(props);
-  const { separator = false } = props;
+  const { separator = false, surfaceMotion } = props;
 
-  const motion = useMotion<HTMLElement>(open);
-
-  return {
+  const state: InlineDrawerState = {
     components: {
       root: 'div',
+      // casting from internal type that has required properties
+      // to external type that only has optional properties
+      // converting to unknown first as both Function component signatures are not compatible
+      surfaceMotion: InlineDrawerMotion as unknown as React.FC<SurfaceMotionSlotProps>,
     },
 
     root: slot.always(
       getIntrinsicElementProps('div', {
         ...props,
-        ref: useMergedRefs(ref, motion.ref),
+        ref,
       }),
       { elementType: 'div' },
     ),
 
-    size,
+    open,
     position,
+    size,
     separator,
-    motion,
+    surfaceMotion: presenceMotionSlot<DrawerMotionParams>(surfaceMotion, {
+      elementType: InlineDrawerMotion,
+      defaultProps: {
+        position,
+        size,
+        visible: open,
+        unmountOnExit: true,
+      },
+    }),
+
+    // Deprecated props
+    motion: STATIC_MOTION,
   };
+
+  return state;
 };

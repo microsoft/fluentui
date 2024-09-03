@@ -8,6 +8,7 @@ export { Size } from './CardSize.stories';
 export { Appearance } from './CardAppearance.stories';
 export { Selectable } from './CardSelectable.stories';
 export { SelectableIndicator } from './CardSelectableIndicator.stories';
+export { WithAction } from './CardAction.stories';
 export { FocusMode } from './CardFocusMode.stories';
 export { Templates } from './CardTemplates.stories';
 

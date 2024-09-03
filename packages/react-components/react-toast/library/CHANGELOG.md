@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Mon, 15 Jul 2024 17:25:20 GMT and should not be manually modified.
+This log was last generated on Fri, 16 Aug 2024 10:24:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.54)
+
+Fri, 16 Aug 2024 10:24:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.53..@fluentui/react-toast_v9.3.54)
+
+### Patches
+
+- Bump @fluentui/react-motion to v9.5.0 ([PR #32316](https://github.com/microsoft/fluentui/pull/32316) by beachball)
+
+## [9.3.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.53)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.52..@fluentui/react-toast_v9.3.53)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.4 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-portal to v9.4.33 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.3.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.52)
+
+Thu, 15 Aug 2024 08:22:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.51..@fluentui/react-toast_v9.3.52)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.3 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-portal to v9.4.32 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+
+## [9.3.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.51)
+
+Tue, 23 Jul 2024 20:13:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.3.50..@fluentui/react-toast_v9.3.51)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.2 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-motion to v9.4.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-portal to v9.4.31 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.3.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.3.50)
 

@@ -37,9 +37,15 @@ const TestComponent: React.FC<TestComponentProps> = props => {
 
   return (
     <div data-testid="root">
-      <state.presenceMotion>
-        <div data-testid="content" />
-      </state.presenceMotion>
+      {
+        // TODO: state.presenceMotion is non nullable, but assertSlots asserts it as nullable
+        // FIXME: this should be resolved by properly splitting props and state slots declaration
+        state.presenceMotion && (
+          <state.presenceMotion>
+            <div data-testid="content" />
+          </state.presenceMotion>
+        )
+      }
     </div>
   );
 };

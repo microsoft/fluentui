@@ -9,15 +9,13 @@ import type { InlineDrawerState, InlineDrawerSlots } from './InlineDrawer.types'
  * Render the final JSX of InlineDrawer
  */
 export const renderInlineDrawer_unstable = (state: InlineDrawerState, contextValue: DrawerContextValue) => {
-  if (!state.motion.canRender) {
-    return null;
-  }
-
   assertSlots<InlineDrawerSlots>(state);
 
   return (
     <DrawerProvider value={contextValue}>
-      <state.root />
+      <state.surfaceMotion>
+        <state.root />
+      </state.surfaceMotion>
     </DrawerProvider>
   );
 };

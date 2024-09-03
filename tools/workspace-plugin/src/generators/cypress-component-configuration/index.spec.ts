@@ -59,7 +59,6 @@ describe(`cypress-component-configuration`, () => {
           "types": Array [
             "node",
             "cypress",
-            "cypress-storybook/cypress",
             "cypress-real-events",
           ],
         },

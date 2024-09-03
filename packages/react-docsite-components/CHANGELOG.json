@@ -2,6 +2,263 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 28 Aug 2024 07:21:50 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.117",
+      "version": "8.13.117",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.7",
+            "commit": "0c3ba3bfdd0481a67f3d5408b9351b2c7b8dd64f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.235",
+            "commit": "0c3ba3bfdd0481a67f3d5408b9351b2c7b8dd64f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 22 Aug 2024 07:21:49 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.116",
+      "version": "8.13.116",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.234",
+            "commit": "e06ecf6a96437a97adcc924083ee2d33b8229218"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2024 07:21:50 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.115",
+      "version": "8.13.115",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.6",
+            "commit": "104fbc1f50ba51e29023a5f7a76e8de26e972ffa"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.233",
+            "commit": "104fbc1f50ba51e29023a5f7a76e8de26e972ffa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2024 07:21:17 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.114",
+      "version": "8.13.114",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.232",
+            "commit": "f3461614e80d7dab9295011ec656a94c67773dd0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 07:23:38 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.113",
+      "version": "8.13.113",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "10ea7c51d968a2fb29bc20eafd5615f6e594e00f",
+            "comment": "chore: define scoped test target dependants in v8 projects"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.5",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.6.59",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.231",
+            "commit": "34a708f154629699e39a38cb2367248fbee8ef49"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 07:21:41 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.112",
+      "version": "8.13.112",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.4",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.230",
+            "commit": "740b0b4583fe0f5cd474d240a2c849c7b5e97c45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2024 07:24:18 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.111",
+      "version": "8.13.111",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.3",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.6.58",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/example-data to v8.4.25",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.8.12",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.229",
+            "commit": "0c2c905f8f567f47b7229104b542cfc1f936671a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 21:38:31 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.110",
+      "version": "8.13.110",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.2",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.228",
+            "commit": "aa652de894084d5e10cbc708aa4542cc46916856"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Aug 2024 07:24:48 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.109",
+      "version": "8.13.109",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.1",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/theme to v2.6.57",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-hooks to v8.8.11",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.227",
+            "commit": "496e9e6c84dee323ca0160b79ea7fd090d65bd52"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 31 Jul 2024 07:33:08 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.108",
+      "version": "8.13.108",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.0",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.226",
+            "commit": "e756c4a8e515d225de053fc64fe80d3815e5ba6f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 07:30:53 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.107",
+      "version": "8.13.107",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.225",
+            "commit": "e5822fb863ac96bc86bfb355031229923b65f64c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 07:32:55 GMT",
       "tag": "@fluentui/react-docsite-components_v8.13.106",
       "version": "8.13.106",

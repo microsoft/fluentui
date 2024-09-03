@@ -9,7 +9,7 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     type: 'problem',
     docs: {
       description: 'Enforce callback props to be typed with `EventHandler`',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       invalidType: 'callback props should be typed with @fluentui/react-utilities#EventHandler<T>',

@@ -2,6 +2,80 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Thu, 15 Aug 2024 13:49:46 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.5",
+      "version": "9.22.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "469de81765cd621e234d76882bb276d234102151",
+            "comment": "chore: simplifies useMergedTabsterAttributes internals"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Aug 2024 08:22:14 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.4",
+      "version": "9.22.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "811fbca1c7b1fbbc0ec458c62a625591d00c3251",
+            "comment": "chore: ensures useMergedTabsterAttributes supports Partial attributes"
+          }
+        ],
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 30 Jul 2024 18:47:35 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.3",
+      "version": "9.22.3",
+      "comments": {
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/naming-convention report on TabsterTypes_6_0_1_DoNotUse"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jul 2024 20:13:14 GMT",
+      "tag": "@fluentui/react-tabster_v9.22.3",
+      "version": "9.22.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.0",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.18.13",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:16 GMT",
       "tag": "@fluentui/react-tabster_v9.22.2",
       "version": "9.22.2",

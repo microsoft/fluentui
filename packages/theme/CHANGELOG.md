@@ -1,8 +1,36 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 09 Jul 2024 07:36:30 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 07:23:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.59](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.59)
+
+Thu, 15 Aug 2024 07:23:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.58..@fluentui/theme_v2.6.59)
+
+### Patches
+
+- Point fluentui/theme export maps to right path ([PR #31484](https://github.com/microsoft/fluentui/pull/31484) by 126254552+gauriGupta99@users.noreply.github.com)
+
+## [2.6.58](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.58)
+
+Thu, 08 Aug 2024 07:24:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.57..@fluentui/theme_v2.6.58)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.6.13 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+- Bump @fluentui/utilities to v8.15.15 ([commit](https://github.com/microsoft/fluentui/commit/0c2c905f8f567f47b7229104b542cfc1f936671a) by beachball)
+
+## [2.6.57](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.57)
+
+Thu, 01 Aug 2024 07:24:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.56..@fluentui/theme_v2.6.57)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.15.14 ([PR #32173](https://github.com/microsoft/fluentui/pull/32173) by beachball)
 
 ## [2.6.56](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.56)
 

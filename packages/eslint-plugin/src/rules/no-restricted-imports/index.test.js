@@ -1,7 +1,7 @@
-const { ESLintUtils } = require('@typescript-eslint/utils');
+const { RuleTester } = require('@typescript-eslint/rule-tester');
 const rule = require('./index');
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
 });
 

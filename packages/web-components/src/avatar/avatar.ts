@@ -14,7 +14,7 @@ import {
  * The base class used for constructing a fluent-avatar custom element
  * @public
  */
-export class Avatar extends FASTElement {
+export class BaseAvatar extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
@@ -43,6 +43,53 @@ export class Avatar extends FASTElement {
   public initials?: string | undefined;
 
   /**
+   * Optional activity indicator
+   * * active: the avatar will be decorated according to activeAppearance
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * undefined: normal display
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: active
+   */
+  @attr
+  public active?: AvatarActive | undefined;
+
+  constructor() {
+    super();
+
+    this.elementInternals.role = 'img';
+  }
+}
+
+/**
+ * An Avatar Custom HTML Element.
+ * Based on BaseAvatar and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class Avatar extends BaseAvatar {
+  /**
+   * The avatar can have a circular or square shape.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: shape
+   */
+  @attr
+  public shape?: AvatarShape | undefined;
+
+  /**
+   * The appearance when `active="active"`
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: appearance
+   */
+  @attr
+  public appearance?: AvatarAppearance | undefined;
+
+  /**
    * Size of the avatar in pixels.
    *
    * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`) and
@@ -58,39 +105,6 @@ export class Avatar extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public size?: AvatarSize | undefined;
-
-  /**
-   * The avatar can have a circular or square shape.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: shape
-   */
-  @attr
-  public shape?: AvatarShape | undefined;
-
-  /**
-   * Optional activity indicator
-   * * active: the avatar will be decorated according to activeAppearance
-   * * inactive: the avatar will be reduced in size and partially transparent
-   * * undefined: normal display
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: active
-   */
-  @attr
-  public active?: AvatarActive | undefined;
-
-  /**
-   * The appearance when `active="active"`
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: appearance
-   */
-  @attr
-  public appearance?: AvatarAppearance | undefined;
 
   /**
    * The color when displaying either an icon or initials.
@@ -118,26 +132,6 @@ export class Avatar extends FASTElement {
    */
   private currentColor: string | undefined;
 
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'img';
-  }
-
-  public connectedCallback(): void {
-    super.connectedCallback();
-
-    Observable.getNotifier(this).subscribe(this);
-
-    this.generateColor();
-  }
-
-  public disconnectedCallback(): void {
-    super.disconnectedCallback();
-
-    Observable.getNotifier(this).unsubscribe(this);
-  }
-
   /**
    * Handles changes to observable properties
    * @internal
@@ -153,26 +147,6 @@ export class Avatar extends FASTElement {
       default:
         break;
     }
-  }
-
-  /**
-   * Sets the data-color attribute used for the visual presentation
-   * @internal
-   */
-  public generateColor(): void {
-    const colorful: boolean = this.color === AvatarColor.colorful;
-    const prev = this.currentColor;
-
-    toggleState(this.elementInternals, `${prev}`, false);
-
-    this.currentColor =
-      colorful && this.colorId
-        ? this.colorId
-        : colorful
-        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
-        : this.color ?? AvatarColor.neutral;
-
-    toggleState(this.elementInternals, `${this.currentColor}`, true);
   }
 
   /**
@@ -196,9 +170,43 @@ export class Avatar extends FASTElement {
   }
 
   /**
+   * Sets the data-color attribute used for the visual presentation
+   * @internal
+   */
+  public generateColor(): void {
+    const colorful: boolean = this.color === AvatarColor.colorful;
+    const prev = this.currentColor;
+
+    toggleState(this.elementInternals, `${prev}`, false);
+
+    this.currentColor =
+      colorful && this.colorId
+        ? this.colorId
+        : colorful
+        ? (Avatar.colors[getHashCode(this.name ?? '') % Avatar.colors.length] as AvatarColor)
+        : this.color ?? AvatarColor.neutral;
+
+    toggleState(this.elementInternals, `${this.currentColor}`, true);
+  }
+
+  /**
    * An array of the available Avatar named colors
    */
   public static colors = Object.values(AvatarNamedColor);
+
+  public connectedCallback(): void {
+    super.connectedCallback();
+
+    Observable.getNotifier(this).subscribe(this);
+
+    this.generateColor();
+  }
+
+  public disconnectedCallback(): void {
+    super.disconnectedCallback();
+
+    Observable.getNotifier(this).unsubscribe(this);
+  }
 }
 
 // copied from React avatar

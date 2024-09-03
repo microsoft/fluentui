@@ -12,6 +12,7 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PresenceMotionSlotProps } from '@fluentui/react-motion';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
@@ -130,7 +131,7 @@ export type AccordionItemValue = unknown;
 export const AccordionPanel: ForwardRefComponent<AccordionPanelProps>;
 
 // @public (undocumented)
-export const accordionPanelClassNames: SlotClassNames<AccordionPanelSlots>;
+export const accordionPanelClassNames: SlotClassNames<Omit<AccordionPanelSlots, 'collapseMotion'>>;
 
 // @public (undocumented)
 export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
@@ -138,6 +139,7 @@ export type AccordionPanelProps = ComponentProps<AccordionPanelSlots>;
 // @public (undocumented)
 export type AccordionPanelSlots = {
     root: NonNullable<Slot<'div'>>;
+    collapseMotion?: Slot<PresenceMotionSlotProps>;
 };
 
 // @public (undocumented)
@@ -188,7 +190,7 @@ export const renderAccordionHeader_unstable: (state: AccordionHeaderState, conte
 export const renderAccordionItem_unstable: (state: AccordionItemState, contextValues: AccordionItemContextValues) => JSX.Element;
 
 // @public
-export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element | null;
+export const renderAccordionPanel_unstable: (state: AccordionPanelState) => JSX.Element;
 
 // @public
 export const useAccordion_unstable: <Value = unknown>(props: AccordionProps<Value>, ref: React_2.Ref<HTMLElement>) => AccordionState<Value>;

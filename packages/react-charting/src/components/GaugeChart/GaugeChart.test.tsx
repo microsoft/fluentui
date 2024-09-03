@@ -367,16 +367,16 @@ describe('GaugeChart interaction and accessibility tests', () => {
     const legend = screen.getByText(segments[0].legend);
     fireEvent.mouseOver(legend);
     const segs = container.querySelectorAll('[class^="segment"]');
-    expect(segs[0]).toHaveAttribute('fill-opacity', '1');
+    expect(segs[0]).toHaveStyle('fill-opacity: 1');
     for (let i = 0; i < segs.length; i++) {
       if (i !== 0) {
-        expect(segs[i]).toHaveAttribute('fill-opacity', '0.1');
+        expect(segs[i]).toHaveStyle('fill-opacity: 0.1');
       }
     }
 
     fireEvent.mouseOut(legend);
     for (let i = 0; i < segs.length; i++) {
-      expect(segs[i]).toHaveAttribute('fill-opacity', '1');
+      expect(segs[i]).toHaveStyle('fill-opacity: 1');
     }
   });
 
@@ -389,16 +389,16 @@ describe('GaugeChart interaction and accessibility tests', () => {
     const legend = screen.getByText(segments[0].legend);
     fireEvent.click(legend);
     const segs = container.querySelectorAll('[class^="segment"]');
-    expect(segs[0]).toHaveAttribute('fill-opacity', '1');
+    expect(segs[0]).toHaveStyle('fill-opacity: 1');
     for (let i = 0; i < segs.length; i++) {
       if (i !== 0) {
-        expect(segs[i]).toHaveAttribute('fill-opacity', '0.1');
+        expect(segs[i]).toHaveStyle('fill-opacity: 0.1');
       }
     }
 
     fireEvent.click(legend);
     for (let i = 0; i < segs.length; i++) {
-      expect(segs[i]).toHaveAttribute('fill-opacity', '1');
+      expect(segs[i]).toHaveStyle('fill-opacity: 1');
     }
   });
 

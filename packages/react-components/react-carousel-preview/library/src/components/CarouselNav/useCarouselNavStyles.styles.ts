@@ -15,7 +15,6 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'row',
-    columnGap: tokens.spacingHorizontalXS,
     alignItems: 'center',
     justifyContent: 'center',
     ...createCustomFocusIndicatorStyle({
@@ -25,7 +24,6 @@ const useStyles = makeStyles({
     }),
     borderRadius: tokens.borderRadiusXLarge,
     margin: `auto ${tokens.spacingHorizontalS}`,
-    padding: tokens.spacingHorizontalXS,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
   },
 });

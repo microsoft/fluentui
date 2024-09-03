@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Slider, IStackTokens, Stack, IStackStyles } from '@fluentui/react';
 
+export default {
+  title: 'Components/Slider',
+};
+
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 1000 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const sliderAriaValueText = (value: number) => `${value} percent`;
