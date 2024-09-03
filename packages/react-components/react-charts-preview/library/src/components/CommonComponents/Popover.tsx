@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import {
-  mergeClasses,
-  PositioningVirtualElement,
-  tokens,
-  useFocusableGroup,
-  useId,
-} from '../../../../react-components/src/index';
+import { mergeClasses } from '@griffel/react';
+import type { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { tokens } from '@fluentui/react-theme';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
 import { Shape } from '../Legends/shape';

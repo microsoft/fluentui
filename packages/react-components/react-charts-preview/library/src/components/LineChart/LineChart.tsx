@@ -7,7 +7,7 @@ import { bisector } from 'd3-array';
 import { ILegend, Legends } from '../Legends/index';
 import { line as d3Line, curveLinear as d3curveLinear } from 'd3-shape';
 import { useId } from '@fluentui/react-utilities';
-import { find, memoizeFunction } from '@fluentui/utilities';
+import { find } from '../../utilities/index';
 import {
   IAccessibilityProps,
   CartesianChart,
@@ -146,9 +146,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
-    let _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element = memoizeFunction(
-      (data: LineChartDataWithIndex[]) => _createLegends(data),
-    );
     let _firstRenderOptimization = true;
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
@@ -1258,7 +1255,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     // if when hideLegend is false.
     // NOTE: they are rendered only when hideLegend is false in CartesianChart.
     if (!props.hideLegend) {
-      legendBars = _createLegendsMemoized(_points!);
+      legendBars = _createLegends(_points!); // ToDo: Memoize legends to improve performance.
     }
     const calloutProps = {
       YValueHover: YValueHover,

@@ -1,13 +1,7 @@
 import * as React from 'react';
-import {
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  useOverflowMenu,
-} from '../../../../react-components/src/index';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
+import { MenuButton } from '@fluentui/react-button';
+import { useOverflowMenu } from '@fluentui/react-overflow';
 
 export const OverflowMenu: React.FC<{ itemIds: string[]; title: string; items: JSX.Element[] }> = ({
   itemIds,

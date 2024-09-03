@@ -9,7 +9,7 @@ import { getColorFromToken, getNextColor } from '../../utilities/index';
 import { IAccessibilityProps, ILegend, Legends } from '../../index';
 import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
-import { useFocusableGroup } from '../../../../react-components/src/index';
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
 
 const LEGEND_CONTAINER_HEIGHT = 40;
