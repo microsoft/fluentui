@@ -36,7 +36,7 @@ export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  const { focusMode = 'off' } = props;
+  const { focusMode = 'off', autoSize } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
   const isMouseEvent = React.useRef<boolean>(false);
   const selectPageByElement = useCarouselContext(ctx => ctx.selectPageByElement);
@@ -96,6 +96,7 @@ export const useCarouselCard_unstable = (
   const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
   const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
   const state: CarouselCardState = {
+    autoSize,
     components: {
       root: 'div',
     },

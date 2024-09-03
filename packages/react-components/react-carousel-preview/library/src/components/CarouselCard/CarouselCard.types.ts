@@ -29,9 +29,14 @@ export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
    * @default 'off'
    */
   focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
+
+  /**
+   * Sets the card styling to be responsive based on content.
+   */
+  autoSize?: boolean;
 };
 
 /**
  * State used in rendering CarouselCard
  */
-export type CarouselCardState = ComponentState<CarouselCardSlots>;
+export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'autoSize'>;

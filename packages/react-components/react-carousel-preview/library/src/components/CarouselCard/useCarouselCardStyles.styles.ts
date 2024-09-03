@@ -11,8 +11,14 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    flex: '0 0 100%',
     minWidth: 0,
+    maxWidth: '100%' /* Prevent from growing larger than viewport */,
+    width: '100%' /* Default to 100% width cards */,
+  },
+  autoSize: {
+    flex: '0 0 auto' /* Adapt slide size to its content */,
+    minWidth: 0,
+    width: 'auto',
   },
 });
 
@@ -22,8 +28,15 @@ const useStyles = makeStyles({
 export const useCarouselCardStyles_unstable = (state: CarouselCardState): CarouselCardState => {
   'use no memo';
 
+  const { autoSize } = state;
+
   const styles = useStyles();
-  state.root.className = mergeClasses(carouselCardClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(
+    carouselCardClassNames.root,
+    styles.root,
+    autoSize && styles.autoSize,
+    state.root.className,
+  );
 
   return state;
 };
