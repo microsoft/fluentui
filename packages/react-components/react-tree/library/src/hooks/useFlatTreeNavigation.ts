@@ -13,7 +13,7 @@ export function useFlatTreeNavigation() {
   'use no memo';
 
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
-  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
+  const { rove, forceUpdate: forceUpdateRovingTabIndex, initialize: initializeRovingTabIndex } = useRovingTabIndex();
 
   const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
     root => {
@@ -87,7 +87,11 @@ export function useFlatTreeNavigation() {
       rove(nextElement);
     }
   });
-  return { navigate, rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback) } as const;
+  return {
+    navigate,
+    rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback),
+    forceUpdateRovingTabIndex,
+  } as const;
 }
 
 function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLElement | null {
