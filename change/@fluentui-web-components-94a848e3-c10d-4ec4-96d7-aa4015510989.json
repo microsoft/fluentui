@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add updated design token fallbacks with new control to semantic tokens",
+  "packageName": "@fluentui/web-components",
+  "email": "7559015+janechu@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

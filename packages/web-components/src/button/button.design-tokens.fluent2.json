@@ -1,0 +1,2756 @@
+{
+  "Default": [
+    {
+      "name": "--ctrlDefaultFocusInnerStrokeColor",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultFocusOuterStrokeColor",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorStrokeFocus2",
+          "theme": {
+            "light": "#000000"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultCornerDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "16px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultCornerHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "18px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultCornerPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "20px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultCornerRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "16px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultGapIcontoText",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "6px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultGapTexttoChevron",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "4px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultMinSize",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "40px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultPaddingIconOnly",
+      "fallback": {
+        "fluent2": {
+          "name": "--spacingHorizontalSNudge",
+          "theme": {
+            "light": "6px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultPaddingHorizontalDefault",
+      "fallback": {
+        "fluent2": {
+          "name": "--spacingHorizontalM",
+          "theme": {
+            "light": "12px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultStrokeWidth",
+      "fallback": {
+        "fluent2": {
+          "name": "--strokeWidthThin",
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextOffsetBottom",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextOffsetTop",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultGapControltoLabel",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "8px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarColorHint",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarColorSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeThickness",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "3px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarCorner",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "999px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "12px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "14px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarSizeLengthSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "12px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultFocusInnerStrokeWidth",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultFocusOuterStrokeWidth",
+      "fallback": {
+        "fluent2": {
+          "name": "--strokeWidthThick",
+          "theme": {
+            "light": "2px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconSize",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "20px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultChevronSize",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "12px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIndicatorBarColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000026"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextDefaultFamily",
+      "fallback": {
+        "fluent2": {
+          "name": "--fontFamilyBase",
+          "theme": {
+            "light": "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextDefaultFontSize",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "14px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextDefaultLineHeight",
+      "fallback": {
+        "fluent2": {
+          "name": "--lineHeightBase300",
+          "theme": {
+            "light": "20px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextDefaultLetterSpacing",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconThemeRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconThemeSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconThemeHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconThemePressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultIconThemeDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultCornerIntersection",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultPaddingToNestedControl",
+      "fallback": {
+        "fluent2": {
+          "name": "--spacingHorizontalXS",
+          "theme": {
+            "light": "4px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultOnDragKeyShadowBlur",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "8px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultOnDragKeyShadowYoffset",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "4px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextDefaultWeight",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "450px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultTextSelectedWeight",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "650px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultChevronTheme",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultChevronThemeSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlDefaultFocusInnerCorner",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "16px"
+          }
+        }
+      }
+    }
+  ],
+  "Button": [
+    {
+      "name": "--ctrlButtonDefaultBackgroundRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralBackground1",
+          "theme": {
+            "light": "#0000000a"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralBackground1Hover",
+          "theme": {
+            "light": "#0000000f"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralBackground1Pressed",
+          "theme": {
+            "light": "#00000008"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorBrandBackground",
+          "theme": {
+            "light": "#ff5757ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorBrandBackgroundHover",
+          "theme": {
+            "light": "#f54d4dff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackground",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorSubtleBackgroundHover",
+          "theme": {
+            "light": "#00000008"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorSubtleBackgroundPressed",
+          "theme": {
+            "light": "#00000005"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground1",
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground1Hover",
+          "theme": {
+            "light": "#000000ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground1Pressed",
+          "theme": {
+            "light": "#000000bd"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForegroundOnBrand",
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForegroundOnBrand",
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralStroke1Hover",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralStroke1",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForegroundOnBrand",
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70badb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackground",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackgroundHover",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackgroundHover",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000014"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000014"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000000f"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2",
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2BrandHover",
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2BrandPressed",
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000008"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000005"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackground",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentStrokeColorDefault",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70badb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70badb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentStroke",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000bd"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2",
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2Hover",
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2Pressed",
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonCircularCorner",
+      "fallback": {
+        "fluent2": {
+          "name": "--borderRadiusCircular",
+          "theme": {
+            "light": "999px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonZeroCorner",
+      "fallback": {
+        "fluent2": {
+          "name": "--borderRadiusNone",
+          "theme": {
+            "light": "0"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralStroke1Pressed",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeWidthRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeWidthDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeWidthHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "2px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeWidthPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "2px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2BrandHover",
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForeground2BrandPressed",
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorBrandBackgroundPressed",
+          "theme": {
+            "light": "#ff5757db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000026"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandBackgroundSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000026"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralBackgroundDisabled",
+          "theme": {
+            "light": "#00000005"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultBackgroundSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000026"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeBottomColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralStrokeDisabled",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultStrokeColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorNeutralForegroundDisabled",
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff05"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineBackgroundSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000026"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#00000029"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineStrokeColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundIconColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#7275c059"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeBottomRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeBottomColor",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentStrokeBottomColor",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#7275c059"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#7275c059"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultSplitDividerColorDefault",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconThemeHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconThemePressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconThemeRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconThemeDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70baff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#585ca6ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#6c70ba99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#7275c059"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleBackgroundDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleStrokeColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleForegroundIconThemeSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABCornerRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "999px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABKeyShadowBlur",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "2px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABKeyShadowYoffset",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABCornerHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "4px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABCornerPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "16px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonFABCornerDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "999px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundTextWeight",
+      "fallback": {
+        "fluent2": {
+          "name": "--fontWeightSemibold",
+          "theme": {
+            "light": "600"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000db"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000ff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#000000bd"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#0000004d"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffff"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffffdb"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonOutlineForegroundIconColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "#ffffff99"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconThemeRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconThemeHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconThemePressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconThemeDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentForegroundIconThemeSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Filled"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultSplitPaddingLeft",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandSplitDividerColor",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultForegroundTextWeightSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "650px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultSplitDividerColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultSplitDividerWidth",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "1px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeBottomHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeBottomPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandStrokeBottomDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonDefaultSplitPaddingRight",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "10px"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundHover",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackgroundHover",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundPressed",
+      "fallback": {
+        "fluent2": {
+          "name": "--colorTransparentBackgroundPressed",
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundSelectedRest",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundSelectedHover",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundSelectedPressed",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentBackgroundSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentStrokeColorSelected",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonTransparentStrokeColorSelectedDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleSplitDividerColor",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonSubtleSplitDividerColorDisabled",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "transparent"
+          }
+        }
+      }
+    },
+    {
+      "name": "--ctrlButtonBrandForegroundIconTheme",
+      "fallback": {
+        "fluent2": {
+          "name": null,
+          "theme": {
+            "light": "Regular"
+          }
+        }
+      }
+    }
+  ]
+}
