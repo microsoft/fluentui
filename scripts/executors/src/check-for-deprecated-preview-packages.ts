@@ -3,7 +3,7 @@ import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
 
 import { logger } from 'just-scripts';
-import { argv } from 'yargs';
+import yargs from 'yargs';
 
 /**
  * Deprecates the specified packages.
@@ -72,8 +72,10 @@ function getPackagesToDeprecate() {
   return packagesToDeprecate;
 }
 
-if (!argv.token || typeof argv.token !== 'string') {
-  throw new Error('Please pass an NPM token through the --token argument');
+function main() {
+  const args = yargs.option('token', { type: 'string', description: 'NPM Token', demandOption: true }).argv;
+
+  deprecatePackages(getPackagesToDeprecate(), args.token);
 }
 
-deprecatePackages(getPackagesToDeprecate(), argv.token);
+main();
