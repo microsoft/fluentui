@@ -54,9 +54,13 @@
       "types": "./dist/dts/*/*.template.d.ts",
       "default": "./dist/esm/*/*.template.js"
     },
-    "./*.js": {
+    "./*/index.js": {
       "types": "./dist/dts/*/index.d.ts",
       "default": "./dist/esm/*/index.js"
+    },
+    "./*.js": {
+      "types": "./dist/dts/*/define.d.ts",
+      "default": "./dist/esm/*/define.js"
     },
     "./package.json": "./package.json"
   },
