@@ -4,12 +4,10 @@ import descriptionMd from './CarouselDescription.md';
 import bestPracticesMd from './CarouselBestPractices.md';
 
 export { Default } from './CarouselDefault.stories';
-export { Circular } from './CarouselCircular.stories';
-export { MultipleCards } from './CarouselMultipleCards.stories';
-export { FreeLayout } from './CarouselFreeLayout.stories';
+export { Responsive } from './CarouselResponsive';
 export { Controlled } from './CarouselControlled.stories';
-export { Autoplay } from './CarouselAutoplay.stories';
-export { CardFocus } from './CarouselFocus.stories';
+export { ImageSlideshow } from './CarouselImageBox.stories';
+export { ActionCards } from './CarouselActionCards.stories';
 
 export default {
   title: 'Preview Components/Carousel',

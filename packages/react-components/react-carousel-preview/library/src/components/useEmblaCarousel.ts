@@ -6,6 +6,7 @@ import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.sty
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
 import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
+import { TabsterDOMAttribute, useTabsterAttributes } from '@fluentui/react-tabster';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: 'trimSnaps',
@@ -69,7 +70,20 @@ export function useEmblaCarousel(
 
     const handleIndexChange = () => {
       const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-
+      const slides = emblaApi.current?.slideNodes();
+      const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+      // We set the active or first index of group on-screen as the selected tabster index
+      slides?.forEach((slide, slideIndex) => {
+        const tabsterAtt = slide.getAttribute('data-tabster');
+        if (tabsterAtt) {
+          const tabsterAttributes = JSON.parse(tabsterAtt);
+          if (tabsterAttributes.focusable) {
+            // If tabster.focusable isn't present, we will ignore.
+            tabsterAttributes.focusable.isDefault = slideIndex === actualIndex;
+            slide.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
+          }
+        }
+      });
       setActiveIndex(newIndex);
     };
     const handleReinit = () => {
