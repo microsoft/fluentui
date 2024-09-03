@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselNavContainer renders a default state 1`] = `
+<div>
+  <div
+    class="fui-CarouselNavContainer"
+  >
+    Default CarouselNavContainer
+  </div>
+</div>
+`;

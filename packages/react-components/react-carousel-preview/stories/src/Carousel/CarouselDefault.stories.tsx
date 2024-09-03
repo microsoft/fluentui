@@ -1,10 +1,10 @@
-import { Button, makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens, Dropdown, Option, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselButton,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
+  CarouselNavContainer,
   CarouselSlider,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
@@ -69,20 +69,8 @@ export const Default = () => (
         </TestComponent>
       </CarouselCard>
     </CarouselSlider>
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'center',
-      }}
-    >
-      <Tooltip content={'Go To Previous Page'} relationship={'label'}>
-        <CarouselButton navType="prev" aria-label={'Previous Carousel Page Button'} />
-      </Tooltip>
+    <CarouselNavContainer layout={'inline'} autoplay={''}>
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-      <Tooltip content={'Go To Next Page'} relationship={'label'}>
-        <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
-      </Tooltip>
-    </div>
+    </CarouselNavContainer>
   </Carousel>
 );

@@ -9,7 +9,6 @@ export { MultipleCards } from './CarouselMultipleCards.stories';
 export { FreeLayout } from './CarouselFreeLayout.stories';
 export { Controlled } from './CarouselControlled.stories';
 export { Autoplay } from './CarouselAutoplay.stories';
-export { AutoplayControlled } from './CarouselAutoplayControlled.stories';
 export { CardFocus } from './CarouselFocus.stories';
 
 export default {

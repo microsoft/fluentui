@@ -13,6 +13,7 @@ const useStyles = makeStyles({
   root: {
     overflow: 'hidden',
     overflowAnchor: 'none',
+    position: 'relative',
   },
 });
 

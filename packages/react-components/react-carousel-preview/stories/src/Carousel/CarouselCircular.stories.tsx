@@ -17,6 +17,9 @@ const useClasses = makeStyles({
     height: '200px',
     textAlign: 'center',
   },
+  card: {
+    maxWidth: '35%',
+  },
 });
 
 const TestComponent: React.FC<{ accentColor: string; children: string }> = props => {
@@ -33,7 +36,7 @@ const TestComponent: React.FC<{ accentColor: string; children: string }> = props
 export const Circular = () => (
   <Carousel circular groupSize={1}>
     <CarouselSlider>
-      <CarouselCard>
+      <CarouselCard className={useClasses().card}>
         <TestComponent accentColor="#B99095">Card 1</TestComponent>
       </CarouselCard>
       <CarouselCard>

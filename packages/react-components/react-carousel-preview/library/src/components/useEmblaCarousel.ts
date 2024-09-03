@@ -8,10 +8,11 @@ import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
-  containScroll: false,
+  containScroll: 'trimSnaps',
   inViewThreshold: 0.99,
   watchDrag: false,
   skipSnaps: true,
+
   container: `.${carouselSliderClassNames.root}`,
   slides: `.${carouselCardClassNames.root}`,
 };
@@ -19,7 +20,7 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag'> & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
   },

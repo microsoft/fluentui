@@ -11,9 +11,7 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    minWidth: 0,
-    maxWidth: '100%' /* Prevent from growing larger than viewport */,
-    width: '100%' /* Default to 100% width cards */,
+    flex: '0 0 100%',
   },
   autoSize: {
     flex: '0 0 auto' /* Adapt slide size to its content */,
