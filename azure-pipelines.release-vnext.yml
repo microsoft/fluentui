@@ -94,7 +94,7 @@ extends:
                 continueOnError: true
 
               - script: |
-                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/deprecate-preview-packages/index.ts --token $(npmToken)
+                  node -r ./scripts/ts-node/src/register ./scripts/executors/src/check-for-deprecated-preview-packages.ts --token $(npmToken)
                 displayName: 'Deprecate preview packages'
                 continueOnError: true
 
