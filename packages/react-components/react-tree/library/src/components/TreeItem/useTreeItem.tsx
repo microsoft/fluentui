@@ -92,26 +92,20 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
-    if (isEventFromActions) {
+    const isEventFromActions = () => actionsRef.current && elementContains(actionsRef.current, event.target as Node);
+
+    const isEventFromSubtree = () => subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
+
+    const isEventFromSelection = () => selectionRef.current?.contains(event.target as Node);
+
+    const isEventFromExpandIcon = expandIconRef.current?.contains(event.target as Node);
+
+    if (isEventFromActions() || isEventFromSubtree() || isEventFromSelection()) {
       return;
-    }
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (isEventFromSubtree) {
-      return;
-    }
-    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
-    if (isEventFromSelection) {
-      return;
-    }
-    const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
-    if (!isEventFromExpandIcon) {
+    } else if (!isEventFromExpandIcon) {
       onClick?.(event);
     }
-    if (event.isDefaultPrevented()) {
-      return;
-    }
-    if (itemType === 'leaf') {
+    if (event.isDefaultPrevented() || itemType === 'leaf') {
       return;
     }
 
