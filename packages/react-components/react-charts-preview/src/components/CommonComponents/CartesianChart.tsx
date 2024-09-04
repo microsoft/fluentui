@@ -520,7 +520,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       onMouseLeave={_onChartLeave}
     >
       <div className={classes.chartWrapper}  {...focusAttributes} {...arrowAttributes}>
-      {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
+      {_isFirstRender.current}
       <svg
         width={svgDimensions.width}
         height={svgDimensions.height}

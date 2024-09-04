@@ -24,7 +24,7 @@ export const OverflowMenu: React.FC<{ itemIds: string[]; title: string; items: J
   const remainingItemsCount = itemIds.length - overflowCount;
   const menuList = [];
   for (let i = remainingItemsCount; i < itemIds.length; i++) {
-    menuList.push(<MenuItem key={i}>{items[i]}</MenuItem>);
+    menuList.push(<MenuItem tabIndex={-1} key={i}>{items[i]}</MenuItem>);
   }
   return (
     <Menu>
