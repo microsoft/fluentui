@@ -311,3 +311,20 @@ export const userInvalidState = css.partial`:is([state--user-invalid], :state(us
  * @public
  */
 export const userValidState = css.partial`:is([state--user-valid], :state(user-valid))`;
+
+/**
+ * Selector for the `selected` state.
+ * @public
+ */
+export const selectedState = css.partial`:is([state--selected], :state(selected))`;
+
+/**
+ * Selector for the `placeholder-visible` state.
+ * @public
+ */
+export const placeholderVisibleState = css.partial`:is([state--placeholder-visible], :state(placeholder-visible))`;
+
+/**
+ * Selector for the `multiselect` state.
+ */
+export const multipleState = css.partial`:is([state--multiple], :state(multiple))`;

@@ -1,0 +1,12 @@
+<script type="module">
+  if (!CSS.supports('anchor-name: --a')) {
+    Promise.all([
+      customElements.whenDefined('fluent-dropdown'),
+      customElements.whenDefined('fluent-dropdown-list'),
+      new Promise(resolve => window.addEventListener('load', () => resolve())),
+    ]).then(() => {
+      // TODO: should only import after the `<style>` is added
+      import('https://unpkg.com/@oddbird/css-anchor-positioning');
+    });
+  }
+</script>

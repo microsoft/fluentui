@@ -1,6 +1,6 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { uniqueId } from '@microsoft/fast-web-utilities';
 import { DropdownList } from '../dropdown-list/dropdown-list.js';
+import { ComboboxDecorator } from '../patterns/combobox.js';
 
 /**
  * Base class for a Dropdown custom element.
@@ -23,11 +23,7 @@ export class BaseDropdown extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  private anchorPositioningStyleSheet = new CSSStyleSheet();
-  private anchorId = uniqueId('fluent-dropdown-anchor-');
-  private anchorName = `--${this.anchorId}`;
-
-  private clickEventListener!: EventListener;
+  private decorator?: ComboboxDecorator;
 
   /**
    * Sets the element's disabled state.
@@ -53,18 +49,9 @@ export class BaseDropdown extends FASTElement {
    */
   @attr
   public list?: string;
-  protected listChanged(prev: string | undefined, next: string | undefined) {
-    if (prev) {
-      const prevListElement = document.getElementById(prev) as DropdownList;
-      if (prevListElement) {
-        // @ts-expect-error Current Typescript doesn't support Popover API
-        prevListElement.hidePopover();
-        prevListElement.combobox = null;
-      }
-    }
-
-    if (next) {
-      this.setList();
+  protected listChanged() {
+    if (this.listElement) {
+      this.decorator?.connectListbox(this.listElement);
     }
   }
 
@@ -83,84 +70,37 @@ export class BaseDropdown extends FASTElement {
     return el instanceof DropdownList ? el : null;
   }
 
-  constructor() {
-    super();
-
-    this.elementInternals.role = 'combobox';
-    this.elementInternals.ariaExpanded = 'false';
+  /**
+   * Whether multiple options can be selected.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `multiple`
+   */
+  @attr({ mode: 'boolean' })
+  public multiple = false;
+  protected multipleChanged() {
+    this.decorator?.setMultiSelectable(this.multiple);
   }
 
   connectedCallback() {
     super.connectedCallback();
 
-    this.dataset.anchorid = this.anchorId;
-    this.setList();
-    this.bindEvents();
+    if (this.listElement) {
+      this.decorator = new ComboboxDecorator(this, this.listElement);
+    }
   }
 
   disconnectedCallback() {
-    super.disconnectedCallback();
-
-    this.unbindEvents();
+    this.decorator?.remove();
   }
 
   formDisabledCallback(disabled: boolean) {
     this.setDisabledSideEffect(disabled);
   }
 
-  /**
-   * @internal
-   */
-  public handleClick() {
-    // @ts-expect-error Current Typescript doesn't support Popover API
-    this.listElement?.togglePopover();
-  }
-
-  private bindEvents() {
-    this.clickEventListener = this.handleClick.bind(this);
-    this.addEventListener('click', this.clickEventListener);
-  }
-
-  private unbindEvents() {
-    if (this.clickEventListener) {
-      this.removeEventListener('click', this.clickEventListener);
-    }
-  }
-
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
-  }
-
-  private setList() {
-    if (!this.list || !this.listElement) {
-      return;
-    }
-
-    this.setAttribute('aria-controls', this.list);
-    this.listElement.combobox = this;
-    this.setAnchorPositioningCSS();
-  }
-
-  private setAnchorPositioningCSS() {
-    if (!this.listElement) {
-      return;
-    }
-
-    if (!document.adoptedStyleSheets.includes(this.anchorPositioningStyleSheet)) {
-      document.adoptedStyleSheets.push(this.anchorPositioningStyleSheet);
-    }
-
-    const css = `
-      [data-anchorid="${this.anchorId}"] {
-        anchor-name: ${this.anchorName};
-      }
-      #${this.listElement.id} {
-        left: anchor(${this.anchorName} left);
-        top: anchor(${this.anchorName} bottom);
-      }
-    `;
-
-    this.anchorPositioningStyleSheet.replaceSync(css);
   }
 }
 

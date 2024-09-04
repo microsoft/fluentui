@@ -4,7 +4,7 @@ import { html } from '@microsoft/fast-element';
 import type { DropdownList } from './dropdown-list.js';
 
 export const template: ElementViewTemplate<DropdownList> = html`
-  <template popover>
+  <template>
     <slot></slot>
   </template>
 `;
