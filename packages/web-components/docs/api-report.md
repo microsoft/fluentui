@@ -27,6 +27,8 @@ export class Accordion extends FASTElement {
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
     // @internal
     handleChange(source: any, propertyName: string): void;
+    // @internal
+    slotchangeHandler(event: Event): void;
     // @internal (undocumented)
     slottedAccordionItems: HTMLElement[];
     // @internal (undocumented)

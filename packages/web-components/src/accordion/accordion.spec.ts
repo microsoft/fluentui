@@ -358,8 +358,6 @@ test.describe('Accordion', () => {
   });
 
   test('should allow disabled items to be expanded when in single mode', async ({ page }) => {
-    test.slow();
-
     const element = page.locator('fluent-accordion');
 
     await page.setContent(/* html */ `

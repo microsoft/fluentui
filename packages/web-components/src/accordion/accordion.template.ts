@@ -7,7 +7,7 @@ import type { Accordion } from './accordion.js';
 export function accordionTemplate<T extends Accordion>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
-      <slot ${slotted({ property: 'slottedAccordionItems', filter: elements() })}></slot>
+      <slot @slotchange="${(x, c) => x.slotchangeHandler(c.event as Event)}"></slot>
     </template>
   `;
 }
