@@ -32,6 +32,15 @@ export class ComboboxDecorator {
   // @ts-expect-error Current Typescript doesn't support Popover API
   private listboxToggleListener?: (event: ToggleEvent) => void;
 
+  private _isExpanded = false;
+  private get isExpanded(): boolean {
+    return this._isExpanded;
+  }
+  private set isExpanded(next: boolean) {
+    this.combobox.elementInternals.ariaExpanded = next.toString();
+    this._isExpanded = next;
+  }
+
   /**
    * A unique ID of the anchor.
    */
@@ -184,8 +193,10 @@ export class ComboboxDecorator {
   }
 
   private handleComboboxClick() {
+    const nextIsExpanded = !this.isExpanded;
     // @ts-expect-error Current Typescript doesn't support Popover API
-    this.listbox.togglePopover();
+    this.listbox.togglePopover(nextIsExpanded);
+    this.isExpanded = nextIsExpanded;
   }
 
   private handleComboboxKeydown(evt: KeyboardEvent) {
@@ -200,7 +211,6 @@ export class ComboboxDecorator {
 
   // @ts-expect-error Current Typescript doesn't support Popover API
   private handleListboxToggle(evt: ToggleEvent) {
-    this.combobox.elementInternals.ariaExpanded =
-      evt.newState === 'open' ? 'true' : 'false';
+    this.isExpanded = evt.newState === 'open';
   }
 }
