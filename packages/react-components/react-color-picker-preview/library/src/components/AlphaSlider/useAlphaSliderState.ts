@@ -3,6 +3,7 @@ import { clamp, useControllableState, useEventCallback } from '@fluentui/react-u
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
+import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
 const { sliderProgressVar, sliderDirectionVar, thumbColorVar, railColorVar } = alphaSliderCSSVars;
 
@@ -14,7 +15,8 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   'use no memo';
 
   const { dir } = useFluent();
-  const { defaultValue, min = 0, max = 100, onChange, value, overlayColor } = props;
+  const { channel = 'alpha', defaultValue, min = 0, max = 100, onChange, value, overlayColor } = props;
+  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
@@ -24,16 +26,16 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   const clampedValue = clamp(currentValue, min, max);
   const valuePercent = getPercent(clampedValue, min, max);
 
+  const propsOnChange = onChange ?? ctxOnChange;
   const inputOnChange = state.input.onChange;
 
   const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
     const newValue = Number(ev.target.value);
     setCurrentValue(clamp(newValue, min, max));
-
-    if (inputOnChange && inputOnChange !== (onChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
+    if (inputOnChange && inputOnChange !== (propsOnChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
       inputOnChange(ev);
-    } else if (onChange) {
-      onChange(ev, { type: 'change', event: ev, value: newValue });
+    } else if (propsOnChange) {
+      propsOnChange(ev, { type: 'change', event: ev, value: newValue, channel });
     }
   });
 
