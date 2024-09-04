@@ -56,8 +56,8 @@ export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
 export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots>;
 
 // @public
-export type CarouselButtonProps = ButtonProps & ComponentProps<CarouselButtonSlots> & {
-    navType: 'prev' | 'next';
+export type CarouselButtonProps = Partial<ButtonProps> & ComponentProps<CarouselButtonSlots> & {
+    navType?: 'prev' | 'next';
 };
 
 // @public (undocumented)
@@ -66,7 +66,7 @@ export type CarouselButtonSlots = ButtonSlots & {
 };
 
 // @public
-export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlots> & Pick<CarouselButtonProps, 'navType'>;
+export type CarouselButtonState = ButtonState & ComponentState<CarouselButtonSlots> & Required<Pick<CarouselButtonProps, 'navType'>>;
 
 // @public
 export const CarouselCard: ForwardRefComponent<CarouselCardProps>;

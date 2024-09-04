@@ -14,7 +14,7 @@ export type CarouselButtonProps = Partial<ButtonProps> &
     /**
      * Dictates whether button will be of type go next or go previous
      */
-    navType: 'prev' | 'next';
+    navType?: 'prev' | 'next';
   };
 
 /**
@@ -22,4 +22,4 @@ export type CarouselButtonProps = Partial<ButtonProps> &
  */
 export type CarouselButtonState = ButtonState &
   ComponentState<CarouselButtonSlots> &
-  Pick<CarouselButtonProps, 'navType'>;
+  Required<Pick<CarouselButtonProps, 'navType'>>;

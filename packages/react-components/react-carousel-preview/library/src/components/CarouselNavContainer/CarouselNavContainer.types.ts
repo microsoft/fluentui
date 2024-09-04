@@ -4,8 +4,8 @@ import { CarouselButtonProps } from '../CarouselButton/CarouselButton.types';
 
 export type CarouselNavContainerSlots = {
   root: Slot<'div'>;
-  next?: Slot<Partial<CarouselButtonProps>>;
-  prev?: Slot<Partial<CarouselButtonProps>>;
+  next?: Slot<CarouselButtonProps>;
+  prev?: Slot<CarouselButtonProps>;
   autoplay?: Slot<typeof CarouselAutoplayButton>;
 };
 

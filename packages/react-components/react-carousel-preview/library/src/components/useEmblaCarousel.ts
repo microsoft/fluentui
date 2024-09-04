@@ -25,7 +25,7 @@ export function useEmblaCarousel(
     activeIndex: number | undefined;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag, containScroll } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -39,6 +39,7 @@ export function useEmblaCarousel(
     slidesToScroll,
     startIndex: activeIndex,
     watchDrag,
+    containScroll,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -188,7 +189,8 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag };
+    console.log('Update: ', containScroll);
+    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
@@ -203,7 +205,7 @@ export function useEmblaCarousel(
         }),
       ],
     );
-  }, [align, direction, loop, slidesToScroll, watchDrag]);
+  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll]);
 
   return {
     activeIndex,
