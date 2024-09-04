@@ -60,7 +60,9 @@ export function useMeasureList<
   React.useEffect(() => {
     const newHeightLength = totalLength - heightArray.current.length;
     const newWidthLength = totalLength - widthArray.current.length;
-    // Ensure we grow or truncate arrays with prior properties
+    /* Ensure we grow or truncate arrays with prior properties,
+    keeping the existing values is important for whitespace assumptions.
+    Even if items in the 'middle' are deleted, we will recalc the whitespace as it is explored.*/
     if (newWidthLength > 0) {
       widthArray.current = widthArray.current.concat(new Array(newWidthLength).fill(defaultItemSize));
     } else if (newWidthLength < 0) {

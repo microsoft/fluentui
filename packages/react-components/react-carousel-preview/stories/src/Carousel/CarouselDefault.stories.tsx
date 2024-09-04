@@ -14,7 +14,7 @@ const useClasses = makeStyles({
     ...typographyStyles.largeTitle,
     alignContent: 'center',
     borderRadius: tokens.borderRadiusLarge,
-    minHeight: '450px',
+    height: '450px',
     textAlign: 'center',
   },
 });
@@ -31,7 +31,7 @@ const TestComponent: React.FC<{ accentColor: string; children: React.ReactNode }
 };
 
 export const Default = () => (
-  <Carousel groupSize={1} enableDrag align="start">
+  <Carousel groupSize={1}>
     <CarouselSlider>
       <CarouselCard>
         <TestComponent accentColor="#B99095">
