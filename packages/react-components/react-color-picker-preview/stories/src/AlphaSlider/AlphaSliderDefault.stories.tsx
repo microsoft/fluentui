@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorSlider, ColorSliderProps, SliderOnChangeEventHandler } from '@fluentui/react-color-picker-preview';
+import { AlphaSlider, AlphaSliderProps, SliderOnChangeEventHandler } from '@fluentui/react-color-picker-preview';
 import { useId, Button, Label, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -17,19 +17,24 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = (props: Partial<ColorSliderProps>) => {
+export const Default = (props: Partial<AlphaSliderProps>) => {
   const styles = useStyles();
   const id = useId();
-  const [sliderValue, setSliderValue] = React.useState(160);
+  const COLOR = '#5be600';
+  const HUE = 96;
+  const [sliderValue, setSliderValue] = React.useState(50);
   const onSliderChange: SliderOnChangeEventHandler = (_, data) => setSliderValue(data.value);
   const resetSlider = () => setSliderValue(0);
 
   return (
     <div className={styles.example}>
       <Label htmlFor={id}>Control Slider [ Current Value: {sliderValue} ]</Label>
-      <ColorSlider value={sliderValue} max={360} onChange={onSliderChange} id={id} {...props} />
-      <ColorSlider value={sliderValue} max={360} onChange={onSliderChange} id={id} vertical {...props} />
-      <div className={styles.previewColor} style={{ backgroundColor: `hsl(${sliderValue}, 100%, 50%)` }} />
+      <AlphaSlider overlayColor={COLOR} value={sliderValue} onChange={onSliderChange} id={id} {...props} />
+      <AlphaSlider overlayColor={COLOR} value={sliderValue} onChange={onSliderChange} id={id} vertical {...props} />
+      <div
+        className={styles.previewColor}
+        style={{ backgroundColor: `hsla(${HUE}, 100%, 45%, ${sliderValue / 100})` }}
+      />
       <Button onClick={resetSlider}>Reset</Button>
     </div>
   );

@@ -180,7 +180,7 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${thumbSizeVar})`,
-    '-webkit-appearance': 'slider-vertical',
+    'writing-mode': 'vertical-lr',
   },
 });
 
