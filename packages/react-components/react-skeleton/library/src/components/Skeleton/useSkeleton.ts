@@ -14,7 +14,12 @@ import { useSkeletonContext } from '../../contexts/SkeletonContext';
  */
 export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLElement>): SkeletonState => {
   const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
-  const { animation = contextAnimation ?? 'wave', appearance = contextAppearance ?? 'opaque' } = props;
+  const {
+    animation = contextAnimation ?? 'wave',
+    appearance = contextAppearance ?? 'opaque',
+    size = 16,
+    shape = 'rectangle',
+  } = props;
 
   const root = slot.always(
     getIntrinsicElementProps('div', {
@@ -28,5 +33,5 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
     }),
     { elementType: 'div' },
   );
-  return { animation, appearance, components: { root: 'div' }, root };
+  return { animation, appearance, size, shape, components: { root: 'div' }, root };
 };
