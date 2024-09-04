@@ -3,7 +3,7 @@ import { keyEnter } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import type { StartEndOptions } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import {
   AnchorAttributes,
   type AnchorButtonAppearance,
@@ -256,22 +256,9 @@ export class AnchorButton extends BaseAnchor {
    * @remarks
    * HTML Attribute: `appearance`
    */
+  @toggleAttrState
   @attr
   public appearance?: AnchorButtonAppearance | undefined;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: AnchorButtonAppearance | undefined, next: AnchorButtonAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The shape the anchor button should have.
@@ -280,22 +267,9 @@ export class AnchorButton extends BaseAnchor {
    * @remarks
    * HTML Attribute: `shape`
    */
+  @toggleAttrState
   @attr
   public shape?: AnchorButtonShape | undefined;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: AnchorButtonShape | undefined, next: AnchorButtonShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The size the anchor button should have.
@@ -304,22 +278,9 @@ export class AnchorButton extends BaseAnchor {
    * @remarks
    * HTML Attribute: `size`
    */
+  @toggleAttrState
   @attr
   public size?: AnchorButtonSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: AnchorButtonSize | undefined, next: AnchorButtonSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The anchor button has an icon only, no text content

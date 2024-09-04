@@ -1,6 +1,6 @@
 import { attr } from '@microsoft/fast-element';
 import { BaseAnchor } from '../anchor-button/anchor-button.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { type LinkAppearance } from './link.options.js';
 
 /**
@@ -21,22 +21,9 @@ export class Link extends BaseAnchor {
    * @remarks
    * HTML Attribute: `appearance`
    */
+  @toggleAttrState
   @attr
   public appearance?: LinkAppearance | undefined;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: LinkAppearance | undefined, next: LinkAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The link is inline with text
@@ -48,15 +35,7 @@ export class Link extends BaseAnchor {
    * @remarks
    * HTML Attribute: `inline`
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public inline: boolean = false;
-
-  /**
-   * Handles changes to inline attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public inlineChanged(prev: boolean, next: boolean) {
-    toggleState(this.elementInternals, 'inline', next);
-  }
 }

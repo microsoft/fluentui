@@ -2,7 +2,7 @@ import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-elem
 // TODO: Remove with https://github.com/microsoft/fast/pull/6797
 import { applyMixins } from '../utils/apply-mixins.js';
 import { StartEnd } from '../patterns/index.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import {
   CounterBadgeAppearance,
   CounterBadgeColor,
@@ -29,22 +29,9 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: appearance
    */
+  @toggleAttrState
   @attr
   public appearance?: CounterBadgeAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: CounterBadgeAppearance | undefined, next: CounterBadgeAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The color the badge should have.
@@ -53,22 +40,9 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: color
    */
+  @toggleAttrState
   @attr
   public color?: CounterBadgeColor;
-
-  /**
-   * Handles changes to color attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public colorChanged(prev: CounterBadgeColor | undefined, next: CounterBadgeColor | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The shape the badge should have.
@@ -77,22 +51,9 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: shape
    */
+  @toggleAttrState
   @attr
   public shape?: CounterBadgeShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: CounterBadgeShape | undefined, next: CounterBadgeShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The size the badge should have.
@@ -101,22 +62,9 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: CounterBadgeSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: CounterBadgeSize | undefined, next: CounterBadgeSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The count the badge should have.
@@ -161,17 +109,9 @@ export class CounterBadge extends FASTElement {
    * @remarks
    * HTML Attribute: dot
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public dot: boolean = false;
-
-  /**
-   * Handles changes to dot attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public dotChanged(prev: boolean | undefined, next: boolean | undefined) {
-    toggleState(this.elementInternals, 'dot', !!next);
-  }
 
   /**
    * @internal

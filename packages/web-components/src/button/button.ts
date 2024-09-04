@@ -2,7 +2,7 @@ import { attr, FASTElement, nullableNumberConverter, observable } from '@microso
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { StartEnd } from '../patterns/index.js';
 import { applyMixins } from '../utils/apply-mixins.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import type { ButtonAppearance, ButtonFormTarget, ButtonShape, ButtonSize } from './button.options.js';
 import { ButtonType } from './button.options.js';
 
@@ -438,22 +438,9 @@ export class Button extends BaseButton {
    * @remarks
    * HTML Attribute: `appearance`
    */
+  @toggleAttrState
   @attr
   public appearance?: ButtonAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: ButtonAppearance | undefined, next: ButtonAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The shape of the button.
@@ -462,22 +449,9 @@ export class Button extends BaseButton {
    * @remarks
    * HTML Attribute: `shape`
    */
+  @toggleAttrState
   @attr
   public shape?: ButtonShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: ButtonShape | undefined, next: ButtonShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The size of the button.
@@ -486,22 +460,9 @@ export class Button extends BaseButton {
    * @remarks
    * HTML Attribute: `size`
    */
+  @toggleAttrState
   @attr
   public size?: ButtonSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: ButtonSize | undefined, next: ButtonSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * Indicates that the button should only display as an icon with no text content.

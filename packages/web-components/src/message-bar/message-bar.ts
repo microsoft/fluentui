@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 
 /**
@@ -30,22 +30,9 @@ export class MessageBar extends FASTElement {
    * @remarks
    * HTML Attribute: `shape`
    */
+  @toggleAttrState
   @attr
   public shape?: MessageBarShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: MessageBarShape | undefined, next: MessageBarShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * Sets the layout of the control.
@@ -54,22 +41,9 @@ export class MessageBar extends FASTElement {
    * @remarks
    * HTML Attribute: `layout`
    */
+  @toggleAttrState
   @attr
   public layout?: MessageBarLayout;
-
-  /**
-   * Handles changes to the layout attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public layoutChanged(prev: MessageBarLayout | undefined, next: MessageBarLayout | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * Sets the intent of the control.
@@ -78,22 +52,9 @@ export class MessageBar extends FASTElement {
    * @remarks
    * HTML Attribute: `intent`
    */
+  @toggleAttrState
   @attr
   public intent?: MessageBarIntent;
-
-  /**
-   * Handles changes to the intent attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public intentChanged(prev: MessageBarIntent | undefined, next: MessageBarIntent | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, prev, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, next, true);
-    }
-  }
 
   /**
    * @public

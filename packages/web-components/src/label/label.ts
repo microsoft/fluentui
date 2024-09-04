@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import { LabelSize, LabelWeight } from './label.options.js';
 
 /**
@@ -21,22 +21,9 @@ export class Label extends FASTElement {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: LabelSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: LabelSize | undefined, next: LabelSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * 	Specifies font weight of a label
@@ -45,22 +32,9 @@ export class Label extends FASTElement {
    * @remarks
    * HTML Attribute: weight
    */
+  @toggleAttrState
   @attr
   public weight?: LabelWeight;
-
-  /**
-   * Handles changes to weight attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public weightChanged(prev: LabelWeight | undefined, next: LabelWeight | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * 	Specifies styles for label when associated input is disabled
@@ -69,17 +43,9 @@ export class Label extends FASTElement {
    * @remarks
    * HTML Attribute: disabled
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
-
-  /**
-   * Handles changes to disabled attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public disabledChanged(prev: boolean | undefined, next: boolean | undefined) {
-    toggleState(this.elementInternals, 'disabled', next);
-  }
 
   /**
    * 	Specifies styles for label when associated input is a required field

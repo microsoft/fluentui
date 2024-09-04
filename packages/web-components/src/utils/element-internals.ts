@@ -32,3 +32,34 @@ export function toggleState(elementInternals: ElementInternals, state: string, f
   // @ts-expect-error - Baseline 2024
   elementInternals.states.delete(state);
 }
+
+/**
+ * A decorator for toggling the element internals of an element
+ *
+ * @internal
+ */
+export function toggleAttrState(target: any, attr: string): any {
+  // Stash the original method
+  const method = target[`${attr}Changed`];
+
+  // Replace the attrChanged method with a new one
+  target[`${attr}Changed`] = function (prev: any, next: any): void {
+    // Call original method
+    method?.call(this, prev, next);
+
+    // Update elementInternals state for booleans
+    if (typeof next === 'boolean') {
+      toggleState(this.elementInternals, attr, next);
+      return;
+    }
+
+    // Update elementInternals state for strings
+    // TODO: Change to `${attr}-${next}` https://github.com/microsoft/fluentui/issues/32069
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  };
+}

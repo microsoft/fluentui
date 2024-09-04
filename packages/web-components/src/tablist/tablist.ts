@@ -10,7 +10,7 @@ import {
   uniqueId,
 } from '@microsoft/fast-web-utilities';
 import { getDirection } from '../utils/index.js';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState, toggleState } from '../utils/element-internals.js';
 import { isFocusableElement } from '../utils/focusable-element.js';
 import { Tab } from '../index.js';
 import { TablistAppearance, TablistOrientation, TablistSize } from './tablist.options.js';
@@ -34,19 +34,9 @@ export class BaseTablist extends FASTElement {
    * @remarks
    * HTML Attribute: disabled.
    */
+  @toggleAttrState
   @attr({ mode: 'boolean' })
   public disabled: boolean = false;
-
-  /**
-   * Handles disabled changes
-   * @param prev - previous value
-   * @param next - next value
-   *
-   * @internal
-   */
-  protected disabledChanged(prev: boolean, next: boolean): void {
-    toggleState(this.elementInternals, 'disabled', next);
-  }
 
   /**
    * The orientation
@@ -54,6 +44,7 @@ export class BaseTablist extends FASTElement {
    * @remarks
    * HTML Attribute: orientation
    */
+  @toggleAttrState
   @attr
   public orientation: TablistOrientation = TablistOrientation.horizontal;
   /**
@@ -61,13 +52,6 @@ export class BaseTablist extends FASTElement {
    */
   protected orientationChanged(prev: TablistOrientation, next: TablistOrientation): void {
     this.elementInternals.ariaOrientation = next ?? TablistOrientation.horizontal;
-
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
 
     if (this.$fastController.isConnected) {
       this.setTabs();
@@ -301,40 +285,18 @@ export class Tablist extends BaseTablist {
    * appearance
    * There are two modes of appearance: transparent and subtle.
    */
+  @toggleAttrState
   @attr
   public appearance?: TablistAppearance = TablistAppearance.transparent;
-
-  /**
-   * @internal
-   */
-  protected appearanceChanged(prev: TablistAppearance, next: TablistAppearance): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * size
    * defaults to medium.
    * Used to set the size of all the tab controls, which effects text size and margins. Three sizes: small, medium and large.
    */
+  @toggleAttrState
   @attr
   public size?: TablistSize;
-
-  /**
-   * @internal
-   */
-  protected sizeChanged(prev: TablistSize, next: TablistSize): void {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * calculateAnimationProperties

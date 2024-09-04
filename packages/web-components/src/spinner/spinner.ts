@@ -1,5 +1,5 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js';
+import { toggleAttrState } from '../utils/element-internals.js';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
@@ -34,22 +34,9 @@ export class Spinner extends BaseSpinner {
    * @remarks
    * HTML Attribute: size
    */
+  @toggleAttrState
   @attr
   public size?: SpinnerSize;
-
-  /**
-   * Handles changes to size attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public sizeChanged(prev: SpinnerSize | undefined, next: SpinnerSize | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The appearance of the spinner
@@ -57,20 +44,7 @@ export class Spinner extends BaseSpinner {
    * @remarks
    * HTML Attribute: appearance
    */
+  @toggleAttrState
   @attr
   public appearance?: SpinnerAppearance;
-
-  /**
-   * Handles changes to appearance attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public appearanceChanged(prev: SpinnerAppearance | undefined, next: SpinnerAppearance | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 }
