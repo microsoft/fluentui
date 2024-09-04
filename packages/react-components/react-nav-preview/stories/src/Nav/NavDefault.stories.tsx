@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Nav, NavItem } from '@fluentui/react-nav-preview';
+import { Switch } from '@fluentui/react-components';
 
 export const Default = () => {
   return (

@@ -48,37 +48,37 @@ export const Responsive = () => {
   const classes = useClasses();
 
   return (
-    <Carousel>
+    <Carousel draggable>
       <CarouselSlider className={classes.slider}>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#B99095">Responsive sizing without a minWidth!</TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#FCB5AC" className={classes.smallCardContent}>
             Card 2
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#B5E5CF" className={classes.mediumCardContent}>
             Card 3
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#3D5B59" className={classes.largeCardContent}>
             Card 4
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#F9EAC2" className={classes.mediumCardContent}>
             Card 5
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#FEE7E6" className={classes.largeCardContent}>
             Card 6
           </TestComponent>
         </CarouselCard>
-        <CarouselCard className={classes.card} autoSize={true}>
+        <CarouselCard autoSize={true}>
           <TestComponent accentColor="#FFD898" className={classes.smallCardContent}>
             Card 7
           </TestComponent>

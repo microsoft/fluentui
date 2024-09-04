@@ -40,7 +40,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   groupSize?: number | 'auto';
 
   /**
-   * Enables mouse/touch drag on carousel items.
+   * Enables drag to scroll on carousel items.
    * Defaults to: False
    */
   draggable?: boolean;

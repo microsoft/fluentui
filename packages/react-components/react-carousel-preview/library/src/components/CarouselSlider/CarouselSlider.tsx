@@ -7,7 +7,7 @@ import { useCarouselSliderStyles_unstable } from './useCarouselSliderStyles.styl
 import type { CarouselSliderProps } from './CarouselSlider.types';
 
 /**
- * CarouselSlider component - TODO: add more docs
+ * CarouselSlider component - The viewport window that CarouselCards are contained within.
  */
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps> = React.forwardRef((props, ref) => {
   const state = useCarouselSlider_unstable(props, ref);

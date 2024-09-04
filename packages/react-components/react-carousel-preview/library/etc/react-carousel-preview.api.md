@@ -13,9 +13,13 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import { ContextSelector } from '@fluentui/react-context-selector';
 import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -87,6 +91,25 @@ export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<Carouse
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
 
+// @public (undocumented)
+export const carouselContextDefaultValue: CarouselContextValue;
+
+// @public (undocumented)
+export type CarouselContextValue = {
+    activeIndex: number;
+    circular: boolean;
+    selectPageByElement: (event: React_2.FocusEvent, element: HTMLElement, jump?: boolean) => void;
+    selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => void;
+    selectPageByIndex: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: number, jump?: boolean) => void;
+    subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
+    enableAutoplay: (autoplay: boolean) => void;
+};
+
+// @public
+export type CarouselContextValues = {
+    carousel: CarouselContextValue;
+};
+
 // @public
 export const CarouselFooter: ForwardRefComponent<CarouselFooterProps>;
 
@@ -103,6 +126,11 @@ export type CarouselFooterSlots = {
 
 // @public
 export type CarouselFooterState = ComponentState<CarouselFooterSlots>;
+
+// @public (undocumented)
+export type CarouselIndexChangeData = EventData<'click' | 'focus', React_2.FocusEvent | React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+    index: number;
+};
 
 // @public
 export const CarouselNav: ForwardRefComponent<CarouselNavProps>;
@@ -137,16 +165,19 @@ export const carouselNavContainerClassNames: SlotClassNames<CarouselNavContainer
 
 // @public
 export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots> & {
-    layout?: 'inline' | 'overlay' | 'overlay-expanded';
+    layout?: 'inline' | 'inline-wide' | 'overlay' | 'overlay-wide' | 'overlay-expanded';
 };
 
 // @public (undocumented)
 export type CarouselNavContainerSlots = {
     root: Slot<'div'>;
+    next?: NonNullable<Slot<CarouselButtonProps>>;
+    prev?: NonNullable<Slot<CarouselButtonProps>>;
+    autoplay?: Slot<typeof CarouselAutoplayButton>;
 };
 
 // @public
-export type CarouselNavContainerState = ComponentState<CarouselNavContainerSlots>;
+export type CarouselNavContainerState = ComponentState<CarouselNavContainerSlots> & Pick<CarouselNavContainerProps, 'layout'>;
 
 // @public
 export const CarouselNavImageButton: ForwardRefComponent<CarouselNavImageButtonProps>;
@@ -171,7 +202,7 @@ export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
     children: NavButtonRenderFunction;
-} & Pick<CarouselNavState, 'appearance'>;
+} & Partial<Pick<CarouselNavState, 'appearance' | 'totalSlides'>>;
 
 // @public (undocumented)
 export type CarouselNavSlots = {
@@ -194,7 +225,11 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     circular?: boolean;
     groupSize?: number | 'auto';
     draggable?: boolean;
+    whitespace?: boolean;
 };
+
+// @public (undocumented)
+export const CarouselProvider: Provider<CarouselContextValue | undefined> & FC<ProviderProps<CarouselContextValue | undefined>>;
 
 // @public
 export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
@@ -274,6 +309,9 @@ export const useCarouselCard_unstable: (props: CarouselCardProps, ref: React_2.R
 
 // @public
 export const useCarouselCardStyles_unstable: (state: CarouselCardState) => CarouselCardState;
+
+// @public (undocumented)
+export const useCarouselContext_unstable: <T>(selector: ContextSelector<CarouselContextValue, T>) => T;
 
 // @public
 export const useCarouselFooter_unstable: (props: CarouselFooterProps, ref: React_2.Ref<HTMLDivElement>) => CarouselFooterState;

@@ -24,7 +24,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const [totalSlides, setTotalSlides] = React.useState(0);
+  const [totalSlides, setTotalSlides] = React.useState(props.totalSlides ?? 0);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   useIsomorphicLayoutEffect(() => {

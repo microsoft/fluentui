@@ -9,9 +9,7 @@ import type { CarouselNavContainerState, CarouselNavContainerSlots } from './Car
  */
 export const renderCarouselNavContainer_unstable = (state: CarouselNavContainerState) => {
   assertSlots<CarouselNavContainerSlots>(state);
-  const { layout } = state;
 
-  // TODO Add additional slots in the appropriate place
   return (
     <state.root>
       {state.autoplay && <state.autoplay />}

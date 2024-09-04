@@ -7,12 +7,13 @@ describe('CarouselNavContainer', () => {
   isConformant({
     Component: CarouselNavContainer,
     displayName: 'CarouselNavContainer',
+    requiredProps: { autoplay: '' },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<CarouselNavContainer>Default CarouselNavContainer</CarouselNavContainer>);
+    const result = render(<CarouselNavContainer autoplay={''}>Default CarouselNavContainer</CarouselNavContainer>);
     expect(result.container).toMatchSnapshot();
   });
 });

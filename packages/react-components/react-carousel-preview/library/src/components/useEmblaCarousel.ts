@@ -6,7 +6,6 @@ import { carouselCardClassNames } from './CarouselCard/useCarouselCardStyles.sty
 import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyles.styles';
 import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
-import { TabsterDOMAttribute, useTabsterAttributes } from '@fluentui/react-tabster';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: 'trimSnaps',
