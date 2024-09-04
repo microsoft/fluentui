@@ -2,9 +2,10 @@ pr: none
 
 trigger: none
 
-name: 'Deprecate Preview Package'
+name: 'Deprecate Published Package'
 
 parameters:
+  # @see https://docs.npmjs.com/cli/v10/using-npm/package-spec
   - name: packageSpec
     type: string
     default: ''
@@ -18,7 +19,7 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
-  - job: Deprecate Preview Package
+  - job: Deprecate Published Package
     pool:
       name: '1ES-Host-Ubuntu'
       image: '1ES-PT-Ubuntu-20.04'
