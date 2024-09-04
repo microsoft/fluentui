@@ -1,6 +1,5 @@
 import { makeStyles, makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 import type { ColorSliderSlots, ColorSliderState } from './ColorSlider.types';
 
@@ -70,15 +69,6 @@ const useStyles = makeStyles({
   hue: {
     backgroundImage: hueBackground,
   },
-  focusIndicatorHorizontal: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '-2px', bottom: '-2px', left: '8px', right: '8px' } },
-  }),
-
-  focusIndicatorVertical: createFocusOutlineStyle({
-    selector: 'focus-within',
-    style: { outlineOffset: { top: '6px', bottom: '6px', left: '4px', right: '4px' } },
-  }),
 });
 
 /**
@@ -177,6 +167,11 @@ const useInputStyles = makeStyles({
     gridColumnEnd: '-1',
     padding: '0',
     margin: '0',
+    [`:focus-visible ~ .${colorSliderClassNames.thumb}`]: {
+      border: `2px solid ${tokens.colorStrokeFocus2}`,
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+      borderRadius: tokens.borderRadiusCircular,
+    },
   },
   horizontal: {
     height: `var(${thumbSizeVar})`,
@@ -185,7 +180,7 @@ const useInputStyles = makeStyles({
   vertical: {
     height: '100%',
     width: `var(${thumbSizeVar})`,
-    '-webkit-appearance': 'slider-vertical',
+    'writing-mode': 'vertical-lr',
   },
 });
 

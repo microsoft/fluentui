@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useFocusWithin } from '@fluentui/react-tabster';
-import { getPartitionedNativeProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, useId, slot } from '@fluentui/react-utilities';
 import type { ColorSliderProps, ColorSliderState } from './ColorSlider.types';
 import { useColorSliderState_unstable } from './useColorSliderState';
 
@@ -56,8 +55,6 @@ export const useColorSlider_unstable = (
     rail: slot.always(rail, { elementType: 'div' }),
     thumb: slot.always(thumb, { elementType: 'div' }),
   };
-
-  state.root.ref = useMergedRefs(state.root.ref, useFocusWithin<HTMLInputElement>());
 
   useColorSliderState_unstable(state, props);
 

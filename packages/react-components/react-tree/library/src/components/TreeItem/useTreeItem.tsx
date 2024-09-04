@@ -92,26 +92,22 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
-    onClick?.(event);
-    if (event.isDefaultPrevented()) {
+    const isEventFromActions = () => actionsRef.current && elementContains(actionsRef.current, event.target as Node);
+
+    const isEventFromSubtree = () => subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
+
+    const isEventFromSelection = () => selectionRef.current?.contains(event.target as Node);
+
+    const isEventFromExpandIcon = expandIconRef.current?.contains(event.target as Node);
+
+    if (isEventFromActions() || isEventFromSubtree() || isEventFromSelection()) {
+      return;
+    } else if (!isEventFromExpandIcon) {
+      onClick?.(event);
+    }
+    if (event.isDefaultPrevented() || itemType === 'leaf') {
       return;
     }
-    if (itemType === 'leaf') {
-      return;
-    }
-    const isEventFromActions = actionsRef.current && elementContains(actionsRef.current, event.target as Node);
-    if (isEventFromActions) {
-      return;
-    }
-    const isEventFromSubtree = subtreeRef.current && elementContains(subtreeRef.current, event.target as Node);
-    if (isEventFromSubtree) {
-      return;
-    }
-    const isEventFromSelection = selectionRef.current && elementContains(selectionRef.current, event.target as Node);
-    if (isEventFromSelection) {
-      return;
-    }
-    const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
 
     ReactDOM.unstable_batchedUpdates(() => {
       const data = {

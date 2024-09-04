@@ -597,7 +597,6 @@ export class BaseDivider extends FASTElement {
 
 // @public
 export class BaseDropdown extends FASTElement {
-    constructor();
     // (undocumented)
     connectedCallback(): void;
     disabled: boolean;
@@ -610,18 +609,20 @@ export class BaseDropdown extends FASTElement {
     static readonly formAssociated = true;
     // (undocumented)
     formDisabledCallback(disabled: boolean): void;
-    // @internal (undocumented)
-    handleClick(): void;
     list?: string;
     // (undocumented)
-    protected listChanged(prev: string | undefined, next: string | undefined): void;
+    protected listChanged(): void;
     get listElement(): null | DropdownList;
+    multiple: boolean;
+    // (undocumented)
+    protected multipleChanged(): void;
 }
 
-// Warning: (ae-forgotten-export) The symbol "BaseListbox" needs to be exported by the entry point index.d.ts
-//
 // @public
-export class BaseDropdownList extends BaseListbox {
+export class BaseDropdownList extends FASTElement {
+    constructor();
+    // @internal
+    elementInternals: ElementInternals;
 }
 
 // @public
@@ -661,6 +662,18 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseOption extends BaseCheckbox {
     constructor();
+    // @internal
+    formResetCallback(): void;
+    // @override
+    id: string;
+    // @internal @override (undocumented)
+    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @internal
+    protected mode: CheckboxMode;
+    get selected(): boolean;
+    set selected(next: boolean);
+    // @internal
+    protected setAriaProperties(value?: boolean): void;
 }
 
 // @public
@@ -3051,9 +3064,7 @@ export type OptionOptions = Record<string, any>;
 // @public
 export const OptionStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const OptionTemplate: ElementViewTemplate<Option_2>;
 
 // @public
@@ -3902,6 +3913,9 @@ export const TextAreaAppearance: {
 
 // @public (undocumented)
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
+
+// @public
+export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
 
 // Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
