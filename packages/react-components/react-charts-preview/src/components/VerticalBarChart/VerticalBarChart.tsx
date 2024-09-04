@@ -552,7 +552,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            className={classes.opacityChangeOnHover}
             y={yPoint}
             width={_barWidth}
             data-is-focusable={!props.hideTooltip && shouldHighlight}
@@ -569,6 +568,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
             tabIndex={point.legend !== '' ? 0 : undefined}
+            opacity={shouldHighlight? '1': '0.1'}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
