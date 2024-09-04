@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, IChartProps } from '../../src/LineChart';
-import { DataVizPalette } from '../../src/utilities/colors';
+import { ILineChartProps, LineChart, IChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch, Checkbox } from '@fluentui/react-components';
 import type { CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 

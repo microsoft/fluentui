@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { Stack, TextField } from '@fluentui/react';
+import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+//import { Stack, TextField } from '@fluentui/react';
 import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
-  const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps["checked"]>(true);
-  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
-  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps["checked"]>(false);
+  const [barWidthEnabled, setBarWidthEnabled] = React.useState<CheckboxProps['checked']>(true);
+  const [xAxisInnerPaddingEnabled, setXAxisInnerPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
+  const [xAxisOuterPaddingEnabled, setXAxisOuterPaddingEnabled] = React.useState<CheckboxProps['checked']>(false);
   const [barWidth, setBarWidth] = React.useState<number>(16);
   const [maxBarWidth, setMaxBarWidth] = React.useState<number>(100);
   const [xAxisInnerPadding, setXAxisInnerPadding] = React.useState<number>(0.67);
@@ -15,7 +15,7 @@ export const VCAxisTooltip = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
-  const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+  /* const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setBarWidthEnabled(checked.checked);
   };
   const _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
@@ -41,7 +41,7 @@ export const VCAxisTooltip = () => {
   };
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(Number(e.target.value));
-  };
+  }; */
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: 'Simple Text',
@@ -67,7 +67,7 @@ export const VCAxisTooltip = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
+      {/* <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
         <Stack horizontal verticalAlign="center">
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
@@ -96,7 +96,9 @@ export const VCAxisTooltip = () => {
           )}
         </Stack>
         <Stack horizontal verticalAlign="center">
-          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>maxBarWidth:</label>
+          <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
+            maxBarWidth:
+          </label>
           <TextField
             type="number"
             value={maxBarWidth.toString()}
@@ -140,7 +142,7 @@ export const VCAxisTooltip = () => {
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
         </Stack>
-      </Stack>
+      </Stack> */}
       <div>
         <Field label="Pick one">
           <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>

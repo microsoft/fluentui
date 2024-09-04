@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {  ILineChartProps, LineChart} from '../../src/LineChart';
-import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
+import { ILineChartProps, LineChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 
 export const LCCustomAccess = (props: ILineChartProps) => {
@@ -198,7 +197,7 @@ export const LCCustomAccess = (props: ILineChartProps) => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-       <Switch
+      <Switch
         label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}

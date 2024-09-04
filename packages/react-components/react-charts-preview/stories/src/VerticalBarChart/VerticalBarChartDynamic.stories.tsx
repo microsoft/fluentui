@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
-import { Button } from "@fluentui/react-components";
-import { Stack, TextField } from '@fluentui/react';
-import { DataVizPalette, getColorFromToken } from '../../src/utilities/colors';
+import {
+  VerticalBarChart,
+  IVerticalBarChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charts-preview';
+import { Button } from '@fluentui/react-components';
+// import { Stack, TextField } from '@fluentui/react';
 import {
   Checkbox,
   CheckboxOnChangeData,
@@ -28,18 +32,26 @@ export const VCDynamic = () => {
   };
 
   const _colors = [
-    [getColorFromToken(DataVizPalette.color1),
+    [
+      getColorFromToken(DataVizPalette.color1),
       getColorFromToken(DataVizPalette.color2),
-      getColorFromToken(DataVizPalette.color3)],
-    [getColorFromToken(DataVizPalette.color4),
+      getColorFromToken(DataVizPalette.color3),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color4),
       getColorFromToken(DataVizPalette.color5),
-      getColorFromToken(DataVizPalette.color6)],
-    [getColorFromToken(DataVizPalette.color7),
+      getColorFromToken(DataVizPalette.color6),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color7),
       getColorFromToken(DataVizPalette.color8),
-      getColorFromToken(DataVizPalette.color9),],
-    [getColorFromToken(DataVizPalette.color10),
+      getColorFromToken(DataVizPalette.color9),
+    ],
+    [
+      getColorFromToken(DataVizPalette.color10),
       getColorFromToken(DataVizPalette.color11),
-      getColorFromToken(DataVizPalette.color12),],
+      getColorFromToken(DataVizPalette.color12),
+    ],
   ];
   const _colorIndex = React.useRef<number>(0);
   let _prevBarWidth = 16;
@@ -63,7 +75,7 @@ export const VCDynamic = () => {
     return Math.floor(Math.random() * 90) + 1;
   };
 
-  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  /*  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     if (typeof barWidth === 'undefined') {
       setBarWidth('auto');
     } else if (barWidth === 'auto') {
@@ -93,12 +105,12 @@ export const VCDynamic = () => {
   };
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Number(e.target.value));
-  };
+  }; */
   const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData) => {
     setXAxisType(option.value);
     setDynamicData(_getData(dataSize, option.value));
   };
-  const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+  /* const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setEnableReflow(checked.checked);
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,7 +118,7 @@ export const VCDynamic = () => {
     setDataSize(dataSize);
     setDynamicData(_getData(dataSize, xAxisType));
     setDynamicData(_getData(dataSize, xAxisType));
-  };
+  }; */
 
   const _getData = (dataSize: number, xAxisType: string) => {
     const data: IVerticalBarChartDataPoint[] = [];
@@ -152,7 +164,7 @@ export const VCDynamic = () => {
 
   return (
     <>
-      <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
+      {/* <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
         <Stack horizontal verticalAlign="center">
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
@@ -230,7 +242,7 @@ export const VCDynamic = () => {
           </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
         </Stack>
-      </Stack>
+      </Stack> */}
       <div style={{ marginTop: '20px' }}>
         <Field label="X-Axis type:">
           <RadioGroup onChange={_onAxisTypeChange}>

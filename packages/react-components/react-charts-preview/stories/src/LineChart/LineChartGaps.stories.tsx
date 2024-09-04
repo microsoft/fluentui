@@ -1,6 +1,11 @@
 import * as React from 'react';
-import {  ILineChartProps, LineChart, IChartProps, ICustomizedCalloutData} from '../../src/LineChart';
-import { DataVizPalette } from '../../src/utilities/colors';
+import {
+  ILineChartProps,
+  LineChart,
+  IChartProps,
+  ICustomizedCalloutData,
+  DataVizPalette,
+} from '@fluentui/react-charts-preview';
 
 export const LCGaps = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);

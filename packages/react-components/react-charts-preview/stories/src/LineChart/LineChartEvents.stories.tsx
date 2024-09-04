@@ -1,14 +1,12 @@
 import * as React from 'react';
-import {  ILineChartProps, LineChart, IChartProps} from '../../src/LineChart';
-import { DataVizPalette } from '../../src/utilities/colors';
-import { mergeStyles } from '@fluentui/react/lib/Styling';
+import { ILineChartProps, LineChart, IChartProps, DataVizPalette } from '@fluentui/react-charts-preview';
 import * as d3 from 'd3-format';
 import { Label, Switch } from '@fluentui/react-components';
 
-const calloutItemStyle = mergeStyles({
+/* const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
   padding: '3px',
-});
+}); */
 
 export const LCEvents = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
@@ -139,21 +137,21 @@ export const LCEvents = (props: ILineChartProps) => {
         onChange={_onHeightChange}
         aria-valuetext={`ChangeHeightslider${height}`}
       />
-       <Switch
+      <Switch
         label={allowMultipleShapes ? 'Enabled multiple shapes for each line' : 'Disabled multiple shapes for each line'}
         onChange={_onShapeChange}
         checked={allowMultipleShapes}
       />
-      <div style={{marginTop: '10px'}}>
-      <Label htmlFor="color-select">Use Custom Color for Event Annotation</Label>
-      <input
-        ref={inputRef}
-        color = {customEventAnnotationColor}
-        style={{marginLeft: '10px'}}
-        type="color"
-        id="color-select"
-        name="color-select"
-      />
+      <div style={{ marginTop: '10px' }}>
+        <Label htmlFor="color-select">Use Custom Color for Event Annotation</Label>
+        <input
+          ref={inputRef}
+          color={customEventAnnotationColor}
+          style={{ marginLeft: '10px' }}
+          type="color"
+          id="color-select"
+          name="color-select"
+        />
       </div>
       <div style={rootStyle}>
         <LineChart
@@ -179,27 +177,27 @@ export const LCEvents = (props: ILineChartProps) => {
               {
                 event: 'event 1',
                 date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
+                onRenderCard: () => <div /* className={calloutItemStyle} */>event 1 message</div>,
               },
               {
                 event: 'event 2',
                 date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+                onRenderCard: () => <div /* className={calloutItemStyle} */>event 2 message</div>,
               },
               {
                 event: 'event 3',
                 date: new Date('2020-03-04T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+                onRenderCard: () => <div /* className={calloutItemStyle} */>event 3 message</div>,
               },
               {
                 event: 'event 4',
                 date: new Date('2020-03-06T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+                onRenderCard: () => <div /* className={calloutItemStyle} */>event 4 message</div>,
               },
               {
                 event: 'event 5',
                 date: new Date('2020-03-08T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
+                onRenderCard: () => <div /* className={calloutItemStyle} */>event 5 message</div>,
               },
             ],
             strokeColor: customEventAnnotationColor,

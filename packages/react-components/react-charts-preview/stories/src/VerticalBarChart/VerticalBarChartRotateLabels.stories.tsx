@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../src/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
 
 export const VCRotateLabels = () => {
   const points: IVerticalBarChartDataPoint[] = [

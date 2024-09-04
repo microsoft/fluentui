@@ -1,4 +1,4 @@
-import { VerticalBarChart } from '../../src/VerticalBarChart';
+import { VerticalBarChart } from '@fluentui/react-charts-preview';
 
 import descriptionMd from './VerticalBarChartDescription.md';
 import bestPracticesMd from './VerticalBarChartBestPractices.md';

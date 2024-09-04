@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  VerticalBarChart,
-  IVerticalBarChartProps,
-  IVerticalBarChartDataPoint,
-  ILineChartLineOptions,
-} from '../../src/VerticalBarChart';
+import { VerticalBarChart, IVerticalBarChartDataPoint, ILineChartLineOptions } from '@fluentui/react-charts-preview';
 import {
   Switch,
   Checkbox,
@@ -16,7 +11,6 @@ import {
   RadioGroupOnChangeData,
   RadioGroupProps,
 } from '@fluentui/react-components';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { tokens } from '@fluentui/react-theme';
 
 export const VCBasic = () => {
@@ -213,12 +207,12 @@ export const VCBasic = () => {
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
-            {...(isCalloutselected && {
+            /*             {...(isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
-            })}
+            })} */
             yAxisTitle={
               showAxisTitles
                 ? 'Different categories of animals and fruits and their corresponding count are shown here'

@@ -1,4 +1,4 @@
-import { DonutChart } from '../../src/DonutChart';
+import { DonutChart } from '@fluentui/react-charts-preview';
 
 import descriptionMd from './DonutChartDescription.md';
 import bestPracticesMd from './DonutChartBestPractices.md';

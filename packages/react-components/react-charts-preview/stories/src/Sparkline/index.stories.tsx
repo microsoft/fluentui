@@ -1,4 +1,4 @@
-import { Sparkline } from '../../src/Sparkline';
+import { Sparkline } from '@fluentui/react-charts-preview';
 
 import descriptionMd from './SparklineDescription.md';
 import bestPracticesMd from './SparklineBestPractices.md';

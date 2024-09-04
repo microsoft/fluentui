@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, ICustomizedCalloutData } from '../../src/LineChart';
-import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
+import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charts-preview';
 
 export const LCStyled = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);

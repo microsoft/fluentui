@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint} from '../../src/VerticalBarChart';
-import { Checkbox, CheckboxOnChangeData, CheckboxProps } from "@fluentui/react-components";
+import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
+import { Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 export const VCCustomAccess = () => {
-  const [isChecked, setIsChecked] = React.useState<CheckboxProps["checked"]>(true);
-  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps["checked"]>(true);
+  const [isChecked, setIsChecked] = React.useState<CheckboxProps['checked']>(true);
+  const [useSingleColor, setUseSingleColor] = React.useState<CheckboxProps['checked']>(true);
 
   const _onChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setIsChecked(checked.checked);
-  }
+  };
   const _onCheckChange = (ev: React.ChangeEvent<HTMLElement>, checked: CheckboxOnChangeData) => {
     setUseSingleColor(checked.checked);
-  }
+  };
 
   const points: IVerticalBarChartDataPoint[] = [
     {
@@ -45,12 +45,12 @@ export const VCCustomAccess = () => {
   return (
     <>
       <Checkbox label="show  line(This will draw the line)" checked={isChecked} onChange={_onChange} />
-      <div style = {{marginTop: '10px'}}>
-      <Checkbox
-        label="use single color(This will have only one color)"
-        checked={useSingleColor}
-        onChange={_onCheckChange}
-      />
+      <div style={{ marginTop: '10px' }}>
+        <Checkbox
+          label="use single color(This will have only one color)"
+          checked={useSingleColor}
+          onChange={_onCheckChange}
+        />
       </div>
       <div style={{ width: '800px', height: '400px' }}>
         <VerticalBarChart

@@ -1,6 +1,6 @@
 import descriptionMd from './LegendsDescription.md';
 import bestPracticesMd from './LegendsBestPractices.md';
-import { Legends } from '../../src/Legends';
+import { Legends } from '@fluentui/react-charts-preview';
 
 export { LegendsBasic } from './LegendsDefault.stories';
 export { LegendsOverflow } from './Legends.Overflow.stories';

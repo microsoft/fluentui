@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Sparkline, ISparklineProps } from '../../src/Sparkline';
-import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
+import { Sparkline, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 
 export const SparklineBasic = () => {
   const sl1 = {

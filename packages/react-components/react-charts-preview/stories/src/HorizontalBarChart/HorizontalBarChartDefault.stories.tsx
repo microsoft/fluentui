@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart, IHorizontalBarChartProps } from '../../src/HorizontalBarChart';
-import { getColorFromToken, DataVizPalette } from '../../src/utilities/colors';
+import { HorizontalBarChart, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
 
 export const HBCBasic = () => {
   const data = [

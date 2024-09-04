@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { ILineChartProps, LineChart, IChartProps, ILineChartDataPoint } from '../../src/LineChart';
-import { DataVizPalette } from '../../src/utilities/colors';
+import {
+  ILineChartProps,
+  LineChart,
+  IChartProps,
+  ILineChartDataPoint,
+  DataVizPalette,
+} from '@fluentui/react-charts-preview';
 import { Switch } from '@fluentui/react-components';
 
 export const LCLargeData = (props: ILineChartProps) => {
