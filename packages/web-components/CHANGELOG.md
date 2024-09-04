@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 30 Aug 2024 04:07:03 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Sep 2024 04:08:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.63)
+
+Wed, 04 Sep 2024 04:08:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.62..@fluentui/web-components_v3.0.0-beta.63)
+
+### Changes
+
+- normalize export paths ([PR #32451](https://github.com/microsoft/fluentui/pull/32451) by 863023+radium-v@users.noreply.github.com)
+- restore define modules as default exports ([PR #32452](https://github.com/microsoft/fluentui/pull/32452) by 863023+radium-v@users.noreply.github.com)
 
 ## [3.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.62)
 
