@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(useOverflowContainer): Removes double overflowManager creation",
+  "packageName": "@fluentui/react-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
