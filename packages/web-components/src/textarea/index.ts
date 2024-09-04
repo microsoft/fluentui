@@ -4,9 +4,6 @@ export {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
-  TextAreaResizableResize,
-  TextAreaHorizontallyResizableResize,
-  TextAreaVerticallyResizableResize,
   TextAreaResize,
   TextAreaSize,
 } from './textarea.options.js';

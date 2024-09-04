@@ -465,6 +465,34 @@ describe('Tree', () => {
   });
 });
 
+describe('TreeItem', () => {
+  it('should not call onClick when clicking on: expand icon, actions or subtree', () => {
+    const handleClick = cy.stub().as('onClick');
+    mount(
+      <TreeTest id="tree" aria-label="Tree">
+        <TreeItem open onClick={handleClick} itemType="branch" value="item1" data-testid="item1">
+          <TreeItemLayout
+            expandIcon={{ 'data-testid': 'item1__expandIcon' } as {}}
+            actions={{ visible: true, children: <Button id="action">action!</Button> }}
+          >
+            level 1, item 1
+          </TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf" value="item1__item1" data-testid="item1__item1">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
+      </TreeTest>,
+    );
+    cy.get('[data-testid="item1__item1"]').should('exist');
+    cy.get(`#action`).realClick();
+    cy.get('[data-testid="item1__item1"]').realClick();
+    cy.get('[data-testid="item1__expandIcon"]').realClick();
+    cy.get('@onClick').should('not.have.been.called');
+  });
+});
+
 declare global {
   namespace Cypress {
     interface Chainable<Subject> {
