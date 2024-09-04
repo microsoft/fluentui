@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards",
+  "packageName": "@fluentui/react-carousel-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
