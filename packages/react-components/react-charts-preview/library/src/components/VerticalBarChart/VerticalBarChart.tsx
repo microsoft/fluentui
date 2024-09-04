@@ -55,8 +55,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   HTMLDivElement,
   IVerticalBarChartProps
 >((props, forwardedRef) => {
-  let _points: IVerticalBarChartDataPoint[];
-  let _barWidth: number;
+  let _points: IVerticalBarChartDataPoint[] = [];
+  let _barWidth: number = 0;
   let _colors: string[];
   const _refArray: IRefArrayData[] = [];
   let margins: IMargins;
@@ -76,8 +76,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const _vbcLineId: string = useId('_VBC_line_');
   const _vbcPointId: string = useId('_VBC_point_');
   const _vbcBarId: string = useId('_VBC_bar_');
-  let _xAxisInnerPadding: number;
-  let _xAxisOuterPadding: number;
+  let _xAxisInnerPadding: number = 0;
+  let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
 
   const [color, setColor] = React.useState<string>('');
@@ -91,7 +91,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [yCalloutValue, setYCalloutValue] = React.useState<string | undefined>('');
   const [activeXdataPoint, setActiveXDatapoint] = React.useState<string | number | Date | null>(null);
   const [YValueHover, setYValueHover] = React.useState<IYValueHover[]>();
-  const [hoverXValue, setHoverXValue] = React.useState<string | number | null>('');
+  const [hoverXValue, setHoverXValue] = React.useState<string | number | undefined>('');
   const [calloutLegend, setCalloutLegend] = React.useState<string>('');
   const [callOutAccessibilityData, setCalloutAccessibilityData] = React.useState<IAccessibilityProps>();
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
@@ -345,7 +345,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
 
   function _getCalloutContentForLineAndBar(point: IVerticalBarChartDataPoint): {
     YValueHover: IYValueHover[];
-    hoverXValue: string | number | null;
+    hoverXValue: string | number | undefined;
   } {
     // eslint-disable-next-line @typescript-eslint/no-shadow
     const YValueHover: IYValueHover[] = [];
@@ -949,7 +949,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
     isCalloutForStack: true,
-    culture: props.culture,
+    culture: props.culture ?? 'en-us',
   };
 
   const tickParams = {

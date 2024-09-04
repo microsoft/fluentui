@@ -325,8 +325,7 @@ export class Async {
       noOpFunction.cancel = () => {
         return;
       };
-      // ToDo - Fix this build error
-      // noOpFunction.flush = (() => null) as unknown as () => ReturnType<T>;
+      noOpFunction.flush = (() => null) as unknown as () => ReturnType<T>;
       noOpFunction.pending = () => false;
 
       return noOpFunction;

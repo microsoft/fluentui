@@ -12,7 +12,7 @@
     "strictPropertyInitialization": false,
     "strictBindCallApply": false,
     "strictFunctionTypes": false,
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "noImplicitReturns": false,
     "noEmitOnError": false,
     "lib": ["es5", "dom"]

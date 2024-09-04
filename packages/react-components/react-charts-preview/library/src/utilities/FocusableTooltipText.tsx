@@ -9,7 +9,7 @@ import { Async } from './async-utils';
 
 interface IFocusableTooltipTextProps {
   className?: string;
-  content?: string | JSX.Element | JSX.Element[];
+  content: string | JSX.Element | JSX.Element[];
   accessibilityData?: IAccessibilityProps;
 }
 
@@ -57,7 +57,7 @@ export const FocusableTooltipText: React.FunctionComponent<IFocusableTooltipText
 
   return (
     <div className={props.className} tabIndex={0}>
-      <Tooltip content={props.content} relationship="label">
+      <Tooltip content={props.content} relationship="description">
         <span {...getAccessibleDataObject(props.accessibilityData)} ref={tooltipChild} data-is-focusable={textOverflow}>
           {props.content}
         </span>

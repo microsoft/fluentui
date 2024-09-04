@@ -26,7 +26,7 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     let y: any;
     let _emptyChartId: string = '_SparklineChart_empty';
     let _isRTL: boolean = isRtl();
-    const [points, setPoints] = React.useState<ILineChartDataPoint[] | null>(null);
+    const [points, setPoints] = React.useState<ILineChartDataPoint[]>([]);
     const [width, setWidth] = React.useState<number>(80);
     const [height, setHight] = React.useState<number>(20);
     const [valueTextWidth, setValueTextWidth] = React.useState<number>(80);
@@ -85,7 +85,7 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
         <>
           <path
             className="line"
-            d={line(points)}
+            d={line(points)!}
             fill={'transparent'}
             opacity={1}
             strokeWidth={2}
@@ -93,7 +93,7 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
           />
           <path
             className="area"
-            d={area(points)}
+            d={area(points)!}
             opacity={1}
             fillOpacity={0.2}
             fill={data!.lineChartData![0].color!}

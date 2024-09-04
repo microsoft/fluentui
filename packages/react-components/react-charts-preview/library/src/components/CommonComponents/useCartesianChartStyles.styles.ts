@@ -106,9 +106,10 @@ const useStyles = makeStyles({
       display: 'none',
     },
     '& g': {
-      ...(isRtl && {
-        textAnchor: 'end',
-      }),
+      // ToDo: fix - Is RTL hook cannot be called from non functional components
+      //...(isRtl() && {
+      //  textAnchor: 'end',
+      //}),
     },
   },
   opacityChangeOnHover: {

@@ -23,12 +23,12 @@ export interface IArcProps {
   /**
    * innerRadius of the Arc.
    */
-  innerRadius?: number;
+  innerRadius: number;
 
   /**
    * outerRadius of the Arc.
    */
-  outerRadius?: number;
+  outerRadius: number;
 
   /**
    * Color for the Arc.

@@ -61,7 +61,7 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
         return null;
       }
 
-      const [base, perp] = arc.centroid({ ...data, innerRadius, outerRadius });
+      const [base, perp] = arc.centroid({ ...data!, innerRadius, outerRadius });
       const hyp = Math.sqrt(base * base + perp * perp);
       const labelRadius = Math.max(innerRadius!, outerRadius!) + 2;
       const angle = (data!.startAngle + data!.endAngle) / 2;
@@ -100,14 +100,14 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
           // TODO innerradius and outerradius were absent
           <path
             id={id + 'focusRing'}
-            d={arc({ ...props.focusData, innerRadius: props.innerRadius, outerRadius: props.outerRadius })}
+            d={arc({ ...props.focusData!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
             className={classes.focusRing}
           />
         )}
         <path
           // TODO innerradius and outerradius were absent
           id={id}
-          d={arc({ ...props.data, innerRadius: props.innerRadius, outerRadius: props.outerRadius })}
+          d={arc({ ...props.data!, innerRadius: props.innerRadius, outerRadius: props.outerRadius })!}
           className={classes.root}
           style={{ fill: props.color, cursor: href ? 'pointer' : 'default' }}
           onFocus={_onFocus.bind(this, props.data!.data, id)}

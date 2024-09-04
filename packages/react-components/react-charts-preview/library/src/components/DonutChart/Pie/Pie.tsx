@@ -74,7 +74,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     }
 
     const { data } = props;
-    const focusData = pieForFocusRing(data.map(d => d.data));
+    const focusData = pieForFocusRing(data.map(d => d.data!));
 
     // const piechart = d3Pie<DataItem>().value(d => d.value)(data1);
     const piechart = d3Pie<IChartDataPoint>()

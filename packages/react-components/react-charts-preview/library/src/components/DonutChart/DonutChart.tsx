@@ -303,7 +303,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         <PopoverComponent
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
-          culture={props.culture}
+          culture={props.culture ?? 'en-us'}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           legend={legend!}

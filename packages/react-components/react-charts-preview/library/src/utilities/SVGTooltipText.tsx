@@ -8,7 +8,7 @@ import { useId } from '@fluentui/react-utilities';
 
 interface ISVGTooltipTextProps {
   closeDelay?: number;
-  content?: string;
+  content: string;
   delay?: number;
   tooltipProps?: React.ComponentProps<typeof Tooltip>;
   textProps?: React.SVGAttributes<SVGTextElement>;
@@ -41,7 +41,7 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
     if (
       props.content &&
       props.wrapContent &&
-      props.wrapContent(props.content, tooltipHostId, props.maxWidth, props.maxHeight)
+      props.wrapContent(props.content, tooltipHostId, props.maxWidth ?? 100, props.maxHeight) // ToDo - Specify a correct fallback value here
     ) {
       setIsOverflowing(true);
     } else {
@@ -61,8 +61,8 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
   }, [props.maxWidth, props.maxHeight, wrapContentCallback]);
 
   const hideTooltip = useCallback(() => {
-    async.clearTimeout(openTimerId.current);
-    async.clearTimeout(dismissTimerId.current);
+    async.clearTimeout(openTimerId.current!);
+    async.clearTimeout(dismissTimerId.current!);
     setIsTooltipVisible(false);
   }, [async]);
 
@@ -76,13 +76,13 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
         return;
       }
 
-      async.clearTimeout(dismissTimerId.current);
-      async.clearTimeout(openTimerId.current);
+      async.clearTimeout(dismissTimerId.current!);
+      async.clearTimeout(openTimerId.current!);
 
       if (props.delay !== 0) {
         openTimerId.current = async.setTimeout(() => {
           setIsTooltipVisible(true);
-        }, props.delay);
+        }, props.delay!);
       } else {
         setIsTooltipVisible(true);
       }
@@ -92,8 +92,8 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
 
   const onTooltipMouseLeave = useCallback(
     (ev: React.MouseEvent<SVGElement>) => {
-      async.clearTimeout(dismissTimerId.current);
-      async.clearTimeout(openTimerId.current);
+      async.clearTimeout(dismissTimerId.current!);
+      async.clearTimeout(openTimerId.current!);
 
       if (props.closeDelay) {
         dismissTimerId.current = async.setTimeout(() => {
@@ -143,6 +143,7 @@ export const SVGTooltipText: React.FunctionComponent<ISVGTooltipTextProps> = Rea
   return (
     <>
       <Tooltip
+        relationship="description"
         {...props.tooltipProps}
         withArrow
         content={props.content}

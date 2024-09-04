@@ -150,7 +150,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let _emptyChartId: string = useId('_LineChart_empty');
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
-    let xAxisCalloutAccessibilityData: IAccessibilityProps;
+    let xAxisCalloutAccessibilityData: IAccessibilityProps = {};
 
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -162,14 +162,14 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [isSelectedLegend, setIsSelectedLegend] = React.useState<boolean>(false);
     const [activePoint, setActivePoint] = React.useState<string>('');
     const [nearestCircleToHighlight, setNearestCircleToHighlight] = React.useState<ILineChartDataPoint | null>(null);
-    const [activeLine, setActiveLine] = React.useState<number>(0);
+    const [activeLine, setActiveLine] = React.useState<number | null>(0);
     const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
 
-    const pointsRef = React.useRef([]);
-    const calloutPointsRef = React.useRef([]);
+    const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
+    const calloutPointsRef = React.useRef<any[]>([]);
     React.useEffect(() => {
       /** note that height and width are not used to resize or set as dimesions of the chart,
        * fitParentContainer is responisble for setting the height and width or resizing of the svg/chart
@@ -930,7 +930,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       const d0 = lineChartData![linenumber].data[i - 1] as ILineChartDataPoint;
       const d1 = lineChartData![linenumber].data[i] as ILineChartDataPoint;
       let axisType: XAxisTypes | null = null;
-      let xPointToHighlight: string | Date | number | null = null;
+      let xPointToHighlight: string | Date | number = 0;
       let index: null | number = null;
       if (d0 === undefined && d1 !== undefined) {
         xPointToHighlight = d1.x;
@@ -1270,7 +1270,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
       clickPosition: clickPosition,
       isPopoverOpen: isPopoverOpen,
       isCalloutForStack: true,
-      culture: props.culture,
+      culture: props.culture ?? 'en-us',
     };
     const tickParams = {
       tickValues,

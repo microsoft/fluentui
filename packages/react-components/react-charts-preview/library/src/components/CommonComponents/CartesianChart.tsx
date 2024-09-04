@@ -58,7 +58,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   const [isRemoveValCalculated, setIsRemoveValCalculated] = React.useState<boolean>(true);
   const [removalValueForTextTuncate, setRemovalValueForTextTuncate] = React.useState<number>(0);
   const [startFromX, setStartFromX] = React.useState<number>(0);
-  const [prevProps, setPrevProps] = React.useState<IModifiedCartesianChartProps>(null);
+  const [prevProps, setPrevProps] = React.useState<IModifiedCartesianChartProps | null>(null);
 
   /**
    * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
@@ -115,7 +115,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     }
     if (!props.wrapXAxisLables && props.rotateXAxisLables && props.xAxisType! === XAxisTypes.StringAxis) {
       const rotateLabelProps = {
-        node: xAxisElement.current,
+        node: xAxisElement.current!,
         xAxis: _xScale,
       };
       const rotatedHeight = rotateXAxisLabels(rotateLabelProps);
@@ -279,7 +279,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
      * */
     if (props.wrapXAxisLables || props.showXAxisLablesTooltip) {
       const wrapLabelProps = {
-        node: xAxisElement.current,
+        node: xAxisElement.current!,
         xAxis: xScale,
         showXAxisLablesTooltip: props.showXAxisLablesTooltip || false,
         noOfCharsToTruncate: props.noOfCharsToTruncate || 4,
@@ -349,7 +349,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
       yScale &&
       createYAxisLabels(
-        yAxisElement.current,
+        yAxisElement.current!,
         yScale,
         props.noOfCharsToTruncate || 4,
         props.showYAxisLablesTooltip || false,
@@ -420,7 +420,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         parseFloat((legendContainerComputedStyles && legendContainerComputedStyles.marginBottom) || '0');
     }
     if (props.parentRef || chartContainer.current) {
-      const container = props.parentRef ? props.parentRef : chartContainer.current;
+      const container = props.parentRef ? props.parentRef : chartContainer.current!;
       const currentContainerWidth =
         props.enableReflow && !_isFirstRender.current
           ? Math.max(container.getBoundingClientRect().width, _calculateChartMinWidth())
@@ -537,7 +537,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
         >
           <g
             ref={(e: SVGElement | null) => {
-              xAxisElement.current = e;
+              xAxisElement.current = e!;
             }}
             id={`xAxisGElement${idForGraph}`}
             // To add wrap of x axis lables feature, need to remove word height from svg height.
@@ -559,7 +559,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           )}
           <g
             ref={(e: SVGElement | null) => {
-              yAxisElement.current = e;
+              yAxisElement.current = e!;
             }}
             id={`yAxisGElement${idForGraph}`}
             transform={`translate(${
@@ -571,7 +571,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
             <g>
               <g
                 ref={(e: SVGElement | null) => {
-                  yAxisElementSecondary.current = e;
+                  yAxisElementSecondary.current = e!;
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
                 transform={`translate(${_isRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}

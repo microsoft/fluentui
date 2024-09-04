@@ -6,21 +6,6 @@
 
 /// <reference types="react" />
 
-import { FocusZoneDirection } from '@fluentui/react-focus';
-import { ICalloutContentStyleProps } from '@fluentui/react/lib/Callout';
-import { ICalloutContentStyles } from '@fluentui/react/lib/Callout';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IFocusZoneProps } from '@fluentui/react-focus';
-import { IHoverCardStyleProps } from '@fluentui/react/lib/HoverCard';
-import { IHoverCardStyles } from '@fluentui/react/lib/HoverCard';
-import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
-import { IRenderFunction } from '@fluentui/react/lib/Utilities';
-import { IStyle } from '@fluentui/react/lib/Styling';
-import { IStyle as IStyle_2 } from '@fluentui/react';
-import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from '@fluentui/react';
-import { ITheme } from '@fluentui/react/lib/Styling';
-import { ITheme as ITheme_2 } from '@fluentui/react';
 import * as React_2 from 'react';
 import { SankeyLink } from 'd3-sankey';
 import { SankeyNode } from 'd3-sankey';
@@ -28,16 +13,10 @@ import { SVGProps } from 'react';
 import { TimeLocaleDefinition } from 'd3-time-format';
 
 // @public
-export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
-
-// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
-
-// @public (undocumented)
-export const ChartHoverCard: React_2.FunctionComponent<IChartHoverCardProps>;
 
 // @public (undocumented)
 export const DataVizPalette: {
@@ -93,39 +72,11 @@ export const DataVizPalette: {
 // @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
-// @public
-export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
-
-// @public (undocumented)
-export enum GaugeChartVariant {
-    // (undocumented)
-    MultipleSegments = "multiple-segments",
-    // (undocumented)
-    SingleSegment = "single-segment"
-}
-
-// @public (undocumented)
-export enum GaugeValueFormat {
-    // (undocumented)
-    Fraction = "fraction",
-    // (undocumented)
-    Percentage = "percentage"
-}
-
-// @public (undocumented)
-export const getChartHoverCardStyles: (props: IChartHoverCardStyleProps) => IChartHoverCardStyles;
-
 // @public (undocumented)
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
-
-// @public
-export const GroupedVerticalBarChart: React_2.FunctionComponent<IGroupedVerticalBarChartProps>;
-
-// @public
-export const HeatMapChart: React_2.FunctionComponent<IHeatMapChartProps>;
 
 // @public
 export const HorizontalBarChart: React_2.FunctionComponent<IHorizontalBarChartProps>;
@@ -138,37 +89,11 @@ export enum HorizontalBarChartVariant {
     PartToWhole = "part-to-whole"
 }
 
-// @public
-export const HorizontalBarChartWithAxis: React_2.FunctionComponent<IHorizontalBarChartWithAxisProps>;
-
 // @public (undocumented)
 export interface IAccessibilityProps {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
-}
-
-// @public
-export interface IAreaChartProps extends ICartesianChartProps {
-    culture?: string;
-    data: IChartProps;
-    enableGradient?: boolean;
-    enablePerfOptimization?: boolean;
-    onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
-    onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
-    // (undocumented)
-    optimizeLargeData?: boolean;
-    // @deprecated
-    showYAxisGridLines?: boolean;
-    styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-}
-
-// @public
-export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
-}
-
-// @public
-export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
 // @public (undocumented)
@@ -219,7 +144,7 @@ export interface IBasestate {
 
 // @public
 export interface ICartesianChartProps {
-    calloutProps?: Partial<ICalloutProps>;
+    calloutProps: Partial<IPopoverComponentProps>;
     // @deprecated
     chartLabel?: string;
     className?: string;
@@ -227,14 +152,12 @@ export interface ICartesianChartProps {
     dateLocalizeOptions?: Intl.DateTimeFormatOptions;
     enabledLegendsWrapLines?: boolean;
     enableReflow?: boolean;
-    focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
     height?: number;
     hideLegend?: boolean;
     hideTooltip?: boolean;
     href?: string;
     // (undocumented)
     legendProps?: Partial<ILegendsProps>;
-    legendsOverflowProps?: Partial<IOverflowSetProps>;
     // (undocumented)
     legendsOverflowText?: any;
     margins?: IMargins;
@@ -248,13 +171,13 @@ export interface ICartesianChartProps {
     };
     showXAxisLablesTooltip?: boolean;
     strokeWidth?: number;
-    styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
+    styles?: ICartesianChartStyles;
     svgProps?: React_2.SVGProps<SVGSVGElement>;
-    theme?: ITheme;
     tickFormat?: string;
     tickPadding?: number;
     tickValues?: number[] | Date[];
     timeFormatLocale?: TimeLocaleDefinition;
+    useUTC?: string | boolean;
     width?: number;
     wrapXAxisLables?: boolean;
     xAxisTickCount?: number;
@@ -278,32 +201,33 @@ export interface ICartesianChartStyleProps {
     isRtl?: boolean;
     lineColor?: string;
     shouldHighlight?: boolean;
-    theme: ITheme;
     toDrawShape?: boolean;
     width?: number;
 }
 
 // @public
 export interface ICartesianChartStyles {
-    axisTitle?: IStyle;
-    calloutBlockContainer?: IStyle;
-    calloutContentRoot?: IStyle;
-    calloutContentX?: IStyle;
-    calloutContentY?: IStyle;
-    calloutDateTimeContainer?: IStyle;
-    calloutInfoContainer?: IStyle;
-    calloutlegendText?: IStyle;
-    chartTitle?: IStyle;
-    chartWrapper?: IStyle;
-    descriptionMessage?: IStyle;
-    hover?: IStyle;
-    legendContainer?: IStyle;
-    opacityChangeOnHover?: IStyle;
-    root?: IStyle;
-    shapeStyles?: IStyle;
-    tooltip?: IStyle;
-    xAxis?: IStyle;
-    yAxis?: IStyle;
+    axisTitle?: string;
+    calloutBlockContainer?: string;
+    calloutBlockContainertoDrawShapefalse?: string;
+    calloutBlockContainertoDrawShapetrue?: string;
+    calloutContentRoot?: string;
+    calloutContentX?: string;
+    calloutContentY?: string;
+    calloutDateTimeContainer?: string;
+    calloutInfoContainer?: string;
+    calloutlegendText?: string;
+    chartTitle?: string;
+    chartWrapper?: string;
+    descriptionMessage?: string;
+    hover?: string;
+    legendContainer?: string;
+    opacityChangeOnHover?: string;
+    root?: string;
+    shapeStyles?: string;
+    tooltip?: string;
+    xAxis?: string;
+    yAxis?: string;
 }
 
 // @public (undocumented)
@@ -317,42 +241,6 @@ export interface IChartDataPoint {
     placeHolder?: boolean;
     xAxisCalloutData?: string;
     yAxisCalloutData?: string;
-}
-
-// @public (undocumented)
-export interface IChartHoverCardProps {
-    color?: string;
-    culture?: string;
-    descriptionMessage?: string;
-    Legend?: string | number | Date;
-    ratio?: [number, number];
-    styles?: IStyleFunctionOrObject_2<IChartHoverCardStyleProps, IChartHoverCardStyles>;
-    theme?: ITheme_2;
-    XValue?: string;
-    YValue?: string | number | Date;
-}
-
-// @public (undocumented)
-export interface IChartHoverCardStyleProps {
-    color?: string;
-    isRatioPresent?: boolean;
-    theme: ITheme_2;
-    XValue?: string;
-}
-
-// @public (undocumented)
-export interface IChartHoverCardStyles {
-    calloutBlockContainer?: IStyle_2;
-    calloutContentRoot?: IStyle_2;
-    calloutContentX?: IStyle_2;
-    calloutContentY?: IStyle_2;
-    calloutDateTimeContainer?: IStyle_2;
-    calloutInfoContainer?: IStyle_2;
-    calloutlegendText?: IStyle_2;
-    denominator?: IStyle_2;
-    descriptionMessage?: IStyle_2;
-    numerator?: IStyle_2;
-    ratio?: IStyle_2;
 }
 
 // @public (undocumented)
@@ -373,6 +261,8 @@ export interface IChildProps {
     containerHeight?: number;
     // (undocumented)
     containerWidth?: number;
+    // (undocumented)
+    optimizeLargeData?: boolean;
     // (undocumented)
     xScale?: any;
     // (undocumented)
@@ -440,12 +330,12 @@ export interface IDonutChart {
 
 // @public
 export interface IDonutChartProps extends ICartesianChartProps {
-    calloutProps?: Partial<ICalloutProps>;
+    calloutProps: IPopoverComponentProps;
     culture?: string;
     data?: IChartProps;
     hideLabels?: boolean;
     innerRadius?: number;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
+    onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element;
     showLabelsInPercent?: boolean;
     styles?: IDonutChartStyles;
     valueInsideDonut?: string | number;
@@ -478,111 +368,11 @@ export interface IEventsAnnotationProps {
     strokeColor?: string;
 }
 
-// @public
-export interface IGaugeChartProps {
-    calloutProps?: Partial<ICalloutProps>;
-    chartTitle?: string;
-    chartValue: number;
-    chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
-    className?: string;
-    culture?: string;
-    height?: number;
-    hideLegend?: boolean;
-    hideMinMax?: boolean;
-    hideTooltip?: boolean;
-    // (undocumented)
-    legendProps?: Partial<ILegendsProps>;
-    maxValue?: number;
-    minValue?: number;
-    segments: IGaugeChartSegment[];
-    styles?: IStyleFunctionOrObject<IGaugeChartStyleProps, IGaugeChartStyles>;
-    sublabel?: string;
-    theme?: ITheme;
-    variant?: GaugeChartVariant;
-    width?: number;
-}
-
-// @public
-export interface IGaugeChartSegment {
-    accessibilityData?: IAccessibilityProps;
-    color?: string;
-    legend: string;
-    size: number;
-}
-
-// @public
-export interface IGaugeChartStyleProps {
-    chartHeight?: number;
-    chartValueSize?: number;
-    chartWidth?: number;
-    className?: string;
-    lineColor?: string;
-    theme: ITheme;
-    toDrawShape?: boolean;
-}
-
-// @public
-export interface IGaugeChartStyles {
-    calloutBlockContainer?: IStyle;
-    calloutContentRoot?: IStyle;
-    calloutContentX?: IStyle;
-    calloutContentY?: IStyle;
-    calloutDateTimeContainer?: IStyle;
-    calloutInfoContainer?: IStyle;
-    calloutlegendText?: IStyle;
-    chart?: IStyle;
-    chartTitle?: IStyle;
-    chartValue?: IStyle;
-    descriptionMessage?: IStyle;
-    legendsContainer?: IStyle;
-    limits?: IStyle;
-    needle?: IStyle;
-    root?: IStyle;
-    segment?: IStyle;
-    shapeStyles?: IStyle;
-    sublabel?: IStyle;
-}
-
 // @public (undocumented)
 export interface IGroupedVerticalBarChartData {
     name: string;
     series: IGVBarChartSeriesPoint[];
     stackCallOutAccessibilityData?: IAccessibilityProps;
-}
-
-// @public
-export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
-    barwidth?: number | 'default' | 'auto';
-    chartTitle?: string;
-    culture?: string;
-    data: IGroupedVerticalBarChartData[];
-    hideLabels?: boolean;
-    isCalloutForStack?: boolean;
-    // @deprecated
-    legendColor?: string;
-    maxBarWidth?: number;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
-    // @deprecated
-    showXAxisGridLines?: boolean;
-    // @deprecated
-    showXAxisPath?: boolean;
-    // @deprecated
-    showYAxisGridLines?: boolean;
-    // @deprecated
-    showYAxisPath?: boolean;
-    styles?: IStyleFunctionOrObject<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>;
-    xAxisInnerPadding?: number;
-    xAxisOuterPadding?: number;
-}
-
-// @public
-export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {
-}
-
-// @public
-export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
-    barLabel: IStyle;
-    opacityChangeOnHover: IStyle;
 }
 
 // @public (undocumented)
@@ -636,43 +426,9 @@ export interface IHeatMapChartDataPoint {
 }
 
 // @public
-export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
-    chartTitle?: string;
-    culture?: string;
-    data: IHeatMapChartData[];
-    domainValuesForColorScale: number[];
-    legendProps?: Partial<ILegendsProps>;
-    rangeValuesForColorScale: string[];
-    styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
-    xAxisDateFormatString?: string;
-    xAxisNumberFormatString?: string;
-    xAxisStringFormatter?: (point: string) => string;
-    yAxisDateFormatString?: string;
-    yAxisNumberFormatString?: string;
-    yAxisStringFormatter?: (point: string) => string;
-}
-
-// @public
-export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {
-}
-
-// @public
-export interface IHeatMapChartStyles {
-    // (undocumented)
-    root?: IStyle;
-    // (undocumented)
-    subComponentStyles: {
-        cartesianStyles: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
-        calloutStyles: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    };
-    // (undocumented)
-    text?: IStyle;
-}
-
-// @public
 export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivElement> {
     barHeight?: number;
-    calloutProps?: Partial<ICalloutProps>;
+    calloutProps?: IPopoverComponentProps;
     chartDataMode?: ChartDataMode;
     className?: string;
     color?: string;
@@ -681,6 +437,7 @@ export interface IHorizontalBarChartProps extends React.RefAttributes<HTMLDivEle
     hideLabels?: boolean;
     hideRatio?: boolean[];
     hideTooltip?: boolean;
+    onRenderCalloutPerHorizontalBar?: (props: IChartDataPoint) => JSX.Element;
     showTriangle?: boolean;
     styles?: IHorizontalBarChartStyles;
     variant?: HorizontalBarChartVariant;
@@ -715,38 +472,6 @@ export interface IHorizontalBarChartWithAxisDataPoint {
     yAxisCalloutData?: string;
 }
 
-// @public
-export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
-    barHeight?: number;
-    chartTitle?: string;
-    colors?: string[];
-    culture?: string;
-    data?: IHorizontalBarChartWithAxisDataPoint[];
-    onRenderCalloutPerDataPoint?: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>;
-    showYAxisLables?: boolean;
-    showYAxisLablesTooltip?: boolean;
-    styles?: IStyleFunctionOrObject<IHorizontalBarChartWithAxisStyleProps, IHorizontalBarChartWithAxisStyles>;
-    useSingleColor?: boolean;
-    yAxisPadding?: number;
-}
-
-// @public
-export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartStyleProps {
-    legendColor?: string;
-}
-
-// @public
-export interface IHorizontalBarChartWithAxisStyles extends ICartesianChartStyles {
-    chartLabel?: IStyle;
-    opacityChangeOnHover: IStyle;
-    xAxisDomain?: IStyle;
-    xAxisText?: IStyle;
-    xAxisTicks?: IStyle;
-    yAxisDomain?: IStyle;
-    yAxisText?: IStyle;
-    yAxisTicks?: IStyle;
-}
-
 // @public (undocumented)
 export interface IHorizontalDataPoint {
     x: number;
@@ -774,14 +499,6 @@ export interface ILegendDataItem {
     legendText: string | number;
 }
 
-// @public (undocumented)
-export interface ILegendOverflowData {
-    // (undocumented)
-    overflow?: ILegend[];
-    // (undocumented)
-    primary: ILegend[];
-}
-
 // @public
 export interface ILegendsProps {
     allowFocusOnLegends?: boolean;
@@ -791,29 +508,31 @@ export interface ILegendsProps {
     defaultSelectedLegend?: string;
     defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
-    focusZonePropsInHoverCard?: IFocusZoneProps;
     legends: ILegend[];
     onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
-    onLegendHoverCardLeave?: VoidFunction;
-    overflowProps?: Partial<IOverflowSetProps>;
+    overflowStyles?: React_2.CSSProperties;
     overflowText?: string;
     shape?: LegendShape;
-    styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
-    theme?: ITheme;
+    styles?: ILegendsStyles;
 }
 
 // @public
 export interface ILegendsStyles {
-    hoverCardRoot: IStyle;
-    hoverChange: IStyle;
-    legend: IStyle;
-    overflowIndicationTextStyle: IStyle;
-    rect: IStyle;
-    root: IStyle;
-    shape: IStyle;
-    subComponentStyles: ILegendSubComponentStyles;
-    text: IStyle;
-    triangle: IStyle;
+    hoverChange?: string;
+    legend?: string;
+    rect?: string;
+    resizableArea?: string;
+    root?: string;
+    shape?: string;
+    text?: string;
+    triangle?: string;
+}
+
+// @public (undocumented)
+export interface ILegendState {
+    // (undocumented)
+    activeLegend: string;
+    selectedLegends: LegendMap;
 }
 
 // @public
@@ -832,14 +551,6 @@ export interface ILegendStyleProps {
     overflow?: boolean;
     // (undocumented)
     stripePattern?: boolean;
-    // (undocumented)
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface ILegendSubComponentStyles {
-    // (undocumented)
-    hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
 // @public (undocumented)
@@ -900,7 +611,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
     // (undocumented)
     optimizeLargeData?: boolean;
-    styles?: IStyleFunctionOrObject<ILineChartStyleProps, ILineChartStyles>;
+    styles?: ILineChartStyles;
 }
 
 // @public
@@ -946,18 +657,7 @@ export interface IMargins {
 // @public (undocumented)
 export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     barwidth?: number;
-    calloutProps: Partial<ICalloutProps> & {
-        isCalloutVisible: boolean;
-        id: string;
-        YValueHover?: IYValueHover[];
-        hoverXValue?: string | number | null;
-        legend?: string;
-        color?: string;
-        YValue?: string | number;
-        XValue?: string;
-        descriptionMessage?: string;
-    };
-    chartHoverProps?: IChartHoverCardProps;
+    calloutProps: IPopoverComponentProps;
     chartTitle?: string;
     chartType: ChartTypes;
     children(props: IChildProps): React_2.ReactNode;
@@ -965,7 +665,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
     enableFirstRenderOptimization?: boolean;
-    focusZoneDirection?: FocusZoneDirection;
     // (undocumented)
     getAxisData?: any;
     getDomainMargins?: (containerWidth: number) => IMargins;
@@ -979,7 +678,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     showYAxisLables?: boolean;
     showYAxisLablesTooltip?: boolean;
     stringDatasetForYAxisDomain?: string[];
-    svgFocusZoneProps?: IFocusZoneProps;
     tickParams?: {
         tickValues?: number[] | Date[];
         tickFormat?: string;
@@ -992,89 +690,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     yAxisType?: YAxisType;
 }
 
-// @public
-export interface IMultiStackedBarChartProps {
-    barHeight?: number;
-    calloutProps?: Partial<ICalloutProps>;
-    className?: string;
-    culture?: string;
-    data?: IChartProps[];
-    focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
-    hideDenominator?: boolean[];
-    hideLabels?: boolean;
-    hideLegend?: boolean;
-    hideRatio?: boolean[];
-    hideTooltip?: boolean;
-    href?: string;
-    legendProps?: Partial<ILegendsProps>;
-    legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
-    styles?: IStyleFunctionOrObject<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>;
-    theme?: ITheme;
-    variant?: MultiStackedBarChartVariant;
-    width?: number;
-}
-
-// @public
-export interface IMultiStackedBarChartStyleProps {
-    barHeight?: number;
-    className?: string;
-    hideLabels?: boolean;
-    href?: string;
-    legendColor?: string;
-    shouldHighlight?: boolean;
-    theme: ITheme;
-    variant?: MultiStackedBarChartVariant;
-    width?: number;
-}
-
-// @public
-export interface IMultiStackedBarChartStyles {
-    barLabel: IStyle;
-    chart: IStyle;
-    chartTitle: IStyle;
-    chartTitleLeft: IStyle;
-    chartWrapper: IStyle;
-    items: IStyle;
-    legendContainer: IStyle;
-    noData: IStyle;
-    opacityChangeOnHover: IStyle;
-    placeHolderOnHover: IStyle;
-    ratioDenominator: IStyle;
-    ratioNumerator: IStyle;
-    root: IStyle;
-    singleChartRoot: IStyle;
-}
-
-// @public (undocumented)
-export interface IPieChart {
-}
-
-// @public
-export interface IPieChartProps {
-    chartTitle?: string;
-    className?: string;
-    colors?: string[];
-    culture?: string;
-    data?: IDataPoint[];
-    height?: number;
-    strokeWidth?: number;
-    styles?: IStyleFunctionOrObject<IPieChartStyleProps, IPieChartStyles>;
-    theme?: ITheme;
-    width?: number;
-}
-
-// @public
-export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> & Pick<IPieChartProps, 'className'>;
-
-// @public
-export interface IPieChartStyles {
-    chart?: IStyle;
-    chartTitle?: IStyle;
-    root?: IStyle;
-}
-
 // @public (undocumented)
 export interface IRefArrayData {
     // (undocumented)
@@ -1083,66 +698,12 @@ export interface IRefArrayData {
     refElement?: SVGGElement;
 }
 
-// @public
-export interface ISankeyChartAccessibilityProps {
-    emptyAriaLabel?: string;
-    linkAriaLabel?: string;
-    nodeAriaLabel?: string;
-}
-
 // @public (undocumented)
 export interface ISankeyChartData {
     // (undocumented)
     links: SLink[];
     // (undocumented)
     nodes: SNode[];
-}
-
-// @public
-export interface ISankeyChartProps {
-    accessibility?: ISankeyChartAccessibilityProps;
-    borderColorsForNodes?: string[];
-    className?: string;
-    colorsForNodes?: string[];
-    data: IChartProps;
-    formatNumberOptions?: Intl.NumberFormatOptions;
-    height?: number;
-    parentRef?: HTMLElement | null;
-    pathColor?: string;
-    shouldResize?: number;
-    strings?: ISankeyChartStrings;
-    styles?: IStyleFunctionOrObject<ISankeyChartStyleProps, ISankeyChartStyles>;
-    theme?: ITheme;
-    width?: number;
-}
-
-// @public
-export interface ISankeyChartStrings {
-    linkFrom?: string;
-}
-
-// @public
-export interface ISankeyChartStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    height: number;
-    // (undocumented)
-    pathColor?: string;
-    // (undocumented)
-    theme: ITheme;
-    // (undocumented)
-    width: number;
-}
-
-// @public
-export interface ISankeyChartStyles {
-    calloutContentRoot?: IStyle;
-    links?: IStyle;
-    nodes?: IStyle;
-    nodeTextContainer?: IStyle;
-    root?: IStyle;
-    toolTip?: IStyle;
 }
 
 // @public (undocumented)
@@ -1154,18 +715,19 @@ export interface IShapeProps {
     // (undocumented)
     shape: LegendShape;
     // (undocumented)
+    style?: React_2.CSSProperties | undefined;
+    // (undocumented)
     svgProps: React_2.SVGAttributes<SVGElement>;
 }
 
 // @public
-export interface ISparklineProps {
+export interface ISparklineProps extends React.RefAttributes<HTMLDivElement> {
     className?: string;
     culture?: string;
     data?: IChartProps;
     height?: number;
     showLegend?: boolean;
-    styles?: IStyleFunctionOrObject<ISparklineStyleProps, ISparklineStyles>;
-    theme?: ITheme;
+    styles?: ISparklineStyles;
     valueTextWidth?: number;
     width?: number;
 }
@@ -1177,134 +739,9 @@ export interface ISparklineStyleProps extends ICartesianChartStyleProps {
 // @public
 export interface ISparklineStyles {
     // (undocumented)
-    inlineBlock?: IStyle;
+    inlineBlock?: string;
     // (undocumented)
-    valueText?: IStyle;
-}
-
-// @public (undocumented)
-export interface IStackedBarChart {
-}
-
-// @public
-export interface IStackedBarChartProps {
-    barBackgroundColor?: string;
-    barHeight?: number;
-    benchmarkData?: IChartDataPoint;
-    calloutProps?: Partial<ICalloutProps>;
-    className?: string;
-    culture?: string;
-    data?: IChartProps;
-    enabledLegendsWrapLines?: boolean;
-    focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
-    hideDenominator?: boolean;
-    hideLegend?: boolean;
-    hideNumberDisplay?: boolean;
-    hideTooltip?: boolean;
-    href?: string;
-    ignoreFixStyle?: boolean;
-    legendProps?: Partial<ILegendsProps>;
-    legendsOverflowProps?: Partial<IOverflowSetProps>;
-    legendsOverflowText?: string;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IChartDataPoint>;
-    styles?: IStyleFunctionOrObject<IStackedBarChartStyleProps, IStackedBarChartStyles>;
-    targetData?: IChartDataPoint;
-    theme?: ITheme;
-    width?: number;
-}
-
-// @public
-export interface IStackedBarChartStyleProps {
-    barHeight?: number;
-    benchmarkColor?: string;
-    benchmarkRatio?: number;
-    className?: string;
-    href?: string;
-    isChartSelected?: boolean;
-    legendColor?: string;
-    shouldHighlight?: boolean;
-    showTriangle?: boolean;
-    targetColor?: string;
-    targetRatio?: number;
-    theme: ITheme;
-    width?: number;
-}
-
-// @public
-export interface IStackedBarChartStyles {
-    benchmark: IStyle;
-    benchmarkContainer: IStyle;
-    chart: IStyle;
-    chartTitle: IStyle;
-    chartTitleLeft: IStyle;
-    legendContainer: IStyle;
-    opacityChangeOnHover: IStyle;
-    ratioDenominator: IStyle;
-    ratioNumerator: IStyle;
-    root: IStyle;
-    target: IStyle;
-}
-
-// @public (undocumented)
-export interface ITreeChartDataPoint {
-    bodytext?: string;
-    children?: Array<ITreeChartDataPoint>;
-    fill: string;
-    metric?: string;
-    name: string;
-    subname?: string;
-}
-
-// @public (undocumented)
-export interface ITreeDataStructure {
-    bodyText?: string;
-    children: Array<ITreeDataStructure>;
-    dataName: string;
-    fill: string;
-    id: number;
-    metricName?: string;
-    parentID: number;
-    subName?: string;
-    x: number;
-    y: number;
-}
-
-// @public
-export interface ITreeProps {
-    className?: string;
-    composition?: NodesComposition.long | NodesComposition.compact;
-    height?: number;
-    layoutWidth?: number;
-    margins?: IMargins;
-    styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
-    theme?: ITheme;
-    treeData: ITreeChartDataPoint;
-    treeTraversal?: TreeTraverse.preOrder | TreeTraverse.levelOrder;
-    width?: number;
-}
-
-// @public (undocumented)
-export interface ITreeState {
-    _height: number;
-    _layoutWidth?: number;
-    _width: number;
-}
-
-// @public
-export interface ITreeStyleProps {
-    className?: string;
-    theme: ITheme;
-}
-
-// @public
-export interface ITreeStyles {
-    link: IStyle;
-    rectBodyText: IStyle;
-    rectMetricText: IStyle;
-    rectNode: IStyle;
-    rectSubText: IStyle;
-    rectText: IStyle;
-    root: IStyle;
+    valueText?: string;
 }
 
 // @public (undocumented)
@@ -1333,7 +770,7 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
     lineOptions?: ILineChartLineOptions;
     maxBarWidth?: number;
     onRenderCalloutPerDataPoint?: IRenderFunction<IVerticalBarChartDataPoint>;
-    styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+    styles?: IVerticalBarChartStyles;
     useSingleColor?: boolean;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
@@ -1347,73 +784,14 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
 
 // @public
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
-    barLabel: IStyle;
+    barLabel: string;
+    opacityChangeOnHover: string;
     // @deprecated
-    chartLabel?: IStyle;
-    opacityChangeOnHover: IStyle;
+    xAxisTicks?: string;
     // @deprecated
-    xAxisDomain?: IStyle;
+    yAxisDomain?: string;
     // @deprecated
-    xAxisText?: IStyle;
-    // @deprecated
-    xAxisTicks?: IStyle;
-    // @deprecated
-    yAxisDomain?: IStyle;
-    // @deprecated
-    yAxisText?: IStyle;
-    // @deprecated
-    yAxisTicks?: IStyle;
-}
-
-// @public
-export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
-    allowHoverOnLegend?: boolean;
-    barCornerRadius?: number;
-    barGapMax?: number;
-    barMinimumHeight?: number;
-    barWidth?: number | 'default' | 'auto';
-    calloutProps?: Partial<ICalloutProps>;
-    chartTitle?: string;
-    // @deprecated
-    colors?: string[];
-    culture?: string;
-    data: IVerticalStackedChartProps[];
-    hideLabels?: boolean;
-    isCalloutForStack?: boolean;
-    lineOptions?: ILineChartLineOptions;
-    maxBarWidth?: number;
-    onBarClick?: (event: React_2.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
-    onRenderCalloutPerDataPoint?: IRenderFunction<IVSChartDataPoint>;
-    onRenderCalloutPerStack?: IRenderFunction<IVerticalStackedChartProps>;
-    styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
-    xAxisInnerPadding?: number;
-    xAxisOuterPadding?: number;
-    xAxisPadding?: number;
-    yMinValue?: undefined;
-}
-
-// @public
-export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {
-}
-
-// @public
-export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
-    barLabel: IStyle;
-    // @deprecated
-    chart?: IStyle;
-    opacityChangeOnHover?: IStyle;
-    // @deprecated
-    xAxisDomain?: IStyle;
-    // @deprecated
-    xAxisText?: IStyle;
-    // @deprecated
-    xAxisTicks?: IStyle;
-    // @deprecated
-    yAxisDomain?: IStyle;
-    // @deprecated
-    yAxisText?: IStyle;
-    // @deprecated
-    yAxisTicks?: IStyle;
+    yAxisTicks?: string;
 }
 
 // @public (undocumented)
@@ -1462,7 +840,7 @@ export interface IYValueHover {
     };
 }
 
-// @public
+// @public (undocumented)
 export const Legends: React_2.FunctionComponent<ILegendsProps>;
 
 // @public
@@ -1471,31 +849,8 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 // @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
 
-// @public
-export const MultiStackedBarChart: React_2.FunctionComponent<IMultiStackedBarChartProps>;
-
 // @public (undocumented)
-export enum MultiStackedBarChartVariant {
-    // (undocumented)
-    AbsoluteScale = "absolute-scale",
-    // (undocumented)
-    PartToWhole = "part-to-whole"
-}
-
-// @public (undocumented)
-export enum NodesComposition {
-    compact = 0,
-    long = 1
-}
-
-// @public
-export const PieChart: React_2.FunctionComponent<IPieChartProps>;
-
-// @public
-export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
-
-// @public (undocumented)
-export const Shape: React_2.FC<IShapeProps>;
+export const Shape: React_2.FunctionComponent<IShapeProps>;
 
 // @public (undocumented)
 export type SLink = SankeyLink<ISNodeExtra, ISLinkExtra>;
@@ -1506,26 +861,11 @@ export type SNode = SankeyNode<ISNodeExtra, ISLinkExtra>;
 // @public
 export const Sparkline: React_2.FunctionComponent<ISparklineProps>;
 
-// @public
-export const StackedBarChart: React_2.FunctionComponent<IStackedBarChartProps>;
-
 // @public (undocumented)
 export const Textbox: React_2.FunctionComponent<ITextboxProps>;
 
 // @public
-export const TreeChart: React_2.FunctionComponent<ITreeProps>;
-
-// @public (undocumented)
-export enum TreeTraverse {
-    levelOrder = 0,
-    preOrder = 1
-}
-
-// @public
 export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>;
-
-// @public
-export const VerticalStackedBarChart: React_2.FunctionComponent<IVerticalStackedBarChartProps>;
 
 // (No @packageDocumentation comment for this package)
 
