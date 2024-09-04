@@ -5,6 +5,7 @@ import {
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
+  CarouselNavContainer,
   CarouselSlider,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
@@ -84,21 +85,18 @@ export const Responsive = () => {
           </TestComponent>
         </CarouselCard>
       </CarouselSlider>
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
+
+      <CarouselNavContainer
+        layout={'inline'}
+        next={{
+          'aria-label': 'Go to next slide',
+        }}
+        prev={{
+          'aria-label': 'Go to prev slide',
         }}
       >
-        <Tooltip content={'Go To Previous Page'} relationship={'label'}>
-          <CarouselButton navType="prev" aria-label={`Previous Carousel Page Button`} />
-        </Tooltip>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-        <Tooltip content={'Go To Next Page'} relationship={'label'}>
-          <CarouselButton navType="next" aria-label={'Next Carousel Page Button'} />
-        </Tooltip>
-      </div>
+      </CarouselNavContainer>
     </Carousel>
   );
 };

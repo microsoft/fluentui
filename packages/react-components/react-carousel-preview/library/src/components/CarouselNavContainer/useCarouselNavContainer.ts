@@ -18,18 +18,20 @@ export const useCarouselNavContainer_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): CarouselNavContainerState => {
   const { layout } = props;
-  const next: CarouselNavContainerState['next'] = slot.always(props.next, {
+  const next: CarouselNavContainerState['next'] = slot.optional(props.next, {
     defaultProps: {
       navType: 'next',
     },
     elementType: CarouselButton,
+    renderByDefault: true,
   });
 
-  const prev: CarouselNavContainerState['prev'] = slot.always(props.prev, {
+  const prev: CarouselNavContainerState['prev'] = slot.optional(props.prev, {
     defaultProps: {
       navType: 'prev',
     },
     elementType: CarouselButton,
+    renderByDefault: true,
   });
 
   const autoplay: CarouselNavContainerState['autoplay'] = slot.optional(props.autoplay, {

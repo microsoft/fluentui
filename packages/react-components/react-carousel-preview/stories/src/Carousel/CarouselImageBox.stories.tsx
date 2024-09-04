@@ -53,7 +53,7 @@ const ImageCardComponent: React.FC<{ index: number }> = props => {
   const classes = useClasses();
   const { index } = props;
 
-  return <Image className={classes.image} src={images[index].fullImageSrc}></Image>;
+  return <Image className={classes.image} src={images[index].fullImageSrc} role="presentation" />;
 };
 
 export const ImageSlideshow = () => {
@@ -69,7 +69,15 @@ export const ImageSlideshow = () => {
           );
         })}
       </CarouselSlider>
-      <CarouselNavContainer layout={'overlay-expanded'}>
+      <CarouselNavContainer
+        layout={'overlay-expanded'}
+        next={{
+          'aria-label': 'Go to next slide',
+        }}
+        prev={{
+          'aria-label': 'Go to prev slide',
+        }}
+      >
         <CarouselNav>
           {index => (
             <CarouselNavImageButton

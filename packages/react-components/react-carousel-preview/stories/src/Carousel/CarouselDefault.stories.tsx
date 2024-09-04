@@ -45,7 +45,7 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = pr
 
   return (
     <CarouselCard className={classes.bannerCard}>
-      <Image fit="cover" src={imageSrc} />
+      <Image fit="cover" src={imageSrc} role="presentation" />
       <div className={classes.cardContainer}>
         {children}
         <div className={classes.subtext}>
@@ -68,7 +68,20 @@ export const Default = () => (
         return <BannerCard imageSrc={imageSrc}>{`Card ${index + 1}`}</BannerCard>;
       })}
     </CarouselSlider>
-    <CarouselNavContainer layout={'inline'} autoplay={''}>
+    <CarouselNavContainer
+      layout={'inline'}
+      autoplay={{
+        autoplayAriaLabel: autoplay => {
+          return autoplay ? 'Enable Autoplay' : 'Disable Autoplay';
+        },
+      }}
+      next={{
+        'aria-label': 'Go to next slide',
+      }}
+      prev={{
+        'aria-label': 'Go to prev slide',
+      }}
+    >
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>
   </Carousel>

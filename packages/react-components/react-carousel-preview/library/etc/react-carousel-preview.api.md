@@ -171,8 +171,8 @@ export type CarouselNavContainerProps = ComponentProps<CarouselNavContainerSlots
 // @public (undocumented)
 export type CarouselNavContainerSlots = {
     root: Slot<'div'>;
-    next?: NonNullable<Slot<CarouselButtonProps>>;
-    prev?: NonNullable<Slot<CarouselButtonProps>>;
+    next?: Slot<CarouselButtonProps>;
+    prev?: Slot<CarouselButtonProps>;
     autoplay?: Slot<typeof CarouselAutoplayButton>;
 };
 

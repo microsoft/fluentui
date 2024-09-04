@@ -51,12 +51,12 @@ const ActionCard: React.FC<{ secondaryText: string; text: string }> = props => {
   return (
     <CarouselCard focusMode="tab-exit" className={classes.actionCard}>
       <div className={classes.imageContainer}>
-        <Image fit="cover" className={classes.image} src={swapImage} />
-        <Button className={classes.imageButton} icon={<DocumentLinkRegular />} />
+        <Image fit="cover" className={classes.image} src={swapImage} role="presentation" />
+        <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label={'Go to document'} />
       </div>
       <div className={classes.info}>
         <Persona textPosition="after" name={text} presence={{ status: 'available' }} secondaryText={secondaryText} />
-        <Button className={classes.moreButton} icon={<MoreHorizontalRegular />} />
+        <Button className={classes.moreButton} icon={<MoreHorizontalRegular />} aria-label={'More options'} />
       </div>
     </CarouselCard>
   );
@@ -88,7 +88,11 @@ export const ActionCards = () => {
           <Button>Card 8</Button>
         </ActionCard>
       </CarouselSlider>
-      <CarouselNavContainer layout={'inline-wide'}>
+      <CarouselNavContainer
+        layout={'inline-wide'}
+        next={{ 'aria-label': 'Go to next page' }}
+        prev={{ 'aria-label': 'Go to previous page' }}
+      >
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
     </Carousel>
