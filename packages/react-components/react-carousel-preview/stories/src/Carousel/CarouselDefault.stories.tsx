@@ -65,7 +65,7 @@ export const Default = () => (
   <Carousel groupSize={1} circular>
     <CarouselSlider>
       {fullScreenImages.concat(fullScreenImages).map((imageSrc, index) => {
-        return <BannerCard imageSrc={imageSrc}>{`Card ${index + 1}`}</BannerCard>;
+        return <BannerCard key={`card-${index}`} imageSrc={imageSrc}>{`Card ${index + 1}`}</BannerCard>;
       })}
     </CarouselSlider>
     <CarouselNavContainer

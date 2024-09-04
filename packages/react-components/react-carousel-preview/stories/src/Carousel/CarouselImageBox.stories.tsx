@@ -63,7 +63,7 @@ export const ImageSlideshow = () => {
       <CarouselSlider className={classes.slider}>
         {images.map((image, index) => {
           return (
-            <CarouselCard className={classes.card}>
+            <CarouselCard className={classes.card} key={`card-${index}`}>
               <ImageCardComponent index={index} />
             </CarouselCard>
           );

@@ -9,7 +9,7 @@ export type CarouselButtonSlots = ButtonSlots & {
 /**
  * CarouselButton Props
  */
-export type CarouselButtonProps = ButtonProps &
+export type CarouselButtonProps = Partial<ButtonProps> &
   ComponentProps<CarouselButtonSlots> & {
     /**
      * Dictates whether button will be of type go next or go previous
