@@ -189,7 +189,6 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    console.log('Update: ', containScroll);
     emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
     emblaApi.current?.reInit(
       {
