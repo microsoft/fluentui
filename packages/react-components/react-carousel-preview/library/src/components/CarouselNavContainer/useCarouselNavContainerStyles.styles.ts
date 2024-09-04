@@ -28,6 +28,9 @@ const useStyles = makeStyles({
   next: {},
   prev: {},
   autoplay: {},
+  inline: {
+    marginTop: tokens.spacingVerticalM,
+  },
   overlay: {
     position: 'absolute',
     bottom: tokens.spacingVerticalM,
@@ -97,6 +100,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   state.root.className = mergeClasses(
     carouselNavContainerClassNames.root,
     styles.root,
+    !isOverlay && styles.inline,
     isOverlay && styles.overlay,
     isOverlay && isWide && styles.overlayWide,
     layout === 'overlay-expanded' && styles.expanded,

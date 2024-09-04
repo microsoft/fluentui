@@ -1,4 +1,4 @@
-import { Button, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Button, Image, makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -10,66 +10,65 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  test: {
-    ...typographyStyles.largeTitle,
+  bannerCard: {
     alignContent: 'center',
     borderRadius: tokens.borderRadiusLarge,
     height: '450px',
-    textAlign: 'center',
+    textAlign: 'left',
+    position: 'relative',
+  },
+  cardContainer: {
+    ...typographyStyles.title1,
+    position: 'absolute',
+    left: '10%',
+    top: '25%',
+    background: tokens.colorNeutralBackground1,
+    padding: '18px',
+    maxWidth: '270px',
+    width: '50%',
+  },
+  subtext: {
+    ...typographyStyles.body1,
+    paddingTop: '18px',
   },
 });
 
-const TestComponent: React.FC<{ accentColor: string; children: React.ReactNode }> = props => {
-  const { accentColor, children } = props;
+const fullScreenImages = [
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
+];
+
+const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = props => {
+  const { children, imageSrc } = props;
   const classes = useClasses();
 
   return (
-    <div className={classes.test} style={{ backgroundColor: accentColor }}>
-      {children}
-    </div>
+    <CarouselCard className={classes.bannerCard}>
+      <Image fit="cover" src={imageSrc} />
+      <div className={classes.cardContainer}>
+        {children}
+        <div className={classes.subtext}>
+          {
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
+          }
+        </div>
+        <Button size="small" shape="square" appearance="primary">
+          Call to action
+        </Button>
+      </div>
+    </CarouselCard>
   );
 };
 
 export const Default = () => (
   <Carousel groupSize={1}>
     <CarouselSlider>
-      <CarouselCard>
-        <TestComponent accentColor="#B99095">
-          <Button>Card 1</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#FCB5AC">
-          <Button>Card 2</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#B5E5CF">
-          <Button>Card 3</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#3D5B59">
-          <Button>Card 4</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#F9EAC2">
-          <Button>Card 5</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#FEE7E6">
-          <Button>Card 7</Button>
-        </TestComponent>
-      </CarouselCard>
-      <CarouselCard>
-        <TestComponent accentColor="#FFD898">
-          <Button>Card 8</Button>
-        </TestComponent>
-      </CarouselCard>
+      {fullScreenImages.concat(fullScreenImages).map((imageSrc, index) => {
+        return <BannerCard imageSrc={imageSrc}>{`Card ${index + 1}`}</BannerCard>;
+      })}
     </CarouselSlider>
-    <CarouselNavContainer layout={'inline'}>
+    <CarouselNavContainer layout={'inline'} autoplay={''}>
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>
   </Carousel>

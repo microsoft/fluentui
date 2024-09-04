@@ -10,8 +10,8 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  card: {
-    margin: '0px 10px',
+  slider: {
+    gap: '10px',
   },
   test: {
     ...typographyStyles.largeTitle,
@@ -49,7 +49,7 @@ export const Responsive = () => {
 
   return (
     <Carousel>
-      <CarouselSlider>
+      <CarouselSlider className={classes.slider}>
         <CarouselCard className={classes.card} autoSize={true}>
           <TestComponent accentColor="#B99095">Responsive sizing without a minWidth!</TestComponent>
         </CarouselCard>
