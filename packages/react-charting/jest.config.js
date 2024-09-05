@@ -11,14 +11,19 @@ function getEsmOnlyPackagesToCjsMapping() {
    * See https://github.com/d3/d3-scale/issues/269 and https://github.com/d3/d3-color/pull/100
    * The current version of jest does not support ESM only packages.
    * So we need to map these packages to their CommonJS versions.
+   *
+   * There are 2 versions of d3 dependencies. One for react-charting and another for react-vis dependency.
    */
   const cjsPathsToEsmOnlyPackages = {
-    '^d3-scale$': prefix + '../../node_modules/d3-scale/build/d3-scale.js',
+    '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js', // There are 2 versions of d3 dep
     '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
     '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
-    '^d3-axis$': prefix + '../../node_modules/d3-scale/build/d3-axis.js',
-    '^d3-array$': prefix + '../../node_modules/d3-scale/build/d3-array.js',
-    '^d3-selection$': prefix + '../../node_modules/d3-scale/build/d3-selection.js',
+    '^d3-axis$': prefix + '../../node_modules/d3-axis/dist/d3-axis.js',
+    '^d3-array$': prefix + 'node_modules/d3-array/dist/d3-array.js',
+    '^d3-time$': prefix + 'node_modules/d3-time/dist/d3-time.js',
+    '^d3-hierarchy$': prefix + 'node_modules/d3-hierarchy/dist/d3-hierarchy.js',
+    '^d3-selection$': prefix + '../../node_modules/d3-selection/dist/d3-selection.js',
+    '^d3-format$': prefix + '../../node_modules/d3-format/dist/d3-format.js',
   };
   return cjsPathsToEsmOnlyPackages;
 }
