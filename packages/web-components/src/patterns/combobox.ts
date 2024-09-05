@@ -3,14 +3,25 @@ import { uniqueId } from '@microsoft/fast-web-utilities';
 
 const SUPPORTS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
 
+enum Action {
+  OPEN = 0,
+  CLOSE = 1,
+};
+
 interface FluentElement extends FASTElement {
   elementInternals: ElementInternals;
 }
 
-interface ComboboxDecoratorOptions {
+export interface ComboboxDecoratorOptions {
   anchorId?: string;
-  multiSelectable?: boolean;
+  multiSelectable: boolean;
+  disabled: boolean;
 }
+
+const defaultComboboxDecoratorOptions: ComboboxDecoratorOptions = {
+  multiSelectable: false,
+  disabled: false,
+};
 
 /**
  * A class to decorate a pair of elements to a combobox and a listbox. This
@@ -29,7 +40,7 @@ export class ComboboxDecorator {
 
   private comboboxClickListener?: (event: PointerEvent | MouseEvent) => void;
   private comboboxKeydownListener?: (event: KeyboardEvent) => void;
-  // @ts-expect-error Current Typescript doesn't support Popover API
+  // @ts-expect-error Popover API
   private listboxToggleListener?: (event: ToggleEvent) => void;
 
   private _isExpanded = false;
@@ -40,6 +51,8 @@ export class ComboboxDecorator {
     this.combobox.elementInternals.ariaExpanded = next.toString();
     this._isExpanded = next;
   }
+
+  private isDisabled = false;
 
   /**
    * A unique ID of the anchor.
@@ -54,7 +67,7 @@ export class ComboboxDecorator {
   constructor(
     combobox: FluentElement,
     listbox: FluentElement,
-    options: ComboboxDecoratorOptions = {}
+    options: ComboboxDecoratorOptions = defaultComboboxDecoratorOptions
   ) {
     this.options = options;
     this.combobox = combobox;
@@ -99,6 +112,22 @@ export class ComboboxDecorator {
     this.listbox.elementInternals.ariaMultiSelectable = multiple.toString();
   }
 
+  public setDisabled(disabled: boolean) {
+    this.isDisabled = disabled;
+    this.combobox.tabIndex = disabled ? -1 : 0;
+
+    if (this.isExpanded) {
+      this.togglePopover(false);
+    }
+  }
+
+  public togglePopover(force?: boolean) {
+    const next = force ?? !this.isExpanded;
+    // @ts-expect-error Popover API
+    this.listbox.togglePopover(next);
+    this.isExpanded = next;
+  }
+
   private decorateCombobox() {
     if (!this.combobox.elementInternals) {
       throw 'Missing `elementInternals` property on the combobox element';
@@ -106,6 +135,8 @@ export class ComboboxDecorator {
 
     this.combobox.elementInternals.role = 'combobox';
     this.combobox.elementInternals.ariaExpanded = 'false';
+
+    this.setDisabled(this.options.disabled);
   }
 
   private decorateListbox() {
@@ -116,9 +147,9 @@ export class ComboboxDecorator {
     this.listbox.elementInternals.role = 'listbox';
     this.setMultiSelectable(!!this.options.multiSelectable);
 
-    // @ts-expect-error Current Typescript doesn't support Popover API
+    // @ts-expect-error Popover API
     if (!this.popover) {
-      // @ts-expect-error Current Typescript doesn't support Popover API
+      // @ts-expect-error Popover API
       this.listbox.popover = 'auto';
     }
 
@@ -193,23 +224,37 @@ export class ComboboxDecorator {
   }
 
   private handleComboboxClick() {
-    const nextIsExpanded = !this.isExpanded;
-    // @ts-expect-error Current Typescript doesn't support Popover API
-    this.listbox.togglePopover(nextIsExpanded);
-    this.isExpanded = nextIsExpanded;
+    this.togglePopover();
   }
 
   private handleComboboxKeydown(evt: KeyboardEvent) {
+    if (this.isDisabled) {
+      return true;
+    }
+
     switch (evt.key) {
       case 'Enter':
       case ' ':
+        // Prevent page scrolling.
         evt.preventDefault();
         this.combobox.click();
         break;
+      case 'Escape':
+        if (this.isExpanded) {
+          this.togglePopover(false);
+        } else {
+          // TODO: clear combobox value
+        }
+        break;
+      default:
+        // TODO: Printable characters.
     }
   }
 
-  // @ts-expect-error Current Typescript doesn't support Popover API
+  private getActionByKey(key: string): Action {
+  }
+
+  // @ts-expect-error Popover API
   private handleListboxToggle(evt: ToggleEvent) {
     this.isExpanded = evt.newState === 'open';
   }

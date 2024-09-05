@@ -13,5 +13,6 @@ export const styles = css`
     border: 1px solid currentcolor;
     cursor: pointer;
     min-block-size: 1lh;
+    touch-action: manipulation;
   }
 `;
