@@ -1,4 +1,4 @@
-import { makeStyles, tokens, typographyStyles } from '@fluentui/react-components';
+import { Body1, Caption1, makeStyles, mergeClasses, tokens, Title1, Subtitle2 } from '@fluentui/react-components';
 import {
   Carousel,
   CarouselCard,
@@ -13,33 +13,69 @@ const useClasses = makeStyles({
   slider: {
     gap: '10px',
   },
-  test: {
-    ...typographyStyles.largeTitle,
-    alignContent: 'center',
-    borderRadius: tokens.borderRadiusLarge,
+  wireframe: {
+    backgroundColor: tokens.colorNeutralBackground3,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorNeutralStroke1}`,
+
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '12px',
+    placeContent: 'center',
+
+    padding: '40px',
     height: '200px',
-    textAlign: 'center',
-    padding: '25px',
-    maxWidth: '100%',
+
+    position: 'relative',
   },
-  largeCardContent: {
-    minWidth: '350px',
+  wireframeEven: {
+    backgroundColor: tokens.colorBrandBackground2,
+    border: `${tokens.strokeWidthThin} solid ${tokens.colorBrandStroke1}`,
   },
-  mediumCardContent: {
+  wireframeInfo: {
+    position: 'absolute',
+    right: '12px',
+    top: '12px',
+
+    backgroundColor: tokens.colorPaletteRedBackground2,
+    border: `${tokens.strokeWidthThin} dotted ${tokens.colorPaletteRedBorder2}`,
+
+    fontSize: tokens.fontSizeBase200,
+    padding: '4px 8px',
+  },
+  wireframeSmall: {
+    minWidth: '100px',
+    padding: '40px 20px',
+  },
+  wireframeMedium: {
     minWidth: '200px',
+    padding: '40px 20px',
   },
-  smallCardContent: {
-    minWidth: '50px',
+  wireframeLarge: {
+    minWidth: '350px',
   },
 });
 
-const TestComponent: React.FC<{ accentColor: string; children: string; className?: string }> = props => {
-  const { accentColor, children, className } = props;
+const WireframeContent: React.FC<{
+  appearance: 'odd' | 'even';
+  children: React.ReactNode;
+  size?: 'small' | 'medium' | 'large';
+}> = props => {
   const classes = useClasses();
 
   return (
-    <div className={classes.test + ' ' + className} style={{ backgroundColor: accentColor }}>
-      {children}
+    <div
+      className={mergeClasses(
+        classes.wireframe,
+        props.appearance === 'even' && classes.wireframeEven,
+        props.size === 'small' && classes.wireframeSmall,
+        props.size === 'medium' && classes.wireframeMedium,
+        props.size === 'large' && classes.wireframeLarge,
+      )}
+    >
+      <div className={classes.wireframeInfo}>
+        <code>size: {props.size ?? 'auto'}</code>
+      </div>
+      {props.children}
     </div>
   );
 };
@@ -50,52 +86,68 @@ export const Responsive = () => {
   return (
     <Carousel draggable>
       <CarouselSlider className={classes.slider}>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#B99095">Responsive sizing without a minWidth!</TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="odd">
+            <Title1 align="center">Lorem Ipsum</Title1>
+            <Body1 align="center">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor...
+            </Body1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#FCB5AC" className={classes.smallCardContent}>
-            Card 2
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="even" size="small">
+            <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+            <Caption1 align="center">Lorem ipsum...</Caption1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#B5E5CF" className={classes.mediumCardContent}>
-            Card 3
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="odd" size="medium">
+            <Title1 align="center">Lorem Ipsum</Title1>
+            <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#3D5B59" className={classes.largeCardContent}>
-            Card 4
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="even" size="large">
+            <Title1 align="center">Lorem Ipsum</Title1>
+            <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#F9EAC2" className={classes.mediumCardContent}>
-            Card 5
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="odd" size="medium">
+            <Title1 align="center">Lorem Ipsum</Title1>
+            <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#FEE7E6" className={classes.largeCardContent}>
-            Card 6
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="even" size="large">
+            <Title1 align="center">Lorem Ipsum</Title1>
+            <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
+          </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize={true}>
-          <TestComponent accentColor="#FFD898" className={classes.smallCardContent}>
-            Card 7
-          </TestComponent>
+        <CarouselCard autoSize>
+          <WireframeContent appearance="odd" size="small">
+            <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
+            <Caption1 align="center">Lorem ipsum...</Caption1>
+          </WireframeContent>
         </CarouselCard>
       </CarouselSlider>
 
       <CarouselNavContainer
-        layout={'inline'}
-        next={{
-          'aria-label': 'Go to next slide',
-        }}
-        prev={{
-          'aria-label': 'Go to prev slide',
-        }}
+        layout="inline"
+        next={{ 'aria-label': 'Go to next slide' }}
+        prev={{ 'aria-label': 'Go to prev slide' }}
       >
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
     </Carousel>
   );
+};
+
+Responsive.parameters = {
+  docs: {
+    description: {
+      story:
+        'Carousel can have responsive cards that adjust their size based on the content, using `autoSize` prop on `CarouselCard`.',
+    },
+  },
 };

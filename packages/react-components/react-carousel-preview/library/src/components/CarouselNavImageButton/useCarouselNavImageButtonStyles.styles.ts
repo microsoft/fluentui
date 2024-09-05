@@ -27,13 +27,11 @@ const useStyles = makeStyles({
     ':hover': {
       cursor: 'pointer',
     },
-    '> *': {
-      borderRadius: tokens.borderRadiusSmall,
-    },
   },
   image: {
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
+    borderRadius: tokens.borderRadiusSmall,
   },
   selected: {
     width: selectedImageButtonSize + 'px',

@@ -13,7 +13,7 @@ export type NavButtonRenderFunction = (index: number) => React.ReactNode;
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   /**
    * The total number of slides available.
-   * Can be overwritten by passing in as a prop.
+   * Users may override if using the component without a Carousel wrapper or implementing custom functionality.
    */
   totalSlides: number;
 

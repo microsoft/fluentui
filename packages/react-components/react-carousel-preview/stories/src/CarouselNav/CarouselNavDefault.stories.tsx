@@ -1,49 +1,78 @@
-import {
-  carouselContextDefaultValue,
-  CarouselNav,
-  CarouselNavImageButton,
-  CarouselNavButton,
-  CarouselProvider,
-} from '@fluentui/react-carousel-preview';
-import { Label, Switch, useId } from '@fluentui/react-components';
+import { CarouselNav, CarouselNavImageButton, CarouselNavButton } from '@fluentui/react-carousel-preview';
+import { Field, makeStyles, Switch, tokens } from '@fluentui/react-components';
 import * as React from 'react';
 
-const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
+const useClasses = makeStyles({
+  container: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto 1fr',
+
+    boxShadow: tokens.shadow16,
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'end',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    padding: '10px',
+    minHeight: '100px',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: 'none',
+    borderRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
+    padding: '10px',
+  },
+  sliderField: {
+    flex: 1,
+    gridTemplateColumns: 'max-content 1fr',
+  },
+});
+
 export const Default = () => {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
+  const classes = useClasses();
   const [useImageButtons, setUseImageButtons] = React.useState(false);
-  const switchLabelId = useId('switch-label');
+
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <Label id={switchLabelId}>Enable Image Nav Buttons</Label>
-      <Switch
-        checked={useImageButtons}
-        onChange={(_, data) => setUseImageButtons(!!data.checked)}
-        label={useImageButtons ? 'Enabled' : 'Disabled'}
-        aria-labelledby={switchLabelId}
-      />
-      <CarouselProvider value={{ ...carouselContextDefaultValue, activeIndex: currentIndex }}>
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field
+          className={classes.sliderField}
+          label={
+            <>
+              Use <code>CarouselNavImageButton</code>
+            </>
+          }
+          orientation="horizontal"
+        >
+          <Switch checked={useImageButtons} onChange={(_, data) => setUseImageButtons(data.checked)} />
+        </Field>
+      </div>
+      <div className={classes.card}>
         <CarouselNav totalSlides={5} appearance="brand">
           {index =>
             useImageButtons ? (
-              <CarouselNavImageButton
-                image={{ src: swapImage }}
-                onClick={() => {
-                  setCurrentIndex(index);
-                }}
-                aria-label={`Carousel Nav Button ${index}`}
-              />
+              <CarouselNavImageButton image={{ src: SWAP_IMAGE }} aria-label={`Carousel Nav Button ${index}`} />
             ) : (
-              <CarouselNavButton
-                onClick={() => {
-                  setCurrentIndex(index);
-                }}
-                aria-label={`Carousel Nav Button ${index}`}
-              />
+              <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />
             )
           }
         </CarouselNav>
-      </CarouselProvider>
+      </div>
     </div>
   );
 };

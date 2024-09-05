@@ -27,61 +27,62 @@ const useClasses = makeStyles({
   },
 });
 
-const images = [
+type ImageDefinition = {
+  previewUrl: string;
+  url: string;
+
+  label: string;
+  disabled?: boolean;
+};
+
+const IMAGES: ImageDefinition[] = [
   {
-    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg',
-    value: 'image-0',
+    previewUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-swatch.jpg',
+    url: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
     label: 'sea',
-    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
   },
   {
-    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg',
-    value: 'image-1',
+    previewUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-swatch.jpg',
+    url: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
     label: 'bridge',
     disabled: true,
-    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
   },
   {
-    swatchSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg',
-    value: 'image-2',
+    previewUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-swatch.jpg',
+    url: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
     label: 'park',
-    fullImageSrc: 'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
   },
 ];
 
-const ImageCardComponent: React.FC<{ index: number }> = props => {
+const ImageCard: React.FC<ImageDefinition> = props => {
   const classes = useClasses();
-  const { index } = props;
+  const { url } = props;
 
-  return <Image className={classes.image} src={images[index].fullImageSrc} role="presentation" />;
+  return <Image className={classes.image} src={url} role="presentation" />;
 };
 
 export const ImageSlideshow = () => {
   const classes = useClasses();
+
   return (
-    <Carousel groupSize={1} align={'center'}>
+    <Carousel groupSize={1} align="center">
       <CarouselSlider className={classes.slider}>
-        {images.map((image, index) => {
-          return (
-            <CarouselCard className={classes.card} key={`card-${index}`}>
-              <ImageCardComponent index={index} />
-            </CarouselCard>
-          );
-        })}
+        {IMAGES.map(image => (
+          <CarouselCard key={image.url} className={classes.card}>
+            <ImageCard {...image} />
+          </CarouselCard>
+        ))}
       </CarouselSlider>
+
       <CarouselNavContainer
-        layout={'overlay-expanded'}
-        next={{
-          'aria-label': 'Go to next slide',
-        }}
-        prev={{
-          'aria-label': 'Go to prev slide',
-        }}
+        layout="overlay-expanded"
+        next={{ 'aria-label': 'Go to next slide' }}
+        prev={{ 'aria-label': 'Go to prev slide' }}
       >
         <CarouselNav>
           {index => (
             <CarouselNavImageButton
-              image={{ src: images[index].swatchSrc }}
+              image={{ src: IMAGES[index].previewUrl }}
               aria-label={`Carousel Nav Button ${index}`}
             />
           )}

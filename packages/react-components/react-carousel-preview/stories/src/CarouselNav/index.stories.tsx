@@ -6,7 +6,7 @@ import bestPracticesMd from './CarouselNavBestPractices.md';
 export { Default } from './CarouselNavDefault.stories';
 
 export default {
-  title: 'Preview Components/CarouselNav',
+  title: 'Preview Components/Carousel/CarouselNav',
   component: CarouselNav,
   parameters: {
     docs: {

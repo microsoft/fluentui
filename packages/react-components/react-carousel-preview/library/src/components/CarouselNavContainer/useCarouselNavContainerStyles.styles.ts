@@ -20,10 +20,6 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     width: '100%',
     pointerEvents: 'none',
-
-    '> *': {
-      pointerEvents: 'all',
-    },
   },
   next: {},
   prev: {},
@@ -100,8 +96,7 @@ export const useCarouselNavContainerStyles_unstable = (state: CarouselNavContain
   state.root.className = mergeClasses(
     carouselNavContainerClassNames.root,
     styles.root,
-    !isOverlay && styles.inline,
-    isOverlay && styles.overlay,
+    isOverlay ? styles.overlay : styles.inline,
     isOverlay && isWide && styles.overlayWide,
     layout === 'overlay-expanded' && styles.expanded,
     state.root.className,

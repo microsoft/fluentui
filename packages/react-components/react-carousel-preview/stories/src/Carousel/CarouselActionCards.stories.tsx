@@ -6,10 +6,9 @@ import {
   Persona,
   Dropdown,
   Option,
-  useId,
   Switch,
+  Field,
 } from '@fluentui/react-components';
-
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
@@ -23,6 +22,52 @@ import {
 import * as React from 'react';
 
 const useClasses = makeStyles({
+  container: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto 1fr',
+
+    boxShadow: tokens.shadow16,
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    padding: '10px',
+    minHeight: '100px',
+  },
+  carousel: {
+    flex: 1,
+    padding: '20px',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: 'none',
+    borderRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
+  },
+  dropdown: {
+    maxWidth: 'max-content',
+  },
+});
+
+const useCardClasses = makeStyles({
   actionCard: {
     borderRadius: tokens.borderRadiusLarge,
     overflow: 'hidden',
@@ -50,87 +95,128 @@ const useClasses = makeStyles({
     alignContent: 'center',
     justifyContent: 'space-between',
   },
-  moreButton: {},
 });
 
 const swapImage = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 
-const ActionCard: React.FC<{ secondaryText: string; text: string }> = props => {
-  const { secondaryText, text } = props;
-  const classes = useClasses();
+type Post = {
+  avatarUrl: string;
+  name: string;
+  text: string;
+  description: string;
+};
+
+const POSTS: Post[] = [
+  {
+    avatarUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg',
+    name: 'Allan Munger',
+    text: 'Meeting notes',
+    description: '2 days ago by Kathryn Murphy',
+  },
+  {
+    avatarUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg',
+    name: 'Amanda Brady',
+    text: 'FY24 Hiring Budget',
+    description: 'Wed at 3:38pm',
+  },
+  {
+    avatarUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AshleyMcCarthy.jpg',
+    name: 'Ashley McCarthy',
+    text: 'Test edited this',
+    description: 'Thu at 4:38pm',
+  },
+  {
+    avatarUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg',
+    name: 'Cameron Evans',
+    text: 'Review 1:1 Recap',
+    description: 'You recently opened this',
+  },
+  {
+    avatarUrl: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg',
+    name: 'Carlos Slattery',
+    text: 'FY24 Hiring Test',
+    description: '2 days ago by Cecil Folk',
+  },
+];
+
+const ActionCard: React.FC<Post> = props => {
+  const { avatarUrl, description, name, text } = props;
+  const classes = useCardClasses();
 
   return (
     <CarouselCard focusMode="tab-exit" className={classes.actionCard}>
       <div className={classes.imageContainer}>
-        <Image fit="cover" className={classes.image} src={swapImage} role="presentation" />
-        <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label={'Go to document'} />
+        <Image className={classes.image} fit="cover" src={swapImage} role="presentation" />
+        <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label="Go to document" />
       </div>
       <div className={classes.info}>
-        <Persona textPosition="after" name={text} presence={{ status: 'available' }} secondaryText={secondaryText} />
-        <Button className={classes.moreButton} icon={<MoreHorizontalRegular />} aria-label={'More options'} />
+        <Persona
+          textPosition="after"
+          avatar={{ name, image: { src: avatarUrl } }}
+          name={text}
+          presence={{ status: 'available' }}
+          secondaryText={description}
+        />
+        <Button icon={<MoreHorizontalRegular />} aria-label="More options" />
       </div>
     </CarouselCard>
   );
 };
 
-const alignmentOptions = ['center', 'end', 'start'];
+export const AlignmentAndWhitespace = () => {
+  const classes = useClasses();
 
-export const ActionCards = () => {
-  const dropdownId = useId('dropdown');
-  const [alignment, setAlignment] = React.useState<CarouselProps['align']>();
+  const [alignment, setAlignment] = React.useState<CarouselProps['align']>('center');
   const [whitespace, setWhitespace] = React.useState<boolean>(false);
-  return (
-    <div>
-      <label id={dropdownId}>Alignment:</label>
-      <Dropdown
-        aria-labelledby={dropdownId}
-        placeholder="Select an alignment"
-        onOptionSelect={(event, option) => {
-          setAlignment(option.optionText as CarouselProps['align']);
-        }}
-      >
-        {alignmentOptions.map(option => (
-          <Option key={option}>{option}</Option>
-        ))}
-      </Dropdown>
 
-      <Switch label={'Whitespace'} checked={whitespace} onChange={() => setWhitespace(!whitespace)} />
-      <Carousel draggable align={alignment} whitespace={whitespace}>
-        <CarouselSlider>
-          <ActionCard text={'Diane Russel edited this'} secondaryText="Wed at 3:38pm">
-            <Button>Card 1</Button>
-          </ActionCard>
-          <ActionCard text={'Sam / Niala 1:1 Recap'} secondaryText="You recently opened this">
-            <Button>Card 2</Button>
-          </ActionCard>
-          <ActionCard text={'FY24 Hiring Budget'} secondaryText="2 days ago by Kathryn Murphy">
-            <Button>Card 3</Button>
-          </ActionCard>
-          <ActionCard text={'Diane Russel edited this'} secondaryText="Wed at 3:38pm">
-            <Button>Card 4</Button>
-          </ActionCard>
-          <ActionCard text={'Review 1:1 Recap'} secondaryText="You recently opened this">
-            <Button>Card 5</Button>
-          </ActionCard>
-          <ActionCard text={'FY24 Hiring Test'} secondaryText="2 days ago by Test User">
-            <Button>Card 7</Button>
-          </ActionCard>
-          <ActionCard text={'Test edited this'} secondaryText="Thur at 4:38pm">
-            <Button>Card 8</Button>
-          </ActionCard>
-        </CarouselSlider>
-        <CarouselNavContainer
-          layout={'inline-wide'}
-          next={{
-            'aria-label': 'Go to next slide',
-          }}
-          prev={{
-            'aria-label': 'Go to prev slide',
-          }}
-        >
-          <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
-        </CarouselNavContainer>
-      </Carousel>
+  return (
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field label="Alignment" orientation="horizontal" className={classes.field}>
+          <Dropdown
+            className={classes.dropdown}
+            placeholder="Select an alignment"
+            onOptionSelect={(_, option) => {
+              setAlignment(option.optionText as CarouselProps['align']);
+            }}
+            value={alignment}
+          >
+            {['start', 'center', 'end'].map(option => (
+              <Option key={option}>{option}</Option>
+            ))}
+          </Dropdown>
+        </Field>
+
+        <Field label="Whitespace" orientation="horizontal" className={classes.field}>
+          <Switch checked={whitespace} onChange={() => setWhitespace(!whitespace)} />
+        </Field>
+      </div>
+
+      <div className={classes.card}>
+        <Carousel align={alignment} className={classes.carousel} whitespace={whitespace}>
+          <CarouselSlider>
+            {POSTS.map(post => (
+              <ActionCard {...post} key={post.name} />
+            ))}
+          </CarouselSlider>
+          <CarouselNavContainer
+            layout="inline"
+            next={{ 'aria-label': 'Go to next slide' }}
+            prev={{ 'aria-label': 'Go to prev slide' }}
+          >
+            <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+          </CarouselNavContainer>
+        </Carousel>
+      </div>
     </div>
   );
+};
+
+AlignmentAndWhitespace.parameters = {
+  docs: {
+    description: {
+      story:
+        'Carousel can have slides aligned relative to the carousel viewport, use the `align` prop to set the alignment. Note, the `whitespace` prop could be used to clear leading and trailing empty space that causes excessive scrolling.',
+    },
+  },
 };

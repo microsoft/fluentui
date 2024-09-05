@@ -18,7 +18,10 @@ const useClasses = makeStyles({
     position: 'relative',
   },
   cardContainer: {
-    ...typographyStyles.title1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+
     position: 'absolute',
     left: '10%',
     top: '25%',
@@ -27,13 +30,15 @@ const useClasses = makeStyles({
     maxWidth: '270px',
     width: '50%',
   },
+  title: {
+    ...typographyStyles.title1,
+  },
   subtext: {
     ...typographyStyles.body1,
-    paddingTop: '18px',
   },
 });
 
-const fullScreenImages = [
+const IMAGES = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
@@ -46,16 +51,18 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = pr
   return (
     <CarouselCard className={classes.bannerCard}>
       <Image fit="cover" src={imageSrc} role="presentation" />
+
       <div className={classes.cardContainer}>
-        {children}
+        <div className={classes.title}>{children}</div>
         <div className={classes.subtext}>
-          {
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-          }
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam.
         </div>
-        <Button size="small" shape="square" appearance="primary">
-          Call to action
-        </Button>
+        <div>
+          <Button size="small" shape="square" appearance="primary">
+            Call to action
+          </Button>
+        </div>
       </div>
     </CarouselCard>
   );
@@ -64,23 +71,19 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = pr
 export const Default = () => (
   <Carousel groupSize={1} circular>
     <CarouselSlider>
-      {fullScreenImages.concat(fullScreenImages).map((imageSrc, index) => {
-        return <BannerCard key={`card-${index}`} imageSrc={imageSrc}>{`Card ${index + 1}`}</BannerCard>;
-      })}
+      {IMAGES.concat(IMAGES).map((imageSrc, index) => (
+        <BannerCard key={imageSrc} imageSrc={imageSrc}>
+          Card {index + 1}
+        </BannerCard>
+      ))}
     </CarouselSlider>
     <CarouselNavContainer
-      layout={'inline'}
+      layout="inline"
       autoplay={{
-        autoplayAriaLabel: autoplay => {
-          return autoplay ? 'Enable Autoplay' : 'Disable Autoplay';
-        },
+        autoplayAriaLabel: autoplay => (autoplay ? 'Enable Autoplay' : 'Disable Autoplay'),
       }}
-      next={{
-        'aria-label': 'Go to next slide',
-      }}
-      prev={{
-        'aria-label': 'Go to prev slide',
-      }}
+      next={{ 'aria-label': 'Go to next slide' }}
+      prev={{ 'aria-label': 'Go to prev slide' }}
     >
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>
