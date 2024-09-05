@@ -33,6 +33,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
       aria-disabled="true"
       class="fui-CarouselButton fui-Button fui-CarouselNavContainer__prev"
       disabled=""
+      tabindex="-1"
       type="button"
     >
       <span
@@ -58,6 +59,7 @@ exports[`CarouselNavContainer renders a default state 1`] = `
     <button
       aria-disabled="false"
       class="fui-CarouselButton fui-Button fui-CarouselNavContainer__next"
+      tabindex="0"
       type="button"
     >
       <span

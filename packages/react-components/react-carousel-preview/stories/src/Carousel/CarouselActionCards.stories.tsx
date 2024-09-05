@@ -144,7 +144,7 @@ const ActionCard: React.FC<Post> = props => {
   const classes = useCardClasses();
 
   return (
-    <CarouselCard focusMode="tab-exit" className={classes.actionCard}>
+    <CarouselCard className={classes.actionCard}>
       <div className={classes.imageContainer}>
         <Image className={classes.image} fit="cover" src={swapImage} role="presentation" />
         <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label="Go to document" />
@@ -194,7 +194,7 @@ export const AlignmentAndWhitespace = () => {
 
       <div className={classes.card}>
         <Carousel align={alignment} className={classes.carousel} whitespace={whitespace}>
-          <CarouselSlider>
+          <CarouselSlider cardFocus={true}>
             {POSTS.map(post => (
               <ActionCard {...post} key={post.name} />
             ))}

@@ -17,6 +17,7 @@ export const useCarouselSlider_unstable = (
   props: CarouselSliderProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselSliderState => {
+  const { cardFocus = false } = props;
   const focusableGroupAttr = useArrowNavigationGroup({
     circular: false, // We don't want circular focus here, it's confusing in carousel.
     axis: 'horizontal',
@@ -25,7 +26,10 @@ export const useCarouselSlider_unstable = (
     unstable_hasDefault: true,
   });
 
+  const focusProps = cardFocus ? focusableGroupAttr : {};
+
   return {
+    cardFocus,
     components: {
       root: 'div',
     },
@@ -34,7 +38,7 @@ export const useCarouselSlider_unstable = (
         ref,
         role: 'group',
         ...props,
-        ...focusableGroupAttr,
+        ...focusProps,
       }),
       { elementType: 'div' },
     ),

@@ -76,7 +76,6 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
 export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
-    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
     autoSize?: boolean;
 };
 
@@ -238,7 +237,9 @@ export const CarouselSlider: ForwardRefComponent<CarouselSliderProps>;
 export const carouselSliderClassNames: SlotClassNames<CarouselSliderSlots>;
 
 // @public
-export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>>;
+export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> & {
+    cardFocus?: boolean;
+};
 
 // @public (undocumented)
 export type CarouselSliderSlots = {
@@ -246,7 +247,7 @@ export type CarouselSliderSlots = {
 };
 
 // @public
-export type CarouselSliderState = ComponentState<CarouselSliderSlots>;
+export type CarouselSliderState = ComponentState<CarouselSliderSlots> & Pick<CarouselSliderProps, 'cardFocus'>;
 
 // @public (undocumented)
 export type CarouselSlots = {
@@ -287,7 +288,7 @@ export const renderCarouselNavContainer_unstable: (state: CarouselNavContainerSt
 export const renderCarouselNavImageButton_unstable: (state: CarouselNavImageButtonState) => JSX.Element;
 
 // @public
-export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.Element;
+export const renderCarouselSlider_unstable: (state: CarouselSliderState, contextValues: CarouselSliderContextValues) => JSX.Element;
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
