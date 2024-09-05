@@ -270,7 +270,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       return (
         <>
           <Popover
-            culture={props.culture!}
+            culture={props.culture ?? 'en-us'}
             clickPosition={clickPosition}
             isPopoverOpen={isPopoverOpen}
             legend={item.legend!}
@@ -292,7 +292,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           XValue={_props.xAxisCalloutData || (_props.x as string)}
           xCalloutValue={xCalloutValue}
           yCalloutValue={yCalloutValue}
-          culture={props.culture!}
+          culture={props.culture ?? 'en-us'}
           clickPosition={clickPosition}
           isPopoverOpen={isPopoverOpen}
           legend={_props.legend!}
