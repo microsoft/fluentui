@@ -233,6 +233,7 @@ export const Legends: React.FunctionComponent<ILegendsProps> = React.forwardRef<
           onFocus={onHoverHandler}
           onBlur={onMouseOut}
           data-is-focusable={allowFocusOnLegends}
+          appearance={'outline'}
           style={{
             '--rect-height': legend.isLineLegendInBarChart ? '4px' : '12px',
             '--rect-backgroundColor': legend.stripePattern ? '' : color,
