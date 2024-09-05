@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgsTable,
+  ArgTypes,
   Title,
   Subtitle,
   Description,
@@ -171,7 +171,7 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          <ArgsTable of={primaryStory.component} />
+          <ArgTypes of={primaryStory.component} />
           {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
             <div className={styles.nativeProps}>
               <InfoFilled className={styles.nativePropsIcon} />
