@@ -13,6 +13,7 @@ export type CarouselButtonProps = Partial<ButtonProps> &
   ComponentProps<CarouselButtonSlots> & {
     /**
      * Dictates whether button will be of type go next or go previous
+     * Default: 'next'
      */
     navType?: 'prev' | 'next';
   };
