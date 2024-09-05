@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
+import { classNamesFunction, FocusRects, initializeComponentRef, warnDeprecations, warn } from '../../Utilities';
 import { TextField } from '../../TextField';
 import { TooltipHost } from '../../Tooltip';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -291,6 +291,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             </tbody>
           </table>
         </div>
+        <FocusRects />
       </div>
     );
   }
