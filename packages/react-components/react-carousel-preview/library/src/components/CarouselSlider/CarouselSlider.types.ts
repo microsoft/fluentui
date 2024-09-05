@@ -16,6 +16,8 @@ export type CarouselSliderProps = Partial<ComponentProps<CarouselSliderSlots>> &
    * enabling left/right navigation of elements.
    *
    * This will also be passed into CarouselCards via context and set the appropriate focus attributes
+   *
+   * Defaults: false
    */
   cardFocus?: boolean;
 };
