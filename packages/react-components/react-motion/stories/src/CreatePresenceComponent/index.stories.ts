@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react';
 import CreatePresenceComponentDescription from './CreatePresenceComponentDescription.md';
 
 export { CreatePresenceComponentDefault as Default } from './CreatePresenceComponentDefault.stories';
@@ -14,7 +15,6 @@ export { PresenceMotionFunctionParams as functionParams } from './PresenceMotion
 
 export default {
   title: 'Motion/APIs/createPresenceComponent',
-  component: null,
   parameters: {
     docs: {
       description: {
@@ -22,4 +22,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;
