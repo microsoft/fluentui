@@ -98,8 +98,8 @@ export const carouselContextDefaultValue: CarouselContextValue;
 export type CarouselContextValue = {
     activeIndex: number;
     circular: boolean;
-    selectPageByElement: (event: React_2.FocusEvent, element: HTMLElement, jump?: boolean) => void;
-    selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => void;
+    selectPageByElement: (event: React_2.FocusEvent, element: HTMLElement, jump?: boolean) => number;
+    selectPageByDirection: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, direction: 'next' | 'prev') => number;
     selectPageByIndex: (event: React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>, value: number, jump?: boolean) => void;
     subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
     enableAutoplay: (autoplay: boolean) => void;
