@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 04 Sep 2024 04:08:17 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Sep 2024 04:07:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.64)
+
+Thu, 05 Sep 2024 04:07:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.63..@fluentui/web-components_v3.0.0-beta.64)
+
+### Changes
+
+- chore: add missing export for textarea ([PR #32450](https://github.com/microsoft/fluentui/pull/32450) by rupertdavid@microsoft.com)
 
 ## [3.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.63)
 
