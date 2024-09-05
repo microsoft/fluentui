@@ -22,7 +22,7 @@ export class Image extends FASTElement {
    * HTML attribute: block.
    */
   @attr({ mode: 'boolean' })
-  public block?: boolean = false;
+  public block?: boolean;
 
   /**
    * Handles changes to block custom states

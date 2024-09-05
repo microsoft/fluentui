@@ -5,6 +5,7 @@
   "implicitDependencies": [],
   "tags": ["react-northstar"],
   "targets": {
+    "test-perf": { "dependsOn": ["bundle"] },
     "bundle": { "dependsOn": ["prebundle"] }
   }
 }

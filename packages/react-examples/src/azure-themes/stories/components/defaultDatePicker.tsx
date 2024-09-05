@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { DatePicker, mergeStyles, defaultDatePickerStrings } from '@fluentui/react';
 
+export default {
+  title: 'Components/DatePicker',
+};
+
 const rootClass = mergeStyles({ minWidth: 170, selectors: { '> *': { marginBottom: 15 } } });
 
 export const DatePickerBasicExample: React.FunctionComponent = () => {

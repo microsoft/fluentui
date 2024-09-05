@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Card } from '@fluentui/react-northstar';
 import CardExampleBody from '../../examples/components/Card/Slots/CardExampleBody';
 import CardExampleFooter from '../../examples/components/Card/Slots/CardExampleFooter';
@@ -19,7 +19,7 @@ import CardExampleInverted from '../../examples/components/Card/Variations/CardE
 import CardExampleQuiet from '../../examples/components/Card/Variations/CardExampleQuiet';
 import CardExampleSize from '../../examples/components/Card/Variations/CardExampleSize';
 
-export default { component: Card, title: 'Card' } as ComponentMeta<typeof Card>;
+export default { component: Card, title: 'Card' } as Meta<typeof Card>;
 
 export {
   CardExampleBody,

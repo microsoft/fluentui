@@ -1,21 +1,11 @@
-import { ImmutableMap } from './ImmutableMap';
 import type { TreeSelectionValue } from '../Tree';
 import type { TreeItemValue } from '../TreeItem';
+import { ImmutableMap } from './ImmutableMap';
 
-export function createCheckedItems(iterable?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>) {
-  if (iterable === undefined) {
-    return ImmutableMap.empty;
-  }
-  if (ImmutableMap.isImmutableMap<TreeItemValue, TreeSelectionValue>(iterable)) {
-    return iterable;
-  }
-  const internalMap = new Map<TreeItemValue, 'mixed' | boolean>();
-  for (const item of iterable) {
-    if (Array.isArray(item)) {
-      internalMap.set(item[0], item[1]);
-    } else {
-      internalMap.set(item, true);
-    }
-  }
-  return ImmutableMap.dangerouslyCreate_unstable(internalMap);
-}
+const tuplifyCheckedItem = (
+  value: TreeItemValue | [TreeItemValue, TreeSelectionValue],
+): [TreeItemValue, TreeSelectionValue] => (Array.isArray(value) ? value : [value, true]);
+
+export const createCheckedItems = (
+  iterable?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>,
+): ImmutableMap<TreeItemValue, TreeSelectionValue> => ImmutableMap.from(iterable, tuplifyCheckedItem);

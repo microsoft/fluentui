@@ -135,6 +135,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="ChevronLeft"
     >
@@ -3729,6 +3730,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="ChevronRight"
     >
@@ -3873,6 +3875,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="ChevronLeft"
     >
@@ -7459,6 +7462,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
             font-style: normal;
             font-weight: normal;
             speak: none;
+            text-decoration: inherit;
           }
       data-icon-name="ChevronRight"
     >

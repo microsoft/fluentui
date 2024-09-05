@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Tree, treeItemClassName, treeTitleClassName } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import TreeTitleCustomizationExample from '../../examples/components/Tree/Usage/TreeTitleCustomizationExample.shorthand';
@@ -21,7 +21,7 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Tree>;
+} as Meta<typeof Tree>;
 
 const TreeTitleCustomizationExampleTeams = getThemeStoryVariant(TreeTitleCustomizationExample, 'teamsV2');
 

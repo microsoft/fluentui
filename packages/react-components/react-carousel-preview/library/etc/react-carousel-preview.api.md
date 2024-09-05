@@ -13,12 +13,14 @@ import { ButtonSlots } from '@fluentui/react-button';
 import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { EventData } from '@fluentui/react-utilities';
+import type { EventData } from '@fluentui/react-utilities';
 import type { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { ToggleButtonProps } from '@fluentui/react-button';
+import { ToggleButtonState } from '@fluentui/react-button';
 
 // @public
 export const Carousel: ForwardRefComponent<CarouselProps>;
@@ -30,15 +32,18 @@ export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonP
 export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayButtonSlots>;
 
 // @public
-export type CarouselAutoplayButtonProps = ComponentProps<CarouselAutoplayButtonSlots> & {};
+export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
+    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
+    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
+};
 
 // @public (undocumented)
-export type CarouselAutoplayButtonSlots = {
-    root: Slot<'div'>;
+export type CarouselAutoplayButtonSlots = ButtonSlots & {
+    root: NonNullable<Slot<ARIAButtonSlotProps>>;
 };
 
 // @public
-export type CarouselAutoplayButtonState = ComponentState<CarouselAutoplayButtonSlots>;
+export type CarouselAutoplayButtonState = ToggleButtonState & ComponentState<CarouselAutoplayButtonSlots>;
 
 // @public
 export const CarouselButton: ForwardRefComponent<CarouselButtonProps>;
@@ -67,7 +72,7 @@ export const carouselCardClassNames: SlotClassNames<CarouselCardSlots>;
 
 // @public
 export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
-    value: string;
+    focusMode?: 'off' | 'no-tab' | 'tab-exit' | 'tab-only';
 };
 
 // @public (undocumented)
@@ -76,7 +81,7 @@ export type CarouselCardSlots = {
 };
 
 // @public
-export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'value'>;
+export type CarouselCardState = ComponentState<CarouselCardSlots>;
 
 // @public (undocumented)
 export const carouselClassNames: SlotClassNames<CarouselSlots>;
@@ -118,7 +123,7 @@ export type CarouselNavButtonSlots = {
 // @public
 export type CarouselNavButtonState = ComponentState<CarouselNavButtonSlots> & {
     selected?: boolean;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots>;
@@ -135,7 +140,7 @@ export type CarouselNavImageButtonProps = ComponentProps<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavImageButtonSlots = {
     root: NonNullable<Slot<ARIAButtonSlotProps>>;
-    image: Slot<'img'>;
+    image: NonNullable<Slot<'img'>>;
 };
 
 // @public
@@ -146,7 +151,7 @@ export type CarouselNavImageButtonState = ComponentState<CarouselNavImageButtonS
 // @public (undocumented)
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
     children: NavButtonRenderFunction;
-};
+} & Pick<CarouselNavState, 'appearance'>;
 
 // @public (undocumented)
 export type CarouselNavSlots = {
@@ -155,17 +160,20 @@ export type CarouselNavSlots = {
 
 // @public (undocumented)
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-    values: string[];
+    totalSlides: number;
     renderNavButton: NavButtonRenderFunction;
+    appearance?: 'brand';
 };
 
 // @public
 export type CarouselProps = ComponentProps<CarouselSlots> & {
-    defaultValue?: string;
+    defaultActiveIndex?: number;
     align?: 'center' | 'start' | 'end';
-    value?: string;
-    onValueChange?: EventHandler<CarouselValueChangeData>;
+    activeIndex?: number;
+    onActiveIndexChange?: EventHandler<CarouselIndexChangeData>;
     circular?: boolean;
+    groupSize?: number | 'auto';
+    enableDrag?: boolean;
 };
 
 // @public
@@ -194,7 +202,7 @@ export type CarouselSlots = {
 export type CarouselState = ComponentState<CarouselSlots> & CarouselContextValue;
 
 // @public (undocumented)
-export type NavButtonRenderFunction = (value: string) => React_2.ReactNode;
+export type NavButtonRenderFunction = (index: number) => React_2.ReactNode;
 
 // @public
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
@@ -212,7 +220,7 @@ export const renderCarouselCard_unstable: (state: CarouselCardState) => JSX.Elem
 export const renderCarouselFooter_unstable: (state: CarouselFooterState) => JSX.Element;
 
 // @public
-export const renderCarouselNav_unstable: (state: CarouselNavState) => JSX.Element;
+export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSX.Element;
 
 // @public
 export const renderCarouselNavButton_unstable: (state: CarouselNavButtonState) => JSX.Element;
@@ -227,7 +235,7 @@ export const renderCarouselSlider_unstable: (state: CarouselSliderState) => JSX.
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
 
 // @public
-export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<HTMLDivElement>) => CarouselAutoplayButtonState;
+export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<ARIAButtonElement>) => CarouselAutoplayButtonState;
 
 // @public
 export const useCarouselAutoplayButtonStyles_unstable: (state: CarouselAutoplayButtonState) => CarouselAutoplayButtonState;

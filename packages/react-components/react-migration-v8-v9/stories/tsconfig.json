@@ -1,0 +1,24 @@
+{
+  "extends": "../../../../tsconfig.base.json",
+  "compilerOptions": {
+    "strict": true,
+    "target": "ES2019",
+    "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "paths": {}
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
+}

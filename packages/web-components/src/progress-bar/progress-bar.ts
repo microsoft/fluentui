@@ -3,63 +3,18 @@ import { toggleState } from '../utils/element-internals.js';
 import { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**
- * An Progress HTML Element.
+ * A Progress HTML Element.
  * Implements the {@link https://www.w3.org/TR/wai-aria-1.1/#progressbar | ARIA progressbar }.
  *
  * @public
  */
-export class ProgressBar extends FASTElement {
+export class BaseProgressBar extends FASTElement {
   /**
    * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
    *
    * @internal
    */
   public elementInternals: ElementInternals = this.attachInternals();
-
-  /**
-   * The thickness of the progress bar
-   *
-   * @public
-   * HTML Attribute: `thickness`
-   */
-  @attr
-  public thickness?: ProgressBarThickness;
-
-  /**
-   * Handles changes to thickness attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
-
-  /**
-   * The shape of the progress bar
-   * @public
-   * HTML Attribute: `shape`
-   */
-  @attr
-  public shape?: ProgressBarShape;
-
-  /**
-   * Handles changes to shape attribute custom states
-   * @param prev - the previous state
-   * @param next - the next state
-   */
-  public shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined) {
-    if (prev) {
-      toggleState(this.elementInternals, `${prev}`, false);
-    }
-    if (next) {
-      toggleState(this.elementInternals, `${next}`, true);
-    }
-  }
 
   /**
    * The validation state of the progress bar
@@ -158,5 +113,58 @@ export class ProgressBar extends FASTElement {
     super();
 
     this.elementInternals.role = 'progressbar';
+  }
+}
+
+/**
+ * A Progress HTML Element.
+ * Based on BaseProgressBar and includes style and layout specific attributes
+ *
+ * @public
+ */
+export class ProgressBar extends BaseProgressBar {
+  /**
+   * The thickness of the progress bar
+   *
+   * @public
+   * HTML Attribute: `thickness`
+   */
+  @attr
+  public thickness?: ProgressBarThickness;
+
+  /**
+   * Handles changes to thickness attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public thicknessChanged(prev: ProgressBarThickness | undefined, next: ProgressBarThickness | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
+  }
+
+  /**
+   * The shape of the progress bar
+   * @public
+   * HTML Attribute: `shape`
+   */
+  @attr
+  public shape?: ProgressBarShape;
+
+  /**
+   * Handles changes to shape attribute custom states
+   * @param prev - the previous state
+   * @param next - the next state
+   */
+  public shapeChanged(prev: ProgressBarShape | undefined, next: ProgressBarShape | undefined) {
+    if (prev) {
+      toggleState(this.elementInternals, `${prev}`, false);
+    }
+    if (next) {
+      toggleState(this.elementInternals, `${next}`, true);
+    }
   }
 }

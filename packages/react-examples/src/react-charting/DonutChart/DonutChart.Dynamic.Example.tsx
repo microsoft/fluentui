@@ -6,9 +6,12 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
+  getGradientFromToken,
+  DataVizGradientPalette,
 } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];
@@ -17,6 +20,8 @@ export interface IExampleState {
   innerRadius: number;
   statusKey: number;
   statusMessage: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -38,6 +43,20 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     [DataVizPalette.color12, DataVizPalette.color13, DataVizPalette.color14, DataVizPalette.color15],
     [DataVizPalette.color16, DataVizPalette.color17, DataVizPalette.color18],
   ];
+  private _gradientColors = [
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient1),
+      getGradientFromToken(DataVizGradientPalette.gradient3),
+      getGradientFromToken(DataVizGradientPalette.gradient9),
+    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient2), getGradientFromToken(DataVizGradientPalette.gradient4)],
+    [
+      getGradientFromToken(DataVizGradientPalette.gradient5),
+      getGradientFromToken(DataVizGradientPalette.gradient6),
+      getGradientFromToken(DataVizGradientPalette.gradient10),
+    ],
+    [getGradientFromToken(DataVizGradientPalette.gradient7), getGradientFromToken(DataVizGradientPalette.gradient8)],
+  ];
 
   constructor(props: IDonutChartProps) {
     super(props);
@@ -53,6 +72,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       innerRadius: 35,
       statusKey: 0,
       statusMessage: '',
+      enableGradient: false,
+      roundCorners: false,
     };
 
     this._changeData = this._changeData.bind(this);
@@ -64,6 +85,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       chartTitle: 'Donut chart dynamic example',
       chartData: this.state.dynamicData,
     };
+
     return (
       <div>
         <Checkbox
@@ -77,6 +99,24 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           checked={this.state.showLabelsInPercent}
           onChange={this._onShowPercentCheckChange}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle
+            label="Enable Gradient"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleGradient}
+            checked={this.state.enableGradient}
+          />
+          &nbsp;&nbsp;
+          <Toggle
+            label="Rounded Corners"
+            onText="ON"
+            offText="OFF"
+            onChange={this._onToggleRoundCorners}
+            checked={this.state.roundCorners}
+          />
+        </div>
+
         <DonutChart
           data={data}
           innerRadius={this.state.innerRadius}
@@ -85,6 +125,8 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           }}
           hideLabels={this.state.hideLabels}
           showLabelsInPercent={this.state.showLabelsInPercent}
+          enableGradient={this.state.enableGradient}
+          roundCorners={this.state.roundCorners}
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
@@ -97,6 +139,14 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
       </div>
     );
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
 
   private _changeData(): void {
     this.setState(prevState => ({
@@ -114,10 +164,10 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
   private _changeColors(): void {
     this.setState(prevState => ({
       dynamicData: [
-        { legend: 'first', data: 40, color: this._randomColor(0) },
-        { legend: 'second', data: 20, color: this._randomColor(1) },
-        { legend: 'third', data: 30, color: this._randomColor(2) },
-        { legend: 'fourth', data: 10, color: this._randomColor(3) },
+        { legend: 'first', data: 40, color: this._randomColor(0), gradient: this._randomGradient(0) },
+        { legend: 'second', data: 20, color: this._randomColor(1), gradient: this._randomGradient(1) },
+        { legend: 'third', data: 30, color: this._randomColor(2), gradient: this._randomGradient(2) },
+        { legend: 'fourth', data: 10, color: this._randomColor(3), gradient: this._randomGradient(3) },
       ],
       statusKey: prevState.statusKey + 1,
       statusMessage: 'Donut chart colors changed',
@@ -130,6 +180,10 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
 
   private _randomColor(index: number): string {
     return getColorFromToken(this._colors[index][Math.floor(Math.random() * this._colors[index].length)]);
+  }
+
+  private _randomGradient(index: number): [string, string] {
+    return this._gradientColors[index][Math.floor(Math.random() * this._gradientColors[index].length)];
   }
 
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {

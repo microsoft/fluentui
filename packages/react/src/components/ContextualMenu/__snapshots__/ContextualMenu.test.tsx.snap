@@ -22,7 +22,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
-        height: 32px;
+        min-height: 32px;
         min-width: 80px;
         outline: transparent;
         padding-bottom: 0;
@@ -118,6 +118,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
           ms-Button-menuIcon
           {
             display: inline-block;
+            text-decoration: inherit;
           }
           {
             -moz-osx-font-smoothing: grayscale;
@@ -492,6 +493,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                   line-height: 36px;
                                   speak: none;
                                   text-align: center;
+                                  text-decoration: inherit;
                                   vertical-align: middle;
                                 }
                                 &:hover {

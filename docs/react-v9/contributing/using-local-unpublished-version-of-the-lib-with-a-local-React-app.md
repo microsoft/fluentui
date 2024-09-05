@@ -105,7 +105,7 @@ Now, whenever you make tweaks to the `fluentui` lib, you simply need to rebuild 
 
 ```
 $ cd fluentui
-$ yarn buildto react
+$ yarn nx run react:build
 ```
 
 And the changes should be automatically picked up by the `app`.

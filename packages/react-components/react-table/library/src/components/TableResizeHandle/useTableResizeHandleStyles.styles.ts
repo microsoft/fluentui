@@ -37,7 +37,7 @@ const useStyles = makeStyles({
       opacity: 1,
     },
 
-    ':after': {
+    '::after': {
       content: '" "',
       display: 'block',
       width: '1px',

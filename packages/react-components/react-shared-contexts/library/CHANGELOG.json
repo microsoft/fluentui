@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Tue, 23 Jul 2024 20:13:13 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.20.0",
+      "version": "9.20.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "c4558a5330549324debd15bc2d07e985452a8b0c",
+            "comment": "chore: adds custom style hook for MenuItemLink"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:45 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.19.1",
       "version": "9.19.1",

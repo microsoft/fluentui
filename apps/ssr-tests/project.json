@@ -5,6 +5,9 @@
   "implicitDependencies": [],
   "tags": ["v8"],
   "targets": {
-    "test-ssr": { "dependsOn": ["bundle", "^bundle"] }
+    "test-ssr": {
+      "dependsOn": ["bundle"]
+    },
+    "bundle": { "dependsOn": ["^build"] }
   }
 }

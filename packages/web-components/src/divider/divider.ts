@@ -140,7 +140,7 @@ export class Divider extends BaseDivider {
    * Adds padding to the beginning and end of the divider.
    */
   @attr({ mode: 'boolean' })
-  public inset?: boolean = false;
+  public inset?: boolean;
 
   /**
    * Handles changes to inset custom states

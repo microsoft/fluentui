@@ -289,17 +289,20 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         cardDismissDelay={300}
         target={this._hoverCardRef}
       >
-        <div
-          className={classNames.overflowIndicationTextStyle}
-          ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
-          {...(allowFocusOnLegends && {
-            role: 'button',
-            'aria-expanded': this.state.isHoverCardVisible,
-            'aria-label': `${items.length} ${overflowString}`,
-          })}
-          data-is-focusable={allowFocusOnLegends}
-        >
-          {items.length} {overflowString}
+        {/* "button" role is not allowed as a child of parent role "listbox" */}
+        <div role="option">
+          <div
+            className={classNames.overflowIndicationTextStyle}
+            ref={(rootElem: HTMLDivElement) => (this._hoverCardRef = rootElem)}
+            {...(allowFocusOnLegends && {
+              role: 'button',
+              'aria-expanded': this.state.isHoverCardVisible,
+              'aria-label': `${items.length} ${overflowString}`,
+            })}
+            data-is-focusable={allowFocusOnLegends}
+          >
+            {items.length} {overflowString}
+          </div>
         </div>
       </HoverCard>
     );

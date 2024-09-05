@@ -8,6 +8,8 @@ import { useRootTree } from '../../hooks/useRootTree';
 import { useSubtree } from '../../hooks/useSubtree';
 import { useTreeNavigation } from '../../hooks/useTreeNavigation';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
+import { ImmutableSet } from '../../utils/ImmutableSet';
+import { ImmutableMap } from '../../utils/ImmutableMap';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
   'use no memo';
@@ -36,7 +38,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
           const nextOpenItems = createNextOpenItems(data, openItems);
           props.onOpenChange?.(event, {
             ...data,
-            openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+            openItems: ImmutableSet.dangerouslyGetInternalSet(nextOpenItems),
           });
           setOpenItems(nextOpenItems);
         }),
@@ -52,7 +54,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
           const nextCheckedItems = createNextNestedCheckedItems(data, checkedItems);
           props.onCheckedChange?.(event, {
             ...data,
-            checkedItems: nextCheckedItems.dangerouslyGetInternalMap_unstable(),
+            checkedItems: ImmutableMap.dangerouslyGetInternalMap(nextCheckedItems),
           });
         }),
       },

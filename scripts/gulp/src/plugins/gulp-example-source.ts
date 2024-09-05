@@ -1,5 +1,5 @@
 import * as Babel from '@babel/core';
-import { CLIEngine } from 'eslint';
+import { ESLint } from 'eslint';
 import gutil from 'gulp-util';
 import prettier from 'prettier';
 import through from 'through2';
@@ -12,13 +12,13 @@ import { ExampleSource } from './util/docs-types';
 
 const prettierConfig = require('../../../../prettier.config');
 
-// eslint-disable-next-line deprecation/deprecation
-const ESLint = new CLIEngine({
+const eslint = new ESLint({
   fix: true,
 });
+
 const pluginName = 'gulp-example-source';
 
-const createExampleSourceCode = (file: Vinyl): ExampleSource => {
+const createExampleSourceCode = async (file: Vinyl): Promise<ExampleSource> => {
   const tsSource = file.contents?.toString() ?? '';
 
   const babelResult = Babel.transform(tsSource, {
@@ -28,6 +28,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
     sourceType: 'module',
   });
+
   const prettierResult = prettier.format(babelResult?.code ?? '', {
     ...prettierConfig,
     trailingComma: 'all',
@@ -35,9 +36,11 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
     semi: false,
     parser: 'babel',
   });
+
   // https://eslint.org/docs/developer-guide/nodejs-api#cliengineexecuteontext
   // Results will contain single entry
-  const eslintResult = ESLint.executeOnText(prettierResult, file.path).results[0];
+  const results = await eslint.lintText(prettierResult, { filePath: file.path });
+  const eslintResult = results[0];
 
   return {
     // result.output is omitted if no fix is available
@@ -47,7 +50,7 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
 };
 
 export default () =>
-  through.obj((file: Vinyl, enc, cb) => {
+  through.obj(async (file: Vinyl, _, cb) => {
     if (file.isNull()) {
       cb(null, file);
       return;
@@ -60,7 +63,7 @@ export default () =>
 
     try {
       const sourcePath = getRelativePathToSourceFile(file.path);
-      const source = createExampleSourceCode(file);
+      const source = await createExampleSourceCode(file);
 
       const sourceFile = new Vinyl({
         path: sourcePath,

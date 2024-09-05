@@ -60,6 +60,10 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
    */
   onColumnContextMenu?: (column: IColumn, ev: React.MouseEvent<HTMLElement>) => void;
   /**
+   * Callback fired when keydown event occurs.
+   */
+  onColumnKeyDown?: (ev: React.KeyboardEvent, column: IColumn) => void;
+  /**
    * The drag and drop helper for the component instance.
    */
   dragDropHelper?: IDragDropHelper | null;

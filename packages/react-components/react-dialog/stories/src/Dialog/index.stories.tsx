@@ -3,7 +3,6 @@ import { Dialog, DialogSurface, DialogTitle, DialogActions, DialogTrigger } from
 import descriptionMd from './DialogDescription.md';
 import bestPracticesMd from './DialogBestPractices.md';
 import a11yMd from './DialogA11y.md';
-import { ComponentMeta } from '@storybook/react';
 
 export { Default } from './DialogDefault.stories';
 export { NonModal } from './DialogNonModal.stories';
@@ -20,7 +19,11 @@ export { WithForm } from './DialogWithForm.stories';
 export { TitleCustomAction } from './DialogTitleCustomAction.stories';
 export { TitleNoAction } from './DialogTitleNoAction.stories';
 
-const metadata: ComponentMeta<typeof Dialog> = {
+// Typing with Meta<typeof Dialog> generates a type error for the `subcomponents` property.
+// https://github.com/storybookjs/storybook/issues/27535
+//
+// TODO: bring back typing when the issue is resolved
+const metadata = {
   title: 'Components/Dialog',
   component: Dialog,
   subcomponents: {

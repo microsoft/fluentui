@@ -405,6 +405,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         ms-Button-icon
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -932,6 +933,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                         ms-Button-icon
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;

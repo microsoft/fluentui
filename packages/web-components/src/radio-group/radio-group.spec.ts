@@ -1,5 +1,5 @@
-import { expect, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import type { Radio } from '../radio/index.js';
 import type { RadioGroup } from './radio-group.js';
 
@@ -257,9 +257,6 @@ test.describe('RadioGroup', () => {
   });
 
   test('should mark only the last radio defaulted to checked as checked', async ({ page }) => {
-    const element = page.locator('fluent-radio-group');
-    const radios = element.locator('fluent-radio');
-
     await page.setContent(/* html */ `
         <fluent-radio-group>
             <fluent-radio value="foo" checked></fluent-radio>
@@ -267,6 +264,9 @@ test.describe('RadioGroup', () => {
             <fluent-radio value="baz" checked></fluent-radio>
         </fluent-radio-group>
     `);
+
+    const element = page.locator('fluent-radio-group');
+    const radios = element.locator('fluent-radio');
 
     expect(await radios.evaluateAll((radios: Radio[]) => radios.filter(radio => radio.checked).length)).toBe(1);
 

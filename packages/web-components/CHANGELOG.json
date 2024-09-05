@@ -2,6 +2,322 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 30 Aug 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.62",
+      "version": "3.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "6f53f9702d46ac50562ba861b7a70baca6a3dcb3",
+            "comment": "fix: add primary button state and improved button disabled state in forced-colors mode"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 29 Aug 2024 04:07:09 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.61",
+      "version": "3.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "e15398ac2b81b40f92171d4966e57c0734377355",
+            "comment": "chore: add missing exports for LinkStyles and MessageBar and remove default option from DividerApperance and ImageFit"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Aug 2024 04:06:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.60",
+      "version": "3.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bfa731b32f26991c1ff4335d3e6e0472ffb7868a",
+            "comment": "feat: adjust slider sliding range"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 21 Aug 2024 04:07:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.59",
+      "version": "3.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "13071055+chrisdholt@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "7f1015092b1d1fe1aa9a421a2725af3c82dc392d",
+            "comment": "feat: update fast-element to latest stable version"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Aug 2024 04:06:57 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.58",
+      "version": "3.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "07f70bdc0c1d0718ff35b3aef8f7ac87635520e3",
+            "comment": "feat: enabling setting theme on an individual element and unsetting themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Aug 2024 04:08:15 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.57",
+      "version": "3.0.0-beta.57",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "8492a7ebd12270b49dd3083671a859ada31b395b",
+            "comment": "remove web types package and configuration"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "3d0b2597d3b41868bf15d2c14b15fe6873b0b5c2",
+            "comment": "export BaseCheckbox class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 14 Aug 2024 04:07:35 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.56",
+      "version": "3.0.0-beta.56",
+      "comments": {
+        "none": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "4aae6edaf04c16be98d5ee2121ea366a2a9ceb98",
+            "comment": "update tests to be async"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf96935c37fddfdc7274787e72ea6566bda01458",
+            "comment": "feat(web-components): add fluent-textarea component"
+          },
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "dbea17157bcc0a705ddca4264fec4d18d5fa13a6",
+            "comment": "export BaseAnchor class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Aug 2024 04:07:16 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.55",
+      "version": "3.0.0-beta.55",
+      "comments": {
+        "none": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef15b5dae40f0db635275671ae51862071a82d2a",
+            "comment": "upgrade to storybook v7"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c971f0fec783527bebbafbcd687034e3f0aa4ca3",
+            "comment": "[chore]: [rating-display] move size, color and generate icons out of base class"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Aug 2024 04:08:14 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "30765e0d03df293c466e93b631f93b4d09a455b2",
+            "comment": "chore: revert type-check definition and follow repo target defaults for consistency and type-check speeds"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 06 Aug 2024 04:07:08 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.54",
+      "version": "3.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ec6b5c70deabef4c992e4f1f2b052971fa9569b2",
+            "comment": "Add Tablist component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Aug 2024 04:08:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.53",
+      "version": "3.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "89959ae94f9f7aa53a761ca9f2f778693462bd02",
+            "comment": "fix(web-components): detach design tokens from existing themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Aug 2024 04:07:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.52",
+      "version": "3.0.0-beta.52",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mlijanto@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "aafddb7a0cc9042ea1aec71bfa1c0c0cda524d75",
+            "comment": "Export patterns."
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "449457bbf21af43db4c83590edee402e2b637f22",
+            "comment": "feat: abstracts layout api from field class"
+          }
+        ],
+        "none": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "6336863c0bd99c7167508bb6feae8967ad444a79",
+            "comment": "ci: ensure package is built first before running type-check to mitigate build error."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Jul 2024 04:07:23 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.51",
+      "version": "3.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "04c9a2ab618abe651852098544321339463daa92",
+            "comment": "chore: move size and generate initials out of base class"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "29df42688cd3237dcefc86691a54a4ba9f37e616",
+            "comment": "fix: reference accordion item base class in accordion"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jul 2024 04:08:24 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.50",
+      "version": "3.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "da667ca385f85c30de192de376062ed0333f810c",
+            "comment": "[chore]: create base class for accordion item and remove style and layout specific api"
+          }
+        ],
+        "none": [
+          {
+            "author": "vgenaev@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "1eb29be121a9e0639f2e1a501518033c785003b7",
+            "comment": "chore: suppress @typescript-eslint/no_unsafe_declaration-merging reports"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Jul 2024 04:08:33 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.49",
+      "version": "3.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "bf6be2bc0e92b7e5024faaa4a45d1e953f7bcf61",
+            "comment": "chore: create avatar base class to abstract style specfic api"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fe4b9c436349b43129c04f62c5febdbb6e89d0f0",
+            "comment": "chore: create base class for textinput and remove style and layout specific api"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Jul 2024 04:07:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.48",
+      "version": "3.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "60952ac19534a4299c4b3263b21e3c07470bd099",
+            "comment": "chore: create base class for progress bar and remove style and layout specfic api"
+          },
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "273f6aae649bbec4e36f300f6467ae72f1960cfd",
+            "comment": "feat(web-components): relax setTheme() argument type to allow custom tokens"
+          },
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "970bf5ca221b35fcf03c89b4e20e1b350dbe4406",
+            "comment": "chore: create base class for spinner and remove style and layout specfic api"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 04:07:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.47",
       "version": "3.0.0-beta.47",

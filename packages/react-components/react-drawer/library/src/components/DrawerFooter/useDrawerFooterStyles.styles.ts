@@ -28,14 +28,14 @@ const useStyles = makeResetStyles({
 
 const useDrawerFooterStyles = makeStyles({
   separator: {
-    ':before': {
+    '::before': {
       ...drawerSeparatorStyles,
       top: 0,
     },
   },
 
   separatorVisible: {
-    ':before': {
+    '::before': {
       opacity: 1,
     },
   },

@@ -123,11 +123,11 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, { 
             <div className={classNames.headerTitle}>{`Custom header for ${props.group!.name}`}</div>
             <div className={classNames.headerLinkSet}>
               {props.selectionMode !== SelectionMode.none ? (
-                <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)}>
+                <Link className={classNames.headerLink} onClick={this._onToggleSelectGroup(props)} underline>
                   {props.selected ? 'Remove selection' : 'Select group'}
                 </Link>
               ) : null}
-              <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)}>
+              <Link className={classNames.headerLink} onClick={this._onToggleCollapse(props)} underline>
                 {props.group!.isCollapsed ? 'Expand group' : 'Collapse group'}
               </Link>
             </div>

@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Mon, 15 Jul 2024 17:25:42 GMT and should not be manually modified.
+This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.17.2)
+
+Thu, 15 Aug 2024 13:49:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.17.1..@fluentui/react-provider_v9.17.2)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.5 ([PR #32313](https://github.com/microsoft/fluentui/pull/32313) by beachball)
+
+## [9.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.17.1)
+
+Thu, 15 Aug 2024 08:22:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.17.0..@fluentui/react-provider_v9.17.1)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.22.4 ([PR #31885](https://github.com/microsoft/fluentui/pull/31885) by beachball)
+
+## [9.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.17.0)
+
+Tue, 23 Jul 2024 20:13:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.16.5..@fluentui/react-provider_v9.17.0)
+
+### Minor changes
+
+- chore: adds custom style hook for MenuItemLink ([PR #32045](https://github.com/microsoft/fluentui/pull/32045) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.20.0 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-tabster to v9.22.3 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-utilities to v9.18.13 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.42 ([PR #32067](https://github.com/microsoft/fluentui/pull/32067) by beachball)
 
 ## [9.16.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.16.5)
 

@@ -97,11 +97,19 @@ export {
 } from './NavSectionHeader';
 export type { NavDividerProps, NavDividerState } from './NavDivider';
 export { NavDivider, navDividerClassNames, useNavDividerStyles_unstable, useNavDivider_unstable } from './NavDivider';
-export type { AppNodeProps, AppNodeSlots, AppNodeState } from './AppNode';
+export type { AppItemProps, AppItemSlots, AppItemState } from './AppItem';
 export {
-  AppNode,
-  appNodeClassNames,
-  renderAppNode_unstable,
-  useAppNodeStyles_unstable,
-  useAppNode_unstable,
-} from './AppNode';
+  AppItem,
+  appItemClassNames,
+  renderAppItem_unstable,
+  useAppItemStyles_unstable,
+  useAppItem_unstable,
+} from './AppItem';
+export type { AppItemStaticProps, AppItemStaticSlots, AppItemStaticState } from './AppItemStatic';
+export {
+  AppItemStatic,
+  appItemStaticClassNames,
+  renderAppItemStatic_unstable,
+  useAppItemStaticStyles_unstable,
+  useAppItemStatic_unstable,
+} from './AppItemStatic';

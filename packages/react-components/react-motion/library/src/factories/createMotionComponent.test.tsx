@@ -3,13 +3,7 @@ import * as React from 'react';
 
 import type { AtomMotion } from '../types';
 import { createMotionComponent } from './createMotionComponent';
-
-jest.mock('./createMotionComponent', () => {
-  // Add a mock for the `animate` method on the HTMLElement prototype as jsdom does not support it
-  Element.prototype.animate = jest.fn();
-
-  return jest.requireActual('./createMotionComponent');
-});
+import { MotionBehaviourProvider } from '../contexts/MotionBehaviourContext';
 
 const motion: AtomMotion = {
   keyframes: [{ opacity: 0 }, { opacity: 1 }],
@@ -42,10 +36,6 @@ function createElementMock() {
 }
 
 describe('createMotionComponent', () => {
-  it('has mock for .animate()', () => {
-    expect(Element.prototype.animate).toBeDefined();
-  });
-
   it('creates a motion and plays it', () => {
     const TestAtom = createMotionComponent(motion);
     const { animateMock, ElementMock } = createElementMock();
@@ -100,5 +90,28 @@ describe('createMotionComponent', () => {
 
     expect(onMotionStart).toHaveBeenCalledTimes(1);
     expect(onMotionFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('finishes motion when wrapped in motion context with skip behaviour', async () => {
+    const TestAtom = createMotionComponent(motion);
+    const onMotionStart = jest.fn();
+    const onMotionFinish = jest.fn();
+
+    const { finishMock, ElementMock } = createElementMock();
+
+    render(
+      <TestAtom onMotionFinish={onMotionFinish} onMotionStart={onMotionStart}>
+        <ElementMock />
+      </TestAtom>,
+      { wrapper: ({ children }) => <MotionBehaviourProvider value="skip">{children}</MotionBehaviourProvider> },
+    );
+
+    await act(async () => {
+      await new Promise<void>(process.nextTick);
+    });
+
+    expect(onMotionStart).toHaveBeenCalledTimes(1);
+    expect(onMotionFinish).toHaveBeenCalledTimes(1);
+    expect(finishMock).toHaveBeenCalledTimes(1);
   });
 });

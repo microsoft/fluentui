@@ -1,5 +1,5 @@
-import { expect, Locator, test } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
+import { Locator, test } from '@playwright/test';
+import { expect, fixtureURL } from '../helpers.tests.js';
 import { RatingDisplaySize } from './rating-display.options.js';
 import { RatingDisplay } from './rating-display.js';
 
@@ -77,7 +77,7 @@ test.describe('Rating Display', () => {
     });
 
     expect(await element.evaluate((node: RatingDisplay) => node.color)).toBe('brand');
-    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('brand'))).toBe(true);
+    await expect(element).toHaveCustomState('brand');
 
     for (const icon of await page.locator('svg:nth-child(-n+8 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(15, 108, 189)');
@@ -92,7 +92,7 @@ test.describe('Rating Display', () => {
     });
 
     expect(await element.evaluate((node: RatingDisplay) => node.color)).toBe('neutral');
-    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('neutral'))).toBe(true);
+    await expect(element).toHaveCustomState('neutral');
 
     for (const icon of await page.locator('svg:nth-child(-n+8 of [aria-hidden="true"])').all()) {
       await expect(icon).toHaveCSS('fill', 'rgb(36, 36, 36)');
@@ -151,7 +151,7 @@ test.describe('Rating Display', () => {
     });
 
     expect(await element.evaluate((node: RatingDisplay) => node.size)).toBe('small');
-    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('small'))).toBe(true);
+    await expect(element).toHaveCustomState('small');
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.small);
     await expect(icon).toHaveCSS('width', '12px');
@@ -165,7 +165,7 @@ test.describe('Rating Display', () => {
     });
 
     expect(await element.evaluate((node: RatingDisplay) => node.size)).toBe('large');
-    expect(await element.evaluate((node: RatingDisplay) => node.elementInternals.states.has('large'))).toBe(true);
+    await expect(element).toHaveCustomState('large');
 
     await expect(element).toHaveJSProperty('size', RatingDisplaySize.large);
     await expect(icon).toHaveCSS('width', '20px');

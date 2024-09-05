@@ -5,6 +5,7 @@
   "implicitDependencies": [],
   "tags": ["vNext"],
   "targets": {
+    "test-perf": { "dependsOn": ["bundle"] },
     "bundle": { "dependsOn": [] }
   }
 }

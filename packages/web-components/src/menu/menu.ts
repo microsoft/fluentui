@@ -49,28 +49,28 @@ export class Menu extends FASTElement {
    * @public
    */
   @attr({ attribute: 'open-on-hover', mode: 'boolean' })
-  public openOnHover?: boolean = false;
+  public openOnHover?: boolean;
 
   /**
    * Determines if the menu should open on right click.
    * @public
    */
   @attr({ attribute: 'open-on-context', mode: 'boolean' })
-  public openOnContext?: boolean = false;
+  public openOnContext?: boolean;
 
   /**
    * Determines if the menu should close on scroll.
    * @public
    */
   @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
-  public closeOnScroll?: boolean = false;
+  public closeOnScroll?: boolean;
 
   /**
    * Determines if the menu open state should persis on click of menu item
    * @public
    */
   @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
-  public persistOnItemClick?: boolean = false;
+  public persistOnItemClick?: boolean;
 
   /**
    * Holds the slotted menu list.
@@ -145,6 +145,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public toggleMenu = () => {
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(!this._open);
   };
 
@@ -161,7 +162,7 @@ export class Menu extends FASTElement {
     ) {
       return;
     }
-
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -174,6 +175,7 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu = (e?: Event) => {
+    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(true);
 
     if (e && this.openOnContext) {
@@ -211,8 +213,10 @@ export class Menu extends FASTElement {
    * @param e - the event
    * @returns void
    */
-  public toggleHandler = (e: Event | ToggleEvent): void => {
-    if (e instanceof ToggleEvent) {
+  public toggleHandler = (e: Event): void => {
+    // @ts-expect-error - Baseline 2024
+    if (e.type === 'toggle' && e.newState) {
+      // @ts-expect-error - Baseline 2024
       const newState = e.newState === 'open' ? true : false;
       this._trigger?.setAttribute('aria-expanded', `${newState}`);
       this._open = newState;

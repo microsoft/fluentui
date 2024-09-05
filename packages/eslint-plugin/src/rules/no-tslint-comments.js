@@ -7,7 +7,7 @@ module.exports = createRule({
     type: 'problem',
     docs: {
       description: 'Forbid tslint:disable/tslint:enable comments after ESLint migration.',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     messages: {
       tslint: 'tslint:{{verb}} comments are unnecessary with ESLint',
@@ -17,7 +17,7 @@ module.exports = createRule({
   defaultOptions: [],
   create: context => {
     const tslintCommentRegex = /^\s*tslint ?: ?(disable|enable)/;
-    const sourceCode = context.getSourceCode();
+    const { sourceCode } = context;
 
     return {
       Program: () => {

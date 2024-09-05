@@ -150,6 +150,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -296,6 +297,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -482,6 +484,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
@@ -628,6 +631,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                 ms-Button-menuIcon
                 {
                   display: inline-block;
+                  text-decoration: inherit;
                 }
                 {
                   -moz-osx-font-smoothing: grayscale;
