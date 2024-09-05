@@ -116,7 +116,7 @@ export interface IDomainNRange {
 
 export interface IXAxisParams {
   domainNRangeValues: IDomainNRange;
-  xAxisElement?: SVGElement | null;
+  xAxisElement?: SVGSVGElement | null;
   xAxisCount?: number;
   showRoundOffXTickValues?: boolean;
   xAxistickSize?: number;
@@ -141,7 +141,7 @@ export interface IYAxisParams {
   margins: IMargins;
   containerWidth: number;
   containerHeight: number;
-  yAxisElement?: SVGElement | null;
+  yAxisElement?: SVGSVGElement | null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   yAxisTickFormat?: any;
   yAxisTickCount: number;
@@ -598,7 +598,7 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   if (node === null) {
     return;
   }
-  const axisNode = d3Select(node).call(xAxis);
+  const axisNode = d3Select(node).call(g => xAxis);
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
@@ -1259,7 +1259,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   let maxHeight: number = 0;
   const xAxisTranslations: string[] = [];
   d3Select(node)
-    .call(xAxis)
+    .call(g => xAxis)
     .selectAll('.tick')
     .each(function () {
       const translateValue = (this as SVGElement).getAttribute('transform');
@@ -1282,7 +1282,7 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
 
   let idx = 0;
   d3Select(node)
-    .call(xAxis)
+    .call(g => xAxis)
     .selectAll('.tick')
     .each(function () {
       if (xAxisTranslations.length > idx) {
