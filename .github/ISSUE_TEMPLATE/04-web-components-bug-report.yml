@@ -1,4 +1,4 @@
-name: 🌎 Web Components - 🐞 Bug Report
+name: '🌎 Web Components - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'web-components']

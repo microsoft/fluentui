@@ -26,7 +26,6 @@ body:
     id: documentation-issue-type
     attributes:
       label: What kind of documentation issue are you reporting?
-      description:
       options:
         - label: Reporting a typo
         - label: Reporting a documentation bug
@@ -36,7 +35,7 @@ body:
       required: true
 
   - type: textarea
-    id: pages
+    id: url-pages
     attributes:
       label: Is there a specific documentation page you are reporting?
       description: |

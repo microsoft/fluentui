@@ -1,4 +1,4 @@
-name: ⚛️ React (v8) - 🐞 Bug Report
+name: '⚛️ React (v8) - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'react v8']

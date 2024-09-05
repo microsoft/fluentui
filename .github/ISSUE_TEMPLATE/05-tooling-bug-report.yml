@@ -1,4 +1,4 @@
-name: ⚙️ Tooling - 🐞 Bug Report
+name: '⚙️ Tooling - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'Build System']

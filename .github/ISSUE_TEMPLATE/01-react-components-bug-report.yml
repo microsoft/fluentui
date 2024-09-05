@@ -1,4 +1,4 @@
-name: ⚛️ React Components - 🐞 Bug Report
+name: '⚛️ React Components - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'react-components v9']
