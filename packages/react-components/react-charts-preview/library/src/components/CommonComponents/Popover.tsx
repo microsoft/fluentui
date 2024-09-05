@@ -36,7 +36,11 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
     <div id={useId('callout')} {...focusAttributes}>
-      <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
+      <Popover
+        positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
+        open={props.isPopoverOpen}
+        inline
+      >
         <PopoverSurface tabIndex={-1}>
           {/** Given custom callout, then it will render */}
           {props.customizedCallout && props.customizedCallout}
