@@ -15,7 +15,7 @@
   margin-top: 49px;
 }
 
-#storybook-docs details {
+#storybook-docs details:not(.sbdocs-preview details) {
   position: relative;
   z-index: 99;
 }
@@ -276,7 +276,7 @@
   line-height: 21px;
 }
 
-#storybook-docs code,
+#storybook-docs code:not(.sbdocs-preview code),
 #storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
@@ -313,7 +313,7 @@
   white-space: normal;
 }
 
-#storybook-docs code {
+#storybook-docs code:not(.sbdocs-preview code) {
   padding: 0.1em 0.2em;
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
