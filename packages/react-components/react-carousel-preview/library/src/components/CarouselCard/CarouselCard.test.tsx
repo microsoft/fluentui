@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { CarouselCard } from './CarouselCard';
 import { setTabsterDefault } from '../useEmblaCarousel';
-import { useTabsterAttributes } from '@fluentui/react-tabster';
 import { getTabsterAttribute } from 'tabster';
 
 describe('CarouselCard', () => {
