@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2024 07:21:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.22.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.4)
+
+Fri, 06 Sep 2024 07:21:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.22.3..@fluentui/react-charting_v5.22.4)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.172 ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by beachball)
+- Bump @fluentui/react to v8.120.8 ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by beachball)
 
 ## [5.22.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.3)
 
