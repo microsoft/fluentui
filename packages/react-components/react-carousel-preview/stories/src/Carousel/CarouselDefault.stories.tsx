@@ -69,7 +69,7 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = pr
 };
 
 export const Default = () => (
-  <Carousel groupSize={1}>
+  <Carousel groupSize={1} circular>
     <CarouselSlider>
       {IMAGES.concat(IMAGES).map((imageSrc, index) => (
         <BannerCard key={`image-${index}`} imageSrc={imageSrc}>
