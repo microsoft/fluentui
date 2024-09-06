@@ -5,7 +5,7 @@ import { type BabelFileResult, transformAsync } from '@babel/core';
 import { globSync } from 'fast-glob';
 import { logger } from '@nx/devkit';
 
-import { type NormalizedOptions } from './executor';
+import { type NormalizedOptions } from './shared';
 
 const EOL_REGEX = /\r?\n/g;
 
@@ -30,7 +30,7 @@ export async function babel(
     return;
   }
 
-  logger.log(`processing griffel AOT with babel: ${files.length} files`);
+  logger.log(`Processing griffel AOT with babel: ${files.length} files`);
 
   for (const filename of files) {
     const filePath = join(filesRoot, filename);

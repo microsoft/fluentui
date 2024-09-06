@@ -1,4 +1,4 @@
-import { readFileSync, rmSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { basename, dirname, join } from 'node:path';
 import { globSync } from 'fast-glob';
@@ -6,7 +6,8 @@ import { isMatch } from 'micromatch';
 
 import { transform, type Config } from '@swc/core';
 import { logger, readJsonFile } from '@nx/devkit';
-import { type NormalizedOptions } from './executor';
+
+import { type NormalizedOptions } from './shared';
 
 interface Options {
   module: 'es6' | 'commonjs' | 'amd';
@@ -17,12 +18,7 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
   const { outputPath, module } = options;
   const absoluteOutputPath = join(normalizedOptions.absoluteProjectRoot, outputPath);
 
-  logger.log(`Compiling with SWC for ${normalizedOptions.project.name} with module:${options.module}...`);
-
-  if (normalizedOptions.clean) {
-    logger.log(`Cleaning output path: ${absoluteOutputPath}`);
-    rmSync(absoluteOutputPath, { recursive: true, force: true });
-  }
+  logger.log(`Compiling with SWC for module:${options.module}...`);
 
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
 

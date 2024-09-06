@@ -1,4 +1,4 @@
-import { type ExecutorContext, logger } from '@nx/devkit';
+import { type ExecutorContext, logger, stripIndents } from '@nx/devkit';
 
 import { BuildExecutorSchema } from './schema';
 import executor from './executor';
@@ -6,7 +6,7 @@ import { join } from 'node:path';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 
 // ===== mocks start =====
-import { rmSync } from 'node:fs';
+import { rm } from 'node:fs/promises';
 // ===== mocks end =====
 
 const options: BuildExecutorSchema = {
@@ -44,20 +44,22 @@ const context: ExecutorContext = {
     projects: {
       proj: {
         root: 'libs/proj',
+        name: 'proj',
       },
     },
   },
 };
 
-jest.mock('node:fs', () => {
-  const actualFs = jest.requireActual('fs');
+jest.mock('node:fs/promises', () => {
+  const actualFs = jest.requireActual('node:fs/promises');
+
   return {
     ...actualFs,
-    rmSync: jest.fn(actualFs.rmSync),
+    rm: jest.fn(actualFs.rm),
   };
 });
 
-const rmSyncMock = rmSync as jest.Mock;
+const rmMock = rm as jest.Mock;
 
 describe('Build Executor', () => {
   it('can run', async () => {
@@ -71,24 +73,37 @@ describe('Build Executor', () => {
     const output = await executor(options, context);
     expect(output.success).toBe(true);
 
-    expect(loggerLogSpy.mock.calls.flat()).toEqual([
-      'Compiling with SWC for undefined with module:es6...',
-      `Cleaning output path: ${workspaceRoot}/libs/proj/lib`,
-      'processing griffel AOT with babel: 1 files',
-      'Compiling with SWC for undefined with module:commonjs...',
-      `Cleaning output path: ${workspaceRoot}/libs/proj/lib-commonjs`,
+    const loggerLogSpyCalls = loggerLogSpy.mock.calls.flat();
+    const [clearLogs, ...restOfLogs] = loggerLogSpyCalls;
+
+    expect(stripIndents`${clearLogs}`).toEqual(stripIndents`
+      Cleaning outputs:
+
+       - ${workspaceRoot}/libs/proj/lib-commonjs
+       - ${workspaceRoot}/libs/proj/lib
+       - ${workspaceRoot}/libs/proj/dist/assets/spec.md
+    `);
+    expect(restOfLogs).toEqual([
+      'Compiling with SWC for module:es6...',
+      'Processing griffel AOT with babel: 1 files',
+      'Compiling with SWC for module:commonjs...',
     ]);
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
     ]);
 
-    expect(rmSyncMock.mock.calls.flat()).toEqual([
+    expect(rmMock.mock.calls.flat()).toEqual([
+      `${workspaceRoot}/libs/proj/lib-commonjs`,
+      {
+        force: true,
+        recursive: true,
+      },
       `${workspaceRoot}/libs/proj/lib`,
       {
         force: true,
         recursive: true,
       },
-      `${workspaceRoot}/libs/proj/lib-commonjs`,
+      `${workspaceRoot}/libs/proj/dist/assets/spec.md`,
       {
         force: true,
         recursive: true,
