@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { clamp, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { clamp, useControllableState, useEventCallback, mergeCallbacks } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import type { ColorSliderState, ColorSliderProps } from './ColorSlider.types';
@@ -28,19 +28,26 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   const clampedValue = clamp(currentValue, min, max);
   const valuePercent = getPercent(clampedValue, min, max);
 
-  const propsOnChange = onChange ?? ctxOnChange;
   const inputOnChange = state.input.onChange;
 
-  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
-    const newValue = Number(ev.target.value);
-    setCurrentValue(clamp(newValue, min, max));
-
-    if (inputOnChange && inputOnChange !== (propsOnChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
-      inputOnChange(ev);
-    } else if (propsOnChange) {
-      propsOnChange(ev, { type: 'change', event: ev, value: newValue, channel });
-    }
-  });
+  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(
+    mergeCallbacks(
+      event => {
+        const newValue = Number(event.target.value);
+        setCurrentValue(clamp(newValue, min, max));
+        if (inputOnChange && inputOnChange !== (onChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
+          inputOnChange(event);
+        } else if (onChange) {
+          onChange(event, { type: 'change', event, value: newValue, channel });
+        }
+      },
+      (event: React.ChangeEvent<HTMLInputElement>) =>
+        ctxOnChange(event, {
+          value: Number(event.target.value),
+          channel,
+        }),
+    ),
+  );
 
   const rootVariables = {
     [sliderDirectionVar]: state.vertical ? '180deg' : dir === 'ltr' ? '-90deg' : '90deg',
