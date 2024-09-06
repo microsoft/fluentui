@@ -19,6 +19,18 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
+export function setTabsterDefault(element: Element, isDefault: boolean) {
+  const tabsterAtt = element.getAttribute('data-tabster');
+  if (tabsterAtt) {
+    const tabsterAttributes = JSON.parse(tabsterAtt);
+    if (tabsterAttributes.focusable) {
+      // If tabster.focusable isn't present, we will ignore.
+      tabsterAttributes.focusable.isDefault = isDefault;
+      element.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
+    }
+  }
+}
+
 export function useEmblaCarousel(
   options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
@@ -74,15 +86,7 @@ export function useEmblaCarousel(
       const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
       // We set the active or first index of group on-screen as the selected tabster index
       slides?.forEach((slide, slideIndex) => {
-        const tabsterAtt = slide.getAttribute('data-tabster');
-        if (tabsterAtt) {
-          const tabsterAttributes = JSON.parse(tabsterAtt);
-          if (tabsterAttributes.focusable) {
-            // If tabster.focusable isn't present, we will ignore.
-            tabsterAttributes.focusable.isDefault = slideIndex === actualIndex;
-            slide.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
-          }
-        }
+        setTabsterDefault(slide, slideIndex === actualIndex);
       });
       setActiveIndex(newIndex);
     };
