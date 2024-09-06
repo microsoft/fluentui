@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Sep 2024 07:21:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.8)
+
+Fri, 06 Sep 2024 07:21:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.7..@fluentui/react_v8.120.8)
+
+### Patches
+
+- fix: ColorPicker initializes focus outlines ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by sarah.higley@microsoft.com)
 
 ## [8.120.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.7)
 
