@@ -105,6 +105,7 @@ export class BaseDropdown extends FASTElement {
 
   private setDisabledSideEffect(disabled: boolean) {
     this.elementInternals.ariaDisabled = `${disabled}`;
+    this.decorator?.setDisabled(disabled);
   }
 }
 

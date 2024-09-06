@@ -169,12 +169,12 @@ export class ComboboxDecorator {
    * @public
    */
   public setDisabled(disabled: boolean) {
-    this.isDisabled = disabled;
-    this.combobox.tabIndex = disabled ? -1 : 0;
-
     if (this.isExpanded) {
       this.toggleListbox(false);
     }
+
+    this.isDisabled = disabled;
+    this.combobox.tabIndex = disabled ? -1 : 0;
   }
 
   /**
@@ -187,6 +187,10 @@ export class ComboboxDecorator {
    *
    */
   public toggleListbox(force?: boolean) {
+    if (this.isDisabled) {
+      return;
+    }
+
     const next = force ?? !this.isExpanded;
     // @ts-expect-error Popover API
     this.listbox.togglePopover(next);
