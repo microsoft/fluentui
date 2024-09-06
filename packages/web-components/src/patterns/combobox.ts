@@ -58,7 +58,6 @@ export class ComboboxDecorator {
   // Even listeners
   private comboboxClickListener?: (event: PointerEvent | MouseEvent) => void;
   private comboboxKeydownListener?: (event: KeyboardEvent) => void;
-  private comboboxBlurListener?: EventListener;
   // @ts-expect-error Popover API
   private listboxToggleListener?: (event: ToggleEvent) => void;
   private listboxInputListener?: (event: Event) => void;
@@ -224,9 +223,6 @@ export class ComboboxDecorator {
 
     this.comboboxKeydownListener = this.handleComboboxKeydown.bind(this);
     this.combobox.addEventListener('keydown', this.comboboxKeydownListener);
-
-    this.comboboxBlurListener = this.handleComboboxBlur.bind(this);
-    this.combobox.addEventListener('blur', this.comboboxBlurListener);
   }
 
   private bindListboxEvents() {
@@ -244,10 +240,6 @@ export class ComboboxDecorator {
 
     if (this.comboboxKeydownListener) {
       this.combobox.removeEventListener('keydown', this.comboboxKeydownListener);
-    }
-
-    if (this.comboboxBlurListener) {
-      this.combobox.removeEventListener('blur', this.comboboxBlurListener);
     }
   }
 
@@ -339,10 +331,6 @@ export class ComboboxDecorator {
     }
   }
 
-  private handleComboboxBlur() {
-    this.toggleListbox(false);
-  }
-
   // @ts-expect-error Popover API
   private handleListboxToggle(evt: ToggleEvent) {
     this.isExpanded = evt.newState === 'open';
@@ -379,10 +367,10 @@ export class ComboboxDecorator {
       case 'Enter':
         return ListboxAction.SELECT;
       case 'Escape':
+      case 'Tab':
         if (this.isExpanded) {
           return ListboxAction.DISMISS;
         }
-        // TODO: Clear values?
         break;
       case 'ArrowUp':
         return ListboxAction.MOVE_TO_PREV;
