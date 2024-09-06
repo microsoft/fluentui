@@ -299,8 +299,14 @@ export class ComboboxDecorator {
           this.togglePopover(true);
           return;
         }
-
-        this.selectActiveOption();
+        if (!this.activeOption) {
+          return;
+        }
+        if (!this.isMultiSelectable && this.selectedOptions.has(this.activeOption)) {
+          this.togglePopover(false);
+          return;
+        }
+        this.activeOption.click();
         break;
     }
   }
@@ -313,7 +319,24 @@ export class ComboboxDecorator {
   private handleListboxInput(evt: Event) {
     const target = evt.target as FluentOptionElement;
     this.activeOption = target;
-    this.selectActiveOption();
+
+    if (this.activeOption.selected) {
+      this.selectedOptions.add(this.activeOption);
+    } else {
+      this.selectedOptions.delete(this.activeOption);
+    }
+
+    if (!this.isMultiSelectable) {
+      for (const option of this.selectedOptions) {
+        if (option === this.activeOption) {
+          continue;
+        }
+        option.selected = false;
+        this.selectedOptions.delete(option);
+      }
+
+      this.togglePopover(false);
+    }
   }
 
   private getListboxAction(evt: KeyboardEvent): ListboxAction | null {
@@ -373,28 +396,5 @@ export class ComboboxDecorator {
     }
 
     this.activeOption = this.listbox.options[index];
-  }
-
-  private selectActiveOption() {
-    if (this.activeOption) {
-      const next = this.isMultiSelectable ? !this.activeOption.selected : true;
-      this.activeOption.selected = next;
-      if (next) {
-        this.selectedOptions.add(this.activeOption);
-      } else {
-        this.selectedOptions.delete(this.activeOption);
-      }
-    }
-    if (!this.isMultiSelectable) {
-      for (const option of this.selectedOptions) {
-        if (option === this.activeOption) {
-          continue;
-        }
-        option.selected = false;
-        this.selectedOptions.delete(option);
-      }
-
-      this.togglePopover(false);
-    }
   }
 }
