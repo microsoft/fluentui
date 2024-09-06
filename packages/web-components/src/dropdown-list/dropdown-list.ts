@@ -1,5 +1,6 @@
-import { FASTElement, observable } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 
+import { toggleState } from '../utils/element-internals.js'; 
 import type { Option } from '../option/option.js';
 
 /**
@@ -15,11 +16,24 @@ export class BaseDropdownList extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
+  @attr({ mode:'boolean' })
+  public multiple = false;
+  protected multipleChanged() {
+    this.elementInternals.ariaMultiSelectable = this.multiple.toString();
+
+    if (this.$fastController.isConnected) {
+      this.toggleOptionsMultipleState();
+    }
+  }
+
   /**
    * @internal
    */
   @observable
   public slottedOptions!: Option[];
+  protected slottedOptionsChanged() {
+    this.toggleOptionsMultipleState();
+  }
 
   /**
    * The option elements.
@@ -34,6 +48,15 @@ export class BaseDropdownList extends FASTElement {
   constructor() {
     super();
     this.elementInternals.role = 'listbox';
+  }
+
+  private toggleOptionsMultipleState() {
+    for (const option of this.options) {
+      if (!option.elementInternals) {
+        continue;
+      }
+      toggleState(option.elementInternals, 'multiple', this.multiple);
+    }
   }
 }
 

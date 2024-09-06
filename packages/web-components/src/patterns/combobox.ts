@@ -13,6 +13,7 @@ interface FluentOptionElement extends FluentElement {
 }
 
 interface FluentListboxElement extends FluentElement {
+  multiple: boolean;
   options: FluentOptionElement[];
 }
 
@@ -155,6 +156,8 @@ export class ComboboxDecorator {
    */
   public setMultiSelectable(multiple: boolean) {
     this.isMultiSelectable = multiple;
+    this.listbox.multiple = multiple;
+    // Ensure `aria-multiselectable` is indeed set on the listbox.
     this.listbox.elementInternals.ariaMultiSelectable = multiple.toString();
   }
 
