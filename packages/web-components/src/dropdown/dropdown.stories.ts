@@ -1,4 +1,4 @@
-import { html, when } from '@microsoft/fast-element';
+import { html, repeat } from '@microsoft/fast-element';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
@@ -7,9 +7,10 @@ const storyTemplate = html<StoryArgs<FluentDropdown>>`
   <div>
     <fluent-dropdown list="options"></fluent-dropdown>
     <fluent-dropdown-list id="options">
-      <fluent-option value="value1">Option 1</fluent-option>
-      <fluent-option value="value2">Option 2</fluent-option>
-      <fluent-option value="value3">Option 3</fluent-option>
+      ${repeat(
+        [...Array(10).keys()].map(m => m + 1),
+        html<string>` <fluent-option value="value${x => x}">Option ${x => x}</fluent-option> `,
+      )}
     </fluient-dropdown-list>
   </div>
 `;

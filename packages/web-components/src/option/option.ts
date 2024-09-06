@@ -1,5 +1,6 @@
 import { attr, volatile } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
+import { toggleState } from '../utils/element-internals.js';
 import { BaseCheckbox } from '../checkbox/checkbox.js';
 import { CheckboxMode } from '../checkbox/checkbox.options.js';
 
@@ -60,6 +61,22 @@ export class BaseOption extends BaseCheckbox {
 
   public set selected(next: boolean) {
     this.checked = next;
+  }
+
+  private _active = false;
+  /**
+   * The element’s current ARIA active state.
+   *
+   * @public
+   */
+  public get active(): boolean {
+    return this._active;
+  }
+
+  public set active(next: boolean) {
+    this._active = next;
+    toggleState(this.elementInternals, 'aria-active', next);
+    this.scrollIntoView({ block: 'nearest' });
   }
 
   constructor() {

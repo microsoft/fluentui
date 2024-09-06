@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { typographyBody1Styles } from '../styles/partials/typography.partials.js';
-import { disabledState, multipleState, selectedState } from '../styles/states/index.js';
+import { ariaActiveState, disabledState, multipleState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -58,6 +58,7 @@ export const styles = css`
     color: ${colorNeutralForeground2Pressed};
   }
 
+  :host(${ariaActiveState}),
   :host(:focus-visible) {
     border-color: ${colorStrokeFocus2};
   }

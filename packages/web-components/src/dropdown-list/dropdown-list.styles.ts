@@ -12,6 +12,7 @@ export const styles = css`
   :host {
     flex-direction: column;
     margin: 0;
+    max-block-size: 10rem;
     position: absolute;
   }
 `;

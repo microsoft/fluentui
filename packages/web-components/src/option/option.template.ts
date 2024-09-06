@@ -1,6 +1,6 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { html } from '@microsoft/fast-element';
-import { staticallyCompose } from '../utils/template-helpers.js'; 
+import { staticallyCompose } from '../utils/template-helpers.js';
 
 import type { Option } from './option.js';
 import type { OptionOptions } from './option.options.js';

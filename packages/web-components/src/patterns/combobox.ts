@@ -1,27 +1,42 @@
-import type { FASTElement } from "@microsoft/fast-element";
+import type { FASTElement } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 
 const SUPPORTS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
-
-enum Action {
-  OPEN = 0,
-  CLOSE = 1,
-};
 
 interface FluentElement extends FASTElement {
   elementInternals: ElementInternals;
 }
 
-export interface ComboboxDecoratorOptions {
-  anchorId?: string;
-  multiSelectable: boolean;
-  disabled: boolean;
+interface FluentOptionElement extends FluentElement {
+  active: boolean;
+  selected: boolean;
 }
 
-const defaultComboboxDecoratorOptions: ComboboxDecoratorOptions = {
+interface FluentListboxElement extends FluentElement {
+  options: FluentOptionElement[];
+}
+
+export interface ComboboxDecoratorConfig {
+  disabled: boolean;
+  multiSelectable: boolean;
+  comboboxEditable: boolean;
+  anchorId?: string;
+}
+
+const defaultComboboxDecoratorConfig: ComboboxDecoratorConfig = {
   multiSelectable: false,
   disabled: false,
+  comboboxEditable: false,
 };
+
+enum ListboxAction {
+  MOVE_TO_NEXT,
+  MOVE_TO_PREV,
+  MOVE_TO_FIRST,
+  MOVE_TO_LAST,
+  DISMISS,
+  SELECT,
+}
 
 /**
  * A class to decorate a pair of elements to a combobox and a listbox. This
@@ -32,17 +47,22 @@ const defaultComboboxDecoratorOptions: ComboboxDecoratorOptions = {
  */
 export class ComboboxDecorator {
   private combobox!: FluentElement;
-  private listbox!: FluentElement;
-  private options!: ComboboxDecoratorOptions;
+  private listbox!: FluentListboxElement;
+  private config!: ComboboxDecoratorConfig;
+  private selectedOptions: Set<FluentOptionElement> = new Set();
 
+  // Anchor Positioning
   private anchorPositioningStyleSheet?: CSSStyleSheet;
   private anchorPositioningStyleElement?: HTMLStyleElement;
 
+  // Even listeners
   private comboboxClickListener?: (event: PointerEvent | MouseEvent) => void;
   private comboboxKeydownListener?: (event: KeyboardEvent) => void;
   // @ts-expect-error Popover API
   private listboxToggleListener?: (event: ToggleEvent) => void;
+  private listboxInputListener?: (event: Event) => void;
 
+  // Combobox states
   private _isExpanded = false;
   private get isExpanded(): boolean {
     return this._isExpanded;
@@ -51,34 +71,40 @@ export class ComboboxDecorator {
     this.combobox.elementInternals.ariaExpanded = next.toString();
     this._isExpanded = next;
   }
-
   private isDisabled = false;
+  private isMultiSelectable = false;
 
-  /**
-   * A unique ID of the anchor.
-   */
-  public anchorId = '';
+  private _activeOption?: FluentOptionElement;
+  private get activeOption(): FluentOptionElement | undefined {
+    return this._activeOption;
+  }
+  private set activeOption(option: FluentOptionElement | undefined) {
+    if (this._activeOption) {
+      this._activeOption.active = false;
+    }
 
-  /**
-   * The value of the `anchor-name` CSS property.
-   */
-  public anchorName = '';
+    this._activeOption = option;
+
+    if (option) {
+      option.active = true;
+    }
+
+    this.combobox.setAttribute('aria-activedescendant', option ? option.id : '');
+  }
 
   constructor(
     combobox: FluentElement,
-    listbox: FluentElement,
-    options: ComboboxDecoratorOptions = defaultComboboxDecoratorOptions
+    listbox: FluentListboxElement,
+    config: ComboboxDecoratorConfig = defaultComboboxDecoratorConfig,
   ) {
-    this.options = options;
-    this.combobox = combobox;
-    this.listbox = listbox;
-    this.anchorId = options.anchorId ?? uniqueId('fluent-dropdown-anchor-');
-    this.anchorName = `--${this.anchorId}`;
+    this.config = config;
+    this.config.anchorId = this.config.anchorId ?? uniqueId('fluent-dropdown-anchor-');
 
+    this.combobox = combobox;
     this.decorateCombobox();
-    this.decorateListbox();
-    this.setAnchorPositioningCSS();
-    this.bindEvents();
+    this.bindComboboxEvents();
+
+    this.connectListbox(listbox);
   }
 
   /**
@@ -88,12 +114,17 @@ export class ComboboxDecorator {
    *
    * @public
    */
-  public connectListbox(listbox: FluentElement) {
+  public connectListbox(listbox: FluentListboxElement) {
+    if (this.activeOption) {
+      this.activeOption = undefined;
+    }
+
     if (this.listbox) {
       this.unbindListboxEvents();
     }
 
     this.listbox = listbox;
+
     this.decorateListbox();
     this.setAnchorPositioningCSS();
     this.bindListboxEvents();
@@ -105,10 +136,12 @@ export class ComboboxDecorator {
    * @public
    */
   public remove() {
-    this.unbindEvents();
+    this.unbindComboboxEvents();
+    this.unbindListboxEvents();
   }
 
   public setMultiSelectable(multiple: boolean) {
+    this.isMultiSelectable = multiple;
     this.listbox.elementInternals.ariaMultiSelectable = multiple.toString();
   }
 
@@ -126,6 +159,14 @@ export class ComboboxDecorator {
     // @ts-expect-error Popover API
     this.listbox.togglePopover(next);
     this.isExpanded = next;
+
+    if (next && !this.activeOption && this.listbox.options?.[0]) {
+      this.activeOption = this.listbox.options[0];
+    }
+
+    if (this.activeOption) {
+      this.activeOption.scrollIntoView({ block: 'nearest' });
+    }
   }
 
   private decorateCombobox() {
@@ -136,7 +177,7 @@ export class ComboboxDecorator {
     this.combobox.elementInternals.role = 'combobox';
     this.combobox.elementInternals.ariaExpanded = 'false';
 
-    this.setDisabled(this.options.disabled);
+    this.setDisabled(this.config.disabled);
   }
 
   private decorateListbox() {
@@ -145,7 +186,7 @@ export class ComboboxDecorator {
     }
 
     this.listbox.elementInternals.role = 'listbox';
-    this.setMultiSelectable(!!this.options.multiSelectable);
+    this.setMultiSelectable(!!this.config.multiSelectable);
 
     // @ts-expect-error Popover API
     if (!this.popover) {
@@ -156,22 +197,23 @@ export class ComboboxDecorator {
     this.combobox.setAttribute('aria-controls', this.listbox.id);
   }
 
-  private bindEvents() {
+  private bindComboboxEvents() {
     this.comboboxClickListener = this.handleComboboxClick.bind(this);
     this.combobox.addEventListener('click', this.comboboxClickListener);
 
     this.comboboxKeydownListener = this.handleComboboxKeydown.bind(this);
     this.combobox.addEventListener('keydown', this.comboboxKeydownListener);
-
-    this.bindListboxEvents();
   }
 
   private bindListboxEvents() {
     this.listboxToggleListener = this.handleListboxToggle.bind(this);
     this.listbox.addEventListener('toggle', this.listboxToggleListener);
+
+    this.listboxInputListener = this.handleListboxInput.bind(this);
+    this.listbox.addEventListener('input', this.listboxInputListener);
   }
 
-  private unbindEvents() {
+  private unbindComboboxEvents() {
     if (this.comboboxClickListener) {
       this.combobox.removeEventListener('click', this.comboboxClickListener);
     }
@@ -179,26 +221,29 @@ export class ComboboxDecorator {
     if (this.comboboxKeydownListener) {
       this.combobox.removeEventListener('keydown', this.comboboxKeydownListener);
     }
-
-    this.unbindListboxEvents();
   }
 
   private unbindListboxEvents() {
     if (this.listboxToggleListener) {
       this.listbox.removeEventListener('toggle', this.listboxToggleListener);
     }
+
+    if (this.listboxInputListener) {
+      this.listbox.removeEventListener('input', this.listboxInputListener);
+    }
   }
 
   private setAnchorPositioningCSS() {
-    this.combobox.dataset.anchorid = this.anchorId;
+    this.combobox.dataset.anchorid = this.config.anchorId;
+    const anchorName = `--${this.config.anchorId}`;
 
     const css = `
-      [data-anchorid="${this.anchorId}"] {
-        anchor-name: ${this.anchorName};
+      [data-anchorid="${this.config.anchorId}"] {
+        anchor-name: ${anchorName};
       }
       #${this.listbox.id} {
-        left: anchor(${this.anchorName} left);
-        top: anchor(${this.anchorName} bottom);
+        left: anchor(${anchorName} left);
+        top: anchor(${anchorName} bottom);
       }
     `;
 
@@ -232,30 +277,124 @@ export class ComboboxDecorator {
       return true;
     }
 
-    switch (evt.key) {
-      case 'Enter':
-      case ' ':
-        // Prevent page scrolling.
-        evt.preventDefault();
-        this.combobox.click();
-        break;
-      case 'Escape':
-        if (this.isExpanded) {
-          this.togglePopover(false);
-        } else {
-          // TODO: clear combobox value
-        }
-        break;
-      default:
-        // TODO: Printable characters.
-    }
-  }
+    const action = this.getListboxAction(evt);
 
-  private getActionByKey(key: string): Action {
+    switch (action) {
+      case ListboxAction.DISMISS:
+        this.togglePopover(false);
+        break;
+      case ListboxAction.MOVE_TO_FIRST:
+      case ListboxAction.MOVE_TO_LAST:
+      case ListboxAction.MOVE_TO_PREV:
+      case ListboxAction.MOVE_TO_NEXT:
+        evt.preventDefault();
+        if (!this.isExpanded) {
+          this.togglePopover(true);
+        }
+        this.moveActiveOption(action);
+        break;
+      case ListboxAction.SELECT:
+        evt.preventDefault();
+        if (!this.isExpanded) {
+          this.togglePopover(true);
+          return;
+        }
+
+        this.selectActiveOption();
+        break;
+    }
   }
 
   // @ts-expect-error Popover API
   private handleListboxToggle(evt: ToggleEvent) {
     this.isExpanded = evt.newState === 'open';
+  }
+
+  private handleListboxInput(evt: Event) {
+    const target = evt.target as FluentOptionElement;
+    this.activeOption = target;
+    this.selectActiveOption();
+  }
+
+  private getListboxAction(evt: KeyboardEvent): ListboxAction | null {
+    const { key } = evt;
+
+    switch (key) {
+      case ' ':
+      case 'Enter':
+        return ListboxAction.SELECT;
+      case 'Escape':
+        if (this.isExpanded) {
+          return ListboxAction.DISMISS;
+        }
+        // TODO: Clear values?
+        break;
+      case 'ArrowUp':
+        return ListboxAction.MOVE_TO_PREV;
+      case 'ArrowDown':
+        return ListboxAction.MOVE_TO_NEXT;
+      case 'Home':
+        return ListboxAction.MOVE_TO_FIRST;
+      case 'End':
+        return ListboxAction.MOVE_TO_LAST;
+    }
+
+    return null;
+  }
+
+  private moveActiveOption(action: ListboxAction) {
+    let index: number;
+    const activeOptionIndex = this.activeOption ? this.listbox.options.indexOf(this.activeOption) : -1;
+
+    switch (action) {
+      case ListboxAction.MOVE_TO_FIRST:
+        index = 0;
+        break;
+      case ListboxAction.MOVE_TO_LAST:
+        index = this.listbox.options.length - 1;
+        break;
+      case ListboxAction.MOVE_TO_NEXT:
+        index = activeOptionIndex + 1;
+        break;
+      case ListboxAction.MOVE_TO_PREV:
+        index = activeOptionIndex - 1;
+        break;
+      default:
+        return;
+    }
+
+    if (index < 0) {
+      this.moveActiveOption(ListboxAction.MOVE_TO_FIRST);
+      return;
+    }
+    if (index >= this.listbox.options.length) {
+      this.moveActiveOption(ListboxAction.MOVE_TO_LAST);
+      return;
+    }
+
+    this.activeOption = this.listbox.options[index];
+  }
+
+  private selectActiveOption() {
+    if (this.activeOption) {
+      const next = this.isMultiSelectable ? !this.activeOption.selected : true;
+      this.activeOption.selected = next;
+      if (next) {
+        this.selectedOptions.add(this.activeOption);
+      } else {
+        this.selectedOptions.delete(this.activeOption);
+      }
+    }
+    if (!this.isMultiSelectable) {
+      for (const option of this.selectedOptions) {
+        if (option === this.activeOption) {
+          continue;
+        }
+        option.selected = false;
+        this.selectedOptions.delete(option);
+      }
+
+      this.togglePopover(false);
+    }
   }
 }

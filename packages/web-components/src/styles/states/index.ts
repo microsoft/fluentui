@@ -328,3 +328,8 @@ export const placeholderVisibleState = css.partial`:is([state--placeholder-visib
  * Selector for the `multiselect` state.
  */
 export const multipleState = css.partial`:is([state--multiple], :state(multiple))`;
+
+/**
+ * Selector for the `aria-active` state.
+ */
+export const ariaActiveState = css.partial`:is([state--aria-active], :state(aria-active))`;
