@@ -74,6 +74,10 @@ export class ComboboxDecorator {
   private isDisabled = false;
   private isMultiSelectable = false;
 
+  private get isFocusVisible(): boolean {
+    return this.combobox.matches(':focus-visible');
+  }
+
   private _activeOption?: FluentOptionElement;
   private get activeOption(): FluentOptionElement | undefined {
     return this._activeOption;
@@ -85,8 +89,9 @@ export class ComboboxDecorator {
 
     this._activeOption = option;
 
-    if (option) {
+    if (option && this.isFocusVisible) {
       option.active = true;
+      option.scrollIntoView({ block: 'nearest' });
     }
 
     this.combobox.setAttribute('aria-activedescendant', option ? option.id : '');
@@ -171,6 +176,9 @@ export class ComboboxDecorator {
   /**
    * Toggles the listbox.
    *
+   * TODO: If `.selectedOptions.size` is not 0 and none of the options is
+   * currently in view, scroll the first selected option into view.
+   *
    * @param force - If `true`, show the listbox; if `false`, hide the listbox.
    *
    */
@@ -180,11 +188,18 @@ export class ComboboxDecorator {
     this.listbox.togglePopover(next);
     this.isExpanded = next;
 
-    if (next && !this.activeOption && this.listbox.options?.[0]) {
-      this.activeOption = this.listbox.options[0];
+    if (!next) {
+      return;
+    }
+
+    if (!this.activeOption) {
+      this.activeOption = this.listbox.options?.[0];
     }
 
     if (this.activeOption) {
+      if (this.isFocusVisible) {
+        this.activeOption.active = true;
+      }
       this.activeOption.scrollIntoView({ block: 'nearest' });
     }
   }

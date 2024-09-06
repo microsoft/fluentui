@@ -76,7 +76,6 @@ export class BaseOption extends BaseCheckbox {
   public set active(next: boolean) {
     this._active = next;
     toggleState(this.elementInternals, 'aria-active', next);
-    this.scrollIntoView({ block: 'nearest' });
   }
 
   constructor() {
