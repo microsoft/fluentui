@@ -9,6 +9,7 @@ interface FluentElement extends FASTElement {
 
 interface FluentOptionElement extends FluentElement {
   active: boolean;
+  disabled: boolean;
   selected: boolean;
 }
 
@@ -422,14 +423,15 @@ export class ComboboxDecorator {
 
   private moveActiveOption(action: ListboxAction) {
     let index: number;
-    const activeOptionIndex = this.activeOption ? this.listbox.options.indexOf(this.activeOption) : -1;
+    const enabledOptions = this.listbox.options.filter(option => !option.disabled);
+    const activeOptionIndex = this.activeOption ? enabledOptions.indexOf(this.activeOption) : -1;
 
     switch (action) {
       case ListboxAction.MOVE_TO_FIRST:
         index = 0;
         break;
       case ListboxAction.MOVE_TO_LAST:
-        index = this.listbox.options.length - 1;
+        index = enabledOptions.length - 1;
         break;
       case ListboxAction.MOVE_TO_NEXT:
         index = activeOptionIndex + 1;
@@ -450,6 +452,6 @@ export class ComboboxDecorator {
       return;
     }
 
-    this.activeOption = this.listbox.options[index];
+    this.activeOption = enabledOptions[index];
   }
 }
