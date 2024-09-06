@@ -1,3 +1,8 @@
+/**
+ *
+ * TODO: remove this module and its usage once we will be able to remove griffel AOT from our build output -> https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/shared/build-system/stop-styles-transforms.md
+ */
+
 import { writeFile, readFile } from 'node:fs/promises';
 import { basename, join } from 'node:path';
 
@@ -5,7 +10,8 @@ import { type BabelFileResult, transformAsync } from '@babel/core';
 import { globSync } from 'fast-glob';
 import { logger } from '@nx/devkit';
 
-import { type NormalizedOptions } from './shared';
+import { processAsyncQueue, type NormalizedOptions } from './shared';
+import { compileSwc } from './swc';
 
 const EOL_REGEX = /\r?\n/g;
 
@@ -19,10 +25,34 @@ export function hasStylesFilesToProcess(normalizedOptions: NormalizedOptions) {
   return files.length > 0;
 }
 
-export async function babel(
-  esmModuleOutput: NormalizedOptions['moduleOutput'][number],
-  normalizedOptions: NormalizedOptions,
-) {
+export async function compileWithGriffelStylesAOT(options: NormalizedOptions, successCallback: () => Promise<boolean>) {
+  const moduleOutput = [...options.moduleOutput];
+  const esmConfigId = moduleOutput.findIndex(outputConfig => outputConfig.module === 'es6');
+  if (esmConfigId === -1) {
+    throw new Error('es6 module output is required');
+  }
+  const esmConfig = moduleOutput[esmConfigId];
+  delete moduleOutput[esmConfigId];
+  const restOfConfigs = moduleOutput;
+
+  await compileSwc(esmConfig, options);
+  await babel(esmConfig, options);
+
+  const compilationQueue = restOfConfigs.map(outputConfig => {
+    const overriddenSourceRoot = join(options.workspaceRoot, options.project.root);
+    // we need to override source root to the output path of transpiled ESM, because griffel is unable to handle SWC commonjs output
+    const overriddenAbsoluteSourceRoot = join(overriddenSourceRoot, esmConfig.outputPath);
+
+    return compileSwc(outputConfig, {
+      ...options,
+      absoluteSourceRoot: overriddenAbsoluteSourceRoot,
+    });
+  });
+
+  return processAsyncQueue(compilationQueue, successCallback);
+}
+
+async function babel(esmModuleOutput: NormalizedOptions['moduleOutput'][number], normalizedOptions: NormalizedOptions) {
   const filesRoot = join(normalizedOptions.absoluteProjectRoot, esmModuleOutput.outputPath);
   const files = globSync('**/*.styles.js', { cwd: filesRoot });
 

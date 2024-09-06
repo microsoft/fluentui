@@ -1,7 +1,7 @@
 import { type ExecutorContext, type PromiseExecutor } from '@nx/devkit';
 
 import { compileSwc } from './lib/swc';
-import { babel, hasStylesFilesToProcess } from './lib/babel';
+import { compileWithGriffelStylesAOT, hasStylesFilesToProcess } from './lib/babel';
 import { assetGlobsToFiles, copyAssets } from './lib/assets';
 import { cleanOutput } from './lib/clean';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue } from './lib/shared';
@@ -37,28 +37,4 @@ async function runBuild(options: NormalizedOptions, context: ExecutorContext): P
   });
 
   return processAsyncQueue(compilationQueue, () => copyAssets(assetFiles));
-}
-
-/**
- *
- * TODO: remove this and all related logic once we will be able to enable https://github.com/microsoft/fluentui/blob/master/docs/react-v9/contributing/rfcs/shared/build-system/stop-styles-transforms.md
- */
-async function compileWithGriffelStylesAOT(options: NormalizedOptions, successCallback: () => Promise<boolean>) {
-  const moduleOutput = [...options.moduleOutput];
-  const esmConfigId = moduleOutput.findIndex(outputConfig => outputConfig.module === 'es6');
-  if (esmConfigId === -1) {
-    throw new Error('es6 module output is required');
-  }
-  const esmConfig = moduleOutput[esmConfigId];
-  delete moduleOutput[esmConfigId];
-  const restOfConfigs = moduleOutput;
-
-  await compileSwc(esmConfig, options);
-  await babel(esmConfig, options);
-
-  const compilationQueue = restOfConfigs.map(outputConfig => {
-    return compileSwc(outputConfig, { ...options, sourceRoot: esmConfig.outputPath });
-  });
-
-  return processAsyncQueue(compilationQueue, successCallback);
 }

@@ -155,11 +155,15 @@ describe('Build Executor', () => {
           }
       });
       var _react = require(\\"@griffel/react\\");
-      var useStyles = (0, _react.makeStyles)({
+      var useStyles = /*#__PURE__*/ (0, _react.__styles)({
           root: {
-              color: 'red'
+              sj55zd: \\"fe3e8s9\\"
           }
-      });
+      }, {
+          d: [
+              \\".fe3e8s9{color:red;}\\"
+          ]
+      }); //# sourceMappingURL=greeter.styles.js.map
       "
     `);
   }, 30000);
