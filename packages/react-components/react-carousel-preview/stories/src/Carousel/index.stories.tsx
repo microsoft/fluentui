@@ -19,6 +19,7 @@ export { Responsive } from './CarouselResponsive.stories';
 export { Controlled } from './CarouselControlled.stories';
 export { ImageSlideshow } from './CarouselImageBox.stories';
 export { AlignmentAndWhitespace } from './CarouselActionCards.stories';
+export { Autoplay } from './CarouselAutoplay.stories';
 
 export default {
   title: 'Preview Components/Carousel',
