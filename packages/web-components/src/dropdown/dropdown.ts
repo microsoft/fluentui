@@ -87,7 +87,11 @@ export class BaseDropdown extends FASTElement {
     super.connectedCallback();
 
     if (this.listElement) {
-      this.decorator = new ComboboxDecorator(this, this.listElement);
+      this.decorator = new ComboboxDecorator(this, this.listElement, {
+        disabled: this.disabled,
+        multiSelectable: this.multiple,
+        comboboxEditable: false,
+      });
     }
   }
 
