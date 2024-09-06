@@ -17,8 +17,8 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   'use no memo';
 
   const { dir } = useFluent();
-  const { channel = 'hue', defaultValue, min = 0, max = MAX_COLOR_HUE, onChange, value } = props;
-  const ctxOnChange = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const { channel = 'hue', defaultValue, min = 0, max = MAX_COLOR_HUE, onChange = onChangeFromContext, value } = props;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
