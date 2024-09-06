@@ -20,8 +20,9 @@ const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
 export function setTabsterDefault(element: Element, isDefault: boolean) {
-  const tabsterAtt = element.getAttribute('data-tabster');
-  if (tabsterAtt) {
+  const tabsterAttr = element.getAttribute('data-tabster');
+
+  if (tabsterAttr) {
     const tabsterAttributes = JSON.parse(tabsterAtt);
     if (tabsterAttributes.focusable) {
       // If tabster.focusable isn't present, we will ignore.
