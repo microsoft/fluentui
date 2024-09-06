@@ -6,7 +6,6 @@ import {
   AlphaSlider,
   ColorPickerOnSelectEventHandler,
 } from '@fluentui/react-color-picker-preview';
-import { tinycolor } from '@ctrl/tinycolor';
 
 const useStyles = makeStyles({
   example: {
