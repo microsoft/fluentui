@@ -58,6 +58,7 @@ export class ComboboxDecorator {
   // Even listeners
   private comboboxClickListener?: (event: PointerEvent | MouseEvent) => void;
   private comboboxKeydownListener?: (event: KeyboardEvent) => void;
+  private comboboxBlurListener?: EventListener;
   // @ts-expect-error Popover API
   private listboxToggleListener?: (event: ToggleEvent) => void;
   private listboxInputListener?: (event: Event) => void;
@@ -131,7 +132,7 @@ export class ComboboxDecorator {
   }
 
   /**
-   * Remove the decoration on both combobox and listbox.
+   * Removes the decoration on both combobox and listbox.
    *
    * @public
    */
@@ -140,21 +141,41 @@ export class ComboboxDecorator {
     this.unbindListboxEvents();
   }
 
+  /**
+   * Sets the listbox to allow multiple selected options.
+   *
+   * @param multiple - Whether to allow multiple selected options.
+   *
+   * @public
+   */
   public setMultiSelectable(multiple: boolean) {
     this.isMultiSelectable = multiple;
     this.listbox.elementInternals.ariaMultiSelectable = multiple.toString();
   }
 
+  /**
+   * Sets the combobox to be disabled or enabled.
+   *
+   * @param disabled - Whenther to disabled the combobox, set to `true` to disable.
+   *
+   * @public
+   */
   public setDisabled(disabled: boolean) {
     this.isDisabled = disabled;
     this.combobox.tabIndex = disabled ? -1 : 0;
 
     if (this.isExpanded) {
-      this.togglePopover(false);
+      this.toggleListbox(false);
     }
   }
 
-  public togglePopover(force?: boolean) {
+  /**
+   * Toggles the listbox.
+   *
+   * @param force - If `true`, show the listbox; if `false`, hide the listbox.
+   *
+   */
+  public toggleListbox(force?: boolean) {
     const next = force ?? !this.isExpanded;
     // @ts-expect-error Popover API
     this.listbox.togglePopover(next);
@@ -203,6 +224,9 @@ export class ComboboxDecorator {
 
     this.comboboxKeydownListener = this.handleComboboxKeydown.bind(this);
     this.combobox.addEventListener('keydown', this.comboboxKeydownListener);
+
+    this.comboboxBlurListener = this.handleComboboxBlur.bind(this);
+    this.combobox.addEventListener('blur', this.comboboxBlurListener);
   }
 
   private bindListboxEvents() {
@@ -220,6 +244,10 @@ export class ComboboxDecorator {
 
     if (this.comboboxKeydownListener) {
       this.combobox.removeEventListener('keydown', this.comboboxKeydownListener);
+    }
+
+    if (this.comboboxBlurListener) {
+      this.combobox.removeEventListener('blur', this.comboboxBlurListener);
     }
   }
 
@@ -269,7 +297,7 @@ export class ComboboxDecorator {
   }
 
   private handleComboboxClick() {
-    this.togglePopover();
+    this.toggleListbox();
   }
 
   private handleComboboxKeydown(evt: KeyboardEvent) {
@@ -281,7 +309,7 @@ export class ComboboxDecorator {
 
     switch (action) {
       case ListboxAction.DISMISS:
-        this.togglePopover(false);
+        this.toggleListbox(false);
         break;
       case ListboxAction.MOVE_TO_FIRST:
       case ListboxAction.MOVE_TO_LAST:
@@ -289,26 +317,30 @@ export class ComboboxDecorator {
       case ListboxAction.MOVE_TO_NEXT:
         evt.preventDefault();
         if (!this.isExpanded) {
-          this.togglePopover(true);
+          this.toggleListbox(true);
         }
         this.moveActiveOption(action);
         break;
       case ListboxAction.SELECT:
         evt.preventDefault();
         if (!this.isExpanded) {
-          this.togglePopover(true);
+          this.toggleListbox(true);
           return;
         }
         if (!this.activeOption) {
           return;
         }
         if (!this.isMultiSelectable && this.selectedOptions.has(this.activeOption)) {
-          this.togglePopover(false);
+          this.toggleListbox(false);
           return;
         }
         this.activeOption.click();
         break;
     }
+  }
+
+  private handleComboboxBlur() {
+    this.toggleListbox(false);
   }
 
   // @ts-expect-error Popover API
@@ -335,7 +367,7 @@ export class ComboboxDecorator {
         this.selectedOptions.delete(option);
       }
 
-      this.togglePopover(false);
+      this.toggleListbox(false);
     }
   }
 
