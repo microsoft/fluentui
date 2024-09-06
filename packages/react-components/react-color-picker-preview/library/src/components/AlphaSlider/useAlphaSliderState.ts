@@ -33,8 +33,8 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
       event => {
         const newValue = Number(event.target.value);
         setCurrentValue(clamp(newValue, min, max));
-        inputOnChange && inputOnChange(event);
-        onChange && onChange(event, { type: 'change', event, value: newValue, channel });
+        inputOnChange?.(event);
+        onChange?.(event, { type: 'change', event, value: newValue, channel });
       },
       (event: React.ChangeEvent<HTMLInputElement>) =>
         ctxOnChange(event, {
