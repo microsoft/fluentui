@@ -41,6 +41,7 @@ export const useCarouselAutoplayButtonStyles_unstable = (
   useToggleButtonStyles_unstable(state);
 
   state.root.className = mergeClasses(carouselAutoplayButtonClassNames.root, styles.root, state.root.className);
+
   if (state.icon) {
     state.icon.className = mergeClasses(carouselAutoplayButtonClassNames.icon, state.icon.className);
   }

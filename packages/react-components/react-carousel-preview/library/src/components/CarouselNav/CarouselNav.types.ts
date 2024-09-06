@@ -3,7 +3,7 @@ import * as React from 'react';
 
 export type CarouselNavSlots = {
   /**
-   * The element wrapping the carousel pagination. By default this is a div.
+   * The element wrapping the carousel pagination. By default, this is a div.
    */
   root: NonNullable<Slot<'div'>>;
 };
@@ -12,10 +12,9 @@ export type NavButtonRenderFunction = (index: number) => React.ReactNode;
 
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   /**
-   * The total number of slides available.
-   * Users may override if using the component without a Carousel wrapper or implementing custom functionality.
+   * Enables an alternate brand style when set to 'brand'
    */
-  totalSlides: number;
+  appearance?: 'brand';
 
   /**
    * The function that will render nav items based on total slides and their index.
@@ -23,15 +22,14 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   renderNavButton: NavButtonRenderFunction;
 
   /**
-   * Enables an alternate brand style when set to 'brand'
+   * The total number of slides available.
+   * Users may override if using the component without a Carousel wrapper or implementing custom functionality.
    */
-  appearance?: 'brand';
+  totalSlides: number;
 };
 
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
   children: NavButtonRenderFunction;
 } & Partial<Pick<CarouselNavState, 'appearance' | 'totalSlides'>>;
 
-export type CarouselNavContextValue = {
-  index: number;
-} & Pick<CarouselNavState, 'appearance'>;
+export type CarouselNavContextValue = Pick<CarouselNavState, 'appearance'>;

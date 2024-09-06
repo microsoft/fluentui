@@ -110,6 +110,7 @@ export function useEmblaCarousel(
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
+
       cardElements?.forEach((cardElement, index) => {
         cardElement.dispatchEvent(
           new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
