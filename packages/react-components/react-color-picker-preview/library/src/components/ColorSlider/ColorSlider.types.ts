@@ -1,8 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 
-export type SliderOnChangeEventHandler = EventHandler<SliderOnChangeData>;
-
 export type SliderOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   value: number;
   channel: string;

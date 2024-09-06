@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import {
-  ColorPicker,
-  ColorSlider,
-  AlphaSlider,
-  ColorPickerOnSelectEventHandler,
-} from '@fluentui/react-color-picker-preview';
+import { ColorPicker, ColorSlider, AlphaSlider, ColorPickerProps } from '@fluentui/react-color-picker-preview';
 
 const useStyles = makeStyles({
   example: {
@@ -27,7 +22,7 @@ export const Default = () => {
 
   const [hue, setHue] = React.useState(160);
   const [alpha, setAlpha] = React.useState(50);
-  const handleChange: ColorPickerOnSelectEventHandler = (_, data) => {
+  const handleChange: ColorPickerProps['onColorChange'] = (_, data) => {
     if (data.value) {
       data.channel === 'hue' && setHue(data.value);
       data.channel === 'alpha' && setAlpha(data.value);

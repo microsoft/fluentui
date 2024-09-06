@@ -53,9 +53,6 @@ export const ColorPicker: ForwardRefComponent<ColorPickerProps>;
 // @public (undocumented)
 export const colorPickerClassNames: SlotClassNames<ColorPickerSlots>;
 
-// @public (undocumented)
-export type ColorPickerOnSelectEventHandler = EventHandler<ColorPickerOnChangeData>;
-
 // @public
 export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
     color?: string;
@@ -109,9 +106,6 @@ export const renderColorPicker_unstable: (state: ColorPickerState, contextValues
 
 // @public
 export const renderColorSlider_unstable: (state: ColorSliderState) => JSX.Element;
-
-// @public (undocumented)
-export type SliderOnChangeEventHandler = EventHandler<SliderOnChangeData>;
 
 // @public
 export const useAlphaSlider_unstable: (props: AlphaSliderProps, ref: React_2.Ref<HTMLInputElement>) => AlphaSliderState;

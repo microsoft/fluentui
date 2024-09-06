@@ -2,8 +2,6 @@ import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
 import { ColorPickerContextValue } from '../../contexts/colorPicker';
 
-export type ColorPickerOnSelectEventHandler = EventHandler<ColorPickerOnChangeData>;
-
 export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
   value?: number;
   channel?: string;
