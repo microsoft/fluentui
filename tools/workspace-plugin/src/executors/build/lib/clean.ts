@@ -1,7 +1,8 @@
 import { logger } from '@nx/devkit';
-import { NormalizedOptions, processAsyncQueue } from './shared';
 import { rm } from 'node:fs/promises';
 import { join } from 'node:path';
+
+import { type NormalizedOptions, processAsyncQueue } from './shared';
 
 export async function cleanOutput(options: NormalizedOptions, assetFiles: Array<{ input: string; output: string }>) {
   if (!options.clean) {

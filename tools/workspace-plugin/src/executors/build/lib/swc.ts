@@ -1,9 +1,9 @@
 import { readFileSync } from 'node:fs';
 import { mkdir, writeFile } from 'node:fs/promises';
 import { basename, dirname, join } from 'node:path';
+
 import { globSync } from 'fast-glob';
 import { isMatch } from 'micromatch';
-
 import { transform, type Config } from '@swc/core';
 import { logger, readJsonFile } from '@nx/devkit';
 

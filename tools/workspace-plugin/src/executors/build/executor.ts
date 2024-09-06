@@ -1,11 +1,12 @@
 import { type ExecutorContext, type PromiseExecutor } from '@nx/devkit';
 
-import { BuildExecutorSchema } from './schema';
-import { compileSwc } from './swc';
-import { babel, hasStylesFilesToProcess } from './babel';
-import { assetGlobsToFiles, copyAssets } from './assets';
-import { cleanOutput } from './clean';
-import { NormalizedOptions, normalizeOptions, processAsyncQueue } from './shared';
+import { compileSwc } from './lib/swc';
+import { babel, hasStylesFilesToProcess } from './lib/babel';
+import { assetGlobsToFiles, copyAssets } from './lib/assets';
+import { cleanOutput } from './lib/clean';
+import { NormalizedOptions, normalizeOptions, processAsyncQueue } from './lib/shared';
+
+import { type BuildExecutorSchema } from './schema';
 
 const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context) => {
   const options = normalizeOptions(schema, context);

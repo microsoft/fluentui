@@ -1,7 +1,7 @@
 import { type ExecutorContext, logger } from '@nx/devkit';
 import { join } from 'node:path';
 
-import { type BuildExecutorSchema } from './schema';
+import { type BuildExecutorSchema } from '../schema';
 
 export async function processAsyncQueue(value: Promise<unknown>[], successCallback?: () => Promise<boolean>) {
   return Promise.all(value)
