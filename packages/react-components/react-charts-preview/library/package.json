@@ -37,6 +37,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-button": "^9.3.89",
     "@fluentui/react-jsx-runtime": "^9.0.41",
     "@fluentui/react-overflow": "^9.1.24",
     "@fluentui/react-popover": "^9.9.14",

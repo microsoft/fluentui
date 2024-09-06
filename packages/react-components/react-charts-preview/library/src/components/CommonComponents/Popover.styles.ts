@@ -46,7 +46,7 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
-    fontSize: 'fontSizeBase400',
+    fontSize: 'fontSizeBase200',
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
   },
@@ -76,7 +76,7 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontSize: tokens.fontSizeHero700,
+    fontSize: tokens.fontSizeBase400,
     fontWeight: 'bold',
     lineHeight: '36px',
     selectors: {
