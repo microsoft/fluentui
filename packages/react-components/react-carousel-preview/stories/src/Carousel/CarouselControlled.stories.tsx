@@ -155,7 +155,7 @@ export const Controlled = () => {
         <Toolbar className={classes.controls}>
           {new Array(5).fill(null).map((_, index) => (
             <ToolbarButton
-              key={index}
+              key={`toolbar-button-${index}`}
               aria-label={`Carousel Nav Button ${index} `}
               className={classes.controlButton}
               appearance="subtle"
