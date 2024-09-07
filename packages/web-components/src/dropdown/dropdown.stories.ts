@@ -81,7 +81,16 @@ export default {
   },
 } as Meta<FluentDropdown>;
 
-export const Dropdown: Story<FluentDropdown> = renderComponent(html` <fluent-dropdown></fluent-dropdown> `).bind({});
+// Creates a closure to avoid ID conflicts.
+export const Dropdown: Story<FluentDropdown> = (args) => {
+  return (renderComponent(html`${render(args, storyTemplate)}`))(args);
+};
+Dropdown.args = {
+  block: false,
+  disabled: false,
+  multiple: false,
+  placeholder: 'Select a fruit',
+};
 
 export const SelectionMode: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
