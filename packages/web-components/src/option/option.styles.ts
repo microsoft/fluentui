@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { typographyBody1Styles } from '../styles/partials/typography.partials.js';
-import { ariaActiveState, disabledState, multipleState, selectedState } from '../styles/states/index.js';
+import { ariaActiveState, multipleState, selectedState } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
@@ -65,9 +65,10 @@ export const styles = css`
     border-color: ${colorStrokeFocus2};
   }
 
-  :host(${disabledState}) {
+  :host(:disabled) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForegroundDisabled};
+    cursor: default;
   }
 
   .content {
@@ -102,7 +103,6 @@ export const styles = css`
     border-radius: ${borderRadiusSmall};
     border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
     box-sizing: border-box;
-    cursor: pointer;
     position: relative;
     visibility: visible;
     width: 16px;

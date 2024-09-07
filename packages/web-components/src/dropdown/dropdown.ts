@@ -1,8 +1,8 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { toggleState } from '../utils/element-internals.js'; 
+import { toggleState } from '../utils/element-internals.js';
 import { DropdownList } from '../dropdown-list/dropdown-list.js';
 import { ComboboxDecorator } from '../patterns/combobox.js';
-import { DropdownAppearance, DropdownSize } from './dropdown.options.js'; 
+import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 
 /**
  * Base class for a Dropdown custom element.

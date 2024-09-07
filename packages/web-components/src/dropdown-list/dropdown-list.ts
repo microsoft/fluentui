@@ -1,6 +1,6 @@
 import { attr, FASTElement, observable } from '@microsoft/fast-element';
 
-import { toggleState } from '../utils/element-internals.js'; 
+import { toggleState } from '../utils/element-internals.js';
 import type { Option } from '../option/option.js';
 
 /**
@@ -16,7 +16,7 @@ export class BaseDropdownList extends FASTElement {
    */
   public elementInternals: ElementInternals = this.attachInternals();
 
-  @attr({ mode:'boolean' })
+  @attr({ mode: 'boolean' })
   public multiple = false;
   protected multipleChanged() {
     this.elementInternals.ariaMultiSelectable = this.multiple.toString();
