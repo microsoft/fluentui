@@ -319,7 +319,12 @@ export class ComboboxDecorator {
     }
   }
 
-  private handleComboboxClick() {
+  private handleComboboxClick(evt: PointerEvent | MouseEvent) {
+    // Avoid toggling the listbox if associated label is clicked.
+    if ('pointerType' in evt && evt.pointerType === '') {
+      return;
+    }
+
     this.toggleListbox();
   }
 

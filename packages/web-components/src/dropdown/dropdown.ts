@@ -30,6 +30,19 @@ export class BaseDropdown extends FASTElement {
   private decorator?: ComboboxDecorator;
 
   /**
+   * Sets the element's block state.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `block`
+   */
+  @attr({ mode: 'boolean' })
+  public block = false;
+  protected blockChanged() {
+    toggleState(this.elementInternals, 'block', this.block);
+  }
+
+  /**
    * Sets the element's disabled state.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/disabled | `disabled`} attribute
    *

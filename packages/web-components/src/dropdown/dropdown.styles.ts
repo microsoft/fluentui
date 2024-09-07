@@ -1,6 +1,7 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '../utils/display.js';
 import {
+  blockState,
   filledDarkerState,
   filledLighterState,
   largeState,
@@ -72,6 +73,11 @@ export const styles = css`
     touch-action: manipulation;
     padding-inline: var(--padding-inline);
     position: relative;
+  }
+
+  :host(${blockState}:not([hidden])) {
+    display: flex;
+    justify-self: stretch; /* In case it’s placed in a grid area. */
   }
 
   :host(${smallState}) {
