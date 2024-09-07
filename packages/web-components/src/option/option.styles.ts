@@ -19,6 +19,7 @@ import {
   colorTransparentStroke,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
+  spacingHorizontalXXS,
   spacingVerticalSNudge,
   strokeWidthThick,
   strokeWidthThin,
@@ -67,6 +68,11 @@ export const styles = css`
   :host(${disabledState}) {
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForegroundDisabled};
+  }
+
+  .content {
+    flex-grow: 1;
+    padding-inline: ${spacingHorizontalXXS};
   }
 
   .checkmark-16-filled {

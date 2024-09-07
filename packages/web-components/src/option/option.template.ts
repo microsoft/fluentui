@@ -25,7 +25,7 @@ export function optionTemplate<T extends Option>(options: OptionOptions = {}): E
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
     >
       <slot name="checked-indicator">${staticallyCompose(options.checkedIndicator)}</slot>
-      <slot></slot>
+      <div class="content"><slot></slot></div>
     </template>
   `;
 }
