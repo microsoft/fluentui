@@ -295,6 +295,8 @@ export class ComboboxDecorator {
       #${this.listbox.id} {
         left: anchor(${anchorName} left);
         top: anchor(${anchorName} bottom);
+        right: anchor(${anchorName} right);
+        position-try-fallbacks: flip-block;
       }
     `;
 

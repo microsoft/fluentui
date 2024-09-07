@@ -19,6 +19,7 @@ import {
   colorTransparentStroke,
   spacingHorizontalSNudge,
   spacingHorizontalXS,
+  spacingVerticalSNudge,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
@@ -44,7 +45,7 @@ export const styles = css`
     cursor: pointer;
     gap: ${spacingHorizontalXS};
     ${typographyBody1Styles}
-    height: 32px;
+    padding-block: ${spacingVerticalSNudge};
     padding-inline: ${spacingHorizontalSNudge};
   }
 
