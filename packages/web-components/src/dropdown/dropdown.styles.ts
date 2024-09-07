@@ -67,6 +67,7 @@ export const styles = css`
     color: var(--color);
     cursor: pointer;
     gap: var(--gap);
+    justify-content: space-between;
     min-block-size: var(--min-block-size);
     touch-action: manipulation;
     padding-inline: var(--padding-inline);
