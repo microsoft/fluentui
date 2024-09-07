@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 06 Sep 2024 07:21:40 GMT",
+      "tag": "@fluentui/react_v8.120.8",
+      "version": "8.120.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e",
+            "comment": "fix: ColorPicker initializes focus outlines"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2024 07:21:50 GMT",
       "tag": "@fluentui/react_v8.120.7",
       "version": "8.120.7",
