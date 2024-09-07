@@ -4,15 +4,22 @@ import { renderComponent } from '../helpers.stories.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 
 const storyTemplate = html<StoryArgs<FluentDropdown>>`
-  <div>
+  <form>
     <fluent-dropdown list="options"></fluent-dropdown>
     <fluent-dropdown-list id="options">
       ${repeat(
         [...Array(10).keys()].map(m => m + 1),
-        html<string>` <fluent-option value="value${x => x}">Option ${x => x}</fluent-option> `,
+        html<string>`
+          <fluent-option
+            value="value${x => x}"
+            ?disabled="${x => [2, 4, 8].includes(Number(x))}"
+          >
+            Option ${x => x}
+          </fluent-option>
+        `,
       )}
     </fluient-dropdown-list>
-  </div>
+  </form>
 `;
 
 export default {

@@ -1,1 +1,5 @@
-export type OptionOptions = Record<string, any>;
+import type { InlineTemplateDirective } from "@microsoft/fast-element";
+
+export interface OptionOptions {
+  checkedIndicator?: InlineTemplateDirective;
+}
