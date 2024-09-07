@@ -206,9 +206,7 @@ export class ComboboxDecorator {
     }
 
     if (this.activeOption) {
-      if (this.isFocusVisible) {
-        this.activeOption.active = true;
-      }
+      this.activeOption.active = this.isFocusVisible;
       this.activeOption.scrollIntoView({ block: 'nearest' });
     }
   }
