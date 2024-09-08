@@ -14,6 +14,7 @@ import { FASTElementDefinition } from '@microsoft/fast-element';
 import type { HostBehavior } from '@microsoft/fast-element';
 import type { HostController } from '@microsoft/fast-element';
 import { HTMLDirective } from '@microsoft/fast-element';
+import type { InlineTemplateDirective } from '@microsoft/fast-element';
 import { Orientation } from '@microsoft/fast-web-utilities';
 import type { SyntheticViewTemplate } from '@microsoft/fast-element';
 import { ViewTemplate } from '@microsoft/fast-element';
@@ -595,34 +596,17 @@ export class BaseDivider extends FASTElement {
     roleChanged(previous: string | null, next: string | null): void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "AbstractCombobox" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class BaseDropdown extends FASTElement {
-    // (undocumented)
-    connectedCallback(): void;
-    disabled: boolean;
-    // (undocumented)
-    protected disabledChanged(): void;
-    // (undocumented)
-    disconnectedCallback(): void;
-    // @internal
-    elementInternals: ElementInternals;
-    static readonly formAssociated = true;
-    // (undocumented)
-    formDisabledCallback(disabled: boolean): void;
-    list?: string;
-    // (undocumented)
-    protected listChanged(): void;
-    get listElement(): null | DropdownList;
-    multiple: boolean;
-    // (undocumented)
-    protected multipleChanged(): void;
+export class BaseDropdown extends AbstractCombobox {
 }
 
+// Warning: (ae-forgotten-export) The symbol "AbstractListbox" needs to be exported by the entry point index.d.ts
+//
 // @public
-export class BaseDropdownList extends FASTElement {
-    constructor();
-    // @internal
-    elementInternals: ElementInternals;
+export class BaseDropdownList extends AbstractListbox {
+    options: Option_2[];
 }
 
 // @public
@@ -662,6 +646,8 @@ export class BaseField extends FASTElement {
 // @public
 export class BaseOption extends BaseCheckbox {
     constructor();
+    get active(): boolean;
+    set active(next: boolean);
     // @internal
     formResetCallback(): void;
     // @override
@@ -2450,6 +2436,17 @@ export type DrawerType = ValuesOf<typeof DrawerType>;
 
 // @public
 export class Dropdown extends BaseDropdown {
+    // Warning: (ae-forgotten-export) The symbol "DropdownAppearance" needs to be exported by the entry point index.d.ts
+    appearance: DropdownAppearance;
+    // (undocumented)
+    protected appearanceChanged(prev: DropdownAppearance | undefined, next: DropdownAppearance | undefined): void;
+    block: boolean;
+    // (undocumented)
+    protected blockChanged(): void;
+    // Warning: (ae-forgotten-export) The symbol "DropdownSize" needs to be exported by the entry point index.d.ts
+    size: DropdownSize;
+    // (undocumented)
+    protected sizeChanged(prev: DropdownSize | undefined, next: DropdownSize | undefined): void;
 }
 
 // @public
@@ -2478,14 +2475,15 @@ export const DropdownListTemplate: ElementViewTemplate<DropdownList>;
 // Warning: (ae-missing-release-tag) "DropdownOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export type DropdownOptions = Record<string, any>;
+export interface DropdownOptions {
+    // (undocumented)
+    triggerIndicator?: InlineTemplateDirective;
+}
 
 // @public
 export const DropdownStyles: ElementStyles;
 
-// Warning: (ae-missing-release-tag) "template" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const DropdownTemplate: ElementViewTemplate<Dropdown>;
 
 // @public
@@ -3059,7 +3057,10 @@ export const OptionDefinition: FASTElementDefinition<typeof Option_2>;
 // Warning: (ae-missing-release-tag) "OptionOptions" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)
-export type OptionOptions = Record<string, any>;
+export interface OptionOptions {
+    // (undocumented)
+    checkedIndicator?: InlineTemplateDirective;
+}
 
 // @public
 export const OptionStyles: ElementStyles;

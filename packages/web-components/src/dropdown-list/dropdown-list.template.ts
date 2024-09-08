@@ -8,7 +8,7 @@ export const template: ElementViewTemplate<DropdownList> = html`
   <template>
     <slot
       ${slotted({
-        property: 'slottedOptions',
+        property: 'options',
         filter: node => node instanceof Option,
       })}
     ></slot>

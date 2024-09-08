@@ -17,6 +17,8 @@ import {
   colorNeutralForeground4,
   colorNeutralStroke1,
   colorNeutralStrokeAccessible,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -106,6 +108,15 @@ export const styles = css`
   }
 
   :host(${transparentState}) {
+  }
+
+  :host([slot='input']) {
+    outline: 0;
+  }
+
+  :host(:not([slot='input']):focus-visible) {
+    box-shadow: 0 0 0 2pt ${colorStrokeFocus2};
+    outline: 1px solid ${colorStrokeFocus1};
   }
 
   :host::after {

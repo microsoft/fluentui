@@ -1,6 +1,6 @@
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
+import { observable } from '@microsoft/fast-element';
 
-import { toggleState } from '../utils/element-internals.js';
+import { AbstractListbox } from '../patterns/abstract-listbox.js';
 import type { Option } from '../option/option.js';
 
 /**
@@ -8,56 +8,15 @@ import type { Option } from '../option/option.js';
  *
  * @public
  */
-export class BaseDropdownList extends FASTElement {
-  /**
-   * The internal {@link https://developer.mozilla.org/docs/Web/API/ElementInternals | `ElementInternals`} instance for the component.
-   *
-   * @internal
-   */
-  public elementInternals: ElementInternals = this.attachInternals();
-
-  @attr({ mode: 'boolean' })
-  public multiple = false;
-  protected multipleChanged() {
-    this.elementInternals.ariaMultiSelectable = this.multiple.toString();
-
-    if (this.$fastController.isConnected) {
-      this.toggleOptionsMultipleState();
-    }
-  }
-
-  /**
-   * @internal
-   */
-  @observable
-  public slottedOptions!: Option[];
-  protected slottedOptionsChanged() {
-    this.toggleOptionsMultipleState();
-  }
-
+export class BaseDropdownList extends AbstractListbox {
   /**
    * The option elements.
    *
    * @readonly
    * @public
    */
-  public get options(): Option[] {
-    return this.slottedOptions;
-  }
-
-  constructor() {
-    super();
-    this.elementInternals.role = 'listbox';
-  }
-
-  private toggleOptionsMultipleState() {
-    for (const option of this.options) {
-      if (!option.elementInternals) {
-        continue;
-      }
-      toggleState(option.elementInternals, 'multiple', this.multiple);
-    }
-  }
+  @observable
+  public override options!: Option[];
 }
 
 /**
