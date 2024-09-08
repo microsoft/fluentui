@@ -118,9 +118,9 @@ export const Appearances: Story<FluentDropdown> = renderComponent(html<StoryArgs
     ${render({ label: 'Transparent', appearance: 'transparent' }, storyTemplate())}
     ${render({ label: 'Filled darker', appearance: 'filled-darker' }, storyTemplate())}
     ${render({ label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true }, storyTemplate())}
-    ${render({ label: 'Filled darker', appearance: 'filled-lighter' }, storyTemplate())}
+    ${render({ label: 'Filled lighter', appearance: 'filled-lighter' }, storyTemplate())}
     ${render(
-      { label: 'Filled darker with shadow', appearance: 'filled-lighter', displayShadow: true },
+      { label: 'Filled lighter with shadow', appearance: 'filled-lighter', displayShadow: true },
       storyTemplate(),
     )}
   </div>
