@@ -2,6 +2,7 @@ import { css } from '@microsoft/fast-element';
 import { display } from '../utils/display.js';
 import {
   blockState,
+  displayShadowState,
   filledDarkerState,
   filledLighterState,
   largeState,
@@ -10,8 +11,10 @@ import {
 } from '../styles/states/index.js';
 import {
   borderRadiusMedium,
+  borderRadiusNone,
   colorCompoundBrandStroke,
   colorNeutralBackground1,
+  colorNeutralBackground3,
   colorNeutralForeground1,
   colorNeutralForeground3,
   colorNeutralForeground4,
@@ -23,6 +26,7 @@ import {
   curveDecelerateMid,
   durationNormal,
   durationUltraFast,
+  shadow2,
   spacingHorizontalM,
   spacingHorizontalMNudge,
   spacingHorizontalSNudge,
@@ -41,23 +45,22 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    /* sizes */
     --min-block-size: 32px;
     --gap: ${spacingHorizontalXXS};
     --padding-inline: ${spacingHorizontalMNudge};
-    --border-color: ${colorNeutralStroke1};
-    --border-block-end-color: ${colorNeutralStrokeAccessible};
-    --border-radius: ${borderRadiusMedium};
-    --background-color: ${colorNeutralBackground1};
-    --color: ${colorNeutralForeground1};
-
     --content-padding-inline: ${spacingHorizontalXXS};
-
-    --placeholder-color: ${colorNeutralForeground3};
-
-    --trigger-indicator-color: ${colorNeutralForeground4};
     --trigger-indicator-size: 20px;
     --trigger-indicator-icon-inilne-size: 12px;
+    --border-radius: ${borderRadiusMedium};
 
+    /* colors */
+    --color: ${colorNeutralForeground1};
+    --background-color: ${colorNeutralBackground1};
+    --border-color: ${colorNeutralStroke1};
+    --border-block-end-color: ${colorNeutralStrokeAccessible};
+    --placeholder-color: ${colorNeutralForeground4};
+    --trigger-indicator-color: ${colorNeutralForeground3};
     --focus-indicator-color: ${colorCompoundBrandStroke};
 
     ${typographyBody1Styles}
@@ -101,13 +104,29 @@ export const styles = css`
     ${typographyBody2Styles}
   }
 
-  :host(${filledDarkerState}) {
-  }
-
+  :host(${transparentState}),
+  :host(${filledDarkerState}),
   :host(${filledLighterState}) {
+    --border-color: transparent;
   }
 
   :host(${transparentState}) {
+    --border-radius: ${borderRadiusNone};
+    --background-color: transparent;
+  }
+
+  :host(${filledDarkerState}),
+  :host(${filledLighterState}) {
+    --border-block-end-color: transparent;
+  }
+
+  :host(${filledDarkerState}) {
+    --background-color: ${colorNeutralBackground3};
+  }
+
+  :host(${filledDarkerState}${displayShadowState}),
+  :host(${filledLighterState}${displayShadowState}) {
+    box-shadow: ${shadow2};
   }
 
   :host([slot='input']) {

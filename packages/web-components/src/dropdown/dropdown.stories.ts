@@ -40,6 +40,7 @@ const storyTemplate = () => {
         ?block="${x => x.block}"
         ?multiple="${x => x.multiple}"
         ?disabled="${x => x.disabled}"
+        ?display-shadow="${x => x.displayShadow}"
       ></fluent-dropdown>
       <fluent-dropdown-list slot="input" id="${listId}">
         ${repeat(storyOptions, optionTemplate)}
@@ -67,6 +68,9 @@ export default {
     disabled: {
       control: 'boolean',
     },
+    displayShadow: {
+      control: 'boolean',
+    },
     multiple: {
       control: 'boolean',
     },
@@ -88,6 +92,7 @@ export const Dropdown: Story<FluentDropdown> = args => {
 Dropdown.args = {
   block: false,
   disabled: false,
+  displayShadow: false,
   multiple: false,
   placeholder: 'Select a fruit',
 };
@@ -112,7 +117,12 @@ export const Appearances: Story<FluentDropdown> = renderComponent(html<StoryArgs
     ${render({ label: 'Outlined (default)' }, storyTemplate())}
     ${render({ label: 'Transparent', appearance: 'transparent' }, storyTemplate())}
     ${render({ label: 'Filled darker', appearance: 'filled-darker' }, storyTemplate())}
+    ${render({ label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true }, storyTemplate())}
     ${render({ label: 'Filled darker', appearance: 'filled-lighter' }, storyTemplate())}
+    ${render(
+      { label: 'Filled darker with shadow', appearance: 'filled-lighter', displayShadow: true },
+      storyTemplate(),
+    )}
   </div>
 `);
 
