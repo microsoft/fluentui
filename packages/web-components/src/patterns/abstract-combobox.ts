@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 
 import type { Option } from '../option/option.js';
@@ -35,37 +35,32 @@ export abstract class AbstractCombobox extends FASTElement {
   protected anchorPositioningStyleSheet?: CSSStyleSheet;
   protected anchorPositioningStyleElement?: HTMLStyleElement;
 
-  private _isExpanded = false;
-  protected get isExpanded(): boolean {
-    return this._isExpanded;
-  }
-  protected set isExpanded(next: boolean) {
-    this.elementInternals.ariaExpanded = next.toString();
-    this._isExpanded = next;
+  @observable
+  protected isExpanded = false;
+  protected isExpandedChanged() {
+    this.elementInternals.ariaExpanded = this.isExpanded.toString();
   }
 
   protected get isFocusVisible(): boolean {
     return this.matches(':focus-visible');
   }
 
-  private _activeOption?: Option;
-  protected get activeOption(): Option | undefined {
-    return this._activeOption;
-  }
-  protected set activeOption(option: Option | undefined) {
-    if (this._activeOption) {
-      this._activeOption.active = false;
+  @observable
+  protected activeOption?: Option;
+  protected activeOptionChanged(prev: Option | undefined, next: Option | undefined) {
+    if (prev) {
+      prev.active = false;
     }
 
-    this._activeOption = option;
-
-    if (option && this.isFocusVisible) {
-      option.active = true;
-      option.scrollIntoView({ block: 'nearest' });
+    if (next && this.isFocusVisible) {
+      next.active = true;
+      next.scrollIntoView({ block: 'nearest' });
     }
 
-    this.setAttribute('aria-activedescendant', option ? option.id : '');
+    this.setAttribute('aria-activedescendant', next ? next.id : '');
   }
+
+  private _selectedOptions = new Set<Option>();
 
   private clickListener?: (event: PointerEvent | MouseEvent) => void;
   private keydownListener?: (event: KeyboardEvent) => void;
@@ -142,7 +137,6 @@ export abstract class AbstractCombobox extends FASTElement {
     this.listElement.multiple = this.multiple;
   }
 
-  private _selectedOptions = new Set<Option>();
   public get selectedOptions(): Option[] {
     return Array.from(this._selectedOptions);
   }
