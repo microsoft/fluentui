@@ -181,6 +181,7 @@ const useInputStyles = makeStyles({
     height: '100%',
     width: `var(${thumbSizeVar})`,
     'writing-mode': 'vertical-lr',
+    direction: 'rtl',
   },
 });
 
