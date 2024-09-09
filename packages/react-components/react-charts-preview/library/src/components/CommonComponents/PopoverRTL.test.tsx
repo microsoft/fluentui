@@ -1,8 +1,8 @@
 import * as React from 'react';
 import PopoverComponent from './Popover';
 import { resetIds } from '../../Utilities';
-import { getByClass } from '../../utilities/TestUtility.test';
-import { act, render, screen } from '@testing-library/react';
+import { getByClass, getById } from '../../utilities/TestUtility.test';
+import { act, getByText, render, screen } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 expect.extend(toHaveNoViolations);
@@ -11,18 +11,32 @@ function sharedBeforeEach() {
   resetIds();
 }
 
-describe('ChartHoverCard', () => {
+beforeAll(() => {
+  // https://github.com/jsdom/jsdom/issues/3368
+  global.ResizeObserver = class ResizeObserver {
+    public observe() {
+      // do nothing
+    }
+    public unobserve() {
+      // do nothing
+    }
+    public disconnect() {
+      // do nothing
+    }
+  };
+});
+
+describe('Popover', () => {
   test('renders the popover component', () => {
     const { container } = render(<PopoverComponent isPopoverOpen={true} />);
-
-    const chartHoverCardElement = getByClass(container, /calloutContentRoot/);
-    expect(chartHoverCardElement).toBeDefined();
+    const popoverElement = getById(container, /callout1/);
+    expect(popoverElement).toBeDefined();
   });
 
   test('displays the correct XValue', () => {
     const XValue = 'Sample XValue';
     const { container } = render(<PopoverComponent XValue={XValue} isPopoverOpen={true} />);
-    const XValueElement = getByClass(container, /calloutContentX/)[0] as HTMLElement;
+    const XValueElement = getByText(container, /Sample XValue/);
     expect(XValueElement).toBeDefined();
     expect(XValueElement.textContent?.trim()).toBe(XValue);
   });
@@ -36,7 +50,7 @@ describe('ChartHoverCard', () => {
   test('displays the correct YValue', () => {
     const YValue = 'Sample YValue';
     const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
-    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    const YValueElement = getByText(container, /Sample YValue/);
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue);
   });
@@ -50,7 +64,7 @@ describe('ChartHoverCard', () => {
   test('displays the correct YValue when YValue is a number', () => {
     const YValue = 123;
     const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
-    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    const YValueElement = getByText(container, /123/);
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue.toString());
   });
@@ -58,7 +72,7 @@ describe('ChartHoverCard', () => {
   test('displays the correct YValue when YValue is a date', () => {
     const YValue = new Date('2021-01-01');
     const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
-    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    const YValueElement = getByText(container, '1/1/2021');
     expect(YValueElement).toBeDefined();
     expect(YValueElement.textContent?.trim()).toBe(YValue.toLocaleDateString());
   });
@@ -67,25 +81,24 @@ describe('ChartHoverCard', () => {
     const Legend = 'Sample Legend';
     const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
     screen.debug(container, Infinity);
-    const LegendElement = getByClass(container, /calloutlegendText/);
+    const LegendElement = getByText(container, /Sample Legend/);
     expect(LegendElement).toBeDefined();
   });
 
   test('displays the correct Legend when Legend is a number', () => {
     const Legend = 123;
     const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
-    const LegendElement = getByClass(container, /calloutlegendText/);
-    screen.debug(container, Infinity);
+    const LegendElement = getByText(container, /123/);
     expect(LegendElement).toBeDefined();
-    expect(LegendElement[0].textContent?.trim()).toBe(Legend.toString());
+    expect(LegendElement.textContent?.trim()).toBe(Legend.toString());
   });
 
   test('displays the correct Legend when Legend is a date', () => {
     const Legend = new Date('2021-01-01');
     const { container } = render(<PopoverComponent legend={Legend} isPopoverOpen={true} />);
-    const LegendElement = getByClass(container, /calloutlegendText/);
+    const LegendElement = getByText(container, '1/1/2021');
     expect(LegendElement).toBeDefined();
-    expect(LegendElement[0].textContent?.trim()).toBe(Legend.toLocaleDateString());
+    expect(LegendElement.textContent?.trim()).toBe(Legend.toLocaleDateString());
   });
 
   test('displays the popover card correctly when Legend is undefined', () => {
@@ -98,10 +111,10 @@ describe('ChartHoverCard', () => {
     const ratio: [number, number] = [1, 2];
     const { container } = render(<PopoverComponent ratio={ratio} isPopoverOpen={true} />);
     expect(getByClass(container, /ratio/)).toBeDefined();
-    const numerator = getByClass(container, /numerator/)[0] as HTMLElement;
+    const numerator = getByText(container, '1');
     expect(numerator).toBeDefined();
     expect(numerator.textContent).toBe(ratio[0].toLocaleString());
-    const denominator = getByClass(container, /denominator/)[0] as HTMLElement;
+    const denominator = getByText(container, '2');
     expect(denominator).toBeDefined();
     expect(denominator.textContent).toBe(ratio[1].toLocaleString());
   });
@@ -109,7 +122,7 @@ describe('ChartHoverCard', () => {
   it('displays the correct descriptionMessage', () => {
     const descriptionMessage = 'Sample descriptionMessage';
     const { container } = render(<PopoverComponent descriptionMessage={descriptionMessage} isPopoverOpen={true} />);
-    const descriptionMessageElement = getByClass(container, /descriptionMessage/)[0] as HTMLElement;
+    const descriptionMessageElement = getByText(container, /Sample descriptionMessage/);
     expect(descriptionMessageElement).toBeDefined();
     expect(descriptionMessageElement.textContent?.trim()).toBe(descriptionMessage);
   });
