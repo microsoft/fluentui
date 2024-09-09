@@ -4,6 +4,7 @@ import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens } from '@fluentui/react-theme';
 import { isRtl } from '../../utilities/utilities';
+import { merge } from 'd3-array';
 
 /**
  * @internal
@@ -14,6 +15,8 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   axisTitle: 'fui-cart__axisTitle',
   xAxis: 'fui-cart__xAxis',
   yAxis: 'fui-cart__yAxis',
+  yAxisg: 'fui-cart_yAxisg',
+  rtl: 'fui-cart_rtl',
   opacityChangeOnHover: 'fui-cart__opacityChangeOnHover',
   legendContainer: 'fui-cart__legendContainer',
   calloutContentRoot: 'fui-cart__calloutContentRoot',
@@ -50,7 +53,7 @@ const useStyles = makeStyles({
   axisTitle: {
     fontSize: tokens.fontSizeBase100,
     textAlign: 'center',
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightRegular,
     fontStyle: 'normal',
     lineHeight: tokens.fontSizeBase100,
     color: '#323130', // ToDo - Find correct token for this color
@@ -59,7 +62,7 @@ const useStyles = makeStyles({
   xAxis: {
     '& text': {
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '600',
+      fontWeight: '300',
       selectors: {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -85,7 +88,7 @@ const useStyles = makeStyles({
     '& text': {
       fontSize: tokens.fontSizeBase100,
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '600',
+      fontWeight: '300',
       selectors: {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -105,12 +108,10 @@ const useStyles = makeStyles({
     '& path': {
       display: 'none',
     },
-    '& g': {
-      // ToDo: fix - Is RTL hook cannot be called from non functional components
-      //...(isRtl() && {
-      //  textAnchor: 'end',
-      //}),
-    },
+  },
+  yAxisg: {},
+  rtl: {
+    textAnchor: 'end',
   },
   opacityChangeOnHover: {
     opacity: '0.1', //supports custom opacity
@@ -190,6 +191,7 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): ICartesianChartStyles => {
+  const _isRtl = isRtl();
   const baseStyles = useStyles();
   return {
     root: mergeClasses(cartesianchartClassNames.root, baseStyles.root /*props.styles?.root*/),
@@ -200,6 +202,7 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
     yAxis: mergeClasses(cartesianchartClassNames.yAxis, baseStyles.yAxis /*props.styles?.yAxis*/),
+    yAxisg: mergeClasses(cartesianchartClassNames.yAxisg, _isRtl ? baseStyles.rtl : ''),
     opacityChangeOnHover: mergeClasses(
       cartesianchartClassNames.opacityChangeOnHover,
       baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,

@@ -55,6 +55,8 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
+          enableGradient={props.enableGradient}
+          roundCorners={props.roundCorners}
           color={color!}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
@@ -68,7 +70,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
           focusedArcId={props.focusedArcId}
           showLabelsInPercent={props.showLabelsInPercent}
           totalValue={_totalValue}
-          hideLabels={true}
+          hideLabels={props.hideLabels}
         />
       );
     }
