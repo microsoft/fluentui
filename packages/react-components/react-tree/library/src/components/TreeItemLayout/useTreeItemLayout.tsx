@@ -88,8 +88,8 @@ export const useTreeItemLayout_unstable = (
     (event: FocusEvent | MouseEvent) => {
       const isRelatedTargetFromActions = () =>
         Boolean(actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node));
-      const isTargetFromSubtree = () =>
-        Boolean(subtreeRef.current && elementContains(subtreeRef.current, event.target as Node));
+      const isRelatedTargetFromTreeItem = () =>
+        Boolean(treeItemRef.current && elementContains(treeItemRef.current, event.relatedTarget as Node));
       const isTargetFromActions = () => Boolean(actionsRefInternal.current?.contains(event.target as Node));
       if (isRelatedTargetFromActions()) {
         onActionVisibilityChange?.(event, {
@@ -100,7 +100,7 @@ export const useTreeItemLayout_unstable = (
         setIsActionsVisible(true);
         return;
       }
-      if (isTargetFromActions() || isTargetFromSubtree()) {
+      if (isTargetFromActions() && isRelatedTargetFromTreeItem()) {
         return;
       }
       onActionVisibilityChange?.(event, {
@@ -110,7 +110,7 @@ export const useTreeItemLayout_unstable = (
       } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
       setIsActionsVisible(false);
     },
-    [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
+    [setIsActionsVisible, onActionVisibilityChange, treeItemRef],
   );
 
   const expandIcon = slot.optional(props.expandIcon, {
