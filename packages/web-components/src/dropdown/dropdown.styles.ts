@@ -19,10 +19,17 @@ import {
   colorNeutralForeground1,
   colorNeutralForeground3,
   colorNeutralForeground4,
+  colorNeutralForegroundDisabled,
   colorNeutralStroke1,
+  colorNeutralStroke1Hover,
+  colorNeutralStroke1Pressed,
   colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
   colorStrokeFocus1,
   colorStrokeFocus2,
+  colorTransparentBackground,
   curveAccelerateMid,
   curveDecelerateMid,
   durationNormal,
@@ -72,13 +79,38 @@ export const styles = css`
     border-block-end-color: var(--border-block-end-color);
     border-radius: var(--border-radius);
     color: var(--color);
-    cursor: pointer;
     gap: var(--gap);
     grid-template: 'content indicator' 1fr / 1fr auto;
     min-block-size: var(--min-block-size);
     touch-action: manipulation;
     padding-inline: var(--padding-inline);
     position: relative;
+  }
+
+  :host(:not(:disabled)) {
+    cursor: pointer;
+  }
+
+  :host(:hover) {
+    --border-color: ${colorNeutralStroke1Hover};
+    --border-block-end-color: ${colorNeutralStrokeAccessibleHover};
+  }
+
+  :host(:active) {
+    --border-color: ${colorNeutralStroke1Pressed};
+    --border-block-end-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+
+  :host(:disabled) {
+    --color: ${colorNeutralForegroundDisabled};
+    --background-color: ${colorTransparentBackground};
+    --border-color: ${colorNeutralStrokeDisabled};
+    --border-block-end-color: var(--border-color);
+    --box-shadow: none;
+    --placeholder-color: ${colorNeutralForegroundDisabled};
+    --trigger-indicator-color: ${colorNeutralForegroundDisabled};
+
+    user-select: none;
   }
 
   :host(${blockState}:not([hidden])) {
