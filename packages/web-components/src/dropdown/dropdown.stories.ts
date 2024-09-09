@@ -28,7 +28,6 @@ const storyTemplate = () => {
   const listId = uniqueId('dropdown-list-');
 
   return html<StoryArgs<FluentDropdown>>`
-    <fluent-field style="width: 100%">
       ${when(x => x.label, html`<label slot="label" for="${id}">${x => x.label}</label>`)}
       <fluent-dropdown
         slot="input"
@@ -45,9 +44,14 @@ const storyTemplate = () => {
       <fluent-dropdown-list slot="input" id="${listId}">
         ${repeat(storyOptions, optionTemplate)}
       </fluient-dropdown-list>
-    </fluent-field>
   `;
 };
+
+const storyFieldTemplate = () => html`
+  <fluent-field style="width: 100%">
+    ${storyTemplate()}
+  </fluent-field>
+`;
 
 export default {
   title: 'Components/Dropdown',
@@ -99,36 +103,36 @@ Dropdown.args = {
 
 export const SelectionMode: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
-    ${render({ label: 'Single (default)' }, storyTemplate())}
-    ${render({ label: 'Multiple', multiple: true }, storyTemplate())}
+    ${render({ label: 'Single (default)' }, storyFieldTemplate())}
+    ${render({ label: 'Multiple', multiple: true }, storyFieldTemplate())}
   </div>
 `);
 
 export const Sizes: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
-    ${render({ label: 'Medium (default)' }, storyTemplate())}
-    ${render({ label: 'Small', size: 'small' }, storyTemplate())}
-    ${render({ label: 'Large', large: 'large' }, storyTemplate())}
+    ${render({ label: 'Medium (default)' }, storyFieldTemplate())}
+    ${render({ label: 'Small', size: 'small' }, storyFieldTemplate())}
+    ${render({ label: 'Large', large: 'large' }, storyFieldTemplate())}
   </div>
 `);
 
 export const Appearances: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
-    ${render({ label: 'Outlined (default)' }, storyTemplate())}
-    ${render({ label: 'Transparent', appearance: 'transparent' }, storyTemplate())}
-    ${render({ label: 'Filled darker', appearance: 'filled-darker' }, storyTemplate())}
-    ${render({ label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true }, storyTemplate())}
-    ${render({ label: 'Filled lighter', appearance: 'filled-lighter' }, storyTemplate())}
+    ${render({ label: 'Outlined (default)' }, storyFieldTemplate())}
+    ${render({ label: 'Transparent', appearance: 'transparent' }, storyFieldTemplate())}
+    ${render({ label: 'Filled darker', appearance: 'filled-darker' }, storyFieldTemplate())}
+    ${render({ label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true }, storyFieldTemplate())}
+    ${render({ label: 'Filled lighter', appearance: 'filled-lighter' }, storyFieldTemplate())}
     ${render(
       { label: 'Filled lighter with shadow', appearance: 'filled-lighter', displayShadow: true },
-      storyTemplate(),
+      storyFieldTemplate(),
     )}
   </div>
 `);
 
 export const Layouts: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
-    ${render({ label: 'Inline (default)' }, storyTemplate())}
-    ${render({ label: 'Block', block: true }, storyTemplate())}
+    ${render({ label: 'Inline (default)' }, storyFieldTemplate())}
+    ${render({ label: 'Block', block: true }, storyFieldTemplate())}
   </div>
 `);
