@@ -8,10 +8,10 @@ type UseFocusVisibleOptions = {
 };
 
 export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options: UseFocusVisibleOptions = {}) {
-  const contentValue = useFluent();
+  const contextValue = useFluent();
   const scopeRef = React.useRef<TElement>(null);
 
-  const targetDocument = options.targetDocument ?? contentValue.targetDocument;
+  const targetDocument = options.targetDocument ?? contextValue.targetDocument;
 
   React.useEffect(() => {
     if (targetDocument?.defaultView && scopeRef.current) {

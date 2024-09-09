@@ -36,7 +36,7 @@ import {
 import { ColorOverrideBrands, useThemeDesigner } from '../../Context/ThemeDesignerContext';
 import { contrast, hex_to_sRGB } from '../../colors';
 import { accessiblePairs } from './AccessiblePairs';
-import { useStyles } from './TokenList.style';
+import { useStyles } from './TokenList.styles';
 
 export interface TokenIssueListProps {
   brand: BrandVariants;

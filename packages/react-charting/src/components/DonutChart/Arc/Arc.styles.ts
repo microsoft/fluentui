@@ -1,19 +1,26 @@
-import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette, FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
+import { IArcStyleProps, IArcStyles } from './Arc.types';
+import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
 
-export const getStyles = (props: IArcProps): IArcStyles => {
-  const { color, href, theme } = props;
+export const getStyles = (props: IArcStyleProps): IArcStyles => {
+  const { solidFill, gradientFill, href, theme, opacity } = props;
   return {
     root: {
-      fill: color,
+      fill: solidFill,
       cursor: href ? 'pointer' : 'default',
-      stroke: DefaultPalette.white,
+      stroke: theme.semanticColors.bodyBackground,
       outline: 'transparent',
       selectors: {
         '::-moz-focus-inner': {
           border: '0',
         },
       },
+      opacity,
+    },
+    gradientArc: {
+      width: '100%',
+      height: '100%',
+      background: gradientFill,
+      opacity,
     },
     focusRing: {
       stroke: theme.semanticColors.focusBorder,

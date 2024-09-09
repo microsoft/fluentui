@@ -17,8 +17,8 @@ export function createSlideStyles(mainAxis: number): GriffelStyle {
     },
   };
 
-  const slideDistanceVarX = '--slide-distance-x';
-  const slideDistanceVarY = '--slide-distance-y';
+  const slideDistanceVarX = '--fui-positioning-slide-distance-x';
+  const slideDistanceVarY = '--fui-positioning-slide-distance-y';
 
   return {
     animationComposition: 'accumulate',

@@ -21,6 +21,14 @@
       "rules": {
         "no-undef": "error"
       }
+    },
+    {
+      "files": "bundle-size/*.js",
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "import/no-default-export": "off",
+        "no-console": "off"
+      }
     }
   ],
   "root": true

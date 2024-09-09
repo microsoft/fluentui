@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import SplitButtonExampleSmallContainer from '../../examples/components/SplitButton/Visual/SplitButtonExampleSmallContainer';
@@ -6,7 +6,7 @@ import SplitButtonExampleSmallContainer from '../../examples/components/SplitBut
 export default {
   component: SplitButton,
   title: 'SplitButton',
-} as ComponentMeta<typeof SplitButton>;
+} as Meta<typeof SplitButton>;
 
 const SplitButtonExampleSmallContainerTeams = getThemeStoryVariant(SplitButtonExampleSmallContainer, 'teamsV2');
 

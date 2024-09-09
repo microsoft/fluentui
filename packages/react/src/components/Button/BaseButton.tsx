@@ -678,9 +678,12 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       this._dismissMenu();
     }
 
-    if (!this._processingTouch && this.props.onClick) {
+    // toggle split buttons need two separate targets, even for touch
+    const singleTouchTarget = this._processingTouch && !this.props.toggle;
+
+    if (!singleTouchTarget && this.props.onClick) {
       this.props.onClick(ev);
-    } else if (this._processingTouch) {
+    } else if (singleTouchTarget) {
       this._onMenuClick(ev);
     }
   };

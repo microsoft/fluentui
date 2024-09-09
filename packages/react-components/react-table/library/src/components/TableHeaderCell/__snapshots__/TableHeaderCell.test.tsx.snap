@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableHeaderCell renders a default state 1`] = `
+<tr>
+  <th
+    class="fui-TableHeaderCell"
+  >
+    <div
+      class="fui-TableHeaderCell__button"
+      role="presentation"
+    >
+      Default TableHeaderCell
+    </div>
+  </th>
+</tr>
+`;

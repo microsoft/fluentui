@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "tsconfig-base-all",
+  "description": "Create tsconfig.json with merged 'compilerOptions.paths' from v0,v8,v9 tsconfigs",
+  "type": "object",
+  "properties": {
+    "verify": {
+      "type": "boolean",
+      "description": "Verify integrity of tsconfig.base.all.json path aliases"
+    },
+    "skipFormat": {
+      "description": "Skip formatting files.",
+      "type": "boolean",
+      "default": false,
+      "x-priority": "internal"
+    }
+  },
+  "required": []
+}

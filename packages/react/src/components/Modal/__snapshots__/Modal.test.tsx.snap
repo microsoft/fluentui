@@ -107,6 +107,7 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
                     text-align: left;
                     z-index: 1000000;
                   }
+              data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
               id="ModalFocusTrapZone0"
               style="transform: translate(0px, 0px);"
             >
@@ -280,6 +281,7 @@ exports[`Modal renders Modal correctly 1`] = `
                     position: relative;
                     text-align: left;
                   }
+              data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
               id="ModalFocusTrapZone0"
             >
               <div
@@ -426,6 +428,7 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
                     text-align: left;
                     z-index: 1000000;
                   }
+              data-tabster="{\\"uncontrolled\\": {\\"completely\\": true}}"
               id="ModalFocusTrapZone0"
             >
               <div

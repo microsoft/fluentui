@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
-import { TestWrapperDecorator } from '../utilities/index';
+import { Steps } from 'storywright';
+import { getStoryVariant, RTL, StoryWrightDecorator, TestWrapperDecorator } from '../utilities';
 import { ResizeGroup, OverflowSet } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -25,48 +24,48 @@ const list = {
 
 const noop = () => null;
 
-storiesOf('ResizeGroup', module)
-  .addDecorator(TestWrapperDecorator)
-  .addDecorator(story => (
-    <StoryWright
-      steps={new Steps()
+export default {
+  title: 'ResizeGroup',
+
+  decorators: [
+    TestWrapperDecorator,
+    StoryWrightDecorator(
+      new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.OverflowButton')
         .hover('.OverflowButton')
         .snapshot('click overflow')
-        .end()}
-    >
-      {story()}
-    </StoryWright>
-  ))
-  .addStory(
-    'Root',
-    () => (
-      <ResizeGroup
-        data={list}
-        onReduceData={noop}
-        onRenderData={data => {
-          return (
-            <OverflowSet
-              items={data.primary}
-              overflowItems={data.overflow.length ? data.overflow : null}
-              onRenderItem={item => {
-                return (
-                  <DefaultButton
-                    text={item.name}
-                    iconProps={item.iconProps}
-                    onClick={item.onClick}
-                    checked={item.checked}
-                  />
-                );
-              }}
-              onRenderOverflowButton={overflowItems => (
-                <DefaultButton className="OverflowButton" menuProps={{ items: overflowItems! }} />
-              )}
-            />
-          );
-        }}
-      />
+        .end(),
     ),
-    { includeRtl: true },
-  );
+  ],
+};
+
+export const Root = () => (
+  <ResizeGroup
+    data={list}
+    onReduceData={noop}
+    onRenderData={data => {
+      return (
+        <OverflowSet
+          items={data.primary}
+          overflowItems={data.overflow.length ? data.overflow : null}
+          onRenderItem={item => {
+            return (
+              <DefaultButton
+                text={item.name}
+                iconProps={item.iconProps}
+                onClick={item.onClick}
+                checked={item.checked}
+              />
+            );
+          }}
+          onRenderOverflowButton={overflowItems => (
+            <DefaultButton className="OverflowButton" menuProps={{ items: overflowItems! }} />
+          )}
+        />
+      );
+    }}
+  />
+);
+
+export const RootRTL = getStoryVariant(Root, RTL);

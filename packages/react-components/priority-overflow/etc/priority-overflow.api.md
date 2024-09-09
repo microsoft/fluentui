@@ -37,6 +37,13 @@ export type OverflowAxis = 'horizontal' | 'vertical';
 // @public (undocumented)
 export type OverflowDirection = 'start' | 'end';
 
+// @public (undocumented)
+export interface OverflowDividerEntry {
+    element: HTMLElement;
+    // (undocumented)
+    groupId: string;
+}
+
 // @public
 export interface OverflowEventPayload {
     // (undocumented)
@@ -61,11 +68,13 @@ export interface OverflowItemEntry {
 
 // @internal (undocumented)
 export interface OverflowManager {
+    addDivider: (divider: OverflowDividerEntry) => void;
     addItem: (items: OverflowItemEntry) => void;
     addOverflowMenu: (element: HTMLElement) => void;
     disconnect: () => void;
     forceUpdate: () => void;
     observe: (container: HTMLElement, options: ObserveOptions) => void;
+    removeDivider: (groupId: string) => void;
     removeItem: (itemId: string) => void;
     removeOverflowMenu: () => void;
     update: () => void;

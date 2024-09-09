@@ -1,5 +1,5 @@
 name: 🐞 Bug Report
-description: File a bug report
+description: File a bug report.
 title: '[Bug]: '
 labels: ['Type: Bug 🐛', 'Needs: Triage 🔍']
 assignees: []
@@ -34,11 +34,11 @@ body:
   - type: dropdown
     id: a11y-bug
     attributes:
-      label: Are you reporting Accessibility issue?
+      label: Are you reporting an Accessibility issue?
       description: |
         **PLEASE NOTE:**
 
-        1. Do not link to, screenshot or reference a Microsoft product in this description.
+        1. Do not link to, screenshot, or reference a Microsoft product in this description.
         2. Please check ARIA component examples to ensure it is not a screen reader or browser issue. If the issue concerns screen reader behavior that reproduces on HTML elements or ARIA Practices examples (https://w3c.github.io/aria-practices/), it should be filed with the respective browser or screen reading software and not the Fluent UI repo.
         3. There is documentation or best practice info to support your expected behavior (review https://w3c.github.io/aria/ for accessibility guidance.)
 
@@ -53,7 +53,7 @@ body:
     attributes:
       label: Reproduction
       description: |
-        Please provide a link to one of following browser tools based on library version:
+        Please provide a link to one of the following browser tools based on the library version:
         - React Northstar / v0 - https://codesandbox.io/s/fluent-ui-template-8ismt
         - React / v8  - https://aka.ms/fluentpen
         - React Components / v9 - https://codesandbox.io/

@@ -46,6 +46,8 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxCheckHoverTest: string;
   checkBoxCheckedDisabledBackground: string;
   checkBoxDisabled: string;
+  checkBoxIndeterminateDetailsRowCheck: string;
+  checkBoxIndeterminateDetailsRowCheckHover: string;
   checkBoxIndeterminateBackground: string;
   checkBoxIndeterminateDefaultChecked: string;
   callOutBorderStyle: string;
@@ -63,6 +65,16 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   commandBarButtonTextHover: string;
   commandBarButtonTextDisabled: string;
   commandBarBorder: string;
+  dataColor1: string;
+  dataColor2: string;
+  dataColor3: string;
+  dataColor4: string;
+  dataColor5: string;
+  dataColor6: string;
+  dataColor7: string;
+  dataColor8: string;
+  dataColor9: string;
+  dataColor10: string;
   controlAccent: string;
   controlBackground: string;
   controlFocus: string;
@@ -120,6 +132,8 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   ButtonBorderDanger: string;
   ButtonBorderDangerHovered: string;
   ButtonBorderDangerPressed: string;
+  noDataColor1: string;
+  noData2Color: string;
   primaryButtonBorder: string;
   primaryButtonBorderDisabled: string;
   primaryButtonText: string;
@@ -146,6 +160,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   sliderDisabledInActiveBackground: string;
   statusDefaultBackground: string;
   statusDefaultBorder: string;
+  statusDisabledIcon: string;
   statusErrorBackground: string;
   statusErrorBorder: string;
   statusErrorIcon: string;
@@ -155,6 +170,8 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusInformationText: string;
   statusLink: string;
   statusLinkHover: string;
+  statusUpsellBackground: string;
+  statusUpsellIcon: string;
   statusSuccessBackground: string;
   statusSuccessBorder: string;
   statusSuccessIcon: string;

@@ -1,0 +1,1 @@
+By default, the child component does not perform the enter animation when it first mounts, regardless of the value of `visible`. If you want this behavior, set both `appear` and `visible` props to be true.

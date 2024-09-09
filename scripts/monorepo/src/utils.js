@@ -1,27 +1,8 @@
 const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
 
-const { workspaceRoot } = require('@nrwl/devkit');
+const { workspaceRoot } = require('@nx/devkit');
 
-const findGitRoot = require('./findGitRoot');
 const TEN_MEGABYTES = 1024 * 10000;
-
-/**
- * Gets project metadata from monorepo source of truth which is `workspace.json`
- * @param {Object} options
- * @param {string} [options.root] - repo root path
- * @param {string} options.name - package name
- * @returns {import('@nrwl/devkit').ProjectConfiguration}
- */
-function getProjectMetadata(options) {
-  const { root = findGitRoot() } = options;
-
-  /**@type {import('@nrwl/devkit').WorkspaceJsonConfiguration} */
-  const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
-
-  return nxWorkspace.projects[options.name];
-}
 
 /**
  *
@@ -54,5 +35,4 @@ function getUntrackedFiles() {
 
 exports.getUncommittedFiles = getUncommittedFiles;
 exports.getUntrackedFiles = getUntrackedFiles;
-exports.getProjectMetadata = getProjectMetadata;
 exports.workspaceRoot = workspaceRoot;

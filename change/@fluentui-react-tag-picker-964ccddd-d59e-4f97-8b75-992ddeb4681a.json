@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(react-tag-picker): compute aria-label/aria-labelledby for expand button, stories a11y fixes",
+  "packageName": "@fluentui/react-tag-picker",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}

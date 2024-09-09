@@ -74,9 +74,11 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
       if (!(hasOnChange || isReadOnly) && !warningsMap.valueOnChange[componentId]) {
         warningsMap.valueOnChange[componentId] = true;
         warn(
-          `Warning: You provided a '${valueProp}' prop to a ${componentName} without an '${onChangeProp}' handler. ` +
-            `This will render a read-only field. If the field should be mutable use '${defaultValueProp}'. ` +
-            `Otherwise, set '${onChangeProp}'${readOnlyProp ? ` or '${readOnlyProp}'` : ''}.`,
+          `Warning: You provided a '${String(valueProp)}' prop to a ${String(componentName)} without an '${String(
+            onChangeProp,
+          )}' handler. ` +
+            `This will render a read-only field. If the field should be mutable use '${String(defaultValueProp)}'. ` +
+            `Otherwise, set '${String(onChangeProp)}'${readOnlyProp ? ` or '${String(readOnlyProp)}'` : ''}.`,
         );
       }
 
@@ -85,9 +87,13 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
       if (defaultValue !== undefined && defaultValue !== null && !warningsMap.valueDefaultValue[componentId]) {
         warningsMap.valueDefaultValue[componentId] = true;
         warn(
-          `Warning: You provided both '${valueProp}' and '${defaultValueProp}' to a ${componentName}. ` +
-            `Form fields must be either controlled or uncontrolled (specify either the '${valueProp}' prop, ` +
-            `or the '${defaultValueProp}' prop, but not both). Decide between using a controlled or uncontrolled ` +
+          `Warning: You provided both '${String(valueProp)}' and '${String(
+            defaultValueProp,
+          )}' to a ${componentName}. ` +
+            `Form fields must be either controlled or uncontrolled (specify either the '${String(valueProp)}' prop, ` +
+            `or the '${String(
+              defaultValueProp,
+            )}' prop, but not both). Decide between using a controlled or uncontrolled ` +
             `${componentName} and remove one of these props. More info: https://fb.me/react-controlled-components`,
         );
       }

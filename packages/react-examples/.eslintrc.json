@@ -4,6 +4,7 @@
   "rules": {
     "import/no-webpack-loader-syntax": "off",
     "@typescript-eslint/no-explicit-any": "off",
-    "no-alert": "off"
+    "no-alert": "off",
+    "no-restricted-globals": "off"
   }
 }

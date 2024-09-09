@@ -284,6 +284,41 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
    * focus will not be restored automatically, and you'll need to call `params.originalElement.focus()`.
    */
   onRestoreFocus?: (params: IPopupRestoreFocusParams) => void;
+
+  /**
+   * The minimum height, in pixels, that the callout will scroll-resize down to on top/bottom edges
+   * before repositioning to a new edge.
+   *
+   * Note: this prop has no effect if `directionalHintFixed=true`.
+   *
+   * Note: if `preferScrollResizing=false`, this prop will have no effect because the callout will not scroll-resize.
+   *
+   * Note: if `hideOverflow = true`, or if the computed callout style `overflowY` is `hidden` or `clip`,
+   * the callout will not scroll-resize.
+   *
+   * @defaultvalue 200
+   */
+  minimumScrollResizeHeight?: number;
+
+  /**
+   * If true, the callout will scroll-resize when positioning on top / bottom edges,
+   * rather than repositioning to a new edge.
+   *
+   * Example: if `directionalHint=DirectionalHint.bottomAutoEdge`, and the callout content height exceeds
+   * the vertical space below the callout, the callout will position itself on the bottom edge of the target
+   * (rather than repositioning to a new edge with more available vertical space),
+   * and the callout will scroll-resize down to the available space.
+   *
+   * Use `minimumScrollResizeHeight` to change the minimum height the callout will resize down to
+   * before repositioning to another edge (default 200px).
+   *
+   * Note: this prop has no effect if `directionalHintFixed=true`.
+   *
+   * Note: if `hideOverflow = true`, or if the computed callout style `overflowY` is `hidden` or `clip`,
+   * the callout will not prefer scroll-resized positions (i.e. this prop will be ignored)
+   * @defaultvalue false
+   */
+  preferScrollResizePositioning?: boolean;
 }
 
 /**

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 import { CircleRegular } from '@fluentui/react-icons';
 import { propValues, useStyles } from './utils';
-import { ComponentMeta } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { getStoryVariant, RTL } from '../../utilities';
 
 const BadgeSampleRow: React.FC<BadgeProps> = props => {
@@ -35,7 +35,7 @@ const BadgeSampleRow: React.FC<BadgeProps> = props => {
 
 export default {
   title: 'Badge Converged',
-} as ComponentMeta<typeof Badge>;
+} satisfies Meta<typeof Badge>;
 
 export const SizeTiny = () => {
   const styles = useStyles();

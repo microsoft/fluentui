@@ -2,6 +2,7 @@ import { EventGroup } from './EventGroup';
 import { findScrollableParent } from './scroll';
 import { getRect } from './dom/getRect';
 import type { IRectangle } from './IRectangle';
+import { getWindow } from './dom';
 
 declare function setTimeout(cb: Function, delay: number): number;
 
@@ -26,21 +27,22 @@ export class AutoScroll {
   private _isVerticalScroll!: boolean;
   private _timeoutId?: number;
 
-  constructor(element: HTMLElement) {
+  constructor(element: HTMLElement, win?: Window) {
+    const theWin = win ?? getWindow(element)!;
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
     this._incrementScroll = this._incrementScroll.bind(this);
-    this._scrollRect = getRect(this._scrollableParent);
+    this._scrollRect = getRect(this._scrollableParent, theWin);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (this._scrollableParent === (window as any)) {
-      this._scrollableParent = document.body;
+    if (this._scrollableParent === (theWin as any)) {
+      this._scrollableParent = theWin.document.body;
     }
 
     if (this._scrollableParent) {
-      this._events.on(window, 'mousemove', this._onMouseMove, true);
-      this._events.on(window, 'touchmove', this._onTouchMove, true);
+      this._events.on(theWin, 'mousemove', this._onMouseMove, true);
+      this._events.on(theWin, 'touchmove', this._onTouchMove, true);
     }
   }
 

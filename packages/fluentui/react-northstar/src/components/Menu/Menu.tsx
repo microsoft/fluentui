@@ -292,7 +292,7 @@ export const Menu = React.forwardRef<HTMLUListElement, MenuProps>((props, ref) =
       const kind = getKindProp(item, 'item');
 
       if (kind === 'divider') {
-        return createShorthand(MenuDivider, item, {
+        return createShorthand(MenuDivider, item as ShorthandValue<MenuDividerProps>, {
           defaultProps: () => getA11yProps('divider', {}),
           overrideProps: handleDividerOverrides,
         });

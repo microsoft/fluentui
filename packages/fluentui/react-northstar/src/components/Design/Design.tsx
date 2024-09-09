@@ -9,7 +9,7 @@ import { ReactChildren } from '../../types';
 
 export type DesignProps = {
   /** A render function that receives the generated className as its only argument */
-  children: ({ className: string }) => ReactChildren;
+  children: (args: { className: string }) => ReactChildren;
 
   /** Design config takes a limited set of layout and position CSS properties. */
   config: ComponentDesignProp;

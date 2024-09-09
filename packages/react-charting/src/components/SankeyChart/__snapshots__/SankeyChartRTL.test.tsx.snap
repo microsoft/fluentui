@@ -1,0 +1,1332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Sankey bar chart rendering Should render the Sankey chart with string node data 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone15"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        focusable="false"
+        height="436"
+        id="sankeyChart2"
+        width="864"
+      >
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement6"
+          >
+            <rect
+              aria-label="node 192.168.42.72 with weight 80"
+              data-is-focusable="true"
+              fill="#757575"
+              height="237.53846153846155"
+              id="nodeBar5"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="0"
+              width="124"
+              x="48"
+              y="36"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar5-name"
+                  text-anchor="start"
+                  x="48"
+                  y="36"
+                >
+                  192.168.42.72
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="48"
+                y="36"
+              >
+                80
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement8"
+          >
+            <rect
+              aria-label="node 172.152.48.13 with weight 50"
+              data-is-focusable="true"
+              fill="#8764B8"
+              height="148.46153846153845"
+              id="nodeBar7"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="48"
+              y="281.53846153846155"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar7-name"
+                  text-anchor="start"
+                  x="48"
+                  y="281.53846153846155"
+                >
+                  172.152.48.13
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="48"
+                y="281.53846153846155"
+              >
+                50
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-0"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#757575"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#757575"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link13"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-1"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#8764B8"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link14"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement10"
+          >
+            <rect
+              aria-label="node 124.360.55.1 with weight 80"
+              data-is-focusable="true"
+              fill="#757575"
+              height="237.53846153846155"
+              id="nodeBar9"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="739"
+              y="36"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar9-name"
+                  text-anchor="start"
+                  x="739"
+                  y="36"
+                >
+                  124.360.55.1
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="739"
+                y="36"
+              >
+                80
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement12"
+          >
+            <rect
+              aria-label="node 192.564.10.2 with weight 50"
+              data-is-focusable="true"
+              fill="#8764B8"
+              height="148.46153846153845"
+              id="nodeBar11"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="739"
+              y="281.53846153846155"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar11-name"
+                  text-anchor="start"
+                  x="739"
+                  y="281.53846153846155"
+                >
+                  192.564.10.2
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="739"
+                y="281.53846153846155"
+              >
+                50
+              </text>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Sankey chart - Theme Should reflect theme change 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: #1b1a19;
+          color: #f3f2f1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
+  >
+    <div
+      class=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+          }
+      role="presentation"
+    >
+      <div
+        class=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              overflow: auto;
+            }
+        data-focuszone-id="FocusZone18"
+        data-tabster="{\\"uncontrolled\\": {}}"
+      >
+        <svg
+          focusable="false"
+          height="436"
+          id="sankeyChart5"
+          width="864"
+        >
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
+            <g
+              id="nodeGElement9"
+            >
+              <rect
+                aria-label="node 192.168.42.72 with weight 80"
+                data-is-focusable="true"
+                fill="#757575"
+                height="237.53846153846155"
+                id="nodeBar8"
+                opacity="1"
+                role="img"
+                stroke="#4B3867"
+                stroke-width="2"
+                tabindex="0"
+                width="124"
+                x="48"
+                y="36"
+              />
+              <g
+                class=
+
+                    {
+                      margin-bottom: 4px;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                      fill: rgb(179, 179, 179);
+                    }
+              >
+                <g
+                  class="nodeName"
+                >
+                  <text
+                    aria-hidden="true"
+                    dx="0.4em"
+                    dy="1.2em"
+                    fill="#FFFFFF"
+                    font-size="10"
+                    font-weight="regular"
+                    id="nodeBar8-name"
+                    text-anchor="start"
+                    x="48"
+                    y="36"
+                  >
+                    192.168.42.72
+                  </text>
+                </g>
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="2em"
+                  fill="#FFFFFF"
+                  font-size="14"
+                  font-weight="bold"
+                  text-anchor="start"
+                  x="48"
+                  y="36"
+                >
+                  80
+                </text>
+              </g>
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
+            <g
+              id="nodeGElement11"
+            >
+              <rect
+                aria-label="node 172.152.48.13 with weight 50"
+                data-is-focusable="true"
+                fill="#8764B8"
+                height="148.46153846153845"
+                id="nodeBar10"
+                opacity="1"
+                role="img"
+                stroke="#4B3867"
+                stroke-width="2"
+                tabindex="-1"
+                width="124"
+                x="48"
+                y="281.53846153846155"
+              />
+              <g
+                class=
+
+                    {
+                      margin-bottom: 4px;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                      fill: rgb(179, 179, 179);
+                    }
+              >
+                <g
+                  class="nodeName"
+                >
+                  <text
+                    aria-hidden="true"
+                    dx="0.4em"
+                    dy="1.2em"
+                    fill="#FFFFFF"
+                    font-size="10"
+                    font-weight="regular"
+                    id="nodeBar10-name"
+                    text-anchor="start"
+                    x="48"
+                    y="281.53846153846155"
+                  >
+                    172.152.48.13
+                  </text>
+                </g>
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="2em"
+                  fill="#FFFFFF"
+                  font-size="14"
+                  font-weight="bold"
+                  text-anchor="start"
+                  x="48"
+                  y="281.53846153846155"
+                >
+                  50
+                </text>
+              </g>
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #1b1a19;
+                  stroke-width: 3px;
+                  stroke: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+            stroke-opacity="1"
+          >
+            <g>
+              <defs>
+                <lineargradient
+                  id="gradient-link4-0"
+                  x1="0%"
+                  x2="100%"
+                  y1="0%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#757575"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#757575"
+                  />
+                </lineargradient>
+              </defs>
+              <path
+                aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+                d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+                data-is-focusable="true"
+                fill-opacity="1"
+                id="link16"
+                role="img"
+                stroke="#757575"
+                stroke-opacity="1"
+                stroke-width="2"
+                tabindex="-1"
+              />
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #1b1a19;
+                  stroke-width: 3px;
+                  stroke: #ffffff;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+            stroke-opacity="1"
+          >
+            <g>
+              <defs>
+                <lineargradient
+                  id="gradient-link4-1"
+                  x1="0%"
+                  x2="100%"
+                  y1="0%"
+                  y2="0%"
+                >
+                  <stop
+                    offset="0"
+                    stop-color="#8764B8"
+                  />
+                  <stop
+                    offset="100%"
+                    stop-color="#8764B8"
+                  />
+                </lineargradient>
+              </defs>
+              <path
+                aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+                d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+                data-is-focusable="true"
+                fill-opacity="1"
+                id="link17"
+                role="img"
+                stroke="#757575"
+                stroke-opacity="1"
+                stroke-width="2"
+                tabindex="-1"
+              />
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
+            <g
+              id="nodeGElement13"
+            >
+              <rect
+                aria-label="node 124.360.55.1 with weight 80"
+                data-is-focusable="true"
+                fill="#757575"
+                height="237.53846153846155"
+                id="nodeBar12"
+                opacity="1"
+                role="img"
+                stroke="#4B3867"
+                stroke-width="2"
+                tabindex="-1"
+                width="124"
+                x="739"
+                y="36"
+              />
+              <g
+                class=
+
+                    {
+                      margin-bottom: 4px;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                      fill: rgb(179, 179, 179);
+                    }
+              >
+                <g
+                  class="nodeName"
+                >
+                  <text
+                    aria-hidden="true"
+                    dx="0.4em"
+                    dy="1.2em"
+                    fill="#FFFFFF"
+                    font-size="10"
+                    font-weight="regular"
+                    id="nodeBar12-name"
+                    text-anchor="start"
+                    x="739"
+                    y="36"
+                  >
+                    124.360.55.1
+                  </text>
+                </g>
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="2em"
+                  fill="#FFFFFF"
+                  font-size="14"
+                  font-weight="bold"
+                  text-anchor="start"
+                  x="739"
+                  y="36"
+                >
+                  80
+                </text>
+              </g>
+            </g>
+          </g>
+          <g
+            class=
+
+                {
+                  fill: #F5F5F5;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                  fill: #000000;
+                }
+          >
+            <g
+              id="nodeGElement15"
+            >
+              <rect
+                aria-label="node 192.564.10.2 with weight 50"
+                data-is-focusable="true"
+                fill="#8764B8"
+                height="148.46153846153845"
+                id="nodeBar14"
+                opacity="1"
+                role="img"
+                stroke="#4B3867"
+                stroke-width="2"
+                tabindex="-1"
+                width="124"
+                x="739"
+                y="281.53846153846155"
+              />
+              <g
+                class=
+
+                    {
+                      margin-bottom: 4px;
+                      margin-left: 8px;
+                      margin-right: 8px;
+                      margin-top: 4px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                      fill: rgb(179, 179, 179);
+                    }
+              >
+                <g
+                  class="nodeName"
+                >
+                  <text
+                    aria-hidden="true"
+                    dx="0.4em"
+                    dy="1.2em"
+                    fill="#FFFFFF"
+                    font-size="10"
+                    font-weight="regular"
+                    id="nodeBar14-name"
+                    text-anchor="start"
+                    x="739"
+                    y="281.53846153846155"
+                  >
+                    192.564.10.2
+                  </text>
+                </g>
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="2em"
+                  fill="#FFFFFF"
+                  font-size="14"
+                  font-weight="bold"
+                  text-anchor="start"
+                  x="739"
+                  y="281.53846153846155"
+                >
+                  50
+                </text>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Sankey chart rendering Should re-render the Sankey chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_SankeyChart_empty3"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Sankey chart rendering Should re-render the Sankey chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    role="presentation"
+    style=""
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone15"
+      data-tabster="{\\"uncontrolled\\": {}}"
+    >
+      <svg
+        focusable="false"
+        height="436"
+        id="sankeyChart2"
+        width="864"
+      >
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement6"
+          >
+            <rect
+              aria-label="node 192.168.42.72 with weight 80"
+              data-is-focusable="true"
+              fill="#757575"
+              height="237.53846153846155"
+              id="nodeBar5"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="0"
+              width="124"
+              x="48"
+              y="36"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar5-name"
+                  text-anchor="start"
+                  x="48"
+                  y="36"
+                >
+                  192.168.42.72
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="48"
+                y="36"
+              >
+                80
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement8"
+          >
+            <rect
+              aria-label="node 172.152.48.13 with weight 50"
+              data-is-focusable="true"
+              fill="#8764B8"
+              height="148.46153846153845"
+              id="nodeBar7"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="48"
+              y="281.53846153846155"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar7-name"
+                  text-anchor="start"
+                  x="48"
+                  y="281.53846153846155"
+                >
+                  172.152.48.13
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="48"
+                y="281.53846153846155"
+              >
+                50
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-0"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#757575"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#757575"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 192.168.42.72 to 124.360.55.1 with weight 80"
+              d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link13"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #ffffff;
+                stroke-width: 3px;
+                stroke: #000000;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+          stroke-opacity="1"
+        >
+          <g>
+            <defs>
+              <lineargradient
+                id="gradient-link1-1"
+                x1="0%"
+                x2="100%"
+                y1="0%"
+                y2="0%"
+              >
+                <stop
+                  offset="0"
+                  stop-color="#8764B8"
+                />
+                <stop
+                  offset="100%"
+                  stop-color="#8764B8"
+                />
+              </lineargradient>
+            </defs>
+            <path
+              aria-label="link from 172.152.48.13 to 192.564.10.2 with weight 50"
+              d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
+              data-is-focusable="true"
+              fill-opacity="1"
+              id="link14"
+              role="img"
+              stroke="#757575"
+              stroke-opacity="1"
+              stroke-width="2"
+              tabindex="-1"
+            />
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement10"
+          >
+            <rect
+              aria-label="node 124.360.55.1 with weight 80"
+              data-is-focusable="true"
+              fill="#757575"
+              height="237.53846153846155"
+              id="nodeBar9"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="739"
+              y="36"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar9-name"
+                  text-anchor="start"
+                  x="739"
+                  y="36"
+                >
+                  124.360.55.1
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="739"
+                y="36"
+              >
+                80
+              </text>
+            </g>
+          </g>
+        </g>
+        <g
+          class=
+
+              {
+                fill: #F5F5F5;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                fill: #000000;
+              }
+        >
+          <g
+            id="nodeGElement12"
+          >
+            <rect
+              aria-label="node 192.564.10.2 with weight 50"
+              data-is-focusable="true"
+              fill="#8764B8"
+              height="148.46153846153845"
+              id="nodeBar11"
+              opacity="1"
+              role="img"
+              stroke="#4B3867"
+              stroke-width="2"
+              tabindex="-1"
+              width="124"
+              x="739"
+              y="281.53846153846155"
+            />
+            <g
+              class=
+
+                  {
+                    margin-bottom: 4px;
+                    margin-left: 8px;
+                    margin-right: 8px;
+                    margin-top: 4px;
+                  }
+                  @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                    fill: rgb(179, 179, 179);
+                  }
+            >
+              <g
+                class="nodeName"
+              >
+                <text
+                  aria-hidden="true"
+                  dx="0.4em"
+                  dy="1.2em"
+                  fill="#FFFFFF"
+                  font-size="10"
+                  font-weight="regular"
+                  id="nodeBar11-name"
+                  text-anchor="start"
+                  x="739"
+                  y="281.53846153846155"
+                >
+                  192.564.10.2
+                </text>
+              </g>
+              <text
+                aria-hidden="true"
+                dx="0.4em"
+                dy="2em"
+                fill="#FFFFFF"
+                font-size="14"
+                font-weight="bold"
+                text-anchor="start"
+                x="739"
+                y="281.53846153846155"
+              >
+                50
+              </text>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+`;

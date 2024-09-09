@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: dialog title now takes whole row when there are no actions. This fixes an earlier regresssion.",
-  "packageName": "@fluentui/react-dialog",
-  "email": "derdem@microsoft.com",
-  "dependentChangeType": "patch"
-}

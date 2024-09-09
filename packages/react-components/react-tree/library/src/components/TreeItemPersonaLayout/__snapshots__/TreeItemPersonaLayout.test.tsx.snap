@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeItemPersonaLayout renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TreeItemPersonaLayout"
+  >
+    <div
+      class="fui-TreeItemPersonaLayout__media"
+    />
+    <div
+      class="fui-TreeItemPersonaLayout__main"
+    >
+      Default TreeItemPersonaLayout
+    </div>
+  </div>
+</div>
+`;

@@ -2,13 +2,15 @@
   "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
     "target": "es5",
-    "outDir": "lib",
     "module": "commonjs",
-    "jsx": "react",
     "experimentalDecorators": true,
-    "preserveConstEnums": true,
-    "lib": ["ES2015", "DOM"],
-    "types": ["webpack-env", "node"]
+    "preserveConstEnums": true
   },
-  "include": ["src"]
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
 }

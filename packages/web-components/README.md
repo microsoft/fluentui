@@ -1,31 +1,33 @@
 # Fluent UI Web Components
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40fluentui%2Fweb-components.svg)](https://badge.fury.io/js/%40fluentui%2Fweb-components)
+[![npm version](https://img.shields.io/npm/v/@fluentui/web-components/beta?style=flat-square)](https://www.npmjs.com/package/@fluentui/web-components/v/beta)
 
-`@fluentui/web-components` is a library of Web Components that _composes_ `@microsoft/fast-foundation` and supports Microsoft's Fluent design language.
+Microsoft's [Fluent UI Web Components](https://github.com/microsoft/fluentui/tree/master/packages/web-components) is designed to help you build web apps using Web Components styled with the [Fluent design language](https://github.com/microsoft/fluentui).
 
 ## Installation
 
-### From NPM
+## Install
 
-To install the `web-components` library, use either `npm` or `yarn` as follows:
+Fluent UI should be installed as a `dependency` of your app.
 
-```shell
-npm install --save @fluentui/web-components
+**Yarn**
+
+```sh
+yarn add @fluentui/web-components@beta
 ```
 
-```shell
-yarn add @fluentui/web-components
+**NPM**
+
+```sh
+npm i @fluentui/web-components@beta
 ```
 
-Within your JavaScript or TypeScript code, you can then import library APIs like this:
+**pnpm**
 
-```ts
-import { FluentAnchor } from '@fluentui/web-components';
+```sh
+pnpm add @fluentui/web-components@beta
 ```
-
-Looking for a setup that integrates with a particular front-end framework or bundler? Check out [our integration docs](http://fast.design/docs/integrations/introduction).
 
 ### From CDN
 
@@ -35,15 +37,44 @@ A pre-bundled script that contains all APIs needed to use FAST Foundation is ava
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script type="module" src="https://unpkg.com/@fluentui/web-components"></script>
+    <script type="module" src="https://unpkg.com/@fluentui/web-components@beta"></script>
   </head>
   <!-- ... -->
 </html>
 ```
 
-The above CDN location points to the latest release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
+The above CDN location points to the latest Beta release of `@fluentui/web-components`. It is advised that when you deploy your site or app, you import the specific version you have developed and tested with.
 
 For simplicity, examples throughout the documentation will assume the library has been installed from NPM, but you can always replace the import location with the CDN URL.
+
+## Setup
+
+Fluent UI Web Components are styled using tokens in the form of CSS variables. You can use the `setTheme` utility to provide a theme for your website or application.
+
+```js
+import { setTheme } from '@fluentui/web-components';
+import { webLightTheme } from '@fluentui/tokens';
+
+setTheme(webLightTheme);
+```
+
+## Usage
+
+That's it. You can now use Fluent UI Web Components in your app.
+
+**Importing the defined component:**
+
+```js
+import '@fluentui/web-components/button.js';
+```
+
+**Defining the element yourself using named imports:**
+
+```js
+import { ButtonDefinition, FluentDesignSystem } from '@fluentui/web-components';
+
+ButtonDefinition.define(FluentDesignSystem.registry);
+```
 
 ## Development
 
@@ -55,3 +86,7 @@ Storybook will watch modules for changes and hot-reload the module when necessar
 `Failed to execute 'define' on 'CustomElementRegistry': the name "my-custom-element-name" has already been used with this registry`
 
 This is a known issue and will indicate that you need to refresh the page. We're working on surfacing a more instructive error message for this case.
+
+## Testing
+
+When testing locally, start the dev server and in a separate terminal window, run `yarn test:dev` within the web-components folder.

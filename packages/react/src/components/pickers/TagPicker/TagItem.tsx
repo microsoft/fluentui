@@ -48,7 +48,7 @@ export const TagItemBase = (props: ITagItemProps) => {
         tabindex: 0,
       }
     : {
-        disabled: disabled,
+        disabled,
       };
 
   return (

@@ -53,7 +53,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
       compactCardHeight,
       className,
       expandedCardHeight,
-      needsScroll: needsScroll,
+      needsScroll,
       expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered,
     });
 

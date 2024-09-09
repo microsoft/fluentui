@@ -200,12 +200,13 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
   public componentDidMount(): void {
     const win = getWindow(this._root.current);
+    const doc = win?.document;
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
-    this._events.on(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
-    this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
-    this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
+    this._events.on(doc, 'click', this._findScrollParentAndTryClearOnEmptyClick);
+    this._events.on(doc?.body, 'touchstart', this._onTouchStartCapture, true);
+    this._events.on(doc?.body, 'touchend', this._onTouchStartCapture, true);
 
     // Subscribe to the selection to keep modal state updated.
     this._events.on(this.props.selection, 'change', this._onSelectionChange);
@@ -274,8 +275,10 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
 
   private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
     let target = ev.target as HTMLElement;
+    const win = getWindow(this._root.current);
+    const doc = win?.document;
 
-    if (document.activeElement !== target && !elementContains(document.activeElement as HTMLElement, target)) {
+    if (doc?.activeElement !== target && !elementContains(doc?.activeElement as HTMLElement, target)) {
       this.ignoreNextFocus();
       return;
     }
@@ -737,9 +740,11 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
    * so this is less likely to cause layout thrashing then doing it in mount.
    */
   private _findScrollParentAndTryClearOnEmptyClick(ev: MouseEvent) {
+    const win = getWindow(this._root.current);
+    const doc = win?.document;
     const scrollParent = findScrollableParent(this._root.current) as HTMLElement;
     // unbind this handler and replace binding with a binding on the actual scrollable parent
-    this._events.off(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
+    this._events.off(doc, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(scrollParent, 'click', this._tryClearOnEmptyClick);
 
     // If we clicked inside the scrollable parent, call through to the handler on this click.

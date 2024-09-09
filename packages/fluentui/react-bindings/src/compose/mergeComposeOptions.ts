@@ -10,7 +10,7 @@ export function mergeComposeOptions(
     ? [...parentOptions.slotProps, inputOptions.slotProps]
     : parentOptions.slotProps;
 
-  const resolveSlotProps = <P = {}>(props: P) =>
+  const resolveSlotProps = <P extends {} = {}>(props: P) =>
     mapPropsToSlotPropsChain.reduce<Record<string, object>>((acc, definition) => {
       const nextProps = { ...definition(props) };
       const slots: string[] = [...Object.keys(acc), ...Object.keys(nextProps)];

@@ -34,6 +34,17 @@ const getFocusVisibility = (providerRef?: React.RefObject<HTMLElement>) => {
   return false;
 };
 
+// We don't want to import Tabster here, so we're using a type that matches the Tabster type to set the flag needed
+// for better interop between Fluent UI V8 and V9.
+interface IHTMLElementWithTabsterFlags extends HTMLElement {
+  __tabsterElementFlags?: {
+    noDirectAriaHidden?: boolean; // When Modalizer sets aria-hidden on everything outside of the modal,
+    // do not set aria-hidden directly on this element, go inside and check its children,
+    // and set aria-hidden on the children. This is to be set on a container that hosts
+    // elements which have the active modal dialog as virtual parent.
+  };
+}
+
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
     const registerPortalEl = usePortalCompat();
@@ -85,7 +96,8 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
 
     // Returns the user provided hostId props element, the default target selector,
     // or undefined if document doesn't exist.
-    const getHost = (doc: Document): Node | null => {
+    const getHost = (doc: Document, shadowRoot: ShadowRoot | null = null): Node | null => {
+      const root = shadowRoot ?? doc;
       if (hostId) {
         const layerHost = getLayerHost(hostId);
 
@@ -93,17 +105,17 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
           return layerHost.rootRef.current ?? null;
         }
 
-        return doc.getElementById(hostId) ?? null;
+        return root.getElementById(hostId) ?? null;
       } else {
         const defaultHostSelector = getDefaultTarget();
 
         // Find the host.
-        let host: Node | null = defaultHostSelector ? (doc.querySelector(defaultHostSelector) as Node) : null;
+        let host: Node | null = defaultHostSelector ? (root.querySelector(defaultHostSelector) as Node) : null;
 
         // If no host is available, create a container for injecting layers in.
         // Having a container scopes layout computation.
         if (!host) {
-          host = createDefaultLayerHost(doc);
+          host = createDefaultLayerHost(doc, shadowRoot);
         }
 
         return host;
@@ -127,16 +139,30 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // If a doc or host exists, it will remove and update layer parentNodes.
     const createLayerElement = () => {
       const doc = getDocument(rootRef.current);
+      const shadowRoot = (rootRef.current?.getRootNode() as ShadowRoot)?.host
+        ? (rootRef?.current?.getRootNode() as ShadowRoot)
+        : undefined;
 
-      if (!doc) {
+      if (!doc || (!doc && !shadowRoot)) {
         return;
       }
 
-      const host = getHost(doc);
+      const host = getHost(doc, shadowRoot) as IHTMLElementWithTabsterFlags | null;
 
       if (!host) {
         return;
       }
+
+      // Tabster in V9 sets aria-hidden on the elements outside of the modal dialog. And it doesn't set aria-hidden
+      // on the virtual children of the dialog. But the host element itself is not a virtual child of a dialog, it
+      // might contain virtual children. noDirectAriaHidden flag makes Tabster to poke inside the element and set
+      // aria-hidden on the children (if they are not virtual children of the active V9 dialog) not on the host element.
+      // To avoid importing Tabster as a dependency here, we just set a flag on the host element which is checked by
+      // Tabster.
+      if (!host.__tabsterElementFlags) {
+        host.__tabsterElementFlags = {};
+      }
+      host.__tabsterElementFlags.noDirectAriaHidden = true;
 
       // Remove and re-create any previous existing layer elements.
       removeLayerElement();

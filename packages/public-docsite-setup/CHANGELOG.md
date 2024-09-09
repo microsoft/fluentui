@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite-setup
 
-This log was last generated on Thu, 02 Feb 2023 07:35:41 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.22)
+
+Fri, 18 Aug 2023 07:35:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-setup_v0.3.21..@fluentui/public-docsite-setup_v0.3.22)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
 
 ## [0.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-setup_v0.3.16)
 

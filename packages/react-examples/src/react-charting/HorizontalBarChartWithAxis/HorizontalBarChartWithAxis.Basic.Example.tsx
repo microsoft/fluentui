@@ -3,17 +3,21 @@ import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisDataPoint,
+  getColorFromToken,
+  DataVizPalette,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHorizontalBarChartWithAxisState {
   width: number;
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -32,6 +36,8 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -57,13 +63,22 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
     this.setState({ useSingleColor: checked });
   };
 
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
   private _basicExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         x: 10000,
         y: 5000,
         legend: 'Oranges',
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color1),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '10%',
       },
@@ -71,7 +86,8 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 20000,
         y: 50000,
         legend: 'Dogs',
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color2),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '20%',
       },
@@ -79,16 +95,17 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
         x: 25000,
         y: 30000,
         legend: 'Apples',
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color3),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient3),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '37%',
       },
-
       {
         x: 40000,
         y: 13000,
         legend: 'Bananas',
-        color: DefaultPalette.blueLight,
+        color: getColorFromToken(DataVizPalette.color4),
+        // gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
         yAxisCalloutData: '2020/04/30',
         xAxisCalloutData: '88%',
       },
@@ -127,6 +144,13 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundCorners} />
+        </div>
+        <br />
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             culture={window.navigator.language}
@@ -141,6 +165,9 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
                 defaultRender: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

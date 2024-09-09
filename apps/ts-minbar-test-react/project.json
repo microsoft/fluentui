@@ -1,0 +1,6 @@
+{
+  "name": "ts-minbar-test-react",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "tags": ["v8"]
+}

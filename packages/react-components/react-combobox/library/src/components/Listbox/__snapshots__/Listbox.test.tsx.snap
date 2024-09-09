@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Listbox renders a default state 1`] = `
+<div>
+  <div
+    aria-activedescendant="fluent-option1"
+    class="fui-Listbox"
+    role="listbox"
+    tabindex="0"
+  >
+    <div
+      aria-selected="false"
+      class="fui-Option"
+      data-activedescendant=""
+      id="fluent-option1"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Red
+    </div>
+    <div
+      aria-selected="false"
+      class="fui-Option"
+      id="fluent-option2"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Green
+    </div>
+    <div
+      aria-selected="false"
+      class="fui-Option"
+      id="fluent-option3"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Blue
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Listbox renders with a selected option 1`] = `
+<div>
+  <div
+    aria-activedescendant="fluent-option4"
+    class="fui-Listbox"
+    role="listbox"
+    tabindex="0"
+  >
+    <div
+      aria-selected="true"
+      class="fui-Option"
+      data-activedescendant=""
+      id="fluent-option4"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Red
+    </div>
+    <div
+      aria-selected="false"
+      class="fui-Option"
+      id="fluent-option5"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Green
+    </div>
+    <div
+      aria-selected="false"
+      class="fui-Option"
+      id="fluent-option6"
+      role="option"
+    >
+      <span
+        aria-hidden="true"
+        class="fui-Option__checkIcon"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          fill="currentColor"
+          height="1em"
+          viewBox="0 0 20 20"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      Blue
+    </div>
+  </div>
+</div>
+`;

@@ -15,7 +15,6 @@
     "noImplicitAny": false,
     "strictNullChecks": false,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",

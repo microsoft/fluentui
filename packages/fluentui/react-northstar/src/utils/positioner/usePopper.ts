@@ -5,7 +5,8 @@ import {
   useFirstMount,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
-import * as PopperJs from '@popperjs/core';
+import { createPopper, detectOverflow } from '@popperjs/core';
+import type { State, ModifierPhases, ModifierArguments, VirtualElement, Options, SideObject } from '@popperjs/core';
 import * as React from 'react';
 
 import { getReactFiberFromNode } from '../getReactFiberFromNode';
@@ -73,7 +74,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
   const placement = getPlacement(options.align, options.position, options.rtl);
   const strategy = options.positionFixed ? 'fixed' : 'absolute';
 
-  const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
+  const handleStateUpdate = useEventCallback(({ state }: { state: Partial<State> }) => {
     if (onStateUpdate) {
       onStateUpdate(state);
     }
@@ -92,17 +93,13 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
   const userModifiers = useDeepMemo(() => options.modifiers, options.modifiers);
 
   return React.useCallback(
-    (
-      target: HTMLElement | PopperJs.VirtualElement,
-      container: HTMLElement,
-      arrow: HTMLElement | null,
-    ): PopperJs.Options => {
+    (target: HTMLElement | VirtualElement, container: HTMLElement, arrow: HTMLElement | null): Options => {
       const scrollParentElement: HTMLElement = getScrollParent(container);
       const hasScrollableElement = scrollParentElement
         ? scrollParentElement !== scrollParentElement.ownerDocument.body
         : false;
 
-      const modifiers: PopperJs.Options['modifiers'] = [
+      const modifiers: Options['modifiers'] = [
         isIntersectingModifier,
 
         /**
@@ -113,8 +110,8 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         {
           name: 'positionStyleFix',
           enabled: true,
-          phase: 'afterWrite' as PopperJs.ModifierPhases,
-          effect: ({ state, instance }: { state: Partial<PopperJs.State>; instance: PopperInstance }) => {
+          phase: 'afterWrite' as ModifierPhases,
+          effect: ({ state, instance }: { state: Partial<State>; instance: PopperInstance }) => {
             // ".isFirstRun" is a part of our patch, on a first evaluation it will "undefined"
             // should be disabled for subsequent runs as it breaks positioning for them
             if (instance.isFirstRun !== false) {
@@ -178,7 +175,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         {
           name: 'onUpdate',
           enabled: true,
-          phase: 'afterWrite' as PopperJs.ModifierPhases,
+          phase: 'afterWrite' as ModifierPhases,
           fn: handleStateUpdate,
         },
 
@@ -188,20 +185,20 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
           // This modifier can apply max sizes always, or apply the max sizes only when overflow is detected
           name: 'applyMaxSize',
           enabled: true,
-          phase: 'beforeWrite' as PopperJs.ModifierPhases,
+          phase: 'beforeWrite' as ModifierPhases,
           requiresIfExists: ['offset', 'preventOverflow', 'flip'],
           options: {
             altBoundary: true,
             boundary: getBoundary(container, overflowBoundary),
           },
-          fn({ state, options: modifierOptions }: PopperJs.ModifierArguments<{}>) {
-            const overflow = PopperJs.detectOverflow(state, modifierOptions);
+          fn({ state, options: modifierOptions }: ModifierArguments<{}>) {
+            const overflow = detectOverflow(state, modifierOptions);
             const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
             const { width, height } = state.rects.popper;
             const [basePlacement] = state.placement.split('-');
 
-            const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
-            const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
+            const widthProp: keyof SideObject = basePlacement === 'left' ? 'left' : 'right';
+            const heightProp: keyof SideObject = basePlacement === 'top' ? 'top' : 'bottom';
 
             const applyMaxWidth =
               autoSize === 'always' ||
@@ -232,7 +229,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         },
       ].filter(Boolean);
 
-      const popperOptions: PopperJs.Options = {
+      const popperOptions: Options = {
         modifiers,
 
         placement,
@@ -294,7 +291,7 @@ export function usePopper(options: PopperOptions = {}): {
 
     if (isBrowser() && enabled) {
       if (targetRef.current && containerRef.current) {
-        popperInstance = PopperJs.createPopper(
+        popperInstance = createPopper(
           targetRef.current,
           containerRef.current,
           resolvePopperOptions(targetRef.current, containerRef.current, arrowRef.current),
@@ -343,7 +340,7 @@ export function usePopper(options: PopperOptions = {}): {
   //
   // This again can be solved with callback refs. It's not a huge issue as with hooks we are moving popper's creation
   // to ChatMessage itself, however, without `useCallback()` refs it's still a Pandora box.
-  const targetRef = useCallbackRef<HTMLElement | PopperJs.VirtualElement | null>(null, handlePopperUpdate, true);
+  const targetRef = useCallbackRef<HTMLElement | VirtualElement | null>(null, handlePopperUpdate, true);
   const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 

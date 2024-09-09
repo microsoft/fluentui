@@ -6,12 +6,10 @@
   "scripts": {
     "format": "prettier -w --ignore-path ../../.prettierignore .",
     "format:check": "yarn format -c",
-    "lint": "eslint --ext .ts,.js .",
-    "test": "jest --passWithNoTests",
-    "type-check": "tsc -b tsconfig.json"
+    "type-check": "just-scripts type-check"
   },
   "dependencies": {
-    "@fluentui/scripts-monorepo": "*",
-    "@fluentui/babel-preset-storybook-full-source": "*"
-  }
+    "@fluentui/scripts-monorepo": "*"
+  },
+  "devDependencies": {}
 }

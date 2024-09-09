@@ -99,6 +99,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -364,6 +365,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -645,6 +647,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1012,6 +1015,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1379,6 +1383,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1660,6 +1665,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone1"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -1921,6 +1927,7 @@ exports[`DetailsList renders List correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -1969,6 +1976,17 @@ exports[`DetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -1986,6 +2004,9 @@ exports[`DetailsList renders List correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -2021,6 +2042,17 @@ exports[`DetailsList renders List correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -2085,6 +2117,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2127,6 +2160,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -2217,6 +2251,17 @@ exports[`DetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2232,6 +2277,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2282,9 +2329,21 @@ exports[`DetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2405,6 +2464,17 @@ exports[`DetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2420,6 +2490,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2470,9 +2542,21 @@ exports[`DetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2593,6 +2677,17 @@ exports[`DetailsList renders List correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -2608,6 +2703,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2658,9 +2755,21 @@ exports[`DetailsList renders List correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -2766,6 +2875,7 @@ exports[`DetailsList renders List correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -2904,6 +3014,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -2952,6 +3063,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -2969,6 +3091,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -3004,6 +3129,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -3068,6 +3204,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3110,6 +3247,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -3200,6 +3338,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3215,6 +3364,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3265,9 +3416,21 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3332,6 +3495,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3347,6 +3521,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3397,9 +3573,21 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3464,6 +3652,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3479,6 +3678,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3529,9 +3730,21 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3596,6 +3809,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3611,6 +3835,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3661,9 +3887,21 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3728,6 +3966,17 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -3743,6 +3992,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3793,9 +4044,21 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -3845,6 +4108,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -3984,6 +4248,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -4032,6 +4297,17 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -4049,6 +4325,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -4084,6 +4363,17 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -4148,6 +4438,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -4190,6 +4481,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -4280,6 +4572,17 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4295,6 +4598,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4345,9 +4650,21 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4468,6 +4785,17 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4483,6 +4811,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4533,9 +4863,21 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4656,6 +4998,17 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -4671,6 +5024,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4721,9 +5076,21 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -4829,6 +5196,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -4968,6 +5336,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -5016,6 +5385,17 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -5033,6 +5413,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -5068,6 +5451,17 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -5132,6 +5526,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -5174,6 +5569,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -5264,6 +5660,17 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5279,6 +5686,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5329,9 +5738,21 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5452,6 +5873,17 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5467,6 +5899,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5517,9 +5951,21 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5640,6 +6086,17 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -5655,6 +6112,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5705,9 +6164,21 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -5813,6 +6284,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -5951,6 +6423,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -5999,6 +6472,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
             onClick={[Function]}
             role="columnheader"
           >
@@ -6016,6 +6500,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -6051,6 +6538,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: 1px solid #ffffff;
                       bottom: 1px;
                       content: "";
@@ -6115,6 +6613,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         ms-Check-circle
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -6157,6 +6656,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         ms-Check-check
                         {
                           display: inline-block;
+                          text-decoration: inherit;
                         }
                         {
                           -moz-osx-font-smoothing: grayscale;
@@ -6247,6 +6747,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6262,6 +6773,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6312,9 +6825,21 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_0"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6382,6 +6907,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6397,6 +6933,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6447,9 +6985,21 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_1"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6517,6 +7067,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6532,6 +7093,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6582,9 +7145,21 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_2"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6652,6 +7227,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6667,6 +7253,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6717,9 +7305,21 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_3"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6787,6 +7387,17 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -6802,6 +7413,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6852,9 +7465,21 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-column_key_4"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -6907,6 +7532,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                   min-width: 100%;
                 }
             data-focuszone-id="FocusZone3"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -7045,6 +7671,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
               }
           data-automationid="DetailsHeader"
           data-focuszone-id="FocusZone2"
+          data-tabster="{\\"uncontrolled\\": {}}"
           onFocus={[Function]}
           onKeyDown={[Function]}
           onMouseDownCapture={[Function]}
@@ -7095,6 +7722,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background-color: #f3f2f1;
                 }
@@ -7112,6 +7750,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   ms-DetailsHeader-collapseButton
                   {
                     display: inline-block;
+                    text-decoration: inherit;
                   }
                   {
                     -moz-osx-font-smoothing: grayscale;
@@ -7202,6 +7841,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -7217,6 +7867,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7267,9 +7919,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-key"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7390,6 +8054,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -7405,6 +8080,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7455,9 +8132,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-name"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7578,6 +8267,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   top: 1px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: 1px;
+                  content: "";
+                  left: 1px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: 1px;
+                  top: 1px;
+                  z-index: 1;
+                }
                 &:hover {
                   background: #f3f2f1;
                   color: #323130;
@@ -7593,6 +8293,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7643,9 +8345,21 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid #ffffff;
+                      bottom: 1px;
+                      content: "";
+                      left: 1px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 1px;
+                      top: 1px;
+                      z-index: 1;
+                    }
                 id="header1-value"
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onKeyDown={[Function]}
               >
                 <span
                   className=
@@ -7765,6 +8479,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-automationid="GroupedList"
             data-focuszone-id="FocusZone3"
             data-is-scrollable="false"
+            data-tabster="{\\"uncontrolled\\": {}}"
             onBlur={[Function]}
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -7830,6 +8545,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid #ffffff;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #605e5c;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
                             &:hover {
                               background: #f3f2f1;
                               color: #201f1e;
@@ -7838,6 +8564,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 1;
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                              opacity: 1;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
                               opacity: 1;
                             }
                             & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
@@ -7896,6 +8625,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     font-style: normal;
                                     font-weight: normal;
                                     speak: none;
+                                    text-decoration: inherit;
                                   }
                               data-icon-name="Tag"
                             >
@@ -7944,6 +8674,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     top: 1px;
                                     z-index: 1;
                                   }
+                                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
                                   &:hover {
                                     background-color: #edebe9;
                                   }
@@ -7967,6 +8708,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
+                                      text-decoration: inherit;
                                       transform-origin: 50% 50%;
                                       transform: rotate(90deg);
                                       transition: transform .1s linear;
@@ -8090,6 +8832,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       top: 1px;
                                       z-index: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
                                     .ms-List-cell:first-child &:before {
                                       display: none;
                                     }
@@ -8109,6 +8862,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
                                     & .ms-GroupSpacer {
                                       flex-grow: 0;
                                       flex-shrink: 0;
@@ -8119,11 +8875,13 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={0}
                                 data-selection-index={0}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-0"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
+                                tabIndex={0}
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8166,6 +8924,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -8231,6 +9000,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           top: 0px;
                                           z-index: 1;
                                         }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
                                         & > button {
                                           max-width: 100%;
                                         }
@@ -8276,6 +9056,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -8372,6 +9163,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       top: 1px;
                                       z-index: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
                                     .ms-List-cell:first-child &:before {
                                       display: none;
                                     }
@@ -8391,6 +9193,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
                                     & .ms-GroupSpacer {
                                       flex-grow: 0;
                                       flex-shrink: 0;
@@ -8401,6 +9206,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={1}
                                 data-selection-index={1}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-1"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -8448,6 +9254,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -8513,6 +9330,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           top: 0px;
                                           z-index: 1;
                                         }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
                                         & > button {
                                           max-width: 100%;
                                         }
@@ -8558,6 +9386,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -8652,6 +9491,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               top: 1px;
                               z-index: 1;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                              border: 1px solid #ffffff;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #605e5c;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
                             &:hover {
                               background: #f3f2f1;
                               color: #201f1e;
@@ -8660,6 +9510,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 1;
                             }
                             .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                              opacity: 1;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
                               opacity: 1;
                             }
                             & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
@@ -8718,6 +9571,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     font-style: normal;
                                     font-weight: normal;
                                     speak: none;
+                                    text-decoration: inherit;
                                   }
                               data-icon-name="Tag"
                             >
@@ -8766,6 +9620,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     top: 1px;
                                     z-index: 1;
                                   }
+                                  :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
                                   &:hover {
                                     background-color: #edebe9;
                                   }
@@ -8789,6 +9654,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       font-style: normal;
                                       font-weight: normal;
                                       speak: none;
+                                      text-decoration: inherit;
                                       transform-origin: 50% 50%;
                                       transform: rotate(90deg);
                                       transition: transform .1s linear;
@@ -8912,6 +9778,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       top: 1px;
                                       z-index: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
                                     .ms-List-cell:first-child &:before {
                                       display: none;
                                     }
@@ -8931,6 +9808,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
                                     & .ms-GroupSpacer {
                                       flex-grow: 0;
                                       flex-shrink: 0;
@@ -8941,6 +9821,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={2}
                                 data-selection-index={2}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-2"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -8988,6 +9869,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -9053,6 +9945,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           top: 0px;
                                           z-index: 1;
                                         }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
                                         & > button {
                                           max-width: 100%;
                                         }
@@ -9098,6 +10001,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -9194,6 +10108,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       top: 1px;
                                       z-index: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
                                     .ms-List-cell:first-child &:before {
                                       display: none;
                                     }
@@ -9213,6 +10138,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
                                     & .ms-GroupSpacer {
                                       flex-grow: 0;
                                       flex-shrink: 0;
@@ -9223,6 +10151,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={3}
                                 data-selection-index={3}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-3"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -9270,6 +10199,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -9335,6 +10275,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           top: 0px;
                                           z-index: 1;
                                         }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
                                         & > button {
                                           max-width: 100%;
                                         }
@@ -9380,6 +10331,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -9476,6 +10438,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       top: 1px;
                                       z-index: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
                                     .ms-List-cell:first-child &:before {
                                       display: none;
                                     }
@@ -9495,6 +10468,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                                       opacity: 1;
                                     }
+                                    :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
                                     & .ms-GroupSpacer {
                                       flex-grow: 0;
                                       flex-shrink: 0;
@@ -9505,6 +10481,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-item-index={4}
                                 data-selection-index={4}
                                 data-selection-touch-invoke={true}
+                                data-tabster="{\\"uncontrolled\\": {}}"
                                 id="row0-4"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
@@ -9552,6 +10529,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";
@@ -9617,6 +10605,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           top: 0px;
                                           z-index: 1;
                                         }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
                                         & > button {
                                           max-width: 100%;
                                         }
@@ -9662,6 +10661,17 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           border: 0;
                                         }
                                         .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        :host(.ms-Fabric--isFocusVisible) &:focus:after {
                                           border: 1px solid #605e5c;
                                           bottom: 0px;
                                           content: "";

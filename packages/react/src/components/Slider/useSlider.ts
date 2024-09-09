@@ -12,6 +12,7 @@ import {
 } from '@fluentui/utilities';
 import type { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import type { ILabelProps } from '../Label/index';
+import { useWindowEx } from '../../utilities/dom';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -101,6 +102,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
   const disposables = React.useRef<(() => void)[]>([]);
   const { setTimeout, clearTimeout } = useSetTimeout();
   const sliderLine = React.useRef<HTMLDivElement>(null);
+  const win = useWindowEx();
 
   // Casting here is necessary because useControllableValue expects the event for the change callback
   // to extend React.SyntheticEvent, when in fact for Slider, the event could be either a React event
@@ -303,15 +305,16 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
         newValue - internalState.latestLowerValue <= internalState.latestValue - newValue;
     }
 
+    // safe to use `win!` since it can only be called on the client
     if (event.type === 'mousedown') {
       disposables.current.push(
-        on(window, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(window, 'mouseup', onMouseUpOrTouchEnd, true),
+        on(win!, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(win!, 'mouseup', onMouseUpOrTouchEnd, true),
       );
     } else if (event.type === 'touchstart') {
       disposables.current.push(
-        on(window, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(window, 'touchend', onMouseUpOrTouchEnd, true),
+        on(win!, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(win!, 'touchend', onMouseUpOrTouchEnd, true),
       );
     }
     onMouseMoveOrTouchMove(event, true);

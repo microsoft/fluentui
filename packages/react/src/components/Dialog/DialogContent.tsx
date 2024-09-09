@@ -9,3 +9,5 @@ export const DialogContent: React.FunctionComponent<IDialogContentProps> = style
   IDialogContentStyleProps,
   IDialogContentStyles
 >(DialogContentBase, getStyles, undefined, { scope: 'DialogContent' });
+
+DialogContent.displayName = 'DialogContent';

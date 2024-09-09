@@ -1,0 +1,12 @@
+{
+  "name": "react-cards",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "tags": ["v8", "ships-bundle"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

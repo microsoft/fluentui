@@ -1,0 +1,30 @@
+name: Azure Static Web Apps web components
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - packages/web-components/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    name: Build and Deploy Job
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build and Deploy Job
+        id: builddeploy
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.WEB_COMPONENTS_AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for GitHub integrations (i.e. PR comments)
+          action: 'upload'
+          app_build_command: 'yarn workspace @fluentui/web-components build-storybook'
+          output_location: 'packages/web-components/dist/storybook' # Built app content directory, relative to app_location - optional
+          skip_api_build: true

@@ -4,13 +4,13 @@
     "allowJs": true,
     "checkJs": true,
     "module": "commonjs",
-    "moduleResolution": "node",
+    "moduleResolution": "nodenext",
     "noUnusedLocals": true,
     "skipLibCheck": true,
     "strict": true,
     "types": ["node"],
     "isolatedModules": true
   },
-  "include": ["src/**/*"],
+  "include": ["./src/**/*.js", "./src/**/*.ts"],
   "exclude": ["**/fixtures/**/*"]
 }

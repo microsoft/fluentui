@@ -24,7 +24,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
             ...getHighContrastNoAdjustStyle(),
           },
 
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             outline: `1px solid ${palette.neutralSecondary}`,
             [`${HighContrastSelector}`]: {
               outline: '2px solid CanvasText',

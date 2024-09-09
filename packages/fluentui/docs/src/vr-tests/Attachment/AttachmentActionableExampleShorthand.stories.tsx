@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Attachment } from '@fluentui/react-northstar';
 import StoryWrightSteps from './commonStoryWrightSteps';
 import { getThemeStoryVariant } from '../utilities/getThemeStoryVariant';
@@ -27,7 +27,7 @@ export default {
   component: Attachment,
   title: 'Attachment',
   decorators: [story => <StoryWright steps={StoryWrightSteps}>{story()}</StoryWright>],
-} as ComponentMeta<typeof Attachment>;
+} as Meta<typeof Attachment>;
 
 const AttachmentActionableExampleShorthandTeams = getThemeStoryVariant(AttachmentActionableExampleShorthand, 'teamsV2');
 

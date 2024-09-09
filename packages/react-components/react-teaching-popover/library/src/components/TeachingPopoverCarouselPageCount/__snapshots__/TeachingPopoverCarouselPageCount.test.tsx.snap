@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeachingPopoverCarouselPageCount renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TeachingPopoverCarouselPageCount"
+  >
+    <div>
+      0 of 0
+    </div>
+  </div>
+</div>
+`;

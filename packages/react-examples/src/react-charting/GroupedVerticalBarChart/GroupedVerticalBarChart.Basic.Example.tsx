@@ -1,14 +1,21 @@
 import * as React from 'react';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@fluentui/react-charting';
+import {
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 interface IGroupedBarChartState {
   width: number;
   height: number;
   barwidth: number;
   selectedCallout: 'singleCallout' | 'StackCallout';
   hideLabels: boolean;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGroupedBarChartState> {
@@ -20,6 +27,8 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       barwidth: 16,
       selectedCallout: 'singleCallout',
       hideLabels: false,
+      enableGradient: false,
+      roundCorners: false,
     };
   }
 
@@ -43,90 +52,122 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     this.setState({ hideLabels: checked });
   };
 
+  private _onEnableGradientChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onRoundCornersChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
   private _basicExample(): JSX.Element {
     const data = [
       {
-        name: 'Metadata info multi lines text Completed',
+        name: 'Jan - Mar',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
+            xAxisCalloutData: '2022/04/30',
+            yAxisCalloutData: '29%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 1 of 2 2022, x value 2022/04/30, y value 29%',
+            },
           },
           {
             key: 'series2',
             data: 44000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/04/30',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
+            xAxisCalloutData: '2023/04/30',
             yAxisCalloutData: '44%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jan - Mar 1 of 4, Bar series 2 of 2 2023, x value 2023/04/30, y value 44%',
+            },
           },
         ],
       },
       {
-        name: 'Meta Data2',
+        name: 'Apr - Jun',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/05/30',
-            yAxisCalloutData: '33%',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
+            xAxisCalloutData: '2022/05/30',
+            yAxisCalloutData: '29%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 1 of 2 2022, x value 2022/05/30, y value 29%',
+            },
           },
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/05/30',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
+            xAxisCalloutData: '2023/05/30',
             yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Apr - Jun 2 of 4, Bar series 2 of 2 2023, x value 2023/05/30, y value 3%',
+            },
           },
         ],
       },
 
       {
-        name: 'Single line text ',
+        name: 'Jul - Sep',
         series: [
           {
             key: 'series1',
             data: 14000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/06/30',
-            yAxisCalloutData: '14%',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
+            xAxisCalloutData: '2022/06/30',
+            yAxisCalloutData: '13%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 1 of 2 2022, x value 2022/06/30, y value 13%',
+            },
           },
           {
             key: 'series2',
             data: 50000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/06/30',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
+            xAxisCalloutData: '2023/06/30',
             yAxisCalloutData: '50%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Jul - Sep 3 of 4, Bar series 2 of 2 2023, x value 2023/06/30, y value 50%',
+            },
           },
         ],
       },
       {
-        name: 'Hello World!!!',
+        name: 'Oct - Dec',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
-            xAxisCalloutData: '2020/07/30',
-            yAxisCalloutData: '33%',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
+            xAxisCalloutData: '2022/07/30',
+            yAxisCalloutData: '29%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 1 of 2 2022, x value 2022/07/30, y value 29%',
+            },
           },
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
-            xAxisCalloutData: '2020/07/30',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
+            xAxisCalloutData: '2023/07/30',
             yAxisCalloutData: '3%',
+            callOutAccessibilityData: {
+              ariaLabel: 'Group Oct - Dec 4 of 4, Bar series 2 of 2 2023, x value 2023/07/30, y value 3%',
+            },
           },
         ],
       },
@@ -140,6 +181,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
+        <p>
+          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the{' '}
+          <code>xAxisCalloutData</code> property.
+        </p>
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -184,6 +230,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <div style={{ display: 'flex' }}>
+          <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onEnableGradientChange} />
+          &nbsp;&nbsp;
+          <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onRoundCornersChange} />
+        </div>
         <div style={rootStyle}>
           <GroupedVerticalBarChart
             culture={window.navigator.language}
@@ -191,11 +242,12 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             data={data}
             height={this.state.height}
             width={this.state.width}
-            showYAxisGridLines
-            wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

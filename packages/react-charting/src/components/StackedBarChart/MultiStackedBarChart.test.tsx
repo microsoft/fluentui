@@ -69,7 +69,7 @@ const secondChartPoints: IChartDataPoint[] = [
   },
 ];
 
-const chartPoints: IChartProps[] = [
+export const chartPoints: IChartProps[] = [
   {
     chartTitle: 'Monitored',
     chartData: firstChartPoints,
@@ -80,14 +80,15 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
-const emptyChartPoints: IChartProps[] = [
+export const emptyChartPoints: IChartProps[] = [
   {
-    chartTitle: 'Monitored',
     chartData: [],
   },
 ];
 
 describe('MultiStackedBarChart snapShot testing', () => {
+  beforeEach(sharedBeforeEach);
+
   it('renders MultiStackedBarChart correctly', () => {
     const component = renderer.create(<MultiStackedBarChart data={chartPoints} />);
     const tree = component.toJSON();
@@ -200,6 +201,8 @@ describe('MultiStackedBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
+  beforeEach(sharedBeforeEach);
+
   it('No prop changes', () => {
     const renderMock = jest.spyOn(MultiStackedBarChartBase.prototype, 'render');
     const props = {

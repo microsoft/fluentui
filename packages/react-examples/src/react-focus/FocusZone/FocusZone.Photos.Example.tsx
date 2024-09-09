@@ -52,7 +52,7 @@ const getItems = (): IPhoto[] => {
     const randomWidth = 50 + Math.floor(Math.random() * 150);
     items.push({
       id: getId('photo'),
-      url: `http://via.placeholder.com/${randomWidth}x100`,
+      url: 'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg',
       width: randomWidth,
       height: 100,
     });

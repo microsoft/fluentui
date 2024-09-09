@@ -8,6 +8,7 @@
     "@typescript-eslint/naming-convention": "off",
     "@typescript-eslint/jsx-no-bind": "off",
     "deprecation/deprecation": "off",
-    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }]
+    "import/no-extraneous-dependencies": ["error", { "packageDir": [".", "../.."] }],
+    "no-restricted-globals": "off"
   }
 }

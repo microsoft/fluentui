@@ -11,6 +11,7 @@ import {
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
+import { mergeStyles } from '../../Styling';
 import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
@@ -410,7 +411,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
     return (
       <>
-        {inputProps.description ? defaultRender(inputProps) : null}
+        {inputProps.description || inputProps.onRenderDescription ? defaultRender(inputProps) : null}
         <div aria-live="assertive" className={classNames.statusMessage}>
           {statusMessage}
         </div>
@@ -420,11 +421,14 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const divProps = getNativeProps(inputProps!, divProperties);
+    // Need to merge styles so the provided styles win over the default ones. This is due to the classnames having the
+    // same specificity.
+    const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
     // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
+      <div {...divProps} className={readOnlyTextFieldClassName} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
           <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
@@ -474,6 +478,17 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const dataIsFocusable = (textFieldProps as any)?.['data-is-focusable'] ?? (props as any)['data-is-focusable'] ?? true;
 
+  // Props to create a semantic but non-focusable button when the datepicker has a text input
+  // Used for voice control and touch screen reader accessibility
+  const iconA11yProps: React.HTMLAttributes<HTMLSpanElement> = allowTextInput
+    ? {
+        role: 'button',
+        'aria-expanded': isCalendarShown,
+        'aria-label': ariaLabel ?? label,
+        'aria-labelledby': textFieldProps && textFieldProps['aria-labelledby'],
+      }
+    : {};
+
   return (
     <div {...nativeProps} className={classNames.root} ref={forwardedRef}>
       <div ref={datePickerDiv} aria-owns={isCalendarShown ? calloutId : undefined} className={classNames.wrapper}>
@@ -500,6 +515,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           className={css(classNames.textField, textFieldProps && textFieldProps.className)}
           iconProps={{
             iconName: 'Calendar',
+            ...iconA11yProps,
             ...iconProps,
             className: css(classNames.icon, iconProps && iconProps.className),
             onClick: onIconClick,

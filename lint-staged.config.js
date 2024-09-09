@@ -10,15 +10,17 @@ const commands = {
    * - respect ignore files (which eslint doesn't do by default when passed a specific file path)
    * - match the set of files that are linted by the package's normal `lint` command
    */
-  lint: 'node ./scripts/lint-staged/eslint',
+  lint: 'node ./scripts/lint-staged/src/eslint',
 };
+
+const nonJsExtensions = [
+  prettierSupportedFileExtensionsByContext.stylesheets,
+  prettierSupportedFileExtensionsByContext.markdown,
+  prettierSupportedFileExtensionsByContext.others,
+].flat();
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {
-  [`**/*.{${[].concat(
-    prettierSupportedFileExtensionsByContext.stylesheets,
-    prettierSupportedFileExtensionsByContext.markdown,
-    prettierSupportedFileExtensionsByContext.others,
-  )}}`]: [commands.format],
-  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [commands.format, commands.lint],
+  [`**/*.{${nonJsExtensions}}`]: [commands.format],
+  [`**/*.{${prettierSupportedFileExtensionsByContext.js}}`]: [/* commands.format, */ commands.lint],
 };

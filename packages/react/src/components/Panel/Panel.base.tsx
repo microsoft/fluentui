@@ -22,6 +22,8 @@ import { FocusTrapZone } from '../FocusTrapZone/index';
 import { PanelType } from './Panel.types';
 import type { IProcessedStyleSet } from '../../Styling';
 import type { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles } from './Panel.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
 const COMPONENT_NAME = 'Panel';
@@ -47,6 +49,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     hasCloseButton: true,
     type: PanelType.smallFixedFar,
   };
+
+  public static contextType = WindowContext;
 
   private _async: Async;
   private _events: EventGroup;
@@ -107,11 +111,13 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   public componentDidMount(): void {
     this._async = new Async(this);
     this._events = new EventGroup(this);
+    const win = getWindowEx(this.context);
+    const doc = getDocumentEx(this.context);
 
-    this._events.on(window, 'resize', this._updateFooterPosition);
+    this._events.on(win, 'resize', this._updateFooterPosition);
 
     if (this._shouldListenForOuterClick(this.props)) {
-      this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.on(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     }
 
     if (this.props.isOpen) {
@@ -132,10 +138,11 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
       }
     }
 
+    const doc = getDocumentEx(this.context);
     if (shouldListenOnOuterClick && !previousShouldListenOnOuterClick) {
-      this._events.on(document.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.on(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
-      this._events.off(document.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.off(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     }
   }
 

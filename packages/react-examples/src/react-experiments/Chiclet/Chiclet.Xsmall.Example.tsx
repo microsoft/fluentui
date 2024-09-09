@@ -8,7 +8,7 @@ export const ChicletXsmallExample: React.FunctionComponent<{}> = () => {
     <Chiclet
       url={SAMPLE_URL}
       title={'WordTest with a long title that will wrap around.docx'}
-      image="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/48/docx.svg"
+      image="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/48/docx.svg"
       itemType="docx"
       size={ChicletSize.xSmall}
     />

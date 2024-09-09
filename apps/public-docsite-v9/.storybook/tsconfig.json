@@ -3,7 +3,8 @@
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
-    "types": ["node", "static-assets", "storybook__addons"]
+    "jsx": "react",
+    "types": ["node", "static-assets"]
   },
   "include": ["*.js"]
 }

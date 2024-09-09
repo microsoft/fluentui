@@ -13,8 +13,8 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = React.for
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
-    alignContent: alignContent,
-    vertical: vertical,
+    alignContent,
+    vertical,
   });
 
   return (

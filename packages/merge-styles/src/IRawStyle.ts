@@ -1,5 +1,5 @@
-import { IRawStyleBase } from './IRawStyleBase';
-import { IStyle } from './IStyle';
+import type { IRawStyleBase } from './IRawStyleBase';
+import type { IStyle } from './IStyle';
 
 /**
  * IRawStyle extends a raw style object, but allows selectors to be defined

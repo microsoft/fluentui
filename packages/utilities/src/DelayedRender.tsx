@@ -7,7 +7,6 @@ import { IReactProps } from './React.types';
  *
  * @public
  */
-// eslint-disable-next-line deprecation/deprecation
 export interface IDelayedRenderProps extends IReactProps<{}> {
   /**
    * Number of milliseconds to delay rendering children.
@@ -51,6 +50,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 
   public componentDidMount(): void {
     let { delay } = this.props;
+    // eslint-disable-next-line no-restricted-globals
     this._timeoutId = window.setTimeout(() => {
       this.setState({
         isRendered: true,

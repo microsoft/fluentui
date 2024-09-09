@@ -18,7 +18,7 @@ Lets say we wanna add a new package storybook named `@fluentui/react-clippy`
   {
     "name": "@fluentui/react-clippy",
     "scripts": {
-+      "build-storybook": "build-storybook -o ./dist/storybook"
++      "build-storybook": "storybook build -o ./dist/storybook"
     }
   }
 ```

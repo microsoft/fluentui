@@ -33,6 +33,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -117,6 +118,24 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         right: 1px;
                         top: 1px;
                       }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
                       &:active > span {
                         left: 0px;
                         position: relative;
@@ -181,6 +200,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                             font-style: normal;
                             font-weight: normal;
                             speak: none;
+                            text-decoration: inherit;
                           }
                       data-icon-name="ChevronDown"
                     >
@@ -202,6 +222,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -298,6 +319,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -423,6 +445,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -520,6 +543,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -616,6 +640,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -712,6 +737,7 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -837,6 +863,7 @@ exports[`Breadcrumb rendering renders correctly with custom divider 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1170,6 +1197,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1267,6 +1295,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -1350,6 +1379,24 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         right: 1px;
                         top: 1px;
                       }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
                       &:active > span {
                         left: 0px;
                         position: relative;
@@ -1409,6 +1456,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1479,6 +1527,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1563,6 +1612,24 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                         right: 1px;
                         top: 1px;
                       }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
                       &:active > span {
                         left: 0px;
                         position: relative;
@@ -1622,6 +1689,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1692,6 +1760,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -1776,6 +1845,24 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         right: 1px;
                         top: 1px;
                       }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
                       &:active > span {
                         left: 0px;
                         position: relative;
@@ -1835,6 +1922,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -1876,6 +1964,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -1972,6 +2061,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -2097,6 +2187,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=
@@ -2194,6 +2285,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -2277,6 +2369,24 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         right: 1px;
                         top: 1px;
                       }
+                      :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        border: 1px solid #ffffff;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                        bottom: 1px;
+                        left: 1px;
+                        outline-color: ButtonText;
+                        right: 1px;
+                        top: 1px;
+                      }
                       &:active > span {
                         left: 0px;
                         position: relative;
@@ -2336,6 +2446,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                           ms-Button-icon
                           {
                             display: inline-block;
+                            text-decoration: inherit;
                           }
                           {
                             -moz-osx-font-smoothing: grayscale;
@@ -2377,6 +2488,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
+                        text-decoration: inherit;
                       }
                       @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
@@ -2502,6 +2614,7 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
                   outline: none;
                 }
             data-focuszone-id="FocusZone0"
+            data-tabster="{\\"uncontrolled\\": {}}"
           >
             <ol
               class=

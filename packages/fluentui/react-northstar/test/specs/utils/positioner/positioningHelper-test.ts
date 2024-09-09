@@ -1,4 +1,4 @@
-import * as PopperJs from '@popperjs/core';
+import type { Placement as PopperJsPlacement } from '@popperjs/core';
 
 import { Alignment, OffsetFunction, Position } from 'src/utils/positioner';
 import { applyRtlToOffset, getPlacement } from 'src/utils/positioner/positioningHelper';
@@ -6,7 +6,7 @@ import { applyRtlToOffset, getPlacement } from 'src/utils/positioner/positioning
 type PositionTestInput = {
   align: Alignment;
   position: Position;
-  expectedPlacement: PopperJs.Placement;
+  expectedPlacement: PopperJsPlacement;
   rtl?: boolean;
 };
 

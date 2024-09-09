@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Input } from '@fluentui/react-northstar';
 import { getThemeStoryVariant } from '../utilities';
 import InputExample from '../../examples/components/Input/Types/InputInvertedExample.shorthand';
@@ -6,7 +6,7 @@ import InputExample from '../../examples/components/Input/Types/InputInvertedExa
 export default {
   component: Input,
   title: 'Input',
-} as ComponentMeta<typeof Input>;
+} as Meta<typeof Input>;
 
 const InputExampleTeams = getThemeStoryVariant(InputExample, 'teamsV2');
 

@@ -24,7 +24,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
       },
       checked && [
         {
-          backgroundColor: extendedSemanticColors.controlFocus,
+          backgroundColor: extendedSemanticColors.controlAccent,
           selectors: {
             '&:hover': {
               backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,

@@ -1,0 +1,7 @@
+{
+  "name": "react-northstar",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "tags": ["react-northstar"]
+}

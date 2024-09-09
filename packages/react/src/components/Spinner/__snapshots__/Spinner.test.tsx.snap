@@ -20,9 +20,13 @@ exports[`Spinner renders Spinner correctly 1`] = `
           animation-iteration-count: infinite;
           animation-name: keyframes 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);};
           animation-timing-function: cubic-bezier(.53,.21,.29,.67);
+          border-bottom-color: #c7e0f4;
+          border-left-color: #c7e0f4;
           border-radius: 50%;
+          border-right-color: #c7e0f4;
+          border-style: solid;
           border-top-color: #0078d4;
-          border: 1.5px solid #c7e0f4;
+          border-width: 1.5px;
           box-sizing: border-box;
           height: 20px;
           width: 20px;

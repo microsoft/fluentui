@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 
 import { getTsPathAliasesApiExtractorConfig } from './utils';
 
@@ -43,10 +43,13 @@ describe(`utils`, () => {
         definitionsRootPath: 'dist/for/types',
       });
 
-      expect(actual.overrideTsconfig.compilerOptions).toEqual(expect.objectContaining({ paths: undefined }));
+      expect(actual.overrideTsconfig.compilerOptions).toEqual(
+        expect.objectContaining({ paths: undefined, baseUrl: '.' }),
+      );
     });
 
-    it(`should override path aliases to emitted declaration files instead of source files`, () => {
+    // This is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
+    it.skip(`should override path aliases to emitted declaration files instead of source files`, () => {
       const actual = setup({
         definitionsRootPath: 'dist/for/types',
         pathAliasesTsConfigPath: path.join(workspaceRoot, 'tsconfig.base.json'),

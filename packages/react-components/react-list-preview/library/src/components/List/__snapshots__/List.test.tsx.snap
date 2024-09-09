@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`List rendering render as div and div doesn't throw 1`] = `
+<div>
+  <div
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="list"
+  >
+    <div
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-1"
+      role="listitem"
+    >
+      First ListItem
+    </div>
+    <div
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-2"
+      role="listitem"
+    >
+      Second ListItem
+    </div>
+  </div>
+</div>
+`;
+
+exports[`List rendering renders a default state 1`] = `
+<div>
+  <ul
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="list"
+  >
+    <li
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-1"
+      role="listitem"
+      value="test-value-1"
+    >
+      First ListItem
+    </li>
+    <li
+      class="fui-ListItem"
+      data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-2"
+      role="listitem"
+      value="test-value-2"
+    >
+      Second ListItem
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List selection multiselect items are properly rendered with all attributes 1`] = `
+<div>
+  <ul
+    aria-multiselectable="true"
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="listbox"
+  >
+    <li
+      aria-selected="false"
+      class="fui-ListItem"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-1"
+      role="option"
+      tabindex="0"
+      value="test-value-1"
+    >
+      <span
+        class="fui-Checkbox fui-ListItem__checkmark"
+      >
+        <input
+          class="fui-Checkbox__input"
+          id="checkbox-54"
+          tabindex="-1"
+          type="checkbox"
+        />
+        <div
+          aria-hidden="true"
+          class="fui-Checkbox__indicator"
+        />
+      </span>
+      First ListItem
+    </li>
+    <li
+      aria-selected="false"
+      class="fui-ListItem"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-2"
+      role="option"
+      tabindex="0"
+      value="test-value-2"
+    >
+      <span
+        class="fui-Checkbox fui-ListItem__checkmark"
+      >
+        <input
+          class="fui-Checkbox__input"
+          id="checkbox-56"
+          tabindex="-1"
+          type="checkbox"
+        />
+        <div
+          aria-hidden="true"
+          class="fui-Checkbox__indicator"
+        />
+      </span>
+      Second ListItem
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`List selection single select items are properly rendered with all attributes 1`] = `
+<div>
+  <ul
+    class="fui-List"
+    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"memorizeCurrent\\":true}}"
+    role="listbox"
+  >
+    <li
+      aria-selected="false"
+      class="fui-ListItem"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-1"
+      role="option"
+      tabindex="0"
+      value="test-value-1"
+    >
+      <span
+        class="fui-Checkbox fui-ListItem__checkmark"
+      >
+        <input
+          class="fui-Checkbox__input"
+          id="checkbox-50"
+          tabindex="-1"
+          type="checkbox"
+        />
+        <div
+          aria-hidden="true"
+          class="fui-Checkbox__indicator"
+        />
+      </span>
+      First ListItem
+    </li>
+    <li
+      aria-selected="false"
+      class="fui-ListItem"
+      data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true},\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+      id="test-value-2"
+      role="option"
+      tabindex="0"
+      value="test-value-2"
+    >
+      <span
+        class="fui-Checkbox fui-ListItem__checkmark"
+      >
+        <input
+          class="fui-Checkbox__input"
+          id="checkbox-52"
+          tabindex="-1"
+          type="checkbox"
+        />
+        <div
+          aria-hidden="true"
+          class="fui-Checkbox__indicator"
+        />
+      </span>
+      Second ListItem
+    </li>
+  </ul>
+</div>
+`;
