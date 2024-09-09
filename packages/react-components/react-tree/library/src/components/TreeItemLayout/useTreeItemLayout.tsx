@@ -15,7 +15,6 @@ import type {
   TreeItemLayoutProps,
   TreeItemLayoutState,
 } from './TreeItemLayout.types';
-import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Checkbox, CheckboxProps } from '@fluentui/react-checkbox';
 import { Radio, RadioProps } from '@fluentui/react-radio';
 import { TreeItemChevron } from '../TreeItemChevron';
@@ -49,25 +48,10 @@ export const useTreeItemLayout_unstable = (
       [props.actions.visible, props.actions.onVisibilityChange]
     : [undefined, undefined];
 
-  const [isActionsVisible, setIsActionsVisibleState] = useControllableState({
+  const [isActionsVisible, setIsActionsVisible] = useControllableState({
     state: isActionsVisibleFromProps,
     initialState: false,
   });
-
-  const { targetDocument } = useFluent();
-  const setIsActionsVisible = React.useMemo(() => {
-    const win = targetDocument?.defaultView;
-    if (!win) {
-      return () => null;
-    }
-
-    let timeout = 0;
-    return (visible: boolean) => {
-      // TODO this is not final, the timeout needs to be cleared on component unmount
-      win.clearTimeout(timeout);
-      timeout = win.setTimeout(() => setIsActionsVisibleState(visible));
-    };
-  }, [setIsActionsVisibleState, targetDocument]);
 
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
@@ -102,10 +86,12 @@ export const useTreeItemLayout_unstable = (
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
-      const isRelatedTargetFromActions = Boolean(
-        actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node),
-      );
-      if (isRelatedTargetFromActions) {
+      const isRelatedTargetFromActions = () =>
+        Boolean(actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node));
+      const isTargetFromSubtree = () =>
+        Boolean(subtreeRef.current && elementContains(subtreeRef.current, event.target as Node));
+      const isTargetFromActions = () => Boolean(actionsRefInternal.current?.contains(event.target as Node));
+      if (isRelatedTargetFromActions()) {
         onActionVisibilityChange?.(event, {
           visible: true,
           event,
@@ -114,18 +100,15 @@ export const useTreeItemLayout_unstable = (
         setIsActionsVisible(true);
         return;
       }
-      const isTargetFromSubtree = Boolean(
-        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-      );
-      if (!isTargetFromSubtree) {
-        onActionVisibilityChange?.(event, {
-          visible: false,
-          event,
-          type: event.type,
-        } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
-        setIsActionsVisible(false);
+      if (isTargetFromActions() || isTargetFromSubtree()) {
         return;
       }
+      onActionVisibilityChange?.(event, {
+        visible: false,
+        event,
+        type: event.type,
+      } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
+      setIsActionsVisible(false);
     },
     [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
   );
