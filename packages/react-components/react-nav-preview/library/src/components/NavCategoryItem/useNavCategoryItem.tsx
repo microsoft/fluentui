@@ -25,7 +25,9 @@ export const useNavCategoryItem_unstable = (
   const { onRequestNavCategoryItemToggle, selectedCategoryValue, size = 'medium' } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onRequestNavCategoryItemToggle(event, { type: 'click', event, value })),
+    mergeCallbacks(onClick, event =>
+      onRequestNavCategoryItemToggle(event, { type: 'click', event, value: undefined, categoryValue: value }),
+    ),
   );
 
   const selected = selectedCategoryValue === value;

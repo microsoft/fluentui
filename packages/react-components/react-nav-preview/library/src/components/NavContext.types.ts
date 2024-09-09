@@ -3,10 +3,7 @@ import { EventHandler } from '@fluentui/react-utilities';
 
 import type { NavProps, OnNavItemSelectData } from './Nav/Nav.types';
 
-export type NavContextValue = Pick<
-  NavProps,
-  'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace' | 'size'
-> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'size'> & {
   /** A callback to allow a navItem to register itself with the navItem list. */
   onRegister: RegisterNavItemEventHandler;
 

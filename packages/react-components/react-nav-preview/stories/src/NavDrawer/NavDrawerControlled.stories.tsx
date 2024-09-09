@@ -46,6 +46,7 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
+import { OnNavItemSelectData } from '../../../library/src/components/Nav/Nav.types'; // Todo before checking - why can't I import this from the package?
 
 const useStyles = makeStyles({
   root: {
@@ -85,15 +86,35 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 
 type DrawerType = Required<DrawerProps>['type'];
 
-export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
+export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
 
+  const [openCategories, setOpenCategories] = React.useState<string[]>(['6']); // todo before checkin - hydrate this
+  const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string>('6');
+  const [selectedValue, setSelectedValue] = React.useState<string>('7');
+
   const [isOpen, setIsOpen] = React.useState(true);
-  const [enabledLinks, setEnabledLinks] = React.useState(true);
+  const [enabledLinks, setEnabledLinks] = React.useState(false); // todo- change me back before checkin
   const [type, setType] = React.useState<DrawerType>('inline');
+
+  const handleCategoryToggle = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
+    if (data.value === undefined && data.categoryValue) {
+      // we're just opening it,
+      setOpenCategories([data.categoryValue as string]);
+    }
+
+    if (!openCategories.includes(data.categoryValue as string)) {
+      setOpenCategories([...openCategories, data.categoryValue as string]);
+    }
+  };
+
+  const handleItemSelect = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
+    setSelectedCategoryValue(data.categoryValue as string);
+    setSelectedValue(data.value as string);
+  };
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
@@ -107,7 +128,18 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" multiple={false} open={isOpen} type={type}>
+      <NavDrawer
+        // defaultSelectedValue="7"
+        // defaultSelectedCategoryValue="6"
+        onNavCategoryItemToggle={handleCategoryToggle}
+        onNavItemSelect={handleItemSelect}
+        openCategories={openCategories}
+        selectedValue={selectedValue}
+        selectedCategoryValue={selectedCategoryValue}
+        open={isOpen}
+        multiple={false} // todo before checkin - handle this case properly
+        type={type}
+      >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 
         <NavDrawerBody>

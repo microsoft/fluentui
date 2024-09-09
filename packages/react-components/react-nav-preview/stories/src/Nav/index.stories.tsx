@@ -11,6 +11,7 @@ import { Nav } from '@fluentui/react-nav-preview';
 
 export { NavDrawerDefault } from '../NavDrawer/NavDrawerDefault.stories';
 export { NavDrawerSize } from '../NavDrawer/NavDrawerSize.stories';
+export { NavDrawerControlled } from '../NavDrawer/NavDrawerControlled.stories';
 
 export default {
   title: 'Preview Components/Nav',

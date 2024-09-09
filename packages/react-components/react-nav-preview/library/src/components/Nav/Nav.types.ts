@@ -14,15 +14,6 @@ export type NavSize = 'small' | 'medium';
  */
 export type NavProps = ComponentProps<NavSlots> & {
   /**
-   * Nav size may change between unselected and selected states.
-   * The default scenario is a selected NavItem has bold text.
-   *
-   * When true, this property requests navItems be the same size whether unselected or selected.
-   * @default true
-   */
-  reserveSelectedNavItemSpace?: boolean;
-
-  /**
    * The value of the navItem to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
    *  Mutually exclusive with selectedValue.
@@ -37,7 +28,20 @@ export type NavProps = ComponentProps<NavSlots> & {
   defaultSelectedCategoryValue?: NavItemValue;
 
   /**
+   * Set of categories that are opened by default.
+   * Typically useful when the openCategories is uncontrolled.
+   */
+  defaultOpenCategories?: NavItemValue[];
+
+  /**
+   * Controls the open categories.
+   * For use in controlled scenarios.
+   */
+  openCategories?: NavItemValue[];
+
+  /**
    * Raised when a navItem is selected.
+   * If the navItem is child of a category, the categoryValue will be provided
    */
   onNavItemSelect?: EventHandler<OnNavItemSelectData>;
 
@@ -61,7 +65,7 @@ export type NavProps = ComponentProps<NavSlots> & {
   multiple?: boolean;
 
   /**
-   * Callback used by NavCategoryItem to request a change on it's own opened state
+   * Callback raised when a NavCategoryItem is toggled.
    */
   onNavCategoryItemToggle?: EventHandler<OnNavItemSelectData>;
 
@@ -76,11 +80,12 @@ export type NavProps = ComponentProps<NavSlots> & {
 export type OnNavItemSelectData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
   /**
    * The value of the selected navItem.
+   * In the case of a category selection, this will be the value of the selected category.
    */
   value: NavItemValue;
 
   /**
-   * The parent value of the selected navItem
+   * The parent value of the selected navSubItem
    * Null if not a child of a category
    */
   categoryValue?: NavItemValue;
