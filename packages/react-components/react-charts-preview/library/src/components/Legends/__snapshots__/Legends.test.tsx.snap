@@ -19,9 +19,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
   >
     <button
       aria-label="Legend 1"
-      aria-posinset={1}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -45,15 +43,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 1
       </div>
     </button>
     <button
       aria-label="Legend 2"
-      aria-posinset={2}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -77,15 +78,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 2
       </div>
     </button>
     <button
       aria-label="Legend 3"
-      aria-posinset={3}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -109,15 +113,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 3
       </div>
     </button>
     <button
       aria-label="Legend 4"
-      aria-posinset={4}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -141,15 +148,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 4
       </div>
     </button>
     <button
       aria-label="Legend 5"
-      aria-posinset={5}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -173,15 +183,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 5
       </div>
     </button>
     <button
       aria-label="Legend 6"
-      aria-posinset={6}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -205,15 +218,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 6
       </div>
     </button>
     <button
       aria-label="Legend 7"
-      aria-posinset={7}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -237,15 +253,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 7
       </div>
     </button>
     <button
       aria-label="Legend 8"
-      aria-posinset={8}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -269,15 +288,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 8
       </div>
     </button>
     <button
       aria-label="Legend 9"
-      aria-posinset={9}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -301,15 +323,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 9
       </div>
     </button>
     <button
       aria-label="Legend 10"
-      aria-posinset={10}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -333,15 +358,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 10
       </div>
     </button>
     <button
       aria-label="Legend 11"
-      aria-posinset={11}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -365,15 +393,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 11
       </div>
     </button>
     <button
       aria-label="Legend 12"
-      aria-posinset={12}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -397,15 +428,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 12
       </div>
     </button>
     <button
       aria-label="Legend 13"
-      aria-posinset={13}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -429,15 +463,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 13
       </div>
     </button>
     <button
       aria-label="Legend 14"
-      aria-posinset={14}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -461,15 +498,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 14
       </div>
     </button>
     <button
       aria-label="Legend 15"
-      aria-posinset={15}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -493,15 +533,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 15
       </div>
     </button>
     <button
       aria-label="Legend 16"
-      aria-posinset={16}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -525,15 +568,18 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 16
       </div>
     </button>
     <button
       aria-label="Legend 17"
-      aria-posinset={17}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -557,6 +603,11 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 17
       </div>
@@ -584,9 +635,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
   >
     <button
       aria-label="Legend 1"
-      aria-posinset={1}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -610,15 +659,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 1
       </div>
     </button>
     <button
       aria-label="Legend 2"
-      aria-posinset={2}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -642,15 +694,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 2
       </div>
     </button>
     <button
       aria-label="Legend 3"
-      aria-posinset={3}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -674,15 +729,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 3
       </div>
     </button>
     <button
       aria-label="Legend 4"
-      aria-posinset={4}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -706,15 +764,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 4
       </div>
     </button>
     <button
       aria-label="Legend 5"
-      aria-posinset={5}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -738,15 +799,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 5
       </div>
     </button>
     <button
       aria-label="Legend 6"
-      aria-posinset={6}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -770,15 +834,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 6
       </div>
     </button>
     <button
       aria-label="Legend 7"
-      aria-posinset={7}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -802,15 +869,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 7
       </div>
     </button>
     <button
       aria-label="Legend 8"
-      aria-posinset={8}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -834,15 +904,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 8
       </div>
     </button>
     <button
       aria-label="Legend 9"
-      aria-posinset={9}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -866,15 +939,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 9
       </div>
     </button>
     <button
       aria-label="Legend 10"
-      aria-posinset={10}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -898,15 +974,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 10
       </div>
     </button>
     <button
       aria-label="Legend 11"
-      aria-posinset={11}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -930,15 +1009,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 11
       </div>
     </button>
     <button
       aria-label="Legend 12"
-      aria-posinset={12}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -962,15 +1044,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 12
       </div>
     </button>
     <button
       aria-label="Legend 13"
-      aria-posinset={13}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -994,15 +1079,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 13
       </div>
     </button>
     <button
       aria-label="Legend 14"
-      aria-posinset={14}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1026,15 +1114,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 14
       </div>
     </button>
     <button
       aria-label="Legend 15"
-      aria-posinset={15}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1058,15 +1149,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 15
       </div>
     </button>
     <button
       aria-label="Legend 16"
-      aria-posinset={16}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1090,15 +1184,18 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 16
       </div>
     </button>
     <button
       aria-label="Legend 17"
-      aria-posinset={17}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1122,6 +1219,11 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 17
       </div>
@@ -1149,9 +1251,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
   >
     <button
       aria-label="Legend 1"
-      aria-posinset={1}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1175,15 +1275,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 1
       </div>
     </button>
     <button
       aria-label="Legend 2"
-      aria-posinset={2}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1207,15 +1310,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 2
       </div>
     </button>
     <button
       aria-label="Legend 3"
-      aria-posinset={3}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1239,15 +1345,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 3
       </div>
     </button>
     <button
       aria-label="Legend 4"
-      aria-posinset={4}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1271,15 +1380,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 4
       </div>
     </button>
     <button
       aria-label="Legend 5"
-      aria-posinset={5}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1303,15 +1415,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 5
       </div>
     </button>
     <button
       aria-label="Legend 6"
-      aria-posinset={6}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1335,15 +1450,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 6
       </div>
     </button>
     <button
       aria-label="Legend 7"
-      aria-posinset={7}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1367,15 +1485,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 7
       </div>
     </button>
     <button
       aria-label="Legend 8"
-      aria-posinset={8}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1399,15 +1520,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 8
       </div>
     </button>
     <button
       aria-label="Legend 9"
-      aria-posinset={9}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1431,15 +1555,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 9
       </div>
     </button>
     <button
       aria-label="Legend 10"
-      aria-posinset={10}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1463,15 +1590,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 10
       </div>
     </button>
     <button
       aria-label="Legend 11"
-      aria-posinset={11}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1495,15 +1625,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 11
       </div>
     </button>
     <button
       aria-label="Legend 12"
-      aria-posinset={12}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1527,15 +1660,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 12
       </div>
     </button>
     <button
       aria-label="Legend 13"
-      aria-posinset={13}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1559,15 +1695,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 13
       </div>
     </button>
     <button
       aria-label="Legend 14"
-      aria-posinset={14}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1591,15 +1730,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 14
       </div>
     </button>
     <button
       aria-label="Legend 15"
-      aria-posinset={15}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1623,15 +1765,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 15
       </div>
     </button>
     <button
       aria-label="Legend 16"
-      aria-posinset={16}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1655,15 +1800,18 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 16
       </div>
     </button>
     <button
       aria-label="Legend 17"
-      aria-posinset={17}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1687,6 +1835,11 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 17
       </div>
@@ -1714,9 +1867,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
   >
     <button
       aria-label="Legend 1"
-      aria-posinset={1}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1740,15 +1891,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 1
       </div>
     </button>
     <button
       aria-label="Legend 2"
-      aria-posinset={2}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1772,15 +1926,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 2
       </div>
     </button>
     <button
       aria-label="Legend 3"
-      aria-posinset={3}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1804,15 +1961,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 3
       </div>
     </button>
     <button
       aria-label="Legend 4"
-      aria-posinset={4}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1836,15 +1996,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 4
       </div>
     </button>
     <button
       aria-label="Legend 5"
-      aria-posinset={5}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1868,15 +2031,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 5
       </div>
     </button>
     <button
       aria-label="Legend 6"
-      aria-posinset={6}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1900,15 +2066,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 6
       </div>
     </button>
     <button
       aria-label="Legend 7"
-      aria-posinset={7}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1932,15 +2101,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 7
       </div>
     </button>
     <button
       aria-label="Legend 8"
-      aria-posinset={8}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1964,15 +2136,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 8
       </div>
     </button>
     <button
       aria-label="Legend 9"
-      aria-posinset={9}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -1996,15 +2171,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 9
       </div>
     </button>
     <button
       aria-label="Legend 10"
-      aria-posinset={10}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2028,15 +2206,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 10
       </div>
     </button>
     <button
       aria-label="Legend 11"
-      aria-posinset={11}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2060,15 +2241,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 11
       </div>
     </button>
     <button
       aria-label="Legend 12"
-      aria-posinset={12}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2092,15 +2276,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 12
       </div>
     </button>
     <button
       aria-label="Legend 13"
-      aria-posinset={13}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2124,15 +2311,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 13
       </div>
     </button>
     <button
       aria-label="Legend 14"
-      aria-posinset={14}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2156,15 +2346,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 14
       </div>
     </button>
     <button
       aria-label="Legend 15"
-      aria-posinset={15}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2188,15 +2381,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 15
       </div>
     </button>
     <button
       aria-label="Legend 16"
-      aria-posinset={16}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2220,15 +2416,18 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 16
       </div>
     </button>
     <button
       aria-label="Legend 17"
-      aria-posinset={17}
       aria-selected={false}
-      aria-setsize={17}
       className="fui-Button fui-legend__legend"
       data-is-focusable={true}
       onBlur={[Function]}
@@ -2252,6 +2451,11 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       />
       <div
         className="fui-legend__text"
+        style={
+          Object {
+            "opacity": "",
+          }
+        }
       >
         Legend 17
       </div>

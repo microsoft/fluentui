@@ -7,6 +7,10 @@ import { ILegendState } from './Legends';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ILegendsProps } from './Legends.types';
+import { render, act } from '@testing-library/react';
+import { axe, toHaveNoViolations } from 'jest-axe';
+
+expect.extend(toHaveNoViolations);
 
 // Wrapper of the Legends to be tested.
 let wrapper: ReactWrapper<ILegendsProps, ILegendState > | undefined;
@@ -193,6 +197,7 @@ describe('Legends - basic props', () => {
 describe('Render calling with respective to props', () => {
   beforeEach(sharedBeforeEach);
 
+  //To Do - This tc will be need to revisit because the logic is not correct.
   it('No prop changes', () => {
     const props = {
       legends,
@@ -230,5 +235,18 @@ describe('Legends - multi Legends', () => {
     );
     const renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
     expect(renderedLegends?.length).toBe(2);
+  });
+});
+
+describe('Legends - axe-core', () => {
+  beforeEach(sharedBeforeEach);
+
+  test('Should pass accessibility tests', async () => {
+    const { container } = render(<Legends legends={legends} />);
+    let axeResults;
+    await act(async () => {
+      axeResults = await axe(container);
+    });
+    expect(axeResults).toHaveNoViolations();
   });
 });
