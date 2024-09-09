@@ -29,7 +29,7 @@ export abstract class AbstractListbox extends FASTElement {
   @attr({ mode: 'boolean' })
   public multiple = false;
   protected multipleChanged() {
-    this.elementInternals.ariaMultiSelectable = this.multiple.toString();
+    this.elementInternals.ariaMultiSelectable = `${!!this.multiple}`;
     this.toggleOptionsMultipleState();
   }
 
@@ -46,7 +46,7 @@ export abstract class AbstractListbox extends FASTElement {
     super();
 
     this.elementInternals.role = 'listbox';
-    this.elementInternals.ariaMultiSelectable = this.multiple.toString();
+    this.elementInternals.ariaMultiSelectable = `${!!this.multiple}`;
   }
 
   connectedCallback() {

@@ -85,6 +85,44 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   /**
+   * The id of a form to associate the element to.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `form`
+   */
+  @attr({ attribute: 'form' })
+  public initialForm?: string;
+
+  /**
+   * The form element that’s associated to the element, or `null` if no form is associated.
+   *
+   * @public
+   */
+  public get form(): HTMLFormElement | null {
+    return this.elementInternals.form;
+  }
+
+  /**
+   * A `NodeList` of `<label>` element associated with the element.
+   * @see The {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/labels | `labels`} property
+   *
+   * @public
+   */
+  public get labels(): NodeList {
+    return this.elementInternals.labels;
+  }
+
+  /**
+   * The number of Option elements associated with the element.
+   *
+   * @public
+   */
+  public get length(): number {
+    return this.options?.length || 0;
+  }
+
+  /**
    * Associates the component with a DropdownList element. The value references the DropdownList
    * element’s ID.
    *
@@ -139,6 +177,24 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   /**
+   * The name of the element. This element's value will be surfaced during form submission under the provided name.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `name`
+   */
+  @attr
+  public name!: string;
+  protected nameChanged() {
+    for (const option of this.options) {
+      if (option.name) {
+        continue;
+      }
+      option.name = this.name;
+    }
+  }
+
+  /**
    * An array of Option elements. It’s shortcut to the Listbox element’s
    * `.options` property.
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/options | `HTMLSelectElement.prototype.options`}
@@ -165,6 +221,35 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   /**
+   * When true, the control will be immutable by user interaction.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/readonly | `readonly`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `readonly`
+   */
+  @attr({ attribute: 'readonly', mode: 'boolean' })
+  public readOnly = false;
+  protected readOnlyChanged() {
+    this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
+    this.setValidity();
+  }
+
+  /**
+   * The element's required attribute.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `required`
+   */
+  @attr({ mode: 'boolean' })
+  public required = false;
+  protected requiredChanged() {
+    this.elementInternals.ariaRequired = `${!!this.required}`;
+    this.setValidity();
+  }
+
+  /**
    * The index of the first selected Option element, otherwise returns `-1`.
    * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex | `HTMLSelectElement.prototype.selectedIndex`}
    *
@@ -178,8 +263,8 @@ export abstract class AbstractCombobox extends FASTElement {
     return -1;
   }
   public set selectedIndex(index: number) {
-    if (Number.isInteger(index) && index >= 0 && index < this.options.length && !this.options[index].disabled) {
-      this.options[index].selected = true;
+    if (Number.isInteger(index) && index >= 0 && index < this.options.length) {
+      this.value = this.options[index].value;
     }
   }
 
@@ -201,9 +286,32 @@ export abstract class AbstractCombobox extends FASTElement {
   protected selectedLabels: string[] = [];
   protected selectedLabelsChanged() {
     this.togglePlaceholderVisibleState();
+    this.setValidity();
     this.$emit('change');
     this.$emit('input');
   }
+
+  /**
+   * The element’s type. It returns `select-multiple` if `multiple` is `true`,
+   * otherwise `select-one`.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/type | `HTMLSelectElement.prototype.type`}
+   *
+   * @public
+   */
+  public get type(): string {
+    return `select-${this.multiple ? 'multiple' : 'one'}`;
+  }
+
+  /**
+   * The initial value of the element.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value | `HTMLSelectElement.prototype.value`}
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `value`
+   */
+  @attr({ attribute: 'value' })
+  public initialValue?: string;
 
   /**
    * The value of the first selected Option element, otherwise returns an empty
@@ -212,7 +320,59 @@ export abstract class AbstractCombobox extends FASTElement {
    * @public
    */
   public get value(): string {
+    if (!this.$fastController.isConnected) {
+      return this.initialValue ?? '';
+    }
     return this.selectedOptions?.[0]?.value ?? '';
+  }
+  public set value(next: string) {
+    if (this.disabled || this.readOnly) {
+      return;
+    }
+
+    if (!this.$fastController.isConnected) {
+      // TODO: set preconnected value
+    }
+
+    const option = this.options.find(option => option.value === next);
+    if (option && !option.disabled && !option.selected) {
+      option.click();
+    }
+  }
+
+  /**
+   * The element's validity state.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validity | `ElementInternals.validity`} property.
+   */
+  public get validity(): ValidityState {
+    return this.elementInternals.validity;
+  }
+
+  /**
+   * The validation message.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
+   */
+  public get validationMessage(): string {
+    return '';
+    // TODO
+    // return this.elementInternals.validationMessage || this.controlEl.validationMessage;
+  }
+
+  /**
+   * Determines if the control can be submitted for constraint validation.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/willValidate | `ElementInternals.willValidate`} property.
+   */
+  public get willValidate(): boolean {
+    return this.elementInternals.willValidate;
   }
 
   constructor() {
@@ -222,6 +382,9 @@ export abstract class AbstractCombobox extends FASTElement {
     this.elementInternals.ariaExpanded = 'false';
   }
 
+  /**
+   * @internal
+   */
   connectedCallback() {
     super.connectedCallback();
 
@@ -229,8 +392,15 @@ export abstract class AbstractCombobox extends FASTElement {
     this.bindListboxEvents();
     this.connectListbox();
     this.togglePlaceholderVisibleState();
+
+    // TODO
+    // this.setInitialSelectedOption();
+    this.setValidity();
   }
 
+  /**
+   * @internal
+   */
   disconnectedCallback() {
     super.disconnectedCallback();
 
@@ -238,12 +408,89 @@ export abstract class AbstractCombobox extends FASTElement {
     this.unbindListboxEvents();
   }
 
+  /**
+   * @internal
+   */
+  formResetCallback() {
+    this.value = this.initialValue || '';
+  }
+
+  /**
+   * @internal
+   */
   formDisabledCallback(disabled: boolean) {
     this.setDisabledSideEffect(disabled);
   }
 
+  /**
+   * Open the DropdownList.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/showPicker | `HTMLSelectElement.prototype.showPicker`}
+   *
+   * @public
+   */
   public showPicker() {
     this.toggleListbox(true);
+  }
+
+  /**
+   * Checks the validity of the element and returns the result.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/checkValidity | `HTMLInputElement.checkValidity()`} method.
+   */
+  public checkValidity(): boolean {
+    return this.elementInternals.checkValidity();
+  }
+
+  /**
+   * Reports the validity of the element.
+   *
+   * @public
+   * @remarks
+   * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/reportValidity | `HTMLInputElement.reportValidity()`} method.
+   */
+  public reportValidity(): boolean {
+    return this.elementInternals.reportValidity();
+  }
+
+  /**
+   * Sets the custom validity message.
+   * @param message - The message to set
+   *
+   * @public
+   */
+  public setCustomValidity(message: string | null): void {
+    this.setValidity({ customError: !!message }, message ? message.toString() : undefined);
+    this.reportValidity();
+  }
+
+  /**
+   * Sets the validity of the control.
+   *
+   * @param flags - Validity flags. If not provided, the control's `validity` will be used.
+   * @param message - Optional message to supply. If not provided, the control's `validationMessage` will be used. If the control does not have a `validationMessage`, the message will be empty.
+   * @param anchor - Optional anchor to use for the validation message. If not provided, the control will be used.
+   *
+   * @internal
+   */
+  public setValidity(flags?: Partial<ValidityState>, message?: string, anchor?: HTMLElement): void {
+    if (!this.$fastController.isConnected) {
+      return;
+    }
+
+    if (this.disabled || this.readOnly) {
+      this.elementInternals.setValidity({});
+      return;
+    }
+
+    // TODO: add validation
+
+    this.elementInternals.setValidity(
+      flags ?? this.validity,
+      message ?? this.validationMessage,
+      anchor,
+    );
   }
 
   protected connectListbox() {
@@ -505,6 +752,8 @@ export abstract class AbstractCombobox extends FASTElement {
     if (this.isExpanded && this.listElement) {
       this.toggleListbox(false);
     }
+
+    this.setValidity();
   }
 
   // @ts-expect-error Popover API
