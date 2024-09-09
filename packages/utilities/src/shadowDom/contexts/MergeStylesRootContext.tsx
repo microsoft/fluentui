@@ -1,16 +1,12 @@
 import * as React from 'react';
-import {
-  GLOBAL_STYLESHEET_KEY,
-  ShadowDomStylesheet,
-  makeShadowConfig,
-  DEFAULT_SHADOW_CONFIG,
-} from '@fluentui/merge-styles';
+import { GLOBAL_STYLESHEET_KEY, ShadowDomStylesheet, makeShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../../dom';
-
+import { MergeStylesDefaultContext, getNewContext } from './MergeStylesDefaultContext';
 import {
   useAdoptedStylesheet as useAdoptedStylesheetDefault,
   useAdoptedStylesheetEx as useAdoptedStylesheetExDefault,
 } from '../hooks/useAdoptedStylesheet';
+
 import { useShadowConfig as useShadowConfigDefault } from '../hooks/useShadowConfig';
 import {
   useHasMergeStylesShadowRootContext as useHasMergeStylesShadowRootContextDefault,
@@ -29,6 +25,7 @@ import type {
 } from '../hooks/useMergeStylesShadowRoot';
 import type { MergeStylesRootStylesheetsHook } from '../hooks/useMergeStylesRootStylesheets';
 import type { UseStyledHook } from '../hooks/useStyled';
+import type { UseWindowHook } from './MergeStylesDefaultContext';
 
 declare global {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -38,17 +35,7 @@ declare global {
   }
 }
 
-type UseWindowHook = () => Window | undefined;
-
-const noop = () => false;
-const noopShadow = () => DEFAULT_SHADOW_CONFIG;
-const noopRootStylesheets = () => new Map();
-const noopUndefined = () => undefined;
-
 export type MergeStylesRootContextValue = {
-  /**
-   * Map of stylesheets available in the context.
-   */
   stylesheets: Map<string, ExtendedCSSStyleSheet>;
   useAdoptedStylesheetEx: AdoptedStylesheetExHook;
   useAdoptedStylesheet: AdoptedStylesheetHook;
@@ -60,17 +47,7 @@ export type MergeStylesRootContextValue = {
   useStyled: UseStyledHook;
 };
 
-export const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
-  stylesheets: new Map(),
-  useAdoptedStylesheetEx: noop,
-  useAdoptedStylesheet: noop,
-  useShadowConfig: noopShadow,
-  useMergeStylesShadowRootContext: noopUndefined,
-  useHasMergeStylesShadowRootContext: noop,
-  useMergeStylesRootStylesheets: noopRootStylesheets,
-  useWindow: noopUndefined,
-  useStyled: noopUndefined,
-});
+export const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>(getNewContext());
 
 export type MergeStylesRootProviderProps = {
   /**
@@ -167,7 +144,7 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const value = React.useMemo(() => {
+  const defaultValues = React.useMemo(() => {
     return {
       stylesheets,
       useAdoptedStylesheet: useAdoptedStylesheet || useAdoptedStylesheetDefault,
@@ -192,5 +169,9 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
     useStyled,
   ]);
 
-  return <MergeStylesRootContext.Provider value={value} {...props} />;
+  return (
+    <MergeStylesDefaultContext.Provider value={defaultValues}>
+      <MergeStylesRootContext.Provider value={defaultValues} {...props} />
+    </MergeStylesDefaultContext.Provider>
+  );
 };
