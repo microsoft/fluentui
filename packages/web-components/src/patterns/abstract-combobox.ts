@@ -61,8 +61,6 @@ export abstract class AbstractCombobox extends FASTElement {
     this.setAttribute('aria-activedescendant', next ? next.id : '');
   }
 
-  private _selectedOptions = new Set<Option>();
-
   private clickListener?: (event: PointerEvent | MouseEvent) => void;
   private keydownListener?: (event: KeyboardEvent) => void;
   // @ts-expect-error Popover API
@@ -190,7 +188,7 @@ export abstract class AbstractCombobox extends FASTElement {
       if (option.name) {
         continue;
       }
-      option.name = this.name;
+      option.name = this.name || '';
     }
   }
 
@@ -257,7 +255,7 @@ export abstract class AbstractCombobox extends FASTElement {
    */
   @observable
   public get selectedIndex(): number {
-    if (this.selectedOptions.length) {
+    if (this.selectedOptions?.length) {
       return this.options.indexOf(this.selectedOptions[0]);
     }
     return -1;
@@ -275,11 +273,7 @@ export abstract class AbstractCombobox extends FASTElement {
    * @public
    */
   public get selectedOptions(): Option[] {
-    try {
-      return Array.from(this._selectedOptions);
-    } catch {
-      return [];
-    }
+    return this.options.filter(option => option.selected);
   }
 
   @observable
@@ -303,35 +297,17 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   /**
-   * The initial value of the element.
-   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/value | `HTMLSelectElement.prototype.value`}
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `value`
-   */
-  @attr({ attribute: 'value' })
-  public initialValue?: string;
-
-  /**
    * The value of the first selected Option element, otherwise returns an empty
    * string.
    *
    * @public
    */
   public get value(): string {
-    if (!this.$fastController.isConnected) {
-      return this.initialValue ?? '';
-    }
     return this.selectedOptions?.[0]?.value ?? '';
   }
   public set value(next: string) {
-    if (this.disabled || this.readOnly) {
+    if (!this.$fastController.isConnected || this.disabled || this.readOnly) {
       return;
-    }
-
-    if (!this.$fastController.isConnected) {
-      // TODO: set preconnected value
     }
 
     const option = this.options.find(option => option.value === next);
@@ -392,9 +368,6 @@ export abstract class AbstractCombobox extends FASTElement {
     this.bindListboxEvents();
     this.connectListbox();
     this.togglePlaceholderVisibleState();
-
-    // TODO
-    // this.setInitialSelectedOption();
     this.setValidity();
   }
 
@@ -406,13 +379,6 @@ export abstract class AbstractCombobox extends FASTElement {
 
     this.unbindEvents();
     this.unbindListboxEvents();
-  }
-
-  /**
-   * @internal
-   */
-  formResetCallback() {
-    this.value = this.initialValue || '';
   }
 
   /**
@@ -503,6 +469,7 @@ export abstract class AbstractCombobox extends FASTElement {
       this.setAnchorPositioningCSS();
       this.bindListboxEvents();
       this.listElement.multiple = this.multiple;
+      this.updateSelectedLabels();
     }
   }
 
@@ -668,7 +635,7 @@ export abstract class AbstractCombobox extends FASTElement {
         if (!this.activeOption) {
           return;
         }
-        if (!this.multiple && this._selectedOptions.has(this.activeOption)) {
+        if (!this.multiple && this.selectedOptions.includes(this.activeOption)) {
           this.toggleListbox(false);
           return;
         }
@@ -770,24 +737,21 @@ export abstract class AbstractCombobox extends FASTElement {
     const target = evt.target as Option;
     this.activeOption = target;
 
-    if (this.activeOption.selected) {
-      this._selectedOptions.add(this.activeOption);
-    } else {
-      this._selectedOptions.delete(this.activeOption);
-    }
-
     if (!this.multiple) {
       for (const option of this.selectedOptions) {
         if (option === this.activeOption) {
           continue;
         }
         option.selected = false;
-        this._selectedOptions.delete(option);
       }
 
       this.toggleListbox(false);
     }
 
+    this.updateSelectedLabels();
+  }
+
+  protected updateSelectedLabels() {
     this.selectedLabels = this.selectedOptions.map(option => option.label);
   }
 
