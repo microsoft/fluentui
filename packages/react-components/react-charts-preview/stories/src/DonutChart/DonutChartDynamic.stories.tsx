@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-charts-preview';
 import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-charting';
 
-import { Button, Switch, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import { Button, Checkbox, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
 
 /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
 const screenReaderOnlyStyle: React.CSSProperties = {
@@ -55,22 +55,6 @@ export const DonutDynamic = () => {
   const [innerRadius, setInnerRadius] = React.useState<number>(35);
   const [statusKey, setStatusKey] = React.useState<number>(0);
   const [statusMessage, setStatusMessage] = React.useState<string>('');
-  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
-  const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
-
-  const _onToggleGradient = React.useCallback(
-    ev => {
-      setEnableGradient(ev.currentTarget.checked);
-    },
-    [enableGradient],
-  );
-
-  const _onToggleRoundCorners = React.useCallback(
-    ev => {
-      setRoundCorners(ev.currentTarget.checked);
-    },
-    [roundCorners],
-  );
 
   const _changeData = (): void => {
     setDynamicData([
@@ -142,19 +126,6 @@ export const DonutDynamic = () => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
-      <div style={{ display: 'flex' }}>
-        <Switch
-          label={enableGradient ? 'Enable Gradient' : 'Disable Gradient'}
-          onChange={_onToggleGradient}
-          checked={enableGradient}
-        />
-        &nbsp;&nbsp;
-        <Switch
-          label={roundCorners ? 'Enable Rounded Corners' : 'Disable Rounded Corners'}
-          onChange={_onToggleRoundCorners}
-          checked={roundCorners}
-        />
-      </div>
 
       <DonutChart
         data={data}
@@ -164,8 +135,6 @@ export const DonutDynamic = () => {
         }}
         hideLabels={hideLabels}
         showLabelsInPercent={showLabelsInPercent}
-        enableGradient={enableGradient}
-        roundCorners={roundCorners}
       />
       <Button onClick={_changeData}> Change data </Button>
       <Button onClick={_changeColors}> Change colors </Button>

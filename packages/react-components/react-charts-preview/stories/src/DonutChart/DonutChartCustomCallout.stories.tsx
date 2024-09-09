@@ -7,7 +7,6 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
 import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-charting';
-import { Switch } from '@fluentui/react-components';
 import PopoverComponent from '../../../library/src/components/CommonComponents/Popover';
 
 export const DonutCustomCallout = () => {
@@ -29,22 +28,6 @@ export const DonutCustomCallout = () => {
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 39000h' },
     },
   ];
-  const [enableGradient, setEnableGradient] = React.useState<boolean>(false);
-  const [roundCorners, setRoundCorners] = React.useState<boolean>(false);
-
-  const _onToggleGradient = React.useCallback(
-    ev => {
-      setEnableGradient(ev.currentTarget.checked);
-    },
-    [enableGradient],
-  );
-
-  const _onToggleRoundCorners = React.useCallback(
-    ev => {
-      setRoundCorners(ev.currentTarget.checked);
-    },
-    [roundCorners],
-  );
 
   const data: IChartProps = {
     chartTitle: 'Donut chart custom callout example',
@@ -53,19 +36,6 @@ export const DonutCustomCallout = () => {
 
   return (
     <>
-      <div style={{ display: 'flex' }}>
-        <Switch
-          label={enableGradient ? 'Enable Gradient' : 'Disable Gradient'}
-          onChange={_onToggleGradient}
-          checked={enableGradient}
-        />
-        &nbsp;&nbsp;
-        <Switch
-          label={roundCorners ? 'Enable Rounded Corners' : 'Disable Rounded Corners'}
-          onChange={_onToggleRoundCorners}
-          checked={roundCorners}
-        />
-      </div>
       <DonutChart
         data={data}
         innerRadius={55}
@@ -86,8 +56,6 @@ export const DonutCustomCallout = () => {
             />
           ) : null
         }
-        enableGradient={enableGradient}
-        roundCorners={roundCorners}
       />
     </>
   );

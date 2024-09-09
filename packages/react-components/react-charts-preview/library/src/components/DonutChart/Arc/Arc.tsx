@@ -94,7 +94,6 @@ export const Arc: React.FunctionComponent<IArcProps> = React.forwardRef<HTMLDivE
     //TO DO 'replace' is throwing error
     const id = props.uniqText! + props.data!.data.legend!.replace(/\s+/, '') + props.data!.data.data;
     const opacity: number = props.activeArc === props.data!.data.legend || props.activeArc === '' ? 1 : 0.1;
-    const cornerRadius = props.roundCorners ? 3 : 0;
     return (
       <g ref={currentRef}>
         {!!focusedArcId && focusedArcId === id && (

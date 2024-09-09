@@ -104,18 +104,6 @@ export interface IArcProps {
    * Additional CSS class(es) to apply to the Chart.
    */
   className?: string;
-
-  /**
-   * Prop to enable the gradient in the arc
-   * @default false
-   */
-  enableGradient?: boolean;
-
-  /**
-   * Prop to enable the round corners in the chart
-   * @default false
-   */
-  roundCorners?: boolean;
 }
 
 export interface IArcData {
