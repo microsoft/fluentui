@@ -36,10 +36,12 @@ const storyTemplate = () => {
         size="${x => x.size}"
         placeholder="${x => x.placeholder ?? 'Select a fruit'}"
         list="${listId}"
+        name="fruit"
         ?block="${x => x.block}"
         ?multiple="${x => x.multiple}"
         ?disabled="${x => x.disabled}"
         ?display-shadow="${x => x.displayShadow}"
+        ?required="${x => x.required}"
       ></fluent-dropdown>
       <fluent-dropdown-list slot="input" id="${listId}">
         ${repeat(storyOptions, optionTemplate)}
@@ -81,6 +83,9 @@ export default {
     placeholder: {
       control: 'text',
     },
+    required: {
+      control: 'boolean',
+    },
     size: {
       control: 'select',
       options: Object.values(DropdownSize),
@@ -98,6 +103,7 @@ Dropdown.args = {
   disabled: false,
   displayShadow: false,
   multiple: false,
+  required: false,
   placeholder: 'Select a fruit',
 };
 
@@ -135,4 +141,11 @@ export const Layouts: Story<FluentDropdown> = renderComponent(html<StoryArgs<Flu
     ${render({ label: 'Inline (default)' }, storyFieldTemplate())}
     ${render({ label: 'Block', block: true }, storyFieldTemplate())}
   </div>
+`);
+
+export const Required: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
+  <form>
+    ${render({ label: 'Required', required: true }, storyFieldTemplate())}
+    <button>Submit</button>
+  </form>
 `);

@@ -68,6 +68,8 @@ export abstract class AbstractCombobox extends FASTElement {
   private listboxInputListener?: (event: Event) => void;
   private listboxKeydownListener?: (event: KeyboardEvent) => void;
 
+  private inputForValidationMessage = document.createElement('input');
+
   /**
    * Sets the element's disabled state.
    * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/disabled | `disabled`} attribute
@@ -219,21 +221,6 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   /**
-   * When true, the control will be immutable by user interaction.
-   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/readonly | `readonly`} attribute
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `readonly`
-   */
-  @attr({ attribute: 'readonly', mode: 'boolean' })
-  public readOnly = false;
-  protected readOnlyChanged() {
-    this.elementInternals.ariaReadOnly = `${!!this.readOnly}`;
-    this.setValidity();
-  }
-
-  /**
    * The element's required attribute.
    *
    * @public
@@ -306,7 +293,7 @@ export abstract class AbstractCombobox extends FASTElement {
     return this.selectedOptions?.[0]?.value ?? '';
   }
   public set value(next: string) {
-    if (!this.$fastController.isConnected || this.disabled || this.readOnly) {
+    if (!this.$fastController.isConnected || this.disabled) {
       return;
     }
 
@@ -335,9 +322,8 @@ export abstract class AbstractCombobox extends FASTElement {
    * Reflects the {@link https://developer.mozilla.org/docs/Web/API/ElementInternals/validationMessage | `ElementInternals.validationMessage`} property.
    */
   public get validationMessage(): string {
-    return '';
-    // TODO
-    // return this.elementInternals.validationMessage || this.controlEl.validationMessage;
+    this.inputForValidationMessage.required = this.required;
+    return this.elementInternals.validationMessage || this.inputForValidationMessage.validationMessage;
   }
 
   /**
@@ -445,15 +431,19 @@ export abstract class AbstractCombobox extends FASTElement {
       return;
     }
 
-    if (this.disabled || this.readOnly) {
+    if (this.disabled) {
       this.elementInternals.setValidity({});
       return;
     }
 
-    // TODO: add validation
+    let valueMissing = false;
+
+    if (this.required && this.selectedOptions.length === 0) {
+      valueMissing = true;
+    }
 
     this.elementInternals.setValidity(
-      flags ?? this.validity,
+      flags ?? { valueMissing },
       message ?? this.validationMessage,
       anchor,
     );
