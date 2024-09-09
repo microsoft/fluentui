@@ -3,14 +3,35 @@ import { toggleState } from '../utils/element-internals.js';
 import { AbstractCombobox } from '../patterns/abstract-combobox.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 
+function getListFormatter(el: HTMLElement): Intl.ListFormat {
+  const lang = (el.closest('[lang]') as HTMLElement)?.lang || 'en';
+  const lf = new Intl.ListFormat(lang, {
+    type: 'conjunction',
+    style: 'narrow',
+  });
+
+  return lf;
+}
+
 /**
  * Base class for a Dropdown custom element.
  *
- * @slot trigger-indicator
+ * @slot trigger-indicator - The icon as the trigger indicator.
+ * @emits input - Fires when the selected values changed.
+ * @emits change - Fires when the selected values changed.
  *
  * @public
  */
-export class BaseDropdown extends AbstractCombobox {}
+export class BaseDropdown extends AbstractCombobox {
+  private listFormatter: Intl.ListFormat = getListFormatter(this);
+
+  /**
+   * @internal
+   */
+  public displayContent(): string {
+    return this.listFormatter.format(this.selectedLabels);
+  }
+}
 
 /**
  * A Dropdown custom element.

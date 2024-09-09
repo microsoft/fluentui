@@ -6,6 +6,7 @@ import {
   filledDarkerState,
   filledLighterState,
   largeState,
+  placeholderVisibleState,
   smallState,
   transparentState,
 } from '../styles/states/index.js';
@@ -42,7 +43,7 @@ import { typographyBody1Styles, typographyBody2Styles, typographyCaption1Styles 
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')}
+  ${display('inline-grid')}
 
   :host {
     /* sizes */
@@ -73,7 +74,7 @@ export const styles = css`
     color: var(--color);
     cursor: pointer;
     gap: var(--gap);
-    justify-content: space-between;
+    grid-template: 'content indicator' 1fr / 1fr auto;
     min-block-size: var(--min-block-size);
     touch-action: manipulation;
     padding-inline: var(--padding-inline);
@@ -81,7 +82,7 @@ export const styles = css`
   }
 
   :host(${blockState}:not([hidden])) {
-    display: flex;
+    display: grid;
     justify-self: stretch; /* In case it’s placed in a grid area. */
   }
 
@@ -160,17 +161,30 @@ export const styles = css`
     transition-delay: ${curveDecelerateMid};
   }
 
-  .content {
+  .content,
+  .placeholder {
+    grid-area: content;
     padding-inline: var(--content-padding-inline);
   }
 
   .placeholder {
     color: var(--placeholder-color);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  :host(${placeholderVisibleState}) .placeholder {
+    opacity: 1;
+  }
+
+  .placeholder:empty {
+    display: none;
   }
 
   .trigger-indicator {
     aspect-ratio: 1;
     display: grid;
+    grid-area: indicator;
     inline-size: var(--trigger-indicator-size);
     flex-shrink: 0;
     place-items: center;

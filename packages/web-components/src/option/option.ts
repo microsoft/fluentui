@@ -50,6 +50,38 @@ export class BaseOption extends BaseCheckbox {
   public override id: string = uniqueId('fluent-option-');
 
   /**
+   * The element’s label.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `label`
+   */
+  @attr({ attribute: 'label' })
+  public initialLabel?: string;
+  public get label(): string {
+    return this.initialLabel?.trim() ?? this.text ?? '';
+  }
+  public set label(next: string) {
+    if (this.initialLabel?.trim()) {
+      this.initialLabel = next.trim();
+    } else {
+      this.text = next.trim();
+    }
+  }
+
+  /**
+   * The element’s text content.
+   *
+   * @public
+   */
+  public get text(): string {
+    return this.textContent?.trim() ?? '';
+  }
+  public set text(next: string) {
+    this.textContent = next.trim();
+  }
+
+  /**
    * The element's current selected state.
    *
    * @public
@@ -64,6 +96,7 @@ export class BaseOption extends BaseCheckbox {
   }
 
   private _active = false;
+
   /**
    * The element’s current ARIA active state.
    *

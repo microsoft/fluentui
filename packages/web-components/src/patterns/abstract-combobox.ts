@@ -2,6 +2,7 @@ import { attr, FASTElement, observable } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 
 import type { Option } from '../option/option.js';
+import { toggleState } from '../utils/element-internals.js';
 import { AbstractListbox } from './abstract-listbox.js';
 
 const SUPPORTS_ANCHOR_POSITIONING = CSS.supports('anchor-name: --a');
@@ -137,8 +138,85 @@ export abstract class AbstractCombobox extends FASTElement {
     this.listElement.multiple = this.multiple;
   }
 
+  /**
+   * An array of Option elements. It’s shortcut to the Listbox element’s
+   * `.options` property.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/options | `HTMLSelectElement.prototype.options`}
+   *
+   * @public
+   */
+  public get options(): Option[] {
+    return this.listElement?.options ?? [];
+  }
+
+  /**
+   * Sets the placeholder value of the element, generally used to provide a hint to the user.
+   * @see The {@link https://developer.mozilla.org/docs/Web/HTML/Attributes/placeholder | `placeholder`} attribute
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `placeholder`
+   * This attribute is not a valid substitute for a label.
+   */
+  @attr
+  public placeholder?: string;
+  protected placeholderChanged() {
+    this.togglePlaceholderVisibleState();
+  }
+
+  /**
+   * The index of the first selected Option element, otherwise returns `-1`.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedIndex | `HTMLSelectElement.prototype.selectedIndex`}
+   *
+   * @public
+   */
+  @observable
+  public get selectedIndex(): number {
+    if (this.selectedOptions.length) {
+      return this.options.indexOf(this.selectedOptions[0]);
+    }
+    return -1;
+  }
+  public set selectedIndex(index: number) {
+    if (
+      Number.isInteger(index) &&
+      index >= 0 && index < this.options.length &&
+      !this.options[index].disabled
+    ) {
+      this.options[index].selected = true;
+    }
+  }
+
+  /**
+   * An array of selected Option elements.
+   * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLSelectElement/selectedOptions | `HTMLSelectElement.prototype.selectedOptions`}
+   *
+   * @public
+   */
   public get selectedOptions(): Option[] {
-    return Array.from(this._selectedOptions);
+    try {
+      return Array.from(this._selectedOptions);
+    } catch {
+      return [];
+    }
+  }
+
+  @observable
+  protected selectedLabels: string[] = [];
+  protected selectedLabelsChanged() {
+    this.togglePlaceholderVisibleState();
+    this.$emit('change');
+    this.$emit('input');
+  }
+
+  /**
+   * The value of the first selected Option element, otherwise returns an empty
+   * string.
+   *
+   * @public
+   */
+  public get value(): string {
+    return this.selectedOptions?.[0]?.value ?? '';
   }
 
   constructor() {
@@ -154,6 +232,7 @@ export abstract class AbstractCombobox extends FASTElement {
     this.bindEvents();
     this.bindListboxEvents();
     this.connectListbox();
+    this.togglePlaceholderVisibleState();
   }
 
   disconnectedCallback() {
@@ -463,5 +542,15 @@ export abstract class AbstractCombobox extends FASTElement {
 
       this.toggleListbox(false);
     }
+
+    this.selectedLabels = this.selectedOptions.map(option => option.label);
+  }
+
+  protected togglePlaceholderVisibleState() {
+    toggleState(
+      this.elementInternals,
+      'placeholder-visible',
+      this.selectedOptions.length === 0 && !!this.placeholder
+    );
   }
 }

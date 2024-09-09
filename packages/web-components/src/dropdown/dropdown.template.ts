@@ -19,7 +19,8 @@ const triggerIndicator = html.partial(/* html */ `
 export function dropdownTemplate<T extends Dropdown>(options: DropdownOptions = {}): ElementViewTemplate<T> {
   return html<T>`
     <template tabindex="${x => (x.disabled ? null : x.getAttribute('tabindex') ?? '0')}">
-      <div class="content">Value display</div>
+      <div class="placeholder">${x => x.placeholder}</div>
+      <div class="content">${x => html`${html.partial(x.displayContent())}`}</div>
       <div class="trigger-indicator">
         <slot name="trigger-indicator">${staticallyCompose(options.triggerIndicator)}</slot>
       </div>
