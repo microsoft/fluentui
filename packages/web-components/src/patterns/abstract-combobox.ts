@@ -178,11 +178,7 @@ export abstract class AbstractCombobox extends FASTElement {
     return -1;
   }
   public set selectedIndex(index: number) {
-    if (
-      Number.isInteger(index) &&
-      index >= 0 && index < this.options.length &&
-      !this.options[index].disabled
-    ) {
+    if (Number.isInteger(index) && index >= 0 && index < this.options.length && !this.options[index].disabled) {
       this.options[index].selected = true;
     }
   }
@@ -547,10 +543,6 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   protected togglePlaceholderVisibleState() {
-    toggleState(
-      this.elementInternals,
-      'placeholder-visible',
-      this.selectedOptions.length === 0 && !!this.placeholder
-    );
+    toggleState(this.elementInternals, 'placeholder-visible', this.selectedOptions.length === 0 && !!this.placeholder);
   }
 }
