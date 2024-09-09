@@ -13,9 +13,10 @@ function getEsmOnlyPackagesToCjsMapping() {
    * So we need to map these packages to their CommonJS versions.
    *
    * There are 2 versions of d3 dependencies. One for react-charting and another for react-vis dependency.
+   * As a workaround, we have to rely on cjs scripts published at root level and within react-charting package.
    */
   const cjsPathsToEsmOnlyPackages = {
-    '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js', // There are 2 versions of d3 dep
+    '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js',
     '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
     '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
     '^d3-axis$': prefix + '../../node_modules/d3-axis/dist/d3-axis.js',
