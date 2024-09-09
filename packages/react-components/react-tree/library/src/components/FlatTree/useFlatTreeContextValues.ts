@@ -12,6 +12,7 @@ export const useFlatTreeContextValues_unstable = (state: FlatTreeState): FlatTre
     appearance,
     size,
     requestTreeResponse,
+    forceUpdateRovingTabIndex,
   } = state;
   /**
    * This context is created with "@fluentui/react-context-selector",
@@ -27,6 +28,7 @@ export const useFlatTreeContextValues_unstable = (state: FlatTreeState): FlatTre
     contextType,
     level,
     requestTreeResponse,
+    forceUpdateRovingTabIndex,
   };
 
   return { tree };

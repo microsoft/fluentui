@@ -159,6 +159,7 @@ export type TreeContextValue = {
     openItems: ImmutableSet<TreeItemValue>;
     checkedItems: ImmutableMap<TreeItemValue, 'mixed' | boolean>;
     requestTreeResponse(request: TreeItemRequest): void;
+    forceUpdateRovingTabIndex?(): void;
 };
 
 // @public (undocumented)

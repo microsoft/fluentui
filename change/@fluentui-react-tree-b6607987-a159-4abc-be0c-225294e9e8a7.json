@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "bugfix: recover from tabIndex=-1 when TreeItem is removed",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
