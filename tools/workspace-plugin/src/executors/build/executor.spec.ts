@@ -139,8 +139,7 @@ describe('Build Executor', () => {
         }
       }, {
         d: [\\".fe3e8s9{color:red;}\\"]
-      });
-      //# sourceMappingURL=greeter.styles.js.map"
+      });"
     `);
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.styles.js'), 'utf-8'))
       .toMatchInlineSnapshot(`
@@ -163,7 +162,7 @@ describe('Build Executor', () => {
           d: [
               \\".fe3e8s9{color:red;}\\"
           ]
-      }); //# sourceMappingURL=greeter.styles.js.map
+      });
       "
     `);
   }, 30000);
