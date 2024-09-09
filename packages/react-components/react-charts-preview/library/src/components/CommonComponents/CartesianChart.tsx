@@ -24,6 +24,8 @@ import {
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
+import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useArrowNavigationGroup } from '@fluentui/react-components';
 
 /**
  * Cartesian Chart component
@@ -82,6 +84,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   }
 
   const classes = useCartesianChartStyles_unstable(props);
+  const focusAttributes = useFocusableGroup();
+  const arrowAttributes = useArrowNavigationGroup({ axis: 'horizontal' });
   // ComponentdidMount and Componentwillunmount logic
   React.useEffect(() => {
     _fitParentContainer();
@@ -390,15 +394,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
     height: containerHeight,
   };
 
-  let focusDirection;
-  /*   if (props.focusZoneDirection === FocusZoneDirection.vertical) {
-    focusDirection = props.focusZoneDirection;
-  } else if (props.focusZoneDirection) {
-    focusDirection = props.focusZoneDirection;
-  } else {
-    focusDirection = FocusZoneDirection.horizontal;
-  } */
-
   const xAxisTitleMaximumAllowedWidth = svgDimensions.width - margins.left! - margins.right! - startFromX!;
   const yAxisTitleMaximumAllowedHeight =
     svgDimensions.height - margins.bottom! - margins.top! - removalValueForTextTuncate! - titleMargin;
@@ -519,15 +514,8 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       ref={(rootElem: HTMLDivElement) => (chartContainer.current = rootElem)}
       onMouseLeave={_onChartLeave}
     >
-      {!_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
-      {/*       <FocusZone
-        direction={focusDirection}
-        className={classes.chartWrapper}
-        defaultTabbableElement={`#${idForDefaultTabbableElement}`}
-        {...svgFocusZoneProps}
-      > */}
-      <div className={classes.chartWrapper}>
-        {_isFirstRender.current && <div id={idForDefaultTabbableElement} />}
+      <div className={classes.chartWrapper} {...focusAttributes} {...arrowAttributes}>
+        {_isFirstRender.current}
         <svg
           width={svgDimensions.width}
           height={svgDimensions.height}
@@ -616,7 +604,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
           )}
         </svg>
       </div>
-      {/*       </FocusZone> */}
 
       {!props.hideLegend && (
         <div ref={(e: HTMLDivElement) => (legendContainer = e)} className={classes.legendContainer}>
