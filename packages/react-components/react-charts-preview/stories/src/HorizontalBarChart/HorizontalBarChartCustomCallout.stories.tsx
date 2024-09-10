@@ -5,10 +5,9 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
+  PopoverComponent,
 } from '@fluentui/react-charts-preview';
-import { DirectionalHint } from '@fluentui/react';
 import * as d3 from 'd3-format';
-import PopoverComponent from '../../../library/src/components/CommonComponents/Popover';
 
 export const HBCCustomCallout = () => {
   const hideRatio: boolean[] = [true, false];

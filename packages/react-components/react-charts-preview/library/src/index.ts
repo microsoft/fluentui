@@ -7,5 +7,6 @@ export * from './CartesianChart';
 export * from './types/index';
 export * from './Sparkline';
 export * from './utilities/colors';
+export * from './Popover';
 
 //import './version';

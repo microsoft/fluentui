@@ -4,7 +4,6 @@ import { HighContrastSelectorBlack, HighContrastSelector } from '../../utilities
 import { SlotClassNames } from '@fluentui/react-utilities/src/index';
 import { tokens } from '@fluentui/react-theme';
 import { isRtl } from '../../utilities/utilities';
-import { merge } from 'd3-array';
 
 /**
  * @internal
@@ -15,8 +14,6 @@ export const cartesianchartClassNames: SlotClassNames<ICartesianChartStyles> = {
   axisTitle: 'fui-cart__axisTitle',
   xAxis: 'fui-cart__xAxis',
   yAxis: 'fui-cart__yAxis',
-  yAxisg: 'fui-cart_yAxisg',
-  rtl: 'fui-cart_rtl',
   opacityChangeOnHover: 'fui-cart__opacityChangeOnHover',
   legendContainer: 'fui-cart__legendContainer',
   calloutContentRoot: 'fui-cart__calloutContentRoot',
@@ -109,10 +106,12 @@ const useStyles = makeStyles({
       display: 'none',
     },
   },
-  yAxisg: {},
   rtl: {
-    textAnchor: 'end',
+    '& g': {
+      textAnchor: 'end',
+    },
   },
+  ltr: {},
   opacityChangeOnHover: {
     opacity: '0.1', //supports custom opacity
     cursor: 'default', //supports custom cursor
@@ -201,8 +200,11 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     ),
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
-    yAxis: mergeClasses(cartesianchartClassNames.yAxis, baseStyles.yAxis /*props.styles?.yAxis*/),
-    yAxisg: mergeClasses(cartesianchartClassNames.yAxisg, _isRtl ? baseStyles.rtl : ''),
+    yAxis: mergeClasses(
+      cartesianchartClassNames.yAxis,
+      baseStyles.yAxis,
+      _isRtl ? baseStyles.rtl : baseStyles.ltr /*props.styles?.yAxis*/,
+    ),
     opacityChangeOnHover: mergeClasses(
       cartesianchartClassNames.opacityChangeOnHover,
       baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,

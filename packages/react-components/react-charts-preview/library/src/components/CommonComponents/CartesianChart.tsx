@@ -565,7 +565,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
             transform={`translate(${
               _isRtl ? svgDimensions.width - margins.right! - startFromX : margins.left! + startFromX
             }, 0)`}
-            className={`${classes.yAxis} ${classes.yAxisg}`}
+            className={classes.yAxis}
           />
           {props.secondaryYScaleOptions && (
             <g>
@@ -575,7 +575,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
                 }}
                 id={`yAxisGElementSecondary${idForGraph}`}
                 transform={`translate(${_isRtl ? margins.left! : svgDimensions.width - margins.right!}, 0)`}
-                className={`${classes.yAxis} ${classes.yAxisg}`}
+                className={classes.yAxis}
               />
               {props.secondaryYAxistitle !== undefined && props.secondaryYAxistitle !== '' && (
                 <SVGTooltipText

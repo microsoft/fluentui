@@ -76,16 +76,6 @@ export interface ICartesianChartStyles {
   yAxis?: string;
 
   /**
-   * Style for the element containing the y-axis.
-   */
-  yAxisg?: string;
-
-  /**
-   * Style for the rtl mode in yAxis.
-   */
-  rtl?: string;
-
-  /**
    * Style for legend container
    */
   legendContainer?: string;

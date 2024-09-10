@@ -134,8 +134,6 @@ export interface IChartDataPoint {
    */
   color?: string;
 
-  gradient?: [string, string];
-
   /**
    * placeholder data point
    */

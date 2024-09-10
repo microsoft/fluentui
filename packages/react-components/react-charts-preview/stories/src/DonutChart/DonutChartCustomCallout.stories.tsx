@@ -5,9 +5,8 @@ import {
   IChartDataPoint,
   DataVizPalette,
   getColorFromToken,
+  PopoverComponent,
 } from '@fluentui/react-charts-preview';
-import { getGradientFromToken, DataVizGradientPalette } from '@fluentui/react-charting';
-import PopoverComponent from '../../../library/src/components/CommonComponents/Popover';
 
 export const DonutCustomCallout = () => {
   const points: IChartDataPoint[] = [
@@ -15,7 +14,6 @@ export const DonutCustomCallout = () => {
       legend: 'first',
       data: 20000,
       color: getColorFromToken(DataVizPalette.color9),
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient4),
       xAxisCalloutData: '2020/04/30',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 20000h' },
     },
@@ -23,7 +21,6 @@ export const DonutCustomCallout = () => {
       legend: 'second',
       data: 39000,
       color: getColorFromToken(DataVizPalette.color10),
-      gradient: getGradientFromToken(DataVizGradientPalette.gradient5),
       xAxisCalloutData: '2020/04/20',
       callOutAccessibilityData: { ariaLabel: 'Custom XVal Custom Legend 39000h' },
     },
