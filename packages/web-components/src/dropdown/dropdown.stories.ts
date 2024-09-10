@@ -28,24 +28,24 @@ const storyTemplate = () => {
   const listId = uniqueId('dropdown-list-');
 
   return html<StoryArgs<FluentDropdown>>`
-      ${when(x => x.label, html`<label slot="label" for="${id}">${x => x.label}</label>`)}
-      <fluent-dropdown
-        slot="input"
-        id="${id}"
-        appearance="${x => x.appearance}"
-        size="${x => x.size}"
-        placeholder="${x => x.placeholder ?? 'Select a fruit'}"
-        list="${listId}"
-        name="fruit"
-        ?block="${x => x.block}"
-        ?multiple="${x => x.multiple}"
-        ?disabled="${x => x.disabled}"
-        ?display-shadow="${x => x.displayShadow}"
-        ?required="${x => x.required}"
-      ></fluent-dropdown>
-      <fluent-dropdown-list slot="input" id="${listId}">
-        ${repeat(storyOptions, optionTemplate)}
-      </fluient-dropdown-list>
+    ${when(x => x.label, html`<label slot="label" for="${id}">${x => x.label}</label>`)}
+    <fluent-dropdown
+      slot="${x => x.slot ?? 'input'}"
+      id="${id}"
+      appearance="${x => x.appearance}"
+      size="${x => x.size}"
+      placeholder="${x => x.placeholder ?? 'Select a fruit'}"
+      list="${listId}"
+      name="fruit"
+      ?block="${x => x.block}"
+      ?multiple="${x => x.multiple}"
+      ?disabled="${x => x.disabled}"
+      ?display-shadow="${x => x.displayShadow}"
+      ?required="${x => x.required}"
+    ></fluent-dropdown>
+    <fluent-dropdown-list slot="${x => x.slot ?? 'input'}" id="${listId}">
+      ${repeat(x => x.storyOptions ?? storyOptions, optionTemplate)}
+    </fluient-dropdown-list>
   `;
 };
 
@@ -91,6 +91,12 @@ export default {
       options: Object.values(DropdownSize),
       table: { defaultValue: { summary: DropdownSize.medium } },
     },
+    storyOptions: {
+      table: { disable: true },
+    },
+    slot: {
+      table: { disable: true },
+    },
   },
 } as Meta<FluentDropdown>;
 
@@ -105,6 +111,7 @@ Dropdown.args = {
   multiple: false,
   required: false,
   placeholder: 'Select a fruit',
+  slot: '',
 };
 
 export const SelectionMode: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
