@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ILegendsProps, ILegendsStyles } from './Legends.types';
+import { tokens } from '@fluentui/react-theme';
 
 /**
  * @internal
@@ -63,6 +64,7 @@ const useStyles = makeStyles({
   // TO DO Add props when these styles are used in the component
   text: {
     lineHeight: '16px',
+    fontSize: tokens.fontSizeBase200,
   },
   // TO DO Add props when these styles are used in the component
   hoverChange: {
@@ -74,7 +76,7 @@ const useStyles = makeStyles({
   resizableArea: {
     position: 'relative',
     textAlign: 'center',
-    transform: 'translate(-50%, -50%)',
+    transform: 'translate(-50%, 0)',
     top: 'auto',
     left: '50%',
     minWidth: '200px',
