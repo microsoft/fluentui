@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 10:19:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.86](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.86)
+
+Tue, 10 Sep 2024 10:19:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.85..@fluentui/react-select_v9.1.86)
+
+### Patches
+
+- chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-field to v9.1.75 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
 
 ## [9.1.85](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.85)
 

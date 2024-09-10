@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Fri, 16 Aug 2024 10:24:17 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 10:19:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.0)
+
+Tue, 10 Sep 2024 10:19:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.7.11..@fluentui/react-tree_v9.8.0)
+
+### Minor changes
+
+- bugfix: recover from tabIndex=-1 when TreeItem is removed ([PR #32442](https://github.com/microsoft/fluentui/pull/32442) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.13.5 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-avatar to v9.6.38 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-button to v9.3.90 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.36 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.66 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-motion-components-preview to v0.1.3 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-motion to v9.5.1 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-radio to v9.2.31 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+
+### Patches
+
+- bugfix: ensure actions visibility between successive mouse events ([PR #32477](https://github.com/microsoft/fluentui/pull/32477) by bernardo.sunderhus@gmail.com)
+- fix: remove unnecessary aria-hidden attributes that were causing accessibility issues ([PR #32081](https://github.com/microsoft/fluentui/pull/32081) by sarah.higley@microsoft.com)
+- bugfix: ensure onClick handler is not called on every click ([PR #32434](https://github.com/microsoft/fluentui/pull/32434) by bernardo.sunderhus@gmail.com)
 
 ## [9.7.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.7.11)
 

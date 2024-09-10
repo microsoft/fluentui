@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 23 Jul 2024 20:13:13 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 10:19:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.18.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.14)
+
+Tue, 10 Sep 2024 10:19:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.18.13..@fluentui/react-utilities_v9.18.14)
+
+### Patches
+
+- chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
 
 ## [9.18.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.18.13)
 

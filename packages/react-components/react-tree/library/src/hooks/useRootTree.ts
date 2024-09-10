@@ -95,6 +95,9 @@ export function useRootTree(
     openItems,
     checkedItems,
     requestTreeResponse,
+    forceUpdateRovingTabIndex: () => {
+      // noop
+    },
     root: slot.always(
       getIntrinsicElementProps('div', {
         // FIXME:

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add strokeDasharray for line charts with large datasets",
+  "packageName": "@fluentui/react-charting",
+  "email": "kaelens@microsoft.com",
+  "dependentChangeType": "patch"
+}
