@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Added defaultOpenCategories and openCategories prop and added examples. [BREAKING] Removed non functional reserveSelectedNavItemSpace prop.",
+  "packageName": "@fluentui/react-nav-preview",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}

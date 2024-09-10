@@ -130,7 +130,7 @@ export type NavCategoryState = NavCategoryContextValue & Required<NavCategoryPro
 export const navClassNames: SlotClassNames<NavSlots>;
 
 // @public (undocumented)
-export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'reserveSelectedNavItemSpace' | 'size'> & {
+export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue' | 'selectedCategoryValue' | 'size'> & {
     onRegister: RegisterNavItemEventHandler;
     onUnregister: RegisterNavItemEventHandler;
     onSelect: EventHandler<OnNavItemSelectData>;
@@ -257,9 +257,10 @@ export type NavItemValue = unknown;
 
 // @public
 export type NavProps = ComponentProps<NavSlots> & {
-    reserveSelectedNavItemSpace?: boolean;
     defaultSelectedValue?: NavItemValue;
     defaultSelectedCategoryValue?: NavItemValue;
+    defaultOpenCategories?: NavItemValue[];
+    openCategories?: NavItemValue[];
     onNavItemSelect?: EventHandler<OnNavItemSelectData>;
     selectedValue?: NavItemValue;
     selectedCategoryValue?: NavItemValue;
