@@ -442,11 +442,7 @@ export abstract class AbstractCombobox extends FASTElement {
       valueMissing = true;
     }
 
-    this.elementInternals.setValidity(
-      flags ?? { valueMissing },
-      message ?? this.validationMessage,
-      anchor,
-    );
+    this.elementInternals.setValidity(flags ?? { valueMissing }, message ?? this.validationMessage, anchor);
   }
 
   protected connectListbox() {
@@ -724,8 +720,8 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   private handleListboxInput(evt: Event) {
-    const target = evt.target as Option;
-    this.activeOption = target;
+    const target = evt.target as Option | AbstractListbox;
+    this.activeOption = target instanceof AbstractListbox ? target.options.find(option => option.selected) : target;
 
     if (!this.multiple) {
       for (const option of this.selectedOptions) {

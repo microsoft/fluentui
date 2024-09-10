@@ -7,10 +7,19 @@ import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 
 const optionTemplate = html<StoryArgs<FluentOption>>`
-  <fluent-option value="${x => x.value}" ?disabled="${x => x.disabled}"> ${x => x.storyContent} </fluent-option>
+  <fluent-option value="${x => x.value}" ?disabled="${x => x.disabled}" ?selected="${x => x.selected}">
+    ${x => x.storyContent}
+  </fluent-option>
 `;
 
-const storyOptions = [
+interface StoryOption {
+  value: string;
+  storyContent: string;
+  selected?: boolean;
+  disabled?: boolean;
+}
+
+const storyOptions: StoryOption[] = [
   { value: 'apple', storyContent: 'Apple' },
   { value: 'banana', storyContent: 'Banana' },
   { value: 'durian', storyContent: 'Durian', disabled: true },
@@ -49,11 +58,7 @@ const storyTemplate = () => {
   `;
 };
 
-const storyFieldTemplate = () => html`
-  <fluent-field style="width: 100%">
-    ${storyTemplate()}
-  </fluent-field>
-`;
+const storyFieldTemplate = () => html` <fluent-field style="width: 100%"> ${storyTemplate()} </fluent-field> `;
 
 export default {
   title: 'Components/Dropdown',
@@ -134,7 +139,10 @@ export const Appearances: Story<FluentDropdown> = renderComponent(html<StoryArgs
     ${render({ label: 'Outlined (default)' }, storyFieldTemplate())}
     ${render({ label: 'Transparent', appearance: 'transparent' }, storyFieldTemplate())}
     ${render({ label: 'Filled darker', appearance: 'filled-darker' }, storyFieldTemplate())}
-    ${render({ label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true }, storyFieldTemplate())}
+    ${render(
+      { label: 'Filled darker with shadow', appearance: 'filled-darker', displayShadow: true },
+      storyFieldTemplate(),
+    )}
     ${render({ label: 'Filled lighter', appearance: 'filled-lighter' }, storyFieldTemplate())}
     ${render(
       { label: 'Filled lighter with shadow', appearance: 'filled-lighter', displayShadow: true },
@@ -155,4 +163,34 @@ export const Required: Story<FluentDropdown> = renderComponent(html<StoryArgs<Fl
     ${render({ label: 'Required', required: true }, storyFieldTemplate())}
     <button>Submit</button>
   </form>
+`);
+
+export const WithInitiallySelectedOptions: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
+    ${render(
+      {
+        label: 'Fruit',
+        storyOptions: structuredClone(storyOptions).map((option, index) => {
+          if (index === 8) {
+            option.selected = true;
+          }
+          return option;
+        }),
+      },
+      storyFieldTemplate(),
+    )}
+    ${render(
+      {
+        label: 'Fruits',
+        storyOptions: structuredClone(storyOptions).map((option, index) => {
+          if ([1, 8].includes(index)) {
+            option.selected = true;
+          }
+          return option;
+        }),
+        multiple: true,
+      },
+      storyFieldTemplate(),
+    )}
+  </div>
 `);

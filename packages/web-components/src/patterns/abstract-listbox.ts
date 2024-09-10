@@ -40,6 +40,9 @@ export abstract class AbstractListbox extends FASTElement {
   public abstract readonly options: Option[];
   protected optionsChanged() {
     this.toggleOptionsMultipleState();
+    if (this.options.some(option => option.selected)) {
+      this.$emit('input');
+    }
   }
 
   constructor() {
