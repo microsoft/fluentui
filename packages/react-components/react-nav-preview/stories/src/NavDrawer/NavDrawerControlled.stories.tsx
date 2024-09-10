@@ -99,7 +99,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const [isMultiple, setIsMultiple] = React.useState(true);
 
   const [isOpen, setIsOpen] = React.useState(true);
-  const [enabledLinks, setEnabledLinks] = React.useState(false); // todo- change me back before checkin
+  const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
 
   const handleCategoryToggle = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
@@ -146,17 +146,16 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer
         // This a controlled example,
-        // so don't use default props
+        // so don't use these props
         // defaultSelectedValue="7"
         // defaultSelectedCategoryValue="6"
+        // multiple={isMultiple}
         onNavCategoryItemToggle={handleCategoryToggle}
         onNavItemSelect={handleItemSelect}
         openCategories={openCategories}
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
         open={isOpen}
-        // don't use this prop in a controlled scenario either
-        // multiple={isMultiple}
         type={type}
       >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
