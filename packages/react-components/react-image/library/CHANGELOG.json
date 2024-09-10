@@ -2,6 +2,27 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:12 GMT",
+      "tag": "@fluentui/react-image_v9.1.72",
+      "version": "9.1.72",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.43",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Jul 2024 20:13:14 GMT",
       "tag": "@fluentui/react-image_v9.1.71",
       "version": "9.1.71",

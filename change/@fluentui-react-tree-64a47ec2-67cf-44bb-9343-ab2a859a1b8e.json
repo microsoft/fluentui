@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: ensure actions visibility between successive mouse events",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

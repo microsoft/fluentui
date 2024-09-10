@@ -2,6 +2,39 @@
   "name": "@fluentui/react-select",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:07 GMT",
+      "tag": "@fluentui/react-select_v9.1.86",
+      "version": "9.1.86",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-field to v9.1.75",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.43",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-select",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 13:49:46 GMT",
       "tag": "@fluentui/react-select_v9.1.85",
       "version": "9.1.85",
