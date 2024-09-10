@@ -23,7 +23,8 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
   const sourceFiles = globSync(`**/*.{js,ts,tsx}`, { cwd: normalizedOptions.absoluteSourceRoot });
 
   // TODO: make this configurable via schema
-  const swcConfig = readJsonFile<Config>(join(normalizedOptions.absoluteProjectRoot, '.swcrc'));
+  const swcConfigPath = join(normalizedOptions.absoluteProjectRoot, '.swcrc');
+  const swcConfig = readJsonFile<Config>(swcConfigPath);
   const tsFileExtensionRegex = /\.(tsx|ts)$/;
 
   for (const fileName of sourceFiles) {
@@ -41,7 +42,8 @@ export async function compileSwc(options: Options, normalizedOptions: Normalized
       sourceFileName: basename(fileName),
       module: { type: module },
       outputPath,
-      sourceMaps: true,
+      // this is crucial in order to transpile with project config SWC
+      configFile: swcConfigPath,
     });
 
     // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126

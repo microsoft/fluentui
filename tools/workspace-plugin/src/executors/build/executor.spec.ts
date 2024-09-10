@@ -110,6 +110,9 @@ describe('Build Executor', () => {
       },
     ]);
 
+    // =====================
+    // assert build Assets
+    // =====================
     expect(existsSync(join(workspaceRoot, 'libs/proj/dist/assets', 'spec.md'))).toBe(true);
     expect(readdirSync(join(workspaceRoot, 'libs/proj/lib'))).toEqual([
       'greeter.js',
@@ -128,12 +131,48 @@ describe('Build Executor', () => {
       'index.js.map',
     ]);
 
+    // ====================================
+    // assert swc output based on settings
+    // ====================================
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
+      "import { useStyles } from './greeter.styles';
+      export function greeter(greeting, user) {
+          var _user_hometown;
+          const styles = useStyles();
+          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+      }
+      "
+    `);
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.js.map'), 'utf-8')).toMatchInlineSnapshot(
+      `"{\\"version\\":3,\\"sources\\":[\\"greeter.ts\\"],\\"sourcesContent\\":[\\"import { useStyles } from './greeter.styles';\\\\nexport function greeter(greeting: string, user: User): string {\\\\n  const styles = useStyles();\\\\n  return \`<h1 class=\\\\\\"\${styles}\\\\\\">\${greeting} \${user.name} from \${user.hometown?.name}</h1>\`;\\\\n}\\\\n\\\\ntype User = {\\\\n  name: string;\\\\n  hometown?: {\\\\n    name: string;\\\\n  };\\\\n};\\\\n\\"],\\"names\\":[\\"useStyles\\",\\"greeter\\",\\"greeting\\",\\"user\\",\\"styles\\",\\"name\\",\\"hometown\\"],\\"rangeMappings\\":\\";;;;;\\",\\"mappings\\":\\"AAAA,SAASA,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,QAAQC,QAAgB,EAAEC,IAAU;QAEYA;IAD9D,MAAMC,SAASJ;IACf,OAAO,CAAC,WAAW,EAAEI,OAAO,EAAE,EAAEF,SAAS,CAAC,EAAEC,KAAKE,IAAI,CAAC,MAAM,GAAEF,iBAAAA,KAAKG,QAAQ,cAAbH,qCAAAA,eAAeE,IAAI,CAAC,KAAK,CAAC;AAC1F\\"}"`,
+    );
+
+    expect(readFileSync(join(workspaceRoot, 'libs/proj/lib-commonjs/greeter.js'), 'utf-8')).toMatchInlineSnapshot(`
+      "\\"use strict\\";
+      Object.defineProperty(exports, \\"__esModule\\", {
+          value: true
+      });
+      Object.defineProperty(exports, \\"greeter\\", {
+          enumerable: true,
+          get: function() {
+              return greeter;
+          }
+      });
+      const _greeterstyles = require(\\"./greeter.styles\\");
+      function greeter(greeting, user) {
+          var _user_hometown;
+          const styles = (0, _greeterstyles.useStyles)();
+          return \`<h1 class=\\"\${styles}\\">\${greeting} \${user.name} from \${(_user_hometown = user.hometown) === null || _user_hometown === void 0 ? void 0 : _user_hometown.name}</h1>\`;
+      }
+      "
+    `);
+
     // =====================
     // assert griffel AOT
     // =====================
     expect(readFileSync(join(workspaceRoot, 'libs/proj/lib/greeter.styles.js'), 'utf-8')).toMatchInlineSnapshot(`
       "import { __styles } from '@griffel/react';
-      export var useStyles = /*#__PURE__*/__styles({
+      export const useStyles = /*#__PURE__*/__styles({
         root: {
           sj55zd: \\"fe3e8s9\\"
         }
@@ -153,8 +192,8 @@ describe('Build Executor', () => {
               return useStyles;
           }
       });
-      var _react = require(\\"@griffel/react\\");
-      var useStyles = /*#__PURE__*/ (0, _react.__styles)({
+      const _react = require(\\"@griffel/react\\");
+      const useStyles = /*#__PURE__*/ (0, _react.__styles)({
           root: {
               sj55zd: \\"fe3e8s9\\"
           }
