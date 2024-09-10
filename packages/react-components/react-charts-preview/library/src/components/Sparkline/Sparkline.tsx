@@ -109,7 +109,12 @@ export const Sparkline: React.FunctionComponent<ISparklineProps> = React.forward
     return !_isChartEmpty() ? (
       <div className={classes.inlineBlock} {...focusAttributes}>
         {width >= 50 && height >= 16 ? (
-          <svg width={width} height={height} aria-label={`Sparkline with label ${data!.lineChartData![0].legend!}`}>
+          <svg
+            width={width}
+            height={height}
+            aria-label={`Sparkline with label ${data!.lineChartData![0].legend!}`}
+            tabIndex={0}
+          >
             {points ? drawSparkline() : null}
           </svg>
         ) : (

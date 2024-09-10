@@ -3,7 +3,6 @@ import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import { mergeClasses } from '@griffel/react';
 import type { PositioningVirtualElement } from '@fluentui/react-positioning';
 import { tokens } from '@fluentui/react-theme';
-import { useFocusableGroup } from '@fluentui/react-tabster';
 import { useId } from '@fluentui/react-utilities';
 import { getAccessibleDataObject, Points, pointTypes } from '../../utilities/index';
 import { convertToLocaleString } from '../../utilities/locale-util';
@@ -31,17 +30,16 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   };
 
   const classes = usePopoverStyles_unstable(props);
-  const focusAttributes = useFocusableGroup();
   const Legend = props.xCalloutValue ? props.xCalloutValue : props.legend;
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
-    <div id={useId('callout')} {...focusAttributes}>
+    <div id={useId('callout')}>
       <Popover
         positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
         open={props.isPopoverOpen}
         inline
       >
-        <PopoverSurface tabIndex={-1}>
+        <PopoverSurface>
           {/** Given custom callout, then it will render */}
           {props.customizedCallout && props.customizedCallout}
           {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}

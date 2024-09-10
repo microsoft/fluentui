@@ -561,7 +561,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            className={classes.opacityChangeOnHover}
             y={yPoint}
             width={_barWidth}
             data-is-focusable={!props.hideTooltip && shouldHighlight}
@@ -577,6 +576,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
+            opacity={shouldHighlight ? '1' : '0.1'}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -649,6 +650,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             data-is-focusable={!props.hideTooltip}
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -720,6 +722,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -977,7 +980,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       legendBars={legendBars}
       datasetForXAxisDomain={_xAxisLabels}
       barwidth={_barWidth}
-      //focusZoneDirection={FocusZoneDirection.horizontal}
       customizedCallout={_getCustomizedCallout()}
       getmargins={_getMargins}
       getGraphData={_getGraphData}
