@@ -13,6 +13,7 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
+  OnNavItemSelectData,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
@@ -46,7 +47,6 @@ import {
   bundleIcon,
   PersonCircle32Regular,
 } from '@fluentui/react-icons';
-import { OnNavItemSelectData } from '../../../library/src/components/Nav/Nav.types'; // Todo before checking - why can't I import this from the package?
 
 const useStyles = makeStyles({
   root: {
@@ -89,12 +89,14 @@ type DrawerType = Required<DrawerProps>['type'];
 export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
-  const typeLableId = useId('type-label');
+  const typeLabelId = useId('type-label');
   const linkLabelId = useId('link-label');
+  const multipleLabelId = useId('multiple-label');
 
-  const [openCategories, setOpenCategories] = React.useState<string[]>(['6']); // todo before checkin - hydrate this
+  const [openCategories, setOpenCategories] = React.useState<string[]>(['6']);
   const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string>('6');
   const [selectedValue, setSelectedValue] = React.useState<string>('7');
+  const [isMultiple, setIsMultiple] = React.useState(true);
 
   const [isOpen, setIsOpen] = React.useState(true);
   const [enabledLinks, setEnabledLinks] = React.useState(false); // todo- change me back before checkin
@@ -106,8 +108,22 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
       setOpenCategories([data.categoryValue as string]);
     }
 
-    if (!openCategories.includes(data.categoryValue as string)) {
-      setOpenCategories([...openCategories, data.categoryValue as string]);
+    if (isMultiple) {
+      // if it's already open, remove it from the list
+      if (openCategories.includes(data.categoryValue as string)) {
+        setOpenCategories([...openCategories.filter(category => category !== data.categoryValue)]);
+      } else {
+        // otherwise add it
+        setOpenCategories([...openCategories, data.categoryValue as string]);
+      }
+    } else {
+      // if it's already open, remove it from the list
+      if (openCategories.includes(data.categoryValue as string)) {
+        setOpenCategories([]);
+      } else {
+        // otherwise add it
+        setOpenCategories([data.categoryValue as string]);
+      }
     }
   };
 
@@ -129,6 +145,8 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   return (
     <div className={styles.root}>
       <NavDrawer
+        // This a controlled example,
+        // so don't use default props
         // defaultSelectedValue="7"
         // defaultSelectedCategoryValue="6"
         onNavCategoryItemToggle={handleCategoryToggle}
@@ -137,7 +155,8 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
         open={isOpen}
-        multiple={false} // todo before checkin - handle this case properly
+        // don't use this prop in a controlled scenario either
+        // multiple={isMultiple}
         type={type}
       >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
@@ -222,11 +241,11 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
       <div className={styles.content}>
         {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
-          <Label id={typeLableId}>Type</Label>
+          <Label id={typeLabelId}>Type</Label>
           <RadioGroup
             value={type}
             onChange={(_, data) => setType(data.value as DrawerType)}
-            aria-labelledby={typeLableId}
+            aria-labelledby={typeLabelId}
           >
             <Radio value="overlay" label="Overlay (Default)" />
             <Radio value="inline" label="Inline" />
@@ -237,6 +256,13 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
             onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
+          />
+          <Label id={multipleLabelId}>Multiple Categories</Label>
+          <Switch
+            checked={isMultiple}
+            onChange={(_, data) => setIsMultiple(!!data.checked)}
+            label={isMultiple ? 'Multiple Open Categories' : 'Single Open Category'}
+            aria-labelledby={multipleLabelId}
           />
         </div>
       </div>

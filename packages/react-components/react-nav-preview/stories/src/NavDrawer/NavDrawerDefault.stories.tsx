@@ -90,10 +90,12 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
+  const multipleLabelId = useId('multiple-label');
 
   const [isOpen, setIsOpen] = React.useState(true);
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [type, setType] = React.useState<DrawerType>('inline');
+  const [isMultiple, setIsMultiple] = React.useState(true);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
@@ -107,7 +109,13 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="2" defaultSelectedCategoryValue="1" multiple={false} open={isOpen} type={type}>
+      <NavDrawer
+        defaultSelectedValue="2"
+        defaultSelectedCategoryValue="1"
+        open={isOpen}
+        type={type}
+        multiple={isMultiple}
+      >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 
         <NavDrawerBody>
@@ -205,6 +213,13 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
             onChange={(_, data) => setEnabledLinks(!!data.checked)}
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
+          />
+          <Label id={multipleLabelId}>Categories</Label>
+          <Switch
+            checked={isMultiple}
+            onChange={(_, data) => setIsMultiple(!!data.checked)}
+            label={isMultiple ? 'Multiple' : 'Single'}
+            aria-labelledby={multipleLabelId}
           />
         </div>
       </div>
