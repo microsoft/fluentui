@@ -83,20 +83,20 @@ export const VCAxisTooltip = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <StackShim horizontal wrap tokens={{ childrenGap: 30 }}>
-        <StackShim horizontal verticalAlign="center">
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
           </label>
           <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox label="barWidth:&nbsp;" checked={barWidthEnabled} onChange={_onBarWidthCheckChange} />
           {barWidthEnabled ? (
             <Input
@@ -110,8 +110,8 @@ export const VCAxisTooltip = () => {
           ) : (
             <code>'auto'</code>
           )}
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:
           </label>
@@ -123,8 +123,10 @@ export const VCAxisTooltip = () => {
             id="input-maxbarwidth"
             onChange={_onMaxBarWidthChange}
           />
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisInnerPadding:&nbsp;"
             checked={xAxisInnerPaddingEnabled}
@@ -140,8 +142,8 @@ export const VCAxisTooltip = () => {
             disabled={!xAxisInnerPaddingEnabled}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisOuterPadding:&nbsp;"
             checked={xAxisOuterPaddingEnabled}
@@ -157,16 +159,16 @@ export const VCAxisTooltip = () => {
             disabled={!xAxisOuterPaddingEnabled}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
-        </StackShim>
-      </StackShim>
-      <StackShim horizontal>
+        </div>
+      </div>
+      <div style={{ display: 'flex' }}>
         <Field label="Pick one">
           <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>
             <Radio value="WrapTickValues" label="Wrap X Axis Ticks" />
             <Radio value="showTooltip" label="Show Tooltip at X Axis Ticks" />
           </RadioGroup>
         </Field>
-      </StackShim>
+      </div>
       <div style={rootStyle}>
         <VerticalBarChart
           chartTitle="Vertical bar chart axis tooltip example "
