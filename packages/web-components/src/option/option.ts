@@ -128,6 +128,15 @@ export class BaseOption extends BaseCheckbox {
   }
 
   /**
+   * @internal
+   */
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.setName();
+  }
+
+  /**
    * Resets the form value to its initial value when the form is reset.
    *
    * @internal
@@ -146,6 +155,31 @@ export class BaseOption extends BaseCheckbox {
    */
   protected setAriaProperties(value: boolean = this.selected) {
     this.elementInternals.ariaSelected = value ? 'true' : 'false';
+  }
+
+  /**
+   * If no `name` is defined, sets the name according to its connected combobox
+   * element.
+   *
+   * @internal
+   */
+  protected setName() {
+    if (this.name) {
+      return;
+    }
+
+    const listboxShadowRoot = this.assignedSlot?.getRootNode();
+    if (!listboxShadowRoot || !(listboxShadowRoot instanceof ShadowRoot)) {
+      return;
+    }
+
+    const listbox = listboxShadowRoot.host;
+    const combobox = document.querySelector(`[aria-controls="${listbox.id}"]`);
+    if (!combobox || !('name' in combobox)) {
+      return;
+    }
+
+    this.name = combobox.name as string;
   }
 }
 

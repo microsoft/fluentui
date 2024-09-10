@@ -186,11 +186,11 @@ export abstract class AbstractCombobox extends FASTElement {
   @attr
   public name!: string;
   protected nameChanged() {
+    if (!this.name) {
+      return;
+    }
     for (const option of this.options) {
-      if (option.name) {
-        continue;
-      }
-      option.name = this.name || '';
+      option.name = this.name;
     }
   }
 
