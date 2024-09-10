@@ -82,6 +82,17 @@ export class BaseOption extends BaseCheckbox {
   }
 
   /**
+   * The initial selected state of the element.
+   *
+   * @override
+   * @public
+   * @remarks
+   * HTML Attribute: `selected`
+   */
+  @attr({ attribute: 'selected', mode: 'boolean' })
+  public override initialChecked?: boolean;
+
+  /**
    * The element's current selected state.
    *
    * @public
@@ -125,17 +136,6 @@ export class BaseOption extends BaseCheckbox {
     this.selected = this.initialChecked ?? false;
     this.dirtyState = false;
     this.setValidity();
-  }
-
-  /**
-   * @override
-   * @internal
-   * @privateRemarks
-   * This is a no-op for the option element. The initial selected state is handled by the `initialSelectedChanged` method.
-   *
-   */
-  protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void {
-    return;
   }
 
   /**
