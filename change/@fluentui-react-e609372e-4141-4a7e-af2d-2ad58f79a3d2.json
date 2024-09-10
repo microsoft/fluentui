@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Debouncing onResolveSuggestions correctly after a picker has been remounted in React 18 strict mode.",
-  "packageName": "@fluentui/react",
-  "email": "420834+andyrooger@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
