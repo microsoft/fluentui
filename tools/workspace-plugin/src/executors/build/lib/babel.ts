@@ -26,21 +26,37 @@ export function hasStylesFilesToProcess(normalizedOptions: NormalizedOptions) {
 }
 
 export async function compileWithGriffelStylesAOT(options: NormalizedOptions, successCallback: () => Promise<boolean>) {
-  const moduleOutput = [...options.moduleOutput];
-  const esmConfigId = moduleOutput.findIndex(outputConfig => outputConfig.module === 'es6');
-  if (esmConfigId === -1) {
-    throw new Error('es6 module output is required');
+  const { esmConfig, restOfConfigs } = options.moduleOutput.reduce<{
+    esmConfig: NormalizedOptions['moduleOutput'][number] | null;
+    restOfConfigs: NormalizedOptions['moduleOutput'];
+  }>(
+    (acc, outputConfig) => {
+      if (outputConfig.module === 'es6') {
+        acc.esmConfig = outputConfig;
+        return acc;
+      }
+
+      acc.restOfConfigs.push(outputConfig);
+      return acc;
+    },
+    { esmConfig: null, restOfConfigs: [] },
+  );
+
+  if (!esmConfig) {
+    logger.warn('es6 module output not specified. Skipping griffel AOT...');
+    const compilationQueue = restOfConfigs.map(outputConfig => {
+      return compileSwc(outputConfig, options);
+    });
+    return processAsyncQueue(compilationQueue, successCallback);
   }
-  const esmConfig = moduleOutput[esmConfigId];
-  delete moduleOutput[esmConfigId];
-  const restOfConfigs = moduleOutput;
 
   await compileSwc(esmConfig, options);
   await babel(esmConfig, options);
 
   const compilationQueue = restOfConfigs.map(outputConfig => {
     const overriddenSourceRoot = join(options.workspaceRoot, options.project.root);
-    // we need to override source root to the output path of transpiled ESM, because griffel is unable to handle SWC commonjs output
+    // we need to override source root to the output path of transpiled ESM+Griffel AOT, because griffel is unable to handle SWC commonjs output
+    // so instead of transpiling TS(ESM) -> JS(COMMONJS), we transpile JS(ESM + griffel AOT) -> JS(COMMONJS)
     const overriddenAbsoluteSourceRoot = join(overriddenSourceRoot, esmConfig.outputPath);
 
     return compileSwc(outputConfig, {
