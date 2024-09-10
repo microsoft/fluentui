@@ -1,10 +1,32 @@
 const { createV8Config: createConfig } = require('@fluentui/scripts-jest');
+const { workspaceRoot } = require('@nx/devkit');
+const { relative, join } = require('node:path');
 
 function getEsmOnlyPackagesToCjsMapping() {
   /**
    * relative path to jest cwd
    */
   const prefix = `<rootDir>/`;
+
+  const workspaceRootNodeModules = prefix + join(relative(__dirname, workspaceRoot), 'node_modules');
+  const createD3LibMappingToCommonJs = libraryName => {
+    return workspaceRootNodeModules + `/${libraryName}/dist/${libraryName}.js`;
+  };
+
+  const d3Libs = [
+    'd3-scale',
+    'd3-interpolate',
+    'd3-color',
+    'd3-shape',
+    'd3-path',
+    'd3-axis',
+    'd3-array',
+    'd3-time',
+    'd3-hierarchy',
+    'd3-selection',
+    'd3-format',
+  ];
+
   /**
    * map of packages that ship only as ESM. All our d3 dependencies are ES5 except d3-scale package.
    * We had to upgrade the d3-scale to an ESM only package because of a security vulnerability in older versions.
@@ -12,20 +34,12 @@ function getEsmOnlyPackagesToCjsMapping() {
    * The current version of jest does not support ESM only packages.
    * So we need to map these packages to their CommonJS versions.
    *
-   * There are 2 versions of d3 dependencies. One for react-charting and another for react-vis dependency.
-   * As a workaround, we have to rely on cjs scripts published at root level and within react-charting package.
    */
-  const cjsPathsToEsmOnlyPackages = {
-    '^d3-scale$': prefix + 'node_modules/d3-scale/dist/d3-scale.js',
-    '^d3-shape$': prefix + 'node_modules/d3-shape/dist/d3-shape.js',
-    '^d3-path$': prefix + 'node_modules/d3-path/dist/d3-path.js',
-    '^d3-axis$': prefix + '../../node_modules/d3-axis/dist/d3-axis.js',
-    '^d3-array$': prefix + 'node_modules/d3-array/dist/d3-array.js',
-    '^d3-time$': prefix + 'node_modules/d3-time/dist/d3-time.js',
-    '^d3-hierarchy$': prefix + 'node_modules/d3-hierarchy/dist/d3-hierarchy.js',
-    '^d3-selection$': prefix + '../../node_modules/d3-selection/dist/d3-selection.js',
-    '^d3-format$': prefix + '../../node_modules/d3-format/dist/d3-format.js',
-  };
+  const cjsPathsToEsmOnlyPackages = d3Libs.reduce((acc, lib) => {
+    acc[`^${lib}$`] = createD3LibMappingToCommonJs(lib);
+    return acc;
+  }, {});
+
   return cjsPathsToEsmOnlyPackages;
 }
 
