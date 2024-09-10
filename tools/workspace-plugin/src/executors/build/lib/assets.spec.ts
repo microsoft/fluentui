@@ -16,7 +16,7 @@ jest.mock('node:fs/promises', () => {
 const cpMock = cp as jest.Mock;
 
 describe(`assets`, () => {
-  const rootDir = join(__dirname, '__fixtures__/assets');
+  const rootDir = join(__dirname, '../__fixtures__/assets');
   it(`should copy assets in string or glob format`, async () => {
     const actual = await copyAssets(
       assetGlobsToFiles(
