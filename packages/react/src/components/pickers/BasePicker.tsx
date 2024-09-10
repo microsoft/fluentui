@@ -115,6 +115,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _async: Async;
+  private _onResolveSuggestionsDebounced: (updatedValue: string) => void;
   private _overrideScrollDismiss = false;
   private _overrideScrollDimissTimeout: number;
 
@@ -129,7 +130,6 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
     super(basePickerProps);
 
     initializeComponentRef(this);
-    this._async = new Async(this);
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
@@ -160,8 +160,9 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   public componentDidMount(): void {
+    this._async = new Async(this);
     this.selection.setItems(this.state.items);
-    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
+    this._onResolveSuggestionsDebounced = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
   public componentDidUpdate(oldProps: P, oldState: IBasePickerState<T>) {
@@ -485,7 +486,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
   }
 
   protected updateValue(updatedValue: string) {
-    this._onResolveSuggestions(updatedValue);
+    this._onResolveSuggestionsDebounced(updatedValue);
   }
 
   protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>, updatedValue?: string) {
@@ -1086,7 +1087,7 @@ export class BasePicker<T extends {}, P extends IBasePickerProps<T>>
         this.onEmptyInputFocus();
       } else {
         if (this.suggestionStore.suggestions.length === 0) {
-          this._onResolveSuggestions(input);
+          this._onResolveSuggestionsDebounced(input);
         } else {
           this.setState({
             isMostRecentlyUsedVisible: false,

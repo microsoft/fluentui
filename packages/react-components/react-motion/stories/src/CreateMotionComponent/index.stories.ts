@@ -1,3 +1,4 @@
+import type { Meta } from '@storybook/react';
 import CreateMotionComponentDescription from './CreateMotionComponentDescription.md';
 
 export { CreateMotionComponentDefault as Default } from './CreateMotionComponentDefault.stories';
@@ -14,7 +15,6 @@ export { MotionFunctionParams as functionParams } from './MotionFunctionParams.s
 
 export default {
   title: 'Motion/APIs/createMotionComponent',
-  component: null,
   parameters: {
     docs: {
       description: {
@@ -22,4 +22,4 @@ export default {
       },
     },
   },
-};
+} satisfies Meta;

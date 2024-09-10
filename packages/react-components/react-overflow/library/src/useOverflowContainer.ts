@@ -28,6 +28,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
+  'use no memo';
+
   const {
     overflowAxis = 'horizontal',
     overflowDirection = 'end',
@@ -74,7 +76,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     const newOverflowManager = createOverflowManager();
     newOverflowManager.observe(containerRef.current, overflowOptions);
     setOverflowManager(newOverflowManager);
-  }, [overflowOptions, firstMount]);
+    // We don't want to re-create the overflow manager when the first mount flag changes from true to false
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [overflowOptions]);
 
   /* Clean up overflow manager on unmount */
   React.useEffect(

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 28 Aug 2024 07:21:50 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 07:21:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.120.9](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.9)
+
+Tue, 10 Sep 2024 07:21:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.8..@fluentui/react_v8.120.9)
+
+### Patches
+
+- fix: Debouncing onResolveSuggestions correctly after a picker has been remounted in React 18 strict mode. ([PR #28227](https://github.com/microsoft/fluentui/pull/28227) by 420834+andyrooger@users.noreply.github.com)
+
+## [8.120.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.8)
+
+Fri, 06 Sep 2024 07:21:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.120.7..@fluentui/react_v8.120.8)
+
+### Patches
+
+- fix: ColorPicker initializes focus outlines ([PR #32376](https://github.com/microsoft/fluentui/pull/32376) by sarah.higley@microsoft.com)
 
 ## [8.120.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.120.7)
 

@@ -37,7 +37,10 @@ function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Fla
       },
       useMergedRefs(ref, navigation.rootRef),
     ),
-    { treeType: 'flat' } as const,
+    {
+      treeType: 'flat',
+      forceUpdateRovingTabIndex: navigation.forceUpdateRovingTabIndex,
+    } as const,
   );
 }
 
@@ -59,6 +62,7 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
     openItems: ImmutableSet.empty,
     checkedItems: ImmutableMap.empty,
     requestTreeResponse: noop,
+    forceUpdateRovingTabIndex: noop,
     appearance: 'subtle',
     size: 'medium',
     // ------ defaultTreeContextValue

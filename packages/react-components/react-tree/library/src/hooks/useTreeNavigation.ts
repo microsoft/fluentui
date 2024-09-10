@@ -13,7 +13,7 @@ import { useMergedRefs } from '@fluentui/react-utilities';
 export function useTreeNavigation() {
   'use no memo';
 
-  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
+  const { rove, initialize: initializeRovingTabIndex, forceUpdate: forceUpdateRovingTabIndex } = useRovingTabIndex();
   const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
 
   const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
@@ -64,6 +64,7 @@ export function useTreeNavigation() {
   return {
     navigate,
     treeRef: useMergedRefs(walkerRootRef, rootRefCallback) as React.RefCallback<HTMLElement>,
+    forceUpdateRovingTabIndex,
   } as const;
 }
 

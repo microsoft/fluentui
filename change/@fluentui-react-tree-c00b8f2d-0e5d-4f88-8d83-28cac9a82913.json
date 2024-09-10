@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: ensure onClick handler is not called on every click",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

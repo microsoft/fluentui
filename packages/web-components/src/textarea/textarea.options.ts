@@ -26,6 +26,11 @@ export const TextAreaAppearance = {
 
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
+/**
+ * Allowed values for `appearance` when `display-shadow` is set to true.
+ *
+ * @public
+ */
 export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]> = [
   TextAreaAppearance.filledLighter,
   TextAreaAppearance.filledDarker,
@@ -54,19 +59,3 @@ export const TextAreaResize = {
 } as const;
 
 export type TextAreaResize = ValuesOf<typeof TextAreaResize>;
-
-export const TextAreaResizableResize: Partial<TextAreaResize[]> = [
-  TextAreaResize.both,
-  TextAreaResize.horizontal,
-  TextAreaResize.vertical,
-];
-
-export const TextAreaVerticallyResizableResize: Partial<TextAreaResize[]> = [
-  TextAreaResize.both,
-  TextAreaResize.vertical,
-];
-
-export const TextAreaHorizontallyResizableResize: Partial<TextAreaResize[]> = [
-  TextAreaResize.both,
-  TextAreaResize.horizontal,
-];

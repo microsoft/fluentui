@@ -1,1 +1,5 @@
-export interface GenerateApiExecutorSchema {} // eslint-disable-line
+export interface GenerateApiExecutorSchema {
+  config?: string;
+  local?: boolean;
+  diagnostics?: boolean;
+}

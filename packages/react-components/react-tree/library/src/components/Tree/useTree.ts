@@ -60,7 +60,10 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       },
       useMergedRefs(ref, navigation.treeRef),
     ),
-    { treeType: 'nested' } as const,
+    {
+      treeType: 'nested',
+      forceUpdateRovingTabIndex: navigation.forceUpdateRovingTabIndex,
+    } as const,
   );
 }
 

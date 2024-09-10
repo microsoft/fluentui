@@ -5,7 +5,6 @@ import {
   TextAreaAppearance,
   TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
-  TextAreaResizableResize,
   TextAreaResize,
   TextAreaSize,
 } from './textarea.options.js';
@@ -275,7 +274,13 @@ export class BaseTextArea extends FASTElement {
       toggleState(this.elementInternals, `resize-${next}`, true);
     }
 
-    toggleState(this.elementInternals, `resize`, TextAreaResizableResize.includes(this.resize));
+    toggleState(
+      this.elementInternals,
+      `resize`,
+      ([TextAreaResize.both, TextAreaResize.horizontal, TextAreaResize.vertical] as Partial<TextAreaResize[]>).includes(
+        this.resize,
+      ),
+    );
   }
 
   /**
