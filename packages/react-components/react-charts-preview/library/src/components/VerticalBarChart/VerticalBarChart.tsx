@@ -38,6 +38,7 @@ import {
   calculateAppropriateBarWidth,
   isRtl,
 } from '../../utilities/index';
+import Popover from '../CommonComponents/Popover';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -267,15 +268,18 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     const { YValueHover, hoverXValue } = _getCalloutContentForLineAndBar(point);
     const content: JSX.Element[] = YValueHover.map((item: IYValueHover, index: number) => {
       return (
-        <></>
-        /*  <ChartHoverCard
-          key={index}
-          Legend={item.legend}
-          {...(index === 0 && { XValue: `${hoverXValue || item.data}` })}
-          color={item.color}
-          YValue={item.data || item.y}
-          culture={props.culture}
-        /> */
+        <>
+          <Popover
+            culture={props.culture ?? 'en-us'}
+            clickPosition={clickPosition}
+            isPopoverOpen={isPopoverOpen}
+            legend={item.legend!}
+            {...(index === 0 && { XValue: `${hoverXValue || item.data}` })}
+            YValue={item.data || item.y}
+            color={item.color}
+            isCalloutForStack={false}
+          />
+        </>
       );
     });
     return <>{content}</>;
@@ -284,13 +288,18 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   function _renderContentForOnlyBars(_props: IVerticalBarChartDataPoint): JSX.Element {
     return (
       <>
-        {/*  <ChartHoverCard
+        <Popover
           XValue={_props.xAxisCalloutData || (_props.x as string)}
-          Legend={_props.legend}
+          xCalloutValue={xCalloutValue}
+          yCalloutValue={yCalloutValue}
+          culture={props.culture ?? 'en-us'}
+          clickPosition={clickPosition}
+          isPopoverOpen={isPopoverOpen}
+          legend={_props.legend!}
           YValue={_props.yAxisCalloutData || _props.y}
           color={!props.useSingleColor && _props.color ? _props.color : _createColors()(_props.y)}
-          culture={props.culture}
-        /> */}
+          isCalloutForStack={false}
+        />
       </>
     );
   }

@@ -36,7 +36,11 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
   const YValue = props.yCalloutValue ? props.yCalloutValue : props.YValue;
   return (
     <div id={useId('callout')} {...focusAttributes}>
-      <Popover positioning={{ target: virtualElement }} open={props.isPopoverOpen} inline>
+      <Popover
+        positioning={{ target: virtualElement, autoSize: 'always', offset: 20, coverTarget: false }}
+        open={props.isPopoverOpen}
+        inline
+      >
         <PopoverSurface tabIndex={-1}>
           {/** Given custom callout, then it will render */}
           {props.customizedCallout && props.customizedCallout}
@@ -175,7 +179,14 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           <div
             id={`${index}_${xValue.y}`}
             className={classes.calloutBlockContainer}
-            style={{ marginTop: props.XValue ? '13px' : 'unset', borderLeft: `4px solid ${props.color}` }}
+            style={{
+              marginTop: props.XValue ? '13px' : 'unset',
+              ...(!toDrawShape
+                ? {
+                    borderLeft: `4px solid ${xValue.color}`,
+                  }
+                : { display: 'flex' }),
+            }}
           >
             {toDrawShape && (
               <Shape
@@ -193,20 +204,9 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
-              style={{
-                ...(!toDrawShape
-                  ? {
-                      borderLeft: `4px solid ${xValue.color}`,
-                      marginTop: props.XValue ? '13px' : 'unset',
-                    }
-                  : {}),
-              }}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div
-                className={classes.calloutContentY}
-                style={{ color: props.color ? props.color : tokens.colorNeutralForeground1 }}
-              >
+              <div className={classes.calloutContentY}>
                 {convertToLocaleString(
                   xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,

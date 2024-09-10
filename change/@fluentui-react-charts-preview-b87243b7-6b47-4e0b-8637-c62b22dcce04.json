@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing popover content for cartesian and Vertical bar chart.",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
