@@ -31,9 +31,6 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
   chartWrapper: '',
 };
 const useStyles = makeStyles({
-  opacityChangeOnHover: {
-    opacity: '1', // support custom opacity change
-  },
   xAxisTicks: {},
   yAxisTicks: {
     transform: 'scaleX(-1)',
