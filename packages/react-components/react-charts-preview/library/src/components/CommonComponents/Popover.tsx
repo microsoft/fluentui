@@ -62,7 +62,10 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   }
                 }
               >
-                <div className={classes.calloutBlockContainer}>
+                <div
+                  className={classes.calloutBlockContainer}
+                  style={{ '--lineColor': `4px solid ${props.color}` } as React.CSSProperties}
+                >
                   <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
                   <div
                     className={classes.calloutContentY}
@@ -204,6 +207,7 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                   ? classes.calloutBlockContainertoDrawShapetrue
                   : classes.calloutBlockContainertoDrawShapefalse,
               )}
+              style={{ '--lineColor': `4px solid ${xValue.color}` } as React.CSSProperties}
             >
               <div className={classes.calloutlegendText}> {xValue.legend}</div>
               <div className={classes.calloutContentY}>

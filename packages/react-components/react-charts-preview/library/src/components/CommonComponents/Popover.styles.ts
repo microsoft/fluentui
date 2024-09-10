@@ -46,9 +46,11 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
   },
   calloutBlockContainer: {
-    fontSize: 'fontSizeBase200',
+    fontSize: tokens.fontSizeBase200,
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
+    borderLeft: 'var(--lineColor)',
+    paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapefalse: {
     selectors: {
@@ -56,7 +58,7 @@ const useStyles = makeStyles({
         forcedColorAdjust: 'none',
       },
     },
-    ...shorthands.borderLeft('4px solid'),
+    borderLeft: 'var(--lineColor)',
     paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapetrue: {
@@ -76,7 +78,7 @@ const useStyles = makeStyles({
     },
   },
   calloutContentY: {
-    fontSize: tokens.fontSizeBase400,
+    fontSize: tokens.fontSizeBase600,
     fontWeight: 'bold',
     lineHeight: '36px',
     selectors: {

@@ -883,7 +883,8 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
         div
           .html(originalDataArray[i])
           .style('left', event.pageX + 'px')
-          .style('top', event.pageY - 28 + 'px');
+          .style('top', event.pageY - 28 + 'px')
+          .style('background', '#FFFFFF');
       })
       .on('mouseout', d => {
         div.style('opacity', 0);

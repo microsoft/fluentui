@@ -953,11 +953,11 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     color: color,
     legend: calloutLegend,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
+    XValue: xCalloutValue,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
-    isCalloutForStack: true,
     culture: props.culture ?? 'en-us',
   };
 

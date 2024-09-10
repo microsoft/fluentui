@@ -10,7 +10,7 @@ export interface IPopoverComponentProps {
   XValue?: string;
   color?: string;
   culture: string;
-  isCalloutForStack: boolean;
+  isCalloutForStack?: boolean;
   customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
