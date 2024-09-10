@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 16 Aug 2024 10:24:16 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 10:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.14)
+
+Tue, 10 Sep 2024 10:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.13..@fluentui/react-components_v9.54.14)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add accessibility and focus modes to cards ([PR #32181](https://github.com/microsoft/fluentui/pull/32181) by mifraser@microsoft.com)
+  - feat: Add brand appearance to nav buttons, update action states ([PR #32348](https://github.com/microsoft/fluentui/pull/32348) by mifraser@microsoft.com)
+  - feat: Add enableDrag option for mouse/touch scroll support ([PR #32388](https://github.com/microsoft/fluentui/pull/32388) by mifraser@microsoft.com)
+- `@fluentui/react-tabs`
+  - export Tab component style hooks ([PR #32125](https://github.com/microsoft/fluentui/pull/32125) by kirpadv@gmail.com)
+- `@fluentui/react-tree`
+  - bugfix: recover from tabIndex=-1 when TreeItem is removed ([PR #32442](https://github.com/microsoft/fluentui/pull/32442) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: medium and large SplitButton menuButton is at least 24px wide ([PR #32309](https://github.com/microsoft/fluentui/pull/32309) by sarah.higley@microsoft.com)
+- `@fluentui/react-card`
+  - fix: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-carousel-preview`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-drawer`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-overflow`
+  - fix(useOverflowContainer): Removes double overflowManager creation ([PR #32459](https://github.com/microsoft/fluentui/pull/32459) by lingfangao@hotmail.com)
+- `@fluentui/react-select`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinbutton`
+  - fix: remove aria-valuenow from native input element ([PR #32360](https://github.com/microsoft/fluentui/pull/32360) by sarah.higley@microsoft.com)
+- `@fluentui/react-table`
+  - fix(TableHeaderCell): should use hover and pressed tokens ([PR #32352](https://github.com/microsoft/fluentui/pull/32352) by lingfangao@hotmail.com)
+- `@fluentui/react-tabs`
+  - fix: Improve animation for active tab indicator on tabs with falsy values ([PR #32374](https://github.com/microsoft/fluentui/pull/32374) by kirpadv@gmail.com)
+- `@fluentui/react-tag-picker`
+  - bugfix: ensures input behaviour on text selection ([PR #32285](https://github.com/microsoft/fluentui/pull/32285) by bernardo.sunderhus@gmail.com)
+  - fix(react-tag-picker): compute aria-label/aria-labelledby for expand button, stories a11y fixes ([PR #32297](https://github.com/microsoft/fluentui/pull/32297) by jiangemma@microsoft.com)
+  - fix(react-tag-picker): allows TagPickerGroup to be disabled ([PR #32317](https://github.com/microsoft/fluentui/pull/32317) by jiangemma@microsoft.com)
+- `@fluentui/react-tags`
+  - fix(react-tags): allows TagGroup to be disabled ([PR #32317](https://github.com/microsoft/fluentui/pull/32317) by jiangemma@microsoft.com)
+  - fix(react-tags): allow TagGroup to be disabled, remove role='img' from Tag dismiss ([PR #32297](https://github.com/microsoft/fluentui/pull/32297) by jiangemma@microsoft.com)
+- `@fluentui/react-teaching-popover`
+  - fix: Update popover size to match design guidance 320px, enable image to auto size based on popover surface bounds ([PR #32363](https://github.com/microsoft/fluentui/pull/32363) by mifraser@microsoft.com)
+- `@fluentui/react-tree`
+  - bugfix: ensure actions visibility between successive mouse events ([PR #32477](https://github.com/microsoft/fluentui/pull/32477) by bernardo.sunderhus@gmail.com)
+  - fix: remove unnecessary aria-hidden attributes that were causing accessibility issues ([PR #32081](https://github.com/microsoft/fluentui/pull/32081) by sarah.higley@microsoft.com)
+  - bugfix: ensure onClick handler is not called on every click ([PR #32434](https://github.com/microsoft/fluentui/pull/32434) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: follow up on assertSlots fixes ([PR #32323](https://github.com/microsoft/fluentui/pull/32323) by bernardo.sunderhus@gmail.com)
 
 ## [9.54.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.13)
 
