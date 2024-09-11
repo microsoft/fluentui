@@ -3,6 +3,10 @@ import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-char
 import { Switch } from '@fluentui/react-components';
 
 export const LCCustomLocale = (props: ILineChartProps) => {
+  React.useEffect(() => {
+    _getCustomLocale();
+  }, []);
+
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
