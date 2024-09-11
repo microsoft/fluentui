@@ -65,29 +65,29 @@ const DrawerSeparatorExample: React.FC<DrawerSeparatorExampleProps> = ({ open, s
 export const Separator = () => {
   const styles = useStyles();
 
-  const [leftOpen, setLeftOpen] = React.useState(true);
-  const [rightOpen, setRightOpen] = React.useState(true);
-  const [bottomOpen, setBottomOpen] = React.useState(false);
+  const [startOpen, setStartOpen] = React.useState(true);
+  const [endOpen, setEndOpen] = React.useState(true);
+  const [bottomOpen, setBottomOpen] = React.useState(true);
 
   return (
     <div className={mergeClasses(styles.root, styles.flexColumn)}>
       <div className={styles.root} style={{ borderBottomWidth: 0 }}>
-        <DrawerSeparatorExample open={leftOpen} setOpen={setLeftOpen} position="start" />
+        <DrawerSeparatorExample open={startOpen} setOpen={setStartOpen} position="start" />
 
         <div className={styles.content}>
-          <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-            Toggle left
+          <Button appearance="primary" onClick={() => setStartOpen(!startOpen)}>
+            Toggle start
           </Button>
 
-          <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-            Toggle right
+          <Button appearance="primary" onClick={() => setEndOpen(!endOpen)}>
+            Toggle end
           </Button>
 
           <Button appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
             Toggle bottom
           </Button>
         </div>
-        <DrawerSeparatorExample open={rightOpen} setOpen={setRightOpen} position="end" />
+        <DrawerSeparatorExample open={endOpen} setOpen={setEndOpen} position="end" />
       </div>
       <DrawerSeparatorExample open={bottomOpen} setOpen={setBottomOpen} position="bottom" />
     </div>

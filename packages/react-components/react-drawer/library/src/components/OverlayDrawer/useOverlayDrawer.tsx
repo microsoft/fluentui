@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { Dialog } from '@fluentui/react-dialog';
 import { slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { OverlayDrawerMotion, OverlaySurfaceBackdropMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
@@ -30,6 +31,7 @@ export const useOverlayDrawer_unstable = (
 ): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
   const { backdropMotion, modalType = 'modal', inertTrapFocus, onOpenChange, surfaceMotion } = props;
+  const { dir } = useFluent();
 
   const backdropProps = slot.resolveShorthand(props.backdrop);
   const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
@@ -56,7 +58,7 @@ export const useOverlayDrawer_unstable = (
       onOpenChange,
       inertTrapFocus,
       modalType,
-      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size }),
+      surfaceMotion: mergePresenceSlots(surfaceMotion, OverlayDrawerMotion, { position, size, dir }),
       /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps

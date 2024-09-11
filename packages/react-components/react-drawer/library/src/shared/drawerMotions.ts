@@ -1,10 +1,13 @@
 import { createPresenceComponent, motionTokens } from '@fluentui/react-motion';
 import { tokens } from '@fluentui/react-theme';
+import { ProviderContextValue_unstable as FluentProviderContextValue } from '@fluentui/react-shared-contexts';
 
 import type { DrawerBaseProps } from './DrawerBase.types';
 import { drawerCSSVars } from './useDrawerBaseStyles.styles';
 
-export type DrawerMotionParams = Required<Pick<DrawerBaseProps, 'size' | 'position'>>;
+export type DrawerMotionParams = Required<
+  Pick<DrawerBaseProps, 'size' | 'position'> & Pick<FluentProviderContextValue, 'dir'>
+>;
 export type OverlayDrawerSurfaceMotionParams = Required<Pick<DrawerBaseProps, 'size'>>;
 
 const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
@@ -14,22 +17,37 @@ const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
   full: motionTokens.durationUltraSlow,
 };
 
+function getPositionTransform(
+  position: DrawerBaseProps['position'],
+  sizeVar: string,
+  dir: FluentProviderContextValue['dir'],
+) {
+  switch (position) {
+    case 'start':
+      if (dir === 'rtl') {
+        return `translate3d(var(${sizeVar}), 0, 0)`;
+      }
+
+      return `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
+    case 'end':
+      if (dir === 'rtl') {
+        return `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
+      }
+
+      return `translate3d(var(${sizeVar}), 0, 0)`;
+    case 'bottom':
+      return `translate3d(0, var(${sizeVar}), 0)`;
+  }
+}
+
 /**
  * @internal
  */
-export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size }) => {
+export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
   const keyframes: Keyframe[] = [
     {
-      ...(position === 'start' && {
-        transform: `translate3d(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
-      }),
-      ...(position === 'end' && {
-        transform: `translate3d(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
-      }),
-      ...(position === 'bottom' && {
-        transform: `translate3d(0, var(${drawerCSSVars.drawerSizeVar}), 0)`,
-      }),
-
+      /* TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs */
+      transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       opacity: 0,
     },
     { transform: 'translate3d(0, 0, 0)', opacity: 1 },
@@ -53,19 +71,11 @@ export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({
 /**
  * @internal
  */
-export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size }) => {
+export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
   const keyframes: Keyframe[] = [
     {
-      ...(position === 'start' && {
-        transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
-      }),
-      ...(position === 'end' && {
-        transform: `translate3d(calc(var(${drawerCSSVars.drawerSizeVar}) * 1), 0, 0)`,
-      }),
-      ...(position === 'bottom' && {
-        transform: `translate3d(0, calc(var(${drawerCSSVars.drawerSizeVar}) * 1), 0)`,
-      }),
-
+      /* TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs */
+      transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       boxShadow: `0px ${tokens.colorTransparentBackground}`,
       opacity: 0,
     },
