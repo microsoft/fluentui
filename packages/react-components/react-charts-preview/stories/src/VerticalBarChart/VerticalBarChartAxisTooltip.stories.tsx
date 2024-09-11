@@ -1,7 +1,17 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartDataPoint } from '@fluentui/react-charts-preview';
-//import { Stack, TextField } from '@fluentui/react';
-import { Checkbox, Field, Radio, RadioGroup, CheckboxOnChangeData, CheckboxProps } from '@fluentui/react-components';
+import {
+  Checkbox,
+  Field,
+  Radio,
+  RadioGroup,
+  CheckboxOnChangeData,
+  CheckboxProps,
+  Input,
+  InputProps,
+  InputOnChangeData,
+} from '@fluentui/react-components';
+import { StackShim } from '@fluentui/react-migration-v8-v9';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
@@ -15,14 +25,20 @@ export const VCAxisTooltip = () => {
   const [width, setWidth] = React.useState<number>(650);
   const [height, setHeight] = React.useState<number>(350);
 
-  /* const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+  const _onBarWidthCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setBarWidthEnabled(checked.checked);
   };
-  const _onBarWidthChange = (e: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
-    setBarWidth(Number(newValue));
+  const _onBarWidthChange: InputProps['onChange'] = (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData,
+  ) => {
+    setBarWidth(Number(data.value));
   };
-  const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    setMaxBarWidth(Number(newValue));
+  const _onMaxBarWidthChange: InputProps['onChange'] = (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData,
+  ) => {
+    setMaxBarWidth(Number(data.value));
   };
   const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setXAxisInnerPaddingEnabled(checked.checked);
@@ -41,7 +57,7 @@ export const VCAxisTooltip = () => {
   };
   const _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setHeight(Number(e.target.value));
-  }; */
+  };
   const points: IVerticalBarChartDataPoint[] = [
     {
       x: 'Simple Text',
@@ -67,48 +83,50 @@ export const VCAxisTooltip = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      {/* <Stack horizontal wrap tokens={{ childrenGap: 30 }}>
-        <Stack horizontal verticalAlign="center">
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-height" style={{ fontWeight: 400 }}>
             height:&nbsp;
           </label>
           <input type="range" value={height} min={200} max={1000} id="input-height" onChange={_onHeightChange} />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox label="barWidth:&nbsp;" checked={barWidthEnabled} onChange={_onBarWidthCheckChange} />
           {barWidthEnabled ? (
-            <TextField
+            <Input
               type="number"
-              value={barWidth.toString()}
               min={1}
               max={300}
+              value={barWidth.toString()}
               onChange={_onBarWidthChange}
               disabled={!barWidthEnabled}
             />
           ) : (
             <code>'auto'</code>
           )}
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:
           </label>
-          <TextField
+          <Input
             type="number"
-            value={maxBarWidth.toString()}
             min={1}
             max={300}
+            value={maxBarWidth.toString()}
             id="input-maxbarwidth"
             onChange={_onMaxBarWidthChange}
           />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisInnerPadding:&nbsp;"
             checked={xAxisInnerPaddingEnabled}
@@ -124,8 +142,8 @@ export const VCAxisTooltip = () => {
             disabled={!xAxisInnerPaddingEnabled}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisOuterPadding:&nbsp;"
             checked={xAxisOuterPaddingEnabled}
@@ -141,9 +159,9 @@ export const VCAxisTooltip = () => {
             disabled={!xAxisOuterPaddingEnabled}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
-        </Stack>
-      </Stack> */}
-      <div>
+        </div>
+      </div>
+      <div style={{ display: 'flex' }}>
         <Field label="Pick one">
           <RadioGroup defaultValue="showTooltip" onChange={(_ev, option) => option && setSelectedCallout(option.value)}>
             <Radio value="WrapTickValues" label="Wrap X Axis Ticks" />

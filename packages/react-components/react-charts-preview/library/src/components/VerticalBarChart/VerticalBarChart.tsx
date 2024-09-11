@@ -572,7 +572,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
           <rect
             id={`${_vbcBarId}-${index}`}
             x={xPoint}
-            className={classes.opacityChangeOnHover}
             y={yPoint}
             width={_barWidth}
             data-is-focusable={!props.hideTooltip && shouldHighlight}
@@ -588,6 +587,8 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
+            opacity={shouldHighlight ? '1' : '0.1'}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -642,6 +643,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             data-is-focusable={!props.hideTooltip}
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -693,6 +695,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
             onFocus={_onBarFocus.bind(point, index, colorScale(point.y))}
             onBlur={_onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
+            tabIndex={point.legend !== '' ? 0 : undefined}
           />
           {_renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
@@ -921,52 +924,49 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     tickFormat: props.tickFormat,
   };
   return !_isChartEmpty() ? (
-    <>
-      <CartesianChart
-        {...props}
-        points={_points}
-        chartType={ChartTypes.VerticalBarChart}
-        xAxisType={_xAxisType}
-        calloutProps={calloutProps}
-        tickParams={tickParams}
-        {...(_isHavingLine && _noLegendHighlighted() && { isCalloutForStack: true })}
-        legendBars={legendBars}
-        datasetForXAxisDomain={_xAxisLabels}
-        barwidth={_barWidth}
-        tooltipRef={tooltipRef}
-        //focusZoneDirection={FocusZoneDirection.horizontal}
-        customizedCallout={_getCustomizedCallout()}
-        getmargins={_getMargins}
-        getGraphData={_getGraphData}
-        getAxisData={_getAxisData}
-        onChartMouseLeave={_handleChartMouseLeave}
-        getDomainMargins={_getDomainMargins}
-        {...(_xAxisType === XAxisTypes.StringAxis && {
-          xAxisInnerPadding: _xAxisInnerPadding,
-          xAxisOuterPadding: _xAxisOuterPadding,
-        })}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          return (
-            <>
-              <g>{_bars}</g>
-              {_isHavingLine && (
-                <g>
-                  {_createLine(
-                    props.xScale!,
-                    props.yScale!,
-                    props.containerHeight,
-                    props.containerWidth,
-                    props.yScaleSecondary,
-                  )}
-                </g>
-              )}
-            </>
-          );
-        }}
-      />
-    </>
+    <CartesianChart
+      {...props}
+      points={_points}
+      chartType={ChartTypes.VerticalBarChart}
+      xAxisType={_xAxisType}
+      calloutProps={calloutProps}
+      tickParams={tickParams}
+      {...(_isHavingLine && _noLegendHighlighted() && { isCalloutForStack: true })}
+      legendBars={legendBars}
+      datasetForXAxisDomain={_xAxisLabels}
+      barwidth={_barWidth}
+      customizedCallout={_getCustomizedCallout()}
+      tooltipRef={tooltipRef}
+      getmargins={_getMargins}
+      getGraphData={_getGraphData}
+      getAxisData={_getAxisData}
+      onChartMouseLeave={_handleChartMouseLeave}
+      getDomainMargins={_getDomainMargins}
+      {...(_xAxisType === XAxisTypes.StringAxis && {
+        xAxisInnerPadding: _xAxisInnerPadding,
+        xAxisOuterPadding: _xAxisOuterPadding,
+      })}
+      /* eslint-disable react/jsx-no-bind */
+      // eslint-disable-next-line react/no-children-prop
+      children={(props: IChildProps) => {
+        return (
+          <>
+            <g>{_bars}</g>
+            {_isHavingLine && (
+              <g>
+                {_createLine(
+                  props.xScale!,
+                  props.yScale!,
+                  props.containerHeight,
+                  props.containerWidth,
+                  props.yScaleSecondary,
+                )}
+              </g>
+            )}
+          </>
+        );
+      }}
+    />
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
   );

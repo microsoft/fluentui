@@ -28,11 +28,9 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  tooltip: '',
 };
 const useStyles = makeStyles({
-  opacityChangeOnHover: {
-    opacity: '1', // support custom opacity change
-  },
   xAxisTicks: {},
   yAxisTicks: {
     transform: 'scaleX(-1)',
@@ -54,10 +52,7 @@ export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps
   const baseStyles = useStyles();
 
   return {
-    opacityChangeOnHover: mergeClasses(
-      verticalbarchartClassNames.opacityChangeOnHover,
-      baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,
-    ),
+    opacityChangeOnHover: mergeClasses(verticalbarchartClassNames.opacityChangeOnHover),
     xAxisTicks: mergeClasses(
       // eslint-disable-next-line deprecation/deprecation
       verticalbarchartClassNames.xAxisTicks,

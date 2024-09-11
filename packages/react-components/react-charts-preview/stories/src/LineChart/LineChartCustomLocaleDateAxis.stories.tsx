@@ -3,10 +3,11 @@ import { ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-char
 import { Switch } from '@fluentui/react-components';
 
 export const LCCustomLocale = (props: ILineChartProps) => {
+  const locale = require('d3-time-format/locale/it-IT.json');
   const [width, setWidth] = React.useState<number>(700);
   const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
-  const [customLocale, setCustomLocale] = React.useState<any>(undefined);
+  const [customLocale, setCustomLocale] = React.useState<any>(locale);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(e.target.value, 10));
@@ -22,11 +23,6 @@ export const LCCustomLocale = (props: ILineChartProps) => {
     },
     [allowMultipleShapes],
   );
-
-  const _getCustomLocale = () => {
-    const locale = require('d3-time-format/locale/it-IT.json');
-    setCustomLocale(locale);
-  };
 
   const data: IChartProps = {
     chartTitle: 'Line Chart',

@@ -5,7 +5,7 @@ import { Switch } from '@fluentui/react-components';
 
 export const LCMultiple = (props: ILineChartProps) => {
   const [width, setWidth] = React.useState<number>(700);
-  const [height, setHeight] = React.useState<number>(800);
+  const [height, setHeight] = React.useState<number>(300);
   const [allowMultipleShapes, setAllowMultipleShapes] = React.useState<boolean>(false);
 
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
