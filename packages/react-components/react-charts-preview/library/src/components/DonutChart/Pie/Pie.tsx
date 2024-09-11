@@ -68,7 +68,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
           focusedArcId={props.focusedArcId}
           showLabelsInPercent={props.showLabelsInPercent}
           totalValue={_totalValue}
-          hideLabels={true}
+          hideLabels={props.hideLabels}
         />
       );
     }
