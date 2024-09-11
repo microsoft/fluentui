@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 10 Sep 2024 07:21:59 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Sep 2024 07:20:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.23.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.23.0)
+
+Wed, 11 Sep 2024 07:20:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.22.5..@fluentui/react-charting_v5.23.0)
+
+### Minor changes
+
+- Update d3 package dependencies to 3.x.y and 4.x.y ([PR #32463](https://github.com/microsoft/fluentui/pull/32463) by 98592573+AtishayMsft@users.noreply.github.com)
+
+### Patches
+
+- add strokeDasharray for line charts with large datasets ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by kaelens@microsoft.com)
 
 ## [5.22.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.22.5)
 
