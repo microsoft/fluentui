@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { CarouselNavContextValue, CarouselNavState } from './CarouselNav.types';
+import type { CarouselNavContextValue, CarouselNavState } from './CarouselNav.types';
 
 const carouselNavContext = React.createContext<CarouselNavContextValue | undefined>(undefined);
 
 export const carouselNavContextDefaultValue: CarouselNavContextValue = {
-  index: 0,
   appearance: undefined,
 };
 
@@ -21,14 +20,7 @@ export type CarouselNavContextValues = {
 
 export function useCarouselNavContextValues_unstable(state: CarouselNavState): CarouselNavContextValues {
   const { appearance } = state;
-
-  const carouselNav = React.useMemo(
-    () => ({
-      index: 0,
-      appearance,
-    }),
-    [appearance],
-  );
+  const carouselNav = React.useMemo(() => ({ appearance }), [appearance]);
 
   return { carouselNav };
 }

@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { IconButton } from '@storybook/components';
+import { styled } from '@storybook/theming';
 
 import { DIR_ID } from '../constants';
 import { useGlobals } from '../hooks';
 
-import { useDirSwitchStyles } from './DirSwitch.styles';
+const Monospace = styled.span({
+  fontFamily: "'Cascadia Code', Menlo, 'Courier New', Courier, monospace",
+  letterSpacing: '-0.05em',
+});
 
-export const DirSwitch = () => {
+export const DirectionSwitch = () => {
   const [globals, updateGlobals] = useGlobals();
-  const styles = useDirSwitchStyles();
 
   const direction = globals[DIR_ID] ?? 'ltr';
   const isLTR = direction === 'ltr';
@@ -24,7 +27,7 @@ export const DirSwitch = () => {
   return (
     <IconButton key={DIR_ID} title="Change Direction" onClick={toggleDirection}>
       <div>
-        Direction: <span className={styles.monospace}>{direction.toUpperCase()}</span>
+        Direction: <Monospace>{direction.toUpperCase()}</Monospace>
       </div>
     </IconButton>
   );
