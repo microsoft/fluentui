@@ -15,19 +15,24 @@ steps:
         --destination 'fabric-website' \
         --source $(System.DefaultWorkingDirectory)/apps/public-docsite/dist \
         --account-name fabricweb \
-        --destination-path v$(version)/$(Build.BuildNumber)/ \
+        --destination-path v${{ parameters.version }}/$(Build.BuildNumber)/ \
         --auth-mode login \
         --overwrite
 
-  - task: AzureFileCopy@6
+  - task: AzureCLI@2
     displayName: 'Update dogfood manifest in Azure blob'
     inputs:
-      SourcePath: '$(System.DefaultWorkingDirectory)/site-manifests/v$(version)-df.js'
       azureSubscription: 'Azure - fabricweb storage - NEW'
-      Destination: AzureBlob
-      storage: fabricweb
-      ContainerName: 'fabric-website'
-      BlobPrefix: manifests/
+      scriptType: 'bash'
+      scriptLocation: inlineScript
+      inlineScript: |
+        az storage blob upload \
+        --account-name fabricweb \
+        --container-name fabric-website \
+        --name manifests/v${{ parameters.version }}-df.js \
+        --file $(System.DefaultWorkingDirectory)/site-manifests/v${{ parameters.version }}-df.js \
+        --auth-mode login \
+        --overwrite
 
   # - task: AzureFileCopy@6
   #   displayName: 'Update prod manifest in Azure blob'
