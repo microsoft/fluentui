@@ -7,6 +7,7 @@ import { existsSync, readFileSync, readdirSync } from 'node:fs';
 
 // ===== mocks start =====
 import { rm } from 'node:fs/promises';
+import { measureStart, measureEnd } from '../../utils';
 // ===== mocks end =====
 
 const options: BuildExecutorSchema = {
@@ -59,7 +60,16 @@ jest.mock('node:fs/promises', () => {
   };
 });
 
+jest.mock('../../utils', () => {
+  return {
+    measureStart: jest.fn(),
+    measureEnd: jest.fn(),
+  };
+});
+
 const rmMock = rm as jest.Mock;
+const measureStartMock = measureStart as jest.Mock;
+const measureEndMock = measureEnd as jest.Mock;
 
 describe('Build Executor', () => {
   it('can run', async () => {
@@ -83,11 +93,13 @@ describe('Build Executor', () => {
        - ${workspaceRoot}/libs/proj/lib
        - ${workspaceRoot}/libs/proj/dist/assets/spec.md
     `);
+
     expect(restOfLogs).toEqual([
       'Compiling with SWC for module:es6...',
       'Processing griffel AOT with babel: 1 files',
       'Compiling with SWC for module:commonjs...',
     ]);
+
     expect(loggerVerboseSpy.mock.calls.flat()).toEqual([
       `babel: transformed ${workspaceRoot}/libs/proj/lib/greeter.styles.js`,
     ]);
@@ -109,6 +121,9 @@ describe('Build Executor', () => {
         recursive: true,
       },
     ]);
+
+    expect(measureStartMock).toHaveBeenCalledTimes(1);
+    expect(measureEndMock).toHaveBeenCalledTimes(1);
 
     // =====================
     // assert build Assets
