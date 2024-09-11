@@ -23,6 +23,7 @@ const useStyles = makeStyles({
     borderRadius: tokens.borderRadiusSmall,
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
+    overflow: 'hidden',
     ':hover': {
       cursor: 'pointer',
     },
@@ -30,13 +31,12 @@ const useStyles = makeStyles({
   image: {
     width: imageButtonSize + 'px',
     height: imageButtonSize + 'px',
+    borderRadius: tokens.borderRadiusSmall,
   },
   selected: {
     width: selectedImageButtonSize + 'px',
     height: selectedImageButtonSize + 'px',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
