@@ -30,7 +30,8 @@ export const useNavCategoryItem_unstable = (
     ),
   );
 
-  const selected = selectedCategoryValue === value;
+  // don't fill the icon when it's open
+  const selected = selectedCategoryValue === value && !open;
   // there's more than 2 possible values for aria-current, but this is the only one that's used in this component
   const validAriaCurrent: 'page' | 'false' = selected && !open ? 'page' : 'false';
 
