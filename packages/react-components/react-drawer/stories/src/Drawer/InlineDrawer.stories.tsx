@@ -61,7 +61,7 @@ type DrawerInlineExampleProps = DrawerProps & {
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const setButtonText = (open: boolean, position: DrawerProps['position']) => {
-  let buttonText = open ? 'Close' : 'Open';
+  const buttonText = open ? 'Close' : 'Open';
 
   if (['start', 'end', 'bottom'].includes(position!)) {
     return `${buttonText} ${position}`;
