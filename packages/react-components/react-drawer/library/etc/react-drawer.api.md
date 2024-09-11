@@ -170,7 +170,7 @@ export type OverlayDrawerSlots = {
 };
 
 // @public
-export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState>;
+export type OverlayDrawerState = ComponentState<OverlayDrawerInternalSlots> & Required<DrawerBaseState> & Pick<OverlayDrawerProps, 'mountNode'>;
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState, contextValue: DrawerContextValue) => JSX.Element;
