@@ -60,17 +60,17 @@ type DrawerInlineExampleProps = DrawerProps & {
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const setButtonText = (open: boolean, position: DrawerProps['position']) => {
+const setButtonText = (open: boolean, position: Required<DrawerProps>['position']) => {
   const buttonText = open ? 'Close' : 'Open';
 
-  if (['start', 'end', 'bottom'].includes(position!)) {
+  if (['start', 'end', 'bottom'].includes(position)) {
     return `${buttonText} ${position}`;
   }
 
   return `${buttonText} drawer`;
 };
 
-const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
+const DrawerInlineExample: React.FC<Required<DrawerInlineExampleProps>> = ({ setOpen, ...props }) => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   return (
@@ -81,7 +81,7 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
             <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
           }
         >
-          {capitalize(props.position!)} Inline Drawer
+          {capitalize(props.position)} Inline Drawer
         </DrawerHeaderTitle>
       </DrawerHeader>
 
