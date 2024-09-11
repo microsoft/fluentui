@@ -14,8 +14,8 @@ variables:
     value: production,externalfacing
 
 # below are variables configurable at queue time, so they cannot appear in yml file
-# - name: skipPublish # set it to true in order to skip publishing to NPM. Useful for deploying docsite updates only.
-#   value: false #default is false, set to true to skip publishing to NPM.
+# - name: skipPublish # set it to true in order to skip publishing to NPM. Useful for deploying docsite only updates.
+#   value: false
 
 schedules:
   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
@@ -109,35 +109,35 @@ extends:
                   FLUENT_PROD_BUILD=true yarn nx run-many -t build -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: build
 
-              # - script: |
-              #     FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
-              #   displayName: test
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t test -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: test
 
-              # - script: |
-              #     FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
-              #   displayName: lint
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t lint -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: lint
 
               - script: |
                   FLUENT_PROD_BUILD=true yarn nx run-many -t bundle -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
                 displayName: bundle
 
-              # - script: |
-              #     FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
-              #   displayName: verify packaged assets
+              - script: |
+                  FLUENT_PROD_BUILD=true yarn nx run-many -t verify-packaging -p tag:v8 --exclude tag:vNext,tag:tools,ssr-tests,vr-tests,perf-test --nxBail
+                displayName: verify packaged assets
 
-              # - script: |
-              #     yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
-              #     git reset --hard origin/master
-              #   condition: eq(variables.skipPublish, false)
-              #   env:
-              #     GITHUB_PAT: $(githubPAT)
-              #   displayName: Publish changes and bump versions
+              - script: |
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
+                  git reset --hard origin/master
+                condition: eq(variables.skipPublish, false)
+                env:
+                  GITHUB_PAT: $(githubPAT)
+                displayName: Publish changes and bump versions
 
-              # - script: |
-              #     echo Making $(Build.ArtifactStagingDirectory)/api
-              #     mkdir -p $(Build.ArtifactStagingDirectory)/api
-              #     cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
-              #   displayName: Copy api.json files to artifact staging directory
+              - script: |
+                  echo Making $(Build.ArtifactStagingDirectory)/api
+                  mkdir -p $(Build.ArtifactStagingDirectory)/api
+                  cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
+                displayName: Copy api.json files to artifact staging directory
 
               - script: |
                   oufrVersion=$(node -p -e "require('./packages/react/package.json').version")
@@ -155,9 +155,9 @@ extends:
               # Generate the homepage.htm file used to load developer.microsoft.com/fluentui. Note that the
               # generated file must be manually checked in to an internal repo, it's just generated as a build
               # artifact for convenience and tracking.
-              # - script: |
-              #     node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
-              #   displayName: 'Generate homepage.htm'
+              - script: |
+                  node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
+                displayName: 'Generate homepage.htm'
 
               - template: .devops/templates/publish-website.yml@self
                 parameters:
@@ -165,10 +165,10 @@ extends:
 
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
-              # - script: |
-              #     node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
-              #   condition: eq(variables.skipPublish, false)
-              #   displayName: 'Update github release notes'
+              - script: |
+                  node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
+                condition: eq(variables.skipPublish, false)
+                displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:
