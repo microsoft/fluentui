@@ -26,7 +26,7 @@ export const Position = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [position, setPosition] = React.useState<DrawerProps['position']>('start');
+  const [position, setPosition] = React.useState<Required<DrawerProps>['position']>('start');
 
   const onClickStartButton = React.useCallback(() => {
     setPosition('start');
@@ -57,7 +57,7 @@ export const Position = () => {
               />
             }
           >
-            {capitalize(position!)} Drawer
+            {capitalize(position)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 

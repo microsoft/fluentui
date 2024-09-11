@@ -30,19 +30,11 @@ export function getPositionTransform(
   const bottomToTopTransform = `translate3d(0, var(${sizeVar}), 0)`;
 
   if (position === 'start') {
-    if (dir === 'rtl') {
-      return rightToLeftTransform;
-    }
-
-    return leftToRightTransform;
+    return dir === 'rtl' ? rightToLeftTransform : leftToRightTransform;
   }
 
   if (position === 'end') {
-    if (dir === 'rtl') {
-      return leftToRightTransform;
-    }
-
-    return rightToLeftTransform;
+    return dir === 'rtl' ? leftToRightTransform : rightToLeftTransform;
   }
 
   if (position === 'bottom') {
