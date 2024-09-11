@@ -114,13 +114,15 @@ type SelectedPage = {
 };
 
 const selectRandomPage = (): SelectedPage => {
-  const randomIndex = Math.floor(Math.random() * navItemValueList.length);
-  const randomItem = navItemValueList[randomIndex];
+  const randomIndex = Math.floor(Math.random() * navItemValueList.length + 1);
+  const randomItem = navItemValueList[randomIndex - 1];
+
+  console.log(randomIndex);
 
   if (randomItem.children.length > 0) {
     const randomChildIndex = Math.floor(Math.random() * randomItem.children.length);
     const selectedCategory = randomItem.parent;
-    const selectedValue = randomItem.children[randomChildIndex];
+    const selectedValue = randomItem.children[randomChildIndex - 1];
     return { selectedCategory, selectedValue };
   } else {
     const selectedCategory = randomItem.parent;
