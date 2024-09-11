@@ -6,7 +6,6 @@ import {
   getColorFromToken,
 } from '@fluentui/react-charts-preview';
 import { Button } from '@fluentui/react-components';
-// import { Stack, TextField } from '@fluentui/react';
 import {
   Checkbox,
   CheckboxOnChangeData,
@@ -15,8 +14,11 @@ import {
   Radio,
   RadioGroup,
   RadioGroupOnChangeData,
-  RadioGroupProps,
+  Input,
+  InputProps,
+  InputOnChangeData,
 } from '@fluentui/react-components';
+import { StackShim } from '@fluentui/react-migration-v8-v9';
 
 export const VCDynamic = () => {
   /** This style is commonly used to visually hide text that is still available for the screen reader to announce. */
@@ -75,7 +77,7 @@ export const VCDynamic = () => {
     return Math.floor(Math.random() * 90) + 1;
   };
 
-  /*  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
+  const _onBarWidthCheckChange = (e: React.FormEvent<HTMLInputElement>, checked: boolean) => {
     if (typeof barWidth === 'undefined') {
       setBarWidth('auto');
     } else if (barWidth === 'auto') {
@@ -85,11 +87,17 @@ export const VCDynamic = () => {
       setBarWidth(undefined);
     }
   };
-  const _onBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    setBarWidth(Number(newValue));
+  const _onBarWidthChange: InputProps['onChange'] = (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData,
+  ) => {
+    setBarWidth(Number(data.value));
   };
-  const _onMaxBarWidthChange = (e: React.FormEvent<HTMLInputElement>, newValue: string) => {
-    setMaxBarWidth(Number(newValue));
+  const _onMaxBarWidthChange: InputProps['onChange'] = (
+    ev: React.ChangeEvent<HTMLInputElement>,
+    data: InputOnChangeData,
+  ) => {
+    setMaxBarWidth(Number(data.value));
   };
   const _onInnerPaddingCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setXAxisInnerPaddingEnabled(checked.checked);
@@ -105,12 +113,12 @@ export const VCDynamic = () => {
   };
   const _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setWidth(Number(e.target.value));
-  }; */
+  };
   const _onAxisTypeChange = (e: React.FormEvent<HTMLInputElement>, option: RadioGroupOnChangeData) => {
     setXAxisType(option.value);
     setDynamicData(_getData(dataSize, option.value));
   };
-  /* const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
+  const _onEnableReflowCheckChange = (e: React.ChangeEvent<HTMLInputElement>, checked: CheckboxOnChangeData) => {
     setEnableReflow(checked.checked);
   };
   const _onDataSizeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -118,7 +126,7 @@ export const VCDynamic = () => {
     setDataSize(dataSize);
     setDynamicData(_getData(dataSize, xAxisType));
     setDynamicData(_getData(dataSize, xAxisType));
-  }; */
+  };
 
   const _getData = (dataSize: number, xAxisType: string) => {
     const data: IVerticalBarChartDataPoint[] = [];
@@ -164,14 +172,14 @@ export const VCDynamic = () => {
 
   return (
     <>
-      {/* <Stack horizontal wrap tokens={{ childrenGap: '15 30' }}>
-        <Stack horizontal verticalAlign="center">
+      <StackShim horizontal wrap tokens={{ childrenGap: '15 30' }}>
+        <StackShim horizontal verticalAlign="center">
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <Checkbox
             label="barWidth:&nbsp;"
             checked={typeof barWidth === 'number'}
@@ -179,16 +187,16 @@ export const VCDynamic = () => {
             indeterminate={barWidth === 'auto'}
           />
           {typeof barWidth === 'number' ? (
-            <TextField type="number" value={barWidth.toString()} min={1} max={300} onChange={_onBarWidthChange} />
+            <Input type="number" value={barWidth.toString()} min={1} max={300} onChange={_onBarWidthChange} />
           ) : (
             <code>{`${barWidth}`}</code>
           )}
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:&nbsp;
           </label>
-          <TextField
+          <Input
             type="number"
             value={maxBarWidth.toString()}
             min={1}
@@ -196,8 +204,8 @@ export const VCDynamic = () => {
             id="input-maxbarwidth"
             onChange={_onMaxBarWidthChange}
           />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <Checkbox
             label="xAxisInnerPadding:&nbsp;"
             checked={xAxisInnerPaddingEnabled}
@@ -214,8 +222,8 @@ export const VCDynamic = () => {
             disabled={!xAxisInnerPaddingEnabled}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <Checkbox
             label="xAxisOuterPadding:&nbsp;"
             checked={xAxisOuterPaddingEnabled}
@@ -232,17 +240,17 @@ export const VCDynamic = () => {
             disabled={!xAxisOuterPaddingEnabled}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <Checkbox label="enableReflow" checked={enableReflow} onChange={_onEnableReflowCheckChange} />
-        </Stack>
-        <Stack horizontal verticalAlign="center">
+        </StackShim>
+        <StackShim horizontal verticalAlign="center">
           <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
           </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
-        </Stack>
-      </Stack> */}
+        </StackShim>
+      </StackShim>
       <div style={{ marginTop: '20px' }}>
         <Field label="X-Axis type:">
           <RadioGroup onChange={_onAxisTypeChange}>

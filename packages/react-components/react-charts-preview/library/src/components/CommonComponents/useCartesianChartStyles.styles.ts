@@ -50,7 +50,7 @@ const useStyles = makeStyles({
   axisTitle: {
     fontSize: tokens.fontSizeBase100,
     textAlign: 'center',
-    fontWeight: tokens.fontWeightSemibold,
+    fontWeight: tokens.fontWeightRegular,
     fontStyle: 'normal',
     lineHeight: tokens.fontSizeBase100,
     color: '#323130', // ToDo - Find correct token for this color
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   xAxis: {
     '& text': {
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '600',
+      fontWeight: '300',
       selectors: {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -85,7 +85,7 @@ const useStyles = makeStyles({
     '& text': {
       fontSize: tokens.fontSizeBase100,
       fill: tokens.colorNeutralForeground1,
-      fontWeight: '600',
+      fontWeight: '300',
       selectors: {
         [HighContrastSelectorBlack]: {
           fill: 'rgb(179, 179, 179)',
@@ -105,13 +105,13 @@ const useStyles = makeStyles({
     '& path': {
       display: 'none',
     },
+  },
+  rtl: {
     '& g': {
-      // ToDo: fix - Is RTL hook cannot be called from non functional components
-      //...(isRtl() && {
-      //  textAnchor: 'end',
-      //}),
+      textAnchor: 'end',
     },
   },
+  ltr: {},
   opacityChangeOnHover: {
     opacity: '0.1', //supports custom opacity
     cursor: 'default', //supports custom cursor
@@ -190,6 +190,7 @@ const useStyles = makeStyles({
  * Apply styling to the Carousel slots based on the state
  */
 export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): ICartesianChartStyles => {
+  const _isRtl = isRtl();
   const baseStyles = useStyles();
   return {
     root: mergeClasses(cartesianchartClassNames.root, baseStyles.root /*props.styles?.root*/),
@@ -199,7 +200,11 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
     ),
     axisTitle: mergeClasses(cartesianchartClassNames.axisTitle, baseStyles.axisTitle /*props.styles?.axisTitle*/),
     xAxis: mergeClasses(cartesianchartClassNames.xAxis, baseStyles.xAxis /*props.styles?.xAxis*/),
-    yAxis: mergeClasses(cartesianchartClassNames.yAxis, baseStyles.yAxis /*props.styles?.yAxis*/),
+    yAxis: mergeClasses(
+      cartesianchartClassNames.yAxis,
+      baseStyles.yAxis,
+      _isRtl ? baseStyles.rtl : baseStyles.ltr /*props.styles?.yAxis*/,
+    ),
     opacityChangeOnHover: mergeClasses(
       cartesianchartClassNames.opacityChangeOnHover,
       baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,

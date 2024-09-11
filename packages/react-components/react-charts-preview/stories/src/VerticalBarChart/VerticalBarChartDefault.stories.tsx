@@ -145,11 +145,12 @@ export const VCBasic = () => {
   const rootStyle = { width: `${width}px`, height: `${height}px` };
   return (
     <>
-      <p>
+      <text>
         In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
         So instead of a numeric value, the callout will show the date that is passed in the{' '}
         <code>xAxisCalloutData</code> property.
-      </p>
+      </text>
+      <br></br>
       <label htmlFor="changeWidth">Change Width:</label>
       <input
         type="range"
