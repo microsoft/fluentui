@@ -1,3 +1,4 @@
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
@@ -8,11 +9,10 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import type { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
-import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
-import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
-import { useFocusableGroup } from '@fluentui/react-tabster';
 import { carouselCardClassNames } from './useCarouselCardStyles.styles';
 import { useCarouselSliderContext } from '../CarouselSlider/CarouselSliderContext';
 
@@ -25,7 +25,6 @@ import { useCarouselSliderContext } from '../CarouselSlider/CarouselSliderContex
  * @param props - props from this instance of CarouselCard
  * @param ref - reference to root HTMLDivElement of CarouselCard
  */
-
 export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
