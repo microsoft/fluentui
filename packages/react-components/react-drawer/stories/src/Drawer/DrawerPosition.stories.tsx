@@ -20,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-const capitalize = (str?: string) => str && str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const Position = () => {
   const styles = useStyles();
@@ -57,7 +57,7 @@ export const Position = () => {
               />
             }
           >
-            {capitalize(position)} Drawer
+            {capitalize(position!)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 

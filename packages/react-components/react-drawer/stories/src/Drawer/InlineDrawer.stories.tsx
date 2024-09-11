@@ -58,29 +58,16 @@ type DrawerInlineExampleProps = DrawerProps & {
   setOpen: (open: boolean) => void;
 };
 
-const capitalize = (str?: string) => str && str.charAt(0).toUpperCase() + str.slice(1);
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 const setButtonText = (open: boolean, position: DrawerProps['position']) => {
   let buttonText = open ? 'Close' : 'Open';
 
-  switch (position) {
-    case 'start':
-      buttonText = `${buttonText} start`;
-      break;
-
-    case 'end':
-      buttonText = `${buttonText} end`;
-      break;
-
-    case 'bottom':
-      buttonText = `${buttonText} bottom`;
-      break;
-
-    default:
-      buttonText = `${buttonText} drawer`;
+  if (['start', 'end', 'bottom'].includes(position!)) {
+    return `${buttonText} ${position}`;
   }
 
-  return buttonText;
+  return `${buttonText} drawer`;
 };
 
 const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
@@ -94,7 +81,7 @@ const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...p
             <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
           }
         >
-          {capitalize(props.position)} Inline Drawer
+          {capitalize(props.position!)} Inline Drawer
         </DrawerHeaderTitle>
       </DrawerHeader>
 
