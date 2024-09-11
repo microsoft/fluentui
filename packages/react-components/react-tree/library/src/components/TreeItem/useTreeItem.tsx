@@ -38,6 +38,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
+  const forceUpdateRovingTabIndex = useTreeContext_unstable(ctx => ctx.forceUpdateRovingTabIndex);
   const { level: contextLevel } = useSubtreeContext_unstable();
   const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
 
@@ -79,12 +80,23 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       if (treeItemRef.current?.querySelector(`.${treeClassNames.root}`)) {
         // eslint-disable-next-line no-console
         console.error(/** #__DE-INDENT__ */ `
-      @fluentui/react-tree [useTreeItem]:
-      <TreeItem> should be declared inside a <Tree> component.
-    `);
+          @fluentui/react-tree [useTreeItem]:
+          <TreeItem> should be declared inside a <Tree> component.
+        `);
       }
     }, [hasTreeContext]);
   }
+
+  React.useEffect(() => {
+    const treeItem = treeItemRef.current;
+    return () => {
+      // When the tree item is unmounted, we need to update the roving tab index
+      // if the tree item is the current tab indexed item
+      if (treeItem && treeItem.tabIndex === 0) {
+        forceUpdateRovingTabIndex?.();
+      }
+    };
+  }, [forceUpdateRovingTabIndex]);
 
   const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const getNextOpen = () => (itemType === 'branch' ? !open : open);

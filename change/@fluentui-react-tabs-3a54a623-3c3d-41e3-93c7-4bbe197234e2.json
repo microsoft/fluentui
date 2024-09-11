@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "export Tab component style hooks",
-  "packageName": "@fluentui/react-tabs",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

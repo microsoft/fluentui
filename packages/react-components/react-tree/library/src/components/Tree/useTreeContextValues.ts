@@ -16,6 +16,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       appearance,
       size,
       requestTreeResponse,
+      forceUpdateRovingTabIndex,
     } = state;
     /**
      * This context is created with "@fluentui/react-context-selector",
@@ -31,6 +32,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       contextType,
       level,
       requestTreeResponse,
+      forceUpdateRovingTabIndex,
     };
 
     return { tree };

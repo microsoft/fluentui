@@ -7,11 +7,16 @@ import { Extractor, ExtractorConfig, type IConfigFile } from '@microsoft/api-ext
 
 import type { GenerateApiExecutorSchema } from './schema';
 import type { PackageJson, TsConfig } from '../../types';
+import { measureEnd, measureStart } from '../../utils';
 
 const runExecutor: PromiseExecutor<GenerateApiExecutorSchema> = async (schema, context) => {
+  measureStart('GenerateApiExecutor');
+
   const options = normalizeOptions(schema, context);
 
   const success = await runGenerateApi(options, context);
+
+  measureEnd('GenerateApiExecutor');
 
   return { success };
 };

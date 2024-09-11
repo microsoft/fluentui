@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Sep 2024 10:19:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.90](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.90)
+
+Tue, 10 Sep 2024 10:19:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.89..@fluentui/react-button_v9.3.90)
+
+### Patches
+
+- fix: medium and large SplitButton menuButton is at least 24px wide ([PR #32309](https://github.com/microsoft/fluentui/pull/32309) by sarah.higley@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.5 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
 
 ## [9.3.89](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.89)
 
