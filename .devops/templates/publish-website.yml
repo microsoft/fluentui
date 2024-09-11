@@ -4,8 +4,8 @@ parameters:
     default: 8
 
 steps:
-  - task: AzureCLI@2$
-    displayName: 'Copy website drop to Azure '
+  - task: AzureCLI@2
+    displayName: 'Copy website drop to Azure'
     inputs:
       azureSubscription: 'Azure - fabricweb storage - NEW'
       scriptType: 'bash'
@@ -20,7 +20,7 @@ steps:
         --overwrite
 
   - task: AzureFileCopy@6
-    displayName: 'Update dogfood manifest in Azure blob '
+    displayName: 'Update dogfood manifest in Azure blob'
     inputs:
       SourcePath: '$(System.DefaultWorkingDirectory)/site-manifests/v$(version)-df.js'
       azureSubscription: 'Azure - fabricweb storage - NEW'
