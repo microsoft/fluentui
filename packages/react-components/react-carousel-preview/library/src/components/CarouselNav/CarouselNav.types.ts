@@ -13,6 +13,7 @@ export type NavButtonRenderFunction = (index: number) => React.ReactNode;
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
   /**
    * The total number of slides available.
+   * Users may override if using the component without a Carousel wrapper or implementing custom functionality.
    */
   totalSlides: number;
 
@@ -29,7 +30,7 @@ export type CarouselNavState = ComponentState<CarouselNavSlots> & {
 
 export type CarouselNavProps = Omit<ComponentProps<Partial<CarouselNavSlots>>, 'children'> & {
   children: NavButtonRenderFunction;
-} & Pick<CarouselNavState, 'appearance'>;
+} & Partial<Pick<CarouselNavState, 'appearance' | 'totalSlides'>>;
 
 export type CarouselNavContextValue = {
   index: number;

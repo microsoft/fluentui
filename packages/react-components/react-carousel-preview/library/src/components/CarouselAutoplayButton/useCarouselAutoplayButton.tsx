@@ -30,6 +30,13 @@ export const useCarouselAutoplayButton_unstable = (
 
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
 
+  React.useEffect(() => {
+    return () => {
+      // We disable autoplay if the button gets unmounted.
+      enableAutoplay(false);
+    };
+  }, [enableAutoplay]);
+
   useIsomorphicLayoutEffect(() => {
     // Enable/disable autoplay on state change
     enableAutoplay(autoplay);

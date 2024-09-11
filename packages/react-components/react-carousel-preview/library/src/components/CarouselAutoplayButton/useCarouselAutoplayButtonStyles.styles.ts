@@ -14,6 +14,7 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
  */
 const useStyles = makeStyles({
   root: {
+    pointerEvents: 'all',
     marginTop: 'auto',
     marginBottom: 'auto',
     ...shorthands.borderColor(tokens.colorTransparentStroke),
