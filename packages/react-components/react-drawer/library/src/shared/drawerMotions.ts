@@ -17,7 +17,10 @@ const durations: Record<NonNullable<DrawerBaseProps['size']>, number> = {
   full: motionTokens.durationUltraSlow,
 };
 
-function getPositionTransform(
+/**
+ * @internal
+ */
+export function getPositionTransform(
   position: DrawerBaseProps['position'],
   sizeVar: string,
   dir: FluentProviderContextValue['dir'],
@@ -42,7 +45,11 @@ function getPositionTransform(
     return rightToLeftTransform;
   }
 
-  return bottomToTopTransform;
+  if (position === 'bottom') {
+    return bottomToTopTransform;
+  }
+
+  return 'translate3d(0, 0, 0)';
 }
 
 /**
