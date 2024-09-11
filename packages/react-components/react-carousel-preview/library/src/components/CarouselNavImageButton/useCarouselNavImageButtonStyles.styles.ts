@@ -49,6 +49,7 @@ export const useCarouselNavImageButtonStyles_unstable = (
 
   const { selected } = state;
   const styles = useStyles();
+
   state.root.className = mergeClasses(
     carouselNavImageButtonClassNames.root,
     styles.root,

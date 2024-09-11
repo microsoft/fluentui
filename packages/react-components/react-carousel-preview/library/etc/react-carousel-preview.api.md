@@ -37,8 +37,8 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
-    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
     autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
+    onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
 };
 
 // @public (undocumented)
@@ -108,23 +108,6 @@ export type CarouselContextValue = {
 export type CarouselContextValues = {
     carousel: CarouselContextValue;
 };
-
-// @public
-export const CarouselFooter: ForwardRefComponent<CarouselFooterProps>;
-
-// @public (undocumented)
-export const carouselFooterClassNames: SlotClassNames<CarouselFooterSlots>;
-
-// @public
-export type CarouselFooterProps = ComponentProps<CarouselFooterSlots> & {};
-
-// @public (undocumented)
-export type CarouselFooterSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type CarouselFooterState = ComponentState<CarouselFooterSlots>;
 
 // @public (undocumented)
 export type CarouselIndexChangeData = EventData<'click' | 'focus', React_2.FocusEvent | React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
@@ -210,9 +193,9 @@ export type CarouselNavSlots = {
 
 // @public (undocumented)
 export type CarouselNavState = ComponentState<CarouselNavSlots> & {
-    totalSlides: number;
-    renderNavButton: NavButtonRenderFunction;
     appearance?: 'brand';
+    renderNavButton: NavButtonRenderFunction;
+    totalSlides: number;
 };
 
 // @public
@@ -273,9 +256,6 @@ export const renderCarouselButton_unstable: (state: CarouselButtonState) => JSX.
 export const renderCarouselCard_unstable: (state: CarouselCardState) => JSX.Element;
 
 // @public
-export const renderCarouselFooter_unstable: (state: CarouselFooterState) => JSX.Element;
-
-// @public
 export const renderCarouselNav_unstable: (state: CarouselNavState, contextValues: CarouselNavContextValues) => JSX.Element;
 
 // @public
@@ -313,12 +293,6 @@ export const useCarouselCardStyles_unstable: (state: CarouselCardState) => Carou
 
 // @public (undocumented)
 export const useCarouselContext_unstable: <T>(selector: ContextSelector<CarouselContextValue, T>) => T;
-
-// @public
-export const useCarouselFooter_unstable: (props: CarouselFooterProps, ref: React_2.Ref<HTMLDivElement>) => CarouselFooterState;
-
-// @public
-export const useCarouselFooterStyles_unstable: (state: CarouselFooterState) => CarouselFooterState;
 
 // @public
 export const useCarouselNav_unstable: (props: CarouselNavProps, ref: React_2.Ref<HTMLDivElement>) => CarouselNavState;

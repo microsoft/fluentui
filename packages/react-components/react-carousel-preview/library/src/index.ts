@@ -38,14 +38,6 @@ export {
   useCarouselCardStyles_unstable,
   useCarouselCard_unstable,
 } from './CarouselCard';
-export type { CarouselFooterProps, CarouselFooterSlots, CarouselFooterState } from './CarouselFooter';
-export {
-  CarouselFooter,
-  carouselFooterClassNames,
-  renderCarouselFooter_unstable,
-  useCarouselFooterStyles_unstable,
-  useCarouselFooter_unstable,
-} from './CarouselFooter';
 export type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
