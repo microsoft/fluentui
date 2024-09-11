@@ -51,7 +51,10 @@ function getPositionTransform(
 export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
   const keyframes: Keyframe[] = [
     {
-      /* TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs */
+      /**
+       * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
+       * The work will be done in the #32817
+       */
       transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       opacity: 0,
     },
@@ -79,7 +82,10 @@ export const InlineDrawerMotion = createPresenceComponent<DrawerMotionParams>(({
 export const OverlayDrawerMotion = createPresenceComponent<DrawerMotionParams>(({ position, size, dir }) => {
   const keyframes: Keyframe[] = [
     {
-      /* TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs */
+      /**
+       * TODO: Once the #31663 lands, we should update the RTL logic to use Motion APIs
+       * The work will be done in the #32817
+       */
       transform: getPositionTransform(position, drawerCSSVars.drawerSizeVar, dir),
       boxShadow: `0px ${tokens.colorTransparentBackground}`,
       opacity: 0,
