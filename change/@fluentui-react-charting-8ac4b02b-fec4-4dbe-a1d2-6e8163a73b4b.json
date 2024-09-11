@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Update d3 package dependencies to 3.x.y and 4.x.y",
+  "packageName": "@fluentui/react-charting",
+  "email": "98592573+AtishayMsft@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
