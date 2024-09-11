@@ -185,6 +185,19 @@ const useStyles = makeStyles({
     paddingTop: '10px',
     ...shorthands.borderTop(`1px solid ${tokens.colorNeutralStroke2}`),
   },
+  tooltip: {
+    fontSize: tokens.fontSizeBase300,
+    display: 'flex',
+    flexDirection: 'column',
+    ...shorthands.padding('8px'),
+    position: 'absolute',
+    textAlign: 'center',
+    top: '0px',
+    fill: tokens.colorNeutralBackground1,
+    borderRadius: '2px',
+    pointerEvents: 'none',
+    background: tokens.colorNeutralBackground1,
+  },
 });
 /**
  * Apply styling to the Carousel slots based on the state
@@ -248,5 +261,6 @@ export const useCartesianChartStyles_unstable = (props: ICartesianChartProps): I
       cartesianchartClassNames.descriptionMessage,
       baseStyles.descriptionMessage /*props.styles?. descriptionMessage*/,
     ),
+    tooltip: mergeClasses(cartesianchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
   };
 };

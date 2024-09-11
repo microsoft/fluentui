@@ -24,6 +24,7 @@ import {
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
+import { useId } from '@fluentui/react-utilities';
 
 /**
  * Cartesian Chart component
@@ -50,6 +51,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let _xScale: any;
   let isIntegralDataset: boolean = true;
+  const _tooltipId = useId('tooltip');
 
   const [containerWidth, setContainerWidth] = React.useState<number>(0);
   const [containerHeight, setContainerHeight] = React.useState<number>(0);
@@ -625,6 +627,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       )}
       {/** The callout is used for narration, so keep it mounted on the DOM */}
       {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
+      <div id={_tooltipId} className={classes.tooltip} ref={props.tooltipRef!} />
     </div>
   );
 });

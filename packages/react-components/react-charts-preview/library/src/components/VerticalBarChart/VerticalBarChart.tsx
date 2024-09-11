@@ -66,7 +66,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _xAxisLabels: string[];
   let _yMax: number;
   let _isHavingLine: boolean = _checkForLine();
-  const _tooltipId: string = useId('VCTooltipID_');
   const _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
@@ -80,6 +79,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
+  const tooltipRef = React.useRef(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -98,6 +98,19 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [xAxis, setXElement] = React.useState<SVGElement | null>(null);
+
+  const classes = useVerticalBarChartStyles_unstable(props);
+
+  React.useEffect(() => {
+    if (xAxis) {
+      const tooltipProps = {
+        xAxis: xAxis,
+        div: tooltipRef.current,
+      };
+      tooltipOfXAxislabels(tooltipProps);
+    }
+  }, [xAxis]);
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -536,8 +549,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     return { xBarScale, yBarScale };
   }
 
-  const classes = useVerticalBarChartStyles_unstable(props);
-
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
@@ -582,28 +593,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -654,30 +647,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-        showTooltip: props.showXAxisLablesTooltip,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -725,28 +698,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -966,49 +921,52 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     tickFormat: props.tickFormat,
   };
   return !_isChartEmpty() ? (
-    <CartesianChart
-      {...props}
-      points={_points}
-      chartType={ChartTypes.VerticalBarChart}
-      xAxisType={_xAxisType}
-      calloutProps={calloutProps}
-      tickParams={tickParams}
-      {...(_isHavingLine && _noLegendHighlighted() && { isCalloutForStack: true })}
-      legendBars={legendBars}
-      datasetForXAxisDomain={_xAxisLabels}
-      barwidth={_barWidth}
-      //focusZoneDirection={FocusZoneDirection.horizontal}
-      customizedCallout={_getCustomizedCallout()}
-      getmargins={_getMargins}
-      getGraphData={_getGraphData}
-      getAxisData={_getAxisData}
-      onChartMouseLeave={_handleChartMouseLeave}
-      getDomainMargins={_getDomainMargins}
-      {...(_xAxisType === XAxisTypes.StringAxis && {
-        xAxisInnerPadding: _xAxisInnerPadding,
-        xAxisOuterPadding: _xAxisOuterPadding,
-      })}
-      /* eslint-disable react/jsx-no-bind */
-      // eslint-disable-next-line react/no-children-prop
-      children={(props: IChildProps) => {
-        return (
-          <>
-            <g>{_bars}</g>
-            {_isHavingLine && (
-              <g>
-                {_createLine(
-                  props.xScale!,
-                  props.yScale!,
-                  props.containerHeight,
-                  props.containerWidth,
-                  props.yScaleSecondary,
-                )}
-              </g>
-            )}
-          </>
-        );
-      }}
-    />
+    <>
+      <CartesianChart
+        {...props}
+        points={_points}
+        chartType={ChartTypes.VerticalBarChart}
+        xAxisType={_xAxisType}
+        calloutProps={calloutProps}
+        tickParams={tickParams}
+        {...(_isHavingLine && _noLegendHighlighted() && { isCalloutForStack: true })}
+        legendBars={legendBars}
+        datasetForXAxisDomain={_xAxisLabels}
+        barwidth={_barWidth}
+        tooltipRef={tooltipRef}
+        //focusZoneDirection={FocusZoneDirection.horizontal}
+        customizedCallout={_getCustomizedCallout()}
+        getmargins={_getMargins}
+        getGraphData={_getGraphData}
+        getAxisData={_getAxisData}
+        onChartMouseLeave={_handleChartMouseLeave}
+        getDomainMargins={_getDomainMargins}
+        {...(_xAxisType === XAxisTypes.StringAxis && {
+          xAxisInnerPadding: _xAxisInnerPadding,
+          xAxisOuterPadding: _xAxisOuterPadding,
+        })}
+        /* eslint-disable react/jsx-no-bind */
+        // eslint-disable-next-line react/no-children-prop
+        children={(props: IChildProps) => {
+          return (
+            <>
+              <g>{_bars}</g>
+              {_isHavingLine && (
+                <g>
+                  {_createLine(
+                    props.xScale!,
+                    props.yScale!,
+                    props.containerHeight,
+                    props.containerWidth,
+                    props.yScaleSecondary,
+                  )}
+                </g>
+              )}
+            </>
+          );
+        }}
+      />
+    </>
   ) : (
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
   );
