@@ -80,3 +80,17 @@ export {
   type CarouselSliderSlots,
   type CarouselSliderState,
 } from './CarouselSlider';
+export type {
+  CarouselNavContainerProps,
+  CarouselNavContainerSlots,
+  CarouselNavContainerState,
+} from './CarouselNavContainer';
+export {
+  CarouselNavContainer,
+  carouselNavContainerClassNames,
+  renderCarouselNavContainer_unstable,
+  useCarouselNavContainerStyles_unstable,
+  useCarouselNavContainer_unstable,
+} from './CarouselNavContainer';
+export { carouselContextDefaultValue, CarouselProvider, useCarouselContext_unstable } from './CarouselContext';
+export type { CarouselIndexChangeData, CarouselContextValue, CarouselContextValues } from './CarouselContext';

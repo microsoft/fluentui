@@ -5,6 +5,7 @@ exports[`CarouselButton renders a default state 1`] = `
   <button
     aria-disabled="false"
     class="fui-CarouselButton fui-Button"
+    tabindex="0"
     type="button"
   >
     <span

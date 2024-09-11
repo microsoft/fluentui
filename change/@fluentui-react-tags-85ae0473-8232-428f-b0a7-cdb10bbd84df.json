@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-tags): allows TagGroup to be disabled",
-  "packageName": "@fluentui/react-tags",
-  "email": "jiangemma@microsoft.com",
-  "dependentChangeType": "patch"
-}

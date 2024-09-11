@@ -18,6 +18,7 @@ const useStyles = makeStyles({
     marginBottom: 'auto',
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackgroundAlpha,
+    pointerEvents: 'all',
     ':hover': {
       cursor: 'pointer',
     },
