@@ -22,22 +22,27 @@ function getPositionTransform(
   sizeVar: string,
   dir: FluentProviderContextValue['dir'],
 ) {
-  switch (position) {
-    case 'start':
-      if (dir === 'rtl') {
-        return `translate3d(var(${sizeVar}), 0, 0)`;
-      }
+  const leftToRightTransform = `translate3d(var(${sizeVar}), 0, 0)`;
+  const rightToLeftTransform = `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
+  const bottomToTopTransform = `translate3d(0, var(${sizeVar}), 0)`;
 
-      return `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
-    case 'end':
-      if (dir === 'rtl') {
-        return `translate3d(calc(var(${sizeVar}) * -1), 0, 0)`;
-      }
+  if (position === 'start') {
+    if (dir === 'rtl') {
+      return rightToLeftTransform;
+    }
 
-      return `translate3d(var(${sizeVar}), 0, 0)`;
-    case 'bottom':
-      return `translate3d(0, var(${sizeVar}), 0)`;
+    return leftToRightTransform;
   }
+
+  if (position === 'end') {
+    if (dir === 'rtl') {
+      return leftToRightTransform;
+    }
+
+    return rightToLeftTransform;
+  }
+
+  return bottomToTopTransform;
 }
 
 /**
