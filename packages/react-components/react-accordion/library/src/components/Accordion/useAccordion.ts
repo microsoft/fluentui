@@ -107,6 +107,7 @@ function updateOpenItems<Value = AccordionItemValue>(
   }
   return previousOpenItems;
 }
+
 /**
  * Normalizes Accordion index into an array of indexes
  */
