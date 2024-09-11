@@ -16,6 +16,7 @@ import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
  */
 export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
   const { appearance } = props;
+
   const focusableGroupAttr = useArrowNavigationGroup({
     circular: false,
     axis: 'horizontal',
