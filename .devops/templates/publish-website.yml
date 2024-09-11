@@ -29,12 +29,12 @@ steps:
       ContainerName: 'fabric-website'
       BlobPrefix: manifests/
 
-  - task: AzureFileCopy@6
-    displayName: 'Update prod manifest in Azure blob'
-    inputs:
-      SourcePath: '$(System.DefaultWorkingDirectory)/site-manifests/v$(version)-prod.js'
-      azureSubscription: 'Azure - fabricweb storage - NEW'
-      Destination: AzureBlob
-      storage: fabricweb
-      ContainerName: 'fabric-website'
-      BlobPrefix: manifests/
+  # - task: AzureFileCopy@6
+  #   displayName: 'Update prod manifest in Azure blob'
+  #   inputs:
+  #     SourcePath: '$(System.DefaultWorkingDirectory)/site-manifests/v$(version)-prod.js'
+  #     azureSubscription: 'Azure - fabricweb storage - NEW'
+  #     Destination: AzureBlob
+  #     storage: fabricweb
+  #     ContainerName: 'fabric-website'
+  #     BlobPrefix: manifests/
