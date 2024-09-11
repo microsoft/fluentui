@@ -15,8 +15,7 @@ import {
   NavSubItemGroup,
   OnNavItemSelectData,
 } from '@fluentui/react-nav-preview';
-import { DrawerProps } from '@fluentui/react-drawer';
-import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import { Button, Label, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -84,13 +83,55 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-type DrawerType = Required<DrawerProps>['type'];
+// A type that represents a navItemValue and its potential children.
+// An empty children array indicates a Single top level NavItem.
+// A hydrated children array indicates a NavCategoryItem with children.
+type navItemValueCombo = { parent: string; children: string[] };
+
+// This is a list of navItemValues and their potential children
+// Ite exactly matches the NavDrawer in the story below
+// This is how a consumer might store them in their app
+const navItemValueList: navItemValueCombo[] = [
+  { parent: '1', children: [] },
+  { parent: '2', children: [] },
+  { parent: '3', children: [] },
+  { parent: '4', children: [] },
+  { parent: '5', children: [] },
+  { parent: '6', children: ['7', '8'] },
+  { parent: '9', children: [] },
+  { parent: '10', children: [] },
+  { parent: '11', children: ['12', '13'] },
+  { parent: '14', children: [] },
+  { parent: '15', children: [] },
+  { parent: '16', children: ['17', '18'] },
+  { parent: '19', children: [] },
+  { parent: '20', children: [] },
+];
+
+type SelectedPage = {
+  selectedCategory: string;
+  selectedValue: string;
+};
+
+const selectRandomPage = (): SelectedPage => {
+  const randomIndex = Math.floor(Math.random() * navItemValueList.length);
+  const randomItem = navItemValueList[randomIndex];
+
+  if (randomItem.children.length > 0) {
+    const randomChildIndex = Math.floor(Math.random() * randomItem.children.length);
+    const selectedCategory = randomItem.parent;
+    const selectedValue = randomItem.children[randomChildIndex];
+    return { selectedCategory, selectedValue };
+  } else {
+    const selectedCategory = randomItem.parent;
+    const selectedValue = randomItem.parent;
+    return { selectedCategory, selectedValue };
+  }
+};
 
 export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
-  const typeLabelId = useId('type-label');
-  const linkLabelId = useId('link-label');
   const multipleLabelId = useId('multiple-label');
 
   const [openCategories, setOpenCategories] = React.useState<string[]>(['6']);
@@ -99,8 +140,6 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const [isMultiple, setIsMultiple] = React.useState(true);
 
   const [isOpen, setIsOpen] = React.useState(true);
-  const [enabledLinks, setEnabledLinks] = React.useState(true);
-  const [type, setType] = React.useState<DrawerType>('inline');
 
   const handleCategoryToggle = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
     if (data.value === undefined && data.categoryValue) {
@@ -132,14 +171,18 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
     setSelectedValue(data.value as string);
   };
 
-  const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
-
   const renderHamburgerWithToolTip = () => {
     return (
       <Tooltip content="Navigation" relationship="label">
         <Hamburger onClick={() => setIsOpen(!isOpen)} />
       </Tooltip>
     );
+  };
+
+  const handleNavigationClick = () => {
+    const { selectedCategory, selectedValue } = selectRandomPage();
+    setSelectedCategoryValue(selectedCategory);
+    setSelectedValue(selectedValue);
   };
 
   return (
@@ -155,40 +198,36 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
         openCategories={openCategories}
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
+        type={'inline'}
         open={isOpen}
-        type={type}
       >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 
         <NavDrawerBody>
-          <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
+          <AppItem icon={<PersonCircle32Regular />} as="a">
             Contoso HR
           </AppItem>
-          <NavItem href={linkDestination} icon={<Dashboard />} value="1">
+          <NavItem icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
-          <NavItem href={linkDestination} icon={<Announcements />} value="2">
+          <NavItem icon={<Announcements />} value="2">
             Announcements
           </NavItem>
-          <NavItem href={linkDestination} icon={<EmployeeSpotlight />} value="3">
+          <NavItem icon={<EmployeeSpotlight />} value="3">
             Employee Spotlight
           </NavItem>
-          <NavItem icon={<Search />} href={linkDestination} value="4">
+          <NavItem icon={<Search />} value="4">
             Profile Search
           </NavItem>
-          <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
+          <NavItem icon={<PerformanceReviews />} value="5">
             Performance Reviews
           </NavItem>
           <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="7">
-                Openings
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="8">
-                Submissions
-              </NavSubItem>
+              <NavSubItem value="7">Openings</NavSubItem>
+              <NavSubItem value="8">Submissions</NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
           <NavItem icon={<Interviews />} value="9">
@@ -204,12 +243,8 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
               Retirement
             </NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="13">
-                Plan Information
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="14">
-                Fund Performance
-              </NavSubItem>
+              <NavSubItem value="13">Plan Information</NavSubItem>
+              <NavSubItem value="14">Fund Performance</NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
 
@@ -220,19 +255,15 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
           <NavCategory value="16">
             <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
             <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="17">
-                Career Paths
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="18">
-                Planning
-              </NavSubItem>
+              <NavSubItem value="17">Career Paths</NavSubItem>
+              <NavSubItem value="18">Planning</NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
           <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
-          <NavItem href={linkDestination} icon={<Reports />} value="20">
+          <NavItem icon={<Reports />} value="20">
             Reports
           </NavItem>
         </NavDrawerBody>
@@ -240,27 +271,14 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
       <div className={styles.content}>
         {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
-          <Label id={typeLabelId}>Type</Label>
-          <RadioGroup
-            value={type}
-            onChange={(_, data) => setType(data.value as DrawerType)}
-            aria-labelledby={typeLabelId}
-          >
-            <Radio value="overlay" label="Overlay (Default)" />
-            <Radio value="inline" label="Inline" />
-          </RadioGroup>
-          <Label id={linkLabelId}>Links</Label>
-          <Switch
-            checked={enabledLinks}
-            onChange={(_, data) => setEnabledLinks(!!data.checked)}
-            label={enabledLinks ? 'Enabled' : 'Disabled'}
-            aria-labelledby={linkLabelId}
-          />
-          <Label id={multipleLabelId}>Multiple Categories</Label>
+          <Button appearance="primary" onClick={handleNavigationClick}>
+            Navigate
+          </Button>
+          <Label id={multipleLabelId}>Categories</Label>
           <Switch
             checked={isMultiple}
             onChange={(_, data) => setIsMultiple(!!data.checked)}
-            label={isMultiple ? 'Multiple Open Categories' : 'Single Open Category'}
+            label={isMultiple ? 'Multiple' : 'Single'}
             aria-labelledby={multipleLabelId}
           />
         </div>

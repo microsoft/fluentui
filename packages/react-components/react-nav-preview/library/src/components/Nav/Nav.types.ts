@@ -48,13 +48,14 @@ export type NavProps = ComponentProps<NavSlots> & {
   /**
    * The value of the currently selected navItem.
    * Mutually exclusive with defaultSelectedValue.
+   * @default undefined
    */
   selectedValue?: NavItemValue;
 
   /**
    * Indicates a category that has a selected child
    * Will show the category as selected if it is closed.
-   * Null otherwise
+   * @default undefined
    */
   selectedCategoryValue?: NavItemValue;
 
@@ -71,7 +72,6 @@ export type NavProps = ComponentProps<NavSlots> & {
 
   /**
    * The size and density of the Nav and it's children
-   *
    * @default 'medium'
    */
   size?: NavSize;
