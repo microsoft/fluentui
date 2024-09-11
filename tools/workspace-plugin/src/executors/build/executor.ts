@@ -6,12 +6,18 @@ import { assetGlobsToFiles, copyAssets } from './lib/assets';
 import { cleanOutput } from './lib/clean';
 import { NormalizedOptions, normalizeOptions, processAsyncQueue } from './lib/shared';
 
+import { measureEnd, measureStart } from '../../utils';
+
 import { type BuildExecutorSchema } from './schema';
 
 const runExecutor: PromiseExecutor<BuildExecutorSchema> = async (schema, context) => {
+  measureStart('BuildExecutor');
+
   const options = normalizeOptions(schema, context);
 
   const success = await runBuild(options, context);
+
+  measureEnd('BuildExecutor');
 
   return { success };
 };
