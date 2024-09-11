@@ -254,6 +254,7 @@ export {
   BaseTextArea,
   TextArea,
   TextAreaAppearance,
+  TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
   TextAreaDefinition,
   TextAreaResize,

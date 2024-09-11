@@ -2,6 +2,181 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:04 GMT",
+      "tag": "@fluentui/react-components_v9.54.14",
+      "version": "9.54.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "99348c848e4729e8794581ed8499bb350cd54732",
+            "comment": "fix: medium and large SplitButton menuButton is at least 24px wide"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "fix: follow up on assertSlots fixes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "47f08936d69e00ee7d02f28658c9280c6c9e070d",
+            "comment": "fix(useOverflowContainer): Removes double overflowManager creation"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "4b0f902e88f0fa8ba980791cbf64dbcedb159a4b",
+            "comment": "fix: remove aria-valuenow from native input element"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d3249d633bc92d1486a0f4702e7d5197c754327b",
+            "comment": "fix(TableHeaderCell): should use hover and pressed tokens"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b044f714a9c16ac165e1b5829bdb04902f16aaf8",
+            "comment": "fix: Improve animation for active tab indicator on tabs with falsy values"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "843386fc13e12d9efca29eb1e26a2654239167b6",
+            "comment": "bugfix: ensures input behaviour on text selection"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "c1f74b492d26cec010913d61907bfdfb67a4746e",
+            "comment": "fix(react-tag-picker): compute aria-label/aria-labelledby for expand button, stories a11y fixes"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "0a888221b9d92a87135dd5319fd481169b0d45ac",
+            "comment": "fix(react-tag-picker): allows TagPickerGroup to be disabled"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "0a888221b9d92a87135dd5319fd481169b0d45ac",
+            "comment": "fix(react-tags): allows TagGroup to be disabled"
+          },
+          {
+            "author": "jiangemma@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "c1f74b492d26cec010913d61907bfdfb67a4746e",
+            "comment": "fix(react-tags): allow TagGroup to be disabled, remove role='img' from Tag dismiss"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-teaching-popover",
+            "commit": "854fe51c4fb889cfd0a5e3419cf88ee8c2e837d7",
+            "comment": "fix: Update popover size to match design guidance 320px, enable image to auto size based on popover surface bounds"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ee0406bd36a354d1251dcacdaf4b162fdc7f4abf",
+            "comment": "bugfix: ensure actions visibility between successive mouse events"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b30f776bc7b6510cbc31ef1b4e1ceaac51adc242",
+            "comment": "fix: remove unnecessary aria-hidden attributes that were causing accessibility issues"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4831884340f715d5a8d285e6862e19e85032b738",
+            "comment": "bugfix: ensure onClick handler is not called on every click"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "26ad33a04b489d59a8e64dc7337734ea8568fbfc",
+            "comment": "feat: Add accessibility and focus modes to cards"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "f481a67b7ea12fea5b9953f738872901225221ef",
+            "comment": "feat: Add brand appearance to nav buttons, update action states"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "95e64e87fcbcebfde3ec8b2c0e45685d627116d6",
+            "comment": "feat: Add enableDrag option for mouse/touch scroll support"
+          },
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "2157a9ec51b1d4833f9a9ff7b495155c26154854",
+            "comment": "export Tab component style hooks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d7d7430e49fafbb186b88bc02bd2c7f2bccf6773",
+            "comment": "bugfix: recover from tabIndex=-1 when TreeItem is removed"
+          }
+        ],
+        "none": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b30f776bc7b6510cbc31ef1b4e1ceaac51adc242",
+            "comment": "docs: remove now-uneeded comment on tree"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 16 Aug 2024 10:24:16 GMT",
       "tag": "@fluentui/react-components_v9.54.13",
       "version": "9.54.13",

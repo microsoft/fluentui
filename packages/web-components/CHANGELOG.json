@@ -2,6 +2,57 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2024 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.65",
+      "version": "3.0.0-beta.65",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "269f109440bd3b66abf86b1f70aedb1b7999e142",
+            "comment": "docs: reflect setTheme change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2024 04:07:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.64",
+      "version": "3.0.0-beta.64",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "416d7ddb3bd0ef5187c151807f10a0cfa721e0c1",
+            "comment": "chore: add missing export for textarea"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Sep 2024 04:08:17 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.63",
+      "version": "3.0.0-beta.63",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "dcc17c95874e52e5e74e6e9e6e1ec24027cc144d",
+            "comment": "normalize export paths"
+          },
+          {
+            "author": "863023+radium-v@users.noreply.github.com",
+            "package": "@fluentui/web-components",
+            "commit": "207969ccc26df63fc0400d2a1c78b31b4b6c6f72",
+            "comment": "restore define modules as default exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Aug 2024 04:07:03 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.62",
       "version": "3.0.0-beta.62",

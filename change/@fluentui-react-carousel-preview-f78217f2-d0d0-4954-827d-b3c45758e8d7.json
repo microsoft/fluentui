@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: follow up on assertSlots fixes",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

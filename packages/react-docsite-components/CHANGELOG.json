@@ -2,6 +2,63 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2024 07:20:49 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.120",
+      "version": "8.13.120",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.238",
+            "commit": "a00b8c1d2c6fe4b853b5616d65bef406f942bb0d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Sep 2024 07:21:59 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.119",
+      "version": "8.13.119",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.9",
+            "commit": "d7d7430e49fafbb186b88bc02bd2c7f2bccf6773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.237",
+            "commit": "d7d7430e49fafbb186b88bc02bd2c7f2bccf6773"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2024 07:21:41 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.118",
+      "version": "8.13.118",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react to v8.120.8",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-docsite-components",
+            "comment": "Bump @fluentui/react-monaco-editor to v1.7.236",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2024 07:21:50 GMT",
       "tag": "@fluentui/react-docsite-components_v8.13.117",
       "version": "8.13.117",

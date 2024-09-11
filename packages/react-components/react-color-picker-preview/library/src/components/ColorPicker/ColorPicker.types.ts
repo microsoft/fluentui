@@ -1,4 +1,11 @@
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import * as React from 'react';
+import type { ComponentProps, ComponentState, Slot, EventHandler, EventData } from '@fluentui/react-utilities';
+import { ColorPickerContextValue } from '../../contexts/colorPicker';
+
+export type ColorPickerOnChangeData = EventData<'change', React.ChangeEvent<HTMLInputElement>> & {
+  value?: number;
+  channel?: string;
+};
 
 export type ColorPickerSlots = {
   root: Slot<'div'>;
@@ -7,11 +14,19 @@ export type ColorPickerSlots = {
 /**
  * ColorPicker Props
  */
-export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {};
+export type ColorPickerProps = ComponentProps<ColorPickerSlots> & {
+  /**
+   * Selected color.
+   */
+  color?: string;
+
+  /**
+   * Callback for when the user changes the color.
+   */
+  onColorChange?: EventHandler<ColorPickerOnChangeData>;
+};
 
 /**
  * State used in rendering ColorPicker
  */
-export type ColorPickerState = ComponentState<ColorPickerSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ColorPickerProps.
-// & Required<Pick<ColorPickerProps, 'propName'>>
+export type ColorPickerState = ComponentState<ColorPickerSlots> & ColorPickerContextValue;
