@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing background for legends",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "120183316+srmukher@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}

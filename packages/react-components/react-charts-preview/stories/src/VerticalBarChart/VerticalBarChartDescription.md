@@ -1,0 +1,1 @@
+Vertical Bar Chart Description

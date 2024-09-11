@@ -1,0 +1,2586 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonutChart - mouse events Should render callout correctly on mouseover 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(0, -20)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+              data-is-focusable={true}
+              id="_Pie_15first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+              data-is-focusable={true}
+              id="_Pie_15second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+              data-is-focusable={true}
+              id="_Pie_15third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-PopoverSurface"
+    data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+    onKeyDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    role="group"
+    tabIndex={-1}
+  >
+    <div
+      className="calloutContentRoot-112"
+    >
+      <div
+        className="calloutDateTimeContainer-113"
+      >
+        <div
+          className="calloutContentX-114"
+        >
+           
+        </div>
+      </div>
+      <div
+        className=""
+      >
+        <div
+          className="calloutBlockContainer-115"
+        >
+          <div
+            className="calloutlegendText-116"
+          >
+            2020/04/30
+          </div>
+          <div
+            className="calloutContentY-117"
+          >
+            20,000
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="0"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="2"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart - mouse events Should render customized callout on mouseover 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(0, -20)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
+              data-is-focusable={true}
+              id="_Pie_19first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
+              data-is-focusable={true}
+              id="_Pie_19second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
+              data-is-focusable={true}
+              id="_Pie_19third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-PopoverSurface"
+    data-tabster="{\\"restorer\\":{\\"type\\":0}}"
+    onKeyDown={[Function]}
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
+    role="group"
+    tabIndex={-1}
+  >
+    <div
+      className="calloutContentRoot-112"
+    >
+      <div
+        className="calloutDateTimeContainer-113"
+      >
+        <div
+          className="calloutContentX-114"
+        >
+           
+        </div>
+      </div>
+      <div
+        className=""
+      >
+        <div
+          className="calloutBlockContainer-115"
+        >
+          <div
+            className="calloutlegendText-116"
+          >
+            2020/04/30
+          </div>
+          <div
+            className="calloutContentY-117"
+          >
+            20,000
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="0"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="1"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  key="2"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should elevate all smaller values to minimums 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_9first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_9second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_9third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_7first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_7second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_7third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing Should render arc labels in percentage format 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_8first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_8second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_8third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1.141,-99.993A100,100,0,0,1,93.397,-35.736L51.182,-20.134A55,55,0,0,0,1.141,-54.988Z"
+              data-is-focusable={true}
+              id="_Pie_1first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.188,-33.595A100,100,0,0,1,-40.544,91.412L-21.828,50.483A55,55,0,0,0,51.974,-17.993Z"
+              data-is-focusable={true}
+              id="_Pie_1second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.619,90.463A100,100,0,0,1,-1.141,-99.993L-1.141,-54.988A55,55,0,0,0,-23.904,49.534Z"
+              data-is-focusable={true}
+              id="_Pie_1third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders DonutChart correctly without color points 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_2first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": undefined,
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_2second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": undefined,
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_2third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": undefined,
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": undefined,
+                        "--rect-borderColor": undefined,
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": undefined,
+                        "--rect-borderColor": undefined,
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": undefined,
+                        "--rect-borderColor": undefined,
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_5first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_5second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_5third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_3first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_3second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_3third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_4first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_4second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_4third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
+<div
+  className="fui-donut__root"
+  onMouseLeave={[Function]}
+>
+  <div
+    data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  >
+    <div>
+      <svg
+        aria-label="Donut chart example"
+        className="fui-donut__chart"
+      >
+        <g
+          transform="translate(100, 100)"
+        >
+          <g>
+            <path
+              aria-label="2020/04/30, 20000."
+              className="fui-donut-arc__root"
+              d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_6first20000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#E5E5E5",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/20, 39000."
+              className="fui-donut-arc__root"
+              d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_6second39000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#0078D4",
+                }
+              }
+            />
+          </g>
+          <g>
+            <path
+              aria-label="2020/04/25, 45000."
+              className="fui-donut-arc__root"
+              d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
+              data-is-focusable={true}
+              id="_Pie_6third45000"
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+              opacity={1}
+              role="img"
+              style={
+                Object {
+                  "cursor": "default",
+                  "fill": "#DADADA",
+                }
+              }
+            />
+          </g>
+          <text
+            className="fui-donut-pie__insideDonutString"
+            dominantBaseline="middle"
+            textAnchor="middle"
+            y={5}
+          >
+            1,000
+          </text>
+        </g>
+      </svg>
+    </div>
+  </div>
+  <div
+    className="fui-donut__legendContainer"
+  >
+    <div
+      className="fui-legend__root"
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              aria-label="Legends"
+              aria-multiselectable={false}
+              data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+              role="listbox"
+            >
+              <div
+                className="ms-OverflowSet root-109"
+                role="group"
+              >
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="first"
+                    aria-posinset={1}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#E5E5E5",
+                        "--rect-borderColor": "#E5E5E5",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      first
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="second"
+                    aria-posinset={2}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#0078D4",
+                        "--rect-borderColor": "#0078D4",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      second
+                    </div>
+                  </button>
+                </div>
+                <div
+                  className="ms-OverflowSet-item item-110"
+                  role="none"
+                >
+                  <button
+                    aria-label="third"
+                    aria-posinset={3}
+                    aria-selected={false}
+                    aria-setsize={3}
+                    className="fui-Button fui-legend__legend"
+                    data-is-focusable={true}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onFocus={[Function]}
+                    onMouseOut={[Function]}
+                    onMouseOver={[Function]}
+                    role="option"
+                    style={
+                      Object {
+                        "--rect-backgroundColor": "#DADADA",
+                        "--rect-borderColor": "#DADADA",
+                        "--rect-content": "",
+                        "--rect-height": "12px",
+                      }
+                    }
+                    type="button"
+                  >
+                    <div
+                      className="fui-legend__rect"
+                    />
+                    <div
+                      className="fui-legend__text"
+                    >
+                      third
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
