@@ -71,8 +71,8 @@ OverlayInsideContainer.parameters = {
   docs: {
     description: {
       story: [
-        'An overlay drawer can be rendered within a container by setting the `mountNode` prop to the container element.',
-        'This is useful when the drawer needs to be rendered within a specific container and not at the root level.',
+        'The overlay Drawer can be rendered inside a specific container by setting the mountNode prop to the desired container element.',
+        'This approach is useful when you need the Drawer to appear within a particular section of the DOM, rather than being attached to the root element.',
       ].join('\n'),
     },
   },
