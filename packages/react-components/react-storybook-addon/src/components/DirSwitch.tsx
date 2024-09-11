@@ -24,7 +24,7 @@ export const DirSwitch = () => {
   return (
     <IconButton key={DIR_ID} title="Change Direction" onClick={toggleDirection}>
       <div>
-        Direction: <span className={styles.monospace}>{isLTR ? 'LTR' : 'RTL'}</span>
+        Direction: <span className={styles.monospace}>{direction.toUpperCase()}</span>
       </div>
     </IconButton>
   );
