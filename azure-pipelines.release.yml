@@ -154,6 +154,10 @@ extends:
                   node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
                 displayName: 'Generate homepage.htm'
 
+              - template: .devops/templates/publish-website.yml@self
+                parameters:
+                  version: 8
+
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
