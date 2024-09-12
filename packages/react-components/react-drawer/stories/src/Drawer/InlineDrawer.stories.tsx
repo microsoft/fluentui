@@ -7,7 +7,7 @@ import {
   Button,
   makeStyles,
   tokens,
-  DrawerProps,
+  InlineDrawerProps,
   mergeClasses,
   useRestoreFocusSource,
   useRestoreFocusTarget,
@@ -54,13 +54,13 @@ const useStyles = makeStyles({
   },
 });
 
-type DrawerInlineExampleProps = DrawerProps & {
+type DrawerInlineExampleProps = InlineDrawerProps & {
   setOpen: (open: boolean) => void;
 };
 
 const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
-const setButtonText = (open: boolean, position: Required<DrawerProps>['position']) => {
+const getButtonText = (open: boolean, position: Required<InlineDrawerProps>['position']) => {
   const buttonText = open ? 'Close' : 'Open';
 
   if (['start', 'end', 'bottom'].includes(position)) {
@@ -70,7 +70,7 @@ const setButtonText = (open: boolean, position: Required<DrawerProps>['position'
   return `${buttonText} drawer`;
 };
 
-const DrawerInlineExample: React.FC<Required<DrawerInlineExampleProps>> = ({ setOpen, ...props }) => {
+const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ setOpen, ...props }) => {
   const restoreFocusSourceAttributes = useRestoreFocusSource();
 
   return (
@@ -81,7 +81,7 @@ const DrawerInlineExample: React.FC<Required<DrawerInlineExampleProps>> = ({ set
             <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
           }
         >
-          {capitalize(props.position)} Inline Drawer
+          {capitalize(props.position!)} Inline Drawer
         </DrawerHeaderTitle>
       </DrawerHeader>
 
@@ -109,15 +109,15 @@ export const Inline = () => {
         <div className={styles.content}>
           <div className={styles.buttons}>
             <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setStartOpen(!startOpen)}>
-              {setButtonText(startOpen, 'start')}
+              {getButtonText(startOpen, 'start')}
             </Button>
 
             <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setEndOpen(!endOpen)}>
-              {setButtonText(endOpen, 'end')}
+              {getButtonText(endOpen, 'end')}
             </Button>
 
             <Button {...restoreFocusTargetAttributes} appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
-              {setButtonText(bottomOpen, 'bottom')}
+              {getButtonText(bottomOpen, 'bottom')}
             </Button>
           </div>
 
