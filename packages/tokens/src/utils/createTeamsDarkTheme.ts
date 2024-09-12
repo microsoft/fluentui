@@ -7,7 +7,6 @@ import type { BrandVariants, Theme } from '../types';
 import { durations } from '../global/durations';
 import { curves } from '../global/curves';
 import { horizontalSpacings, verticalSpacings } from '../global/spacings';
-import { zIndexes } from '../global/zIndexes';
 
 export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
   const colorTokens = generateColorTokens(brand);
@@ -27,8 +26,6 @@ export const createTeamsDarkTheme: (brand: BrandVariants) => Theme = brand => {
     ...colorTokens,
     ...colorPaletteTokens,
     ...colorStatusTokens,
-
-    ...zIndexes,
 
     ...createShadowTokens(colorTokens.colorNeutralShadowAmbient, colorTokens.colorNeutralShadowKey),
     ...createShadowTokens(colorTokens.colorBrandShadowAmbient, colorTokens.colorBrandShadowKey, 'Brand'),

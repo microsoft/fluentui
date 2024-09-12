@@ -687,14 +687,14 @@ export type CurveTokens = {
  * Design tokens for z-index groups and levels
  */
 export type ZIndexTokens = {
-  zIndexBackground: string;
-  zIndexContent: string;
-  zIndexOverlay: string;
-  zIndexPopup: string;
-  zIndexMessages: string;
-  zIndexFloating: string;
-  zIndexPriority: string;
-  zIndexDebug: string;
+  zIndexBackground?: string;
+  zIndexContent?: string;
+  zIndexOverlay?: string;
+  zIndexPopup?: string;
+  zIndexMessages?: string;
+  zIndexFloating?: string;
+  zIndexPriority?: string;
+  zIndexDebug?: string;
 };
 
 /**
