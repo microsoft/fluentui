@@ -238,7 +238,7 @@
     "eslint-plugin-react": "7.26.0",
     "eslint-plugin-react-compiler": "0.0.0-experimental-a97cca1-20240529",
     "eslint-plugin-react-hooks": "4.6.2",
-    "express": "4.19.2",
+    "express": "4.20.0",
     "extract-comments": "1.1.0",
     "file-loader": "6.2.0",
     "find-free-port": "2.0.0",
