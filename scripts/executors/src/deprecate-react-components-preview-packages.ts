@@ -1,9 +1,10 @@
 import { execSync } from 'node:child_process';
-import { readFileSync, readdirSync } from 'node:fs';
+import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
-import { logger } from '@nx/devkit';
+import { logger, readJsonFile } from '@nx/devkit';
+import type { ChangeType } from 'beachball';
 import yargs from 'yargs';
 
 /**
@@ -11,7 +12,6 @@ import yargs from 'yargs';
  *
  * @param packageSpec - The NPM package name specifier (could be with or without a scope, and optionally tag, version, or version range, for more details see https://docs.npmjs.com/cli/v10/using-npm/package-spec)
  * @param npmToken - The npm authentication token.
- * @returns A promise that resolves when the deprecation is successful, or rejects with an error if it fails.
  */
 export function deprecatePackage(packageSpec: string, npmToken: string) {
   const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
@@ -22,7 +22,7 @@ export function deprecatePackage(packageSpec: string, npmToken: string) {
   try {
     execSync(command, { stdio: 'inherit' });
   } catch (e) {
-    logger.error(`Failed to deprecate "${packageSpec}" package`);
+    throw new Error(`Failed to deprecate "${packageSpec}" package`);
   }
 }
 
@@ -38,24 +38,21 @@ export function deprecatePackage(packageSpec: string, npmToken: string) {
 export function getPackagesToDeprecate() {
   const readPackageChangeFile = createPackageChangeFileReader();
 
-  const allPackages = getAllPackageInfo();
-
-  const packagesToDeprecate = Object.values(allPackages).reduce<string[]>((acc, { projectConfig, packageJson }) => {
-    const changeFile = readPackageChangeFile(projectConfig.name!);
-
+  const packagesToDeprecate = getAllPackageInfo(({ project, packageJson }) => {
     if (
-      projectConfig.tags?.includes('vNext') &&
+      project.tags?.includes('vNext') &&
       !packageJson.name?.endsWith('-preview') &&
-      packageJson.version === '9.0.0-alpha.0' &&
-      changeFile?.type === 'minor'
+      packageJson.version === '9.0.0-alpha.0'
     ) {
-      acc.push(packageJson.name);
+      const changeFile = readPackageChangeFile(project.name!);
+
+      return changeFile?.type === 'minor';
     }
 
-    return acc;
-  }, []);
+    return false;
+  });
 
-  return packagesToDeprecate;
+  return Object.keys(packagesToDeprecate);
 }
 
 /**
@@ -65,20 +62,26 @@ export function getPackagesToDeprecate() {
  */
 function createPackageChangeFileReader() {
   const changeDir = join(workspaceRoot, 'change');
-  const changeFiles = readdirSync(changeDir);
 
-  return (packageName: string): { type: string; packageName: string } | null => {
-    try {
-      const changeFilePath = changeFiles.find(file => file.startsWith(`@fluentui-${packageName}`));
+  let changeFiles: string[] = [];
 
-      if (!changeFilePath) {
-        return null;
-      }
+  try {
+    changeFiles = readdirSync(changeDir);
+  } catch (e) {
+    throw new Error('Failed to read change files directory');
+  }
 
-      return JSON.parse(readFileSync(join(changeDir, changeFilePath), 'utf8'));
-    } catch (e) {
-      logger.error(`Failed to read change file for "${packageName}" package`);
+  return (projectName: string) => {
+    const changeFilePath = changeFiles.find(file => file.startsWith(`@fluentui-${projectName}`));
+
+    if (!changeFilePath) {
       return null;
+    }
+
+    try {
+      return readJsonFile<{ type: ChangeType; packageName: string }>(join(changeDir, changeFilePath));
+    } catch (e) {
+      throw new Error(`Failed to read change file for "${projectName}" package`);
     }
   };
 }
@@ -89,15 +92,22 @@ function main() {
     description: 'NPM Token',
     demandOption: true,
   }).argv;
+  try {
+    const packagesToDeprecate = getPackagesToDeprecate();
 
-  const packagesToDeprecate = getPackagesToDeprecate();
+    if (packagesToDeprecate.length === 0) {
+      logger.log('No preview to stable packages found. Skipping');
+      return;
+    }
 
-  if (packagesToDeprecate.length === 0) {
-    logger.log('No preview to stable packages found. Skipping');
-    return;
+    logger.log('Packages to deprecate:', packagesToDeprecate);
+
+    packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, npmToken));
+  } catch (e) {
+    logger.error(e);
+    logger.error('Failed to deprecate packages');
+    process.exit(1);
   }
-
-  packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, npmToken));
 }
 
 if (require.main === module) {

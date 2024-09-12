@@ -14,7 +14,12 @@ parameters:
     default: 'Deprecated in favor of stable release'
 
 variables:
-  skipComponentGovernanceDetection: true
+  - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      skipComponentGovernanceDetection: false
+  - name: tags
+    value: production,externalfacing
 
 pool: '1ES-Host-Ubuntu'
 

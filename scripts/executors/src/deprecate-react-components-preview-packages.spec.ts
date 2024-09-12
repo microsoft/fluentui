@@ -3,15 +3,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import monorepoScripts from '@fluentui/scripts-monorepo';
-import { logger } from '@nx/devkit';
+import * as devkit from '@nx/devkit';
+import type { ChangeType } from 'beachball';
 
 import { deprecatePackage, getPackagesToDeprecate } from './deprecate-react-components-preview-packages';
 
 const mockExecSync = jest.spyOn(childProcess, 'execSync');
 const mockReaddirSync = jest.spyOn(fs, 'readdirSync');
-const mockReadFileSync = jest.spyOn(fs, 'readFileSync');
+const mockReadJsonFile = jest.spyOn(devkit, 'readJsonFile');
 const mockJoin = jest.spyOn(path, 'join');
-const mockLoggerError = jest.spyOn(logger, 'error');
 const mockGetAllPackageInfo = jest.spyOn(monorepoScripts, 'getAllPackageInfo');
 
 describe('deprecatePackage', () => {
@@ -35,11 +35,9 @@ describe('deprecatePackage', () => {
       throw new Error('Deprecation failed');
     });
 
-    mockLoggerError.mockImplementationOnce(() => '');
-
-    deprecatePackage('test-package', 'npm-token');
-
-    expect(mockLoggerError).toHaveBeenCalledWith('Failed to deprecate "test-package" package');
+    expect(() => deprecatePackage('test-package', 'npm-token')).toThrowError(
+      'Failed to deprecate "test-package" package',
+    );
   });
 });
 
@@ -82,18 +80,18 @@ describe('getPackagesToDeprecate', () => {
   });
 
   type PreviewPackageConfig = {
-    changeFile: { type: string } | null;
+    changeFile: { type: ChangeType } | null;
     version: string;
   };
 
   function setup(packages: Record<string, PreviewPackageConfig> = {}) {
-    // Mock all packages info
-    mockGetAllPackageInfo.mockReturnValue(
-      Object.entries(packages).reduce<monorepoScripts.AllPackageInfo>((acc, [packageName, { version }]) => {
-        acc[packageName] = {
+    const allPackages = Object.entries(packages).reduce<monorepoScripts.AllPackageInfo>(
+      (acc, [packageName, { version }]) => {
+        const packageNameWithScope = `@fluentui/${packageName}`;
+        acc[packageNameWithScope] = {
           packagePath: '',
           packageJson: {
-            name: `@fluentui/${packageName}`,
+            name: packageNameWithScope,
             version,
             main: 'dist/index.js',
           },
@@ -105,8 +103,24 @@ describe('getPackagesToDeprecate', () => {
         };
 
         return acc;
-      }, {}),
+      },
+      {},
     );
+
+    // Mock all packages info
+    mockGetAllPackageInfo.mockImplementation(predicate => {
+      const allPackageInfo: monorepoScripts.AllPackageInfo = {};
+
+      for (const [packageName, packageInfo] of Object.entries(allPackages)) {
+        if (predicate && !predicate({ project: packageInfo.projectConfig, packageJson: packageInfo.packageJson })) {
+          continue;
+        }
+
+        allPackageInfo[packageName] = packageInfo;
+      }
+
+      return allPackageInfo;
+    });
 
     // Mock change file directory contents
     mockReaddirSync.mockReturnValue(
@@ -116,13 +130,13 @@ describe('getPackagesToDeprecate', () => {
     );
 
     // Mock change file contents
-    mockReadFileSync.mockImplementation(filePath => {
-      const mockData: Record<string, string> = Object.entries(packages).reduce<Record<string, string>>(
+    mockReadJsonFile.mockImplementation(filePath => {
+      const mockData = Object.entries(packages).reduce<Record<string, { type: ChangeType }>>(
         (acc, [packageName, { changeFile }]) => {
           if (changeFile) {
-            acc[`@fluentui-${packageName}-hash123.json`] = JSON.stringify({
+            acc[`@fluentui-${packageName}-hash123.json`] = {
               type: changeFile.type,
-            });
+            };
           }
 
           return acc;
