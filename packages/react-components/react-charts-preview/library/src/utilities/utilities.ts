@@ -43,8 +43,6 @@ import {
 } from '../index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { tokens } from '@fluentui/react-theme';
-import { makeStyles } from '@griffel/react';
 
 export type NumericAxis = D3Axis<number | { valueOf(): number }>;
 export type StringAxis = D3Axis<string>;

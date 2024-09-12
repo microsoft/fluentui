@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ILineChartProps } from './LineChart.types';
-import { useLineChartStyles_unstable } from './useLineChartStyles.styles';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select, pointer } from 'd3-selection';
 import { bisector } from 'd3-array';

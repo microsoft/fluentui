@@ -59,12 +59,6 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForeground2,
     paddingLeft: '8px',
   },
-  calloutBlockContainerMultiValued: {
-    fontSize: tokens.fontSizeBase200,
-    marginTop: '13px',
-    color: tokens.colorNeutralForeground2,
-    paddingLeft: '8px',
-  },
   calloutBlockContainertoDrawShapefalse: {
     selectors: {
       [HighContrastSelector]: {
