@@ -25,6 +25,7 @@ export interface IPopoverComponentStyles {
   calloutDateTimeContainer: string;
   calloutContentX: string;
   calloutBlockContainer: string;
+  calloutBlockContainerMultiValued: string;
   calloutBlockContainertoDrawShapefalse: string;
   calloutBlockContainertoDrawShapetrue: string;
   shapeStyles: string;

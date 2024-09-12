@@ -12,6 +12,7 @@ export const popoverClassNames: SlotClassNames<IPopoverComponentStyles> = {
   calloutDateTimeContainer: 'fui-cart__calloutDateTimeContainer',
   calloutContentX: 'fui-cart__calloutContentX',
   calloutBlockContainer: 'fui-cart__calloutBlockContainer',
+  calloutBlockContainerMultiValued: 'fui-cart__calloutBlockContainerMultiValued',
   calloutBlockContainertoDrawShapefalse: 'fui-cart__calloutBlockContainertoDrawShapefalse',
   calloutBlockContainertoDrawShapetrue: 'fui-cart__calloutBlockContainertoDrawShapetrue',
   shapeStyles: 'fui-cart__shapeStyles',
@@ -50,6 +51,12 @@ const useStyles = makeStyles({
     marginTop: '13px',
     color: tokens.colorNeutralForeground2,
     borderLeft: 'var(--lineColor)',
+    paddingLeft: '8px',
+  },
+  calloutBlockContainerMultiValued: {
+    fontSize: tokens.fontSizeBase200,
+    marginTop: '13px',
+    color: tokens.colorNeutralForeground2,
     paddingLeft: '8px',
   },
   calloutBlockContainertoDrawShapefalse: {
@@ -127,6 +134,10 @@ export const usePopoverStyles_unstable = (props: IPopoverComponentProps): IPopov
     calloutBlockContainer: mergeClasses(
       popoverClassNames.calloutBlockContainer,
       baseStyles.calloutBlockContainer /*props.styles?.calloutBlockContainer*/,
+    ),
+    calloutBlockContainerMultiValued: mergeClasses(
+      popoverClassNames.calloutBlockContainerMultiValued,
+      baseStyles.calloutBlockContainerMultiValued /*props.styles?.calloutBlockContainerMultiValued*/,
     ),
     calloutBlockContainertoDrawShapefalse: mergeClasses(
       popoverClassNames.calloutBlockContainertoDrawShapefalse,
