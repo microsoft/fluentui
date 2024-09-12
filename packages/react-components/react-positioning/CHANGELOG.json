@@ -2,6 +2,21 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:12 GMT",
+      "tag": "@fluentui/react-positioning_v9.15.8",
+      "version": "9.15.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-positioning",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 30 Jul 2024 18:47:34 GMT",
       "tag": "@fluentui/react-positioning_v9.15.7",
       "version": "9.15.7",

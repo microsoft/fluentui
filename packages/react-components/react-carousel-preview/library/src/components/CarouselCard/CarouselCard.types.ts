@@ -7,9 +7,14 @@ export type CarouselCardSlots = {
 /**
  * CarouselCard Props
  */
-export type CarouselCardProps = ComponentProps<CarouselCardSlots>;
+export type CarouselCardProps = ComponentProps<CarouselCardSlots> & {
+  /**
+   * Sets the card styling to be responsive based on content.
+   */
+  autoSize?: boolean;
+};
 
 /**
  * State used in rendering CarouselCard
  */
-export type CarouselCardState = ComponentState<CarouselCardSlots>;
+export type CarouselCardState = ComponentState<CarouselCardSlots> & Pick<CarouselCardProps, 'autoSize'>;

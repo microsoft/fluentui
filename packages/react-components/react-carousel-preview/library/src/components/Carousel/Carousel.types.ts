@@ -33,11 +33,24 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
   circular?: boolean;
+
   /**
    * Controls the number of carousel cards per navigation element, will default to 'auto'
    * Recommended to set to '1' when using full page carousel cards.
    */
   groupSize?: number | 'auto';
+
+  /**
+   * Enables drag to scroll on carousel items.
+   * Defaults to: False
+   */
+  draggable?: boolean;
+
+  /**
+   * Adds whitespace to start/end so that 'align' prop is always respected for current index
+   * Defaults to: False
+   */
+  whitespace?: boolean;
 };
 
 /**
@@ -57,4 +70,6 @@ export type CarouselVisibilityChangeEvent = CustomEvent<CarouselVisibilityEventD
 export interface CarouselUpdateData {
   activeIndex: number;
   navItemsCount: number;
+  groupIndexList: number[][];
+  slideNodes: HTMLElement[];
 }

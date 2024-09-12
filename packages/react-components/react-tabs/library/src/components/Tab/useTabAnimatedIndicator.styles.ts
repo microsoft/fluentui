@@ -62,10 +62,12 @@ const calculateTabRect = (element: HTMLElement) => {
 };
 
 const getRegisteredTabRect = (registeredTabs: Record<string, TabRegisterData>, value?: TabValue) => {
-  const element =
-    value !== undefined && value !== null ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
+  const element = isValueDefined(value) ? registeredTabs[JSON.stringify(value)]?.ref.current : undefined;
   return element ? calculateTabRect(element) : undefined;
 };
+
+// eslint-disable-next-line eqeqeq
+const isValueDefined = (value: TabValue) => value != null;
 
 /**
  * Adds additional styling to the active tab selection indicator to create a sliding animation.
@@ -79,7 +81,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   const getRegisteredTabs = useTabListContext_unstable(ctx => ctx.getRegisteredTabs);
 
   React.useEffect(() => {
-    if (lastAnimatedFrom) {
+    if (isValueDefined(lastAnimatedFrom)) {
       setAnimationValues({ offset: 0, scale: 1 });
     }
   }, [lastAnimatedFrom]);
@@ -87,7 +89,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
 
-    if (previousSelectedValue && lastAnimatedFrom !== previousSelectedValue) {
+    if (isValueDefined(previousSelectedValue) && lastAnimatedFrom !== previousSelectedValue) {
       const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
       const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
 
@@ -104,7 +106,7 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
         setLastAnimatedFrom(previousSelectedValue);
       }
     }
-  } else if (lastAnimatedFrom) {
+  } else if (isValueDefined(lastAnimatedFrom)) {
     // need to clear the last animated from so that if this tab is selected again
     // from the same previous tab as last time, that animation still happens.
     setLastAnimatedFrom(undefined);

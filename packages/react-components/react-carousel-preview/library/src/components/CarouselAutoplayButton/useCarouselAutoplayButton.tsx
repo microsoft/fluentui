@@ -1,12 +1,17 @@
-import * as React from 'react';
-import { slot, useControllableState, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
-import type { CarouselAutoplayButtonProps, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
+import type { ARIAButtonElement } from '@fluentui/react-aria';
 import { useToggleButton_unstable } from '@fluentui/react-button';
 import { PlayCircleRegular, PauseCircleRegular } from '@fluentui/react-icons';
-import { useEventCallback } from '@fluentui/react-utilities';
-import { mergeCallbacks } from '@fluentui/react-utilities';
+import {
+  mergeCallbacks,
+  slot,
+  useControllableState,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+} from '@fluentui/react-utilities';
+import * as React from 'react';
+
+import type { CarouselAutoplayButtonProps, CarouselAutoplayButtonState } from './CarouselAutoplayButton.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
-import { ARIAButtonElement } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render CarouselAutoplayButton.
@@ -21,14 +26,21 @@ export const useCarouselAutoplayButton_unstable = (
   props: CarouselAutoplayButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselAutoplayButtonState => {
-  const { onAutoplayChange } = props;
-  const [autoplay, setAutoplay] = useControllableState({
-    state: props.autoplay,
-    defaultState: props.defaultAutoplay,
-    initialState: true,
-  });
+  const { onCheckedChange, checked, defaultChecked } = props;
 
+  const [autoplay, setAutoplay] = useControllableState({
+    state: checked,
+    defaultState: defaultChecked,
+    initialState: false,
+  });
   const enableAutoplay = useCarouselContext(ctx => ctx.enableAutoplay);
+
+  React.useEffect(() => {
+    return () => {
+      // We disable autoplay if the button gets unmounted.
+      enableAutoplay(false);
+    };
+  }, [enableAutoplay]);
 
   useIsomorphicLayoutEffect(() => {
     // Enable/disable autoplay on state change
@@ -39,15 +51,14 @@ export const useCarouselAutoplayButton_unstable = (
     if (event.isDefaultPrevented()) {
       return;
     }
+
     const newValue = !autoplay;
+
     setAutoplay(newValue);
-    onAutoplayChange?.(event, { event, type: 'click', autoplay: newValue });
+    onCheckedChange?.(event, { event, type: 'click', checked: newValue });
   };
 
-  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
-
   return {
-    autoplay,
     // We lean on react-button class to handle styling and icon enhancements
     ...useToggleButton_unstable(
       {
@@ -58,9 +69,10 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
+        'aria-label': props.autoplayAriaLabel?.(autoplay),
         ...props,
         checked: autoplay,
-        onClick: handleButtonClick,
+        onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       ref as React.Ref<HTMLButtonElement>,
     ),

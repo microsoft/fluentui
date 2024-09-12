@@ -114,10 +114,10 @@ test.describe('Divider', () => {
     await expect(element).toHaveJSProperty('alignContent', 'end');
 
     await element.evaluate((node: Divider) => {
-      node.appearance = 'default';
+      node.appearance = undefined;
     });
 
-    await expect(element).toHaveJSProperty('appearance', 'default');
+    await expect(element).not.toHaveJSProperty('appearance', 'default');
 
     await element.evaluate((node: Divider) => {
       node.appearance = 'strong';

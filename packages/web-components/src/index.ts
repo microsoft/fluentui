@@ -15,7 +15,7 @@ export {
   accordionStyles,
   accordionTemplate,
 } from './accordion/index.js';
-export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkTarget } from './link/index.js';
+export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkStyles, LinkTarget } from './link/index.js';
 export {
   Avatar,
   AvatarActive,
@@ -127,6 +127,15 @@ export {
   AnchorButtonTemplate,
   AnchorTarget,
 } from './anchor-button/index.js';
+export {
+  MessageBar,
+  MessageBarDefinition,
+  MessageBarIntent,
+  MessageBarLayout,
+  MessageBarShape,
+  MessageBarStyles,
+  MessageBarTemplate,
+} from './message-bar/index.js';
 export {
   MenuButton,
   MenuButtonAppearance,
@@ -245,6 +254,7 @@ export {
   BaseTextArea,
   TextArea,
   TextAreaAppearance,
+  TextAreaAppearancesForDisplayShadow,
   TextAreaAutocomplete,
   TextAreaDefinition,
   TextAreaResize,

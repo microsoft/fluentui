@@ -1,9 +1,16 @@
-import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
-import { getIntrinsicElementProps, isHTMLElement, slot, useEventCallback } from '@fluentui/react-utilities';
+import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import {
+  getIntrinsicElementProps,
+  isHTMLElement,
+  slot,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import * as React from 'react';
 
-import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
+import { useCarouselNavIndexContext } from '../CarouselNav/CarouselNavIndexContext';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselNavImageButtonProps, CarouselNavImageButtonState } from './CarouselNavImageButton.types';
 
@@ -22,9 +29,10 @@ export const useCarouselNavImageButton_unstable = (
 ): CarouselNavImageButtonState => {
   const { onClick, as = 'button' } = props;
 
-  const index = useCarouselNavContext();
+  const index = useCarouselNavIndexContext();
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
+  const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -38,18 +46,34 @@ export const useCarouselNavImageButton_unstable = (
     focusable: { isDefault: selected },
   });
 
+  const buttonRef = React.useRef<HTMLElement>();
   const _carouselButton = slot.always<ARIAButtonSlotProps>(
     getIntrinsicElementProps(as, useARIAButtonProps(props.as, props)),
     {
       elementType: 'button',
       defaultProps: {
-        ref: ref as React.Ref<HTMLButtonElement>,
+        ref: useMergedRefs(ref, buttonRef),
         role: 'tab',
         type: 'button',
+        'aria-selected': selected,
         ...defaultTabProps,
       },
     },
   );
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues(data => {
+      const controlList = data.groupIndexList[index];
+      const _controlledSlideIds = controlList
+        .map((slideIndex: number) => {
+          return data.slideNodes[slideIndex].id;
+        })
+        .join(' ');
+      if (buttonRef.current) {
+        buttonRef.current.setAttribute('aria-controls', _controlledSlideIds);
+      }
+    });
+  }, [subscribeForValues, index]);
 
   // Override onClick
   _carouselButton.onClick = handleClick;

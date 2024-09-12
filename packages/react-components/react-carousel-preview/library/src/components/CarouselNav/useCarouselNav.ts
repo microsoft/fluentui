@@ -15,6 +15,8 @@ import type { CarouselNavProps, CarouselNavState } from './CarouselNav.types';
  * @param ref - reference to root HTMLDivElement of CarouselNav
  */
 export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<HTMLDivElement>): CarouselNavState => {
+  const { appearance } = props;
+
   const focusableGroupAttr = useArrowNavigationGroup({
     circular: false,
     axis: 'horizontal',
@@ -23,7 +25,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
     unstable_hasDefault: true,
   });
 
-  const [totalSlides, setTotalSlides] = React.useState(0);
+  const [totalSlides, setTotalSlides] = React.useState(props.totalSlides ?? 0);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   useIsomorphicLayoutEffect(() => {
@@ -34,6 +36,7 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
 
   return {
     totalSlides,
+    appearance,
     renderNavButton: props.children,
     components: {
       root: 'div',
@@ -42,7 +45,6 @@ export const useCarouselNav_unstable = (props: CarouselNavProps, ref: React.Ref<
       getIntrinsicElementProps('div', {
         ref,
         role: 'tablist',
-        tabIndex: 0,
         ...props,
         ...focusableGroupAttr,
         children: null,

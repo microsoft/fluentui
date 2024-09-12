@@ -3,7 +3,10 @@ import * as React from 'react';
 
 import type { CarouselUpdateData } from '../Carousel';
 
-export type CarouselIndexChangeData = EventData<'click', React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+export type CarouselIndexChangeData = EventData<
+  'click' | 'focus',
+  React.FocusEvent | React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>
+> & {
   /**
    * The index to be set after event has occurred.
    */
@@ -13,11 +16,11 @@ export type CarouselIndexChangeData = EventData<'click', React.MouseEvent<HTMLBu
 export type CarouselContextValue = {
   activeIndex: number;
   circular: boolean;
-
+  selectPageByElement: (event: React.FocusEvent, element: HTMLElement, jump?: boolean) => number;
   selectPageByDirection: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     direction: 'next' | 'prev',
-  ) => void;
+  ) => number;
   selectPageByIndex: (
     event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
     value: number,

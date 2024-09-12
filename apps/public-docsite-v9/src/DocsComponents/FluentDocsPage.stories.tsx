@@ -1,13 +1,14 @@
 import * as React from 'react';
 import {
   DocsContext,
-  ArgTypes,
+  ArgsTable,
   Title,
   Subtitle,
   Description,
   HeaderMdx,
   Primary,
   Stories,
+  type DocsContextProps,
 } from '@storybook/addon-docs';
 import type { SBEnumType } from '@storybook/csf';
 import { makeStyles, shorthands, tokens, Link, Text } from '@fluentui/react-components';
@@ -135,6 +136,8 @@ export const FluentDocsPage = () => {
   const primaryStory = stories[0];
   const primaryStoryContext = context.getStoryContext(primaryStory);
 
+  assertStoryMetaValues(primaryStory);
+
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
@@ -171,7 +174,7 @@ export const FluentDocsPage = () => {
             {primaryStory.name}
           </HeaderMdx>
           <Primary />
-          <ArgTypes of={primaryStory.component} />
+          <ArgsTable of={primaryStory.component} />
           {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
             <div className={styles.nativeProps}>
               <InfoFilled className={styles.nativePropsIcon} />
@@ -196,3 +199,15 @@ export const FluentDocsPage = () => {
     </div>
   );
 };
+
+function assertStoryMetaValues(story: ReturnType<DocsContextProps['componentStories']>[number]) {
+  if (story.component === null) {
+    throw new Error(
+      [
+        '🚨 Invalid Story Meta declaration:',
+        `- primaryStory.component of componentId:${story.componentId} is "null"`,
+        '- to resolve this error, please update "component" property value in your story definition to reference a React Component or remove it if it is not needed.',
+      ].join('\n'),
+    );
+  }
+}
