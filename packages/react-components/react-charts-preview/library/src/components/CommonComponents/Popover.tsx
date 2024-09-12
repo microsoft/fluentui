@@ -62,7 +62,12 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
               >
                 <div
                   className={classes.calloutBlockContainer}
-                  style={{ '--lineColor': `4px solid ${props.color}` } as React.CSSProperties}
+                  style={
+                    {
+                      '--lineColor': `4px solid ${props.color}`,
+                      marginTop: props.XValue ? '13px' : 'unset',
+                    } as React.CSSProperties
+                  }
                 >
                   <div className={classes.calloutlegendText}>{convertToLocaleString(Legend, props.culture)}</div>
                   <div
@@ -179,15 +184,17 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
           )}
           <div
             id={`${index}_${xValue.y}`}
-            className={classes.calloutBlockContainer}
-            style={{
-              marginTop: props.XValue ? '13px' : 'unset',
-              ...(!toDrawShape
-                ? {
-                    borderLeft: `4px solid ${xValue.color}`,
-                  }
-                : { display: 'flex' }),
-            }}
+            className={mergeClasses(
+              classes.calloutBlockContainerMultiValued,
+              toDrawShape
+                ? classes.calloutBlockContainertoDrawShapetrue
+                : classes.calloutBlockContainertoDrawShapefalse,
+            )}
+            style={
+              {
+                '--lineColor': !toDrawShape ? `4px solid ${xValue.color}` : {},
+              } as React.CSSProperties
+            }
           >
             {toDrawShape && (
               <Shape
@@ -198,22 +205,12 @@ const PopoverComponent: React.FunctionComponent<IPopoverComponentProps> = React.
                 shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
               />
             )}
-            <div
-              className={mergeClasses(
-                classes.calloutBlockContainer,
-                toDrawShape
-                  ? classes.calloutBlockContainertoDrawShapetrue
-                  : classes.calloutBlockContainertoDrawShapefalse,
+            <div className={classes.calloutlegendText}> {xValue.legend}</div>
+            <div className={classes.calloutContentY}>
+              {convertToLocaleString(
+                xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
+                culture,
               )}
-              style={{ '--lineColor': `4px solid ${xValue.color}` } as React.CSSProperties}
-            >
-              <div className={classes.calloutlegendText}> {xValue.legend}</div>
-              <div className={classes.calloutContentY}>
-                {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
-                  culture,
-                )}
-              </div>
             </div>
           </div>
         </div>
