@@ -10,6 +10,7 @@ export { VCAxisTooltip } from './VerticalBarChartAxisTooltip.stories';
 export { VCRotateLabels } from './VerticalBarChartRotateLabels.stories';
 export { VCStyled } from './VerticalBarChartStyled.stories';
 export { VCDynamic } from './VerticalBarChartDynamic.stories';
+export { VCResponsive } from './VerticalBarChartResponsive.stories';
 
 export default {
   title: 'Compat Components/Charts/VerticalBarChart',

@@ -39,6 +39,7 @@ import {
   isRtl,
 } from '../../utilities/index';
 import Popover from '../CommonComponents/Popover';
+import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -52,7 +53,7 @@ const MIN_DOMAIN_MARGIN = 8;
  * VerticalBarchart component
  * {@docCategory VerticalBarChart}
  */
-export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> = React.forwardRef<
+const VerticalBarChartBase: React.FunctionComponent<IVerticalBarChartProps> = React.forwardRef<
   HTMLDivElement,
   IVerticalBarChartProps
 >((props, forwardedRef) => {
@@ -1015,4 +1016,18 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     <div id={_emptyChartId} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
   );
 });
+
+export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> = props => {
+  if (!props.responsive) {
+    return <VerticalBarChartBase {...props} />;
+  }
+
+  return (
+    <ResponsiveContainer onResize={props.onResize}>
+      {({ containerWidth, containerHeight }) => (
+        <VerticalBarChartBase {...props} width={containerWidth} height={containerHeight} />
+      )}
+    </ResponsiveContainer>
+  );
+};
 VerticalBarChart.displayName = 'VerticalBarChart';
