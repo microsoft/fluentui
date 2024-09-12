@@ -512,14 +512,14 @@ export const webLightTheme: Theme;
 
 // @public
 export type ZIndexTokens = {
-    zIndexBackground: string;
-    zIndexContent: string;
-    zIndexOverlay: string;
-    zIndexPopup: string;
-    zIndexMessages: string;
-    zIndexFloating: string;
-    zIndexPriority: string;
-    zIndexDebug: string;
+    zIndexBackground?: string;
+    zIndexContent?: string;
+    zIndexOverlay?: string;
+    zIndexPopup?: string;
+    zIndexMessages?: string;
+    zIndexFloating?: string;
+    zIndexPriority?: string;
+    zIndexDebug?: string;
 };
 
 // (No @packageDocumentation comment for this package)
