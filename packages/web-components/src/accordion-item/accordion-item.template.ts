@@ -1,7 +1,8 @@
 import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import { endSlotTemplate, startSlotTemplate } from '../patterns/index.js';
 import { staticallyCompose } from '../utils/index.js';
-import type { AccordionItem, AccordionItemOptions } from './accordion-item.js';
+import type { AccordionItem } from './accordion-item.js';
+import type { AccordionItemOptions } from './accordion-item.options.js';
 
 const chevronRight20Filled = html.partial(`<svg
   width="20"
@@ -50,8 +51,8 @@ export function accordionItemTemplate<T extends AccordionItem>(
         <slot name="heading"></slot>
       </button>
       ${startSlotTemplate(options)}
-      <slot name="marker-expanded"> ${staticallyCompose(options.expandedIcon)} </slot>
-      <slot name="marker-collapsed"> ${staticallyCompose(options.collapsedIcon)} </slot>
+      <slot name="marker-expanded">${staticallyCompose(options.expandedIcon)}</slot>
+      <slot name="marker-collapsed">${staticallyCompose(options.collapsedIcon)}</slot>
     </div>
     <div class="content" part="content" id="${x => x.id}-panel" role="region" aria-labelledby="${x => x.id}">
       <slot></slot>

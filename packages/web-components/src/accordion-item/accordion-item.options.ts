@@ -1,4 +1,16 @@
-import type { ValuesOf } from '../utils/index.js';
+import type { StartEndOptions } from '../patterns/start-end.js';
+import type { StaticallyComposableHTML } from '../utils/template-helpers.js';
+import type { ValuesOf } from '../utils/typings.js';
+import type { AccordionItem } from './accordion-item.js';
+
+/**
+ * Accordion Item configuration options
+ * @public
+ */
+export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
+  expandedIcon?: StaticallyComposableHTML<AccordionItem>;
+  collapsedIcon?: StaticallyComposableHTML<AccordionItem>;
+};
 
 /**
  * An Accordion Item header font size can be small, medium, large, and extra-large

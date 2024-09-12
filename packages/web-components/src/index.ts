@@ -1,11 +1,14 @@
 export {
   AccordionItem,
-  accordionItemDefinition,
+  AccordionItemBaseName,
+  AccordionItemDefinition,
+  AccordionItemDefinition as accordionItemDefinition, // deprecated, use AccordionItemDefinition
   AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
   accordionItemTemplate,
   BaseAccordionItem,
+  isAccordionItem,
 } from './accordion-item/index.js';
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {

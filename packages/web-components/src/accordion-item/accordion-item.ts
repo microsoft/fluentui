@@ -1,20 +1,9 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import type { StaticallyComposableHTML } from '../utils/index.js';
-import { StartEnd } from '../patterns/index.js';
-import type { StartEndOptions } from '../patterns/index.js';
+import { StartEnd } from '../patterns/start-end.js';
 import { applyMixins } from '../utils/apply-mixins.js';
 import { toggleState } from '../utils/element-internals.js';
-import { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
-
-/**
- * Accordion Item configuration options
- * @public
- */
-export type AccordionItemOptions = StartEndOptions<AccordionItem> & {
-  expandedIcon?: StaticallyComposableHTML<AccordionItem>;
-  collapsedIcon?: StaticallyComposableHTML<AccordionItem>;
-};
+import type { AccordionItemMarkerPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**
  *
