@@ -1,5 +1,5 @@
 import { html, when } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Badge as FluentBadge } from './badge.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 

@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Button as FluentButton } from './button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 
@@ -160,8 +160,6 @@ export default {
     },
   },
 } as Meta<FluentButton>;
-
-export const Button: Story = { render: renderComponent(storyTemplate).bind({}) };
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentButton>>`

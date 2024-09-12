@@ -1,5 +1,5 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { type Meta, renderComponent, StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Accordion as FluentAccordion } from './accordion.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
