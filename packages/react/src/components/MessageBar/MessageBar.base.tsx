@@ -65,6 +65,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     delayedRender = true,
     expandButtonProps,
     onExpandButtonToggled = undefined,
+    showExpandIcon,
   } = props;
 
   // Wrap 'toggleExpandSingleLine' to execute the 'onExpandButtonToggled' callback whenever the expand button toggles
@@ -137,7 +138,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
           </span>
         </div>
         {
-          /* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
+          /* singleline expand/collapse button */ (showExpandIcon || (!isMultiline && !actionsDiv && truncated)) && (
             <div className={classNames.expandSingleLine}>
               <IconButton
                 disabled={false}

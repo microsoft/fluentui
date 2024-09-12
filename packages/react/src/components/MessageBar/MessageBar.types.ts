@@ -128,6 +128,12 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement>, Rea
    * @default true
    */
   delayedRender?: boolean;
+
+  /**
+   * An optional override to show the expand/collapse icon.
+   * @defaultvalue false
+   */
+  showExpandIcon?: boolean;
 }
 
 /**
