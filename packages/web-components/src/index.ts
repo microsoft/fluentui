@@ -13,10 +13,13 @@ export {
 export type { AccordionItemOptions } from './accordion-item/index.js';
 export {
   Accordion,
-  accordionDefinition,
+  AccordionBaseName,
+  AccordionDefinition,
+  AccordionDefinition as accordionDefinition, // deprecated, use AccordionDefinition
   AccordionExpandMode,
   accordionStyles,
   accordionTemplate,
+  isAccordion,
 } from './accordion/index.js';
 export { Link, LinkAppearance, LinkDefinition, LinkTemplate, LinkStyles, LinkTarget } from './link/index.js';
 export {

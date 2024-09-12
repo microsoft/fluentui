@@ -1,6 +1,6 @@
-import { Observable } from '@microsoft/fast-element';
-import { attr, FASTElement, observable } from '@microsoft/fast-element';
-import { BaseAccordionItem } from '../accordion-item/accordion-item.js';
+import { attr, FASTElement, Observable, observable } from '@microsoft/fast-element';
+import { isAccordionItem } from '../accordion-item/accordion-item.definition.js';
+import type { BaseAccordionItem } from '../accordion-item/accordion-item.js';
 import { AccordionExpandMode } from './accordion.options.js';
 
 /**
