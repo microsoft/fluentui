@@ -21,7 +21,7 @@ import { ViewTemplate } from '@microsoft/fast-element';
 // @public
 export class Accordion extends FASTElement {
     // @internal (undocumented)
-    protected accordionItems: Element[];
+    protected accordionItems: BaseAccordionItem[];
     expandmode: AccordionExpandMode;
     // (undocumented)
     expandmodeChanged(prev: AccordionExpandMode, next: AccordionExpandMode): void;
@@ -33,8 +33,8 @@ export class Accordion extends FASTElement {
     slottedAccordionItemsChanged(oldValue: HTMLElement[], newValue: HTMLElement[]): void;
 }
 
-// @public (undocumented)
-export const accordionDefinition: FASTElementDefinition<typeof Accordion>;
+// @public
+export const AccordionBaseName = "accordion";
 
 // @public
 export const AccordionExpandMode: {
@@ -64,8 +64,8 @@ export class AccordionItem extends BaseAccordionItem {
 export interface AccordionItem extends StartEnd {
 }
 
-// @public (undocumented)
-export const accordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
+// @public
+export const AccordionItemBaseName = "accordion-item";
 
 // Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -2197,6 +2197,16 @@ export const curveLinear = "var(--curveLinear)";
 export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
 // @public
+const definition: FASTElementDefinition<typeof AccordionItem>;
+export { definition as AccordionItemDefinition }
+export { definition as accordionItemDefinition }
+
+// @public
+const definition_2: FASTElementDefinition<typeof Accordion>;
+export { definition_2 as AccordionDefinition }
+export { definition_2 as accordionDefinition }
+
+// @public
 export class Dialog extends FASTElement {
     ariaDescribedby?: string;
     ariaLabelledby?: string;
@@ -2451,9 +2461,7 @@ export const FieldStyles: ElementStyles;
 // @public
 export const FieldTemplate: ElementViewTemplate;
 
-// Warning: (ae-missing-release-tag) "FluentDesignSystem" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const FluentDesignSystem: Readonly<{
     prefix: "fluent";
     shadowRootMode: "open";
@@ -2515,6 +2523,9 @@ export const fontWeightSemibold = "var(--fontWeightSemibold)";
 export const forcedColorsStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
 
 // @public
+export function generateElementName(baseName: string): string;
+
+// @public
 export const getDirection: (rootNode: HTMLElement) => Direction;
 
 // @public
@@ -2565,6 +2576,12 @@ export const ImageStyles: ElementStyles;
 
 // @public
 export const ImageTemplate: ElementViewTemplate<Image_2>;
+
+// @public
+export function isAccordion(element: Element): element is Accordion;
+
+// @public
+export function isAccordionItem(element: Element): element is BaseAccordionItem;
 
 // @public
 export class Label extends FASTElement {
@@ -3500,6 +3517,9 @@ export type StartOptions<TSource = any, TParent = any> = {
 export function startSlotTemplate<TSource extends StartEnd = StartEnd, TParent = any>(options: StartOptions<TSource, TParent>): CaptureType<TSource, TParent>;
 
 // @public
+export type StaticallyComposableHTML<TSource = any, TParent = any> = string | HTMLDirective | SyntheticViewTemplate<TSource, TParent> | undefined;
+
+// @public
 export const strokeWidthThick = "var(--strokeWidthThick)";
 
 // @public
@@ -3802,9 +3822,7 @@ export const TextAreaAppearance: {
 // @public (undocumented)
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
-// Warning: (ae-missing-release-tag) "TextAreaAppearancesForDisplayShadow" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
 
 // Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
@@ -4133,10 +4151,6 @@ export const ValidationFlags: {
 
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
-
-// Warnings were encountered during analysis:
-//
-// dist/dts/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
