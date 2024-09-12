@@ -52,6 +52,7 @@ export const useTreeItemLayout_unstable = (
     state: isActionsVisibleFromProps,
     initialState: false,
   });
+
   const selectionRef = useTreeItemContext_unstable(ctx => ctx.selectionRef);
   const expandIconRef = useTreeItemContext_unstable(ctx => ctx.expandIconRef);
   const actionsRef = useTreeItemContext_unstable(ctx => ctx.actionsRef);
@@ -85,10 +86,12 @@ export const useTreeItemLayout_unstable = (
 
   const setActionsInvisibleIfNotFromSubtree = React.useCallback(
     (event: FocusEvent | MouseEvent) => {
-      const isRelatedTargetFromActions = Boolean(
-        actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node),
-      );
-      if (isRelatedTargetFromActions) {
+      const isRelatedTargetFromActions = () =>
+        Boolean(actionsRefInternal.current && elementContains(actionsRefInternal.current, event.relatedTarget as Node));
+      const isRelatedTargetFromTreeItem = () =>
+        Boolean(treeItemRef.current && elementContains(treeItemRef.current, event.relatedTarget as Node));
+      const isTargetFromActions = () => Boolean(actionsRefInternal.current?.contains(event.target as Node));
+      if (isRelatedTargetFromActions()) {
         onActionVisibilityChange?.(event, {
           visible: true,
           event,
@@ -97,20 +100,17 @@ export const useTreeItemLayout_unstable = (
         setIsActionsVisible(true);
         return;
       }
-      const isTargetFromSubtree = Boolean(
-        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-      );
-      if (!isTargetFromSubtree) {
-        onActionVisibilityChange?.(event, {
-          visible: false,
-          event,
-          type: event.type,
-        } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
-        setIsActionsVisible(false);
+      if (isTargetFromActions() && isRelatedTargetFromTreeItem()) {
         return;
       }
+      onActionVisibilityChange?.(event, {
+        visible: false,
+        event,
+        type: event.type,
+      } as Extract<TreeItemLayoutActionVisibilityChangeData, { event: typeof event }>);
+      setIsActionsVisible(false);
     },
-    [subtreeRef, setIsActionsVisible, onActionVisibilityChange],
+    [setIsActionsVisible, onActionVisibilityChange, treeItemRef],
   );
 
   const expandIcon = slot.optional(props.expandIcon, {

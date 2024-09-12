@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
-import { CarouselUpdateData } from '../Carousel/Carousel.types';
+import type { CarouselUpdateData } from '../Carousel/Carousel.types';
 
 /**
  * Create the state required to render CarouselButton.
@@ -21,7 +21,7 @@ export const useCarouselButton_unstable = (
   props: CarouselButtonProps,
   ref: React.Ref<ARIAButtonElement>,
 ): CarouselButtonState => {
-  const { navType } = props;
+  const { navType = 'next' } = props;
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
@@ -30,7 +30,6 @@ export const useCarouselButton_unstable = (
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
-  // TODO: this should be a part of subscribeForValues() handler to avoid pulling "activeIndex"
   const isTrailing = useCarouselContext(ctx => {
     if (ctx.activeIndex === undefined || circular) {
       return false;
@@ -51,8 +50,6 @@ export const useCarouselButton_unstable = (
     selectPageByDirection(event, navType);
   };
 
-  const handleButtonClick = useEventCallback(mergeCallbacks(handleClick, props.onClick));
-
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
       setTotalSlides(data.navItemsCount);
@@ -72,10 +69,11 @@ export const useCarouselButton_unstable = (
           elementType: 'span',
         }),
         disabled: isTrailing,
+        tabIndex: isTrailing ? -1 : 0,
         'aria-disabled': isTrailing,
         appearance: 'subtle',
         ...props,
-        onClick: handleButtonClick,
+        onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       ref as React.Ref<HTMLButtonElement>,
     ),

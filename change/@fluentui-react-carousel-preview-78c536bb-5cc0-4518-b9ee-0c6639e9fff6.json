@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add brand appearance to nav buttons, update action states",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 07:21:59 GMT",
+      "tag": "@fluentui/react_v8.120.9",
+      "version": "8.120.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "420834+andyrooger@users.noreply.github.com",
+            "package": "@fluentui/react",
+            "commit": "2a31760ba6d9a2d1f0c6c4c824358dfa61efdeeb",
+            "comment": "fix: Debouncing onResolveSuggestions correctly after a picker has been remounted in React 18 strict mode."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Sep 2024 07:21:40 GMT",
       "tag": "@fluentui/react_v8.120.8",
       "version": "8.120.8",
