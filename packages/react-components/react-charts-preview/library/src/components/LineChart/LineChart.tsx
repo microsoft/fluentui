@@ -27,7 +27,6 @@ import {
   ChartTypes,
   getXAxisType,
   XAxisTypes,
-  tooltipOfXAxislabels,
   Points,
   pointTypes,
   getMinMaxOfYAxis,
@@ -37,6 +36,7 @@ import {
   isRtl,
   formatDate,
 } from '../../utilities/index';
+import { tooltipOfXAxislabels } from '../CommonComponents/cartesian-utils';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -143,7 +143,6 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     let lines: JSX.Element[];
     let _renderedColorFillBars: JSX.Element[];
     const _colorFillBars = React.useRef<IColorFillBarsProps[]>([]);
-    let _tooltipId: string = useId('LineChartTooltipId_');
     let _rectId: string = useId('containerRectLD');
     let _staticHighlightCircle: string = useId('staticHighlightCircle');
     let _firstRenderOptimization = true;
@@ -151,6 +150,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const _colorFillBarId = useId('_colorFillBarId');
     const _isRTL: boolean = isRtl();
     let xAxisCalloutAccessibilityData: IAccessibilityProps = {};
+    const tooltipRef = React.useRef(null);
 
     const [hoverXValue, setHoverXValue] = React.useState<string | number>('');
     const [activeLegend, setActiveLegend] = React.useState<string>('');
@@ -167,6 +167,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
     const [stackCalloutProps, setStackCalloutProps] = React.useState<ICustomizedCalloutData>();
     const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
     const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+    const [xAxis, setXAxisElement] = React.useState<SVGElement | null>(null);
 
     const pointsRef = React.useRef<LineChartDataWithIndex[] | []>([]);
     const calloutPointsRef = React.useRef<any[]>([]);
@@ -180,6 +181,16 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         calloutPointsRef.current = calloutData(pointsRef.current);
       }
     }, [props.height, props.width, props.data]);
+
+    React.useEffect(() => {
+      if (xAxis) {
+        const tooltipProps = {
+          xAxis: xAxis,
+          div: tooltipRef.current,
+        };
+        tooltipOfXAxislabels(tooltipProps);
+      }
+    }, [xAxis]);
 
     function _injectIndexPropertyInLineChartData(lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] {
       const { allowMultipleShapesForPoints = false } = props;
@@ -816,27 +827,10 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
           </g>,
         );
       }
-      const classes = useLineChartStyles_unstable(props);
-      // Removing un wanted tooltip div from DOM, when prop not provided.
-      if (!props.showXAxisLablesTooltip) {
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-      }
       // Used to display tooltip at x axis labels.
       if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
         const xAxisElement = d3Select(xElement).call(_xAxisScale);
-        try {
-          document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-          // eslint-disable-next-line no-empty
-        } catch (e) {}
-        const tooltipProps = {
-          tooltipCls: classes.tooltip!,
-          id: _tooltipId,
-          xAxis: xAxisElement,
-        };
-        xAxisElement && tooltipOfXAxislabels(tooltipProps);
+        setXAxisElement(xAxisElement.node());
       }
       return lines;
     }
@@ -1290,6 +1284,7 @@ export const LineChart: React.FunctionComponent<ILineChartProps> = React.forward
         isCalloutForStack
         calloutProps={calloutProps}
         tickParams={tickParams}
+        tooltipRef={tooltipRef}
         legendBars={legendBars}
         getmargins={_getMargins}
         getGraphData={_initializeLineChartData}
