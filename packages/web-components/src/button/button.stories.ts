@@ -35,9 +35,7 @@ export default {
   args: {
     disabled: false,
     disabledFocusable: false,
-    args: {
-      slottedContent: () => 'Button',
-    },
+    slottedContent: () => 'Button',
   },
   argTypes: {
     appearance: {
