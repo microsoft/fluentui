@@ -44,7 +44,8 @@ describe('Popover', () => {
   test('displays the popover card correctly when XValue is undefined', () => {
     const XValue = undefined;
     const { container } = render(<PopoverComponent XValue={XValue} isPopoverOpen={true} />);
-    expect(getByClass(container, /calloutContentX/)).toBeDefined();
+    const XValueElement = getByClass(container, /calloutContentX/)[0] as HTMLElement;
+    expect(XValueElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct YValue', () => {
@@ -58,7 +59,8 @@ describe('Popover', () => {
   test('displays the popover card correctly when YValue is undefined', () => {
     const YValue = undefined;
     const { container } = render(<PopoverComponent YValue={YValue} isPopoverOpen={true} />);
-    expect(getByClass(container, /calloutContentY/)).toBeDefined();
+    const YValueElement = getByClass(container, /calloutContentY/)[0] as HTMLElement;
+    expect(YValueElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct YValue when YValue is a number', () => {
@@ -104,7 +106,8 @@ describe('Popover', () => {
   test('displays the popover card correctly when Legend is undefined', () => {
     const Legend = undefined;
     const { container } = render(<PopoverComponent Legend={Legend} isPopoverOpen={true} />);
-    expect(getByClass(container, /calloutlegendText/)).toBeDefined();
+    const LegendElement = getByClass(container, /calloutlegendText/)[0] as HTMLElement;
+    expect(LegendElement.children[0]).toBeUndefined();
   });
 
   test('displays the correct ratio', () => {
