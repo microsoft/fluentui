@@ -52,7 +52,7 @@ export class Accordion extends FASTElement {
   /**
    * @internal
    */
-  protected accordionItems!: Element[];
+  protected accordionItems!: BaseAccordionItem[];
 
   /**
    * @internal
@@ -79,23 +79,13 @@ export class Accordion extends FASTElement {
     }
   }
 
-  private activeItemIndex: number = 0;
-
   /**
    * Find the first expanded item in the accordion.
    *
    * @internal
    */
-  private findExpandedItem(): BaseAccordionItem | Element | null {
-    if (this.accordionItems.length === 0) {
-      return null;
-    }
-
-    return (
-      this.accordionItems.find(
-        (item: Element | BaseAccordionItem) => item instanceof BaseAccordionItem && item.expanded,
-      ) ?? this.accordionItems[0]
-    );
+  private findExpandedItem(): BaseAccordionItem | null {
+    return this.accordionItems.find(item => item.expanded) ?? this.accordionItems[0];
   }
 
   /**
@@ -116,13 +106,15 @@ export class Accordion extends FASTElement {
     children.forEach((child: Element) => Observable.getNotifier(child).subscribe(this, 'disabled'));
 
     // Add event listeners to each non-disabled AccordionItem
-    this.accordionItems = children.filter(child => !child.hasAttribute('disabled'));
-    this.accordionItems.forEach((item: Element, index: number) => {
-      if (item instanceof BaseAccordionItem) {
-        item.addEventListener('click', this.expandedChangedHandler);
-        // Subscribe to the expanded attribute of the item
-        Observable.getNotifier(item).subscribe(this, 'expanded');
+    this.accordionItems = children.filter(isAccordionItem);
+
+    this.accordionItems.forEach(item => {
+      if (item.disabled) {
+        return;
       }
+
+      item.addEventListener('click', this.expandedChangedHandler);
+      Observable.getNotifier(item).subscribe(this, 'expanded');
     });
 
     if (this.isSingleExpandMode()) {
@@ -147,25 +139,21 @@ export class Accordion extends FASTElement {
    *
    * @internal
    */
-  private setSingleExpandMode(expandedItem: Element): void {
-    if (this.accordionItems.length === 0) {
+  private setSingleExpandMode(expandedItem: BaseAccordionItem): void {
+    if (!this.accordionItems.length) {
       return;
     }
-    const currentItems = Array.from(this.accordionItems);
-    this.activeItemIndex = currentItems.indexOf(expandedItem);
 
-    currentItems.forEach((item: Element, index: number) => {
-      if (item instanceof BaseAccordionItem) {
-        if (this.activeItemIndex === index) {
-          item.expanded = true;
-          item.expandbutton.setAttribute('aria-disabled', 'true');
-        } else {
-          item.expanded = false;
+    this.accordionItems.filter(isAccordionItem).forEach(item => {
+      if (item === expandedItem) {
+        item.expanded = true;
+        item.expandbutton.setAttribute('aria-disabled', 'true');
+        return;
+      }
 
-          if (!item.hasAttribute('disabled')) {
-            item.expandbutton.removeAttribute('aria-disabled');
-          }
-        }
+      item.expanded = false;
+      if (!item.hasAttribute('disabled')) {
+        item.expandbutton.removeAttribute('aria-disabled');
       }
     });
   }
@@ -193,16 +181,16 @@ export class Accordion extends FASTElement {
   private expandedChangedHandler: EventListener = (evt: Event): void => {
     const item = evt.target as HTMLElement;
 
-    if (item instanceof BaseAccordionItem) {
-      if (!this.isSingleExpandMode()) {
-        item.expanded = !item.expanded;
-        // setSingleExpandMode sets activeItemIndex on its own
-        this.activeItemIndex = this.accordionItems.indexOf(item);
-      } else {
-        this.setSingleExpandMode(item);
-      }
-
-      this.$emit('change');
+    if (!isAccordionItem(item)) {
+      return;
     }
+
+    if (this.isSingleExpandMode()) {
+      this.setSingleExpandMode(item);
+    } else {
+      item.expanded = !item.expanded;
+    }
+
+    this.$emit('change');
   };
 }
