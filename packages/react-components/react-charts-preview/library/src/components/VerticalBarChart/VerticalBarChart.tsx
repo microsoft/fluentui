@@ -30,7 +30,6 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
   formatValueWithSIPrefix,
   getBarWidth,
   getScalePadding,
@@ -39,6 +38,7 @@ import {
   isRtl,
 } from '../../utilities/index';
 import Popover from '../CommonComponents/Popover';
+import { tooltipOfXAxislabels } from '../CommonComponents/cartesian-utils';
 
 enum CircleVisbility {
   show = 'visibility',
