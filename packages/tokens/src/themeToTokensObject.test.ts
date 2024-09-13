@@ -4,10 +4,11 @@ import { tokens } from './tokens';
 import { Theme } from './types';
 
 function assertKeys(generatedTokens: Record<keyof Theme, string>, expectedTokens = tokens) {
-  const tokensKeys = Object.keys(expectedTokens) as (keyof Theme)[];
-
   (Object.keys(generatedTokens) as (keyof Theme)[]).forEach(token => {
-    expect(tokensKeys.includes(token)).toBe(true);
+    expect(expectedTokens).toHaveProperty(token);
+    expect.objectContaining({
+      [token]: expect.stringContaining('var(--'),
+    });
   });
 }
 
