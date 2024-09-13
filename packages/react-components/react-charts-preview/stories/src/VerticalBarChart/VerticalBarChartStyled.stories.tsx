@@ -41,21 +41,19 @@ export const VCStyled = () => {
           onChange={_onCheckChange}
         />
       </div>
-      <div style={{ width: '800px', height: '400px' }}>
-        <VerticalBarChart
-          chartTitle="Vertical bar chart styled example "
-          data={points}
-          width={800}
-          height={400}
-          barWidth={20}
-          useSingleColor={useSingleColor}
-          yAxisTickCount={6}
-          colors={customColors}
-          lineLegendColor={`rgb(174, 140, 0)`}
-          hideLegend={true}
-          enableReflow={true}
-        />
-      </div>
+      <VerticalBarChart
+        chartTitle="Vertical bar chart styled example "
+        data={points}
+        width={800}
+        height={400}
+        barWidth={20}
+        useSingleColor={useSingleColor}
+        yAxisTickCount={6}
+        colors={customColors}
+        lineLegendColor={`rgb(174, 140, 0)`}
+        hideLegend={true}
+        enableReflow={true}
+      />
     </>
   );
 };

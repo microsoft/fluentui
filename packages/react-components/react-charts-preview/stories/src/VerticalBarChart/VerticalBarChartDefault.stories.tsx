@@ -242,12 +242,12 @@ export const VCBasic = () => {
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
-            {...(isCalloutselected && {
+            /*{...(isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
-            })}
+            })}*/
             yAxisTitle={
               showAxisTitles
                 ? 'Different categories of animals and fruits and their corresponding count are shown here'
