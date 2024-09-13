@@ -37,6 +37,9 @@ export class Accordion extends FASTElement {
 export const AccordionBaseName = "accordion";
 
 // @public
+export const AccordionDefinition: FASTElementDefinition<typeof Accordion>;
+
+// @public
 export const AccordionExpandMode: {
     readonly single: "single";
     readonly multi: "multi";
@@ -66,6 +69,9 @@ export interface AccordionItem extends StartEnd {
 
 // @public
 export const AccordionItemBaseName = "accordion-item";
+
+// @public
+export const AccordionItemDefinition: FASTElementDefinition<typeof AccordionItem>;
 
 // Warning: (ae-missing-release-tag) "AccordionItemMarkerPosition" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
@@ -2195,16 +2201,6 @@ export const curveLinear = "var(--curveLinear)";
 
 // @public
 export const darkModeStylesheetBehavior: (styles: ElementStyles) => MatchMediaStyleSheetBehavior;
-
-// @public
-const definition: FASTElementDefinition<typeof AccordionItem>;
-export { definition as AccordionItemDefinition }
-export { definition as accordionItemDefinition }
-
-// @public
-const definition_2: FASTElementDefinition<typeof Accordion>;
-export { definition_2 as AccordionDefinition }
-export { definition_2 as accordionDefinition }
 
 // @public
 export class Dialog extends FASTElement {

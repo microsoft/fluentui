@@ -2,7 +2,6 @@ export {
   AccordionItem,
   AccordionItemBaseName,
   AccordionItemDefinition,
-  AccordionItemDefinition as accordionItemDefinition, // deprecated, use AccordionItemDefinition
   AccordionItemMarkerPosition,
   AccordionItemSize,
   accordionItemStyles,
@@ -15,7 +14,6 @@ export {
   Accordion,
   AccordionBaseName,
   AccordionDefinition,
-  AccordionDefinition as accordionDefinition, // deprecated, use AccordionDefinition
   AccordionExpandMode,
   accordionStyles,
   accordionTemplate,
