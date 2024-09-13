@@ -13,7 +13,6 @@
     "build": "just-scripts build --module cjs",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "pree2e": "yarn build",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
     "just": "just-scripts",

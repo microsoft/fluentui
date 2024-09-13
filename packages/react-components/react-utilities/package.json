@@ -28,7 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-api-extractor": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.7",

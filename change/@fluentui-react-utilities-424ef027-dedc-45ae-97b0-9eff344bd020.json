@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: reflect package.json dependencies to match actual dep graph",
+  "packageName": "@fluentui/react-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
