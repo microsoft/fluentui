@@ -138,9 +138,15 @@ export class PresenceGroup extends React_2.Component<PresenceGroupProps, Presenc
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
 // @public (undocumented)
+export type PresenceMotionCreator<MotionOverrides extends Record<string, MotionParam> = {}> = (overrides?: MotionOverrides) => PresenceMotion;
+
+// @public (undocumented)
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (params: {
     element: HTMLElement;
 } & MotionParams) => PresenceMotion;
+
+// @public (undocumented)
+export type PresenceMotionFnCreator<MotionOverrides extends Record<string, MotionParam> = {}, MotionParams extends Record<string, MotionParam> = {}> = (overrides?: MotionOverrides) => PresenceMotionFn<MotionParams>;
 
 // @public (undocumented)
 export function presenceMotionSlot<MotionParams extends Record<string, MotionParam> = {}>(motion: PresenceMotionSlotProps<MotionParams> | null | undefined, options: {
@@ -154,6 +160,14 @@ export type PresenceMotionSlotProps<MotionParams extends Record<string, MotionPa
     children?: SlotRenderFunction<PresenceMotionSlotRenderProps & MotionParams & {
         children: React_2.ReactElement;
     }>;
+};
+
+// @public (undocumented)
+export type PresenceParams = {
+    enterDuration?: number;
+    exitDuration?: number;
+    enterEasing?: string;
+    exitEasing?: string;
 };
 
 // (No @packageDocumentation comment for this package)

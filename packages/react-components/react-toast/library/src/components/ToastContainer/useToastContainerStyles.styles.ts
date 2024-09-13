@@ -12,6 +12,7 @@ export const toastContainerClassNames: SlotClassNames<ToastContainerSlots> = {
 const useRootBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   marginTop: '16px',
+  // minHeight: '44px',
   pointerEvents: 'all',
   borderRadius: tokens.borderRadiusMedium,
   ...createCustomFocusIndicatorStyle({
