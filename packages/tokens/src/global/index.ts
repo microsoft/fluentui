@@ -7,4 +7,3 @@ export * from './spacings';
 export * from './strokeWidths';
 export * from './borderRadius';
 export * from './typographyStyles';
-export * from './zIndexes';
