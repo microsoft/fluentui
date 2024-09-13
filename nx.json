@@ -34,8 +34,7 @@
     },
     "type-check": {
       "dependsOn": ["^build"],
-      "cache": true,
-      "executor": "@fluentui/workspace-plugin:type-check"
+      "cache": true
     },
     "prepare": {
       "dependsOn": ["^prepare"],
