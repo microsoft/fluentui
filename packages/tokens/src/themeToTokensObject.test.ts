@@ -7,7 +7,7 @@ function assertKeys(generatedTokens: Record<keyof Theme, string>, expectedTokens
   Object.keys(generatedTokens).forEach(token => {
     expect(expectedTokens).toHaveProperty(token);
     expect.objectContaining({
-      [token]: expect.stringContaining('var(--'),
+      [token]: expect.stringMatching(`var\\(--${token}(, .+)?\\)`),
     });
   });
 }
