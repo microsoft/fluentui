@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update scroll state when children changes",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
