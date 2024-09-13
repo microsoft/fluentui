@@ -2,6 +2,47 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 13 Sep 2024 00:49:23 GMT",
+      "tag": "@fluentui/react-components_v9.54.15",
+      "version": "9.54.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "609b363c61459e55dcf94a68389be72d69d9c364",
+            "comment": "chore: cleanup before the release"
+          },
+          {
+            "author": "owcampbe@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "01cacb057bff35f4bb6ba047386af808f9d529a0",
+            "comment": "fix: Adjust window height comparison in fractional cases."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "db57a7b60c6f80262c3c51c04ee04c6a62c019b1",
+            "comment": "fix: update scroll state when children changes"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bcefcd087e61971c60bf1a699653646352167ae4",
+            "comment": "fix: apply position: absolute when mountNode is passed"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "5a5fbd3b9d1012f5c6106221a4fbd8b3bfa267f7",
+            "comment": "feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Sep 2024 10:19:04 GMT",
       "tag": "@fluentui/react-components_v9.54.14",
       "version": "9.54.14",
