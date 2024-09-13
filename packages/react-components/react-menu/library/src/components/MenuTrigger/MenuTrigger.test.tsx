@@ -108,7 +108,7 @@ describe('MenuTrigger', () => {
     );
     fireEvent.click(getByRole('button'));
 
-    expect(setOpen).toBeCalledTimes(0);
+    expect(setOpen).toHaveBeenCalledTimes(0);
   });
 
   it('should open menu when aria-disabled is false', () => {
@@ -122,7 +122,7 @@ describe('MenuTrigger', () => {
     );
     fireEvent.click(getByRole('button'));
 
-    expect(setOpen).toBeCalledTimes(1);
+    expect(setOpen).toHaveBeenCalledTimes(1);
     expect(setOpen).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ open: true }));
   });
 
@@ -137,7 +137,7 @@ describe('MenuTrigger', () => {
     );
     fireEvent.click(getByRole('button'));
 
-    expect(setOpen).toBeCalledTimes(0);
+    expect(setOpen).toHaveBeenCalledTimes(0);
   });
 
   it('should set MenuTriggerContext to false if not a submenu', () => {
@@ -193,6 +193,6 @@ describe('MenuTrigger', () => {
     event.preventDefault();
     fireEvent(getByRole('button'), event);
 
-    expect(onClick).toBeCalledTimes(0);
+    expect(onClick).toHaveBeenCalledTimes(0);
   });
 });

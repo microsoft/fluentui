@@ -96,6 +96,6 @@ describe('useContextSelector', () => {
       document.querySelector<HTMLElement>('.test-provider')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
-    expect(onUpdate).toBeCalledTimes(2);
+    expect(onUpdate).toHaveBeenCalledTimes(2);
   });
 });

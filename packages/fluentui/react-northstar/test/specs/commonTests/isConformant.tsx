@@ -326,7 +326,7 @@ export function isConformant(
         const wrapper = mount(<Component {...wrapperProps} />);
 
         getEventTargetComponent(wrapper, listenerName, eventTargets).simulate(eventName);
-        expect(handler).toBeCalledTimes(1);
+        expect(handler).toHaveBeenCalledTimes(1);
       });
     });
   }
