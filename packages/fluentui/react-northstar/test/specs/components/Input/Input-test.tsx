@@ -100,9 +100,9 @@ describe('Input', () => {
         stopPropagation,
         nativeEvent: { stopPropagation: nativeEventStopPropagation },
       });
-      expect(onChange).not.toBeCalled();
-      expect(stopPropagation).not.toBeCalled();
-      expect(nativeEventStopPropagation).not.toBeCalled();
+      expect(onChange).not.toHaveBeenCalled();
+      expect(stopPropagation).not.toHaveBeenCalled();
+      expect(nativeEventStopPropagation).not.toHaveBeenCalled();
     });
   });
   describe('icon', () => {

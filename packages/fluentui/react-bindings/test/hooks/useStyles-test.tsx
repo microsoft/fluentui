@@ -67,7 +67,7 @@ describe('useStyles', () => {
         wrappingComponentProps: { value: { performance: {}, theme: createTheme(styles) } },
       });
 
-      expect(styles).not.toBeCalled();
+      expect(styles).not.toHaveBeenCalled();
     });
   });
 

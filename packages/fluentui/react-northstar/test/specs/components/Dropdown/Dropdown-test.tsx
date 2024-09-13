@@ -1755,7 +1755,7 @@ describe('Dropdown', () => {
 
       keyDownOnItemsList('Tab', { preventDefault });
 
-      expect(preventDefault).toBeCalled();
+      expect(preventDefault).toHaveBeenCalled();
     });
 
     it('keeps focus on input when not passed', () => {
@@ -1767,7 +1767,7 @@ describe('Dropdown', () => {
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
-      expect(preventDefault).toBeCalled();
+      expect(preventDefault).toHaveBeenCalled();
     });
 
     it('allows focus to move to next item from search input when passed', () => {
@@ -1781,7 +1781,7 @@ describe('Dropdown', () => {
 
       keyDownOnSearchInput('Tab', { preventDefault });
 
-      expect(preventDefault).not.toBeCalled();
+      expect(preventDefault).not.toHaveBeenCalled();
     });
 
     it('allows focus to move to next item from items list when passed', () => {
@@ -1794,7 +1794,7 @@ describe('Dropdown', () => {
 
       keyDownOnItemsList('Tab', { preventDefault });
 
-      expect(preventDefault).not.toBeCalled();
+      expect(preventDefault).not.toHaveBeenCalled();
     });
   });
 
