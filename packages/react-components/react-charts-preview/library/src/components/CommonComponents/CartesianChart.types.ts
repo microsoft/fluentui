@@ -412,6 +412,12 @@ export interface ICartesianChartProps {
    * @default true
    */
   useUTC?: string | boolean;
+
+  /**
+   * Determines whether overlapping x-axis tick labels should be hidden.
+   * @default false
+   */
+  hideTickOverlap?: boolean;
 }
 
 export interface IYValueHover {

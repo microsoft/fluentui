@@ -218,6 +218,9 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
       xAxisPadding: props.xAxisPadding,
       xAxisInnerPadding: props.xAxisInnerPadding,
       xAxisOuterPadding: props.xAxisOuterPadding,
+      containerWidth: containerWidth,
+      hideTickOverlap:
+        props.hideTickOverlap && !props.rotateXAxisLables && !props.showXAxisLablesTooltip && !props.wrapXAxisLables,
     };
 
     const YAxisParams = {
