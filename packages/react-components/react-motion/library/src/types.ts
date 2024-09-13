@@ -4,6 +4,10 @@ export type PresenceDirection = 'enter' | 'exit';
 
 export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]>;
 
+export type PresenceMotionCreator<MotionOverrides extends Record<string, MotionParam> = {}> = (
+  overrides?: MotionOverrides,
+) => PresenceMotion;
+
 /**
  * @internal
  *
@@ -12,6 +16,13 @@ export type PresenceMotion = Record<PresenceDirection, AtomMotion | AtomMotion[]
  */
 export type MotionParam = boolean | number | string;
 
+export type PresenceParams = {
+  enterDuration?: number;
+  exitDuration?: number;
+  enterEasing?: string;
+  exitEasing?: string;
+};
+
 export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
   params: { element: HTMLElement } & MotionParams,
 ) => AtomMotion | AtomMotion[];
@@ -19,6 +30,11 @@ export type AtomMotionFn<MotionParams extends Record<string, MotionParam> = {}> 
 export type PresenceMotionFn<MotionParams extends Record<string, MotionParam> = {}> = (
   params: { element: HTMLElement } & MotionParams,
 ) => PresenceMotion;
+
+export type PresenceMotionFnCreator<
+  MotionOverrides extends Record<string, MotionParam> = {},
+  MotionParams extends Record<string, MotionParam> = {},
+> = (overrides?: MotionOverrides) => PresenceMotionFn<MotionParams>;
 
 // ---
 
