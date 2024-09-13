@@ -542,7 +542,8 @@ export const tokens: Record<keyof Theme, string> = {
 
   /**
    * ZIndexes
-   * This is a special case where the tokens contain default values
+   * Special case where the tokens contain default values
+   * ZIndexes are not mandatory, so they are not included in the theme, but can be used as tokens with default values
    */
 
   /**
