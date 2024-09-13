@@ -24,7 +24,10 @@ describe('TextArea', () => {
 
       wrapper.simulate('change', { target: { value } });
       expect(onChange).toHaveBeenCalledTimes(1);
-      expect(onChange).toBeCalledWith(expect.objectContaining({ type: 'change' }), expect.objectContaining({ value }));
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'change' }),
+        expect.objectContaining({ value }),
+      );
     });
   });
 });

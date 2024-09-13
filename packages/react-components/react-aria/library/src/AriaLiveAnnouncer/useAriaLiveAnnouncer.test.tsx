@@ -43,7 +43,7 @@ describe('useAriaLiveAnnouncer', () => {
       const { rerender } = renderHook(() => useAriaLiveAnnouncer({}));
 
       expect(append).toHaveBeenCalledTimes(1);
-      expect(append).toBeCalledWith(expect.any(HTMLDivElement));
+      expect(append).toHaveBeenCalledWith(expect.any(HTMLDivElement));
 
       // Ensure that the same element is not appended again
       rerender();

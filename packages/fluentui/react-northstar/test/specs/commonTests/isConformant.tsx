@@ -583,7 +583,7 @@ export function isConformant(
 
           const element = getComponent(wrapper);
           expect(typeof element.type()).toBe('string');
-          expect(rootRef).toBeCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
+          expect(rootRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: _.upperCase(element.type()) }));
         });
       }
     });

@@ -235,14 +235,14 @@ describe('useAccessibility', () => {
     });
 
     expect(onKeyDown).toHaveBeenCalledTimes(1);
-    expect(onKeyDown).toBeCalledWith(
+    expect(onKeyDown).toHaveBeenCalledWith(
       expect.objectContaining({
         keyCode: keyboardKey.ArrowDown,
       }),
     );
 
     expect(onClick).toHaveBeenCalledTimes(1);
-    expect(onClick).toBeCalledWith(
+    expect(onClick).toHaveBeenCalledWith(
       expect.objectContaining({
         keyCode: keyboardKey.ArrowDown,
       }),

@@ -16,7 +16,7 @@ describe('handleRef', () => {
     const node = document.createElement('div');
 
     handleRef(ref, node);
-    expect(ref).toBeCalledWith(node);
+    expect(ref).toHaveBeenCalledWith(node);
   });
 
   it('does not do anything when "ref" is null', () => {

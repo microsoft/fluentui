@@ -189,7 +189,7 @@ describe('KeytipLayer', () => {
 
         it('calls on enter keytip mode when we process alt + left win', () => {
           layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onEnter).toBeCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+          expect(onEnter).toHaveBeenCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
         });
 
         it('calls on exit keytip mode when we process alt + left win', () => {
@@ -236,7 +236,7 @@ describe('KeytipLayer', () => {
         );
         layerValue = layerRef.current!;
         layerValue.processTransitionInput({ key: 'Meta' });
-        expect(onEnter).toBeCalledWith({ key: 'Meta' });
+        expect(onEnter).toHaveBeenCalledWith({ key: 'Meta' });
       });
     });
 
