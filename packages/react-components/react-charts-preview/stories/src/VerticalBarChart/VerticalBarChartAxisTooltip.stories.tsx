@@ -11,7 +11,6 @@ import {
   InputProps,
   InputOnChangeData,
 } from '@fluentui/react-components';
-import { StackShim } from '@fluentui/react-migration-v8-v9';
 
 export const VCAxisTooltip = () => {
   const [selectedCallout, setSelectedCallout] = React.useState<string>('showTooltip');
