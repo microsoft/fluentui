@@ -9,7 +9,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
   const { targetDocument } = useFluent_unstable();
   const classes = useResponsiveContainerStyles_unstable();
 
-  const [sizes, setSizes] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
+  const [size, setSize] = React.useState<{ containerWidth?: number; containerHeight?: number }>({});
 
   onResizeRef.current = props.onResize;
   const _window = targetDocument?.defaultView;
@@ -24,11 +24,11 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
       // rAF is an alternative to the throttle function. For more info, see:
       // https://css-tricks.com/debouncing-throttling-explained-examples/#aa-requestanimationframe-raf
       animationFrameId = _window?.requestAnimationFrame(() => {
-        setSizes(prevSizes => {
+        setSize(prevSize => {
           const roundedWidth = Math.floor(containerWidth);
           const roundedHeight = Math.floor(containerHeight);
-          if (prevSizes.containerWidth === roundedWidth && prevSizes.containerHeight === roundedHeight) {
-            return prevSizes;
+          if (prevSize.containerWidth === roundedWidth && prevSize.containerHeight === roundedHeight) {
+            return prevSize;
           }
 
           return { containerWidth: roundedWidth, containerHeight: roundedHeight };
@@ -55,7 +55,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
 
   return (
     <div ref={containerRef} className={classes.root}>
-      {props.children(sizes)}
+      {props.children(size)}
     </div>
   );
 };

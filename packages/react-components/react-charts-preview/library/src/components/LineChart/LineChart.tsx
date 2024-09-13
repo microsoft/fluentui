@@ -37,7 +37,6 @@ import {
   isRtl,
   formatDate,
 } from '../../utilities/index';
-import { ResponsiveContainer } from '../CommonComponents/ResponsiveContainer';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
 enum PointSize {
@@ -123,7 +122,7 @@ type LineChartDataWithIndex = ILineChartPoints & { index: number };
  * Linechart component
  * {@docCategory LineChart}
  */
-const LineChartBase: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
+export const LineChart: React.FunctionComponent<ILineChartProps> = React.forwardRef<HTMLDivElement, ILineChartProps>(
   (props, forwardedRef) => {
     let _points: LineChartDataWithIndex[] = _injectIndexPropertyInLineChartData(props.data.lineChartData);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -1344,18 +1343,4 @@ const LineChartBase: React.FunctionComponent<ILineChartProps> = React.forwardRef
     );
   },
 );
-
-export const LineChart: React.FunctionComponent<ILineChartProps> = props => {
-  if (!props.responsive) {
-    return <LineChartBase {...props} />;
-  }
-
-  return (
-    <ResponsiveContainer onResize={props.onResize}>
-      {({ containerWidth, containerHeight }) => (
-        <LineChartBase {...props} width={containerWidth} height={containerHeight} />
-      )}
-    </ResponsiveContainer>
-  );
-};
 LineChart.displayName = 'LineChart';
