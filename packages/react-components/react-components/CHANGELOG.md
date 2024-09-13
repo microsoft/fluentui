@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 10 Sep 2024 10:19:04 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2024 00:49:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.15)
+
+Fri, 13 Sep 2024 00:49:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.14..@fluentui/react-components_v9.54.15)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards ([PR #32457](https://github.com/microsoft/fluentui/pull/32457) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-carousel-preview`
+  - chore: cleanup before the release ([PR #32475](https://github.com/microsoft/fluentui/pull/32475) by olfedias@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: Adjust window height comparison in fractional cases. ([PR #32480](https://github.com/microsoft/fluentui/pull/32480) by owcampbe@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: update scroll state when children changes ([PR #32818](https://github.com/microsoft/fluentui/pull/32818) by marcosvmmoura@gmail.com)
+  - fix: apply position: absolute when mountNode is passed ([PR #32816](https://github.com/microsoft/fluentui/pull/32816) by marcosvmmoura@gmail.com)
 
 ## [9.54.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.14)
 

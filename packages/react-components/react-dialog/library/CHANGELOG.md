@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 10 Sep 2024 10:19:06 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2024 00:49:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.14)
+
+Fri, 13 Sep 2024 00:49:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.11.13..@fluentui/react-dialog_v9.11.14)
+
+### Patches
+
+- fix: Adjust window height comparison in fractional cases. ([PR #32480](https://github.com/microsoft/fluentui/pull/32480) by owcampbe@microsoft.com)
 
 ## [9.11.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.11.13)
 
