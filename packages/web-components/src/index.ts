@@ -305,3 +305,10 @@ export {
 export type { MediaQueryListListener } from './utils/behaviors/match-media-stylesheet-behavior.js';
 export { getDirection } from './utils/direction.js';
 export { display } from './utils/display.js';
+
+export {
+  HorizontalBarChart,
+  HorizontalBarChartDefinition,
+  HorizontalBarChartStyles,
+  HorizontalBarChartTemplate,
+} from './horizontalbarchart/index.js';
