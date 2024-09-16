@@ -87,4 +87,10 @@ export {
 export { carouselContextDefaultValue, CarouselProvider, useCarouselContext_unstable } from './CarouselContext';
 export type { CarouselIndexChangeData, CarouselContextValue, CarouselContextValues } from './CarouselContext';
 export type { CarouselAnnouncerProps, CarouselAnnouncerSlots, CarouselAnnouncerState } from './CarouselAnnouncer';
-export { CarouselAnnouncer, carouselAnnouncerClassNames, renderCarouselAnnouncer_unstable, useCarouselAnnouncerStyles_unstable, useCarouselAnnouncer_unstable } from './CarouselAnnouncer';
+export {
+  CarouselAnnouncer,
+  carouselAnnouncerClassNames,
+  renderCarouselAnnouncer_unstable,
+  useCarouselAnnouncerStyles_unstable,
+  useCarouselAnnouncer_unstable,
+} from './CarouselAnnouncer';
