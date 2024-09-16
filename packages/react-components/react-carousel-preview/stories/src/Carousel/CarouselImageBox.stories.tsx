@@ -1,6 +1,7 @@
 import { makeStyles, Image } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavContainer,
@@ -61,10 +62,6 @@ const ImageCard: React.FC<ImageDefinition> = props => {
   return <Image className={classes.image} src={url} role="presentation" />;
 };
 
-const indexedAriaLabel = (index: number, targetCards: number[]) => {
-  return `Go to image ${index}`;
-};
-
 export const ImageSlideshow = () => {
   const classes = useClasses();
 
@@ -78,7 +75,11 @@ export const ImageSlideshow = () => {
         ))}
       </CarouselSlider>
 
-      <CarouselNavContainer layout="overlay-expanded" next={{ indexedAriaLabel }} prev={{ indexedAriaLabel }}>
+      <CarouselNavContainer
+        layout="overlay-expanded"
+        next={{ 'aria-label': 'go to next' }}
+        prev={{ 'aria-label': 'go to prev' }}
+      >
         <CarouselNav>
           {index => (
             <CarouselNavImageButton
@@ -88,6 +89,11 @@ export const ImageSlideshow = () => {
           )}
         </CarouselNav>
       </CarouselNavContainer>
+      <CarouselAnnouncer>
+        {(currentIndex, totalSlides, _slideGroupList) => {
+          return `Slide ${currentIndex + 1} of ${totalSlides}`;
+        }}
+      </CarouselAnnouncer>
     </Carousel>
   );
 };

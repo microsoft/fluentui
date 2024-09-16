@@ -145,7 +145,7 @@ const ActionCard: React.FC<Post & { index: number }> = props => {
   const classes = useCardClasses();
 
   return (
-    <CarouselCard className={classes.actionCard} aria-label={`${index + 1} of ${POSTS.length}`}>
+    <CarouselCard className={classes.actionCard} aria-label={`Card ${index + 1} of ${POSTS.length}`}>
       <div className={classes.imageContainer}>
         <Image className={classes.image} fit="cover" src={swapImage} role="presentation" />
         <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label="Go to document" />
@@ -162,10 +162,6 @@ const ActionCard: React.FC<Post & { index: number }> = props => {
       </div>
     </CarouselCard>
   );
-};
-
-const indexedAriaLabel = (index: number, targetCards: number[]) => {
-  return `Go to slide ${index}, containing cards ${targetCards.join(' ')}`;
 };
 
 export const AlignmentAndWhitespace = () => {

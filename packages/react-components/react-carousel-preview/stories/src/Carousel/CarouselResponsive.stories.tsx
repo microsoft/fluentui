@@ -1,6 +1,7 @@
 import { Body1, Caption1, makeStyles, mergeClasses, tokens, Title1, Subtitle2 } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -80,10 +81,6 @@ const WireframeContent: React.FC<{
   );
 };
 
-const indexedAriaLabel = (index: number, targetCards: number[]) => {
-  return `Go to slide ${index}, containing cards ${targetCards.join(' ')}`;
-};
-
 export const Responsive = () => {
   const classes = useClasses();
 
@@ -136,9 +133,15 @@ export const Responsive = () => {
         </CarouselCard>
       </CarouselSlider>
 
-      <CarouselNavContainer layout="inline" next={{ indexedAriaLabel }} prev={{ indexedAriaLabel }}>
+      <CarouselNavContainer layout="inline" next={{ 'aria-label': 'go to next' }} prev={{ 'aria-label': 'go to prev' }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
+
+      <CarouselAnnouncer>
+        {(currentIndex, totalSlides, _slideGroupList) => {
+          return `Slide ${currentIndex + 1} of ${totalSlides}`;
+        }}
+      </CarouselAnnouncer>
     </Carousel>
   );
 };

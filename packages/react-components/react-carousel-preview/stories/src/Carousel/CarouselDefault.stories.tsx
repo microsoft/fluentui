@@ -72,10 +72,6 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   );
 };
 
-const indexedAriaLabel = (index: number) => {
-  return `Go to slide ${index}`;
-};
-
 export const Default = () => (
   <Carousel groupSize={1} circular>
     <CarouselSlider>
@@ -90,8 +86,8 @@ export const Default = () => (
       autoplay={{
         autoplayAriaLabel: autoplay => (autoplay ? 'Disable Autoplay' : 'Enable Autoplay'),
       }}
-      next={{ indexedAriaLabel }}
-      prev={{ indexedAriaLabel }}
+      next={{ 'aria-label': 'go to next' }}
+      prev={{ 'aria-label': 'go to prev' }}
     >
       <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
     </CarouselNavContainer>

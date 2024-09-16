@@ -98,7 +98,6 @@ export const useCarouselButton_unstable = (
     });
   }, [subscribeForValues]);
 
-  const ariaLabel = props['aria-label'] ?? props.indexedAriaLabel?.(targetIndex, slideIndexes[targetIndex]);
   return {
     navType,
     // We lean on react-button class to handle styling and icon enhancements
@@ -116,7 +115,6 @@ export const useCarouselButton_unstable = (
         'aria-disabled': isTrailing,
         appearance: 'subtle',
         ...props,
-        'aria-label': ariaLabel,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
       useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,

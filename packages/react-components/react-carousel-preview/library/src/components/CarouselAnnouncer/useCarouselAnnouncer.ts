@@ -50,6 +50,7 @@ export const useCarouselAnnouncer_unstable = (
         elementType: 'div',
         defaultProps: {
           'aria-live': 'assertive',
+          hidden: true,
         },
       },
     ),

@@ -115,10 +115,6 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   );
 };
 
-const indexedAriaLabel = (index: number) => {
-  return `Go to slide ${index}`;
-};
-
 export const Autoplay = () => {
   const classes = useClasses();
   const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
@@ -156,11 +152,16 @@ export const Autoplay = () => {
         <CarouselNavContainer
           layout="inline"
           autoplay={autoplayProps}
-          next={{ indexedAriaLabel }}
-          prev={{ indexedAriaLabel }}
+          next={{ 'aria-label': 'go to next' }}
+          prev={{ 'aria-label': 'go to prev' }}
         >
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>
+        <CarouselAnnouncer>
+          {(currentIndex, totalSlides, _slideGroupList) => {
+            return `Slide ${currentIndex + 1} of ${totalSlides}`;
+          }}
+        </CarouselAnnouncer>
       </Carousel>
     </div>
   );

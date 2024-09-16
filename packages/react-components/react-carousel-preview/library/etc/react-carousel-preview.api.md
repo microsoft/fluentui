@@ -75,7 +75,6 @@ export const carouselButtonClassNames: SlotClassNames<CarouselButtonSlots>;
 // @public
 export type CarouselButtonProps = Partial<ButtonProps> & ComponentProps<CarouselButtonSlots> & {
     navType?: 'prev' | 'next';
-    indexedAriaLabel?: (index: number, targetCards: number[]) => string;
 };
 
 // @public (undocumented)
