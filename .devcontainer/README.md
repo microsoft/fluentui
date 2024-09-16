@@ -4,7 +4,7 @@ This configuration is based on the base Node container provided by VSCode, it sh
 
 > For more information on how to use/create `development containers` follow the [VSCode Documentation](https://code.visualstudio.com/docs/remote/create-dev-container)
 
-> See here for more information on the base container https://github.com/microsoft/vscode-dev-containers/tree/v0.222.0/containers/javascript-node/.devcontainer/base.Dockerfile
+> See here for more information on the base container https://github.com/microsoft/vscode-dev-containers/blob/main/containers/javascript-node/.devcontainer/base.Dockerfile
 
 ## Cypress tests
 

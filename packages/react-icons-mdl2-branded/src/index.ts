@@ -230,6 +230,7 @@ export { default as VisioLogoInverseIcon } from './components/VisioLogoInverseIc
 export { default as VisualBasicLanguageIcon } from './components/VisualBasicLanguageIcon';
 export { default as VisualStudioIDELogo32Icon } from './components/VisualStudioIDELogo32Icon';
 export { default as VisualStudioLogoIcon } from './components/VisualStudioLogoIcon';
+export { default as VivaEngageIcon } from './components/VivaEngageIcon';
 export { default as VSTSAltLogo1Icon } from './components/VSTSAltLogo1Icon';
 export { default as VSTSAltLogo2Icon } from './components/VSTSAltLogo2Icon';
 export { default as VSTSLogoIcon } from './components/VSTSLogoIcon';

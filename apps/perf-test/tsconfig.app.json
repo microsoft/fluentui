@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES5",
+    "outDir": "lib",
+    "jsx": "react",
+    "lib": ["ES2015", "DOM"],
+    "types": ["webpack-env", "node"]
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
+}

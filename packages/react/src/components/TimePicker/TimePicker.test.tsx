@@ -119,6 +119,33 @@ describe('TimePicker', () => {
     expect(formattedSelectedTime).toEqual(expectedTime);
   });
 
+  it('allows time selection in locales that format time without "am/pm"', () => {
+    const { toLocaleTimeString } = Date.prototype;
+    const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
+
+    // Mock toLocaleTimeString to simulate running in a Japanese locale
+    toLocaleTimeStringMock.mockImplementation(function (this: Date, _locales, options) {
+      return toLocaleTimeString.call(this, 'ja-JP', options);
+    });
+
+    const dateAnchor = new Date('February 27, 2023 08:00:00');
+
+    const onChange = jest.fn();
+
+    const { getByRole, getAllByRole } = render(
+      <TimePicker allowFreeform={false} increments={15} dateAnchor={dateAnchor} useHour12 onChange={onChange} />,
+    );
+
+    const timePickerComboBox = getByRole('combobox') as HTMLInputElement;
+    userEvent.click(timePickerComboBox);
+    const timePickerOptions = getAllByRole('option') as HTMLButtonElement[];
+    userEvent.click(timePickerOptions[2], undefined, { skipPointerEventsCheck: true });
+
+    expect(onChange).toHaveBeenLastCalledWith(expect.anything(), new Date('February 27, 2023 08:30:00'));
+
+    toLocaleTimeStringMock.mockRestore();
+  });
+
   it('correctly renders options using default value as date anchor', () => {
     const defaultValue = new Date('April 1, 2023 13:00:00');
 

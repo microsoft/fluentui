@@ -2,7 +2,7 @@ import { useIFrameFocusDispatch } from './useIFrameFocusDispatch';
 import { useIFrameListener } from './useIFrameListener';
 
 /**
- * It enabables a interval to check if the iframe is focused and executes the callback function.
+ * A hook that creates an interval to check if the iframe is focused and executes the callback function once it happens.
  */
 export const useOnIFrameFocus = (
   enableFrameFocusDispatch: boolean,

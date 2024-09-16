@@ -64,7 +64,7 @@ export const Beak: React.FunctionComponent<IBeakProps> = React.forwardRef<HTMLDi
       right,
       height: `${svgHeight}px`,
       width: `${svgWidth}px`,
-      transform: transform,
+      transform,
       color,
     });
 

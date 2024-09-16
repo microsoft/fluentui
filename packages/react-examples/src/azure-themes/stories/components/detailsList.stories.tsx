@@ -6,6 +6,10 @@ import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import { ThemeProvider } from '@fluentui/react';
 
+export default {
+  title: 'Components/DetailsList',
+};
+
 const exampleChildClass = mergeStyles({
   display: 'block',
   marginBottom: '10px',

@@ -180,6 +180,8 @@ describe('Callout Positioning', () => {
       basicTestCase.bounds,
       __positioningTestPackage._getPositionData(DirectionalHint.bottomLeftEdge),
       basicTestCase.beakWidth,
+      false, // shouldScroll value
+      undefined, // minimumScrollResizeHeight value
       true, // directionalHintFixed value
     );
 

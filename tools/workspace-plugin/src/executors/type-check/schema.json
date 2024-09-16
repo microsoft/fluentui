@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/schema",
+  "version": 2,
+  "title": "TypeCheck executor",
+  "description": "Type check project files via TypeScript.",
+  "type": "object",
+  "properties": {
+    "excludeProject": {
+      "description": "Exclude TsConfigs from type checking (e2e,spec). By default all TsConfigs specified in project root tsconfig#references are checked.",
+      "type": "object",
+      "properties": {
+        "e2e": {
+          "type": "boolean"
+        },
+        "spec": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "required": []
+}

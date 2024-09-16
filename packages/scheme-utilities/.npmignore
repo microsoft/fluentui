@@ -2,7 +2,6 @@
 *.config.js
 *.log
 *.nuspec
-*.png
 *.test.*
 *.yml
 .editorconfig
@@ -24,8 +23,6 @@ jsconfig.json
 node_modules
 results
 src/**/*
-!src/**/examples/*.tsx
-!src/**/docs/**/*.md
 !src/**/*.types.ts
 temp
 tsconfig.json
@@ -33,6 +30,9 @@ tsd.json
 tslint.json
 typings
 visualtests
+project.json
+
+# exclude gitignore patterns explicitly
 !lib
 !lib-commonjs
 !lib-amd

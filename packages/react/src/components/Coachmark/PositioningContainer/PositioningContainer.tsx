@@ -14,6 +14,7 @@ import { useMergedRefs, useAsync, useTarget } from '@fluentui/react-hooks';
 import type { IPositioningContainerProps } from './PositioningContainer.types';
 import type { Point, IRectangle } from '../../../Utilities';
 import type { IPositionedData, IPositionProps, IPosition } from '../../../Positioning';
+import { useDocumentEx, useWindowEx } from '../../../utilities/dom';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -64,6 +65,8 @@ function usePositionState(
   getCachedBounds: () => IRectangle,
 ) {
   const async = useAsync();
+  const doc = useDocumentEx();
+  const win = useWindowEx();
   /**
    * Current set of calculated positions for the outermost parent container.
    */
@@ -90,13 +93,15 @@ function usePositionState(
         // or don't check anything else if the target is a Point or Rectangle
         if (
           (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
-          document.body.contains(target as Node)
+          doc?.body.contains(target as Node)
         ) {
           currentProps!.gapSpace = offsetFromTarget;
           const newPositions: IPositionedData = positionElement(
             currentProps!,
             hostElement,
             positioningContainerElement,
+            undefined,
+            win,
           );
           // Set the new position only when the positions are not exists or one of the new positioningContainer
           // positions are different. The position should not change if the position is within 2 decimal places.
@@ -152,6 +157,7 @@ function useMaxHeight(
    * without going beyond the window or target bounds
    */
   const maxHeight = React.useRef<number | undefined>();
+  const win = useWindowEx();
 
   // If the target element changed, reset the max height. If we are tracking
   // target with class name, always reset because we do not know if
@@ -171,7 +177,14 @@ function useMaxHeight(
     if (!maxHeight.current) {
       if (directionalHintFixed && targetRef.current) {
         const gapSpace = offsetFromTarget ? offsetFromTarget : 0;
-        maxHeight.current = getMaxHeight(targetRef.current, directionalHint!, gapSpace, getCachedBounds());
+        maxHeight.current = getMaxHeight(
+          targetRef.current,
+          directionalHint!,
+          gapSpace,
+          getCachedBounds(),
+          undefined,
+          win,
+        );
       } else {
         maxHeight.current = getCachedBounds().height! - BORDER_WIDTH * 2;
       }

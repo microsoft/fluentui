@@ -1,5 +1,5 @@
 name: "\U0001F680 New feature proposal"
-description: Propose a new feature to be added to Fluent UI
+description: Propose a new feature to be added to Fluent UI.
 title: '[Feature]: '
 labels: ['Type: Feature', 'Needs: Triage 🔍']
 assignees: []
@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest in the project and taking the time to fill out this feature report!
+        Thanks for your interest in the project and for taking the time to fill out this feature report!
 
   - type: dropdown
     id: lib-version
@@ -33,7 +33,7 @@ body:
     id: feature-discussed-with
     attributes:
       label: Have you discussed this feature with our team
-      description: Please use particular person or team github handle
+      description: Please use a particular person or team's GitHub handle
     validations:
       required: false
 
@@ -41,7 +41,7 @@ body:
     id: additional-context
     attributes:
       label: Additional context
-      description: Any other context or screenshots about the feature request here.
+      description: Any other context or screenshots about the feature request here?
     validations:
       required: false
 
@@ -51,5 +51,17 @@ body:
       label: Validations
       description: Before submitting the issue, please make sure you do the following
       options:
-        - label: Check that there isn't already an issue that request the same feature to avoid creating a duplicate.
+        - label: Check that there isn't already an issue that requests the same feature to avoid creating a duplicate.
           required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: What is this feature's priority from your product's perspective
+      options:
+        - High
+        - Normal
+        - Low
+    validations:
+      required: false

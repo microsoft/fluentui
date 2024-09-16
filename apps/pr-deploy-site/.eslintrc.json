@@ -13,7 +13,8 @@
         "curly": "off",
         "no-var": "off",
         "vars-on-top": "off",
-        "prefer-arrow-callback": "off"
+        "prefer-arrow-callback": "off",
+        "no-restricted-globals": "off"
       }
     }
   ]

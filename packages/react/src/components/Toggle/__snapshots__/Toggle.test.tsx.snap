@@ -61,6 +61,17 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
             top: -2px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
           &:hover {
             border-color: #323130;
           }
@@ -183,6 +194,17 @@ exports[`Toggle renders toggle correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: -2px;
             content: "";
@@ -330,6 +352,17 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
             top: -2px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
           &:hover {
             border-color: #323130;
           }
@@ -465,6 +498,17 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
             top: -2px;
             z-index: 1;
           }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
           &:hover {
             border-color: #323130;
           }
@@ -589,6 +633,17 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: -2px;
+            content: "";
+            left: -2px;
+            outline: 1px solid #605e5c;
+            position: absolute;
+            right: -2px;
+            top: -2px;
+            z-index: 1;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus:after {
             border: 1px solid #ffffff;
             bottom: -2px;
             content: "";

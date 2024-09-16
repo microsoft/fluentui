@@ -1,0 +1,13 @@
+{
+  "name": "foundation-legacy",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/foundation-legacy/src",
+  "tags": ["v8", "ships-bundle"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

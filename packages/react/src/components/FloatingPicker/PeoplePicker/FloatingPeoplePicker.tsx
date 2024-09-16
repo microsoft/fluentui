@@ -29,7 +29,7 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
     key: name,
     primaryText: name,
     imageInitials: '!',
-    isValid: isValid,
+    isValid,
   };
 
   if (!isValid) {

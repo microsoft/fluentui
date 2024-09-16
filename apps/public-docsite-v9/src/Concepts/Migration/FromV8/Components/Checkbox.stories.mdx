@@ -8,6 +8,9 @@ Fluent UI v8 provides the `Checkbox` control to give people a way to select one 
 
 The main difference between v8 and v9 `Checkbox` is that v9 offers a circular variant. v9 handles checked and indeterminate differently from v8, v9 combines both into the `checked` and `defaultChecked` props.
 
+Fluent UI v9 also provide the `CheckboxShim` as a bridge component of v8 and v9, which means you can keeps the v8 props and get a v9 `Checkbox` rendered in your UI.<br/>
+** Note **: `CheckboxShim` is not a part of the `@fluentui/react-component` package, it is a part of the `@fluentui/react-migration-v8-v9s` package. It's consideral to use `CheckboxShim` only for temperary migration purpose, and use `Checkbox` directly for new development.
+
 ## Examples
 
 ### Basic Migration
@@ -46,33 +49,50 @@ const CheckboxV9BasicExample = () => {
 };
 ```
 
+Usage of `CheckboxShim` in migration v8 to v9 is
+
+```tsx
+import * as React from 'react';
+import { CheckboxShim as Checkbox } from '@fluentui/react-migration-v8-v9';
+
+const CheckboxShimBasicExample = () => {
+  return (
+    <>
+      <Checkbox checked label="Checked" />
+      <Checkbox disabled label="Disabled" />
+      <Checkbox indeterminate={true} label="Indeterminate" />
+    </>
+  );
+};
+```
+
 ## Prop Mapping
 
-This table maps `Checkbox` v8 props to the `Checkbox` v9 equivalent.
+This table maps `Checkbox` v8 props to the `Checkbox` v9 equivalent and `CheckboxShim`.
 
-| v8                     | v9                 | Notes                                    |
-| ---------------------- | ------------------ | ---------------------------------------- |
-| `ariaDescribedBy`      | `aria-describedby` |                                          |
-| `ariaLabel`            | `aria-label`       |                                          |
-| `ariaLabelledBy`       | `aria-labelledby`  |                                          |
-| `ariaPositionInSet`    | `aria-posinset`    |                                          |
-| `ariaSetSize`          | `aria-setsize`     |                                          |
-| `boxSide`              | `labelPosition`    |                                          |
-| `checked`              | `checked`          | Mutually exclusive with `defaultChecked` |
-| `checkmarkIconProps`   | `indicator`        |                                          |
-| `className`            | `className`        |                                          |
-| `componentRef`         | `ref`              |                                          |
-| `defaultChecked`       | `defaultChecked`   | Mutually exclusive with `checked`        |
-| `defaultIndeterminate` | `defaultChecked`   |                                          |
-| `disabled`             | `disabled`         |                                          |
-| `id`                   | `id`               |                                          |
-| `indeterminate`        | `checked`          |                                          |
-| `inputProps`           | n/a                | Props go directly to the `input` slot    |
-| `label`                | `label`            |                                          |
-| `name`                 | `name`             |                                          |
-| `onChange`             | `onChange`         |                                          |
-| `onRenderLabel`        | n/a                |                                          |
-| `required`             | `required`         |                                          |
-| `styles`               | `className`        |                                          |
-| `theme`                | n/a                | Use `FluentProvider` to customize themes |
-| `title`                | n/a                |                                          |
+| v8                     | v9                 | shim              | Notes                                    |
+| ---------------------- | ------------------ | ----------------- | ---------------------------------------- |
+| `ariaDescribedBy`      | `aria-describedby` | `ariaDescribedBy` |                                          |
+| `ariaLabel`            | `aria-label`       | `ariaLabel`       |                                          |
+| `ariaLabelledBy`       | `aria-labelledby`  | `ariaLabelledBy`  |                                          |
+| `ariaPositionInSet`    | `aria-posinset`    | `aria-posinset`   |                                          |
+| `ariaSetSize`          | `aria-setsize`     | `aria-setsize`    |                                          |
+| `boxSide`              | `labelPosition`    | n/a               |                                          |
+| `checked`              | `checked`          | `checked`         | Mutually exclusive with `defaultChecked` |
+| `checkmarkIconProps`   | `indicator`        | n/a               |                                          |
+| `className`            | `className`        | `className`       |                                          |
+| `componentRef`         | `ref`              | `componentRef`    |                                          |
+| `defaultChecked`       | `defaultChecked`   | `defaultChecked`  | Mutually exclusive with `checked`        |
+| `defaultIndeterminate` | `defaultChecked`   | n/a               |                                          |
+| `disabled`             | `disabled`         | `disabled`        |                                          |
+| `id`                   | `id`               | `id`              |                                          |
+| `indeterminate`        | `checked`          | n/a               |                                          |
+| `inputProps`           | n/a                | n/a               | Props go directly to the `input` slot    |
+| `label`                | `label`            | `label`           |                                          |
+| `name`                 | `name`             | `name`            |                                          |
+| `onChange`             | `onChange`         | `onChange`        |                                          |
+| `onRenderLabel`        | n/a                | `onRenderLabel`   |                                          |
+| `required`             | `required`         | `required`        |                                          |
+| `styles`               | `className`        | `className`       |                                          |
+| `theme`                | n/a                | `theme`           | Use `FluentProvider` to customize themes |
+| `title`                | n/a                | `title`           |                                          |

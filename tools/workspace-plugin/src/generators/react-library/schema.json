@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "id": "react-library",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Library name (without @fluentui scope prefix)",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "pattern": "^[a-zA-Z].*$",
+      "x-priority": "important",
+      "x-prompt": "What name would you like to use for the library (without @fluentui scope prefix)?"
+    },
+    "owner": {
+      "type": "string",
+      "description": "Team owning the library. Will be written in CODEOWNERS",
+      "x-priority": "important",
+      "x-prompt": {
+        "message": "Which team will own this library",
+        "type": "list",
+        "items": [
+          "@microsoft/cxe-red",
+          "@microsoft/cxe-prg",
+          "@microsoft/fluentui-react-build",
+          "@microsoft/teams-prg",
+          "@microsoft/xc-uxe"
+        ]
+      }
+    },
+    "kind": {
+      "type": "string",
+      "description": "v9 library kind either embracing converged patterns(standard) or using griffel only with old framework patterns(compat)",
+      "default": "standard",
+      "enum": ["standard", "compat"],
+      "x-prompt": {
+        "message": "What kind of react-components library do you wanna create?"
+      }
+    }
+  },
+  "required": ["name", "owner"]
+}

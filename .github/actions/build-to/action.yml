@@ -1,3 +1,5 @@
+# TODO: Remove or replace with NX cache - we don't use lage(backfill) anymore
+
 name: 'Build workspaces'
 description: 'Runs the build command for specific workspaces.'
 inputs:

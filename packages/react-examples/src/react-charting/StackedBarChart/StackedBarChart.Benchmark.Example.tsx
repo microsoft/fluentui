@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { StackedBarChart, IChartProps, IChartDataPoint } from '@fluentui/react-charting';
+import {
+  StackedBarChart,
+  IChartProps,
+  IChartDataPoint,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 export class StackedBarChartBenchmarkExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 10, color: DefaultPalette.redDark },
+      { legend: 'first', data: 10, color: getColorFromToken(DataVizPalette.color7) },
       { legend: 'second', data: 90, color: DefaultPalette.neutralTertiaryAlt, placeHolder: true },
     ];
 

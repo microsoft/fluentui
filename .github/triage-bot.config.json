@@ -3,13 +3,13 @@
   "params": [
     {
       "keyword": "(@fluentui/react-northstar)",
-      "labels": ["Fluent UI react-northstar (v0)"],
+      "labels": ["Fluent UI react-northstar (v0)", "Needs: Triage :mag:"],
       "assignees": []
     },
-    { "keyword": "(@fluentui/react)", "labels": ["Fluent UI react (v8)"], "assignees": [] },
+    { "keyword": "(@fluentui/react)", "labels": ["Fluent UI react (v8)", "Needs: Triage :mag:"], "assignees": [] },
     {
       "keyword": "(@fluentui/react-components)",
-      "labels": ["Fluent UI react-components (v9)"],
+      "labels": ["Fluent UI react-components (v9)", "Needs: Triage :mag:"],
       "assignees": []
     },
     {

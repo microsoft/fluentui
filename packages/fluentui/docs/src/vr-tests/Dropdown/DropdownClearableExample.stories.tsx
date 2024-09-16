@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import DropdownClearableExample from '../../examples/components/Dropdown/Types/DropdownExampleClearable.shorthand';
 
@@ -22,6 +22,6 @@ export default {
   component: Dropdown,
   title: 'Dropdown',
   decorators: [story => <StoryWright steps={steps}>{story()}</StoryWright>],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 export { DropdownClearableExample };

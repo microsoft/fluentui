@@ -1,0 +1,13 @@
+{
+  "name": "react-file-type-icons",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-file-type-icons/src",
+  "tags": ["v8"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

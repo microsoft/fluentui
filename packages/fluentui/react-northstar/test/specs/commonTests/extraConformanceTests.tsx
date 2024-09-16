@@ -22,7 +22,7 @@ const parseDocblock = (docblock: string) => {
  */
 export const extraConformanceTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
-  'has-docblock': (componentInfo, testInfo) => {
+  'has-docblock': (_testInfo, componentInfo) => {
     const maxWords = 25;
     const minWords = 5;
 
@@ -37,7 +37,7 @@ export const extraConformanceTests: TestObject = {
   },
 
   /** If the component is a subcomponent, ensure its parent has the subcomponent as static property */
-  'is-static-property-of-parent': (componentInfo, testInfo) => {
+  'is-static-property-of-parent': testInfo => {
     const { componentPath, displayName, Component } = testInfo;
     const componentFolder = componentPath.replace(path.basename(componentPath) + path.extname(componentPath), '');
     const dirName = path.basename(componentFolder).replace(path.extname(componentFolder), '');

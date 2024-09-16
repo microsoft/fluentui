@@ -9,7 +9,7 @@ import { ShorthandFactory } from './utils/factories';
 
 export type ResultOf<T> = T extends (...arg: any[]) => infer TResult ? TResult : never;
 
-export type ObjectOf<T> = { [key: string]: T };
+export type ObjectOf<T extends {}> = { [key: string]: T };
 
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
@@ -17,7 +17,7 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 // Components
 // ========================================================
 
-export type FluentComponentStaticProps<P = {}> = {
+export type FluentComponentStaticProps<P extends {} = {}> = {
   handledProps: (keyof P)[];
   create?: ShorthandFactory<P>;
   shorthandConfig?: ShorthandConfig<P>;
@@ -27,7 +27,7 @@ export type FluentComponentStaticProps<P = {}> = {
 // Props
 // ========================================================
 
-export type Props<T = {}> = T & ObjectOf<any>;
+export type Props<T extends {} = {}> = T & ObjectOf<any>;
 export type ReactChildren = React.ReactNode[] | React.ReactNode;
 
 export type ComponentEventHandler<TProps> = (event: React.SyntheticEvent<HTMLElement>, data?: TProps) => void;
@@ -59,8 +59,8 @@ type KindSelector<T> = {
   [P in keyof T]: { kind?: P } & T[P];
 }[keyof T];
 
-export type ShorthandCollection<Props, Kinds = Record<string, {}>> = ShorthandValue<
-  Props | (KindSelector<Kinds> & Props)
+export type ShorthandCollection<P extends Props, Kinds = Record<string, {}>> = ShorthandValue<
+  P | (KindSelector<Kinds> & P)
 >[];
 
 export type ObjectShorthandValue<P extends Props> = Props<P> & {

@@ -7,7 +7,7 @@ module.exports = {
   displayName: 'scripts-storybook',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   coverageDirectory: './coverage',
   testEnvironment: 'node',

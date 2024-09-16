@@ -19,6 +19,7 @@ export * from './components/ScrollBars/index';
 export * from './components/SideRail/index';
 export * from './components/SiteMessageBar/index';
 export * from './components/Table/index';
+export * from './components/TopBanner/index';
 export * from './components/TopNav/index';
 export * from './components/Video/index';
 export * from './utilities/index2';

@@ -1,4 +1,5 @@
 import * as path from 'path';
+
 import { LicenseWebpackPlugin } from 'license-webpack-plugin';
 import webpack from 'webpack';
 
@@ -44,12 +45,16 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
         },
         renderLicenses: modules => {
           modules.forEach(module => {
-            const packageName = module.packageJson.name;
-            const packageVersion = module.packageJson.version;
+            if (module.packageJson) {
+              const packageName = module.packageJson.name;
+              const packageVersion = module.packageJson.version;
 
-            onDependencyPackage(packageName, packageVersion);
+              onDependencyPackage(packageName, packageVersion);
+            } else {
+              console.error('package.json not found');
+            }
 
-            return modules[0].packageJson.name;
+            return modules[0].packageJson?.name;
           });
 
           return '';
@@ -59,7 +64,7 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
-        ...config.lernaAliases({ type: 'webpack' }),
+        ...config.webpackAliases,
         src: paths.packageSrc('react-northstar'),
       },
     },

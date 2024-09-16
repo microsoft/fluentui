@@ -1,1 +1,0 @@
-With `TreeItemPersonaLayout`, `TreeItem`, and `Tree`, you can create a highly customizable and flexible UI by leveraging various props like `media`, `icons`, `badges`, and `actions`. Here are some examples of how you can use these components together to achieve different layouts and appearances.

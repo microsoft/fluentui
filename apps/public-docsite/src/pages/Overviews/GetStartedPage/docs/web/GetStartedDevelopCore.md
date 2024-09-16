@@ -13,7 +13,7 @@ To add the latest version of Fabric Core to your site, link to this CSS file in 
 ```html
 <link
   rel="stylesheet"
-  href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-core/11.1.0/css/fabric.min.css"
+  href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"
 />
 ```
 

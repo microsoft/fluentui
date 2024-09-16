@@ -1,19 +1,21 @@
-import { dest, lastRun, parallel, series, src, task, watch, TaskFunction } from 'gulp';
+import { spawnSync } from 'child_process';
+import fs from 'fs';
+import { Server } from 'http';
+import path from 'path';
+import { Transform } from 'stream';
+
+import { getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
+import { sh } from '@fluentui/scripts-utils';
 import chalk from 'chalk';
+import del from 'del';
+import { TaskFunction, dest, lastRun, parallel, series, src, task, watch } from 'gulp';
 import cache from 'gulp-cache';
 import remember from 'gulp-remember';
 import { log } from 'gulp-util';
-import fs from 'fs';
-import path from 'path';
-import del from 'del';
-import { Transform } from 'stream';
 import through2 from 'through2';
 import webpack from 'webpack';
 import WebpackDevMiddleware from 'webpack-dev-middleware';
 import WebpackHotMiddleware from 'webpack-hot-middleware';
-
-import { sh } from '@fluentui/scripts-utils';
-import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
 
 import config from '../config';
 import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
@@ -21,11 +23,10 @@ import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
 import gulpExampleSource from '../plugins/gulp-example-source';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
-import { getRelativePathToSourceFile, getComponentInfo } from '../plugins/util';
 import webpackPlugin from '../plugins/gulp-webpack';
-import { Server } from 'http';
-import { serve, forceClose } from './serve';
-import { spawnSync } from 'child_process';
+import { getComponentInfo, getRelativePathToSourceFile } from '../plugins/util';
+
+import { forceClose, serve } from './serve';
 
 const { paths } = config;
 
@@ -127,17 +128,16 @@ task('build:docs:webpack', cb => {
 });
 
 task('build:docs:assets:component:info', cb => {
-  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
-  const lernaArgs = ['lerna', 'run', 'build:info'];
+  const buildInfoCmdArgs = ['nx', 'run-many', '--target=build:info', '--projects=tag:react-northstar'];
 
-  const result = spawnSync('yarn', lernaArgs, {
-    cwd: fluentRoot,
+  const result = spawnSync('yarn', buildInfoCmdArgs, {
+    cwd: workspaceRoot,
     shell: true,
     stdio: 'inherit',
   });
 
   if (result.status) {
-    throw new Error(result.error?.toString() || `lerna run failed with status ${result.status}`);
+    throw new Error(result.error?.toString() || `run failed with status ${result.status}`);
   }
 
   cb();
@@ -193,7 +193,7 @@ task('serve:docs:hot', async () => {
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
         stats: 'errors-warnings',
-      } as WebpackDevMiddleware.Options),
+      } as WebpackDevMiddleware.Options<any, any>),
     );
 
     if (process.env.NODE_ENV !== 'production') {

@@ -14,6 +14,8 @@ module.exports = {
      */
     ...getNamingConventionRule(),
     '@fluentui/max-len': 'off',
+    // @typescript-eslint rules
+    '@typescript-eslint/triple-slash-reference': ['error', { lib: 'always', path: 'never', types: 'never' }],
   },
   overrides: [
     {

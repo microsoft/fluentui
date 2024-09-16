@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeItemLayout renders a default state 1`] = `
+<div>
+  <div
+    class="fui-TreeItemLayout"
+  >
+    <div
+      class="fui-TreeItemLayout__main"
+    >
+      Default TreeItemLayout
+    </div>
+  </div>
+</div>
+`;

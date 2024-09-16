@@ -1,4 +1,4 @@
-import { normalize, FontSizes, getFocusStyle } from '@fluentui/style-utilities';
+import { normalize, FontSizes, getFocusStyle, HighContrastSelector } from '@fluentui/style-utilities';
 import type { ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 
 export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
@@ -58,6 +58,12 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
             color: palette.themePrimary,
             backgroundColor: 'transparent',
             cursor: 'pointer',
+            selectors: {
+              [HighContrastSelector]: {
+                outline: '1px solid Buttontext',
+                borderRadius: '2px',
+              },
+            },
           },
           '&:active': {
             color: palette.themeDark,

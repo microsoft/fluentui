@@ -3,9 +3,11 @@ import {
   HorizontalBarChartWithAxis,
   IHorizontalBarChartWithAxisProps,
   IHorizontalBarChartWithAxisDataPoint,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'expandYAxisLabels', text: 'Expand Y Axis Ticks' },
@@ -14,6 +16,8 @@ const options: IChoiceGroupOption[] = [
 
 interface IHorizontalBarChartWithAxisState {
   selectedCallout: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Component<
@@ -24,33 +28,44 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
     super(props);
     this.state = {
       selectedCallout: 'showTooltip',
+      enableGradient: false,
+      roundCorners: false,
     };
   }
+
   public render(): JSX.Element {
     return <div>{this._basicStringAxisExample()}</div>;
   }
+
+  private _onToggleGradient = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
 
   private _basicStringAxisExample(): JSX.Element {
     const points: IHorizontalBarChartWithAxisDataPoint[] = [
       {
         y: 'String One',
         x: 1000,
-        color: DefaultPalette.accent,
+        color: getColorFromToken(DataVizPalette.color9),
       },
       {
         y: 'String Two',
         x: 5000,
-        color: DefaultPalette.blueDark,
+        color: getColorFromToken(DataVizPalette.color10),
       },
       {
         y: 'String Three',
         x: 3000,
-        color: DefaultPalette.blueMid,
+        color: getColorFromToken(DataVizPalette.color11),
       },
       {
         y: 'String Four',
         x: 2000,
-        color: DefaultPalette.blue,
+        color: getColorFromToken(DataVizPalette.color12),
       },
     ];
 
@@ -65,7 +80,13 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
             label="Pick one"
           />
+          <div style={{ display: 'flex' }}>
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            &nbsp;&nbsp;
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          </div>
         </div>
+
         <div style={rootStyle}>
           <HorizontalBarChartWithAxis
             chartTitle="Horizontal bar chart axis tooltip example "
@@ -76,6 +97,9 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             hideTooltip={false}
             showYAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             showYAxisLables={this.state.selectedCallout === 'expandYAxisLabels' ? true : false}
+            enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

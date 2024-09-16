@@ -52,7 +52,19 @@ export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = 
         checked={checked}
       />
       <DefaultButton
-        text="Main action disabled"
+        text="Default with main action disabled"
+        primaryDisabled
+        split
+        splitButtonAriaLabel="See 2 options"
+        aria-roledescription="split button"
+        menuProps={menuProps}
+        onClick={_alertClicked}
+        disabled={disabled}
+        checked={checked}
+      />
+      <DefaultButton
+        text="Primary with main action disabled"
+        primary
         primaryDisabled
         split
         splitButtonAriaLabel="See 2 options"

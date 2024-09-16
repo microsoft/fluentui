@@ -75,7 +75,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-    expect((component.props() as IComponentProps).styles).toEqual({ root: [globalStyles, componentStyles] });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual([globalStyles, componentStyles]);
   });
 
   it('can concatenate scoped styles and component styles', () => {
@@ -89,8 +91,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: [scopedStyles, componentStyles] });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual([scopedStyles, componentStyles]);
   });
 
   it('can override global styles with component styles', () => {
@@ -104,8 +107,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: componentStyles });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual(componentStyles);
   });
 
   it('can override scoped styles with component styles', () => {
@@ -119,8 +123,9 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
-
-    expect((component.props() as IComponentProps).styles).toEqual({ root: componentStyles });
+    const props = component.props() as IComponentProps;
+    expect(Object.keys(props.styles)).toEqual(['root', '__shadowConfig__']);
+    expect(props.styles.root).toEqual(componentStyles);
   });
 
   it('should not mutate styles if no change to component and global styles', () => {
@@ -136,7 +141,8 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual([globalRootStyles, componentRootStyles]);
 
     wrapper.setProps({});
 
@@ -156,13 +162,14 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual(componentStyles);
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual(componentStyles.root);
 
     wrapper.setProps({});
 
     const updatedComponent = wrapper.find('ConcatStyles');
     const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
-    expect(finalStylesAfterRerender).toBe(finalStyles);
+    expect(finalStylesAfterRerender).toStrictEqual(finalStyles);
     expect(finalStylesAfterRerender).toEqual(finalStyles);
   });
 
@@ -179,7 +186,8 @@ describe('customizable', () => {
     );
     const component = wrapper.find('ConcatStyles');
     const finalStyles = (component.props() as IComponentProps).styles;
-    expect(finalStyles).toEqual({ root: [globalRootStyles, componentRootStyles] });
+    expect(Object.keys(finalStyles)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStyles.root).toEqual([globalRootStyles, componentRootStyles]);
 
     const newComponentRootStyles = { color: 'red' };
     const newComponentStyles = { root: newComponentRootStyles };
@@ -191,6 +199,7 @@ describe('customizable', () => {
 
     const updatedComponent = wrapper.find('ConcatStyles');
     const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
-    expect(finalStylesAfterRerender).toEqual({ root: [globalRootStyles, newComponentRootStyles] });
+    expect(Object.keys(finalStylesAfterRerender)).toEqual(['root', '__shadowConfig__']);
+    expect(finalStylesAfterRerender.root).toEqual([globalRootStyles, newComponentRootStyles]);
   });
 });

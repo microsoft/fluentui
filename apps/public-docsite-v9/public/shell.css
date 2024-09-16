@@ -47,6 +47,14 @@
   background: transparent;
 }
 
+/*
+ * Set position fixed to create a layer and prevent iframe from jumping when content is
+ * larger than the viewport and the iframe itself
+ */
+[role='main'] {
+  position: fixed;
+}
+
 /* remove box shadow style from storybooks wrapper div */
 [role='main'] > div {
   box-shadow: none;
@@ -61,9 +69,4 @@
 [role='main'] > div > div > div {
   top: 0 !important;
   height: 100% !important;
-}
-
-/* Remove 'Published on Chromatic' banner */
-#back-to-chromatic {
-  display: none !important;
 }

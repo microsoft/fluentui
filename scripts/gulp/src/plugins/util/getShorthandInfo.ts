@@ -1,6 +1,7 @@
 import * as Babel from '@babel/core';
 import { NodePath } from '@babel/traverse';
-import * as t from '@babel/types';
+import type * as t from '@babel/types';
+import { assertStringLiteral, isIdentifier } from '@babel/types';
 
 import { ComponentInfo } from './docs-types';
 
@@ -74,26 +75,24 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
         });
 
         if (mappedProperty) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          t.assertStringLiteral(mappedProperty.node.value);
-          mappedShorthandProp = (mappedProperty.node.value as t.StringLiteral).value;
+          assertStringLiteral(mappedProperty.node.value);
+          mappedShorthandProp = mappedProperty.node.value.value;
         }
       } else if (isShorthandExpression(componentName, path)) {
         implementsCreateShorthand = true;
 
-        const config = path.get('right.arguments.0') as NodePath<t.ObjectExpression>;
+        // why is explicit annotation + assertion needed ? https://github.com/microsoft/TypeScript/issues/47945
+        const config: NodePath = path.get('right.arguments.0') as NodePath;
+
         config.assertObjectExpression();
 
-        const mappedProperty = (config.node.properties as any[]).find((property: t.ObjectProperty) => {
-          return t.isIdentifier(property.key, { name: 'mappedProp' });
-        }) as t.ObjectProperty | undefined;
+        const mappedProperty = (config.node.properties as t.ObjectProperty[]).find(property => {
+          return isIdentifier(property.key, { name: 'mappedProp' });
+        });
 
         if (mappedProperty) {
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
-          t.assertStringLiteral(mappedProperty.value);
-          mappedShorthandProp = (mappedProperty.value as t.StringLiteral).value;
+          assertStringLiteral(mappedProperty.value);
+          mappedShorthandProp = mappedProperty.value.value;
         }
       }
     },
@@ -119,10 +118,8 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
             );
 
             if (shorthandMappedPropertyPath) {
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              t.assertStringLiteral(shorthandMappedPropertyPath.node.value);
-              mappedShorthandProp = (shorthandMappedPropertyPath.node.value as t.StringLiteral).value;
+              assertStringLiteral(shorthandMappedPropertyPath.node.value);
+              mappedShorthandProp = shorthandMappedPropertyPath.node.value.value;
             }
           }
         }

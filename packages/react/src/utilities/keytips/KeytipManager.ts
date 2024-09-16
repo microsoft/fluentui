@@ -128,7 +128,7 @@ export class KeytipManager {
     if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
       EventGroup.raise(this, event, {
         keytip: keytipToRemove,
-        uniqueID: uniqueID,
+        uniqueID,
       });
     }
   }

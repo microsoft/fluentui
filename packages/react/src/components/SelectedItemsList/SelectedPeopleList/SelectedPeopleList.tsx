@@ -71,7 +71,7 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
       selected: this.selection.isIndexSelected(index),
       onRemoveItem: () => this.removeItem(item),
       onItemChange: this.onItemChange,
-      removeButtonAriaLabel: removeButtonAriaLabel,
+      removeButtonAriaLabel,
       onCopyItem: (itemToCopy: IExtendedPersonaProps) => this.copyItems([itemToCopy]),
       onExpandItem: expandGroup ? () => expandGroup(item) : undefined,
       menuItems: this._createMenuItems(item),

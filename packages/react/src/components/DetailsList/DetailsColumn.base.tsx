@@ -13,6 +13,7 @@ import type {
   IDetailsColumnRenderTooltipProps,
   IDetailsColumnFilterIconProps,
 } from './DetailsColumn.types';
+import { ITooltipHost } from '../Tooltip/TooltipHost.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
 
@@ -46,6 +47,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription?: IDisposable;
   private _classNames: IProcessedStyleSet<IDetailsColumnStyles>;
+  private _tooltipRef = React.createRef<ITooltipHost>();
 
   constructor(props: IDetailsColumnProps) {
     super(props);
@@ -94,13 +96,14 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     const hasInnerButton =
       column.columnActionsMode !== ColumnActionsMode.disabled &&
       (column.onColumnClick !== undefined || this.props.onColumnClick !== undefined);
+    // use aria-describedby to point to the tooltip if the tooltip is not using the ariaLabel string
+    const shouldAssociateTooltip = this.props.onRenderColumnHeaderTooltip
+      ? !column.ariaLabel
+      : this._hasAccessibleDescription();
     const accNameDescription = {
       'aria-label': column.ariaLabel ? column.ariaLabel : column.isIconOnly ? column.name : undefined,
       'aria-labelledby': column.ariaLabel || column.isIconOnly ? undefined : `${parentId}-${column.key}-name`,
-      'aria-describedby':
-        !this.props.onRenderColumnHeaderTooltip && this._hasAccessibleDescription()
-          ? `${parentId}-${column.key}-tooltip`
-          : undefined,
+      'aria-describedby': shouldAssociateTooltip ? `${parentId}-${column.key}-tooltip` : undefined,
     };
 
     return (
@@ -120,13 +123,15 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           draggable={isDraggable}
           style={{
             width:
-              column.calculatedWidth! +
+              (column.calculatedWidth || 0) +
               cellStyleProps.cellLeftPadding +
               cellStyleProps.cellRightPadding +
               (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),
           }}
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
+          onBlur={this._onColumnBlur}
+          onFocus={this._onColumnFocus}
         >
           {isDraggable && (
             <IconComponent iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />
@@ -137,6 +142,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
               id: `${parentId}-${column.key}-tooltip`,
               setAriaDescribedBy: false,
               column,
+              componentRef: this._tooltipRef,
               content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
               children: (
                 <span
@@ -150,6 +156,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                   {...(hasInnerButton && accNameDescription)}
                   onContextMenu={this._onColumnContextMenu}
                   onClick={this._onColumnClick}
+                  onKeyDown={this._onColumnKeyDown}
                   aria-haspopup={column.columnActionsMode === ColumnActionsMode.hasDropdown ? 'menu' : undefined}
                   aria-expanded={
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? !!column.isMenuOpen : undefined
@@ -268,6 +275,26 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
     if (onColumnClick) {
       onColumnClick(ev, column);
     }
+  };
+
+  private _onColumnKeyDown = (ev: React.KeyboardEvent): void => {
+    const { onColumnKeyDown, column } = this.props;
+
+    if (column.onColumnKeyDown) {
+      column.onColumnKeyDown(ev, column);
+    }
+
+    if (onColumnKeyDown) {
+      onColumnKeyDown(ev, column);
+    }
+  };
+
+  private _onColumnBlur = () => {
+    this._tooltipRef.current && this._tooltipRef.current.dismiss();
+  };
+
+  private _onColumnFocus = () => {
+    this._tooltipRef.current && this._tooltipRef.current.show();
   };
 
   private _getColumnDragDropOptions(): IDragDropOptions {

@@ -1,10 +1,10 @@
 {
   "name": "@fluentui/circulars-test",
-  "version": "0.66.4",
+  "version": "0.66.5",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.66.4"
+    "@fluentui/react-northstar": "*"
   },
   "devDependencies": {
     "@fluentui/scripts-gulp": "*"

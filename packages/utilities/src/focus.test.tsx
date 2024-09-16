@@ -19,6 +19,35 @@ function renderIntoDocument(element: React.ReactElement<{}>, container: HTMLElem
   return renderedDOM;
 }
 
+// JSDOM does not currently set `delegatesFocus`
+// https://github.com/jsdom/jsdom/blob/b7683ed68ebe259cd2c68e5faf12d484a785f45f/lib/jsdom/living/nodes/Element-impl.js#L420-L424
+function createDivWithShadowRoot(initOptions: ShadowRootInit): HTMLElement {
+  const div = {
+    getAttribute: (qualifiedName: string): string | null => null,
+    shadowRoot: {
+      mode: initOptions.mode,
+      delegatesFocus: initOptions.delegatesFocus,
+    },
+  };
+
+  return div as HTMLElement;
+}
+
+function makeShadowDiv(innerHTML: string): React.FC {
+  const ShadowDiv = () => {
+    const setRef = (node: HTMLElement | null) => {
+      if (node) {
+        node.attachShadow({ mode: 'open' });
+        node.shadowRoot!.innerHTML = innerHTML;
+      }
+    };
+
+    return <div className="parent" ref={setRef} />;
+  };
+
+  return ShadowDiv;
+}
+
 describe('isElementVisible', () => {
   let testContainer: HTMLElement | undefined;
 
@@ -152,6 +181,25 @@ describe('isElementTabbable', () => {
     button.tabIndex = -1;
 
     expect(isElementTabbable(button, true)).toEqual(false);
+  });
+
+  it('returns true for elements with shadowRoot.delegatesFocus=true', () => {
+    const div = createDivWithShadowRoot({ mode: 'open', delegatesFocus: true });
+
+    expect(div.shadowRoot?.delegatesFocus).toEqual(true);
+    expect(isElementTabbable(div)).toEqual(true);
+  });
+
+  it('returns true for elements with shadowRoot.delegatesFocus=false', () => {
+    const div = createDivWithShadowRoot({ mode: 'open' });
+
+    expect(isElementTabbable(div)).toEqual(false);
+  });
+
+  it('returns true for elements with shadowRoot.delegatesFocus=true when set to ignore shadow roots', () => {
+    const div = createDivWithShadowRoot({ mode: 'open', delegatesFocus: true });
+
+    expect(isElementTabbable(div, undefined, false)).toEqual(false);
   });
 });
 
@@ -339,6 +387,36 @@ describe('getFirstTabbable', () => {
     expect(getFirstTabbable(parent, buttonA, true, false)).toEqual(buttonB);
   });
 
+  it('focuses on the next tabbable item in shadow DOM', () => {
+    testContainer = createTestContainer();
+
+    const innerHTML = `
+    <button class="a" data-is-visible="true">
+      a
+    </button>
+    <button class="b" data-is-visible="true">
+      b
+    </button>
+    <button class="c" data-is-visible="true">
+      c
+    </button>
+    `;
+    const ShadowDiv = makeShadowDiv(innerHTML);
+
+    const container = renderIntoDocument(
+      <div>
+        <ShadowDiv />
+      </div>,
+      testContainer,
+    );
+
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonA = parent?.shadowRoot?.querySelector('.a') as HTMLElement;
+    const buttonB = parent?.shadowRoot?.querySelector('.b') as HTMLElement;
+
+    expect(getFirstTabbable(parent, buttonA, true, false, true)).toEqual(buttonB);
+  });
+
   it('does not focus on an item with tabIndex of -1', () => {
     testContainer = createTestContainer();
     const container = renderIntoDocument(
@@ -399,6 +477,36 @@ describe('getLastTabbable', () => {
     const buttonC = container.querySelector('.c') as HTMLElement;
 
     expect(getLastTabbable(parent, buttonC, true, false)).toEqual(buttonB);
+  });
+
+  it('focuses on the last tabbable item in shadow DOM', () => {
+    testContainer = createTestContainer();
+
+    const innerHTML = `
+    <button class="a" data-is-visible="true">
+      a
+    </button>
+    <button class="b" data-is-visible="true">
+      b
+    </button>
+    <button class="c" data-is-visible="true">
+      c
+    </button>
+    `;
+    const ShadowDiv = makeShadowDiv(innerHTML);
+
+    const container = renderIntoDocument(
+      <div>
+        <ShadowDiv />
+      </div>,
+      testContainer,
+    );
+
+    const parent = container.querySelector('.parent') as HTMLElement;
+    const buttonB = parent?.shadowRoot?.querySelector('.b') as HTMLElement;
+    const buttonC = parent?.shadowRoot?.querySelector('.c') as HTMLElement;
+
+    expect(getLastTabbable(parent, buttonC, true, false, true)).toEqual(buttonB);
   });
 
   it('does not focus on an item with tabIndex of -1', () => {

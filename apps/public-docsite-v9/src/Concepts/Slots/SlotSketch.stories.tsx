@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { Input, tokens, typographyStyles } from '@fluentui/react-components';
+import { makeStyles, mergeClasses, shorthands, Input, tokens, typographyStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

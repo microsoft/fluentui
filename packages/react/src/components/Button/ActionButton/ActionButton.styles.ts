@@ -16,19 +16,15 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
       color: theme.palette.neutralPrimary,
       backgroundColor: 'transparent',
       border: '1px solid transparent',
-      selectors: {
-        [HighContrastSelector]: {
-          borderColor: 'Window',
-        },
+      [HighContrastSelector]: {
+        borderColor: 'Window',
       },
     },
 
     rootHovered: {
       color: theme.palette.themePrimary,
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'Highlight',
-        },
+      [HighContrastSelector]: {
+        color: 'Highlight',
       },
     },
 
@@ -52,10 +48,8 @@ export const getStyles = memoizeFunction((theme: ITheme, customStyles?: IButtonS
       color: theme.palette.neutralTertiary,
       backgroundColor: 'transparent',
       borderColor: 'transparent',
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'GrayText',
-        },
+      [HighContrastSelector]: {
+        color: 'GrayText',
       },
     },
 

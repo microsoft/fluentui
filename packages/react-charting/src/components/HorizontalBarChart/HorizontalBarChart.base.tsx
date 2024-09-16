@@ -12,9 +12,14 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import { convertToLocaleString } from '../../utilities/locale-util';
+import {
+  ChartHoverCard,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+  getNextGradient,
+} from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -30,7 +35,7 @@ export interface IHorizontalBarChartState {
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
-  emptyChart?: boolean;
+  barSpacingInPercent: number;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -41,6 +46,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -50,22 +57,25 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       lineColor: '',
       legend: '',
       refSelected: null,
-      // eslint-disable-next-line react/no-unused-state
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      emptyChart: false,
+      barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_HBC_empty');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
   public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
     }
   }
 
@@ -74,7 +84,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return !this.state.emptyChart ? (
+
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -94,7 +105,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           // Hide right side text of chart title for absolute-scale variant
           const chartDataText =
             this.props.variant === HorizontalBarChartVariant.AbsoluteScale ? null : this._getChartDataText(points!);
-          const bars = this._createBars(points!, palette);
+          const bars = this._createBars(points!, palette, index);
           const keyVal = this._uniqLineText + '_' + index;
           const classNames = getClassNames(this.props.styles!, {
             theme: this.props.theme!,
@@ -120,7 +131,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 </FocusZone>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <FocusZone direction={FocusZoneDirection.horizontal} className={this._classNames.chartWrapper}>
-                  <svg className={this._classNames.chart} aria-label={points!.chartTitle}>
+                  <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={points!.chartTitle}>
                     <g
                       id={keyVal}
                       key={keyVal}
@@ -171,7 +182,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         </Callout>
       </div>
     ) : (
-      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -186,10 +202,22 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         (currentElement: IRefArrayData) => currentElement.index === point.legend,
       );
       this._calloutAnchorPoint = point;
+      let color = point.color!;
+
+      if (this.props.enableGradient) {
+        const pointIndex = Math.max(
+          this.props.data
+            ?.map(v => v.chartData)
+            ?.findIndex(item => item?.[0].data === point.data && item?.[0].legend === point.legend) || 0,
+          0,
+        );
+        color = point.gradient?.[0] || getNextGradient(pointIndex, 0, this.props.theme?.isInverted)[0];
+      }
+
       this.setState({
         isCalloutVisible: true,
-        hoverValue: hoverValue,
-        lineColor: point.color!,
+        hoverValue,
+        lineColor: color,
         legend: point.legend!,
         refSelected: currentHoveredElement!.refElement,
         xCalloutValue: point.xAxisCalloutData!,
@@ -288,7 +316,18 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
-  private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
+  /**
+   * This functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing in between the bars
+   */
+
+  private _createBars(data: IChartProps, palette: IPalette, dataPointIndex: number): JSX.Element[] {
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
@@ -314,10 +353,25 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       return sumOfPercent;
     });
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+    const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let startColor: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+      let endColor = startColor;
+
+      if (this.props.enableGradient && index !== 1) {
+        startColor = point.gradient?.[0] || getNextGradient(dataPointIndex, 0, this.props.theme?.isInverted)[0];
+        endColor = point.gradient?.[1] || getNextGradient(dataPointIndex, 0, this.props.theme?.isInverted)[1];
+      }
+
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -353,28 +407,45 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+            {formatValueWithSIPrefix(barValue)}
           </text>
         );
       }
 
+      const gradientId = getId('HBC_Gradient') + `_${dataPointIndex}_${index}`;
+
       return (
-        <rect
-          key={index}
-          x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
-          y={0}
-          data-is-focusable={point.legend !== '' ? true : false}
-          width={value + '%'}
-          height={this._barHeight}
-          fill={color}
-          onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
-          onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
-          role="img"
-          aria-label={this._getAriaLabel(point)}
-          onBlur={this._hoverOff}
-          onMouseLeave={this._hoverOff}
-          className={this._classNames.barWrapper}
-        />
+        <React.Fragment key={index}>
+          {this.props.enableGradient && (
+            <defs>
+              <linearGradient id={gradientId}>
+                <stop offset="0" stopColor={startColor} />
+                <stop offset="100%" stopColor={endColor} />
+              </linearGradient>
+            </defs>
+          )}
+          <rect
+            key={index}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
+                : startingPoint[index] + index * this.state.barSpacingInPercent
+            }%`}
+            y={0}
+            rx={this.props.roundCorners ? 3 : 0}
+            data-is-focusable={point.legend !== '' ? true : false}
+            width={value + '%'}
+            height={this._barHeight}
+            fill={this.props.enableGradient ? `url(#${gradientId})` : startColor}
+            onMouseOver={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
+            onFocus={point.legend !== '' ? this._hoverOn.bind(this, xValue, point) : undefined}
+            role="img"
+            aria-label={this._getAriaLabel(point)}
+            onBlur={this._hoverOff}
+            onMouseLeave={this._hoverOff}
+            className={this._classNames.barWrapper}
+          />
+        </React.Fragment>
       );
     });
     return bars;
@@ -388,9 +459,17 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
+    const benchMark = point.data;
     const yValue =
       point.yAxisCalloutData ||
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
-    return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
+    return (
+      point.callOutAccessibilityData?.ariaLabel ||
+      (legend ? `${legend}, ` : '') + `${yValue}.` + (benchMark ? 'with benchmark at ' + `${benchMark}, ` : '')
+    );
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

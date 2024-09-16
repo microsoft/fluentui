@@ -1,9 +1,9 @@
 // @ts-check
-const { ESLintUtils } = require('@typescript-eslint/experimental-utils');
+const { RuleTester } = require('@typescript-eslint/rule-tester');
 const path = require('path');
 const rule = require('./index');
 
-const ruleTester = new ESLintUtils.RuleTester({
+const ruleTester = new RuleTester({
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: path.resolve(__dirname, './fixtures/ban-context-export/tsconfig.json'),
@@ -77,7 +77,7 @@ ruleTester.run('ban-context-export', rule, {
       errors: [{ messageId: 'contextSelector' }],
       parserOptions: getParserOptions('named-export'),
       code: `
-      import { createContext } from '@fluentui/react-context-selector';
+      import { createContext } from '@proj/react-context-selector';
       export const MyContext = createContext({});
       `,
       filename: 'src/index.ts',

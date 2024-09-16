@@ -129,10 +129,17 @@ export const generateColorTokens = (): ColorTokens => ({
   colorBrandBackground2: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackground2Hover: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackground2Pressed: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorBrandBackground3Static: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorBrandBackground4Static: hcCanvas, // Canvas Global.Color.hcCanvas
   colorBrandBackgroundInverted: hcButtonFace, // ButtonFace Global.Color.hcButtonFace
   colorBrandBackgroundInvertedHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandBackgroundInvertedPressed: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandBackgroundInvertedSelected: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralCardBackground: hcCanvas, // Canvas Global.Color.hcCanvas
+  colorNeutralCardBackgroundHover: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralCardBackgroundPressed: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralCardBackgroundSelected: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorNeutralCardBackgroundDisabled: hcCanvas, // Canvas Global.Color.hcCanvas
   colorNeutralStrokeAccessible: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorNeutralStrokeAccessibleHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralStrokeAccessiblePressed: hcHighlight, // Highlight Global.Color.hcHighlight
@@ -153,6 +160,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorBrandStroke2: hcCanvasText, // CanvasText Global.Color.hcCanvasText
   colorBrandStroke2Hover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorBrandStroke2Pressed: hcHighlight, // Highlight Global.Color.hcHighlight
+  colorBrandStroke2Contrast: hcCanvas, // Canvas Global.Color.hcCanvas
   colorCompoundBrandStroke: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokeHover: hcHighlight, // Highlight Global.Color.hcHighlight
   colorCompoundBrandStrokePressed: hcHighlight, // Highlight Global.Color.hcHighlight
@@ -162,6 +170,7 @@ export const generateColorTokens = (): ColorTokens => ({
   colorTransparentStrokeInteractive: hcHighlight, // Highlight Global.Color.hcHighlight
   colorTransparentStrokeDisabled: hcDisabled, // GrayText Global.Color.hcDisabled
   colorNeutralStrokeAlpha: hcCanvasText, // CanvasText Global.Color.hcCanvasText
+  colorNeutralStrokeAlpha2: hcCanvas, // Canvas Global.Color.hcCanvas
   colorStrokeFocus1: hcCanvas, // Canvas Global.Color.hcCanvas
   colorStrokeFocus2: hcHighlight, // Highlight Global.Color.hcHighlight
   colorNeutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

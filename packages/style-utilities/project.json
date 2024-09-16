@@ -1,0 +1,13 @@
+{
+  "name": "style-utilities",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/style-utilities/src",
+  "tags": ["v8"],
+  "implicitDependencies": [],
+  "targets": {
+    "test": {
+      "dependsOn": ["^build"]
+    }
+  }
+}

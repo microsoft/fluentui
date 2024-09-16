@@ -3,6 +3,7 @@
   "root": true,
   "rules": {
     "deprecation/deprecation": "off",
-    "prefer-const": "off"
+    "prefer-const": "off",
+    "no-restricted-globals": "off"
   }
 }

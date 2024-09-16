@@ -5,9 +5,12 @@ import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
   IVerticalStackedBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const options: IChoiceGroupOption[] = [
   { key: 'singleCallout', text: 'Single callout' },
@@ -21,6 +24,8 @@ interface IVerticalStackedBarState {
   barCornerRadius: number;
   barMinimumHeight: number;
   selectedCallout: string;
+  enableGradient: boolean;
+  roundCorners: boolean;
 }
 
 export class VerticalStackedBarChartStyledExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -33,29 +38,39 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       barCornerRadius: 2,
       barMinimumHeight: 1,
       selectedCallout: 'MultiCallout',
+      enableGradient: false,
+      roundCorners: false,
     };
   }
   public render(): JSX.Element {
     return <div>{this._basicExample()}</div>;
   }
 
+  private _onToggleGradient = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ enableGradient: checked });
+  };
+
+  private _onToggleRoundedCorners = (e: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ roundCorners: checked });
+  };
+
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 0, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 30, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 3, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 40, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
+      { legend: 'meta data 1', data: 10, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 60, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 30, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const data: IVerticalStackedChartProps[] = [
@@ -82,7 +97,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       return {
         xAxis: {
           selectors: {
-            text: { fill: 'black', fontSize: '10px' },
+            text: { fill: getColorFromToken(DataVizPalette.color2), fontSize: '10px' },
           },
         },
         chart: {
@@ -153,13 +168,19 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
             aria-valuetext={`ChangebarBarMinimumHeightslider${this.state.barMinimumHeight}`}
           />
-          <ChoiceGroup
-            options={options}
-            defaultSelectedKey="MultiCallout"
-            // eslint-disable-next-line react/jsx-no-bind
-            onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
-            label="Pick one"
-          />
+          <div style={{ display: 'flex' }}>
+            <ChoiceGroup
+              options={options}
+              defaultSelectedKey="MultiCallout"
+              // eslint-disable-next-line react/jsx-no-bind
+              onChange={(_ev, option) => option && this.setState({ selectedCallout: option.key })}
+              label="Pick one"
+            />
+            &nbsp;&nbsp;
+            <Toggle label="Enable Gradient" onText="ON" offText="OFF" onChange={this._onToggleGradient} />
+            &nbsp;&nbsp;
+            <Toggle label="Rounded Corners" onText="ON" offText="OFF" onChange={this._onToggleRoundedCorners} />
+          </div>
         </div>
         <div style={rootStyle}>
           <VerticalStackedBarChart
@@ -190,22 +211,29 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 rect: {
                   borderRadius: '3px',
                 },
+                legend: {
+                  textTransform: 'none',
+                },
               },
             }}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
-              props ? (
-                <ChartHoverCard
-                  XValue={props.xAxisCalloutData}
-                  Legend={props.legend}
-                  YValue={`${props.yAxisCalloutData || props.data} h`}
-                  color={props.color}
-                />
-              ) : null
-            }
+            {...(this.state.selectedCallout === 'singleCallout' && {
+              onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
+                return props ? (
+                  <ChartHoverCard
+                    XValue={props.xAxisCalloutData}
+                    Legend={props.legend}
+                    YValue={`${props.yAxisCalloutData || props.data} h`}
+                    color={props.color}
+                  />
+                ) : null;
+              },
+            })}
             svgProps={{
               'aria-label': 'Example chart with metadata per month',
             }}
+            enableReflow={true}
+            enableGradient={this.state.enableGradient}
+            roundCorners={this.state.roundCorners}
           />
         </div>
       </>

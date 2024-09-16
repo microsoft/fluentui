@@ -1,0 +1,8 @@
+{
+  "copyTo": {
+    "jsx-runtime/package.json": "./src/jsx-runtime/package.json__tmpl__",
+    "jsx-dev-runtime/package.json": "./src/jsx-dev-runtime/package.json__tmpl__",
+    "dist/jsx-runtime.d.ts": "./src/jsx-runtime/index.d.ts__tmpl__",
+    "dist/jsx-dev-runtime.d.ts": "./src/jsx-dev-runtime/index.d.ts__tmpl__"
+  }
+}

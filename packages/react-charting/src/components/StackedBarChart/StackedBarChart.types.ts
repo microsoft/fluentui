@@ -8,6 +8,10 @@ import { ILegendsProps } from '../Legends/index';
 export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
 
+/**
+ * Stacked Bar Chart properties
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.
@@ -130,8 +134,24 @@ export interface IStackedBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable gradient fill color for the chart.
+   */
+  enableGradient?: boolean;
+
+  /**
+   * @default false
+   * The prop used to enable rounded corners for the chart.
+   */
+  roundCorners?: boolean;
 }
 
+/**
+ * Stacked Bar Chart style properties
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -199,6 +219,10 @@ export interface IStackedBarChartStyleProps {
   showTriangle?: boolean;
 }
 
+/**
+ * Stacked Bar Chart styles
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartStyles {
   /**
    *  Style for the root element.

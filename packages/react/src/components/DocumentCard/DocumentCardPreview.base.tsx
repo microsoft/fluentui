@@ -69,10 +69,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
 
     if (previewIconProps) {
       return (
-        <div
-          className={css(this._classNames.previewIcon, previewIconContainerClass)}
-          style={{ width: width, height: height }}
-        >
+        <div className={css(this._classNames.previewIcon, previewIconContainerClass)} style={{ width, height }}>
           <Icon {...previewIconProps} />
         </div>
       );

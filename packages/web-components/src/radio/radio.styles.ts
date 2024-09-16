@@ -1,186 +1,145 @@
-import { css, ElementStyles } from '@microsoft/fast-element';
-import { SystemColors } from '@microsoft/fast-web-utilities';
+import { css } from '@microsoft/fast-element';
+import { checkedState, disabledState } from '../styles/states/index.js';
 import {
-  disabledCursor,
-  display,
-  ElementDefinitionContext,
-  focusVisible,
-  forcedColorsStylesheetBehavior,
-  RadioOptions,
-} from '@microsoft/fast-foundation';
-import { heightNumber } from '../styles';
-import {
-  accentFillActive,
-  accentFillHover,
-  accentFillRest,
-  designUnit,
-  disabledOpacity,
-  foregroundOnAccentRest,
-  neutralFillInputAltActive,
-  neutralFillInputAltFocus,
-  neutralFillInputAltHover,
-  neutralFillInputAltRest,
-  neutralForegroundRest,
-  neutralStrokeStrongActive,
-  neutralStrokeStrongHover,
-  neutralStrokeStrongRest,
-  strokeWidth,
-} from '../design-tokens';
-import { typeRampBase } from '../styles/patterns/type-ramp';
-import { focusTreatmentTight } from '../styles/focus';
+  borderRadiusCircular,
+  borderRadiusMedium,
+  colorCompoundBrandBackground,
+  colorCompoundBrandBackgroundHover,
+  colorCompoundBrandBackgroundPressed,
+  colorCompoundBrandStroke,
+  colorNeutralBackground1,
+  colorNeutralBackgroundDisabled,
+  colorNeutralForegroundInverted,
+  colorNeutralStrokeAccessible,
+  colorNeutralStrokeAccessibleHover,
+  colorNeutralStrokeAccessiblePressed,
+  colorNeutralStrokeDisabled,
+  colorStrokeFocus2,
+  colorTransparentStroke,
+  strokeWidthThick,
+  strokeWidthThin,
+} from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
+import { display } from '../utils/display.js';
 
-export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: RadioOptions,
-) =>
-  css`
-    ${display('inline-flex')} :host {
-      --input-size: calc((${heightNumber} / 2) + ${designUnit});
-      align-items: center;
-      outline: none;
-      ${
-        /*
-         * Chromium likes to select label text or the default slot when
-         * the radio button is clicked. Maybe there is a better solution here?
-         */ ''
-      } user-select: none;
-      position: relative;
-      flex-direction: row;
-      transition: all 0.2s ease-in-out;
+/**
+ * Styles for the Radio component
+ *
+ * @public
+ */
+export const styles = css`
+  ${display('inline-flex')}
+
+  :host {
+    --size: 16px;
+    aspect-ratio: 1;
+    background-color: ${colorNeutralBackground1};
+    border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
+    border-radius: ${borderRadiusCircular};
+    box-sizing: border-box;
+    position: relative;
+    width: var(--size);
+  }
+
+  :host([size='large']) {
+    --size: 20px;
+  }
+
+  .checked-indicator {
+    aspect-ratio: 1;
+    border-radius: ${borderRadiusCircular};
+    color: ${colorNeutralForegroundInverted};
+    inset: 0;
+    margin: auto;
+    position: absolute;
+    width: calc(var(--size) * 0.625);
+  }
+
+  :host(:not([slot='input']))::after {
+    content: '' / '';
+    position: absolute;
+    display: block;
+    inset: -8px;
+    box-sizing: border-box;
+    outline: none;
+    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border-radius: ${borderRadiusMedium};
+  }
+
+  :host(:not([slot='input']):focus-visible)::after {
+    border-color: ${colorStrokeFocus2};
+  }
+
+  :host(:hover) {
+    border-color: ${colorNeutralStrokeAccessibleHover};
+  }
+
+  :host(${checkedState}) {
+    border-color: ${colorCompoundBrandStroke};
+  }
+
+  :host(${checkedState}) .checked-indicator {
+    background-color: ${colorCompoundBrandBackground};
+  }
+
+  :host(${checkedState}:hover) .checked-indicator {
+    background-color: ${colorCompoundBrandBackgroundHover};
+  }
+
+  :host(:active) {
+    border-color: ${colorNeutralStrokeAccessiblePressed};
+  }
+
+  :host(${checkedState}:active) .checked-indicator {
+    background-color: ${colorCompoundBrandBackgroundPressed};
+  }
+
+  :host(:focus-visible) {
+    outline: none;
+  }
+
+  :host(${disabledState}) {
+    background-color: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorNeutralStrokeDisabled};
+  }
+
+  :host(${checkedState}${disabledState}) .checked-indicator {
+    background-color: ${colorNeutralStrokeDisabled};
+  }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      border-color: FieldText;
     }
 
-    .control {
-      position: relative;
-      width: calc(var(--input-size) * 1px);
-      height: calc(var(--input-size) * 1px);
-      box-sizing: border-box;
-      border-radius: 50%;
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
-      background: ${neutralFillInputAltRest};
-      cursor: pointer;
+    :host(:not([slot='input']:focus-visible))::after {
+      border-color: Canvas;
     }
 
-    .label__hidden {
-      display: none;
-      visibility: hidden;
+    :host(:not(${disabledState}):hover),
+    :host(:not([slot='input']):focus-visible)::after {
+      border-color: Highlight;
     }
 
-    .label {
-      ${typeRampBase}
-      color: ${neutralForegroundRest};
-      ${
-        /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
-      } padding-inline-start: calc(${designUnit} * 2px + 2px);
-      margin-inline-end: calc(${designUnit} * 2px + 2px);
-      cursor: pointer;
+    .checked-indicator {
+      color: HighlightText;
     }
 
-    .control,
-    slot[name='checked-indicator'] {
-      flex-shrink: 0;
+    :host(${checkedState}) .checked-indicator {
+      background-color: FieldText;
     }
 
-    slot[name='checked-indicator'] {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      fill: ${foregroundOnAccentRest};
-      opacity: 0;
-      pointer-events: none;
+    :host(${checkedState}:not(${disabledState}):hover) .checked-indicator {
+      background-color: Highlight;
     }
 
-    :host(:not(.disabled):hover) .control {
-      background: ${neutralFillInputAltHover};
-      border-color: ${neutralStrokeStrongHover};
+    :host(${disabledState}) {
+      border-color: GrayText;
+      color: GrayText;
     }
 
-    :host(:not(.disabled):active) .control {
-      background: ${neutralFillInputAltActive};
-      border-color: ${neutralStrokeStrongActive};
+    :host(${disabledState}${checkedState}) .checked-indicator {
+      background-color: GrayText;
     }
-
-    :host(:not(.disabled):active) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
-
-    :host(:${focusVisible}) .control {
-      ${focusTreatmentTight}
-      background: ${neutralFillInputAltFocus};
-    }
-
-    :host(.checked) .control {
-      background: ${accentFillRest};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):hover) .control {
-      background: ${accentFillHover};
-      border-color: transparent;
-    }
-
-    :host(.checked:not(.disabled):active) .control {
-      background: ${accentFillActive};
-      border-color: transparent;
-    }
-
-    :host(.disabled) .label,
-    :host(.readonly) .label,
-    :host(.readonly) .control,
-    :host(.disabled) .control {
-      cursor: ${disabledCursor};
-    }
-
-    :host(.checked) slot[name='checked-indicator'] {
-      opacity: 1;
-    }
-
-    :host(.disabled) {
-      opacity: ${disabledOpacity};
-    }
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.FieldText};
-        }
-        :host(:not(.disabled):hover) .control,
-        :host(:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-        }
-        :host(:${focusVisible}) .control {
-          forced-color-adjust: none;
-          background: ${SystemColors.Field};
-          outline-color: ${SystemColors.FieldText};
-        }
-        :host(.checked:not(.disabled):hover) .control,
-        :host(.checked:not(.disabled):active) .control {
-          border-color: ${SystemColors.Highlight};
-          background: ${SystemColors.Highlight};
-        }
-        :host(.checked) slot[name='checked-indicator'] {
-          fill: ${SystemColors.Highlight};
-        }
-        :host(.checked:hover) .control slot[name='checked-indicator'] {
-          fill: ${SystemColors.HighlightText};
-        }
-        :host(.disabled) {
-          opacity: 1;
-        }
-        :host(.disabled) .label {
-          color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) .control,
-        :host(.checked.disabled) .control {
-          background: ${SystemColors.Field};
-          border-color: ${SystemColors.GrayText};
-        }
-        :host(.disabled) slot[name='checked-indicator'],
-        :host(.checked.disabled) slot[name='checked-indicator'] {
-          fill: ${SystemColors.GrayText};
-        }
-      `,
-    ),
-  );
+  `),
+);

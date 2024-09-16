@@ -1,0 +1,11 @@
+{
+  "name": "perf-test-react-components",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "implicitDependencies": [],
+  "tags": ["vNext"],
+  "targets": {
+    "test-perf": { "dependsOn": ["bundle"] },
+    "bundle": { "dependsOn": [] }
+  }
+}

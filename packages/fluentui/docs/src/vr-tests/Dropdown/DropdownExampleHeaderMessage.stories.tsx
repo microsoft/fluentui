@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StoryWright, Steps } from 'storywright';
-import { ComponentMeta } from '@storybook/react';
+import { Meta } from '@storybook/react';
 import { Dropdown, dropdownSlotClassNames } from '@fluentui/react-northstar';
 import DropdownExampleHeaderMessage from '../../examples/components/Dropdown/Slots/DropdownExampleHeaderMessage.shorthand';
 
@@ -18,6 +18,6 @@ export default {
       </StoryWright>
     ),
   ],
-} as ComponentMeta<typeof Dropdown>;
+} as Meta<typeof Dropdown>;
 
 export { DropdownExampleHeaderMessage };

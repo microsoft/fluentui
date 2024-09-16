@@ -103,9 +103,9 @@ export class DragDropHelper implements IDragDropHelper {
       const { eventMap, context, updateDropState } = dragDropOptions;
 
       const dragDropTarget: IDragDropTarget = {
-        root: root,
+        root,
         options: dragDropOptions,
-        key: key,
+        key,
       };
 
       isDraggable = this._isDraggable(dragDropTarget);
@@ -237,7 +237,7 @@ export class DragDropHelper implements IDragDropHelper {
     }
 
     return {
-      key: key,
+      key,
       dispose: () => {
         if (activeTarget) {
           activeTarget.dispose();

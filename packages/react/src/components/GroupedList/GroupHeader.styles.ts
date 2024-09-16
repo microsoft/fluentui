@@ -69,9 +69,11 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
           [`&:hover .${classNames.check}`]: {
             opacity: 1,
           },
-          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}`]: {
-            opacity: 1,
-          },
+          // eslint-disable-next-line @fluentui/max-len
+          [`.${IsFocusVisibleClassName} &:focus .${classNames.check}, :host(.${IsFocusVisibleClassName}) &:focus .${classNames.check}`]:
+            {
+              opacity: 1,
+            },
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
               [`& > .${classNames.root} .${classNames.dropIcon}`]: {
@@ -136,7 +138,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         width: CHECK_CELL_WIDTH,
         height: finalRowHeight,
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             opacity: 1,
           },
         },

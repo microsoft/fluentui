@@ -145,7 +145,7 @@ type DesignKnobProps = {
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
   elementAccessibilityErrors: AccessibilityError[];
-  onPropUpdate: ({ jsonTreeElement: JSONTreeElement }) => void;
+  onPropUpdate: (args: { jsonTreeElement: JSONTreeElement }) => void;
 };
 
 const isHandledType = (type: string): boolean => {

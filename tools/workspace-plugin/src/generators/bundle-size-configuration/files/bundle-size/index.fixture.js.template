@@ -1,0 +1,7 @@
+import * as p from '<%= npmPackageName %>'
+
+console.log(p);
+
+export default {
+  name: '<%= projectName %> - package',
+};

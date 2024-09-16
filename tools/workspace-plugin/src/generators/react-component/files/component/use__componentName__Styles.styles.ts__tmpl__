@@ -1,0 +1,36 @@
+import { makeStyles, mergeClasses } from '@griffel/react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { <%= componentName %>Slots, <%= componentName %>State } from './<%= componentName %>.types';
+
+
+export const <%= propertyName %>ClassNames:SlotClassNames<<%= componentName %>Slots> = {
+  root: 'fui-<%= componentName %>'
+  // TODO: add class names for all slots on <%= componentName %>Slots.
+  // Should be of the form `<slotName>: 'fui-<%= componentName %>__<slotName>`
+};
+
+/**
+ * Styles for the root slot
+ */
+const useStyles = makeStyles({
+  root: {
+      // TODO Add default styles for the root element
+  },
+
+  // TODO add additional classes for different states and/or slots
+});
+
+/**
+ * Apply styling to the <%= componentName %> slots based on the state
+ */
+export const use<%= componentName %>Styles_unstable = (state: <%= componentName %>State): <%= componentName %>State => {
+  'use no memo';
+
+  const styles = useStyles();
+  state.root.className = mergeClasses(<%= propertyName %>ClassNames.root, styles.root, state.root.className);
+
+  // TODO Add class names to slots, for example:
+  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+
+  return state;
+};

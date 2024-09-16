@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { IStyle, ITheme } from '../../Styling';
+import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
 
@@ -71,9 +71,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * For multiline text fields, whether or not to auto adjust text field height.
+   * If inside a scrollable container, also set `scrollContainerRef`.
    * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
+
+  /**
+   * A read-only ref to the scrollable element that contains this TextField, if any. Only needed if
+   * `autoAdjustHeight` is set. This allows TextField to maintain the scroll position when text is edited.
+   */
+  scrollContainerRef?: React.RefObject<HTMLElement>;
 
   /**
    * Whether or not the text field is underlined.
@@ -329,7 +336,7 @@ export interface ITextFieldSubComponentStyles {
 /**
  * {@docCategory TextField}
  */
-export interface ITextFieldStyles {
+export interface ITextFieldStyles extends IShadowDomStyle {
   /**
    * Style for root element.
    */

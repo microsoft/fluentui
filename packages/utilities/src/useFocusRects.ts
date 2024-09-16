@@ -108,7 +108,10 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     let onPointerDown: (ev: PointerEvent) => void;
     let onKeyDown: (ev: KeyboardEvent) => void;
     let onKeyUp: (ev: KeyboardEvent) => void;
-    if (context?.providerRef?.current) {
+    if (
+      context?.providerRef?.current &&
+      (context?.providerRef?.current as Partial<Pick<HTMLElement, 'addEventListener'>>)?.addEventListener
+    ) {
       el = context.providerRef.current;
       // The NOINLINE directive tells terser not to move the setCallbackMap implementation into the call site during
       // minification.

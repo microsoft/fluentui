@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 2`] = `
+Object {
+  "& .fui-Icon-filled": Object {
+    "display": "none",
+  },
+  "& .fui-Icon-regular": Object {
+    "display": "inline",
+  },
+  "& svg": Object {
+    "margin": "-4px 0 0 -4px",
+    "overflow": "visible",
+    "paddingBottom": "100%",
+    "width": "100%",
+  },
+  "&:hover": Object {
+    "& .fui-Icon-filled": Object {
+      "display": "inline",
+    },
+    "& .fui-Icon-regular": Object {
+      "display": "none",
+    },
+  },
+}
+`;
+
+exports[` 3`] = `
+Object {
+  "& .fui-Icon-filled": Object {
+    "display": "none",
+  },
+  "& .fui-Icon-regular": Object {
+    "display": "inline",
+  },
+  "& svg": Object {
+    "overflow": "visible",
+  },
+  "&:hover": Object {
+    "& .fui-Icon-filled": Object {
+      "display": "inline",
+    },
+    "& .fui-Icon-regular": Object {
+      "display": "none",
+    },
+  },
+}
+`;
+
+exports[` 4`] = `
+Object {
+  "&:disabled": Object {
+    "&:hover": Object {
+      "cursor": "default",
+    },
+    "&:hover:active": Object {
+      "cursor": "default",
+    },
+    "cursor": "default",
+  },
+}
+`;

@@ -36,9 +36,9 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
       // Set callout to top-left corner, will be further positioned in
       // getCalloutOffsetStyles
       calloutProps = {
-        ...calloutProps,
         coverTarget: true,
         directionalHint: DirectionalHint.topLeftEdge,
+        ...calloutProps,
       };
     }
 

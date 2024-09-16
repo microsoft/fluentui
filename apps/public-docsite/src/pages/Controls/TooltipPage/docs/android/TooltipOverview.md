@@ -3,12 +3,12 @@ Use tooltips to show small unobtrusive hints on top of your app's UI. These can 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 ### One line
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_tooltip_01_oneline_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_tooltip_01_oneline_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_tooltip_01_oneline_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_tooltip_01_oneline_dark.png?text=DarkMode" />
 
 ### Two line
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_tooltip_02_twoline_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/android/updated/img_tooltip_02_twoline_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_tooltip_02_twoline_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/android/updated/img_tooltip_02_twoline_dark.png?text=DarkMode" />
 
 </DisplayToggle>

@@ -21,6 +21,14 @@ export function getSpinnerStyles(
         height: 32,
         width: 32,
       },
+      size === SpinnerSize.small && {
+        height: 28,
+        width: 28,
+      },
+      size === SpinnerSize.xSmall && {
+        height: 24,
+        width: 24,
+      },
     ],
   };
 

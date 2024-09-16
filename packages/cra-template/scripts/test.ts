@@ -1,4 +1,4 @@
-import fs from 'fs-extra';
+import fs from 'fs';
 import path from 'path';
 import semver from 'semver';
 
@@ -12,8 +12,11 @@ import {
   prepareCreateReactApp,
   TempPaths,
 } from '@fluentui/scripts-projects-test';
-import { findGitRoot } from '@fluentui/scripts-monorepo';
 
+//  eslint-disable-next-line @typescript-eslint/no-explicit-any
+function readJson(filePath: string): Record<string, any> {
+  return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+}
 // This test is sort of like `packages/fluentui/projects-test/src/createReactApp.ts`, but it uses
 // a custom local template rather than making a generic TS project and adding our project as a dep.
 // So they share some logic, but can't be completely merged (and this test shouldn't go under
@@ -24,9 +27,9 @@ import { findGitRoot } from '@fluentui/scripts-monorepo';
  * This will probably only be an issue if there's a major version bump.
  */
 function verifyVersion() {
-  const templateJson = fs.readJSONSync(path.resolve(__dirname, '../template.json'));
+  const templateJson = readJson(path.resolve(__dirname, '../template.json'));
   const templateVersion = templateJson.package.dependencies['@fluentui/react'];
-  const reactPackageJson = fs.readJSONSync(path.resolve(__dirname, '../../react/package.json'));
+  const reactPackageJson = readJson(path.resolve(__dirname, '../../react/package.json'));
   const actualVersion = reactPackageJson.version;
   if (!semver.satisfies(actualVersion, templateVersion)) {
     console.error(
@@ -42,15 +45,16 @@ function verifyVersion() {
  * Instead, pack up the locally-built packages and make a copy of the template which references them.
  */
 async function prepareTemplate(logger: Function, tempPaths: TempPaths) {
-  await packProjectPackages(logger, findGitRoot(), ['@fluentui/react']);
+  await packProjectPackages(logger, '@fluentui/react');
 
   const templatePath = path.join(tempPaths.root, 'cra-template');
 
-  const packageJson = fs.readJSONSync(path.resolve(__dirname, '../package.json'));
+  const packageJson = readJson(path.resolve(__dirname, '../package.json'));
   // Copy only the template files that would be installed from npm
   const filesToCopy = [...packageJson.files, 'package.json'];
+  const rootDir = path.resolve(__dirname, '..');
   for (const file of filesToCopy) {
-    await fs.copy(path.resolve(__dirname, '..', file), path.join(templatePath, file));
+    fs.cpSync(path.resolve(rootDir, file), path.join(templatePath, file), { recursive: true });
   }
 
   await addResolutionPathsForProjectPackages(templatePath, true /*isTemplateJson*/);

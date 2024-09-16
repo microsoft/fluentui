@@ -3,7 +3,6 @@
     "moduleResolution": "node",
     "module": "esnext",
     "target": "es5",
-    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["es2015", "dom"],

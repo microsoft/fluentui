@@ -8,7 +8,6 @@ import {
   shEcho,
   performBrowserTest,
   prepareCreateReactApp,
-  workspaceRoot,
   generateFiles,
 } from '@fluentui/scripts-projects-test';
 
@@ -34,7 +33,7 @@ export async function createReactApp() {
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
-  const packedPackages = await packProjectPackages(logger, workspaceRoot, ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
   await addResolutionPathsForProjectPackages(testAppPathRoot);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPathRoot);

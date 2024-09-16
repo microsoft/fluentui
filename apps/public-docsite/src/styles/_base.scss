@@ -38,7 +38,6 @@
   // Remove dotted outline added by MWF's main.css
   body [contentEditable=true]:focus,
   body [tabindex]:focus,
-  a[href]:not(.c-uhff-link):focus, // Remove link focus outline from all links but the UHF ones
   body area[href]:focus,
   body button:focus,
   body iframe:focus,
@@ -46,6 +45,13 @@
   body select:focus,
   body textarea:focus {
     outline: none;
+  }
+
+  // Remove link focus outline from all links but the UHF ones unless you're in high contrast mode
+  @media (forced-colors: none) {
+    a[href]:not(.c-uhff-link):focus {
+      outline: none;
+    }
   }
 
   // Return the outline on the 'back to top' button

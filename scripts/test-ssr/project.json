@@ -1,0 +1,13 @@
+{
+  "name": "scripts-test-ssr",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "scripts/test-ssr/src",
+  "projectType": "library",
+  "tags": ["tools"],
+  "targets": {
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
+    },
+    "format": {}
+  }
+}

@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import {
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 
 interface IGroupedBarChartState {
   width: number;
@@ -35,22 +39,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 66,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.accent,
+            xAxisCalloutData: 'Q1 2000',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 13,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: 'Q2 2000',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 34,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: 'Q3 2000',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -61,22 +65,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 14,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.accent,
+            xAxisCalloutData: 'Q1 2010',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 90,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: 'Q2 2010',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 33,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: 'Q3 2010',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -87,22 +91,22 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
           {
             key: 'series1',
             data: 54,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.accent,
+            xAxisCalloutData: 'Q1 2020',
+            color: getColorFromToken(DataVizPalette.color5),
             legend: 'MetaData1',
           },
           {
             key: 'series2',
             data: 72,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueMid,
+            xAxisCalloutData: 'Q2 2020',
+            color: getColorFromToken(DataVizPalette.color6),
             legend: 'MetaData2',
           },
           {
             key: 'series3',
             data: 18,
-            xAxisCalloutData: '2020/04/30',
-            color: DefaultPalette.blueLight,
+            xAxisCalloutData: 'Q3 2020',
+            color: getColorFromToken(DataVizPalette.color7),
             legend: 'MetaData3',
           },
         ],
@@ -141,6 +145,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
             showYAxisGridLines
             yAxisTickCount={10}
             barwidth={43}
+            enableReflow={true}
           />
         </div>
       </>

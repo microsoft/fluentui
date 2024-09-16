@@ -2,7 +2,18 @@ import { FontSizes, FontWeights, HighContrastSelector, HighContrastSelectorBlack
 import { IGaugeChartStyleProps, IGaugeChartStyles } from './GaugeChart.types';
 
 export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
-  const { theme, chartValueSize, chartWidth, chartHeight, className, lineColor, toDrawShape } = props;
+  const {
+    theme,
+    chartValueSize,
+    chartWidth,
+    chartHeight,
+    className,
+    lineColor,
+    toDrawShape,
+    solidFill,
+    gradientFill,
+    opacity,
+  } = props;
 
   return {
     root: [
@@ -41,7 +52,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
 
     needle: {
       fill: theme.palette.black,
-      stroke: theme.palette.white,
+      stroke: theme.semanticColors.bodyBackground,
     },
 
     chartTitle: {
@@ -52,6 +63,15 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
     segment: {
       outline: 'none',
       stroke: theme.semanticColors.focusBorder,
+      fill: solidFill,
+      fillOpacity: opacity,
+    },
+
+    gradientSegment: {
+      width: '100%',
+      height: '100%',
+      background: gradientFill,
+      opacity,
     },
 
     legendsContainer: {
@@ -76,7 +96,7 @@ export const getStyles = (props: IGaugeChartStyleProps): IGaugeChartStyles => {
       {
         ...theme.fonts.small,
         lineHeight: '16px',
-        opacity: '0.8',
+        opacity: '0.85',
         color: theme.semanticColors.bodySubtext,
       },
     ],

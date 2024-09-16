@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as dedent from 'dedent';
+import dedent from 'dedent';
 import { makeStyles } from '@griffel/react';
 import {
   Body1,
@@ -74,7 +74,7 @@ export const ExportPanel = () => {
 
   const darkTheme: Theme = {
     ...createDarkTheme(${themeName}), ${getBrandValues(brand, darkThemeOverrides, themeName, '\u00A0\u00A0')} };
-  
+
 
   darkTheme.colorBrandForeground1 = ${themeName}[110];
   darkTheme.colorBrandForeground2 = ${themeName}[120];
@@ -92,7 +92,7 @@ export const ExportPanel = () => {
        },
        null,
        '\t',
-     )} 
+     )}
   `;
 
   const exportedValue = React.useMemo(() => {

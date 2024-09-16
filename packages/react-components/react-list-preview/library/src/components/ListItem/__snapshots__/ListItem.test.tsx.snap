@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem renders a default state 1`] = `
+<div>
+  <li
+    class="fui-ListItem"
+    data-tabster="{\\"groupper\\":{\\"tabbability\\":2},\\"focusable\\":{\\"ignoreKeydown\\":{\\"Enter\\":true}}}"
+    id="listItem9"
+    role="listitem"
+  >
+    Default ListItem
+  </li>
+</div>
+`;

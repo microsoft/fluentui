@@ -1,14 +1,5 @@
 import * as React from 'react';
-import {
-  Divider,
-  FluentProvider,
-  makeStyles,
-  mergeClasses,
-  shorthands,
-  tokens,
-  Text,
-  Caption1,
-} from '@fluentui/react-components';
+import { Divider, FluentProvider, makeStyles, mergeClasses, tokens, Text, Caption1 } from '@fluentui/react-components';
 import { Demo } from '../Demo/Demo';
 import { Palette } from '../Palette/Palette';
 import { ColorTokens } from '../ColorTokens/ColorTokens';
@@ -25,8 +16,8 @@ const useStyles = makeStyles({
     alignItems: 'stretch',
     flexDirection: 'column',
     minWidth: '750px',
-    ...shorthands.padding('40px', '10%'),
-    ...shorthands.margin('0', 'auto'),
+    padding: '40px 10%',
+    margin: '0 auto',
     gridRowGap: tokens.spacingVerticalXXXL,
   },
   sickerSheet: {

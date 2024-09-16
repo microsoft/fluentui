@@ -1,10 +1,11 @@
 import { mount } from '@cypress/react';
 import * as React from 'react';
 import root from 'react-shadow';
+import Frame from 'react-frame-component';
 
 import { useOnClickOutside } from './useOnClickOutside';
 
-const Example: React.FC<{ useShadowDOM: boolean; onOutsideClick: () => void }> = props => {
+const OutsideClickExample: React.FC<{ useShadowDOM: boolean; onOutsideClick: () => void }> = props => {
   const innerRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside({
@@ -38,11 +39,48 @@ const Example: React.FC<{ useShadowDOM: boolean; onOutsideClick: () => void }> =
   );
 };
 
+const IFrameExample: React.FC<{ disabledFocusOnIframe?: boolean; onOutsideClick: () => void }> = props => {
+  const innerRef = React.useRef<HTMLDivElement>(null);
+
+  useOnClickOutside({
+    element: document,
+    disabledFocusOnIframe: props.disabledFocusOnIframe,
+    callback: props.onOutsideClick,
+    refs: [innerRef],
+  });
+
+  return (
+    <div style={{ border: '3px solid green', padding: 20, display: 'flex', flexDirection: 'column', gap: 20 }}>
+      <div
+        id="inside-area"
+        ref={innerRef}
+        style={{ display: 'flex', flexDirection: 'column', gap: 20, border: '3px solid blue', padding: 20 }}
+      >
+        <button id="inside-button" style={{ width: 'fit-content' }}>
+          a button inside
+        </button>
+
+        <Frame style={{ height: 140, width: 400 }}>
+          <div id="inside-area-frame" style={{ border: '3px solid violet', padding: 20 }}>
+            <button id="inside-frame-button">a button inside (iframe)</button>
+          </div>
+        </Frame>
+      </div>
+
+      <Frame style={{ height: 140, width: 400 }}>
+        <div id="outside-area-frame" style={{ border: '3px solid violet', padding: 20 }}>
+          <button id="inside-frame-button">a button outside (iframe)</button>
+        </div>
+      </Frame>
+    </div>
+  );
+};
+
 describe('useOnClickOutside', () => {
   it('should work within Light DOM', () => {
     const onOutsideClick = cy.spy();
 
-    mount(<Example useShadowDOM={false} onOutsideClick={onOutsideClick} />);
+    mount(<OutsideClickExample useShadowDOM={false} onOutsideClick={onOutsideClick} />);
 
     cy.get('#inside-button')
       .click()
@@ -66,7 +104,7 @@ describe('useOnClickOutside', () => {
   it('should work within Shadow DOM', () => {
     const onOutsideClick = cy.spy();
 
-    mount(<Example useShadowDOM onOutsideClick={onOutsideClick} />);
+    mount(<OutsideClickExample useShadowDOM onOutsideClick={onOutsideClick} />);
 
     cy.get('#shadow-host')
       .shadow()
@@ -89,5 +127,71 @@ describe('useOnClickOutside', () => {
       .then(() => {
         expect(onOutsideClick).to.be.calledTwice;
       });
+  });
+
+  it('should not call callback with inside text selection finishing outside', () => {
+    const onOutsideClick = cy.spy();
+
+    mount(<OutsideClickExample useShadowDOM={false} onOutsideClick={onOutsideClick} />);
+
+    cy.get('#inside-button')
+      .trigger('mousedown', { which: 1 })
+      .trigger('mousemove')
+      .get('#outside-buttonA')
+      .trigger('mousemove')
+      .trigger('mouseup')
+      .trigger('click')
+      .then(() => {
+        expect(onOutsideClick).to.not.be.called;
+      });
+  });
+
+  describe('iframes', () => {
+    beforeEach(() => {
+      cy.clock(new Date(), ['setInterval']);
+    });
+
+    it('is invoked on a frame focus (disabledFocusOnIframe={false})', () => {
+      const onOutsideClick = cy.spy();
+
+      mount(<IFrameExample disabledFocusOnIframe={false} onOutsideClick={onOutsideClick} />);
+
+      cy.get('#inside-button')
+        .click()
+        .then(() => {
+          expect(onOutsideClick).to.not.be.called;
+        });
+
+      cy.realPress('Tab')
+        .tick(2000)
+        .then(() => {
+          expect(onOutsideClick).to.not.be.called;
+        });
+
+      cy.realPress('Tab')
+        .tick(2000)
+        .then(() => {
+          expect(onOutsideClick).to.be.called;
+        });
+    });
+
+    it('is not invoked on a frame focus (disabledFocusOnIframe={true})', () => {
+      const onOutsideClick = cy.spy();
+
+      mount(<IFrameExample disabledFocusOnIframe onOutsideClick={onOutsideClick} />);
+
+      cy.get('#inside-button')
+        .click()
+        .then(() => {
+          expect(onOutsideClick).to.not.be.called;
+        });
+
+      cy.realPress('Tab')
+        .realPress('Tab')
+        .tick(2000)
+        .then(() => {
+          expect(onOutsideClick).to.not.be.called;
+        });
+    });
   });
 });

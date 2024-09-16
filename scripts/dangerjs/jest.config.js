@@ -7,7 +7,7 @@ module.exports = {
   displayName: 'scripts-dangerjs',
   preset: '../../jest.preset.js',
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
+    '^.+\\.tsx?$': ['@swc/jest', {}],
   },
   coverageDirectory: './coverage',
   testEnvironment: 'node',

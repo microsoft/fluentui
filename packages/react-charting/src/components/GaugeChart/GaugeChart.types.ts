@@ -4,6 +4,10 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
+/**
+ * Gauge Chart segment interface.
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartSegment {
   /**
    * Legend text for a segment
@@ -21,16 +25,36 @@ export interface IGaugeChartSegment {
   color?: string;
 
   /**
+   * Gradient color of the segment
+   */
+  gradient?: [string, string];
+
+  /**
    * Accessibility data for the segment
    */
   accessibilityData?: IAccessibilityProps;
 }
 
+/**
+ * {@docCategory GaugeChart}
+ */
 export enum GaugeValueFormat {
   Percentage = 'percentage',
   Fraction = 'fraction',
 }
 
+/**
+ * {@docCategory GaugeChart}
+ */
+export enum GaugeChartVariant {
+  SingleSegment = 'single-segment',
+  MultipleSegments = 'multiple-segments',
+}
+
+/**
+ * Gauge Chart properties
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartProps {
   /**
    * Width of the chart
@@ -83,7 +107,7 @@ export interface IGaugeChartProps {
    * Format of the chart value
    * @defaultvalue GaugeValueFormat.Percentage
    */
-  chartValueFormat?: GaugeValueFormat | ((sweepFraction: number[]) => string);
+  chartValueFormat?: GaugeValueFormat | ((sweepFraction: [number, number]) => string);
 
   /**
    * Decides whether to show/hide legends
@@ -126,8 +150,30 @@ export interface IGaugeChartProps {
    * Props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Specifies the variant of GaugeChart to be rendered
+   * @defaultvalue GaugeChartVariant.MultipleSegments
+   */
+  variant?: GaugeChartVariant;
+
+  /**
+   * Prop to enable the gradient in the chart
+   * @default false
+   */
+  enableGradient?: boolean;
+
+  /**
+   * Prop to enable the round corners in the chart
+   * @default false
+   */
+  roundCorners?: boolean;
 }
 
+/**
+ * Gauge Chart style properties
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyleProps {
   /**
    * Theme (provided through customization)
@@ -163,8 +209,27 @@ export interface IGaugeChartStyleProps {
    * Boolean flag which determines if shape is drawn in callout
    */
   toDrawShape?: boolean;
+
+  /**
+   * solid color for the arc (when enableGradient is false)
+   */
+  solidFill?: string;
+
+  /**
+   * gradient for the arc (when enableGradient is true)
+   */
+  gradientFill?: string;
+
+  /**
+   * opacity of the arc
+   */
+  opacity?: number;
 }
 
+/**
+ * Gauge Chart styles
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartStyles {
   /**
    * Styles for the root element
@@ -205,6 +270,11 @@ export interface IGaugeChartStyles {
    * Styles for the segments
    */
   segment?: IStyle;
+
+  /**
+   * Styles for gradient segments
+   */
+  gradientSegment?: IStyle;
 
   /**
    * Styles for the legends container

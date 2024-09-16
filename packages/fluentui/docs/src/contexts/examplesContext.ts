@@ -14,7 +14,7 @@ if (__DEV__) {
   if (module.hot) {
     // We need this to catch cases unhandled by RHL
     // https://github.com/webpack/webpack/issues/834#issuecomment-76590576
-    module.hot.accept(examplesContext.id, () => {
+    module.hot.accept(examplesContext.id as string, () => {
       examplesContext = require.context('../examples/', true, /(\w+Example(\w|\.)*|\w+.perf|\w+.bsize)\.tsx$/);
     });
   }

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AriaLiveAnnouncer renders a default state 1`] = `
+<div>
+  Default AriaLive
+</div>
+`;

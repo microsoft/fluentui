@@ -17,7 +17,10 @@ import type { IBaseProps } from './BaseComponent.types';
  *
  * @deprecated Do not use. We are moving away from class component.
  */
-export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState extends {} = {}> extends React.Component<
+  TProps,
+  TState
+> {
   /**
    * @deprecated Use React's error boundaries instead.
    */

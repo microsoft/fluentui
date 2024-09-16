@@ -8,8 +8,8 @@ To determine initials for an avatar, the code initially tries to extract two-let
 AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: nil)
 ```
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/macos/Persona/avatar_initials_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/macos/Persona/avatar_initials_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/macos/Persona/avatar_initials_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/macos/Persona/avatar_initials_dark.png?text=DarkMode" />
 
 ### Profile
 
@@ -18,7 +18,7 @@ AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.
 AvatarView(avatarSize: size, contactName: "Amanda Brady", contactEmail: "Amanda.Brady@example.com", contactImage: NSImage(named: "Amanda"))
 ```
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/macos/Persona/avatar_profilepicture_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/macos/Persona/avatar_profilepicture_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/macos/Persona/avatar_profilepicture_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/macos/Persona/avatar_profilepicture_dark.png?text=DarkMode" />
 
 </DisplayToggle>

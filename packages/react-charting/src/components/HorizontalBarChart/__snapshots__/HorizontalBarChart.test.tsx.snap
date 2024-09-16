@@ -27,7 +27,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -71,7 +72,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip7"
               style={
                 Object {
                   "border": 0,
@@ -112,7 +113,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -137,10 +139,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -150,6 +149,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
               y={0}
@@ -158,10 +158,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="13457/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -169,6 +166,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
               y={0}
@@ -194,7 +192,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -238,7 +237,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip10"
               style={
                 Object {
                   "border": 0,
@@ -279,7 +278,8 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone11"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -304,10 +304,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -317,6 +314,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
               y={0}
@@ -325,10 +323,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="14200/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -336,6 +331,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
               y={0}
@@ -446,7 +442,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     font-size: 12px;
                     font-weight: 400;
                     line-height: 16px;
-                    opacity: 0.8;
+                    opacity: 0.85;
                   }
             >
                
@@ -470,6 +466,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                     margin-top: unset;
                     padding-left: 8px;
                   }
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                    forced-color-adjust: none;
+                  }
             >
               <div
                 className=
@@ -482,6 +481,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 2020/04/30
@@ -497,6 +499,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
                       font-size: 28px;
                       font-weight: bold;
                       line-height: 36px;
+                    }
+                    @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                      color: rgb(255, 255, 255);
                     }
               >
                 19%
@@ -537,7 +542,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -581,7 +587,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip7"
               style={
                 Object {
                   "border": 0,
@@ -622,7 +628,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -647,10 +654,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -660,6 +664,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
               y={0}
@@ -668,10 +673,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="13457/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -679,6 +681,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="89.71333333333334%"
               x="10.286666666666665%"
               y={0}
@@ -704,7 +707,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -748,7 +752,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip10"
               style={
                 Object {
                   "border": 0,
@@ -789,7 +793,8 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone11"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -814,10 +819,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -827,6 +829,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
               y={0}
@@ -835,10 +838,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="14200/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -846,6 +846,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               onBlur={[Function]}
               onMouseLeave={[Function]}
               role="img"
+              rx={0}
               width="94.66666666666667%"
               x="5.333333333333334%"
               y={0}
@@ -967,7 +968,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1011,7 +1013,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip9"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1039,7 +1041,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1063,10 +1066,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1075,6 +1075,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
               y={0}
@@ -1099,7 +1100,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1143,7 +1145,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip12"
+              id="tooltip8"
               style={
                 Object {
                   "border": 0,
@@ -1171,7 +1173,8 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1195,10 +1198,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -1207,6 +1207,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
               y={0}
@@ -1248,7 +1249,8 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone4"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1292,7 +1294,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip5"
               style={
                 Object {
                   "border": 0,
@@ -1320,7 +1322,8 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1344,10 +1347,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1356,6 +1356,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="10.286666666666665%"
               x="0%"
               y={0}
@@ -1398,7 +1399,8 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone7"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1442,7 +1444,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip8"
               style={
                 Object {
                   "border": 0,
@@ -1470,7 +1472,8 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1494,10 +1497,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -1506,6 +1506,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               onMouseLeave={[Function]}
               onMouseOver={[Function]}
               role="img"
+              rx={0}
               width="5.333333333333334%"
               x="0%"
               y={0}
@@ -1529,6 +1530,736 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             >
               800
             </text>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing Should render gradients on bars 1`] = `
+<div
+  className=
+
+      {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 10px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={false}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip7"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
+          </div>
+          <div
+            className=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+            data-is-focusable={false}
+            role="text"
+          >
+            1,543
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="one"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+            onClick={[Function]}
+          >
+            <defs>
+              <linearGradient
+                id="HBC_Gradient2_0_0"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#4760D5"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#637CEF"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30, 94%."
+              className=
+
+
+              data-is-focusable={true}
+              fill="url(#HBC_Gradient2_0_0)"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              rx={0}
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <defs>
+              <linearGradient
+                id="HBC_Gradient3_0_1"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#edebe9"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#edebe9"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              aria-label="13457/15000."
+              className=
+
+
+              data-is-focusable={false}
+              fill="url(#HBC_Gradient3_0_1)"
+              height={12}
+              onBlur={[Function]}
+              onMouseLeave={[Function]}
+              role="img"
+              rx={0}
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 10px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={false}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip10"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
+          </div>
+          <div
+            className=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+            data-is-focusable={false}
+            role="text"
+          >
+            800
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone11"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="two"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+            onClick={[Function]}
+          >
+            <defs>
+              <linearGradient
+                id="HBC_Gradient4_1_0"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#795AA6"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#9373C0"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              aria-label="2020/04/30, 19%."
+              className=
+
+
+              data-is-focusable={true}
+              fill="url(#HBC_Gradient4_1_0)"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              rx={0}
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <defs>
+              <linearGradient
+                id="HBC_Gradient5_1_1"
+              >
+                <stop
+                  offset="0"
+                  stopColor="#edebe9"
+                />
+                <stop
+                  offset="100%"
+                  stopColor="#edebe9"
+                />
+              </linearGradient>
+            </defs>
+            <rect
+              aria-label="14200/15000."
+              className=
+
+
+              data-is-focusable={false}
+              fill="url(#HBC_Gradient5_1_1)"
+              height={12}
+              onBlur={[Function]}
+              onMouseLeave={[Function]}
+              role="img"
+              rx={0}
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`HorizontalBarChart snapShot testing Should render rounded corners on bars 1`] = `
+<div
+  className=
+
+      {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+  onMouseLeave={[Function]}
+>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 10px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone6"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={false}
+              role="text"
+            >
+              one
+            </span>
+            <div
+              hidden={true}
+              id="tooltip7"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              one
+            </div>
+          </div>
+          <div
+            className=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+            data-is-focusable={false}
+            role="text"
+          >
+            1,543
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone8"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="one"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_0"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 94%."
+              className=
+
+
+              data-is-focusable={true}
+              fill="#004b50"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              rx={3}
+              width="10.286666666666665%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              aria-label="13457/15000."
+              className=
+
+
+              data-is-focusable={false}
+              fill="#edebe9"
+              height={12}
+              onBlur={[Function]}
+              onMouseLeave={[Function]}
+              role="img"
+              rx={3}
+              width="89.71333333333334%"
+              x="10.286666666666665%"
+              y={0}
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            margin-bottom: 10px;
+          }
+    >
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone9"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                display: flex;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 12px;
+                font-weight: 400;
+                justify-content: space-between;
+              }
+        >
+          <div
+            className=
+                ms-TooltipHost
+                {
+                  color: #323130;
+                  display: block;
+                  margin-bottom: 5px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+            onBlurCapture={[Function]}
+            onFocusCapture={[Function]}
+            onKeyDown={[Function]}
+            onMouseEnter={[Function]}
+            onMouseLeave={[Function]}
+            role="none"
+          >
+            <span
+              data-is-focusable={false}
+              role="text"
+            >
+              two
+            </span>
+            <div
+              hidden={true}
+              id="tooltip10"
+              style={
+                Object {
+                  "border": 0,
+                  "height": 1,
+                  "margin": -1,
+                  "overflow": "hidden",
+                  "padding": 0,
+                  "position": "absolute",
+                  "whiteSpace": "nowrap",
+                  "width": 1,
+                }
+              }
+            >
+              two
+            </div>
+          </div>
+          <div
+            className=
+
+                {
+                  color: #323130;
+                  font-size: 14px;
+                  font-weight: 600;
+                }
+            data-is-focusable={false}
+            role="text"
+          >
+            800
+          </div>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              padding-right: 0px;
+            }
+        data-focuszone-id="FocusZone11"
+        data-tabster="{\\"uncontrolled\\": {}}"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <svg
+          aria-label="two"
+          className=
+
+              {
+                display: block;
+                height: 12px;
+                overflow: visible;
+                width: 100%;
+              }
+        >
+          <g
+            id="_HorizontalLine_lllllm_1"
+            onClick={[Function]}
+          >
+            <rect
+              aria-label="2020/04/30, 19%."
+              className=
+
+
+              data-is-focusable={true}
+              fill="#5c2d91"
+              height={12}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseOver={[Function]}
+              role="img"
+              rx={3}
+              width="5.333333333333334%"
+              x="0%"
+              y={0}
+            />
+            <rect
+              aria-label="14200/15000."
+              className=
+
+
+              data-is-focusable={false}
+              fill="#edebe9"
+              height={12}
+              onBlur={[Function]}
+              onMouseLeave={[Function]}
+              role="img"
+              rx={3}
+              width="94.66666666666667%"
+              x="5.333333333333334%"
+              y={0}
+            />
           </g>
         </svg>
       </div>
