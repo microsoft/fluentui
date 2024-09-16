@@ -72,13 +72,16 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     size = 'medium',
     defaultOpenCategories,
     openCategories: controlledOpenCategoryItems,
+    selectedCategoryValue: controlledSelectedCategoryValue,
+    selectedValue: controlledSelectedValue,
+    defaultSelectedValue,
   } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
   const [openCategories, setOpenCategories] = useControllableState({
     state: React.useMemo(() => normalizeValues(controlledOpenCategoryItems), [controlledOpenCategoryItems]),
-    defaultState: () => initializeUncontrolledOpenCategories({ defaultOpenCategories, multiple }),
+    defaultState: defaultOpenCategories && initializeUncontrolledOpenCategories({ defaultOpenCategories, multiple }),
     initialState: [],
   });
 
@@ -88,14 +91,13 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     setOpenCategories(nextOpenItems);
   });
 
-  const [selectedCategoryValue, setSelectedCategoryValue] = useControllableState({
-    state: props.selectedCategoryValue,
-    defaultState: props.defaultSelectedCategoryValue,
-    initialState: undefined,
-  });
+  const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<NavItemValue | undefined>(
+    controlledSelectedCategoryValue,
+  );
+
   const [selectedValue, setSelectedValue] = useControllableState({
-    state: props.selectedValue,
-    defaultState: props.defaultSelectedValue,
+    state: controlledSelectedValue,
+    defaultState: defaultSelectedValue,
     initialState: undefined,
   });
 
@@ -155,7 +157,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
       { elementType: 'div' },
     ),
     selectedValue,
-    selectedCategoryValue,
+    selectedCategoryValue: controlledSelectedCategoryValue,
     onRegister,
     onUnregister,
     onSelect,

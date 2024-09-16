@@ -110,23 +110,21 @@ const navItemValueList: navItemValueCombo[] = [
 ];
 
 type SelectedPage = {
-  selectedCategory: string;
-  selectedValue: string;
+  newSelectedCategory: string | undefined;
+  newSelectedValue: string;
 };
 
-const selectRandomPage = (): SelectedPage => {
-  const randomIndex = Math.floor(Math.random() * navItemValueList.length + 1);
-  const randomItem = navItemValueList[randomIndex - 1];
+const getRandomPage = (): SelectedPage => {
+  const randomIndex = Math.floor(Math.random() * navItemValueList.length);
+  const randomItem = navItemValueList[randomIndex];
 
-  if (randomItem.children.length > 0) {
-    const randomChildIndex = Math.floor(Math.random() * randomItem.children.length);
-    const selectedCategory = randomItem.parent;
-    const selectedValue = randomItem.children[randomChildIndex - 1];
-    return { selectedCategory, selectedValue };
+  // there are no children, so we're selecting a top level item
+  if (randomItem.children.length === 0) {
+    return { newSelectedCategory: undefined, newSelectedValue: randomItem.parent };
   } else {
-    const selectedCategory = randomItem.parent;
-    const selectedValue = randomItem.parent;
-    return { selectedCategory, selectedValue };
+    // there are children, so we're including a category and it's child as the selectedValue
+    const randomChildIndex = Math.floor(Math.random() * randomItem.children.length);
+    return { newSelectedCategory: randomItem.parent, newSelectedValue: randomItem.children[randomChildIndex] };
   }
 };
 
@@ -136,7 +134,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const multipleLabelId = useId('multiple-label');
 
   const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6']);
-  const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string>('6');
+  const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string | undefined>('6');
   const [selectedValue, setSelectedValue] = React.useState<string>('7');
   const [isMultiple, setIsMultiple] = React.useState(true);
 
@@ -179,9 +177,10 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   };
 
   const handleNavigationClick = () => {
-    const { selectedCategory, selectedValue } = selectRandomPage();
-    setSelectedCategoryValue(selectedCategory);
-    setSelectedValue(selectedValue);
+    const { newSelectedCategory, newSelectedValue } = getRandomPage();
+
+    setSelectedCategoryValue(newSelectedCategory);
+    setSelectedValue(newSelectedValue);
   };
 
   return (
