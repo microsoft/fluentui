@@ -682,12 +682,87 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
         tickValues?: number[] | Date[];
         tickFormat?: string;
     };
+    tooltipRef?: React_2.MutableRefObject<null>;
     xAxisInnerPadding?: number;
     xAxisOuterPadding?: number;
     xAxisPadding?: number;
     xAxisType: XAxisTypes;
     yAxisPadding?: number;
     yAxisType?: YAxisType;
+}
+
+// @public (undocumented)
+export interface IPopoverComponentProps {
+    // (undocumented)
+    clickPosition: {
+        x: number;
+        y: number;
+    };
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    culture: string;
+    // (undocumented)
+    customizedCallout?: JSX.Element;
+    // (undocumented)
+    descriptionMessage?: string;
+    // (undocumented)
+    hoverXValue?: string | number;
+    // (undocumented)
+    isCalloutForStack?: boolean;
+    // (undocumented)
+    isPopoverOpen: boolean;
+    // (undocumented)
+    Legend?: string | number | Date;
+    // (undocumented)
+    legend?: string;
+    // (undocumented)
+    ratio?: [number, number];
+    // (undocumented)
+    xAxisCalloutAccessibilityData?: {
+        ariaLabel?: string;
+        data?: string;
+    };
+    // (undocumented)
+    xCalloutValue?: string;
+    // (undocumented)
+    XValue?: string;
+    // (undocumented)
+    yCalloutValue?: string;
+    // (undocumented)
+    YValue?: string | number | Date;
+    // (undocumented)
+    YValueHover?: IYValueHover[];
+}
+
+// @public (undocumented)
+export interface IPopoverComponentStyles {
+    // (undocumented)
+    calloutBlockContainer: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapefalse: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapetrue: string;
+    // (undocumented)
+    calloutContentRoot: string;
+    // (undocumented)
+    calloutContentX: string;
+    // (undocumented)
+    calloutContentY: string;
+    // (undocumented)
+    calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutlegendText: string;
+    // (undocumented)
+    denominator: string;
+    // (undocumented)
+    descriptionMessage: string;
+    // (undocumented)
+    numerator: string;
+    // (undocumented)
+    ratio: string;
+    // (undocumented)
+    shapeStyles: string;
 }
 
 // @public (undocumented)
@@ -848,6 +923,9 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 
 // @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
+
+// @public (undocumented)
+export const PopoverComponent: React_2.FunctionComponent<IPopoverComponentProps>;
 
 // @public (undocumented)
 export const Shape: React_2.FunctionComponent<IShapeProps>;

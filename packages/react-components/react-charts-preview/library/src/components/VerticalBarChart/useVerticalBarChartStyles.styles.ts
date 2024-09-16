@@ -8,7 +8,6 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
   xAxisTicks: 'fui-vbc__xAxisTicks',
   yAxisTicks: 'fui-vbc__yAxisTicks',
   yAxisDomain: 'fui-vbc__yAxisDomain',
-  tooltip: 'fui-vbc__tooltip',
   barLabel: 'fui-vbc__barLabel',
   root: '',
   xAxis: '',
@@ -29,6 +28,7 @@ export const verticalbarchartClassNames: SlotClassNames<IVerticalBarChartStyles>
   chartTitle: '',
   shapeStyles: '',
   chartWrapper: '',
+  tooltip: '',
 };
 const useStyles = makeStyles({
   xAxisTicks: {},
@@ -37,18 +37,6 @@ const useStyles = makeStyles({
   },
   yAxisDomain: {
     transform: 'scaleX(-1)',
-  },
-  tooltip: {
-    fontSize: tokens.fontSizeBase300,
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding('8px'),
-    position: 'absolute',
-    textAlign: 'center',
-    top: '0px',
-    fill: tokens.colorNeutralBackground1,
-    borderRadius: '2px',
-    pointerEvents: 'none',
   },
   barLabel: {
     fontSize: tokens.fontSizeBase200,
@@ -64,10 +52,7 @@ export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps
   const baseStyles = useStyles();
 
   return {
-    opacityChangeOnHover: mergeClasses(
-      verticalbarchartClassNames.opacityChangeOnHover,
-      baseStyles.opacityChangeOnHover /*props.styles?.opacityChangeOnHover*/,
-    ),
+    opacityChangeOnHover: mergeClasses(verticalbarchartClassNames.opacityChangeOnHover),
     xAxisTicks: mergeClasses(
       // eslint-disable-next-line deprecation/deprecation
       verticalbarchartClassNames.xAxisTicks,
@@ -83,7 +68,6 @@ export const useVerticalBarChartStyles_unstable = (props: IVerticalBarChartProps
       verticalbarchartClassNames.yAxisDomain,
       baseStyles.yAxisDomain /*props.styles?.yAxisDomain*/,
     ),
-    tooltip: mergeClasses(verticalbarchartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
     barLabel: mergeClasses(verticalbarchartClassNames.barLabel, baseStyles.barLabel /*props.styles?.barLabel*/),
   };
 };

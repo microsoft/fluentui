@@ -581,4 +581,9 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Used to control the first render cycle Performance optimization code.
    */
   enableFirstRenderOptimization?: boolean;
+
+  /**
+   * Ref for tooltip of xAxis ticks
+   */
+  tooltipRef?: React.MutableRefObject<null>;
 }

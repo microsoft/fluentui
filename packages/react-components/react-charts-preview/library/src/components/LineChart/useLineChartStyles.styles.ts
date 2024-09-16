@@ -33,26 +33,12 @@ export const linechartClassNames: SlotClassNames<ILineChartStyles> = {
 /**
  * Base Styles
  */
-const useStyles = makeStyles({
-  tooltip: {
-    display: 'flex',
-    flexDirection: 'column',
-    ...shorthands.padding('8px'),
-    position: 'absolute',
-    textAlign: 'center',
-    top: '0px',
-    fill: tokens.colorNeutralBackground1,
-    ...shorthands.borderRadius('2px'),
-    pointerEvents: 'none',
-  },
-});
+const useStyles = makeStyles({});
 
 /**
  * Apply styling to the Carousel slots based on the state
  */
 export const useLineChartStyles_unstable = (props: ILineChartProps): ILineChartStyles => {
   const baseStyles = useStyles();
-  return {
-    tooltip: mergeClasses(linechartClassNames.tooltip, baseStyles.tooltip /*props.styles?.tooltip*/),
-  };
+  return {};
 };

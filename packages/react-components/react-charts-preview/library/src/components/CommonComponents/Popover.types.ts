@@ -10,7 +10,7 @@ export interface IPopoverComponentProps {
   XValue?: string;
   color?: string;
   culture: string;
-  isCalloutForStack: boolean;
+  isCalloutForStack?: boolean;
   customizedCallout?: JSX.Element;
   xAxisCalloutAccessibilityData?: { ariaLabel?: string; data?: string };
   hoverXValue?: string | number;
@@ -25,6 +25,7 @@ export interface IPopoverComponentStyles {
   calloutDateTimeContainer: string;
   calloutContentX: string;
   calloutBlockContainer: string;
+  calloutBlockContainerMultiValued: string;
   calloutBlockContainertoDrawShapefalse: string;
   calloutBlockContainertoDrawShapetrue: string;
   shapeStyles: string;

@@ -854,44 +854,6 @@ export const calculateLongestLabelWidth = (labels: (string | number)[], query: s
 };
 
 /**
- * This method displays a tooltip to the x axis lables(tick values)
- * when prop 'showXAxisLablesTooltip' enables to the respected chart.
- * On hover of the truncated word(at x axis labels tick), a tooltip will be appeared.
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function tooltipOfXAxislabels(xAxistooltipProps: any): any {
-  const { tooltipCls, xAxis, id } = xAxistooltipProps;
-  if (xAxis === null) {
-    return null;
-  }
-  const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
-  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
-  const baseSpanLength = aa && Object.keys(aa)!.length;
-  const originalDataArray: string[] = [];
-  for (let i = 0; i < baseSpanLength; i++) {
-    const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
-    originalDataArray.push(originalData);
-  }
-  const tickObject = xAxis!.selectAll('.tick')._groups[0];
-  const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
-  for (let i = 0; i < tickObjectLength; i++) {
-    const d1 = tickObject[i];
-    d3Select(d1)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      .on('mouseover', (event: any, d) => {
-        div.style('opacity', 0.9);
-        div
-          .html(originalDataArray[i])
-          .style('left', event.pageX + 'px')
-          .style('top', event.pageY - 28 + 'px');
-      })
-      .on('mouseout', d => {
-        div.style('opacity', 0);
-      });
-  }
-}
-
-/**
  * Find the axis type of line chart and area chart from given data
  * @param points
  */

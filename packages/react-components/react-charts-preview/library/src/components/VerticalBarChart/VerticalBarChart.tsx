@@ -30,7 +30,6 @@ import {
   XAxisTypes,
   NumericAxis,
   getTypeOfAxis,
-  tooltipOfXAxislabels,
   formatValueWithSIPrefix,
   getBarWidth,
   getScalePadding,
@@ -39,6 +38,7 @@ import {
   isRtl,
 } from '../../utilities/index';
 import Popover from '../CommonComponents/Popover';
+import { tooltipOfXAxislabels } from '../CommonComponents/cartesian-utils';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -66,7 +66,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _xAxisLabels: string[];
   let _yMax: number;
   let _isHavingLine: boolean = _checkForLine();
-  const _tooltipId: string = useId('VCTooltipID_');
   const _xAxisType: XAxisTypes =
     props.data! && props.data!.length > 0
       ? (getTypeOfAxis(props.data![0].x, true) as XAxisTypes)
@@ -80,6 +79,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   let _xAxisInnerPadding: number = 0;
   let _xAxisOuterPadding: number = 0;
   type ColorScale = (_p?: number) => string;
+  const tooltipRef = React.useRef(null);
 
   const [color, setColor] = React.useState<string>('');
   const [dataForHoverCard, setDataForHoverCard] = React.useState<number>(0);
@@ -98,6 +98,19 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
   const [dataPointCalloutProps, setDataPointCalloutProps] = React.useState<IVerticalBarChartDataPoint>();
   const [clickPosition, setClickPosition] = React.useState({ x: 0, y: 0 });
   const [isPopoverOpen, setPopoverOpen] = React.useState(false);
+  const [xAxis, setXElement] = React.useState<SVGElement | null>(null);
+
+  const classes = useVerticalBarChartStyles_unstable(props);
+
+  React.useEffect(() => {
+    if (xAxis) {
+      const tooltipProps = {
+        xAxis: xAxis,
+        div: tooltipRef.current,
+      };
+      tooltipOfXAxislabels(tooltipProps);
+    }
+  }, [xAxis]);
 
   function _createLine(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -536,8 +549,6 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     return { xBarScale, yBarScale };
   }
 
-  const classes = useVerticalBarChartStyles_unstable(props);
-
   function _createNumericBars(containerHeight: number, containerWidth: number, xElement: SVGElement): JSX.Element[] {
     const { useSingleColor = false } = props;
     const { xBarScale, yBarScale } = _getScales(containerHeight, containerWidth);
@@ -583,28 +594,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -656,30 +649,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-        showTooltip: props.showXAxisLablesTooltip,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -728,28 +701,10 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
         </g>
       );
     });
-    // Removing un wanted tooltip div from DOM, when prop not provided.
-    if (!props.showXAxisLablesTooltip) {
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-    }
     // Used to display tooltip at x axis labels.
     if (!props.wrapXAxisLables && props.showXAxisLablesTooltip) {
       const xAxisElement = d3Select(xElement).call(xBarScale);
-      try {
-        // eslint-disable-next-line no-restricted-globals
-        document.getElementById(_tooltipId) && document.getElementById(_tooltipId)!.remove();
-        // eslint-disable-next-line no-empty
-      } catch (e) {}
-      const tooltipProps = {
-        tooltipCls: classes.tooltip!,
-        id: _tooltipId,
-        xAxis: xAxisElement,
-      };
-      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+      setXElement(xAxisElement.node());
     }
     return bars;
   }
@@ -956,11 +911,11 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
     color: color,
     legend: calloutLegend,
     YValue: yCalloutValue ? yCalloutValue : dataForHoverCard,
+    XValue: xCalloutValue,
     ...props.calloutProps,
     ...getAccessibleDataObject(callOutAccessibilityData),
     clickPosition: clickPosition,
     isPopoverOpen: isPopoverOpen,
-    isCalloutForStack: true,
     culture: props.culture ?? 'en-us',
   };
 
@@ -981,6 +936,7 @@ export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> =
       datasetForXAxisDomain={_xAxisLabels}
       barwidth={_barWidth}
       customizedCallout={_getCustomizedCallout()}
+      tooltipRef={tooltipRef}
       getmargins={_getMargins}
       getGraphData={_getGraphData}
       getAxisData={_getAxisData}
