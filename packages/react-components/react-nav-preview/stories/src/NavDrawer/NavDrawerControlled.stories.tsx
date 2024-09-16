@@ -87,12 +87,12 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 // A type that represents a navItemValue and its potential children.
 // An empty children array indicates a Single top level NavItem.
 // A hydrated children array indicates a NavCategoryItem with children.
-type navItemValueCombo = { parent: string; children: string[] };
+type NavItemValueCombo = { parent: string; children: string[] };
 
 // This is a list of navItemValues and their potential children
 // Ite exactly matches the NavDrawer in the story below
 // This is how a consumer might store them in their app
-const navItemValueList: navItemValueCombo[] = [
+const navItemValueList: NavItemValueCombo[] = [
   { parent: '1', children: [] },
   { parent: '2', children: [] },
   { parent: '3', children: [] },
