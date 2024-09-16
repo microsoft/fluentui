@@ -65,14 +65,21 @@ export const useCarouselCard_unstable = (
     }
   }, [cardFocus]);
 
-  const handleFocusCapture = React.useCallback(
+  const handleFocus = React.useCallback(
     (e: React.FocusEvent) => {
       if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
         selectPageByElement(e, e.currentTarget, true);
+        e.currentTarget.setAttribute('aria-current', 'true');
       }
     },
     [selectPageByElement],
   );
+
+  const handleBlur = React.useCallback((e: React.FocusEvent) => {
+    if (!e.defaultPrevented && isHTMLElement(e.currentTarget) && !isMouseEvent.current) {
+      e.currentTarget.setAttribute('aria-current', 'false');
+    }
+  }, []);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!e.defaultPrevented) {
@@ -85,9 +92,10 @@ export const useCarouselCard_unstable = (
     }
   };
 
-  const onFocusCapture = mergeCallbacks(props.onFocusCapture, handleFocusCapture);
+  const onFocus = mergeCallbacks(props.onFocus, handleFocus);
   const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
   const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
+  const onBlur = mergeCallbacks(props.onBlur, handleBlur);
   const state: CarouselCardState = {
     autoSize,
     components: {
@@ -100,7 +108,8 @@ export const useCarouselCard_unstable = (
         tabIndex: cardFocus ? 0 : undefined,
         ...props,
         id,
-        onFocusCapture,
+        onFocus,
+        onBlur,
         onMouseDown,
         onMouseUp,
         ...focusAttrProps,

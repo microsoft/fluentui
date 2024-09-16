@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons",
+  "packageName": "@fluentui/react-carousel-preview",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

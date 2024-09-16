@@ -86,14 +86,17 @@ const IMAGES = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
 ];
 
-const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = props => {
-  const { children, imageSrc } = props;
+const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index: number }> = props => {
+  const { children, imageSrc, index } = props;
   const classes = useClasses();
 
   return (
-    <CarouselCard className={classes.bannerCard}>
+    <CarouselCard className={classes.bannerCard} aria-label={`${index + 1} of ${IMAGES.length}`}>
       <Image fit="cover" src={imageSrc} role="presentation" />
 
       <div className={classes.cardContainer}>
@@ -110,6 +113,10 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string }> = pr
       </div>
     </CarouselCard>
   );
+};
+
+const indexedAriaLabel = (index: number) => {
+  return `Go to slide ${index}`;
 };
 
 export const Autoplay = () => {
@@ -140,8 +147,8 @@ export const Autoplay = () => {
       </div>
       <Carousel groupSize={1} circular>
         <CarouselSlider>
-          {IMAGES.concat(IMAGES).map((imageSrc, index) => (
-            <BannerCard key={`image-${index}`} imageSrc={imageSrc}>
+          {IMAGES.map((imageSrc, index) => (
+            <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
               Card {index + 1}
             </BannerCard>
           ))}
@@ -149,8 +156,8 @@ export const Autoplay = () => {
         <CarouselNavContainer
           layout="inline"
           autoplay={autoplayProps}
-          next={{ 'aria-label': 'Go to next slide' }}
-          prev={{ 'aria-label': 'Go to prev slide' }}
+          next={{ indexedAriaLabel }}
+          prev={{ indexedAriaLabel }}
         >
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>

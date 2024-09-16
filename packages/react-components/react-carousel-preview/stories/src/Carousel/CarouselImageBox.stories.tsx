@@ -61,24 +61,24 @@ const ImageCard: React.FC<ImageDefinition> = props => {
   return <Image className={classes.image} src={url} role="presentation" />;
 };
 
+const indexedAriaLabel = (index: number, targetCards: number[]) => {
+  return `Go to image ${index}`;
+};
+
 export const ImageSlideshow = () => {
   const classes = useClasses();
 
   return (
     <Carousel groupSize={1} align="center">
       <CarouselSlider className={classes.slider}>
-        {IMAGES.map(image => (
-          <CarouselCard key={image.url} className={classes.card}>
+        {IMAGES.map((image, index) => (
+          <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>
             <ImageCard {...image} />
           </CarouselCard>
         ))}
       </CarouselSlider>
 
-      <CarouselNavContainer
-        layout="overlay-expanded"
-        next={{ 'aria-label': 'Go to next slide' }}
-        prev={{ 'aria-label': 'Go to prev slide' }}
-      >
+      <CarouselNavContainer layout="overlay-expanded" next={{ indexedAriaLabel }} prev={{ indexedAriaLabel }}>
         <CarouselNav>
           {index => (
             <CarouselNavImageButton

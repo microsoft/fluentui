@@ -19,6 +19,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
     /** noop */
   },
   circular: false,
+  containerRef: undefined,
 };
 
 const CarouselContext = createContext<CarouselContextValue | undefined>(undefined);

@@ -80,13 +80,17 @@ const WireframeContent: React.FC<{
   );
 };
 
+const indexedAriaLabel = (index: number, targetCards: number[]) => {
+  return `Go to slide ${index}, containing cards ${targetCards.join(' ')}`;
+};
+
 export const Responsive = () => {
   const classes = useClasses();
 
   return (
     <Carousel draggable>
       <CarouselSlider className={classes.slider}>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="1 of 7">
           <WireframeContent appearance="odd">
             <Title1 align="center">Lorem Ipsum</Title1>
             <Body1 align="center">
@@ -94,37 +98,37 @@ export const Responsive = () => {
             </Body1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="2 of 7">
           <WireframeContent appearance="even" size="small">
             <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
             <Caption1 align="center">Lorem ipsum...</Caption1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="3 of 7">
           <WireframeContent appearance="odd" size="medium">
             <Title1 align="center">Lorem Ipsum</Title1>
             <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="4 of 7">
           <WireframeContent appearance="even" size="large">
             <Title1 align="center">Lorem Ipsum</Title1>
             <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="5 of 7">
           <WireframeContent appearance="odd" size="medium">
             <Title1 align="center">Lorem Ipsum</Title1>
             <Caption1 align="center">Lorem ipsum dolor sit amet...</Caption1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="6 of 7">
           <WireframeContent appearance="even" size="large">
             <Title1 align="center">Lorem Ipsum</Title1>
             <Body1 align="center">Lorem ipsum dolor sit amet...</Body1>
           </WireframeContent>
         </CarouselCard>
-        <CarouselCard autoSize>
+        <CarouselCard autoSize aria-label="7 of 7">
           <WireframeContent appearance="odd" size="small">
             <Subtitle2 align="center">Lorem Ipsum</Subtitle2>
             <Caption1 align="center">Lorem ipsum...</Caption1>
@@ -132,11 +136,7 @@ export const Responsive = () => {
         </CarouselCard>
       </CarouselSlider>
 
-      <CarouselNavContainer
-        layout="inline"
-        next={{ 'aria-label': 'Go to next slide' }}
-        prev={{ 'aria-label': 'Go to prev slide' }}
-      >
+      <CarouselNavContainer layout="inline" next={{ indexedAriaLabel }} prev={{ indexedAriaLabel }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
     </Carousel>

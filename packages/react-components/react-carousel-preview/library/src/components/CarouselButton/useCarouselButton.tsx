@@ -1,12 +1,20 @@
 import { type ARIAButtonElement } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import { ChevronLeftRegular, ChevronRightRegular } from '@fluentui/react-icons';
-import { mergeCallbacks, useEventCallback, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  mergeCallbacks,
+  useEventCallback,
+  slot,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.types';
 import type { CarouselUpdateData } from '../Carousel/Carousel.types';
+import { carouselButtonClassNames } from './useCarouselButtonStyles.styles';
+import { useRef } from 'react';
 
 /**
  * Create the state required to render CarouselButton.
@@ -25,13 +33,16 @@ export const useCarouselButton_unstable = (
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
+  const [slideIndexes, setSlideIndexes] = React.useState<number[][]>([[0]]);
 
+  const buttonRef = useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
+  const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
 
   const isTrailing = useCarouselContext(ctx => {
-    if (ctx.activeIndex === undefined || circular) {
+    if (circular) {
       return false;
     }
 
@@ -42,20 +53,52 @@ export const useCarouselButton_unstable = (
     return ctx.activeIndex === totalSlides - 1;
   });
 
+  const targetIndex = useCarouselContext(ctx => {
+    const newIndex = navType === 'prev' ? ctx.activeIndex - 1 : ctx.activeIndex + 1;
+    if (circular && newIndex < 0) {
+      return Math.max(totalSlides - 1, 0);
+    } else if (circular && newIndex >= totalSlides) {
+      return 0;
+    } else {
+      return Math.max(Math.min(newIndex, totalSlides - 1), 0);
+    }
+  });
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
     if (event.isDefaultPrevented()) {
       return;
     }
 
-    selectPageByDirection(event, navType);
+    const nextIndex = selectPageByDirection(event, navType);
+
+    let _trailing = false;
+    if (navType === 'prev') {
+      _trailing = nextIndex === 0;
+    } else {
+      _trailing = nextIndex === totalSlides - 1;
+    }
+
+    if (!circular && _trailing && containerRef?.current) {
+      // Focus non-disabled element
+      const buttonRefs: NodeListOf<HTMLButtonElement> = containerRef.current.querySelectorAll(
+        `.${carouselButtonClassNames.root}`,
+      );
+      buttonRefs.forEach(_buttonRef => {
+        if (_buttonRef !== buttonRef.current) {
+          _buttonRef.focus();
+        }
+      });
+    }
   };
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
       setTotalSlides(data.navItemsCount);
+      setSlideIndexes(data.groupIndexList);
     });
   }, [subscribeForValues]);
 
+  const ariaLabel = props['aria-label'] ?? props.indexedAriaLabel?.(targetIndex, slideIndexes[targetIndex]);
   return {
     navType,
     // We lean on react-button class to handle styling and icon enhancements
@@ -73,9 +116,10 @@ export const useCarouselButton_unstable = (
         'aria-disabled': isTrailing,
         appearance: 'subtle',
         ...props,
+        'aria-label': ariaLabel,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),
       },
-      ref as React.Ref<HTMLButtonElement>,
+      useMergedRefs(ref, buttonRef) as React.Ref<HTMLButtonElement>,
     ),
   };
 };

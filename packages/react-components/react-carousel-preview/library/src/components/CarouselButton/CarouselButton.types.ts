@@ -16,6 +16,11 @@ export type CarouselButtonProps = Partial<ButtonProps> &
      * Default: 'next'
      */
     navType?: 'prev' | 'next';
+
+    /**
+     * Enables localization of aria-label based on index and target slide cards
+     */
+    indexedAriaLabel?: (index: number, targetCards: number[]) => string;
   };
 
 /**
