@@ -289,7 +289,7 @@ export type NavSectionHeaderSlots = {
 // @public
 export type NavSectionHeaderState = ComponentState<NavSectionHeaderSlots>;
 
-// @public (undocumented)
+// @public
 export type NavSize = 'small' | 'medium';
 
 // @public (undocumented)
