@@ -18,7 +18,9 @@ export const Controlled = () => {
         onChange={onSliderChange}
         id={id}
       />
-      <Button onClick={resetSlider}>Reset</Button>
+      <Button onClick={resetSlider} disabledFocusable={sliderValue === 0}>
+        Reset
+      </Button>
     </>
   );
 };
