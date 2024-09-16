@@ -7,6 +7,9 @@ export type NavSlots = {
   root: NonNullable<Slot<'div'>>;
 };
 
+/***
+ * Indicates the vertical size of the Nav content.
+ */
 export type NavSize = 'small' | 'medium';
 
 /**

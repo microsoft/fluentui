@@ -343,6 +343,12 @@ export type NavSubItemState = ComponentState<NavSubItemSlots> & Pick<NavSubItemP
 };
 
 // @public (undocumented)
+export type OnNavItemSelectData = EventData<'click', React_2.MouseEvent<HTMLButtonElement | HTMLAnchorElement>> & {
+    value: NavItemValue;
+    categoryValue?: NavItemValue;
+};
+
+// @public (undocumented)
 export type RegisterNavItemEventHandler = (data: NavItemRegisterData) => void;
 
 // @public

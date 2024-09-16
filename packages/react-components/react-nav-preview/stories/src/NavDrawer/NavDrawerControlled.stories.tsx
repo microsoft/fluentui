@@ -10,6 +10,7 @@ import {
   NavDrawerHeader,
   NavDrawerProps,
   NavItem,
+  NavItemValue,
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
@@ -117,8 +118,6 @@ const selectRandomPage = (): SelectedPage => {
   const randomIndex = Math.floor(Math.random() * navItemValueList.length + 1);
   const randomItem = navItemValueList[randomIndex - 1];
 
-  console.log(randomIndex);
-
   if (randomItem.children.length > 0) {
     const randomChildIndex = Math.floor(Math.random() * randomItem.children.length);
     const selectedCategory = randomItem.parent;
@@ -136,12 +135,10 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
 
   const multipleLabelId = useId('multiple-label');
 
-  const [openCategories, setOpenCategories] = React.useState<string[]>(['6']);
+  const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6']);
   const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string>('6');
   const [selectedValue, setSelectedValue] = React.useState<string>('7');
   const [isMultiple, setIsMultiple] = React.useState(true);
-
-  const [isOpen, setIsOpen] = React.useState(true);
 
   const handleCategoryToggle = (ev: Event | React.SyntheticEvent<Element, Event>, data: OnNavItemSelectData) => {
     if (data.value === undefined && data.categoryValue) {
@@ -176,7 +173,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   const renderHamburgerWithToolTip = () => {
     return (
       <Tooltip content="Navigation" relationship="label">
-        <Hamburger onClick={() => setIsOpen(!isOpen)} />
+        <Hamburger />
       </Tooltip>
     );
   };
@@ -194,6 +191,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
         // so don't use these props
         // defaultSelectedValue="7"
         // defaultSelectedCategoryValue="6"
+        // defaultOpenCategories={['6']}
         // multiple={isMultiple}
         onNavCategoryItemToggle={handleCategoryToggle}
         onNavItemSelect={handleItemSelect}
@@ -201,7 +199,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
         selectedValue={selectedValue}
         selectedCategoryValue={selectedCategoryValue}
         type={'inline'}
-        open={isOpen}
+        open={true}
       >
         <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
 
@@ -271,7 +269,6 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
-        {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
           <Button appearance="primary" onClick={handleNavigationClick}>
             Navigate
