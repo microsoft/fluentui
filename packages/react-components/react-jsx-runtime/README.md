@@ -47,7 +47,9 @@ const renderButton_unstable = (state: ButtonState) => {
 ```tsx
 /** @jsxRuntime classic */
 
+// in order to apply our custom `createElement` factory to jsx transforms, to support slot creation, we need to import it physically
 import { createElement } from '@fluentui/react-jsx-runtime';
+
 import { assertSlots } from '@fluentui/react-utilities';
 
 const renderButton_unstable = (state: ButtonState) => {
