@@ -39,7 +39,6 @@ export class HorizontalBarChart extends FASTElement {
 
   constructor() {
     super();
-    this.attachShadow({ mode: 'open' });
 
     const chartPoints1: IChartDataPoint[] = [
       {
@@ -129,8 +128,7 @@ export class HorizontalBarChart extends FASTElement {
   private bindEvents() {}
 
   connectedCallback() {
-    //this.render();
-    this.renderSingle();
+    this.render();
   }
 
   renderSingle() {
@@ -197,16 +195,14 @@ export class HorizontalBarChart extends FASTElement {
   }
 
   render() {
-    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 800);
-    const rootDivEle = d3
-      .create('div')
+    const div = d3.select(this.shadowRoot).append('div').attr('width', 800).attr('height', 400);
+    div
+      .append('div')
       .selectAll('div')
       .data(this.inpData!)
       .enter()
       .append('div')
       .each((d, i, nodes) => this.createSingleChartBars(d, i, nodes));
-
-    div.node()?.appendChild(rootDivEle.node()!);
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -287,7 +283,7 @@ export class HorizontalBarChart extends FASTElement {
       startingPoint.push(prevPosition);
 
       const gEle = d3
-        .select(this) // 'this' refers to the current 'rect' element
+        .select(this) // 'this' refers to the current 'g' element
         .attr('key', index)
         .attr('role', 'img')
         .attr('aria-label', pointData);
@@ -309,8 +305,10 @@ export class HorizontalBarChart extends FASTElement {
         .attr('height', barHeight);
     }
 
-    const svgEle = d3
-      .create('svg')
+    const containerDiv = d3.create('div');
+
+    const svgEle = containerDiv
+      .append('svg')
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -345,9 +343,6 @@ export class HorizontalBarChart extends FASTElement {
     }
 
     const getChartData = () => (data!.chartData![0].data ? data!.chartData![0].data : 0);
-
-    const containerDiv = d3.create('div');
-    containerDiv.node()!.appendChild(svgEle.node()!); // ToDo - Handle nulls properly
 
     return containerDiv;
   }
