@@ -102,7 +102,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       expect(bars[0].getAttribute('fill')).toEqual(DefaultPalette.tealDark);
       expect(bars[1].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
       expect(bars[2].getAttribute('fill')).toEqual(DefaultPalette.purple);
-      expect(bars[3].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay');
+      expect(bars[3].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
       expect(bars[4].getAttribute('fill')).toEqual(DefaultPalette.redDark);
       expect(bars[5].getAttribute('fill')).toEqual('var(--colorBackgroundOverlay)');
     },
@@ -171,7 +171,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
     { data: chartPoints, chartDataMode: 'fraction' },
     container => {
       //Assert
-      expect(getByClass(container, /chartDataTextDenominator/i)).toHaveLength(3);
+      expect(getByClass(container, /fui-hbc__textDenom/i)).toHaveLength(3);
     },
   );
 
