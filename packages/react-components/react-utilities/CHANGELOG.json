@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:11 GMT",
+      "tag": "@fluentui/react-utilities_v9.18.14",
+      "version": "9.18.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 08:22:17 GMT",
       "tag": "@fluentui/react-utilities_v9.18.13",
       "version": "9.18.13",

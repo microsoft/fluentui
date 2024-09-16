@@ -15,12 +15,12 @@
   margin-top: 49px;
 }
 
-#storybook-docs details {
+#storybook-docs details:not(.sbdocs-preview details) {
   position: relative;
   z-index: 99;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) p {
+#storybook-docs .sbdocs p:not(.sbdocs-preview p) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 18px;
@@ -45,13 +45,13 @@
   border-radius: 24px;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) hr {
+#storybook-docs .sbdocs hr:not(.sbdocs-preview hr) {
   margin: 48px 0;
   height: 0;
   border-top: 1px solid #ebebeb;
 }
 
-#storybook-docs .sbdocs h2 {
+#storybook-docs .sbdocs h2:not(.sbdocs-preview h2) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 24px;
@@ -64,7 +64,7 @@
   padding: 48px 0 0 0;
 }
 
-#storybook-docs .sbdocs h2 code {
+#storybook-docs .sbdocs h2 code:not(.sbdocs-preview h2 code) {
   border-radius: 4px;
   font-size: 20px;
 }
@@ -92,7 +92,7 @@
   margin: -40px 0 0;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) li {
+#storybook-docs .sbdocs li:not(.sbdocs-preview li) {
   font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
     sans-serif;
   font-size: 16px;
@@ -104,11 +104,11 @@
   margin-top: 8px;
 }
 
-#storybook-docs .sbdocs:not(.sbdocs-preview) ul {
+#storybook-docs .sbdocs ul:not(.sbdocs-preview ul) {
   margin: 12px 0;
 }
 
-#storybook-docs .sbdocs-ul .sbdocs:not(.sbdocs-preview) li {
+#storybook-docs .sbdocs-ul li:not(.sbdocs-preview .sbdocs-ul li) {
   list-style: none;
   position: relative;
 }
@@ -276,7 +276,7 @@
   line-height: 21px;
 }
 
-#storybook-docs code,
+#storybook-docs code:not(.sbdocs-preview code),
 #storybook-docs .docblock-argstable tbody tr td:nth-child(3) > div > span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(2) span,
 #storybook-docs .docblock-argstable-body > tr > td:nth-child(2) > div:nth-child(1) > div > span,
@@ -313,7 +313,7 @@
   white-space: normal;
 }
 
-#storybook-docs code {
+#storybook-docs code:not(.sbdocs-preview code) {
   padding: 0.1em 0.2em;
   display: inline-block;
   background-color: rgba(17, 16, 15, 0.1);
@@ -426,7 +426,7 @@ h1.fluent {
   letter-spacing: -0.16px;
 }
 
-h1 .fluent-version {
+h1.fluent .fluent-version {
   display: block;
   font-size: 24px; /* --font-size-base-600 */
   line-height: 32px;
