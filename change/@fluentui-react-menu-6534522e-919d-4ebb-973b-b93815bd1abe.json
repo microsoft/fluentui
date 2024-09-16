@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Menu): Do not rely on tabster restorer for focus restore",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
