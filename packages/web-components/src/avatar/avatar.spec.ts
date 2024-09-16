@@ -5,7 +5,7 @@ import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
 test.describe('Avatar Component', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-avatar--avatar'));
+    await page.goto(fixtureURL('components-avatar--image'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-avatar'));
   });
