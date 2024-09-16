@@ -13,7 +13,9 @@
         "{workspaceRoot}/packages/fluentui/*/project.json"
       ]
     },
-    "type-check": {},
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
+    },
     "format": {}
   }
 }

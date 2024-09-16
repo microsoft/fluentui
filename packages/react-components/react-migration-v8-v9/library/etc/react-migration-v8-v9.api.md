@@ -16,7 +16,7 @@ import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
 import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
-import type { MenuProps } from '@fluentui/react-menu';
+import type { MenuProps } from '@fluentui/react-components';
 import * as React_2 from 'react';
 import { Theme } from '@fluentui/react-components';
 import { Theme as Theme_2 } from '@fluentui/react';
