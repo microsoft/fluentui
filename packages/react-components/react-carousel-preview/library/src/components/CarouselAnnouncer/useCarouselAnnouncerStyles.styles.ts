@@ -4,19 +4,22 @@ import type { CarouselAnnouncerSlots, CarouselAnnouncerState } from './CarouselA
 
 export const carouselAnnouncerClassNames: SlotClassNames<CarouselAnnouncerSlots> = {
   root: 'fui-CarouselAnnouncer',
-  // TODO: add class names for all slots on CarouselAnnouncerSlots.
-  // Should be of the form `<slotName>: 'fui-CarouselAnnouncer__<slotName>`
 };
 
 /**
  * Styles for the root slot
+ * Hidden according to A11Y compatibility: https://www.a11yproject.com/posts/how-to-hide-content/
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    clip: 'rect(0 0 0 0)',
+    height: '0px',
+    overflow: 'hidden',
+    position: 'absolute',
+    width: '0px',
+    clipPath: 'inset(50%)',
+    whiteSpace: 'nowrap',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -27,9 +30,6 @@ export const useCarouselAnnouncerStyles_unstable = (state: CarouselAnnouncerStat
 
   const styles = useStyles();
   state.root.className = mergeClasses(carouselAnnouncerClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

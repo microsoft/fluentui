@@ -210,7 +210,7 @@ export const AlignmentAndWhitespace = () => {
 
           <CarouselAnnouncer>
             {(currentIndex, totalSlides, slideGroupList) => {
-              return `Slide ${currentIndex + 1} of ${totalSlides}`;
+              return `Slide ${currentIndex + 1} of ${totalSlides} with ${slideGroupList[currentIndex].length} cards`;
             }}
           </CarouselAnnouncer>
         </Carousel>

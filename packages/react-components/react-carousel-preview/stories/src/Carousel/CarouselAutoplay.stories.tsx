@@ -1,6 +1,7 @@
 import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncer,
   CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
@@ -122,7 +123,7 @@ export const Autoplay = () => {
 
   const autoplayProps: CarouselAutoplayButtonProps | undefined = autoplayButton
     ? {
-        autoplayAriaLabel: autoplay => (autoplay ? 'Enable Autoplay' : 'Disable Autoplay'),
+        'aria-label': 'Enable autoplay',
         checked: autoplayEnabled,
         onCheckedChange: (e, data) => {
           setAutoplayEnabled(data.checked);
@@ -171,7 +172,7 @@ Autoplay.parameters = {
   docs: {
     description: {
       story:
-        'The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended autoplayAriaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it.',
+        'The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended ariaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it.',
     },
   },
 };

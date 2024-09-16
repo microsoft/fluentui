@@ -84,7 +84,7 @@ export const Default = () => (
     <CarouselNavContainer
       layout="inline"
       autoplay={{
-        autoplayAriaLabel: autoplay => (autoplay ? 'Disable Autoplay' : 'Enable Autoplay'),
+        'aria-label': 'Enable autoplay',
       }}
       next={{ 'aria-label': 'go to next' }}
       prev={{ 'aria-label': 'go to prev' }}

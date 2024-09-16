@@ -33,7 +33,6 @@ export const useCarouselButton_unstable = (
 
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
-  const [slideIndexes, setSlideIndexes] = React.useState<number[][]>([[0]]);
 
   const buttonRef = useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
@@ -51,17 +50,6 @@ export const useCarouselButton_unstable = (
     }
 
     return ctx.activeIndex === totalSlides - 1;
-  });
-
-  const targetIndex = useCarouselContext(ctx => {
-    const newIndex = navType === 'prev' ? ctx.activeIndex - 1 : ctx.activeIndex + 1;
-    if (circular && newIndex < 0) {
-      return Math.max(totalSlides - 1, 0);
-    } else if (circular && newIndex >= totalSlides) {
-      return 0;
-    } else {
-      return Math.max(Math.min(newIndex, totalSlides - 1), 0);
-    }
   });
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement>) => {
@@ -94,7 +82,6 @@ export const useCarouselButton_unstable = (
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues((data: CarouselUpdateData) => {
       setTotalSlides(data.navItemsCount);
-      setSlideIndexes(data.groupIndexList);
     });
   }, [subscribeForValues]);
 

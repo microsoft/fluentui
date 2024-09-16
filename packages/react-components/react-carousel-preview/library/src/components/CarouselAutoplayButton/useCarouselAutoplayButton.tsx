@@ -69,7 +69,6 @@ export const useCarouselAutoplayButton_unstable = (
           renderByDefault: true,
           elementType: 'span',
         }),
-        'aria-label': props.autoplayAriaLabel?.(autoplay),
         ...props,
         checked: autoplay,
         onClick: useEventCallback(mergeCallbacks(handleClick, props.onClick)),

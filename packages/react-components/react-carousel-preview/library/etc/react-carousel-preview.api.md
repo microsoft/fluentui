@@ -54,7 +54,6 @@ export const carouselAutoplayButtonClassNames: SlotClassNames<CarouselAutoplayBu
 
 // @public
 export type CarouselAutoplayButtonProps = ToggleButtonProps & ComponentProps<CarouselAutoplayButtonSlots> & {
-    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
     onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
 };
 
