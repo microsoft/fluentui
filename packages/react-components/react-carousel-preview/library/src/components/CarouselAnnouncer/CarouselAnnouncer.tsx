@@ -6,7 +6,11 @@ import { useCarouselAnnouncerStyles_unstable } from './useCarouselAnnouncerStyle
 import type { CarouselAnnouncerProps } from './CarouselAnnouncer.types';
 
 /**
- * CarouselAnnouncer component - TODO: add more docs
+ * CarouselAnnouncer component - This component will enable context for announcements of carousel page changes.
+ *
+ * It is recommended to provide a simple current out of total page index string.
+ *
+ * Slide group lists are also provided when multiple cards are present in a single slide.
  */
 export const CarouselAnnouncer: ForwardRefComponent<CarouselAnnouncerProps> = React.forwardRef((props, ref) => {
   const state = useCarouselAnnouncer_unstable(props, ref);

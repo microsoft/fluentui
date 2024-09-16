@@ -36,7 +36,9 @@ export const CarouselAnnouncer: ForwardRefComponent<CarouselAnnouncerProps>;
 export const carouselAnnouncerClassNames: SlotClassNames<CarouselAnnouncerSlots>;
 
 // @public
-export type CarouselAnnouncerProps = ComponentProps<CarouselAnnouncerSlots> & {};
+export type CarouselAnnouncerProps = Omit<ComponentProps<Partial<CarouselAnnouncerSlots>>, 'children'> & {
+    children: AnnouncerIndexRenderFunction;
+};
 
 // @public (undocumented)
 export type CarouselAnnouncerSlots = {
@@ -44,7 +46,12 @@ export type CarouselAnnouncerSlots = {
 };
 
 // @public
-export type CarouselAnnouncerState = ComponentState<CarouselAnnouncerSlots>;
+export type CarouselAnnouncerState = ComponentState<CarouselAnnouncerSlots> & {
+    renderAnnouncerChild: AnnouncerIndexRenderFunction;
+    totalSlides: number;
+    currentIndex: number;
+    slideGroupList: number[][];
+};
 
 // @public
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps>;

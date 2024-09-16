@@ -1,15 +1,10 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 export type CarouselAnnouncerSlots = {
   root: Slot<'div'>;
 };
 
-export type AnnouncerIndexRenderFunction = (
-  index: number,
-  totalSlides: number,
-  slideGroupList: number[][],
-) => React.ReactNode;
+export type AnnouncerIndexRenderFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
 /**
  * CarouselAnnouncer Props
  */
