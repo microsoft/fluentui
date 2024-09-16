@@ -2,6 +2,7 @@ import * as React from 'react';
 
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
+const formatComponentExampleUrl = (component, example) => `/?path=/docs/components-${component}--docs#${example}`;
 
 interface FullscreenLinkProps {
   parent: string;
@@ -47,4 +48,16 @@ export const removeFromArray = (array: string[], item: string) => {
   if (index >= 0) {
     array.splice(index, 1);
   }
+};
+
+const camelToDashed = (camel) => {
+  const dashed = camel.toLowerCase().replace(/\ |\:/g, '-');
+  return dashed;
+};
+
+export const getComponentExampleUrl = (component, example?) => {
+  const dashedComponent = camelToDashed(component);
+  const dashedExample = camelToDashed(example);
+  const url = formatComponentExampleUrl(dashedComponent, dashedExample);
+  return url;
 };
