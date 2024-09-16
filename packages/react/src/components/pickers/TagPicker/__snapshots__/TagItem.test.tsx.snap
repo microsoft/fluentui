@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TagItem accepts  1`] = `
+exports[`TagItem accepts remove-button-data-id 1`] = `
 <div
   className=
       ms-TagItem
@@ -184,7 +184,7 @@ exports[`TagItem accepts  1`] = `
           background: #005a9e;
           color: #ffffff;
         }
-    data-id="close-red"
+    data-id="close-red-x"
     data-is-focusable={true}
     id="id__0"
     onClick={[Function]}
@@ -214,6 +214,7 @@ exports[`TagItem accepts  1`] = `
             ms-Button-icon
             {
               display: inline-block;
+              text-decoration: inherit;
             }
             {
               -moz-osx-font-smoothing: grayscale;

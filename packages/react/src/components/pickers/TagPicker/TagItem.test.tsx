@@ -42,7 +42,7 @@ describe('TagItem', () => {
 
   it('accepts remove-button-data-id', () => {
     const component = renderer.create(
-      <TagItem item={{ name: 'Red', key: 'red' }} index={0} remove-button-data-id="close-red">
+      <TagItem item={{ name: 'Red', key: 'red' }} index={0} removeButtonProps={{ 'data-id': 'close-red-x' }}>
         Red color
       </TagItem>,
     );
