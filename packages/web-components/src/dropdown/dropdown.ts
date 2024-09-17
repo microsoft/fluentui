@@ -1,11 +1,11 @@
 import { attr, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
+import { getLanguage } from '../utils/language.js'; 
 import { AbstractCombobox } from '../patterns/abstract-combobox.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 
 function getListFormatter(el: HTMLElement): Intl.ListFormat {
-  const lang = (el.closest('[lang]') as HTMLElement)?.lang || 'en';
-  const lf = new Intl.ListFormat(lang, {
+  const lf = new Intl.ListFormat(getLanguage(el), {
     type: 'conjunction',
     style: 'narrow',
   });
