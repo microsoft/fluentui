@@ -133,7 +133,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
 
   const multipleLabelId = useId('multiple-label');
 
-  const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6']);
+  const [openCategories, setOpenCategories] = React.useState<NavItemValue[]>(['6', '11']);
   const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<string | undefined>('6');
   const [selectedValue, setSelectedValue] = React.useState<string>('7');
   const [isMultiple, setIsMultiple] = React.useState(true);
@@ -181,6 +181,16 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
 
     setSelectedCategoryValue(newSelectedCategory);
     setSelectedValue(newSelectedValue);
+  };
+
+  const handleMultipleChange = (ev: Event | React.SyntheticEvent<Element, Event>, data: { checked: boolean }) => {
+    setIsMultiple(!!data.checked);
+
+    if (!!data.checked) {
+      setOpenCategories(['6', '11']);
+    } else {
+      setOpenCategories(['6']);
+    }
   };
 
   return (
@@ -275,7 +285,7 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
           <Label id={multipleLabelId}>Categories</Label>
           <Switch
             checked={isMultiple}
-            onChange={(_, data) => setIsMultiple(!!data.checked)}
+            onChange={(_, data) => handleMultipleChange(_, data)}
             label={isMultiple ? 'Multiple' : 'Single'}
             aria-labelledby={multipleLabelId}
           />
