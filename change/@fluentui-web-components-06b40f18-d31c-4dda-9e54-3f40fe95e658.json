@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix: cleans up stories Accordion - Checkbox",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch"
-}
