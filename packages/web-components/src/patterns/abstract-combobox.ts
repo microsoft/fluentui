@@ -16,6 +16,20 @@ enum ListboxAction {
   SELECT = 5,
 }
 
+function getAnchorPositioningCSS(anchorId: string, anchorName:string, listElementId: string): string {
+  return `
+    [data-anchorid="${anchorId}"] {
+      anchor-name: ${anchorName};
+    }
+    #${listElementId} {
+      left: anchor(${anchorName} left);
+      top: anchor(${anchorName} bottom);
+      right: anchor(${anchorName} right);
+      position-try-fallbacks: flip-start;
+    }
+  `;
+}
+
 export abstract class AbstractCombobox extends FASTElement {
   /**
    * The form-associated flag.
@@ -549,17 +563,7 @@ export abstract class AbstractCombobox extends FASTElement {
     this.dataset.anchorid = this.anchorId;
     const anchorName = `--${this.anchorId}`;
 
-    const css = `
-      [data-anchorid="${this.anchorId}"] {
-        anchor-name: ${anchorName};
-      }
-      #${this.listElement.id} {
-        left: anchor(${anchorName} left);
-        top: anchor(${anchorName} bottom);
-        right: anchor(${anchorName} right);
-        position-try-fallbacks: flip-block;
-      }
-    `;
+    const css = getAnchorPositioningCSS(this.anchorId, anchorName, this.listElement.id);
 
     if (SUPPORTS_ANCHOR_POSITIONING) {
       if (!this.anchorPositioningStyleSheet) {
