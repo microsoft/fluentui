@@ -57,7 +57,7 @@ const camelToDashed = (camel) => {
 
 export const getComponentExampleUrl = (component, example?) => {
   const dashedComponent = camelToDashed(component);
-  const dashedExample = camelToDashed(example);
+  const dashedExample = example ? camelToDashed(example) : 'default';
   const url = formatComponentExampleUrl(dashedComponent, dashedExample);
   return url;
 };
