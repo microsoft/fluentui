@@ -1,11 +1,10 @@
 import { html } from '@microsoft/fast-element';
-import type { Args } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { DialogBody as FluentDialogBody } from './dialog-body.js';
 
-type DialogStoryArgs = Args & FluentDialogBody;
+type Story = StoryObj<FluentDialogBody>;
 
-const dismissed20Regular = html<DialogStoryArgs>`
+const dismissed20Regular = html<StoryArgs<FluentDialogBody>>`
   <svg
     fill="currentColor"
     aria-hidden="true"
@@ -35,8 +34,8 @@ const dismissCircle20Regular = html`<svg
   ></path>
 </svg>`;
 
-const dialogTemplate = html<DialogStoryArgs>`
-    <fluent-dialog-body>
+const dialogTemplate = html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body ?no-title-action="${story => story.noTitleAction}">
       <div slot="title">This is a Dialog title</div>
       <fluent-text weight="regular" block>
         <p>
@@ -58,111 +57,111 @@ const dialogTemplate = html<DialogStoryArgs>`
 
 export default {
   title: 'Components/Dialog/Dialog Body',
+  render: renderComponent(dialogTemplate),
   argTypes: {
     noTitleAction: {
       description:
         'Used to opt out of rendering the default title action that is rendered when the dialog <code>type</code>is set to <code>non-modal</code>',
-      table: {
-        defaultValue: { summary: false },
-      },
-      control: {
-        type: 'boolean',
-      },
-      defaultValue: false,
-    },
-    titleAction: {
-      description:
-        'Slot for the title action elements (e.g. Close button). When the dialog <code>type</code> is set to <code>non-modal</code> and no title action is provided, a default title action button is rendered.',
-    },
-    defaultTitleAction: {
-      description: 'The default title action button',
+      control: 'boolean',
+      name: 'noTitleAction',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
   },
-};
+} as Meta<FluentDialogBody>;
 
-export const Default = renderComponent(dialogTemplate).bind({});
-
-export const Basic = renderComponent(html<DialogStoryArgs>`
-  <fluent-dialog-body>
-    <div slot="title">Basic</div>
-    <fluent-text block>
-      <p>
-        A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text>
-        actions.
-      </p>
-    </fluent-text>
-    <fluent-text block>
-      <p>However, if required, you can populate the action slot with any number of buttons as needed.</p>
-    </fluent-text>
-    <br />
-    <fluent-text block><code>slot="action"</code></fluent-text>
-    <fluent-button slot="action">Close Dialog</fluent-button>
-    <fluent-button appearance="primary" slot="action">Call to Action</fluent-button>
-  </fluent-dialog-body>
-`);
-
-export const Actions = renderComponent(html<DialogStoryArgs>`
-  <fluent-dialog-body id="dialog-fluidactions">
-    <div slot="title">Actions</div>
-    <fluent-button appearance="transparent" icon-only slot="title-action"> ${dismissed20Regular} </fluent-button>
-    <div>
+export const Basic: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body>
+      <div slot="title">Basic</div>
       <fluent-text block>
         <p>
-          A dialog body should have no more than <strong>two</strong> footer actions. However, if required, you can
-          populate the action slot with any number of buttons as needed.
+          A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text>
+          actions.
         </p>
       </fluent-text>
+      <fluent-text block>
+        <p>However, if required, you can populate the action slot with any number of buttons as needed.</p>
+      </fluent-text>
+      <br />
       <fluent-text block><code>slot="action"</code></fluent-text>
-    </div>
+      <fluent-button slot="action">Close Dialog</fluent-button>
+      <fluent-button appearance="primary" slot="action">Call to Action</fluent-button>
+    </fluent-dialog-body>
+  `),
+};
 
-    <fluent-button size="small" slot="action">Something</fluent-button>
-    <fluent-button size="small" slot="action">Something Else</fluent-button>
+export const Actions: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body id="dialog-fluidactions">
+      <div slot="title">Actions</div>
+      <fluent-button appearance="transparent" icon-only slot="title-action"> ${dismissed20Regular} </fluent-button>
+      <div>
+        <fluent-text block>
+          <p>
+            A dialog body should have no more than <strong>two</strong> footer actions. However, if required, you can
+            populate the action slot with any number of buttons as needed.
+          </p>
+        </fluent-text>
+        <fluent-text block><code>slot="action"</code></fluent-text>
+      </div>
 
-    <fluent-button slot="action" size="small" appearance="primary">Close Dialog</fluent-button>
-    <fluent-button size="small" slot="action">Something Else Entirely</fluent-button>
-  </fluent-dialog-body>
-`);
+      <fluent-button size="small" slot="action">Something</fluent-button>
+      <fluent-button size="small" slot="action">Something Else</fluent-button>
 
-export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
-  <fluent-dialog-body no-title-action>
-    <div slot="title">No Title Action</div>
-    <fluent-text block>
-      <p>Removing the title action will prevent the default close button from being rendered in a non-modal dialog.</p>
-    </fluent-text>
-    <br />
-    <fluent-text block><code>no-title-action</code></fluent-text>
-  </fluent-dialog-body>
-`);
+      <fluent-button slot="action" size="small" appearance="primary">Close Dialog</fluent-button>
+      <fluent-button size="small" slot="action">Something Else Entirely</fluent-button>
+    </fluent-dialog-body>
+  `),
+};
 
-export const CustomTitleAction = renderComponent(html<DialogStoryArgs>`
-  <fluent-dialog-body>
-    <div slot="title">Custom Title Action</div>
-    <fluent-button
-      slot="title-action"
-      appearance="transparent"
-      icon-only
-      @click="${(e: Event, c) => alert('This is a custom action')}"
-    >
-      ${dismissCircle20Regular}
-    </fluent-button>
-    <fluent-text block>
-      <p>
-        A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text> actions.
-      </p>
-    </fluent-text>
-    <fluent-text block><code>slot="title-action"</code></fluent-text>
-    <fluent-button slot="action">Close Dialog</fluent-button>
-  </fluent-dialog-body>
-`);
+export const NoTitleAction: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body no-title-action>
+      <div slot="title">No Title Action</div>
+      <fluent-text block>
+        <p>
+          Removing the title action will prevent the default close button from being rendered in a non-modal dialog.
+        </p>
+      </fluent-text>
+      <br />
+      <fluent-text block><code>no-title-action</code></fluent-text>
+    </fluent-dialog-body>
+  `),
+};
 
-export const NoTitleAndNoAction = renderComponent(html<DialogStoryArgs>`
-  <fluent-dialog-body no-title-action>
-    <fluent-text block>
-      <p>
-        A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text> actions.
-      </p>
-    </fluent-text>
-    <br />
-    <fluent-text block><code>no-title-action</code></fluent-text>
-  </fluent-dialog-body>
-`);
+export const CustomTitleAction: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body>
+      <div slot="title">Custom Title Action</div>
+      <fluent-button
+        slot="title-action"
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => alert('This is a custom action')}"
+      >
+        ${dismissCircle20Regular}
+      </fluent-button>
+      <fluent-text block>
+        <p>
+          A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text> actions.
+        </p>
+      </fluent-text>
+      <fluent-text block><code>slot="title-action"</code></fluent-text>
+      <fluent-button slot="action">Close Dialog</fluent-button>
+    </fluent-dialog-body>
+  `),
+};
+
+export const NoTitleAndNoAction: Story = {
+  render: renderComponent(html<StoryArgs<FluentDialogBody>>`
+    <fluent-dialog-body no-title-action>
+      <fluent-text block>
+        <p>
+          A dialog should have no more than <fluent-text weight="bold"><span>two</span></fluent-text> actions.
+        </p>
+      </fluent-text>
+      <br />
+      <fluent-text block><code>no-title-action</code></fluent-text>
+    </fluent-dialog-body>
+  `),
+};

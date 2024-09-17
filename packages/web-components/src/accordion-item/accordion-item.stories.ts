@@ -7,9 +7,9 @@ type Story = StoryObj<FluentAccordionItem>;
 
 const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
   <fluent-accordion-item
-    heading-level="${story => story.headinglevel}"
-    marker-position="${story => story.markerPosition}"
-    size="${story => story.size}"
+    heading-level="${story => story.headinglevel || void 0}"
+    marker-position="${story => story.markerPosition || void 0}"
+    size="${story => story.size || void 0}"
     ?disabled="${story => story.disabled}"
     ?expanded="${story => story.expanded}"
     ?block="${story => story.block}"
@@ -92,6 +92,8 @@ export default {
     },
   },
 } as Meta<FluentAccordionItem>;
+
+export const Default: Story = {};
 
 export const AccordionItem: Story = {
   args: {

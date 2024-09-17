@@ -7,10 +7,10 @@ type Story = StoryObj<FluentBadge>;
 
 const storyTemplate = html<StoryArgs<FluentBadge>>`
   <fluent-badge
-    appearance="${story => story.appearance}"
-    color="${story => story.color}"
-    shape="${story => story.shape}"
-    size="${story => story.size}"
+    appearance="${story => story.appearance || void 0}"
+    color="${story => story.color || void 0}"
+    shape="${story => story.shape || void 0}"
+    size="${story => story.size || void 0}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
     ${story => story.endSlottedContent?.()}
@@ -83,6 +83,8 @@ export default {
     },
   },
 } as Meta<FluentBadge>;
+
+export const Default: Story = {};
 
 export const SlottedContent: Story = {
   args: {

@@ -7,11 +7,11 @@ type Story = StoryObj<FluentAvatar>;
 
 const storyTemplate = html<StoryArgs<FluentAvatar>>`
   <fluent-avatar
-    appearance="${story => story.appearance}"
-    active="${story => story.active}"
-    color="${story => story.color}"
-    shape="${story => story.shape}"
-    size="${story => story.size}"
+    appearance="${story => story.appearance || void 0}"
+    active="${story => story.active || void 0}"
+    color="${story => story.color || void 0}"
+    shape="${story => story.shape || void 0}"
+    size="${story => story.size || void 0}"
     initials="${story => story.initials}"
     name="${story => story.name}"
   >
@@ -93,6 +93,8 @@ export default {
     },
   },
 } as Meta<FluentAvatar>;
+
+export const Default: Story = {};
 
 export const Image: Story = {
   render: renderComponent(html<StoryArgs<FluentAvatar>>`<fluent-avatar>

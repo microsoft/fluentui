@@ -8,9 +8,9 @@ type Story = StoryObj<FluentAnchorButton>;
 const storyTemplate = html<StoryArgs<FluentAnchorButton>>`
   <fluent-anchor-button
     href="${story => story.href}"
-    appearance="${story => story.appearance}"
-    shape="${story => story.shape}"
-    size="${story => story.size}"
+    appearance="${story => story.appearance || void 0}"
+    shape="${story => story.shape || void 0}"
+    size="${story => story.size || void 0}"
     ?icon-only="${story => story.iconOnly}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
@@ -140,6 +140,8 @@ export default {
     },
   },
 } as Meta<FluentAnchorButton>;
+
+export const Default: Story = {};
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentAnchorButton>>`

@@ -15,8 +15,8 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     :indeterminate="${story => story.indeterminate}"
     name="${story => story.name}"
     ?required="${story => story.required}"
-    shape="${story => story.shape}"
-    size="${story => story.size}"
+    shape="${story => story.shape || void 0}"
+    size="${story => story.size || void 0}"
     slot="${story => story.slot}"
   >
     ${story => story.checkedIndicatorContent?.()} ${story => story.indeterminateIndicatorContent?.()}
@@ -117,6 +117,8 @@ export default {
     messageSlottedContent: { table: { disable: true } },
   },
 } as Meta<FluentCheckbox>;
+
+export const Default: Story = {};
 
 export const Checkbox: Story = {
   render: renderComponent(storyTemplate).bind({}),
