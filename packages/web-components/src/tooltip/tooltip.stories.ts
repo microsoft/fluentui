@@ -1,33 +1,31 @@
-import { html, repeat } from '@microsoft/fast-element';
+import { html, render, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import { Meta, renderComponent, Story } from '../helpers.stories.js';
 import { definition } from './tooltip.definition.js';
 import { Tooltip } from './tooltip.js';
 import { TooltipPositioning } from './tooltip.options.js';
 
-const storyTemplate = html`
-  <fluent-link id="${story => story.anchor}" href="#">Hover me</fluent-link>
-  <fluent-tooltip
-    anchor="${story => story.anchor}"
-    positioning="${story => story.positioning}"
-    delay="${story => story.delay}"
-  >
-    ${story => story.slottedContent?.()}
-  </fluent-tooltip>
-`;
+const storyTemplate = () => {
+  const id = uniqueId('anchor');
+
+  return html`
+    <fluent-link id="${id}" href="#">Hover me</fluent-link>
+    <fluent-tooltip anchor="${id}" positioning="${story => story.positioning}" delay="${story => story.delay}">
+      ${story => story.slottedContent?.()}
+    </fluent-tooltip>
+  `;
+};
 
 export default {
   title: 'Components/Tooltip',
   component: definition.name,
-  render: renderComponent(storyTemplate),
+  render: renderComponent(storyTemplate()),
   args: {
-    anchor: uniqueId('anchor'),
     positioning: 'above',
     delay: 250,
   },
   argTypes: {
     anchor: {
-      control: 'text',
       description: 'The target element for the tooltip to anchor on',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
@@ -49,7 +47,9 @@ export default {
   },
 } as unknown as Meta<Tooltip>;
 
-export const Default: Story<Tooltip> = renderComponent(storyTemplate).bind({});
+export const Default: Story<Tooltip> = args => {
+  return renderComponent(html`${render(args, storyTemplate)}`)(args);
+};
 Default.args = {
   slottedContent: () => html`Really long tooltip content goes here. lorem ipsum dolor sit amet.`,
 };
