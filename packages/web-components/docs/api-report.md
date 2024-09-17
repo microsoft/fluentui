@@ -4036,6 +4036,58 @@ export const ToggleButtonStyles: ElementStyles;
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
 
+// @public
+export class Tooltip extends FASTElement {
+    constructor();
+    anchor: string;
+    // (undocumented)
+    connectedCallback(): void;
+    delay: number;
+    // (undocumented)
+    disconnectedCallback(): void;
+    // (undocumented)
+    elementInternals: ElementInternals;
+    handleBlur: () => void;
+    handleFocus: () => void;
+    handleMouseEnter: () => void;
+    handleMouseLeave: () => void;
+    // @internal
+    hideTooltip(delay?: number): void;
+    positioning: string;
+    // @internal
+    showTooltip(delay?: number): void;
+    // @internal
+    tooltip: HTMLElement;
+}
+
+// @public
+export const TooltipDefinition: FASTElementDefinition<typeof Tooltip>;
+
+// @public
+export const TooltipPositioning: {
+    'above-start': string;
+    above: string;
+    'above-end': string;
+    'below-start': string;
+    below: string;
+    'below-end': string;
+    'before-top': string;
+    before: string;
+    'before-bottom': string;
+    'after-top': string;
+    after: string;
+    'after-bottom': string;
+};
+
+// @public
+export type TooltipPositioning = ValuesOf<typeof TooltipPositioning>;
+
+// @public
+export const TooltipStyles: ElementStyles;
+
+// @public
+export const TooltipTemplate: ViewTemplate<Tooltip, any>;
+
 // Warning: (ae-missing-release-tag) "typographyBody1StrongerStyles" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
 //
 // @public (undocumented)

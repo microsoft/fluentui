@@ -295,6 +295,7 @@ export {
   ToggleButtonTemplate,
 } from './toggle-button/index.js';
 export type { ToggleButtonOptions } from './toggle-button/index.js';
+export { Tooltip, TooltipDefinition, TooltipPositioning, TooltipStyles, TooltipTemplate } from './tooltip/index.js';
 export {
   darkModeStylesheetBehavior,
   forcedColorsStylesheetBehavior,
