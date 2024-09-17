@@ -8,8 +8,15 @@ import {
   Link,
   Text,
   Divider,
+  Checkbox,
+  RadioGroup,
+  Radio,
+  Label,
+  makeStyles,
+  tokens,
+  Image,
 } from '@fluentui/react-components';
-import { Checkbox, RadioGroup, Radio, Label, makeStyles } from '@fluentui/react-components';
+
 import { Scenario, removeFromArray } from './utils';
 
 import {
@@ -49,6 +56,31 @@ const useStyles = makeStyles({
   thirdLevel: { 'margin-left': '60px' },
   forthLevel: { 'margin-left': '90px' },
   foundMessage: { 'margin-bottom': '10px' },
+  root: {
+    // Stack the label above the field with a gap
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '2px',
+    maxWidth: '1600px',
+  },
+  tagsList: {
+    listStyleType: 'none',
+    marginBottom: tokens.spacingVerticalXXS,
+    marginTop: 0,
+    paddingLeft: 0,
+    display: 'flex',
+    gridGap: tokens.spacingHorizontalXXS,
+  },
+  tooltip: { maxWidth: '500px important!', backgroundColor: 'red' },
+  componentWrapper: {
+    margin: '10px',
+    padding: '10px',
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '10px',
+  },
 });
 
 export const Selector = () => {
@@ -153,30 +185,8 @@ export const Selector = () => {
     );
     mergeBaseObjects();
     cleanUpBaseObjects();
+    console.log('componentsDefinitions: ', componentsDefinitions.current);
   }
-
-  const getComponent = () => {
-    const suitableComponents: any[] = [];
-
-    componentsDefinitions.current.forEach(definition => {
-      const keysInDefinitions = Object.keys(definition);
-
-      const matching = [];
-      selectedDecisions.current.forEach(decision => {
-        if (keysInDefinitions.indexOf(decision) >= 0) {
-          matching.push('matched');
-        }
-      });
-
-      if (selectedDecisions.current.length === matching.length) {
-        console.log('fully matched');
-        suitableComponents.push(definition);
-      }
-    });
-    return suitableComponents;
-  };
-
-  const foundComponents = getComponent();
 
   //Following useMemo wasn't call when I tick checkbox
   // const suitableComponents = React.useMemo(() => {
@@ -243,10 +253,109 @@ export const Selector = () => {
     }
   };
 
+  const additionalTags = ['expandable', 'static', 'selectable', 'sortable', 'filterable'];
+
+  // Handle selectedOptions both when an option is selected or deselected in the Combobox,
+  // and when an option is removed by clicking on a tag
+  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
+  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
+  console.log('Milan:selectedComponents: ', selectedComponents);
+
+  const getImage = tagName => {
+    try {
+      return require(`../ComponentSelector/components-images/${tagName}.png`);
+    } catch (error) {
+      // console.log('Image not found: ', error);
+      return null;
+    }
+  };
+
+  const getComponent = () => {
+    const suitableComponents: any[] = [];
+
+    // if (selectedOptions && selectedOptions.length > 0) {
+    //   suitableComponents.push(...selectedOptions);
+    // }
+    // console.log(`selectedOptions: ${selectedOptions}`);
+    console.log(`suitableComponents: ${suitableComponents}`);
+
+    console.log(`Array Decisions: ${selectedDecisions.current}`);
+
+    componentsDefinitions.current.forEach(definition => {
+      const keysInDefinitions = Object.keys(definition);
+
+      const matching = [];
+      selectedDecisions.current.forEach(decision => {
+        console.log(`Decision: ${decision}`);
+        if (keysInDefinitions.indexOf(decision) >= 0) {
+          matching.push('matched');
+        }
+      });
+
+      if (selectedDecisions.current.length === matching.length) {
+        console.log('fully matched');
+        suitableComponents.push(definition);
+      }
+    });
+    return suitableComponents;
+  };
+
+  const foundComponents = getComponent();
+
+  const namesOfComponents = () => {
+    const properNames = componentsDefinitions.current.map(definition => {
+      const componentName = definition.exampleName ? `${definition.name} : ${definition.exampleName}` : definition.name;
+      return componentName;
+    });
+    return properNames.sort();
+  };
+
+  const componentsToDisplay = namesOfComponents().map(name => (
+    <>
+      <div data-id="wrapper" className={classes.componentWrapper}>
+        <Image src={getImage(name)} height={75} width={75} />
+        <div>
+          <span>{name}</span>
+          <Checkbox
+            aria-label={name}
+            onChange={(event, data) => {
+              if (data.checked) {
+                setSelectedComponents([...selectedComponents, name]);
+              } else {
+                removeFromArray(selectedComponents, name);
+                setSelectedComponents(selectedComponents.filter(component => component !== name));
+              }
+            }}
+          />
+        </div>
+      </div>
+    </>
+  ));
+
   return (
     <Scenario pageTitle="Component Selector">
       <h1>Component Selector</h1>
-
+      <Accordion multiple>
+        <AccordionItem value="1">
+          <AccordionHeader>Basic Inputs</AccordionHeader>
+          <AccordionPanel>
+            <div className={classes.root}>{componentsToDisplay}</div>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="2">
+          <AccordionHeader>Commands, Menus & Navs</AccordionHeader>
+          <AccordionPanel>
+            <div>Accordion Panel 2</div>
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem value="3">
+          <AccordionHeader>Galleries & Pickers</AccordionHeader>
+          <AccordionPanel>
+            <div>Accordion Panel 3</div>
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
+      ----------- old accordion will be removed----------------
       <Accordion multiple defaultOpenItems="uiBehavior">
         <AccordionItem value="uiBehavior">
           <AccordionHeader as="h2">How the desired UI behaves?</AccordionHeader>
@@ -410,7 +519,8 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
-
+      {/* nova komponenta na resutls: Found components */}
+      {console.log('selectedDecisions.current: ', selectedDecisions.current)}
       <h2 id="matching-heading">Matching components</h2>
       {selectedDecisions.current.length > 0 ? (
         <div role="group" aria-labelledby="matching-heading">
