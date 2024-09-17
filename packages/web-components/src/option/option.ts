@@ -181,6 +181,15 @@ export class BaseOption extends BaseCheckbox {
 
     this.name = combobox.name as string;
   }
+
+  public override clickHandler(e: MouseEvent): boolean | void {
+    // @ts-expect-error - Baseline 2024
+    if (!this.elementInternals.states.has('multiple') && this.selected) {
+      this.$emit('input');
+      return;
+    }
+    super.clickHandler(e);
+  }
 }
 
 /**

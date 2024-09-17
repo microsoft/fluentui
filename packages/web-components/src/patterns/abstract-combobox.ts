@@ -16,7 +16,7 @@ enum ListboxAction {
   SELECT = 5,
 }
 
-function getAnchorPositioningCSS(anchorId: string, anchorName:string, listElementId: string): string {
+function getAnchorPositioningCSS(anchorId: string, anchorName: string, listElementId: string): string {
   return `
     [data-anchorid="${anchorId}"] {
       anchor-name: ${anchorName};
