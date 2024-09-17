@@ -5,7 +5,9 @@
   "projectType": "library",
   "tags": ["tools"],
   "targets": {
-    "type-check": {},
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
+    },
     "format": {}
   }
 }

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: update scroll state when children changes",
+  "comment": "fix: add correct direction of animations when RTL",
   "packageName": "@fluentui/react-drawer",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"

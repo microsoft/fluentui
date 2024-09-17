@@ -1,6 +1,7 @@
+import * as React from 'react';
 import { presenceMotionSlot } from '@fluentui/react-motion';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
-import * as React from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 import { type DrawerMotionParams, InlineDrawerMotion } from '../../shared/drawerMotions';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
@@ -25,6 +26,7 @@ const STATIC_MOTION = {
 export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Ref<HTMLElement>): InlineDrawerState => {
   const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false, surfaceMotion } = props;
+  const { dir } = useFluent();
 
   const state: InlineDrawerState = {
     components: {
@@ -52,6 +54,7 @@ export const useInlineDrawer_unstable = (props: InlineDrawerProps, ref: React.Re
       defaultProps: {
         position,
         size,
+        dir,
         visible: open,
         unmountOnExit: true,
       },
