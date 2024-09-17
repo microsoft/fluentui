@@ -43,7 +43,7 @@ export type NavContextValue = Pick<NavProps, 'onNavItemSelect' | 'selectedValue'
 /**
  * Any value that identifies a specific Item.
  */
-export type NavItemValue = unknown;
+export type NavItemValue = string;
 
 /**
  * Context values used in rendering navItemList.

@@ -19,14 +19,16 @@ export type NavProps = ComponentProps<NavSlots> & {
   /**
    * The value of the navItem to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
-   *  Mutually exclusive with selectedValue.
+   * Mutually exclusive with selectedValue.
+   * Empty string indicates no selection.
    */
   defaultSelectedValue?: NavItemValue;
 
   /**
    * The value of the navCategory to be selected by default.
    * Typically useful when the selectedValue is uncontrolled.
-   *  Mutually exclusive with selectedValue.
+   * Mutually exclusive with selectedValue.
+   * Empty string indicates no selection.
    */
   defaultSelectedCategoryValue?: NavItemValue;
 

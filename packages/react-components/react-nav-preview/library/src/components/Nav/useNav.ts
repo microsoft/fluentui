@@ -11,30 +11,20 @@ import {
 import type { NavProps, NavState, OnNavItemSelectData } from './Nav.types';
 import type { NavItemRegisterData, NavItemValue } from '../NavContext.types';
 
-// /**
-//  * Initial value for the uncontrolled case of the list of open indexes
-//  */
+/**
+ * Initial value for the uncontrolled case of the list of open indexes
+ */
 function initializeUncontrolledOpenCategories({
   defaultOpenCategories,
   multiple,
-}: Pick<NavProps, 'defaultOpenCategories' | 'multiple'>): NavItemValue[] {
+}: Pick<NavProps, 'defaultOpenCategories' | 'multiple'>): NavItemValue[] | undefined {
   if (defaultOpenCategories !== undefined) {
     if (Array.isArray(defaultOpenCategories)) {
       return multiple ? defaultOpenCategories : [defaultOpenCategories[0]];
     }
     return [defaultOpenCategories];
   }
-  return [];
-}
-
-/**
- * Normalizes various value index types into an array of indexes
- */
-function normalizeValues<Value = NavItemValue>(index?: Value | Value[]): Value[] | undefined {
-  if (index === undefined) {
-    return undefined;
-  }
-  return Array.isArray(index) ? index : [index];
+  return undefined;
 }
 
 /**
@@ -43,7 +33,7 @@ function normalizeValues<Value = NavItemValue>(index?: Value | Value[]): Value[]
  * @param previousOpenItems - list of current open indexes
  * @param multiple - if Nav supports open categories at the same time
  */
-const updateOpenItems = (value: NavItemValue, previousOpenItems: NavItemValue[], multiple: boolean) => {
+const updateOpenCategories = (value: NavItemValue, previousOpenItems: NavItemValue[], multiple: boolean) => {
   if (multiple) {
     if (previousOpenItems.includes(value)) {
       return previousOpenItems.filter(i => i !== value);
@@ -70,30 +60,27 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     onNavCategoryItemToggle,
     multiple = true,
     size = 'medium',
-    defaultOpenCategories,
     openCategories: controlledOpenCategoryItems,
     selectedCategoryValue: controlledSelectedCategoryValue,
     selectedValue: controlledSelectedValue,
+    defaultOpenCategories,
     defaultSelectedValue,
+    defaultSelectedCategoryValue,
   } = props;
 
   const innerRef = React.useRef<HTMLElement>(null);
 
   const [openCategories, setOpenCategories] = useControllableState({
-    state: React.useMemo(() => normalizeValues(controlledOpenCategoryItems), [controlledOpenCategoryItems]),
-    defaultState: defaultOpenCategories && initializeUncontrolledOpenCategories({ defaultOpenCategories, multiple }),
-    initialState: [],
+    state: controlledOpenCategoryItems,
+    defaultState: initializeUncontrolledOpenCategories({ defaultOpenCategories, multiple }),
+    initialState: undefined,
   });
 
-  const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
-    const nextOpenItems = updateOpenItems(data.categoryValue, openCategories, multiple);
-    onNavCategoryItemToggle?.(event, data);
-    setOpenCategories(nextOpenItems);
+  const [selectedCategoryValue, setSelectedCategoryValue] = useControllableState({
+    state: controlledSelectedCategoryValue,
+    defaultState: defaultSelectedCategoryValue,
+    initialState: undefined,
   });
-
-  const [selectedCategoryValue, setSelectedCategoryValue] = React.useState<NavItemValue | undefined>(
-    controlledSelectedCategoryValue,
-  );
 
   const [selectedValue, setSelectedValue] = useControllableState({
     state: controlledSelectedValue,
@@ -119,10 +106,20 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
     currentSelectedCategoryValue.current = selectedCategoryValue;
   }, [selectedValue, selectedCategoryValue]);
 
+  // used for NavItems and NavSubItems
   const onSelect: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
     setSelectedValue(data.value);
-    setSelectedCategoryValue(data.categoryValue);
+    setSelectedCategoryValue(data.categoryValue ? data.categoryValue : '');
     onNavItemSelect?.(event, data);
+  });
+
+  // used for NavCategoryItems
+  const onRequestNavCategoryItemToggle: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
+    if (data.categoryValue !== undefined) {
+      const nextOpenCategories = updateOpenCategories(data.categoryValue, openCategories ?? [], multiple);
+      onNavCategoryItemToggle?.(event, data);
+      setOpenCategories(nextOpenCategories);
+    }
   });
 
   const registeredNavItems = React.useRef<Record<string, NavItemRegisterData>>({});
@@ -156,14 +153,14 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
       }),
       { elementType: 'div' },
     ),
+    openCategories: openCategories && openCategories.length > 0 ? openCategories : [],
     selectedValue,
-    selectedCategoryValue: controlledSelectedCategoryValue,
+    selectedCategoryValue: controlledSelectedCategoryValue ?? selectedCategoryValue,
     onRegister,
     onUnregister,
     onSelect,
     getRegisteredNavItems,
     onRequestNavCategoryItemToggle,
-    openCategories,
     multiple,
     size,
   };
