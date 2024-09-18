@@ -1,13 +1,8 @@
 import { Nav } from '@fluentui/react-nav-preview';
 
+// Todo: light these up
 // import descriptionMd from './NavDescription.md';
 // import bestPracticesMd from './NavBestPractices.md';
-
-// export { Default } from './NavDefault.stories';
-// export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
-// export { WithNestedSubItems } from './NavWithNestedSubItems.stories';
-// export { WithNestedSubItemsDefaultSelection } from './NavWithNestedSubItemsWithDefaultSelection.stories';
-// export { WithNestedSubItemsWithDefaultSelectionSingleCategory } from './NavWithNestedSubItemsWithDefaultSelectionSingleCategory.stories';
 
 export { NavDrawerDefault } from '../NavDrawer/NavDrawerDefault.stories';
 export { NavDrawerSize } from '../NavDrawer/NavDrawerSize.stories';
