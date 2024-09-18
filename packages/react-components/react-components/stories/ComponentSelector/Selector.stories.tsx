@@ -304,7 +304,7 @@ export const Selector = () => {
 
   const namesOfComponents = () => {
     const properNames = componentsDefinitions.current.map(definition => {
-      const componentName = definition.exampleName ? `${definition.name} : ${definition.exampleName}` : definition.name;
+      const componentName = definition.story ? `${definition.name} : ${definition.story}` : definition.name;
       return componentName;
     });
     return properNames.sort();
@@ -335,21 +335,22 @@ export const Selector = () => {
   return (
     <Scenario pageTitle="Component Selector">
       <h1>Component Selector</h1>
+      <h2>Choose component</h2>
       <Accordion multiple>
         <AccordionItem value="1">
-          <AccordionHeader>Basic Inputs</AccordionHeader>
+          <AccordionHeader as="h3">Basic Inputs</AccordionHeader>
           <AccordionPanel>
             <div className={classes.root}>{componentsToDisplay}</div>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="2">
-          <AccordionHeader>Commands, Menus & Navs</AccordionHeader>
+          <AccordionHeader as="h3">Commands, Menus & Navs</AccordionHeader>
           <AccordionPanel>
             <div>Accordion Panel 2</div>
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="3">
-          <AccordionHeader>Galleries & Pickers</AccordionHeader>
+          <AccordionHeader as="h3">Galleries & Pickers</AccordionHeader>
           <AccordionPanel>
             <div>Accordion Panel 3</div>
           </AccordionPanel>
