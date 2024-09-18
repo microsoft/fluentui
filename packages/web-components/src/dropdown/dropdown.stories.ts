@@ -46,13 +46,18 @@ const storyTemplate = () => {
       placeholder="${x => x.placeholder ?? 'Select a fruit'}"
       list="${listId}"
       name="fruit"
+      dir="${x => x.rtl ? 'rtl' : null}"
       ?block="${x => x.block}"
       ?multiple="${x => x.multiple}"
       ?disabled="${x => x.disabled}"
       ?display-shadow="${x => x.displayShadow}"
       ?required="${x => x.required}"
     ></fluent-dropdown>
-    <fluent-dropdown-list slot="${x => x.slot ?? 'input'}" id="${listId}">
+    <fluent-dropdown-list
+      slot="${x => x.slot ?? 'input'}"
+      id="${listId}"
+      dir="${x => x.rtl ? 'rtl' : null}"
+    >
       ${repeat(x => x.storyOptions ?? storyOptions, optionTemplate)}
     </fluient-dropdown-list>
   `;
@@ -77,6 +82,9 @@ export default {
       control: 'boolean',
     },
     disabled: {
+      control: 'boolean',
+    },
+    rtl: {
       control: 'boolean',
     },
     displayShadow: {
@@ -117,6 +125,7 @@ Dropdown.args = {
   required: false,
   placeholder: 'Select a fruit',
   slot: '',
+  rtl: false,
 };
 
 export const SelectionMode: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
