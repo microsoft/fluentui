@@ -17,7 +17,7 @@ import {
   Image,
 } from '@fluentui/react-components';
 
-import { Scenario, removeFromArray } from './utils';
+import { Scenario, removeFromArray, getComponentStoryUrl } from './utils';
 
 import {
   ListBaseDef,
@@ -562,7 +562,7 @@ export const Selector = () => {
             <div key={`component-${index}}`}>
               <Text weight="semibold">
                 Component name:{' '}
-                <Link target="_blank" inline href={component.link}>
+                <Link target="_blank" inline href={getComponentStoryUrl(component)}>
                   {component.name}{' '}
                 </Link>
               </Text>

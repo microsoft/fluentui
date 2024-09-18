@@ -2,7 +2,8 @@ import * as React from 'react';
 
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
-const formatComponentStoryUrl = (component, story) => `/?path=/docs/components-${component}--docs#${story}`;
+const formatComponentStoryUrl = (component, story) =>
+  `https://react.fluentui.dev/?path=/docs/components-${component}--docs#${story}`;
 
 interface FullscreenLinkProps {
   parent: string;
@@ -50,14 +51,15 @@ export const removeFromArray = (array: string[], item: string) => {
   }
 };
 
-const camelToDashed = (camel) => {
+const camelToDashed = camel => {
+  console.log('Milan: camel', camel);
   const dashed = camel.toLowerCase().replace(/\ |\:/g, '-');
   return dashed;
 };
 
-export const getComponentStoryUrl = (component, story?) => {
-  const dashedComponent = camelToDashed(component);
-  const dashedStory = story ? camelToDashed(story) : 'default';
+export const getComponentStoryUrl = component => {
+  const dashedComponent = component.name && camelToDashed(component.component);
+  const dashedStory = component.story ? camelToDashed(component.story) : 'default';
   const url = formatComponentStoryUrl(dashedComponent, dashedStory);
   return url;
 };
