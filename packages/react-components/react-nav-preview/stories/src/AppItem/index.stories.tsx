@@ -6,7 +6,7 @@ import bestPracticesMd from './AppItemBestPractices.md';
 // export { Default } from './AppItemDefault.stories';
 
 export default {
-  title: 'Preview Components/Nav/AppItem',
+  title: 'Preview Components/AppItem',
   component: AppItem,
   parameters: {
     docs: {
