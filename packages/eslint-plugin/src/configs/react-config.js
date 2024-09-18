@@ -1,5 +1,5 @@
 const configHelpers = require('../utils/configHelpers');
-const { react: restrictedGlobals } = require('./restricted-globals');
+// const { react: restrictedGlobals } = require('./restricted-globals');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -30,7 +30,8 @@ module.exports = {
     '@griffel/no-shorthands': 'error',
     '@griffel/pseudo-element-naming': 'error',
     '@griffel/styles-file': 'error',
-    'no-restricted-globals': restrictedGlobals,
+    // 'no-restricted-globals': restrictedGlobals,
+    // '@nx/workspace-no-restricted-globals': restrictedGlobals,
     /**
      * react eslint rules
      * @see https://github.com/yannickcr/eslint-plugin-react

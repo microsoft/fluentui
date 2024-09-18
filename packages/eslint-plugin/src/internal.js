@@ -1,3 +1,5 @@
+const restrictedGlobals = require('./configs/restricted-globals');
+
 function shouldRegisterInternal() {
   try {
     const hasNxEslintPlugin = require.resolve('@nx/eslint-plugin');
@@ -26,8 +28,10 @@ const __internal = {
     react: shouldRegister
       ? {
           files: ['**/src/**/*.{ts,tsx}'],
+          excludedFiles: ['*.{test,spec,cy}.{ts,tsx}'],
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
+            '@nx/workspace-no-restricted-globals': restrictedGlobals.react,
           },
         }
       : null,
