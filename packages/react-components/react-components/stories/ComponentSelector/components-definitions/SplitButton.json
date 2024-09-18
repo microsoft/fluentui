@@ -1,6 +1,7 @@
 {
   "name": "SplitButton",
   "component": "SplitButton",
+  "folder": "Button",
   "extends": "ButtonBase",
   "attributes": ["moreActions"]
 }

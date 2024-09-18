@@ -1,6 +1,7 @@
 {
   "name": "ToggleButton",
   "component": "ToggleButton",
+  "folder": "Button",
   "extends": "ButtonBase",
   "attributes": ["singleAction", "yesOrNo"]
 }

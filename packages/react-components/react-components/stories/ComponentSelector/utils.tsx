@@ -58,7 +58,8 @@ const camelToDashed = camel => {
 };
 
 export const getComponentStoryUrl = component => {
-  const dashedComponent = component.name && camelToDashed(component.component);
+  const camelComponent = component.folder ? component.folder + ' ' + component.component : component.component;
+  const dashedComponent = camelToDashed(camelComponent);
   const dashedStory = component.story ? camelToDashed(component.story) : 'default';
   const url = formatComponentStoryUrl(dashedComponent, dashedStory);
   return url;

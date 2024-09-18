@@ -1,5 +1,6 @@
 {
   "name": "Menu",
   "component": "Menu",
+  "folder": "Menu",
   "extends": "MenuBase"
 }

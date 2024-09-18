@@ -1,6 +1,7 @@
 {
   "name": "MenuItemCheckbox",
   "component": "Menu",
+  "folder": "Menu",
   "story": "Checkbox Items",
   "extends": "MenuBase",
   "attributes": ["yesOrNo"]

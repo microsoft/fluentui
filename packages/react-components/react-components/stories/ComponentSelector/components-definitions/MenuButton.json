@@ -1,6 +1,7 @@
 {
   "name": "MenuButton",
   "component": "MenuButton",
+  "folder": "Button",
   "extends": "ButtonBase",
   "attributes": ["opensMenu"]
 }
