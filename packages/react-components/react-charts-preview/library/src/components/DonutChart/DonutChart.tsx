@@ -5,9 +5,8 @@ import { IDonutChartProps } from './DonutChart.types';
 import { useDonutChartStyles_unstable } from './DonutChart.styles';
 import { IChartDataPoint } from '../../DonutChart';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { getColorFromToken, getNextColor } from '../../utilities/index';
+import { getNextGradient } from '../../utilities/index';
 import { IAccessibilityProps, ILegend, Legends } from '../../index';
-import { ScaleOrdinal } from 'd3-scale';
 import { useId } from '@fluentui/react-utilities';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import PopoverComponent from '../CommonComponents/Popover';
@@ -21,7 +20,6 @@ const LEGEND_CONTAINER_HEIGHT = 40;
  */
 export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwardRef<HTMLDivElement, IDonutChartProps>(
   (props, forwardedRef) => {
-    let colors: ScaleOrdinal<string, {}>;
     let _rootElem: HTMLElement | null;
     const _uniqText: string = useId('_Pie_');
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -110,13 +108,13 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       const viewbox = `0 0 ${widthVal!} ${heightVal!}`;
       node.setAttribute('viewBox', viewbox);
     }
+
     function _createLegends(chartData: IChartDataPoint[]): JSX.Element {
       const legendDataItems = chartData.map((point: IChartDataPoint, index: number) => {
-        const color: string = point.color!;
         // mapping data to the format Legends component needs
         const legend: ILegend = {
           title: point.legend!,
-          color,
+          color: point.gradient![0],
           action: () => {
             if (selectedLegend === point.legend) {
               setSelectedLegend('');
@@ -134,6 +132,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         };
         return legend;
       });
+
       const legends = (
         <Legends
           legends={legendDataItems}
@@ -150,7 +149,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
       setValue(data.data!.toString());
       setLegend(data.legend);
-      setColor(data.color!);
+      setColor(data.gradient![0]);
       setXCalloutValue(data.xAxisCalloutData!);
       setYCalloutValue(data.yAxisCalloutData!);
       setFocusedArcId(id);
@@ -165,7 +164,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
         setPopoverOpen(selectedLegend === '' || selectedLegend === data.legend);
         setValue(data.data!.toString());
         setLegend(data.legend);
-        setColor(data.color!);
+        setColor(data.gradient![0]);
         setXCalloutValue(data.xAxisCalloutData!);
         setYCalloutValue(data.yAxisCalloutData!);
         setDataPointCalloutProps(data);
@@ -228,17 +227,11 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
       );
     }
 
-    function _addDefaultColors(donutChartDataPoint?: IChartDataPoint[]): IChartDataPoint[] {
+    function _addDefaultGradients(donutChartDataPoint?: IChartDataPoint[]): IChartDataPoint[] {
       return donutChartDataPoint
         ? donutChartDataPoint.map((item, index) => {
-            let defaultColor: string;
-            if (typeof item.color === 'undefined') {
-              defaultColor = getNextColor(index, 0);
-            } else {
-              defaultColor = getColorFromToken(item.color);
-            }
-            return { ...item, defaultColor };
-          })
+          return { ...item, gradient: item.gradient ?? getNextGradient(index, 0) };
+        })
         : [];
     }
 
@@ -255,7 +248,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = React.forwa
     }
 
     const { data, hideLegend = false } = props;
-    const points = _addDefaultColors(data?.chartData);
+    const points = _addDefaultGradients(data?.chartData);
 
     const classes = useDonutChartStyles_unstable(props);
 

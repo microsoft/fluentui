@@ -2,12 +2,12 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { pie as d3Pie } from 'd3-shape';
+import { pie as d3Pie, PieArcDatum } from 'd3-shape';
 import { IPieProps } from './index';
 import { Arc, IArcData } from '../Arc/index';
 import { IChartDataPoint } from '../index';
 import { usePieStyles_unstable } from './Pie.styles';
-import { wrapTextInsideDonut } from '../../../utilities/index';
+import { getNextGradient, wrapTextInsideDonut } from '../../../utilities/index';
 const TEXT_PADDING: number = 5;
 
 // Create a Pie within Donut Chart variant which uses these default styles and this styled subcomponent.
@@ -46,8 +46,9 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    function arcGenerator(d: any, i: number, focusData: any, href?: string): JSX.Element {
-      const color = d && d.data && d.data.color;
+    function arcGenerator(d: PieArcDatum<IChartDataPoint>, i: number, focusData: any, href?: string): JSX.Element {
+      const gradient = d.data.gradient ?? getNextGradient(i, 0);
+
       return (
         <Arc
           key={i}
@@ -55,7 +56,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
           focusData={focusData}
           innerRadius={props.innerRadius}
           outerRadius={props.outerRadius}
-          color={color!}
+          gradient={gradient}
           onFocusCallback={_focusCallback}
           hoverOnCallback={_hoverCallback}
           onBlurCallback={props.onBlurCallback}
@@ -88,7 +89,7 @@ export const Pie: React.FunctionComponent<IPieProps> = React.forwardRef<HTMLDivE
 
     return (
       <g transform={translate}>
-        {piechart.map((d: any, i: number) => arcGenerator(d, i, focusData[i], props.href))}
+        {piechart.map((d: PieArcDatum<IChartDataPoint>, i: number) => arcGenerator(d, i, focusData[i], props.href))}
         {props.valueInsideDonut && (
           <text y={5} textAnchor="middle" dominantBaseline="middle" className={classes.insideDonutString}>
             {props.valueInsideDonut}
