@@ -212,29 +212,25 @@ export const WithInitiallySelectedOptions: Story<FluentDropdown> = renderCompone
   </div>
 `);
 
+const storyOptionsWithDividers = structuredClone(storyOptions).flatMap((option, index) => {
+  if ([1, 5].includes(index)) {
+    return [{ divider: true }, option];
+  }
+  return option;
+});
 export const WithDividers: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
     ${render(
       {
         label: 'Fruit',
-        storyOptions: structuredClone(storyOptions).flatMap((option, index) => {
-          if ([1, 5].includes(index)) {
-            return [{ divider: true }, option];
-          }
-          return option;
-        }),
+        storyOptions: storyOptionsWithDividers,
       },
       storyFieldTemplate(),
     )}
     ${render(
       {
         label: 'Fruits',
-        storyOptions: structuredClone(storyOptions).map((option, index) => {
-          if ([1, 8].includes(index)) {
-            option.selected = true;
-          }
-          return option;
-        }),
+        storyOptions: storyOptionsWithDividers,
         multiple: true,
       },
       storyFieldTemplate(),

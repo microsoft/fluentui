@@ -41,6 +41,7 @@ export const styles = css`
 
   ::slotted(fluent-divider) {
     margin-inline: calc(var(--padding-inline) * -1);
+    padding-block: ${spacingVerticalXS};
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`
