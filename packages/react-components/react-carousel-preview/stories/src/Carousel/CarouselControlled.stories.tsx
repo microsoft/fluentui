@@ -126,19 +126,19 @@ export const Controlled = () => {
 
         <div className={classes.carouselSlider}>
           <CarouselSlider>
-            <CarouselCard>
+            <CarouselCard aria-label="1 of 5">
               <WireframeContent index={0} />
             </CarouselCard>
-            <CarouselCard>
+            <CarouselCard aria-label="2 of 5">
               <WireframeContent index={1} />
             </CarouselCard>
-            <CarouselCard>
+            <CarouselCard aria-label="3 of 5">
               <WireframeContent index={2} />
             </CarouselCard>
-            <CarouselCard>
+            <CarouselCard aria-label="4 of 5">
               <WireframeContent index={3} />
             </CarouselCard>
-            <CarouselCard>
+            <CarouselCard aria-label="5 of 5">
               <WireframeContent index={4} />
             </CarouselCard>
           </CarouselSlider>

@@ -78,7 +78,7 @@ export function useEmblaCarousel(
     };
   }, []);
 
-  const containerRef = React.useMemo(() => {
+  const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
     const handleIndexChange = () => {
