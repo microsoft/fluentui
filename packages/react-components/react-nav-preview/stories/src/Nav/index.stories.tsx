@@ -1,7 +1,7 @@
 import { Nav } from '@fluentui/react-nav-preview';
 
-import descriptionMd from './NavDescription.md';
-import bestPracticesMd from './NavBestPractices.md';
+// import descriptionMd from './NavDescription.md';
+// import bestPracticesMd from './NavBestPractices.md';
 
 // export { Default } from './NavDefault.stories';
 // export { WithDefaultSelection } from './NavWithDefaultSelection.stories';
