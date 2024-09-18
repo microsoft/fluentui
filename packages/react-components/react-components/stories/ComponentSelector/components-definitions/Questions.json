@@ -2,6 +2,8 @@
   {
     "id": "hasMoreActions",
     "question": "Does component have more actions?",
+    "selectText": "Question 1",
+    "shortSelectText": "Q1:",
     "answers": [
       {
         "value": "moreActions",
@@ -16,6 +18,8 @@
   {
     "id": "doesNavigateToPage",
     "question": "Does component navigate to new page?",
+    "selectText": "Question 2",
+    "shortSelectText": "Q2:",
     "answers": [
       {
         "value": "navigatesToPage",
@@ -30,6 +34,8 @@
   {
     "id": "isYesOrNo",
     "question": "Is toggle or choice possible between yes or no?",
+    "selectText": "Question 3",
+    "shortSelectText": "Q3:",
     "answers": [
       {
         "value": "yesOrNo",
@@ -44,6 +50,8 @@
   {
     "id": "isInsideMenu",
     "question": "Is component inside menu?",
+    "selectText": "Question 4",
+    "shortSelectText": "Q4:",
     "answers": [
       {
         "value": "insideMenu",

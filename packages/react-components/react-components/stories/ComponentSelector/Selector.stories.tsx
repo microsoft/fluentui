@@ -15,10 +15,13 @@ import {
   makeStyles,
   tokens,
   Image,
+  Button,
+  Field,
+  Select,
+  useId,
 } from '@fluentui/react-components';
-
-import { Scenario, removeFromArray, getComponentStoryUrl } from './utils';
-
+import { removeFromArray, getComponentStoryUrl } from './utils';
+import questions from './components-definitions/Questions.json';
 import {
   ListBaseDef,
   AccordionDef,
@@ -81,6 +84,38 @@ const useStyles = makeStyles({
     alignItems: 'center',
     gap: '10px',
   },
+  questionsWrapper: {
+    padding: '20px',
+    margin: '20px 0',
+    backgroundColor: 'white',
+    borderRadius: '16px',
+    border: '1px solid var(--colorNeutralStroke1, #e1dfdd)',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+  },
+  questionsLabel: {
+    color: '#ff00ff',
+    fontWeight: tokens.fontWeightBold,
+    marginRight: '8px',
+  },
+  questionsText: {
+    fontWeight: tokens.fontWeightBold,
+    fontSize: tokens.fontSizeBase400,
+  },
+  questionContainer: {
+    display: 'flex',
+  },
+  questionLeftSide: {
+    'flex-basis': '10%',
+  },
+  questionRightSide: {
+    borderLeft: '1px solid #ff00ff',
+    'flex-basis': '90%',
+    'flex-shrink': 0,
+    padding: '0 10px',
+  },
+  radioItem: {
+    display: 'flex',
+  },
 });
 
 export const Selector = () => {
@@ -114,6 +149,8 @@ export const Selector = () => {
   });
 
   const selectedDecisions = React.useRef<string[]>([]);
+
+  const [selectedQuestion, setSelectedQuestion] = React.useState('');
 
   const getDecisionCategory = React.useCallback(
     (name: string) => {
@@ -265,7 +302,8 @@ export const Selector = () => {
 
   // Handle selectedOptions both when an option is selected or deselected in the Combobox,
   // and when an option is removed by clicking on a tag
-  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
+  // const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
+
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
 
   const getImage = tagName => {
@@ -361,9 +399,59 @@ export const Selector = () => {
     </>
   ));
 
+  const QuestionSelect = () => {
+    const selectId = useId();
+
+    return (
+      <>
+        <label htmlFor={selectId}></label>
+        <Select defaultValue={questions[0].selectText} id={selectId}>
+          {questions.map(item => (
+            <option>{item.selectText}</option>
+          ))}
+        </Select>
+      </>
+    );
+  };
+
+  const Questionnaire = () => {
+    return (
+      <>
+        <QuestionSelect />
+        <QuestionRadioGroup />
+      </>
+    );
+  };
+
+  const QuestionRadioGroup = () => {
+    const [value, setValue] = React.useState('');
+    return (
+      <>
+        {questions.map(item => (
+          <div className={classes.questionsWrapper}>
+            <Field className={classes.questionsField}>
+              <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
+                <div className={classes.questionContainer}>
+                  <div className={classes.questionLeftSide}>
+                    <span className={classes.questionsLabel}>{item.shortSelectText}</span>
+                  </div>
+                  <div className={classes.questionRightSide}>
+                    <span className={classes.questionsText}>{item.question}</span>
+                    {item.answers.map(item => (
+                      <Radio key={item.value} value={item.text} label={item.text} className={classes.radioItem} />
+                    ))}
+                  </div>
+                </div>
+              </RadioGroup>
+            </Field>
+          </div>
+        ))}
+      </>
+    );
+  };
+
   return (
-    <Scenario pageTitle="Component Selector">
-      <h1>Component Selector</h1>
+    <>
       <h2>Choose component</h2>
       <Accordion multiple>
         <AccordionItem value="1">
@@ -385,6 +473,7 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
+      <Questionnaire />
       ----------- old accordion will be removed----------------
       <Accordion multiple defaultOpenItems="uiBehavior">
         <AccordionItem value="uiBehavior">
@@ -578,6 +667,6 @@ export const Selector = () => {
           );
         })}
       </div>
-    </Scenario>
+    </>
   );
 };
