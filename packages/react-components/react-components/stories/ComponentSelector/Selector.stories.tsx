@@ -255,6 +255,9 @@ export const Selector = () => {
   //   return suitableComponents;
   // }, [selectedDecisions]);
 
+  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
+  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
+
   const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
     const category = getDecisionCategory(name) as string;
     decisionState[category][name] = value;
@@ -298,13 +301,20 @@ export const Selector = () => {
     }
   };
 
+  const updateDecisionsForCheckbox = (name: string, checked: boolean | string) => {
+    if (checked) {
+      setSelectedBehaviours([...selectedBehaviours, name]);
+    } else {
+      setSelectedBehaviours(selectedBehaviours.filter(behavior => behavior !== behavior));
+    }
+    console.log(`NEW: selectedBehaviours: ${selectedBehaviours}`);
+  };
+
   const additionalTags = ['expandable', 'static', 'selectable', 'sortable', 'filterable'];
 
   // Handle selectedOptions both when an option is selected or deselected in the Combobox,
   // and when an option is removed by clicking on a tag
   // const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
-
-  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
 
   const getImage = tagName => {
     try {
@@ -319,6 +329,7 @@ export const Selector = () => {
   };
 
   const getComponent = () => {
+    console.log(`--------- get component called`);
     const suitableComponents: any[] = [];
 
     if (selectedComponents && selectedComponents.length > 0) {
@@ -333,21 +344,21 @@ export const Selector = () => {
     // console.log(`selectedComponents: ${selectedComponents}`);
     // console.log(`suitableComponents: ${suitableComponents}`);
 
-    if (selectedDecisions.current.length > 0) {
+    if (selectedBehaviours.length > 0) {
       const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
       // componentsDefinitions.current.forEach(definition => {
       componentsToIterate.forEach(definition => {
         const keysInDefinitions = Object.keys(definition);
 
         const matching = [];
-        selectedDecisions.current.forEach(decision => {
+        selectedBehaviours.forEach(decision => {
           definition.attributes.includes(decision) ? matching.push('matched') : null;
           // if (keysInDefinitions.indexOf(decision) >= 0) {
           //   matching.push('matched');
           // }
         });
 
-        if (selectedDecisions.current.length === matching.length) {
+        if (selectedBehaviours.length === matching.length) {
           console.log('fully matched');
           // if suitableComponents does not include definition, push it
           suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
@@ -474,170 +485,124 @@ export const Selector = () => {
         </AccordionItem>
       </Accordion>
       <Questionnaire />
-      ----------- old accordion will be removed----------------
-      <Accordion multiple defaultOpenItems="uiBehavior">
-        <AccordionItem value="uiBehavior">
-          <AccordionHeader as="h3">How the desired UI behaves?</AccordionHeader>
-          <AccordionPanel>
-            <Label id="interactivity"> Interactivity </Label>
-            <RadioGroup
-              value={decisionState.uiBehavior.interaction as string}
-              onChange={(event, data) => {
-                updateDecisions('interaction', data.value);
-              }}
-              aria-labelledby="interactivity"
-            >
-              <Radio value="interactive" label="Is interactive?" />
-              <Radio value="static" label="Is static?" />
-            </RadioGroup>
-            {/* START interactive section */}
-            {decisionState.uiBehavior.interaction === 'interactive' && (
-              <>
-                {/* <Label className={classes.secondLevel} id="Composition">
-                  Composition
-                </Label>
-                <RadioGroup
-                  className={classes.secondLevel}
-                  value={decisionState.composition as string}
-                  onChange={(event, data) => {
-                    updateDecisions('composition', data.value);
-                  }}
-                  aria-labelledby="Composition"
-                >
-                  <Radio value="single" label="Single element" />
-                  <Radio value="group" label="Group of elements" />
-                </RadioGroup> */}
-
-                {/* {decisionState.composition === 'single' && ( */}
-                <div className={classes.thirdLevel}>
-                  <div>
-                    <Text id="chooseFromActions-label" weight="semibold">
-                      Choose from actions:{' '}
-                    </Text>
-                    <div role="group" aria-labelledby="chooseFromActions-label">
-                      <Checkbox
-                        label="Navigate to page on activation?"
-                        onChange={(event, data) => {
-                          updateDecisions('navigableToPage', data.checked);
-                        }}
-                      />
-                      <Checkbox
-                        label="Can be toggled?"
-                        onChange={(event, data) => {
-                          updateDecisions('toggle', data.checked);
-                        }}
-                      />
-                      <Checkbox
-                        label="Has multiple actions?"
-                        onChange={(event, data) => {
-                          updateDecisions('multipleActions', data.checked);
-                        }}
-                      />
-                      <Checkbox
-                        label="Opens menu?"
-                        onChange={(event, data) => {
-                          updateDecisions('opensMenu', data.checked);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <Text id="chooseFromAppearance-label" weight="semibold">
-                      Choose from appearance:{' '}
-                    </Text>
-                    <div role="group" aria-labelledby="chooseFromAppearance-label">
-                      <Checkbox
-                        label="Single column"
-                        onChange={(event, data) => {
-                          updateDecisions('singleColumn', data.checked);
-                        }}
-                      />
-                      <Checkbox
-                        label="Columns and rows"
-                        onChange={(event, data) => {
-                          updateDecisions('columnsAndRows', data.checked);
-                        }}
-                      />
-                      <Checkbox
-                        label="Hierarchical"
-                        onChange={(event, data) => {
-                          updateDecisions('hierarchical', data.checked);
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-                {/* )} */}
-              </>
-            )}
-            {/* END interactive section */}
-            {decisionState.uiBehavior.interaction === 'static' && (
-              <div className={classes.thirdLevel}>
-                <Text id="chooseFromAppearance-label" weight="semibold">
-                  Choose from appearance:{' '}
-                </Text>
-                <div role="group" aria-labelledby="chooseFromAppearance-label">
-                  <Checkbox
-                    label="Single column"
-                    onChange={(event, data) => {
-                      updateDecisions('singleColumn', data.checked);
-                    }}
-                  />
-                  <Checkbox
-                    label="Columns and rows"
-                    onChange={(event, data) => {
-                      updateDecisions('columnsAndRows', data.checked);
-                    }}
-                  />
-                  <Checkbox
-                    label="Text/Heading"
-                    onChange={(event, data) => {
-                      updateDecisions('textOrHeading', data.checked);
-                    }}
-                  />
-                </div>
-              </div>
-            )}
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value="keyboardNavigation">
-          <AccordionHeader as="h3">What do you expect from keyboard navigation?</AccordionHeader>
-          <AccordionPanel>
-            {decisionState.uiBehavior.interaction === 'interactive' ? (
-              <>
-                <Label id="navigationBy">Navigation by</Label>
-                <RadioGroup
-                  value={decisionState.keyboardNavigation.navigationBy as string}
-                  onChange={(event, data) => {
-                    updateDecisions('navigationBy', data.value);
-                  }}
-                  aria-labelledby="navigationBy"
-                >
-                  <Radio value="navigationByArrowKeys" label="Arrow keys" />
-                  <Radio value="navigationByTabKey" label="Tab key" />
-                  <Radio value="notSpecified" label="Not specified" />
-                </RadioGroup>
-              </>
-            ) : (
-              <Text weight="semibold" className={classes.thirdLevel}>
-                Keybord navigation is available only in interactive mode.
-              </Text>
-            )}
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem value="screenReader">
-          <AccordionHeader as="h3">What do you expect from screen reader behavior?</AccordionHeader>
-          <AccordionPanel>
+      ----------- behaviours----------------
+      <Checkbox
+        label="Interactive"
+        onChange={(event, data) => {
+          updateDecisionsForCheckbox('interactive', data.checked);
+        }}
+      />
+      <Checkbox
+        label="Static"
+        onChange={(event, data) => {
+          updateDecisionsForCheckbox('static', data.checked);
+        }}
+      />
+      <div className={classes.thirdLevel}>
+        <div>
+          <Text id="chooseFromActions-label" weight="semibold">
+            Choose from actions:{' '}
+          </Text>
+          <div role="group" aria-labelledby="chooseFromActions-label">
             <Checkbox
-              className={classes.thirdLevel}
-              label="Screen reader narrates position"
+              label="Navigate to page"
               onChange={(event, data) => {
-                updateDecisions('narratesPosition', data.checked);
+                updateDecisionsForCheckbox('navigatesToPage', data.checked);
               }}
             />
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
+            <Checkbox
+              label="Can be toggled?"
+              onChange={(event, data) => {
+                updateDecisions('toggle', data.checked);
+              }}
+            />
+            <Checkbox
+              label="Has multiple actions?"
+              onChange={(event, data) => {
+                updateDecisions('multipleActions', data.checked);
+              }}
+            />
+            <Checkbox
+              label="Opens menu?"
+              onChange={(event, data) => {
+                updateDecisions('opensMenu', data.checked);
+              }}
+            />
+          </div>
+        </div>
+        <div>
+          <Text id="chooseFromAppearance-label" weight="semibold">
+            Choose from appearance:{' '}
+          </Text>
+          <div role="group" aria-labelledby="chooseFromAppearance-label">
+            <Checkbox
+              label="Single column"
+              onChange={(event, data) => {
+                updateDecisions('singleColumn', data.checked);
+              }}
+            />
+            <Checkbox
+              label="Columns and rows"
+              onChange={(event, data) => {
+                updateDecisions('columnsAndRows', data.checked);
+              }}
+            />
+            <Checkbox
+              label="Hierarchical"
+              onChange={(event, data) => {
+                updateDecisions('hierarchical', data.checked);
+              }}
+            />
+          </div>
+        </div>
+      </div>
+      <div className={classes.thirdLevel}>
+        <Text id="chooseFromAppearance-label" weight="semibold">
+          Choose from appearance:{' '}
+        </Text>
+        <div role="group" aria-labelledby="chooseFromAppearance-label">
+          <Checkbox
+            label="Single column"
+            onChange={(event, data) => {
+              updateDecisions('singleColumn', data.checked);
+            }}
+          />
+          <Checkbox
+            label="Columns and rows"
+            onChange={(event, data) => {
+              updateDecisions('columnsAndRows', data.checked);
+            }}
+          />
+          <Checkbox
+            label="Text/Heading"
+            onChange={(event, data) => {
+              updateDecisions('textOrHeading', data.checked);
+            }}
+          />
+        </div>
+      </div>
+      <>
+        <Label id="navigationBy">Navigation by</Label>
+        <RadioGroup
+          value={decisionState.keyboardNavigation.navigationBy as string}
+          onChange={(event, data) => {
+            updateDecisions('navigationBy', data.value);
+          }}
+          aria-labelledby="navigationBy"
+        >
+          <Radio value="navigationByArrowKeys" label="Arrow keys" />
+          <Radio value="navigationByTabKey" label="Tab key" />
+          <Radio value="notSpecified" label="Not specified" />
+        </RadioGroup>
+      </>
+      <Checkbox
+        className={classes.thirdLevel}
+        label="Screen reader narrates position"
+        onChange={(event, data) => {
+          updateDecisions('narratesPosition', data.checked);
+        }}
+      />
+      ----------- behaviours----------------
       {/* nova komponenta na resutls: Found components */}
       <h2 id="matching-heading">Matching components</h2>
       <div role="group" aria-labelledby="matching-heading">
