@@ -184,9 +184,9 @@ export const NavDrawerControlled = (props: Partial<NavDrawerProps>) => {
   };
 
   const handleMultipleChange = (ev: Event | React.SyntheticEvent<Element, Event>, data: { checked: boolean }) => {
-    setIsMultiple(!!data.checked);
+    setIsMultiple(data.checked);
 
-    if (!!data.checked) {
+    if (data.checked) {
       setOpenCategories(['6', '11']);
     } else {
       setOpenCategories(['6']);
