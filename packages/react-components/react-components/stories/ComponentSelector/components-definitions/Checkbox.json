@@ -1,5 +1,5 @@
 {
   "name": "Checkbox",
   "component": "Checkbox",
-  "attributes": ["tabbable", "toggle", "navigationByTabKey", "interactive"]
+  "attributes": ["yesOrNo", "notInsideMenu", "navigationByTabKey", "interactive"]
 }

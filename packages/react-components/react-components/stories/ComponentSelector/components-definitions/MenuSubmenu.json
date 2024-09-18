@@ -3,6 +3,5 @@
   "component": "Menu",
   "story": "Nested Submenus",
   "extends": "MenuBase",
-  "attributes": ["nested"],
-  "requiredNodes": ["menuitem", "menuitemradio", "menuitemcheckbox"]
+  "attributes": ["nested"]
 }

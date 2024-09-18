@@ -4,7 +4,7 @@
     "question": "Does component have more actions?",
     "answers": [
       {
-        "value": "multipleActions",
+        "value": "moreActions",
         "text": "Yes"
       },
       {
@@ -28,29 +28,15 @@
     ]
   },
   {
-    "id": "hasMoreOptions",
-    "question": "Can user select more than 2 options?",
-    "answers": [
-      {
-        "value": "moreThanTwoOptions",
-        "text": "Yes"
-      },
-      {
-        "value": "twoOptions",
-        "text": "No"
-      }
-    ]
-  },
-  {
     "id": "isYesOrNo",
-    "question": "Is choice possible between yes or no?",
+    "question": "Is toggle or choice possible between yes or no?",
     "answers": [
       {
-        "value": "binaryChoice",
+        "value": "yesOrNo",
         "text": "Yes"
       },
       {
-        "value": "nonBinaryChoice",
+        "value": "notYesOrNo",
         "text": "No"
       }
     ]
@@ -60,11 +46,11 @@
     "question": "Is component inside menu?",
     "answers": [
       {
-        "value": "InsideMenu",
+        "value": "insideMenu",
         "text": "Yes"
       },
       {
-        "value": "Standalone",
+        "value": "notInsideMenu",
         "text": "No"
       }
     ]

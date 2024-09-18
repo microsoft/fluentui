@@ -1,4 +1,4 @@
 {
   "name": "MenuBase",
-  "attributes": ["navigationByArrowKeys", "narratesPosition", "interactive"]
+  "attributes": ["insideMenu", "navigationByArrowKeys", "narratesPosition", "interactive"]
 }

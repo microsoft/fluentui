@@ -3,5 +3,5 @@
   "component": "Menu",
   "story": "Checkbox Items",
   "extends": "MenuBase",
-  "attributes": ["toggle"]
+  "attributes": ["yesOrNo"]
 }

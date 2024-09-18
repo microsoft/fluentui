@@ -5,6 +5,6 @@
   },
   {
     "tags": ["Checkbox", "Radio", "ToggleButton", "MenuItemCheckbox", "MenuItemRadio"],
-    "questions": ["hasMoreOptions", "isYesOrNo", "isInsideMenu"]
+    "questions": ["isYesOrNo", "isInsideMenu"]
   }
 ]
