@@ -22,6 +22,7 @@ export const styles = css`
   :host {
     --border-color: transaprent;
     --box-shadow: ${shadow16};
+    --padding-inline: ${spacingHorizontalXS};
 
     background-color: ${colorNeutralBackground1};
     border: ${strokeWidthThin} solid var(--border-color);
@@ -34,8 +35,12 @@ export const styles = css`
     margin: 0;
     min-inline-size: 160px;
     overflow: auto;
-    padding: ${spacingHorizontalXS} ${spacingVerticalXS};
+    padding: ${spacingVerticalXS} var(--padding-inline);
     position: absolute;
+  }
+
+  ::slotted(fluent-divider) {
+    margin-inline: calc(var(--padding-inline) * -1);
   }
 `.withBehaviors(
   forcedColorsStylesheetBehavior(css`

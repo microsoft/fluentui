@@ -2,6 +2,7 @@ import { html, render, repeat, when } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
+import type { Divider as FluentDivider } from '../divider/divider.js';
 import type { Option as FluentOption } from '../option/option.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
@@ -10,6 +11,10 @@ const optionTemplate = html<StoryArgs<FluentOption>>`
   <fluent-option value="${x => x.value}" ?disabled="${x => x.disabled}" ?selected="${x => x.selected}">
     ${x => x.storyContent}
   </fluent-option>
+`;
+
+const dividerTemplate = html<StoryArgs<FluentDivider>>`
+  <fluent-divider></fluent-divider>
 `;
 
 interface StoryOption {
@@ -58,7 +63,10 @@ const storyTemplate = () => {
       id="${listId}"
       dir="${x => x.rtl ? 'rtl' : null}"
     >
-      ${repeat(x => x.storyOptions ?? storyOptions, optionTemplate)}
+      ${repeat(
+        x => x.storyOptions ?? storyOptions,
+        html`${x => x.divider ? dividerTemplate : optionTemplate}`
+      )}
     </fluient-dropdown-list>
   `;
 };
@@ -182,6 +190,36 @@ export const WithInitiallySelectedOptions: Story<FluentDropdown> = renderCompone
         storyOptions: structuredClone(storyOptions).map((option, index) => {
           if (index === 8) {
             option.selected = true;
+          }
+          return option;
+        }),
+      },
+      storyFieldTemplate(),
+    )}
+    ${render(
+      {
+        label: 'Fruits',
+        storyOptions: structuredClone(storyOptions).map((option, index) => {
+          if ([1, 8].includes(index)) {
+            option.selected = true;
+          }
+          return option;
+        }),
+        multiple: true,
+      },
+      storyFieldTemplate(),
+    )}
+  </div>
+`);
+
+export const WithDividers: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
+    ${render(
+      {
+        label: 'Fruit',
+        storyOptions: structuredClone(storyOptions).flatMap((option, index) => {
+          if ([1, 5].includes(index)) {
+            return [{ divider: true }, option];
           }
           return option;
         }),
