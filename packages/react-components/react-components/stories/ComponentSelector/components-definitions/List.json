@@ -1,6 +1,6 @@
 {
   "name": "List",
-  "link": "",
+  "component": "List",
   "extends": "ListBase",
-  "static": "true"
+  "attributes": ["static"]
 }

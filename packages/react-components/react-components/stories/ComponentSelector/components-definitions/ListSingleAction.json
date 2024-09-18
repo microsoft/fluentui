@@ -1,0 +1,7 @@
+{
+  "name": "ListSingleAction",
+  "component": "List",
+  "story": "Single Action",
+  "extends": "ListBase",
+  "attributes": ["interactive", "navigationByArrowKeys"]
+}

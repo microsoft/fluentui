@@ -1,0 +1,7 @@
+{
+  "name": "TableCellNavigation",
+  "component": "Table",
+  "story": "Cell Navigation",
+  "extends": "Base-Table",
+  "attributes": ["interactive", "navigationByArrowKeys"]
+}

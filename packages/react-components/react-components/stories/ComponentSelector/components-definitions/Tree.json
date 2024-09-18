@@ -1,5 +1,5 @@
 {
   "name": "Tree",
-  "link": "https://react.fluentui.dev/?path=/docs/components-tree--default",
+  "component": "Tree",
   "extends": "TreeBase"
 }

@@ -1,0 +1,31 @@
+{
+  "tags": ["Button", "Link", "SplitButton", "ToggleButton"],
+  "questions": [
+    {
+      "question": "Does component have more actions?",
+      "answers": [
+        {
+          "text": "Yes",
+          "value": "multipleActions"
+        },
+        {
+          "text": "No",
+          "value": "singleAction"
+        }
+      ]
+    },
+    {
+      "question": "Does component navigate to new page?",
+      "answers": [
+        {
+          "text": "Yes",
+          "value": "navigatesToPage"
+        },
+        {
+          "text": "No",
+          "value": "staysOnPage"
+        }
+      ]
+    }
+  ]
+}

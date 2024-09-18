@@ -1,6 +1,5 @@
 {
   "name": "ListBase",
-  "narratesPosition": "true",
-  "singleColumn": "true",
+  "attributes": ["narratesPosition", "singleColumn"],
   "note": "Component not available yet, under development."
 }

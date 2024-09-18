@@ -1,6 +1,6 @@
 {
   "name": "SplitButton",
-  "link": "https://react.fluentui.dev/?path=/docs/components-button-splitbutton--default",
-  "multipleActions": "true",
-  "extends": "ButtonBase"
+  "component": "SplitButton",
+  "extends": "ButtonBase",
+  "attributes": ["multipleActions"]
 }

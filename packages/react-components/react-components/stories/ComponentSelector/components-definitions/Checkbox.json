@@ -1,8 +1,5 @@
 {
   "name": "Checkbox",
-  "link": "https://react.fluentui.dev/?path=/docs/components-checkbox--default",
-  "tabbable": "true",
-  "toggle": "true",
-  "navigationByTabKey": "true",
-  "interactive": "true"
+  "component": "Checkbox",
+  "attributes": ["tabbable", "toggle", "navigationByTabKey", "interactive"]
 }

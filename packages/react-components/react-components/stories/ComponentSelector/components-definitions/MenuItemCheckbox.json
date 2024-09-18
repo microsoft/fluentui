@@ -1,0 +1,7 @@
+{
+  "name": "MenuItemCheckbox",
+  "component": "Menu",
+  "story": "Checkbox Items",
+  "extends": "MenuBase",
+  "attributes": ["toggle"]
+}

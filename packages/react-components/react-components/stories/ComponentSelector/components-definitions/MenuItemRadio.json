@@ -1,0 +1,7 @@
+{
+  "name": "MenuItemRadio",
+  "component": "Menu",
+  "story": "Radio Items",
+  "extends": "MenuBase",
+  "attributes": ["toggle"]
+}

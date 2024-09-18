@@ -1,6 +1,0 @@
-{
-  "name": "MenuCheckbox",
-  "link": "https://react.fluentui.dev/?path=/docs/components-menu-menu--default#checkbox-items",
-  "extends": "MenuBase",
-  "toggle": "true"
-}

@@ -1,0 +1,44 @@
+{
+  "tags": ["Checkbox", "Radio", "ToggleButton", "MenuItemCheckbox", "MenuItemRadio"],
+  "questions": [
+    {
+      "question": "Can user select more than 2 options?",
+      "answers": [
+        {
+          "text": "Yes",
+          "value": "moreThanTwoOptions"
+        },
+        {
+          "text": "No",
+          "value": "twoOptions"
+        }
+      ]
+    },
+    {
+      "question": "Is choice possible between yes or no?",
+      "answers": [
+        {
+          "text": "Yes",
+          "value": "binaryChoice"
+        },
+        {
+          "text": "No",
+          "value": "nonBinaryChoice"
+        }
+      ]
+    },
+    {
+      "question": "Is component inside menu?",
+      "answers": [
+        {
+          "text": "Yes",
+          "value": "InsideMenu"
+        },
+        {
+          "text": "No",
+          "value": "Standalone"
+        }
+      ]
+    }
+  ]
+}

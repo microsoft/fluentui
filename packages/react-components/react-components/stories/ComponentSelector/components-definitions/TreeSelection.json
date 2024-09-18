@@ -1,7 +1,7 @@
 {
   "name": "TreeSelection",
-  "link": "https://react.fluentui.dev/?path=/docs/components-tree--default#selection",
-  "exampleName": "Selection",
+  "component": "Tree",
+  "story": "Selection",
   "extends": "TreeBase",
-  "toggle": "true"
+  "attributes": ["toggle"]
 }

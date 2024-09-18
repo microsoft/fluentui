@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const APP_TITLE = 'Component Selector';
 const APP_TITLE_SEPARATOR = ' | ';
-const formatComponentExampleUrl = (component, example) => `/?path=/docs/components-${component}--docs#${example}`;
+const formatComponentStoryUrl = (component, story) => `/?path=/docs/components-${component}--docs#${story}`;
 
 interface FullscreenLinkProps {
   parent: string;
@@ -55,9 +55,9 @@ const camelToDashed = (camel) => {
   return dashed;
 };
 
-export const getComponentExampleUrl = (component, example?) => {
+export const getComponentStoryUrl = (component, story?) => {
   const dashedComponent = camelToDashed(component);
-  const dashedExample = example ? camelToDashed(example) : 'default';
-  const url = formatComponentExampleUrl(dashedComponent, dashedExample);
+  const dashedStory = story ? camelToDashed(story) : 'default';
+  const url = formatComponentStoryUrl(dashedComponent, dashedStory);
   return url;
 };

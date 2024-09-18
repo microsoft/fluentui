@@ -1,6 +1,4 @@
 {
   "name": "MenuBase",
-  "navigationByArrowKeys": "true",
-  "narratesPosition": "true",
-  "interactive": "true"
+  "attributes": ["navigationByArrowKeys", "narratesPosition", "interactive"]
 }

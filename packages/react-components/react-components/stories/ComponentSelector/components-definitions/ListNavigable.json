@@ -1,7 +1,0 @@
-{
-  "name": "ListNavigable",
-  "link": "",
-  "extends": "ListBase",
-  "navigationByArrowKeys": "true",
-  "interactive": "true"
-}
