@@ -111,7 +111,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
     <div className={styles.root}>
       <NavDrawer
         defaultSelectedValue="2"
-        defaultSelectedCategoryValue="1"
+        defaultSelectedCategoryValue=""
         open={isOpen}
         type={type}
         multiple={isMultiple}

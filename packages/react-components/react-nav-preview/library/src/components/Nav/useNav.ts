@@ -98,13 +98,15 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>)
   const currentSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
   const previousSelectedCategoryValue = React.useRef<NavItemValue | undefined>(undefined);
 
-  React.useEffect(() => {
+  if (currentSelectedValue.current !== selectedValue) {
     previousSelectedValue.current = currentSelectedValue.current;
     currentSelectedValue.current = selectedValue;
+  }
 
+  if (currentSelectedCategoryValue.current !== selectedCategoryValue) {
     previousSelectedCategoryValue.current = currentSelectedCategoryValue.current;
     currentSelectedCategoryValue.current = selectedCategoryValue;
-  }, [selectedValue, selectedCategoryValue]);
+  }
 
   // used for NavItems and NavSubItems
   const onSelect: EventHandler<OnNavItemSelectData> = useEventCallback((event, data) => {
