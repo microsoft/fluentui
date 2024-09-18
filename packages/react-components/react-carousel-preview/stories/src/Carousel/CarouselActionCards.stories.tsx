@@ -12,6 +12,7 @@ import {
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
+  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -139,12 +140,12 @@ const POSTS: Post[] = [
   },
 ];
 
-const ActionCard: React.FC<Post> = props => {
-  const { avatarUrl, description, name, text } = props;
+const ActionCard: React.FC<Post & { index: number }> = props => {
+  const { avatarUrl, description, name, text, index } = props;
   const classes = useCardClasses();
 
   return (
-    <CarouselCard className={classes.actionCard}>
+    <CarouselCard className={classes.actionCard} aria-label={`Card ${index + 1} of ${POSTS.length}`}>
       <div className={classes.imageContainer}>
         <Image className={classes.image} fit="cover" src={swapImage} role="presentation" />
         <Button className={classes.imageButton} icon={<DocumentLinkRegular />} aria-label="Go to document" />
@@ -195,17 +196,23 @@ export const AlignmentAndWhitespace = () => {
       <div className={classes.card}>
         <Carousel align={alignment} className={classes.carousel} whitespace={whitespace}>
           <CarouselSlider cardFocus={true}>
-            {POSTS.map(post => (
-              <ActionCard {...post} key={post.name} />
+            {POSTS.map((post, index) => (
+              <ActionCard {...post} key={post.name} index={index} />
             ))}
           </CarouselSlider>
           <CarouselNavContainer
             layout="inline"
-            next={{ 'aria-label': 'Go to next slide' }}
-            prev={{ 'aria-label': 'Go to prev slide' }}
+            next={{ 'aria-label': 'go to next' }}
+            prev={{ 'aria-label': 'go to prev' }}
           >
             <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
           </CarouselNavContainer>
+
+          <CarouselAnnouncer>
+            {(currentIndex, totalSlides, slideGroupList) => {
+              return `Slide ${currentIndex + 1} of ${totalSlides} with ${slideGroupList[currentIndex].length} cards`;
+            }}
+          </CarouselAnnouncer>
         </Carousel>
       </div>
     </div>

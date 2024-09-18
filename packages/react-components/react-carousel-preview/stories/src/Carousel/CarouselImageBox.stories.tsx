@@ -1,6 +1,7 @@
 import { makeStyles, Image } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavContainer,
@@ -67,8 +68,8 @@ export const ImageSlideshow = () => {
   return (
     <Carousel groupSize={1} align="center">
       <CarouselSlider className={classes.slider}>
-        {IMAGES.map(image => (
-          <CarouselCard key={image.url} className={classes.card}>
+        {IMAGES.map((image, index) => (
+          <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>
             <ImageCard {...image} />
           </CarouselCard>
         ))}
@@ -76,8 +77,8 @@ export const ImageSlideshow = () => {
 
       <CarouselNavContainer
         layout="overlay-expanded"
-        next={{ 'aria-label': 'Go to next slide' }}
-        prev={{ 'aria-label': 'Go to prev slide' }}
+        next={{ 'aria-label': 'go to next' }}
+        prev={{ 'aria-label': 'go to prev' }}
       >
         <CarouselNav>
           {index => (
@@ -88,6 +89,11 @@ export const ImageSlideshow = () => {
           )}
         </CarouselNav>
       </CarouselNavContainer>
+      <CarouselAnnouncer>
+        {(currentIndex, totalSlides, _slideGroupList) => {
+          return `Slide ${currentIndex + 1} of ${totalSlides}`;
+        }}
+      </CarouselAnnouncer>
     </Carousel>
   );
 };
