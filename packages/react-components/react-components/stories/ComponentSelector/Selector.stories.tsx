@@ -134,11 +134,20 @@ export const Selector = () => {
       for (const key in definition) {
         if (key === 'extends') {
           const value = definition[key];
+          // const currentJSONObject = JSON.parse(JSON.stringify(definition));
+          const attributesOfCurrentJSON = definition.attributes;
           // find definition which is based one
           const baseDefinition = componentsDefinitions.current.find(def => def.name === value);
+          const attributesOfBaseDefinition = baseDefinition?.attributes;
+
           // create new object not delete name of base definition for others usage
           const temporaryObject = JSON.parse(JSON.stringify(baseDefinition));
           delete temporaryObject.name;
+
+          // merge attributes of current JSON with Base JSON
+          if (attributesOfCurrentJSON) {
+            temporaryObject['attributes'] = [...attributesOfBaseDefinition, ...attributesOfCurrentJSON];
+          }
           Object.assign(definition, temporaryObject);
         }
       }
@@ -287,9 +296,12 @@ export const Selector = () => {
       const matching = [];
       selectedDecisions.current.forEach(decision => {
         console.log(`Decision: ${decision}`);
-        if (keysInDefinitions.indexOf(decision) >= 0) {
-          matching.push('matched');
-        }
+        console.log(`Definition: ${definition.name}`);
+        console.log(`Definition: ${definition.attributes}`);
+        definition.attributes.includes(decision) ? matching.push('matched') : null;
+        // if (keysInDefinitions.indexOf(decision) >= 0) {
+        //   matching.push('matched');
+        // }
       });
 
       if (selectedDecisions.current.length === matching.length) {
@@ -322,7 +334,6 @@ export const Selector = () => {
               if (data.checked) {
                 setSelectedComponents([...selectedComponents, name]);
               } else {
-                removeFromArray(selectedComponents, name);
                 setSelectedComponents(selectedComponents.filter(component => component !== name));
               }
             }}
