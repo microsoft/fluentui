@@ -253,7 +253,7 @@ export type NavItemState = ComponentState<NavItemSlots> & Pick<NavItemProps, 'va
 };
 
 // @public
-export type NavItemValue = unknown;
+export type NavItemValue = string;
 
 // @public
 export type NavProps = ComponentProps<NavSlots> & {
