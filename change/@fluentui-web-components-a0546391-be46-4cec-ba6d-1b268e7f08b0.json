@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "update tsconfig to be compatiable with 5.2",
+  "packageName": "@fluentui/web-components",
+  "email": "viktorgenaev@microsoft.com",
+  "dependentChangeType": "none"
+}
