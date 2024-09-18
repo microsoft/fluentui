@@ -1,0 +1,72 @@
+[
+  {
+    "id": "hasMoreActions",
+    "question": "Does component have more actions?",
+    "answers": [
+      {
+        "value": "multipleActions",
+        "text": "Yes"
+      },
+      {
+        "value": "singleAction",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "doesNavigateToPage",
+    "question": "Does component navigate to new page?",
+    "answers": [
+      {
+        "value": "navigatesToPage",
+        "text": "Yes"
+      },
+      {
+        "value": "staysOnPage",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "hasMoreOptions",
+    "question": "Can user select more than 2 options?",
+    "answers": [
+      {
+        "value": "moreThanTwoOptions",
+        "text": "Yes"
+      },
+      {
+        "value": "twoOptions",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "isYesOrNo",
+    "question": "Is choice possible between yes or no?",
+    "answers": [
+      {
+        "value": "binaryChoice",
+        "text": "Yes"
+      },
+      {
+        "value": "nonBinaryChoice",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "isInsideMenu",
+    "question": "Is component inside menu?",
+    "answers": [
+      {
+        "value": "InsideMenu",
+        "text": "Yes"
+      },
+      {
+        "value": "Standalone",
+        "text": "No"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "tags": ["Button", "Link", "SplitButton", "ToggleButton"],
+    "questions": ["hasMoreActions", "doesNavigateToPage"]
+  },
+  {
+    "tags": ["Checkbox", "Radio", "ToggleButton", "MenuItemCheckbox", "MenuItemRadio"],
+    "questions": ["hasMoreOptions", "isYesOrNo", "isInsideMenu"]
+  }
+]
