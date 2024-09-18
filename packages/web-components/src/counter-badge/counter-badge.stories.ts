@@ -12,10 +12,10 @@ type Story = StoryObj<FluentCounterBadge>;
 
 const storyTemplate = html<StoryArgs<FluentCounterBadge>>`
   <fluent-counter-badge
-    appearance="${story => story.appearance}"
-    color="${story => story.color}"
-    shape="${story => story.shape}"
-    size="${story => story.size}"
+    appearance="${story => story.appearance || void 0}"
+    color="${story => story.color || void 0}"
+    shape="${story => story.shape || void 0}"
+    size="${story => story.size || void 0}"
     count="${story => story.count}"
     overflow-count="${story => story.overflowCount}"
     ?show-zero="${story => story.showZero}"
