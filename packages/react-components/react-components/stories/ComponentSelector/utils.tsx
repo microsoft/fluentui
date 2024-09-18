@@ -52,7 +52,6 @@ export const removeFromArray = (array: string[], item: string) => {
 };
 
 const camelToDashed = camel => {
-  console.log('Milan: camel', camel);
   const dashed = camel.toLowerCase().replace(/\ |\:/g, '-');
   return dashed;
 };

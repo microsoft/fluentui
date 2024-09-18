@@ -15,7 +15,7 @@ import {
   makeStyles,
   tokens,
   Image,
-  Button,
+  ToggleButton,
   Field,
   Select,
   useId,
@@ -47,6 +47,7 @@ import {
   TreeBaseDef,
   MenuButtonDef,
   TabListDef,
+  Button,
 } from './components-definitions/index';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -116,6 +117,7 @@ const useStyles = makeStyles({
   radioItem: {
     display: 'flex',
   },
+  behaviors: { display: 'flex', gap: '10px' },
 });
 
 export const Selector = () => {
@@ -148,9 +150,14 @@ export const Selector = () => {
     },
   });
 
+  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
+  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const selectedDecisions = React.useRef<string[]>([]);
-
   const [selectedQuestion, setSelectedQuestion] = React.useState('');
+  const [behavior1, setBehavior1] = React.useState(false);
+  const [behavior2, setBehavior2] = React.useState(false);
+  const [behavior3, setBehavior3] = React.useState(false);
+  const [behavior4, setBehavior4] = React.useState(false);
 
   const getDecisionCategory = React.useCallback(
     (name: string) => {
@@ -255,9 +262,6 @@ export const Selector = () => {
   //   return suitableComponents;
   // }, [selectedDecisions]);
 
-  const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
-  const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
-
   const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
     const category = getDecisionCategory(name) as string;
     decisionState[category][name] = value;
@@ -305,9 +309,9 @@ export const Selector = () => {
     if (checked) {
       setSelectedBehaviours([...selectedBehaviours, name]);
     } else {
-      setSelectedBehaviours(selectedBehaviours.filter(behavior => behavior !== behavior));
+      const array = selectedBehaviours.filter(behavior => behavior !== name);
+      setSelectedBehaviours(array);
     }
-    console.log(`NEW: selectedBehaviours: ${selectedBehaviours}`);
   };
 
   const additionalTags = ['expandable', 'static', 'selectable', 'sortable', 'filterable'];
@@ -341,10 +345,10 @@ export const Selector = () => {
         }
       });
     }
-    // console.log(`selectedComponents: ${selectedComponents}`);
-    // console.log(`suitableComponents: ${suitableComponents}`);
 
+    console.log(`IF GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
     if (selectedBehaviours.length > 0) {
+      console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
       const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
       // componentsDefinitions.current.forEach(definition => {
       componentsToIterate.forEach(definition => {
@@ -486,18 +490,54 @@ export const Selector = () => {
       </Accordion>
       <Questionnaire />
       ----------- behaviours----------------
-      <Checkbox
+      {/* <Checkbox
         label="Interactive"
         onChange={(event, data) => {
           updateDecisionsForCheckbox('interactive', data.checked);
         }}
-      />
-      <Checkbox
-        label="Static"
-        onChange={(event, data) => {
-          updateDecisionsForCheckbox('static', data.checked);
-        }}
-      />
+      /> */}
+      <div className={classes.behaviors}>
+        <ToggleButton
+          checked={behavior1}
+          shape="circular"
+          onClick={() => {
+            setBehavior1(!behavior1);
+            updateDecisionsForCheckbox('interactive', !behavior1);
+          }}
+        >
+          interactive
+        </ToggleButton>
+        <ToggleButton
+          checked={behavior2}
+          shape="circular"
+          onClick={() => {
+            setBehavior2(!behavior2);
+            updateDecisionsForCheckbox('static', !behavior2);
+          }}
+        >
+          static
+        </ToggleButton>
+        <ToggleButton
+          checked={behavior3}
+          shape="circular"
+          onClick={() => {
+            setBehavior3(!behavior3);
+            updateDecisionsForCheckbox('selectable', !behavior3);
+          }}
+        >
+          selectable
+        </ToggleButton>
+        <ToggleButton
+          checked={behavior4}
+          shape="circular"
+          onClick={() => {
+            setBehavior4(!behavior4);
+            updateDecisionsForCheckbox('toggle', !behavior4);
+          }}
+        >
+          toggle
+        </ToggleButton>
+      </div>
       <div className={classes.thirdLevel}>
         <div>
           <Text id="chooseFromActions-label" weight="semibold">
