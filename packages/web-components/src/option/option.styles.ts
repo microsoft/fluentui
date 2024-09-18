@@ -58,6 +58,17 @@ export const styles = css`
     padding-inline: ${spacingHorizontalSNudge};
   }
 
+  :host(${multipleState}) {
+    --multiple-selected-indicator-border-color: ${colorNeutralStrokeAccessible};
+    --multiple-selected-indicator-background-color: ${colorNeutralBackground1};
+  }
+
+  :host(${multipleState}${selectedState}) {
+    --multiple-selected-indicator-border-color: ${colorCompoundBrandStroke};
+    --multiple-selected-indicator-background-color: ${colorCompoundBrandBackground};
+    --multiple-selected-indicator-fill: ${colorNeutralForegroundInverted};
+  }
+
   :host(:hover) {
     --background-color: ${colorNeutralBackground1Hover};
     --color: ${colorNeutralForeground2Hover};
@@ -76,19 +87,9 @@ export const styles = css`
   :host(:disabled) {
     --background-color: ${colorNeutralBackground1};
     --color: ${colorNeutralForegroundDisabled};
+    --multiple-selected-indicator-border-color: ${colorNeutralForegroundDisabled};
 
     cursor: default;
-  }
-
-  :host(${multipleState}) {
-    --multiple-selected-indicator-border-color: ${colorNeutralStrokeAccessible};
-    --multiple-selected-indicator-background-color: ${colorNeutralBackground1};
-  }
-
-  :host(${multipleState}${selectedState}) {
-    --multiple-selected-indicator-border-color: ${colorCompoundBrandStroke};
-    --multiple-selected-indicator-background-color: ${colorCompoundBrandBackground};
-    --multiple-selected-indicator-fill: ${colorNeutralForegroundInverted};
   }
 
   .content {

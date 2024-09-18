@@ -153,7 +153,7 @@ export const Appearances: Story<FluentDropdown> = renderComponent(html<StoryArgs
 
 export const Layouts: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
   <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
-    ${render({ label: 'Inline (default)' }, storyFieldTemplate())}
+    <div>Some text inline with ${render({ label: 'dropdown label', slot: '' }, storyTemplate())} and more text.</div>
     ${render({ label: 'Block', block: true }, storyFieldTemplate())}
   </div>
 `);

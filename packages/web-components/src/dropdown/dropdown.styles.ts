@@ -39,6 +39,8 @@ import {
   spacingHorizontalMNudge,
   spacingHorizontalSNudge,
   spacingHorizontalXXS,
+  spacingVerticalXS,
+  spacingVerticalXXS,
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
@@ -57,6 +59,7 @@ export const styles = css`
     /* sizes */
     --min-block-size: 32px;
     --gap: ${spacingHorizontalXXS};
+    --padding-block: ${spacingVerticalXS};
     --padding-inline: ${spacingHorizontalMNudge};
     --content-padding-inline: ${spacingHorizontalXXS};
     --trigger-indicator-size: 20px;
@@ -79,12 +82,17 @@ export const styles = css`
     border: ${strokeWidthThin} solid var(--border-color);
     border-block-end-color: var(--border-block-end-color);
     border-radius: var(--border-radius);
+    box-sizing: border-box;
     color: var(--color);
     gap: var(--gap);
     grid-template: 'content indicator' 1fr / 1fr auto;
     min-block-size: var(--min-block-size);
     touch-action: manipulation;
-    padding-inline: var(--padding-inline);
+    /**
+     * padding-block is here just to create padding when the display value has
+     * to wrap. The height of the component is controlled by min-block-size.
+     */
+    padding: var(--padding-block) var(--padding-inline);
     position: relative;
   }
 
@@ -123,6 +131,7 @@ export const styles = css`
     --min-block-size: 24px;
     --trigger-indicator-size: 16px;
     --trigger-indicator-icon-inilne-size: 10px;
+    --padding-block: ${spacingVerticalXXS};
     --padding-inline: ${spacingHorizontalSNudge};
 
     ${typographyCaption1Styles};
