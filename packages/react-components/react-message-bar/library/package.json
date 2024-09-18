@@ -34,6 +34,7 @@
     "@fluentui/react-icons": "^2.0.245",
     "@fluentui/react-jsx-runtime": "^9.0.44",
     "@fluentui/react-shared-contexts": "^9.20.1",
+    "@fluentui/react-link": "^9.2.32",
     "@fluentui/react-theme": "^9.1.20",
     "@fluentui/react-utilities": "^9.18.15",
     "@griffel/react": "^1.5.22",

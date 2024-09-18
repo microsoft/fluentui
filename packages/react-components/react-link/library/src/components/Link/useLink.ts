@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
+import { useMessageBarBodyContext } from '@fluentui/react-message-bar';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 
@@ -14,6 +15,7 @@ export const useLink_unstable = (
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
   const backgroundAppearance = useBackgroundAppearance();
+  const { inlineLinks } = useMessageBarBodyContext();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
 
   const elementType = props.as || (props.href ? 'a' : 'button');
@@ -31,7 +33,7 @@ export const useLink_unstable = (
     appearance,
     disabled,
     disabledFocusable,
-    inline,
+    inline: inline || inlineLinks,
 
     // Slots definition
     components: {

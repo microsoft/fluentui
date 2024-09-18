@@ -3,6 +3,7 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { MessageBarBodyState, MessageBarBodySlots } from './MessageBarBody.types';
+import { InlineLinkContextProvider } from '@fluentui/react-link';
 
 /**
  * Render the final JSX of MessageBarBody
@@ -10,5 +11,9 @@ import type { MessageBarBodyState, MessageBarBodySlots } from './MessageBarBody.
 export const renderMessageBarBody_unstable = (state: MessageBarBodyState) => {
   assertSlots<MessageBarBodySlots>(state);
 
-  return <state.root />;
+  return (
+    <InlineLinkContextProvider value={{ inlineLinks: true }}>
+      <state.root />
+    </InlineLinkContextProvider>
+  );
 };
