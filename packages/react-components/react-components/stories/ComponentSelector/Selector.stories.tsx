@@ -194,7 +194,6 @@ export const Selector = () => {
     );
     mergeBaseObjects();
     cleanUpBaseObjects();
-    console.log('componentsDefinitions: ', componentsDefinitions.current);
   }
 
   //Following useMemo wasn't call when I tick checkbox
@@ -268,73 +267,92 @@ export const Selector = () => {
   // and when an option is removed by clicking on a tag
   const [selectedBehaviours, setSelectedBehaviours] = React.useState<string[]>([]);
   const [selectedComponents, setSelectedComponents] = React.useState<string[]>([]);
-  console.log('Milan:selectedComponents: ', selectedComponents);
 
   const getImage = tagName => {
     try {
       return require(`../ComponentSelector/components-images/${tagName}.png`);
     } catch (error) {
-      // console.log('Image not found: ', error);
       return null;
     }
+  };
+
+  const getComponentByName = (name: string) => {
+    return componentsDefinitions.current.find(definition => definition.name === name);
   };
 
   const getComponent = () => {
     const suitableComponents: any[] = [];
 
-    // if (selectedOptions && selectedOptions.length > 0) {
-    //   suitableComponents.push(...selectedOptions);
-    // }
-    // console.log(`selectedOptions: ${selectedOptions}`);
-    console.log(`suitableComponents: ${suitableComponents}`);
-
-    console.log(`Array Decisions: ${selectedDecisions.current}`);
-
-    componentsDefinitions.current.forEach(definition => {
-      const keysInDefinitions = Object.keys(definition);
-
-      const matching = [];
-      selectedDecisions.current.forEach(decision => {
-        console.log(`Decision: ${decision}`);
-        console.log(`Definition: ${definition.name}`);
-        console.log(`Definition: ${definition.attributes}`);
-        definition.attributes.includes(decision) ? matching.push('matched') : null;
-        // if (keysInDefinitions.indexOf(decision) >= 0) {
-        //   matching.push('matched');
-        // }
+    if (selectedComponents && selectedComponents.length > 0) {
+      selectedComponents.forEach(componentName => {
+        const component = getComponentByName(componentName);
+        // console.log(`PUSH component name: ${component.name}`);
+        if (component) {
+          suitableComponents.push(component);
+        }
       });
+    }
+    // console.log(`selectedComponents: ${selectedComponents}`);
+    // console.log(`suitableComponents: ${suitableComponents}`);
 
-      if (selectedDecisions.current.length === matching.length) {
-        console.log('fully matched');
-        suitableComponents.push(definition);
-      }
-    });
+    if (selectedDecisions.current.length > 0) {
+      const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
+      // componentsDefinitions.current.forEach(definition => {
+      componentsToIterate.forEach(definition => {
+        const keysInDefinitions = Object.keys(definition);
+
+        const matching = [];
+        selectedDecisions.current.forEach(decision => {
+          definition.attributes.includes(decision) ? matching.push('matched') : null;
+          // if (keysInDefinitions.indexOf(decision) >= 0) {
+          //   matching.push('matched');
+          // }
+        });
+
+        if (selectedDecisions.current.length === matching.length) {
+          console.log('fully matched');
+          // if suitableComponents does not include definition, push it
+          suitableComponents.includes(definition) ? null : suitableComponents.push(definition);
+        } else {
+          // console.log(`suitableComponents: ${suitableComponents}`);
+          // console.log('GOING TO REMOVE');
+          removeFromArray(suitableComponents, definition);
+          // console.log(`suitableComponents: ${suitableComponents}`);
+        }
+      });
+    }
+
     return suitableComponents;
   };
 
   const foundComponents = getComponent();
 
   const namesOfComponents = () => {
-    const properNames = componentsDefinitions.current.map(definition => {
+    const definitionsWithDisplayName = componentsDefinitions.current.map(definition => {
       const componentName = definition.story ? `${definition.name} : ${definition.story}` : definition.name;
-      return componentName;
+      definition['displayName'] = componentName;
+      return definition;
     });
-    return properNames.sort();
+    definitionsWithDisplayName.sort((a, b) => (a.displayName > b.displayName ? 1 : -1));
+
+    return definitionsWithDisplayName;
   };
 
-  const componentsToDisplay = namesOfComponents().map(name => (
+  const componentsToDisplay = namesOfComponents().map(definitionsWithDisplayName => (
     <>
       <div data-id="wrapper" className={classes.componentWrapper}>
-        <Image src={getImage(name)} height={75} width={75} />
+        <Image src={getImage(definitionsWithDisplayName.displayName)} height={75} width={75} />
         <div>
-          <span>{name}</span>
+          <span>{definitionsWithDisplayName.displayName}</span>
           <Checkbox
-            aria-label={name}
+            aria-label={definitionsWithDisplayName.displayName}
             onChange={(event, data) => {
               if (data.checked) {
-                setSelectedComponents([...selectedComponents, name]);
+                setSelectedComponents([...selectedComponents, definitionsWithDisplayName.name]);
               } else {
-                setSelectedComponents(selectedComponents.filter(component => component !== name));
+                setSelectedComponents(
+                  selectedComponents.filter(component => component !== definitionsWithDisplayName.name),
+                );
               }
             }}
           />
@@ -532,39 +550,34 @@ export const Selector = () => {
         </AccordionItem>
       </Accordion>
       {/* nova komponenta na resutls: Found components */}
-      {console.log('selectedDecisions.current: ', selectedDecisions.current)}
       <h2 id="matching-heading">Matching components</h2>
-      {selectedDecisions.current.length > 0 ? (
-        <div role="group" aria-labelledby="matching-heading">
-          <div className={classes.foundMessage}>
-            <Text as="h3" weight="bold">
-              Found {foundComponents.length} component(s).{' '}
-            </Text>
-          </div>
-          {foundComponents.map((component, index) => {
-            return (
-              <div key={`component-${index}}`}>
-                <Text weight="semibold">
-                  Component name:{' '}
-                  <Link target="_blank" inline href={component.link}>
-                    {component.name}{' '}
-                  </Link>
-                </Text>
-                <br />
-                <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
-                {component.note && (
-                  <div>
-                    <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
-                  </div>
-                )}
-                <Divider appearance="strong" />
-              </div>
-            );
-          })}
+      <div role="group" aria-labelledby="matching-heading">
+        <div className={classes.foundMessage}>
+          <Text as="h3" weight="bold">
+            Found {foundComponents.length} component(s).{' '}
+          </Text>
         </div>
-      ) : (
-        <Text>Select proper attribute(s) above.</Text>
-      )}
+        {foundComponents.map((component, index) => {
+          return (
+            <div key={`component-${index}}`}>
+              <Text weight="semibold">
+                Component name:{' '}
+                <Link target="_blank" inline href={component.link}>
+                  {component.name}{' '}
+                </Link>
+              </Text>
+              <br />
+              <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
+              {component.note && (
+                <div>
+                  <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
+                </div>
+              )}
+              <Divider appearance="strong" />
+            </div>
+          );
+        })}
+      </div>
     </Scenario>
   );
 };
