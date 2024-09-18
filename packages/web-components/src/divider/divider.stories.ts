@@ -101,10 +101,6 @@ export const DividerSvgVerticalTemplate: Story = {
   },
 };
 
-//
-// Attribute Stories
-//
-
 export const Content: Story = {
   render: renderComponent(html<StoryArgs<FluentDivider>>`
     <fluent-divider align-content="center">
@@ -158,9 +154,3 @@ export const Orientation: Story = {
     </div>
   `),
 };
-
-// //
-// // Extra stories - These stories are in addition to the story for each attribute.
-// //
-// export const DividerWithSvg = DividerSvgTemplate
-// export const VerticalDividerWithSvg = DividerSvgVerticalTemplate
