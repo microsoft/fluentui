@@ -1,15 +1,23 @@
-import { html, render, repeat, when } from '@microsoft/fast-element';
+import { css, html, render, repeat, when } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
 import type { Meta, Story, StoryArgs } from '../helpers.stories.js';
 import { renderComponent } from '../helpers.stories.js';
 import type { Divider as FluentDivider } from '../divider/divider.js';
 import type { Option as FluentOption } from '../option/option.js';
+import { typographyCaption1Styles } from '../styles/index.js';
+import { colorNeutralForeground2, colorNeutralForeground3, fontFamilyBase, fontSizeBase200, fontWeightRegular, lineHeightBase200 } from '../theme/design-tokens.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 import type { Dropdown as FluentDropdown } from './dropdown.js';
 
 const optionTemplate = html<StoryArgs<FluentOption>>`
-  <fluent-option value="${x => x.value}" ?disabled="${x => x.disabled}" ?selected="${x => x.selected}">
-    ${x => x.storyContent}
+  <fluent-option
+    value="${x => x.value}"
+    label="${x => x.label}"
+    ?disabled="${x => x.disabled}"
+    ?selected="${x => x.selected}"
+  >
+    ${x => x.storyContent ?? x.label}
+    ${when(x => x.description, html`<div class="description">${x => x.description}</div>`)}
   </fluent-option>
 `;
 
@@ -231,6 +239,62 @@ export const WithDividers: Story<FluentDropdown> = renderComponent(html<StoryArg
       {
         label: 'Fruits',
         storyOptions: storyOptionsWithDividers,
+        multiple: true,
+      },
+      storyFieldTemplate(),
+    )}
+  </div>
+`);
+
+const storyOptionsWithDescriptions = [
+  {
+    value: 'apple',
+    label: 'Apple',
+    description: 'An edible fruit produced by an apple tree. Apple trees are the most widely grown species in the genus Malus.',
+  },
+  {
+    value: 'banana',
+    label: 'Banana',
+    description: 'An elongated, edible fruit produced by several kinds of large herbaceous plants.',
+    disabled: true,
+  },
+  {
+    value: 'orange',
+    label: 'Orange',
+    description: 'The orange is the fruit of various citrus species in the family Rutaceae.',
+  },
+];
+export const WithOptionDescription: Story<FluentDropdown> = renderComponent(html<StoryArgs<FluentDropdown>>`
+  <div style="display: flex; flex-direction: column; gap: 2rem; align-items: start;">
+    <style>
+      @scope {
+        fluent-dropdown-list {
+          min-inline-size: 324px;
+        }
+
+        .description {
+          font-family: ${fontFamilyBase};
+          font-size: ${fontSizeBase200};
+          line-height: ${lineHeightBase200};
+          font-weight: ${fontWeightRegular};
+        }
+
+        .description:not(:disabled *) {
+          color: ${colorNeutralForeground3};
+        }
+      }
+    </style>
+    ${render(
+      {
+        label: 'Fruit',
+        storyOptions: storyOptionsWithDescriptions,
+      },
+      storyFieldTemplate(),
+    )}
+    ${render(
+      {
+        label: 'Fruits',
+        storyOptions: storyOptionsWithDescriptions,
         multiple: true,
       },
       storyFieldTemplate(),
