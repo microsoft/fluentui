@@ -134,11 +134,20 @@ export const Selector = () => {
       for (const key in definition) {
         if (key === 'extends') {
           const value = definition[key];
+          // const currentJSONObject = JSON.parse(JSON.stringify(definition));
+          const attributesOfCurrentJSON = definition.attributes;
           // find definition which is based one
           const baseDefinition = componentsDefinitions.current.find(def => def.name === value);
+          const attributesOfBaseDefinition = baseDefinition?.attributes;
+
           // create new object not delete name of base definition for others usage
           const temporaryObject = JSON.parse(JSON.stringify(baseDefinition));
           delete temporaryObject.name;
+
+          // merge attributes of current JSON with Base JSON
+          if (attributesOfCurrentJSON) {
+            temporaryObject['attributes'] = [...attributesOfBaseDefinition, ...attributesOfCurrentJSON];
+          }
           Object.assign(definition, temporaryObject);
         }
       }
@@ -287,9 +296,12 @@ export const Selector = () => {
       const matching = [];
       selectedDecisions.current.forEach(decision => {
         console.log(`Decision: ${decision}`);
-        if (keysInDefinitions.indexOf(decision) >= 0) {
-          matching.push('matched');
-        }
+        console.log(`Definition: ${definition.name}`);
+        console.log(`Definition: ${definition.attributes}`);
+        definition.attributes.includes(decision) ? matching.push('matched') : null;
+        // if (keysInDefinitions.indexOf(decision) >= 0) {
+        //   matching.push('matched');
+        // }
       });
 
       if (selectedDecisions.current.length === matching.length) {
@@ -322,7 +334,6 @@ export const Selector = () => {
               if (data.checked) {
                 setSelectedComponents([...selectedComponents, name]);
               } else {
-                removeFromArray(selectedComponents, name);
                 setSelectedComponents(selectedComponents.filter(component => component !== name));
               }
             }}
@@ -359,7 +370,7 @@ export const Selector = () => {
       ----------- old accordion will be removed----------------
       <Accordion multiple defaultOpenItems="uiBehavior">
         <AccordionItem value="uiBehavior">
-          <AccordionHeader as="h2">How the desired UI behaves?</AccordionHeader>
+          <AccordionHeader as="h3">How the desired UI behaves?</AccordionHeader>
           <AccordionPanel>
             <Label id="interactivity"> Interactivity </Label>
             <RadioGroup
@@ -483,7 +494,7 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="keyboardNavigation">
-          <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
+          <AccordionHeader as="h3">What do you expect from keyboard navigation?</AccordionHeader>
           <AccordionPanel>
             {decisionState.uiBehavior.interaction === 'interactive' ? (
               <>
@@ -508,7 +519,7 @@ export const Selector = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="screenReader">
-          <AccordionHeader as="h2">What do you expect from screen reader behavior?</AccordionHeader>
+          <AccordionHeader as="h3">What do you expect from screen reader behavior?</AccordionHeader>
           <AccordionPanel>
             <Checkbox
               className={classes.thirdLevel}
