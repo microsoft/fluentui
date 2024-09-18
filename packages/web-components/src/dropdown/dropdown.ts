@@ -1,6 +1,6 @@
 import { attr, Observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
-import { getLanguage } from '../utils/language.js'; 
+import { getLanguage } from '../utils/language.js';
 import { AbstractCombobox } from '../patterns/abstract-combobox.js';
 import { DropdownAppearance, DropdownSize } from './dropdown.options.js';
 

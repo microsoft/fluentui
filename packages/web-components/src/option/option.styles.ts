@@ -24,6 +24,7 @@ import {
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { display } from '../utils/display.js';
 
 const slottedCheckedIndicator = css.partial`slot[name='checked-indicator'], ::slotted([slot='checked-indicator'])`;
@@ -37,12 +38,19 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    --border-color: ${colorTransparentStroke};
+    --background-color: ${colorNeutralBackground1};
+    --color: ${colorNeutralForeground2};
+    --multiple-selected-indicator-border-color: transparent;
+    --multiple-selected-indicator-background-color: transparent;
+    --multiple-selected-indicator-fill: transparent;
+
     -webkit-tap-highlight-color: transparent;
-    background-color: ${colorNeutralBackground1};
+    background-color: var(--background-color);
     align-items: center;
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+    border: ${strokeWidthThick} solid var(--border-color);
     border-radius: ${borderRadiusMedium};
-    color: ${colorNeutralForeground2};
+    color: var(--color);
     cursor: pointer;
     gap: ${spacingHorizontalXS};
     ${typographyBody1Styles}
@@ -51,24 +59,36 @@ export const styles = css`
   }
 
   :host(:hover) {
-    background-color: ${colorNeutralBackground1Hover};
-    color: ${colorNeutralForeground2Hover};
+    --background-color: ${colorNeutralBackground1Hover};
+    --color: ${colorNeutralForeground2Hover};
   }
 
   :host(:active) {
-    background-color: ${colorNeutralBackground1Pressed};
-    color: ${colorNeutralForeground2Pressed};
+    --background-color: ${colorNeutralBackground1Pressed};
+    --color: ${colorNeutralForeground2Pressed};
   }
 
   :host(${ariaActiveState}),
   :host(:focus-visible) {
-    border-color: ${colorStrokeFocus2};
+    --border-color: ${colorStrokeFocus2};
   }
 
   :host(:disabled) {
-    background-color: ${colorNeutralBackground1};
-    color: ${colorNeutralForegroundDisabled};
+    --background-color: ${colorNeutralBackground1};
+    --color: ${colorNeutralForegroundDisabled};
+
     cursor: default;
+  }
+
+  :host(${multipleState}) {
+    --multiple-selected-indicator-border-color: ${colorNeutralStrokeAccessible};
+    --multiple-selected-indicator-background-color: ${colorNeutralBackground1};
+  }
+
+  :host(${multipleState}${selectedState}) {
+    --multiple-selected-indicator-border-color: ${colorCompoundBrandStroke};
+    --multiple-selected-indicator-background-color: ${colorCompoundBrandBackground};
+    --multiple-selected-indicator-fill: ${colorNeutralForegroundInverted};
   }
 
   .content {
@@ -76,15 +96,28 @@ export const styles = css`
     padding-inline: ${spacingHorizontalXXS};
   }
 
+  .checkmark-16-filled,
+  .checkmark-12-regular,
+  ${slottedCheckedIndicator} {
+    aspect-ratio: 1;
+    flex: 0 0 auto;
+    inline-size: 16px;
+  }
+
+  .checkmark-12-regular {
+    background-color: var(--multiple-selected-indicator-background-color);
+    border: ${strokeWidthThin} solid var(--multiple-selected-indicator-border-color);
+    border-radius: ${borderRadiusSmall};
+    box-sizing: border-box;
+    fill: var(--multiple-selected-indicator-fill);
+    position: relative;
+  }
+
   .checkmark-16-filled {
     fill: currentColor;
-    width: 16px;
   }
 
   ${slottedCheckedIndicator} {
-    aspect-ratio: 1;
-    width: 16px;
-    flex: 0 0 auto;
     visibility: hidden;
   }
 
@@ -98,19 +131,47 @@ export const styles = css`
   }
 
   :host(${multipleState}) .checkmark-12-regular {
-    fill: transparent;
-    background-color: ${colorNeutralBackground1};
-    border-radius: ${borderRadiusSmall};
-    border: ${strokeWidthThin} solid ${colorNeutralStrokeAccessible};
-    box-sizing: border-box;
-    position: relative;
     visibility: visible;
-    width: 16px;
   }
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      --border-color: Canvas;
+    }
 
-  :host(${multipleState}${selectedState}) .checkmark-12-regular {
-    background-color: ${colorCompoundBrandBackground};
-    border-color: ${colorCompoundBrandStroke};
-    fill: ${colorNeutralForegroundInverted};
-  }
-`;
+    :host(${multipleState}) {
+      --multiple-selected-indicator-background-color: Field;
+    }
+
+    :host(${multipleState}${selectedState}) {
+      --multiple-selected-indicator-border-color: Highlight;
+      --multiple-selected-indicator-background-color: Highlight;
+      --multiple-selected-indicator-fill: HighlightText;
+    }
+
+    :host(:hover) {
+      --color: HighlightText;
+      --background-color: Highlight;
+    }
+
+    :host(${multipleState}:hover) {
+      --multiple-selected-indicator-background-color: transparent;
+      --multiple-selected-indicator-border-color: HighlightText;
+    }
+
+    :host(${ariaActiveState}),
+    :host(:focus-visible) {
+      --border-color: Highlight;
+      --multiple-selected-indicator-border-color: FieldText;
+    }
+
+    :host(:disabled) {
+      --background-color: Field;
+      --color: GrayText;
+    }
+
+    :host(${multipleState}:disabled) {
+      --multiple-selected-indicator-border-color: GrayText;
+    }
+  `),
+);

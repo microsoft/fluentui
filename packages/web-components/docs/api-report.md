@@ -600,6 +600,8 @@ export class BaseDivider extends FASTElement {
 //
 // @public
 export class BaseDropdown extends AbstractCombobox {
+    // @internal (undocumented)
+    displayContent(): string;
 }
 
 // Warning: (ae-forgotten-export) The symbol "AbstractListbox" needs to be exported by the entry point index.d.ts
@@ -648,18 +650,30 @@ export class BaseOption extends BaseCheckbox {
     constructor();
     get active(): boolean;
     set active(next: boolean);
+    // (undocumented)
+    clickHandler(e: MouseEvent): boolean | void;
+    // @internal (undocumented)
+    connectedCallback(): void;
     // @internal
     formResetCallback(): void;
     // @override
     id: string;
-    // @internal @override (undocumented)
-    protected initialCheckedChanged(prev: boolean | undefined, next: boolean | undefined): void;
+    // @override
+    initialChecked?: boolean;
+    initialLabel?: string;
+    // (undocumented)
+    get label(): string;
+    set label(next: string);
     // @internal
     protected mode: CheckboxMode;
     get selected(): boolean;
     set selected(next: boolean);
     // @internal
     protected setAriaProperties(value?: boolean): void;
+    // @internal
+    protected setName(): void;
+    get text(): string;
+    set text(next: string);
 }
 
 // @public
@@ -757,7 +771,6 @@ export class BaseTextArea extends FASTElement {
     protected disabledChanged(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
-    displayShadow: boolean;
     // @internal
     elementInternals: ElementInternals;
     get form(): HTMLFormElement | null;
@@ -2443,6 +2456,13 @@ export class Dropdown extends BaseDropdown {
     block: boolean;
     // (undocumented)
     protected blockChanged(): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
+    // @internal (undocumented)
+    disconnectedCallback(): void;
+    displayShadow: boolean;
+    // @internal (undocumented)
+    handleChange(_: unknown, propertyName: string): void;
     // Warning: (ae-forgotten-export) The symbol "DropdownSize" needs to be exported by the entry point index.d.ts
     size: DropdownSize;
     // (undocumented)
@@ -3894,6 +3914,7 @@ export class TextArea extends BaseTextArea {
     connectedCallback(): void;
     // @internal (undocumented)
     disconnectedCallback(): void;
+    displayShadow: boolean;
     // @internal (undocumented)
     handleChange(_: any, propertyName: string): void;
     // (undocumented)

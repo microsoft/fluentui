@@ -9,6 +9,7 @@ import {
   spacingVerticalXXS,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 
 /**
  * Styles of the {@link (DropdownList:class)} component.
@@ -36,4 +37,10 @@ export const styles = css`
     padding: ${spacingHorizontalXS} ${spacingVerticalXS};
     position: absolute;
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      --border-color: FieldText;
+    }
+  `),
+);

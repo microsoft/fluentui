@@ -42,6 +42,7 @@ import {
   strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
+import { forcedColorsStylesheetBehavior } from '../utils/behaviors/match-media-stylesheet-behavior.js';
 import { typographyBody1Styles, typographyBody2Styles, typographyCaption1Styles } from '../styles/index.js';
 
 /**
@@ -226,4 +227,33 @@ export const styles = css`
     fill: var(--trigger-indicator-color);
     inline-size: var(--trigger-indicator-icon-inilne-size);
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host {
+      --border-color: FieldText;
+      --border-block-end-color: FieldText;
+      --focus-indicator-color: Highlight;
+      --placeholder-color: FieldText;
+      --trigger-indicator-color: FieldText;
+    }
+
+    :host(:hover),
+    :host(:active),
+    :host(:focus-within) {
+      --border-color: Highlight;
+      --border-block-end-color: Highlight;
+    }
+
+    :host(${transparentState}) {
+      --border-color: Canvas;
+    }
+
+    :host(:disabled) {
+      --color: GrayText;
+      --border-color: GrayText;
+      --border-block-end-color: GrayText;
+      --placeholder-color: GrayText;
+      --trigger-indicator-color: GrayText;
+    }
+  `),
+);
