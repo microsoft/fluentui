@@ -22,11 +22,6 @@ export type CarouselAutoplayAriaLabelFunction = (autoplay: boolean) => string;
 export type CarouselAutoplayButtonProps = ToggleButtonProps &
   ComponentProps<CarouselAutoplayButtonSlots> & {
     /**
-     * Override aria label property to provide state
-     */
-    autoplayAriaLabel?: CarouselAutoplayAriaLabelFunction;
-
-    /**
      * Callback that informs the user when internal autoplay value has changed
      */
     onCheckedChange?: EventHandler<CarouselAutoplayChangeData>;
