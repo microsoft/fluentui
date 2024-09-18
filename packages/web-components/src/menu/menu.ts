@@ -161,7 +161,6 @@ export class Menu extends FASTElement {
    * @public
    */
   public toggleMenu = () => {
-    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(!this._open);
   };
 
@@ -178,7 +177,6 @@ export class Menu extends FASTElement {
     ) {
       return;
     }
-    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(false);
 
     if (this.closeOnScroll) {
@@ -191,7 +189,6 @@ export class Menu extends FASTElement {
    * @public
    */
   public openMenu = (e?: Event) => {
-    // @ts-expect-error - Baseline 2024
     this._menuList?.togglePopover(true);
 
     if (e && this.openOnContext) {
