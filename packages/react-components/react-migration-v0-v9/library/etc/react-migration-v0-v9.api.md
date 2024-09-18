@@ -79,10 +79,10 @@ export interface AttachmentIconProps extends React_2.HTMLAttributes<HTMLSpanElem
 }
 
 // @public (undocumented)
-export const attachmentProgressBarClassName: string;
+export const attachmentProgressBarClassName = "fui-Attachment__progress";
 
 // @public (undocumented)
-export const attachmentProgressContainerClassName: string;
+export const attachmentProgressContainerClassName = "fui-Attachment__progress-container";
 
 // @public (undocumented)
 export interface AttachmentProps extends React_2.HTMLAttributes<HTMLElement> {
