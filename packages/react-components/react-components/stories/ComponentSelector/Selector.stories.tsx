@@ -472,11 +472,8 @@ export const Selector = () => {
     radioItems.forEach(item => {
       console.log(`STATE: Radio items: ${item.value}`);
     });
-    // const [value, setValue] = React.useState('');
 
     const allQuestions = getAllQuestions(selectedComponents, questions);
-
-    const [radioItem1, setRadioItem1] = React.useState('');
 
     return (
       <>
