@@ -382,6 +382,26 @@ export const renderNavSubItem_unstable: (state: NavSubItemState) => JSX.Element;
 export const renderNavSubItemGroup_unstable: (state: NavSubItemGroupState) => JSX.Element | null;
 
 // @public
+export const renderSplitNavItem_unstable: (state: SplitNavItemState) => JSX.Element;
+
+// @public
+export const SplitNavItem: ForwardRefComponent<SplitNavItemProps>;
+
+// @public (undocumented)
+export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots>;
+
+// @public
+export type SplitNavItemProps = ComponentProps<SplitNavItemSlots> & {};
+
+// @public (undocumented)
+export type SplitNavItemSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type SplitNavItemState = ComponentState<SplitNavItemSlots>;
+
+// @public
 export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => AppItemState;
 
 // @public
@@ -470,6 +490,12 @@ export const useNavSubItemGroupStyles_unstable: (state: NavSubItemGroupState) =>
 
 // @public
 export const useNavSubItemStyles_unstable: (state: NavSubItemState) => NavSubItemState;
+
+// @public
+export const useSplitNavItem_unstable: (props: SplitNavItemProps, ref: React_2.Ref<HTMLDivElement>) => SplitNavItemState;
+
+// @public
+export const useSplitNavItemStyles_unstable: (state: SplitNavItemState) => SplitNavItemState;
 
 // (No @packageDocumentation comment for this package)
 
