@@ -4,3 +4,4 @@ to take immediate action, but should persist until the user performs one of the 
 
 > ⚠️ For `aria-live` announcements to work correctly you should configure you application with a
 > <a href="https://react.fluentui.dev/?path=/docs/utilities-aria-live-arialiveannouncer--docs">AriaLiveAnnouncer</a>
+> towards the top of the React tree.
