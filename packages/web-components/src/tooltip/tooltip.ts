@@ -2,32 +2,35 @@ import { attr, FASTElement } from '@microsoft/fast-element';
 
 /**
  * A Tooltip Custom HTML Element.
+ * Based on ARIA APG Tooltip Pattern {@link https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ }
  * @public
  */
 export class Tooltip extends FASTElement {
+  /**
+   * The attached element internals
+   */
   public elementInternals = this.attachInternals();
 
   /**
    * Set the delay for the tooltip
    */
   @attr
-  public delay: number = 250;
+  public delay?: number;
+
+  /**
+   * The default delay for the tooltip
+   * @internal
+   */
+  private defaultDelay: number = 250;
 
   /**
    * Set the positioning of the tooltip
    */
   @attr
-  public positioning: string = 'above';
-
-  /**
-   * Reference to the tooltip element
-   * @internal
-   */
-  public tooltip!: HTMLElement;
+  public positioning?: string;
 
   /**
    * The id of the anchor element for the tooltip
-   * @public
    */
   @attr
   public anchor: string = '';
@@ -76,9 +79,9 @@ export class Tooltip extends FASTElement {
    * @param delay Number of milliseconds to delay showing the tooltip
    * @internal
    */
-  public showTooltip(delay: number = 0): void {
+  public showTooltip(delay: number = this.defaultDelay): void {
     setTimeout(() => {
-      this.tooltip.setAttribute('aria-hidden', 'false');
+      this.setAttribute('aria-hidden', 'false');
       // @ts-expect-error Baseline 2024
       this.showPopover();
     }, delay);
@@ -89,9 +92,15 @@ export class Tooltip extends FASTElement {
    * @param delay Number of milliseconds to delay hiding the tooltip
    * @internal
    */
-  public hideTooltip(delay: number = 0): void {
+  public hideTooltip(delay: number = this.defaultDelay): void {
     setTimeout(() => {
-      this.tooltip.setAttribute('aria-hidden', 'true');
+      // Detect if the tooltip or anchor element is still hovered and enqueue another hide
+      if (this.matches(':hover') || this.anchorElement?.matches(':hover')) {
+        this.hideTooltip(delay);
+        return;
+      }
+
+      this.setAttribute('aria-hidden', 'true');
       // @ts-expect-error Baseline 2024
       this.hidePopover();
     }, delay);
@@ -108,9 +117,9 @@ export class Tooltip extends FASTElement {
   /**
    * Show the tooltip on focus
    */
-  public handleFocus = () => this.showTooltip();
+  public handleFocus = () => this.showTooltip(0);
   /**
    * Hide the tooltip on blur
    */
-  public handleBlur = () => this.hideTooltip();
+  public handleBlur = () => this.hideTooltip(0);
 }

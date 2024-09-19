@@ -1,7 +1,7 @@
 import type { ValuesOf } from '../utils/typings.js';
 
 /**
- * An example Tooltip option
+ * The TooltipPositioning options and their corresponding CSS values
  * @public
  */
 export const TooltipPositioning = {
@@ -20,7 +20,7 @@ export const TooltipPositioning = {
 };
 
 /**
- * An example TooltipPosition type
+ * The TooltipPositioning type
  * @public
  */
 export type TooltipPositioning = ValuesOf<typeof TooltipPositioning>;

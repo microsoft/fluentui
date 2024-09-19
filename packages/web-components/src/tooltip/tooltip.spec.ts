@@ -14,10 +14,21 @@ test.describe('Tooltip', () => {
   });
 
   /**
-   * WAI ARIA rules
+   * ARIA APG Tooltip Pattern {@link https://www.w3.org/WAI/ARIA/apg/patterns/tooltip/ }
+   * ESC dismisses the tooltip.
    * The element that serves as the tooltip container has role tooltip.
    * The element that triggers the tooltip references the tooltip element with aria-describedby.
    */
+  test('escape key should hide the tooltip', async ({ page }) => {
+    const element = page.locator('fluent-tooltip');
+    const button = page.locator('button');
+
+    await button.focus();
+    await expect(element).toBeVisible();
+    await page.keyboard.press('Escape');
+    await expect(element).toBeHidden();
+  });
+
   test('should have the role set to `tooltip`', async ({ page }) => {
     const element = page.locator('fluent-tooltip');
     await expect(element).toHaveJSProperty('elementInternals.role', 'tooltip');

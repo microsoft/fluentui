@@ -22,7 +22,6 @@ export default {
   render: renderComponent(storyTemplate()),
   args: {
     positioning: 'above',
-    delay: 250,
   },
   argTypes: {
     anchor: {
@@ -36,7 +35,7 @@ export default {
     },
     delay: {
       control: 'number',
-      description: 'Number of milliseconds to delay the tooltip from showing/hiding',
+      description: 'Number of milliseconds to delay the tooltip from showing/hiding on hover. Default is 250ms',
       table: { category: 'attributes', type: { summary: 'number' } },
     },
     positioning: {
