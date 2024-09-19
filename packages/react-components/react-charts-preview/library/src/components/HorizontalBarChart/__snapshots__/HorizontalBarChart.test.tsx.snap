@@ -17,10 +17,23 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          one
+          Array [
+            <span
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onPointerEnter={[Function]}
+              onPointerLeave={[Function]}
+              role="text"
+            >
+              one
+            </span>,
+            <span
+              hidden={true}
+            />,
+          ]
         </div>
         <div
           className="fui-hbc__chartTitleRight"
@@ -86,10 +99,23 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          two
+          Array [
+            <span
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onPointerEnter={[Function]}
+              onPointerLeave={[Function]}
+              role="text"
+            >
+              two
+            </span>,
+            <span
+              hidden={true}
+            />,
+          ]
         </div>
         <div
           className="fui-hbc__chartTitleRight"
@@ -143,6 +169,9 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
       </svg>
     </div>
   </div>
+  <div
+    id="callout36"
+  />
 </div>
 `;
 
@@ -163,10 +192,23 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          one
+          Array [
+            <span
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onPointerEnter={[Function]}
+              onPointerLeave={[Function]}
+              role="text"
+            >
+              one
+            </span>,
+            <span
+              hidden={true}
+            />,
+          ]
         </div>
         <div
           className="fui-hbc__chartTitleRight"
@@ -232,10 +274,23 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          two
+          Array [
+            <span
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onFocus={[Function]}
+              onPointerEnter={[Function]}
+              onPointerLeave={[Function]}
+              role="text"
+            >
+              two
+            </span>,
+            <span
+              hidden={true}
+            />,
+          ]
         </div>
         <div
           className="fui-hbc__chartTitleRight"
@@ -289,6 +344,9 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
       </svg>
     </div>
   </div>
+  <div
+    id="callout40"
+  />
 </div>
 `;
 
@@ -307,10 +365,21 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          one
+          <span
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onPointerEnter={[Function]}
+            onPointerLeave={[Function]}
+            role="text"
+          >
+            one
+          </span>
+          <span
+            hidden={true}
+          />
         </div>
       </div>
       <svg
@@ -352,10 +421,21 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          two
+          <span
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onPointerEnter={[Function]}
+            onPointerLeave={[Function]}
+            role="text"
+          >
+            two
+          </span>
+          <span
+            hidden={true}
+          />
         </div>
       </div>
       <svg
@@ -387,6 +467,9 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
       </svg>
     </div>
   </div>
+  <div
+    id="callout8"
+  />
 </div>
 `;
 
@@ -405,10 +488,21 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          one
+          <span
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onPointerEnter={[Function]}
+            onPointerLeave={[Function]}
+            role="text"
+          >
+            one
+          </span>
+          <span
+            hidden={true}
+          />
         </div>
       </div>
       <svg
@@ -459,10 +553,21 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
       >
         <div
           className="fui-hbc__chartTitleLeft"
-          data-is-focusable={true}
-          role="text"
+          tabIndex={0}
         >
-          two
+          <span
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onPointerEnter={[Function]}
+            onPointerLeave={[Function]}
+            role="text"
+          >
+            two
+          </span>
+          <span
+            hidden={true}
+          />
         </div>
       </div>
       <svg
@@ -503,6 +608,9 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
       </svg>
     </div>
   </div>
+  <div
+    id="callout4"
+  />
 </div>
 `;
 

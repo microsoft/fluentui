@@ -1,6 +1,5 @@
 jest.mock('react-dom');
 import * as React from 'react';
-import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { ILineChartPoints, ILineChartProps, LineChart } from './index';
 import { ICustomizedCalloutData } from '../../index';
@@ -10,15 +9,6 @@ import { act } from 'react-dom/test-utils';
 // Wrapper of the LineChart to be tested.
 let wrapper: ReactWrapper<ILineChartProps> | undefined;
 const originalRAF = window.requestAnimationFrame;
-
-function sharedBeforeEach() {
-  resetIds();
-  jest.useFakeTimers();
-  Object.defineProperty(window, 'requestAnimationFrame', {
-    writable: true,
-    value: (callback: FrameRequestCallback) => callback(0),
-  });
-}
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -57,9 +47,6 @@ export const emptyChartPoints = {
 };
 
 describe('LineChart snapShot testing', () => {
-  beforeEach(() => {
-    resetIds();
-  });
   afterEach(() => {
     if (wrapper) {
       wrapper.unmount();
@@ -180,7 +167,6 @@ describe('LineChart snapShot testing', () => {
 });
 
 describe('LineChart - basic props', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should not mount legend when hideLegend true ', () => {
@@ -220,9 +206,6 @@ describe('LineChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-  beforeEach(() => {
-    resetIds();
-  });
 
   it('No prop changes', () => {
     const props = {
@@ -257,13 +240,6 @@ describe('Render calling with respective to props', () => {
 
 describe('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
-
-  beforeEach(() => {
-    sharedBeforeEach();
-
-    root = document.createElement('div');
-    document.body.appendChild(root);
-  });
 
   afterEach(() => {
     sharedAfterEach();
@@ -346,9 +322,6 @@ describe('LineChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  beforeEach(() => {
-    resetIds();
-  });
 
   it('No empty chart aria label div rendered', () => {
     act(() => {

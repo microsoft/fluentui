@@ -2,10 +2,8 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
 import { act, render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { DefaultPalette, resetIds } from '@fluentui/react';
 import { VerticalBarChart } from './VerticalBarChart';
-import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { FluentProvider } from '@fluentui/react-provider';
 import {
   forEachTimezone,
   getByClass,
@@ -39,13 +37,6 @@ beforeAll(() => {
   };
 });
 
-beforeEach(() => {
-  // When adding a new snapshot test, it's observed that other snapshots may fail due to
-  // components sharing a common global counter for IDs. To prevent this from happening,
-  // we should reset the IDs before each test execution.
-  resetIds();
-});
-
 const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
@@ -74,7 +65,7 @@ const pointsWithLine = [
     x: 0,
     y: 10000,
     legend: 'Oranges',
-    color: DefaultPalette.accent,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '10%',
     lineData: {
@@ -86,7 +77,7 @@ const pointsWithLine = [
     x: 10000,
     y: 50000,
     legend: 'Dogs',
-    color: DefaultPalette.blueDark,
+    color: '#002050',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '20%',
     lineData: {
@@ -97,7 +88,7 @@ const pointsWithLine = [
     x: 25000,
     y: 30000,
     legend: 'Apples',
-    color: DefaultPalette.blueMid,
+    color: '#00188f',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '37%',
     lineData: {
@@ -109,7 +100,7 @@ const pointsWithLine = [
     x: 40000,
     y: 13000,
     legend: 'Bananas',
-    color: DefaultPalette.blueLight,
+    color: '#00bcf2',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '88%',
   },
@@ -117,7 +108,7 @@ const pointsWithLine = [
     x: 52000,
     y: 43000,
     legend: 'Giraffes',
-    color: DefaultPalette.blue,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '71%',
     lineData: {
@@ -128,7 +119,7 @@ const pointsWithLine = [
     x: 68000,
     y: 30000,
     legend: 'Cats',
-    color: DefaultPalette.blueDark,
+    color: '#002050',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '40%',
     lineData: {
@@ -139,7 +130,7 @@ const pointsWithLine = [
     x: 80000,
     y: 20000,
     legend: 'Elephants',
-    color: DefaultPalette.blue,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '87%',
     lineData: {
@@ -150,7 +141,7 @@ const pointsWithLine = [
     x: 92000,
     y: 45000,
     legend: 'Monkeys',
-    color: DefaultPalette.blueLight,
+    color: '#00bcf2',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '33%',
     lineData: {
@@ -165,7 +156,7 @@ const datePointsWithLine = [
     x: new Date('2018/01/01'),
     y: 10000,
     legend: 'Oranges',
-    color: DefaultPalette.accent,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '10%',
     lineData: {
@@ -177,7 +168,7 @@ const datePointsWithLine = [
     x: new Date('2018/03/01'),
     y: 50000,
     legend: 'Dogs',
-    color: DefaultPalette.blueDark,
+    color: '#002050',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '20%',
     lineData: {
@@ -188,7 +179,7 @@ const datePointsWithLine = [
     x: new Date('2018/05/01'),
     y: 30000,
     legend: 'Apples',
-    color: DefaultPalette.blueMid,
+    color: '#00188f',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '37%',
     lineData: {
@@ -200,7 +191,7 @@ const datePointsWithLine = [
     x: new Date('2018/07/01'),
     y: 13000,
     legend: 'Bananas',
-    color: DefaultPalette.blueLight,
+    color: '#00bcf2',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '88%',
   },
@@ -208,7 +199,7 @@ const datePointsWithLine = [
     x: new Date('2018/09/01'),
     y: 43000,
     legend: 'Giraffes',
-    color: DefaultPalette.blue,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '71%',
     lineData: {
@@ -219,7 +210,7 @@ const datePointsWithLine = [
     x: new Date('2018/11/01'),
     y: 30000,
     legend: 'Cats',
-    color: DefaultPalette.blueDark,
+    color: '#002050',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '40%',
     lineData: {
@@ -230,7 +221,7 @@ const datePointsWithLine = [
     x: new Date('2019/02/01'),
     y: 20000,
     legend: 'Elephants',
-    color: DefaultPalette.blue,
+    color: '#0078d4',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '87%',
     lineData: {
@@ -241,7 +232,7 @@ const datePointsWithLine = [
     x: new Date('2019/04/01'),
     y: 45000,
     legend: 'Monkeys',
-    color: DefaultPalette.blueLight,
+    color: '#00bcf2',
     xAxisCalloutData: '2020/04/30',
     yAxisCalloutData: '33%',
     lineData: {
@@ -293,7 +284,6 @@ const simpleDatePoints = [
 ];
 
 describe('Vertical bar chart rendering', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -397,7 +387,6 @@ describe('Vertical bar chart rendering', () => {
 });
 
 describe('Vertical bar chart - Subcomponent bar', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -470,7 +459,6 @@ describe('Vertical bar chart - Subcomponent bar', () => {
 });
 
 describe('Vertical bar chart - Subcomponent line', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait('Should render line along with bars', VerticalBarChart, { data: pointsWithLine }, container => {
@@ -522,7 +510,6 @@ describe('Vertical bar chart - Subcomponent line', () => {
 });
 
 describe('Vertical bar chart - Subcomponent Legends', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithoutWait(
@@ -614,7 +601,6 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
 });
 
 describe('Vertical bar chart - Subcomponent callout', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should call the handler on mouse over bar and on mouse leave from bar', async () => {
@@ -703,7 +689,6 @@ describe('Vertical bar chart - Subcomponent callout', () => {
 });
 
 describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -732,7 +717,6 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
 });
 
 describe('Screen resolution', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testScreenResolutionChanges(() => {
@@ -743,14 +727,13 @@ describe('Screen resolution', () => {
 });
 
 describe('Theme Change', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
+      <FluentProvider theme={{ colorNeutralBackground1: '#ccc' }}>
         <VerticalBarChart culture={window.navigator.language} data={chartPointsVBC} />
-      </ThemeProvider>,
+      </FluentProvider>,
     );
     // Assert
     expect(container).toMatchSnapshot();
@@ -758,7 +741,6 @@ describe('Theme Change', () => {
 });
 
 describe('Vertical bar chart re-rendering', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should re-render the vertical bar chart with data', async () => {
@@ -778,7 +760,6 @@ describe('Vertical bar chart re-rendering', () => {
 });
 
 describe('VerticalBarChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   testWithWait(
@@ -817,7 +798,6 @@ describe('VerticalBarChart - mouse events', () => {
 });
 
 describe('VerticalBarChart - accessibility', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   test('Should pass accessibility tests', async () => {
