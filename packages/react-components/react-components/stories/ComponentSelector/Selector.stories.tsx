@@ -47,7 +47,6 @@ import {
   TreeBaseDef,
   MenuButtonDef,
   TabListDef,
-  Button,
 } from './components-definitions/index';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -540,7 +539,7 @@ export const Selector = () => {
           shape="circular"
           onClick={() => {
             setBehavior5(!behavior5);
-            updateDecisionsForCheckbox('multipleActions', !behavior5);
+            updateDecisionsForCheckbox('moreActions', !behavior5);
           }}
         >
           multiple actions
