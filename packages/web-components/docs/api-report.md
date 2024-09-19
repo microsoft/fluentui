@@ -4035,10 +4035,9 @@ export class Tooltip extends FASTElement {
     anchor: string;
     // (undocumented)
     connectedCallback(): void;
-    delay: number;
+    delay?: number;
     // (undocumented)
     disconnectedCallback(): void;
-    // (undocumented)
     elementInternals: ElementInternals;
     handleBlur: () => void;
     handleFocus: () => void;
@@ -4049,8 +4048,6 @@ export class Tooltip extends FASTElement {
     positioning: string;
     // @internal
     showTooltip(delay?: number): void;
-    // @internal
-    tooltip: HTMLElement;
 }
 
 // @public
