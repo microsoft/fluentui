@@ -32,17 +32,33 @@
     ]
   },
   {
-    "id": "isYesOrNo",
-    "question": "Is toggle or choice possible between yes or no?",
+    "id": "canSelectMultipleChoices",
+    "question": "Does provide possibility to select multiple choices?",
     "selectText": "Question 3",
     "shortSelectText": "Q3:",
     "answers": [
       {
-        "value": "yesOrNo",
+        "value": "multipleChoices",
         "text": "Yes"
       },
       {
-        "value": "notYesOrNo",
+        "value": "singleChoice",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "isOnOrOff",
+    "question": "Does select between on/off or enabled/disabled states?",
+    "selectText": "Question 3",
+    "shortSelectText": "Q3:",
+    "answers": [
+      {
+        "value": "onOrOff",
+        "text": "Yes"
+      },
+      {
+        "value": "notOnOrOff",
         "text": "No"
       }
     ]

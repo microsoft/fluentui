@@ -4,5 +4,5 @@
   "folder": "Menu",
   "story": "Checkbox Items",
   "extends": "MenuBase",
-  "attributes": ["yesOrNo"]
+  "attributes": ["multipleChoices", "notOnOrOff", "toggle"]
 }

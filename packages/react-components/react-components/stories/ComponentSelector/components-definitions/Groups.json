@@ -4,7 +4,7 @@
     "questions": ["hasMoreActions", "doesNavigateToPage"]
   },
   {
-    "tags": ["Checkbox", "Radio", "ToggleButton", "MenuItemCheckbox", "MenuItemRadio"],
+    "tags": ["Checkbox", "Radio", "ToggleButton", "Switch", "MenuItemCheckbox", "MenuItemRadio"],
     "questions": ["isYesOrNo", "isInsideMenu"]
   }
 ]

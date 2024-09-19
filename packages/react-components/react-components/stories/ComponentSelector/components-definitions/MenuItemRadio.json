@@ -4,5 +4,5 @@
   "folder": "Menu",
   "story": "Radio Items",
   "extends": "MenuBase",
-  "attributes": ["notYesOrNo"]
+  "attributes": ["singleChoice", "notOnOrOff"]
 }

@@ -3,5 +3,5 @@
   "component": "ToggleButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["singleAction", "yesOrNo"]
+  "attributes": ["singleAction", "multipleChoices", "onOrOff", "toggle"]
 }
