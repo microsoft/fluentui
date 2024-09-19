@@ -420,20 +420,20 @@ export const Selector = () => {
     </>
   ));
 
-  const QuestionSelect = () => {
-    const selectId = useId();
+  // const QuestionSelect = () => {
+  //   const selectId = useId();
 
-    return (
-      <>
-        <label htmlFor={selectId}></label>
-        <Select defaultValue={questions[0].selectText} id={selectId}>
-          {questions.map(item => (
-            <option>{item.selectText}</option>
-          ))}
-        </Select>
-      </>
-    );
-  };
+  //   return (
+  //     <>
+  //       <label htmlFor={selectId}></label>
+  //       <Select defaultValue={questions[0].selectText} id={selectId}>
+  //         {questions.map(item => (
+  //           <option>{item.selectText}</option>
+  //         ))}
+  //       </Select>
+  //     </>
+  //   );
+  // };
 
   const Questionnaire = () => {
     return (
@@ -445,7 +445,7 @@ export const Selector = () => {
   };
 
   const QuestionRadioGroup = () => {
-    const [value, setValue] = React.useState('');
+    // const [value, setValue] = React.useState('');
 
     const allQuestions = getAllQuestions(selectedComponents, questions);
 
@@ -453,13 +453,13 @@ export const Selector = () => {
       <>
         {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
         {allQuestions.length > 0 &&
-          allQuestions.map(item => (
+          allQuestions.map((item, index) => (
             <div className={classes.questionsWrapper}>
               <Field className={classes.questionsField}>
-                <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
+                <RadioGroup>
                   <div className={classes.questionContainer}>
                     <div className={classes.questionLeftSide}>
-                      <span className={classes.questionsLabel}>{item.shortSelectText}</span>
+                      <span className={classes.questionsLabel}>{`Q${index + 1}`}</span>
                     </div>
                     <div className={classes.questionRightSide}>
                       <span className={classes.questionsText}>{item.question}</span>
