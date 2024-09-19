@@ -28,7 +28,7 @@ const __internal = {
     react: shouldRegister
       ? {
           files: ['**/src/**/*.{ts,tsx}'],
-          excludedFiles: ['*.{test,spec,cy}.{ts,tsx}'],
+          excludedFiles: ['*.{test,spec,cy,stories}.{ts,tsx}'],
           rules: {
             '@nx/workspace-consistent-callback-type': 'error',
             '@nx/workspace-no-restricted-globals': restrictedGlobals.react,
