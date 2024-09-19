@@ -5,6 +5,10 @@
   },
   {
     "tags": ["Checkbox", "Radio", "ToggleButton", "Switch", "MenuItemCheckbox", "MenuItemRadio"],
-    "questions": ["isYesOrNo", "isInsideMenu"]
+    "questions": ["canSelectMultipleChoices", "isOnOrOff", "isInsideMenu"]
+  },
+  {
+    "tags": ["InfoLabel", "Tooltip"],
+    "questions": ["hasInteractiveContent", "doesAppearOnHover"]
   }
 ]

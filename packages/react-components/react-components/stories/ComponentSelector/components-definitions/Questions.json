@@ -33,7 +33,7 @@
   },
   {
     "id": "canSelectMultipleChoices",
-    "question": "Does provide possibility to select multiple choices?",
+    "question": "Does group of component provide possibility to select multiple choices?",
     "selectText": "Question 3",
     "shortSelectText": "Q3:",
     "answers": [
@@ -49,7 +49,7 @@
   },
   {
     "id": "isOnOrOff",
-    "question": "Does select between on/off or enabled/disabled states?",
+    "question": "Does component select between on/off or enabled/disabled states?",
     "selectText": "Question 3",
     "shortSelectText": "Q3:",
     "answers": [
@@ -75,6 +75,38 @@
       },
       {
         "value": "notInsideMenu",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "hasInteractiveContent",
+    "question": "Does it contain extensive text or interactive content, e.g., links or buttons?",
+    "selectText": "Question 4",
+    "shortSelectText": "Q4:",
+    "answers": [
+      {
+        "value": "interactiveContent",
+        "text": "Yes"
+      },
+      {
+        "value": "nonInteractiveContent",
+        "text": "No"
+      }
+    ]
+  },
+  {
+    "id": "doesAppearOnHover",
+    "question": "Does it appear on hover/keybord focus rather than on click/keyboard activation?",
+    "selectText": "Question 4",
+    "shortSelectText": "Q4:",
+    "answers": [
+      {
+        "value": "onHover",
+        "text": "Yes"
+      },
+      {
+        "value": "onClick",
         "text": "No"
       }
     ]
