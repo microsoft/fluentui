@@ -241,6 +241,11 @@ describe('Render calling with respective to props', () => {
 describe('LineChart - mouse events', () => {
   let root: HTMLDivElement | null;
 
+  beforeEach(() => {
+    root = document.createElement('div');
+    document.body.appendChild(root);
+  });
+
   afterEach(() => {
     sharedAfterEach();
 
