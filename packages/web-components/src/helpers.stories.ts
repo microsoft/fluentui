@@ -1,4 +1,4 @@
-import type { FASTElement, ViewTemplate } from '@microsoft/fast-element';
+import type { ElementViewTemplate, FASTElement, ViewTemplate } from '@microsoft/fast-element';
 import type { AnnotatedStoryFn, Args, ComponentAnnotations, Renderer, StoryAnnotations } from '@storybook/csf';
 
 /**
@@ -18,6 +18,17 @@ export function renderComponent<TArgs = Args>(template: ViewTemplate): (args: TA
   };
 }
 
+export declare interface FASTComponentsRenderer extends Renderer {
+  canvasElement: FASTElement;
+  component: typeof FASTElement | string;
+  storyResult: string | Node | DocumentFragment | ElementViewTemplate;
+}
+
+/**
+ * Metadata to configure the stories for a component.
+ */
+export declare type NewMeta<TArgs = Args> = ComponentAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
+
 /**
  * A helper that returns a function to bind a Storybook story to a ViewTemplate.
  */
@@ -32,9 +43,11 @@ export type FASTFramework = Renderer & {
 export type Meta<TArgs = Args> = ComponentAnnotations<FASTFramework, Omit<TArgs, keyof FASTElement>>;
 
 /**
- * Story function that represents a CSFv3 component example.
+ * Story object that represents a CSFv3 component example.
+ *
+ * @see [Named Story exports](https://storybook.js.org/docs/formats/component-story-format/#named-story-exports)
  */
-export declare type StoryObj<TArgs = Args> = StoryAnnotations<FASTFramework, TArgs>;
+export declare type StoryObj<TArgs = Args> = StoryAnnotations<FASTComponentsRenderer, StoryArgs<TArgs>>;
 
 /**
  * Story function that represents a CSFv2 component example.

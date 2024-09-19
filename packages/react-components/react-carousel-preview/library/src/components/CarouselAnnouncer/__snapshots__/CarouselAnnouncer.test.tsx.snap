@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarouselAnnouncer renders a default state 1`] = `
+<div>
+  <div
+    aria-live="polite"
+    class="fui-CarouselAnnouncer"
+  >
+    Slide 0 of 0
+  </div>
+</div>
+`;
