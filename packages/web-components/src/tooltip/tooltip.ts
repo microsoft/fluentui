@@ -39,7 +39,9 @@ export class Tooltip extends FASTElement {
    * Reference to the anchor element
    * @internal
    */
-  private anchorElement: HTMLElement | null = null;
+  private get anchorElement(): HTMLElement | null {
+    return document.getElementById(this.anchor ?? '');
+  }
 
   public constructor() {
     super();
@@ -48,9 +50,6 @@ export class Tooltip extends FASTElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
-
-    this.anchorElement = document.getElementById(this.anchor) || null;
-
     if (this.anchorElement) {
       this.anchorElement.setAttribute('aria-describedby', `tooltip-${this.anchor}`);
 
