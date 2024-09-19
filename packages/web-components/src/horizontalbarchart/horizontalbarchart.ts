@@ -329,6 +329,7 @@ export class HorizontalBarChart extends FASTElement {
 
     const svgEle = containerDiv
       .append('svg')
+      .attr('height', 20)
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -353,7 +354,7 @@ export class HorizontalBarChart extends FASTElement {
             }%`,
           )
           .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2)
+          .attr('y', this.barHeight / 2 + 6)
           .attr('dominantBaseline', 'central')
           .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
           .attr('aria-label', `Total: ${barLabel}`)
