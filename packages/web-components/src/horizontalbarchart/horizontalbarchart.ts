@@ -1,6 +1,12 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
 import * as d3 from 'd3';
+import { createTabster, getGroupper, getMover, getTabsterAttribute, Types } from 'tabster';
 import { IChartDataPoint, IChartProps, Variant } from './horizontalbarchart.options.js';
+
+// During the page startup.
+const tabsterCore = createTabster(window);
+getMover(tabsterCore);
+getGroupper(tabsterCore);
 
 /**
  * A Horizontal Bar Chart HTML Element.
@@ -202,7 +208,17 @@ export class HorizontalBarChart extends FASTElement {
       .data(this.inpData!)
       .enter()
       .append('div')
-      .each((d, i, nodes) => this.createSingleChartBars(d, i, nodes));
+      .each((d, i, nodes) => {
+        this.createSingleChartBars(d, i, nodes);
+
+        //Get the tabster attributes
+        const attributes = getTabsterAttribute({ root: {} });
+
+        //Apply attributes directly to the current node
+        Object.keys(attributes).forEach(key => {
+          nodes[i].setAttribute(key, attributes[key]);
+        });
+      });
   }
 
   public _createBarsAndLegends(data: IChartProps, barNo?: number) {
@@ -303,13 +319,18 @@ export class HorizontalBarChart extends FASTElement {
         )
         .attr('y', 0)
         .attr('width', value + '%')
-        .attr('height', barHeight);
+        .attr('height', barHeight)
+        .attr('style', `fill: ${point.color}`)
+        .attr('tabindex', 0)
+        .attr('data-tabster', '{"groupper": {...}}"')
+        .attr('data-tabster', '{"mover": {...}}"');
     }
 
     const containerDiv = d3.create('div');
 
     const svgEle = containerDiv
       .append('svg')
+      .attr('height', 20)
       .attr('aria-label', data?.chartTitle ? data?.chartTitle : '')
       .selectAll('g')
       .data(data.chartData!)
@@ -334,7 +355,7 @@ export class HorizontalBarChart extends FASTElement {
             }%`,
           )
           .attr('textAnchor', 'start')
-          .attr('y', this.barHeight / 2)
+          .attr('y', this.barHeight / 2 + 6)
           .attr('dominantBaseline', 'central')
           .attr('transform', `translate(${this._isRTL ? -4 : 4})`)
           .attr('aria-label', `Total: ${barLabel}`)
