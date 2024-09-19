@@ -419,20 +419,20 @@ export const Selector = () => {
     </>
   ));
 
-  const QuestionSelect = () => {
-    const selectId = useId();
+  // const QuestionSelect = () => {
+  //   const selectId = useId();
 
-    return (
-      <>
-        <label htmlFor={selectId}></label>
-        <Select defaultValue={questions[0].selectText} id={selectId}>
-          {questions.map(item => (
-            <option>{item.selectText}</option>
-          ))}
-        </Select>
-      </>
-    );
-  };
+  //   return (
+  //     <>
+  //       <label htmlFor={selectId}></label>
+  //       <Select defaultValue={questions[0].selectText} id={selectId}>
+  //         {questions.map(item => (
+  //           <option>{item.selectText}</option>
+  //         ))}
+  //       </Select>
+  //     </>
+  //   );
+  // };
 
   const Questionnaire = () => {
     return (
@@ -472,6 +472,7 @@ export const Selector = () => {
     radioItems.forEach(item => {
       console.log(`STATE: Radio items: ${item.value}`);
     });
+    // const [value, setValue] = React.useState('');
 
     const allQuestions = getAllQuestions(selectedComponents, questions);
 
@@ -493,7 +494,7 @@ export const Selector = () => {
                 >
                   <div className={classes.questionContainer}>
                     <div className={classes.questionLeftSide}>
-                      <span className={classes.questionsLabel}>{item.shortSelectText}</span>
+                      <span className={classes.questionsLabel}>{`Q${index + 1}`}</span>
                     </div>
                     <div className={classes.questionRightSide}>
                       <span className={classes.questionsText}>{item.question}</span>
