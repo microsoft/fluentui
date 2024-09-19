@@ -83,15 +83,28 @@ async function main() {
     if (selectedFlag === 'dryRun') {
       flagValue = await new Confirm({
         name: 'question',
-        message: 'Want to answer?',
+        message: 'Enable dry-run mode?',
       }).run();
     } else {
+      let escPressed = false;
+
       flagValue = (
         await new Input({
           message: `${selectedFlag}`,
           hint: `--${selectedFlag}=`,
-          footer: `Press 'Enter' to confirm your input. Empty value will go back to flag selection.`,
-        }).run()
+          footer: `Press 'Enter' to confirm your input or 'Escape' to cancel (go back to flag selection).`,
+        })
+          .on('keypress', async (_char, key) => {
+            if (key.name === 'escape') {
+              escPressed = true;
+            }
+          })
+          .run()
+          .catch(_ => {
+            if (escPressed) {
+              return '';
+            }
+          })
       ).trim();
     }
 
