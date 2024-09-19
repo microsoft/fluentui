@@ -10,6 +10,11 @@ import type { SplitNavItemState, SplitNavItemSlots } from './SplitNavItem.types'
 export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
   assertSlots<SplitNavItemSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.primaryNavItem && <state.primaryNavItem />}
+      {state.secondaryActionButton && <state.secondaryActionButton />}
+      {state.menuButton && <state.menuButton />}
+    </state.root>
+  );
 };

@@ -4,8 +4,9 @@ import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types'
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
-  // TODO: add class names for all slots on SplitNavItemSlots.
-  // Should be of the form `<slotName>: 'fui-SplitNavItem__<slotName>`
+  primaryNavItem: 'fui-SplitNavItem_primaryNavItem',
+  menuButton: 'fui-SplitNavItem_menuButton',
+  secondaryActionButton: 'fui-SplitNavItem_secondaryActionButton',
 };
 
 /**
@@ -13,7 +14,7 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'flex',
   },
 
   // TODO add additional classes for different states and/or slots
@@ -28,8 +29,17 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   const styles = useStyles();
   state.root.className = mergeClasses(splitNavItemClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.primaryNavItem) {
+    state.primaryNavItem.className = mergeClasses(splitNavItemClassNames.primaryNavItem);
+  }
+
+  if (state.secondaryActionButton) {
+    state.secondaryActionButton.className = mergeClasses(splitNavItemClassNames.secondaryActionButton);
+  }
+
+  if (state.menuButton) {
+    state.menuButton.className = mergeClasses(splitNavItemClassNames.menuButton);
+  }
 
   return state;
 };

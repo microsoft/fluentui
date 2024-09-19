@@ -17,6 +17,6 @@ export const NavItem: ForwardRefComponent<NavItemProps> = React.forwardRef((prop
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   // useCustomStyleHook_unstable('useNavItemStyles_unstable')(state);
   return renderNavItem_unstable(state);
-});
+}) as ForwardRefComponent<NavItemProps>;
 
 NavItem.displayName = 'NavItem';

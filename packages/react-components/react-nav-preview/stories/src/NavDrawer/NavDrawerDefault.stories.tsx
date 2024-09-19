@@ -13,6 +13,7 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
+  SplitNavItem,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
@@ -122,6 +123,9 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
+          <SplitNavItem href={linkDestination} icon={<Dashboard />} value="1">
+            SomeNav Item
+          </SplitNavItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
