@@ -28,3 +28,5 @@ export { default as TreeDef } from './Tree.json';
 export { default as TreeSelectionDef } from './TreeSelection.json';
 
 export { default as TabListDef } from './TabList.json';
+
+export { default as GroupsDef } from './Groups.json';

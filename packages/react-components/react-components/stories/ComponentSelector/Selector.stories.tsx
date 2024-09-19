@@ -20,7 +20,7 @@ import {
   Select,
   useId,
 } from '@fluentui/react-components';
-import { removeFromArray, getComponentStoryUrl } from './utils';
+import { removeFromArray, getComponentStoryUrl, getAllQuestions } from './utils';
 import questions from './components-definitions/Questions.json';
 import {
   ListBaseDef,
@@ -47,7 +47,9 @@ import {
   TreeBaseDef,
   MenuButtonDef,
   TabListDef,
+  GroupsDef,
 } from './components-definitions/index';
+import { get } from 'lodash';
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
@@ -59,6 +61,7 @@ const useStyles = makeStyles({
   thirdLevel: { 'margin-left': '60px' },
   forthLevel: { 'margin-left': '90px' },
   foundMessage: { 'margin-bottom': '10px' },
+  heading: { margin: '30px 0 10px 0' },
   root: {
     // Stack the label above the field with a gap
     display: 'flex',
@@ -435,7 +438,7 @@ export const Selector = () => {
   const Questionnaire = () => {
     return (
       <>
-        <QuestionSelect />
+        {/* <QuestionSelect /> */}
         <QuestionRadioGroup />
       </>
     );
@@ -443,27 +446,32 @@ export const Selector = () => {
 
   const QuestionRadioGroup = () => {
     const [value, setValue] = React.useState('');
+
+    const allQuestions = getAllQuestions(selectedComponents, questions);
+
     return (
       <>
-        {questions.map(item => (
-          <div className={classes.questionsWrapper}>
-            <Field className={classes.questionsField}>
-              <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
-                <div className={classes.questionContainer}>
-                  <div className={classes.questionLeftSide}>
-                    <span className={classes.questionsLabel}>{item.shortSelectText}</span>
+        {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
+        {allQuestions.length > 0 &&
+          allQuestions.map(item => (
+            <div className={classes.questionsWrapper}>
+              <Field className={classes.questionsField}>
+                <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
+                  <div className={classes.questionContainer}>
+                    <div className={classes.questionLeftSide}>
+                      <span className={classes.questionsLabel}>{item.shortSelectText}</span>
+                    </div>
+                    <div className={classes.questionRightSide}>
+                      <span className={classes.questionsText}>{item.question}</span>
+                      {item.answers.map(item => (
+                        <Radio key={item.value} value={item.text} label={item.text} className={classes.radioItem} />
+                      ))}
+                    </div>
                   </div>
-                  <div className={classes.questionRightSide}>
-                    <span className={classes.questionsText}>{item.question}</span>
-                    {item.answers.map(item => (
-                      <Radio key={item.value} value={item.text} label={item.text} className={classes.radioItem} />
-                    ))}
-                  </div>
-                </div>
-              </RadioGroup>
-            </Field>
-          </div>
-        ))}
+                </RadioGroup>
+              </Field>
+            </div>
+          ))}
       </>
     );
   };
@@ -492,7 +500,7 @@ export const Selector = () => {
         </AccordionItem>
       </Accordion>
       <Questionnaire />
-      <h2>Choose behavior</h2>
+      <h2 className={classes.heading}>Choose behavior</h2>
       <div className={classes.behaviors}>
         <ToggleButton
           checked={behavior1}
@@ -514,7 +522,7 @@ export const Selector = () => {
         >
           static
         </ToggleButton>
-        <ToggleButton
+        {/* <ToggleButton
           checked={behavior3}
           shape="circular"
           onClick={() => {
@@ -523,7 +531,7 @@ export const Selector = () => {
           }}
         >
           selectable
-        </ToggleButton>
+        </ToggleButton> */}
         <ToggleButton
           checked={behavior4}
           shape="circular"
@@ -546,42 +554,46 @@ export const Selector = () => {
         </ToggleButton>
       </div>
 
-      <h2>Choose keyboard and screen reader experience</h2>
-      <ToggleButton
-        checked={behavior6}
-        shape="circular"
-        onClick={() => {
-          setBehavior6(!behavior6);
-          updateDecisionsForCheckbox('navigationByArrowKeys', !behavior6);
-        }}
-      >
-        arrow keys
-      </ToggleButton>
+      <h2 className={classes.heading}>Choose keyboard and screen reader experience</h2>
+      <div className={classes.behaviors}>
+        <ToggleButton
+          checked={behavior6}
+          shape="circular"
+          onClick={() => {
+            setBehavior6(!behavior6);
+            updateDecisionsForCheckbox('navigationByArrowKeys', !behavior6);
+          }}
+        >
+          arrow keys
+        </ToggleButton>
 
-      <ToggleButton
-        checked={behavior7}
-        shape="circular"
-        onClick={() => {
-          setBehavior7(!behavior7);
-          updateDecisionsForCheckbox('navigationByTabKey', !behavior7);
-        }}
-      >
-        Tab key
-      </ToggleButton>
+        <ToggleButton
+          checked={behavior7}
+          shape="circular"
+          onClick={() => {
+            setBehavior7(!behavior7);
+            updateDecisionsForCheckbox('navigationByTabKey', !behavior7);
+          }}
+        >
+          Tab key
+        </ToggleButton>
 
-      <ToggleButton
-        checked={behavior8}
-        shape="circular"
-        onClick={() => {
-          setBehavior8(!behavior8);
-          updateDecisionsForCheckbox('narratesPosition', !behavior8);
-        }}
-      >
-        screen reader narrates position
-      </ToggleButton>
+        <ToggleButton
+          checked={behavior8}
+          shape="circular"
+          onClick={() => {
+            setBehavior8(!behavior8);
+            updateDecisionsForCheckbox('narratesPosition', !behavior8);
+          }}
+        >
+          screen reader narrates position
+        </ToggleButton>
+      </div>
 
       {/* nova komponenta na resutls: Found components */}
-      <h2 id="matching-heading">Matching components</h2>
+      <h2 id="matching-heading" className={classes.heading}>
+        Matching components
+      </h2>
       <div role="group" aria-labelledby="matching-heading">
         <div className={classes.foundMessage}>
           <Text as="h3" weight="bold">
