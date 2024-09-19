@@ -49,7 +49,7 @@ import {
   TabListDef,
   GroupsDef,
 } from './components-definitions/index';
-import { get } from 'lodash';
+import { create, get } from 'lodash';
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
@@ -352,7 +352,6 @@ export const Selector = () => {
       });
     }
 
-    console.log(`IF GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
     if (selectedBehaviours.length > 0) {
       console.log(`GET COMPONENT: selectedBehaviours: ${selectedBehaviours}`);
       const componentsToIterate = suitableComponents.length > 0 ? suitableComponents : componentsDefinitions.current;
@@ -444,19 +443,54 @@ export const Selector = () => {
     );
   };
 
+  const updateDecisionsForRadio = (name: string) => {
+    console.log(`Milan: updateDecisionsForRadio: ${name}`);
+    if (selectedBehaviours.includes(name)) {
+      const array = selectedBehaviours.filter(behavior => behavior !== name);
+      setSelectedBehaviours(array);
+    } else {
+      setSelectedBehaviours([...selectedBehaviours, name]);
+    }
+  };
+
   const QuestionRadioGroup = () => {
-    const [value, setValue] = React.useState('');
+    const [radioItems, setRadioItems] = React.useState([
+      { id: 0, value: 'item1' },
+      { id: 1, value: 'item2' },
+      { id: 2, value: 'item3' },
+    ]);
+    const updateItem = (id, newValue) => {
+      console.log('updateItem: Update Item: ', newValue);
+      const newArray = radioItems.map(radio => (radio.id === id ? (radio.value = newValue) : radio));
+      const anotherNewArray = [...newArray];
+      anotherNewArray.forEach(item => {
+        console.log(`updatedItem: Radio items: ${item.value}`);
+      });
+      setRadioItems(anotherNewArray);
+    };
+
+    radioItems.forEach(item => {
+      console.log(`STATE: Radio items: ${item.value}`);
+    });
 
     const allQuestions = getAllQuestions(selectedComponents, questions);
+
+    const [radioItem1, setRadioItem1] = React.useState('');
 
     return (
       <>
         {allQuestions.length > 0 && <h2 className={classes.heading}>Questions</h2>}
         {allQuestions.length > 0 &&
-          allQuestions.map(item => (
+          allQuestions.map((item, index) => (
             <div className={classes.questionsWrapper}>
               <Field className={classes.questionsField}>
-                <RadioGroup value={value} onChange={(_, data) => setValue(data.value)}>
+                <RadioGroup
+                  value={radioItems[index].value}
+                  onChange={(_, data) => {
+                    updateDecisionsForRadio(data.value);
+                    updateItem(index, data);
+                  }}
+                >
                   <div className={classes.questionContainer}>
                     <div className={classes.questionLeftSide}>
                       <span className={classes.questionsLabel}>{item.shortSelectText}</span>
@@ -464,7 +498,7 @@ export const Selector = () => {
                     <div className={classes.questionRightSide}>
                       <span className={classes.questionsText}>{item.question}</span>
                       {item.answers.map(item => (
-                        <Radio key={item.value} value={item.text} label={item.text} className={classes.radioItem} />
+                        <Radio key={item.value} value={item.value} label={item.text} className={classes.radioItem} />
                       ))}
                     </div>
                   </div>

@@ -69,8 +69,6 @@ export const getComponentStoryUrl = component => {
 const getQuestionsIDs = (name: string) => {
   let questions = [];
   GroupsDef.forEach(group => {
-    console.log(`group: ${group}`);
-    console.log(`group questions: ${group.questions}`);
     group.tags.includes(name) ? questions.push(group.questions) : null;
   });
   return questions;
@@ -79,17 +77,14 @@ const getQuestionsIDs = (name: string) => {
 export const getAllQuestions = (selectedComponents, questions) => {
   let allQuestionsIDs = [];
   selectedComponents.forEach(component => {
-    console.log(`M: selected component: ${component}`);
     allQuestionsIDs.push(getQuestionsIDs(component));
   });
-  console.log(`M: all questions IDs: ${allQuestionsIDs}`);
 
   const allQuestions = allQuestionsIDs.map(questionId =>
     questions.map(item => {
       // questionId is array of arrays, to simplyfy the check we flat it
       const questionIdFlat = questionId.flat();
       if (questionIdFlat.includes(item.id)) {
-        console.log(`M: item: ${item}`);
         return item;
       }
     }),
