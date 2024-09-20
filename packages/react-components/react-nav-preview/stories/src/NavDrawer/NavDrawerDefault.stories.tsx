@@ -123,7 +123,7 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
-          <SplitNavItem href={linkDestination} icon={<Dashboard />} value="1">
+          <SplitNavItem href={linkDestination} icon={<Dashboard />} value="0">
             SomeNav Item
           </SplitNavItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">

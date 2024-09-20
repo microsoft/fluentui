@@ -46,7 +46,6 @@ export const useSplitNavItem_unstable = (
 
   const menuButtonShorthand = slot.optional(menuButton, {
     defaultProps: {
-      // size,
       icon: <MoreHorizontalFilled />,
       appearance: 'transparent',
     },
