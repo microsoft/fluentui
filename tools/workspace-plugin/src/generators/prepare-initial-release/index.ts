@@ -242,6 +242,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   );
 
   unknownProjectsToBeUpdated?.forEach(projectName => {
+    projectName = projectName.replace('-preview', '');
     const projectConfig = getProjectConfig(tree, {
       packageName: projectName,
     });

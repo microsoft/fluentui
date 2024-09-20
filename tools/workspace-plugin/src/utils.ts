@@ -193,7 +193,7 @@ export const workspacePaths = {
     codeowners: joinPathFragments('/.github', 'CODEOWNERS'),
   },
   storybook: {
-    root: '/.storyboook',
+    root: '/.storybook',
   },
 };
 
