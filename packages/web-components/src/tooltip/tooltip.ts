@@ -1,4 +1,4 @@
-import { attr, FASTElement } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
 
 /**
  * A Tooltip Custom HTML Element.
@@ -14,7 +14,7 @@ export class Tooltip extends FASTElement {
   /**
    * Set the delay for the tooltip
    */
-  @attr
+  @attr({ converter: nullableNumberConverter })
   public delay?: number;
 
   /**
@@ -40,7 +40,8 @@ export class Tooltip extends FASTElement {
    * @internal
    */
   private get anchorElement(): HTMLElement | null {
-    return document.getElementById(this.anchor ?? '');
+    const rootNode = this.getRootNode();
+    return (rootNode instanceof ShadowRoot ? rootNode : document).getElementById(this.anchor ?? '');
   }
 
   public constructor() {

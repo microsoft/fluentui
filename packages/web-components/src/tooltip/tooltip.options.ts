@@ -17,7 +17,7 @@ export const TooltipPositioning = {
   'after-top': 'inline-end span-block-end',
   after: 'inline-end',
   'after-bottom': 'inline-end span-block-start',
-};
+} as const;
 
 /**
  * The TooltipPositioning type
