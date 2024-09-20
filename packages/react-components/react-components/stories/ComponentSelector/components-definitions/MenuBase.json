@@ -1,4 +1,5 @@
 {
   "name": "MenuBase",
-  "attributes": ["insideMenu", "navigationByArrowKeys", "narratesPosition", "interactive"]
+  "attributes": ["insideMenu", "navigationByArrowKeys", "narratesPosition", "interactive"],
+  "img": "overview_menu.DZ_QmfGO.png"
 }

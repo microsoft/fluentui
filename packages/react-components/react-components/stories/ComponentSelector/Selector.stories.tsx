@@ -50,6 +50,7 @@ import {
   GroupsDef,
 } from './components-definitions/index';
 import { create, get } from 'lodash';
+import { SelectionCard } from './SelectionCard';
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
@@ -107,13 +108,8 @@ const useStyles = makeStyles({
   questionContainer: {
     display: 'flex',
   },
-  questionLeftSide: {
-    'flex-basis': '10%',
-  },
   questionRightSide: {
     borderLeft: '1px solid #ff00ff',
-    'flex-basis': '90%',
-    'flex-shrink': 0,
     padding: '0 10px',
   },
   radioItem: {
@@ -396,26 +392,22 @@ export const Selector = () => {
     return definitionsWithDisplayName;
   };
 
+  const onSelectionChange = (event, data, name) => {
+    if (!!data.selected) {
+      setSelectedComponents([...selectedComponents, name]);
+    } else {
+      setSelectedComponents(selectedComponents.filter(component => component !== name));
+    }
+  };
+
   const componentsToDisplay = namesOfComponents().map(definitionsWithDisplayName => (
     <>
-      <div data-id="wrapper" className={classes.componentWrapper}>
-        <Image src={getImage(definitionsWithDisplayName.displayName)} height={75} width={75} />
-        <div>
-          <span>{definitionsWithDisplayName.displayName}</span>
-          <Checkbox
-            aria-label={definitionsWithDisplayName.displayName}
-            onChange={(event, data) => {
-              if (data.checked) {
-                setSelectedComponents([...selectedComponents, definitionsWithDisplayName.name]);
-              } else {
-                setSelectedComponents(
-                  selectedComponents.filter(component => component !== definitionsWithDisplayName.name),
-                );
-              }
-            }}
-          />
-        </div>
-      </div>
+      <SelectionCard
+        displayName={definitionsWithDisplayName.displayName}
+        name={definitionsWithDisplayName.name}
+        image={definitionsWithDisplayName.img}
+        onChange={onSelectionChange}
+      />
     </>
   ));
 

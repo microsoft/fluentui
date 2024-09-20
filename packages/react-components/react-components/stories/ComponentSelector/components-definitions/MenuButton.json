@@ -3,5 +3,6 @@
   "component": "MenuButton",
   "folder": "Button",
   "extends": "ButtonBase",
-  "attributes": ["opensMenu"]
+  "attributes": ["opensMenu"],
+  "img": "overview_button.Baa-fciS.png"
 }

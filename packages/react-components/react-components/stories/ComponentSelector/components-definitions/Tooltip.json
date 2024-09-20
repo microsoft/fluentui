@@ -1,5 +1,6 @@
 {
   "name": "Tooltip",
   "component": "Tooltip",
-  "attributes": ["nonInteractiveContent", "onHover", "navigationByTabKey", "interactive"]
+  "attributes": ["nonInteractiveContent", "onHover", "navigationByTabKey", "interactive"],
+  "img": "overview_tooltip.DzdzrdMi.png"
 }

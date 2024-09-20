@@ -2,5 +2,6 @@
   "name": "List",
   "component": "List",
   "extends": "ListBase",
-  "attributes": ["static"]
+  "attributes": ["static"],
+  "img": "overview_menu.DZ_QmfGO.png"
 }

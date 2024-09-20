@@ -1,5 +1,6 @@
 {
   "name": "Accordion",
   "component": "Accordion",
-  "attributes": ["expandable", "tabbable", "navigationByTabKey", "interactive"]
+  "attributes": ["expandable", "tabbable", "navigationByTabKey", "interactive"],
+  "img": "overview_accordion.B8eJ_Qlv.png"
 }

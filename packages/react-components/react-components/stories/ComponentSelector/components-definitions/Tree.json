@@ -1,5 +1,6 @@
 {
   "name": "Tree",
   "component": "Tree",
-  "extends": "TreeBase"
+  "extends": "TreeBase",
+  "img": "overview_accordion.B8eJ_Qlv.png"
 }

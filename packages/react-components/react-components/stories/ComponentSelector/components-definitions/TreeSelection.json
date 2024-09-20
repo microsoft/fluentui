@@ -3,5 +3,6 @@
   "component": "Tree",
   "story": "Selection",
   "extends": "TreeBase",
-  "attributes": ["toggle"]
+  "attributes": ["toggle"],
+  "img": "overview_accordion.B8eJ_Qlv.png"
 }

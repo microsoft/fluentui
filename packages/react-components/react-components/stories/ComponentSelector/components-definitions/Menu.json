@@ -2,5 +2,6 @@
   "name": "Menu",
   "component": "Menu",
   "folder": "Menu",
-  "extends": "MenuBase"
+  "extends": "MenuBase",
+  "img": "overview_menu.DZ_QmfGO.png"
 }

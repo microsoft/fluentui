@@ -1,4 +1,5 @@
 {
   "name": "ButtonBase",
-  "attributes": ["staysOnPage", "navigationByTabKey", "interactive"]
+  "attributes": ["staysOnPage", "navigationByTabKey", "interactive"],
+  "img": "overview_button.Baa-fciS.png"
 }

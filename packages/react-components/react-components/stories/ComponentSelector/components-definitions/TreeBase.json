@@ -1,4 +1,5 @@
 {
   "name": "TreeBase",
-  "attributes": ["interactive", "navigationByArrowKeys", "hierarchical", "narratesPosition"]
+  "attributes": ["interactive", "navigationByArrowKeys", "hierarchical", "narratesPosition"],
+  "img": "overview_accordion.B8eJ_Qlv.png"
 }

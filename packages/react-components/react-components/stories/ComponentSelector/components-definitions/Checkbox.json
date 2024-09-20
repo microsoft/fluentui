@@ -1,5 +1,6 @@
 {
   "name": "Checkbox",
   "component": "Checkbox",
-  "attributes": ["multipleChoices", "notOnOrOff", "toggle", "notInsideMenu", "navigationByTabKey", "interactive"]
+  "attributes": ["multipleChoices", "notOnOrOff", "toggle", "notInsideMenu", "navigationByTabKey", "interactive"],
+  "img": "overview_checkbox.C4LCt4a7.png"
 }

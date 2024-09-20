@@ -1,4 +1,5 @@
 {
   "name": "TableBase",
-  "attributes": ["columnsAndRows", "narratesPosition"]
+  "attributes": ["columnsAndRows", "narratesPosition"],
+  "img": "overview_tablist.CTZsc6f-.png"
 }

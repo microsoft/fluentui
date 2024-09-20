@@ -3,5 +3,6 @@
   "component": "Table",
   "story": "Cell Actions",
   "extends": "TableBase",
-  "attributes": ["interactive", "navigationByTabKey"]
+  "attributes": ["interactive", "navigationByTabKey"],
+  "img": "overview_tablist.CTZsc6f-.png"
 }

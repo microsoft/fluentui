@@ -4,5 +4,6 @@
   "folder": "Menu",
   "story": "Checkbox Items",
   "extends": "MenuBase",
-  "attributes": ["multipleChoices", "notOnOrOff", "toggle"]
+  "attributes": ["multipleChoices", "notOnOrOff", "toggle"],
+  "img": "overview_checkbox.C4LCt4a7.png"
 }

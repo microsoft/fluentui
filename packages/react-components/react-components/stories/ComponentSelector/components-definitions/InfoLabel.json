@@ -1,5 +1,6 @@
 {
   "name": "InfoLabel",
   "component": "InfoLabel",
-  "attributes": ["interactiveContent", "onClick", "navigationByTabKey", "interactive"]
+  "attributes": ["interactiveContent", "onClick", "navigationByTabKey", "interactive"],
+  "img": "overview_placeholder.DKLLlbq1.png"
 }
