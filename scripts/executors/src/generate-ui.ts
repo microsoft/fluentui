@@ -55,12 +55,18 @@ async function main() {
   const generatorCommand = await generatorPrompt.run();
   const generator = parseGeneratorString(generatorCommand);
 
-  const executeCommand: Choice = {
+  const executeCommandBase: Choice = {
     name: `Execute: nx g ${generatorCommand}`,
     value: generatorCommand,
     message: `Execute: nx g ${generatorCommand}`,
   };
-  let generatorFlagsChoices = createGeneratorFlagsChoices(generator, projects.projects);
+  const executeCommand: Choice = {
+    ...executeCommandBase,
+  };
+  const { choices: generatorFlagsChoices, state: flagsState } = createGeneratorFlagsChoices(
+    generator,
+    projects.projects,
+  );
   let flagChoices = [executeCommand, ...generatorFlagsChoices];
 
   const generatorFlagsPromptOptions: AutoCompleteOptions = {
@@ -109,15 +115,21 @@ async function main() {
     }
 
     if (typeof flagValue === 'string' && flagValue.length === 0) {
+      // go back by submitting empty choice
       selectedFlag = await new AutoComplete(generatorFlagsPromptOptions).run();
     } else {
-      const flagCommand = selectedFlag === 'dryRun' ? ' --dryRun' : ` --${selectedFlag}=${flagValue}`;
+      flagsState[selectedFlag] = flagValue;
 
-      executeCommand.name += flagCommand;
-      executeCommand.value += flagCommand;
-      executeCommand.message += flagCommand;
+      const flagCommand = serializeFlagState(flagsState);
 
-      generatorFlagsChoices = generatorFlagsChoices.filter(choice => choice.value !== selectedFlag);
+      console.log({ flagCommand });
+
+      executeCommand.name = executeCommandBase.name + ' ' + flagCommand;
+      executeCommand.value = executeCommandBase.value + ' ' + flagCommand;
+      executeCommand.message = executeCommandBase.message + ' ' + flagCommand;
+
+      // remove selected flags from menu ( not the best DX imo) - removing for now
+      // generatorFlagsChoices = generatorFlagsChoices.filter(choice => choice.value !== selectedFlag);
       flagChoices = [executeCommand, ...generatorFlagsChoices];
 
       selectedFlag = await new AutoComplete({ ...generatorFlagsPromptOptions, choices: flagChoices }).run();
@@ -129,10 +141,25 @@ async function main() {
   runCommand('nx', ['g', executeCommand.value]);
 }
 
+function serializeFlagState(state: Record<string, unknown>) {
+  return Object.entries(state)
+    .map(([key, value]) => {
+      if (typeof value === 'boolean') {
+        return value ? `--${key}` : '';
+      }
+      return `--${key}=${value}`;
+    })
+    .filter(Boolean)
+    .join(' ');
+}
+
 function createGeneratorFlagsChoices(
   generator: ReturnType<typeof parseGeneratorString>,
   projects: ProjectsConfigurations['projects'],
-): Choice[] {
+): {
+  choices: Choice[];
+  state: Record<string, unknown>;
+} {
   const generatorInfo = getGeneratorInformation(generator.collection, generator.generator, workspaceRoot, projects);
 
   const generatorSchema: {
@@ -142,21 +169,29 @@ function createGeneratorFlagsChoices(
   } = generatorInfo.schema;
   const { properties, required } = generatorSchema;
 
-  const choices: Choice[] = Object.entries(properties).map(([key, value]) => {
-    const item = {
-      name: `${key}${required?.includes(key) ? output.dim('(required)') : ''} - ${value.description}`,
-      value: key,
-    };
-    return item;
-  });
+  const { choices, state } = Object.entries(properties).reduce<{
+    choices: Choice[];
+    state: Record<string, unknown>;
+  }>(
+    (acc, [key, value]) => {
+      acc.choices.push({
+        name: `${key}${required?.includes(key) ? output.dim('(required)') : ''} - ${value.description}`,
+        value: key,
+      });
+      acc.state[key] = null;
+
+      return acc;
+    },
+    { choices: [], state: {} },
+  );
 
   const dryRunChoice = {
-    name: 'dry run mode',
+    name: 'dry-run',
     value: 'dryRun',
   };
   choices.push(dryRunChoice);
 
-  return choices;
+  return { choices, state };
 }
 
 function createPluginChoices(plugins: Map<string, PluginCapabilities>): Array<Choice> {
