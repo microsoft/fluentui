@@ -9,7 +9,7 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { convertToLocaleString } from '../../utilities/locale-util';
-import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find } from '../../utilities/index';
+import { formatValueWithSIPrefix, getAccessibleDataObject, isRtl, find, getNextGradient } from '../../utilities/index';
 import { useId } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { useFocusableGroup } from '@fluentui/react-tabster';
@@ -36,7 +36,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   const _emptyChartId: string = useId('_HBC_empty');
 
   const [refSelected, setRefSelected] = React.useState<SVGGElement | null | undefined>(null);
-  const [color, setColor] = React.useState<string>('');
   const [hoverValue, setHoverValue] = React.useState<string | number | Date | null>('');
   const [lineColor, setLineColor] = React.useState<string>('');
   const [legend, setLegend] = React.useState<string | null>('');
@@ -65,7 +64,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       _calloutAnchorPoint = point;
       updatePosition(event.clientX, event.clientY);
       setHoverValue(hoverVal);
-      setLineColor(point.color!);
+      setLineColor(point.gradient![0]);
       setLegend(point.legend!);
       setRefSelected(currentHoveredElement?.refElement);
       setXCalloutValue(point.xAxisCalloutData!);
@@ -163,13 +162,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
     const totalMarginPercent = barSpacingInPercent * (noOfBars - 1);
-    const defaultColors: string[] = [
-      tokens.colorPaletteBlueForeground2,
-      tokens.colorPaletteCornflowerForeground2,
-      tokens.colorPaletteDarkGreenForeground2,
-      tokens.colorPaletteNavyForeground2,
-      tokens.colorPaletteDarkOrangeForeground2,
-    ];
+
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
@@ -205,7 +198,6 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
     const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
-      const color: string = point.color ? point.color : defaultColors[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       if (index > 0) {
         prevPosition += value;
@@ -258,7 +250,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
           data-is-focusable={point.legend !== '' ? true : false}
           width={value + '%'}
           height={_barHeight}
-          fill={color}
+          fill={point.gradient![0]}
           onMouseOver={point.legend !== '' ? event => _hoverOn(event, xValue, point) : undefined}
           onFocus={point.legend !== '' ? event => _hoverOn.bind(event, xValue, point) : undefined}
           role="img"
@@ -271,6 +263,14 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
       );
     });
     return bars;
+  }
+
+  function _addDefaultGradients(dataPoints?: IChartDataPoint[]): IChartDataPoint[] {
+    return dataPoints
+      ? dataPoints.map((item, index) => {
+        return { ...item, gradient: item.gradient ?? getNextGradient(index, 0) };
+      })
+      : [];
   }
 
   const _getAriaLabel = (point: IChartDataPoint): string => {
@@ -313,9 +313,12 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
   const focusAttributes = useFocusableGroup();
 
   let datapoint: number | undefined = 0;
+
   return !_isChartEmpty() ? (
     <div className={classes.root} onMouseLeave={_handleChartMouseLeave}>
       {data!.map((points: IChartProps, index: number) => {
+        points = { ...points, chartData: _addDefaultGradients(points.chartData) };
+
         if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
           datapoint = points.chartData![0].horizontalBarChartdata!.x;
         } else {
@@ -327,7 +330,7 @@ export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProp
             x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
             y: points.chartData![0].horizontalBarChartdata!.y,
           },
-          color: tokens.colorBackgroundOverlay,
+          gradient: [tokens.colorBackgroundOverlay, ''],
         };
 
         // Hide right side text of chart title for absolute-scale variant

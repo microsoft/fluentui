@@ -19,6 +19,36 @@ export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartPr
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
 // @public (undocumented)
+export const DataVizGradientPalette: {
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
+    gradient5: string;
+    gradient6: string;
+    gradient7: string;
+    gradient8: string;
+    gradient9: string;
+    gradient10: string;
+    gradient1Ext: string;
+    gradient2Ext: string;
+    gradient3Ext: string;
+    gradient4Ext: string;
+    gradient5Ext: string;
+    gradient6Ext: string;
+    gradient7Ext: string;
+    gradient8Ext: string;
+    gradient9Ext: string;
+    gradient10Ext: string;
+    success: string;
+    highSuccess: string;
+    warning: string;
+    error: string;
+    highError: string;
+    disabled: string;
+};
+
+// @public (undocumented)
 export const DataVizPalette: {
     color1: string;
     color2: string;
@@ -76,7 +106,13 @@ export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string;
 
 // @public (undocumented)
+export const getGradientFromToken: (token: string, isDarkTheme?: boolean) => [string, string];
+
+// @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
+
+// @public (undocumented)
+export const getNextGradient: (index: number, offset?: number, isDarkTheme?: boolean) => [string, string];
 
 // @public
 export const HorizontalBarChart: React_2.FunctionComponent<IHorizontalBarChartProps>;
@@ -233,8 +269,8 @@ export interface ICartesianChartStyles {
 // @public (undocumented)
 export interface IChartDataPoint {
     callOutAccessibilityData?: IAccessibilityProps;
-    color?: string;
     data?: number;
+    gradient?: [string, string];
     horizontalBarChartdata?: IHorizontalDataPoint;
     legend?: string;
     onClick?: VoidFunction;
@@ -691,6 +727,80 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
 }
 
 // @public (undocumented)
+export interface IPopoverComponentProps {
+    // (undocumented)
+    clickPosition: {
+        x: number;
+        y: number;
+    };
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    culture: string;
+    // (undocumented)
+    customizedCallout?: JSX.Element;
+    // (undocumented)
+    descriptionMessage?: string;
+    // (undocumented)
+    hoverXValue?: string | number;
+    // (undocumented)
+    isCalloutForStack: boolean;
+    // (undocumented)
+    isPopoverOpen: boolean;
+    // (undocumented)
+    Legend?: string | number | Date;
+    // (undocumented)
+    legend?: string;
+    // (undocumented)
+    ratio?: [number, number];
+    // (undocumented)
+    xAxisCalloutAccessibilityData?: {
+        ariaLabel?: string;
+        data?: string;
+    };
+    // (undocumented)
+    xCalloutValue?: string;
+    // (undocumented)
+    XValue?: string;
+    // (undocumented)
+    yCalloutValue?: string;
+    // (undocumented)
+    YValue?: string | number | Date;
+    // (undocumented)
+    YValueHover?: IYValueHover[];
+}
+
+// @public (undocumented)
+export interface IPopoverComponentStyles {
+    // (undocumented)
+    calloutBlockContainer: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapefalse: string;
+    // (undocumented)
+    calloutBlockContainertoDrawShapetrue: string;
+    // (undocumented)
+    calloutContentRoot: string;
+    // (undocumented)
+    calloutContentX: string;
+    // (undocumented)
+    calloutContentY: string;
+    // (undocumented)
+    calloutDateTimeContainer: string;
+    // (undocumented)
+    calloutlegendText: string;
+    // (undocumented)
+    denominator: string;
+    // (undocumented)
+    descriptionMessage: string;
+    // (undocumented)
+    numerator: string;
+    // (undocumented)
+    ratio: string;
+    // (undocumented)
+    shapeStyles: string;
+}
+
+// @public (undocumented)
 export interface IRefArrayData {
     // (undocumented)
     index?: string;
@@ -848,6 +958,9 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 
 // @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
+
+// @public (undocumented)
+export const PopoverComponent: React_2.FunctionComponent<IPopoverComponentProps>;
 
 // @public (undocumented)
 export const Shape: React_2.FunctionComponent<IShapeProps>;

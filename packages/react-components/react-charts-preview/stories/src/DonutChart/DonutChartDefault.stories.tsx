@@ -1,13 +1,18 @@
 import * as React from 'react';
-import { DonutChart, IChartProps, getColorFromToken, DataVizPalette } from '@fluentui/react-charts-preview';
+import { DonutChart, IChartProps, IChartDataPoint, DataVizGradientPalette, getGradientFromToken } from '@fluentui/react-charts-preview';
 
 export const DonutBasic = () => {
-  const points = [
-    { legend: 'first', data: 20000, color: getColorFromToken(DataVizPalette.color1), xAxisCalloutData: '2020/04/30' },
+  const points:IChartDataPoint[] = [
+    {
+      legend: 'first',
+      data: 20000,
+      gradient: getGradientFromToken(DataVizGradientPalette.gradient1),
+      xAxisCalloutData: '2020/04/30'
+    },
     {
       legend: 'second',
       data: 39000,
-      color: getColorFromToken(DataVizPalette.color2),
+      gradient: getGradientFromToken(DataVizGradientPalette.gradient2),
       xAxisCalloutData: '2020/04/20',
     },
   ];
