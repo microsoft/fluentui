@@ -6,6 +6,7 @@ import {
   colorNeutralForeground1,
   colorNeutralShadowAmbient,
   colorNeutralShadowKey,
+  colorTransparentStroke,
   fontFamilyBase,
   fontSizeBase200,
   lineHeightBase200,
@@ -30,7 +31,7 @@ export const styles = css`
     --inlineOffset: ${spacingHorizontalXS};
     background: ${colorNeutralBackground1};
     border-radius: ${borderRadiusMedium};
-    border: 1px solid var(--colorTransparentStroke);
+    border: 1px solid ${colorTransparentStroke};
     box-sizing: border-box;
     color: ${colorNeutralForeground1};
     display: inline-flex;

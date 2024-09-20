@@ -49,7 +49,16 @@ test.describe('Tooltip', () => {
 
   test('default placement should be set to `above`', async ({ page }) => {
     const element = page.locator('fluent-tooltip');
-    await expect(element).toHaveAttribute('positioning', 'above');
+    const button = page.locator('button');
+    await expect(element).not.toHaveAttribute('positioning', 'above');
+
+    // show the element to get the position
+    await button.focus();
+
+    const buttonTop = await button.evaluate((node: HTMLElement) => node.getBoundingClientRect().top);
+    const elementBottom = await element.evaluate((node: HTMLElement) => node.getBoundingClientRect().bottom);
+
+    await expect(buttonTop).toBeGreaterThan(elementBottom);
   });
 
   test('should show the tooltip on hover', async ({ page }) => {
