@@ -7,10 +7,9 @@ import { useLegendStyles_unstable } from './Legends.styles';
 import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 /* import { buttonProperties } from '@fluentui/react-components'; */
 import { Overflow, OverflowItem } from '@fluentui/react-overflow';
-import { useFocusableGroup } from '@fluentui/react-tabster';
+import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { OverflowMenu } from './OverflowMenu';
 import { tokens } from '@fluentui/react-theme';
-import { useArrowNavigationGroup } from '@fluentui/react-components';
 
 // This is an internal interface used for rendering the legends with unique key
 interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
