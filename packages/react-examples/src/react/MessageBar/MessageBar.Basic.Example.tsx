@@ -106,24 +106,52 @@ const SuccessExample = () => (
   </MessageBar>
 );
 
-const WarningExample = (p: IExampleProps) => (
-  <MessageBar
-    messageBarType={MessageBarType.warning}
-    isMultiline={false}
-    onDismiss={p.resetChoice}
-    dismissButtonAriaLabel="Close"
-    actions={
-      <div>
-        <MessageBarButton>Action</MessageBarButton>
-      </div>
+const WarningExample = (p: IExampleProps) => {
+  const [showExpandButton, setShowExpandButton] = React.useState(false);
+
+  function onResize() {
+    const messageBarMessage = document.getElementById('warningMessageBar') as HTMLDivElement;
+
+    if (messageBarMessage) {
+      const temp = messageBarMessage.cloneNode(true) as any;
+
+      temp.style.position = 'fixed';
+      temp.style.overflow = 'visible';
+      temp.style.whiteSpace = 'nowrap';
+      temp.style.visibility = 'hidden';
+
+      (messageBarMessage.parentElement as any).appendChild(temp);
+
+      const fullWidth = temp.getBoundingClientRect().width;
+      const displayWidth = messageBarMessage.getBoundingClientRect().width;
+
+      setShowExpandButton(fullWidth > displayWidth);
     }
-  >
-    Warning MessageBar content.
-    <Link href="www.bing.com" target="_blank" underline>
-      Visit our website.
-    </Link>
-  </MessageBar>
-);
+  }
+
+  window.onresize = onResize;
+
+  return (
+    <MessageBar
+      id="warningMessageBar"
+      messageBarType={MessageBarType.warning}
+      isMultiline={false}
+      onDismiss={p.resetChoice}
+      dismissButtonAriaLabel="Close"
+      actions={
+        <div>
+          <MessageBarButton>Action</MessageBarButton>
+        </div>
+      }
+      showExpandButton={showExpandButton}
+    >
+      Warning MessageBar content.
+      <Link href="www.bing.com" target="_blank" underline>
+        Visit our website.
+      </Link>
+    </MessageBar>
+  );
+};
 
 const WarningExample2 = (p: IExampleProps) => (
   <MessageBar
