@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-carousel-preview
 
-This log was last generated on Tue, 10 Sep 2024 10:19:05 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2024 00:49:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.4.0)
+
+Fri, 13 Sep 2024 00:49:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel-preview_v0.3.0..@fluentui/react-carousel-preview_v0.4.0)
+
+### Minor changes
+
+- feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards ([PR #32457](https://github.com/microsoft/fluentui/pull/32457) by mifraser@microsoft.com)
+
+### Patches
+
+- chore: cleanup before the release ([PR #32475](https://github.com/microsoft/fluentui/pull/32475) by olfedias@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.3.0)
 

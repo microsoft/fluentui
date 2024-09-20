@@ -38,14 +38,6 @@ export {
   useCarouselCardStyles_unstable,
   useCarouselCard_unstable,
 } from './CarouselCard';
-export type { CarouselFooterProps, CarouselFooterSlots, CarouselFooterState } from './CarouselFooter';
-export {
-  CarouselFooter,
-  carouselFooterClassNames,
-  renderCarouselFooter_unstable,
-  useCarouselFooterStyles_unstable,
-  useCarouselFooter_unstable,
-} from './CarouselFooter';
 export type {
   CarouselAutoplayButtonProps,
   CarouselAutoplayButtonSlots,
@@ -80,3 +72,25 @@ export {
   type CarouselSliderSlots,
   type CarouselSliderState,
 } from './CarouselSlider';
+export type {
+  CarouselNavContainerProps,
+  CarouselNavContainerSlots,
+  CarouselNavContainerState,
+} from './CarouselNavContainer';
+export {
+  CarouselNavContainer,
+  carouselNavContainerClassNames,
+  renderCarouselNavContainer_unstable,
+  useCarouselNavContainerStyles_unstable,
+  useCarouselNavContainer_unstable,
+} from './CarouselNavContainer';
+export { carouselContextDefaultValue, CarouselProvider, useCarouselContext_unstable } from './CarouselContext';
+export type { CarouselIndexChangeData, CarouselContextValue, CarouselContextValues } from './CarouselContext';
+export type { CarouselAnnouncerProps, CarouselAnnouncerSlots, CarouselAnnouncerState } from './CarouselAnnouncer';
+export {
+  CarouselAnnouncer,
+  carouselAnnouncerClassNames,
+  renderCarouselAnnouncer_unstable,
+  useCarouselAnnouncerStyles_unstable,
+  useCarouselAnnouncer_unstable,
+} from './CarouselAnnouncer';

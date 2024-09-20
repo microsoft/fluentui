@@ -5,11 +5,16 @@ import micromatch from 'micromatch';
 
 import { type VerifyPackagingExecutorSchema } from './schema';
 import { join } from 'node:path';
+import { measureEnd, measureStart } from '../../utils';
 
 const runExecutor: PromiseExecutor<VerifyPackagingExecutorSchema> = async (schema, context) => {
+  measureStart('VerifyTargetExecutor');
+
   const options = normalizeOptions(schema, context);
 
   const success = await runVerifyPackaging(options, context);
+
+  measureEnd('VerifyTargetExecutor');
 
   return { success };
 };

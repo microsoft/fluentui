@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Adjust window height comparison in fractional cases.",
-  "packageName": "@fluentui/react-dialog",
-  "email": "owcampbe@microsoft.com",
-  "dependentChangeType": "patch"
-}

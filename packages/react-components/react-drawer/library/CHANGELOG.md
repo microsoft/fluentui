@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Tue, 10 Sep 2024 10:19:06 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Sep 2024 00:49:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.14)
+
+Fri, 13 Sep 2024 00:49:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.13..@fluentui/react-drawer_v9.5.14)
+
+### Patches
+
+- fix: update scroll state when children changes ([PR #32818](https://github.com/microsoft/fluentui/pull/32818) by marcosvmmoura@gmail.com)
+- fix: apply position: absolute when mountNode is passed ([PR #32816](https://github.com/microsoft/fluentui/pull/32816) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.11.14 ([PR #32371](https://github.com/microsoft/fluentui/pull/32371) by beachball)
 
 ## [9.5.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.13)
 
