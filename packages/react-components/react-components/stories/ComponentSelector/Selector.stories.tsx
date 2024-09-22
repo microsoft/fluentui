@@ -338,6 +338,8 @@ export const Selector = () => {
     console.log(`--------- get component called`);
     const suitableComponents: any[] = [];
 
+    console.log(`selectedComponents: ${selectedComponents}`);
+
     if (selectedComponents && selectedComponents.length > 0) {
       selectedComponents.forEach(componentName => {
         const component = getComponentByName(componentName);
@@ -393,9 +395,17 @@ export const Selector = () => {
   };
 
   const onSelectionChange = (event, data, name) => {
-    if (!!data.selected) {
+    if (data?.checked === undefined) {
+      console.log(`onSelectionChange undefined`);
+      console.log(`onSelectionChange: undefined: selectedComponents: ${selectedComponents}`);
+      return;
+    }
+    if (data.checked) {
+      console.log(`onSelectionChange: TRUE: selectedComponents: ${selectedComponents}`);
+      console.log(`onSelectionChange: TRUE: name : ${name}`);
       setSelectedComponents([...selectedComponents, name]);
     } else {
+      console.log(`onSelectionChange: FALSE:  ${name}`);
       setSelectedComponents(selectedComponents.filter(component => component !== name));
     }
   };
@@ -461,9 +471,9 @@ export const Selector = () => {
       setRadioItems(anotherNewArray);
     };
 
-    radioItems.forEach(item => {
-      console.log(`STATE: Radio items: ${item.value}`);
-    });
+    // radioItems.forEach(item => {
+    //   console.log(`STATE: Radio items: ${item.value}`);
+    // });
 
     const allQuestions = getAllQuestions(selectedComponents, questions);
 

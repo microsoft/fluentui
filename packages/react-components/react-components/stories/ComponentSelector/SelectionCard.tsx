@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles, Button, Caption1, tokens, Text, Checkbox } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
+import { stat } from 'fs';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL = 'https://fluent2websitecdn.azureedge.net/cdn/';
@@ -62,6 +63,8 @@ export const SelectionCard = props => {
   const onSelectedCardChange = React.useCallback(
     (_, state) => {
       setCheckboxState(state, setSelected);
+      console.log('------- onchange called');
+      state && state.checked && console.log('card state', state.checked);
       props.onChange(_, state, props.name);
     },
     [setCheckboxState],
