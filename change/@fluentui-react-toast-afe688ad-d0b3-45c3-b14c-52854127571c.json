@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "migrate enter/exit to Collapse motion component",
+  "packageName": "@fluentui/react-toast",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
