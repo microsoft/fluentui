@@ -28,6 +28,7 @@ export type CarouselContextValue = {
   ) => void;
   subscribeForValues: (listener: (data: CarouselUpdateData) => void) => () => void;
   enableAutoplay: (autoplay: boolean) => void;
+  resetAutoplay: () => void;
   containerRef?: React.RefObject<HTMLDivElement>;
 };
 
