@@ -59,10 +59,6 @@ export function useEmblaCarousel(
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
 
-  const resetAutoplay = React.useCallback(() => {
-    emblaApi.current?.plugins().autoplay.reset();
-  }, []);
-
   const autoplayRef = React.useRef<boolean>(false);
   /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
   const enableAutoplay = React.useCallback((autoplay: boolean) => {
@@ -74,6 +70,10 @@ export function useEmblaCarousel(
     } else {
       emblaApi.current?.plugins().autoplay.stop();
     }
+  }, []);
+
+  const resetAutoplay = React.useCallback(() => {
+    emblaApi.current?.plugins().autoplay.reset();
   }, []);
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
