@@ -48,9 +48,6 @@ export type CarouselAnnouncerSlots = {
 // @public
 export type CarouselAnnouncerState = ComponentState<CarouselAnnouncerSlots> & {
     renderAnnouncerText: AnnouncerIndexRenderFunction;
-    totalSlides: number;
-    currentIndex: number;
-    slideGroupList: number[][];
 };
 
 // @public

@@ -5,8 +5,6 @@ exports[`CarouselAnnouncer renders a default state 1`] = `
   <div
     aria-live="polite"
     class="fui-CarouselAnnouncer"
-  >
-    Slide 0 of 0
-  </div>
+  />
 </div>
 `;
