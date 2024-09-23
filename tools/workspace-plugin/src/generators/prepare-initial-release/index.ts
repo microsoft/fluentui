@@ -169,7 +169,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   }
 
   const mdFilePath = {
-    spec: joinPathFragments(options.projectConfig.root, 'docs/SPEC.md'),
+    spec: joinPathFragments(options.projectConfig.root, 'docs/Spec.md'),
     readme: joinPathFragments(options.projectConfig.root, 'README.md'),
     api: joinPathFragments(options.projectConfig.root, 'etc', options.project + '.api.md'),
     apiNew: joinPathFragments(options.projectConfig.root, 'etc', newPackage.name + '.api.md'),

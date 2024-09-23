@@ -924,7 +924,7 @@ function createProject(
   const sourceRoot = joinPathFragments(options.root, 'src');
   const indexFile = joinPathFragments(sourceRoot, 'index.ts');
   const jestPath = joinPathFragments(options.root, 'jest.config.js');
-  const specPath = joinPathFragments(options.root, 'docs/SPEC.md');
+  const specPath = joinPathFragments(options.root, 'docs/Spec.md');
   const readmePath = joinPathFragments(options.root, 'README.md');
   const licensePath = joinPathFragments(options.root, 'LICENSE');
   const apiMdPath = joinPathFragments(options.root, `etc/${projectName}.api.md`);
@@ -1056,7 +1056,7 @@ These are not production-ready components and **should never be used in product*
     },
     md: {
       license: () => tree.read(joinPathFragments(newRoot, 'LICENSE'), 'utf-8'),
-      spec: () => tree.read(joinPathFragments(newRoot, 'docs/SPEC.md'), 'utf-8'),
+      spec: () => tree.read(joinPathFragments(newRoot, 'docs/Spec.md'), 'utf-8'),
       readme: () => tree.read(joinPathFragments(newRoot, 'README.md'), 'utf-8'),
       api: () => tree.read(joinPathFragments(newRoot, `etc/${projectName.replace('-preview', '')}.api.md`), 'utf-8'),
     },
