@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselAnnouncerProps, CarouselAnnouncerState } from './CarouselAnnouncer.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import { useCallback } from 'react';
 
 /**
  * Create the state required to render CarouselAnnouncer.
@@ -23,7 +24,7 @@ export const useCarouselAnnouncer_unstable = (
   const navLengthRef = React.useRef<number>(0);
   const navGroupRef = React.useRef<number[][]>([]);
 
-  const updateInnerText = (index: number, totalSlides: number, groupIndexList: number[][]) => {
+  const updateInnerText = useCallback((index: number, totalSlides: number, groupIndexList: number[][]) => {
     if (totalSlides <= 0) {
       // Ignore announcements until slides discovered
       return;
@@ -33,7 +34,7 @@ export const useCarouselAnnouncer_unstable = (
     if (textRef.current) {
       textRef.current.innerText = announcementText;
     }
-  };
+  }, []);
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
