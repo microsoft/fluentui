@@ -11,7 +11,6 @@ export { LCCustomLocale } from './LineChartCustomLocaleDateAxis.stories';
 export { LCEvents } from './LineChartEvents.stories';
 export { LCGaps } from './LineChartGaps.stories';
 export { LCLargeData } from './LineChartLargeData.stories';
-export { LCResponsive } from './LineChartResponsive.stories';
 
 export default {
   title: 'Compat Components/Charts/LineChart',

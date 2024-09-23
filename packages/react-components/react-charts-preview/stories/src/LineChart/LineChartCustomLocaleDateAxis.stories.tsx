@@ -163,7 +163,6 @@ export const LCCustomLocale = (props: ILineChartProps) => {
           width={width}
           margins={margins}
           xAxisTickCount={10}
-          enableReflow={true}
           allowMultipleShapesForPoints={allowMultipleShapes}
           rotateXAxisLables={true}
           timeFormatLocale={customLocale}

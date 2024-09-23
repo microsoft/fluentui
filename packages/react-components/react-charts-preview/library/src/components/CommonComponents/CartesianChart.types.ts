@@ -415,7 +415,7 @@ export interface ICartesianChartProps {
 
   /**
    * Enables the chart to automatically adjust its size based on the container's dimensions.
-   * @default false
+   * @default true
    */
   responsive?: boolean;
 

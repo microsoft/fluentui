@@ -133,7 +133,6 @@ export const LCLargeData = (props: ILineChartProps) => {
           width={width}
           margins={margins}
           allowMultipleShapesForPoints={allowMultipleShapes}
-          enableReflow={true}
           optimizeLargeData={true}
           enablePerfOptimization={true}
         />

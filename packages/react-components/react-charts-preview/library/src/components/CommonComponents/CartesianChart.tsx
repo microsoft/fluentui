@@ -631,3 +631,6 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   );
 };
 CartesianChart.displayName = 'CartesianChart';
+CartesianChart.defaultProps = {
+  responsive: true,
+};

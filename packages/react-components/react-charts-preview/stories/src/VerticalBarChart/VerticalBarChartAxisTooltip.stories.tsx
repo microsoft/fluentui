@@ -179,7 +179,6 @@ export const VCAxisTooltip = () => {
           hideTooltip={false}
           showXAxisLablesTooltip={selectedCallout === 'showTooltip' ? true : false}
           wrapXAxisLables={selectedCallout === 'WrapTickValues' ? true : false}
-          enableReflow={true}
           barWidth={barWidthEnabled ? barWidth : 'auto'}
           maxBarWidth={maxBarWidth}
           xAxisInnerPadding={xAxisInnerPaddingEnabled ? xAxisInnerPadding : undefined}
