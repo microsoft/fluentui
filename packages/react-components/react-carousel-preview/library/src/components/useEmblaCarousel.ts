@@ -62,9 +62,14 @@ export function useEmblaCarousel(
   const enableAutoplay = React.useCallback((autoplay: boolean) => {
     autoplayRef.current = autoplay;
     if (autoplay) {
+      console.log('Playing autoplay:', autoplay);
       emblaApi.current?.plugins().autoplay.play();
+      console.log('Is autoplay:', emblaApi.current?.plugins().autoplay.isPlaying());
+      emblaApi.current?.plugins().autoplay.reset();
+      console.log('Is autoplay:', emblaApi.current?.plugins().autoplay.isPlaying());
     } else {
-      emblaApi.current?.plugins().autoplay.stop();
+      console.log('Stop autoplay:', autoplay);
+      // emblaApi.current?.plugins().autoplay.stop();
     }
   }, []);
 
@@ -132,6 +137,7 @@ export function useEmblaCarousel(
 
         if (newElement) {
           currentElement = newElement;
+          console.log('New element: ', autoplayRef.current);
           emblaApi.current = EmblaCarousel(
             newElement,
             {
@@ -141,9 +147,9 @@ export function useEmblaCarousel(
             [
               Autoplay({
                 playOnInit: autoplayRef.current,
-                stopOnInteraction: !autoplayRef.current,
-                stopOnMouseEnter: true,
-                stopOnFocusIn: true,
+                // stopOnInteraction: !autoplayRef.current,
+                stopOnMouseEnter: false,
+                stopOnFocusIn: false,
               }),
             ],
           );
