@@ -41,7 +41,7 @@ export const useCarouselAnnouncer_unstable = (
       navGroupRef.current = data.groupIndexList;
       updateInnerText(data.activeIndex, data.navItemsCount, data.groupIndexList);
     });
-  }, [subscribeForValues]);
+  }, [subscribeForValues, updateInnerText]);
 
   useIsomorphicLayoutEffect(() => {
     updateInnerText(currentIndex, navLengthRef.current, navGroupRef.current);
