@@ -7,11 +7,11 @@ type Story = StoryObj<FluentDivider>;
 
 const dividerTemplate = html<StoryArgs<FluentDivider>>`
   <fluent-divider
-    align-content=${story => story.alignContent || void 0}
-    appearance=${story => story.appearance || void 0}
-    role=${story => story.role || void 0}
+    align-content=${story => story.alignContent}
+    appearance=${story => story.appearance}
+    role=${story => story.role}
     ?inset=${story => story.inset}
-    orientation="${story => story.orientation || void 0}"
+    orientation="${story => story.orientation}"
   >
     ${story => story.slottedContent?.()}
   </fluent-divider>
@@ -28,6 +28,7 @@ export default {
       control: 'select',
       description: 'Align content',
       options: ['', ...Object.values(DividerAlignContent)],
+      mapping: { '': null, ...DividerAlignContent },
       table: {
         category: 'attributes',
         type: { summary: Object.values(DividerAlignContent).join('|') },
@@ -37,6 +38,7 @@ export default {
       control: 'select',
       description: 'Divider and text colors',
       options: ['', ...Object.values(DividerAppearance)],
+      mapping: { '': null, ...DividerAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(DividerAppearance).join('|') },
@@ -46,6 +48,7 @@ export default {
       control: 'select',
       description: 'Set role attribute',
       options: ['', ...Object.values(DividerRole)],
+      mapping: { '': null, ...DividerRole },
       table: {
         category: 'attributes',
         type: { summary: Object.values(DividerRole).join('|') },
@@ -60,6 +63,7 @@ export default {
       control: 'select',
       description: 'Divider layout',
       options: ['', ...Object.values(DividerOrientation)],
+      mapping: { '': null, ...DividerOrientation },
       table: {
         category: 'attributes',
         type: { summary: Object.values(DividerOrientation).join('|') },

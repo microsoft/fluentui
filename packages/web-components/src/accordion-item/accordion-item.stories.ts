@@ -7,9 +7,9 @@ type Story = StoryObj<FluentAccordionItem>;
 
 const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
   <fluent-accordion-item
-    heading-level="${story => story.headinglevel || void 0}"
-    marker-position="${story => story.markerPosition || void 0}"
-    size="${story => story.size || void 0}"
+    heading-level="${story => story.headinglevel}"
+    marker-position="${story => story.markerPosition}"
+    size="${story => story.size}"
     ?disabled="${story => story.disabled}"
     ?expanded="${story => story.expanded}"
     ?block="${story => story.block}"
@@ -21,6 +21,10 @@ const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
 export default {
   title: 'Components/Accordion/AccordionItem',
   render: renderComponent(storyTemplate),
+  args: {
+    headingSlottedContent: () => html`<span slot="heading">Accordion Item</span>`,
+    slottedContent: () => 'Content',
+  },
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -54,6 +58,7 @@ export default {
       description: 'Controls the size of the Accordion Item.',
       name: 'size',
       options: ['', ...Object.values(AccordionItemSize)],
+      mapping: { '': null, ...AccordionItemSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemSize).join('|') },
@@ -64,6 +69,7 @@ export default {
       description: 'Controls the position of the marker.',
       name: 'marker-position',
       options: ['', ...Object.values(AccordionItemMarkerPosition)],
+      mapping: { '': null, ...AccordionItemMarkerPosition },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemMarkerPosition).join('|') },

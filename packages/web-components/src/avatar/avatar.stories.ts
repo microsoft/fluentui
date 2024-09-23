@@ -7,11 +7,11 @@ type Story = StoryObj<FluentAvatar>;
 
 const storyTemplate = html<StoryArgs<FluentAvatar>>`
   <fluent-avatar
-    appearance="${story => story.appearance || void 0}"
-    active="${story => story.active || void 0}"
-    color="${story => story.color || void 0}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
+    appearance="${story => story.appearance}"
+    active="${story => story.active}"
+    color="${story => story.color}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
     initials="${story => story.initials}"
     name="${story => story.name}"
   >
@@ -27,6 +27,7 @@ export default {
       control: 'select',
       description: 'Optional activity indicator',
       options: ['', ...Object.values(AvatarActive)],
+      mapping: { '': null, ...AvatarActive },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarActive).join('|') },
@@ -36,6 +37,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the avatar.',
       options: ['', ...Object.values(AvatarAppearance)],
+      mapping: { '': null, ...AvatarAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarAppearance).join('|') },
@@ -45,6 +47,7 @@ export default {
       control: 'select',
       description: 'Indicates the color of the avatar.',
       options: ['', ...Object.values(AvatarColor)],
+      mapping: { '': null, ...AvatarColor },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarColor).join('|') },
@@ -65,6 +68,7 @@ export default {
       control: 'select',
       description: 'Indicates the shape of the avatar.',
       options: ['', ...Object.values(AvatarShape)],
+      mapping: { '': null, ...AvatarShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarShape).join('|') },
@@ -74,6 +78,7 @@ export default {
       control: 'select',
       description: 'Indicates the size of the avatar.',
       options: ['', ...Object.values(AvatarSize)],
+      mapping: { '': null, ...AvatarSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AvatarSize).join('|') },

@@ -12,10 +12,10 @@ type Story = StoryObj<FluentCounterBadge>;
 
 const storyTemplate = html<StoryArgs<FluentCounterBadge>>`
   <fluent-counter-badge
-    appearance="${story => story.appearance || void 0}"
-    color="${story => story.color || void 0}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
+    appearance="${story => story.appearance}"
+    color="${story => story.color}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
     count="${story => story.count}"
     overflow-count="${story => story.overflowCount}"
     ?show-zero="${story => story.showZero}"
@@ -40,6 +40,7 @@ export default {
     appearance: {
       description: 'Sets the appearance of the badge to one of the predefined styles',
       options: Object.values(CounterBadgeAppearance),
+      mapping: { '': null, ...CounterBadgeAppearance },
       control: 'select',
       table: {
         category: 'attributes',
@@ -49,6 +50,7 @@ export default {
     color: {
       description: 'Sets the color of the badge to one of the predefined colors',
       options: Object.values(CounterBadgeColor),
+      mapping: { '': null, ...CounterBadgeColor },
       control: 'select',
       table: {
         category: 'attributes',
@@ -58,6 +60,7 @@ export default {
     shape: {
       description: 'Sets the shape of the badge to one of the predefined shapes',
       options: Object.values(CounterBadgeShape),
+      mapping: { '': null, ...CounterBadgeShape },
       control: 'select',
       table: {
         category: 'attributes',
@@ -67,6 +70,7 @@ export default {
     size: {
       description: 'Sets the size of the badge to one of the predefined sizes',
       options: Object.values(CounterBadgeSize),
+      mapping: { '': null, ...CounterBadgeSize },
       control: 'select',
       table: {
         category: 'attributes',

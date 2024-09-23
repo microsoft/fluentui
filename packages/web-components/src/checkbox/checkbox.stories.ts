@@ -15,8 +15,8 @@ const storyTemplate = html<StoryArgs<FluentCheckbox>>`
     :indeterminate="${story => story.indeterminate}"
     name="${story => story.name}"
     ?required="${story => story.required}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
     slot="${story => story.slot}"
   >
     ${story => story.checkedIndicatorContent?.()} ${story => story.indeterminateIndicatorContent?.()}
@@ -87,6 +87,7 @@ export default {
       description: 'Sets the shape of the checkbox',
       control: 'select',
       options: Object.values(CheckboxShape),
+      mapping: { '': null, ...CheckboxShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CheckboxShape).join('|') },
@@ -96,6 +97,7 @@ export default {
       description: 'Sets the size of the checkbox',
       control: 'select',
       options: Object.values(CheckboxSize),
+      mapping: { '': null, ...CheckboxSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CheckboxSize).join('|') },

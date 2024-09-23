@@ -33,6 +33,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the button.',
       options: ['', ...Object.values(CompoundButtonAppearance)],
+      mapping: { '': null, ...CompoundButtonAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CompoundButtonAppearance).join('|') },
@@ -42,6 +43,7 @@ export default {
       control: 'select',
       description: 'The shape of the button.',
       options: ['', ...Object.values(CompoundButtonShape)],
+      mapping: { '': null, ...CompoundButtonShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CompoundButtonShape).join('|') },
@@ -51,6 +53,7 @@ export default {
       control: 'select',
       description: 'The size of the button.',
       options: ['', ...Object.values(CompoundButtonSize)],
+      mapping: { '': null, ...CompoundButtonSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(CompoundButtonSize).join('|') },

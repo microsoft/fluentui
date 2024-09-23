@@ -12,16 +12,16 @@ const storyTemplate = html<StoryArgs<FluentButton>>`
     ?disabled="${story => story.disabled}"
     ?formnovalidate="${story => story.formnovalidate}"
     ?icon-only="${story => story.iconOnly}"
-    appearance="${story => story.appearance || void 0}"
+    appearance="${story => story.appearance}"
     form="${story => story.form}"
     formaction="${story => story.formaction}"
     formenctype="${story => story.formenctype}"
     formmethod="${story => story.formmethod}"
     formtarget="${story => story.formtarget}"
     name="${story => story.name}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
-    type="${story => story.type || void 0}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
+    type="${story => story.type}"
     value="${story => story.value}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
@@ -42,6 +42,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the button.',
       options: ['', ...Object.values(ButtonAppearance)],
+      mapping: { '': null, ...ButtonAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonAppearance).join('|') },
@@ -110,6 +111,7 @@ export default {
       control: 'select',
       description: 'The size of the button.',
       options: ['', ...Object.values(ButtonSize)],
+      mapping: { '': null, ...ButtonSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonSize).join('|') },
@@ -119,6 +121,7 @@ export default {
       control: 'select',
       description: 'The shape of the button.',
       options: ['', ...Object.values(ButtonShape)],
+      mapping: { '': null, ...ButtonShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonShape).join('|') },
@@ -128,6 +131,7 @@ export default {
       control: 'select',
       description: 'The type of the button.',
       options: ['', ...Object.values(ButtonType)],
+      mapping: { '': null, ...ButtonType },
       table: {
         category: 'attributes',
         type: { summary: Object.values(ButtonType).join('|') },

@@ -7,10 +7,10 @@ type Story = StoryObj<FluentBadge>;
 
 const storyTemplate = html<StoryArgs<FluentBadge>>`
   <fluent-badge
-    appearance="${story => story.appearance || void 0}"
-    color="${story => story.color || void 0}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
+    appearance="${story => story.appearance}"
+    color="${story => story.color}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
     ${story => story.endSlottedContent?.()}
@@ -30,6 +30,7 @@ export default {
     appearance: {
       description: 'Sets the appearance of the badge to one of the predefined styles',
       options: Object.values(BadgeAppearance),
+      mapping: { '': null, ...BadgeAppearance },
       control: 'select',
       table: {
         category: 'attributes',
@@ -39,6 +40,7 @@ export default {
     color: {
       description: 'Sets the color of the badge to one of the predefined colors',
       options: Object.values(BadgeColor),
+      mapping: { '': null, ...BadgeColor },
       control: 'select',
       table: {
         category: 'attributes',
@@ -48,6 +50,7 @@ export default {
     shape: {
       description: 'Sets the shape of the badge to one of the predefined shapes',
       options: Object.values(BadgeShape),
+      mapping: { '': null, ...BadgeShape },
       control: 'select',
       table: {
         category: 'attributes',
@@ -57,6 +60,7 @@ export default {
     size: {
       description: 'Sets the size of the badge to one of the predefined sizes',
       options: Object.values(BadgeSize),
+      mapping: { '': null, ...BadgeSize },
       control: 'select',
       table: {
         category: 'attributes',
