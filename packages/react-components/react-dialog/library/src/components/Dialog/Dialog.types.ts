@@ -7,7 +7,7 @@ import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types'
 
 export type DialogSlots = {
   /**
-   * For more information refer to the [Motion Components page](/?path=/docs/concepts-developer-motion-components--docs).
+   * For more information refer to the [Motion docs page](/?path=/docs/motion-motion-slot--docs).
    *
    */
   surfaceMotion: Slot<PresenceMotionSlotProps>;
