@@ -109,8 +109,6 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     />
   ) : null;
 
-  // console.log(truncated, isMultiline);
-
   return (
     <div ref={ref} className={classNames.root} {...regionProps}>
       <div className={classNames.content}>
