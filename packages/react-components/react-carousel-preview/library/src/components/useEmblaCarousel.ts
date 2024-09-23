@@ -58,23 +58,26 @@ export function useEmblaCarousel(
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
-
   const autoplayRef = React.useRef<boolean>(false);
-  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
-  const enableAutoplay = React.useCallback((autoplay: boolean) => {
-    autoplayRef.current = autoplay;
-    if (autoplay) {
-      emblaApi.current?.plugins().autoplay.play();
-      // Reset after play to ensure timing and any focus/mouse pause state is reset.
-      resetAutoplay();
-    } else {
-      emblaApi.current?.plugins().autoplay.stop();
-    }
-  }, []);
 
   const resetAutoplay = React.useCallback(() => {
     emblaApi.current?.plugins().autoplay.reset();
   }, []);
+
+  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
+  const enableAutoplay = React.useCallback(
+    (autoplay: boolean) => {
+      autoplayRef.current = autoplay;
+      if (autoplay) {
+        emblaApi.current?.plugins().autoplay.play();
+        // Reset after play to ensure timing and any focus/mouse pause state is reset.
+        resetAutoplay();
+      } else {
+        emblaApi.current?.plugins().autoplay.stop();
+      }
+    },
+    [resetAutoplay],
+  );
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
