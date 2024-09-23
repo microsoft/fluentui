@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix (v8 MessageBar): Add showExpandButton prop to allow manual override to explicitly show the expand button",
+  "packageName": "@fluentui/react",
+  "email": "jiangemma@microsoft.com",
+  "dependentChangeType": "patch"
+}
