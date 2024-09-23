@@ -415,6 +415,8 @@ function updateFileContent(
 
   const newContent = updater(oldContent);
 
+  console.log({ filePath, newFilePath, oldContent, newContent });
+
   if (newFilePath) {
     tree.rename(filePath, newFilePath);
     tree.write(newFilePath, newContent);

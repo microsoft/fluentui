@@ -45,6 +45,7 @@ jobs:
       - run: cat packages/react-components/hello-world/library/README.md
       - run: cat packages/react-components/hello-world/library/docs/SPEC.md
       - run: cat packages/react-components/hello-world/stories/README.md
+      - run: tree packages/react-components/hello-world
       - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --no-interactive
