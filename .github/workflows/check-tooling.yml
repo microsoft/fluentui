@@ -42,8 +42,8 @@ jobs:
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=preview --no-interactive
       - run: yarn nx g @fluentui/workspace-plugin:prepare-initial-release --project hello-world-preview --phase=stable --no-interactive
       - run: cat packages/react-components/hello-world/library/bundle-size/index.fixture.js
-      - run: cat packages/react-components/hello-world/library/bundle-size/README.md
-      - run: cat packages/react-components/hello-world/library/bundle-size/docs/SPEC.md
+      - run: cat packages/react-components/hello-world/library/README.md
+      - run: cat packages/react-components/hello-world/library/docs/SPEC.md
       - run: cat packages/react-components/hello-world/stories/README.md
       - run: yarn nx g @nx/workspace:remove --project hello-world --forceRemove --no-interactive
       - run: yarn nx g @nx/workspace:remove --project hello-world-stories --forceRemove --no-interactive
