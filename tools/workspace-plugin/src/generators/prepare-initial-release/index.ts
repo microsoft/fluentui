@@ -62,7 +62,10 @@ function assertOutputOnCi(tree: Tree, options: NormalizedSchema) {
   if (options.phase === 'stable') {
     console.log(
       'bundle-size',
-      tree.read(joinPathFragments(options.projectConfig.root, 'bundle-size/index.fixture.js'), 'utf-8'),
+      tree.read(
+        joinPathFragments(options.projectConfig.root.replace('-preview', ''), 'bundle-size/index.fixture.js'),
+        'utf-8',
+      ),
     );
   }
 }
