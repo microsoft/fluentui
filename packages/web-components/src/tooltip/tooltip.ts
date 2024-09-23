@@ -1,4 +1,5 @@
 import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { uniqueId } from '@microsoft/fast-web-utilities';
 
 /**
  * A Tooltip Custom HTML Element.
@@ -10,6 +11,16 @@ export class Tooltip extends FASTElement {
    * The attached element internals
    */
   public elementInternals = this.attachInternals();
+
+  /**
+   * The item ID
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: id
+   */
+  @attr
+  public id: string = uniqueId('tooltip-');
 
   /**
    * Set the delay for the tooltip
@@ -52,7 +63,7 @@ export class Tooltip extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
     if (this.anchorElement) {
-      this.anchorElement.setAttribute('aria-describedby', `tooltip-${this.anchor}`);
+      this.anchorElement.setAttribute('aria-describedby', this.id);
 
       // @ts-expect-error Baseline 2024
       this.anchorElement.style.anchorName = `--${this.anchor}`;

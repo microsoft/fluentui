@@ -40,8 +40,9 @@ export default {
     },
     positioning: {
       control: 'select',
+      description: 'Controls the positioning of the tooltip',
       options: Object.keys(TooltipPositioning),
-      table: { category: 'attributes', type: { summary: 'Controls the positioning of the tooltip' } },
+      table: { category: 'attributes', type: { summary: 'string' } },
     },
   },
 } as unknown as Meta<Tooltip>;
