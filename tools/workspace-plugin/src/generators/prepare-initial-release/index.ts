@@ -28,6 +28,7 @@ import tsConfigBaseAll from '../tsconfig-base-all';
 import { assertStoriesProject, isSplitProject as isSplitProjectFn } from '../split-library-in-two/shared';
 
 import { type ReleasePackageGeneratorSchema } from './schema';
+import { visitNotGitIgnoredFiles } from './lib/utils';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -53,21 +54,7 @@ export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema
     tasks.forEach(task => {
       task(tree);
     });
-
-    assertOutputOnCi(tree, options);
   };
-}
-
-function assertOutputOnCi(tree: Tree, options: NormalizedSchema) {
-  if (options.phase === 'stable') {
-    console.log(
-      'bundle-size',
-      tree.read(
-        joinPathFragments(options.projectConfig.root.replace('-preview', ''), 'bundle-size/index.fixture.js'),
-        'utf-8',
-      ),
-    );
-  }
 }
 
 function normalizeOptions(tree: Tree, options: ReleasePackageGeneratorSchema) {
@@ -135,6 +122,9 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     return content.replace(regexp, 'react-components');
   };
 
+  // clean node_modules so we don't perform unnecessary RENAMES later
+  tree.delete(joinPathFragments(options.projectConfig.root, 'node_modules'));
+
   // we need to update projects that might still contain dependency to old -preview package first
   await updateProjectsThatUsedPreviewPackage();
 
@@ -156,16 +146,12 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   const bundleSizeFixturesRoot = joinPathFragments(options.projectConfig.root, 'bundle-size');
   if (tree.exists(bundleSizeFixturesRoot)) {
-    console.log('===BUNDLE SIZE UPDATES====', { bundleSizeFixturesRoot });
-    visitNotIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
-      console.log('===BUNDLE SIZE UPDATES====', { filePath });
+    visitNotGitIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
       updateFileContent(tree, {
         filePath,
         updater: contentNameUpdater,
       });
     });
-  } else {
-    console.warn('=== NO BUNDLE SIZE UPDATES! ====', { bundleSizeFixturesRoot });
   }
 
   const mdFilePath = {

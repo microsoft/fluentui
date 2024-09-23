@@ -9,13 +9,14 @@ import {
   readJson,
   updateJson,
   installPackagesTask,
-  visitNotIgnoredFiles,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
 import path from 'node:path';
 
+import type { PackageJson, TsConfig } from '../../types';
+
 import generator from './index';
-import { PackageJson, TsConfig } from '../../types';
+import { visitNotGitIgnoredFiles } from './lib/utils';
 
 const getBlankGraphMock = () => ({
   dependencies: {},
@@ -55,6 +56,21 @@ describe('prepare-initial-release generator', () => {
       ...getBlankGraphMock(),
     };
     tree = createTreeWithEmptyWorkspace();
+    tree.write(
+      '.nxignore',
+      stripIndents`
+      ; build output
+      **/dist/**
+
+      ; known directories to not incorporate into the workspace graph creation
+      **/fixtures/**
+      **/__fixtures__/**
+      **/bundle-size/**
+
+      ; scaffolding templates
+      **/generators/**/files/**
+    `,
+    );
     tree.write(codeownersPath, `foo/bar @org/all\n`);
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
@@ -1064,7 +1080,7 @@ These are not production-ready components and **should never be used in product*
       const root = joinPathFragments(newRoot, 'bundle-size');
       const contents: Record<string, string> = {};
 
-      visitNotIgnoredFiles(tree, root, file => {
+      visitNotGitIgnoredFiles(tree, root, file => {
         contents[path.posix.normalize(file)] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
       });
 
