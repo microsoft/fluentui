@@ -4,6 +4,7 @@ const { durationNormal, durationSlower, durationUltraFast, curveEasyEase, curveE
 
 export type CollapseOrientation = 'horizontal' | 'vertical';
 
+/** Variant options are locked into the variant when its motion function is created. */
 type CollapseVariantOptions = {
   /** Time (ms) for the size expand. Defaults to the durationNormal value (200 ms). */
   enterSizeDuration?: number;
@@ -28,6 +29,25 @@ type CollapseVariantOptions = {
 
   /** Easing curve for the exit transition, shared by size and opacity. Defaults to the enterEasing param. */
   exitEasing?: string;
+};
+
+/**
+ * Runtime params allow values to be supplied when the motion function is called,
+ * whereas variant options are locked when the motion function is created.
+ *
+ */
+type CollapseRuntimeParams = {
+  /** The orientation of the size animation. Defaults to `'vertical'`. */
+  orientation?: CollapseOrientation;
+
+  /** Whether to animate the opacity. Defaults to `true`. */
+  animateOpacity?: boolean;
+
+  /** Whether to collapse the margin. Defaults to `true`.  */
+  collapseMargin?: boolean;
+
+  /** Whether to collapse the padding. Defaults to `true`. */
+  collapsePadding?: boolean;
 };
 
 /**
@@ -57,11 +77,7 @@ type CollapseVariantOptions = {
  * - `collapseMargin` (optional): Whether to collapse the margin. Defaults to `true`.
  * - `collapsePadding` (optional): Whether to collapse the padding. Defaults to `true`.
  */
-
-const createCollapsePresence: PresenceMotionFnCreator<
-  CollapseVariantOptions,
-  { orientation?: CollapseOrientation; animateOpacity?: boolean; collapseMargin?: boolean; collapsePadding?: boolean }
-> =
+const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams> =
   ({
     // duration
     enterSizeDuration = durationNormal,
@@ -75,7 +91,7 @@ const createCollapsePresence: PresenceMotionFnCreator<
     enterEasing = curveEasyEaseMax,
     exitEasing = enterEasing,
   } = {}) =>
-  ({ element, orientation = 'vertical', animateOpacity = true, collapseMargin = !true, collapsePadding = !true }) => {
+  ({ element, orientation = 'vertical', animateOpacity = true, collapseMargin = true, collapsePadding = true }) => {
     const fromOpacity = animateOpacity ? 0 : 1; // Possible future custom param, for fading in from a different opacity.
     const toOpacity = 1;
 
