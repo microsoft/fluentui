@@ -199,6 +199,10 @@ describe('prepare-initial-release generator', () => {
         `);
         expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
           Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-compat": "*",
+            },
             "name": "@proj/react-one-compat-stories",
             "private": true,
             "version": "0.0.0",
@@ -295,6 +299,10 @@ describe('prepare-initial-release generator', () => {
         `);
         expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
           Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-preview": "*",
+            },
             "name": "@proj/react-one-preview-stories",
             "private": true,
             "version": "0.0.0",
@@ -465,6 +473,7 @@ describe('prepare-initial-release generator', () => {
           "
         `);
 
+        expect(tree.exists('packages/react-one-preview')).toEqual(false);
         expect(tree.children('packages/react-one-preview')).toEqual([]);
 
         expect(utils.project.global.codeowners()).toEqual(
@@ -714,12 +723,24 @@ describe('prepare-initial-release generator', () => {
             sourceRoot: 'packages/react-one/library/src',
           }),
         );
+        expect(utils.project.library.pkgJson()).toEqual({
+          name: '@proj/react-one',
+          version: '9.0.0-alpha.0',
+        });
+
         expect(utils.project.stories.projectJson()).toEqual(
           expect.objectContaining({
             name: 'react-one-stories',
             sourceRoot: 'packages/react-one/stories/src',
           }),
         );
+        expect(utils.project.stories.pkgJson()).toEqual({
+          name: '@proj/react-one-stories',
+          version: expect.any(String),
+          devDependencies: {
+            '@proj/react-components': '*',
+          },
+        });
 
         expect(utils.project.library.bundleSize()).toMatchInlineSnapshot(`
           Object {
@@ -733,6 +754,23 @@ describe('prepare-initial-release generator', () => {
           }
         `);
 
+        expect(utils.project.library.md.license()).toMatchInlineSnapshot(`
+          "# @proj/react-one
+
+          Copyright (c) CompanyName
+
+          All rights reserved.
+
+          MIT License"
+        `);
+        expect(utils.project.library.md.spec()).toMatchInlineSnapshot(`
+          "# @proj/react-one Spec
+
+          ## Background
+
+          A Foo is a component that displays a set of vertically stacked Moos.
+          "
+        `);
         expect(utils.project.library.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one
 
@@ -831,6 +869,13 @@ function createSplitProject(
 
   const stories = createProject(tree, storiesProjectName, {
     ...options,
+    pkgJson: {
+      ...options.pkgJson,
+      devDependencies: {
+        [`@proj/react-components`]: '*',
+        [`@proj/${projectName}`]: '*',
+      },
+    },
     root: storiesProject.root,
     files: [
       ...(options.files?.stories ?? []),
@@ -878,7 +923,9 @@ function createProject(
   const sourceRoot = joinPathFragments(options.root, 'src');
   const indexFile = joinPathFragments(sourceRoot, 'index.ts');
   const jestPath = joinPathFragments(options.root, 'jest.config.js');
+  const specPath = joinPathFragments(options.root, 'docs/SPEC.md');
   const readmePath = joinPathFragments(options.root, 'README.md');
+  const licensePath = joinPathFragments(options.root, 'LICENSE');
   const apiMdPath = joinPathFragments(options.root, `etc/${projectName}.api.md`);
   const tsConfigBaseAllPath = 'tsconfig.base.all.json';
   const tsConfigBasePath = 'tsconfig.base.json';
@@ -901,6 +948,39 @@ function createProject(
   `,
   );
 
+  tree.write(
+    licensePath,
+    stripIndents`
+  # ${npmName}
+
+Copyright (c) CompanyName
+
+All rights reserved.
+
+MIT License
+  `,
+  );
+  tree.write(
+    specPath,
+    stripIndents`
+# ${npmName} Spec
+
+## Background
+
+A Foo is a component that displays a set of vertically stacked Moos.
+    `,
+  );
+  tree.write(
+    readmePath,
+    stripIndents`
+  # ${npmName}
+
+**React Tags components for [Fluent UI React](https://react.fluentui.dev/)**
+
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+
+  `,
+  );
   tree.write(
     readmePath,
     stripIndents`
@@ -941,7 +1021,10 @@ These are not production-ready components and **should never be used in product*
     return json;
   });
 
-  const depKeys = [...Object.keys(options.pkgJson.dependencies ?? {})];
+  const depKeys = [
+    ...Object.keys(options.pkgJson.dependencies ?? {}),
+    ...Object.keys(options.pkgJson.devDependencies ?? {}),
+  ];
 
   graphMock.dependencies[projectName] = depKeys.map(value => {
     return { source: projectName, target: value.replace('@proj/', ''), type: 'static' };
@@ -971,6 +1054,8 @@ These are not production-ready components and **should never be used in product*
       return tree.read(joinPathFragments(newRoot, 'jest.config.js'), 'utf-8');
     },
     md: {
+      license: () => tree.read(joinPathFragments(newRoot, 'LICENSE'), 'utf-8'),
+      spec: () => tree.read(joinPathFragments(newRoot, 'docs/SPEC.md'), 'utf-8'),
       readme: () => tree.read(joinPathFragments(newRoot, 'README.md'), 'utf-8'),
       api: () => tree.read(joinPathFragments(newRoot, `etc/${projectName.replace('-preview', '')}.api.md`), 'utf-8'),
     },

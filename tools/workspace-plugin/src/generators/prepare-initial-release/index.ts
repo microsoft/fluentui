@@ -12,6 +12,7 @@ import {
   readJson,
   stripIndents,
   workspaceRoot,
+  logger,
   type ProjectConfiguration,
   type Tree,
   type ProjectGraph,
@@ -150,11 +151,21 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   }
 
   const mdFilePath = {
+    spec: joinPathFragments(options.projectConfig.root, 'docs/SPEC.md'),
     readme: joinPathFragments(options.projectConfig.root, 'README.md'),
     api: joinPathFragments(options.projectConfig.root, 'etc', options.project + '.api.md'),
     apiNew: joinPathFragments(options.projectConfig.root, 'etc', newPackage.name + '.api.md'),
+    license: joinPathFragments(options.projectConfig.root, 'LICENSE'),
   };
 
+  updateFileContent(tree, {
+    filePath: mdFilePath.license,
+    updater: contentNameUpdater,
+  });
+  updateFileContent(tree, {
+    filePath: mdFilePath.spec,
+    updater: contentNameUpdater,
+  });
   updateFileContent(tree, {
     filePath: mdFilePath.readme,
     updater: contentNameUpdater,
@@ -222,6 +233,11 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   async function updateProjectsThatUsedPreviewPackage() {
     const graph = await createProjectGraphAsync();
     const projectsToUpdate = await getProjectThatNeedsToBeUpdated(graph, options);
+    const ignoreProjects = [
+      // we don't wanna update `*-stories` project based on Graph - stories project is updated later which doesn't uses Graph rather relies on our custom imports parser and package.json template
+      // TODO: re-evaluate this approach if we should not rather use Graph for everything
+      options.isSplitProject ? options.projectConfig.name + '-stories' : null,
+    ].filter(Boolean) as string[];
 
     const knownProjectsToBeUpdated = {
       docsite: 'public-docsite-v9',
@@ -231,6 +247,10 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     // update other projects that might still contain dependency to old -preview package
     const unknownProjectsToBeUpdated = projectsToUpdate
       ? projectsToUpdate.filter(projectName => {
+          if (ignoreProjects.includes(projectName)) {
+            return false;
+          }
+
           const knownKeys = Object.values(knownProjectsToBeUpdated);
           return !knownKeys.includes(projectName);
         })
@@ -321,6 +341,8 @@ function stableReleaseForStoriesProject(tree: Tree, options: NormalizedSchema) {
   updateJson<PackageJson>(tree, storiesProjectPaths.packageJson, json => {
     json.name = newStoriesProject.npmName;
 
+    delete json.devDependencies?.[options.npmPackageName];
+
     return json;
   });
 
@@ -365,6 +387,13 @@ function updateFileContent(
   },
 ) {
   const { filePath, newFilePath, updater } = options;
+
+  if (!tree.exists(filePath)) {
+    logger.warn(`attempt to update ${filePath} contents failed, because that path does not exist`);
+
+    return tree;
+  }
+
   const oldContent = tree.read(filePath, 'utf-8') as string;
 
   const newContent = updater(oldContent);
