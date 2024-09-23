@@ -14,7 +14,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 

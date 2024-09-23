@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, SelectionItemId } from '@fluentui/react-components';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 

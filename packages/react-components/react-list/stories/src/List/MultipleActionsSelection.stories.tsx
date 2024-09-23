@@ -14,7 +14,7 @@ import {
   tokens,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-components';
 
 import * as React from 'react';
 
@@ -53,6 +53,12 @@ const useStyles = makeStyles({
     fontWeight: 600,
     display: 'block',
   },
+  checkmark: {
+    position: 'absolute',
+    left: '10px',
+    top: '10px',
+    zIndex: 1,
+  },
   preview: { gridArea: 'preview', overflow: 'hidden' },
   header: { gridArea: 'header' },
   action: { gridArea: 'action' },
@@ -64,19 +70,12 @@ const CustomListItem = (props: { title: string; value: string }) => {
   const styles = useStyles();
   const { value } = props;
 
-  // This will be triggered by user pressing Enter or clicking on the list item
-  const onAction = React.useCallback(event => {
-    // This prevents the change in selection on click/Enter
-    event.preventDefault();
-    alert(`Triggered custom action!`);
-  }, []);
-
   return (
     <ListItem
       value={props.value}
       className={mergeClasses(listItemStyles, styles.listItem)}
+      checkmark={{ className: styles.checkmark }}
       aria-label={value}
-      onAction={onAction}
     >
       <div role="gridcell" className={styles.preview}>
         <Image
@@ -106,9 +105,11 @@ const CustomListItem = (props: { title: string; value: string }) => {
         <Menu>
           <MenuTrigger disableButtonEnhancement>
             <Button
+              onClick={e => {
+                e.preventDefault();
+              }}
               appearance="transparent"
               icon={<MoreHorizontal20Regular />}
-              onClick={e => e.preventDefault()}
               aria-label="More actions"
             />
           </MenuTrigger>
@@ -147,11 +148,19 @@ const CustomListItem = (props: { title: string; value: string }) => {
   );
 };
 
-export const MultipleActionsWithPrimary = () => {
+export const MultipleActionsSelection = () => {
   const classes = useStyles();
 
+  const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
+
   return (
-    <List navigationMode="composite" className={classes.list}>
+    <List
+      className={classes.list}
+      navigationMode="composite"
+      selectionMode="multiselect"
+      selectedItems={selectedItems}
+      onSelectionChange={(e, data) => setSelectedItems(data.selectedItems)}
+    >
       <CustomListItem title="Example List Item" value="card-1" />
       <CustomListItem title="Example List Item" value="card-2" />
       <CustomListItem title="Example List Item" value="card-3" />
@@ -164,21 +173,19 @@ export const MultipleActionsWithPrimary = () => {
     </List>
   );
 };
-
-MultipleActionsWithPrimary.parameters = {
+MultipleActionsSelection.parameters = {
   docs: {
     description: {
       story: [
-        "Base item with multiple actions. Doesn't support selection, but the list items have a primary action ",
-        'that can be triggered by clicking on the item or pressing Enter.',
+        "Item with multiple actions. It has selection enabled, which is also it's primary action.",
+        'The selection can be toggled by clicking on the item or pressing the `Space` key.',
         '',
-        '__To make the navigation work properly, the `navigationMode` prop should be set to `composite`.__',
-        'This will allow the user to navigate inside of the list items by pressing the `Right Arrow` key.',
-        'It also sets the `grid` role automatically to the list.',
+        'Because the selection is the action on the item, to properly narrate the state of selection',
+        'we are using the role grid / row / gridcell here to properly announce when the selection on the',
+        'item is toggled.',
         '',
-        '> ⚠️ _In cases where `grid` role is used, it is important that every direct children of `ListItem`_',
-        '_has role `gridcell`. Also each focusable item should be in its own "gridcell". This makes sure the _',
-        '_screen readers work properly._',
+        'To enable the user to navigate inside of the list items by pressing the `RightArrow` key,',
+        'the `navigationMode` prop should be set to `composite`.',
       ].join('\n'),
     },
   },

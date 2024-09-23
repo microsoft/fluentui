@@ -6,7 +6,7 @@ This log was last generated on Tue, 10 Sep 2024 10:19:12 GMT and should not be m
 
 ## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.6)
 
-Tue, 10 Sep 2024 10:19:12 GMT 
+Tue, 10 Sep 2024 10:19:12 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.5..@fluentui/react-list-preview_v0.3.6)
 
 ### Patches
@@ -19,7 +19,7 @@ Tue, 10 Sep 2024 10:19:12 GMT
 
 ## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.5)
 
-Thu, 15 Aug 2024 13:49:46 GMT 
+Thu, 15 Aug 2024 13:49:46 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.4..@fluentui/react-list-preview_v0.3.5)
 
 ### Patches
@@ -29,7 +29,7 @@ Thu, 15 Aug 2024 13:49:46 GMT
 
 ## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.4)
 
-Thu, 15 Aug 2024 08:22:11 GMT 
+Thu, 15 Aug 2024 08:22:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.3..@fluentui/react-list-preview_v0.3.4)
 
 ### Patches
@@ -40,7 +40,7 @@ Thu, 15 Aug 2024 08:22:11 GMT
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.3)
 
-Tue, 30 Jul 2024 18:47:35 GMT 
+Tue, 30 Jul 2024 18:47:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.2..@fluentui/react-list-preview_v0.3.3)
 
 ### Patches
@@ -49,7 +49,7 @@ Tue, 30 Jul 2024 18:47:35 GMT
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.2)
 
-Tue, 23 Jul 2024 20:13:14 GMT 
+Tue, 23 Jul 2024 20:13:14 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.1..@fluentui/react-list-preview_v0.3.2)
 
 ### Patches
@@ -63,7 +63,7 @@ Tue, 23 Jul 2024 20:13:14 GMT
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.1)
 
-Mon, 15 Jul 2024 17:25:33 GMT 
+Mon, 15 Jul 2024 17:25:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.3.0..@fluentui/react-list-preview_v0.3.1)
 
 ### Patches
@@ -78,7 +78,7 @@ Mon, 15 Jul 2024 17:25:33 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.3.0)
 
-Mon, 01 Jul 2024 20:30:52 GMT 
+Mon, 01 Jul 2024 20:30:52 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.9..@fluentui/react-list-preview_v0.3.0)
 
 ### Minor changes
@@ -96,7 +96,7 @@ Mon, 01 Jul 2024 20:30:52 GMT
 
 ## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.9)
 
-Mon, 17 Jun 2024 07:34:17 GMT 
+Mon, 17 Jun 2024 07:34:17 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.8..@fluentui/react-list-preview_v0.2.9)
 
 ### Patches
@@ -107,7 +107,7 @@ Mon, 17 Jun 2024 07:34:17 GMT
 
 ## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-list-preview_v0.2.8)
 
-Thu, 06 Jun 2024 15:26:34 GMT 
+Thu, 06 Jun 2024 15:26:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-list-preview_v0.2.7..@fluentui/react-list-preview_v0.2.8)
 
 ### Patches
