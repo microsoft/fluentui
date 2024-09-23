@@ -23,6 +23,7 @@ const PLAYLIST = 'playlist';
 const LOOP_WORKSPACE = 'loopworkspace';
 const TODOITEM = 'todoitem';
 const PLANNER = 'planner';
+const PORTFOLIO = 'portfolio'
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -155,6 +156,9 @@ export function getFileTypeIconNameFromExtensionOrType(
       case FileIconType.todoItem:
         iconBaseName = TODOITEM;
         break;
+      case FileIconType.portfolio:
+          iconBaseName = PORTFOLIO;
+          break;
     }
   }
   return iconBaseName || GENERIC_FILE;

@@ -407,6 +407,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   photo360: {},
   picturesfolder: {},
   planner: {},
+  portfolio: {},
   potx: {
     extensions: ['pot', 'potm', 'potx'],
   },
