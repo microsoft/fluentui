@@ -734,6 +734,18 @@ describe('prepare-initial-release generator', () => {
         expect(treeStructureAfter).toEqual(treeStructureBefore);
         expect(tree.children('packages/react-one-preview')).toEqual([]);
 
+        expect(tree.read('packages/react-one/library/src/index.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export { Hello } from './hello';
+          "
+        `);
+        expect(tree.read('packages/react-one/library/src/hello.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export function Hello() {
+            console.log('@proj/react-one: some debug message for user');
+            return;
+          }
+          "
+        `);
+
         expect(utils.project.library.projectJson()).toEqual(
           expect.objectContaining({
             name: 'react-one',
@@ -961,7 +973,16 @@ function createProject(
   tree.write(
     indexFile,
     stripIndents`
-    export {};
+    export { Hello } from './hello';
+  `,
+  );
+  tree.write(
+    joinPathFragments(sourceRoot, 'hello.ts'),
+    stripIndents`
+    export function Hello(){
+      console.log('${npmName}: some debug message for user')
+      return
+    };
   `,
   );
 

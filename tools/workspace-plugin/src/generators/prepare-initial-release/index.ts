@@ -144,6 +144,16 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   updateFileContent(tree, { filePath: options.paths.jestConfig, updater: contentNameUpdater });
 
+  // update any references to self within source code
+  if (options.projectConfig.sourceRoot) {
+    visitNotIgnoredFiles(tree, joinPathFragments(options.projectConfig.sourceRoot), filePath => {
+      updateFileContent(tree, {
+        filePath,
+        updater: contentNameUpdater,
+      });
+    });
+  }
+
   const bundleSizeFixturesRoot = joinPathFragments(options.projectConfig.root, 'bundle-size');
   if (tree.exists(bundleSizeFixturesRoot)) {
     visitNotGitIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
