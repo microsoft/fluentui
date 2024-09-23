@@ -24,8 +24,7 @@ import {
 } from '../../utilities/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 import PopoverComponent from './Popover';
-import { useFocusableGroup } from '@fluentui/react-tabster';
-import { useArrowNavigationGroup } from '@fluentui/react-components';
+import { useFocusableGroup, useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Cartesian Chart component
