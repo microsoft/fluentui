@@ -25,10 +25,13 @@ export const useNavCategoryItem_unstable = (
   const { onRequestNavCategoryItemToggle, selectedCategoryValue, size = 'medium' } = useNavContext_unstable();
 
   const onNavCategoryItemClick = useEventCallback(
-    mergeCallbacks(onClick, event => onRequestNavCategoryItemToggle(event, { type: 'click', event, value })),
+    mergeCallbacks(onClick, event =>
+      onRequestNavCategoryItemToggle(event, { type: 'click', event, value: '', categoryValue: value }),
+    ),
   );
 
-  const selected = selectedCategoryValue === value;
+  // don't fill the icon when it's open
+  const selected = selectedCategoryValue === value && !open;
   // there's more than 2 possible values for aria-current, but this is the only one that's used in this component
   const validAriaCurrent: 'page' | 'false' = selected && !open ? 'page' : 'false';
 

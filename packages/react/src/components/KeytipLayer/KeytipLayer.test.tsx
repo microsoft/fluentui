@@ -115,7 +115,7 @@ describe('KeytipLayer', () => {
       // Call enterKeytipMode
       ktpMgr.enterKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(true);
-      expect(onEnter).toBeCalled();
+      expect(onEnter).toHaveBeenCalled();
       ktpTree = layerRef.current!.getKeytipTree();
 
       // 4 nodes + the root
@@ -136,7 +136,7 @@ describe('KeytipLayer', () => {
       // Call enterKeytipMode
       ktpMgr.exitKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(false);
-      expect(onExit).toBeCalled();
+      expect(onExit).toHaveBeenCalled();
       ktpTree = layerRef.current!.getKeytipTree();
 
       visibleKeytips = ktpLayer.state('visibleKeytips');
@@ -153,7 +153,7 @@ describe('KeytipLayer', () => {
       ktpMgr.shouldEnterKeytipMode = true;
       ktpMgr.enterKeytipMode();
       expect(ktpLayer.state('inKeytipMode')).toEqual(true);
-      expect(onEnter).toBeCalled();
+      expect(onEnter).toHaveBeenCalled();
     });
   });
 
@@ -189,19 +189,19 @@ describe('KeytipLayer', () => {
 
         it('calls on enter keytip mode when we process alt + left win', () => {
           layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onEnter).toBeCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
+          expect(onEnter).toHaveBeenCalledWith({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
         });
 
         it('calls on exit keytip mode when we process alt + left win', () => {
           ktpTree.currentKeytip = ktpTree.root;
           layerValue.processTransitionInput({ key: 'Meta', modifierKeys: [KeyCodes.alt] });
-          expect(onExit).toBeCalled();
+          expect(onExit).toHaveBeenCalled();
         });
 
         it('calls on exit keytip mode because we are going back when on the root', () => {
           ktpTree.currentKeytip = ktpTree.root;
           layerValue.processTransitionInput({ key: 'Escape' });
-          expect(onExit).toBeCalled();
+          expect(onExit).toHaveBeenCalled();
         });
 
         it('hitting Esc when on a root child node will go up to the root', () => {
@@ -211,7 +211,7 @@ describe('KeytipLayer', () => {
           ktpTree.currentKeytip = nodeC;
           layerValue.processTransitionInput({ key: 'Escape' });
           expect(ktpTree.currentKeytip).toEqual(ktpTree.root);
-          expect(onReturn).toBeCalled();
+          expect(onReturn).toHaveBeenCalled();
         });
 
         it('hitting Esc when on a child node will go up one level', () => {
@@ -236,7 +236,7 @@ describe('KeytipLayer', () => {
         );
         layerValue = layerRef.current!;
         layerValue.processTransitionInput({ key: 'Meta' });
-        expect(onEnter).toBeCalledWith({ key: 'Meta' });
+        expect(onEnter).toHaveBeenCalledWith({ key: 'Meta' });
       });
     });
 
@@ -271,8 +271,8 @@ describe('KeytipLayer', () => {
         ktpTree.addNode({ ...keytipB, onExecute }, uniqueIdB);
         ktpTree.currentKeytip = ktpTree.root;
         layerValue.processInput('b');
-        expect(onExecute).toBeCalled();
-        expect(onExit).toBeCalled();
+        expect(onExecute).toHaveBeenCalled();
+        expect(onExit).toHaveBeenCalled();
         expect(layerValue.getCurrentSequence().length).toEqual(0);
       });
 
@@ -284,9 +284,9 @@ describe('KeytipLayer', () => {
         // We are still waiting for second key
         expect(layerValue.getCurrentSequence().length).toEqual(1);
         layerValue.processInput('2');
-        expect(onExecuteE2).toBeCalled();
+        expect(onExecuteE2).toHaveBeenCalled();
         expect(layerValue.getCurrentSequence().length).toEqual(0);
-        expect(onExit).toBeCalled();
+        expect(onExit).toHaveBeenCalled();
       });
 
       it('Processing a node which is not leaf but its children are not in the DOM', () => {
@@ -295,7 +295,7 @@ describe('KeytipLayer', () => {
         ktpTree.currentKeytip = ktpTree.root;
         layerValue.processInput('b');
         // Node B's onExecute should be called
-        expect(onExecute).toBeCalled();
+        expect(onExecute).toHaveBeenCalled();
         // There is no more buffer in the sequence
         expect(layerValue.getCurrentSequence().length).toEqual(0);
         // We haven't exited keytip mode (current keytip is set to the matched keytip)
@@ -315,7 +315,7 @@ describe('KeytipLayer', () => {
         expect(visibleLayerKtps[0].content).toEqual('E1');
         layerValue.processInput('2');
         // E2 should be triggered
-        expect(nodeE2.onExecute).toBeCalled();
+        expect(nodeE2.onExecute).toHaveBeenCalled();
       });
       it('Process a node with no matching visible element and is a submenu in an overflow', () => {
         // Make C2 a submenu in an overflow
@@ -324,7 +324,7 @@ describe('KeytipLayer', () => {
         ktpTree.currentKeytip = ktpTree.root;
         layerValue.processInput('c');
         // C2 should be triggered
-        expect(onExecuteC2).toBeCalled();
+        expect(onExecuteC2).toHaveBeenCalled();
       });
     });
   });

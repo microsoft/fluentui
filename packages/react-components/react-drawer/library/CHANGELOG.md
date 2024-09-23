@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Fri, 13 Sep 2024 00:49:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2024 12:40:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.15)
+
+Mon, 23 Sep 2024 12:40:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.5.14..@fluentui/react-drawer_v9.5.15)
+
+### Patches
+
+- fix: add correct direction of animations when RTL ([PR #32813](https://github.com/microsoft/fluentui/pull/32813) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.11.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-motion to v9.5.2 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
 
 ## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.5.14)
 
