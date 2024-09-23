@@ -40,7 +40,7 @@ export const styles = css`
     font-size: ${fontSizeBase200};
     inset-area: block-start;
     line-height: ${lineHeightBase200};
-    margin: 0;
+    margin: unset; /* Remove browser default for [popover] */
     max-width: 240px;
     padding: 4px 11px 6px;
     position: absolute;
