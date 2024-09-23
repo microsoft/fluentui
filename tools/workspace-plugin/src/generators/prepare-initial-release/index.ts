@@ -158,6 +158,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   if (tree.exists(bundleSizeFixturesRoot)) {
     console.log('===BUNDLE SIZE UPDATES====', { bundleSizeFixturesRoot });
     visitNotIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
+      console.log('===BUNDLE SIZE UPDATES====', { filePath });
       updateFileContent(tree, {
         filePath,
         updater: contentNameUpdater,
@@ -414,8 +415,6 @@ function updateFileContent(
   const oldContent = tree.read(filePath, 'utf-8') as string;
 
   const newContent = updater(oldContent);
-
-  console.log({ filePath, newFilePath, oldContent, newContent });
 
   if (newFilePath) {
     tree.rename(filePath, newFilePath);
