@@ -30,9 +30,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-aria": "^9.13.5",
-    "@fluentui/react-provider": "^9.17.3",
-    "@fluentui/react-theme": "^9.1.19",
+    "@fluentui/react-aria": "^9.13.6",
+    "@fluentui/react-provider": "^9.17.4",
+    "@fluentui/react-theme": "^9.1.20",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

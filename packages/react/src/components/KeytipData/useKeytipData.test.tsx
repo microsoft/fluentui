@@ -30,8 +30,8 @@ describe('usePrevious', () => {
       keytipId: undefined,
     });
 
-    expect(keytipManagerRegisterSpy).toBeCalledTimes(0);
-    expect(keytipManagerUpdateSpy).toBeCalledTimes(0);
+    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(0);
+    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
   });
 
   it('return data when keytipProps is passed', () => {
@@ -52,8 +52,8 @@ describe('usePrevious', () => {
       keytipId: 'ktp-a-1',
     });
 
-    expect(keytipManagerRegisterSpy).toBeCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toBeCalledTimes(0);
+    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
+    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
   });
 
   it('update when keytipProps has changed', () => {
@@ -76,8 +76,8 @@ describe('usePrevious', () => {
       keytipId: 'ktp-a-1',
     });
 
-    expect(keytipManagerRegisterSpy).toBeCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toBeCalledTimes(0);
+    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
+    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(0);
 
     wrapper.setProps({
       keytipProps: {
@@ -92,7 +92,7 @@ describe('usePrevious', () => {
       keytipId: 'ktp-b-1',
     });
 
-    expect(keytipManagerRegisterSpy).toBeCalledTimes(1);
-    expect(keytipManagerUpdateSpy).toBeCalledTimes(1);
+    expect(keytipManagerRegisterSpy).toHaveBeenCalledTimes(1);
+    expect(keytipManagerUpdateSpy).toHaveBeenCalledTimes(1);
   });
 });

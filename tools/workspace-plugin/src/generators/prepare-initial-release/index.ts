@@ -1,11 +1,9 @@
 import { execSync } from 'child_process';
 
 import {
-  Tree,
   formatFiles,
   names,
   updateJson,
-  ProjectConfiguration,
   joinPathFragments,
   visitNotIgnoredFiles,
   createProjectGraphAsync,
@@ -14,18 +12,21 @@ import {
   readJson,
   stripIndents,
   workspaceRoot,
+  type ProjectConfiguration,
+  type Tree,
+  type ProjectGraph,
 } from '@nrwl/devkit';
 import * as tsquery from '@phenomnomnominal/tsquery';
 
 import { getProjectConfig, workspacePaths } from '../../utils';
 
-import { PackageJson, TsConfig } from '../../types';
+import { type PackageJson, type TsConfig } from '../../types';
 
 import tsConfigBaseAll from '../tsconfig-base-all';
 
 import { assertStoriesProject, isSplitProject as isSplitProjectFn } from '../split-library-in-two/shared';
 
-import { ReleasePackageGeneratorSchema } from './schema';
+import { type ReleasePackageGeneratorSchema } from './schema';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -119,6 +120,10 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     return content.replace(regexp, 'react-components');
   };
 
+  // we need to update projects that might still contain dependency to old -preview package first
+  await updateProjectsThatUsedPreviewPackage();
+
+  // now we can update the preview package itself
   updateJson<PackageJson>(tree, options.paths.packageJson, json => {
     delete json.private;
     json.name = newPackage.npmName;
@@ -157,7 +162,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   updateFileContent(tree, { filePath: mdFilePath.api, newFilePath: mdFilePath.apiNew, updater: contentNameUpdater });
 
   if (options.isSplitProject) {
-    const { storiesProjectPaths } = stableReleaseForSplitProject(tree, options);
+    const { storiesProjectPaths } = stableReleaseForStoriesProject(tree, options);
     updateStories(tree, { storiesSourcePath: storiesProjectPaths.sourceRoot, contentNameToSuiteUpdater });
   } else {
     updateStories(tree, { storiesSourcePath: options.paths.stories, contentNameToSuiteUpdater });
@@ -173,7 +178,7 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     return json;
   });
 
-  await tsConfigBaseAll(tree, {});
+  await tsConfigBaseAll(tree, { skipFormat: true });
 
   updateFileContent(tree, { filePath: workspacePaths.github.codeowners, updater: contentNameUpdater });
 
@@ -196,66 +201,6 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     },
   });
 
-  const knownProjectsToBeUpdated = {
-    docsite: 'public-docsite-v9',
-    vrTests: 'vr-tests-react-components',
-  };
-
-  // update other projects that might still contain dependency to old -preview package
-  const unknownProjectsToBeUpdated = (await getProjectThatNeedsToBeUpdated(tree, options))?.filter(projectName => {
-    const knownKeys = Object.values(knownProjectsToBeUpdated);
-    return !knownKeys.includes(projectName);
-  });
-
-  // update public-docsite-v9
-  const reactComponentsDocsiteProject = getProjectConfig(tree, {
-    packageName: knownProjectsToBeUpdated.docsite,
-  });
-  updateJson<PackageJson>(tree, reactComponentsDocsiteProject.paths.packageJson, json => {
-    json.dependencies = json.dependencies ?? {};
-    delete json.dependencies[currentPackage.npmName];
-    return json;
-  });
-  visitNotIgnoredFiles(tree, joinPathFragments(reactComponentsDocsiteProject.projectConfig.root, 'src'), filePath => {
-    updateFileContent(tree, { filePath, updater: contentNameToSuiteUpdater });
-  });
-
-  // update vr-tests-react-components
-  const reactComponentsVrTestsProject = getProjectConfig(tree, {
-    packageName: knownProjectsToBeUpdated.vrTests,
-  });
-  updateJson<PackageJson>(tree, reactComponentsVrTestsProject.paths.packageJson, json => {
-    json.dependencies = json.dependencies ?? {};
-    delete json.dependencies[currentPackage.npmName];
-    // when going from preview to stable, package version changes to `9.0.0-alpha` in order to beachball properly bump to `9.0.0` stable.
-    // thus dependency on the package within workspace packages cannot use `*` but `>=9.0.0-alpha`
-    // on CI (release,pr) this is being checked normalized via [normalize-package-dependencies generator](tools/workspace-plugin/src/generators/normalize-package-dependencies/index.ts)
-    json.dependencies[newPackage.npmName] = '>=9.0.0-alpha';
-    return json;
-  });
-  visitNotIgnoredFiles(
-    tree,
-    joinPathFragments(reactComponentsVrTestsProject.projectConfig.root, 'src/stories'),
-    filePath => {
-      updateFileContent(tree, { filePath, updater: contentNameUpdater });
-    },
-  );
-
-  unknownProjectsToBeUpdated?.forEach(projectName => {
-    const projectConfig = getProjectConfig(tree, {
-      packageName: projectName,
-    });
-    visitNotIgnoredFiles(tree, joinPathFragments(projectConfig.projectConfig.root, 'src'), filePath => {
-      updateFileContent(tree, { filePath, updater: contentNameToSuiteUpdater });
-    });
-    updateJson<PackageJson>(tree, joinPathFragments(projectConfig.projectConfig.root, 'package.json'), json => {
-      json.dependencies = json.dependencies ?? {};
-      delete json.dependencies[currentPackage.npmName];
-      json.dependencies[suiteNpmProjectName] = '*';
-      return json;
-    });
-  });
-
   // AFTER updates are done - rename project folder
   if (options.isSplitProject) {
     const hostFolder = joinPathFragments(options.projectConfig.root, '..');
@@ -273,9 +218,81 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     });
     generateApiMarkdownTask(tree, suiteProjectName);
   };
+
+  async function updateProjectsThatUsedPreviewPackage() {
+    const graph = await createProjectGraphAsync();
+    const projectsToUpdate = await getProjectThatNeedsToBeUpdated(graph, options);
+
+    const knownProjectsToBeUpdated = {
+      docsite: 'public-docsite-v9',
+      vrTests: 'vr-tests-react-components',
+    };
+
+    // update other projects that might still contain dependency to old -preview package
+    const unknownProjectsToBeUpdated = projectsToUpdate
+      ? projectsToUpdate.filter(projectName => {
+          const knownKeys = Object.values(knownProjectsToBeUpdated);
+          return !knownKeys.includes(projectName);
+        })
+      : null;
+
+    // update public-docsite-v9
+    const reactComponentsDocsiteProject = getProjectConfig(tree, {
+      packageName: knownProjectsToBeUpdated.docsite,
+    });
+    updateJson<PackageJson>(tree, reactComponentsDocsiteProject.paths.packageJson, json => {
+      json.dependencies = json.dependencies ?? {};
+      // preview package is now part of the suite, so we don't need it being specified as a dependency of the docsite
+      delete json.dependencies[currentPackage.npmName];
+      return json;
+    });
+    visitNotIgnoredFiles(tree, joinPathFragments(reactComponentsDocsiteProject.projectConfig.root, 'src'), filePath => {
+      updateFileContent(tree, { filePath, updater: contentNameToSuiteUpdater });
+    });
+
+    // update vr-tests-react-components
+    const reactComponentsVrTestsProject = getProjectConfig(tree, {
+      packageName: knownProjectsToBeUpdated.vrTests,
+    });
+    updateJson<PackageJson>(tree, reactComponentsVrTestsProject.paths.packageJson, json => {
+      json.dependencies = json.dependencies ?? {};
+      delete json.dependencies[currentPackage.npmName];
+      // when going from preview to stable, package version changes to `9.0.0-alpha` in order to beachball properly bump to `9.0.0` stable.
+      // thus dependency on the package within workspace packages cannot use `*` but `>=9.0.0-alpha`
+      // on CI (release,pr) this is being checked normalized via [normalize-package-dependencies generator](tools/workspace-plugin/src/generators/normalize-package-dependencies/index.ts)
+      json.dependencies[newPackage.npmName] = '>=9.0.0-alpha';
+      return json;
+    });
+    visitNotIgnoredFiles(
+      tree,
+      joinPathFragments(reactComponentsVrTestsProject.projectConfig.root, 'src/stories'),
+      filePath => {
+        updateFileContent(tree, { filePath, updater: contentNameUpdater });
+      },
+    );
+
+    if (!unknownProjectsToBeUpdated) {
+      return;
+    }
+
+    unknownProjectsToBeUpdated.forEach(projectName => {
+      const projectConfig = getProjectConfig(tree, {
+        packageName: projectName,
+      });
+      visitNotIgnoredFiles(tree, joinPathFragments(projectConfig.projectConfig.root, 'src'), filePath => {
+        updateFileContent(tree, { filePath, updater: contentNameToSuiteUpdater });
+      });
+      updateJson<PackageJson>(tree, joinPathFragments(projectConfig.projectConfig.root, 'package.json'), json => {
+        json.dependencies = json.dependencies ?? {};
+        delete json.dependencies[currentPackage.npmName];
+        json.dependencies[suiteNpmProjectName] = '*';
+        return json;
+      });
+    });
+  }
 }
 
-function stableReleaseForSplitProject(tree: Tree, options: NormalizedSchema) {
+function stableReleaseForStoriesProject(tree: Tree, options: NormalizedSchema) {
   const storiesProjectRoot = joinPathFragments(options.projectConfig.root, '../stories');
   const currentStoriesPackage = {
     name: options.projectConfig.name + '-stories',
@@ -362,10 +379,9 @@ function updateFileContent(
   return tree;
 }
 
-async function getProjectThatNeedsToBeUpdated(tree: Tree, options: NormalizedSchema) {
+async function getProjectThatNeedsToBeUpdated(graph: ProjectGraph, options: NormalizedSchema) {
   const projectName = options.projectConfig.name as string;
 
-  const graph = await createProjectGraphAsync();
   const reverseGraph = reverse(graph);
 
   const deps = reverseGraph.dependencies[projectName] || [];
@@ -373,6 +389,8 @@ async function getProjectThatNeedsToBeUpdated(tree: Tree, options: NormalizedSch
   if (deps.length > 0) {
     return deps.map(dep => dep.target);
   }
+
+  return null;
 }
 
 function generateChangefileTask(

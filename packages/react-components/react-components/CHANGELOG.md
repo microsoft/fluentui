@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 13 Sep 2024 00:49:23 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2024 12:40:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.16)
+
+Mon, 23 Sep 2024 12:40:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.15..@fluentui/react-components_v9.54.16)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons ([PR #32844](https://github.com/microsoft/fluentui/pull/32844) by mifraser@microsoft.com)
+- `@fluentui/react-nav-preview`
+  - Scaffolds SplitNavItem ([PR #32870](https://github.com/microsoft/fluentui/pull/32870) by matejera@microsoft.com)
+  -  [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData. ([PR #32489](https://github.com/microsoft/fluentui/pull/32489) by matejera@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-drawer`
+  - fix: add correct direction of animations when RTL ([PR #32813](https://github.com/microsoft/fluentui/pull/32813) by marcosvmmoura@gmail.com)
+- `@fluentui/react-menu`
+  - fix(Menu): Do not rely on tabster restorer for focus restore ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by lingfangao@hotmail.com)
+- `@fluentui/react-migration-v8-v9`
+  - fix: cleanup production dependencies and fix forbidden sub-package import within Menu ([PR #32359](https://github.com/microsoft/fluentui/pull/32359) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - feat: add z-index tokens ([PR #32356](https://github.com/microsoft/fluentui/pull/32356) by marcosvmmoura@gmail.com)
 
 ## [9.54.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.15)
 
