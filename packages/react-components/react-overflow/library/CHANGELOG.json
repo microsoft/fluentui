@@ -2,6 +2,33 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Tue, 10 Sep 2024 10:19:07 GMT",
+      "tag": "@fluentui/react-overflow_v9.1.29",
+      "version": "9.1.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "47f08936d69e00ee7d02f28658c9280c6c9e070d",
+            "comment": "fix(useOverflowContainer): Removes double overflowManager creation"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.66",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 08:22:12 GMT",
       "tag": "@fluentui/react-overflow_v9.1.27",
       "version": "9.1.27",

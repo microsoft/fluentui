@@ -8,23 +8,37 @@ import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
-  containScroll: false,
+  containScroll: 'trimSnaps',
   inViewThreshold: 0.99,
   watchDrag: false,
   skipSnaps: true,
+
   container: `.${carouselSliderClassNames.root}`,
   slides: `.${carouselCardClassNames.root}`,
 };
 
 export const EMBLA_VISIBILITY_EVENT = 'embla:visibilitychange';
 
+export function setTabsterDefault(element: Element, isDefault: boolean) {
+  const tabsterAttr = element.getAttribute('data-tabster');
+
+  if (tabsterAttr) {
+    const tabsterAttributes = JSON.parse(tabsterAttr);
+    if (tabsterAttributes.focusable) {
+      // If tabster.focusable isn't present, we will ignore.
+      tabsterAttributes.focusable.isDefault = isDefault;
+      element.setAttribute('data-tabster', JSON.stringify(tabsterAttributes));
+    }
+  }
+}
+
 export function useEmblaCarousel(
-  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag'> & {
+  options: Pick<EmblaOptionsType, 'align' | 'direction' | 'loop' | 'slidesToScroll' | 'watchDrag' | 'containScroll'> & {
     defaultActiveIndex: number | undefined;
     activeIndex: number | undefined;
   },
 ) {
-  const { align, direction, loop, slidesToScroll, watchDrag } = options;
+  const { align, direction, loop, slidesToScroll, watchDrag, containScroll } = options;
   const [activeIndex, setActiveIndex] = useControllableState({
     defaultState: options.defaultActiveIndex,
     state: options.activeIndex,
@@ -38,6 +52,7 @@ export function useEmblaCarousel(
     slidesToScroll,
     startIndex: activeIndex,
     watchDrag,
+    containScroll,
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
@@ -63,12 +78,17 @@ export function useEmblaCarousel(
     };
   }, []);
 
-  const containerRef = React.useMemo(() => {
+  const containerRef: React.RefObject<HTMLDivElement> = React.useMemo(() => {
     let currentElement: HTMLDivElement | null = null;
 
     const handleIndexChange = () => {
       const newIndex = emblaApi.current?.selectedScrollSnap() ?? 0;
-
+      const slides = emblaApi.current?.slideNodes();
+      const actualIndex = emblaApi.current?.internalEngine().slideRegistry[newIndex][0] ?? 0;
+      // We set the active or first index of group on-screen as the selected tabster index
+      slides?.forEach((slide, slideIndex) => {
+        setTabsterDefault(slide, slideIndex === actualIndex);
+      });
       setActiveIndex(newIndex);
     };
     const handleReinit = () => {
@@ -90,6 +110,7 @@ export function useEmblaCarousel(
     const handleVisibilityChange = () => {
       const cardElements = emblaApi.current?.slideNodes();
       const visibleIndexes = emblaApi.current?.slidesInView() ?? [];
+
       cardElements?.forEach((cardElement, index) => {
         cardElement.dispatchEvent(
           new CustomEvent<CarouselVisibilityEventDetail>(EMBLA_VISIBILITY_EVENT, {
@@ -174,7 +195,7 @@ export function useEmblaCarousel(
   }, [activeIndex]);
 
   React.useEffect(() => {
-    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag };
+    emblaOptions.current = { align, direction, loop, slidesToScroll, watchDrag, containScroll };
     emblaApi.current?.reInit(
       {
         ...DEFAULT_EMBLA_OPTIONS,
@@ -189,7 +210,7 @@ export function useEmblaCarousel(
         }),
       ],
     );
-  }, [align, direction, loop, slidesToScroll, watchDrag]);
+  }, [align, direction, loop, slidesToScroll, watchDrag, containScroll]);
 
   return {
     activeIndex,

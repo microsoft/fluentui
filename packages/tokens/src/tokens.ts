@@ -539,4 +539,58 @@ export const tokens: Record<keyof Theme, string> = {
   curveEasyEaseMax: 'var(--curveEasyEaseMax)',
   curveEasyEase: 'var(--curveEasyEase)',
   curveLinear: 'var(--curveLinear)',
+
+  /**
+   * ZIndexes
+   * Special case where the tokens contain default values
+   * ZIndexes are not mandatory, so they are not included in the theme, but can be used as tokens with default values
+   */
+
+  /**
+   * Elevation 0
+   * Can be used for background elements, like surfaces
+   */
+  zIndexBackground: 'var(--zIndexBackground, 0)',
+
+  /**
+   * Elevation 2
+   * Can be used content that is on top of the background, like cards
+   */
+  zIndexContent: 'var(--zIndexContent, 1)',
+
+  /**
+   * Elevation 4
+   * Can be used for overlays, like the backdrop of a modal
+   */
+  zIndexOverlay: 'var(--zIndexOverlay, 1000)',
+
+  /**
+   * Elevation 8
+   * Can be used for popups, like modals and drawers
+   */
+  zIndexPopup: 'var(--zIndexPopup, 2000)',
+
+  /**
+   * Elevation 16
+   * Can be used for messages, like snackbars and toasts
+   */
+  zIndexMessages: 'var(--zIndexMessages, 3000)',
+
+  /**
+   * Elevation 28
+   * Can be used for floating elements, like dropdowns
+   */
+  zIndexFloating: 'var(--zIndexFloating, 4000)',
+
+  /**
+   * Elevation 64
+   * Can be used for high priority floating elements, like tooltips
+   */
+  zIndexPriority: 'var(--zIndexPriority, 5000)',
+
+  /**
+   * Special elevation
+   * Can be used for elements that need to be above everything else, like debug overlays
+   */
+  zIndexDebug: 'var(--zIndexDebug, 6000)',
 };
