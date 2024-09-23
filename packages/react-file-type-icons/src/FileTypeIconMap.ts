@@ -258,6 +258,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   contact: {
     extensions: ['vcf'],
   },
+  copilot: {
+    extensions: ['copilot'],
+  }
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
