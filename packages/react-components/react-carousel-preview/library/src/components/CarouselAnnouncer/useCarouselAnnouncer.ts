@@ -45,7 +45,7 @@ export const useCarouselAnnouncer_unstable = (
 
   useIsomorphicLayoutEffect(() => {
     updateInnerText(currentIndex, navLengthRef.current, navGroupRef.current);
-  }, [currentIndex]);
+  }, [currentIndex, updateInnerText]);
 
   return {
     renderAnnouncerText: props.children,
