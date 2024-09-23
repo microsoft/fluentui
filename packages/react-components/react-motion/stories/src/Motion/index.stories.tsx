@@ -1,19 +1,20 @@
-import description from './MotionDescription.md';
-import { Motion } from './utils.stories';
+import type { Meta } from '@storybook/react';
 
-export { Default } from './Default.stories';
+import description from './MotionDescription.md';
+
 export { DisableMotion } from './DisableMotion.stories';
 export { CustomMotion } from './CustomMotion.stories';
 
 export default {
-  title: 'Concepts/Developer/Motion Components',
-  component: Motion,
+  title: 'Motion/Motion Slot',
   parameters: {
     layout: 'centered',
     docs: {
       description: {
-        component: [description].join('\n'),
+        component: description,
       },
+      hideArgsTable: true,
+      skipPrimaryStory: true,
     },
   },
-};
+} satisfies Meta;

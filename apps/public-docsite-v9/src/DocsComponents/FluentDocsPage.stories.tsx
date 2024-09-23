@@ -141,6 +141,9 @@ export const FluentDocsPage = () => {
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
+  const hideArgsTable = primaryStoryContext.parameters?.docs?.hideArgsTable ?? false;
+  const skipPrimaryStory = primaryStoryContext.parameters?.docs?.skipPrimaryStory ?? false;
+
   const videos = primaryStoryContext.parameters?.videos ?? null;
   const styles = useStyles();
   // DEBUG
@@ -169,26 +172,34 @@ export const FluentDocsPage = () => {
             <Description />
             {videos && <VideoPreviews videos={videos} />}
           </div>
-          <hr className={styles.divider} />
-          <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
-            {primaryStory.name}
-          </HeaderMdx>
-          <Primary />
-          <ArgsTable of={primaryStory.component} />
-          {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
-            <div className={styles.nativeProps}>
-              <InfoFilled className={styles.nativePropsIcon} />
-              <div className={styles.nativePropsMessage}>
-                <b>
-                  Native props are supported <span role="presentation">🙌</span>
-                </b>
-                <span>
-                  All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)},
-                  including all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native props
-                  on this component.
-                </span>
-              </div>
-            </div>
+          {skipPrimaryStory ? null : (
+            <>
+              <hr className={styles.divider} />
+              <HeaderMdx as="h3" id={nameToHash(primaryStory.name)}>
+                {primaryStory.name}
+              </HeaderMdx>
+              <Primary />
+            </>
+          )}
+          {hideArgsTable ? null : (
+            <>
+              <ArgsTable of={primaryStory.component} />
+              {primaryStory.argTypes.as && primaryStory.argTypes.as?.type?.name === 'enum' && (
+                <div className={styles.nativeProps}>
+                  <InfoFilled className={styles.nativePropsIcon} />
+                  <div className={styles.nativePropsMessage}>
+                    <b>
+                      Native props are supported <span role="presentation">🙌</span>
+                    </b>
+                    <span>
+                      All HTML attributes native to the {getNativeElementsList(primaryStory.argTypes.as.type.value)},
+                      including all <code>aria-*</code> and <code>data-*</code> attributes, can be applied as native
+                      props on this component.
+                    </span>
+                  </div>
+                </div>
+              )}
+            </>
           )}
           <Stories />
         </div>

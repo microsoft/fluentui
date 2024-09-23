@@ -23,51 +23,52 @@ const useStyles = makeStyles({
   },
 });
 
-const keyframes = [
-  { opacity: 0, transform: 'translateX(-100%)', boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)' },
-  { opacity: 1, transform: 'translateX(0)', boxShadow: tokens.shadow64 },
-];
+const SlideDialogMotion = createPresenceComponent(() => {
+  const keyframes = [
+    { opacity: 0, transform: 'translateX(-100%)', boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)' },
+    { opacity: 1, transform: 'translateX(0)', boxShadow: tokens.shadow64 },
+  ];
 
-const SlideDialogMotion = createPresenceComponent({
-  enter: {
-    keyframes,
-    easing: motionTokens.curveDecelerateMax,
-    duration: motionTokens.durationGentle,
-  },
-  exit: {
-    keyframes: [
-      { opacity: 1, transform: 'translateX(0)', boxShadow: tokens.shadow64 },
-      { opacity: 0, transform: 'translateX(100%)', boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)' },
-    ],
-    easing: motionTokens.curveAccelerateMid,
-    duration: motionTokens.durationGentle,
-  },
+  return {
+    enter: {
+      keyframes,
+      easing: motionTokens.curveDecelerateMax,
+      duration: motionTokens.durationGentle,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      easing: motionTokens.curveAccelerateMid,
+      duration: motionTokens.durationGentle,
+    },
+  };
 });
 
-const keyframesBackdrop = [
-  {
-    opacity: 0,
-    background: 'radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)',
-    transform: 'scale(0)',
-  },
-  {
-    opacity: 1,
-    background: 'radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)',
-    transform: 'scale(1)',
-  },
-];
+const RadialBackdropMotion = createPresenceComponent(() => {
+  const keyframes = [
+    {
+      opacity: 0,
+      background: 'radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)',
+      transform: 'scale(0)',
+    },
+    {
+      opacity: 1,
+      background: 'radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%)',
+      transform: 'scale(1)',
+    },
+  ];
 
-const RadialBackdropMotion = createPresenceComponent({
-  enter: {
-    keyframes: keyframesBackdrop,
-    easing: motionTokens.curveDecelerateMax,
-    duration: motionTokens.durationGentle,
-  },
-  exit: {
-    keyframes: [...keyframesBackdrop].reverse(),
-    easing: motionTokens.curveAccelerateMax,
-    duration: motionTokens.durationGentle,
-  },
+  return {
+    enter: {
+      keyframes: keyframes,
+      easing: motionTokens.curveDecelerateMax,
+      duration: motionTokens.durationGentle,
+    },
+    exit: {
+      keyframes: [...keyframes].reverse(),
+      easing: motionTokens.curveAccelerateMax,
+      duration: motionTokens.durationGentle,
+    },
+  };
 });
 
 export const CustomMotion = () => {
@@ -77,9 +78,7 @@ export const CustomMotion = () => {
     <div className={classes.wrapper}>
       <Dialog
         surfaceMotion={{
-          children: (_, props) => {
-            return <SlideDialogMotion {...props}>{props.children}</SlideDialogMotion>;
-          },
+          children: (_, props) => <SlideDialogMotion {...props}>{props.children}</SlideDialogMotion>,
         }}
       >
         <DialogTrigger disableButtonEnhancement>
@@ -110,9 +109,7 @@ export const CustomMotion = () => {
         </DialogTrigger>
         <DialogSurface
           backdropMotion={{
-            children: (_, props) => {
-              return <RadialBackdropMotion {...props}>{props.children}</RadialBackdropMotion>;
-            },
+            children: (_, props) => <RadialBackdropMotion {...props}>{props.children}</RadialBackdropMotion>,
           }}
         >
           <DialogBody>

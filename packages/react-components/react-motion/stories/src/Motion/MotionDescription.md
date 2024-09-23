@@ -4,6 +4,6 @@ Fluent components leverages the `@fluentui/react-motion` to handle animations. A
 
 - Dialog
 - Drawer
-- Toast (internally uses the motion API but does not expose a slot)
+- Toast (_internally uses the motion API but does not expose a slot_)
 
 For components that provide a slot to control animation, you can disable or customize the motion by configuring these slots.
