@@ -13,6 +13,10 @@ variables:
   - name: tags
     value: production,externalfacing
 
+# below are variables configurable at queue time, so they cannot appear in yml file
+# - name: skipPublish # set it to true in order to skip publishing to NPM. Useful for deploying docsite only updates.
+#   value: false
+
 schedules:
   # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
@@ -124,6 +128,7 @@ extends:
               - script: |
                   yarn publish:beachball -n $(npmToken) --config scripts/beachball/src/release-v8.config.js --message 'release: applying package updates - react v8'
                   git reset --hard origin/master
+                condition: eq(variables.skipPublish, false)
                 env:
                   GITHUB_PAT: $(githubPAT)
                 displayName: Publish changes and bump versions
@@ -154,10 +159,15 @@ extends:
                   node ./packages/public-docsite-setup/scripts/generateHomepage ./homepage
                 displayName: 'Generate homepage.htm'
 
+              - template: .devops/templates/publish-website.yml@self
+                parameters:
+                  version: 8
+
               # Run this near the end because it's more likely to fail than the artifact upload tasks, and its
               # failure doesn't need to block anything else
               - script: |
                   node -r ./scripts/ts-node/src/register ./scripts/update-release-notes/src/index.ts --token=$(githubPAT) --apply --debug
+                condition: eq(variables.skipPublish, false)
                 displayName: 'Update github release notes'
 
               - template: .devops/templates/cleanup.yml@self

@@ -4,10 +4,16 @@ import { join } from 'node:path';
 import { rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
+import { measureEnd, measureStart } from '../../utils';
+
 const runExecutor: PromiseExecutor<CleanExecutorSchema> = async (schema, context) => {
+  measureStart('CleanExecutor');
+
   const options = normalizeOptions(schema, context);
 
   const success = await runClean(options, context);
+
+  measureEnd('CleanExecutor');
 
   return { success };
 };

@@ -77,7 +77,7 @@ ruleTester.run('ban-context-export', rule, {
       errors: [{ messageId: 'contextSelector' }],
       parserOptions: getParserOptions('named-export'),
       code: `
-      import { createContext } from '@fluentui/react-context-selector';
+      import { createContext } from '@proj/react-context-selector';
       export const MyContext = createContext({});
       `,
       filename: 'src/index.ts',

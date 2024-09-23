@@ -4,10 +4,10 @@ import type { CarouselContextValue } from './CarouselContext.types';
 export const carouselContextDefaultValue: CarouselContextValue = {
   activeIndex: 0,
   selectPageByElement: () => {
-    /** noop */
+    return 0;
   },
   selectPageByDirection: () => {
-    /** noop */
+    return 0;
   },
   selectPageByIndex: () => {
     /** noop */
@@ -19,6 +19,7 @@ export const carouselContextDefaultValue: CarouselContextValue = {
     /** noop */
   },
   circular: false,
+  containerRef: undefined,
 };
 
 const CarouselContext = createContext<CarouselContextValue | undefined>(undefined);

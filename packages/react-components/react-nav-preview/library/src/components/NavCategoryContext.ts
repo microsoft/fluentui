@@ -18,7 +18,7 @@ const NavCategoryContext = React.createContext<NavCategoryContextValue | undefin
 
 const navCategoryContextDefaultValue: NavCategoryContextValue = {
   open: false,
-  value: undefined,
+  value: '',
 };
 
 export const { Provider: NavCategoryProvider } = NavCategoryContext;

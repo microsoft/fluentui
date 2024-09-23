@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge } from './Badge';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
+
 import { isConformant } from '../../testing/isConformant';
 
 describe('Badge', () => {
@@ -15,15 +15,6 @@ describe('Badge', () => {
         },
       ],
     },
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

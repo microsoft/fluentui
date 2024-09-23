@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Update popover size to match design guidance 320px, enable image to auto size based on popover surface bounds",
-  "packageName": "@fluentui/react-teaching-popover",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

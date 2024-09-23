@@ -13,6 +13,7 @@ import bestPracticesMd from './DrawerBestPractices.md';
 export { Default } from './DrawerDefault.stories';
 export { Overlay } from './OverlayDrawer.stories';
 export { OverlayNoModal } from './OverlayDrawerNoModal.stories';
+export { OverlayInsideContainer } from './OverlayInsideContainer.stories';
 export { Inline } from './InlineDrawer.stories';
 export { Position } from './DrawerPosition.stories';
 export { Size } from './DrawerSize.stories';

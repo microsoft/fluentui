@@ -68,9 +68,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
   private minLegendContainerHeight: number = 32;
-  private xAxisElement: SVGElement | null;
-  private yAxisElement: SVGElement | null;
-  private yAxisElementSecondary: SVGElement | null;
+  private xAxisElement: SVGSVGElement | null;
+  private yAxisElement: SVGSVGElement | null;
+  private yAxisElementSecondary: SVGSVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
   private idForDefaultTabbableElement: string;
@@ -497,7 +497,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {...svgProps}
           >
             <g
-              ref={(e: SVGElement | null) => {
+              ref={(e: SVGSVGElement | null) => {
                 this.xAxisElement = e;
               }}
               id={`xAxisGElement${this.idForGraph}`}
@@ -522,7 +522,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               />
             )}
             <g
-              ref={(e: SVGElement | null) => {
+              ref={(e: SVGSVGElement | null) => {
                 this.yAxisElement = e;
               }}
               id={`yAxisGElement${this.idForGraph}`}
@@ -536,7 +536,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.secondaryYScaleOptions && (
               <g>
                 <g
-                  ref={(e: SVGElement | null) => {
+                  ref={(e: SVGSVGElement | null) => {
                     this.yAxisElementSecondary = e;
                   }}
                   id={`yAxisGElementSecondary${this.idForGraph}`}

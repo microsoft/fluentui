@@ -150,7 +150,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -158,7 +158,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -168,7 +168,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -176,7 +176,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -190,8 +190,8 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={40}
-          x2={40}
+          x1={-20}
+          x2={-20}
           y1={0}
           y2={310}
         />
@@ -487,7 +487,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                 data-is-focusable={false}
                 role="text"
               >
-                20
+                40
               </div>
             </div>
             <div
@@ -519,7 +519,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                         @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           forced-color-adjust: none;
                         }
-                    id="0_50"
+                    id="0_80"
                   >
                     <div>
                       <div
@@ -556,7 +556,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                               color: rgb(255, 255, 255);
                             }
                       >
-                        50
+                        80
                       </div>
                     </div>
                   </div>
@@ -721,7 +721,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -729,7 +729,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -739,7 +739,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -747,7 +747,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -761,8 +761,8 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={40}
-          x2={40}
+          x1={-20}
+          x2={-20}
           y1={0}
           y2={310}
         />
@@ -1021,11 +1021,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           <div>
             <pre>
               {
-  "x": 20,
+  "x": 40,
   "values": [
     {
       "legend": "metaData1",
-      "y": 50,
+      "y": 80,
       "color": "red"
     }
   ]
@@ -1189,7 +1189,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             cx={40}
             cy={115.625}
             data-is-focusable={true}
-            fill="#ffffff"
+            fill="red"
             id="circle2_0"
             key="circle2_0"
             onBlur={[Function]}
@@ -1197,7 +1197,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={8}
+            r={0}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -1207,7 +1207,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             cx={-20}
             cy={20}
             data-is-focusable={true}
-            fill="red"
+            fill="#ffffff"
             id="circle2_1"
             key="circle2_1"
             onBlur={[Function]}
@@ -1215,7 +1215,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
             onFocus={[Function]}
             onMouseOut={[Function]}
             onMouseOver={[Function]}
-            r={0}
+            r={8}
             role="img"
             stroke="red"
             strokeWidth={3}
@@ -1229,8 +1229,8 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={40}
-          x2={40}
+          x1={-20}
+          x2={-20}
           y1={0}
           y2={310}
         />
@@ -1489,11 +1489,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           <div>
             <pre>
               {
-  "x": 20,
+  "x": 40,
   "values": [
     {
       "legend": "metaData1",
-      "y": 50,
+      "y": 80,
       "color": "red"
     }
   ]

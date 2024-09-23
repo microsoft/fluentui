@@ -1,3 +1,4 @@
+import { performance } from 'node:perf_hooks';
 import yargsParser from 'yargs-parser';
 import type * as Enquirer from 'enquirer';
 import {
@@ -266,4 +267,18 @@ export function isV8Package(tree: Tree, project: ProjectConfiguration) {
 
 export function packageJsonHasBeachballConfig(packageJson: PackageJson): packageJson is PackageJsonWithBeachball {
   return !!(packageJson as PackageJsonWithBeachball).beachball;
+}
+
+// ==========================
+// Execution time measurement
+// ==========================
+
+export function measureStart(key: string) {
+  performance.mark(`${key}:start`);
+}
+export function measureEnd(key: string) {
+  performance.mark(`${key}:end`);
+  const measure = performance.measure(key, `${key}:start`, `${key}:end`);
+
+  logger.verbose(`Execution Timings: ${key} (${(measure.duration / 1000).toFixed(2)} s)`);
 }

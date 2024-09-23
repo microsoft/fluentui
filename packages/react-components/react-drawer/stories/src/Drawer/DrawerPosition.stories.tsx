@@ -20,34 +20,20 @@ const useStyles = makeStyles({
   },
 });
 
-const setTitle = (position: DrawerProps['position']) => {
-  switch (position) {
-    case 'start':
-      return 'Left';
-
-    case 'end':
-      return 'Right';
-
-    case 'bottom':
-      return 'Bottom';
-
-    default:
-      return undefined;
-  }
-};
+const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const Position = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [position, setPosition] = React.useState<DrawerProps['position']>('start');
+  const [position, setPosition] = React.useState<Required<DrawerProps>['position']>('start');
 
-  const onClickLeftButton = React.useCallback(() => {
+  const onClickStartButton = React.useCallback(() => {
     setPosition('start');
     setIsOpen(true);
   }, []);
 
-  const onClickRightButton = React.useCallback(() => {
+  const onClickEndButton = React.useCallback(() => {
     setPosition('end');
     setIsOpen(true);
   }, []);
@@ -71,7 +57,7 @@ export const Position = () => {
               />
             }
           >
-            {setTitle(position)} Drawer
+            {capitalize(position)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
@@ -81,12 +67,12 @@ export const Position = () => {
       </OverlayDrawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={onClickLeftButton}>
-          Open left
+        <Button appearance="primary" onClick={onClickStartButton}>
+          Open start
         </Button>
 
-        <Button appearance="primary" onClick={onClickRightButton}>
-          Open right
+        <Button appearance="primary" onClick={onClickEndButton}>
+          Open end
         </Button>
 
         <Button appearance="primary" onClick={onClickBottomButton}>
@@ -101,7 +87,7 @@ Position.parameters = {
   docs: {
     description: {
       story: [
-        'When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen.',
+        'When a Drawer is invoked, it slides in from either the start or end side, or bottom of the screen.',
         'This can be specified by the `position` prop.',
       ].join('\n'),
     },

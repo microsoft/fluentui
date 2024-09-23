@@ -3,11 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "main": "src/index.ts",
-  "scripts": {
-    "format": "prettier -w --ignore-path ../../.prettierignore .",
-    "format:check": "yarn format -c",
-    "type-check": "just-scripts type-check"
-  },
+  "scripts": {},
   "dependencies": {
     "@fluentui/scripts-utils": "*",
     "@fluentui/scripts-puppeteer": "*",

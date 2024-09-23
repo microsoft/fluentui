@@ -3802,9 +3802,7 @@ export const TextAreaAppearance: {
 // @public (undocumented)
 export type TextAreaAppearance = ValuesOf<typeof TextAreaAppearance>;
 
-// Warning: (ae-missing-release-tag) "TextAreaAppearancesForDisplayShadow" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)
-//
-// @public (undocumented)
+// @public
 export const TextAreaAppearancesForDisplayShadow: Partial<TextAreaAppearance[]>;
 
 // Warning: (ae-missing-release-tag) "TextAreaAutocomplete" is part of the package's API, but it is missing a release tag (@alpha, @beta, @public, or @internal)

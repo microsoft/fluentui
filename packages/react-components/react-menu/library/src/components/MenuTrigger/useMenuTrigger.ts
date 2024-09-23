@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useFocusFinders, useRestoreFocusTarget } from '@fluentui/react-tabster';
+import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import {
@@ -31,7 +31,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
-  const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
   const isSubmenu = useIsSubmenu();
 
@@ -125,7 +124,6 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
 
   const contextMenuProps = {
     id: triggerId,
-    ...restoreFocusTargetAttribute,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),

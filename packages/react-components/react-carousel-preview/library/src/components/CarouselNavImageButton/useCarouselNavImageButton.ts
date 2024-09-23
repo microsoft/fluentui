@@ -1,4 +1,4 @@
-import { ARIAButtonElement, ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
+import { type ARIAButtonElement, type ARIAButtonSlotProps, useARIAButtonProps } from '@fluentui/react-aria';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
@@ -10,7 +10,7 @@ import {
 import { useTabsterAttributes } from '@fluentui/react-tabster';
 import * as React from 'react';
 
-import { useCarouselNavContext } from '../CarouselNav/CarouselNavContext';
+import { useCarouselNavIndexContext } from '../CarouselNav/CarouselNavIndexContext';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 import type { CarouselNavImageButtonProps, CarouselNavImageButtonState } from './CarouselNavImageButton.types';
 
@@ -29,7 +29,7 @@ export const useCarouselNavImageButton_unstable = (
 ): CarouselNavImageButtonState => {
   const { onClick, as = 'button' } = props;
 
-  const { index } = useCarouselNavContext();
+  const index = useCarouselNavIndexContext();
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);

@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2024 12:40:16 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.17",
+      "version": "1.0.0-alpha.17",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "de8118d071983fdc372b1ea24535c38f85e474b9",
+            "comment": "feat: add z-index tokens"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Jul 2024 17:25:25 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.16",
       "version": "1.0.0-alpha.16",

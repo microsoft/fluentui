@@ -57,7 +57,6 @@ describe('MenuTrigger', () => {
       Array [
         <button
           aria-haspopup="menu"
-          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
           id="id"
         >
           Trigger
@@ -88,7 +87,6 @@ describe('MenuTrigger', () => {
       Array [
         <button
           aria-haspopup="menu"
-          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
           id="id"
         >
           Trigger

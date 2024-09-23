@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Mon, 18 Mar 2024 19:50:46 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2024 12:40:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.17)
+
+Mon, 23 Sep 2024 12:40:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.16..@fluentui/tokens_v1.0.0-alpha.17)
+
+### Changes
+
+- feat: add z-index tokens ([PR #32356](https://github.com/microsoft/fluentui/pull/32356) by marcosvmmoura@gmail.com)
 
 ## [1.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.16)
 

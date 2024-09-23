@@ -1,22 +1,12 @@
 import * as React from 'react';
 import { PresenceBadge } from './PresenceBadge';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../testing/isConformant';
 
 describe('PresenceBadge', () => {
   isConformant({
     Component: PresenceBadge,
     displayName: 'PresenceBadge',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   it('renders a default state', () => {

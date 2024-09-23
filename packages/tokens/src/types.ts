@@ -684,6 +684,20 @@ export type CurveTokens = {
 };
 
 /**
+ * Design tokens for z-index groups and levels
+ */
+export type ZIndexTokens = {
+  zIndexBackground?: string;
+  zIndexContent?: string;
+  zIndexOverlay?: string;
+  zIndexPopup?: string;
+  zIndexMessages?: string;
+  zIndexFloating?: string;
+  zIndexPriority?: string;
+  zIndexDebug?: string;
+};
+
+/**
  * Design tokens for shadow levels
  */
 export type ShadowTokens = {
@@ -773,6 +787,7 @@ export type Theme = FontSizeTokens &
   FontWeightTokens &
   ColorPaletteTokens &
   ColorStatusTokens &
-  ColorTokens;
+  ColorTokens &
+  ZIndexTokens;
 
 export type PartialTheme = Partial<Theme>;

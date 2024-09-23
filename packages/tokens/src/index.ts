@@ -62,4 +62,5 @@ export type {
   Theme,
   TypographyStyle,
   TypographyStyles,
+  ZIndexTokens,
 } from './types';

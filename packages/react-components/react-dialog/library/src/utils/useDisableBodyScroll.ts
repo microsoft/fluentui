@@ -20,7 +20,9 @@ export function useDisableBodyScroll(): {
       return;
     }
     const isHorizontalScrollbarVisible =
-      targetDocument.body.clientHeight > (targetDocument.defaultView?.innerHeight ?? 0);
+      // When the window is a fractional height, `innerHeight` always rounds down but `clientHeight` rounds either up or down depending on the value.
+      // To properly compare the body clientHeight to the window innerHeight, manually round down the fractional value to match innerHeight's calculation.
+      Math.floor(targetDocument.body.getBoundingClientRect().height) > (targetDocument.defaultView?.innerHeight ?? 0);
     if (!isHorizontalScrollbarVisible) {
       return;
     }

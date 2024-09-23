@@ -6,6 +6,10 @@
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",
-    "types": ["static-assets", "environment"]
+    "types": ["static-assets", "environment"],
+    "baseUrl": ".",
+    "paths": {
+      "@proj/react-context-selector": ["../react-context-selector-pkg/index.ts"]
+    }
   }
 }

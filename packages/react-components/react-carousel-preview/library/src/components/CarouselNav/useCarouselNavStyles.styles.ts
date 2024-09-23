@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { CarouselNavSlots, CarouselNavState } from './CarouselNav.types';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { CarouselNavSlots, CarouselNavState } from './CarouselNav.types';
 
 export const carouselNavClassNames: SlotClassNames<CarouselNavSlots> = {
   root: 'fui-CarouselNav',
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
+    pointerEvents: 'all',
     ...createCustomFocusIndicatorStyle({
       outline: `${tokens.strokeWidthThick} solid ${tokens.colorStrokeFocus2}`,
       borderRadius: tokens.borderRadiusMedium,

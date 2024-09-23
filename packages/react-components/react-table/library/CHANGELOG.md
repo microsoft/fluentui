@@ -1,8 +1,43 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 15 Aug 2024 13:49:46 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2024 12:40:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.17)
+
+Mon, 23 Sep 2024 12:40:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.16..@fluentui/react-table_v9.15.17)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.13.6 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-avatar to v9.6.39 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.37 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-radio to v9.2.32 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [9.15.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.16)
+
+Tue, 10 Sep 2024 10:19:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.15.15..@fluentui/react-table_v9.15.16)
+
+### Patches
+
+- fix(TableHeaderCell): should use hover and pressed tokens ([PR #32352](https://github.com/microsoft/fluentui/pull/32352) by lingfangao@hotmail.com)
+- Bump @fluentui/react-aria to v9.13.5 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-avatar to v9.6.38 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-checkbox to v9.2.36 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.66 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-radio to v9.2.31 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-tabster to v9.22.6 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-utilities to v9.18.14 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.43 ([PR #32494](https://github.com/microsoft/fluentui/pull/32494) by beachball)
 
 ## [9.15.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.15.15)
 

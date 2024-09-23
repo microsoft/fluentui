@@ -33,6 +33,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Circular enables the carousel to loop back around on navigation past trailing index.
    */
   circular?: boolean;
+
   /**
    * Controls the number of carousel cards per navigation element, will default to 'auto'
    * Recommended to set to '1' when using full page carousel cards.
@@ -40,10 +41,16 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   groupSize?: number | 'auto';
 
   /**
-   * Enables mouse/touch drag on carousel items.
+   * Enables drag to scroll on carousel items.
    * Defaults to: False
    */
-  enableDrag?: boolean;
+  draggable?: boolean;
+
+  /**
+   * Adds whitespace to start/end so that 'align' prop is always respected for current index
+   * Defaults to: False
+   */
+  whitespace?: boolean;
 };
 
 /**

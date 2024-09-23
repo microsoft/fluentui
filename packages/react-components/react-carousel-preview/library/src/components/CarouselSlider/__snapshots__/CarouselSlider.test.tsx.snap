@@ -4,7 +4,6 @@ exports[`CarouselSlider renders a default state 1`] = `
 <div>
   <div
     class="fui-CarouselSlider"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="group"
   >
     Default CarouselSlider

@@ -52,15 +52,18 @@ export const Colors = () => {
   // It returns tokens matching the input value.
   const searchToken = React.useCallback(
     newSearchValue => {
-      const tokensFoundBySearch = tokens.filter(
-        token =>
+      const tokensFoundBySearch = tokens.filter(token => {
+        const tokensMatchSearchValue = (tokenItem?: string | number) => tokenItem?.toString().includes(newSearchValue);
+
+        return (
           token.toLowerCase().includes(newSearchValue) ||
-          theme.webLight[token].toString().includes(newSearchValue) ||
-          theme.webDark[token].toString().includes(newSearchValue) ||
-          theme.teamsLight[token].toString().includes(newSearchValue) ||
-          theme.teamsDark[token].toString().includes(newSearchValue) ||
-          theme.teamsHighContrast[token].toString().includes(newSearchValue),
-      );
+          tokensMatchSearchValue(theme.webLight[token]) ||
+          tokensMatchSearchValue(theme.webDark[token]) ||
+          tokensMatchSearchValue(theme.teamsLight[token]) ||
+          tokensMatchSearchValue(theme.teamsDark[token]) ||
+          tokensMatchSearchValue(theme.teamsHighContrast[token])
+        );
+      });
       setTokensSearchResult(tokensFoundBySearch);
     },
     [setTokensSearchResult],

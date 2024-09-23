@@ -3,12 +3,20 @@
 
 import { assertSlots } from '@fluentui/react-utilities';
 import type { CarouselSliderState, CarouselSliderSlots } from './CarouselSlider.types';
+import { CarouselSliderContextProvider, CarouselSliderContextValues } from './CarouselSliderContext';
 
 /**
  * Render the final JSX of CarouselSlider
  */
-export const renderCarouselSlider_unstable = (state: CarouselSliderState) => {
+export const renderCarouselSlider_unstable = (
+  state: CarouselSliderState,
+  contextValues: CarouselSliderContextValues,
+) => {
   assertSlots<CarouselSliderSlots>(state);
 
-  return <state.root />;
+  return (
+    <CarouselSliderContextProvider value={contextValues.carouselSlider}>
+      <state.root />
+    </CarouselSliderContextProvider>
+  );
 };

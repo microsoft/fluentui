@@ -12,6 +12,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
     subscribeForValues,
     enableAutoplay,
     circular,
+    containerRef,
   } = state;
 
   const carousel = React.useMemo(
@@ -23,6 +24,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       subscribeForValues,
       enableAutoplay,
       circular,
+      containerRef,
     }),
     [
       activeIndex,
@@ -32,6 +34,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       subscribeForValues,
       enableAutoplay,
       circular,
+      containerRef,
     ],
   );
 

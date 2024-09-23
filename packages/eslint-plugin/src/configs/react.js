@@ -30,6 +30,7 @@ module.exports = {
     '@fluentui/no-context-default-value': [
       'error',
       {
+        // nx-ignore-next-line - this is a valid use case to ignore workspace packages. keeping  them part of the project dependencies would be wrong assumption
         imports: ['react', '@fluentui/react-context-selector', '@fluentui/global-context'],
       },
     ],

@@ -1,90 +1,178 @@
-import { makeStyles, tokens, Tooltip, typographyStyles } from '@fluentui/react-components';
+import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselButton,
+  CarouselAnnouncer,
+  CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
-  CarouselNavImageButton,
+  CarouselNavButton,
+  CarouselNavContainer,
   CarouselSlider,
-  CarouselAutoplayButton,
 } from '@fluentui/react-carousel-preview';
 import * as React from 'react';
 
-const SWAP_IMAGE = 'https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/image-square.png';
 const useClasses = makeStyles({
-  test: {
-    ...typographyStyles.largeTitle,
+  bannerCard: {
     alignContent: 'center',
     borderRadius: tokens.borderRadiusLarge,
     height: '450px',
-    textAlign: 'center',
+    textAlign: 'left',
+    position: 'relative',
+  },
+  cardContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+
+    position: 'absolute',
+    left: '10%',
+    top: '25%',
+    background: tokens.colorNeutralBackground1,
+    padding: '18px',
+    maxWidth: '270px',
+    width: '50%',
+  },
+  title: {
+    ...typographyStyles.title1,
+  },
+  subtext: {
+    ...typographyStyles.body1,
+  },
+  container: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridTemplateRows: 'auto 1fr',
+    paddingBottom: '24px',
+    boxShadow: tokens.shadow16,
+  },
+  card: {
+    display: 'flex',
+    flexDirection: 'column',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderRadius: tokens.borderRadiusMedium,
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0,
+
+    padding: '10px',
+    minHeight: '100px',
+  },
+  carousel: {
+    flex: 1,
+    padding: '20px',
+  },
+  controls: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '6px',
+
+    border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
+    borderBottom: 'none',
+    borderRadius: tokens.borderRadiusMedium,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+
+    padding: '10px',
+  },
+  field: {
+    flex: 1,
+    gridTemplateColumns: 'minmax(100px, max-content) 1fr',
+  },
+  dropdown: {
+    maxWidth: 'max-content',
   },
 });
 
-const TestComponent: React.FC<{ accentColor: string; children: string }> = props => {
-  const { accentColor, children } = props;
+const IMAGES = [
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/sea-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/bridge-full-img.jpg',
+  'https://fabricweb.azureedge.net/fabric-website/assets/images/swatch-picker/park-full-img.jpg',
+];
+
+const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index: number }> = props => {
+  const { children, imageSrc, index } = props;
   const classes = useClasses();
 
   return (
-    <div className={classes.test} style={{ backgroundColor: accentColor }}>
-      {children}
-    </div>
+    <CarouselCard className={classes.bannerCard} aria-label={`${index + 1} of ${IMAGES.length}`}>
+      <Image fit="cover" src={imageSrc} role="presentation" />
+
+      <div className={classes.cardContainer}>
+        <div className={classes.title}>{children}</div>
+        <div className={classes.subtext}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam.
+        </div>
+        <div>
+          <Button size="small" shape="square" appearance="primary">
+            Call to action
+          </Button>
+        </div>
+      </div>
+    </CarouselCard>
   );
 };
 
 export const Autoplay = () => {
+  const classes = useClasses();
+  const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
+  const [autoplayButton, setAutoplayButton] = React.useState(true);
+
+  const autoplayProps: CarouselAutoplayButtonProps | undefined = autoplayButton
+    ? {
+        'aria-label': 'Enable autoplay',
+        checked: autoplayEnabled,
+        onCheckedChange: (e, data) => {
+          setAutoplayEnabled(data.checked);
+        },
+      }
+    : undefined;
+
   return (
-    <div>
-      <Carousel groupSize={1}>
+    <div className={classes.container}>
+      <div className={classes.controls}>
+        <Field label="Autoplay Present" orientation="horizontal" className={classes.field}>
+          <Switch checked={autoplayButton} onChange={() => setAutoplayButton(!autoplayButton)} />
+        </Field>
+
+        <Field label="Autoplay Enabled" orientation="horizontal" className={classes.field}>
+          <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
+        </Field>
+      </div>
+      <Carousel groupSize={1} circular>
         <CarouselSlider>
-          <CarouselCard>
-            <TestComponent accentColor="#B99095">Card 1</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#FCB5AC">Card 2</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#B5E5CF">Card 3</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#3D5B59">Card 4</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#F9EAC2">Card 5</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#FEE7E6">Card 6</TestComponent>
-          </CarouselCard>
-          <CarouselCard>
-            <TestComponent accentColor="#FFD898">Card 7</TestComponent>
-          </CarouselCard>
+          {IMAGES.map((imageSrc, index) => (
+            <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
+              Card {index + 1}
+            </BannerCard>
+          ))}
         </CarouselSlider>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-          }}
+        <CarouselNavContainer
+          layout="inline"
+          autoplay={autoplayProps}
+          next={{ 'aria-label': 'go to next' }}
+          prev={{ 'aria-label': 'go to prev' }}
         >
-          <Tooltip content={'Go To Previous Page'} relationship={'label'}>
-            <CarouselButton navType="prev" aria-label="previous carousel page" />
-          </Tooltip>
-          <CarouselAutoplayButton
-            aria-label={'Carousel Autoplay Button'}
-            autoplayAriaLabel={(autoplay: boolean) => {
-              return autoplay ? 'Stop Carousel Autoplay' : 'Start Carousel Autoplay';
-            }}
-          />
-          <CarouselNav>
-            {index => (
-              <CarouselNavImageButton aria-label={`Carousel Nav Button ${index}`} image={{ src: SWAP_IMAGE }} />
-            )}
-          </CarouselNav>
-          <Tooltip content={'Go To Next Page'} relationship={'label'}>
-            <CarouselButton navType="next" aria-label="next carousel page" />
-          </Tooltip>
-        </div>
+          <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
+        </CarouselNavContainer>
+        <CarouselAnnouncer>
+          {(currentIndex, totalSlides, _slideGroupList) => {
+            return `Slide ${currentIndex + 1} of ${totalSlides}`;
+          }}
+        </CarouselAnnouncer>
       </Carousel>
     </div>
   );
+};
+
+Autoplay.parameters = {
+  docs: {
+    description: {
+      story:
+        'The Autoplay button must be present to enable autoplay as it is an accessibility requirement. To enable, any valid prop (recommended ariaLabel) must be passed in, while setting the autoplay prop in CarouselNav to undefined will disable and remove it.',
+    },
+  },
 };

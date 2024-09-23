@@ -1,3 +1,4 @@
+import { useFocusableGroup } from '@fluentui/react-tabster';
 import {
   getIntrinsicElementProps,
   isHTMLElement,
@@ -8,19 +9,12 @@ import {
 } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
+import type { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
 import { EMBLA_VISIBILITY_EVENT } from '../useEmblaCarousel';
 import type { CarouselCardProps, CarouselCardState } from './CarouselCard.types';
-import { CarouselVisibilityChangeEvent } from '../Carousel/Carousel.types';
-import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
-import { useFocusableGroup } from '@fluentui/react-tabster';
 import { carouselCardClassNames } from './useCarouselCardStyles.styles';
-
-const focusMap = {
-  off: undefined,
-  'no-tab': 'limited-trap-focus',
-  'tab-exit': 'limited',
-  'tab-only': 'unlimited',
-} as const;
+import { useCarouselSliderContext } from '../CarouselSlider/CarouselSliderContext';
 
 /**
  * Create the state required to render CarouselCard.
@@ -31,21 +25,20 @@ const focusMap = {
  * @param props - props from this instance of CarouselCard
  * @param ref - reference to root HTMLDivElement of CarouselCard
  */
-
 export const useCarouselCard_unstable = (
   props: CarouselCardProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselCardState => {
-  const { focusMode = 'off' } = props;
+  const { autoSize } = props;
   const elementRef = React.useRef<HTMLDivElement>(null);
   const isMouseEvent = React.useRef<boolean>(false);
   const selectPageByElement = useCarouselContext(ctx => ctx.selectPageByElement);
+  const { cardFocus } = useCarouselSliderContext();
 
   const focusAttr = useFocusableGroup({
-    tabBehavior: focusMap[focusMode],
+    tabBehavior: 'limited',
   });
-  const isFocusable = focusMode !== 'off';
-  const focusAttrProps = isFocusable ? { ...focusAttr, tabIndex: 0 } : {};
+  const focusAttrProps = cardFocus ? { ...focusAttr, tabIndex: 0 } : {};
 
   // We attach a unique card id if user does not provide
   const id = useId(carouselCardClassNames.root, props.id);
@@ -57,7 +50,7 @@ export const useCarouselCard_unstable = (
       const listener = (_e: Event) => {
         const event = _e as CarouselVisibilityChangeEvent;
         // When there is no tab index present, only current cards should be visible to accessibility
-        if (!isFocusable) {
+        if (!cardFocus) {
           const hidden = !event.detail.isVisible;
           element.ariaHidden = hidden.toString();
           element.inert = hidden;
@@ -70,7 +63,7 @@ export const useCarouselCard_unstable = (
         element.removeEventListener(EMBLA_VISIBILITY_EVENT, listener);
       };
     }
-  }, [isFocusable]);
+  }, [cardFocus]);
 
   const handleFocusCapture = React.useCallback(
     (e: React.FocusEvent) => {
@@ -96,6 +89,7 @@ export const useCarouselCard_unstable = (
   const onMouseUp = mergeCallbacks(props.onMouseUp, handleMouseUp);
   const onMouseDown = mergeCallbacks(props.onMouseDown, handleMouseDown);
   const state: CarouselCardState = {
+    autoSize,
     components: {
       root: 'div',
     },
@@ -103,6 +97,7 @@ export const useCarouselCard_unstable = (
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(elementRef, ref),
         role: 'tabpanel',
+        tabIndex: cardFocus ? 0 : undefined,
         ...props,
         id,
         onFocusCapture,

@@ -9,6 +9,12 @@
         // too many false positives on node types
         "@typescript-eslint/naming-convention": "off"
       }
+    },
+    {
+      "files": ["src/rules/**/fixtures/**/*.{js,ts}"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
     }
   ]
 }

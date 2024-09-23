@@ -1,18 +1,24 @@
 import { PromiseExecutor, joinPathFragments, readJsonFile, logger, ExecutorContext } from '@nx/devkit';
 
-import { TypeCheckExecutorSchema } from './schema';
 import { existsSync } from 'node:fs';
 import { promisify } from 'node:util';
 import { exec } from 'node:child_process';
+
+import { type TypeCheckExecutorSchema } from './schema';
+import { measureEnd, measureStart } from '../../utils';
 
 const asyncExec = promisify(exec);
 
 interface NormalizedOptions extends ReturnType<typeof normalizeOptions> {}
 
 const runExecutor: PromiseExecutor<TypeCheckExecutorSchema> = async (schema, context) => {
+  measureStart('TypeCheckExecutor');
+
   const options = normalizeOptions(schema, context);
 
   const success = await runTypeCheck(options, context);
+
+  measureEnd('TypeCheckExecutor');
 
   return { success };
 };

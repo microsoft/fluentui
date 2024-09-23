@@ -107,6 +107,8 @@ import {
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
 
+// @{link 'file://./../../../docs/src/behaviorMenu.json'}
+// nx-ignore-next-line - following pragma ignores 'docs' project(application) being part of this package dependencies from nx - 🚨 NOTE: this is wrong as without docs project json files generated this test wont work.
 const behaviorMenuItems = require('../../../docs/src/behaviorMenu');
 
 const testHelper = new TestHelper();

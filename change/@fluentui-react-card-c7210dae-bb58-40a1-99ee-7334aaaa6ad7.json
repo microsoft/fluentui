@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: follow up on assertSlots fixes",
-  "packageName": "@fluentui/react-card",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
