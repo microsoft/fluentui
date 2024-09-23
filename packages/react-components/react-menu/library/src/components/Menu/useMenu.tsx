@@ -177,6 +177,7 @@ const useMenuOpenState = (
   'use no memo';
 
   const { targetDocument } = useFluent();
+  targetDocument?.window;
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 

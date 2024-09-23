@@ -99,33 +99,51 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
     const fromSize = '0'; // Possible future custom param, for collapsing to a width or height.
     const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
     const toSize = `${measuredSize}px`;
+    // use generic names for size and overflow, handling vertical or horizontal orientation
     const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
     const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
 
-    // Setting height to zero does not eliminate margin or padding, so allow collapsing those as well.
-    // TODO: rename to be agnostic to orientation
-    const collapsedWhiteSpace = {
-      marginTop: collapseMargin ? 0 : undefined,
-      marginBottom: collapseMargin ? 0 : undefined,
-      paddingTop: collapsePadding ? 0 : undefined,
-      paddingBottom: collapsePadding ? 0 : undefined,
-    };
+    // Because setting height to zero does not eliminate margin or padding,
+    // we will create keyframes to surgically animate them to zero.
+    const collapsedWhiteSpace = {} as { [key: string]: string };
+    if (collapseMargin) {
+      if (orientation === 'horizontal') {
+        collapsedWhiteSpace.marginLeft = '0';
+        collapsedWhiteSpace.marginRight = '0';
+      } else {
+        collapsedWhiteSpace.marginTop = '0';
+        collapsedWhiteSpace.marginBottom = '0';
+      }
+    }
+    if (collapsePadding) {
+      if (orientation === 'horizontal') {
+        collapsedWhiteSpace.paddingLeft = '0';
+        collapsedWhiteSpace.paddingRight = '0';
+      } else {
+        collapsedWhiteSpace.paddingTop = '0';
+        collapsedWhiteSpace.paddingBottom = '0';
+      }
+    }
 
     return {
-      // The enter transition is an array of 2 motion atoms: for size and for opacity.
+      // The enter transition is an array of 3 motion atoms: size, whitespace and opacity.
       enter: [
         // Expand size (width or height).
         {
           keyframes: [
             {
               [sizeName]: fromSize,
-              // opacity: fromOpacity,
               [overflowName]: 'hidden',
-              ...collapsedWhiteSpace,
             },
             { [sizeName]: toSize, offset: 0.9999, [overflowName]: 'hidden' },
             { [sizeName]: 'unset', [overflowName]: 'unset' },
           ],
+          duration: enterSizeDuration,
+          easing: enterEasing,
+        },
+        // Expand whitespace (margin and/or padding).
+        {
+          keyframes: [{ ...collapsedWhiteSpace, offset: 0 }],
           duration: enterSizeDuration,
           easing: enterEasing,
         },
@@ -139,14 +157,11 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
         },
       ],
 
-      // The enter transition is an array of 2 motion atoms: for size and for opacity.
+      // The enter transition is an array of 3 motion atoms: opacity, size, and whitespace.
       exit: [
         // Fade out first (if delay > 0)
         {
-          keyframes: [
-            { opacity: toOpacity /*, [overflowName]: 'hidden'*/ },
-            { opacity: fromOpacity /*, [overflowName]: 'hidden'*/ },
-          ],
+          keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
           duration: exitOpacityDuration,
           easing: exitEasing,
         },
@@ -155,38 +170,44 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
           delay: exitDelay,
           keyframes: [
             { [sizeName]: toSize, [overflowName]: 'hidden' },
-            { [sizeName]: fromSize, [overflowName]: 'hidden', ...collapsedWhiteSpace },
+            { [sizeName]: fromSize, [overflowName]: 'hidden' },
           ],
           duration: exitSizeDuration,
           easing: exitEasing,
           fill: 'both',
         },
+        // Collapse whitespace (margin and/or padding).
+        {
+          delay: exitDelay,
+          keyframes: [{ ...collapsedWhiteSpace, offset: 1 }],
+          duration: exitSizeDuration,
+          easing: exitEasing,
+          fill: 'backwards',
+        },
       ],
     };
   };
 
+export const createCollapseComponent = (options: CollapseVariantOptions = {}) => {
+  return createPresenceComponent(createCollapsePresence(options));
+};
+
 /** A React component that applies collapse/expand transitions to its child content. */
-export const Collapse = createPresenceComponent(createCollapsePresence());
+export const Collapse = createCollapseComponent();
 
-export const CollapseSnappy = createPresenceComponent(
-  createCollapsePresence({
-    enterSizeDuration: durationUltraFast,
-  }),
-);
+export const CollapseSnappy = createCollapseComponent({
+  enterSizeDuration: durationUltraFast,
+});
 
-export const CollapseExaggerated = createPresenceComponent(
-  createCollapsePresence({
-    enterSizeDuration: durationSlower,
-    enterOpacityDuration: durationNormal,
-  }),
-);
+export const CollapseExaggerated = createCollapseComponent({
+  enterSizeDuration: durationSlower,
+  enterOpacityDuration: durationNormal,
+});
 
-export const CollapseDelayed = createPresenceComponent(
-  createCollapsePresence({
-    enterSizeDuration: durationNormal,
-    enterOpacityDuration: durationSlower,
-    enterDelay: durationNormal,
-    exitDelay: durationSlower,
-    enterEasing: curveEasyEase,
-  }),
-);
+export const CollapseDelayed = createCollapseComponent({
+  enterSizeDuration: durationNormal,
+  enterOpacityDuration: durationSlower,
+  enterDelay: durationNormal,
+  exitDelay: durationSlower,
+  enterEasing: curveEasyEase,
+});

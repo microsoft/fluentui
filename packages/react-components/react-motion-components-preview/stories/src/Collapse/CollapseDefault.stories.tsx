@@ -10,7 +10,8 @@ const useClasses = makeStyles({
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
+    padding: '20px',
+    backgroundColor: tokens.colorNeutralBackground6,
   },
   controls: {
     display: 'flex',
@@ -47,7 +48,7 @@ export const Default = () => {
         </Field>
       </div>
 
-      <Collapse visible={visible}>
+      <Collapse visible={visible} unmountOnExit>
         <div className={classes.card}>
           <LoremIpsum />
         </div>
