@@ -12,6 +12,7 @@ import {
   visitNotIgnoredFiles,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
+import path from 'node:path';
 
 import generator from './index';
 import { PackageJson, TsConfig } from '../../types';
@@ -1064,7 +1065,7 @@ These are not production-ready components and **should never be used in product*
       const contents: Record<string, string> = {};
 
       visitNotIgnoredFiles(tree, root, file => {
-        contents[file] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
+        contents[path.normalize(file)] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
       });
 
       return contents;

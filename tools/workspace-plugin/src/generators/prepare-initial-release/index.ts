@@ -156,12 +156,15 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   const bundleSizeFixturesRoot = joinPathFragments(options.projectConfig.root, 'bundle-size');
   if (tree.exists(bundleSizeFixturesRoot)) {
+    console.log('===BUNDLE SIZE UPDATES====', { bundleSizeFixturesRoot });
     visitNotIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
       updateFileContent(tree, {
         filePath,
         updater: contentNameUpdater,
       });
     });
+  } else {
+    console.warn('=== NO BUNDLE SIZE UPDATES! ====', { bundleSizeFixturesRoot });
   }
 
   const mdFilePath = {
