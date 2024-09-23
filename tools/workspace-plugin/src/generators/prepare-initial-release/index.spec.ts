@@ -1065,7 +1065,7 @@ These are not production-ready components and **should never be used in product*
       const contents: Record<string, string> = {};
 
       visitNotIgnoredFiles(tree, root, file => {
-        contents[path.normalize(file)] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
+        contents[path.posix.normalize(file)] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
       });
 
       return contents;
