@@ -345,7 +345,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
             // Ignore buffer size (IO offset)
             measurementPos -= bufferSize;
             // we hit the after buffer and detected the end of view, we need to find the start index.
-            measurementPos -= containerSizeRef.current;
+            measurementPos -= containerSizeRef.current ?? 0;
 
             // Calculate how far past the window bounds we are (this will be zero if IO is within window)
             const hOverflow = latestEntry.boundingClientRect.top - latestEntry.intersectionRect.top;

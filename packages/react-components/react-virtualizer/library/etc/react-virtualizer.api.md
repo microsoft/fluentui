@@ -80,7 +80,7 @@ export const useDynamicVirtualizerMeasure: <TElement extends HTMLElement>(virtua
     bufferItems: number;
     bufferSize: number;
     scrollRef: (instance: TElement | null) => void;
-    containerSizeRef: React_2.MutableRefObject<number>;
+    containerSizeRef: React_2.RefObject<number>;
 };
 
 // @public

@@ -194,7 +194,7 @@ export type VirtualizerConfigProps = {
    * A ref that provides the size of container (vertical - height, horizontal - width), set by a resize observer.
    * Virtualizer Measure hooks provide a suitable reference.
    */
-  containerSizeRef: MutableRefObject<number>;
+  containerSizeRef: RefObject<number>;
 };
 
 export type VirtualizerProps = ComponentProps<Partial<VirtualizerSlots>> & VirtualizerConfigProps;

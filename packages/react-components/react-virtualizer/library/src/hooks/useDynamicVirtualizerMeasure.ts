@@ -15,7 +15,7 @@ export const useDynamicVirtualizerMeasure = <TElement extends HTMLElement>(
   bufferItems: number;
   bufferSize: number;
   scrollRef: (instance: TElement | null) => void;
-  containerSizeRef: React.MutableRefObject<number>;
+  containerSizeRef: React.RefObject<number>;
 } => {
   const {
     defaultItemSize,
