@@ -12,6 +12,10 @@
         "{workspaceRoot}/jest.preset.js",
         "{workspaceRoot}/packages/fluentui/*/project.json"
       ]
-    }
+    },
+    "type-check": {
+      "executor": "@fluentui/workspace-plugin:type-check"
+    },
+    "format": {}
   }
 }

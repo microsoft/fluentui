@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AlphaSlider, AlphaSliderProps, SliderOnChangeEventHandler } from '@fluentui/react-color-picker-preview';
+import { AlphaSlider, AlphaSliderProps } from '@fluentui/react-color-picker-preview';
 import { useId, Button, Label, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -23,7 +23,7 @@ export const Default = (props: Partial<AlphaSliderProps>) => {
   const COLOR = '#5be600';
   const HUE = 96;
   const [sliderValue, setSliderValue] = React.useState(50);
-  const onSliderChange: SliderOnChangeEventHandler = (_, data) => setSliderValue(data.value);
+  const onSliderChange: AlphaSliderProps['onChange'] = (_, data) => setSliderValue(data.value);
   const resetSlider = () => setSliderValue(0);
 
   return (

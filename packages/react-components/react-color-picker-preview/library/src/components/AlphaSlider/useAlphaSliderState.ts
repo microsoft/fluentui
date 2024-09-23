@@ -3,6 +3,7 @@ import { clamp, useControllableState, useEventCallback } from '@fluentui/react-u
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { alphaSliderCSSVars } from './useAlphaSliderStyles.styles';
 import type { AlphaSliderState, AlphaSliderProps } from './AlphaSlider.types';
+import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
 const { sliderProgressVar, sliderDirectionVar, thumbColorVar, railColorVar } = alphaSliderCSSVars;
 
@@ -14,7 +15,16 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
   'use no memo';
 
   const { dir } = useFluent();
-  const { defaultValue, min = 0, max = 100, onChange, value, overlayColor } = props;
+  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const {
+    channel = 'alpha',
+    defaultValue,
+    min = 0,
+    max = 100,
+    onChange = onChangeFromContext,
+    value,
+    overlayColor,
+  } = props;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
@@ -26,15 +36,15 @@ export const useAlphaSliderState_unstable = (state: AlphaSliderState, props: Alp
 
   const inputOnChange = state.input.onChange;
 
-  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
-    const newValue = Number(ev.target.value);
+  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const newValue = Number(event.target.value);
     setCurrentValue(clamp(newValue, min, max));
-
-    if (inputOnChange && inputOnChange !== (onChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
-      inputOnChange(ev);
-    } else if (onChange) {
-      onChange(ev, { type: 'change', event: ev, value: newValue });
-    }
+    inputOnChange?.(event);
+    onChange?.(event, { type: 'change', event, value: newValue, channel });
+    onChangeFromContext(event, {
+      value: Number(event.target.value),
+      channel,
+    });
   });
 
   const rootVariables = {

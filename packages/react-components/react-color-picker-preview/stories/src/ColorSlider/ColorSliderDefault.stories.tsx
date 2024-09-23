@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorSlider, ColorSliderProps, SliderOnChangeEventHandler } from '@fluentui/react-color-picker-preview';
+import { ColorSlider, ColorSliderProps } from '@fluentui/react-color-picker-preview';
 import { useId, Button, Label, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -21,7 +21,7 @@ export const Default = (props: Partial<ColorSliderProps>) => {
   const styles = useStyles();
   const id = useId();
   const [sliderValue, setSliderValue] = React.useState(160);
-  const onSliderChange: SliderOnChangeEventHandler = (_, data) => setSliderValue(data.value);
+  const onSliderChange: ColorSliderProps['onChange'] = (_, data) => setSliderValue(data.value);
   const resetSlider = () => setSliderValue(0);
 
   return (

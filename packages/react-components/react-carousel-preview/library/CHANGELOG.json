@@ -2,6 +2,163 @@
   "name": "@fluentui/react-carousel-preview",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2024 12:40:12 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "fc047998ed363987204af9a9c3f635eee9cee827",
+            "comment": "feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-aria to v9.13.6",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.91",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.67",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.44",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.20.1",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.22.7",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.20",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.15",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2024 00:49:24 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "609b363c61459e55dcf94a68389be72d69d9c364",
+            "comment": "chore: cleanup before the release"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "5a5fbd3b9d1012f5c6106221a4fbd8b3bfa267f7",
+            "comment": "feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Sep 2024 10:19:05 GMT",
+      "tag": "@fluentui/react-carousel-preview_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "26ad33a04b489d59a8e64dc7337734ea8568fbfc",
+            "comment": "feat: Add accessibility and focus modes to cards"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "f481a67b7ea12fea5b9953f738872901225221ef",
+            "comment": "feat: Add brand appearance to nav buttons, update action states"
+          },
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "95e64e87fcbcebfde3ec8b2c0e45685d627116d6",
+            "comment": "feat: Add enableDrag option for mouse/touch scroll support"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-aria to v9.13.5",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.90",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.66",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.43",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.22.6",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-carousel-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.18.14",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "ce57deb4448c086d998d0400368906e0a996aeff",
+            "comment": "chore: follow up on assertSlots fixes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 15 Aug 2024 13:49:46 GMT",
       "tag": "@fluentui/react-carousel-preview_v0.2.2",
       "version": "0.2.2",

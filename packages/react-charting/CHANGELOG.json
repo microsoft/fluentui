@@ -2,6 +2,71 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 11 Sep 2024 07:20:49 GMT",
+      "tag": "@fluentui/react-charting_v5.23.0",
+      "version": "5.23.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "98592573+AtishayMsft@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a2162a36a13ce867afa4906a6077d1fa0a093ccd",
+            "comment": "Update d3 package dependencies to 3.x.y and 4.x.y"
+          }
+        ],
+        "patch": [
+          {
+            "author": "kaelens@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b1c2ab614e70a7e34a35d590fc2cc838452ef14d",
+            "comment": "add strokeDasharray for line charts with large datasets"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Sep 2024 07:21:59 GMT",
+      "tag": "@fluentui/react-charting_v5.22.5",
+      "version": "5.22.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.173",
+            "commit": "d7d7430e49fafbb186b88bc02bd2c7f2bccf6773"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.9",
+            "commit": "d7d7430e49fafbb186b88bc02bd2c7f2bccf6773"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Sep 2024 07:21:41 GMT",
+      "tag": "@fluentui/react-charting_v5.22.4",
+      "version": "5.22.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.172",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.120.8",
+            "commit": "ec65f4cae8331689288477c08862f84f96382c2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Aug 2024 07:21:50 GMT",
       "tag": "@fluentui/react-charting_v5.22.3",
       "version": "5.22.3",

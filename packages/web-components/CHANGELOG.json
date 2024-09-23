@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 17 Sep 2024 04:07:20 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.65",
+      "version": "3.0.0-beta.65",
+      "comments": {
+        "none": [
+          {
+            "author": "jes@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "35bd7a4710b303d9042bba78df2fecf9ee77a1d3",
+            "comment": "Fix: cleans up stories Accordion - Checkbox"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Sep 2024 04:08:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.65",
+      "version": "3.0.0-beta.65",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "machi@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "269f109440bd3b66abf86b1f70aedb1b7999e142",
+            "comment": "docs: reflect setTheme change"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Sep 2024 04:07:18 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.64",
+      "version": "3.0.0-beta.64",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "rupertdavid@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "416d7ddb3bd0ef5187c151807f10a0cfa721e0c1",
+            "comment": "chore: add missing export for textarea"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Sep 2024 04:08:17 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.63",
       "version": "3.0.0-beta.63",

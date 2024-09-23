@@ -3,6 +3,7 @@ import { clamp, useControllableState, useEventCallback } from '@fluentui/react-u
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { colorSliderCSSVars } from './useColorSliderStyles.styles';
 import type { ColorSliderState, ColorSliderProps } from './ColorSlider.types';
+import { useColorPickerContextValue_unstable } from '../../contexts/colorPicker';
 
 const { sliderProgressVar, sliderDirectionVar, thumbColorVar } = colorSliderCSSVars;
 
@@ -16,7 +17,8 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
   'use no memo';
 
   const { dir } = useFluent();
-  const { defaultValue, min = 0, max = MAX_COLOR_HUE, onChange, value } = props;
+  const onChangeFromContext = useColorPickerContextValue_unstable(ctx => ctx.requestChange);
+  const { channel = 'hue', defaultValue, min = 0, max = MAX_COLOR_HUE, onChange = onChangeFromContext, value } = props;
 
   const [currentValue, setCurrentValue] = useControllableState({
     state: value,
@@ -28,15 +30,15 @@ export const useColorSliderState_unstable = (state: ColorSliderState, props: Col
 
   const inputOnChange = state.input.onChange;
 
-  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(ev => {
-    const newValue = Number(ev.target.value);
+  const _onChange: React.ChangeEventHandler<HTMLInputElement> = useEventCallback(event => {
+    const newValue = Number(event.target.value);
     setCurrentValue(clamp(newValue, min, max));
-
-    if (inputOnChange && inputOnChange !== (onChange as unknown as React.ChangeEventHandler<HTMLInputElement>)) {
-      inputOnChange(ev);
-    } else if (onChange) {
-      onChange(ev, { type: 'change', event: ev, value: newValue });
-    }
+    inputOnChange?.(event);
+    onChange?.(event, { type: 'change', event, value: newValue, channel });
+    onChangeFromContext(event, {
+      value: Number(event.target.value),
+      channel,
+    });
   });
 
   const rootVariables = {

@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-beta.63",
+  "version": "3.0.0-beta.65",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -98,7 +98,7 @@
   },
   "dependencies": {
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.16",
+    "@fluentui/tokens": "1.0.0-alpha.17",
     "tabbable": "^6.2.0",
     "tslib": "^2.1.0"
   },
