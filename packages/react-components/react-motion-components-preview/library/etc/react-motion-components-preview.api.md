@@ -7,19 +7,16 @@
 import { PresenceComponent } from '@fluentui/react-motion';
 
 // @public
-export const Collapse: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const Collapse: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseExaggerated: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const CollapseDelayed: PresenceComponent<CollapseRuntimeParams>;
 
 // @public (undocumented)
-export const CollapseSnappy: PresenceComponent<    {
-animateOpacity?: boolean | undefined;
-}>;
+export const CollapseExaggerated: PresenceComponent<CollapseRuntimeParams>;
+
+// @public (undocumented)
+export const CollapseSnappy: PresenceComponent<CollapseRuntimeParams>;
 
 // @public
 export const Fade: PresenceComponent<    {}>;
