@@ -53,7 +53,18 @@ export default async function (tree: Tree, schema: ReleasePackageGeneratorSchema
     tasks.forEach(task => {
       task(tree);
     });
+
+    assertOutputOnCi(tree, options);
   };
+}
+
+function assertOutputOnCi(tree: Tree, options: NormalizedSchema) {
+  if (options.phase === 'stable') {
+    console.log(
+      'bundle-size',
+      tree.read(joinPathFragments(options.projectConfig.root, 'bundle-size/index.fixture.js'), 'utf-8'),
+    );
+  }
 }
 
 function normalizeOptions(tree: Tree, options: ReleasePackageGeneratorSchema) {

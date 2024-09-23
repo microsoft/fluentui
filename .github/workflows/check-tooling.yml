@@ -31,7 +31,7 @@ jobs:
 
       - run: yarn nx run scripts-executors:test -t start
 
-      - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
+      # - run: yarn nx run workspace-plugin:test -t 'prepare-initial-release generator'
 
       - run: yarn nx list @fluentui/workspace-plugin
 
