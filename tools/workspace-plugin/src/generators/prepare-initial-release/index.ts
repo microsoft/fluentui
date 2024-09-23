@@ -348,8 +348,11 @@ function stableReleaseForStoriesProject(tree: Tree, options: NormalizedSchema) {
   };
 
   const contentNameUpdaterStories = (content: string) => {
-    const regexp = new RegExp(currentStoriesPackage.name, 'g');
-    return content.replace(regexp, newStoriesProject.name);
+    const regexpStoryProject = new RegExp(currentStoriesPackage.name, 'g');
+    const regexpLibraryProject = new RegExp(options.project, 'g');
+    return content
+      .replace(regexpStoryProject, newStoriesProject.name)
+      .replace(regexpLibraryProject, options.project.replace('-preview', ''));
   };
 
   updateJson<PackageJson>(tree, storiesProjectPaths.packageJson, json => {

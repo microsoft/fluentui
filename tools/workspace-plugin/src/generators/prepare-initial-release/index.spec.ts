@@ -811,7 +811,7 @@ describe('prepare-initial-release generator', () => {
         expect(utils.project.stories.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one-stories
 
-          Storybook stories for packages/react-components/react-one-stories
+          Storybook stories for packages/react-components/react-one
 
           ## Usage
 
@@ -819,7 +819,7 @@ describe('prepare-initial-release generator', () => {
 
           \\\\\`\\\\\`\\\\\`js
           module.exports = {
-          stories: ['../packages/react-components/react-one-stories/stories/src/**/*.stories.mdx', '../packages/react-components/react-one-stories/stories/src/**/index.stories.@(ts|tsx)'],
+          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
           }
           \\\\\`\\\\\`\\\\\`
           "
@@ -913,7 +913,7 @@ function createSplitProject(
         content: stripIndents`
         # @proj/${storiesProjectName}
 
-        Storybook stories for packages/react-components/${storiesProjectName}
+        Storybook stories for packages/react-components/${projectName}
 
         ## Usage
 
@@ -921,7 +921,7 @@ function createSplitProject(
 
         \`\`\`js
         module.exports = {
-        stories: ['../packages/react-components/${storiesProjectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${storiesProjectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
         }
         \`\`\`
     `,
