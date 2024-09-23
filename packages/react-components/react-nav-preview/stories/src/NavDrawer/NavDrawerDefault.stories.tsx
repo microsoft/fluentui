@@ -46,6 +46,7 @@ import {
   PreviewLink20Regular,
   bundleIcon,
   PersonCircle32Regular,
+  Pin20Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -123,8 +124,11 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
-          <SplitNavItem href={linkDestination} icon={<Dashboard />} value="0">
-            SomeNav Item
+          <SplitNavItem
+            primaryNavItem={{ icon: <Dashboard />, value: '0' }}
+            secondaryActionButton={{ icon: <Pin20Regular /> }}
+          >
+            Some Nav Item
           </SplitNavItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard

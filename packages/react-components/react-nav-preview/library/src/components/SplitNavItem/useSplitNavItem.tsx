@@ -2,10 +2,10 @@ import * as React from 'react';
 // import { MoreHorizontalFilled } from '@fluentui/react-icons';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
-import { NavItem } from '../NavItem/NavItem';
 import { useNavContext_unstable } from '../NavContext';
 import { Button, MenuButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
+import { NavItem } from '../NavItem/index';
 
 /**
  * Create the state required to render SplitNavItem.
@@ -18,18 +18,15 @@ import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
  */
 export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
-  ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { primaryNavItem, children, icon, value, secondaryActionButton, menuButton } = props;
+  const { primaryNavItem, secondaryActionButton, menuButton, children } = props;
 
-  const { size = 'medium', selectedValue } = useNavContext_unstable();
-  const selected = selectedValue === value;
+  const { size = 'medium' } = useNavContext_unstable();
 
   const primaryActionButtonShorthand = slot.optional(primaryNavItem, {
     defaultProps: {
       children,
-      icon,
-      value,
     },
     renderByDefault: true,
     elementType: NavItem,
@@ -40,7 +37,6 @@ export const useSplitNavItem_unstable = (
       icon: <Pin20Regular />,
       appearance: 'transparent',
     },
-    renderByDefault: true,
     elementType: Button,
   });
 
@@ -49,9 +45,6 @@ export const useSplitNavItem_unstable = (
       icon: <MoreHorizontalFilled />,
       appearance: 'transparent',
     },
-    // renderByDefault: true,
-
-    renderByDefault: true,
     elementType: MenuButton,
   });
 
@@ -64,8 +57,6 @@ export const useSplitNavItem_unstable = (
       secondaryActionButton: Button,
       menuButton: MenuButton,
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
@@ -76,8 +67,6 @@ export const useSplitNavItem_unstable = (
     primaryNavItem: primaryActionButtonShorthand,
     secondaryActionButton: secondaryActionButtonShorthand,
     menuButton: menuButtonShorthand,
-    value,
     size,
-    selected,
   };
 };

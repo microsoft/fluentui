@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types';
 import { navItemTokens, useRootDefaultClassName } from '../sharedNavStyles.styles';
@@ -21,25 +21,23 @@ const useRootStyles = makeResetStyles({
 
   backgroundColor: navItemTokens.backgroundColor,
 
-  transitionDuration: tokens.durationFaster,
+  transitionDuration: navItemTokens.animationTokens.animationDuration,
+  transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
   transitionProperty: 'background',
-  transitionTimingFunction: tokens.curveEasyEase,
 
   ':hover .fui-NavItem': {
     backgroundColor: navItemTokens.backgroundColorHover,
-
-    transitionDuration: tokens.durationFaster,
+    transitionDuration: navItemTokens.animationTokens.animationDuration,
+    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
     transitionProperty: 'background',
-    transitionTimingFunction: tokens.curveEasyEase,
-  },
-  ':hover': {
-    backgroundColor: navItemTokens.backgroundColorHover,
   },
 
-  ':active': {
+  ':active .fui-NavItem': {
     backgroundColor: navItemTokens.backgroundColorPressed,
+    transitionDuration: navItemTokens.animationTokens.animationDuration,
+    transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
+    transitionProperty: 'background',
   },
-  // TODO add additional classes for different states and/or slots
 });
 
 const usePrimaryNavItemStyles = makeResetStyles({
@@ -59,31 +57,29 @@ const usePrimaryNavItemStyles = makeResetStyles({
   boxSizing: 'border-box',
   cursor: 'pointer',
 
-  transitionDuration: tokens.durationFaster,
-  transitionProperty: 'background',
-  transitionTimingFunction: tokens.curveEasyEase,
+  // transitionDuration: navItemTokens.animationTokens.animationDuration,
+  // transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
+  // transitionProperty: 'background',
 
   width: '100%',
-  ':hover': {
-    backgroundColor: 'unset',
-  },
-  ':active': {
-    backgroundColor: 'unset',
-  },
 });
 
 const useSecondaryActionButtonStyles = makeResetStyles({
-  backgroundColor: navItemTokens.backgroundColorHover,
-
   maxWidth: '24px',
   minWidth: '24px',
-  padding: '4px',
-
-  transitionDuration: tokens.durationFaster,
-  transitionProperty: 'background',
-  transitionTimingFunction: tokens.curveEasyEase,
-  paddingLeft: '4px',
+  paddingLeft: '4px', // todo use logical properties
   paddingRight: '4px',
+
+  transitionDuration: navItemTokens.animationTokens.animationDuration,
+  transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
+  transitionProperty: 'background',
+
+  ':hover': {
+    backgroundColor: navItemTokens.backgroundColorHover,
+  },
+  ':active': {
+    backgroundColor: navItemTokens.backgroundColorPressed,
+  },
 });
 
 /**
@@ -120,7 +116,11 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   }
 
   if (state.menuButton) {
-    state.menuButton.className = mergeClasses(splitNavItemClassNames.menuButton, secondaryActionButtonClassNames);
+    state.menuButton.className = mergeClasses(
+      splitNavItemClassNames.menuButton,
+      secondaryActionButtonClassNames,
+      state.menuButton.className,
+    );
   }
 
   return state;
