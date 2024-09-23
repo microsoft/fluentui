@@ -1,4 +1,4 @@
-# @fluentui/react-list-preview-stories
+# @fluentui/react-list-stories
 
 Storybook stories for packages/react-components/react-list-preview
 

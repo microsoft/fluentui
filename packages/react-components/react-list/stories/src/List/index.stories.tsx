@@ -1,4 +1,4 @@
-import { List } from '@fluentui/react-list-preview';
+import { List } from '@fluentui/react-components';
 
 import descriptionMd from './ListDescription.md';
 import bestPracticesMd from './ListBestPractices.md';
@@ -16,7 +16,7 @@ export { VirtualizedListWithActionableItems } from './VirtualizedListWithActiona
 export { ListActiveElement } from './ListActiveElement.stories';
 
 export default {
-  title: 'Preview Components/List',
+  title: 'Components/List',
   component: List,
   parameters: {
     docs: {

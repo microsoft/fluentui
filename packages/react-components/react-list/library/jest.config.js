@@ -23,7 +23,7 @@ if (swcJestConfig.swcrc === undefined) {
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-list-preview',
+  displayName: 'react-list',
   preset: '../../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': ['@swc/jest', swcJestConfig],

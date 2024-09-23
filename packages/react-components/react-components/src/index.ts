@@ -1885,3 +1885,24 @@ export type {
   PresenceMotionFn,
   PresenceComponentProps,
 } from '@fluentui/react-motion';
+
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListItem,
+  listItemClassNames,
+  renderListItem_unstable,
+  useListItemStyles_unstable,
+  useListItem_unstable,
+} from '@fluentui/react-list';
+export type {
+  ListProps,
+  ListSlots,
+  ListState,
+  ListItemProps,
+  ListItemSlots,
+  ListItemState,
+} from '@fluentui/react-list';

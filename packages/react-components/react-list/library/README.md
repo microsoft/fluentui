@@ -1,4 +1,4 @@
-# @fluentui/react-list-preview
+# @fluentui/react-list
 
 **React List components for [Fluent UI React](https://react.fluentui.dev/)**
 

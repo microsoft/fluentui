@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem } from '@fluentui/react-components';
 
 export const Default = () => (
   <List>

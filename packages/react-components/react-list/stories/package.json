@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-list-preview-stories",
+  "name": "@fluentui/react-list-stories",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -18,5 +18,8 @@
     "@fluentui/scripts-storybook": "*",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "*"
   }
 }
