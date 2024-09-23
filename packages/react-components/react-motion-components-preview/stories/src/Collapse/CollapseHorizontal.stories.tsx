@@ -3,25 +3,24 @@ import { Collapse } from '@fluentui/react-motion-components-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
-  container: {
-    // display: 'grid',
-    // gridTemplate: `"controls ." "card card" / 1fr 1fr`,
-    // gap: '20px 10px',
+  container: {},
+  sideContent: {
+    background: 'lightgrey',
+    padding: '50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   card: {
     gridArea: 'card',
-    padding: '10px',
-    // overflow: 'hidden',
+    padding: '20px',
     width: '300px',
-    background: tokens.colorNeutralForegroundDisabled,
   },
   controls: {
     display: 'grid',
     gridTemplateColumns: '1fr 3fr',
-    // flexDirection: 'row',
     justifyContent: 'start',
     gridArea: 'controls',
-
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
     boxShadow: tokens.shadow16,
@@ -54,25 +53,14 @@ export const Horizontal = () => {
 
       <div style={{ display: 'flex' }}>
         <Collapse visible={visible} orientation="horizontal">
+          {/* Wrapper div to make the collapse crop the card without reflowing the text. */}
           <div>
             <div className={classes.card}>
               <LoremIpsum />
             </div>
           </div>
         </Collapse>
-        <div
-          style={{
-            background: 'lightblue',
-            width: '100px',
-            height: '100px',
-            border: 'solid 2px black',
-            borderRadius: '20px',
-            padding: '50px',
-            textAlign: 'center',
-          }}
-        >
-          Other Content
-        </div>
+        <div className={classes.sideContent}>[side content]</div>
       </div>
     </div>
   );

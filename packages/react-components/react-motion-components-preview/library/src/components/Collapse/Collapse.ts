@@ -101,7 +101,6 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
     const toSize = `${measuredSize}px`;
     const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
     const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
-    // const overflow = 'hidden';
 
     // Setting height to zero does not eliminate margin or padding, so allow collapsing those as well.
     // TODO: rename to be agnostic to orientation
@@ -155,8 +154,8 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
         {
           delay: exitDelay,
           keyframes: [
-            { [sizeName]: toSize /*, [overflowName]: 'hidden'*/ },
-            { [sizeName]: fromSize /*, [overflowName]: 'hidden'*/, ...collapsedWhiteSpace },
+            { [sizeName]: toSize, [overflowName]: 'hidden' },
+            { [sizeName]: fromSize, [overflowName]: 'hidden', ...collapsedWhiteSpace },
           ],
           duration: exitSizeDuration,
           easing: exitEasing,
