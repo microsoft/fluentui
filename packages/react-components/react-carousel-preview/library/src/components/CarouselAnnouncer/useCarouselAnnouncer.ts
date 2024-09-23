@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilities';
 import type { CarouselAnnouncerProps, CarouselAnnouncerState } from './CarouselAnnouncer.types';
 import { useCarouselContext_unstable as useCarouselContext } from '../CarouselContext';
 
@@ -16,23 +16,39 @@ export const useCarouselAnnouncer_unstable = (
   props: CarouselAnnouncerProps,
   ref: React.Ref<HTMLDivElement>,
 ): CarouselAnnouncerState => {
-  const [totalSlides, setTotalSlides] = React.useState(0);
-  const [slideGroupList, setSlideGroupList] = React.useState([[0]]);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+  const textRef: React.Ref<HTMLElement> = React.useRef(null);
+
   const currentIndex = useCarouselContext(ctx => ctx.activeIndex);
+  const navLengthRef = React.useRef<number>(0);
+  const navGroupRef = React.useRef<number[][]>([]);
+
+  const updateInnerText = (index: number, totalSlides: number, groupIndexList: number[][]) => {
+    if (totalSlides <= 0) {
+      // Ignore announcements until slides discovered
+      return;
+    }
+    const announcementText = props.children(index, totalSlides, groupIndexList);
+
+    if (textRef.current) {
+      textRef.current.innerText = announcementText;
+    }
+  };
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
-      setTotalSlides(data.navItemsCount);
-      setSlideGroupList(data.groupIndexList);
+      navLengthRef.current = data.navItemsCount;
+      navGroupRef.current = data.groupIndexList;
+      updateInnerText(data.activeIndex, data.navItemsCount, data.groupIndexList);
     });
   }, [subscribeForValues]);
 
+  useIsomorphicLayoutEffect(() => {
+    updateInnerText(currentIndex, navLengthRef.current, navGroupRef.current);
+  }, [currentIndex]);
+
   return {
-    totalSlides,
-    currentIndex,
-    slideGroupList,
-    renderAnnouncerChild: props.children,
+    renderAnnouncerText: props.children,
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
@@ -42,7 +58,7 @@ export const useCarouselAnnouncer_unstable = (
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, textRef),
         ...props,
         children: null,
       }),
