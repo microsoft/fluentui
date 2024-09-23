@@ -1,7 +1,11 @@
-import { initial } from 'lodash';
+// import { initial } from 'lodash';
+
+export {};
 
 // Enquirer Type definitions are not in best state - https://github.com/enquirer/enquirer/pull/307
 declare module 'enquirer' {
+  import { Prompt } from 'enquirer';
+
   type Choice = {
     name: string;
     message?: string;
@@ -45,7 +49,7 @@ declare module 'enquirer' {
     initial?: number;
     limit?: number;
     header?: string;
-    footer?: () => string;
+    footer?: string | (() => string);
     suggest?: (input: string, choices: Array<Choice<T>>) => Array<Choice> | [];
   }
 
@@ -54,6 +58,7 @@ declare module 'enquirer' {
   }
 
   interface InputOptions {
+    name: string;
     message: string;
     initial?: string;
     hint?: string;
@@ -62,5 +67,26 @@ declare module 'enquirer' {
   }
   export class Input extends Prompt {
     constructor(options: InputOptions);
+  }
+
+  interface SelectOptions {
+    name: string;
+    message: string;
+    choices: Array<string | Choice>;
+    footer?: string;
+  }
+
+  export class Select extends Prompt {
+    constructor(options: SelectOptions);
+  }
+
+  interface NumberPromptOptions {
+    name: string;
+    message: string;
+    footer?: string;
+  }
+
+  export class NumberPrompt extends Prompt {
+    constructor(options: NumberPromptOptions);
   }
 }

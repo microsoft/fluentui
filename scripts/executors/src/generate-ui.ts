@@ -9,9 +9,10 @@ import {
   output,
   readNxJson,
   readProjectsConfigurationFromProjectGraph,
+  serializeJson,
   workspaceRoot,
 } from '@nx/devkit';
-import { AutoComplete, AutoCompleteOptions, type Choice, Confirm, Input } from 'enquirer';
+import { AutoComplete, AutoCompleteOptions, type Choice, Confirm, Input, NumberPrompt, Select } from 'enquirer';
 import { getGeneratorInformation } from 'nx/src/command-line/generate/generator-utils';
 import { getInstalledPluginsAndCapabilities, getLocalWorkspacePlugins } from 'nx/src/utils/plugins';
 import { PluginCapabilities } from 'nx/src/utils/plugins/plugin-capabilities';
@@ -63,10 +64,11 @@ async function main() {
   const executeCommand: Choice = {
     ...executeCommandBase,
   };
-  const { choices: generatorFlagsChoices, state: flagsState } = createGeneratorFlagsChoices(
-    generator,
-    projects.projects,
-  );
+  const {
+    choices: generatorFlagsChoices,
+    state: flagsState,
+    prompts: generatorFlagsPrompts,
+  } = createGeneratorFlagsChoices(generator, projects.projects);
   let flagChoices = [executeCommand, ...generatorFlagsChoices];
 
   const generatorFlagsPromptOptions: AutoCompleteOptions = {
@@ -84,35 +86,13 @@ async function main() {
 
   let selectedFlag = await generatorFlagsPrompt.run();
 
+  // ========
+  // START FLAG PROMPTS until user chooses to EXECUTE
+  // ========
   while (!selectedFlag.startsWith(executeCommand.value)) {
-    let flagValue = '';
-    if (selectedFlag === 'dryRun') {
-      flagValue = await new Confirm({
-        name: 'question',
-        message: 'Enable dry-run mode?',
-      }).run();
-    } else {
-      let escPressed = false;
-
-      flagValue = (
-        await new Input({
-          message: `${selectedFlag}`,
-          hint: `--${selectedFlag}=`,
-          footer: `Press 'Enter' to confirm your input or 'Escape' to cancel (go back to flag selection).`,
-        })
-          .on('keypress', async (_char, key) => {
-            if (key.name === 'escape') {
-              escPressed = true;
-            }
-          })
-          .run()
-          .catch(_ => {
-            if (escPressed) {
-              return '';
-            }
-          })
-      ).trim();
-    }
+    const prompt = generatorFlagsPrompts[selectedFlag];
+    const answer = await prompt();
+    const flagValue = typeof answer === 'string' ? answer.trim() : answer;
 
     if (typeof flagValue === 'string' && flagValue.length === 0) {
       // go back by submitting empty choice
@@ -121,8 +101,6 @@ async function main() {
       flagsState[selectedFlag] = flagValue;
 
       const flagCommand = serializeFlagState(flagsState);
-
-      console.log({ flagCommand });
 
       executeCommand.name = executeCommandBase.name + ' ' + flagCommand;
       executeCommand.value = executeCommandBase.value + ' ' + flagCommand;
@@ -141,37 +119,73 @@ async function main() {
   runCommand('nx', ['g', executeCommand.value]);
 }
 
+// ====================================================================================================================
+
 function serializeFlagState(state: Record<string, unknown>) {
   return Object.entries(state)
-    .map(([key, value]) => {
-      if (typeof value === 'boolean') {
-        return value ? `--${key}` : '';
+    .reduce<string[]>((acc, [key, value]) => {
+      // eslint-disable-next-line eqeqeq
+      if (value == null) {
+        return acc;
       }
-      return `--${key}=${value}`;
-    })
-    .filter(Boolean)
+
+      if (typeof value === 'boolean') {
+        return value ? [...acc, `--${key}`] : acc;
+      }
+
+      return [...acc, `--${key}=${value}`];
+    }, [])
     .join(' ');
 }
 
+/**
+ * TODO: adopt logic from https://github.com/nrwl/nx/blob/master/packages/nx/src/utils/params.ts
+ *
+ * @param generator
+ * @param projects
+ */
 function createGeneratorFlagsChoices(
   generator: ReturnType<typeof parseGeneratorString>,
   projects: ProjectsConfigurations['projects'],
 ): {
   choices: Choice[];
   state: Record<string, unknown>;
+  prompts: Record<string, () => Promise<unknown>>;
 } {
   const generatorInfo = getGeneratorInformation(generator.collection, generator.generator, workspaceRoot, projects);
 
+  /**
+   * @see https://nx.dev/extending-nx/recipes/generator-options#all-configurable-schema-options
+   */
+  type SchemaProperty = {
+    type: string;
+    description: string;
+    enum?: string[];
+    'x-prompt'?: string;
+    'x-priority'?: 'important';
+    'x-deprecated'?: boolean;
+  };
   const generatorSchema: {
     required?: string[];
-    properties: { [key: string]: { type: string; description: string; 'x-priority'?: 'important' } };
+    properties: {
+      [key: string]: SchemaProperty;
+    };
     id: string;
   } = generatorInfo.schema;
   const { properties, required } = generatorSchema;
 
-  const { choices, state } = Object.entries(properties).reduce<{
+  const genericProperties = {
+    dryRun: {
+      type: 'boolean',
+      description: 'Enable dry-run mode?',
+    },
+  };
+  Object.assign(properties, genericProperties);
+
+  const { choices, state, prompts } = Object.entries(properties).reduce<{
     choices: Choice[];
     state: Record<string, unknown>;
+    prompts: Record<string, () => Promise<unknown>>;
   }>(
     (acc, [key, value]) => {
       acc.choices.push({
@@ -179,19 +193,115 @@ function createGeneratorFlagsChoices(
         value: key,
       });
       acc.state[key] = null;
+      acc.prompts[key] = getPromptType(key, properties[key]);
 
       return acc;
     },
-    { choices: [], state: {} },
+    { choices: [], state: {}, prompts: {} },
   );
 
-  const dryRunChoice = {
-    name: 'dry-run',
-    value: 'dryRun',
-  };
-  choices.push(dryRunChoice);
+  return { choices, state, prompts };
 
-  return { choices, state };
+  function getPromptType(propName: string, propertyDef: SchemaProperty): () => Promise<unknown> {
+    const footer = output.dim(`Press 'Enter' to confirm your input or 'Escape' to cancel (go back to flag selection).`);
+    if (propertyDef.type === 'number') {
+      return () => {
+        let escPressed = false;
+
+        return new NumberPrompt({
+          name: 'number',
+          message: `Enter number/amount for ${propName}`,
+          footer,
+        })
+          .on('keypress', async (_char, key) => {
+            if (key.name === 'escape') {
+              escPressed = true;
+            }
+          })
+          .run()
+          .catch(_ => {
+            if (escPressed) {
+              return '';
+            }
+          });
+      };
+    }
+
+    if (propertyDef.type === 'boolean') {
+      return () => new Confirm({ name: 'confirm', message: propName }).run();
+    }
+
+    if (propertyDef.type === 'string') {
+      if (propName === 'project' && propertyDef['x-prompt']) {
+        return () => {
+          let escPressed = false;
+
+          return new AutoComplete({
+            name: 'project',
+            message: 'Select Project',
+            choices: Object.keys(projects),
+            limit: 10,
+            // suggest,
+            // header,
+            footer,
+          })
+            .on('keypress', async (_char, key) => {
+              if (key.name === 'escape') {
+                escPressed = true;
+              }
+            })
+            .run()
+            .catch(_ => {
+              if (escPressed) {
+                return '';
+              }
+            });
+        };
+      }
+
+      if (Array.isArray(propertyDef.enum)) {
+        return () => {
+          let escPressed = false;
+
+          return new Select({ name: 'enum', message: `Pick ${propName}`, choices: propertyDef.enum!, footer })
+            .on('keypress', async (_char, key) => {
+              if (key.name === 'escape') {
+                escPressed = true;
+              }
+            })
+            .run()
+            .catch(_ => {
+              if (escPressed) {
+                return '';
+              }
+            });
+        };
+      }
+
+      return () => {
+        let escPressed = false;
+
+        return new Input({
+          name: 'input',
+          message: propName,
+          footer,
+        })
+          .on('keypress', async (_char, key) => {
+            if (key.name === 'escape') {
+              escPressed = true;
+            }
+          })
+          .run()
+          .catch(_ => {
+            if (escPressed) {
+              return '';
+            }
+          });
+      };
+    }
+
+    throw new Error(`unknown prompt type from ${propName}:${serializeJson(propertyDef)}`);
+  }
 }
 
 function createPluginChoices(plugins: Map<string, PluginCapabilities>): Array<Choice> {
