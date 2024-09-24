@@ -239,6 +239,22 @@ export interface ILegendsProps {
   defaultSelectedLegend?: string;
 
   /**
+   * Keys (title) that will be used to set selected items.
+   * Specifying this prop sets the component to controlled mode when `canSelectMultipleLegends` is `true`.
+   * @see defaultSelectedLegends for setting the initially-selected legends in uncontrolled mode.
+   * @see selectedLegend for setting the selected legend when `canSelectMultipleLegends` is `false`.
+   */
+  selectedLegends?: string[];
+
+  /**
+   * Key (title) that will be used to set the selected item.
+   * Specifying this prop sets the component to controlled mode when `canSelectMultipleLegends` is `false`.
+   * @see defaultSelectedLegend for setting the initially-selected legend in uncontrolled mode.
+   * @see selectedLegends for setting the selected legends when `canSelectMultipleLegends` is `true`.
+   */
+  selectedLegend?: string;
+
+  /**
    * The shape for the legend.
    */
   shape?: LegendShape;
