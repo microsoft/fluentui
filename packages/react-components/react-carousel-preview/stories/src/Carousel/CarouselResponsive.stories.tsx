@@ -1,7 +1,6 @@
 import { Body1, Caption1, makeStyles, mergeClasses, tokens, Title1, Subtitle2 } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -136,12 +135,6 @@ export const Responsive = () => {
       <CarouselNavContainer layout="inline" next={{ 'aria-label': 'go to next' }} prev={{ 'aria-label': 'go to prev' }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
-
-      <CarouselAnnouncer>
-        {(currentIndex, totalSlides, _slideGroupList) => {
-          return `Slide ${currentIndex + 1} of ${totalSlides}`;
-        }}
-      </CarouselAnnouncer>
     </Carousel>
   );
 };

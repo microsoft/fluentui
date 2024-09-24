@@ -1,7 +1,6 @@
 import { makeStyles, Image } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavContainer,
@@ -89,11 +88,6 @@ export const ImageSlideshow = () => {
           )}
         </CarouselNav>
       </CarouselNavContainer>
-      <CarouselAnnouncer>
-        {(currentIndex, totalSlides, _slideGroupList) => {
-          return `Slide ${currentIndex + 1} of ${totalSlides}`;
-        }}
-      </CarouselAnnouncer>
     </Carousel>
   );
 };

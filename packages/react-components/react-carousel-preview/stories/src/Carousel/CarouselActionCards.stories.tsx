@@ -12,7 +12,6 @@ import {
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
-  CarouselAnnouncer,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -207,12 +206,6 @@ export const AlignmentAndWhitespace = () => {
           >
             <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
           </CarouselNavContainer>
-
-          <CarouselAnnouncer>
-            {(currentIndex, totalSlides, slideGroupList) => {
-              return `Slide ${currentIndex + 1} of ${totalSlides} with ${slideGroupList[currentIndex].length} cards`;
-            }}
-          </CarouselAnnouncer>
         </Carousel>
       </div>
     </div>

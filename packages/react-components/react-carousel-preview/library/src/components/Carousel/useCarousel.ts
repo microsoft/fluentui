@@ -1,10 +1,17 @@
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { getIntrinsicElementProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  slot,
+  useEventCallback,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import type { CarouselContextValue } from '../CarouselContext.types';
 import { useEmblaCarousel } from '../useEmblaCarousel';
+import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
 
 /**
  * Create the state required to render Carousel.
@@ -25,6 +32,8 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     groupSize = 'auto',
     draggable = false,
     whitespace = false,
+    polite = true,
+    announcement,
   } = props;
 
   const { dir } = useFluent();
@@ -61,6 +70,42 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   });
 
   const mergedRefs = useMergedRefs(ref, containerRef);
+
+  // Announce carousel updates
+  const announcementTextRef = React.useRef<string>('');
+  const totalNavLength = React.useRef<number>(0);
+  const navGroupRef = React.useRef<number[][]>([]);
+
+  const { announce } = useAriaLiveAnnouncer_unstable(props);
+
+  const updateAnnouncement = useEventCallback(() => {
+    if (totalNavLength.current <= 0 || !announcement) {
+      // Ignore announcements until slides discovered
+      return;
+    }
+
+    const announcementText = announcement(activeIndex, totalNavLength.current, navGroupRef.current);
+
+    if (announcementTextRef.current === '') {
+      // The first valid announcement text will be set, but ignored (page load)
+      announcementTextRef.current = announcementText;
+    } else if (announcementText !== announcementTextRef.current) {
+      announcementTextRef.current = announcementText;
+      announce(announcementText, { polite });
+    }
+  });
+
+  useIsomorphicLayoutEffect(() => {
+    return subscribeForValues(data => {
+      totalNavLength.current = data.navItemsCount;
+      navGroupRef.current = data.groupIndexList;
+      updateAnnouncement();
+    });
+  }, [subscribeForValues]);
+
+  useIsomorphicLayoutEffect(() => {
+    updateAnnouncement();
+  }, [activeIndex]);
 
   return {
     components: {

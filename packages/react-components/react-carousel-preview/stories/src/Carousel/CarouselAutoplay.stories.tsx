@@ -1,7 +1,6 @@
 import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncer,
   CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
@@ -158,11 +157,6 @@ export const Autoplay = () => {
         >
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>
-        <CarouselAnnouncer>
-          {(currentIndex, totalSlides, _slideGroupList) => {
-            return `Slide ${currentIndex + 1} of ${totalSlides}`;
-          }}
-        </CarouselAnnouncer>
       </Carousel>
     </div>
   );
