@@ -100,13 +100,13 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.root.className,
   );
 
-  if (state.primaryNavItem) {
-    state.primaryNavItem.className = mergeClasses(
-      splitNavItemClassNames.primaryNavItem,
-      primaryNavItemClassNames,
-      state.primaryNavItem.className,
-    );
-  }
+  // if (state.primaryNavItem) {
+  //   state.primaryNavItem.className = mergeClasses(
+  //     splitNavItemClassNames.primaryNavItem,
+  //     primaryNavItemClassNames,
+  //     state.primaryNavItem.className,
+  //   );
+  // }
 
   if (state.secondaryActionButton) {
     state.secondaryActionButton.className = mergeClasses(
@@ -115,13 +115,13 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     );
   }
 
-  if (state.menuButton) {
-    state.menuButton.className = mergeClasses(
-      splitNavItemClassNames.menuButton,
-      secondaryActionButtonClassNames,
-      state.menuButton.className,
-    );
-  }
+  // if (state.menuButton) {
+  //   state.menuButton.className = mergeClasses(
+  //     splitNavItemClassNames.menuButton,
+  //     secondaryActionButtonClassNames,
+  //     state.menuButton.className,
+  //   );
+  // }
 
   return state;
 };

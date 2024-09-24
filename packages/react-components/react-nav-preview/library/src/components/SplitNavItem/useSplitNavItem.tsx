@@ -20,17 +20,18 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { primaryNavItem, secondaryActionButton, menuButton, children } = props;
+  //  const { primaryNavItem, secondaryActionButton, menuButton, children } = props;
+
+  const { secondaryActionButton } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  const primaryActionButtonShorthand = slot.optional(primaryNavItem, {
-    defaultProps: {
-      children,
-    },
-    renderByDefault: true,
-    elementType: NavItem,
-  });
+  // const primaryActionButtonShorthand = slot.always(primaryNavItem, {
+  //   defaultProps: {
+  //     children,
+  //   },
+  //   elementType: NavItem,
+  // });
 
   const secondaryActionButtonShorthand = slot.optional(secondaryActionButton, {
     defaultProps: {
@@ -40,33 +41,34 @@ export const useSplitNavItem_unstable = (
     elementType: Button,
   });
 
-  const menuButtonShorthand = slot.optional(menuButton, {
-    defaultProps: {
-      icon: <MoreHorizontalFilled />,
-      appearance: 'transparent',
-    },
-    elementType: MenuButton,
-  });
+  // const menuButtonShorthand = slot.optional(menuButton, {
+  //   defaultProps: {
+  //     icon: <MoreHorizontalFilled />,
+  //     appearance: 'transparent',
+  //   },
+  //   elementType: MenuButton,
+  // });
 
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
       root: 'div',
-      primaryNavItem: NavItem,
+      // primaryNavItem: NavItem,
       secondaryActionButton: Button,
-      menuButton: MenuButton,
+      // menuButton: MenuButton,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        children: null,
       }),
       { elementType: 'div' },
     ),
-    primaryNavItem: primaryActionButtonShorthand,
+    //primaryNavItem: primaryActionButtonShorthand,
     secondaryActionButton: secondaryActionButtonShorthand,
-    menuButton: menuButtonShorthand,
+    // menuButton: menuButtonShorthand,
     size,
   };
 };

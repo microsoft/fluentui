@@ -124,12 +124,8 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
-          <SplitNavItem
-            primaryNavItem={{ icon: <Dashboard />, value: '0' }}
-            secondaryActionButton={{ icon: <Pin20Regular /> }}
-          >
-            Some Nav Item
-          </SplitNavItem>
+          {/*icon: <Person20Filled />   */}
+          <SplitNavItem secondaryActionButton={{}}>Some Nav Item</SplitNavItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
