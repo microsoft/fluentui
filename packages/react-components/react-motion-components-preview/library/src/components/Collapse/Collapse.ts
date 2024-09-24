@@ -37,17 +37,11 @@ type CollapseVariantOptions = {
  *
  */
 type CollapseRuntimeParams = {
-  /** The orientation of the size animation. Defaults to `'vertical'`. */
-  orientation?: CollapseOrientation;
-
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
 
-  /** Whether to collapse the margin. Defaults to `true`.  */
-  collapseMargin?: boolean;
-
-  /** Whether to collapse the padding. Defaults to `true`. */
-  collapsePadding?: boolean;
+  /** The orientation of the size animation. Defaults to `'vertical'`. */
+  orientation?: CollapseOrientation;
 };
 
 /**
@@ -74,8 +68,6 @@ type CollapseRuntimeParams = {
  * - `element`: The element to animate.
  * - `orientation` (optional): The orientation of the size animation. Defaults to `'vertical'`.
  * - `animateOpacity` (optional): Whether to animate the opacity. Defaults to `true`.
- * - `collapseMargin` (optional): Whether to collapse the margin. Defaults to `true`.
- * - `collapsePadding` (optional): Whether to collapse the padding. Defaults to `true`.
  */
 const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams> =
   ({
@@ -91,7 +83,7 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
     enterEasing = curveEasyEaseMax,
     exitEasing = enterEasing,
   } = {}) =>
-  ({ element, orientation = 'vertical', animateOpacity = true, collapseMargin = true, collapsePadding = true }) => {
+  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
     const fromOpacity = animateOpacity ? 0 : 1; // Possible future custom param, for fading in from a different opacity.
     const toOpacity = 1;
 
@@ -103,30 +95,8 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
     const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
     const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
 
-    // Because setting height to zero does not eliminate margin or padding,
-    // we will create keyframes to surgically animate them to zero.
-    const collapsedWhiteSpace = {} as { [key: string]: string };
-    if (collapseMargin) {
-      if (orientation === 'horizontal') {
-        collapsedWhiteSpace.marginLeft = '0';
-        collapsedWhiteSpace.marginRight = '0';
-      } else {
-        collapsedWhiteSpace.marginTop = '0';
-        collapsedWhiteSpace.marginBottom = '0';
-      }
-    }
-    if (collapsePadding) {
-      if (orientation === 'horizontal') {
-        collapsedWhiteSpace.paddingLeft = '0';
-        collapsedWhiteSpace.paddingRight = '0';
-      } else {
-        collapsedWhiteSpace.paddingTop = '0';
-        collapsedWhiteSpace.paddingBottom = '0';
-      }
-    }
-
     return {
-      // The enter transition is an array of 3 motion atoms: size, whitespace and opacity.
+      // The enter transition is an array of 2 motion atoms: size and opacity.
       enter: [
         // Expand size (width or height).
         {
@@ -141,12 +111,6 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
           duration: enterSizeDuration,
           easing: enterEasing,
         },
-        // Expand whitespace (margin and/or padding).
-        {
-          keyframes: [{ ...collapsedWhiteSpace, offset: 0 }],
-          duration: enterSizeDuration,
-          easing: enterEasing,
-        },
         // Fade in. If enterDelay > 0, this is after the size expand.
         {
           delay: enterDelay,
@@ -157,7 +121,7 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
         },
       ],
 
-      // The enter transition is an array of 3 motion atoms: opacity, size, and whitespace.
+      // The enter transition is an array of 2 motion atoms: opacity and size.
       exit: [
         // Fade out first (if delay > 0)
         {
@@ -175,14 +139,6 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
           duration: exitSizeDuration,
           easing: exitEasing,
           fill: 'both',
-        },
-        // Collapse whitespace (margin and/or padding).
-        {
-          delay: exitDelay,
-          keyframes: [{ ...collapsedWhiteSpace, offset: 1 }],
-          duration: exitSizeDuration,
-          easing: exitEasing,
-          fill: 'backwards',
         },
       ],
     };
