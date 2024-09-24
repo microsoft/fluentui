@@ -9,7 +9,6 @@ const storyTemplate = html<StoryArgs<FluentAnchorButton>>`
   <fluent-anchor-button
     href="${story => story.href}"
     hreflang="${story => story.hreflang}"
-    ping="${story => story.ping}"
     referrerpolicy="${story => story.referrerpolicy}"
     rel="${story => story.rel}"
     type="${story => story.type}"
@@ -64,12 +63,6 @@ export default {
       name: 'hreflang',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    ping: {
-      control: 'text',
-      description: 'The ping attribute.',
-      name: 'ping',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
     referrerpolicy: {
       control: 'text',
       description: 'The referrerpolicy attribute.',
@@ -92,6 +85,7 @@ export default {
       control: 'select',
       description: 'The target attribute.',
       options: ['', ...Object.values(AnchorTarget)],
+      mapping: { '': null, ...AnchorTarget },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AnchorTarget).join('|') },

@@ -10,7 +10,6 @@ const storyTemplate = html<StoryArgs<FluentLink>>`
   <fluent-link
     href="${story => story.href}"
     hreflang="${story => story.hreflang}"
-    ping="${story => story.ping}"
     referrerpolicy="${story => story.referrerpolicy}"
     rel="${story => story.rel}"
     type="${story => story.type}"
@@ -40,12 +39,6 @@ export default {
       control: 'text',
       description: 'Hints at the language of the referenced resource.',
       name: 'hreflang',
-      table: { category: 'attributes', type: { summary: 'string' } },
-    },
-    ping: {
-      control: 'text',
-      description: 'The ping attribute.',
-      name: 'ping',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
     referrerpolicy: {
