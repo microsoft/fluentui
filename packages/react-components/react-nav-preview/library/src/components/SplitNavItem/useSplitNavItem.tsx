@@ -3,7 +3,7 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
-import { Button, MenuButton } from '@fluentui/react-button';
+import { Button, MenuButton, ToggleButton } from '@fluentui/react-button';
 import { MoreHorizontalFilled, Pin20Regular } from '@fluentui/react-icons';
 import { NavItem } from '../NavItem/index';
 
@@ -20,18 +20,16 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  //  const { primaryNavItem, secondaryActionButton, menuButton, children } = props;
-
-  const { secondaryActionButton } = props;
+  const { primaryNavItem, secondaryActionButton, secondaryToggleButton, menuButton, children } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  // const primaryActionButtonShorthand = slot.always(primaryNavItem, {
-  //   defaultProps: {
-  //     children,
-  //   },
-  //   elementType: NavItem,
-  // });
+  const primaryActionButtonShorthand = slot.always(primaryNavItem, {
+    defaultProps: {
+      children,
+    },
+    elementType: NavItem,
+  });
 
   const secondaryActionButtonShorthand = slot.optional(secondaryActionButton, {
     defaultProps: {
@@ -41,34 +39,46 @@ export const useSplitNavItem_unstable = (
     elementType: Button,
   });
 
-  // const menuButtonShorthand = slot.optional(menuButton, {
-  //   defaultProps: {
-  //     icon: <MoreHorizontalFilled />,
-  //     appearance: 'transparent',
-  //   },
-  //   elementType: MenuButton,
-  // });
+  const secondaryToggleButtonShorthand = slot.optional(secondaryToggleButton, {
+    defaultProps: {
+      icon: <Pin20Regular />,
+      appearance: 'transparent',
+    },
+    elementType: ToggleButton,
+  });
+
+  const menuButtonShorthand = slot.optional(menuButton, {
+    defaultProps: {
+      icon: <MoreHorizontalFilled />,
+      appearance: 'transparent',
+    },
+    elementType: MenuButton,
+  });
 
   return {
     // TODO add appropriate props/defaults
     components: {
       // TODO add each slot's element type or component
       root: 'div',
-      // primaryNavItem: NavItem,
+      primaryNavItem: NavItem,
       secondaryActionButton: Button,
-      // menuButton: MenuButton,
+      secondaryToggleButton: ToggleButton,
+      menuButton: MenuButton,
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref,
         ...props,
+        // because we're passing in children to the NavItem,
+        // We can be explicit about the children prop here
         children: null,
       }),
       { elementType: 'div' },
     ),
-    //primaryNavItem: primaryActionButtonShorthand,
+    primaryNavItem: primaryActionButtonShorthand,
     secondaryActionButton: secondaryActionButtonShorthand,
-    // menuButton: menuButtonShorthand,
+    secondaryToggleButton: secondaryToggleButtonShorthand,
+    menuButton: menuButtonShorthand,
     size,
   };
 };

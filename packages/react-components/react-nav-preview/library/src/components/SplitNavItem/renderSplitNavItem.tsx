@@ -12,9 +12,10 @@ export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
 
   return (
     <state.root>
-      {/* {state.primaryNavItem && <state.primaryNavItem />} */}
+      {state.primaryNavItem && <state.primaryNavItem />}
       {state.secondaryActionButton && <state.secondaryActionButton />}
-      {/* {state.menuButton && <state.menuButton />} */}
+      {state.secondaryToggleButton && <state.secondaryToggleButton />}
+      {state.menuButton && <state.menuButton />}
     </state.root>
   );
 };

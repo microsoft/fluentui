@@ -15,8 +15,24 @@ import {
   NavDivider,
   AppItem,
   AppItemStatic,
+  SplitNavItem,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  Label,
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Radio,
+  RadioGroup,
+  Switch,
+  Tooltip,
+  makeStyles,
+  tokens,
+  useId,
+} from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -47,6 +63,8 @@ import {
   bundleIcon,
   PersonCircle32Regular,
   PersonCircle24Regular,
+  Pin20Filled,
+  Pin20Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -85,6 +103,17 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
+const SomeMenuPopover = () => {
+  return (
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>Item a</MenuItem>
+        <MenuItem>Item b</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  );
+};
+
 export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
@@ -97,6 +126,8 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
   const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
+  // Consumers would likely have a separate variable for each item.
+  const [isPinFilled, setIsPinFilled] = React.useState(false);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
@@ -126,8 +157,26 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           {appItem}
+          <Menu positioning="below-end">
+            <MenuTrigger>
+              {(triggerProps: MenuButtonProps) => (
+                <SplitNavItem
+                  primaryNavItem={{ value: '0', href: linkDestination, icon: <Person /> }}
+                  secondaryToggleButton={{
+                    onClick: () => setIsPinFilled(!isPinFilled),
+                    icon: isPinFilled ? <Pin20Filled /> : <Pin20Regular />,
+                  }}
+                  secondaryActionButton={{ icon: <MegaphoneLoud20Regular /> }}
+                  menuButton={triggerProps}
+                >
+                  Some Nav Item
+                </SplitNavItem>
+              )}
+            </MenuTrigger>
+            <SomeMenuPopover />
+          </Menu>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
-            Dashboard
+            Dashboard sdf asdas asdasdsdfs sdfsdf
           </NavItem>
           <NavItem href={linkDestination} icon={<Announcements />} value="2">
             Announcements

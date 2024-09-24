@@ -1,7 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { NavItemProps } from '../NavItem/NavItem.types';
+import { ButtonProps, MenuButtonProps, ToggleButtonProps } from '@fluentui/react-button';
 import { NavSize } from '../Nav/Nav.types';
-import { Button, MenuButton } from '@fluentui/react-button';
 
 export type SplitNavItemSlots = {
   /**
@@ -9,20 +9,25 @@ export type SplitNavItemSlots = {
    */
   root: Slot<'div'>;
 
-  // /**
-  //  * Primary navigation item in SplitNavItem.
-  //  */
-  // primaryNavItem?: NonNullable<Slot<NavItemProps>>;
+  /**
+   * Primary navigation item in SplitNavItem.
+   */
+  primaryNavItem?: NonNullable<Slot<NavItemProps>>;
 
   /**
    * Secondary actions in SplitNavItem.
    */
-  secondaryActionButton?: Slot<typeof Button>;
+  secondaryActionButton?: Slot<ButtonProps>;
 
-  // /**
-  //  * Button that opens menu with secondary actions in SplitNavItem.
-  //  */
-  // menuButton?: Slot<typeof MenuButton>;
+  /**
+   * An optional toggle button slot
+   */
+  secondaryToggleButton?: Slot<ToggleButtonProps>;
+
+  /**
+   * Button that opens menu with secondary actions in SplitNavItem.
+   */
+  menuButton?: Slot<MenuButtonProps>;
 };
 
 /**
