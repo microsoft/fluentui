@@ -13,8 +13,10 @@ import yargs from 'yargs';
  * @param packageSpec - The NPM package name specifier (could be with or without a scope, and optionally tag, version, or version range, for more details see https://docs.npmjs.com/cli/v10/using-npm/package-spec)
  * @param npmToken - The npm authentication token.
  */
-export function deprecatePackage(packageSpec: string, npmToken: string) {
-  const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
+function deprecatePackage(packageSpec: string, npmToken: string) {
+  const projectNpmName = packageSpec.replace(/\-preview.+^/, '').trim();
+
+  const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release - use/migrate to ${projectNpmName}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
 
   logger.log(`Deprecating "${packageSpec}" package`);
   logger.log(command);
@@ -33,10 +35,11 @@ export function deprecatePackage(packageSpec: string, npmToken: string) {
  *   - The package version is `9.0.0-alpha.0`
  *   - There is a change file for the package with a `minor` type
  *
- * @returns {string[]} An array of package names to deprecate.
+ * @param changeFilesRoot - The root folder where change files live (relative to the workspace root).
+ * @returns An array of package names to deprecate.
  */
-export function getPackagesToDeprecate() {
-  const readPackageChangeFile = createPackageChangeFileReader();
+function getPackagesToDeprecate(options: { changeFilesRoot: string }) {
+  const readPackageChangeFile = createPackageChangeFileReader(options);
 
   const packagesToDeprecate = getAllPackageInfo(({ project, packageJson }) => {
     if (
@@ -56,12 +59,36 @@ export function getPackagesToDeprecate() {
 }
 
 /**
+ *  Deprecates React Components v9 preview packages
+ **/
+export function deprecateReactComponentsPreviewPackages(options: { argv: { changeFilesRoot: string; token: string } }) {
+  const { argv } = options;
+
+  try {
+    const packagesToDeprecate = getPackagesToDeprecate({ changeFilesRoot: argv.changeFilesRoot });
+
+    if (packagesToDeprecate.length === 0) {
+      logger.log('No preview to stable packages found. Skipping');
+      return;
+    }
+
+    logger.log('Packages to deprecate:', packagesToDeprecate);
+
+    packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, argv.token));
+  } catch (e) {
+    logger.error(e);
+    logger.error('Failed to deprecate packages');
+    process.exit(1);
+  }
+}
+
+/**
  * Creates a helper function to read a package change file if it exists.
  *
  * @returns A function that takes a package name and returns an change file contents, or null if the change file does not exist.
  */
-function createPackageChangeFileReader() {
-  const changeDir = join(workspaceRoot, 'change');
+function createPackageChangeFileReader(options: { changeFilesRoot: string }) {
+  const changeDir = join(workspaceRoot, options.changeFilesRoot);
 
   let changeFiles: string[] = [];
 
@@ -87,27 +114,19 @@ function createPackageChangeFileReader() {
 }
 
 function main() {
-  const { token: npmToken } = yargs.option('token', {
-    type: 'string',
-    description: 'NPM Token',
-    demandOption: true,
-  }).argv;
-  try {
-    const packagesToDeprecate = getPackagesToDeprecate();
+  const argv = yargs
+    .option('changeFilesRoot', {
+      type: 'string',
+      description: 'Root folder where change files live (relative to workspace root)',
+      default: 'change',
+    })
+    .option('token', {
+      type: 'string',
+      description: 'NPM Token',
+      demandOption: true,
+    }).argv;
 
-    if (packagesToDeprecate.length === 0) {
-      logger.log('No preview to stable packages found. Skipping');
-      return;
-    }
-
-    logger.log('Packages to deprecate:', packagesToDeprecate);
-
-    packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, npmToken));
-  } catch (e) {
-    logger.error(e);
-    logger.error('Failed to deprecate packages');
-    process.exit(1);
-  }
+  deprecateReactComponentsPreviewPackages({ argv });
 }
 
 if (require.main === module) {
