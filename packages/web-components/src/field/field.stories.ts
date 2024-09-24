@@ -15,7 +15,7 @@ const SuccessIcon = html.partial(/* html */ `
 `);
 
 export const storyTemplate = html<StoryArgs<FluentField>>`
-  <fluent-field label-position="${story => story.labelPosition || void 0}">
+  <fluent-field label-position="${story => story.labelPosition}">
     ${story => story.labelSlottedContent?.()} ${story => story.inputSlottedContent?.()}
     ${story => story.messageSlottedContent?.()}
   </fluent-field>
@@ -51,6 +51,7 @@ export default {
       control: 'select',
       description: 'Sets the position of the label relative to the input',
       name: 'size',
+      mapping: { '': null, ...LabelPosition },
       options: ['', ...Object.values(LabelPosition)],
       table: {
         category: 'attributes',

@@ -14,9 +14,9 @@ const storyTemplate = html<StoryArgs<FluentLink>>`
     referrerpolicy="${story => story.referrerpolicy}"
     rel="${story => story.rel}"
     type="${story => story.type}"
-    target="${story => story.target || void 0}"
+    target="${story => story.target}"
     inline="${story => story.inline}"
-    appearance="${story => story.appearance || void 0}"
+    appearance="${story => story.appearance}"
   >
     ${story => story.slottedContent?.()}
   </fluent-link>
@@ -69,6 +69,7 @@ export default {
     target: {
       control: 'select',
       description: 'The target attribute.',
+      mapping: { '': null, ...AnchorTarget },
       options: ['', ...Object.values(AnchorTarget)],
       table: {
         category: 'attributes',
@@ -84,6 +85,7 @@ export default {
     appearance: {
       control: 'select',
       description: 'The appearance of the link.',
+      mapping: { '': null, ...LinkAppearance },
       options: ['', ...Object.values(LinkAppearance)],
       table: {
         category: 'attributes',

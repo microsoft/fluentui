@@ -12,15 +12,15 @@ const storyTemplate = html<StoryArgs<FluentMenuButton>>`
     ?disabled="${story => story.disabled}"
     ?formnovalidate="${story => story.formnovalidate}"
     ?icon-only="${story => story.iconOnly}"
-    appearance="${story => story.appearance || void 0}"
+    appearance="${story => story.appearance}"
     form="${story => story.form}"
     formaction="${story => story.formaction}"
     formenctype="${story => story.formenctype}"
     formmethod="${story => story.formmethod}"
     formtarget="${story => story.formtarget}"
     name="${story => story.name}"
-    shape="${story => story.shape || void 0}"
-    size="${story => story.size || void 0}"
+    shape="${story => story.shape}"
+    size="${story => story.size}"
     value="${story => story.value}"
   >
     ${story => story.startSlottedContent?.()} ${story => story.slottedContent?.()}
@@ -39,6 +39,7 @@ export default {
     appearance: {
       control: 'select',
       description: 'Indicates the styled appearance of the button.',
+      mapping: { '': null, ...MenuButtonAppearance },
       options: ['', ...Object.values(MenuButtonAppearance)],
       table: {
         category: 'attributes',
@@ -107,6 +108,7 @@ export default {
     size: {
       control: 'select',
       description: 'The size of the button.',
+      mapping: { '': null, ...MenuButtonSize },
       options: ['', ...Object.values(MenuButtonSize)],
       table: {
         category: 'attributes',
@@ -116,6 +118,7 @@ export default {
     shape: {
       control: 'select',
       description: 'The shape of the button.',
+      mapping: { '': null, ...MenuButtonShape },
       options: ['', ...Object.values(MenuButtonShape)],
       table: {
         category: 'attributes',

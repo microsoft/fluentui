@@ -7,8 +7,8 @@ type Story = StoryObj<FluentLabel>;
 
 const storyTemplate = html<StoryArgs<FluentLabel>>`
   <fluent-label
-    weight="${story => story.weight || void 0}"
-    size="${story => story.size || void 0}"
+    weight="${story => story.weight}"
+    size="${story => story.size}"
     ?required="${story => story.required}"
     ?disabled="${story => story.disabled}"
     >${story => story.slottedContent?.()}</fluent-label
@@ -38,6 +38,7 @@ export default {
     size: {
       control: 'select',
       description: 'Sets label font size.',
+      mapping: { '': null, ...LabelSize },
       options: ['', ...Object.values(LabelSize)],
       table: {
         category: 'attributes',
@@ -47,6 +48,7 @@ export default {
     weight: {
       control: 'select',
       description: 'Sets label font weight.',
+      mapping: { '': null, ...LabelWeight },
       options: ['', ...Object.values(LabelWeight)],
       table: {
         category: 'attributes',

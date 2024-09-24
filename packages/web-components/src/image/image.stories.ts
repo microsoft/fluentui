@@ -9,9 +9,9 @@ const imageTemplate = html<StoryArgs<FluentImage>>`
   <fluent-image
     ?block="${story => story.block}"
     ?bordered="${story => story.bordered}"
-    fit="${story => story.fit || void 0}"
+    fit="${story => story.fit}"
     ?shadow="${story => story.shadow}"
-    shape="${story => story.shape || void 0}"
+    shape="${story => story.shape}"
   >
     ${story => story.slottedContent?.()}
   </fluent-image>
@@ -47,6 +47,7 @@ export default {
       control: 'select',
       description: 'Determines how the image will be scaled and positioned within its parent container.',
       name: 'size',
+      mapping: { '': null, ...ImageFit },
       options: ['', ...Object.values(ImageFit)],
       table: {
         category: 'attributes',
@@ -66,6 +67,7 @@ export default {
       control: 'select',
       description: 'Image Shape',
       name: 'size',
+      mapping: { '': null, ...ImageShape },
       options: ['', ...Object.values(ImageShape)],
       table: {
         category: 'attributes',
