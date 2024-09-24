@@ -3,7 +3,7 @@ import { motionTokens, createPresenceComponent, PresenceMotionCreator, PresenceP
 const { durationNormal, durationFast, durationGentle, curveEasyEase } = motionTokens;
 
 /** Define a presence motion for fade in/out  */
-const createFadeMotion: PresenceMotionCreator<PresenceParams> = ({
+export const createFadePresence: PresenceMotionCreator<PresenceParams> = ({
   enterDuration = durationNormal,
   exitDuration = durationNormal,
   enterEasing = curveEasyEase,
@@ -14,12 +14,12 @@ const createFadeMotion: PresenceMotionCreator<PresenceParams> = ({
 });
 
 /** A React component that applies fade in/out transitions to its children. */
-export const Fade = createPresenceComponent(createFadeMotion());
+export const Fade = createPresenceComponent(createFadePresence());
 
 export const FadeSnappy = createPresenceComponent(
-  createFadeMotion({ enterDuration: durationFast, exitDuration: durationFast }),
+  createFadePresence({ enterDuration: durationFast, exitDuration: durationFast }),
 );
 
 export const FadeExaggerated = createPresenceComponent(
-  createFadeMotion({ enterDuration: durationGentle, exitDuration: durationGentle }),
+  createFadePresence({ enterDuration: durationGentle, exitDuration: durationGentle }),
 );

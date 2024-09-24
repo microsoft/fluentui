@@ -2,12 +2,16 @@
 
 ```tsx
 import { motionTokens, createPresenceComponentVariant } from '@fluentui/react-components';
-import { Fade } from '@fluentui/react-motion-components-preview';
+import { createFadePresence } from '@fluentui/react-motion-components-preview';
 
-const CustomFadeVariant = createPresenceComponentVariant(Fade, {
-  enter: { duration: motionTokens.durationSlow, easing: motionTokens.curveEasyEaseMax },
-  exit: { duration: motionTokens.durationNormal, easing: motionTokens.curveEasyEaseMax },
-});
+const CustomFadeVariant = createPresenceComponent(
+  createFadePresence({
+    enterDuration: motionTokens.durationSlow,
+    enterEasing: motionTokens.curveEasyEaseMax,
+    exitDuration: motionTokens.durationNormal,
+    exitEasing: motionTokens.curveEasyEaseMax,
+  }),
+);
 
 const CustomFade = ({ visible }) => (
   <CustomFadeVariant unmountOnExit visible={visible}>
