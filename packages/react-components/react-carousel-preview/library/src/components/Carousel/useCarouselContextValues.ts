@@ -11,6 +11,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
     selectPageByIndex,
     subscribeForValues,
     enableAutoplay,
+    resetAutoplay,
     circular,
     containerRef,
   } = state;
@@ -23,6 +24,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       selectPageByIndex,
       subscribeForValues,
       enableAutoplay,
+      resetAutoplay,
       circular,
       containerRef,
     }),
@@ -33,6 +35,7 @@ export function useCarouselContextValues_unstable(state: CarouselState): Carouse
       selectPageByIndex,
       subscribeForValues,
       enableAutoplay,
+      resetAutoplay,
       circular,
       containerRef,
     ],

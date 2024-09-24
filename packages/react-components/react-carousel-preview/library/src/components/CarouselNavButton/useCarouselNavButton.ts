@@ -36,6 +36,7 @@ export const useCarouselNavButton_unstable = (
   const selectPageByIndex = useCarouselContext(ctx => ctx.selectPageByIndex);
   const selected = useCarouselContext(ctx => ctx.activeIndex === index);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+  const resetAutoplay = useCarouselContext(ctx => ctx.resetAutoplay);
 
   const handleClick: ARIAButtonSlotProps['onClick'] = useEventCallback(event => {
     onClick?.(event);
@@ -43,6 +44,9 @@ export const useCarouselNavButton_unstable = (
     if (!event.defaultPrevented && isHTMLElement(event.target)) {
       selectPageByIndex(event, index);
     }
+
+    // Ensure any autoplay timers are extended/reset
+    resetAutoplay();
   });
 
   const defaultTabProps = useTabsterAttributes({
