@@ -1,6 +1,7 @@
 import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncerFunction,
   CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
@@ -115,6 +116,10 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   );
 };
 
+const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 export const Autoplay = () => {
   const classes = useClasses();
   const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
@@ -141,7 +146,7 @@ export const Autoplay = () => {
           <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
         </Field>
       </div>
-      <Carousel groupSize={1} circular>
+      <Carousel groupSize={1} circular announcement={Announcement}>
         <CarouselSlider>
           {IMAGES.map((imageSrc, index) => (
             <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>

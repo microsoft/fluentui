@@ -1,6 +1,7 @@
 import { makeStyles, Image } from '@fluentui/react-components';
 import {
   Carousel,
+  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavContainer,
@@ -61,11 +62,15 @@ const ImageCard: React.FC<ImageDefinition> = props => {
   return <Image className={classes.image} src={url} role="presentation" />;
 };
 
+const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 export const ImageSlideshow = () => {
   const classes = useClasses();
 
   return (
-    <Carousel groupSize={1} align="center">
+    <Carousel groupSize={1} align="center" announcement={Announcement}>
       <CarouselSlider className={classes.slider}>
         {IMAGES.map((image, index) => (
           <CarouselCard key={image.url} className={classes.card} aria-label={`${index + 1} of ${IMAGES.length}`}>

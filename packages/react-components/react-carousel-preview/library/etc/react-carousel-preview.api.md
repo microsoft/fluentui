@@ -30,6 +30,9 @@ import { ToggleButtonState } from '@fluentui/react-button';
 export const Carousel: ForwardRefComponent<CarouselProps>;
 
 // @public
+export type CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
+
+// @public
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps>;
 
 // @public (undocumented)
@@ -210,7 +213,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     draggable?: boolean;
     whitespace?: boolean;
     polite?: boolean;
-    announcement?: LiveAnnouncerFunction;
+    announcement?: CarouselAnnouncerFunction;
 };
 
 // @public (undocumented)

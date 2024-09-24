@@ -12,6 +12,7 @@ import {
 import { MoreHorizontalRegular, DocumentLinkRegular } from '@fluentui/react-icons';
 import {
   Carousel,
+  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -163,6 +164,10 @@ const ActionCard: React.FC<Post & { index: number }> = props => {
   );
 };
 
+const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 export const AlignmentAndWhitespace = () => {
   const classes = useClasses();
 
@@ -193,7 +198,7 @@ export const AlignmentAndWhitespace = () => {
       </div>
 
       <div className={classes.card}>
-        <Carousel align={alignment} className={classes.carousel} whitespace={whitespace}>
+        <Carousel align={alignment} className={classes.carousel} whitespace={whitespace} announcement={Announcement}>
           <CarouselSlider cardFocus={true}>
             {POSTS.map((post, index) => (
               <ActionCard {...post} key={post.name} index={index} />

@@ -22,7 +22,7 @@ export {
   useCarouselNavButtonStyles_unstable,
   useCarouselNavButton_unstable,
 } from './CarouselNavButton';
-export type { CarouselProps, CarouselSlots, CarouselState } from './Carousel';
+export type { CarouselProps, CarouselSlots, CarouselState, CarouselAnnouncerFunction } from './Carousel';
 export {
   Carousel,
   carouselClassNames,
