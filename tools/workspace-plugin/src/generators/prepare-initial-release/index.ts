@@ -12,6 +12,7 @@ import {
   readJson,
   stripIndents,
   workspaceRoot,
+  logger,
   type ProjectConfiguration,
   type Tree,
   type ProjectGraph,
@@ -27,6 +28,7 @@ import tsConfigBaseAll from '../tsconfig-base-all';
 import { assertStoriesProject, isSplitProject as isSplitProjectFn } from '../split-library-in-two/shared';
 
 import { type ReleasePackageGeneratorSchema } from './schema';
+import { visitNotGitIgnoredFiles } from './lib/utils';
 
 interface NormalizedSchema extends ReturnType<typeof normalizeOptions> {}
 
@@ -120,6 +122,9 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     return content.replace(regexp, 'react-components');
   };
 
+  // clean node_modules so we don't perform unnecessary RENAMES later
+  tree.delete(joinPathFragments(options.projectConfig.root, 'node_modules'));
+
   // we need to update projects that might still contain dependency to old -preview package first
   await updateProjectsThatUsedPreviewPackage();
 
@@ -139,9 +144,19 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
 
   updateFileContent(tree, { filePath: options.paths.jestConfig, updater: contentNameUpdater });
 
+  // update any references to self within source code
+  if (options.projectConfig.sourceRoot) {
+    visitNotIgnoredFiles(tree, joinPathFragments(options.projectConfig.sourceRoot), filePath => {
+      updateFileContent(tree, {
+        filePath,
+        updater: contentNameUpdater,
+      });
+    });
+  }
+
   const bundleSizeFixturesRoot = joinPathFragments(options.projectConfig.root, 'bundle-size');
   if (tree.exists(bundleSizeFixturesRoot)) {
-    visitNotIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
+    visitNotGitIgnoredFiles(tree, bundleSizeFixturesRoot, filePath => {
       updateFileContent(tree, {
         filePath,
         updater: contentNameUpdater,
@@ -150,11 +165,21 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   }
 
   const mdFilePath = {
+    spec: joinPathFragments(options.projectConfig.root, 'docs/Spec.md'),
     readme: joinPathFragments(options.projectConfig.root, 'README.md'),
     api: joinPathFragments(options.projectConfig.root, 'etc', options.project + '.api.md'),
     apiNew: joinPathFragments(options.projectConfig.root, 'etc', newPackage.name + '.api.md'),
+    license: joinPathFragments(options.projectConfig.root, 'LICENSE'),
   };
 
+  updateFileContent(tree, {
+    filePath: mdFilePath.license,
+    updater: contentNameUpdater,
+  });
+  updateFileContent(tree, {
+    filePath: mdFilePath.spec,
+    updater: contentNameUpdater,
+  });
   updateFileContent(tree, {
     filePath: mdFilePath.readme,
     updater: contentNameUpdater,
@@ -222,6 +247,11 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
   async function updateProjectsThatUsedPreviewPackage() {
     const graph = await createProjectGraphAsync();
     const projectsToUpdate = await getProjectThatNeedsToBeUpdated(graph, options);
+    const ignoreProjects = [
+      // we don't wanna update `*-stories` project based on Graph - stories project is updated later which doesn't uses Graph rather relies on our custom imports parser and package.json template
+      // TODO: re-evaluate this approach if we should not rather use Graph for everything
+      options.isSplitProject ? options.projectConfig.name + '-stories' : null,
+    ].filter(Boolean) as string[];
 
     const knownProjectsToBeUpdated = {
       docsite: 'public-docsite-v9',
@@ -231,6 +261,10 @@ async function stableRelease(tree: Tree, options: NormalizedSchema & { isSplitPr
     // update other projects that might still contain dependency to old -preview package
     const unknownProjectsToBeUpdated = projectsToUpdate
       ? projectsToUpdate.filter(projectName => {
+          if (ignoreProjects.includes(projectName)) {
+            return false;
+          }
+
           const knownKeys = Object.values(knownProjectsToBeUpdated);
           return !knownKeys.includes(projectName);
         })
@@ -314,12 +348,17 @@ function stableReleaseForStoriesProject(tree: Tree, options: NormalizedSchema) {
   };
 
   const contentNameUpdaterStories = (content: string) => {
-    const regexp = new RegExp(currentStoriesPackage.name, 'g');
-    return content.replace(regexp, newStoriesProject.name);
+    const regexpStoryProject = new RegExp(currentStoriesPackage.name, 'g');
+    const regexpLibraryProject = new RegExp(options.project, 'g');
+    return content
+      .replace(regexpStoryProject, newStoriesProject.name)
+      .replace(regexpLibraryProject, options.project.replace('-preview', ''));
   };
 
   updateJson<PackageJson>(tree, storiesProjectPaths.packageJson, json => {
     json.name = newStoriesProject.npmName;
+
+    delete json.devDependencies?.[options.npmPackageName];
 
     return json;
   });
@@ -365,6 +404,13 @@ function updateFileContent(
   },
 ) {
   const { filePath, newFilePath, updater } = options;
+
+  if (!tree.exists(filePath)) {
+    logger.warn(`attempt to update ${filePath} contents failed, because that path does not exist`);
+
+    return tree;
+  }
+
   const oldContent = tree.read(filePath, 'utf-8') as string;
 
   const newContent = updater(oldContent);

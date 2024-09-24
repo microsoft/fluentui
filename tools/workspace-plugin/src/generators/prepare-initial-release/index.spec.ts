@@ -9,12 +9,14 @@ import {
   readJson,
   updateJson,
   installPackagesTask,
-  visitNotIgnoredFiles,
 } from '@nrwl/devkit';
 import childProcess from 'child_process';
+import path from 'node:path';
+
+import type { PackageJson, TsConfig } from '../../types';
 
 import generator from './index';
-import { PackageJson, TsConfig } from '../../types';
+import { visitNotGitIgnoredFiles } from './lib/utils';
 
 const getBlankGraphMock = () => ({
   dependencies: {},
@@ -54,6 +56,21 @@ describe('prepare-initial-release generator', () => {
       ...getBlankGraphMock(),
     };
     tree = createTreeWithEmptyWorkspace();
+    tree.write(
+      '.nxignore',
+      stripIndents`
+      ; build output
+      **/dist/**
+
+      ; known directories to not incorporate into the workspace graph creation
+      **/fixtures/**
+      **/__fixtures__/**
+      **/bundle-size/**
+
+      ; scaffolding templates
+      **/generators/**/files/**
+    `,
+    );
     tree.write(codeownersPath, `foo/bar @org/all\n`);
     writeJson<TsConfig>(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
     writeJson<TsConfig>(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
@@ -199,6 +216,10 @@ describe('prepare-initial-release generator', () => {
         `);
         expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
           Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-compat": "*",
+            },
             "name": "@proj/react-one-compat-stories",
             "private": true,
             "version": "0.0.0",
@@ -295,6 +316,10 @@ describe('prepare-initial-release generator', () => {
         `);
         expect(utils.project.stories.pkgJson()).toMatchInlineSnapshot(`
           Object {
+            "devDependencies": Object {
+              "@proj/react-components": "*",
+              "@proj/react-one-preview": "*",
+            },
             "name": "@proj/react-one-preview-stories",
             "private": true,
             "version": "0.0.0",
@@ -465,6 +490,7 @@ describe('prepare-initial-release generator', () => {
           "
         `);
 
+        expect(tree.exists('packages/react-one-preview')).toEqual(false);
         expect(tree.children('packages/react-one-preview')).toEqual([]);
 
         expect(utils.project.global.codeowners()).toEqual(
@@ -708,18 +734,42 @@ describe('prepare-initial-release generator', () => {
         expect(treeStructureAfter).toEqual(treeStructureBefore);
         expect(tree.children('packages/react-one-preview')).toEqual([]);
 
+        expect(tree.read('packages/react-one/library/src/index.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export { Hello } from './hello';
+          "
+        `);
+        expect(tree.read('packages/react-one/library/src/hello.ts', 'utf-8')).toMatchInlineSnapshot(`
+          "export function Hello() {
+            console.log('@proj/react-one: some debug message for user');
+            return;
+          }
+          "
+        `);
+
         expect(utils.project.library.projectJson()).toEqual(
           expect.objectContaining({
             name: 'react-one',
             sourceRoot: 'packages/react-one/library/src',
           }),
         );
+        expect(utils.project.library.pkgJson()).toEqual({
+          name: '@proj/react-one',
+          version: '9.0.0-alpha.0',
+        });
+
         expect(utils.project.stories.projectJson()).toEqual(
           expect.objectContaining({
             name: 'react-one-stories',
             sourceRoot: 'packages/react-one/stories/src',
           }),
         );
+        expect(utils.project.stories.pkgJson()).toEqual({
+          name: '@proj/react-one-stories',
+          version: expect.any(String),
+          devDependencies: {
+            '@proj/react-components': '*',
+          },
+        });
 
         expect(utils.project.library.bundleSize()).toMatchInlineSnapshot(`
           Object {
@@ -733,6 +783,23 @@ describe('prepare-initial-release generator', () => {
           }
         `);
 
+        expect(utils.project.library.md.license()).toMatchInlineSnapshot(`
+          "# @proj/react-one
+
+          Copyright (c) CompanyName
+
+          All rights reserved.
+
+          MIT License"
+        `);
+        expect(utils.project.library.md.spec()).toMatchInlineSnapshot(`
+          "# @proj/react-one Spec
+
+          ## Background
+
+          A Foo is a component that displays a set of vertically stacked Moos.
+          "
+        `);
         expect(utils.project.library.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one
 
@@ -744,7 +811,7 @@ describe('prepare-initial-release generator', () => {
         expect(utils.project.stories.md.readme()).toMatchInlineSnapshot(`
           "# @proj/react-one-stories
 
-          Storybook stories for packages/react-components/react-one-stories
+          Storybook stories for packages/react-components/react-one
 
           ## Usage
 
@@ -752,7 +819,7 @@ describe('prepare-initial-release generator', () => {
 
           \\\\\`\\\\\`\\\\\`js
           module.exports = {
-          stories: ['../packages/react-components/react-one-stories/stories/src/**/*.stories.mdx', '../packages/react-components/react-one-stories/stories/src/**/index.stories.@(ts|tsx)'],
+          stories: ['../packages/react-components/react-one/stories/src/**/*.stories.mdx', '../packages/react-components/react-one/stories/src/**/index.stories.@(ts|tsx)'],
           }
           \\\\\`\\\\\`\\\\\`
           "
@@ -831,6 +898,13 @@ function createSplitProject(
 
   const stories = createProject(tree, storiesProjectName, {
     ...options,
+    pkgJson: {
+      ...options.pkgJson,
+      devDependencies: {
+        [`@proj/react-components`]: '*',
+        [`@proj/${projectName}`]: '*',
+      },
+    },
     root: storiesProject.root,
     files: [
       ...(options.files?.stories ?? []),
@@ -839,7 +913,7 @@ function createSplitProject(
         content: stripIndents`
         # @proj/${storiesProjectName}
 
-        Storybook stories for packages/react-components/${storiesProjectName}
+        Storybook stories for packages/react-components/${projectName}
 
         ## Usage
 
@@ -847,7 +921,7 @@ function createSplitProject(
 
         \`\`\`js
         module.exports = {
-        stories: ['../packages/react-components/${storiesProjectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${storiesProjectName}/stories/src/**/index.stories.@(ts|tsx)'],
+        stories: ['../packages/react-components/${projectName}/stories/src/**/*.stories.mdx', '../packages/react-components/${projectName}/stories/src/**/index.stories.@(ts|tsx)'],
         }
         \`\`\`
     `,
@@ -878,7 +952,9 @@ function createProject(
   const sourceRoot = joinPathFragments(options.root, 'src');
   const indexFile = joinPathFragments(sourceRoot, 'index.ts');
   const jestPath = joinPathFragments(options.root, 'jest.config.js');
+  const specPath = joinPathFragments(options.root, 'docs/Spec.md');
   const readmePath = joinPathFragments(options.root, 'README.md');
+  const licensePath = joinPathFragments(options.root, 'LICENSE');
   const apiMdPath = joinPathFragments(options.root, `etc/${projectName}.api.md`);
   const tsConfigBaseAllPath = 'tsconfig.base.all.json';
   const tsConfigBasePath = 'tsconfig.base.json';
@@ -897,10 +973,52 @@ function createProject(
   tree.write(
     indexFile,
     stripIndents`
-    export {};
+    export { Hello } from './hello';
+  `,
+  );
+  tree.write(
+    joinPathFragments(sourceRoot, 'hello.ts'),
+    stripIndents`
+    export function Hello(){
+      console.log('${npmName}: some debug message for user')
+      return
+    };
   `,
   );
 
+  tree.write(
+    licensePath,
+    stripIndents`
+  # ${npmName}
+
+Copyright (c) CompanyName
+
+All rights reserved.
+
+MIT License
+  `,
+  );
+  tree.write(
+    specPath,
+    stripIndents`
+# ${npmName} Spec
+
+## Background
+
+A Foo is a component that displays a set of vertically stacked Moos.
+    `,
+  );
+  tree.write(
+    readmePath,
+    stripIndents`
+  # ${npmName}
+
+**React Tags components for [Fluent UI React](https://react.fluentui.dev/)**
+
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+
+  `,
+  );
   tree.write(
     readmePath,
     stripIndents`
@@ -941,7 +1059,10 @@ These are not production-ready components and **should never be used in product*
     return json;
   });
 
-  const depKeys = [...Object.keys(options.pkgJson.dependencies ?? {})];
+  const depKeys = [
+    ...Object.keys(options.pkgJson.dependencies ?? {}),
+    ...Object.keys(options.pkgJson.devDependencies ?? {}),
+  ];
 
   graphMock.dependencies[projectName] = depKeys.map(value => {
     return { source: projectName, target: value.replace('@proj/', ''), type: 'static' };
@@ -971,6 +1092,8 @@ These are not production-ready components and **should never be used in product*
       return tree.read(joinPathFragments(newRoot, 'jest.config.js'), 'utf-8');
     },
     md: {
+      license: () => tree.read(joinPathFragments(newRoot, 'LICENSE'), 'utf-8'),
+      spec: () => tree.read(joinPathFragments(newRoot, 'docs/Spec.md'), 'utf-8'),
       readme: () => tree.read(joinPathFragments(newRoot, 'README.md'), 'utf-8'),
       api: () => tree.read(joinPathFragments(newRoot, `etc/${projectName.replace('-preview', '')}.api.md`), 'utf-8'),
     },
@@ -978,8 +1101,9 @@ These are not production-ready components and **should never be used in product*
       const root = joinPathFragments(newRoot, 'bundle-size');
       const contents: Record<string, string> = {};
 
-      visitNotIgnoredFiles(tree, root, file => {
-        contents[file] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
+      visitNotGitIgnoredFiles(tree, root, file => {
+        // normalize path key to POSIX
+        contents[file.split(path.sep).join('/')] = stripIndents`${tree.read(file, 'utf-8')}` ?? '';
       });
 
       return contents;

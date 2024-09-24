@@ -2,8 +2,66 @@
   "$schema": "https://json-schema.org/schema",
   "version": 2,
   "title": "Build executor",
-  "description": "",
+  "description": "Builds TS files with SWC to specified JS module type, transforms *.styles.* files via Babel(Griffel) and copies provided Assets.",
   "type": "object",
-  "properties": {},
-  "required": []
+  "properties": {
+    "sourceRoot": {
+      "type": "string",
+      "description": "Directory where the source files are located (relative to {projectRoot})."
+    },
+    "outputPathRoot": {
+      "type": "string",
+      "description": "Root directory where all output assets will live. Relative to {workspaceRoot}"
+    },
+    "moduleOutput": {
+      "type": "array",
+      "description": "Which JS module type to use to transpile to provided output.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "module": { "type": "string", "enum": ["es6", "commonjs", "amd"], "description": "The module type" },
+          "outputPath": {
+            "type": "string",
+            "description": "The output path of the generated files (relative to {outputPathRoot})"
+          }
+        },
+        "required": ["module", "outputPath"]
+      }
+    },
+    "assets": {
+      "type": "array",
+      "description": "List of static assets.",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "glob": { "type": "string", "description": "The pattern to match." },
+              "input": { "type": "string", "description": "The input directory path in which to apply 'glob'" },
+              "output": { "type": "string", "description": "Absolute path within the output" },
+              "substitutions": {
+                "type": "object",
+                "description": "Key-value pairs to replace in the output path",
+                "properties": {
+                  "key": { "type": "string", "description": "The key to replace." },
+                  "value": { "type": "string", "description": "The value to replace." }
+                },
+                "additionalProperties": false,
+                "required": ["key", "value"]
+              }
+            },
+            "additionalProperties": false,
+            "required": ["glob", "input", "output"]
+          },
+          { "type": "string" }
+        ]
+      }
+    },
+    "clean": {
+      "type": "boolean",
+      "description": "Remove previous output before build",
+      "default": true
+    }
+  },
+  "required": ["sourceRoot", "outputPathRoot", "moduleOutput"]
 }
