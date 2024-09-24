@@ -91,7 +91,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       announcementTextRef.current = announcementText;
     } else if (announcementText !== announcementTextRef.current) {
       announcementTextRef.current = announcementText;
-      console.log('Announcing:', announcementText);
       announce(announcementText, { polite });
     }
   });
@@ -102,11 +101,11 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       navGroupRef.current = data.groupIndexList;
       updateAnnouncement();
     });
-  }, [subscribeForValues]);
+  }, [subscribeForValues, updateAnnouncement]);
 
   useIsomorphicLayoutEffect(() => {
     updateAnnouncement();
-  }, [activeIndex]);
+  }, [activeIndex, updateAnnouncement]);
 
   return {
     components: {
