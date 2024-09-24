@@ -1,9 +1,12 @@
 import { execSync } from 'node:child_process';
-import fs from 'node:fs';
-import path from 'node:path';
 
 import { deprecateReactComponentsPreviewPackages } from './deprecate-react-components-preview-packages';
+// fixtures
+import * as noChangeFilesFixture from './fixtures/deprecate-react-components-preview-packages/no-change-files/fixture';
+import * as noPreviewPackagesFixture from './fixtures/deprecate-react-components-preview-packages/no-preview-packages/fixture';
+import * as withPreviewPackagesFixture from './fixtures/deprecate-react-components-preview-packages/with-preview-packages/fixture';
 
+// Mock the `execSync` function, as we don't want to actually run the `npm deprecate` command
 jest.mock('node:child_process', () => ({
   execSync: jest.fn(),
 }));
@@ -11,38 +14,50 @@ jest.mock('node:child_process', () => ({
 const mockExecSync = execSync as jest.MockedFunction<typeof execSync>;
 
 describe('deprecateReactComponentsPreviewPackages', () => {
-  const fixtures = fs.readdirSync(path.join(__dirname, 'fixtures/deprecate-react-components-preview-packages'));
+  it('should skip deprecating packages (no change files)', () => {
+    deprecateReactComponentsPreviewPackages(noChangeFilesFixture.input);
 
-  beforeEach(() => {
-    mockExecSync.mockReset();
+    expect(mockExecSync).not.toHaveBeenCalled();
   });
 
-  it.each(fixtures)('%s', fixture => {
-    const {
-      deprecatedPackages = [],
-      shouldThrow = false,
-    } = require(`./fixtures/deprecate-react-components-preview-packages/${fixture}/expected.js`);
+  it('should skip deprecating packages (no preview packages)', () => {
+    deprecateReactComponentsPreviewPackages(noPreviewPackagesFixture.input);
 
-    console.log('Deprecated packages:', deprecatedPackages);
+    expect(mockExecSync).not.toHaveBeenCalled();
+  });
 
-    const fn = () => {
+  it('should deprecate preview packages', () => {
+    deprecateReactComponentsPreviewPackages(withPreviewPackagesFixture.input);
+
+    expect(mockExecSync).toHaveBeenCalledTimes(withPreviewPackagesFixture.output.packagesToDeprecate.length);
+
+    withPreviewPackagesFixture.output.packagesToDeprecate.forEach(deprecatedPackage => {
+      const stablePackage = deprecatedPackage.replace('-preview', '');
+
+      expect(mockExecSync).toHaveBeenCalledWith(
+        `npm deprecate ${deprecatedPackage} "Deprecated in favor of stable release - use/migrate to ${stablePackage}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=npm-token`,
+        { stdio: 'inherit' },
+      );
+    });
+  });
+
+  it('should throw an error (change dir is not correct)', () => {
+    expect(() =>
       deprecateReactComponentsPreviewPackages({
         argv: {
-          changeFilesRoot: `scripts/executors/src/fixtures/deprecate-react-components-preview-packages/${fixture}/change`,
+          changeFilesRoot: 'wrong-path',
           token: 'npm-token',
         },
-      });
-    };
+        packages: withPreviewPackagesFixture.input.packages,
+      }),
+    ).toThrow();
+  });
 
-    if (shouldThrow) {
-      expect(fn).toThrow();
-    } else {
-      fn();
+  it('should throw an error (package deprecation/npm command fails)', () => {
+    mockExecSync.mockImplementation(() => {
+      throw new Error('Failed to deprecate package');
+    });
 
-      expect(mockExecSync).toHaveBeenCalledTimes(deprecatedPackages.length);
-      expect(mockExecSync).toHaveBeenCalledWith([
-        `npm deprecate @fluentui/react-carousel-preview "This package is deprecated. Please use @fluentui/react-carousel instead."`,
-      ]);
-    }
+    expect(() => deprecateReactComponentsPreviewPackages(withPreviewPackagesFixture.input)).toThrow();
   });
 });

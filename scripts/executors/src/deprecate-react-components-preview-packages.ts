@@ -2,7 +2,7 @@ import { execSync } from 'node:child_process';
 import { readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
+import { type AllPackageInfo, getAllPackageInfo, workspaceRoot } from '@fluentui/scripts-monorepo';
 import { logger, readJsonFile } from '@nx/devkit';
 import type { ChangeType } from 'beachball';
 import yargs from 'yargs';
@@ -14,7 +14,7 @@ import yargs from 'yargs';
  * @param npmToken - The npm authentication token.
  */
 function deprecatePackage(packageSpec: string, npmToken: string) {
-  const projectNpmName = packageSpec.replace(/\-preview.+^/, '').trim();
+  const projectNpmName = packageSpec.replace('-preview', '');
 
   const command = `npm deprecate ${packageSpec} "Deprecated in favor of stable release - use/migrate to ${projectNpmName}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=${npmToken}`;
 
@@ -36,50 +36,59 @@ function deprecatePackage(packageSpec: string, npmToken: string) {
  *   - There is a change file for the package with a `minor` type
  *
  * @param changeFilesRoot - The root folder where change files live (relative to the workspace root).
+ * @param packages - The list of all packages in the monorepo.
  * @returns An array of package names to deprecate.
  */
-function getPackagesToDeprecate(options: { changeFilesRoot: string }) {
+function getPackagesToDeprecate(options: { changeFilesRoot: string; packages: AllPackageInfo }) {
+  const { packages } = options;
+
   const readPackageChangeFile = createPackageChangeFileReader(options);
 
-  const packagesToDeprecate = getAllPackageInfo(({ project, packageJson }) => {
+  const packagesToDeprecate: string[] = [];
+
+  for (const packageInfo of Object.values(packages)) {
+    const { projectConfig, packageJson } = packageInfo;
+
     if (
-      project.tags?.includes('vNext') &&
+      projectConfig.tags?.includes('vNext') &&
       !packageJson.name?.endsWith('-preview') &&
       packageJson.version === '9.0.0-alpha.0'
     ) {
-      const changeFile = readPackageChangeFile(project.name!);
+      const changeFile = readPackageChangeFile(projectConfig.name!);
 
-      return changeFile?.type === 'minor';
+      if (changeFile?.type === 'minor') {
+        packagesToDeprecate.push(`${packageJson.name}-preview`);
+      }
     }
+  }
 
-    return false;
-  });
-
-  return Object.keys(packagesToDeprecate);
+  return packagesToDeprecate;
 }
+
+export type DeprecateReactComponentsPreviewPackagesOptions = {
+  argv: { changeFilesRoot: string; token: string };
+  packages: AllPackageInfo;
+};
 
 /**
  *  Deprecates React Components v9 preview packages
  **/
-export function deprecateReactComponentsPreviewPackages(options: { argv: { changeFilesRoot: string; token: string } }) {
+export function deprecateReactComponentsPreviewPackages(options: DeprecateReactComponentsPreviewPackagesOptions) {
   const { argv } = options;
 
-  try {
-    const packagesToDeprecate = getPackagesToDeprecate({ changeFilesRoot: argv.changeFilesRoot });
+  const packagesToDeprecate = getPackagesToDeprecate({
+    changeFilesRoot: argv.changeFilesRoot,
+    packages: options.packages,
+  });
 
-    if (packagesToDeprecate.length === 0) {
-      logger.log('No preview to stable packages found. Skipping');
-      return;
-    }
-
-    logger.log('Packages to deprecate:', packagesToDeprecate);
-
-    packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, argv.token));
-  } catch (e) {
-    logger.error(e);
-    logger.error('Failed to deprecate packages');
-    process.exit(1);
+  if (packagesToDeprecate.length === 0) {
+    logger.log('No preview to stable packages found. Skipping');
+    return;
   }
+
+  logger.log('Packages to deprecate:', packagesToDeprecate);
+
+  packagesToDeprecate.forEach(pkg => deprecatePackage(pkg, argv.token));
 }
 
 /**
@@ -126,7 +135,13 @@ function main() {
       demandOption: true,
     }).argv;
 
-  deprecateReactComponentsPreviewPackages({ argv });
+  try {
+    deprecateReactComponentsPreviewPackages({ argv, packages: getAllPackageInfo() });
+  } catch (e) {
+    logger.error(e);
+    logger.error('Failed to deprecate packages');
+    process.exit(1);
+  }
 }
 
 if (require.main === module) {
