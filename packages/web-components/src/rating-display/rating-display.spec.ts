@@ -17,6 +17,9 @@ test.describe('Rating Display', () => {
     await expect(element).toBeVisible();
     await expect(element).not.toHaveAttribute('color');
     await expect(element).not.toHaveAttribute('compact');
+    await expect(element).not.toHaveAttribute('count');
+    await expect(element).not.toHaveAttribute('icon');
+    await expect(element).not.toHaveAttribute('icon-view-box');
     await expect(element).not.toHaveAttribute('max');
     await expect(element).not.toHaveAttribute('size');
     await expect(page.locator('.count-label')).toBeHidden();
@@ -57,7 +60,7 @@ test.describe('Rating Display', () => {
     }
   });
 
-  test('should use the right icon color based on the `icon` attribute', async ({ page }) => {
+  test('should use the right icon color based on the `color` attribute', async ({ page }) => {
     await page.setContent(`<fluent-rating-display value="4"></fluent-rating-display>`);
 
     expect(await element.evaluate((node: RatingDisplay) => node.color)).toBeUndefined();
@@ -122,6 +125,35 @@ test.describe('Rating Display', () => {
     await expect(element).toHaveJSProperty('count', 1000);
     await expect(page.locator('.value-label')).toHaveText('3');
     await expect(page.locator('.count-label')).toHaveText('1,000');
+  });
+
+  test('should use custom icons when provided', async ({ page }) => {
+    await page.setContent(
+      `<fluent-rating-display value="4.1" icon='<svg><path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z" /></svg>'></fluent-rating-display>`,
+    );
+
+    await expect(element).toHaveAttribute('icon');
+
+    const icon: Locator = page.locator('svg[aria-hidden="true"]').last();
+
+    // Check for <path> as a direct child to verify that the custom icon is being used
+    await expect(icon.locator('> path')).toBeVisible();
+    await expect(icon.locator('> use')).toBeHidden();
+  });
+
+  test('should set the correct icon `viewBox` based on the `icon-view-box` attribute', async ({ page }) => {
+    await page.setContent(`<fluent-rating-display value="2.2"></fluent-rating-display>`);
+
+    const icon: Locator = page.locator('svg[aria-hidden="true"]').last();
+
+    // Should set the default value when the attribute is not provided
+    await expect(icon).toHaveAttribute('viewBox', '0 0 20 20');
+
+    await element.evaluate((node: RatingDisplay) => {
+      node.iconViewBox = '0 0 12 12';
+    });
+
+    await expect(icon).toHaveAttribute('viewBox', '0 0 12 12');
   });
 
   test('should display the correct number of icons based on the `max` attribute', async ({ page }) => {

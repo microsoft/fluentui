@@ -25,6 +25,27 @@ export class BaseRatingDisplay extends FASTElement {
   public count?: number;
 
   /**
+   * The <svg> element string used for the rating icon.
+   *
+   * @public
+   * @remarks
+   * HTML Attribute: `icon`
+   */
+  @attr
+  icon?: string;
+
+  /**
+   * The `viewBox` attribute of the icon <svg> element.
+   *
+   * @public
+   * @default `0 0 20 20`
+   * @remarks
+   * HTML Attribute: `icon-view-box`
+   */
+  @attr({ attribute: 'icon-view-box' })
+  iconViewBox?: string;
+
+  /**
    * The maximum possible value of the rating.
    * This attribute determines the number of icons displayed.
    * Must be a whole number greater than 1.
@@ -88,6 +109,12 @@ export class BaseRatingDisplay extends FASTElement {
    */
   public generateIcons(): string {
     let htmlString: string = '';
+    let customIcon: string | undefined;
+
+    if (this.icon) {
+      // Extract the SVG element content
+      customIcon = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(this.icon)?.[1] ?? '';
+    }
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
     const selectedValue: number = this.getSelectedValue();
@@ -96,9 +123,9 @@ export class BaseRatingDisplay extends FASTElement {
     for (let i: number = 0; i < this.getMaxIcons(); i++) {
       const iconValue: number = (i + 1) / 2;
 
-      htmlString += `<svg aria-hidden="true" ${
+      htmlString += `<svg aria-hidden="true" viewBox="${this.iconViewBox ?? '0 0 20 20'}" ${
         iconValue === selectedValue ? 'selected' : ''
-      }><use href="#star"></use></svg>`;
+      }>${customIcon ?? '<use href="#star"></use>'}</svg>`;
     }
 
     return htmlString;
@@ -106,7 +133,7 @@ export class BaseRatingDisplay extends FASTElement {
 }
 
 /**
- * A Rating Dislpay Custom HTML Element.
+ * A Rating Display Custom HTML Element.
  * Based on BaseRatingDisplay and includes style and layout specific attributes
  *
  * @public
