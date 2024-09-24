@@ -1,123 +1,92 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Image as FluentImage } from './image.js';
 import { ImageFit, ImageShape } from './image.options.js';
 
-type ImageStoryArgs = Args & FluentImage;
-type ImageStoryMeta = Meta<ImageStoryArgs>;
+type Story = StoryObj<FluentImage>;
 
-const imageTemplate = html<ImageStoryArgs>`
+const imageTemplate = html<StoryArgs<FluentImage>>`
   <fluent-image
-    ?block="${x => x.block}"
-    ?bordered="${x => x.bordered}"
-    fit="${x => x.fit}"
-    ?shadow="${x => x.shadow}"
-    shape="${x => x.shape}"
+    ?block="${story => story.block}"
+    ?bordered="${story => story.bordered}"
+    fit="${story => story.fit}"
+    ?shadow="${story => story.shadow}"
+    shape="${story => story.shape}"
   >
-    <img alt="Short image description" src="300x100.png" />
+    ${story => story.slottedContent?.()}
   </fluent-image>
 `;
 
 export default {
   title: 'Components/Image',
+  render: renderComponent(imageTemplate),
   args: {
-    block: false,
-    bordered: false,
-    shadow: false,
-    fit: undefined,
-    shape: ImageShape.square,
+    slottedContent: () => html`<img alt="Short image description" src="300x100.png" />`,
   },
   argTypes: {
-    alt: {
-      description: 'Alternate text description -- to be supplied by component consumer',
-      table: {
-        type: {
-          summary:
-            'Required. Alt tag provides text attribution for images. Should be brief but accurate—one or two sentences that describe the image and its context. If the image represents a function, be sure to indicate that. If it’s meant to be consumed with other objects on the page, consider that as well. Don’t repeat information that’s on the page in alt text since screen readers will read it twice.',
-        },
-      },
-    },
     block: {
+      control: 'boolean',
       description:
-        'An image can use the argument ‘block’ so that it’s width will expand to fiill the available container space.',
+        'An image can use the argument ‘block’ so that it’s width will expand to fill the available container space.',
       table: {
-        defaultValue: {
-          summary: false,
-        },
+        category: 'attributes',
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
       },
     },
     bordered: {
+      control: 'boolean',
       description: 'Border surrounding image',
       table: {
-        type: {
-          summary: 'Use this option to provide minimal visual separation between image and surrounding content.',
-        },
-        defaultValue: {
-          summary: false,
-        },
+        category: 'attributes',
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
       },
     },
     fit: {
-      description: 'Determines how the image will be scaled and positioned within its parent container.',
-      table: {
-        defaultValue: {
-          summary: 'undefined',
-        },
-      },
-      options: ['undefined', ...Object.values(ImageFit)],
       control: 'select',
-    },
-    role: {
-      description: 'Aria role -- to be supplied by component consumer',
+      description: 'Determines how the image will be scaled and positioned within its parent container.',
+      name: 'size',
+      mapping: { '': null, ...ImageFit },
+      options: ['', ...Object.values(ImageFit)],
       table: {
-        type: {
-          summary:
-            'If images are solely decorative and don’t provide useful information or context, use role=”presentation” to hide them from assistive technologies.',
-        },
+        category: 'attributes',
+        type: { summary: Object.values(ImageFit).join('|') },
       },
     },
     shadow: {
+      control: 'boolean',
       description: 'Apply an optional box shadow to further separate the image from the background.',
       table: {
-        type: {
-          summary:
-            'To give an image additional prominence, use the shadow prop to make it appear elevated. Too many shadows can cause a busy layout, so use them sparingly.',
-        },
-        defaultValue: {
-          summary: false,
-        },
+        category: 'attributes',
+        defaultValue: { summary: 'false' },
+        type: { summary: 'boolean' },
       },
     },
     shape: {
-      description: 'Image shape',
-      table: {
-        defaultValue: {
-          summary: 'square',
-        },
-        type: {
-          summary:
-            'When shape `rounded` is used, default border radius is `borderRadiusMedium`. The dev may override the default border radius using one of the following: borderRadiusSmall, borderRadiusLarge, borderRadiusXLarge.',
-        },
-      },
-      options: Object.values(ImageShape),
       control: 'select',
-    },
-    src: {
-      description: 'Image source -- to be supplied by component consumer',
+      description: 'Image Shape',
+      name: 'size',
+      mapping: { '': null, ...ImageShape },
+      options: ['', ...Object.values(ImageShape)],
       table: {
-        type: {
-          summary: 'Required',
-        },
+        category: 'attributes',
+        type: { summary: Object.values(ImageShape).join('|') },
       },
+    },
+    slottedContent: {
+      control: false,
+      description: 'The default slot',
+      name: '',
+      table: { category: 'slots', type: {} },
     },
   },
-} as ImageStoryMeta;
+} as Meta<FluentImage>;
 
-export const Image = renderComponent(imageTemplate).bind({});
+export const Default = {};
 
 // Block layout
-const imageLayoutBlock = html<ImageStoryArgs>`
+const imageLayoutBlock = html<StoryArgs<FluentImage>>`
   <div style="border: 1px dotted #43ED35;">
     <fluent-image block bordered>
       <img role="presentation" src="958x20.png" />
@@ -125,107 +94,107 @@ const imageLayoutBlock = html<ImageStoryArgs>`
     </fluent-image>
   </div>
 `;
-export const BlockLayout = renderComponent(imageLayoutBlock).bind({});
+export const BlockLayout: Story = { render: renderComponent(imageLayoutBlock) };
 
 // Fit: None
-const imageFitNoneLarge = html<ImageStoryArgs>`
+const imageFitNoneLarge = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="none">
       <img role="presentation" src="600x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitNoneLarge = renderComponent(imageFitNoneLarge).bind({});
+export const ImageFitNoneLarge: Story = { render: renderComponent(imageFitNoneLarge).bind({}) };
 
-const imageFitNoneSmall = html<ImageStoryArgs>`
+const imageFitNoneSmall = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="none">
       <img alt="200x100 placeholder" src="200x100.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitNoneSmall = renderComponent(imageFitNoneSmall).bind({});
+export const ImageFitNoneSmall: Story = { render: renderComponent(imageFitNoneSmall).bind({}) };
 
 // Fit: Center
-const imageFitCenterLarge = html<ImageStoryArgs>`
+const imageFitCenterLarge = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image fit="center">
       <img role="presentation" src="600x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitCenterLarge = renderComponent(imageFitCenterLarge).bind({});
+export const ImageFitCenterLarge: Story = { render: renderComponent(imageFitCenterLarge).bind({}) };
 
-const imageFitCenterSmall = html<ImageStoryArgs>`
+const imageFitCenterSmall = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image fit="center">
       <img alt="image layout story" src="300x100.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitCenterSmall = renderComponent(imageFitCenterSmall).bind({});
+export const ImageFitCenterSmall: Story = { render: renderComponent(imageFitCenterSmall).bind({}) };
 
-const imageFitContain = html<ImageStoryArgs>`
+const imageFitContain = html<StoryArgs<FluentImage>>`
   <div style="height:200px; width: 300px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
       <img alt="image layout story" src="400x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitContain = renderComponent(imageFitContain).bind({});
+export const ImageFitContain: Story = { render: renderComponent(imageFitContain).bind({}) };
 
-const imageFitContainTall = html<ImageStoryArgs>`
+const imageFitContainTall = html<StoryArgs<FluentImage>>`
   <div style="height: 250px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
       <img alt="image layout story" src="400x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitContainTall = renderComponent(imageFitContainTall).bind({});
+export const ImageFitContainTall: Story = { render: renderComponent(imageFitContainTall).bind({}) };
 
-const imageFitContainWide = html<ImageStoryArgs>`
+const imageFitContainWide = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 450px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="contain">
       <img alt="image layout story" src="400x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitContainWide = renderComponent(imageFitContainWide).bind({});
+export const ImageFitContainWide: Story = { render: renderComponent(imageFitContainWide).bind({}) };
 
 // Fit: Cover
-const imageFitCoverSmall = html<ImageStoryArgs>`
+const imageFitCoverSmall = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
       <img alt="image layout story" src="400x250.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitCoverSmall = renderComponent(imageFitCoverSmall).bind({});
+export const ImageFitCoverSmall: Story = { render: renderComponent(imageFitCoverSmall).bind({}) };
 
-const imageFitCoverMedium = html<ImageStoryArgs>`
+const imageFitCoverMedium = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
       <img alt="image layout story" src="400x300.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitCoverMedium = renderComponent(imageFitCoverMedium).bind({});
+export const ImageFitCoverMedium: Story = { render: renderComponent(imageFitCoverMedium).bind({}) };
 
-const imageFitCoverLarge = html<ImageStoryArgs>`
+const imageFitCoverLarge = html<StoryArgs<FluentImage>>`
   <div style="height: 200px; width: 400px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="cover">
       <img alt="image layout story" src="600x200.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitCoverLarge = renderComponent(imageFitCoverLarge).bind({});
+export const ImageFitCoverLarge: Story = { render: renderComponent(imageFitCoverLarge).bind({}) };
 
 // Fit: Default
-const imageFitDefault = html<ImageStoryArgs>`
+const imageFitDefault = html<StoryArgs<FluentImage>>`
   <div style="height: 210px; width: 650px; border: 1px dotted #43ED35;">
     <fluent-image bordered fit="default">
       <img alt="image layout story" src="150x150.png" />
     </fluent-image>
   </div>
 `;
-export const ImageFitDefault = renderComponent(imageFitDefault).bind({});
+export const ImageFitDefault: Story = { render: renderComponent(imageFitDefault).bind({}) };
