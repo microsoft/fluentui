@@ -28,18 +28,10 @@ const storyTemplate = html<StoryArgs<FluentCounterBadge>>`
 export default {
   title: 'Components/Badge/Counter Badge',
   render: renderComponent(storyTemplate),
-  args: {
-    dot: false,
-    showZero: false,
-    appearance: CounterBadgeAppearance.filled,
-    color: CounterBadgeColor.brand,
-    shape: CounterBadgeShape.circular,
-    count: 5,
-  },
   argTypes: {
     appearance: {
       description: 'Sets the appearance of the badge to one of the predefined styles',
-      options: Object.values(CounterBadgeAppearance),
+      options: ['', ...Object.values(CounterBadgeAppearance)],
       mapping: { '': null, ...CounterBadgeAppearance },
       control: 'select',
       table: {
@@ -49,7 +41,7 @@ export default {
     },
     color: {
       description: 'Sets the color of the badge to one of the predefined colors',
-      options: Object.values(CounterBadgeColor),
+      options: ['', ...Object.values(CounterBadgeColor)],
       mapping: { '': null, ...CounterBadgeColor },
       control: 'select',
       table: {
@@ -59,7 +51,7 @@ export default {
     },
     shape: {
       description: 'Sets the shape of the badge to one of the predefined shapes',
-      options: Object.values(CounterBadgeShape),
+      options: ['', ...Object.values(CounterBadgeShape)],
       mapping: { '': null, ...CounterBadgeShape },
       control: 'select',
       table: {
@@ -69,7 +61,7 @@ export default {
     },
     size: {
       description: 'Sets the size of the badge to one of the predefined sizes',
-      options: Object.values(CounterBadgeSize),
+      options: ['', ...Object.values(CounterBadgeSize)],
       mapping: { '': null, ...CounterBadgeSize },
       control: 'select',
       table: {
@@ -113,6 +105,8 @@ export default {
     },
   },
 } as Meta<FluentCounterBadge>;
+
+export const Default: Story = {};
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentCounterBadge>>`
