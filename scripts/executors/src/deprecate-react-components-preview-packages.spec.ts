@@ -35,9 +35,7 @@ describe('deprecatePackage', () => {
       throw new Error('Deprecation failed');
     });
 
-    expect(() => deprecatePackage('test-package', 'npm-token')).toThrowError(
-      'Failed to deprecate "test-package" package',
-    );
+    expect(() => deprecatePackage('test-package', 'npm-token')).toThrow('Failed to deprecate "test-package" package');
   });
 });
 
