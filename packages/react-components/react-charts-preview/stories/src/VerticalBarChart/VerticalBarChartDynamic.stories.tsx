@@ -168,14 +168,14 @@ export const VCDynamic = () => {
 
   return (
     <>
-      <StackShim horizontal wrap tokens={{ childrenGap: '15 30' }}>
-        <StackShim horizontal verticalAlign="center">
+      <div style={{ display: 'flex', gap: '15px 30px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-width" style={{ fontWeight: 400 }}>
             width:&nbsp;
           </label>
           <input type="range" value={width} min={200} max={1000} onChange={_onWidthChange} id="input-width" />
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="barWidth:&nbsp;"
             checked={typeof barWidth === 'number'}
@@ -187,8 +187,8 @@ export const VCDynamic = () => {
           ) : (
             <code>{`${barWidth}`}</code>
           )}
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-maxbarwidth" style={{ fontWeight: 400 }}>
             maxBarWidth:&nbsp;
           </label>
@@ -200,8 +200,10 @@ export const VCDynamic = () => {
             id="input-maxbarwidth"
             onChange={_onMaxBarWidthChange}
           />
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+      </div>
+      <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisInnerPadding:&nbsp;"
             checked={xAxisInnerPaddingEnabled}
@@ -218,8 +220,8 @@ export const VCDynamic = () => {
             disabled={!xAxisInnerPaddingEnabled}
           />
           <span>&nbsp;{xAxisInnerPadding}</span>
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <Checkbox
             label="xAxisOuterPadding:&nbsp;"
             checked={xAxisOuterPaddingEnabled}
@@ -236,14 +238,16 @@ export const VCDynamic = () => {
             disabled={!xAxisOuterPaddingEnabled}
           />
           <span>&nbsp;{xAxisOuterPadding}</span>
-        </StackShim>
-        <StackShim horizontal verticalAlign="center">
+        </div>
+      </div>
+      <div style={{ display: 'flex', marginTop: '20px' }}>
+        <div style={{ justifyContent: 'center', verticalAlign: 'center' }}>
           <label htmlFor="input-datasize" style={{ fontWeight: 400 }}>
             Data Size:&nbsp;
           </label>
           <input type="range" value={dataSize} min={0} max={50} onChange={_onDataSizeChange} id="input-datasize" />
-        </StackShim>
-      </StackShim>
+        </div>
+      </div>
       <div style={{ marginTop: '20px' }}>
         <Field label="X-Axis type:">
           <RadioGroup onChange={_onAxisTypeChange}>

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated the legends testcase.",
+  "packageName": "@fluentui/react-charts-preview",
+  "email": "v-asurse@microsoft.com",
+  "dependentChangeType": "patch"
+}

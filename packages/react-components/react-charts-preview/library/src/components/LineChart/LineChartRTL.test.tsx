@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
-//import { DarkTheme } from '@fluentui/theme-samples';
+import { DarkTheme } from '@fluentui/theme-samples';
 import { DefaultPalette, ThemeProvider, resetIds } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
