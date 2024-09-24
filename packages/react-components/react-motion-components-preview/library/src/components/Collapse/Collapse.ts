@@ -123,7 +123,7 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
 
       // The enter transition is an array of 2 motion atoms: opacity and size.
       exit: [
-        // Fade out first (if delay > 0)
+        // Fade out first (if exitDelay > 0)
         {
           keyframes: [{ opacity: toOpacity }, { opacity: fromOpacity }],
           duration: exitOpacityDuration,

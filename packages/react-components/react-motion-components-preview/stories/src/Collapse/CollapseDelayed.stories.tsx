@@ -10,8 +10,10 @@ const useClasses = makeStyles({
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: '20px 10px',
   },
-  card: {
+  cardWrapper: {
     gridArea: 'card',
+  },
+  card: {
     padding: '20px',
     backgroundColor: tokens.colorNeutralBackground6,
   },
@@ -51,8 +53,10 @@ export const Delayed = () => {
       </div>
 
       <CollapseDelayed visible={visible} unmountOnExit>
-        <div className={classes.card}>
-          <LoremIpsum />
+        <div className={classes.cardWrapper}>
+          <div className={classes.card}>
+            <LoremIpsum />
+          </div>
         </div>
       </CollapseDelayed>
     </div>

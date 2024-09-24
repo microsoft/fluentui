@@ -8,15 +8,16 @@ const useClasses = makeStyles({
     gridTemplate: `"controls ." "card card" / 1fr 1fr`,
     gap: '20px 10px',
   },
-  card: {
+  cardWrapper: {
     gridArea: 'card',
+  },
+  card: {
     padding: '20px',
     backgroundColor: tokens.colorNeutralBackground6,
   },
   controls: {
     display: 'flex',
     flexDirection: 'column',
-    gridArea: 'controls',
 
     border: `${tokens.strokeWidthThicker} solid ${tokens.colorNeutralForeground3}`,
     borderRadius: tokens.borderRadiusMedium,
@@ -49,8 +50,10 @@ export const Default = () => {
       </div>
 
       <Collapse visible={visible} unmountOnExit>
-        <div className={classes.card}>
-          <LoremIpsum />
+        <div className={classes.cardWrapper}>
+          <div className={classes.card}>
+            <LoremIpsum />
+          </div>
         </div>
       </Collapse>
     </div>
