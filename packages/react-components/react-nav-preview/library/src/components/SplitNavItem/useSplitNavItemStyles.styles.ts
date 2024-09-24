@@ -27,7 +27,9 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
   const styles = useStyles();
   state.root.className = mergeClasses(splitNavItemClassNames.root, styles.root, state.root.className);
 
-  state.secondaryActionButton.className = mergeClasses(splitNavItemClassNames.secondaryActionButton);
+  if (state.secondaryActionButton) {
+    state.secondaryActionButton.className = mergeClasses(splitNavItemClassNames.secondaryActionButton);
+  }
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
