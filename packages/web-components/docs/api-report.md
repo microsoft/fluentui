@@ -4266,6 +4266,30 @@ export const ValidationFlags: {
 // @public (undocumented)
 export type ValidationFlags = ValuesOf<typeof ValidationFlags>;
 
+// @public
+export const zIndexBackground = "var(--zIndexBackground)";
+
+// @public
+export const zIndexContent = "var(--zIndexContent)";
+
+// @public
+export const zIndexDebug = "var(--zIndexDebug)";
+
+// @public
+export const zIndexFloating = "var(--zIndexFloating)";
+
+// @public
+export const zIndexMessages = "var(--zIndexMessages)";
+
+// @public
+export const zIndexOverlay = "var(--zIndexOverlay)";
+
+// @public
+export const zIndexPopup = "var(--zIndexPopup)";
+
+// @public
+export const zIndexPriority = "var(--zIndexPriority)";
+
 // Warnings were encountered during analysis:
 //
 // dist/dts/accordion-item/accordion-item.d.ts:11:5 - (ae-forgotten-export) The symbol "StaticallyComposableHTML" needs to be exported by the entry point index.d.ts

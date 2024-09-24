@@ -153,6 +153,8 @@ export const styles = css`
     :host(:hover) {
       --color: HighlightText;
       --background-color: Highlight;
+
+      forced-color-adjust: none;
     }
 
     :host(${multipleState}:hover) {
