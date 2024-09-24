@@ -32,6 +32,7 @@ export default {
       control: 'select',
       description: 'Indicates the styled appearance of the button.',
       options: ['', ...Object.values(AnchorButtonAppearance)],
+      mapping: { '': null, ...AnchorButtonAppearance },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AnchorButtonAppearance).join('|') },
@@ -41,6 +42,7 @@ export default {
       control: 'select',
       description: 'Indicates the shape of the button.',
       options: ['', ...Object.values(AnchorButtonShape)],
+      mapping: { '': null, ...AnchorButtonShape },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AnchorButtonShape).join('|') },
@@ -115,6 +117,7 @@ export default {
       control: 'select',
       description: 'The size of the button.',
       options: ['', ...Object.values(AnchorButtonSize)],
+      mapping: { '': null, ...AnchorButtonSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AnchorButtonSize).join('|') },
@@ -140,6 +143,8 @@ export default {
     },
   },
 } as Meta<FluentAnchorButton>;
+
+export const Default: Story = {};
 
 export const Appearance: Story = {
   render: renderComponent(html<StoryArgs<FluentAnchorButton>>`
