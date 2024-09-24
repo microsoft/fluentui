@@ -188,26 +188,28 @@ const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, Co
     };
   };
 
-export const createCollapseComponent = (options: CollapseVariantOptions = {}) => {
-  return createPresenceComponent(createCollapsePresence(options));
-};
-
 /** A React component that applies collapse/expand transitions to its child content. */
-export const Collapse = createCollapseComponent();
+export const Collapse = createPresenceComponent(createCollapsePresence());
 
-export const CollapseSnappy = createCollapseComponent({
-  enterSizeDuration: durationUltraFast,
-});
+export const CollapseSnappy = createPresenceComponent(
+  createCollapsePresence({
+    enterSizeDuration: durationUltraFast,
+  }),
+);
 
-export const CollapseExaggerated = createCollapseComponent({
-  enterSizeDuration: durationSlower,
-  enterOpacityDuration: durationNormal,
-});
+export const CollapseExaggerated = createPresenceComponent(
+  createCollapsePresence({
+    enterSizeDuration: durationSlower,
+    enterOpacityDuration: durationNormal,
+  }),
+);
 
-export const CollapseDelayed = createCollapseComponent({
-  enterSizeDuration: durationNormal,
-  enterOpacityDuration: durationSlower,
-  enterDelay: durationNormal,
-  exitDelay: durationSlower,
-  enterEasing: curveEasyEase,
-});
+export const CollapseDelayed = createPresenceComponent(
+  createCollapsePresence({
+    enterSizeDuration: durationNormal,
+    enterOpacityDuration: durationSlower,
+    enterDelay: durationNormal,
+    exitDelay: durationSlower,
+    enterEasing: curveEasyEase,
+  }),
+);
