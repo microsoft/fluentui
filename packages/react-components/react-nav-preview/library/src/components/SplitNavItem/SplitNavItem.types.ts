@@ -1,7 +1,10 @@
+import { ButtonProps } from '@fluentui/react-button';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type SplitNavItemSlots = {
   root: Slot<'div'>;
+
+  secondaryActionButton?: Slot<ButtonProps>;
 };
 
 /**

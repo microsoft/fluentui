@@ -13,6 +13,7 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
+  SplitNavItem,
 } from '@fluentui/react-nav-preview';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
@@ -122,6 +123,8 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
             Contoso HR
           </AppItem>
+          {/* icon: <Person20Filled />  why does adding this to SecondaryActionButton hang???*/}
+          <SplitNavItem secondaryActionButton={{}}>Split Nav Item</SplitNavItem>{' '}
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -152,7 +155,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<Interviews />} value="9">
             Interviews
           </NavItem>
-
           <NavSectionHeader>Benefits</NavSectionHeader>
           <NavItem icon={<HealthPlans />} value="10">
             Health Plans
@@ -170,7 +172,6 @@ export const NavDrawerDefault = (props: Partial<NavDrawerProps>) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
-
           <NavSectionHeader>Learning</NavSectionHeader>
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs

@@ -4,8 +4,7 @@ import type { SplitNavItemSlots, SplitNavItemState } from './SplitNavItem.types'
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
-  // TODO: add class names for all slots on SplitNavItemSlots.
-  // Should be of the form `<slotName>: 'fui-SplitNavItem__<slotName>`
+  secondaryActionButton: 'fui-SplitNavItem-secondaryActionButton',
 };
 
 /**

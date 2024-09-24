@@ -11,5 +11,5 @@ export const renderSplitNavItem_unstable = (state: SplitNavItemState) => {
   assertSlots<SplitNavItemSlots>(state);
 
   // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return <state.root>{state.secondaryActionButton && <state.secondaryActionButton />}Hello Split Nav Item</state.root>;
 };
