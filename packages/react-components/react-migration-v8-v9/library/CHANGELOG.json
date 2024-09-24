@@ -2,6 +2,42 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2024 12:40:14 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.32",
+      "version": "9.6.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "fix: cleanup production dependencies and fix forbidden sub-package import within Menu"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.54.16",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2024 00:49:25 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.6.31",
+      "version": "9.6.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.54.15",
+            "commit": "4fb90db6bb9acc89064037a0237b424fe9745c15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Sep 2024 10:19:12 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.6.30",
       "version": "9.6.30",

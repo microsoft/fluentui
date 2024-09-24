@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-carousel-preview
 
-This log was last generated on Tue, 10 Sep 2024 10:19:05 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Sep 2024 12:40:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.5.0)
+
+Mon, 23 Sep 2024 12:40:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel-preview_v0.4.0..@fluentui/react-carousel-preview_v0.5.0)
+
+### Minor changes
+
+- feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons ([PR #32844](https://github.com/microsoft/fluentui/pull/32844) by mifraser@microsoft.com)
+- Bump @fluentui/react-aria to v9.13.6 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-button to v9.3.91 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.67 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.44 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.20.1 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-tabster to v9.22.7 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-theme to v9.1.20 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+- Bump @fluentui/react-utilities to v9.18.15 ([PR #32840](https://github.com/microsoft/fluentui/pull/32840) by beachball)
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.4.0)
+
+Fri, 13 Sep 2024 00:49:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel-preview_v0.3.0..@fluentui/react-carousel-preview_v0.4.0)
+
+### Minor changes
+
+- feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards ([PR #32457](https://github.com/microsoft/fluentui/pull/32457) by mifraser@microsoft.com)
+
+### Patches
+
+- chore: cleanup before the release ([PR #32475](https://github.com/microsoft/fluentui/pull/32475) by olfedias@microsoft.com)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.3.0)
 

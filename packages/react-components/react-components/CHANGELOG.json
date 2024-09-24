@@ -2,6 +2,170 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 Sep 2024 12:40:11 GMT",
+      "tag": "@fluentui/react-components_v9.54.16",
+      "version": "9.54.16",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: reflect package.json dependencies to match actual dep graph"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-list-preview",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tag-picker",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: add missing workspace scripts-cypress devDependencies"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "chore: reflect package.json dependencies to match actual dep graph"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "fc047998ed363987204af9a9c3f635eee9cee827",
+            "comment": "feat: Handle nav disabled behavior and provide index based aria labels for next/prev buttons"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "c189a92730fbf4befd28fad97fc27638c277207d",
+            "comment": "Scaffolds SplitNavItem"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-nav-preview",
+            "commit": "8506c117c51567b6dbf80c7e607873eb73de6452",
+            "comment": " [BREAKING] Removed non functional reserveSelectedNavItemSpace prop. Added defaultOpenCategories and openCategories prop and example. Updated icon selection logic for NavCategoryItem. Exports OnNavItemSelectData."
+          }
+        ],
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b5f5ef08d2c36a64df628036bb91aad46409169f",
+            "comment": "fix: add correct direction of animations when RTL"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1a4a95e350f578f8296815771baaebb30ddaf642",
+            "comment": "fix(Menu): Do not rely on tabster restorer for focus restore"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "680bbaa62078586041345efb41c662a7f5d65bfa",
+            "comment": "fix: cleanup production dependencies and fix forbidden sub-package import within Menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "de8118d071983fdc372b1ea24535c38f85e474b9",
+            "comment": "feat: add z-index tokens"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Sep 2024 00:49:23 GMT",
+      "tag": "@fluentui/react-components_v9.54.15",
+      "version": "9.54.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "609b363c61459e55dcf94a68389be72d69d9c364",
+            "comment": "chore: cleanup before the release"
+          },
+          {
+            "author": "owcampbe@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "01cacb057bff35f4bb6ba047386af808f9d529a0",
+            "comment": "fix: Adjust window height comparison in fractional cases."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "db57a7b60c6f80262c3c51c04ee04c6a62c019b1",
+            "comment": "fix: update scroll state when children changes"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "bcefcd087e61971c60bf1a699653646352167ae4",
+            "comment": "fix: apply position: absolute when mountNode is passed"
+          }
+        ],
+        "minor": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-carousel-preview",
+            "commit": "5a5fbd3b9d1012f5c6106221a4fbd8b3bfa267f7",
+            "comment": "feat: Add CarouselNavContainer for easy layout options, add missing exports and cleanup focus behavior of multiple cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Sep 2024 10:19:04 GMT",
       "tag": "@fluentui/react-components_v9.54.14",
       "version": "9.54.14",

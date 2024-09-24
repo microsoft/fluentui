@@ -59,13 +59,15 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     return nextPageIndex;
   });
 
+  const mergedRefs = useMergedRefs(ref, containerRef);
+
   return {
     components: {
       root: 'div',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
-        ref: useMergedRefs(ref, containerRef),
+        ref: mergedRefs,
         role: 'region',
         ...props,
       }),
@@ -74,6 +76,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     activeIndex,
     circular,
+    containerRef: mergedRefs,
     selectPageByElement,
     selectPageByDirection,
     selectPageByIndex,

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: cleanup before the release",
-  "packageName": "@fluentui/react-carousel-preview",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

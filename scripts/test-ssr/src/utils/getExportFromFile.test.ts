@@ -34,7 +34,7 @@ export const Bar = () => <div>Bar</div>
     await fs.promises.mkdir(storiesDir, { recursive: true });
     await fs.promises.writeFile(moduleFile, template);
 
-    await expect(getExportFromFile(filesDir, moduleFile)).rejects.toThrowError(
+    await expect(getExportFromFile(filesDir, moduleFile)).rejects.toThrow(
       'Multiple exports from a single file are not supported',
     );
   });
@@ -51,8 +51,6 @@ export { Foo, Bar } from './foo';
     await fs.promises.mkdir(storiesDir, { recursive: true });
     await fs.promises.writeFile(moduleFile, template);
 
-    await expect(getExportFromFile(filesDir, moduleFile)).rejects.toThrowError(
-      'has an incorrect location a directory name',
-    );
+    await expect(getExportFromFile(filesDir, moduleFile)).rejects.toThrow('has an incorrect location a directory name');
   });
 });
