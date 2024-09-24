@@ -31,6 +31,7 @@ export class ChoiceGroupBasicExample extends React.Component<{}, IChoiceGroupBas
             {
               key: 'B',
               text: 'Option B',
+              ariaLabel: 'Custom aria-label'
             },
             {
               key: 'C',

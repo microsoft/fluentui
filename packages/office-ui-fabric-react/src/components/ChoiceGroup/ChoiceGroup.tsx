@@ -31,7 +31,7 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
   private _labelId: string;
   private _inputElement = createRef<HTMLInputElement>();
 
-  constructor(props: IChoiceGroupProps, ) {
+  constructor(props: IChoiceGroupProps,) {
     super(props);
 
     this._warnDeprecations({ 'onChanged': 'onChange' });
@@ -122,7 +122,8 @@ export class ChoiceGroup extends BaseComponent<IChoiceGroupProps, IChoiceGroupSt
                       onChange={ this._onChange.bind(this, option) }
                       onFocus={ this._onFocus.bind(this, option) }
                       onBlur={ this._onBlur.bind(this, option) }
-                      aria-labelledby={ option.labelId }
+                      aria-labelledby={ option.ariaLabel ? undefined : option.labelId }
+                      aria-label={ option.ariaLabel }
                       { ...getNativeProps(option, inputProperties) }
                     />
                     { onRenderField(option, this._onRenderField) }
