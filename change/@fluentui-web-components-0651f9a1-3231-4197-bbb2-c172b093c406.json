@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add support for custom icons and colors to rating-display",
+  "packageName": "@fluentui/web-components",
+  "email": "mlijanto@microsoft.com",
+  "dependentChangeType": "patch"
+}
