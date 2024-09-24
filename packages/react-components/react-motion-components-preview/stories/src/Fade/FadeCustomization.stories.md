@@ -1,7 +1,7 @@
 - `duration` and `easing` can be customized for each transition separately using `createPresenceComponentVariant()`.
 
 ```tsx
-import { motionTokens, createPresenceComponentVariant } from '@fluentui/react-components';
+import { motionTokens, createPresenceComponent } from '@fluentui/react-components';
 import { createFadePresence } from '@fluentui/react-motion-components-preview';
 
 const CustomFadeVariant = createPresenceComponent(

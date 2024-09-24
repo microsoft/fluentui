@@ -69,7 +69,7 @@ type CollapseRuntimeParams = {
  * - `orientation` (optional): The orientation of the size animation. Defaults to `'vertical'`.
  * - `animateOpacity` (optional): Whether to animate the opacity. Defaults to `true`.
  */
-const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams> =
+export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams> =
   ({
     // duration
     enterSizeDuration = durationNormal,
