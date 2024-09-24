@@ -340,7 +340,8 @@ export const Selector = () => {
 
     console.log(`selectedComponents: ${selectedComponents}`);
 
-    if (selectedComponents && selectedComponents.length > 0) {
+    // if there is already selected any behavior ignore component selection
+    if (selectedComponents && selectedComponents.length > 0 && selectedBehaviours.length === 0) {
       selectedComponents.forEach(componentName => {
         const component = getComponentByName(componentName);
         // console.log(`PUSH component name: ${component.name}`);
@@ -394,21 +395,13 @@ export const Selector = () => {
     return definitionsWithDisplayName;
   };
 
-  const onSelectionChange = (event, data, name) => {
-    if (data?.checked === undefined) {
-      console.log(`onSelectionChange undefined`);
-      console.log(`onSelectionChange: undefined: selectedComponents: ${selectedComponents}`);
-      return;
-    }
-    if (data.checked) {
-      console.log(`onSelectionChange: TRUE: selectedComponents: ${selectedComponents}`);
-      console.log(`onSelectionChange: TRUE: name : ${name}`);
-      setSelectedComponents([...selectedComponents, name]);
-    } else {
-      console.log(`onSelectionChange: FALSE:  ${name}`);
-      setSelectedComponents(selectedComponents.filter(component => component !== name));
-    }
+  const addComponent = name => {
+    console.log(`addComponent: ${name}`);
+    console.log(`selectedComponents: ${selectedComponents}`);
+    setSelectedComponents([...selectedComponents, name]);
   };
+
+  // setSelectedComponents(selectedComponents.filter(component => component !== name));
 
   const componentsToDisplay = namesOfComponents().map(definitionsWithDisplayName => (
     <>
@@ -416,7 +409,7 @@ export const Selector = () => {
         displayName={definitionsWithDisplayName.displayName}
         name={definitionsWithDisplayName.name}
         image={definitionsWithDisplayName.img}
-        onChange={onSelectionChange}
+        addComponent={addComponent}
       />
     </>
   ));

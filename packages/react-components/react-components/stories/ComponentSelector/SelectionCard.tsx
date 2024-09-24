@@ -65,7 +65,10 @@ export const SelectionCard = props => {
       setCheckboxState(state, setSelected);
       console.log('------- onchange called');
       state && state.checked && console.log('card state', state.checked);
-      props.onChange(_, state, props.name);
+
+      if (state?.checked === true || state?.selected === true) {
+        props.addComponent(props.name);
+      }
     },
     [setCheckboxState],
   );
@@ -78,11 +81,11 @@ export const SelectionCard = props => {
         floatingAction={<Checkbox onChange={onSelectedCardChange} checked={selected} />}
         selected={selected}
         onSelectionChange={onSelectedCardChange}
-        onMouseOver={() => setHovered(true)}
-        onMouseOut={() => setHovered(false)}
+        // onMouseOver={() => setHovered(true)}
+        // onMouseOut={() => setHovered(false)}
       >
         <CardHeader
-          header={<Text weight="semibold">BASIC INPUTS</Text>}
+          // header={<Text weight="semibold">BASIC INPUTS</Text>}
           description={<Caption1 className={styles.caption}>{props.displayName}</Caption1>}
         />
         <CardPreview className={styles.grayBackground}>
