@@ -58,12 +58,6 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
   whitespace?: boolean;
 
   /**
-   * Sets the polite value for carousel aria live announcements
-   * Defaults to: true
-   */
-  polite?: boolean;
-
-  /**
    * Localizes the string used to announce carousel page changes
    * Defaults to: undefined
    */

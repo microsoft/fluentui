@@ -11,7 +11,7 @@ import * as React from 'react';
 import type { CarouselProps, CarouselState } from './Carousel.types';
 import type { CarouselContextValue } from '../CarouselContext.types';
 import { useEmblaCarousel } from '../useEmblaCarousel';
-import { useAriaLiveAnnouncer_unstable } from '@fluentui/react-aria';
+import { useAnnounce } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Carousel.
@@ -32,7 +32,6 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
     groupSize = 'auto',
     draggable = false,
     whitespace = false,
-    polite = true,
     announcement,
   } = props;
 
@@ -76,7 +75,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   const totalNavLength = React.useRef<number>(0);
   const navGroupRef = React.useRef<number[][]>([]);
 
-  const { announce } = useAriaLiveAnnouncer_unstable(props);
+  const { announce } = useAnnounce();
 
   const updateAnnouncement = useEventCallback(() => {
     if (totalNavLength.current <= 0 || !announcement) {
@@ -86,17 +85,19 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
 
     const announcementText = announcement(activeIndex, totalNavLength.current, navGroupRef.current);
 
-    if (announcementTextRef.current === '') {
-      // The first valid announcement text will be set, but ignored (page load)
+    if (announcementText !== announcementTextRef.current) {
       announcementTextRef.current = announcementText;
-    } else if (announcementText !== announcementTextRef.current) {
-      announcementTextRef.current = announcementText;
-      announce(announcementText, { polite });
+      announce(announcementText, { polite: true });
     }
   });
 
   useIsomorphicLayoutEffect(() => {
     return subscribeForValues(data => {
+      if (totalNavLength.current <= 0 && data.navItemsCount > 0 && announcement) {
+        const announcementText = announcement(activeIndex, data.navItemsCount, data.groupIndexList);
+        // Initialize our string to prevent updateAnnouncement from reading an initial load
+        announcementTextRef.current = announcementText;
+      }
       totalNavLength.current = data.navItemsCount;
       navGroupRef.current = data.groupIndexList;
       updateAnnouncement();
