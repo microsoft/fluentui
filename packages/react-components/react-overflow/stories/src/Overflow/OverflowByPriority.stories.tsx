@@ -75,6 +75,29 @@ export const OverflowByPriority = () => {
     [setPills],
   );
 
+  const renderFunction: React.ComponentProps<typeof Overflow>['children'] = props => {
+    console.log('renderFunction', props.ref);
+    return (
+      <>
+        <div {...props} className={mergeClasses(props?.className, classes.container)}>
+          {pills.map(pill => (
+            <OverflowItem key={pill.id} id={pill.id} priority={pill.selected ? 1 : 0}>
+              <ToggleButton
+                appearance={pill.selected ? 'primary' : undefined}
+                shape="circular"
+                checked={pill.selected}
+                onClick={onPillClick}
+              >
+                {pill.id}
+              </ToggleButton>
+            </OverflowItem>
+          ))}
+        </div>
+        <OverflowContainer pills={pills} onPillClick={onPillClick} />
+      </>
+    );
+  };
+
   return (
     <>
       <div>
@@ -93,27 +116,9 @@ export const OverflowByPriority = () => {
         </ul>
       </div>
       <div className={mergeClasses(classes.resizableArea)}>
+        {/* <ToggleButton>{renderFunction}</ToggleButton> */}
         <Toolbar style={{ display: 'block' }}>
-          <Overflow
-            container={
-              <div className={mergeClasses(classes.container)}>
-                {pills.map(pill => (
-                  <OverflowItem key={pill.id} id={pill.id} priority={pill.selected ? 1 : 0}>
-                    <ToggleButton
-                      appearance={pill.selected ? 'primary' : undefined}
-                      shape="circular"
-                      checked={pill.selected}
-                      onClick={onPillClick}
-                    >
-                      {pill.id}
-                    </ToggleButton>
-                  </OverflowItem>
-                ))}
-              </div>
-            }
-          >
-            <OverflowContainer pills={pills} onPillClick={onPillClick} />
-          </Overflow>
+          <Overflow>{renderFunction}</Overflow>
         </Toolbar>
       </div>
     </>
@@ -134,7 +139,7 @@ const OverflowContainer: React.FC<{ pills: Pill[]; onPillClick: React.MouseEvent
   return (
     <div className={classes.overflowContainer}>
       {pills.map(pill => {
-        return <OverflowToolbarItem pill={pill} onPillClick={onPillClick} />;
+        return <OverflowToolbarItem key={pill.id} pill={pill} onPillClick={onPillClick} />;
       })}
     </div>
   );
