@@ -21,6 +21,10 @@ const storyTemplate = html<StoryArgs<FluentAccordionItem>>`
 export default {
   title: 'Components/Accordion/AccordionItem',
   render: renderComponent(storyTemplate),
+  args: {
+    headingSlottedContent: () => html`<span slot="heading">Accordion Item</span>`,
+    slottedContent: () => 'Content',
+  },
   argTypes: {
     disabled: {
       control: 'boolean',
@@ -54,6 +58,7 @@ export default {
       description: 'Controls the size of the Accordion Item.',
       name: 'size',
       options: ['', ...Object.values(AccordionItemSize)],
+      mapping: { '': null, ...AccordionItemSize },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemSize).join('|') },
@@ -64,6 +69,7 @@ export default {
       description: 'Controls the position of the marker.',
       name: 'marker-position',
       options: ['', ...Object.values(AccordionItemMarkerPosition)],
+      mapping: { '': null, ...AccordionItemMarkerPosition },
       table: {
         category: 'attributes',
         type: { summary: Object.values(AccordionItemMarkerPosition).join('|') },
@@ -92,6 +98,8 @@ export default {
     },
   },
 } as Meta<FluentAccordionItem>;
+
+export const Default: Story = {};
 
 export const AccordionItem: Story = {
   args: {

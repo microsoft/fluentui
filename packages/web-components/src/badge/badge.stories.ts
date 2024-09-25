@@ -30,6 +30,7 @@ export default {
     appearance: {
       description: 'Sets the appearance of the badge to one of the predefined styles',
       options: Object.values(BadgeAppearance),
+      mapping: { '': null, ...BadgeAppearance },
       control: 'select',
       table: {
         category: 'attributes',
@@ -39,6 +40,7 @@ export default {
     color: {
       description: 'Sets the color of the badge to one of the predefined colors',
       options: Object.values(BadgeColor),
+      mapping: { '': null, ...BadgeColor },
       control: 'select',
       table: {
         category: 'attributes',
@@ -48,6 +50,7 @@ export default {
     shape: {
       description: 'Sets the shape of the badge to one of the predefined shapes',
       options: Object.values(BadgeShape),
+      mapping: { '': null, ...BadgeShape },
       control: 'select',
       table: {
         category: 'attributes',
@@ -57,6 +60,7 @@ export default {
     size: {
       description: 'Sets the size of the badge to one of the predefined sizes',
       options: Object.values(BadgeSize),
+      mapping: { '': null, ...BadgeSize },
       control: 'select',
       table: {
         category: 'attributes',
@@ -83,6 +87,8 @@ export default {
     },
   },
 } as Meta<FluentBadge>;
+
+export const Default: Story = {};
 
 export const SlottedContent: Story = {
   args: {

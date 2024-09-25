@@ -22,7 +22,9 @@ initializeIcons(/* optional base url */);
 
 ### Alternative CDN options
 
-By default, the icon fonts for the default set of icons will be pulled from the SharePoint CDN. The default endpoint is `spoprod-a.akamaihd.net`, but if you run into access/security issues from the Akamai domain, you can also pass in `https://static2.sharepointonline.com/files/fabric/assets/icons/` as the `baseUrl`.
+By default, the icon fonts for the default set of icons will be pulled from the SharePoint CDN. The default endpoint is `spoprod-a.akamaihd.net`, but if you run into access/security issues from the Akamai domain you can also use top level domain `res-1.cdn.office.net` or `res-2.cdn.office.net` for the `baseUrl`.
+
+> Note that CDN endpoints are immutable so your baseURL will have a file path like `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/`
 
 If you would like the icons to be served from your own CDN, simply copy the files from `@uifabric/icons/fonts` (or `@fluentui/font-icons-mdl2/fonts` in version 8+) to your CDN. A build step is recommended to automate this. Then, in `initializeIcons`, provide the base URL to access those fonts. Note that it will require a trailing slash.
 

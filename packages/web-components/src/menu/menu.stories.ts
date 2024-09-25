@@ -1,131 +1,114 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Menu as FluentMenu } from './menu.js';
 
-type MenuStoryArgs = Args & FluentMenu;
-type MenuStoryMeta = Meta<MenuStoryArgs>;
+type Story = StoryObj<FluentMenu>;
 
-const storyTemplate = html<MenuStoryArgs>`
-  <style>
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  </style>
+const defaultSlottedContent = html`
+  <fluent-menu-list>
+    <fluent-menu-item>Menu item 1</fluent-menu-item>
+    <fluent-menu-item>Menu item 2</fluent-menu-item>
+    <fluent-menu-item>Menu item 3</fluent-menu-item>
+    <fluent-menu-item>Menu item 4</fluent-menu-item>
+  </fluent-menu-list>
+`;
+
+const defaultTriggerSlottedContent = html`<fluent-menu-button
+  aria-label="Toggle Menu"
+  appearance="primary"
+  slot="trigger"
+  >Toggle Menu</fluent-menu-button
+>`;
+
+const storyTemplate = html<StoryArgs<FluentMenu>>`
   <fluent-menu
-    ?open-on-hover="${x => x.openOnHover}"
-    ?open-on-context="${x => x.openOnContext}"
-    ?close-on-scroll="${x => x.closeOnScroll}"
-    ?persist-on-item-click="${x => x.persistOnItemClick}"
+    ?open-on-hover="${story => story.openOnHover}"
+    ?open-on-context="${story => story.openOnContext}"
+    ?close-on-scroll="${story => story.closeOnScroll}"
+    ?persist-on-item-click="${story => story.persistOnItemClick}"
+    style="${story => (story['--menu-max-height'] !== '' ? `--menu-max-height: ${story['--menu-max-height']};` : '')}"
   >
-    <fluent-menu-button aria-label="Toggle Menu" appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
-    <fluent-menu-list>
-      <fluent-menu-item>Menu item 1</fluent-menu-item>
-      <fluent-menu-item>Menu item 2</fluent-menu-item>
-      <fluent-menu-item>Menu item 3</fluent-menu-item>
-      <fluent-menu-item>Menu item 4</fluent-menu-item>
-    </fluent-menu-list>
+    ${story => story.triggerSlottedContent?.()} ${story => story.slottedContent?.()}
   </fluent-menu>
 `;
 
 export default {
   title: 'Components/Menu',
+  render: renderComponent(storyTemplate),
   args: {
-    openOnHover: false,
-    openOnContext: false,
-    closeOnScroll: false,
-    persistOnItemClick: false,
+    slottedContent: () => defaultSlottedContent,
+    triggerSlottedContent: () => defaultTriggerSlottedContent,
+    '--menu-max-height': 'auto',
   },
   argTypes: {
     openOnHover: {
-      description: 'Sets whether menu opens on hover',
-      table: {
-        defaultValue: { summary: false },
-      },
       control: 'boolean',
-      defaultValue: false,
+      description: 'Sets whether menu opens on hover',
+      name: 'open-on-hover',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     openOnContext: {
       description: 'Opens the menu on right click (context menu), removes all other menu open interactions',
-      table: {
-        defaultValue: { summary: false },
-      },
       control: 'boolean',
-      defaultValue: false,
+      name: 'open-on-context',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     closeOnScroll: {
       description: 'Close when scroll outside of it',
-      table: {
-        defaultValue: { summary: false },
-      },
       control: 'boolean',
-      defaultValue: false,
+      name: 'close-on-scroll',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
     },
     persistOnItemClick: {
       description: 'Prevents the menu from closing when an item is clicked',
-      table: {
-        defaultValue: { summary: false },
-      },
       control: 'boolean',
-      defaultValue: false,
+      name: 'persist-on-item-click',
+      table: { category: 'attributes', type: { summary: 'boolean' } },
+    },
+    '--menu-max-height': {
+      control: 'text',
+      description: 'Sets the max height of the menu, e.g. 300px',
+      required: false,
+      table: {
+        category: 'CSS Custom Properties',
+      },
     },
   },
-} as MenuStoryMeta;
+} as Meta<FluentMenu>;
 
-export const Menu = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
 
-export const MenuOpenOnHover = renderComponent(html<MenuStoryArgs>`
-  <div class="container">
-    <fluent-menu open-on-hover>
-      <fluent-menu-button aria-label="Toggle Menu" appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    </fluent-menu>
-  </div>
-`);
+export const MenuOpenOnHover: Story = {
+  args: {
+    openOnHover: true,
+  },
+};
 
-export const MenuOpenOnContext = renderComponent(html<MenuStoryArgs>`
-  <div class="container">
-    <fluent-menu open-on-context>
-      <fluent-menu-button aria-label="Toggle Menu" appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-      </fluent-menu-list>
-    </fluent-menu>
-  </div>
-`);
+export const MenuOpenOnContext: Story = {
+  args: {
+    openOnContext: true,
+  },
+};
 
-export const MenuWithMaxHeight = renderComponent(html<MenuStoryArgs>`
-  <div class="container">
-    <fluent-menu style="--menu-max-height: 10rem">
-      <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
-      <fluent-menu-list>
-        <fluent-menu-item>Menu item 1</fluent-menu-item>
-        <fluent-menu-item>Menu item 2</fluent-menu-item>
-        <fluent-menu-item>Menu item 3</fluent-menu-item>
-        <fluent-menu-item>Menu item 4</fluent-menu-item>
-        <fluent-menu-item>Menu item 5</fluent-menu-item>
-        <fluent-menu-item>Menu item 6</fluent-menu-item>
-        <fluent-menu-item>Menu item 7</fluent-menu-item>
-        <fluent-menu-item>Menu item 8</fluent-menu-item>
-      </fluent-menu-list>
-    </fluent-menu>
-  </div>
-`);
+export const MenuWithMaxHeight: Story = {
+  args: {
+    '--menu-max-height': '10rem',
+    slottedContent: () => html`<fluent-menu-list>
+      <fluent-menu-item>Menu item 1</fluent-menu-item>
+      <fluent-menu-item>Menu item 2</fluent-menu-item>
+      <fluent-menu-item>Menu item 3</fluent-menu-item>
+      <fluent-menu-item>Menu item 4</fluent-menu-item>
+      <fluent-menu-item>Menu item 5</fluent-menu-item>
+      <fluent-menu-item>Menu item 6</fluent-menu-item>
+      <fluent-menu-item>Menu item 7</fluent-menu-item>
+      <fluent-menu-item>Menu item 8</fluent-menu-item>
+    </fluent-menu-list>`,
+  },
+};
 
-export const MenuWithInteractiveItems = renderComponent(html<MenuStoryArgs>`
-  <div class="container">
-    <fluent-menu>
-      <fluent-menu-button appearance="primary" slot="trigger">Toggle Menu</fluent-menu-button>
+export const MenuWithInteractiveItems: Story = {
+  args: {
+    slottedContent: () => html`
       <fluent-menu-list>
         <fluent-menu-item>
           Item 1
@@ -147,6 +130,6 @@ export const MenuWithInteractiveItems = renderComponent(html<MenuStoryArgs>`
         <fluent-menu-item>Menu item 7</fluent-menu-item>
         <fluent-menu-item>Menu item 8</fluent-menu-item>
       </fluent-menu-list>
-    </fluent-menu>
-  </div>
-`);
+    `,
+  },
+};
