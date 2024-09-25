@@ -31,9 +31,11 @@ import type { EventData } from '@fluentui/react-utilities';
 import { EventHandler } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { MenuButtonProps } from '@fluentui/react-button';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { ToggleButtonProps } from '@fluentui/react-button';
 
 // @public
 export const AppItem: ForwardRefComponent<AppItemProps>;
@@ -391,15 +393,21 @@ export const SplitNavItem: ForwardRefComponent<SplitNavItemProps>;
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots>;
 
 // @public
-export type SplitNavItemProps = ComponentProps<SplitNavItemSlots> & {};
+export type SplitNavItemProps = ComponentProps<SplitNavItemSlots>;
 
 // @public (undocumented)
 export type SplitNavItemSlots = {
     root: Slot<'div'>;
+    primaryNavItem?: NonNullable<Slot<NavItemProps>>;
+    secondaryActionButton?: Slot<ButtonProps>;
+    secondaryToggleButton?: Slot<ToggleButtonProps>;
+    menuButton?: Slot<MenuButtonProps>;
 };
 
 // @public
-export type SplitNavItemState = ComponentState<SplitNavItemSlots>;
+export type SplitNavItemState = ComponentState<SplitNavItemSlots> & {
+    size: NavSize;
+};
 
 // @public
 export const useAppItem_unstable: (props: AppItemProps, ref: React_2.Ref<HTMLButtonElement | HTMLAnchorElement>) => AppItemState;
