@@ -16,7 +16,9 @@ enum ListboxAction {
   SELECT = 5,
 }
 
-function getAnchorPositioningCSS(anchorId: string, anchorName: string, listElementId: string): string {
+function getAnchorPositioningCSS(anchorId: string, listElementId: string): string {
+  const anchorName = `--${anchorId}`;
+
   return `
     [data-anchorid="${anchorId}"] {
       anchor-name: ${anchorName};
@@ -27,7 +29,6 @@ function getAnchorPositioningCSS(anchorId: string, anchorName: string, listEleme
       left: anchor(${anchorName} left);
       right: anchor(${anchorName} right);
       position: absolute;
-      position-try-fallbacks: flip-start;
     }
   `;
 }
@@ -71,7 +72,9 @@ export abstract class AbstractCombobox extends FASTElement {
 
     if (next && this.isFocusVisible) {
       next.active = true;
-      next.scrollIntoView({ block: 'nearest' });
+      if (SUPPORTS_ANCHOR_POSITIONING) {
+        next.scrollIntoView({ block: 'nearest' });
+      }
     }
 
     this.setAttribute('aria-activedescendant', next ? next.id : '');
@@ -572,9 +575,8 @@ export abstract class AbstractCombobox extends FASTElement {
     }
 
     this.dataset.anchorid = this.anchorId;
-    const anchorName = `--${this.anchorId}`;
 
-    const css = getAnchorPositioningCSS(this.anchorId, anchorName, this.listElement.id);
+    const css = getAnchorPositioningCSS(this.anchorId, this.listElement.id);
 
     if (SUPPORTS_ANCHOR_POSITIONING) {
       if (!this.anchorPositioningStyleSheet) {
