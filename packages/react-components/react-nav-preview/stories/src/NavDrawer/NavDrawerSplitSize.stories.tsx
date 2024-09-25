@@ -1,22 +1,33 @@
 import * as React from 'react';
 import {
   Hamburger,
-  NavCategory,
-  NavCategoryItem,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
   NavDrawerProps,
-  NavItem,
-  NavSectionHeader,
-  NavSubItem,
-  NavSubItemGroup,
   NavSize,
-  NavDivider,
   AppItem,
   AppItemStatic,
+  SplitNavItem,
+  SplitNavItemProps,
+  NavItemProps,
 } from '@fluentui/react-nav-preview';
-import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
+import {
+  Label,
+  Menu,
+  MenuButtonProps,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+  Radio,
+  RadioGroup,
+  Switch,
+  Tooltip,
+  makeStyles,
+  tokens,
+  useId,
+} from '@fluentui/react-components';
 import {
   Board20Filled,
   Board20Regular,
@@ -30,16 +41,10 @@ import {
   HeartPulse20Regular,
   MegaphoneLoud20Filled,
   MegaphoneLoud20Regular,
-  NotePin20Filled,
-  NotePin20Regular,
   People20Filled,
   People20Regular,
-  PeopleStar20Filled,
-  PeopleStar20Regular,
-  Person20Filled,
   PersonLightbulb20Filled,
   PersonLightbulb20Regular,
-  Person20Regular,
   PersonSearch20Filled,
   PersonSearch20Regular,
   PreviewLink20Filled,
@@ -47,6 +52,8 @@ import {
   bundleIcon,
   PersonCircle32Regular,
   PersonCircle24Regular,
+  Pin20Filled,
+  Pin20Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -71,21 +78,72 @@ const useStyles = makeStyles({
   },
 });
 
-const Person = bundleIcon(Person20Filled, Person20Regular);
 const Dashboard = bundleIcon(Board20Filled, Board20Regular);
 const Announcements = bundleIcon(MegaphoneLoud20Filled, MegaphoneLoud20Regular);
 const EmployeeSpotlight = bundleIcon(PersonLightbulb20Filled, PersonLightbulb20Regular);
 const Search = bundleIcon(PersonSearch20Filled, PersonSearch20Regular);
 const PerformanceReviews = bundleIcon(PreviewLink20Filled, PreviewLink20Regular);
-const JobPostings = bundleIcon(NotePin20Filled, NotePin20Regular);
 const Interviews = bundleIcon(People20Filled, People20Regular);
 const HealthPlans = bundleIcon(HeartPulse20Filled, HeartPulse20Regular);
 const TrainingPrograms = bundleIcon(BoxMultiple20Filled, BoxMultiple20Regular);
-const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
+const splitNavItems: SplitNavItemProps[] = [
+  {
+    primaryNavItem: { value: '1', icon: <Dashboard /> },
+    children: 'Dashboard',
+  },
+  {
+    primaryNavItem: { value: '2', icon: <Announcements /> },
+    children: 'Announcements',
+  },
+  {
+    primaryNavItem: { value: '3', icon: <EmployeeSpotlight /> },
+    children: 'Employee Spotlight',
+  },
+  {
+    primaryNavItem: { value: '4', icon: <Search /> },
+    children: 'Profile Search',
+  },
+  {
+    primaryNavItem: { value: '5', icon: <PerformanceReviews /> },
+    children: 'Performance Reviews',
+  },
+  {
+    primaryNavItem: { value: '9', icon: <Interviews /> },
+    children: 'Interviews',
+  },
+  {
+    primaryNavItem: { value: '10', icon: <HealthPlans /> },
+    children: 'Health Plans',
+  },
+  {
+    primaryNavItem: { value: '15', icon: <TrainingPrograms /> },
+    children: 'Training Programs',
+  },
+  {
+    primaryNavItem: { value: '19', icon: <Analytics /> },
+    children: 'Workforce Data',
+  },
+  {
+    primaryNavItem: { value: '20', icon: <Reports /> },
+    children: 'Reports',
+  },
+];
+
+const SomeMenuPopover = () => {
+  return (
+    <MenuPopover>
+      <MenuList>
+        <MenuItem>Item a</MenuItem>
+        <MenuItem>Item b</MenuItem>
+      </MenuList>
+    </MenuPopover>
+  );
+};
+
+export const NavDrawerSplitSize = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
@@ -97,6 +155,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
   const [enabledLinks, setEnabledLinks] = React.useState(true);
   const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
   const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
+  const [pinnedValues, setPinnedValues] = React.useState<string[]>([]);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
@@ -116,9 +175,43 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
     </AppItem>
   );
 
+  const handlePinClick = (value: string) => {
+    if (pinnedValues.includes(value)) {
+      setPinnedValues(pinnedValues.filter(v => v !== value));
+    } else {
+      setPinnedValues([...pinnedValues, value]);
+    }
+  };
+
+  const generateSplitNavItems = () => {
+    return splitNavItems.map((item: SplitNavItemProps, index) => {
+      const value: string = (item.primaryNavItem as NavItemProps).value;
+
+      return (
+        <Menu key={index} positioning="below-end">
+          <MenuTrigger>
+            {(triggerProps: MenuButtonProps) => (
+              <SplitNavItem
+                primaryNavItem={item.primaryNavItem}
+                secondaryToggleButton={{
+                  onClick: () => handlePinClick(value),
+                  icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin20Regular />,
+                }}
+                menuButton={triggerProps}
+              >
+                {item.children}
+              </SplitNavItem>
+            )}
+          </MenuTrigger>
+          <SomeMenuPopover />
+        </Menu>
+      );
+    });
+  };
+
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
+      <NavDrawer defaultSelectedValue="5" open={true} type={'inline'} size={size}>
         <NavDrawerHeader>
           <Tooltip content="Navigation" relationship="label">
             <Hamburger />
@@ -126,77 +219,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
         </NavDrawerHeader>
         <NavDrawerBody>
           {appItem}
-          <NavItem href={linkDestination} icon={<Dashboard />} value="1">
-            Dashboard sdf asdas asdasdsdfs sdfsdf
-          </NavItem>
-          <NavItem href={linkDestination} icon={<Announcements />} value="2">
-            Announcements
-          </NavItem>
-          <NavItem href={linkDestination} icon={<EmployeeSpotlight />} value="3">
-            Employee Spotlight
-          </NavItem>
-          <NavItem icon={<Search />} href={linkDestination} value="4">
-            Profile Search
-          </NavItem>
-          <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
-            Performance Reviews
-          </NavItem>
-
-          <NavSectionHeader>Employee Management</NavSectionHeader>
-          <NavCategory value="6">
-            <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="7">
-                Openings
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="8">
-                Submissions
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavItem icon={<Interviews />} value="9">
-            Interviews
-          </NavItem>
-
-          <NavSectionHeader>Benefits</NavSectionHeader>
-          <NavItem icon={<HealthPlans />} value="10">
-            Health Plans
-          </NavItem>
-          <NavCategory value="11">
-            <NavCategoryItem icon={<Person />} value="12">
-              Retirement
-            </NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="13">
-                Plan Information
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="14">
-                Fund Performance
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-
-          <NavDivider />
-          <NavItem icon={<TrainingPrograms />} value="15">
-            Training Programs
-          </NavItem>
-          <NavCategory value="16">
-            <NavCategoryItem icon={<CareerDevelopment />}>Career Development</NavCategoryItem>
-            <NavSubItemGroup>
-              <NavSubItem href={linkDestination} value="17">
-                Career Paths
-              </NavSubItem>
-              <NavSubItem href={linkDestination} value="18">
-                Planning
-              </NavSubItem>
-            </NavSubItemGroup>
-          </NavCategory>
-          <NavItem target="_blank" icon={<Analytics />} value="19">
-            Workforce Data
-          </NavItem>
-          <NavItem href={linkDestination} icon={<Reports />} value="20">
-            Reports
-          </NavItem>
+          {generateSplitNavItems()}
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
