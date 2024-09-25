@@ -260,7 +260,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   copilot: {
     extensions: ['copilot'],
-  }
+  },
   /*  css: {},  not broken out yet, snapping to 'code' for now */
   csv: {
     extensions: ['csv'],
