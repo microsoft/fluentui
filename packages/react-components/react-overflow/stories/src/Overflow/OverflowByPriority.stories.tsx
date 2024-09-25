@@ -1,28 +1,31 @@
 import * as React from 'react';
 import {
   makeStyles,
-  Button,
-  Menu,
-  MenuTrigger,
-  MenuPopover,
-  MenuList,
-  MenuItem,
-  MenuButton,
+  ToggleButton,
   tokens,
   mergeClasses,
   Overflow,
   OverflowItem,
-  OverflowItemProps,
   useIsOverflowItemVisible,
   useOverflowMenu,
+  Toolbar,
 } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
+  toolbar: {
+    display: 'block', // toolbar is wrapping just container and overflowContainer which should be displayed on top of each other
+  },
+
   container: {
     display: 'flex',
     flexWrap: 'nowrap',
     minWidth: 0,
-    overflow: 'hidden',
+    // overflow: 'hidden', // moved to resizableArea
+    // outline: '1px solid red',
+  },
+
+  overflowContainer: {
+    // outline: '1px solid green',
   },
 
   resizableArea: {
@@ -32,6 +35,7 @@ const useStyles = makeStyles({
     padding: '20px 10px 10px 10px',
     position: 'relative',
     resize: 'horizontal',
+    overflow: 'hidden' /* for resize */,
     '::after': {
       content: `'Resizable Area'`,
       position: 'absolute',
@@ -48,59 +52,116 @@ const useStyles = makeStyles({
     },
   },
 });
-
+type Pill = { id: string; selected: boolean };
 export const OverflowByPriority = () => {
-  const styles = useStyles();
+  const classes = useStyles();
 
-  const priorities = [2, 3, 6, 1, 4, 5, 0, 7];
+  const [pills, setPills] = React.useState<Pill[]>([
+    { id: 'Unread', selected: false },
+    { id: 'Chats', selected: false },
+    { id: 'Channels', selected: false },
+    { id: 'Meetings', selected: false },
+    { id: 'Muted', selected: false },
+  ]);
+
+  const onPillClick = React.useCallback(
+    e => {
+      const pillId = e.target.textContent;
+      console.log(`Pill clicked`, pillId);
+      setPills(pills =>
+        pills.map(pill => ({ ...pill, selected: pill.id === pillId ? !pill.selected : pill.selected })),
+      );
+    },
+    [setPills],
+  );
 
   return (
-    <Overflow>
-      <div className={mergeClasses(styles.container, styles.resizableArea)}>
-        {priorities.map(i => (
-          <OverflowItem key={i} id={i.toString()} priority={i}>
-            <Button>Priority {i}</Button>
-          </OverflowItem>
-        ))}
-        <OverflowMenu itemIds={priorities.map(x => x.toString())} />
+    <>
+      <div>
+        <h2>Requirements</h2>
+        <ul>
+          <li>All items are part of a single toolbar, navigable using arrow keys.</li>
+          <li>When items are overflowing, unselected items are removed first.</li>
+          <li>Overflowing selected items are not removed, but rather wrapped to the next row(s).</li>
+        </ul>
+        <h2>Known issues</h2>
+        <ul>
+          <li>
+            When item is removed (either by overflowing or by unselecting an overflowing selected item), focus goes to
+            body.
+          </li>
+        </ul>
       </div>
-    </Overflow>
+      <div className={mergeClasses(classes.resizableArea)}>
+        <Toolbar style={{ display: 'block' }}>
+          <Overflow
+            container={
+              <div className={mergeClasses(classes.container)}>
+                {pills.map(pill => (
+                  <OverflowItem key={pill.id} id={pill.id} priority={pill.selected ? 1 : 0}>
+                    <ToggleButton
+                      appearance={pill.selected ? 'primary' : undefined}
+                      shape="circular"
+                      checked={pill.selected}
+                      onClick={onPillClick}
+                    >
+                      {pill.id}
+                    </ToggleButton>
+                  </OverflowItem>
+                ))}
+              </div>
+            }
+          >
+            <OverflowContainer pills={pills} onPillClick={onPillClick} />
+          </Overflow>
+        </Toolbar>
+      </div>
+    </>
   );
 };
 
-const OverflowMenuItem: React.FC<Pick<OverflowItemProps, 'id'>> = props => {
-  const { id } = props;
-  const isVisible = useIsOverflowItemVisible(id);
-
-  if (isVisible) {
-    return null;
-  }
-
-  // As an union between button props and div props may be conflicting, casting is required
-  return <MenuItem>Item {id}</MenuItem>;
-};
-
-const OverflowMenu: React.FC<{ itemIds: string[] }> = ({ itemIds }) => {
-  const { ref, overflowCount, isOverflowing } = useOverflowMenu<HTMLButtonElement>();
+const OverflowContainer: React.FC<{ pills: Pill[]; onPillClick: React.MouseEventHandler }> = ({
+  pills,
+  onPillClick,
+}) => {
+  const classes = useStyles();
+  const { isOverflowing } = useOverflowMenu<HTMLButtonElement>();
 
   if (!isOverflowing) {
     return null;
   }
 
   return (
-    <Menu>
-      <MenuTrigger disableButtonEnhancement>
-        <MenuButton ref={ref}>+{overflowCount} items</MenuButton>
-      </MenuTrigger>
+    <div className={classes.overflowContainer}>
+      {pills.map(pill => {
+        return <OverflowToolbarItem pill={pill} onPillClick={onPillClick} />;
+      })}
+    </div>
+  );
+};
 
-      <MenuPopover>
-        <MenuList>
-          {itemIds.map(i => {
-            return <OverflowMenuItem key={i} id={i} />;
-          })}
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+const OverflowToolbarItem: React.FC<{ pill: Pill; onPillClick: React.MouseEventHandler }> = ({ pill, onPillClick }) => {
+  const isVisible = useIsOverflowItemVisible(pill.id);
+
+  if (isVisible) {
+    // do not show items which are not overflowing the main area
+    return null;
+  }
+
+  if (!pill.selected) {
+    // do not show items which are not selected
+    return null;
+  }
+
+  return (
+    <ToggleButton
+      appearance={pill.selected ? 'primary' : undefined}
+      shape="circular"
+      checked={pill.selected}
+      onClick={onPillClick}
+    >
+      {pill.id}
+    </ToggleButton>
   );
 };
 
