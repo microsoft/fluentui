@@ -195,6 +195,10 @@ const pointsWithGaps: ILineChartPoints[] = [
   },
 ];
 
+const secondaryYScalePoints = [
+  { yMaxValue: 50000, yMinValue: 10000 }
+];
+
 const chartPointsWithGaps = {
   chartTitle: 'LineChart',
   lineChartData: pointsWithGaps,
@@ -257,6 +261,18 @@ describe('Line chart rendering', () => {
     container => {
       // Assert
       expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Line Chart with secondary Y axis',
+    LineChart,
+    { data: basicChartPoints,
+      secondaryYScaleOptions: secondaryYScalePoints,
+     },
+    container => {
+      // Assert
+      expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
     },
   );
 });

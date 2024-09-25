@@ -283,6 +283,10 @@ const simpleDatePoints = [
   },
 ];
 
+const secondaryYScalePoints = [
+  { yMaxValue: 50000, yMinValue: 10000 }
+];
+
 describe('Vertical bar chart rendering', () => {
   afterEach(sharedAfterEach);
 
@@ -383,6 +387,18 @@ describe('Vertical bar chart rendering', () => {
     undefined,
     undefined,
     !(isTimezoneSet(Timezone.UTC) && env === 'TEST'),
+  );
+
+  testWithoutWait(
+    'Should render the vertical bar chart with secondary Y axis',
+    VerticalBarChart,
+    { data: chartPointsVBC,
+      secondaryYScaleOptions: secondaryYScalePoints,
+     },
+    container => {
+      // Assert
+      expect(getById(container, /yAxisGElementSecondarychart_/i)).toBeDefined();
+    },
   );
 });
 
@@ -544,21 +560,21 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
       expect(line).toBeDefined();
       expect(bars[0]).toBeDefined();
-      expect(bars[0]).toHaveStyle('opacity: 0.1');
+      expect(bars[0]).toHaveAttribute('opacity', '0.1');
       expect(bars[1]).toBeDefined();
-      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[1]).toHaveAttribute('opacity', '0.1');
       expect(bars[2]).toBeDefined();
-      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toHaveAttribute('opacity', '0.1');
       expect(bars[3]).toBeDefined();
-      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toHaveAttribute('opacity', '0.1');
       expect(bars[4]).toBeDefined();
-      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toHaveAttribute('opacity', '0.1');
       expect(bars[5]).toBeDefined();
-      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toHaveAttribute('opacity', '0.1');
       expect(bars[6]).toBeDefined();
-      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toHaveAttribute('opacity', '0.1');
       expect(bars[7]).toBeDefined();
-      expect(bars[7]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toHaveAttribute('opacity', '0.1');
     },
   );
   testWithWait(
@@ -583,19 +599,19 @@ describe('Vertical bar chart - Subcomponent Legends', () => {
       expect(screen.getByText('Monkeys')).toHaveStyle('opacity: 0.67');
       expect(line).toBeDefined();
       expect(bars[1]).toBeDefined();
-      expect(bars[1]).toHaveStyle('opacity: 0.1');
+      expect(bars[1]).toHaveAttribute('opacity', '0.1');
       expect(bars[2]).toBeDefined();
-      expect(bars[2]).toHaveStyle('opacity: 0.1');
+      expect(bars[2]).toHaveAttribute('opacity', '0.1');
       expect(bars[3]).toBeDefined();
-      expect(bars[3]).toHaveStyle('opacity: 0.1');
+      expect(bars[3]).toHaveAttribute('opacity', '0.1');
       expect(bars[4]).toBeDefined();
-      expect(bars[4]).toHaveStyle('opacity: 0.1');
+      expect(bars[4]).toHaveAttribute('opacity', '0.1');
       expect(bars[5]).toBeDefined();
-      expect(bars[5]).toHaveStyle('opacity: 0.1');
+      expect(bars[5]).toHaveAttribute('opacity', '0.1');
       expect(bars[6]).toBeDefined();
-      expect(bars[6]).toHaveStyle('opacity: 0.1');
+      expect(bars[6]).toHaveAttribute('opacity', '0.1');
       expect(bars[7]).toBeDefined();
-      expect(bars[7]).toHaveStyle('opacity: 0.1');
+      expect(bars[7]).toHaveAttribute('opacity', '0.1');
     },
   );
 });
