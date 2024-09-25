@@ -56,8 +56,7 @@ const useSplitNaveItemStyles = makeStyles({
   baseSecondary: {
     maxWidth: '24px',
     minWidth: '24px',
-    paddingLeft: '4px', // todo use logical properties
-    paddingRight: '4px',
+    paddingInline: '4px',
     marginBlockStart: '4px',
 
     transitionDuration: navItemTokens.animationTokens.animationDuration,

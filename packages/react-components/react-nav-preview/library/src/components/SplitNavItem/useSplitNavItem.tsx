@@ -59,9 +59,7 @@ export const useSplitNavItem_unstable = (
   });
 
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
       primaryNavItem: NavItem,
       secondaryActionButton: Button,
