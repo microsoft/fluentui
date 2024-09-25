@@ -67,7 +67,6 @@ export const OverflowByPriority = () => {
   const onPillClick = React.useCallback(
     e => {
       const pillId = e.target.textContent;
-      console.log(`Pill clicked`, pillId);
       setPills(pills =>
         pills.map(pill => ({ ...pill, selected: pill.id === pillId ? !pill.selected : pill.selected })),
       );
@@ -76,7 +75,6 @@ export const OverflowByPriority = () => {
   );
 
   const renderFunction: React.ComponentProps<typeof Overflow>['children'] = props => {
-    console.log('renderFunction', props.ref);
     return (
       <>
         <div {...props} className={mergeClasses(props?.className, classes.container)}>
