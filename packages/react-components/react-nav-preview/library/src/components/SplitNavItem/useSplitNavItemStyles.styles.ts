@@ -52,23 +52,13 @@ const useSplitNaveItemStyles = makeStyles({
     position: 'relative',
     justifyContent: 'start',
     gap: tokens.spacingVerticalL,
-    padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
-    backgroundColor: navItemTokens.backgroundColor,
-    borderRadius: tokens.borderRadiusMedium,
-    color: tokens.colorNeutralForeground2,
-    textDecorationLine: 'none',
-    border: 'none',
-    // this element can change between a button and an anchor
-    // so we need to reset box sizing to prevent horizontal overflow
-    boxSizing: 'border-box',
-    cursor: 'pointer',
-    width: '100%',
   },
   baseSecondary: {
     maxWidth: '24px',
     minWidth: '24px',
     paddingLeft: '4px', // todo use logical properties
     paddingRight: '4px',
+    marginBlockStart: '4px',
 
     transitionDuration: navItemTokens.animationTokens.animationDuration,
     transitionTimingFunction: navItemTokens.animationTokens.animationTimingFunction,
@@ -81,8 +71,8 @@ const useSplitNaveItemStyles = makeStyles({
       backgroundColor: navItemTokens.backgroundColorPressed,
     },
   },
-  secondaryMedium: {
-    marginBlockStart: '4px',
+  baseMedium: {
+    paddingBlockStart: '6px',
   },
 });
 
@@ -110,37 +100,31 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     );
   }
 
-  if (state.secondaryActionButton || state.secondaryToggleButton || state.menuButton) {
-    // These should be the same for all 3 buttons
-    // and only computed once if present
-    const mergedSecondaryClassNames = mergeClasses(
+  if (state.secondaryActionButton) {
+    state.secondaryActionButton.className = mergeClasses(
+      splitNavItemClassNames.secondaryActionButton,
       splitNavItemStyles.baseSecondary,
-      state.size === 'medium' && splitNavItemStyles.secondaryMedium,
+      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.secondaryActionButton.className,
     );
+  }
 
-    if (state.secondaryActionButton) {
-      state.secondaryActionButton.className = mergeClasses(
-        splitNavItemClassNames.secondaryActionButton,
-        mergedSecondaryClassNames,
-        state.secondaryActionButton.className,
-      );
-    }
+  if (state.secondaryToggleButton) {
+    state.secondaryToggleButton.className = mergeClasses(
+      splitNavItemClassNames.secondaryToggleButton,
+      splitNavItemStyles.baseSecondary,
+      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.secondaryToggleButton.className,
+    );
+  }
 
-    if (state.secondaryToggleButton) {
-      state.secondaryToggleButton.className = mergeClasses(
-        splitNavItemClassNames.secondaryToggleButton,
-        mergedSecondaryClassNames,
-        state.secondaryToggleButton.className,
-      );
-    }
-
-    if (state.menuButton) {
-      state.menuButton.className = mergeClasses(
-        splitNavItemClassNames.menuButton,
-        mergedSecondaryClassNames,
-        state.menuButton.className,
-      );
-    }
+  if (state.menuButton) {
+    state.menuButton.className = mergeClasses(
+      splitNavItemClassNames.menuButton,
+      splitNavItemStyles.baseSecondary,
+      state.size === 'medium' && splitNavItemStyles.baseMedium,
+      state.menuButton.className,
+    );
   }
 
   return state;

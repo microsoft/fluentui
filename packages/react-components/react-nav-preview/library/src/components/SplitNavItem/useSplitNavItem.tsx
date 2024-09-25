@@ -34,6 +34,7 @@ export const useSplitNavItem_unstable = (
   const secondaryActionButtonShorthand = slot.optional(secondaryActionButton, {
     defaultProps: {
       icon: <Pin20Regular />,
+      size: 'small',
       appearance: 'transparent',
     },
     elementType: Button,
@@ -42,6 +43,7 @@ export const useSplitNavItem_unstable = (
   const secondaryToggleButtonShorthand = slot.optional(secondaryToggleButton, {
     defaultProps: {
       icon: <Pin20Regular />,
+      size: 'small',
       appearance: 'transparent',
     },
     elementType: ToggleButton,
@@ -50,6 +52,7 @@ export const useSplitNavItem_unstable = (
   const menuButtonShorthand = slot.optional(menuButton, {
     defaultProps: {
       icon: <MoreHorizontalFilled />,
+      size: 'small',
       appearance: 'transparent',
     },
     elementType: MenuButton,
