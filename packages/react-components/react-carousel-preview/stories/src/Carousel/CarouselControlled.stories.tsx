@@ -98,7 +98,7 @@ const useClasses = makeStyles({
   },
 });
 
-const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
@@ -129,7 +129,7 @@ export const Controlled = () => {
         className={classes.carousel}
         groupSize={1}
         onActiveIndexChange={(e, data) => setActiveIndex(data.index)}
-        announcement={Announcement}
+        announcement={getAnnouncement}
       >
         <Tooltip content="Go To Previous Page" relationship="label">
           <CarouselButton navType="prev" aria-label="Previous Carousel Page Button" />

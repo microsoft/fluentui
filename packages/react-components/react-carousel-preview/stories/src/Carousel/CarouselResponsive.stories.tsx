@@ -81,7 +81,7 @@ const WireframeContent: React.FC<{
   );
 };
 
-const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
@@ -89,7 +89,7 @@ export const Responsive = () => {
   const classes = useClasses();
 
   return (
-    <Carousel draggable announcement={Announcement}>
+    <Carousel draggable announcement={getAnnouncement}>
       <CarouselSlider className={classes.slider}>
         <CarouselCard autoSize aria-label="1 of 7">
           <WireframeContent appearance="odd">

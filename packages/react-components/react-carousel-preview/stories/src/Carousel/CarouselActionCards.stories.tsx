@@ -164,7 +164,7 @@ const ActionCard: React.FC<Post & { index: number }> = props => {
   );
 };
 
-const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
@@ -198,7 +198,7 @@ export const AlignmentAndWhitespace = () => {
       </div>
 
       <div className={classes.card}>
-        <Carousel align={alignment} className={classes.carousel} whitespace={whitespace} announcement={Announcement}>
+        <Carousel align={alignment} className={classes.carousel} whitespace={whitespace} announcement={getAnnouncement}>
           <CarouselSlider cardFocus={true}>
             {POSTS.map((post, index) => (
               <ActionCard {...post} key={post.name} index={index} />

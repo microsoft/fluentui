@@ -72,12 +72,12 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   );
 };
 
-const Announcement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
   return `Carousel slide ${index + 1} of ${totalSlides}`;
 };
 
 export const Default = () => (
-  <Carousel groupSize={1} circular announcement={Announcement}>
+  <Carousel groupSize={1} circular announcement={getAnnouncement}>
     <CarouselSlider>
       {IMAGES.map((imageSrc, index) => (
         <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
