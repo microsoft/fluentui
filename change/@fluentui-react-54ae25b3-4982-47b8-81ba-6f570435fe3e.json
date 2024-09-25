@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "just a test, do not merge",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
