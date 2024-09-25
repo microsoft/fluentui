@@ -15,7 +15,7 @@ export const Truncate = () => {
   return (
     <Text truncate wrap={false} className={styles.text}>
       Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere aliquam nisi numquam, fugit recusandae eligendi
-      aspernatur odio minus? Incidunt maxime ipsam dolorem quia quas aliquam, quasi consequatur! Ea, minus eaque.
+      aspernatur odio minus? Incidunt maxime ipsam dolorem quia quas aliquam, quasi consequatur! Ea, minus eaque. Hello, World!
     </Text>
   );
 };
