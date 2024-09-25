@@ -1,0 +1,9 @@
+<script id="anchor-polyfill" type="module">
+  document.addEventListener('anchor-polyfill', () => {
+    if (!window.UPDATE_ANCHOR_ON_ANIMATION_FRAME) {
+      window.UPDATE_ANCHOR_ON_ANIMATION_FRAME = true;
+
+      import('https://unpkg.com/@oddbird/css-anchor-positioning@latest');
+    }
+  });
+</script>

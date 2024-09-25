@@ -38,12 +38,13 @@ export const styles = css`
     filter: drop-shadow(0 0 2px ${colorNeutralShadowAmbient}) drop-shadow(0 4px 8px ${colorNeutralShadowKey});
     font-family: ${fontFamilyBase};
     font-size: ${fontSizeBase200};
-    inset-area: block-start;
+    inset: unset;
     line-height: ${lineHeightBase200};
     margin: unset; /* Remove browser default for [popover] */
     max-width: 240px;
     padding: 4px 11px 6px;
     position: absolute;
+    position-area: block-start;
     width: auto;
     z-index: 1;
   }
@@ -58,39 +59,39 @@ export const styles = css`
   }
 
   :host([positioning='above-start']) {
-    inset-area: ${TooltipPositioning['above-start']};
+    position-area: ${TooltipPositioning['above-start']};
   }
   :host([positioning='above']) {
-    inset-area: ${TooltipPositioning.above};
+    position-area: ${TooltipPositioning.above};
   }
   :host([positioning='above-end']) {
-    inset-area: ${TooltipPositioning['above-end']};
+    position-area: ${TooltipPositioning['above-end']};
   }
   :host([positioning='below-start']) {
-    inset-area: ${TooltipPositioning['below-start']};
+    position-area: ${TooltipPositioning['below-start']};
   }
   :host([positioning='below']) {
-    inset-area: ${TooltipPositioning.below};
+    position-area: ${TooltipPositioning.below};
   }
   :host([positioning='below-end']) {
-    inset-area: ${TooltipPositioning['below-end']};
+    position-area: ${TooltipPositioning['below-end']};
   }
   :host([positioning='before-top']) {
-    inset-area: ${TooltipPositioning['before-top']};
+    position-area: ${TooltipPositioning['before-top']};
   }
   :host([positioning='before']) {
-    inset-area: ${TooltipPositioning.before};
+    position-area: ${TooltipPositioning.before};
   }
   :host([positioning='before-bottom']) {
-    inset-area: ${TooltipPositioning['before-bottom']};
+    position-area: ${TooltipPositioning['before-bottom']};
   }
   :host([positioning='after-top']) {
-    inset-area: ${TooltipPositioning['after-top']};
+    position-area: ${TooltipPositioning['after-top']};
   }
   :host([positioning='after']) {
-    inset-area: ${TooltipPositioning.after};
+    position-area: ${TooltipPositioning.after};
   }
   :host([positioning='after-bottom']) {
-    inset-area: ${TooltipPositioning['after-bottom']};
+    position-area: ${TooltipPositioning['after-bottom']};
   }
 `;

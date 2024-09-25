@@ -137,9 +137,9 @@ export const Positioning: Story<Tooltip> = renderComponent(html`
       min-width: 44px;
     }
     /* Fallbacks positions are too aggressive and break demo */
-    .grid ~ fluent-tooltip {
+    /* .grid ~ fluent-tooltip {
       position-try-fallbacks: none;
-    }
+    } */
   </style>
   <div class="grid">${repeat(x => x.storyItems, positionButtonTemplate)}</div>
 
