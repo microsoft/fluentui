@@ -1,4 +1,4 @@
-import { html } from '@microsoft/fast-element';
+import { html, repeat } from '@microsoft/fast-element';
 import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 import { Spinner as FluentSpinner } from './spinner.js';
@@ -54,44 +54,17 @@ export const InvertedAppearance: Story = {
   },
 };
 
-export const TinySize: Story = {
+export const Size: Story = {
+  render: renderComponent(html`<div>${repeat(story => story.storyItems, storyTemplate)}</div> `),
   args: {
-    size: SpinnerSize.tiny,
-  },
-};
-
-export const ExtraSmallSize: Story = {
-  args: {
-    size: SpinnerSize.extraSmall,
-  },
-};
-
-export const SmallSize: Story = {
-  args: {
-    size: SpinnerSize.small,
-  },
-};
-
-export const MediumSize: Story = {
-  args: {
-    size: SpinnerSize.medium,
-  },
-};
-
-export const LargeSize: Story = {
-  args: {
-    size: SpinnerSize.large,
-  },
-};
-
-export const ExtraLargeSize: Story = {
-  args: {
-    size: SpinnerSize.extraLarge,
-  },
-};
-
-export const HugeSize: Story = {
-  args: {
-    size: SpinnerSize.huge,
+    storyItems: [
+      { size: SpinnerSize.tiny },
+      { size: SpinnerSize.extraSmall },
+      { size: SpinnerSize.small },
+      { size: SpinnerSize.medium },
+      { size: SpinnerSize.large },
+      { size: SpinnerSize.extraLarge },
+      { size: SpinnerSize.huge },
+    ],
   },
 };
