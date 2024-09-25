@@ -11,7 +11,7 @@ export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   secondaryToggleButton: 'fui-SplitNavItem_secondaryToggleButton',
   menuButton: 'fui-SplitNavItem_menuButton',
 };
-// Don't use makeResetStyles here because the subcomponents call it once and
+// Don't use makeResetStyles here because the sub components call it once and
 // This links says that makeResetStyles should only be called once per element
 // https://griffel.js.org/react/api/make-reset-styles/#limitations
 
