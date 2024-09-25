@@ -127,7 +127,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
         <NavDrawerBody>
           {appItem}
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
-            Dashboard sdf asdas asdasdsdfs sdfsdf
+            Dashboard
           </NavItem>
           <NavItem href={linkDestination} icon={<Announcements />} value="2">
             Announcements
