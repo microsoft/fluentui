@@ -7,3 +7,5 @@ export {
   useLink_unstable,
 } from './Link';
 export type { LinkProps, LinkSlots, LinkState } from './Link';
+export { inlineLinkContextDefaultValue, InlineLinkContextProvider, useInlineLinkContext } from './contexts';
+export type { InlineLinkContextValue } from './contexts';

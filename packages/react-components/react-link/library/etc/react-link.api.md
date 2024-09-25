@@ -12,6 +12,17 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// @public (undocumented)
+export const inlineLinkContextDefaultValue: InlineLinkContextValue;
+
+// @public (undocumented)
+export const InlineLinkContextProvider: React_2.Provider<InlineLinkContextValue | undefined>;
+
+// @public (undocumented)
+export type InlineLinkContextValue = {
+    inlineLinks: boolean;
+};
+
 // @public
 export const Link: ForwardRefComponent<LinkProps>;
 
@@ -38,6 +49,9 @@ export type LinkState = ComponentState<LinkSlots> & Required<Pick<LinkProps, 'ap
 
 // @public
 export const renderLink_unstable: (state: LinkState) => JSX.Element;
+
+// @public (undocumented)
+export const useInlineLinkContext: () => InlineLinkContextValue;
 
 // @public
 export const useLink_unstable: (props: LinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>) => LinkState;
