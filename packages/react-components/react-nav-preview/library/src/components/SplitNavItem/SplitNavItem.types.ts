@@ -12,20 +12,20 @@ export type SplitNavItemSlots = {
   /**
    * Primary navigation item in SplitNavItem.
    */
-  primaryNavItem?: NonNullable<Slot<NavItemProps>>;
+  navItem?: NonNullable<Slot<NavItemProps>>;
 
   /**
-   * Secondary actions in SplitNavItem.
+   * Basic button slot.
    */
-  secondaryActionButton?: Slot<ButtonProps>;
+  actionButton?: Slot<ButtonProps>;
 
   /**
-   * An optional toggle button slot
+   * Toggle button slot
    */
-  secondaryToggleButton?: Slot<ToggleButtonProps>;
+  toggleButton?: Slot<ToggleButtonProps>;
 
   /**
-   * Button that opens menu with secondary actions in SplitNavItem.
+   * Menu button slot to stuff more things in when the other two aren't enough.
    */
   menuButton?: Slot<MenuButtonProps>;
 };

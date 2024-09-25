@@ -13,16 +13,16 @@ describe('SplitNavItem', () => {
         {
           props: {
             icon: 'Test Icon',
-            primaryNavItem: 'Some Content',
-            secondaryActionButton: 'Some Content',
-            secondaryToggleButton: 'Some Content',
+            navItem: 'Some Content',
+            actionButton: 'Some Content',
+            toggleButton: 'Some Content',
             menuButton: 'Some Content',
           },
           expectedClassNames: {
             root: splitNavItemClassNames.root,
-            primaryNavItem: splitNavItemClassNames.primaryNavItem,
-            secondaryActionButton: splitNavItemClassNames.secondaryActionButton,
-            secondaryToggleButton: splitNavItemClassNames.secondaryToggleButton,
+            navItem: splitNavItemClassNames.navItem,
+            actionButton: splitNavItemClassNames.actionButton,
+            toggleButton: splitNavItemClassNames.toggleButton,
             menuButton: splitNavItemClassNames.menuButton,
           },
         },

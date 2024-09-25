@@ -20,18 +20,18 @@ export const useSplitNavItem_unstable = (
   props: SplitNavItemProps,
   ref: React.Ref<HTMLDivElement>,
 ): SplitNavItemState => {
-  const { primaryNavItem, secondaryActionButton, secondaryToggleButton, menuButton, children } = props;
+  const { navItem, actionButton, toggleButton, menuButton, children } = props;
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  const primaryActionButtonShorthand = slot.always(primaryNavItem, {
+  const primaryActionButtonShorthand = slot.always(navItem, {
     defaultProps: {
       children,
     },
     elementType: NavItem,
   });
 
-  const secondaryActionButtonShorthand = slot.optional(secondaryActionButton, {
+  const actionButtonShorthand = slot.optional(actionButton, {
     defaultProps: {
       icon: <Pin20Regular />,
       size: 'small',
@@ -40,7 +40,7 @@ export const useSplitNavItem_unstable = (
     elementType: Button,
   });
 
-  const secondaryToggleButtonShorthand = slot.optional(secondaryToggleButton, {
+  const toggleButtonShorthand = slot.optional(toggleButton, {
     defaultProps: {
       icon: <Pin20Regular />,
       size: 'small',
@@ -61,9 +61,9 @@ export const useSplitNavItem_unstable = (
   return {
     components: {
       root: 'div',
-      primaryNavItem: NavItem,
-      secondaryActionButton: Button,
-      secondaryToggleButton: ToggleButton,
+      navItem: NavItem,
+      actionButton: Button,
+      toggleButton: ToggleButton,
       menuButton: MenuButton,
     },
     root: slot.always(
@@ -76,9 +76,9 @@ export const useSplitNavItem_unstable = (
       }),
       { elementType: 'div' },
     ),
-    primaryNavItem: primaryActionButtonShorthand,
-    secondaryActionButton: secondaryActionButtonShorthand,
-    secondaryToggleButton: secondaryToggleButtonShorthand,
+    navItem: primaryActionButtonShorthand,
+    actionButton: actionButtonShorthand,
+    toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,
     size,
   };

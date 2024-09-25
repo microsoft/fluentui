@@ -91,43 +91,43 @@ const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletLis
 
 const splitNavItems: SplitNavItemProps[] = [
   {
-    primaryNavItem: { value: '1', icon: <Dashboard /> },
+    navItem: { value: '1', icon: <Dashboard /> },
     children: 'Dashboard',
   },
   {
-    primaryNavItem: { value: '2', icon: <Announcements /> },
+    navItem: { value: '2', icon: <Announcements /> },
     children: 'Announcements',
   },
   {
-    primaryNavItem: { value: '3', icon: <EmployeeSpotlight /> },
+    navItem: { value: '3', icon: <EmployeeSpotlight /> },
     children: 'Employee Spotlight',
   },
   {
-    primaryNavItem: { value: '4', icon: <Search /> },
+    navItem: { value: '4', icon: <Search /> },
     children: 'Profile Search',
   },
   {
-    primaryNavItem: { value: '5', icon: <PerformanceReviews /> },
+    navItem: { value: '5', icon: <PerformanceReviews /> },
     children: 'Performance Reviews',
   },
   {
-    primaryNavItem: { value: '9', icon: <Interviews /> },
+    navItem: { value: '9', icon: <Interviews /> },
     children: 'Interviews',
   },
   {
-    primaryNavItem: { value: '10', icon: <HealthPlans /> },
+    navItem: { value: '10', icon: <HealthPlans /> },
     children: 'Health Plans',
   },
   {
-    primaryNavItem: { value: '15', icon: <TrainingPrograms /> },
+    navItem: { value: '15', icon: <TrainingPrograms /> },
     children: 'Training Programs',
   },
   {
-    primaryNavItem: { value: '19', icon: <Analytics /> },
+    navItem: { value: '19', icon: <Analytics /> },
     children: 'Workforce Data',
   },
   {
-    primaryNavItem: { value: '20', icon: <Reports /> },
+    navItem: { value: '20', icon: <Reports /> },
     children: 'Reports',
   },
 ];
@@ -185,15 +185,15 @@ export const NavDrawerSplitSize = (props: Partial<NavDrawerProps>) => {
 
   const generateSplitNavItems = () => {
     return splitNavItems.map((item: SplitNavItemProps, index) => {
-      const value: string = (item.primaryNavItem as NavItemProps).value;
+      const value: string = (item.navItem as NavItemProps).value;
 
       return (
         <Menu key={index} positioning="below-end">
           <MenuTrigger>
             {(triggerProps: MenuButtonProps) => (
               <SplitNavItem
-                primaryNavItem={item.primaryNavItem}
-                secondaryToggleButton={{
+                navItem={item.navItem}
+                toggleButton={{
                   onClick: () => handlePinClick(value),
                   icon: pinnedValues.includes(value) ? <Pin20Filled /> : <Pin20Regular />,
                 }}

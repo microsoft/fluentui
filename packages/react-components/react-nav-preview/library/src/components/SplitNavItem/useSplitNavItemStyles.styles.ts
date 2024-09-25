@@ -6,9 +6,9 @@ import { tokens } from '@fluentui/react-theme';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
-  primaryNavItem: 'fui-SplitNavItem__primaryNavItem',
-  secondaryActionButton: 'fui-SplitNavItem__secondaryActionButton',
-  secondaryToggleButton: 'fui-SplitNavItem__secondaryToggleButton',
+  navItem: 'fui-SplitNavItem__navItem',
+  actionButton: 'fui-SplitNavItem__actionButton',
+  toggleButton: 'fui-SplitNavItem__toggleButton',
   menuButton: 'fui-SplitNavItem__menuButton',
 };
 // Don't use makeResetStyles here because the sub components call it once and
@@ -44,7 +44,7 @@ const useSplitNaveItemStyles = makeStyles({
       transitionProperty: 'background',
     },
   },
-  basePrimaryNavItem: {
+  basenavItem: {
     // styles that we want to disagree with the default on
     display: 'flex',
     textTransform: 'none',
@@ -91,29 +91,29 @@ export const useSplitNavItemStyles_unstable = (state: SplitNavItemState): SplitN
     state.root.className,
   );
 
-  if (state.primaryNavItem) {
-    state.primaryNavItem.className = mergeClasses(
-      splitNavItemClassNames.primaryNavItem,
-      splitNavItemStyles.basePrimaryNavItem,
-      state.primaryNavItem.className,
+  if (state.navItem) {
+    state.navItem.className = mergeClasses(
+      splitNavItemClassNames.navItem,
+      splitNavItemStyles.basenavItem,
+      state.navItem.className,
     );
   }
 
-  if (state.secondaryActionButton) {
-    state.secondaryActionButton.className = mergeClasses(
-      splitNavItemClassNames.secondaryActionButton,
+  if (state.actionButton) {
+    state.actionButton.className = mergeClasses(
+      splitNavItemClassNames.actionButton,
       splitNavItemStyles.baseSecondary,
       state.size === 'medium' && splitNavItemStyles.baseMedium,
-      state.secondaryActionButton.className,
+      state.actionButton.className,
     );
   }
 
-  if (state.secondaryToggleButton) {
-    state.secondaryToggleButton.className = mergeClasses(
-      splitNavItemClassNames.secondaryToggleButton,
+  if (state.toggleButton) {
+    state.toggleButton.className = mergeClasses(
+      splitNavItemClassNames.toggleButton,
       splitNavItemStyles.baseSecondary,
       state.size === 'medium' && splitNavItemStyles.baseMedium,
-      state.secondaryToggleButton.className,
+      state.toggleButton.className,
     );
   }
 
