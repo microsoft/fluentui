@@ -11,6 +11,7 @@ import {
   Text,
   IChoiceGroupStyles,
 } from '@fluentui/react';
+import { useWindow } from '@fluentui/react-window-provider';
 
 interface IExampleProps {
   resetChoice?: () => void;
@@ -129,7 +130,16 @@ const WarningExample = (p: IExampleProps) => {
     }
   }
 
-  window.onresize = onResize;
+  const win = useWindow();
+  React.useEffect(() => {
+    onResize();
+
+    win && win.addEventListener('resize', onResize);
+
+    return () => {
+      win && win.removeEventListener('resize', onResize);
+    };
+  }, [win]);
 
   return (
     <MessageBar
