@@ -1,84 +1,97 @@
 import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
+import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
+import { Spinner as FluentSpinner } from './spinner.js';
 
-type SpinnerStoryArgs = Args;
-type SpinnerStoryMeta = Meta<SpinnerStoryArgs>;
+type Story = StoryObj<FluentSpinner>;
 
-const storyTemplate = html<SpinnerStoryArgs>`
-  <fluent-spinner appearance=${x => x.appearance} size=${x => x.size}></fluent-spinner>
+const storyTemplate = html<StoryArgs<FluentSpinner>>`
+  <fluent-spinner appearance="${story => story.appearance}" size="${story => story.size}"></fluent-spinner>
 `;
 
 export default {
   title: 'Components/Spinner',
+  render: renderComponent(storyTemplate),
   argTypes: {
     appearance: {
+      control: 'select',
       description: 'The appearance of the spinner',
+      options: ['', ...Object.values(SpinnerAppearance)],
+      mapping: { '': null, ...SpinnerAppearance },
       table: {
-        defaultValue: { summary: 'primary' },
+        category: 'attributes',
+        type: { summary: Object.values(SpinnerAppearance).join('|') },
       },
-      control: {
-        type: 'select',
-        options: Object.values(SpinnerAppearance),
-      },
-      defaultValue: 'primary',
     },
     size: {
+      control: 'select',
       description: 'The size of the spinner',
+      options: ['', ...Object.values(SpinnerSize)],
+      mapping: { '': null, ...SpinnerSize },
       table: {
-        defaultValue: { summary: 'medium' },
+        category: 'attributes',
+        type: { summary: Object.values(SpinnerSize).join('|') },
       },
-      control: {
-        type: 'select',
-        options: Object.values(SpinnerSize),
-      },
-      defaultValue: 'medium',
     },
   },
-  parameters: {
-    status: {
-      type: 'experimental',
-    },
-  },
-} as SpinnerStoryMeta;
+} as Meta<FluentSpinner>;
 
-export const Spinner = renderComponent(storyTemplate).bind({});
+export const Default: Story = {};
 
-//
-// Attribute stories
-//
-
-export const Appearance = renderComponent(html<SpinnerStoryArgs>`
-  <div>
-    <div style="padding: 20px; display: flex; align-items: center; gap: 20px;">
-      <code>primary</code>
-      <fluent-spinner appearance="primary"></fluent-spinner>
-    </div>
+export const InvertedAppearance: Story = {
+  render: renderComponent(html<StoryArgs<FluentSpinner>>`
     <div
-      style="padding: 20px; background-color: var(--colorNeutralBackgroundInverted); color: var(--colorNeutralForegroundInverted); display: flex; align-items: center; gap: 20px;"
+      style="padding: 40px; background-color: var(--colorNeutralBackgroundInverted); color: var(--colorNeutralForegroundInverted);"
     >
-      <code>inverted</code>
-      <fluent-spinner appearance="inverted" size="medium"></fluent-spinner>
+      ${storyTemplate}
     </div>
-  </div>
-`);
+  `),
+  parameters: {
+    layout: 'fullscreen',
+  },
+  args: {
+    appearance: SpinnerAppearance.inverted,
+  },
+};
 
-export const Size = renderComponent(html<SpinnerStoryArgs>`
-  <div style="display: grid; align-items: center; gap: 0 20px; grid-template-columns: 120px min-content;">
-    <code>tiny</code>
-    <fluent-spinner size="tiny"></fluent-spinner>
-    <code>extra-small</code>
-    <fluent-spinner size="extra-small"></fluent-spinner>
-    <code>small</code>
-    <fluent-spinner size="small"></fluent-spinner>
-    <code>medium</code>
-    <fluent-spinner size="medium"></fluent-spinner>
-    <code>large</code>
-    <fluent-spinner size="large"></fluent-spinner>
-    <code>extra-large</code>
-    <fluent-spinner size="extra-large"></fluent-spinner>
-    <code>huge</code>
-    <fluent-spinner size="huge"></fluent-spinner>
-  </div>
-`);
+export const TinySize: Story = {
+  args: {
+    size: SpinnerSize.tiny,
+  },
+};
+
+export const ExtraSmallSize: Story = {
+  args: {
+    size: SpinnerSize.extraSmall,
+  },
+};
+
+export const SmallSize: Story = {
+  args: {
+    size: SpinnerSize.small,
+  },
+};
+
+export const MediumSize: Story = {
+  args: {
+    size: SpinnerSize.medium,
+  },
+};
+
+export const LargeSize: Story = {
+  args: {
+    size: SpinnerSize.large,
+  },
+};
+
+export const ExtraLargeSize: Story = {
+  args: {
+    size: SpinnerSize.extraLarge,
+  },
+};
+
+export const HugeSize: Story = {
+  args: {
+    size: SpinnerSize.huge,
+  },
+};
