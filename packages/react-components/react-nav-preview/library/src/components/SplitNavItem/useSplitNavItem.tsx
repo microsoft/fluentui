@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { MoreHorizontalFilled } from '@fluentui/react-icons';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SplitNavItemProps, SplitNavItemState } from './SplitNavItem.types';
 import { useNavContext_unstable } from '../NavContext';
