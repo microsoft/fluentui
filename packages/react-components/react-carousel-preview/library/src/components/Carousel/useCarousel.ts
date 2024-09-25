@@ -92,6 +92,10 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
   });
 
   useIsomorphicLayoutEffect(() => {
+    // Call updateAnnouncement for any dep changes
+    updateAnnouncement();
+
+    // Subscribe to event-based changes
     return subscribeForValues(data => {
       if (totalNavLength.current <= 0 && data.navItemsCount > 0 && announcement) {
         const announcementText = announcement(activeIndex, data.navItemsCount, data.groupIndexList);
@@ -102,11 +106,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       navGroupRef.current = data.groupIndexList;
       updateAnnouncement();
     });
-  }, [subscribeForValues, updateAnnouncement, announcement]);
-
-  useIsomorphicLayoutEffect(() => {
-    updateAnnouncement();
-  }, [activeIndex, updateAnnouncement]);
+  }, [subscribeForValues, updateAnnouncement, announcement, activeIndex]);
 
   return {
     components: {
