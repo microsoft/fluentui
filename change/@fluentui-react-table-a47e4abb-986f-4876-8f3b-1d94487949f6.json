@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: table selection checkbox or radio should be rendered even if invisible",
+  "packageName": "@fluentui/react-table",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
