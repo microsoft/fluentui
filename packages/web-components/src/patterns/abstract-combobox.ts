@@ -22,9 +22,11 @@ function getAnchorPositioningCSS(anchorId: string, anchorName: string, listEleme
       anchor-name: ${anchorName};
     }
     #${listElementId} {
-      left: anchor(${anchorName} left);
+      inset: unset;
       top: anchor(${anchorName} bottom);
+      left: anchor(${anchorName} left);
       right: anchor(${anchorName} right);
+      position: absolute;
       position-try-fallbacks: flip-start;
     }
   `;
@@ -551,7 +553,16 @@ export abstract class AbstractCombobox extends FASTElement {
 
     if (this.activeOption) {
       this.activeOption.active = this.isFocusVisible;
-      this.activeOption.scrollIntoView({ block: 'nearest' });
+
+      // Only doing this when CSS Anchor Positioning is supported. When a CSS
+      // Anchor Positioning polyfill is used, the polyfill may need time to
+      // calculate the popover position, running `.scrollIntoView()` would
+      // cause the document to jump its scroll position. We can mitigate it
+      // to a certain degree with `setTimeout()` but it’s not ideal and the
+      // timeout number would be arbitrary.
+      if (SUPPORTS_ANCHOR_POSITIONING) {
+        this.activeOption.scrollIntoView({ block: 'nearest' });
+      }
     }
   }
 
