@@ -13,7 +13,8 @@ const storyTemplate = html<StoryArgs<FluentRatingDisplay>>`
     max=${story => story.max}
     size=${story => story.size}
     value=${story => story.value}
-  ></fluent-rating-display>
+    >${story => story.iconSlottedContent?.()}</fluent-rating-display
+  >
 `;
 
 export default {
@@ -133,5 +134,16 @@ export const Compact: Story = {
   args: {
     value: 3.5,
     compact: true,
+  },
+};
+
+export const CustomIcon: Story = {
+  args: {
+    value: 3.7,
+    iconSlottedContent: () => html`<svg slot="icon">
+      <path
+        d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"
+      />
+    </svg>`,
   },
 };
