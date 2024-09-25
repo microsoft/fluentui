@@ -102,7 +102,7 @@ export function useCarousel_unstable(props: CarouselProps, ref: React.Ref<HTMLDi
       navGroupRef.current = data.groupIndexList;
       updateAnnouncement();
     });
-  }, [subscribeForValues, updateAnnouncement]);
+  }, [subscribeForValues, updateAnnouncement, announcement]);
 
   useIsomorphicLayoutEffect(() => {
     updateAnnouncement();
