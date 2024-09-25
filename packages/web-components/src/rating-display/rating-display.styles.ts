@@ -50,6 +50,10 @@ export const styles = css`
     line-height: ${lineHeightBase300};
   }
 
+  ::slotted([slot='icon']) {
+    display: none;
+  }
+
   svg {
     width: var(--icon-size);
     height: var(--icon-size);
@@ -57,7 +61,7 @@ export const styles = css`
     margin-inline-end: ${spacingHorizontalXXS};
   }
 
-  svg:nth-child(even) {
+  svg:nth-child(odd) {
     clip-path: inset(0 50% 0 0);
     margin-inline-end: calc(0px - var(--icon-size));
   }

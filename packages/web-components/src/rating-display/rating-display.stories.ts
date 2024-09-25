@@ -52,14 +52,6 @@ export default {
         },
       },
     },
-    icon: {
-      control: 'text',
-      table: {
-        type: {
-          summary: 'The SVG element string used for the rating icon',
-        },
-      },
-    },
     'icon-view-box': {
       control: 'text',
       table: {
@@ -107,6 +99,12 @@ export default {
         },
       },
     },
+    iconSlottedContent: {
+      control: false,
+      description: 'The slot for the SVG element used as the rating icon',
+      name: 'icon',
+      table: { category: 'slots', type: {} },
+    },
   },
 } as Meta<FluentRatingDisplay>;
 
@@ -131,13 +129,6 @@ export const Count: Story<FluentRatingDisplay> = renderComponent(html<StoryArgs<
   <fluent-rating-display value="4" count="3391"></fluent-rating-display>
 `);
 
-export const Icon: Story<FluentRatingDisplay> = renderComponent(html<StoryArgs<FluentRatingDisplay>>`
-  <fluent-rating-display
-    value="3.8"
-    icon='<svg><path d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z" /></svg>'
-  ></fluent-rating-display>
-`);
-
 export const Max: Story<FluentRatingDisplay> = renderComponent(html<StoryArgs<FluentRatingDisplay>>`
   <fluent-rating-display value="8.6" max="10"></fluent-rating-display>
 `);
@@ -148,4 +139,13 @@ export const Size: Story<FluentRatingDisplay> = renderComponent(html<StoryArgs<F
     <fluent-rating-display value="2.8" size=${RatingDisplaySize.medium}></fluent-rating-display>
     <fluent-rating-display value="2.8" size=${RatingDisplaySize.large}></fluent-rating-display>
   </div>
+`);
+
+export const CustomIcon: Story<FluentRatingDisplay> = renderComponent(html<StoryArgs<FluentRatingDisplay>>`
+  <fluent-rating-display value="3.7"
+    ><svg slot="icon">
+      <path
+        d="M10 2C5.58172 2 2 5.58172 2 10C2 14.4183 5.58172 18 10 18C14.4183 18 18 14.4183 18 10C18 5.58172 14.4183 2 10 2Z"
+      /></svg
+  ></fluent-rating-display>
 `);

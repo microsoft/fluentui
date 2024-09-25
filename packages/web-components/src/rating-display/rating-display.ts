@@ -1,9 +1,12 @@
-import { attr, FASTElement, nullableNumberConverter } from '@microsoft/fast-element';
+import { attr, FASTElement, nullableNumberConverter, observable } from '@microsoft/fast-element';
 import { toggleState } from '../utils/element-internals.js';
 import { RatingDisplayColor, RatingDisplaySize } from './rating-display.options.js';
 
 /**
  * The base class used for constructing a fluent-rating-display custom element
+ *
+ * @slot icon - SVG element used as the rating icon
+ *
  * @public
  */
 export class BaseRatingDisplay extends FASTElement {
@@ -23,16 +26,6 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public count?: number;
-
-  /**
-   * The <svg> element string used for the rating icon.
-   *
-   * @public
-   * @remarks
-   * HTML Attribute: `icon`
-   */
-  @attr
-  icon?: string;
 
   /**
    * The `viewBox` attribute of the icon <svg> element.
@@ -66,6 +59,27 @@ export class BaseRatingDisplay extends FASTElement {
    */
   @attr({ converter: nullableNumberConverter })
   public value?: number;
+
+  /**
+   * @internal
+   */
+  @observable
+  public slottedIcon!: HTMLElement[];
+
+  /**
+   * @internal
+   */
+  public slottedIconChanged(): void {
+    if (this.$fastController.isConnected) {
+      this.customIcon = this.slottedIcon[0]?.outerHTML;
+    }
+  }
+
+  /**
+   * @internal
+   */
+  @observable
+  private customIcon?: string;
 
   private intlNumberFormatter = new Intl.NumberFormat();
 
@@ -111,9 +125,9 @@ export class BaseRatingDisplay extends FASTElement {
     let htmlString: string = '';
     let customIcon: string | undefined;
 
-    if (this.icon) {
+    if (this.customIcon) {
       // Extract the SVG element content
-      customIcon = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(this.icon)?.[1] ?? '';
+      customIcon = /<svg[^>]*>([\s\S]*?)<\/svg>/.exec(this.customIcon)?.[1] ?? '';
     }
 
     // The value of the selected icon. Based on the "value" attribute, rounded to the nearest half.
