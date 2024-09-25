@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "\u0016Update to filetype icons - Sep 2024",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "caperez@microsoft.com",
+  "dependentChangeType": "patch"
+}
