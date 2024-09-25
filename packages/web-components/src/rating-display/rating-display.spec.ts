@@ -7,7 +7,7 @@ test.describe('Rating Display', () => {
   let element: Locator;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-rating-display--rating-display'));
+    await page.goto(fixtureURL('components-rating-display--default'));
     await page.waitForFunction(() => customElements.whenDefined('fluent-rating-display'));
 
     element = page.locator('fluent-rating-display');

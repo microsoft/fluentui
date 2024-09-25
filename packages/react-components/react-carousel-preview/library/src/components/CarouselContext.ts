@@ -18,6 +18,9 @@ export const carouselContextDefaultValue: CarouselContextValue = {
   enableAutoplay: () => {
     /** noop */
   },
+  resetAutoplay: () => {
+    /** noop */
+  },
   circular: false,
   containerRef: undefined,
 };

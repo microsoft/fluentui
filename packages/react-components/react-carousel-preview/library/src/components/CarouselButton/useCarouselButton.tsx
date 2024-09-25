@@ -39,6 +39,7 @@ export const useCarouselButton_unstable = (
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
   const selectPageByDirection = useCarouselContext(ctx => ctx.selectPageByDirection);
   const subscribeForValues = useCarouselContext(ctx => ctx.subscribeForValues);
+  const resetAutoplay = useCarouselContext(ctx => ctx.resetAutoplay);
 
   const isTrailing = useCarouselContext(ctx => {
     if (circular) {
@@ -77,6 +78,8 @@ export const useCarouselButton_unstable = (
         }
       });
     }
+
+    resetAutoplay();
   };
 
   useIsomorphicLayoutEffect(() => {

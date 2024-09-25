@@ -21,7 +21,7 @@ const attributes = {
 
 test.describe('Link', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto(fixtureURL('components-link--link'));
+    await page.goto(fixtureURL('components-link--appearance'));
 
     await page.waitForFunction(() => customElements.whenDefined('fluent-link'));
   });

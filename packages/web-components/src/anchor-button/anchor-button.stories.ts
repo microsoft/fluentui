@@ -1,13 +1,18 @@
 import { html } from '@microsoft/fast-element';
 import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { AnchorButton as FluentAnchorButton } from './anchor-button.js';
-import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
+import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, AnchorTarget } from './anchor-button.options.js';
 
 type Story = StoryObj<FluentAnchorButton>;
 
 const storyTemplate = html<StoryArgs<FluentAnchorButton>>`
   <fluent-anchor-button
     href="${story => story.href}"
+    hreflang="${story => story.hreflang}"
+    referrerpolicy="${story => story.referrerpolicy}"
+    rel="${story => story.rel}"
+    type="${story => story.type}"
+    target="${story => story.target || void 0}"
     appearance="${story => story.appearance}"
     shape="${story => story.shape}"
     size="${story => story.size}"
@@ -23,8 +28,6 @@ export default {
   render: renderComponent(storyTemplate),
   args: {
     href: '#',
-    disabled: false,
-    disabledFocusable: false,
     slottedContent: () => 'Anchor',
   },
   argTypes: {
@@ -48,58 +51,45 @@ export default {
         type: { summary: Object.values(AnchorButtonShape).join('|') },
       },
     },
-    disabled: {
-      control: 'boolean',
-      description: "Sets the button's disabled state.",
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    disabledFocusable: {
-      control: 'boolean',
-      description: 'Indicates the button is focusable while disabled.',
-      name: 'disabled-focusable',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
     href: {
       control: 'text',
-      description: 'The href of the anchor',
+      description: 'The href of the anchor.',
       name: 'href',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    formAction: {
+    hreflang: {
       control: 'text',
-      description: 'The URL that processes the form submission.',
-      name: 'formaction',
+      description: 'Hints at the language of the referenced resource.',
+      name: 'hreflang',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    formAttribute: {
+    referrerpolicy: {
       control: 'text',
-      description: 'The id of a form to associate the element to.',
-      name: 'form',
+      description: 'The referrerpolicy attribute.',
+      name: 'referrerpolicy',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    formEnctype: {
+    rel: {
       control: 'text',
-      description: 'The encoding type for the form submission.',
-      name: 'formenctype',
+      description: 'The rel attribute.',
+      name: 'rel',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    formMethod: {
+    type: {
       control: 'text',
-      description: 'The HTTP method that the browser uses to submit the form.',
-      name: 'formmethod',
+      description: 'The type attribute.',
+      name: 'type',
       table: { category: 'attributes', type: { summary: 'string' } },
     },
-    formNoValidate: {
-      control: 'boolean',
-      description: 'Indicates that the form will not be validated when submitted.',
-      name: 'formnovalidate',
-      table: { category: 'attributes', type: { summary: 'boolean' } },
-    },
-    formTarget: {
-      control: 'text',
-      description: 'The target frame or window to open the form submission in.',
-      name: 'formtarget',
-      table: { category: 'attributes', type: { summary: 'string' } },
+    target: {
+      control: 'select',
+      description: 'The target attribute.',
+      options: ['', ...Object.values(AnchorTarget)],
+      mapping: { '': null, ...AnchorTarget },
+      table: {
+        category: 'attributes',
+        type: { summary: Object.values(AnchorTarget).join('|') },
+      },
     },
     iconOnly: {
       control: 'boolean',
