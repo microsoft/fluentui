@@ -6,10 +6,10 @@ import { tokens } from '@fluentui/react-theme';
 
 export const splitNavItemClassNames: SlotClassNames<SplitNavItemSlots> = {
   root: 'fui-SplitNavItem',
-  primaryNavItem: 'fui-SplitNavItem_primaryNavItem',
-  secondaryActionButton: 'fui-SplitNavItem_secondaryActionButton',
-  secondaryToggleButton: 'fui-SplitNavItem_secondaryToggleButton',
-  menuButton: 'fui-SplitNavItem_menuButton',
+  primaryNavItem: 'fui-SplitNavItem__primaryNavItem',
+  secondaryActionButton: 'fui-SplitNavItem__secondaryActionButton',
+  secondaryToggleButton: 'fui-SplitNavItem__secondaryToggleButton',
+  menuButton: 'fui-SplitNavItem__menuButton',
 };
 // Don't use makeResetStyles here because the sub components call it once and
 // This links says that makeResetStyles should only be called once per element
