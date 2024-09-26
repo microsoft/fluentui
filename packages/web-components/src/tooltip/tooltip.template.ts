@@ -6,7 +6,7 @@ import type { Tooltip } from './tooltip.js';
  * @public
  */
 export const template = html<Tooltip>`
-  <template id="${x => x.id}" popover aria-hidden="true">
+  <template popover aria-hidden="true">
     <slot></slot>
   </template>
 `;
