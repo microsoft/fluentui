@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Added support for custom indicator colors to progress-bar",
+  "packageName": "@fluentui/web-components",
+  "email": "mlijanto@microsoft.com",
+  "dependentChangeType": "patch"
+}
