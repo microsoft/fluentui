@@ -19,6 +19,7 @@ export const styles = css`
   ${display('block')}
 
   :host {
+    --indicator-color: ${colorCompoundBrandBackground};
     width: 100%;
     height: 2px;
     overflow-x: hidden;
@@ -36,7 +37,7 @@ export const styles = css`
   }
 
   .indicator {
-    background-color: ${colorCompoundBrandBackground};
+    background-color: var(--indicator-color);
     border-radius: inherit;
     height: 100%;
   }
@@ -61,15 +62,15 @@ export const styles = css`
   }
 
   :host(${errorState}) .indicator {
-    background-color: ${colorPaletteRedBackground3};
+    --indicator-color: ${colorPaletteRedBackground3};
   }
 
   :host(${warningState}) .indicator {
-    background-color: ${colorPaletteDarkOrangeBackground3};
+    --indicator-color: ${colorPaletteDarkOrangeBackground3};
   }
 
   :host(${successState}) .indicator {
-    background-color: ${colorPaletteGreenBackground3};
+    --indicator-color: ${colorPaletteGreenBackground3};
   }
 
   @layer animations {
