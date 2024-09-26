@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-carousel-preview
 
-This log was last generated on Mon, 23 Sep 2024 12:40:12 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.6.0)
+
+Thu, 26 Sep 2024 14:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-carousel-preview_v0.5.0..@fluentui/react-carousel-preview_v0.6.0)
+
+### Minor changes
+
+- feat: Add resetAutoplay feature to reset index change timer ([PR #32897](https://github.com/microsoft/fluentui/pull/32897) by mifraser@microsoft.com)
+- Bump @fluentui/react-button to v9.3.92 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-carousel-preview_v0.5.0)
 

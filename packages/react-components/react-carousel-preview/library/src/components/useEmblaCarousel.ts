@@ -7,13 +7,15 @@ import { carouselSliderClassNames } from './CarouselSlider/useCarouselSliderStyl
 import { CarouselUpdateData, CarouselVisibilityEventDetail } from '../Carousel';
 import Autoplay from 'embla-carousel-autoplay';
 
+const sliderClassname = `.${carouselSliderClassNames.root}`;
+
 const DEFAULT_EMBLA_OPTIONS: EmblaOptionsType = {
   containScroll: 'trimSnaps',
   inViewThreshold: 0.99,
   watchDrag: false,
   skipSnaps: true,
 
-  container: `.${carouselSliderClassNames.root}`,
+  container: sliderClassname,
   slides: `.${carouselCardClassNames.root}`,
 };
 
@@ -56,17 +58,26 @@ export function useEmblaCarousel(
   });
 
   const emblaApi = React.useRef<EmblaCarouselType | null>(null);
-
   const autoplayRef = React.useRef<boolean>(false);
-  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
-  const enableAutoplay = React.useCallback((autoplay: boolean) => {
-    autoplayRef.current = autoplay;
-    if (autoplay) {
-      emblaApi.current?.plugins().autoplay.play();
-    } else {
-      emblaApi.current?.plugins().autoplay.stop();
-    }
+
+  const resetAutoplay = React.useCallback(() => {
+    emblaApi.current?.plugins().autoplay.reset();
   }, []);
+
+  /* Our autoplay button, which is required by standards for autoplay to be enabled, will handle controlled state */
+  const enableAutoplay = React.useCallback(
+    (autoplay: boolean) => {
+      autoplayRef.current = autoplay;
+      if (autoplay) {
+        emblaApi.current?.plugins().autoplay.play();
+        // Reset after play to ensure timing and any focus/mouse pause state is reset.
+        resetAutoplay();
+      } else {
+        emblaApi.current?.plugins().autoplay.stop();
+      }
+    },
+    [resetAutoplay],
+  );
 
   // Listeners contains callbacks for UI elements that may require state update based on embla changes
   const listeners = React.useRef(new Set<(data: CarouselUpdateData) => void>());
@@ -144,6 +155,9 @@ export function useEmblaCarousel(
                 stopOnInteraction: !autoplayRef.current,
                 stopOnMouseEnter: true,
                 stopOnFocusIn: true,
+                rootNode: (emblaRoot: HTMLElement) => {
+                  return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
+                },
               }),
             ],
           );
@@ -207,6 +221,9 @@ export function useEmblaCarousel(
           stopOnInteraction: !autoplayRef.current,
           stopOnMouseEnter: true,
           stopOnFocusIn: true,
+          rootNode: (emblaRoot: HTMLElement) => {
+            return emblaRoot.querySelector(sliderClassname) ?? emblaRoot;
+          },
         }),
       ],
     );
@@ -218,5 +235,6 @@ export function useEmblaCarousel(
     containerRef,
     subscribeForValues,
     enableAutoplay,
+    resetAutoplay,
   };
 }

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix tabIndex for clear button in Dropdown component",
-  "packageName": "@fluentui/react-combobox",
-  "email": "kirpadv@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-table",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:28 GMT",
+      "tag": "@fluentui/react-table_v9.15.18",
+      "version": "9.15.18",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "3a68e589a477f4ae97e825913d8721ed44ecbb7e",
+            "comment": "fix: table selection checkbox or radio should be rendered even if invisible"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:15 GMT",
       "tag": "@fluentui/react-table_v9.15.17",
       "version": "9.15.17",

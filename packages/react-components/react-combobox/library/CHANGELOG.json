@@ -2,6 +2,21 @@
   "name": "@fluentui/react-combobox",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:27 GMT",
+      "tag": "@fluentui/react-combobox_v9.13.8",
+      "version": "9.13.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "kirpadv@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "110b34637b082f57ca5c863227e0e3a88b2e3e77",
+            "comment": "fix tabIndex for clear button in Dropdown component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:17 GMT",
       "tag": "@fluentui/react-combobox_v9.13.7",
       "version": "9.13.7",
