@@ -12,7 +12,7 @@ export type SplitNavItemSlots = {
   /**
    * Primary navigation item in SplitNavItem.
    */
-  navItem?: NonNullable<Slot<NavItemProps>>;
+  navItem?: Slot<NavItemProps>;
 
   /**
    * Basic button slot.
