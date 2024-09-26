@@ -2,6 +2,21 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:28 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.44",
+      "version": "9.0.44",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6cfb9c80f12449ae53eead80baef0eac1725d80b",
+            "comment": "docs: improve usage docs and fix invalid links to sb docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:17 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.44",
       "version": "9.0.44",

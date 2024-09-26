@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 23 Sep 2024 12:40:11 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.54.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.17)
+
+Thu, 26 Sep 2024 14:15:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.54.16..@fluentui/react-components_v9.54.17)
+
+### Minor changes
+
+- `@fluentui/react-carousel-preview`
+  - feat: Add resetAutoplay feature to reset index change timer ([PR #32897](https://github.com/microsoft/fluentui/pull/32897) by mifraser@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: hovered menubutton icon does not disappear ([PR #32917](https://github.com/microsoft/fluentui/pull/32917) by sarah.higley@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix tabIndex for clear button in Dropdown component ([PR #32278](https://github.com/microsoft/fluentui/pull/32278) by kirpadv@gmail.com)
+- `@fluentui/react-drawer`
+  - fix: reversed animations ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by marcosvmmoura@gmail.com)
+- `@fluentui/react-table`
+  - fix: table selection checkbox or radio should be rendered even if invisible ([PR #32846](https://github.com/microsoft/fluentui/pull/32846) by sarah.higley@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - BREAKING CHANGE (useVirtualizerDynamicMeasure): optimized with scrollPos state and children height reference, updated algorithm to be more accurate, and exported measurement hook ([PR #32375](https://github.com/microsoft/fluentui/pull/32375) by mifraser@microsoft.com)
 
 ## [9.54.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.54.16)
 

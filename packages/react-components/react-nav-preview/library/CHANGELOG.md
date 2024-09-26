@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-nav-preview
 
-This log was last generated on Mon, 23 Sep 2024 12:40:14 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.1)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-nav-preview_v0.8.0..@fluentui/react-nav-preview_v0.8.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.92 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
+- Bump @fluentui/react-drawer to v9.5.16 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
 
 ## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-nav-preview_v0.8.0)
 
