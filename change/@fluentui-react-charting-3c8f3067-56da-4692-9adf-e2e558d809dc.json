@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "patch",
   "comment": "Add controlled selection capability to Legends component",
   "packageName": "@fluentui/react-charting",
   "email": "email not defined",
