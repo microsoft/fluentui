@@ -29,8 +29,8 @@ export const rule = ESLintUtils.RuleCreator(() => __filename)({
     },
     schema: [],
     messages: {
-      missingPragma: `File uses JSX slots API but doesn't specify custom jsx transforms`,
-      missingCreateElementFactoryImport: `File uses JSX slots API, has defined /** jsx createElement */ pragma  /**, but is missing 'createElement' factory function import`,
+      missingPragma: `File uses JSX slots API but doesn't specify custom jsx transforms. To fix this add /** @jsxImportSource @fluentui/react-jsx-runtime */`,
+      missingCreateElementFactoryImport: `File uses JSX slots API, has defined /** jsx createElement */ pragma, but is missing 'createElement' factory function import. To fix this add "import {createElement} from '@fluentui/react-jsx-runtime'"`,
     },
   },
   defaultOptions: [],
