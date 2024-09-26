@@ -1,7 +1,7 @@
 name: '⚛️ React Components - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
-labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'react-components v9']
+labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'Fluent UI react-components (v9)']
 projects: ['microsoft/395']
 assignees: []
 body:
