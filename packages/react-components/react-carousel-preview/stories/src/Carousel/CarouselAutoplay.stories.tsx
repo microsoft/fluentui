@@ -1,7 +1,7 @@
 import { Button, Field, Image, makeStyles, Switch, tokens, typographyStyles } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncer,
+  CarouselAnnouncerFunction,
   CarouselAutoplayButtonProps,
   CarouselCard,
   CarouselNav,
@@ -116,6 +116,10 @@ const BannerCard: React.FC<{ children: React.ReactNode; imageSrc: string; index:
   );
 };
 
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 export const Autoplay = () => {
   const classes = useClasses();
   const [autoplayEnabled, setAutoplayEnabled] = React.useState(false);
@@ -142,7 +146,7 @@ export const Autoplay = () => {
           <Switch checked={autoplayEnabled} onChange={() => setAutoplayEnabled(!autoplayEnabled)} />
         </Field>
       </div>
-      <Carousel groupSize={1} circular>
+      <Carousel groupSize={1} circular announcement={getAnnouncement}>
         <CarouselSlider>
           {IMAGES.map((imageSrc, index) => (
             <BannerCard key={`image-${index}`} imageSrc={imageSrc} index={index}>
@@ -158,11 +162,6 @@ export const Autoplay = () => {
         >
           <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
         </CarouselNavContainer>
-        <CarouselAnnouncer>
-          {(currentIndex, totalSlides, _slideGroupList) => {
-            return `Slide ${currentIndex + 1} of ${totalSlides}`;
-          }}
-        </CarouselAnnouncer>
       </Carousel>
     </div>
   );
