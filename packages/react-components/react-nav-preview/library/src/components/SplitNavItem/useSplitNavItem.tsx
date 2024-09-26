@@ -23,7 +23,7 @@ export const useSplitNavItem_unstable = (
 
   const { size = 'medium' } = useNavContext_unstable();
 
-  const primaryActionButtonShorthand = slot.always(navItem, {
+  const navItemShorthand = slot.optional(navItem, {
     defaultProps: {
       children,
     },
@@ -75,7 +75,7 @@ export const useSplitNavItem_unstable = (
       }),
       { elementType: 'div' },
     ),
-    navItem: primaryActionButtonShorthand,
+    navItem: navItemShorthand,
     actionButton: actionButtonShorthand,
     toggleButton: toggleButtonShorthand,
     menuButton: menuButtonShorthand,
