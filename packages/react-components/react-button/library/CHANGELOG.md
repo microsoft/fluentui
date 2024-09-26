@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.92)
+
+Thu, 26 Sep 2024 14:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.91..@fluentui/react-button_v9.3.92)
+
+### Patches
+
+- fix: hovered menubutton icon does not disappear ([PR #32917](https://github.com/microsoft/fluentui/pull/32917) by sarah.higley@microsoft.com)
 
 ## [9.3.91](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.91)
 

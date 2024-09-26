@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 23 Sep 2024 12:40:17 GMT and should not be manually modified.
+This log was last generated on Thu, 26 Sep 2024 14:15:28 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.2)
+
+Thu, 26 Sep 2024 14:15:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.8.1..@fluentui/react-tree_v9.8.2)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.92 ([PR #32924](https://github.com/microsoft/fluentui/pull/32924) by beachball)
 
 ## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.8.1)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 26 Sep 2024 14:15:27 GMT",
+      "tag": "@fluentui/react-button_v9.3.92",
+      "version": "9.3.92",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "6d209c7ce179a81c5faa56977995b0fade71693d",
+            "comment": "fix: hovered menubutton icon does not disappear"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Sep 2024 12:40:17 GMT",
       "tag": "@fluentui/react-button_v9.3.91",
       "version": "9.3.91",
