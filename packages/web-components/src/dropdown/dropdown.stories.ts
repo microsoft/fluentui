@@ -83,11 +83,6 @@ const storyFieldTemplate = () => html` <fluent-field style="width: 100%"> ${stor
 
 export default {
   title: 'Components/Dropdown',
-  parameters: {
-    docs: {
-      source: renderComponent(storyTemplate()),
-    },
-  },
   argTypes: {
     appearance: {
       control: 'select',
