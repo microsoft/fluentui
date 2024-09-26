@@ -27,6 +27,7 @@ export const useSplitNavItem_unstable = (
     defaultProps: {
       children,
     },
+    renderByDefault: true,
     elementType: NavItem,
   });
 
