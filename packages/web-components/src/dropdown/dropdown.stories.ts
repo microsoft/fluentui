@@ -75,7 +75,7 @@ const storyTemplate = () => {
         x => x.storyOptions ?? storyOptions,
         html`${x => x.divider ? dividerTemplate : optionTemplate}`
       )}
-    </fluient-dropdown-list>
+    </fluent-dropdown-list>
   `;
 };
 
