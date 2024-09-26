@@ -1,10 +1,8 @@
 import { execSync } from 'node:child_process';
 
+import type { AllPackageInfo } from '@fluentui/scripts-monorepo';
+
 import { deprecateReactComponentsPreviewPackages } from './deprecate-react-components-preview-packages';
-// fixtures
-import * as noChangeFilesFixture from './fixtures/deprecate-react-components-preview-packages/no-change-files/fixture';
-import * as noPreviewPackagesFixture from './fixtures/deprecate-react-components-preview-packages/no-preview-packages/fixture';
-import * as withPreviewPackagesFixture from './fixtures/deprecate-react-components-preview-packages/with-preview-packages/fixture';
 
 // Mock the `execSync` function, as we don't want to actually run the `npm deprecate` command
 jest.mock('node:child_process', () => ({
@@ -13,32 +11,106 @@ jest.mock('node:child_process', () => ({
 
 const mockExecSync = execSync as jest.MockedFunction<typeof execSync>;
 
+const packages: AllPackageInfo = {
+  // preview => stable package, published preview package should be deprecated
+  'react-carousel': {
+    packagePath: 'packages/react-carousel',
+    packageJson: {
+      name: '@fluentui/react-carousel',
+      main: 'lib/index.js',
+      version: '9.0.0-alpha.0',
+    },
+    projectConfig: {
+      root: 'packages/react-carousel',
+      name: 'react-carousel',
+      tags: ['vNext'],
+    },
+  },
+  // still in preview, should not be deprecated
+  'react-color-picker-preview': {
+    packagePath: 'packages/react-color-picker-preview',
+    packageJson: {
+      name: '@fluentui/react-color-picker-preview',
+      main: 'lib/index.js',
+      version: '0.1.2',
+    },
+    projectConfig: {
+      root: 'packages/react-color-picker-preview',
+      name: 'react-color-picker-preview',
+      tags: ['vNext'],
+    },
+  },
+  'react-dialog': {
+    packagePath: 'packages/react-dialog',
+    packageJson: {
+      name: '@fluentui/react-dialog',
+      main: 'lib/index.js',
+      version: '9.1.2',
+    },
+    projectConfig: {
+      root: 'packages/react-dialog',
+      name: 'react-dialog',
+      tags: ['vNext'],
+    },
+  },
+  'react-drawer': {
+    packagePath: 'packages/react-drawer',
+    packageJson: {
+      name: '@fluentui/react-drawer',
+      main: 'lib/index.js',
+      version: '9.1.2',
+    },
+    projectConfig: {
+      root: 'packages/react-drawer',
+      name: 'react-drawer',
+      tags: ['vNext'],
+    },
+  },
+};
+
 describe('deprecateReactComponentsPreviewPackages', () => {
   it('should skip deprecating packages (no change files)', () => {
-    deprecateReactComponentsPreviewPackages(noChangeFilesFixture.input);
+    deprecateReactComponentsPreviewPackages({
+      argv: {
+        changeFilesRoot:
+          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-change-files/change',
+        token: 'npm-token',
+      },
+      packages,
+    });
 
     expect(mockExecSync).not.toHaveBeenCalled();
   });
 
   it('should skip deprecating packages (no preview packages)', () => {
-    deprecateReactComponentsPreviewPackages(noPreviewPackagesFixture.input);
+    deprecateReactComponentsPreviewPackages({
+      argv: {
+        changeFilesRoot:
+          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/no-preview-packages/change',
+        token: 'npm-token',
+      },
+      packages,
+    });
 
     expect(mockExecSync).not.toHaveBeenCalled();
   });
 
   it('should deprecate preview packages', () => {
-    deprecateReactComponentsPreviewPackages(withPreviewPackagesFixture.input);
-
-    expect(mockExecSync).toHaveBeenCalledTimes(withPreviewPackagesFixture.output.packagesToDeprecate.length);
-
-    withPreviewPackagesFixture.output.packagesToDeprecate.forEach(deprecatedPackage => {
-      const stablePackage = deprecatedPackage.replace('-preview', '');
-
-      expect(mockExecSync).toHaveBeenCalledWith(
-        `npm deprecate ${deprecatedPackage} "Deprecated in favor of stable release - use/migrate to ${stablePackage}" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=npm-token`,
-        { stdio: 'inherit' },
-      );
+    deprecateReactComponentsPreviewPackages({
+      argv: {
+        changeFilesRoot:
+          'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
+        token: 'npm-token',
+      },
+      packages,
     });
+
+    expect(mockExecSync).toHaveBeenCalledTimes(1);
+
+    expect(mockExecSync).toHaveBeenCalledWith(
+      `npm deprecate @fluentui/react-carousel-preview "Deprecated in favor of stable release - use/migrate to @fluentui/react-carousel" --registry https://registry.npmjs.org/ --//registry.npmjs.org/:_authToken=npm-token`,
+      { stdio: 'inherit' },
+    );
   });
 
   it('should throw an error (change dir is not correct)', () => {
@@ -48,7 +120,7 @@ describe('deprecateReactComponentsPreviewPackages', () => {
           changeFilesRoot: 'wrong-path',
           token: 'npm-token',
         },
-        packages: withPreviewPackagesFixture.input.packages,
+        packages,
       }),
     ).toThrow();
   });
@@ -58,6 +130,15 @@ describe('deprecateReactComponentsPreviewPackages', () => {
       throw new Error('Failed to deprecate package');
     });
 
-    expect(() => deprecateReactComponentsPreviewPackages(withPreviewPackagesFixture.input)).toThrow();
+    expect(() =>
+      deprecateReactComponentsPreviewPackages({
+        argv: {
+          changeFilesRoot:
+            'scripts/executors/src/__fixtures__/deprecate-react-components-preview-packages/with-preview-packages/change',
+          token: 'npm-token',
+        },
+        packages,
+      }),
+    ).toThrow();
   });
 });
