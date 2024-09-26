@@ -32,7 +32,12 @@ export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Define a custom callout renderer for a data point
    */
-  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element;
+  onRenderCalloutPerDataPoint?: (dataPointCalloutProps: IChartDataPoint) => JSX.Element | undefined;
+
+  /**
+   * Define a custom callout props override
+   */
+  customProps?: (dataPointCalloutProps: IChartDataPoint) => IPopoverComponentProps;
 
   /**
    * props for the callout in the chart
