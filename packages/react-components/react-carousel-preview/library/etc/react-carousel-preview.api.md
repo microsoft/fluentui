@@ -30,28 +30,7 @@ import { ToggleButtonState } from '@fluentui/react-button';
 export const Carousel: ForwardRefComponent<CarouselProps>;
 
 // @public
-export const CarouselAnnouncer: ForwardRefComponent<CarouselAnnouncerProps>;
-
-// @public (undocumented)
-export const carouselAnnouncerClassNames: SlotClassNames<CarouselAnnouncerSlots>;
-
-// @public
-export type CarouselAnnouncerProps = Omit<ComponentProps<Partial<CarouselAnnouncerSlots>>, 'children'> & {
-    children: AnnouncerIndexRenderFunction;
-};
-
-// @public (undocumented)
-export type CarouselAnnouncerSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type CarouselAnnouncerState = ComponentState<CarouselAnnouncerSlots> & {
-    renderAnnouncerChild: AnnouncerIndexRenderFunction;
-    totalSlides: number;
-    currentIndex: number;
-    slideGroupList: number[][];
-};
+export type CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
 
 // @public
 export const CarouselAutoplayButton: ForwardRefComponent<CarouselAutoplayButtonProps>;
@@ -233,6 +212,7 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
     groupSize?: number | 'auto';
     draggable?: boolean;
     whitespace?: boolean;
+    announcement?: CarouselAnnouncerFunction;
 };
 
 // @public (undocumented)
@@ -272,9 +252,6 @@ export type NavButtonRenderFunction = (index: number) => React_2.ReactNode;
 export const renderCarousel_unstable: (state: CarouselState, contextValues: CarouselContextValues) => JSX.Element;
 
 // @public
-export const renderCarouselAnnouncer_unstable: (state: CarouselAnnouncerState) => JSX.Element;
-
-// @public
 export const renderCarouselAutoplayButton_unstable: (state: CarouselAutoplayButtonState) => JSX.Element;
 
 // @public
@@ -300,12 +277,6 @@ export const renderCarouselSlider_unstable: (state: CarouselSliderState, context
 
 // @public
 export function useCarousel_unstable(props: CarouselProps, ref: React_2.Ref<HTMLDivElement>): CarouselState;
-
-// @public
-export const useCarouselAnnouncer_unstable: (props: CarouselAnnouncerProps, ref: React_2.Ref<HTMLDivElement>) => CarouselAnnouncerState;
-
-// @public
-export const useCarouselAnnouncerStyles_unstable: (state: CarouselAnnouncerState) => CarouselAnnouncerState;
 
 // @public
 export const useCarouselAutoplayButton_unstable: (props: CarouselAutoplayButtonProps, ref: React_2.Ref<ARIAButtonElement>) => CarouselAutoplayButtonState;

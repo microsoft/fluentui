@@ -6,6 +6,11 @@ export type CarouselSlots = {
 };
 
 /**
+ * Children function replacement, passes through updated context index and carousel information for localization
+ */
+export type CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => string;
+
+/**
  * Carousel Props
  */
 export type CarouselProps = ComponentProps<CarouselSlots> & {
@@ -51,6 +56,12 @@ export type CarouselProps = ComponentProps<CarouselSlots> & {
    * Defaults to: False
    */
   whitespace?: boolean;
+
+  /**
+   * Localizes the string used to announce carousel page changes
+   * Defaults to: undefined
+   */
+  announcement?: CarouselAnnouncerFunction;
 };
 
 /**

@@ -1,7 +1,7 @@
 import { Body1, Caption1, makeStyles, mergeClasses, tokens, Title1, Subtitle2 } from '@fluentui/react-components';
 import {
   Carousel,
-  CarouselAnnouncer,
+  CarouselAnnouncerFunction,
   CarouselCard,
   CarouselNav,
   CarouselNavButton,
@@ -81,11 +81,15 @@ const WireframeContent: React.FC<{
   );
 };
 
+const getAnnouncement: CarouselAnnouncerFunction = (index: number, totalSlides: number, slideGroupList: number[][]) => {
+  return `Carousel slide ${index + 1} of ${totalSlides}`;
+};
+
 export const Responsive = () => {
   const classes = useClasses();
 
   return (
-    <Carousel draggable>
+    <Carousel draggable announcement={getAnnouncement}>
       <CarouselSlider className={classes.slider}>
         <CarouselCard autoSize aria-label="1 of 7">
           <WireframeContent appearance="odd">
@@ -136,12 +140,6 @@ export const Responsive = () => {
       <CarouselNavContainer layout="inline" next={{ 'aria-label': 'go to next' }} prev={{ 'aria-label': 'go to prev' }}>
         <CarouselNav>{index => <CarouselNavButton aria-label={`Carousel Nav Button ${index}`} />}</CarouselNav>
       </CarouselNavContainer>
-
-      <CarouselAnnouncer>
-        {(currentIndex, totalSlides, _slideGroupList) => {
-          return `Slide ${currentIndex + 1} of ${totalSlides}`;
-        }}
-      </CarouselAnnouncer>
     </Carousel>
   );
 };
