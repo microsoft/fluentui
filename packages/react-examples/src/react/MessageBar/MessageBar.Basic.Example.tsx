@@ -127,6 +127,8 @@ const WarningExample = (p: IExampleProps) => {
       const displayWidth = messageBarMessage.getBoundingClientRect().width;
 
       setShowExpandButton(fullWidth > displayWidth);
+
+      (messageBarMessage.parentElement as any).removeChild(temp);
     }
   }
 
