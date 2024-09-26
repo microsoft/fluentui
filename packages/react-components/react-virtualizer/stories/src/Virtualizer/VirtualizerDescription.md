@@ -4,7 +4,7 @@
 >
 > ```jsx
 >
-> import { Virtualizer } from '@fluentui/react-components/unstable';
+> import { Virtualizer } from '@fluentui/react-virtualizer';
 >
 > ```
 >

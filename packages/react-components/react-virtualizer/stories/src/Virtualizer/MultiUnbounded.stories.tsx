@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-components/unstable';
+import { Virtualizer, useStaticVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { makeStyles, useFluent } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -36,7 +36,7 @@ export const MultiUnbounded = () => {
   const childLength = 100;
   const repeatingVirtualizers = 5;
 
-  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef, containerSizeRef } = useStaticVirtualizerMeasure({
     defaultItemSize: 100,
   });
 
@@ -58,6 +58,7 @@ export const MultiUnbounded = () => {
         bufferSize={bufferSize}
         itemSize={100}
         key={`virtualizer-container-${index}`}
+        containerSizeRef={containerSizeRef}
       >
         {rowIndex => {
           return (
