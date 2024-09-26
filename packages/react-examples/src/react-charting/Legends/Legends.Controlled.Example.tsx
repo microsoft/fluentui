@@ -33,7 +33,8 @@ export const LegendsControlledExample: React.FunctionComponent = () => {
   return (
     <div>
       <Stack horizontal tokens={{ childrenGap: 10 }}>
-        <Button onClick={() => setSelectedLegends([])}>Select none</Button>
+        <Button onClick={() => setSelectedLegends(['Legend 1', 'Legend 3'])}>Select 1 and 3</Button>
+        <Button onClick={() => setSelectedLegends(['Legend 2', 'Legend 4'])}>Select 2 and 4</Button>
         <Button onClick={() => setSelectedLegends(legends.map(legend => legend.title))}>Select all</Button>
       </Stack>
       <Legends
