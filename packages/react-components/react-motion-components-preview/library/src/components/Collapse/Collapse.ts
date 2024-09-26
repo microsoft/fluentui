@@ -2,8 +2,6 @@ import { motionTokens, type PresenceMotionFnCreator, createPresenceComponent } f
 
 const { durationNormal, durationSlower, durationUltraFast, curveEasyEase, curveEasyEaseMax } = motionTokens;
 
-export type CollapseOrientation = 'horizontal' | 'vertical';
-
 /** Variant options are locked into the variant when its motion function is created. */
 type CollapseVariantOptions = {
   /** Time (ms) for the size expand. Defaults to the durationNormal value (200 ms). */
@@ -39,15 +37,12 @@ type CollapseVariantOptions = {
 type CollapseRuntimeParams = {
   /** Whether to animate the opacity. Defaults to `true`. */
   animateOpacity?: boolean;
-
-  /** The orientation of the size animation. Defaults to `'vertical'`. */
-  orientation?: CollapseOrientation;
 };
 
 /**
  * Creates a motion function for a collapse presence transition.
  * The motion function defines enter and exit transitions which can be applied to a DOM element,
- * governing size expansion along one dimension (width or height) and a fade.
+ * governing size expansion along one dimension (height currently) and a fade.
  *
  * By default, the size and fade transitions start and end in sync,
  * but they can be given separate durations and/or have a delay between them.
@@ -66,7 +61,6 @@ type CollapseRuntimeParams = {
  *
  * @returns A motion function which will accept an options object at runtime, with the following properties:
  * - `element`: The element to animate.
- * - `orientation` (optional): The orientation of the size animation. Defaults to `'vertical'`.
  * - `animateOpacity` (optional): Whether to animate the opacity. Defaults to `true`.
  */
 export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOptions, CollapseRuntimeParams> =
@@ -83,22 +77,21 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOpti
     enterEasing = curveEasyEaseMax,
     exitEasing = enterEasing,
   } = {}) =>
-  ({ element, animateOpacity = true, orientation = 'vertical' }) => {
+  ({ element, animateOpacity = true }) => {
     const fromOpacity = animateOpacity ? 0 : 1; // Possible future custom param, for fading in from a different opacity.
     const toOpacity = 1;
 
-    // "size" is the width or height of the element, depending on the orientation.
-    const fromSize = '0'; // Possible future custom param, for collapsing to a width or height.
-    const measuredSize = orientation === 'horizontal' ? element.scrollWidth : element.scrollHeight;
+    // "size" is the height of the element. TODO: Support horizontal orientation.
+    const fromSize = '0'; // Possible future custom param, for collapsing to a size.
+    const measuredSize = element.scrollHeight;
     const toSize = `${measuredSize}px`;
-    // use generic names for size and overflow, handling vertical or horizontal orientation
-    const sizeName = orientation === 'horizontal' ? 'maxWidth' : 'maxHeight';
-    const overflowName = orientation === 'horizontal' ? 'overflowX' : 'overflowY';
+    const sizeName = 'maxHeight';
+    const overflowName = 'overflowY';
 
     return {
       // The enter transition is an array of 2 motion atoms: size and opacity.
       enter: [
-        // Expand size (width or height).
+        // Expand size (height currently).
         {
           keyframes: [
             {
@@ -129,7 +122,7 @@ export const createCollapsePresence: PresenceMotionFnCreator<CollapseVariantOpti
           duration: exitOpacityDuration,
           easing: exitEasing,
         },
-        // Collapse size (width or height). If exitDelay > 0, this is after the fade-out.
+        // Collapse size (height currently). If exitDelay > 0, this is after the fade-out.
         {
           delay: exitDelay,
           keyframes: [
