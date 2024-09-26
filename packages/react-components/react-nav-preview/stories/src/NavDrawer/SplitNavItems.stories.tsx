@@ -143,7 +143,7 @@ const SomeMenuPopover = () => {
   );
 };
 
-export const NavDrawerSplitSize = (props: Partial<NavDrawerProps>) => {
+export const SplitNavItems = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
   const labelId = useId('type-label');
