@@ -1,7 +1,8 @@
-name: "\U0001F680 New feature proposal"
-description: Propose a new feature to be added to Fluent UI.
+name: '🚀 Feature proposal'
+description: Propose a new feature.
 title: '[Feature]: '
 labels: ['Type: Feature', 'Needs: Triage 🔍']
+projects: ['microsoft/395']
 assignees: []
 body:
   - type: markdown
@@ -10,15 +11,15 @@ body:
         Thanks for your interest in the project and for taking the time to fill out this feature report!
 
   - type: dropdown
-    id: lib-version
+    id: area
     attributes:
-      label: Library
-      description: To which library would this be added to
+      label: Area
+      description: To which area would this be added to
       options:
-        - React Northstar / v0 (@fluentui/react-northstar)
-        - React / v8 (@fluentui/react)
-        - React Components / v9 (@fluentui/react-components)
+        - React Components (@fluentui/react-components)
+        - React Charting (@fluentui/react-charting)
         - Web Components (@fluentui/web-components)
+        - Tooling
     validations:
       required: true
 
@@ -29,21 +30,20 @@ body:
     validations:
       required: true
 
-  - type: input
-    id: feature-discussed-with
-    attributes:
-      label: Have you discussed this feature with our team
-      description: Please use a particular person or team's GitHub handle
-    validations:
-      required: false
-
   - type: textarea
     id: additional-context
     attributes:
       label: Additional context
       description: Any other context or screenshots about the feature request here?
-    validations:
-      required: false
+
+  - type: input
+    id: feature-discussed-with
+    attributes:
+      label: Have you discussed this feature with our team
+      description: |
+        Please use a particular person or team's GitHub handle.
+        If you haven't discussed it with anyone leave it blank.
+      placeholder: e.g. @microsoft/cxe-prg @githubHandle
 
   - type: checkboxes
     id: checkboxes
@@ -61,7 +61,7 @@ body:
       description: What is this feature's priority from your product's perspective
       options:
         - High
-        - Normal
+        - Medium
         - Low
     validations:
       required: false

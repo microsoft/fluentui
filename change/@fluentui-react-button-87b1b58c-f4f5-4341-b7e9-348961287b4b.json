@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: hovered menubutton icon does not disappear",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
