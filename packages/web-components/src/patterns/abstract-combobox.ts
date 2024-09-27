@@ -153,8 +153,8 @@ export abstract class AbstractCombobox extends FASTElement {
   public list?: string;
   protected listChanged(prev: string | undefined) {
     if (prev) {
-      const prevListElement = document.getElementById(prev);
-      if (prevListElement && prevListElement instanceof AbstractListbox) {
+      const prevListElement = this.getListElementById(prev);
+      if (prevListElement) {
         this.unbindListboxEvents(prevListElement);
       }
     }
@@ -169,14 +169,8 @@ export abstract class AbstractCombobox extends FASTElement {
    *
    * @public
    */
-  public get listElement(): null | AbstractListbox {
-    if (!this.list || typeof this.list !== 'string') {
-      return null;
-    }
-
-    const el = document.getElementById(this.list);
-
-    return el instanceof AbstractListbox ? el : null;
+  public get listElement(): AbstractListbox | null {
+    return this.getListElementById(this.list?.toString());
   }
 
   /**
@@ -370,7 +364,6 @@ export abstract class AbstractCombobox extends FASTElement {
     super.connectedCallback();
 
     this.bindEvents();
-    this.bindListboxEvents();
     this.connectListbox();
     this.togglePlaceholderVisibleState();
     this.setValidity();
@@ -391,6 +384,7 @@ export abstract class AbstractCombobox extends FASTElement {
    */
   formDisabledCallback(disabled: boolean) {
     this.setDisabledSideEffect(disabled);
+    this.setValidity();
   }
 
   /**
@@ -712,11 +706,12 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   protected setDisabledSideEffect(disabled: boolean) {
+    this.elementInternals.ariaDisabled = `${disabled}`;
+
     if (!this.$fastController.isConnected) {
       return;
     }
 
-    this.elementInternals.ariaDisabled = `${disabled}`;
     this.tabIndex = disabled ? -1 : 0;
 
     if (this.isExpanded && this.listElement) {
@@ -760,5 +755,11 @@ export abstract class AbstractCombobox extends FASTElement {
 
   protected togglePlaceholderVisibleState() {
     toggleState(this.elementInternals, 'placeholder-visible', this.selectedOptions.length === 0 && !!this.placeholder);
+  }
+
+  private getListElementById(id = ''): AbstractListbox | null {
+    const rootNode = this.getRootNode();
+    const el =  (rootNode instanceof ShadowRoot ? rootNode : document).getElementById(id);
+    return el instanceof AbstractListbox ? el : null;
   }
 }
