@@ -88,7 +88,7 @@
     "@fluentui/react-teaching-popover": "^9.1.18",
     "@fluentui/react-tag-picker": "^9.3.4",
     "@fluentui/react-motion": "^9.5.2",
-    "@fluentui/react-carousel": "9.0.0-alpha.0"
+    "@fluentui/react-carousel": "^9.0.0"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
