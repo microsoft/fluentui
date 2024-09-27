@@ -1,7 +1,7 @@
 name: '⚙️ Tooling - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
-labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'Area: Build System']
+labels: ['Type: Bug :bug:', 'Needs: Triage :mag:', 'Area: Build System']
 projects: ['microsoft/395']
 assignees: ['@microsoft/fluentui-react-build']
 body:

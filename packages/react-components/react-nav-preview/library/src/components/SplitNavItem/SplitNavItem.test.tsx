@@ -1,18 +1,30 @@
-import * as React from 'react';
-import { render } from '@testing-library/react';
 import { isConformant } from '../../testing/isConformant';
 import { SplitNavItem } from './SplitNavItem';
+import { splitNavItemClassNames } from './useSplitNavItemStyles.styles';
 
 describe('SplitNavItem', () => {
   isConformant({
     Component: SplitNavItem,
     displayName: 'SplitNavItem',
-  });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
-  it('renders a default state', () => {
-    const result = render(<SplitNavItem>Default SplitNavItem</SplitNavItem>);
-    expect(result.container).toMatchSnapshot();
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Test Icon',
+            navItem: 'Some Content',
+            actionButton: 'Some Content',
+            toggleButton: 'Some Content',
+            menuButton: 'Some Content',
+          },
+          expectedClassNames: {
+            root: splitNavItemClassNames.root,
+            navItem: splitNavItemClassNames.navItem,
+            actionButton: splitNavItemClassNames.actionButton,
+            toggleButton: splitNavItemClassNames.toggleButton,
+            menuButton: splitNavItemClassNames.menuButton,
+          },
+        },
+      ],
+    },
   });
 });

@@ -1,7 +1,7 @@
 name: '📊⚛️ React Charting - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
-labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'Package: charting']
+labels: ['Type: Bug :bug:', 'Needs: Triage :mag:', 'Package: charting']
 projects: ['microsoft/395']
 assignees: ['@microsoft/cxe-red']
 body:
