@@ -14,7 +14,6 @@ import {
   createPresenceComponent,
   motionTokens,
 } from '@fluentui/react-components';
-import story from './CustomMotionDescription.md';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -131,7 +130,8 @@ export const CustomMotion = () => {
 CustomMotion.parameters = {
   docs: {
     description: {
-      story,
+      story: `If you need to use a custom animation, you can use a render function inside a slot and
+apply your custom animation built with [createPresenceComponent](https://react.fluentui.dev/?path=/docs/motion-apis-createpresencecomponent--docs").`,
     },
   },
 };

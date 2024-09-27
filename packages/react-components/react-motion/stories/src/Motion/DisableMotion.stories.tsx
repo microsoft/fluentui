@@ -10,7 +10,6 @@ import {
   DialogContent,
   Button,
 } from '@fluentui/react-components';
-import story from './DisableMotionDescription.md';
 
 const useStyles = makeStyles({
   wrapper: {
@@ -64,6 +63,6 @@ export const DisableMotion = () => {
 
 DisableMotion.parameters = {
   docs: {
-    description: { story },
+    description: { story: 'In order to disable motion you can pass `null` to appropriate slot.' },
   },
 };
