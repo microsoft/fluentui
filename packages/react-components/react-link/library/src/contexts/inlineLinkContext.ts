@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-export type InlineLinkContextValue = {
-  inlineLinks: boolean;
+export type LinkContextValue = {
+  inline?: boolean;
 };
 
-const inlineLinkContext = React.createContext<InlineLinkContextValue | undefined>(undefined);
+const LinkContext = React.createContext<LinkContextValue | undefined>(undefined);
 
-export const inlineLinkContextDefaultValue: InlineLinkContextValue = {
+export const linkContextDefaultValue: LinkContextValue = {
   inlineLinks: false,
 };
 
-export const InlineLinkContextProvider = inlineLinkContext.Provider;
-export const useInlineLinkContext = () => React.useContext(inlineLinkContext) ?? inlineLinkContextDefaultValue;
+export const LinkContextProvider = LinkContext.Provider;
+export const useLinkContext = () => React.useContext(LinkContext) ?? linkContextDefaultValue;
