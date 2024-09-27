@@ -27,6 +27,8 @@ export const useRootDefaultClassName = makeResetStyles({
   textTransform: 'none',
   position: 'relative',
   justifyContent: 'start',
+  alignItems: 'flex-start',
+  textAlign: 'left',
   gap: tokens.spacingVerticalL,
   padding: `${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalS} ${tokens.spacingVerticalMNudge} ${tokens.spacingHorizontalMNudge}`,
   backgroundColor: navItemTokens.backgroundColor,
