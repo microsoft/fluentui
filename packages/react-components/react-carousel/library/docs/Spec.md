@@ -32,29 +32,21 @@ _Include background research done for this component_
 
 ### Card Peeking
 
-Cards will not peek by default, but can be enabled by setting the cardWidth to less than 100% of the viewport width.
+Cards will peek by default when the cardWidth is less than 100% of the viewport width.
 
 ### Condensed Navigation
 
-The CarouselFooter can be condensed, this will center all controls with minimal padding.
+The CarouselNavContainer can be condensed, this will center all controls with minimal padding.
 
 ### Inline vs Composed Navigation
 
-The CarouselFooter contains all navigation components in an inline horizontal container, however we have multiple valid layouts of the CarouselNavigation. If disconnected variants are required (such as prev/next buttons being overlaid in a different place than footer), then the individual navigation components can be placed within the Carousel wrapper in a variety of layouts.
+The CarouselNavContainer provides multiple valid layouts of the CarouselNavigation. If alternative variants are required, then the individual navigation components can be placed within the Carousel wrapper in any layouts.
 
 ## API
 
-The core driver of the API will be context provided via the Carousel component, CarouselCards will register themselves via this context, and the Navigation components will subscribe to any updates that occur. The Carousel itself will only re-render on active index change.
-
-Since the navigation has multiple valid layout formats, navigation components will be available individually to move around, or combined into slots via CarouselFooter within a single horizontal container.
+The core driver of the API will be context and event callbacks provided via the Carousel component, CarouselCards will register themselves via this wrapper, and the Navigation components will subscribe to any updates that occur. The Carousel itself will only re-render cards that had an active index change.
 
 Carousel provides callbacks on navigation changes, as well as the ability to drive pagination externally via a controlled index.
-
-Users **must** provide a value on each carouselCard, and a defaultValue that the carousel will initiate on.
-
-Motion can be enabled for next/previous button shift.
-
-A gap prop will be provided to place spacing between cards.
 
 ## Behaviors
 
@@ -64,29 +56,30 @@ Carousel is the context wrapper and container for all carousel content/controls,
 
 ### CarouselAutoplayButton
 
-If the carousel is on auto-play, the user may opt into pausing the auto-play feature via the CarouselAutoplayButton which must be present for auto-play to be enabled (if CarouselAutoplayButton present, auto-play will default to true on mount).
+If the carousel is on auto-play, the user may opt into pausing the auto-play feature via the CarouselAutoplayButton which must be present for auto-play to be enabled, this value can be controlled via interaction or the CarouselAutoplayButton props.
 
 ### CarouselButton
 
-A default navigation button that will set value to the next/previous page, driven by it's type 'next' or 'previous'.
+A default navigation button that will set value to the next/previous page, driven by it's navType of 'next' or 'previous'.
 
 ### CarouselCard
 
-The defining wrapper of a carousel's indexed content, they will take up the full viewport of Carousel wrapper (with consideration for gap and peeking variants), users may place multiple items within this Card if desired, with consideration of viewport width.
+The defining wrapper of a carousel's indexed content, they can be set to a responsive sizing via autoSize prop, or controlled via CSS.
 
-Clickable actions within the content area are available via mouse and tab as expected, non-active index content will be set to inert until moved to active card.
+Clickable actions within the content area are available via mouse and tab as expected, non-active index content will be set to inert until moved to active card. Be sure to set 'cardFocus' on the slider if multiple cards are present at once (not 100% width).
 
 ### CarouselSlider
 
 The container for animating and positioning the carousel cards, it should wrap all carousel cards to prevent the controls from affecting layout and responsiveness of card sizing.
+It is intended to set the 'cardFocus' prop to true if cards are not set to 100% viewport width.
 
 ### CarouselNavContainer
 
-A unified navigation footer with all Carousel navigation components as slots, with the CarouselNav intended to be placed within the root children. It contains variant layouts that are condensed or extended, as well as options to null out slots if not required or placed externally.
+A unified navigation footer with all Carousel navigation components as slots, with the CarouselNav intended to be placed within the root children. It contains variant layouts that are condensed or extended, the nav components can also be used independently.
 
 ### CarouselNav
 
-Used to jump to a card based on index, using arrow navigation via Tabster. The children of this component will be wrapped in a context to provide the appropriate value based on their index position.
+Enables jumping directly to a card based on index and implements arrow navigation via Tabster. The children of this component will automatically be wrapped in a context to provide the appropriate value based on their index position.
 
 ### CarouselNavButton
 
