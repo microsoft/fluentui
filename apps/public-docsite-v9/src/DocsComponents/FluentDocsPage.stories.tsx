@@ -141,7 +141,7 @@ export const FluentDocsPage = () => {
   const dir = primaryStoryContext.parameters?.dir ?? primaryStoryContext.globals?.[DIR_ID] ?? 'ltr';
   const selectedTheme = themes.find(theme => theme.id === primaryStoryContext.globals![THEME_ID]);
 
-  const hideArgsTable = primaryStoryContext.parameters?.docs?.hideArgsTable ?? false;
+  const hideArgsTable = Boolean(primaryStoryContext.parameters?.docs?.hideArgsTable);
   const skipPrimaryStory = primaryStoryContext.parameters?.docs?.skipPrimaryStory ?? false;
 
   const videos = primaryStoryContext.parameters?.videos ?? null;
