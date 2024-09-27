@@ -1,7 +1,7 @@
 name: '📖 Documentation issue'
 description: Help improve our docs.
 title: '[Docs]: '
-labels: ['Area: Documentation', 'Needs: Triage 🔍']
+labels: ['Area: Documentation', 'Needs: Triage :mag:']
 projects: ['microsoft/395']
 assignees: []
 body:

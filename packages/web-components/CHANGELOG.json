@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 27 Sep 2024 04:07:03 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.66",
+      "version": "3.0.0-beta.66",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mlijanto@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "4834ec2f553c8fd973148cd5dcf6d60aa57de29c",
+            "comment": "feat: add support for custom icons and colors to rating-display"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Sep 2024 04:07:20 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.65",
       "version": "3.0.0-beta.65",
