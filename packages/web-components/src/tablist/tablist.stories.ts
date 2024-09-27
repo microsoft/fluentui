@@ -1,5 +1,5 @@
 import { html, ref } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
 

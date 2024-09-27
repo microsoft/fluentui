@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { CounterBadge as FluentCounterBadge } from './counter-badge.js';
 import {
   CounterBadgeAppearance,

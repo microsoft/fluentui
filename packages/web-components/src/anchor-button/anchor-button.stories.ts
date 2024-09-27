@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { AnchorButton as FluentAnchorButton } from './anchor-button.js';
 import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize, AnchorTarget } from './anchor-button.options.js';
 

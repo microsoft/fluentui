@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Divider as FluentDivider } from './divider.js';
 import { DividerAlignContent, DividerAppearance, DividerOrientation, DividerRole } from './divider.options.js';
 

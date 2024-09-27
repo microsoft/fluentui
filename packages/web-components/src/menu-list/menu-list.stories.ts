@@ -1,5 +1,5 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { type MenuItem as FluentMenuItem, MenuItemRole } from '../menu-item/menu-item.js';
 import type { MenuList as FluentMenuList } from './menu-list.js';
 
