@@ -15,6 +15,7 @@ import type { CarouselButtonProps, CarouselButtonState } from './CarouselButton.
 import type { CarouselUpdateData } from '../Carousel/Carousel.types';
 import { carouselButtonClassNames } from './useCarouselButtonStyles.styles';
 import { useRef } from 'react';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render CarouselButton.
@@ -34,6 +35,7 @@ export const useCarouselButton_unstable = (
   // Locally tracks the total number of slides, will only update if this changes.
   const [totalSlides, setTotalSlides] = React.useState(0);
 
+  const { dir } = useFluent();
   const buttonRef = useRef<HTMLButtonElement>();
   const circular = useCarouselContext(ctx => ctx.circular);
   const containerRef = useCarouselContext(ctx => ctx.containerRef);
@@ -88,6 +90,9 @@ export const useCarouselButton_unstable = (
     });
   }, [subscribeForValues]);
 
+  const nextArrowIcon = dir === 'ltr' ? <ChevronRightRegular /> : <ChevronLeftRegular />;
+  const prevArrowIcon = dir === 'ltr' ? <ChevronLeftRegular /> : <ChevronRightRegular />;
+
   return {
     navType,
     // We lean on react-button class to handle styling and icon enhancements
@@ -95,7 +100,7 @@ export const useCarouselButton_unstable = (
       {
         icon: slot.optional(props.icon, {
           defaultProps: {
-            children: navType === 'next' ? <ChevronRightRegular /> : <ChevronLeftRegular />,
+            children: navType === 'next' ? nextArrowIcon : prevArrowIcon,
           },
           renderByDefault: true,
           elementType: 'span',
