@@ -70,53 +70,60 @@ export class Tooltip extends FASTElement {
 
   public connectedCallback(): void {
     super.connectedCallback();
-    if (this.anchorElement) {
+
+    // If the anchor element is not found, tooltip will not be shown
+    if (!this.anchorElement) {
+      return;
+    }
+
+    // @ts-expect-error - Baseline 2024
+    const anchorName = this.anchorElement.style.anchorName || `--${this.anchor}`;
+
+    const describedBy = this.anchorElement.getAttribute('aria-describedby');
+    this.anchorElement.setAttribute('aria-describedby', describedBy ? `${describedBy} ${this.id}` : this.id);
+
+    if (SUPPORTS_ANCHOR_POSITIONING) {
       // @ts-expect-error - Baseline 2024
-      const anchorName = this.anchorElement.style.anchorName || `--${this.anchor}`;
-      this.anchorElement.setAttribute('aria-describedby', this.id);
+      this.anchorElement.style.anchorName = anchorName;
+      // @ts-expect-error - Baseline 2024
+      this.style.positionAnchor = anchorName;
+    } else {
+      // Provide style fallback for browsers that do not support anchor positioning
+      if (!this.anchorPositioningStyleElement) {
+        this.anchorPositioningStyleElement = document.createElement('style');
+        document.head.append(this.anchorPositioningStyleElement);
+      }
 
-      if (SUPPORTS_ANCHOR_POSITIONING) {
-        // @ts-expect-error - Baseline 2024
-        this.anchorElement.style.anchorName = anchorName;
-        // @ts-expect-error - Baseline 2024
-        this.style.positionAnchor = anchorName;
-      } else {
-        // Provide style fallback for browsers that do not support anchor positioning
-        if (!this.anchorPositioningStyleElement) {
-          this.anchorPositioningStyleElement = document.createElement('style');
-          document.head.append(this.anchorPositioningStyleElement);
-        }
+      // Given a position with <direction>-<alignment> format, return the proper CSS properties
+      // eslint-disable-next-line prefer-const
+      let [direction, alignment] = this.positioning?.split('-') ?? [];
 
-        // Given a position with <direction>-<alignment> format, return the proper CSS properties
-        const [direction, alignment] = this.positioning?.split('-') ?? [];
-        let centerAlignment;
+      if (alignment === undefined && (direction === 'above' || direction === 'below')) {
+        alignment = 'centerX';
+      }
+      if (alignment === undefined && (direction === 'before' || direction === 'after')) {
+        alignment = 'centerY';
+      }
 
-        if (alignment === undefined) {
-          if (direction === 'above' || direction === 'below') {
-            centerAlignment = 'centerX';
-          }
-          if (direction === 'before' || direction === 'after') {
-            centerAlignment = 'centerY';
-          }
-        }
-
-        const directionCSS = {
+      const directionCSS =
+        {
           above: `bottom: anchor(${anchorName} top);`,
           below: `top: anchor(${anchorName} bottom);`,
           before: `right: anchor(${anchorName} left);`,
           after: `left: anchor(${anchorName} right);`,
-        }[direction];
+        }[direction] || 'above';
 
-        const alignmentCSS = {
+      const alignmentCSS =
+        {
           start: `left: anchor(${anchorName} left);`,
           end: `right: anchor(${anchorName} right);`,
           top: `top: anchor(${anchorName} top);`,
           bottom: `bottom: anchor(${anchorName} bottom);`,
           centerX: `left: anchor(${anchorName} center); translate: -50% 0;`,
           centerY: `top: anchor(${anchorName} center); translate: 0 -50%;`,
-        }[alignment ?? centerAlignment];
+        }[alignment] || 'centerX';
 
-        this.anchorPositioningStyleElement.textContent = `
+      this.anchorPositioningStyleElement.textContent = `
           #${this.anchor} {
             anchor-name: ${anchorName};
           }
@@ -128,23 +135,22 @@ export class Tooltip extends FASTElement {
           }
         `;
 
-        // Dispatch a ready event for the anchor polyfill
-        document.dispatchEvent(new CustomEvent('anchor-polyfill'));
-      }
-
-      this.anchorElement.addEventListener('focus', this.handleFocus);
-      this.anchorElement.addEventListener('blur', this.handleBlur);
-      this.anchorElement.addEventListener('mouseenter', this.handleMouseEnter);
-      this.anchorElement.addEventListener('mouseleave', this.handleMouseLeave);
+      // Dispatch a ready event for the anchor polyfill
+      document.dispatchEvent(new CustomEvent('anchor-polyfill'));
     }
+
+    this.anchorElement.addEventListener('focus', this.focusAnchorHandler);
+    this.anchorElement.addEventListener('blur', this.blurAnchorHandler);
+    this.anchorElement.addEventListener('mouseenter', this.mouseenterAnchorHandler);
+    this.anchorElement.addEventListener('mouseleave', this.mouseleaveAnchorHandler);
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.anchorElement?.removeEventListener('focus', this.handleFocus);
-    this.anchorElement?.removeEventListener('blur', this.handleBlur);
-    this.anchorElement?.removeEventListener('mouseenter', this.handleMouseEnter);
-    this.anchorElement?.removeEventListener('mouseleave', this.handleMouseLeave);
+    this.anchorElement?.removeEventListener('focus', this.focusAnchorHandler);
+    this.anchorElement?.removeEventListener('blur', this.blurAnchorHandler);
+    this.anchorElement?.removeEventListener('mouseenter', this.mouseenterAnchorHandler);
+    this.anchorElement?.removeEventListener('mouseleave', this.mouseleaveAnchorHandler);
   }
 
   /**
@@ -182,17 +188,17 @@ export class Tooltip extends FASTElement {
   /**
    * Show the tooltip on mouse enter
    */
-  public handleMouseEnter = () => this.showTooltip(this.delay);
+  public mouseenterAnchorHandler = () => this.showTooltip(this.delay);
   /**
    * Hide the tooltip on mouse leave
    */
-  public handleMouseLeave = () => this.hideTooltip(this.delay);
+  public mouseleaveAnchorHandler = () => this.hideTooltip(this.delay);
   /**
    * Show the tooltip on focus
    */
-  public handleFocus = () => this.showTooltip(0);
+  public focusAnchorHandler = () => this.showTooltip(0);
   /**
    * Hide the tooltip on blur
    */
-  public handleBlur = () => this.hideTooltip(0);
+  public blurAnchorHandler = () => this.hideTooltip(0);
 }
