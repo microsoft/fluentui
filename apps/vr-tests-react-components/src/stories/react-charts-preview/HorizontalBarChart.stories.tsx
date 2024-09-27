@@ -2,12 +2,7 @@ import * as React from 'react';
 import type { Meta } from '@storybook/react';
 import { DARK_MODE, getStoryVariant, RTL, TestWrapperDecorator } from '../../utilities';
 import { Steps, StoryWright } from 'storywright';
-import {
-  IChartProps,
-  HorizontalBarChart,
-  HorizontalBarChartVariant,
-  IHorizontalBarChartWithAxisDataPoint,
-} from '@fluentui/react-charts-preview';
+import { IChartProps, HorizontalBarChart, HorizontalBarChartVariant } from '@fluentui/react-charts-preview';
 
 export default {
   title: 'react-charts-preview/HorizontalBarChart',
@@ -298,64 +293,3 @@ export const Variant = () => {
 export const VariantDarkMode = getStoryVariant(Variant, DARK_MODE);
 
 export const VariantRTL = getStoryVariant(Variant, RTL);
-
-export const WithAxis = () => {
-  const points: IHorizontalBarChartWithAxisDataPoint[] = [
-    {
-      x: 10000,
-      y: 5000,
-      legend: 'Oranges',
-      color: '#6e0811',
-      yAxisCalloutData: '2020/04/30',
-      xAxisCalloutData: '10%',
-    },
-    {
-      x: 20000,
-      y: 50000,
-      legend: 'Dogs',
-      color: '#20547c',
-      yAxisCalloutData: '2020/04/30',
-      xAxisCalloutData: '20%',
-    },
-    {
-      x: 25000,
-      y: 30000,
-      legend: 'Apples',
-      color: '#3487c7',
-      yAxisCalloutData: '2020/04/30',
-      xAxisCalloutData: '37%',
-    },
-
-    {
-      x: 40000,
-      y: 13000,
-      legend: 'Bananas',
-      color: '#3a96dd',
-      yAxisCalloutData: '2020/04/30',
-      xAxisCalloutData: '88%',
-    },
-  ];
-
-  //const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
-
-  const rootStyle = { width: `${650}px`, height: `${350}px`, padding: '10px' };
-
-  return (
-    <div style={rootStyle}>
-      <HorizontalBarChartWithAxis
-        culture={window.navigator.language}
-        chartTitle="Horizontal bar chart basic example "
-        data={points}
-        width={650}
-        useSingleColor={false}
-        height={350}
-      />
-    </div>
-  );
-};
-
-WithAxis.storyName = 'With_Axis';
-
-export const WithAxisDarkMode = getStoryVariant(WithAxis, DARK_MODE);
-
-export const WithAxisRTL = getStoryVariant(WithAxis, RTL);

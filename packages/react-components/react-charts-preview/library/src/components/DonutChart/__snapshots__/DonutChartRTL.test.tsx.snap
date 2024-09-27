@@ -58,7 +58,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
       </div>
     </div>
     <div
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       id="callout3"
     />
     <div
@@ -68,7 +67,7 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
         aria-label="Legends"
         aria-multiselectable="false"
         class="fui-legend__root"
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+        data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
         role="listbox"
         style="justify-content: center; flex-wrap: wrap;"
       >
@@ -79,7 +78,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             aria-label="first"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
             data-overflow-item=""
             data-overflowing=""
             role="option"
@@ -99,7 +97,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             aria-label="second"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
             data-overflow-item=""
             data-overflowing=""
             role="option"
@@ -119,7 +116,6 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
             aria-label="third"
             aria-selected="false"
             class="fui-Button fui-legend__legend"
-            data-is-focusable="true"
             data-overflow-item=""
             data-overflowing=""
             role="option"
@@ -174,7 +170,8 @@ exports[`Donut chart interactions Should hide callout on mouse leave 1`] = `
 exports[`Donut chart interactions Should reflect theme change 1`] = `
 <div>
   <div
-    class="body-109"
+    class="fui-FluentProvider fui-FluentProvider50"
+    dir="ltr"
   >
     <div
       class="fui-donut__root"
@@ -197,7 +194,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M0.585,-54.997A55,55,0,0,1,51.383,-19.615L-18.955,6.382Z"
                   data-is-focusable="true"
-                  id="_Pie_50first20000"
+                  id="_Pie_51first20000"
                   opacity="1"
                   role="img"
                   style="fill: #E5E5E5; cursor: default;"
@@ -209,7 +206,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M51.789,-18.517A55,55,0,0,1,-22.338,50.26L8.846,-17.938Z"
                   data-is-focusable="true"
-                  id="_Pie_50second39000"
+                  id="_Pie_51second39000"
                   opacity="1"
                   role="img"
                   style="fill: #0078D4; cursor: default;"
@@ -221,7 +218,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
                   class="fui-donut-arc__root"
                   d="M-23.402,49.773A55,55,0,0,1,-0.585,-54.997L-0.585,19.991Z"
                   data-is-focusable="true"
-                  id="_Pie_50third45000"
+                  id="_Pie_51third45000"
                   opacity="1"
                   role="img"
                   style="fill: #DADADA; cursor: default;"
@@ -232,8 +229,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
         </div>
       </div>
       <div
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-        id="callout52"
+        id="callout53"
       />
       <div
         class="fui-donut__legendContainer"
@@ -242,7 +238,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
           aria-label="Legends"
           aria-multiselectable="false"
           class="fui-legend__root"
-          data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+          data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
           role="listbox"
           style="justify-content: center; flex-wrap: wrap;"
         >
@@ -253,7 +249,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               aria-label="first"
               aria-selected="false"
               class="fui-Button fui-legend__legend"
-              data-is-focusable="true"
               data-overflow-item=""
               data-overflowing=""
               role="option"
@@ -273,7 +268,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               aria-label="second"
               aria-selected="false"
               class="fui-Button fui-legend__legend"
-              data-is-focusable="true"
               data-overflow-item=""
               data-overflowing=""
               role="option"
@@ -293,7 +287,6 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               aria-label="third"
               aria-selected="false"
               class="fui-Button fui-legend__legend"
-              data-is-focusable="true"
               data-overflow-item=""
               data-overflowing=""
               role="option"
@@ -315,7 +308,7 @@ exports[`Donut chart interactions Should reflect theme change 1`] = `
               class="fui-Button fui-MenuButton"
               data-overflow-menu=""
               data-tabster="{\\"restorer\\":{\\"type\\":1}}"
-              id="menu54"
+              id="menu55"
               type="button"
             >
               +3 more

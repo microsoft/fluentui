@@ -23,6 +23,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               one
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -84,6 +87,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               two
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -145,6 +151,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               three
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -189,7 +198,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       id="callout70"
     />
   </div>
@@ -219,6 +227,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               one
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -280,6 +291,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               two
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -341,6 +355,9 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
             >
               three
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -385,7 +402,6 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
       </div>
     </div>
     <div
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       id="callout75"
     />
   </div>
@@ -395,7 +411,8 @@ exports[`Horizontal bar chart - Screen resolution Should remain unchanged on zoo
 exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
 <div>
   <div
-    class="body-109"
+    class="fui-FluentProvider fui-FluentProvider76"
+    dir="ltr"
   >
     <div
       class="fui-hbc__root"
@@ -418,6 +435,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               >
                 one
               </span>
+              <span
+                hidden=""
+              />
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -479,6 +499,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               >
                 two
               </span>
+              <span
+                hidden=""
+              />
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -540,6 +563,9 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
               >
                 three
               </span>
+              <span
+                hidden=""
+              />
             </div>
             <div
               class="fui-hbc__chartTitleRight"
@@ -584,8 +610,7 @@ exports[`Horizontal bar chart - Theme Should reflect theme change 1`] = `
         </div>
       </div>
       <div
-        data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-        id="callout80"
+        id="callout81"
       />
     </div>
   </div>
@@ -596,7 +621,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_HBC_empty81"
+    id="_HBC_empty82"
     role="alert"
     style="opacity: 0;"
   />
@@ -627,6 +652,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             >
               one
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -688,6 +716,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             >
               two
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -749,6 +780,9 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
             >
               three
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -793,8 +827,7 @@ exports[`Horizontal bar chart re-rendering Should re-render the Horizontal bar c
       </div>
     </div>
     <div
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
-      id="callout85"
+      id="callout86"
     />
   </div>
 </div>
@@ -823,6 +856,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             >
               one
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -884,6 +920,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             >
               two
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -945,6 +984,9 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
             >
               three
             </span>
+            <span
+              hidden=""
+            />
           </div>
           <div
             class="fui-hbc__chartTitleRight"
@@ -989,7 +1031,6 @@ exports[`Horizontal bar chart rendering Should render the Horizontal bar chart l
       </div>
     </div>
     <div
-      data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
       id="callout5"
     />
   </div>

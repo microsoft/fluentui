@@ -1,8 +1,6 @@
 jest.mock('react-dom');
 import * as React from 'react';
-import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import {
   IChartProps,
   IChartDataPoint,
@@ -16,10 +14,6 @@ import { act } from 'react-test-renderer';
 
 // Wrapper of the HorizontalBarChart to be tested.
 let wrapper: ReactWrapper<IHorizontalBarChartProps> | undefined;
-
-function sharedBeforeEach() {
-  resetIds();
-}
 
 function sharedAfterEach() {
   if (wrapper) {
@@ -35,7 +29,7 @@ export const chartPoints: IChartProps[] = [
       {
         legend: 'one',
         horizontalBarChartdata: { x: 1543, y: 15000 },
-        color: DefaultPalette.tealDark,
+        color: '#004b50',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '94%',
       },
@@ -47,7 +41,7 @@ export const chartPoints: IChartProps[] = [
       {
         legend: 'two',
         horizontalBarChartdata: { x: 800, y: 15000 },
-        color: DefaultPalette.purple,
+        color: '#5c2d91',
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '19%',
       },
@@ -57,7 +51,6 @@ export const chartPoints: IChartProps[] = [
 
 describe('HorizontalBarChart snapShot testing', () => {
   beforeEach(() => {
-    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -82,7 +75,6 @@ describe('HorizontalBarChart snapShot testing', () => {
 });
 
 describe('HorizontalBarChart - basic props', () => {
-  beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
   it('Should mount callout when hideTootip false ', () => {
@@ -122,7 +114,6 @@ describe('HorizontalBarChart - basic props', () => {
 });
 
 describe('Render calling with respective to props', () => {
-  beforeEach(sharedBeforeEach);
 
   it('No prop changes', () => {
     const props = {
@@ -154,7 +145,6 @@ describe('Render calling with respective to props', () => {
 
 describe('HorizontalBarChart - mouse events', () => {
   beforeEach(() => {
-    sharedBeforeEach();
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
   });
   afterEach(() => {
@@ -190,7 +180,6 @@ describe('HorizontalBarChart - mouse events', () => {
 });
 
 describe('Render empty chart aria label div when chart is empty', () => {
-  beforeEach(sharedBeforeEach);
 
   it('No empty chart aria label div rendered', () => {
     wrapper = mount(<HorizontalBarChart data={chartPoints} />);

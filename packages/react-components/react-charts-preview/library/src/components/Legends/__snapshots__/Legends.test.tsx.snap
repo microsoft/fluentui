@@ -5,7 +5,7 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable={false}
   className="fui-legend__root"
-  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
   style={
     Object {
@@ -21,7 +21,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 1"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -30,8 +29,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#e81123",
-          "--rect-borderColor": "#e81123",
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -56,7 +55,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 2"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -91,7 +89,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 3"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -100,8 +97,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#107c10",
-          "--rect-borderColor": "#107c10",
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -126,7 +123,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 4"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -135,8 +131,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#0078d4",
-          "--rect-borderColor": "#0078d4",
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -161,7 +157,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 5"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -170,8 +165,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00188f",
-          "--rect-borderColor": "#00188f",
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -196,7 +191,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 6"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -205,8 +199,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "rgba(255,255,255,.4)",
-          "--rect-borderColor": "rgba(255,255,255,.4)",
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -231,7 +225,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 7"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -240,8 +233,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#004b1c",
-          "--rect-borderColor": "#004b1c",
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -266,7 +259,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 8"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -275,8 +267,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#002050",
-          "--rect-borderColor": "#002050",
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -301,7 +293,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 9"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -310,8 +301,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#d83b01",
-          "--rect-borderColor": "#d83b01",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -336,7 +327,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 10"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -345,8 +335,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#32145a",
-          "--rect-borderColor": "#32145a",
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -371,7 +361,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 11"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -380,8 +369,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#fff100",
-          "--rect-borderColor": "#fff100",
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -406,7 +395,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 12"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -415,8 +403,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#bad80a",
-          "--rect-borderColor": "#bad80a",
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -441,7 +429,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 13"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -450,8 +437,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ff8c00",
-          "--rect-borderColor": "#ff8c00",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -476,7 +463,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 14"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -485,8 +471,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#008272",
-          "--rect-borderColor": "#008272",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -511,7 +497,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 15"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -520,8 +505,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00b294",
-          "--rect-borderColor": "#00b294",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -546,7 +531,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 16"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -555,8 +539,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#a4262c",
-          "--rect-borderColor": "#a4262c",
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -581,7 +565,6 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       aria-label="Legend 17"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -590,8 +573,8 @@ exports[`Legends snapShot testing renders Legends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ffffff",
-          "--rect-borderColor": "#ffffff",
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -621,7 +604,7 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable={false}
   className="fui-legend__root"
-  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
   style={
     Object {
@@ -637,7 +620,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 1"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -646,8 +628,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#e81123",
-          "--rect-borderColor": "#e81123",
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -672,7 +654,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 2"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -707,7 +688,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 3"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -716,8 +696,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#107c10",
-          "--rect-borderColor": "#107c10",
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -742,7 +722,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 4"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -751,8 +730,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#0078d4",
-          "--rect-borderColor": "#0078d4",
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -777,7 +756,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 5"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -786,8 +764,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00188f",
-          "--rect-borderColor": "#00188f",
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -812,7 +790,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 6"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -821,8 +798,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "rgba(255,255,255,.4)",
-          "--rect-borderColor": "rgba(255,255,255,.4)",
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -847,7 +824,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 7"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -856,8 +832,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#004b1c",
-          "--rect-borderColor": "#004b1c",
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -882,7 +858,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 8"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -891,8 +866,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#002050",
-          "--rect-borderColor": "#002050",
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -917,7 +892,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 9"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -926,8 +900,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#d83b01",
-          "--rect-borderColor": "#d83b01",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -952,7 +926,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 10"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -961,8 +934,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#32145a",
-          "--rect-borderColor": "#32145a",
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -987,7 +960,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 11"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -996,8 +968,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#fff100",
-          "--rect-borderColor": "#fff100",
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1022,7 +994,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 12"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1031,8 +1002,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#bad80a",
-          "--rect-borderColor": "#bad80a",
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1057,7 +1028,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 13"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1066,8 +1036,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ff8c00",
-          "--rect-borderColor": "#ff8c00",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1092,7 +1062,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 14"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1101,8 +1070,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#008272",
-          "--rect-borderColor": "#008272",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1127,7 +1096,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 15"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1136,8 +1104,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00b294",
-          "--rect-borderColor": "#00b294",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1162,7 +1130,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 16"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1171,8 +1138,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#a4262c",
-          "--rect-borderColor": "#a4262c",
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1197,7 +1164,6 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       aria-label="Legend 17"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1206,8 +1172,8 @@ exports[`Legends snapShot testing renders allowFocusOnLegends correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ffffff",
-          "--rect-borderColor": "#ffffff",
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1237,7 +1203,7 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
   aria-label="Legends"
   aria-multiselectable={true}
   className="fui-legend__root"
-  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
   style={
     Object {
@@ -1253,7 +1219,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 1"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1262,8 +1227,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#e81123",
-          "--rect-borderColor": "#e81123",
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1288,7 +1253,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 2"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1323,7 +1287,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 3"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1332,8 +1295,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#107c10",
-          "--rect-borderColor": "#107c10",
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1358,7 +1321,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 4"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1367,8 +1329,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#0078d4",
-          "--rect-borderColor": "#0078d4",
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1393,7 +1355,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 5"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1402,8 +1363,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00188f",
-          "--rect-borderColor": "#00188f",
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1428,7 +1389,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 6"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1437,8 +1397,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "rgba(255,255,255,.4)",
-          "--rect-borderColor": "rgba(255,255,255,.4)",
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1463,7 +1423,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 7"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1472,8 +1431,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#004b1c",
-          "--rect-borderColor": "#004b1c",
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1498,7 +1457,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 8"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1507,8 +1465,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#002050",
-          "--rect-borderColor": "#002050",
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1533,7 +1491,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 9"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1542,8 +1499,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#d83b01",
-          "--rect-borderColor": "#d83b01",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1568,7 +1525,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 10"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1577,8 +1533,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#32145a",
-          "--rect-borderColor": "#32145a",
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1603,7 +1559,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 11"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1612,8 +1567,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#fff100",
-          "--rect-borderColor": "#fff100",
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1638,7 +1593,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 12"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1647,8 +1601,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#bad80a",
-          "--rect-borderColor": "#bad80a",
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1673,7 +1627,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 13"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1682,8 +1635,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ff8c00",
-          "--rect-borderColor": "#ff8c00",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1708,7 +1661,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 14"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1717,8 +1669,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#008272",
-          "--rect-borderColor": "#008272",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1743,7 +1695,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 15"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1752,8 +1703,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00b294",
-          "--rect-borderColor": "#00b294",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1778,7 +1729,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 16"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1787,8 +1737,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#a4262c",
-          "--rect-borderColor": "#a4262c",
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1813,7 +1763,6 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       aria-label="Legend 17"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1822,8 +1771,8 @@ exports[`Legends snapShot testing renders canSelectMultipleLegends correctly 1`]
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ffffff",
-          "--rect-borderColor": "#ffffff",
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1853,7 +1802,7 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
   aria-label="Legends"
   aria-multiselectable={false}
   className="fui-legend__root"
-  data-tabster="{\\"groupper\\":{},\\"focusable\\":{}}"
+  data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
   role="listbox"
   style={
     Object {
@@ -1869,7 +1818,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 1"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1878,8 +1826,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#e81123",
-          "--rect-borderColor": "#e81123",
+          "--rect-backgroundColor": "#FF0000",
+          "--rect-borderColor": "#FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1904,7 +1852,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 2"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1939,7 +1886,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 3"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1948,8 +1894,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#107c10",
-          "--rect-borderColor": "#107c10",
+          "--rect-backgroundColor": "#008000",
+          "--rect-borderColor": "#008000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -1974,7 +1920,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 4"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -1983,8 +1928,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#0078d4",
-          "--rect-borderColor": "#0078d4",
+          "--rect-backgroundColor": "#0000ff",
+          "--rect-borderColor": "#0000ff",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2009,7 +1954,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 5"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2018,8 +1962,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00188f",
-          "--rect-borderColor": "#00188f",
+          "--rect-backgroundColor": "#191970",
+          "--rect-borderColor": "#191970",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2044,7 +1988,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 6"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2053,8 +1996,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "rgba(255,255,255,.4)",
-          "--rect-borderColor": "rgba(255,255,255,.4)",
+          "--rect-backgroundColor": "#E4E3E9",
+          "--rect-borderColor": "#E4E3E9",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2079,7 +2022,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 7"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2088,8 +2030,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#004b1c",
-          "--rect-borderColor": "#004b1c",
+          "--rect-backgroundColor": "#013220",
+          "--rect-borderColor": "#013220",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2114,7 +2056,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 8"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2123,8 +2064,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#002050",
-          "--rect-borderColor": "#002050",
+          "--rect-backgroundColor": "#00008B",
+          "--rect-borderColor": "#00008B",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2149,7 +2090,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 9"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2158,8 +2098,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#d83b01",
-          "--rect-borderColor": "#d83b01",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2184,7 +2124,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 10"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2193,8 +2132,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#32145a",
-          "--rect-borderColor": "#32145a",
+          "--rect-backgroundColor": "#301934",
+          "--rect-borderColor": "#301934",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2219,7 +2158,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 11"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2228,8 +2166,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#fff100",
-          "--rect-borderColor": "#fff100",
+          "--rect-backgroundColor": "#Ffffed",
+          "--rect-borderColor": "#Ffffed",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2254,7 +2192,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 12"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2263,8 +2200,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#bad80a",
-          "--rect-borderColor": "#bad80a",
+          "--rect-backgroundColor": "#90ee90",
+          "--rect-borderColor": "#90ee90",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2289,7 +2226,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 13"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2298,8 +2234,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ff8c00",
-          "--rect-borderColor": "#ff8c00",
+          "--rect-backgroundColor": "#FFA500",
+          "--rect-borderColor": "#FFA500",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2324,7 +2260,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 14"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2333,8 +2268,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#008272",
-          "--rect-borderColor": "#008272",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2359,7 +2294,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 15"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2368,8 +2302,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#00b294",
-          "--rect-borderColor": "#00b294",
+          "--rect-backgroundColor": "#008080",
+          "--rect-borderColor": "#008080",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2394,7 +2328,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 16"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2403,8 +2336,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#a4262c",
-          "--rect-borderColor": "#a4262c",
+          "--rect-backgroundColor": "FF0000",
+          "--rect-borderColor": "FF0000",
           "--rect-content": "",
           "--rect-height": "12px",
         }
@@ -2429,7 +2362,6 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       aria-label="Legend 17"
       aria-selected={false}
       className="fui-Button fui-legend__legend"
-      data-is-focusable={true}
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
@@ -2438,8 +2370,8 @@ exports[`Legends snapShot testing renders styles correctly 1`] = `
       role="option"
       style={
         Object {
-          "--rect-backgroundColor": "#ffffff",
-          "--rect-borderColor": "#ffffff",
+          "--rect-backgroundColor": "#FFFFFF",
+          "--rect-borderColor": "#FFFFFF",
           "--rect-content": "",
           "--rect-height": "12px",
         }
