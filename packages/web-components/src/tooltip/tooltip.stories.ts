@@ -9,10 +9,12 @@ const storyTemplate = () => {
   const id = uniqueId('anchor');
 
   return html`
-    <fluent-link id="${id}" href="#">Hover me</fluent-link>
-    <fluent-tooltip anchor="${id}" positioning="${story => story.positioning}" delay="${story => story.delay}">
-      ${story => story.slottedContent?.()}
-    </fluent-tooltip>
+    <div>
+      <fluent-link id="${id}" href="#">Hover me</fluent-link>
+      <fluent-tooltip anchor="${id}" positioning="${story => story.positioning}" delay="${story => story.delay}">
+        ${story => story.slottedContent?.()}
+      </fluent-tooltip>
+    </div>
   `;
 };
 
@@ -55,7 +57,7 @@ Default.args = {
 };
 
 const iconArrowRight = (rotation = 0) => html`<svg
-  transform="rotate(${rotation})"
+  style="transform: rotate(${rotation}deg)"
   width="20"
   height="20"
   viewBox="0 0 20 20"
@@ -68,7 +70,7 @@ const iconArrowRight = (rotation = 0) => html`<svg
 </svg>`;
 
 const iconArrowLeft = (rotation = 0) => html`<svg
-  transform="rotate(${rotation})"
+  style="transform: rotate(${rotation}deg)"
   width="20"
   height="20"
   viewBox="0 0 20 20"
@@ -81,7 +83,7 @@ const iconArrowLeft = (rotation = 0) => html`<svg
 </svg>`;
 
 const iconArrowUp = (rotation = 0) => html`<svg
-  transform="rotate(${rotation})"
+  style="transform: rotate(${rotation}deg)"
   width="24"
   height="24"
   viewBox="0 0 24 24"
@@ -119,31 +121,29 @@ const positionTooltipTemplate = html`
 `;
 
 export const Positioning: Story<Tooltip> = renderComponent(html`
-  <style>
-    .grid {
-      box-sizing: border-box;
-      display: grid;
-      gap: 4px;
-      max-width: min-content;
-      grid-template-areas:
-        '. above-start above above-end .'
-        'before-top . . . after-top'
-        'before . . . after'
-        'before-bottom . . . after-bottom'
-        '. below-start below below-end .';
-    }
-    .grid fluent-button {
-      aspect-ratio: 1;
-      min-width: 44px;
-    }
-    /* Fallbacks positions are too aggressive and break demo */
-    /* .grid ~ fluent-tooltip {
-      position-try-fallbacks: none;
-    } */
-  </style>
-  <div class="grid">${repeat(x => x.storyItems, positionButtonTemplate)}</div>
+  <div>
+    <style>
+      .grid {
+        box-sizing: border-box;
+        display: grid;
+        gap: 4px;
+        max-width: min-content;
+        grid-template-areas:
+          '. above-start above above-end .'
+          'before-top . . . after-top'
+          'before . . . after'
+          'before-bottom . . . after-bottom'
+          '. below-start below below-end .';
+      }
+      .grid fluent-button {
+        aspect-ratio: 1;
+        min-width: 44px;
+      }
+    </style>
+    <div class="grid">${repeat(x => x.storyItems, positionButtonTemplate)}</div>
 
-  ${repeat(x => x.storyItems, positionTooltipTemplate)}
+    ${repeat(x => x.storyItems, positionTooltipTemplate)}
+  </div>
 `).bind({});
 
 Positioning.args = {
