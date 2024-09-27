@@ -198,12 +198,16 @@ export abstract class AbstractCombobox extends FASTElement {
    */
   @attr
   public name!: string;
-  protected nameChanged() {
+  protected nameChanged(prev: string) {
     if (!this.name) {
       return;
     }
     for (const option of this.options) {
-      option.name = this.name;
+      // Only apply name to an Option if the Option had the same `name` as the
+      // previous Dropdown `name`, or if the Option doesn’t have `name`.
+      if ((prev && option.name === prev) || (!prev && !option.name)) {
+        option.name = this.name;
+      }
     }
   }
 
@@ -312,7 +316,10 @@ export abstract class AbstractCombobox extends FASTElement {
 
     const option = this.options.find(option => option.value === next);
     if (option && !option.disabled && !option.selected) {
+      const originalMultiple = this.multiple;
+      this.multiple = false;
       option.click();
+      this.multiple = originalMultiple;
     }
   }
 

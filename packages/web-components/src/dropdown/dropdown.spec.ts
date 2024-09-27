@@ -13,6 +13,7 @@ import type { Dropdown } from './dropdown.js';
  */
 async function setPageContent(page: Page, content: string) {
   const dropdownLocator = page.locator('fluent-dropdown');
+  const dropdownListLocator = page.locator('fluent-dropdown-list');
   await page.setContent(content);
 
   // Reassign value for Dropdown.list
@@ -23,6 +24,18 @@ async function setPageContent(page: Page, content: string) {
     const listId = node.list;
     node.list = '';
     node.list = listId;
+  });
+
+  // Reassign Options to Listbox
+  await dropdownListLocator.evaluate(node => {
+    const options = node.querySelectorAll('fluent-option');
+    if (!options.length) {
+      return;
+    }
+
+    const clonedOptions = Array.from(options)
+        .map(option => option.cloneNode(true));
+    node.replaceChildren(...clonedOptions);
   });
 }
 
@@ -114,8 +127,27 @@ test.describe('Dropdown', () => {
     await expect(element).toHaveJSProperty('type', 'select-multiple');
   });
 
+  test('should instanciate imperatively', async ({ page }) => {
+    const dropdown = page.locator('fluent-dropdown#foo');
+    await page.evaluate(() => {
+      const dropdown = document.createElement('fluent-dropdown') as Dropdown;
+      dropdown.id = 'foo';
+      dropdown.required = true;
+      dropdown.disabled = true;
+      dropdown.multiple = true;
+
+      document.body.append(dropdown);
+    });
+
+    await expect(dropdown).toHaveJSProperty('id', 'foo');
+    await expect(dropdown).toHaveJSProperty('required', true);
+    await expect(dropdown).toHaveJSProperty('disabled', true);
+    await expect(dropdown).toHaveJSProperty('multiple', true);
+    await expect(dropdown).toHaveJSProperty('type', 'select-multiple');
+  });
+
   test.describe('with DropdownList and Option', () => {
-    test('should connect to the listbox element and return `options`', async ({ page }) => {
+    test('should connect to the listbox and options elements', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
 
@@ -129,18 +161,14 @@ test.describe('Dropdown', () => {
       `);
 
       await expect(dropdown).toHaveJSProperty('list', 'list');
-      await expect(list).toHaveJSProperty('popover', 'auto');
       await expect(dropdown).toHaveJSProperty('length', 3);
+      await expect(dropdown).toHaveJSProperty('options.length', 3);
       await expect(dropdown).toHaveAttribute('aria-controls', 'list');
+      await expect(dropdown).toHaveJSProperty('listElement.id', 'list');
+      await expect(list).toHaveJSProperty('popover', 'auto');
     });
 
-    test.skip('should reconnect when `list` property changes and return new `options`', async ({ page }) => {
-    });
-
-    test.skip('should return the number of options in the listbox', async ({ page }) => {
-    });
-
-    test('should set Option’s `multiple` state', async ({ page }) => {
+    test('should set Listbox and Option’s `multiple` state', async ({ page }) => {
       const dropdown = page.locator('fluent-dropdown');
       const list = page.locator('fluent-dropdown-list');
       const option = page.locator('fluent-option');
@@ -165,12 +193,189 @@ test.describe('Dropdown', () => {
       await expect(option).not.toHaveCustomState('mutliple');
     });
 
-    test.skip('should apply `name` to Options', async ({ page }) => {});
-    test.skip('should return `selectedOptions`', async ({ page }) => {});
-    test.skip('should select the correct option when `value` is set', async ({ page }) => {});
-    test.skip('should return the first selected option’s value with `value`', async ({ page }) => {});
-    test.skip('should select the correct option when `selectedIndex` is set', async ({ page }) => {});
-    test.skip('should return the first selected option’s index with `selectedIndex`', async ({ page }) => {});
+    test('should apply `name` to Options', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list" name="foo"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option></fluent-option>
+          <fluent-option></fluent-option>
+          <fluent-option name="bar"></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveAttribute('name', 'foo');
+      await expect(options.nth(0)).toHaveJSProperty('name', 'foo');
+      await expect(options.nth(1)).toHaveJSProperty('name', 'foo');
+      await expect(options.nth(2)).toHaveJSProperty('name', 'bar');
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.name = 'baz';
+      });
+
+      await expect(options.nth(0)).toHaveJSProperty('name', 'baz');
+      await expect(options.nth(1)).toHaveJSProperty('name', 'baz');
+      await expect(options.nth(2)).toHaveJSProperty('name', 'bar');
+    });
+
+    test('should return the first selected option with `selectedOptions` in single select', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one" selected></fluent-option>
+          <fluent-option value="two"></fluent-option>
+          <fluent-option value="three" selected></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      const selectedOptionsValues = await dropdown.evaluate((node: Dropdown) => {
+        return node.selectedOptions.map(option => option.value);
+      });
+
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 1);
+      expect(selectedOptionsValues).toStrictEqual(['one']);
+    });
+
+    test('should return the all selected options with `selectedOptions` in multiple select', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list" multiple></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one" selected></fluent-option>
+          <fluent-option value="two"></fluent-option>
+          <fluent-option value="three" selected></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      const selectedOptionsValues = await dropdown.evaluate((node: Dropdown) => {
+        return node.selectedOptions.map(option => option.value);
+      });
+
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 2);
+      expect(selectedOptionsValues).toStrictEqual(['one', 'three']);
+    });
+
+    test('should select the correct option when `value` is set', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one"></fluent-option>
+          <fluent-option value="two"></fluent-option>
+          <fluent-option value="three"></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('value', '');
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.value = 'two';
+      });
+
+      await expect(dropdown).toHaveJSProperty('value', 'two');
+      await expect(options.nth(1)).toHaveJSProperty('selected', true);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.multiple = true;
+        node.value = 'three';
+      });
+
+      await expect(dropdown).toHaveJSProperty('value', 'three');
+      await expect(options.nth(1)).toHaveJSProperty('selected', false);
+      await expect(options.nth(2)).toHaveJSProperty('selected', true);
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 1);
+    });
+
+    test('should return the first selected option’s value with `value`', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list" multiple></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one" selected></fluent-option>
+          <fluent-option value="two"></fluent-option>
+          <fluent-option value="three" selected></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('value', 'one');
+    });
+
+    test('should select the correct option when `selectedIndex` is set', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one"></fluent-option>
+          <fluent-option value="two"></fluent-option>
+          <fluent-option value="three"></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.selectedIndex = 1;
+      });
+
+      await expect(options.nth(1)).toHaveJSProperty('selected', true);
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.multiple = true;
+        node.selectedIndex = 2;
+      });
+
+      await expect(options.nth(1)).toHaveJSProperty('selected', false);
+      await expect(options.nth(2)).toHaveJSProperty('selected', true);
+      await expect(dropdown).toHaveJSProperty('selectedOptions.length', 1);
+    });
+
+    test('should return the first selected option’s index with `selectedIndex`', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list" multiple></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one"></fluent-option>
+          <fluent-option value="two" selected></fluent-option>
+          <fluent-option value="three" selected></fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(dropdown).toHaveJSProperty('selectedIndex', 1);
+    });
+
+    test('should open the listbox when `showPicker()` is called', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const list = page.locator('fluent-dropdown-list');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list"></fluent-dropdown-list>
+      `);
+
+      await expect(list).toBeHidden();
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.showPicker();
+      });
+
+      await expect(list).toBeVisible();
+
+      // showPicker() should not toggle/close the list
+      await dropdown.evaluate((node: Dropdown) => {
+        node.showPicker();
+      });
+
+      await expect(list).toBeVisible();
+    });
   });
 
   test.describe('form associated', () => {
@@ -184,10 +389,11 @@ test.describe('Dropdown', () => {
     // .validationMessage
   });
 
-  test.skip('showPicker()', async ({ page }) => {});
   test.describe('pointer interactions', () => {});
+
   test.describe('keyboard interactions', () => {});
 
   test.describe('input event', () => {});
+
   test.describe('change event', () => {});
 });

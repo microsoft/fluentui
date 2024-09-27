@@ -3,6 +3,7 @@ import { uniqueId } from '@microsoft/fast-web-utilities';
 import { toggleState } from '../utils/element-internals.js';
 import { BaseCheckbox } from '../checkbox/checkbox.js';
 import { CheckboxMode } from '../checkbox/checkbox.options.js';
+import { AbstractCombobox } from '../patterns/abstract-combobox.js';
 
 /**
  * Determines if the element is an {@link Option}.
@@ -168,18 +169,10 @@ export class BaseOption extends BaseCheckbox {
       return;
     }
 
-    const listboxShadowRoot = this.assignedSlot?.getRootNode();
-    if (!listboxShadowRoot || !(listboxShadowRoot instanceof ShadowRoot)) {
-      return;
+    const combobox = this.getCombobox();
+    if (combobox?.name) {
+      this.name = combobox.name as string;
     }
-
-    const listbox = listboxShadowRoot.host;
-    const combobox = document.querySelector(`[aria-controls="${listbox.id}"]`);
-    if (!combobox || !('name' in combobox)) {
-      return;
-    }
-
-    this.name = combobox.name as string;
   }
 
   public override clickHandler(e: MouseEvent): boolean | void {
@@ -189,6 +182,20 @@ export class BaseOption extends BaseCheckbox {
       return;
     }
     super.clickHandler(e);
+  }
+
+  private getCombobox(): AbstractCombobox | null {
+    const listboxShadowRoot = this.assignedSlot?.getRootNode();
+    if (!listboxShadowRoot || !(listboxShadowRoot instanceof ShadowRoot)) {
+      return null;
+    }
+
+    const listbox = listboxShadowRoot.host;
+
+    const rootNode = this.getRootNode();
+    const combobox = (rootNode instanceof ShadowRoot ? rootNode : document).querySelector(`[aria-controls="${listbox.id}"]`);
+
+    return combobox instanceof AbstractCombobox ? combobox : null;
   }
 }
 
