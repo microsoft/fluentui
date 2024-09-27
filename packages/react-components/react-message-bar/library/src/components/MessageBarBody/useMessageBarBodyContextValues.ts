@@ -6,7 +6,7 @@ export function useMessageBarBodyContextValues_unstable(state: MessageBarBodySta
 
   const link = React.useMemo(
     () => ({
-      inline: linkInline,
+      inline: true,
     }),
     [linkInline],
   );
