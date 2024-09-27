@@ -57,9 +57,7 @@ export type MessageBarBodySlots = {
 };
 
 // @public
-export type MessageBarBodyState = ComponentState<MessageBarBodySlots> & {
-    linkInline?: boolean;
-};
+export type MessageBarBodyState = ComponentState<MessageBarBodySlots>;
 
 // @public (undocumented)
 export const messageBarClassNames: SlotClassNames<MessageBarSlots>;
