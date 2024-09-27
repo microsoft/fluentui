@@ -6,7 +6,7 @@ import { Tooltip } from './tooltip.js';
 import { TooltipPositioning } from './tooltip.options.js';
 
 const storyTemplate = () => {
-  const id = uniqueId('anchor');
+  const id = uniqueId('anchor-');
 
   return html`
     <div>
@@ -22,9 +22,6 @@ export default {
   title: 'Components/Tooltip',
   component: definition.name,
   render: renderComponent(storyTemplate()),
-  args: {
-    positioning: 'above',
-  },
   argTypes: {
     anchor: {
       description: 'The target element for the tooltip to anchor on',
@@ -43,8 +40,12 @@ export default {
     positioning: {
       control: 'select',
       description: 'Controls the positioning of the tooltip',
-      options: Object.keys(TooltipPositioning),
-      table: { category: 'attributes', type: { summary: 'string' } },
+      mapping: { '': null, ...Object.keys(TooltipPositioning) },
+      options: ['', ...Object.keys(TooltipPositioning)],
+      table: {
+        category: 'attributes',
+        type: { summary: Object.keys(TooltipPositioning).join('|') },
+      },
     },
   },
 } as unknown as Meta<Tooltip>;
