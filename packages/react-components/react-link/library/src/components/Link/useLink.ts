@@ -33,7 +33,7 @@ export const useLink_unstable = (
     appearance,
     disabled,
     disabledFocusable,
-    inline: inline || !!inlineContext,
+    inline: inline ?? !!inlineContext,
 
     // Slots definition
     components: {
