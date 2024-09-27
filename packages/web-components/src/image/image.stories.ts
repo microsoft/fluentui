@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Image as FluentImage } from './image.js';
 import { ImageFit, ImageShape } from './image.options.js';
 

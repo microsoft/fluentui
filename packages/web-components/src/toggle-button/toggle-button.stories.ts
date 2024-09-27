@@ -1,5 +1,5 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { ToggleButton as FluentToggleButton } from './toggle-button.js';
 import { ToggleButtonAppearance, ToggleButtonShape, ToggleButtonSize } from './toggle-button.options.js';
 

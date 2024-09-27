@@ -1,5 +1,5 @@
 import { html, ref } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorNeutralBackgroundInverted, colorNeutralForegroundInverted2 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from './text-input.js';
 import { TextInputAppearance, TextInputControlSize, TextInputType } from './text-input.options.js';

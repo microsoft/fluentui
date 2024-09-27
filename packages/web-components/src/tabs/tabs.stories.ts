@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';
 import { TabsAppearance as TabsAppearanceValues, TabsOrientation, TabsSize } from './tabs.options.js';
 

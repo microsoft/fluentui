@@ -1,6 +1,6 @@
 import { html, ref, repeat } from '@microsoft/fast-element';
 import type { Field as FluentField } from '../field/field.js';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { ValidationFlags } from '../field/field.options.js';
 import type { RadioGroup as FluentRadioGroup } from './radio-group.js';
 import { RadioGroupOrientation } from './radio-group.options.js';

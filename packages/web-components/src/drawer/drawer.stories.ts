@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 

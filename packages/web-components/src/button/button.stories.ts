@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Button as FluentButton } from './button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize, ButtonType } from './button.options.js';
 

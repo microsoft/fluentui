@@ -1,5 +1,5 @@
 import { html, ref } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import type { Tablist as FluentTablist } from './tablist.js';
 import { TablistAppearance as TablistAppearanceValues, TablistOrientation, TablistSize } from './tablist.options.js';
 
@@ -8,10 +8,10 @@ type Story = StoryObj<FluentTablist>;
 const storyTemplate = html<StoryArgs<FluentTablist>>`
   <div style="display: flex; flex-direction: column; gap: 1rem;">
     <fluent-tablist
-      orientation=${story => story.orientation}
-      appearance=${story => story.appearance}
-      ?disabled=${story => story.disabled}
-      size=${story => story.size}
+      orientation="${story => story.orientation}"
+      appearance="${story => story.appearance}"
+      ?disabled="${story => story.disabled}"
+      size="${story => story.size}"
       activeid="${story => story.activeid}"
       @change="${(x, c) => {
         x.panel.textContent = `Panel changed to ${(c.event.target as FluentTablist).activetab?.textContent}`;

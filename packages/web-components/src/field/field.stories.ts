@@ -1,6 +1,6 @@
 import { html, repeat } from '@microsoft/fast-element';
 import { uniqueId } from '@microsoft/fast-web-utilities';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorStatusDangerForeground1, colorStatusSuccessBackground3 } from '../theme/design-tokens.js';
 import type { TextInput as FluentTextInput } from '../text-input/text-input.js';
 import type { Field as FluentField } from './field.js';

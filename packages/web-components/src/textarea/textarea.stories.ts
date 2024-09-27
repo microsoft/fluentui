@@ -1,5 +1,5 @@
 import { html, when } from '@microsoft/fast-element';
-import { Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { colorNeutralBackground1, colorNeutralBackground3 } from '../theme/design-tokens.js';
 import { TextArea as FluentTextArea } from './textarea.js';
 import { TextAreaAppearance, TextAreaResize, TextAreaSize } from './textarea.options.js';
