@@ -166,6 +166,20 @@ describe('Grouped Vertical bar chart rendering', () => {
 
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
   testWithWait(
+    'Should render the bar with the given width',
+    GroupedVerticalBarChart,
+    { data: chartPoints, barWidth: 'auto', maxBarWidth: 50 },
+    container => {
+      // Assert
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(6);
+      expect(bars[0].getAttribute('width')).toEqual('16');
+      expect(bars[1].getAttribute('width')).toEqual('16');
+      expect(bars[2].getAttribute('width')).toEqual('16');
+    },
+  );
+
+  testWithWait(
     'Should render the bars with the specified colors',
     GroupedVerticalBarChart,
     { data: chartPoints },
