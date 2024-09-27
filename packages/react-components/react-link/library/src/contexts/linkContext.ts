@@ -7,7 +7,7 @@ export type LinkContextValue = {
 const LinkContext = React.createContext<LinkContextValue | undefined>(undefined);
 
 export const linkContextDefaultValue: LinkContextValue = {
-  inlineLinks: false,
+  inline: false,
 };
 
 export const LinkContextProvider = LinkContext.Provider;

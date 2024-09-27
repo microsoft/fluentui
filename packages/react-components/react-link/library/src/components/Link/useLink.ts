@@ -3,7 +3,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
-import { useInlineLinkContext } from '../../contexts/inlineLinkContext';
+import { useLinkContext } from '../../contexts/linkContext';
 
 /**
  * Given user props, defines default props for the Link, calls useLinkState_unstable, and returns processed state.
@@ -15,7 +15,7 @@ export const useLink_unstable = (
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement | HTMLSpanElement>,
 ): LinkState => {
   const backgroundAppearance = useBackgroundAppearance();
-  const { inlineLinks } = useInlineLinkContext();
+  const { inline: inlineContext } = useLinkContext();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
 
   const elementType = props.as || (props.href ? 'a' : 'button');
@@ -33,7 +33,7 @@ export const useLink_unstable = (
     appearance,
     disabled,
     disabledFocusable,
-    inline: inline || inlineLinks,
+    inline: inline || !!inlineContext,
 
     // Slots definition
     components: {

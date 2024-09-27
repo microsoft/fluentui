@@ -1,1 +1,1 @@
-export * from './inlineLinkContext';
+export * from './linkContext';

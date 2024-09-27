@@ -21,6 +21,7 @@ export const useMessageBarBody_unstable = (
     components: {
       root: 'div',
     },
+    linkInline: true,
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, bodyRef),
