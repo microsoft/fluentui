@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "add inlineContextProvider",
+  "comment": "feat: add LinkContextProvider",
   "packageName": "@fluentui/react-link",
   "email": "vgenaev@gmail.com",
   "dependentChangeType": "patch"
