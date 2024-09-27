@@ -1,6 +1,6 @@
 {
   "type": "none",
-  "comment": "add link to motion docs page",
+  "comment": "docs: add link to motion docs page",
   "packageName": "@fluentui/react-drawer",
   "email": "viktorgenaev@microsoft.com",
   "dependentChangeType": "none"
