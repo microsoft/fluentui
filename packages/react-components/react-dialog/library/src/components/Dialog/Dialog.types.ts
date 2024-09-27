@@ -7,7 +7,7 @@ import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types'
 
 export type DialogSlots = {
   /**
-   * For more information refer to the [Motion docs page](/?path=/docs/motion-motion-slot--docs).
+   * For more information refer to the [Motion docs page](https://react.fluentui.dev/?path=/docs/motion-motion-slot--docs).
    *
    */
   surfaceMotion: Slot<PresenceMotionSlotProps>;
