@@ -18,4 +18,4 @@ export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 /**
  * State used in rendering MessageBarBody
  */
-export type MessageBarBodyState = ComponentState<MessageBarBodySlots> & { linkInline?: boolean };
+export type MessageBarBodyState = ComponentState<MessageBarBodySlots>;
