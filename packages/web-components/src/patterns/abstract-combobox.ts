@@ -287,8 +287,6 @@ export abstract class AbstractCombobox extends FASTElement {
   protected selectedLabelsChanged() {
     this.togglePlaceholderVisibleState();
     this.setValidity();
-    this.$emit('change');
-    this.$emit('input');
   }
 
   /**
@@ -637,8 +635,9 @@ export abstract class AbstractCombobox extends FASTElement {
         evt.preventDefault();
         if (!this.isExpanded) {
           this.toggleListbox(true);
+        } else {
+          this.moveActiveOption(action);
         }
-        this.moveActiveOption(action);
         break;
       case ListboxAction.SELECT:
         evt.preventDefault();
@@ -767,7 +766,12 @@ export abstract class AbstractCombobox extends FASTElement {
   }
 
   protected updateSelectedLabels() {
+    const previousSelectedLabels = this.selectedLabels;
     this.selectedLabels = this.selectedOptions.map(option => option.label);
+    this.$emit('input');
+    if (this.selectedLabels !== previousSelectedLabels) {
+      this.$emit('change');
+    }
   }
 
   protected togglePlaceholderVisibleState() {

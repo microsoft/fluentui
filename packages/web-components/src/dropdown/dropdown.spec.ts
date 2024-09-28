@@ -519,11 +519,245 @@ test.describe('Dropdown', () => {
     });
   });
 
-  test.describe('pointer interactions', () => {});
+  test.describe('pointer interactions', () => {
+    test('should select the clicked option and close the dropdown without `multiple`', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const content = dropdown.locator('.content');
+      const list = page.locator('fluent-dropdown-list');
+      const options = page.locator('fluent-option');
 
-  test.describe('keyboard interactions', () => {});
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
 
-  test.describe('input event', () => {});
+      await expect(list).toBeHidden();
 
-  test.describe('change event', () => {});
+      await dropdown.click();
+
+      await expect(list).toBeVisible();
+
+      await options.nth(1).click();
+
+      await expect(list).toBeHidden();
+      await expect(content).toHaveText('Two');
+    });
+
+    test('should select the clicked option and keep the dropdown with `multiple`', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const content = dropdown.locator('.content');
+      const list = page.locator('fluent-dropdown-list');
+      const options = page.locator('fluent-option');
+      const outsideButton = page.locator('button');
+
+      await setPageContent(page, /* html */ `
+        <button>outside</button>
+        <fluent-dropdown list="list" multiple></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await expect(list).toBeHidden();
+
+      await dropdown.click();
+
+      await expect(list).toBeVisible();
+
+      await options.nth(1).click();
+
+      await expect(list).toBeVisible();
+      await expect(content).toHaveText('Two');
+
+      await options.nth(2).click();
+
+      await expect(content).toHaveText('Two, Three');
+
+      await outsideButton.click();
+
+      await expect(list).toBeHidden();
+    });
+  });
+
+  test.describe('keyboard interactions', () => {
+    test('should toggle the list by pressing Tab, Enter, Space, or ArrowDown', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const list = page.locator('fluent-dropdown-list');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await page.keyboard.press('Tab');
+
+      await expect(dropdown).toBeFocused();
+      await expect(list).toBeHidden();
+
+      await page.keyboard.press('Enter');
+
+      await expect(list).toBeVisible();
+
+      await page.keyboard.press('Enter');
+
+      await expect(list).toBeHidden();
+
+      await page.keyboard.press(' ');
+
+      await expect(list).toBeVisible();
+
+      await page.keyboard.press(' ');
+
+      await expect(list).toBeHidden();
+
+      await page.keyboard.press('ArrowDown');
+
+      await expect(dropdown).toBeFocused();
+      await expect(list).toBeVisible();
+      await expect(options.nth(0)).toHaveCustomState('aria-active');
+
+      await page.keyboard.press('Tab');
+
+      await expect(list).toBeHidden();
+      await expect(dropdown).not.toBeFocused();
+    });
+
+    test('should close the list by pressing Escape', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const list = page.locator('fluent-dropdown-list');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await expect(list).toBeVisible();
+
+      await page.keyboard.press('Escape');
+
+      await expect(dropdown).toBeFocused();
+      await expect(list).toBeHidden();
+    });
+
+    test('should navigate with Home, End, ArrowDown, and ArrowUp keys', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      const option1Id = await options.nth(0).evaluate(node => node.id);
+      const option2Id = await options.nth(1).evaluate(node => node.id);
+      const option3Id = await options.nth(2).evaluate(node => node.id);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await expect(dropdown).toHaveAttribute('aria-activedescendant', option1Id);
+
+      await page.keyboard.press('ArrowDown');
+
+      await expect(options.nth(1)).toHaveCustomState('aria-active');
+      await expect(dropdown).toHaveAttribute('aria-activedescendant', option2Id);
+
+      await page.keyboard.press('End');
+
+      await expect(options.nth(2)).toHaveCustomState('aria-active');
+      await expect(dropdown).toHaveAttribute('aria-activedescendant', option3Id);
+
+      await page.keyboard.press('ArrowUp');
+
+      await expect(options.nth(1)).toHaveCustomState('aria-active');
+      await expect(dropdown).toHaveAttribute('aria-activedescendant', option2Id);
+
+      await page.keyboard.press('Home');
+
+      await expect(options.nth(0)).toHaveCustomState('aria-active');
+      await expect(dropdown).toHaveAttribute('aria-activedescendant', option1Id);
+    });
+
+    test('should skip disabled options while navigating', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two" disabled>Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.keyboard.press('ArrowDown');
+
+      await expect(options.nth(1)).not.toHaveCustomState('aria-active');
+      await expect(options.nth(2)).toHaveCustomState('aria-active');
+    });
+
+    test('should select option by pressing Enter or Space', async ({ page }) => {
+      const dropdown = page.locator('fluent-dropdown');
+      const options = page.locator('fluent-option');
+
+      await setPageContent(page, /* html */ `
+        <fluent-dropdown list="list"></fluent-dropdown>
+        <fluent-dropdown-list id="list">
+          <fluent-option value="one">One</fluent-option>
+          <fluent-option value="two">Two</fluent-option>
+          <fluent-option value="three">Three</fluent-option>
+        </fluent-dropdown-list>
+      `);
+
+      await page.keyboard.press('Tab');
+      await page.keyboard.press('Enter');
+
+      await page.keyboard.press('ArrowDown');
+      await page.keyboard.press('Enter');
+
+      await expect(options.nth(1)).toHaveJSProperty('selected', true);
+      await expect(dropdown).toHaveJSProperty('value', 'two');
+
+      await dropdown.evaluate((node: Dropdown) => {
+        node.multiple = true;
+      });
+
+      await page.keyboard.press('Enter');
+      await page.keyboard.press('ArrowUp');
+      await page.keyboard.press(' ');
+
+      await expect(options.nth(0)).toHaveJSProperty('selected', true);
+      await expect(options.nth(1)).toHaveJSProperty('selected', true);
+    });
+  });
+
+  test('should fire `input` event when an opton is selected', async ({ page }) => {});
+
+  test('should fire `change` event when value is changed', async ({ page }) => {});
 });
