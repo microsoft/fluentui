@@ -657,6 +657,8 @@ export class BaseRatingDisplay extends FASTElement {
     generateIcons(): string;
     protected getMaxIcons(): number;
     protected getSelectedValue(): number;
+    icon?: string;
+    iconViewBox?: string;
     max?: number;
     value?: number;
 }
@@ -2287,10 +2289,7 @@ export const DividerDefinition: FASTElementDefinition<typeof Divider>;
 
 // @public
 export const DividerOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * Divider roles
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 
@@ -3598,10 +3597,7 @@ export const TablistDefinition: FASTElementDefinition<typeof Tablist>;
 
 // @public
 export const TablistOrientation: {
-    readonly horizontal: "horizontal"; /**
-    * The appearance of the component
-    * @public
-    */
+    readonly horizontal: "horizontal";
     readonly vertical: "vertical";
 };
 

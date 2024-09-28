@@ -1,7 +1,7 @@
 name: '⚛️ React (v8) - 🐞 Bug Report'
 description: File a bug report.
 title: '[Bug]: '
-labels: ['Type: Bug 🐛', 'Needs: Triage 🔍', 'Fluent UI react (v8)']
+labels: ['Type: Bug :bug:', 'Needs: Triage :mag:', 'Fluent UI react (v8)']
 projects: ['microsoft/395']
 assignees: ['@microsoft/cxe-red']
 body:

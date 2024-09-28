@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {
+  AppItem,
   Hamburger,
   NavCategory,
   NavCategoryItem,
+  NavDivider,
   NavDrawer,
   NavDrawerBody,
   NavDrawerHeader,
@@ -11,11 +13,8 @@ import {
   NavSectionHeader,
   NavSubItem,
   NavSubItemGroup,
-  NavSize,
-  NavDivider,
-  AppItem,
-  AppItemStatic,
 } from '@fluentui/react-nav-preview';
+import { DrawerProps } from '@fluentui/react-drawer';
 import { Label, Radio, RadioGroup, Switch, Tooltip, makeStyles, tokens, useId } from '@fluentui/react-components';
 import {
   Board20Filled,
@@ -46,7 +45,6 @@ import {
   PreviewLink20Regular,
   bundleIcon,
   PersonCircle32Regular,
-  PersonCircle24Regular,
 } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -85,47 +83,45 @@ const CareerDevelopment = bundleIcon(PeopleStar20Filled, PeopleStar20Regular);
 const Analytics = bundleIcon(DataArea20Filled, DataArea20Regular);
 const Reports = bundleIcon(DocumentBulletListMultiple20Filled, DocumentBulletListMultiple20Regular);
 
-export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
+type DrawerType = Required<DrawerProps>['type'];
+
+export const Basic = (props: Partial<NavDrawerProps>) => {
   const styles = useStyles();
 
-  const labelId = useId('type-label');
+  const typeLableId = useId('type-label');
   const linkLabelId = useId('link-label');
-  const appItemIconLabelId = useId('app-item-icon-label');
-  const appItemStaticLabelId = useId('app-item-static-label');
+  const multipleLabelId = useId('multiple-label');
 
-  const [size, setNavSize] = React.useState<NavSize>('small');
+  const [isOpen, setIsOpen] = React.useState(true);
   const [enabledLinks, setEnabledLinks] = React.useState(true);
-  const [isAppItemIconPresent, setIsAppItemIconPresent] = React.useState(true);
-  const [isAppItemStatic, setIsAppItemStatic] = React.useState(true);
+  const [type, setType] = React.useState<DrawerType>('inline');
+  const [isMultiple, setIsMultiple] = React.useState(true);
 
   const linkDestination = enabledLinks ? 'https://www.bing.com' : '';
 
-  const appItemIcon = isAppItemIconPresent ? (
-    size === 'small' ? (
-      <PersonCircle24Regular />
-    ) : (
-      <PersonCircle32Regular />
-    )
-  ) : undefined;
-
-  const appItem = isAppItemStatic ? (
-    <AppItemStatic icon={appItemIcon}>Contoso HR</AppItemStatic>
-  ) : (
-    <AppItem icon={appItemIcon} href={linkDestination}>
-      Contoso HR
-    </AppItem>
-  );
+  const renderHamburgerWithToolTip = () => {
+    return (
+      <Tooltip content="Navigation" relationship="label">
+        <Hamburger onClick={() => setIsOpen(!isOpen)} />
+      </Tooltip>
+    );
+  };
 
   return (
     <div className={styles.root}>
-      <NavDrawer defaultSelectedValue="7" defaultSelectedCategoryValue="6" open={true} type={'inline'} size={size}>
-        <NavDrawerHeader>
-          <Tooltip content="Navigation" relationship="label">
-            <Hamburger />
-          </Tooltip>
-        </NavDrawerHeader>
+      <NavDrawer
+        defaultSelectedValue="2"
+        defaultSelectedCategoryValue=""
+        open={isOpen}
+        type={type}
+        multiple={isMultiple}
+      >
+        <NavDrawerHeader>{renderHamburgerWithToolTip()}</NavDrawerHeader>
+
         <NavDrawerBody>
-          {appItem}
+          <AppItem icon={<PersonCircle32Regular />} as="a" href={linkDestination}>
+            Contoso HR
+          </AppItem>
           <NavItem href={linkDestination} icon={<Dashboard />} value="1">
             Dashboard
           </NavItem>
@@ -141,7 +137,6 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
           <NavItem icon={<PerformanceReviews />} href={linkDestination} value="5">
             Performance Reviews
           </NavItem>
-
           <NavSectionHeader>Employee Management</NavSectionHeader>
           <NavCategory value="6">
             <NavCategoryItem icon={<JobPostings />}>Job Postings</NavCategoryItem>
@@ -176,7 +171,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             </NavSubItemGroup>
           </NavCategory>
 
-          <NavDivider />
+          <NavSectionHeader>Learning</NavSectionHeader>
           <NavItem icon={<TrainingPrograms />} value="15">
             Training Programs
           </NavItem>
@@ -191,6 +186,7 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
               </NavSubItem>
             </NavSubItemGroup>
           </NavCategory>
+          <NavDivider />
           <NavItem target="_blank" icon={<Analytics />} value="19">
             Workforce Data
           </NavItem>
@@ -200,11 +196,16 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
         </NavDrawerBody>
       </NavDrawer>
       <div className={styles.content}>
+        {!isOpen && renderHamburgerWithToolTip()}
         <div className={styles.field}>
-          <Label id={labelId}>Size</Label>
-          <RadioGroup value={size} onChange={(_, data) => setNavSize(data.value as NavSize)} aria-labelledby={labelId}>
-            <Radio value="medium" label="Medium" />
-            <Radio value="small" label="Small" />
+          <Label id={typeLableId}>Type</Label>
+          <RadioGroup
+            value={type}
+            onChange={(_, data) => setType(data.value as DrawerType)}
+            aria-labelledby={typeLableId}
+          >
+            <Radio value="overlay" label="Overlay (Default)" />
+            <Radio value="inline" label="Inline" />
           </RadioGroup>
           <Label id={linkLabelId}>Links</Label>
           <Switch
@@ -213,19 +214,12 @@ export const NavDrawerSize = (props: Partial<NavDrawerProps>) => {
             label={enabledLinks ? 'Enabled' : 'Disabled'}
             aria-labelledby={linkLabelId}
           />
-          <Label id={appItemStaticLabelId}>App Item</Label>
+          <Label id={multipleLabelId}>Categories</Label>
           <Switch
-            checked={isAppItemStatic}
-            onChange={(_, data) => setIsAppItemStatic(!!data.checked)}
-            label={isAppItemStatic ? 'Static' : 'Href'}
-            aria-labelledby={appItemStaticLabelId}
-          />
-          <Label id={appItemIconLabelId}>App Item Icon</Label>
-          <Switch
-            checked={isAppItemIconPresent}
-            onChange={(_, data) => setIsAppItemIconPresent(!!data.checked)}
-            label={isAppItemIconPresent ? 'Present' : 'Absent'}
-            aria-labelledby={appItemIconLabelId}
+            checked={isMultiple}
+            onChange={(_, data) => setIsMultiple(!!data.checked)}
+            label={isMultiple ? 'Multiple' : 'Single'}
+            aria-labelledby={multipleLabelId}
           />
         </div>
       </div>
