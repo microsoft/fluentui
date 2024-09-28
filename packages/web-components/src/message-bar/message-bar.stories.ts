@@ -1,5 +1,5 @@
 import { html, repeat } from '@microsoft/fast-element';
-import { type NewMeta as Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
+import { type Meta, renderComponent, type StoryArgs, type StoryObj } from '../helpers.stories.js';
 import { MessageBar as FluentMessageBar } from './message-bar.js';
 import { MessageBarIntent, MessageBarLayout, MessageBarShape } from './message-bar.options.js';
 import './define';
