@@ -757,7 +757,47 @@ test.describe('Dropdown', () => {
     });
   });
 
-  test('should fire `input` event when an opton is selected', async ({ page }) => {});
+  test('should emit `input` event when an opton is selected', async ({ page }) => {
+    const dropdown = page.locator('fluent-dropdown');
 
-  test('should fire `change` event when value is changed', async ({ page }) => {});
+    await setPageContent(page, /* html */ `
+      <fluent-dropdown list="list"></fluent-dropdown>
+      <fluent-dropdown-list id="list">
+        <fluent-option value="one">One</fluent-option>
+        <fluent-option value="two">Two</fluent-option>
+        <fluent-option value="three">Three</fluent-option>
+      </fluent-dropdown-list>
+    `);
+
+    const [wasInput] = await Promise.all([
+      dropdown.evaluate(
+        node => new Promise(resolve => node.addEventListener('input', () => resolve(true), { once: true })),
+      ),
+      dropdown.evaluate((node: Dropdown) => { node.value = 'one' }),
+    ]);
+
+    expect(wasInput).toBe(true);
+  });
+
+  test('should emit `change` event when value is changed', async ({ page }) => {
+    const dropdown = page.locator('fluent-dropdown');
+
+    await setPageContent(page, /* html */ `
+      <fluent-dropdown list="list"></fluent-dropdown>
+      <fluent-dropdown-list id="list">
+        <fluent-option value="one" selected>One</fluent-option>
+        <fluent-option value="two">Two</fluent-option>
+        <fluent-option value="three">Three</fluent-option>
+      </fluent-dropdown-list>
+    `);
+
+    const [wasChanged] = await Promise.all([
+      dropdown.evaluate(
+        node => new Promise(resolve => node.addEventListener('change', () => resolve(true), { once: true })),
+      ),
+      dropdown.evaluate((node: Dropdown) => { node.value = 'two' }),
+    ]);
+
+    expect(wasChanged).toBe(true);
+  });
 });
