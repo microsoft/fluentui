@@ -132,7 +132,7 @@ export interface IXAxisParams {
   hideTickOverlap?: boolean;
 }
 export interface ITickParams {
-  tickValues?: Date[] | number[];
+  tickValues?: Date[] | number[] | string[];
   tickFormat?: string;
 }
 
@@ -162,7 +162,12 @@ export interface IYAxisParams {
  * @export
  * @param {IXAxisParams} xAxisParams
  */
-export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTypes, culture?: string) {
+export function createNumericXAxis(
+  xAxisParams: IXAxisParams,
+  tickParams: ITickParams,
+  chartType: ChartTypes,
+  culture?: string,
+) {
   const {
     domainNRangeValues,
     showRoundOffXTickValues = false,
@@ -179,6 +184,9 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
 
   let tickCount = xAxisCount ?? 6;
   const tickFormat = (domainValue: NumberValue, _index: number) => {
+    if (tickParams.tickFormat) {
+      return d3Format(tickParams.tickFormat)(domainValue);
+    }
     const xAxisValue = typeof domainValue === 'number' ? domainValue : domainValue.valueOf();
     return convertToLocaleString(xAxisValue, culture) as string;
   };
@@ -197,10 +205,16 @@ export function createNumericXAxis(xAxisParams: IXAxisParams, chartType: ChartTy
   if (chartType === ChartTypes.HorizontalBarChartWithAxis) {
     xAxis.tickSizeInner(-(xAxisParams.containerHeight - xAxisParams.margins.top!));
   }
+  if (tickParams.tickValues) {
+    xAxis.tickValues(tickParams.tickValues as number[]);
+  }
+
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = xAxisScale.ticks(tickCount).map(xAxis.tickFormat()!);
+  const tickValues = ((tickParams.tickValues as number[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -304,11 +318,13 @@ export function createDateXAxis(
     .ticks(tickCount)
     .tickFormat(tickFormat);
 
-  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
+  tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues as Date[]) : '';
   if (xAxisElement) {
     d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
   }
-  const tickValues = (tickParams.tickValues ?? xAxisScale.ticks(tickCount)).map(xAxis.tickFormat()!);
+  const tickValues = ((tickParams.tickValues as Date[] | undefined) ?? xAxisScale.ticks(tickCount)).map(
+    xAxis.tickFormat()!,
+  );
   return { xScale: xAxisScale, tickValues };
 }
 
@@ -343,13 +359,13 @@ export function createStringXAxis(
     .paddingInner(typeof xAxisInnerPadding !== 'undefined' ? xAxisInnerPadding : xAxisPadding)
     .paddingOuter(typeof xAxisOuterPadding !== 'undefined' ? xAxisOuterPadding : xAxisPadding);
 
-  let tickValues = dataset;
+  let tickValues = (tickParams.tickValues as string[] | undefined) ?? dataset;
   const tickFormat = (domainValue: string, _index: number) => {
     return convertToLocaleString(domainValue, culture) as string;
   };
   if (hideTickOverlap) {
-    tickValues = [];
-    const tickSizes = dataset.map((value, index) =>
+    let nonOverlappingTickValues = [];
+    const tickSizes = tickValues.map((value, index) =>
       calculateLongestLabelWidth([tickFormat(value, index)], '.fui-cart__xAxis text'),
     );
     // for LTR
@@ -363,17 +379,18 @@ export function createStringXAxis(
       end = 0;
       sign = -1;
     }
-    for (let i = dataset.length - 1; i >= 0; i--) {
-      const tickPosition = xAxisScale(dataset[i])!;
+    for (let i = tickValues.length - 1; i >= 0; i--) {
+      const tickPosition = xAxisScale(tickValues[i])!;
       if (
         sign * (tickPosition - (sign * tickSizes[i]) / 2 - start) >= 0 &&
         sign * (tickPosition + (sign * tickSizes[i]) / 2 - end) <= 0
       ) {
-        tickValues.push(dataset[i]);
+        nonOverlappingTickValues.push(tickValues[i]);
         end = tickPosition - sign * (tickSizes[i] / 2 + 10);
       }
     }
-    tickValues = tickValues.reverse();
+    nonOverlappingTickValues = nonOverlappingTickValues.reverse();
+    tickValues = nonOverlappingTickValues;
   }
 
   const xAxis = d3AxisBottom(xAxisScale)
