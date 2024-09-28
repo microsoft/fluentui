@@ -54,7 +54,7 @@ export const ResponsiveContainer: React.FC<ResponsiveContainerProps> = props => 
   }, [_window]);
 
   return (
-    <div ref={containerRef} className={classes.root}>
+    <div ref={containerRef} className={classes.root} style={{ width: props.width, height: props.height }}>
       {props.children(size)}
     </div>
   );

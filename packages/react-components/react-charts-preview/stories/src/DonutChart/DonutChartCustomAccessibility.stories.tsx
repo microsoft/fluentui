@@ -30,16 +30,15 @@ export const DonutCustomAccess = () => {
     chartTitleAccessibilityData: { ariaLabel: 'Bar chart depicting about Donut chart' },
   };
   return (
-    <div style={{ width: '100%', height: 220 }}>
-      <DonutChart
-        data={data}
-        innerRadius={55}
-        href={'https://developer.microsoft.com/en-us/'}
-        legendsOverflowText={'overflow Items'}
-        hideLegend={false}
-        valueInsideDonut={39000}
-      />
-    </div>
+    <DonutChart
+      data={data}
+      innerRadius={55}
+      href={'https://developer.microsoft.com/en-us/'}
+      legendsOverflowText={'overflow Items'}
+      hideLegend={false}
+      height={220}
+      valueInsideDonut={39000}
+    />
   );
 };
 DonutCustomAccess.parameters = {

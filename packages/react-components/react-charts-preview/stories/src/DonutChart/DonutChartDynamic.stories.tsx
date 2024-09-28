@@ -126,17 +126,16 @@ export const DonutDynamic = () => {
           onChange={_onShowPercentCheckChange}
         />
       </div>
-      <div style={{ width: '100%', height: 248 }}>
-        <DonutChart
-          data={data}
-          innerRadius={innerRadius}
-          legendProps={{
-            allowFocusOnLegends: true,
-          }}
-          hideLabels={hideLabels}
-          showLabelsInPercent={showLabelsInPercent}
-        />
-      </div>
+      <DonutChart
+        data={data}
+        innerRadius={innerRadius}
+        legendProps={{
+          allowFocusOnLegends: true,
+        }}
+        hideLabels={hideLabels}
+        showLabelsInPercent={showLabelsInPercent}
+        height={248}
+      />
       <Button onClick={_changeData}> Change data </Button>
       <Button onClick={_changeColors}> Change colors </Button>
       <div aria-live="polite" aria-atomic="true">

@@ -622,7 +622,7 @@ export const CartesianChart: React.FunctionComponent<IModifiedCartesianChartProp
   }
 
   return (
-    <ResponsiveContainer onResize={props.onResize}>
+    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
       {({ containerWidth, containerHeight }) => (
         <CartesianChartBase {...props} width={containerWidth} height={containerHeight} />
       )}

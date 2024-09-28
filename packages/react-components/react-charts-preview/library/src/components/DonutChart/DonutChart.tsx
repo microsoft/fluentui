@@ -337,7 +337,7 @@ export const DonutChart: React.FunctionComponent<IDonutChartProps> = props => {
   }
 
   return (
-    <ResponsiveContainer onResize={props.onResize}>
+    <ResponsiveContainer onResize={props.onResize} width={props.width} height={props.height}>
       {({ containerWidth, containerHeight }) => (
         <DonutChartBase {...props} width={containerWidth} height={containerHeight} />
       )}

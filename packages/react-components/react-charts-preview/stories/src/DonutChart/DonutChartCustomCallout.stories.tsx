@@ -32,13 +32,14 @@ export const DonutCustomCallout = () => {
   };
 
   return (
-    <div style={{ width: '100%', height: 220 }}>
+    <>
       <DonutChart
         data={data}
         innerRadius={55}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
         hideLegend={false}
+        height={220}
         valueInsideDonut={39000}
         // eslint-disable-next-line react/jsx-no-bind
         onRenderCalloutPerDataPoint={(props: IChartDataPoint) =>
@@ -52,7 +53,7 @@ export const DonutCustomCallout = () => {
           ) : null
         }
       />
-    </div>
+    </>
   );
 };
 DonutCustomCallout.parameters = {
